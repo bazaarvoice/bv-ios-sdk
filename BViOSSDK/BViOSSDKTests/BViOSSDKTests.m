@@ -25,15 +25,19 @@
 }
 
 - (void) didReceiveResponse:(BVResponse *)response sender:(BVBase *)senderID {
+    NSLog(@"\n\n");
     requestComplete = YES;
     if (response.hasErrors) {
+        NSLog(@"\n\n==========================\n\n");
         STFail(@"Error in Class: %@ \n Failure: %@", [senderID class], response.errors);
-        
+        NSLog(@"\n\n==========================\n\n");
     }
     else {
         STAssertNotNil(response.rawResponse, @"Invalid response for Class: %@", [senderID class]);
     }
+    NSLog(@"\n\n");
 }
+
 
 - (void)testShowReview {
     requestComplete = NO;
@@ -167,7 +171,6 @@
     mySubmission.parameters.videoUrl.typeName = @"1";
     mySubmission.parameters.videoUrl.typeValue = @"http://www.youtube.com/";
     mySubmission.delegate = self;
-    [BVSettings instance].passKey = @"u16cwr987fkx0hprzhrbqbmqo";
     [mySubmission startAsynchRequest];                                
     NSRunLoop *theRL = [NSRunLoop currentRunLoop];
     // Begin a run loop terminated when the requestComplete it set to true
@@ -178,14 +181,18 @@
     requestComplete = NO;
     BVSubmissionQuestion *mySubmission = [[BVSubmissionQuestion alloc] init];
     mySubmission.parameters.categoryId = @"1020";
-    mySubmission.parameters.locale = @"en";
+    mySubmission.parameters.locale = @"en_US";
     mySubmission.parameters.userId = @"123abc";
     mySubmission.parameters.questionSummary = @"Some kind of summary";
     mySubmission.delegate = self;
     
-    [BVSettings instance].passKey = @"u16cwr987fkx0hprzhrbqbmqo";
+    [BVSettings instance].passKey = @"KEY_REMOVED";
+    NSString *temp = [BVSettings instance].customerName;
+    [BVSettings instance].customerName = @"answers.apitestcustomer";
     
-    [mySubmission startAsynchRequest];                                  
+    [mySubmission startAsynchRequest];                    
+    [BVSettings instance].customerName = temp;
+
     NSRunLoop *theRL = [NSRunLoop currentRunLoop];
     // Begin a run loop terminated when the requestComplete it set to true
     while (!requestComplete && [theRL runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]]);
@@ -199,8 +206,13 @@
     mySubmission.parameters.answerText = @"Some kind of answer";
     mySubmission.delegate = self;
     [BVSettings instance].passKey = @"KEY_REMOVED";
+    NSString *temp = [BVSettings instance].customerName;
+    [BVSettings instance].customerName = @"answers.apitestcustomer";
+
     
     [mySubmission startAsynchRequest];    
+    [BVSettings instance].customerName = temp;
+
     NSRunLoop *theRL = [NSRunLoop currentRunLoop];
     // Begin a run loop terminated when the requestComplete it set to true
     while (!requestComplete && [theRL runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]]);
@@ -214,6 +226,7 @@
     mySubmission.parameters.categoryId = @"1020";
     mySubmission.parameters.userId = @"123abc";
     mySubmission.delegate = self;
+    [BVSettings instance].customerName = @"stories.apitestcustomer";
     [BVSettings instance].passKey = @"KEY_REMOVED";
     
     [mySubmission startAsynchRequest];        
@@ -237,26 +250,6 @@
     while (!requestComplete && [theRL runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]]);
 }
 
-- (void)testSubmissionPhotos {
-    requestComplete = NO;
-    BVSubmissionPhoto *mySubmission = [[BVSubmissionPhoto alloc] init];
-    mySubmission.parameters.contentType = @"story";
-    mySubmission.parameters.userId = @"testuserid111";
-    
-    NSBundle *bundle = [NSBundle bundleForClass:[self class]];
-    NSString *imagePath = [bundle pathForResource:@"SmallPic" ofType:@"jpg"];
-    UIImage *image = [UIImage imageWithContentsOfFile:imagePath];
-    
-    mySubmission.parameters.photo = image;
-    mySubmission.delegate = self;
-    [BVSettings instance].passKey = @"u16cwr987fkx0hprzhrbqbmqo";//@"62x52tk0usyejqc0yqtx8jtc6";
-    [BVSettings instance].apiVersion = @"5.1";
-    [BVSettings instance].customerName = @"directbuy.ugc";
-    [mySubmission startAsynchRequest];                                     
-    NSRunLoop *theRL = [NSRunLoop currentRunLoop];
-    // Begin a run loop terminated when the requestComplete it set to true
-    while (!requestComplete && [theRL runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]]);
-}
 
 - (void)testSubmissionVideos {
     requestComplete = NO;
@@ -266,11 +259,41 @@
     mySubmission.parameters.userId = @"123abc";
     mySubmission.delegate = self;
     [BVSettings instance].passKey = @"KEY_REMOVED";
-    
+    [BVSettings instance].customerName = @"reviews.apitestcustomer";
+
     [mySubmission startAsynchRequest];                
     NSRunLoop *theRL = [NSRunLoop currentRunLoop];
     // Begin a run loop terminated when the requestComplete it set to true
     while (!requestComplete && [theRL runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]]);
 }
+
+
+
+- (void)testSubmissionPhotos {
+
+    requestComplete = NO;
+    BVSubmissionPhoto *mySubmission = [[BVSubmissionPhoto alloc] init];
+    mySubmission.parameters.contentType = @"review";
+    mySubmission.parameters.userId = @"123";
+    
+    NSBundle *bundle = [NSBundle bundleForClass:[self class]];
+    NSString *imagePath = [bundle pathForResource:@"bv533x533" ofType:@"png"];
+    UIImage *image = [UIImage imageWithContentsOfFile:imagePath];
+    
+    mySubmission.parameters.photo = image;
+    mySubmission.delegate = self;
+    [BVSettings instance].passKey = @"f5jyj7alrfvm7hh3mbykot8ui";
+    [BVSettings instance].apiVersion = @"5.1";
+    [BVSettings instance].customerName = @"reviews.apitestcustomer";
+    [mySubmission startAsynchRequest];                
+    
+    NSRunLoop *theRL = [NSRunLoop currentRunLoop];
+    // Begin a run loop terminated when the requestComplete it set to true
+    while (!requestComplete && [theRL runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]]);
+    
+}
+
+
+
 
 @end
