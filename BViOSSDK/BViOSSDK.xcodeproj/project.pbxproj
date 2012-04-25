@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4D16911F15105D39001ECA48 /* SmallPic.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4D16911E15105D39001ECA48 /* SmallPic.jpg */; };
 		4D9264A8150F1AAC0019574E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D9264A7150F1AAC0019574E /* Foundation.framework */; };
 		4D9264B6150F1AAC0019574E /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D9264B5150F1AAC0019574E /* SenTestingKit.framework */; };
 		4D9264B8150F1AAC0019574E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D9264B7150F1AAC0019574E /* UIKit.framework */; };
@@ -137,6 +136,7 @@
 		4D926598150F1AC10019574E /* SBJsonWriter.h in Headers */ = {isa = PBXBuildFile; fileRef = 4D92651F150F1AC10019574E /* SBJsonWriter.h */; settings = {ATTRIBUTES = (); }; };
 		4D926599150F1AC10019574E /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D926520150F1AC10019574E /* SBJsonWriter.m */; };
 		4D92659A150F1AC10019574E /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D926520150F1AC10019574E /* SBJsonWriter.m */; };
+		BF02D5D61548962C003BDADF /* bv533x533.png in Resources */ = {isa = PBXBuildFile; fileRef = BF02D5D51548962C003BDADF /* bv533x533.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -150,7 +150,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		4D16911E15105D39001ECA48 /* SmallPic.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = SmallPic.jpg; path = BViOSSDKTests/SmallPic.jpg; sourceTree = "<group>"; };
 		4D9264A4150F1AAC0019574E /* libBViOSSDK.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libBViOSSDK.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D9264A7150F1AAC0019574E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		4D9264AB150F1AAC0019574E /* BViOSSDK-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BViOSSDK-Prefix.pch"; sourceTree = "<group>"; };
@@ -243,6 +242,7 @@
 		4D92651E150F1AC10019574E /* SBJsonUTF8Stream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonUTF8Stream.m; sourceTree = "<group>"; };
 		4D92651F150F1AC10019574E /* SBJsonWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonWriter.h; sourceTree = "<group>"; };
 		4D926520150F1AC10019574E /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonWriter.m; sourceTree = "<group>"; };
+		BF02D5D51548962C003BDADF /* bv533x533.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bv533x533.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -271,7 +271,6 @@
 		4D926499150F1AAC0019574E = {
 			isa = PBXGroup;
 			children = (
-				4D16911E15105D39001ECA48 /* SmallPic.jpg */,
 				4D9264A9150F1AAC0019574E /* BViOSSDK */,
 				4D9264BD150F1AAC0019574E /* BViOSSDKTests */,
 				4D9264A6150F1AAC0019574E /* Frameworks */,
@@ -375,6 +374,7 @@
 		4D9264BD150F1AAC0019574E /* BViOSSDKTests */ = {
 			isa = PBXGroup;
 			children = (
+				BF02D5D51548962C003BDADF /* bv533x533.png */,
 				4D9264C3150F1AAC0019574E /* BViOSSDKTests.h */,
 				4D9264C4150F1AAC0019574E /* BViOSSDKTests.m */,
 				4D9264BE150F1AAC0019574E /* Supporting Files */,
@@ -547,7 +547,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4D9264C2150F1AAC0019574E /* InfoPlist.strings in Resources */,
-				4D16911F15105D39001ECA48 /* SmallPic.jpg in Resources */,
+				BF02D5D61548962C003BDADF /* bv533x533.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
