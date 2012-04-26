@@ -177,8 +177,8 @@
     newResponse.rawResponse = respDict;
     newResponse.rawURLRequest = self.rawURLRequest;
     
-    if ([self.delegate respondsToSelector:@selector(didReceiveResponse:sender:)])
-        [self.delegate didReceiveResponse:newResponse sender:self];
+    if ([self.delegate respondsToSelector:@selector(didReceiveResponse:forRequest:)])
+        [self.delegate didReceiveResponse:newResponse forRequest:self];
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
@@ -189,7 +189,7 @@
 }
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
     NSLog(@"Errors: %@", error);
-    if ([self.delegate respondsToSelector:@selector(didFailToReceiveResponse:sender:)])
-        [self.delegate didFailToReceiveResponse:error sender:self];
+    if ([self.delegate respondsToSelector:@selector(didFailToReceiveResponse:forRequest:)])
+        [self.delegate didFailToReceiveResponse:error forRequest:self];
 }
 @end

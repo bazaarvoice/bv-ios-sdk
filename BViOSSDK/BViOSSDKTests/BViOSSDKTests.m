@@ -24,16 +24,16 @@
     [super tearDown];
 }
 
-- (void) didReceiveResponse:(BVResponse *)response sender:(BVBase *)senderID {
+- (void) didReceiveResponse:(BVResponse *)response forRequest:(BVBase *)request {
     NSLog(@"\n\n");
     requestComplete = YES;
     if (response.hasErrors) {
         NSLog(@"\n\n==========================\n\n");
-        STFail(@"Error in Class: %@ \n Failure: %@", [senderID class], response.errors);
+        STFail(@"Error in Class: %@ \n Failure: %@", [request class], response.errors);
         NSLog(@"\n\n==========================\n\n");
     }
     else {
-        STAssertNotNil(response.rawResponse, @"Invalid response for Class: %@", [senderID class]);
+        STAssertNotNil(response.rawResponse, @"Invalid response for Class: %@", [request class]);
     }
     NSLog(@"\n\n");
 }
