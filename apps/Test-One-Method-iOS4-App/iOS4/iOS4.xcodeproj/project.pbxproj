@@ -343,6 +343,7 @@
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				USER_HEADER_SEARCH_PATHS = "$(inherited) \"$(SRCROOT)\" \"$(SRCROOT)/bv-ios-static-library\"";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -361,6 +362,7 @@
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				USER_HEADER_SEARCH_PATHS = "$(inherited) \"$(SRCROOT)\" \"$(SRCROOT)/bv-ios-static-library\"";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
