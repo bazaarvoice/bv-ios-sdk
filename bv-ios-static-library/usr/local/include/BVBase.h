@@ -2,8 +2,8 @@
 //  BVDisplay.h
 //  bazaarvoiceSDK
 //
-//  Created by Leon Fu on 2/21/12.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//  Created by Bazaarvoice Engineering on 2/21/12.
+//  Copyright (c) 2012 Bazaarvoice Inc. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -18,8 +18,8 @@
 
 @protocol BVDelegate <NSObject>
 @optional
-- (void) didReceiveResponse:(BVResponse*)response sender:(BVBase*)senderID;
-- (void) didFailToReceiveResponse:(NSError*)err sender:(BVBase*)senderID;
+- (void) didReceiveResponse:(BVResponse*)response forRequest:(BVBase*)request;
+- (void) didFailToReceiveResponse:(NSError*)err forRequest:(BVBase*)request;
 @end
 
 @interface BVBase : NSObject <NSURLConnectionDelegate> {

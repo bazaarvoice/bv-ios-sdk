@@ -338,7 +338,6 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/bazaarvoiceStaticLibrary\"",
 					"\"$(SRCROOT)\"",
 					"\"$(SRCROOT)/bv-ios-static-library\"",
 				);
@@ -357,7 +356,6 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/bazaarvoiceStaticLibrary\"",
 					"\"$(SRCROOT)\"",
 					"\"$(SRCROOT)/bv-ios-static-library\"",
 				);
