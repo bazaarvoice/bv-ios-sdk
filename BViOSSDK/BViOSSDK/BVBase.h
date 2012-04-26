@@ -18,8 +18,8 @@
 
 @protocol BVDelegate <NSObject>
 @optional
-- (void) didReceiveResponse:(BVResponse*)response sender:(BVBase*)senderID;
-- (void) didFailToReceiveResponse:(NSError*)err sender:(BVBase*)senderID;
+- (void) didReceiveResponse:(BVResponse*)response forRequest:(BVBase*)request;
+- (void) didFailToReceiveResponse:(NSError*)err forRequest:(BVBase*)request;
 @end
 
 @interface BVBase : NSObject <NSURLConnectionDelegate> {
