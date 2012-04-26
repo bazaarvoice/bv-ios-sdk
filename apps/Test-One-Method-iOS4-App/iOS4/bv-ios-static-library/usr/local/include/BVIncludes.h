@@ -2,8 +2,8 @@
 //  BVIncludes.h
 //  bazaarvoiceSDK
 //
-//  Created by Leon Fu on 2/25/12.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//  Created by Bazaarvoice Engineering on 2/25/12.
+//  Copyright (c) 2012 Bazaarvoice Inc. All rights reserved.
 //
 
 #ifndef bazaarvoiceSDK_BVIncludes_h
