@@ -338,12 +338,12 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/bazaarvoiceStaticLibrary\"",
 					"\"$(SRCROOT)\"",
 					"\"$(SRCROOT)/bv-ios-static-library\"",
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				USER_HEADER_SEARCH_PATHS = "$(inherited) \"$(SRCROOT)\" \"$(SRCROOT)/bv-ios-static-library\"";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -357,12 +357,12 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/bazaarvoiceStaticLibrary\"",
 					"\"$(SRCROOT)\"",
 					"\"$(SRCROOT)/bv-ios-static-library\"",
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				USER_HEADER_SEARCH_PATHS = "$(inherited) \"$(SRCROOT)\" \"$(SRCROOT)/bv-ios-static-library\"";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

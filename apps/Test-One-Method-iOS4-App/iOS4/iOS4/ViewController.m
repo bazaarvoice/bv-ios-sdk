@@ -14,7 +14,7 @@
 
 @implementation ViewController
 
-- (void) didReceiveResponse:(BVResponse*)response sender:(BVBase*)senderID {
+- (void) didReceiveResponse:(BVResponse*)response forRequest:(BVBase *)request {
     NSLog(@"Raw Response: %@", response.rawResponse);    
 }
 
