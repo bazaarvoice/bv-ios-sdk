@@ -2,8 +2,8 @@
 //  BVParameters.h
 //  bazaarvoiceSDK
 //
-//  Created by Leon Fu on 2/23/12.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//  Created by Bazaarvoice Engineering on 2/23/12.
+//  Copyright (c) 2012 Bazaarvoice Inc. All rights reserved.
 //
 
 //  A class to store all the parameters

@@ -39,7 +39,7 @@
 
 #pragma mark - BVDelegate
 
-- (void) didReceiveResponse:(BVResponse *)response sender:(BVBase *)senderID {
+- (void) didReceiveResponse:(BVResponse *)response forRequest:(BVBase *)request {
     // When we get a response let's push the view controller response.
     NSLog(@"Raw Response: %@", response.rawResponse);
     if (myResultsView == nil) {
