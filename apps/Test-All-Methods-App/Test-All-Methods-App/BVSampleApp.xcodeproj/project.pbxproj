@@ -19,9 +19,13 @@
 		4DA3E148150BCA0600E897AF /* BVSampleAppFlipsideViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DA3E146150BCA0600E897AF /* BVSampleAppFlipsideViewController.xib */; };
 		4DA3E21C150BE35900E897AF /* BVSampleAppResultsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DA3E21B150BE35900E897AF /* BVSampleAppResultsViewController.xib */; };
 		4DA3E21F150BE4AD00E897AF /* BVSampleAppResultsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DA3E21E150BE4AD00E897AF /* BVSampleAppResultsViewController.m */; };
-		BFB94E4B153CB92000C6ECC7 /* SmallPic.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BFB94E4A153CB92000C6ECC7 /* SmallPic.jpg */; };
 		BFB94E74153CBFCE00C6ECC7 /* libarclite_universal.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BFB94E52153CBFCE00C6ECC7 /* libarclite_universal.a */; };
 		BFB94E75153CBFCE00C6ECC7 /* libBViOSSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BFB94E53153CBFCE00C6ECC7 /* libBViOSSDK.a */; };
+		BFE3F822154B0A1D00E9DA6D /* bv533x533.png in Resources */ = {isa = PBXBuildFile; fileRef = BFE3F821154B0A1D00E9DA6D /* bv533x533.png */; };
+		BFE3F824154B0A7100E9DA6D /* appicon.png in Resources */ = {isa = PBXBuildFile; fileRef = BFE3F823154B0A7100E9DA6D /* appicon.png */; };
+		BFE3F826154B0A7400E9DA6D /* appicon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BFE3F825154B0A7400E9DA6D /* appicon@2x.png */; };
+		BFE3F828154B0A7B00E9DA6D /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = BFE3F827154B0A7B00E9DA6D /* Default.png */; };
+		BFE3F82A154B0A7E00E9DA6D /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BFE3F829154B0A7E00E9DA6D /* Default@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,7 +48,6 @@
 		4DA3E21B150BE35900E897AF /* BVSampleAppResultsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BVSampleAppResultsViewController.xib; sourceTree = "<group>"; };
 		4DA3E21D150BE4AD00E897AF /* BVSampleAppResultsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = BVSampleAppResultsViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		4DA3E21E150BE4AD00E897AF /* BVSampleAppResultsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = BVSampleAppResultsViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		BFB94E4A153CB92000C6ECC7 /* SmallPic.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = SmallPic.jpg; sourceTree = "<group>"; };
 		BFB94E52153CBFCE00C6ECC7 /* libarclite_universal.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libarclite_universal.a; sourceTree = "<group>"; };
 		BFB94E53153CBFCE00C6ECC7 /* libBViOSSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libBViOSSDK.a; sourceTree = "<group>"; };
 		BFB94E57153CBFCE00C6ECC7 /* BVBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVBase.h; sourceTree = "<group>"; };
@@ -76,6 +79,11 @@
 		BFB94E71153CBFCE00C6ECC7 /* BVSubmissionReviewComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVSubmissionReviewComment.h; sourceTree = "<group>"; };
 		BFB94E72153CBFCE00C6ECC7 /* BVSubmissionStory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVSubmissionStory.h; sourceTree = "<group>"; };
 		BFB94E73153CBFCE00C6ECC7 /* BVSubmissionVideo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVSubmissionVideo.h; sourceTree = "<group>"; };
+		BFE3F821154B0A1D00E9DA6D /* bv533x533.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bv533x533.png; sourceTree = "<group>"; };
+		BFE3F823154B0A7100E9DA6D /* appicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = appicon.png; sourceTree = "<group>"; };
+		BFE3F825154B0A7400E9DA6D /* appicon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "appicon@2x.png"; sourceTree = "<group>"; };
+		BFE3F827154B0A7B00E9DA6D /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		BFE3F829154B0A7E00E9DA6D /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +105,10 @@
 		4DA3E11C150BCA0500E897AF = {
 			isa = PBXGroup;
 			children = (
+				BFE3F829154B0A7E00E9DA6D /* Default@2x.png */,
+				BFE3F827154B0A7B00E9DA6D /* Default.png */,
+				BFE3F825154B0A7400E9DA6D /* appicon@2x.png */,
+				BFE3F823154B0A7100E9DA6D /* appicon.png */,
 				BFB94E51153CBFCE00C6ECC7 /* bv-ios-static-library */,
 				4DA3E131150BCA0500E897AF /* BVSampleApp */,
 				4DA3E12A150BCA0500E897AF /* Frameworks */,
@@ -136,7 +148,7 @@
 				4DA3E143150BCA0600E897AF /* BVSampleAppMainViewController.xib */,
 				4DA3E146150BCA0600E897AF /* BVSampleAppFlipsideViewController.xib */,
 				4DA3E21B150BE35900E897AF /* BVSampleAppResultsViewController.xib */,
-				BFB94E4A153CB92000C6ECC7 /* SmallPic.jpg */,
+				BFE3F821154B0A1D00E9DA6D /* bv533x533.png */,
 				4DA3E132150BCA0500E897AF /* Supporting Files */,
 			);
 			path = BVSampleApp;
@@ -270,7 +282,11 @@
 				4DA3E145150BCA0600E897AF /* BVSampleAppMainViewController.xib in Resources */,
 				4DA3E148150BCA0600E897AF /* BVSampleAppFlipsideViewController.xib in Resources */,
 				4DA3E21C150BE35900E897AF /* BVSampleAppResultsViewController.xib in Resources */,
-				BFB94E4B153CB92000C6ECC7 /* SmallPic.jpg in Resources */,
+				BFE3F822154B0A1D00E9DA6D /* bv533x533.png in Resources */,
+				BFE3F824154B0A7100E9DA6D /* appicon.png in Resources */,
+				BFE3F826154B0A7400E9DA6D /* appicon@2x.png in Resources */,
+				BFE3F828154B0A7B00E9DA6D /* Default.png in Resources */,
+				BFE3F82A154B0A7E00E9DA6D /* Default@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

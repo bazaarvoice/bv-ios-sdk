@@ -19,10 +19,9 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     CGSize mySize;
-    self.title = @"BV API Calls";
     UIScrollView *setContentSize = (UIScrollView*)self.view;
-    mySize.width = 320.0;
-    mySize.height = 500.0;
+    mySize.width = self.view.bounds.size.width;
+    mySize.height = self.view.bounds.size.height;
     setContentSize.contentSize = mySize;
 }
 
@@ -211,16 +210,14 @@
 }
 - (IBAction)submissionPhotos {
     BVSubmissionPhoto *mySubmission = [[BVSubmissionPhoto alloc] init];
-    mySubmission.parameters.contentType = @"story";
-    mySubmission.parameters.userId = @"testuserid111";
-    mySubmission.parameters.photo = [UIImage imageNamed:@"SmallPic.jpg"];
+    mySubmission.parameters.contentType = @"review";
+    mySubmission.parameters.userId = @"123";
+    mySubmission.parameters.photo = [UIImage imageNamed:@"bv533x533.png"];
     mySubmission.delegate = self;
-    [BVSettings instance].passKey = @"u16cwr987fkx0hprzhrbqbmqo";//@"62x52tk0usyejqc0yqtx8jtc6";
+    [BVSettings instance].passKey = @"f5jyj7alrfvm7hh3mbykot8ui";
     [BVSettings instance].apiVersion = @"5.1";
-    NSString *temp = [BVSettings instance].customerName;
-    [BVSettings instance].customerName = @"directbuy.ugc";
-    [mySubmission startAsynchRequest];                                     
-    [BVSettings instance].customerName = temp;
+    [BVSettings instance].customerName = @"reviews.apitestcustomer";
+    [mySubmission startAsynchRequest];         
 }
 
 - (IBAction)submissionVideos {

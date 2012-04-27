@@ -23,6 +23,8 @@
     self.mainViewController = [[BVSampleAppMainViewController alloc] initWithNibName:@"BVSampleAppMainViewController" bundle:nil];
     self.mainNavController = [[UINavigationController alloc] init];
     
+    self.mainNavController.navigationBar.hidden = YES;
+    
     // Make the nav controller the root and push on our main view controller.
     self.window.rootViewController = self.mainNavController;
     [self.mainNavController pushViewController:self.mainViewController animated:NO];
