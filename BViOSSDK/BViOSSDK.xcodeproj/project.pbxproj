@@ -136,6 +136,8 @@
 		4D926598150F1AC10019574E /* SBJsonWriter.h in Headers */ = {isa = PBXBuildFile; fileRef = 4D92651F150F1AC10019574E /* SBJsonWriter.h */; settings = {ATTRIBUTES = (); }; };
 		4D926599150F1AC10019574E /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D926520150F1AC10019574E /* SBJsonWriter.m */; };
 		4D92659A150F1AC10019574E /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D926520150F1AC10019574E /* SBJsonWriter.m */; };
+		6F334AE3154F239A00345C16 /* BVDisplayStatistics.h in Headers */ = {isa = PBXBuildFile; fileRef = 6F334AE1154F239A00345C16 /* BVDisplayStatistics.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6F334AE4154F239A00345C16 /* BVDisplayStatistics.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F334AE2154F239A00345C16 /* BVDisplayStatistics.m */; };
 		BF02D5D61548962C003BDADF /* bv533x533.png in Resources */ = {isa = PBXBuildFile; fileRef = BF02D5D51548962C003BDADF /* bv533x533.png */; };
 /* End PBXBuildFile section */
 
@@ -242,6 +244,8 @@
 		4D92651E150F1AC10019574E /* SBJsonUTF8Stream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonUTF8Stream.m; sourceTree = "<group>"; };
 		4D92651F150F1AC10019574E /* SBJsonWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonWriter.h; sourceTree = "<group>"; };
 		4D926520150F1AC10019574E /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonWriter.m; sourceTree = "<group>"; };
+		6F334AE1154F239A00345C16 /* BVDisplayStatistics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVDisplayStatistics.h; sourceTree = "<group>"; };
+		6F334AE2154F239A00345C16 /* BVDisplayStatistics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVDisplayStatistics.m; sourceTree = "<group>"; };
 		BF02D5D51548962C003BDADF /* bv533x533.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bv533x533.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -316,6 +320,8 @@
 				4D9264DB150F1AC10019574E /* BVDisplayQuestion.m */,
 				4D9264DC150F1AC10019574E /* BVDisplayReview.h */,
 				4D9264DD150F1AC10019574E /* BVDisplayReview.m */,
+				6F334AE1154F239A00345C16 /* BVDisplayStatistics.h */,
+				6F334AE2154F239A00345C16 /* BVDisplayStatistics.m */,
 				4D9264DE150F1AC10019574E /* BVDisplayStories.h */,
 				4D9264DF150F1AC10019574E /* BVDisplayStories.m */,
 				4D9264E0150F1AC10019574E /* BVIncludes.h */,
@@ -438,6 +444,7 @@
 				4D926530150F1AC10019574E /* BVDisplayProfile.h in Headers */,
 				4D926533150F1AC10019574E /* BVDisplayQuestion.h in Headers */,
 				4D926536150F1AC10019574E /* BVDisplayReview.h in Headers */,
+				6F334AE3154F239A00345C16 /* BVDisplayStatistics.h in Headers */,
 				4D926539150F1AC10019574E /* BVDisplayStories.h in Headers */,
 				4D92653C150F1AC10019574E /* BVIncludes.h in Headers */,
 				4D92653D150F1AC10019574E /* BVParameters.h in Headers */,
@@ -628,6 +635,7 @@
 				4D926593150F1AC10019574E /* SBJsonTokeniser.m in Sources */,
 				4D926596150F1AC10019574E /* SBJsonUTF8Stream.m in Sources */,
 				4D926599150F1AC10019574E /* SBJsonWriter.m in Sources */,
+				6F334AE4154F239A00345C16 /* BVDisplayStatistics.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
