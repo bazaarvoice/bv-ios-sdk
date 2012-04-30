@@ -1,13 +1,17 @@
 //
 //  BVDisplayStatistics.m
-//  BViOSSDK
+//  bazaarvoiceSDK
 //
-//  Created by Alex Medearis on 4/30/12.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//  Created by Bazaarvoice Engineering on 2/21/12.
+//  Copyright (c) 2012 Bazaarvoice Inc. All rights reserved.
 //
 
 #import "BVDisplayStatistics.h"
 
 @implementation BVDisplayStatistics
+
+- (NSString*) displayType {
+    return @"statistics";
+}
 
 @end

@@ -159,6 +159,22 @@
     while (!requestComplete && [theRL runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]]);
 }
 
+
+- (void)testShowStatistics {
+    requestComplete = NO;
+    BVDisplayStatistics *showDisplayRequest = [[BVDisplayStatistics alloc] init];
+    [BVSettings instance].passKey = @"KEY_REMOVED";
+    showDisplayRequest.parameters.filter = @"productid:test1,test2,test3";
+    showDisplayRequest.parameters.stats = @"Reviews,NativeReviews";
+    showDisplayRequest.delegate = self;
+    
+    [showDisplayRequest startAsynchRequest];
+    NSRunLoop *theRL = [NSRunLoop currentRunLoop];
+    // Begin a run loop terminated when the requestComplete it set to true
+    while (!requestComplete && [theRL runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]]);
+}
+
+
 - (void)testSubmissionReview {
     requestComplete = NO;
     BVSubmissionReview *mySubmission = [[BVSubmissionReview alloc] init];
