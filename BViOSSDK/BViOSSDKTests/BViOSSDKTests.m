@@ -293,7 +293,7 @@
     mySubmission.parameters.userId = @"123";
     
     NSBundle *bundle = [NSBundle bundleForClass:[self class]];
-    NSString *imagePath = [bundle pathForResource:@"bv533x533" ofType:@"png"];
+    NSString *imagePath = [bundle pathForResource:@"sprite" ofType:@"jpg"];
     UIImage *image = [UIImage imageWithContentsOfFile:imagePath];
     
     mySubmission.parameters.photo = image;
@@ -309,6 +309,10 @@
     
 }
 
+- (void) didSendBodyData:(NSInteger)bytesWritten totalBytesWritten:(NSInteger)totalBytesWritten totalBytesExpectedToWrite:(NSInteger)totalBytesExpectedToWrite forforRequest:(BVBase*)request
+{
+
+}
 
 
 
