@@ -138,7 +138,6 @@
 		4D92659A150F1AC10019574E /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D926520150F1AC10019574E /* SBJsonWriter.m */; };
 		6F334AE3154F239A00345C16 /* BVDisplayStatistics.h in Headers */ = {isa = PBXBuildFile; fileRef = 6F334AE1154F239A00345C16 /* BVDisplayStatistics.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6F334AE4154F239A00345C16 /* BVDisplayStatistics.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F334AE2154F239A00345C16 /* BVDisplayStatistics.m */; };
-		6F334B391550392F00345C16 /* sprite.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6F334B371550383E00345C16 /* sprite.jpg */; };
 		BF02D5D61548962C003BDADF /* bv533x533.png in Resources */ = {isa = PBXBuildFile; fileRef = BF02D5D51548962C003BDADF /* bv533x533.png */; };
 /* End PBXBuildFile section */
 
@@ -247,7 +246,6 @@
 		4D926520150F1AC10019574E /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonWriter.m; sourceTree = "<group>"; };
 		6F334AE1154F239A00345C16 /* BVDisplayStatistics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVDisplayStatistics.h; sourceTree = "<group>"; };
 		6F334AE2154F239A00345C16 /* BVDisplayStatistics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVDisplayStatistics.m; sourceTree = "<group>"; };
-		6F334B371550383E00345C16 /* sprite.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = sprite.jpg; path = ../BViOSSDK/sprite.jpg; sourceTree = "<group>"; };
 		BF02D5D51548962C003BDADF /* bv533x533.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bv533x533.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -382,7 +380,6 @@
 		4D9264BD150F1AAC0019574E /* BViOSSDKTests */ = {
 			isa = PBXGroup;
 			children = (
-				6F334B371550383E00345C16 /* sprite.jpg */,
 				BF02D5D51548962C003BDADF /* bv533x533.png */,
 				4D9264C3150F1AAC0019574E /* BViOSSDKTests.h */,
 				4D9264C4150F1AAC0019574E /* BViOSSDKTests.m */,
@@ -558,7 +555,6 @@
 			files = (
 				4D9264C2150F1AAC0019574E /* InfoPlist.strings in Resources */,
 				BF02D5D61548962C003BDADF /* bv533x533.png in Resources */,
-				6F334B391550392F00345C16 /* sprite.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
