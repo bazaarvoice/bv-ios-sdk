@@ -83,7 +83,7 @@
 #pragma mark Network Connections
 - (void) initAsynchRequestWithString:(NSString*)string {
     NSMutableURLRequest *request = [self generateURLRequestWithString:string];
-    NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:request delegate:self startImmediately:YES];
+    NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
     if (connection)
         dataToReceive = [[NSMutableData alloc] init];
 }
@@ -180,6 +180,15 @@
     if ([self.delegate respondsToSelector:@selector(didReceiveResponse:forRequest:)])
         [self.delegate didReceiveResponse:newResponse forRequest:self];
 }
+
+- (void)connection:(NSURLConnection *)connection didSendBodyData:(NSInteger)bytesWritten totalBytesWritten:(NSInteger)totalBytesWritten totalBytesExpectedToWrite:(NSInteger)totalBytesExpectedToWrite
+{
+    if ([self.delegate respondsToSelector:@selector(didSendBodyData:totalBytesWritten:totalBytesExpectedToWrite:forforRequest:)])
+    {
+        [self.delegate didSendBodyData:bytesWritten totalBytesWritten:totalBytesWritten totalBytesExpectedToWrite:totalBytesExpectedToWrite forforRequest:self];
+    }
+}
+
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
     [dataToReceive setLength:0];
