@@ -309,11 +309,4 @@
     
 }
 
-- (void) didSendBodyData:(NSInteger)bytesWritten totalBytesWritten:(NSInteger)totalBytesWritten totalBytesExpectedToWrite:(NSInteger)totalBytesExpectedToWrite forforRequest:(BVBase*)request
-{
-
-}
-
-
-
 @end
