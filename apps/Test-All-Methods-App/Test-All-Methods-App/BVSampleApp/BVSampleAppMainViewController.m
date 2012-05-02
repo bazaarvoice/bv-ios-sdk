@@ -23,6 +23,12 @@
     mySize.width = self.view.bounds.size.width;
     mySize.height = self.view.bounds.size.height;
     setContentSize.contentSize = mySize;
+
+}
+
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewDidLoad];
+    self.navigationController.navigationBar.hidden = YES;
 }
 
 - (void)viewDidUnload
@@ -48,6 +54,7 @@
     
     myResultsView.responseToDisplay = response;
     [self.navigationController pushViewController:myResultsView animated:YES];
+    self.navigationController.navigationBar.hidden = NO;
 }
 
 #pragma mark - Flipside View
