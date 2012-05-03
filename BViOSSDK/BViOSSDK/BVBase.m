@@ -9,9 +9,22 @@
 #import "BVBase.h"
 #import "SBJson.h"
 
+#import <sys/socket.h>
+#import <netinet/in.h>
+#import <arpa/inet.h>
+#import <netdb.h>
+#import <SystemConfiguration/SCNetworkReachability.h>
+
+@interface BVBase()
+// This property indicates whether we have attempted a retry in the case that
+// the first request failed.
+@property (nonatomic, assign) BOOL retriedUponFail;
+
+@end
+
 @implementation BVBase
 @synthesize delegate = _delegate;
-
+@synthesize retriedUponFail = _retriedUponFail;
 @synthesize settingsObject = _settingsObject;
 @synthesize parameters = _parameters;
 @synthesize rawURLRequest = _rawURLRequest;
@@ -21,6 +34,7 @@
 	if (self != nil) {
         // Initalization code here. Put in reasonable defaults.
         self.settingsObject = [BVSettings instance];
+        self.retriedUponFail = NO;
 	}
 	return self;
 }
@@ -183,9 +197,9 @@
 
 - (void)connection:(NSURLConnection *)connection didSendBodyData:(NSInteger)bytesWritten totalBytesWritten:(NSInteger)totalBytesWritten totalBytesExpectedToWrite:(NSInteger)totalBytesExpectedToWrite
 {
-    if ([self.delegate respondsToSelector:@selector(didSendBodyData:totalBytesWritten:totalBytesExpectedToWrite:forforRequest:)])
+    if ([self.delegate respondsToSelector:@selector(didSendBodyData:totalBytesWritten:totalBytesExpectedToWrite:forRequest:)])
     {
-        [self.delegate didSendBodyData:bytesWritten totalBytesWritten:totalBytesWritten totalBytesExpectedToWrite:totalBytesExpectedToWrite forforRequest:self];
+        [self.delegate didSendBodyData:bytesWritten totalBytesWritten:totalBytesWritten totalBytesExpectedToWrite:totalBytesExpectedToWrite forRequest:self];
     }
 }
 
@@ -197,8 +211,19 @@
     [dataToReceive appendData:data];
 }
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
-    NSLog(@"Errors: %@", error);
-    if ([self.delegate respondsToSelector:@selector(didFailToReceiveResponse:forRequest:)])
-        [self.delegate didFailToReceiveResponse:error forRequest:self];
+    // If we've already retried, notify the client
+    if(self.retriedUponFail)
+    {
+        NSLog(@"Errors: %@", error);
+        if ([self.delegate respondsToSelector:@selector(didFailToReceiveResponse:forRequest:)])
+            [self.delegate didFailToReceiveResponse:error forRequest:self];        
+    } 
+    else 
+    {
+        // ... otherwise, retry
+        [self performSelector:@selector(startAsynchRequest) withObject:nil afterDelay:1.0];
+        self.retriedUponFail = YES;
+    }
 }
+
 @end

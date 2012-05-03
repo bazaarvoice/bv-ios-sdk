@@ -11,6 +11,7 @@
 
 @interface BViOSSDKTests : SenTestCase <BVDelegate> {
     BOOL requestComplete;
+    BOOL receivedProgressCallback;
 }
 
 @end
