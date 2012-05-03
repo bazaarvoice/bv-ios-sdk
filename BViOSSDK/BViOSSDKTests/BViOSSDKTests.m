@@ -32,10 +32,36 @@
         STFail(@"Error in Class: %@ \n Failure: %@", [request class], response.errors);
         NSLog(@"\n\n==========================\n\n");
     }
-    else {
+    else if(!receivedProgressCallback && [request isKindOfClass:[BVSubmission class]])
+    {
+        // We only need to check if we received a progress callback for POST / submission requests
+        NSLog(@"\n\n==========================\n\n");
+        STFail(@"Failed to receive a progress callback for request: %@", [request class]);
+        NSLog(@"\n\n==========================\n\n");
+    }
+    else 
+    {
         STAssertNotNil(response.rawResponse, @"Invalid response for Class: %@", [request class]);
     }
     NSLog(@"\n\n");
+}
+
+- (void) didSendBodyData:(NSInteger)bytesWritten totalBytesWritten:(NSInteger)totalBytesWritten totalBytesExpectedToWrite:(NSInteger)totalBytesExpectedToWrite forRequest:(BVBase*)request 
+{
+    STAssertTrue(bytesWritten <= totalBytesWritten, 
+                 @"bytesWritten should be less than totalBytesWritten");
+    
+    STAssertTrue(totalBytesWritten <= totalBytesExpectedToWrite, 
+                 @"totalBytesWritten should be less than totalBytesExpectedToWrite");
+    receivedProgressCallback = YES;
+}
+
+- (void) didFailToReceiveResponse:(NSError *)err forRequest:(BVBase *)request
+{
+    requestComplete = YES;
+    NSLog(@"\n\n==========================\n\n");
+    STFail(@"Request failed to receive response: %@", [request class]);
+    NSLog(@"\n\n==========================\n\n");
 }
 
 
@@ -177,6 +203,7 @@
 
 - (void)testSubmissionReview {
     requestComplete = NO;
+    receivedProgressCallback = NO;
     BVSubmissionReview *mySubmission = [[BVSubmissionReview alloc] init];
     mySubmission.parameters.productId = @"1000001";
     mySubmission.parameters.userId = @"123abc";
@@ -195,6 +222,7 @@
 
 - (void)testSubmissionQuestions {
     requestComplete = NO;
+    receivedProgressCallback = NO;
     BVSubmissionQuestion *mySubmission = [[BVSubmissionQuestion alloc] init];
     mySubmission.parameters.categoryId = @"1020";
     mySubmission.parameters.locale = @"en_US";
@@ -236,6 +264,7 @@
 
 - (void)testSubmissionStories {
     requestComplete = NO;
+    receivedProgressCallback = NO;
     BVSubmissionStory *mySubmission = [[BVSubmissionStory alloc] init];
     mySubmission.parameters.title = @"This is the title";
     mySubmission.parameters.storyText = @"This is my story";
@@ -253,6 +282,7 @@
 
 - (void)testSubmissionComments {
     requestComplete = NO;
+    receivedProgressCallback = NO;
     BVSubmissionReviewComment *mySubmission = [[BVSubmissionReviewComment alloc] init];    
     mySubmission.parameters.commentText = @"This is my comment text";
     mySubmission.parameters.reviewId = @"83964";
@@ -269,6 +299,7 @@
 
 - (void)testSubmissionVideos {
     requestComplete = NO;
+    receivedProgressCallback = NO;
     BVSubmissionVideo *mySubmission = [[BVSubmissionVideo alloc] init];    
     mySubmission.parameters.contentType = @"review";
     mySubmission.parameters.video = @"http://www.youtube.com/";
@@ -286,8 +317,8 @@
 
 
 - (void)testSubmissionPhotos {
-
     requestComplete = NO;
+    receivedProgressCallback = NO;
     BVSubmissionPhoto *mySubmission = [[BVSubmissionPhoto alloc] init];
     mySubmission.parameters.contentType = @"review";
     mySubmission.parameters.userId = @"123";

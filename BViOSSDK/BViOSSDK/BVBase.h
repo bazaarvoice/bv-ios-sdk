@@ -19,7 +19,7 @@
 @protocol BVDelegate <NSObject>
 @optional
 - (void) didReceiveResponse:(BVResponse*)response forRequest:(BVBase*)request;
-- (void) didSendBodyData:(NSInteger)bytesWritten totalBytesWritten:(NSInteger)totalBytesWritten totalBytesExpectedToWrite:(NSInteger)totalBytesExpectedToWrite forforRequest:(BVBase*)request;
+- (void) didSendBodyData:(NSInteger)bytesWritten totalBytesWritten:(NSInteger)totalBytesWritten totalBytesExpectedToWrite:(NSInteger)totalBytesExpectedToWrite forRequest:(BVBase*)request;
 - (void) didFailToReceiveResponse:(NSError*)err forRequest:(BVBase*)request;
 @end
 
