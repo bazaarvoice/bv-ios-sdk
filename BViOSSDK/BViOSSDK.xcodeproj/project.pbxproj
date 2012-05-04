@@ -754,7 +754,7 @@
 		4D9264C9150F1AAC0019574E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				DSTROOT = /tmp/BViOSSDK.dst;
+				DSTROOT = "$(CACHE_ROOT)/SharedPrecompiledHeaders";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BViOSSDK/BViOSSDK-Prefix.pch";
 				OTHER_LDFLAGS = "-ObjC";
@@ -767,7 +767,7 @@
 		4D9264CA150F1AAC0019574E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				DSTROOT = /tmp/BViOSSDK.dst;
+				DSTROOT = "$(CACHE_ROOT)/SharedPrecompiledHeaders";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BViOSSDK/BViOSSDK-Prefix.pch";
 				OTHER_LDFLAGS = "-ObjC";

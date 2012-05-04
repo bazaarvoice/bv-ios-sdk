@@ -1,5 +1,5 @@
 //
-//  BVDisplay.m
+//  BVBase.m
 //  bazaarvoiceSDK
 //
 //  Created by Bazaarvoice Engineering on 2/21/12.
