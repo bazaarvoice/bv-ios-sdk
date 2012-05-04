@@ -68,7 +68,9 @@
     
     // close form
     [body appendData:[[NSString stringWithFormat:@"--%@--\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
-        
+    
+    [request setValue:[NSString stringWithFormat:@"%d", [body length]] forHTTPHeaderField:@"Content-Length"];
+    
     // set request body
     [request setHTTPBody:body];
     

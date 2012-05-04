@@ -138,6 +138,7 @@
 		4D92659A150F1AC10019574E /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D926520150F1AC10019574E /* SBJsonWriter.m */; };
 		6F334AE3154F239A00345C16 /* BVDisplayStatistics.h in Headers */ = {isa = PBXBuildFile; fileRef = 6F334AE1154F239A00345C16 /* BVDisplayStatistics.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6F334AE4154F239A00345C16 /* BVDisplayStatistics.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F334AE2154F239A00345C16 /* BVDisplayStatistics.m */; };
+		6F34A1CE1551E32E00F281BB /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F34A1CD1551E32E00F281BB /* SystemConfiguration.framework */; };
 		BF02D5D61548962C003BDADF /* bv533x533.png in Resources */ = {isa = PBXBuildFile; fileRef = BF02D5D51548962C003BDADF /* bv533x533.png */; };
 /* End PBXBuildFile section */
 
@@ -246,6 +247,7 @@
 		4D926520150F1AC10019574E /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonWriter.m; sourceTree = "<group>"; };
 		6F334AE1154F239A00345C16 /* BVDisplayStatistics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVDisplayStatistics.h; sourceTree = "<group>"; };
 		6F334AE2154F239A00345C16 /* BVDisplayStatistics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVDisplayStatistics.m; sourceTree = "<group>"; };
+		6F34A1CD1551E32E00F281BB /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		BF02D5D51548962C003BDADF /* bv533x533.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bv533x533.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -254,6 +256,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6F34A1CE1551E32E00F281BB /* SystemConfiguration.framework in Frameworks */,
 				4D9264A8150F1AAC0019574E /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -276,6 +279,7 @@
 			isa = PBXGroup;
 			children = (
 				4D9264A9150F1AAC0019574E /* BViOSSDK */,
+				6F34A1CD1551E32E00F281BB /* SystemConfiguration.framework */,
 				4D9264BD150F1AAC0019574E /* BViOSSDKTests */,
 				4D9264A6150F1AAC0019574E /* Frameworks */,
 				4D9264A5150F1AAC0019574E /* Products */,
