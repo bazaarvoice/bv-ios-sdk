@@ -71,6 +71,12 @@
     [BVSettings instance].passKey = @"KEY_REMOVED";
     showDisplayRequest.parameters.filter = @"Id:192612";
     showDisplayRequest.parameters.include = @"Products";
+    // TODO: This causes a bug -- filter and Sort both appear in the request?
+    /*
+    showDisplayRequest.parameters.filterType.prefixName = @"Sort";
+    showDisplayRequest.parameters.filterType.typeName = @"Products";
+    showDisplayRequest.parameters.filterType.typeValue = @"id:asc";
+     */
     showDisplayRequest.delegate = self;
     
     [showDisplayRequest startAsynchRequest];

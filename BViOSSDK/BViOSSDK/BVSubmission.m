@@ -24,6 +24,7 @@
     // Set to nil because unsafe_unretained does not zero out pointers.
 }
 
+// This method is overridden to generate an NSMutableURLRequest with a POST body instead of a GET that is used in the BVDisplay classes.
 - (NSMutableURLRequest*) generateURLRequestWithString:(NSString*)string {
     NSString *parameterString = [NSString stringWithFormat:@"apiversion=%@&passkey=%@", self.settingsObject.apiVersion, self.settingsObject.passKey];
     parameterString = [parameterString stringByAppendingString:[self parameterURL]];
@@ -44,6 +45,7 @@
     return request;
 }
 
+//This method is overridden to not include parameters in the URL Request since Submissions are HTTP POSTs instead of GET’s in Display requests.
 - (NSString*) buildURLString {
     NSString *buildString = [NSString stringWithFormat:@"http://%@.%@/%@/", self.settingsObject.customerName, BAZAARVOICECOM, self.settingsObject.dataString];
     buildString = [buildString stringByAppendingFormat:@"%@.%@", self.displayType, self.settingsObject.formatString];
@@ -57,11 +59,5 @@
         _parameters = [[BVSubmissionParametersBase alloc] init];
     return _parameters;
 }
-
-#pragma mark Overrides
-- (NSString*) displayType {
-    return @"Over Ride Here";
-}
-
 
 @end
