@@ -8,6 +8,12 @@
 
 #import "BVBase.h"
 
+/*!
+ Request class for statistics display
+ 
+ See http://developer.bazaarvoice.com/api/5/1/statistics-display
+ */
+
 @interface BVDisplayStatistics : BVBase
 
 @end

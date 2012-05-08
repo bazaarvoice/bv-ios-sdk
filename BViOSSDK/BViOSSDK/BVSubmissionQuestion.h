@@ -9,6 +9,12 @@
 #import "BVSubmission.h"
 #import "BVSubmissionParametersQuestion.h"
 
+/*!
+ Request class for question submission
+ 
+ See http://developer.bazaarvoice.com/api/5/1/question-submission
+ */
+
 @interface BVSubmissionQuestion : BVSubmission
 
 // Overrides for subclasses

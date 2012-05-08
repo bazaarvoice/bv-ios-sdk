@@ -7,8 +7,9 @@
 //
 
 /*!
- @header BVDisplayAnswer
- Request class for fetching answers.
+ Request class for answer display
+ 
+ See http://developer.bazaarvoice.com/api/5/1/answer-display
  */
 
 #import "BVBase.h"

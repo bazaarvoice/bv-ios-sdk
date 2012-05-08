@@ -49,11 +49,12 @@
 
 #pragma mark Overrides
 - (NSString*) contentType {
-    return @"OverRide in sub class to set contentType";
+    return @"None";
 }
 
 - (NSString*) displayType {
-    return @"Over Ride Here";
+    [NSException raise:@"displayType should be overridden by subclasses of BVBase" format:@""];
+    return @"ERROR";
 }
 
 - (NSString*) fragmentForKey:(NSString*)key usingDictionary:(NSDictionary*)parametersDict {
