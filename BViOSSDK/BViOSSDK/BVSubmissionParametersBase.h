@@ -39,7 +39,7 @@
 @property (nonatomic, copy) NSString* campaignId;
 /*!
  Some examples of this parameter include the following. Each is followed by possible values.
- 
+    
  - ContextDataValue_PurchaserRank - "top", "top10", "top100", "top1000"
  - ContextDataValue_Purchaser - "yes", "no"
  - ContextDataValue_Age - "under21", "21to34", "35to44", "45to54", "55to64", "over65"
@@ -53,21 +53,30 @@
  */
 @property (nonatomic, copy) NSString* locale;
 /*!
+ BVParametersType param for the photo caption.
+ 
  A BVParametersType parameter with:
+
  - prefixName = "PhotoCaption"
  - typeName = <n>
  - typeValue = Caption text for the photo URL with the same value of <n>.
 */
 @property (nonatomic, strong) BVParametersType* photoCaption;
 /*!
+ BVParametersType param for the photo url.
+ 
  A BVParametersType parameter with:
+ 
  - prefixName = "PhotoUrl"
  - typeName = <n>
  - typeValue = A Bazaarvoice URL of a photo uploaded using the Data API, where <n> is a non-negative integer.
  */
 @property (nonatomic, strong) BVParametersType* photoURL;
 /*!
+ BVParametersType param for a product recommendation id.
+ 
  A BVParametersType parameter with:
+ 
  - prefixName = "ProductRecommendationId"
  - typeName = <n>
  - typeValue = A non-negative integer representing the product external ID of the <n>'th product recommendation (for Social Recommendations)
@@ -78,7 +87,10 @@
  */
 @property (nonatomic, copy) NSString* sendEmailAlertWhenPublished;
 /*!
+ BVParametersType param for a tag.
+ 
  A BVParametersType parameter with:
+ 
  - prefixName = "tag"
  - typeName = A parameter of the form <Dimension-External-Id>_<n>. <n> should be a non-negative integer starting at the number 1.  A concrete example of this parameter might be 'Pro_1'.
  - typeValue = Any free form text tag.
@@ -101,7 +113,10 @@
  */
 @property (nonatomic, copy) NSString* userNickName;
 /*!
+ BVParametersType param for a video caption.
+ 
  A BVParametersType parameter with:
+
  - prefixName = "VideoCaption"
  - typeName = <n>
  - typeValue = Caption text for the video URL with the same value of <n>.
@@ -109,7 +124,10 @@
 
 @property (nonatomic, strong) BVParametersType* videoCaption;
 /*!
+ BVParametersType param for a video url.
+ 
  A BVParametersType parameter with:
+ 
  - prefixName = "VideoUrl"
  - typeName = <n>
  - typeValue = Value is valid YouTube or Bazaarvoice video-upload URL where <n> is a non-negative integer.
