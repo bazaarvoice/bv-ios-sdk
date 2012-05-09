@@ -9,6 +9,13 @@
 #import "BVSubmission.h"
 #import "BVSubmissionParametersPhoto.h"
 
+/*!
+ Request class for photo submission
+ 
+ See http://developer.bazaarvoice.com/api/5/1/photo-submission
+ */
+
+
 @interface BVSubmissionPhoto : BVSubmission
 
 // Overrides for subclasses

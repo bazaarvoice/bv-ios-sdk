@@ -8,6 +8,12 @@
 
 #import "BVBase.h"
 
+/*!
+ Request class for profile display
+ 
+ See http://developer.bazaarvoice.com/api/5/1/profile-display
+ */
+
 @interface BVDisplayProfile : BVBase
 
 @end

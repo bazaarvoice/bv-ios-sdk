@@ -5,4 +5,6 @@ Bazaarvoice iOS SDK
 
 Read the Quick Start guide to get familiar with installation and building a bare-bones, simple application that uses the SDK.
 
-The Methods and Properties document provides additional information into the capabilities of the SDK itself.
+The documentation, located in the docs folder, provides additional information into the capabilities of the SDK itself.
+
+Sample applications, located in the apps folder, provide example uses of the API and implementation best practices.

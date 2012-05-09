@@ -9,6 +9,12 @@
 #import "BVSubmission.h"
 #import "BVSubmissionParametersReview.h"
 
+/*!
+ Request class for review submission
+ 
+ See http://developer.bazaarvoice.com/api/5/1/review-submission
+ */
+
 @interface BVSubmissionReview : BVSubmission
 
 // Overrides for subclasses
