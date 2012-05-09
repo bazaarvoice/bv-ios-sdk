@@ -35,7 +35,10 @@
  */
 @property (nonatomic, copy) NSString* rating;
 /*!
+ BVParametersType param for an external rating.
+ 
  A BVParametersType parameter with:
+ 
  - prefixName = "Rating"
  - typeName = <Dimension-External-Id>
  - typeValue = A positive integer between 1 and 5 and represents rating dimension value.
