@@ -5,6 +5,8 @@ Bazaarvoice iOS SDK - Browse Products Example
 
 This example app illustrates use of the Bazaarvoice iOS SDK to perform a photo upload and to rate an existing product.
 
+Note: This app will not run in the simulator since it requires use of the camera.
+
 Some highlights:
 
 - Use of the native image picker class and integration with the BV SDK
