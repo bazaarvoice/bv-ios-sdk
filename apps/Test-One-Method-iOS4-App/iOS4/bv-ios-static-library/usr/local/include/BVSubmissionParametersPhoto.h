@@ -9,9 +9,16 @@
 #import <UIKIt/UIImage.h>
 #import "BVSubmissionParametersBase.h"
 
+/*!
+ BVSubmissionParamatersBase subclass specifically for use with BVSubmissionPhoto requests.
+ */
+
 @interface BVSubmissionParametersPhoto : BVSubmissionParametersBase
 
 @property (nonatomic, copy) NSString* contentType;
+/*!
+ A UIImage representing the photo to be submitted.
+ */
 @property (nonatomic, strong) UIImage* photo;
 
 @end

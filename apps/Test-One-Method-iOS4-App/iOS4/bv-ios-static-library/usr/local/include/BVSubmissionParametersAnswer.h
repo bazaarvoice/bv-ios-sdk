@@ -8,6 +8,11 @@
 
 #import "BVSubmissionParametersBase.h"
 
+/*!
+ BVSubmissionParamatersBase subclass specifically for use with BVSubmissionAnswer requests.
+ */
+
+
 @interface BVSubmissionParametersAnswer : BVSubmissionParametersBase
 
 @property (nonatomic, copy) NSString* answerText;

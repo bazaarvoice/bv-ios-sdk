@@ -18,6 +18,7 @@
 #import "BVDisplayProfile.h"
 #import "BVDisplayProducts.h"
 #import "BVDisplayCategories.h"
+#import "BVDisplayStatistics.h"
 #import "BVSubmissionReview.h"
 #import "BVSubmissionQuestion.h"
 #import "BVSubmissionAnswer.h"

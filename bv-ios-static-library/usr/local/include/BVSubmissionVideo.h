@@ -9,6 +9,12 @@
 #import "BVSubmission.h"
 #import "BVSubmissionParametersVideo.h"
 
+/*!
+ Request class for video submission
+ 
+ See http://developer.bazaarvoice.com/api/5/1/video-submission
+ */
+
 @interface BVSubmissionVideo : BVSubmission
 
 // Overrides for subclasses

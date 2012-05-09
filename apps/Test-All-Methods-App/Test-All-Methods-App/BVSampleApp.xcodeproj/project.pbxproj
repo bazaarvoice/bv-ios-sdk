@@ -48,37 +48,38 @@
 		4DA3E21B150BE35900E897AF /* BVSampleAppResultsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BVSampleAppResultsViewController.xib; sourceTree = "<group>"; };
 		4DA3E21D150BE4AD00E897AF /* BVSampleAppResultsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = BVSampleAppResultsViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		4DA3E21E150BE4AD00E897AF /* BVSampleAppResultsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = BVSampleAppResultsViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		6F334B09154F2A1D00345C16 /* BVBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVBase.h; sourceTree = "<group>"; };
+		6F334B0A154F2A1D00345C16 /* BVDisplayAnswer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVDisplayAnswer.h; sourceTree = "<group>"; };
+		6F334B0B154F2A1D00345C16 /* BVDisplayCategories.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVDisplayCategories.h; sourceTree = "<group>"; };
+		6F334B0C154F2A1D00345C16 /* BVDisplayComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVDisplayComment.h; sourceTree = "<group>"; };
+		6F334B0D154F2A1D00345C16 /* BVDisplayProducts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVDisplayProducts.h; sourceTree = "<group>"; };
+		6F334B0E154F2A1D00345C16 /* BVDisplayProfile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVDisplayProfile.h; sourceTree = "<group>"; };
+		6F334B0F154F2A1D00345C16 /* BVDisplayQuestion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVDisplayQuestion.h; sourceTree = "<group>"; };
+		6F334B10154F2A1D00345C16 /* BVDisplayReview.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVDisplayReview.h; sourceTree = "<group>"; };
+		6F334B11154F2A1D00345C16 /* BVDisplayStatistics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVDisplayStatistics.h; sourceTree = "<group>"; };
+		6F334B12154F2A1D00345C16 /* BVDisplayStories.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVDisplayStories.h; sourceTree = "<group>"; };
+		6F334B13154F2A1D00345C16 /* BVIncludes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVIncludes.h; sourceTree = "<group>"; };
+		6F334B14154F2A1D00345C16 /* BVParameters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVParameters.h; sourceTree = "<group>"; };
+		6F334B15154F2A1D00345C16 /* BVResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVResponse.h; sourceTree = "<group>"; };
+		6F334B16154F2A1D00345C16 /* BVSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVSettings.h; sourceTree = "<group>"; };
+		6F334B17154F2A1D00345C16 /* BVSubmission.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVSubmission.h; sourceTree = "<group>"; };
+		6F334B18154F2A1D00345C16 /* BVSubmissionAnswer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVSubmissionAnswer.h; sourceTree = "<group>"; };
+		6F334B19154F2A1D00345C16 /* BVSubmissionParametersAnswer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVSubmissionParametersAnswer.h; sourceTree = "<group>"; };
+		6F334B1A154F2A1D00345C16 /* BVSubmissionParametersBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVSubmissionParametersBase.h; sourceTree = "<group>"; };
+		6F334B1B154F2A1D00345C16 /* BVSubmissionParametersComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVSubmissionParametersComment.h; sourceTree = "<group>"; };
+		6F334B1C154F2A1D00345C16 /* BVSubmissionParametersPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVSubmissionParametersPhoto.h; sourceTree = "<group>"; };
+		6F334B1D154F2A1D00345C16 /* BVSubmissionParametersQuestion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVSubmissionParametersQuestion.h; sourceTree = "<group>"; };
+		6F334B1E154F2A1D00345C16 /* BVSubmissionParametersReview.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVSubmissionParametersReview.h; sourceTree = "<group>"; };
+		6F334B1F154F2A1D00345C16 /* BVSubmissionParametersStory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVSubmissionParametersStory.h; sourceTree = "<group>"; };
+		6F334B20154F2A1D00345C16 /* BVSubmissionParametersVideo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVSubmissionParametersVideo.h; sourceTree = "<group>"; };
+		6F334B21154F2A1D00345C16 /* BVSubmissionPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVSubmissionPhoto.h; sourceTree = "<group>"; };
+		6F334B22154F2A1D00345C16 /* BVSubmissionQuestion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVSubmissionQuestion.h; sourceTree = "<group>"; };
+		6F334B23154F2A1D00345C16 /* BVSubmissionReview.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVSubmissionReview.h; sourceTree = "<group>"; };
+		6F334B24154F2A1D00345C16 /* BVSubmissionReviewComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVSubmissionReviewComment.h; sourceTree = "<group>"; };
+		6F334B25154F2A1D00345C16 /* BVSubmissionStory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVSubmissionStory.h; sourceTree = "<group>"; };
+		6F334B26154F2A1D00345C16 /* BVSubmissionVideo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVSubmissionVideo.h; sourceTree = "<group>"; };
 		BFB94E52153CBFCE00C6ECC7 /* libarclite_universal.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libarclite_universal.a; sourceTree = "<group>"; };
 		BFB94E53153CBFCE00C6ECC7 /* libBViOSSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libBViOSSDK.a; sourceTree = "<group>"; };
-		BFB94E57153CBFCE00C6ECC7 /* BVBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVBase.h; sourceTree = "<group>"; };
-		BFB94E58153CBFCE00C6ECC7 /* BVDisplayAnswer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVDisplayAnswer.h; sourceTree = "<group>"; };
-		BFB94E59153CBFCE00C6ECC7 /* BVDisplayCategories.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVDisplayCategories.h; sourceTree = "<group>"; };
-		BFB94E5A153CBFCE00C6ECC7 /* BVDisplayComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVDisplayComment.h; sourceTree = "<group>"; };
-		BFB94E5B153CBFCE00C6ECC7 /* BVDisplayProducts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVDisplayProducts.h; sourceTree = "<group>"; };
-		BFB94E5C153CBFCE00C6ECC7 /* BVDisplayProfile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVDisplayProfile.h; sourceTree = "<group>"; };
-		BFB94E5D153CBFCE00C6ECC7 /* BVDisplayQuestion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVDisplayQuestion.h; sourceTree = "<group>"; };
-		BFB94E5E153CBFCE00C6ECC7 /* BVDisplayReview.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVDisplayReview.h; sourceTree = "<group>"; };
-		BFB94E5F153CBFCE00C6ECC7 /* BVDisplayStories.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVDisplayStories.h; sourceTree = "<group>"; };
-		BFB94E60153CBFCE00C6ECC7 /* BVIncludes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVIncludes.h; sourceTree = "<group>"; };
-		BFB94E61153CBFCE00C6ECC7 /* BVParameters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVParameters.h; sourceTree = "<group>"; };
-		BFB94E62153CBFCE00C6ECC7 /* BVResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVResponse.h; sourceTree = "<group>"; };
-		BFB94E63153CBFCE00C6ECC7 /* BVSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVSettings.h; sourceTree = "<group>"; };
-		BFB94E64153CBFCE00C6ECC7 /* BVSubmission.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVSubmission.h; sourceTree = "<group>"; };
-		BFB94E65153CBFCE00C6ECC7 /* BVSubmissionAnswer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVSubmissionAnswer.h; sourceTree = "<group>"; };
-		BFB94E66153CBFCE00C6ECC7 /* BVSubmissionParametersAnswer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVSubmissionParametersAnswer.h; sourceTree = "<group>"; };
-		BFB94E67153CBFCE00C6ECC7 /* BVSubmissionParametersBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVSubmissionParametersBase.h; sourceTree = "<group>"; };
-		BFB94E68153CBFCE00C6ECC7 /* BVSubmissionParametersComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVSubmissionParametersComment.h; sourceTree = "<group>"; };
-		BFB94E69153CBFCE00C6ECC7 /* BVSubmissionParametersPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVSubmissionParametersPhoto.h; sourceTree = "<group>"; };
-		BFB94E6A153CBFCE00C6ECC7 /* BVSubmissionParametersQuestion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVSubmissionParametersQuestion.h; sourceTree = "<group>"; };
-		BFB94E6B153CBFCE00C6ECC7 /* BVSubmissionParametersReview.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVSubmissionParametersReview.h; sourceTree = "<group>"; };
-		BFB94E6C153CBFCE00C6ECC7 /* BVSubmissionParametersStory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVSubmissionParametersStory.h; sourceTree = "<group>"; };
-		BFB94E6D153CBFCE00C6ECC7 /* BVSubmissionParametersVideo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVSubmissionParametersVideo.h; sourceTree = "<group>"; };
-		BFB94E6E153CBFCE00C6ECC7 /* BVSubmissionPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVSubmissionPhoto.h; sourceTree = "<group>"; };
-		BFB94E6F153CBFCE00C6ECC7 /* BVSubmissionQuestion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVSubmissionQuestion.h; sourceTree = "<group>"; };
-		BFB94E70153CBFCE00C6ECC7 /* BVSubmissionReview.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVSubmissionReview.h; sourceTree = "<group>"; };
-		BFB94E71153CBFCE00C6ECC7 /* BVSubmissionReviewComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVSubmissionReviewComment.h; sourceTree = "<group>"; };
-		BFB94E72153CBFCE00C6ECC7 /* BVSubmissionStory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVSubmissionStory.h; sourceTree = "<group>"; };
-		BFB94E73153CBFCE00C6ECC7 /* BVSubmissionVideo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVSubmissionVideo.h; sourceTree = "<group>"; };
 		BFE3F821154B0A1D00E9DA6D /* bv533x533.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bv533x533.png; sourceTree = "<group>"; };
 		BFE3F823154B0A7100E9DA6D /* appicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = appicon.png; sourceTree = "<group>"; };
 		BFE3F825154B0A7400E9DA6D /* appicon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "appicon@2x.png"; sourceTree = "<group>"; };
@@ -165,66 +166,67 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		6F334B06154F2A1D00345C16 /* usr */ = {
+			isa = PBXGroup;
+			children = (
+				6F334B07154F2A1D00345C16 /* local */,
+			);
+			path = usr;
+			sourceTree = "<group>";
+		};
+		6F334B07154F2A1D00345C16 /* local */ = {
+			isa = PBXGroup;
+			children = (
+				6F334B08154F2A1D00345C16 /* include */,
+			);
+			path = local;
+			sourceTree = "<group>";
+		};
+		6F334B08154F2A1D00345C16 /* include */ = {
+			isa = PBXGroup;
+			children = (
+				6F334B09154F2A1D00345C16 /* BVBase.h */,
+				6F334B0A154F2A1D00345C16 /* BVDisplayAnswer.h */,
+				6F334B0B154F2A1D00345C16 /* BVDisplayCategories.h */,
+				6F334B0C154F2A1D00345C16 /* BVDisplayComment.h */,
+				6F334B0D154F2A1D00345C16 /* BVDisplayProducts.h */,
+				6F334B0E154F2A1D00345C16 /* BVDisplayProfile.h */,
+				6F334B0F154F2A1D00345C16 /* BVDisplayQuestion.h */,
+				6F334B10154F2A1D00345C16 /* BVDisplayReview.h */,
+				6F334B11154F2A1D00345C16 /* BVDisplayStatistics.h */,
+				6F334B12154F2A1D00345C16 /* BVDisplayStories.h */,
+				6F334B13154F2A1D00345C16 /* BVIncludes.h */,
+				6F334B14154F2A1D00345C16 /* BVParameters.h */,
+				6F334B15154F2A1D00345C16 /* BVResponse.h */,
+				6F334B16154F2A1D00345C16 /* BVSettings.h */,
+				6F334B17154F2A1D00345C16 /* BVSubmission.h */,
+				6F334B18154F2A1D00345C16 /* BVSubmissionAnswer.h */,
+				6F334B19154F2A1D00345C16 /* BVSubmissionParametersAnswer.h */,
+				6F334B1A154F2A1D00345C16 /* BVSubmissionParametersBase.h */,
+				6F334B1B154F2A1D00345C16 /* BVSubmissionParametersComment.h */,
+				6F334B1C154F2A1D00345C16 /* BVSubmissionParametersPhoto.h */,
+				6F334B1D154F2A1D00345C16 /* BVSubmissionParametersQuestion.h */,
+				6F334B1E154F2A1D00345C16 /* BVSubmissionParametersReview.h */,
+				6F334B1F154F2A1D00345C16 /* BVSubmissionParametersStory.h */,
+				6F334B20154F2A1D00345C16 /* BVSubmissionParametersVideo.h */,
+				6F334B21154F2A1D00345C16 /* BVSubmissionPhoto.h */,
+				6F334B22154F2A1D00345C16 /* BVSubmissionQuestion.h */,
+				6F334B23154F2A1D00345C16 /* BVSubmissionReview.h */,
+				6F334B24154F2A1D00345C16 /* BVSubmissionReviewComment.h */,
+				6F334B25154F2A1D00345C16 /* BVSubmissionStory.h */,
+				6F334B26154F2A1D00345C16 /* BVSubmissionVideo.h */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
 		BFB94E51153CBFCE00C6ECC7 /* bv-ios-static-library */ = {
 			isa = PBXGroup;
 			children = (
 				BFB94E52153CBFCE00C6ECC7 /* libarclite_universal.a */,
 				BFB94E53153CBFCE00C6ECC7 /* libBViOSSDK.a */,
-				BFB94E54153CBFCE00C6ECC7 /* usr */,
+				6F334B06154F2A1D00345C16 /* usr */,
 			);
 			path = "bv-ios-static-library";
-			sourceTree = "<group>";
-		};
-		BFB94E54153CBFCE00C6ECC7 /* usr */ = {
-			isa = PBXGroup;
-			children = (
-				BFB94E55153CBFCE00C6ECC7 /* local */,
-			);
-			path = usr;
-			sourceTree = "<group>";
-		};
-		BFB94E55153CBFCE00C6ECC7 /* local */ = {
-			isa = PBXGroup;
-			children = (
-				BFB94E56153CBFCE00C6ECC7 /* include */,
-			);
-			path = local;
-			sourceTree = "<group>";
-		};
-		BFB94E56153CBFCE00C6ECC7 /* include */ = {
-			isa = PBXGroup;
-			children = (
-				BFB94E57153CBFCE00C6ECC7 /* BVBase.h */,
-				BFB94E58153CBFCE00C6ECC7 /* BVDisplayAnswer.h */,
-				BFB94E59153CBFCE00C6ECC7 /* BVDisplayCategories.h */,
-				BFB94E5A153CBFCE00C6ECC7 /* BVDisplayComment.h */,
-				BFB94E5B153CBFCE00C6ECC7 /* BVDisplayProducts.h */,
-				BFB94E5C153CBFCE00C6ECC7 /* BVDisplayProfile.h */,
-				BFB94E5D153CBFCE00C6ECC7 /* BVDisplayQuestion.h */,
-				BFB94E5E153CBFCE00C6ECC7 /* BVDisplayReview.h */,
-				BFB94E5F153CBFCE00C6ECC7 /* BVDisplayStories.h */,
-				BFB94E60153CBFCE00C6ECC7 /* BVIncludes.h */,
-				BFB94E61153CBFCE00C6ECC7 /* BVParameters.h */,
-				BFB94E62153CBFCE00C6ECC7 /* BVResponse.h */,
-				BFB94E63153CBFCE00C6ECC7 /* BVSettings.h */,
-				BFB94E64153CBFCE00C6ECC7 /* BVSubmission.h */,
-				BFB94E65153CBFCE00C6ECC7 /* BVSubmissionAnswer.h */,
-				BFB94E66153CBFCE00C6ECC7 /* BVSubmissionParametersAnswer.h */,
-				BFB94E67153CBFCE00C6ECC7 /* BVSubmissionParametersBase.h */,
-				BFB94E68153CBFCE00C6ECC7 /* BVSubmissionParametersComment.h */,
-				BFB94E69153CBFCE00C6ECC7 /* BVSubmissionParametersPhoto.h */,
-				BFB94E6A153CBFCE00C6ECC7 /* BVSubmissionParametersQuestion.h */,
-				BFB94E6B153CBFCE00C6ECC7 /* BVSubmissionParametersReview.h */,
-				BFB94E6C153CBFCE00C6ECC7 /* BVSubmissionParametersStory.h */,
-				BFB94E6D153CBFCE00C6ECC7 /* BVSubmissionParametersVideo.h */,
-				BFB94E6E153CBFCE00C6ECC7 /* BVSubmissionPhoto.h */,
-				BFB94E6F153CBFCE00C6ECC7 /* BVSubmissionQuestion.h */,
-				BFB94E70153CBFCE00C6ECC7 /* BVSubmissionReview.h */,
-				BFB94E71153CBFCE00C6ECC7 /* BVSubmissionReviewComment.h */,
-				BFB94E72153CBFCE00C6ECC7 /* BVSubmissionStory.h */,
-				BFB94E73153CBFCE00C6ECC7 /* BVSubmissionVideo.h */,
-			);
-			path = include;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

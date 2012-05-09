@@ -149,6 +149,16 @@
     [showDisplayRequest startAsynchRequest];
 }
 
+- (IBAction)showStatistics {
+    BVDisplayStatistics *showDisplayRequest = [[BVDisplayStatistics alloc] init];
+    [BVSettings instance].passKey = @"KEY_REMOVED";
+    showDisplayRequest.parameters.filter = @"productid:test1,test2";
+    showDisplayRequest.parameters.stats = @"Reviews,NativeReviews";
+    showDisplayRequest.delegate = self;
+    
+    [showDisplayRequest startAsynchRequest];
+}
+
 - (IBAction)submissionReview {
     BVSubmissionReview *mySubmission = [[BVSubmissionReview alloc] init];
     mySubmission.parameters.productId = @"1000001";

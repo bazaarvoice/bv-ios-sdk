@@ -8,6 +8,12 @@
 
 #import "BVBase.h"
 
+/*!
+ Request class for question display
+ 
+ See http://developer.bazaarvoice.com/api/5/1/question-display
+ */
+
 @interface BVDisplayQuestion : BVBase
 
 @end

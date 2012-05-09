@@ -8,9 +8,15 @@
 
 #import "BVSubmissionParametersBase.h"
 
+/*!
+ BVSubmissionParamatersBase subclass specifically for use with BVSubmissionVideo requests.
+ */
 @interface BVSubmissionParametersVideo : BVSubmissionParametersBase
 
 @property (nonatomic, copy) NSString* contentType;
-@property (nonatomic, strong) NSString* video; // For video linking...
+/*!
+ Video for linking
+ */
+@property (nonatomic, strong) NSString* video;
 
 @end
