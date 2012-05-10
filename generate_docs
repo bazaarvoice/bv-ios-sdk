@@ -1,5 +1,5 @@
 cd  BViOSSDK/BViOSSDK/
-appledoc --index-desc ../../desc.txt --project-name "BazaarVoice API" --no-repeat-first-par --project-company "BazaarVoice" --company-id com.bazaarvoice --ignore SBJsonStreamWriter.h --ignore SBJsonParser.h --ignore SBJsonStreamParserAdapter.h --ignore SBJsonStreamParser.h --ignore SBJsonWriter.h --ignore NSObject+SBJson.h --output . --no-install-docset .
+appledoc --index-desc ../../desc.txt --project-name "Bazaarvoice iOS SDK" --no-repeat-first-par --project-company "Bazaarvoice" --company-id com.bazaarvoice --ignore SBJsonStreamWriter.h --ignore SBJsonParser.h --ignore SBJsonStreamParserAdapter.h --ignore SBJsonStreamParser.h --ignore SBJsonWriter.h --ignore NSObject+SBJson.h --output . --no-install-docset .
 rm -rf ../../docs
 mv docset/Contents/Resources/Documents ../../docs
 rm -rf docset
