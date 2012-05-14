@@ -176,8 +176,8 @@
     mySubmission.parameters.userNickName = @"testnickname";
     mySubmission.parameters.videoUrl.typeName = @"1";
     mySubmission.parameters.videoUrl.typeValue = @"http://www.youtube.com/";
+    [BVSettings instance].passKey = @"2cpdrhohmgmwfz8vqyo48f52g";
     mySubmission.delegate = self;
-    [BVSettings instance].passKey = @"u16cwr987fkx0hprzhrbqbmqo";
     [mySubmission startAsynchRequest];                                  
 }
 
@@ -187,9 +187,14 @@
     mySubmission.parameters.userId = @"123abc";
     mySubmission.parameters.questionSummary = @"Some kind of summary";
     mySubmission.delegate = self;
-    [BVSettings instance].passKey = @"u16cwr987fkx0hprzhrbqbmqo";
     
-    [mySubmission startAsynchRequest];                                  
+    [BVSettings instance].passKey = @"2cpdrhohmgmwfz8vqyo48f52g";
+    NSString *temp = [BVSettings instance].customerName;
+    [BVSettings instance].customerName = @"answers.apitestcustomer";
+    
+    [mySubmission startAsynchRequest];                    
+    [BVSettings instance].customerName = temp;
+                                 
 }
 
 - (IBAction)submissionAnswers {
@@ -199,8 +204,12 @@
     mySubmission.parameters.answerText = @"Some kind of answer";
     mySubmission.delegate = self;
     [BVSettings instance].passKey = @"2cpdrhohmgmwfz8vqyo48f52g";
+    NSString *temp = [BVSettings instance].customerName;
+    [BVSettings instance].customerName = @"answers.apitestcustomer";
+    
     
     [mySubmission startAsynchRequest];    
+    [BVSettings instance].customerName = temp;
 }
 
 - (IBAction)submissionStories {
@@ -210,6 +219,7 @@
     mySubmission.parameters.categoryId = @"1020";
     mySubmission.parameters.userId = @"123abc";
     mySubmission.delegate = self;
+    [BVSettings instance].customerName = @"stories.apitestcustomer";
     [BVSettings instance].passKey = @"2cpdrhohmgmwfz8vqyo48f52g";
     
     [mySubmission startAsynchRequest];        
