@@ -50,3 +50,14 @@ To Run The Unit Tests
 7. Build succeeded
 8. Unit tests should now be running.
 9. Evaluate successful and failed tests.
+
+
+To Generate Docs
+--
+
+1. Download and install appledoc.  The simplest way is via github:
+	- git clone git://github.com/tomaz/appledoc.git
+	- cd appledoc
+	- sudo sh install-appledoc.sh 
+	- detailed instructions can be found here: https://github.com/tomaz/appledoc
+2. Within the bv-ios-sdk-dev directory run ./generate_docs.  Appledoc will parse comments from the project header files and output documentation to the docs directory.
