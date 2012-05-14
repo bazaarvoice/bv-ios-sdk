@@ -15,6 +15,10 @@
 		4DFA4B561511BC490088A074 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DFA4B551511BC490088A074 /* AppDelegate.m */; };
 		4DFA4B591511BC490088A074 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DFA4B581511BC490088A074 /* ViewController.m */; };
 		4DFA4B5C1511BC490088A074 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DFA4B5A1511BC490088A074 /* ViewController.xib */; };
+		BFB1F9851561371C0070D745 /* appicon.png in Resources */ = {isa = PBXBuildFile; fileRef = BFB1F9841561371C0070D745 /* appicon.png */; };
+		BFB1F988156137200070D745 /* appicon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BFB1F987156137200070D745 /* appicon@2x.png */; };
+		BFB1F98A156137230070D745 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = BFB1F989156137230070D745 /* Default.png */; };
+		BFB1F98C1561372F0070D745 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BFB1F98B1561372F0070D745 /* Default@2x.png */; };
 		BFB94EB3153CCA2800C6ECC7 /* libarclite_universal.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BFB94E91153CCA2700C6ECC7 /* libarclite_universal.a */; };
 		BFB94EB4153CCA2800C6ECC7 /* libBViOSSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BFB94E92153CCA2700C6ECC7 /* libBViOSSDK.a */; };
 /* End PBXBuildFile section */
@@ -33,6 +37,10 @@
 		4DFA4B571511BC490088A074 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		4DFA4B581511BC490088A074 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		4DFA4B5B1511BC490088A074 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController.xib; sourceTree = "<group>"; };
+		BFB1F9841561371C0070D745 /* appicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = appicon.png; sourceTree = "<group>"; };
+		BFB1F987156137200070D745 /* appicon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "appicon@2x.png"; sourceTree = "<group>"; };
+		BFB1F989156137230070D745 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		BFB1F98B1561372F0070D745 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		BFB94E91153CCA2700C6ECC7 /* libarclite_universal.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libarclite_universal.a; sourceTree = "<group>"; };
 		BFB94E92153CCA2700C6ECC7 /* libBViOSSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libBViOSSDK.a; sourceTree = "<group>"; };
 		BFB94E96153CCA2700C6ECC7 /* BVBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVBase.h; sourceTree = "<group>"; };
@@ -85,6 +93,10 @@
 		4DFA4B361511BC480088A074 = {
 			isa = PBXGroup;
 			children = (
+				BFB1F98B1561372F0070D745 /* Default@2x.png */,
+				BFB1F989156137230070D745 /* Default.png */,
+				BFB1F987156137200070D745 /* appicon@2x.png */,
+				BFB1F9841561371C0070D745 /* appicon.png */,
 				BFB94E90153CCA2700C6ECC7 /* bv-ios-static-library */,
 				4DFA4B4B1511BC490088A074 /* iOS4 */,
 				4DFA4B441511BC490088A074 /* Frameworks */,
@@ -248,6 +260,10 @@
 			files = (
 				4DFA4B501511BC490088A074 /* InfoPlist.strings in Resources */,
 				4DFA4B5C1511BC490088A074 /* ViewController.xib in Resources */,
+				BFB1F9851561371C0070D745 /* appicon.png in Resources */,
+				BFB1F988156137200070D745 /* appicon@2x.png in Resources */,
+				BFB1F98A156137230070D745 /* Default.png in Resources */,
+				BFB1F98C1561372F0070D745 /* Default@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
