@@ -1,4 +1,4 @@
-The BazaarVoice SDK is an iOS static library that provides an easy way to generate REST calls to the Bazaarvoice API.
+The Bazaarvoice SDK is an iOS static library that provides an easy way to generate REST calls to the Bazaarvoice API.
 
 <h2>SDK Organization:</h2>
 
