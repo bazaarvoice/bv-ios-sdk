@@ -33,25 +33,24 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="GE Profile&quot; 30&quot; 7.5 Cu. Ft. Colossal Capacity Electric Dryer" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsFontSizeToFit="NO" id="r4d-S2-SvW">
-                                <rect key="frame" x="20" y="7" width="243" height="52"/>
+                                <rect key="frame" x="37" y="28" width="243" height="52"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="textColor" red="0.13725490196078433" green="0.12156862745098039" blue="0.12549019607843137" alpha="1" colorSpace="deviceRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" image="dryer.png" id="w5D-UC-W6a">
-                                <rect key="frame" x="158" y="46" width="170" height="128"/>
+                                <rect key="frame" x="158" y="87" width="122" height="102"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <view contentMode="scaleToFill" id="qxO-Pt-1Sv" customClass="RoundedCornerView">
-                                <rect key="frame" x="10" y="192" width="300" height="211"/>
+                                <rect key="frame" x="27" y="205" width="267" height="191"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                            </view>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" id="8Ka-p0-GhN">
-                                <rect key="frame" x="21" y="205" width="272" height="181"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <string key="text">Reliable and Efficient
+                                <subviews>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" id="8Ka-p0-GhN">
+                                        <rect key="frame" x="12" y="13" width="242" height="165"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <string key="text">Reliable and Efficient
 
 7.5 cu. ft. colossal capacity — Colossal-size stainless steel drum can take on everything the washer sends its way
 SteamRefresh — Refreshes fabrics, removes wrinkles and odors and rejuvenates clothes
@@ -59,12 +58,15 @@ Steam Dewrinkle — Removes wrinkles and refreshes clean clothes
 Reverse tumble — By reversing the rotation of the drum, you can expect gentle, fast, even drying
 DuoDry™ System — Quickly and consistently dries all types of clothes
 Specialty Dry Cycles — Provide just the right levels of drying for better fabric care</string>
-                                <color key="textColor" red="0.86176658163265307" green="0.86176658163265307" blue="0.86176658163265307" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
+                                        <color key="textColor" red="0.13725490196078433" green="0.12156862745098039" blue="0.12549019607843137" alpha="1" colorSpace="deviceRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ICH-QK-D5J">
-                                <rect key="frame" x="10" y="91" width="159" height="43"/>
+                                <rect key="frame" x="32" y="116" width="118" height="43"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <state key="normal" title="Rate">
@@ -79,7 +81,6 @@ Specialty Dry Cycles — Provide just the right levels of drying for better fabr
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.054901960784313725" green="0.16470588235294117" blue="0.24705882352941178" alpha="1" colorSpace="deviceRGB"/>
                     </view>
                     <navigationItem key="navigationItem" id="BY9-Jr-2D0" customClass="BVNavigationItem"/>
                     <connections>
@@ -98,8 +99,25 @@ Specialty Dry Cycles — Provide just the right levels of drying for better fabr
                         <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" id="PTF-l5-dkb" customClass="RoundedCornerView">
+                                <rect key="frame" x="35" y="254" width="255" height="113"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="smX-Tb-oIh" customClass="UIPlaceHolderTextView">
+                                        <rect key="frame" x="6" y="11" width="243" height="92"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="ICT-5U-F0A" id="tUs-0s-rC1"/>
+                                        </connections>
+                                    </textView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="QKG-YG-bj7">
-                                <rect key="frame" x="123" y="348" width="75" height="37"/>
+                                <rect key="frame" x="123" y="372" width="75" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Submit">
@@ -113,18 +131,8 @@ Specialty Dry Cycles — Provide just the right levels of drying for better fabr
                                     <action selector="submitClicked:" destination="ICT-5U-F0A" eventType="touchUpInside" id="sqC-CS-mGU"/>
                                 </connections>
                             </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="smX-Tb-oIh" customClass="UIPlaceHolderTextView">
-                                <rect key="frame" x="37" y="242" width="252" height="98"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                <connections>
-                                    <outlet property="delegate" destination="ICT-5U-F0A" id="tUs-0s-rC1"/>
-                                </connections>
-                            </textView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="This product is awesome!" adjustsFontSizeToFit="NO" minimumFontSize="14" clearButtonMode="whileEditing" id="KmI-pW-ZFf">
-                                <rect key="frame" x="35" y="10" width="251" height="31"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Title" adjustsFontSizeToFit="NO" minimumFontSize="14" clearButtonMode="whileEditing" id="KmI-pW-ZFf">
+                                <rect key="frame" x="35" y="32" width="251" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -133,50 +141,51 @@ Specialty Dry Cycles — Provide just the right levels of drying for better fabr
                                 </connections>
                             </textField>
                             <view opaque="NO" contentMode="scaleToFill" id="zdX-IO-dey" customClass="RateView">
-                                <rect key="frame" x="39" y="49" width="245" height="58"/>
+                                <rect key="frame" x="38" y="68" width="245" height="58"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" id="iEQ-rw-N7U">
-                                <rect key="frame" x="81" y="112" width="158" height="120"/>
+                                <rect key="frame" x="81" y="127" width="158" height="120"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <view hidden="YES" opaque="NO" contentMode="scaleToFill" id="EoE-sE-9pI">
-                                <rect key="frame" x="0.0" y="-2" width="320" height="420"/>
+                                <rect key="frame" x="2" y="0.0" width="320" height="420"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" id="kVv-PR-9gj" customClass="RoundedCornerView">
                                         <rect key="frame" x="60" y="105" width="200" height="195"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <subviews>
+                                            <progressView opaque="NO" contentMode="scaleToFill" progress="0.5" id="orv-g2-VVM">
+                                                <rect key="frame" x="30" y="141" width="150" height="9"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="progressTintColor" red="0.0" green="0.67058825492858887" blue="0.55686277151107788" alpha="1" colorSpace="deviceRGB"/>
+                                            </progressView>
+                                        </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                     </view>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Uploading Photo..." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="Mj6-cn-0hZ">
                                         <rect key="frame" x="90" y="263" width="143" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" red="0.0" green="0.69411766529083252" blue="0.56470590829849243" alpha="1" colorSpace="deviceRGB"/>
+                                        <color key="textColor" red="0.0" green="0.67058825492858887" blue="0.55686277151107788" alpha="1" colorSpace="deviceRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <progressView opaque="NO" contentMode="scaleToFill" progress="0.5" id="orv-g2-VVM">
-                                        <rect key="frame" x="90" y="246" width="150" height="9"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="progressTintColor" red="0.0" green="0.69411766529999996" blue="0.5647059083" alpha="1" colorSpace="deviceRGB"/>
-                                    </progressView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" image="bv.png" id="4Pq-kc-qfu">
                                         <rect key="frame" x="104" y="135" width="113" height="103"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
                                 </subviews>
-                                <color key="backgroundColor" red="0.054901961237192154" green="0.16470588743686676" blue="0.24705882370471954" alpha="0.67000000000000004" colorSpace="deviceRGB"/>
+                                <color key="backgroundColor" red="0.054901960780000002" green="0.1647058824" blue="0.2470588235" alpha="0.22" colorSpace="deviceRGB"/>
                                 <accessibility key="accessibilityConfiguration">
                                     <accessibilityTraits key="traits" none="YES" notEnabled="YES"/>
                                 </accessibility>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" red="0.054901960784313725" green="0.16470588235294117" blue="0.24705882352941178" alpha="1" colorSpace="deviceRGB"/>
                     </view>
                     <navigationItem key="navigationItem" id="Kzn-NI-GFD">
                         <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="R9i-Tu-dAk">
-                            <color key="tintColor" red="0.0" green="0.69411764705882351" blue="0.56470588235294117" alpha="1" colorSpace="deviceRGB"/>
+                            <color key="tintColor" red="0.0" green="0.67058825492858887" blue="0.55686277151107788" alpha="1" colorSpace="deviceRGB"/>
                             <connections>
                                 <action selector="doneClicked:" destination="ICT-5U-F0A" id="bGA-yg-mhe"/>
                             </connections>
@@ -184,6 +193,7 @@ Specialty Dry Cycles — Provide just the right levels of drying for better fabr
                     </navigationItem>
                     <connections>
                         <outlet property="doneButton" destination="R9i-Tu-dAk" id="JU9-QO-qy1"/>
+                        <outlet property="loadingBevel" destination="kVv-PR-9gj" id="Uc9-gE-CJU"/>
                         <outlet property="loadingLabel" destination="Mj6-cn-0hZ" id="Ty3-64-J0l"/>
                         <outlet property="overlay" destination="EoE-sE-9pI" id="R4I-IZ-7c0"/>
                         <outlet property="previewImageView" destination="iEQ-rw-N7U" id="yPm-7F-OKv"/>
@@ -207,65 +217,112 @@ Specialty Dry Cycles — Provide just the right levels of drying for better fabr
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" image="bv.png" id="pfk-Ok-4Cs">
-                                <rect key="frame" x="7" y="29" width="43" height="48"/>
+                                <rect key="frame" x="41" y="33" width="43" height="48"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <view contentMode="scaleToFill" id="ezw-Yq-ajg">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="36"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Thanks for submitting your review!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="ZwS-wZ-a9S">
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Thanks for submitting your review!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsFontSizeToFit="NO" id="ZwS-wZ-a9S">
                                         <rect key="frame" x="52" y="2" width="216" height="31"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" red="0.054901960780000002" green="0.1647058824" blue="0.2470588235" alpha="1" colorSpace="deviceRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="textColor" red="0.0" green="0.23529411852359772" blue="0.30588236451148987" alpha="1" colorSpace="deviceRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" red="0.0" green="0.69411764705882351" blue="0.56470588235294117" alpha="1" colorSpace="deviceRGB"/>
+                                <color key="backgroundColor" red="0.0" green="0.67058825492858887" blue="0.55686277151107788" alpha="1" colorSpace="deviceRGB"/>
                             </view>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="My Review:" id="cFE-47-f5d">
-                                <rect key="frame" x="15" y="249" width="276" height="40"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="textColor" red="0.0" green="0.69411764710000001" blue="0.56470588239999997" alpha="1" colorSpace="deviceRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" id="Kw5-iQ-4D3">
-                                <rect key="frame" x="80" y="109" width="146" height="138"/>
+                                <rect key="frame" x="24" y="125" width="84" height="78"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <view contentMode="scaleToFill" id="MNg-gb-9IL" customClass="RateView">
-                                <rect key="frame" x="80" y="72" width="151" height="23"/>
+                                <rect key="frame" x="118" y="80" width="151" height="23"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </view>
+                            <view contentMode="scaleToFill" id="WEg-dx-if3" customClass="RoundedCornerView">
+                                <rect key="frame" x="112" y="111" width="168" height="119"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" id="31M-Go-7NB">
+                                        <rect key="frame" x="7" y="10" width="155" height="98"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                        <color key="textColor" red="0.13725490868091583" green="0.12156862765550613" blue="0.12549020349979401" alpha="1" colorSpace="deviceRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="118" sectionHeaderHeight="22" sectionFooterHeight="22" id="mI4-Wv-dRu">
+                                <rect key="frame" x="20" y="246" width="280" height="150"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ReviewCell" rowHeight="118" id="RLb-Kf-Mia" customClass="ReviewCell">
+                                        <rect key="frame" x="0.0" y="22" width="280" height="118"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="280" height="117"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" bouncesZoom="NO" editable="NO" text="Review" id="lt0-6j-SPS">
+                                                    <rect key="frame" x="8" y="30" width="265" height="80"/>
+                                                    <autoresizingMask key="autoresizingMask" heightSizable="YES"/>
+                                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <accessibility key="accessibilityConfiguration">
+                                                        <accessibilityTraits key="traits" none="YES" notEnabled="YES"/>
+                                                        <bool key="isElement" value="NO"/>
+                                                    </accessibility>
+                                                    <color key="textColor" red="0.054901961239999998" green="0.1647058874" blue="0.24705882370000001" alpha="1" colorSpace="deviceRGB"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                </textView>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Username" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsFontSizeToFit="NO" id="NfH-3j-05N">
+                                                    <rect key="frame" x="13" y="8" width="167" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.054901961239999998" green="0.1647058874" blue="0.24705882370000001" alpha="1" colorSpace="deviceRGB"/>
+                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </label>
+                                                <view contentMode="scaleToFill" id="trp-8h-oJP" customClass="RateView">
+                                                    <rect key="frame" x="179" y="8" width="89" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                                </view>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <connections>
+                                            <outlet property="author" destination="NfH-3j-05N" id="N1g-Zu-Abn"/>
+                                            <outlet property="review" destination="lt0-6j-SPS" id="1Ko-Lu-dQa"/>
+                                            <outlet property="stars" destination="trp-8h-oJP" id="x7H-ta-qNj"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="vQY-A6-nkG" id="mo1-zc-Stj"/>
+                                    <outlet property="delegate" destination="vQY-A6-nkG" id="Fzm-sy-E5K"/>
+                                </connections>
+                            </tableView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="zQe-MJ-KGH">
-                                <rect key="frame" x="46" y="44" width="228" height="21"/>
+                                <rect key="frame" x="92" y="51" width="203" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.69411764710000001" blue="0.56470588239999997" alpha="1" colorSpace="deviceRGB"/>
+                                <color key="textColor" red="0.0" green="0.67058825492858887" blue="0.55686277151107788" alpha="1" colorSpace="deviceRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="rounded_item.png" id="gX9-OF-h6b">
-                                <rect key="frame" x="20" y="291" width="280" height="110"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" id="31M-Go-7NB">
-                                <rect key="frame" x="29" y="297" width="262" height="93"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                <color key="textColor" red="0.0" green="0.69411766529083252" blue="0.56470590829849243" alpha="1" colorSpace="deviceRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
                         </subviews>
-                        <color key="backgroundColor" red="0.054901960780000002" green="0.1647058824" blue="0.2470588235" alpha="1" colorSpace="deviceRGB"/>
                     </view>
                     <navigationItem key="navigationItem" id="uwN-RB-Qm9"/>
                     <connections>
                         <outlet property="rateView" destination="MNg-gb-9IL" id="W6E-2I-I5R"/>
                         <outlet property="reviewImageView" destination="Kw5-iQ-4D3" id="hVq-lu-qxr"/>
                         <outlet property="reviewTextView" destination="31M-Go-7NB" id="P1Y-uF-eEf"/>
+                        <outlet property="reviewsTable" destination="mI4-Wv-dRu" id="tyn-a6-Y0t"/>
                         <outlet property="submitFlash" destination="ezw-Yq-ajg" id="S3j-em-Ocd"/>
                         <outlet property="titleLabel" destination="zQe-MJ-KGH" id="UeK-qS-AVp"/>
                     </connections>
@@ -277,50 +334,9 @@ Specialty Dry Cycles — Provide just the right levels of drying for better fabr
     <resources>
         <image name="bv.png" width="361" height="361"/>
         <image name="dryer.png" width="252" height="262"/>
-        <image name="rounded_item.png" width="560" height="220"/>
     </resources>
-    <classes>
-        <class className="BVNavigationItem" superclassName="UINavigationItem">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/BVNavigationItem.h"/>
-        </class>
-        <class className="ConfirmViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ConfirmViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="rateView" candidateClass="RateView"/>
-                <relationship kind="outlet" name="reviewImageView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="reviewTextView" candidateClass="UITextView"/>
-                <relationship kind="outlet" name="submitFlash" candidateClass="UIView"/>
-                <relationship kind="outlet" name="titleLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="ProductViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ProductViewController.h"/>
-        </class>
-        <class className="RateView" superclassName="UIView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/RateView.h"/>
-        </class>
-        <class className="RateViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/RateViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="doneButton" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="loadingLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="overlay" candidateClass="UIView"/>
-                <relationship kind="outlet" name="previewImageView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="progressBar" candidateClass="UIProgressView"/>
-                <relationship kind="outlet" name="rateView" candidateClass="RateView"/>
-                <relationship kind="outlet" name="reviewTextView" candidateClass="UIPlaceHolderTextView"/>
-                <relationship kind="outlet" name="titleTextField" candidateClass="UITextField"/>
-            </relationships>
-        </class>
-        <class className="RoundedCornerView" superclassName="UIView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/RoundedCornerView.h"/>
-        </class>
-        <class className="UIPlaceHolderTextView" superclassName="UITextView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/UIPlaceHolderTextView.h"/>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
-        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedStatusBarMetrics key="statusBar" statusBarStyle="blackTranslucent"/>
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>

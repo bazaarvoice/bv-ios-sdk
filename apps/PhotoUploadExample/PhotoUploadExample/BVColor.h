@@ -10,7 +10,12 @@
 #import <Foundation/Foundation.h>
 
 @interface BVColor : NSObject
-
-+ (UIColor *)bvBlue;
-+ (UIColor *)bvGreen;
++ (UIColor *)primaryBrandColor;
++ (UIColor *)secondaryBrandColor;
++ (UIColor *)formElementColor;
++ (UIColor *)appBackgroundColor;
++ (UIColor *)secondaryTextBoxColor;
++ (UIColor *)textColor;
++ (UIColor *)linkColor;
++ (UIColor *)inlineLinkColor;
 @end

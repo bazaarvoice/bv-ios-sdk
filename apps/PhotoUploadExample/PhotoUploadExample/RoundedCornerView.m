@@ -12,12 +12,21 @@
 
 @implementation RoundedCornerView
 
-
 - (void)baseInit {
-    [self.layer setCornerRadius:30.0f];
-    [self.layer setBorderColor:[BVColor bvGreen].CGColor];
+    [self.layer setCornerRadius:8.0f];
+    [self.layer setBorderColor:[BVColor secondaryTextBoxColor].CGColor];
     [self.layer setBorderWidth:2.0f];
-    self.backgroundColor = [BVColor bvBlue];
+    self.backgroundColor = [UIColor clearColor];
+}
+
+- (void)setBorderColor:(UIColor *)borderColor
+{
+    [self.layer setBorderColor:borderColor.CGColor];
+}
+
+-(UIColor *)borderColor
+{
+    return [UIColor colorWithCGColor:self.layer.borderColor];
 }
 
 - (id)initWithFrame:(CGRect)frame
