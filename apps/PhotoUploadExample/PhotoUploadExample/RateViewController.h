@@ -11,6 +11,7 @@
 #import "RateView.h"
 #import "BVIncludes.h"
 #import "UIPlaceHolderTextView.h"
+#import "RoundedCornerView.h"
 
 @interface RateViewController : UIViewController<RateViewDelegate, BVDelegate, UITextViewDelegate>
 
@@ -30,6 +31,8 @@
 @property (weak, nonatomic) IBOutlet UIProgressView *progressBar;
 // Label associated with the loading overlay
 @property (weak, nonatomic) IBOutlet UILabel *loadingLabel;
+// Background for loading overlay
+@property (weak, nonatomic) IBOutlet RoundedCornerView *loadingBevel;
 
 // Keyboard dismiss/done button
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *doneButton;

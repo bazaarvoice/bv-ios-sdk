@@ -10,4 +10,6 @@
 
 @interface RoundedCornerView : UIView
 
+@property (nonatomic, assign) UIColor *borderColor;
+
 @end

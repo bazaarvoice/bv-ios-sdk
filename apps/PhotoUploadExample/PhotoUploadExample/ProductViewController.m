@@ -20,9 +20,7 @@
 @implementation ProductViewController
 
 - (void)viewDidLoad
-{
-    self.title = @"Rate It!";
-    
+{    
     [super viewDidLoad];
     
     // Set up the global BVSettings object to store parameters
@@ -33,10 +31,10 @@
     // calls to our stating server.
     [BVSettings instance].customerName = @"directbuy.ugc"; 
     [BVSettings instance].dataString = @"bvstaging/data";
-    //[BVSettings instance].dataString = @"v/dev/data";
     [BVSettings instance].apiVersion = @"5.1";
     
-    self.navigationController.navigationBar.tintColor = [BVColor bvBlue];
+    self.navigationController.navigationBar.tintColor = [BVColor primaryBrandColor];
+    self.navigationController.navigationBar.alpha = .9;
 }
 
 - (void)viewDidUnload

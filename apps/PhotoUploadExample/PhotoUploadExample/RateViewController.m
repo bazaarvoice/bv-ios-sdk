@@ -8,6 +8,7 @@
 
 #import "RateViewController.h"
 #import "ConfirmViewController.h"
+#import "BVColor.h"
 
 @interface RateViewController ()
 // Flag indicating whether the form has been submitted
@@ -27,6 +28,7 @@
 @synthesize reviewTextView = _textView;
 @synthesize doneButton = _doneButton;
 @synthesize loadingLabel = _loadingLabel;
+@synthesize loadingBevel = _loadingBevel;
 @synthesize titleTextField = _titleView;
 @synthesize previewImageView = _photoPreview;
 @synthesize previewImage = _previewImage;
@@ -48,19 +50,21 @@
 	
     // RateView setup
     self.rateView.notSelectedImage = [UIImage imageNamed:@"empty_star.png"];
-    self.rateView.halfSelectedImage = [UIImage imageNamed:@"half_star.png"];
+    //self.rateView.halfSelectedImage = [UIImage imageNamed:@"half_star.png"];
     self.rateView.fullSelectedImage = [UIImage imageNamed:@"full_star.png"];
     self.rateView.rating = 0;
     self.rateView.editable = YES;
     self.rateView.maxRating = 5;
     self.rateView.delegate = self;
     
+    self.loadingBevel.backgroundColor = [UIColor whiteColor];
+    
     // We do not want to display the right bar button item initially
     // It will be used to dismiss the keyboard.
     self.navigationItem.rightBarButtonItem = nil;
     
     // UIPlaceHolderTextView setup
-    self.reviewTextView.placeholder = @"I really enjoyed using this product...";
+    self.reviewTextView.placeholder = @"Review";
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -88,13 +92,14 @@
     [self setPreviewImageView:nil];
     [self setProgressBar:nil];
     [self setLoadingLabel:nil];
+    [self setLoadingBevel:nil];
     [super viewDidUnload];
 }
 
 // INPUT ANIMATION
 
 // This is the offset to animate the form when the keyboard appears
-#define kOFFSET_FOR_KEYBOARD 120.0
+#define kOFFSET_FOR_KEYBOARD 180.0
 
 // When the review text view begins editing, move the field up and
 // display the done button
