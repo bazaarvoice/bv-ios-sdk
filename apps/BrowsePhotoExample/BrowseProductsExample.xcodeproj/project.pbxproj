@@ -13,6 +13,8 @@
 		6F334AC0154EF20D00345C16 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F334ABC154EF20D00345C16 /* Default.png */; };
 		6F334AC1154EF20D00345C16 /* appicon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F334ABD154EF20D00345C16 /* appicon@2x.png */; };
 		6F334AC2154EF20D00345C16 /* appicon.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F334ABE154EF20D00345C16 /* appicon.png */; };
+		6F648B4815642E180008A3F3 /* BVColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F648B4715642E180008A3F3 /* BVColor.m */; };
+		6F648B4B15642F4C0008A3F3 /* app-background.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F648B4A15642F4C0008A3F3 /* app-background.png */; };
 		6F6D7CF91549B5E700FB971A /* libarclite_universal.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F6D7CD71549B5E700FB971A /* libarclite_universal.a */; };
 		6F6D7CFA1549B5E700FB971A /* libBViOSSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F6D7CD81549B5E700FB971A /* libBViOSSDK.a */; };
 		6F85EB9C1545F52800602078 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F85EB9B1545F52800602078 /* UIKit.framework */; };
@@ -49,6 +51,9 @@
 		6F334ABC154EF20D00345C16 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		6F334ABD154EF20D00345C16 /* appicon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "appicon@2x.png"; sourceTree = "<group>"; };
 		6F334ABE154EF20D00345C16 /* appicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = appicon.png; sourceTree = "<group>"; };
+		6F648B4615642E180008A3F3 /* BVColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVColor.h; sourceTree = "<group>"; };
+		6F648B4715642E180008A3F3 /* BVColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVColor.m; sourceTree = "<group>"; };
+		6F648B4A15642F4C0008A3F3 /* app-background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "app-background.png"; sourceTree = "<group>"; };
 		6F6D7CD71549B5E700FB971A /* libarclite_universal.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libarclite_universal.a; path = "bv-ios-static-library/libarclite_universal.a"; sourceTree = "<group>"; };
 		6F6D7CD81549B5E700FB971A /* libBViOSSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libBViOSSDK.a; path = "bv-ios-static-library/libBViOSSDK.a"; sourceTree = "<group>"; };
 		6F85EB971545F52800602078 /* BrowseProductsExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BrowseProductsExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -190,6 +195,8 @@
 				6F85EBF51545F60A00602078 /* SDWebImage */,
 				6F85EBAA1545F52800602078 /* AppDelegate.h */,
 				6F85EBAB1545F52800602078 /* AppDelegate.m */,
+				6F648B4615642E180008A3F3 /* BVColor.h */,
+				6F648B4715642E180008A3F3 /* BVColor.m */,
 				6F85EBC41545F57C00602078 /* ListReviewsController.h */,
 				6F85EBC51545F57C00602078 /* ListReviewsController.m */,
 				6F85EBBA1545F54F00602078 /* ProductDetailViewController.h */,
@@ -207,6 +214,7 @@
 				6F85EBC11545F55800602078 /* StarRatingView.m */,
 				6F85EC0E1545FD5E00602078 /* NSDictionary+Utils.h */,
 				6F85EC0F1545FD5E00602078 /* NSDictionary+Utils.m */,
+				6F648B4A15642F4C0008A3F3 /* app-background.png */,
 				6F334ABB154EF20D00345C16 /* Default@2x.png */,
 				6F334ABC154EF20D00345C16 /* Default.png */,
 				6F334ABD154EF20D00345C16 /* appicon@2x.png */,
@@ -384,6 +392,7 @@
 				6F334AC0154EF20D00345C16 /* Default.png in Resources */,
 				6F334AC1154EF20D00345C16 /* appicon@2x.png in Resources */,
 				6F334AC2154EF20D00345C16 /* appicon.png in Resources */,
+				6F648B4B15642F4C0008A3F3 /* app-background.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -410,6 +419,7 @@
 				6FF9239015488E6500007431 /* MBProgressHUD.m in Sources */,
 				6FF9239B1548980700007431 /* ReviewDetailViewController.m in Sources */,
 				6F015E211549ED6A00BE3E49 /* SearchViewController.m in Sources */,
+				6F648B4815642E180008A3F3 /* BVColor.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

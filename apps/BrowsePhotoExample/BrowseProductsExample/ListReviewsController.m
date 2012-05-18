@@ -22,22 +22,12 @@
 @implementation ListReviewsController
 
 @synthesize searchTerm = _searchTerm;
+@synthesize tableView = _tableView;
 @synthesize productData = _productData;
-
-- (id)initWithStyle:(UITableViewStyle)style
-{
-    self = [super initWithStyle:style];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
-    self.title = @"Rate It!";
     
     // Kick off the request to fetch products
     [self getProducts];
@@ -87,6 +77,7 @@
 
 - (void)viewDidUnload
 {
+    [self setTableView:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
