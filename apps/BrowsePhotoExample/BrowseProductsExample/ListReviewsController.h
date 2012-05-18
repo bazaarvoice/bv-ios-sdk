@@ -11,11 +11,13 @@
 #import <UIKit/UIKit.h>
 #import "BVIncludes.h"
 
-@interface ListReviewsController : UITableViewController<BVDelegate>
+@interface ListReviewsController : UIViewController<UITableViewDelegate, UITableViewDataSource, BVDelegate>
 
 // Array of product data -- this is the data source for the display
 @property (strong) NSArray *productData;
 // Query term for products  
 @property (strong) NSString *searchTerm;
+// Table view
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end

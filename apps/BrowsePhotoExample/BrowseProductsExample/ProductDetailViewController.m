@@ -192,10 +192,10 @@
 // Helper method for calculating cell height.  Essentially, this figures out how much
 // space the review will take and then adds a constant to provide space for the 
 // static cell header and padding.
-#define HEADER_SIZE 110.0
+#define HEADER_SIZE 90.0
 -(CGFloat) heightOfCellWithText:(NSString *)reviewText
 {
-    return HEADER_SIZE + [reviewText sizeWithFont:[UIFont systemFontOfSize:12] constrainedToSize:CGSizeMake(300, 500)].height;
+    return HEADER_SIZE + [reviewText sizeWithFont:[UIFont systemFontOfSize:12] constrainedToSize:CGSizeMake(255, 500)].height;
 }
 
 #pragma mark - Table view delegate

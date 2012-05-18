@@ -15,6 +15,9 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+    
+    // Here we set the background image for the entire application
+    self.window.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"app-background.png"]];
     return YES;
 }
 							

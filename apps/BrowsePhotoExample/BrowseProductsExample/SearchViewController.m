@@ -8,6 +8,7 @@
 
 #import "SearchViewController.h"
 #import "ListReviewsController.h"
+#import "BVColor.h"
 
 @interface SearchViewController ()
 
@@ -29,13 +30,20 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:14/255.0 green:42/255.0 blue:63/255.0 alpha:1];
+    self.navigationController.navigationBar.tintColor = [BVColor primaryBrandColor];
     
     // Global BV SDK setup.  In general this should only occur once
     [BVSettings instance].passKey = @"kuy3zj9pr3n7i0wxajrzj04xo";
     [BVSettings instance].customerName = @"reviews.apitestcustomer"; 
     [BVSettings instance].dataString = @"bvstaging/data";
     [BVSettings instance].apiVersion = @"5.1";
+    
+    UIImage *image = [UIImage imageNamed:@"graphic-star.png"];
+    UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
+    imageView.frame = CGRectMake(0, 0, 30, 30);
+    self.navigationController.navigationItem.titleView = imageView;
+    
+    self.navigationController.navigationBar.alpha = .8;
 }
 
 // Click handler for search button
