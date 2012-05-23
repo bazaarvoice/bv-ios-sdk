@@ -14,7 +14,7 @@
 
 @interface ProductViewController ()
 // Private method to kick off photo submission
-- (void)submitPhoto:(UIImage *)image delegate:(id)delegate;
+- (BVSubmission *)submitPhoto:(UIImage *)image delegate:(id)delegate;
 @end
 
 @implementation ProductViewController
@@ -88,13 +88,13 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
     // view controller as the delegate
     if ([segue.identifier isEqualToString:@"rate"]) {
         RateViewController *rateController = segue.destinationViewController;
-        [self submitPhoto:sender delegate:rateController];
+        rateController.photoSubmission = [self submitPhoto:sender delegate:rateController];
         rateController.previewImage = sender;
     }
 }
 
 // This function actually begins the photo upload via the BV SDK
-- (void)submitPhoto:(UIImage *)image delegate:(id)delegate
+- (BVSubmission *)submitPhoto:(UIImage *)image delegate:(id)delegate
 {
     // Create a photo submission request
     BVSubmissionPhoto *mySubmission = [[BVSubmissionPhoto alloc] init];
@@ -108,7 +108,8 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
     // User that is uploading this photo
     mySubmission.parameters.userId = @"testuserid111";
     // Kick off the request
-    [mySubmission startAsynchRequest];                 
+    [mySubmission startAsynchRequest];     
+    return mySubmission;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
