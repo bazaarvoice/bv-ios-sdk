@@ -24,6 +24,8 @@
 // UIImageView to preview the image associated with this review
 @property (weak, nonatomic) IBOutlet UIImageView *previewImageView;
 
+@property (strong, nonatomic) BVSubmission *photoSubmission;
+@property (strong, nonatomic) BVSubmission *reviewSubmission;
 
 // Loading overlay
 @property (weak, nonatomic) IBOutlet UIView *overlay;

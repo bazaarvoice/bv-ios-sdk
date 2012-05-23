@@ -33,6 +33,8 @@
 @synthesize previewImageView = _photoPreview;
 @synthesize previewImage = _previewImage;
 @synthesize formHasBeenSubmitted = _formHasBeenSubmitted;
+@synthesize reviewSubmission = _reviewSubmission;
+@synthesize photoSubmission = _photoSubmission;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -81,6 +83,15 @@
      ];
 }
 
+- (void)viewWillDisappear:(BOOL)animated
+{
+    // This is necessary for the case that the user cancels.  We must set the
+    // delegate to nil to avoid callbacks to a dealocated instance.
+    self.reviewSubmission.delegate = nil;
+    self.photoSubmission.delegate = nil;
+    
+}
+
 - (void)viewDidUnload
 {
     [self setRateView:nil];
@@ -93,6 +104,7 @@
     [self setProgressBar:nil];
     [self setLoadingLabel:nil];
     [self setLoadingBevel:nil];
+
     [super viewDidUnload];
 }
 
@@ -182,6 +194,7 @@
         
         // Set this object as the request delegate and kick off the request
         mySubmission.delegate = self;
+        self.reviewSubmission = mySubmission;
         [mySubmission startAsynchRequest];
         
         // Update the loading indicator
