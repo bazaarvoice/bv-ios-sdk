@@ -59,5 +59,7 @@ To Generate Docs
 	- git clone git://github.com/tomaz/appledoc.git
 	- cd appledoc
 	- sudo sh install-appledoc.sh 
-	- detailed instructions can be found here: https://github.com/tomaz/appledoc
+		- NOTE: In some cases, you may have to configure the XCode path before installing appledoc with xcode-switch.  For instance, if XCode is installed in the /Applications directory, run:
+		- sudo ./xcode-select -switch /Applications/Xcode.app 
+		- Detailed instructions can be found here: https://github.com/tomaz/appledoc
 2. Within the bv-ios-sdk-dev directory run ./generate_docs.  Appledoc will parse comments from the project header files and output documentation to the docs directory.
