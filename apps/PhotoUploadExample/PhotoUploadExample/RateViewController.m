@@ -89,7 +89,6 @@
     // delegate to nil to avoid callbacks to a dealocated instance.
     self.reviewSubmission.delegate = nil;
     self.photoSubmission.delegate = nil;
-    
 }
 
 - (void)viewDidUnload

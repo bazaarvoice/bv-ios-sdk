@@ -25,6 +25,7 @@
 @synthesize reviewImage = _previewImage;
 @synthesize titleLabel = _titleLabel;
 @synthesize reviewsData = _reviewsData;
+@synthesize reviewsRequest = _reviewsRequest;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -50,6 +51,13 @@
     
     [self setUpReviewDisplay];
     [self getReviews];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    // This is necessary for the case that the user cancels.  We must set the
+    // delegate to nil to avoid callbacks to a dealocated instance.
+    self.reviewsRequest.delegate = nil;
 }
 
 - (void)setUpReviewDisplay
@@ -79,6 +87,7 @@
     
     // Set up this object as a delegate and kick off the request
     showDisplayRequest.delegate = self;
+    self.reviewsRequest = showDisplayRequest;
     [showDisplayRequest startAsynchRequest];
     
     [BVSettings instance].passKey = oldPasskey;
