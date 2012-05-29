@@ -32,6 +32,9 @@
 // Internal property for storing product review data
 @property (strong, nonatomic) NSArray *reviewsData;
 
+@property (strong, nonatomic) BVBase *reviewsRequest;
+
+
 // Flash to indicate a successful submission
 @property (weak, nonatomic) IBOutlet UIView *submitFlash;
 @end

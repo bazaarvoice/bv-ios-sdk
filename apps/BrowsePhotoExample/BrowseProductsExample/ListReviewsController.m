@@ -24,6 +24,7 @@
 @synthesize searchTerm = _searchTerm;
 @synthesize tableView = _tableView;
 @synthesize productData = _productData;
+@synthesize searchRequest = _searchRequest;
 
 - (void)viewDidLoad
 {
@@ -31,6 +32,18 @@
     
     // Kick off the request to fetch products
     [self getProducts];
+}
+
+- (void) viewWillAppear:(BOOL)animated {
+    [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:animated];
+    [super viewWillAppear:animated];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    // This is necessary for the case that the user cancels.  We must set the
+    // delegate to nil to avoid callbacks to a dealocated instance.
+    self.searchRequest.delegate = nil;
 }
 
 - (void)getProducts 

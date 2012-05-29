@@ -33,6 +33,7 @@
 @synthesize productData = _productData;
 @synthesize ratingLabel = _ratingLabel;
 @synthesize reviewsData = _reviewsData;
+@synthesize productRequest = _productRequest;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -51,6 +52,13 @@
     [self getReviews];
 }
 
+- (void)viewWillDisappear:(BOOL)animated
+{
+    // This is necessary for the case that the user cancels.  We must set the
+    // delegate to nil to avoid callbacks to a dealocated instance.
+    self.productRequest.delegate = nil;
+}
+
 - (void)getReviews
 {
     // Determine the productId of this product for use in our request
@@ -65,6 +73,7 @@
     
     // Set up this object as a delegate and kick off the request
     showDisplayRequest.delegate = self;
+    self.productRequest = showDisplayRequest;
     [showDisplayRequest startAsynchRequest];
     
     // Show a loading overlay

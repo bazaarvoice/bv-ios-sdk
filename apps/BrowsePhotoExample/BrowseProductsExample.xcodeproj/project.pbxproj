@@ -488,6 +488,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BrowseProductsExample/BrowseProductsExample-Prefix.pch";
 				INFOPLIST_FILE = "BrowseProductsExample/BrowseProductsExample-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/BrowseProductsExample/bv-ios-static-library\"",
@@ -504,6 +505,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BrowseProductsExample/BrowseProductsExample-Prefix.pch";
 				INFOPLIST_FILE = "BrowseProductsExample/BrowseProductsExample-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/BrowseProductsExample/bv-ios-static-library\"",

@@ -28,4 +28,6 @@
 // Internal property for storing product review data
 @property (strong, nonatomic) NSArray *reviewsData;
 
+@property (strong, nonatomic) BVBase *productRequest;
+
 @end
