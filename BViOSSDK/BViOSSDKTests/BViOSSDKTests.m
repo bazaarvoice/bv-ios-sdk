@@ -68,7 +68,6 @@
 - (void)testShowReview {
     requestComplete = NO;
     BVDisplayReview *showDisplayRequest = [[BVDisplayReview alloc] init];
-    [BVSettings instance].passKey = @"kuy3zj9pr3n7i0wxajrzj04xo";
     showDisplayRequest.parameters.filter = @"Id:192612";
     showDisplayRequest.parameters.include = @"Products";
     // TODO: This causes a bug -- filter and Sort both appear in the request?
@@ -88,7 +87,6 @@
 - (void)testShowQuestion {
     requestComplete = NO;
     BVDisplayQuestion *showDisplayRequest = [[BVDisplayQuestion alloc] init];
-    [BVSettings instance].passKey = @"kuy3zj9pr3n7i0wxajrzj04xo";
     showDisplayRequest.parameters.filter = @"Id:14898";
     showDisplayRequest.parameters.include = @"Answers";
     showDisplayRequest.delegate = self;
@@ -102,7 +100,6 @@
 - (void)testShowAnswers {
     requestComplete = NO;
     BVDisplayAnswer *showDisplayRequest = [[BVDisplayAnswer alloc] init];
-    [BVSettings instance].passKey = @"kuy3zj9pr3n7i0wxajrzj04xo";
     showDisplayRequest.parameters.filter = @"Id:16369";
     showDisplayRequest.parameters.include = @"Questions";
     showDisplayRequest.delegate = self;
@@ -116,7 +113,6 @@
 - (void)testShowStory {
     requestComplete = NO;
     BVDisplayStories *showDisplayRequest = [[BVDisplayStories alloc] init];
-    [BVSettings instance].passKey = @"kuy3zj9pr3n7i0wxajrzj04xo";
     showDisplayRequest.parameters.filter = @"ProductId:1000001";
     showDisplayRequest.delegate = self;
     
@@ -129,7 +125,6 @@
 - (void)testShowComments {
     requestComplete = NO;
     BVDisplayReviewComment *showDisplayRequest = [[BVDisplayReviewComment alloc] init];
-    [BVSettings instance].passKey = @"kuy3zj9pr3n7i0wxajrzj04xo";
     showDisplayRequest.parameters.filter = @"reviewid:192548";
     showDisplayRequest.delegate = self;
     
@@ -142,7 +137,6 @@
 - (void)testShowCommentStory {
     requestComplete = NO;
     BVDisplayStoryComment *showDisplayRequest = [[BVDisplayStoryComment alloc] init];
-    [BVSettings instance].passKey = @"kuy3zj9pr3n7i0wxajrzj04xo";
     showDisplayRequest.parameters.filter = @"storyid:1593";
     showDisplayRequest.delegate = self;
     
@@ -155,7 +149,6 @@
 - (void)testShowProfile {
     requestComplete = NO;
     BVDisplayProfile *showDisplayRequest = [[BVDisplayProfile alloc] init];
-    [BVSettings instance].passKey = @"kuy3zj9pr3n7i0wxajrzj04xo";
     showDisplayRequest.parameters.filter = @"TotalCommentCount:gte:20";
     showDisplayRequest.delegate = self;
     
@@ -168,7 +161,6 @@
 - (void)testShowProducts {
     requestComplete = NO;
     BVDisplayProducts *showDisplayRequest = [[BVDisplayProducts alloc] init];
-    [BVSettings instance].passKey = @"kuy3zj9pr3n7i0wxajrzj04xo";
     showDisplayRequest.parameters.filter = @"CategoryId:eq:testcategory1011";
     showDisplayRequest.delegate = self;
     
@@ -181,7 +173,6 @@
 - (void)testShowCateogry {
     requestComplete = NO;
     BVDisplayCategories *showDisplayRequest = [[BVDisplayCategories alloc] init];
-    [BVSettings instance].passKey = @"kuy3zj9pr3n7i0wxajrzj04xo";
     showDisplayRequest.parameters.filter = @"id:testCategory1011";
     showDisplayRequest.delegate = self;
     
@@ -195,7 +186,6 @@
 - (void)testShowStatistics {
     requestComplete = NO;
     BVDisplayStatistics *showDisplayRequest = [[BVDisplayStatistics alloc] init];
-    [BVSettings instance].passKey = @"kuy3zj9pr3n7i0wxajrzj04xo";
     showDisplayRequest.parameters.filter = @"productid:test1,test2,test3";
     showDisplayRequest.parameters.stats = @"Reviews,NativeReviews";
     showDisplayRequest.delegate = self;
@@ -235,11 +225,9 @@
     mySubmission.parameters.userId = @"123abc";
     mySubmission.parameters.questionSummary = @"Some kind of summary";
     mySubmission.delegate = self;
-    
-    [BVSettings instance].passKey = @"2cpdrhohmgmwfz8vqyo48f52g";
+
     NSString *temp = [BVSettings instance].customerName;
     [BVSettings instance].customerName = @"answers.apitestcustomer";
-    
     [mySubmission startAsynchRequest];                    
     [BVSettings instance].customerName = temp;
 
@@ -255,11 +243,9 @@
     mySubmission.parameters.userId = @"123abc";
     mySubmission.parameters.answerText = @"Some kind of answer";
     mySubmission.delegate = self;
-    [BVSettings instance].passKey = @"2cpdrhohmgmwfz8vqyo48f52g";
+   
     NSString *temp = [BVSettings instance].customerName;
     [BVSettings instance].customerName = @"answers.apitestcustomer";
-
-    
     [mySubmission startAsynchRequest];    
     [BVSettings instance].customerName = temp;
 
@@ -274,13 +260,15 @@
     BVSubmissionStory *mySubmission = [[BVSubmissionStory alloc] init];
     mySubmission.parameters.title = @"This is the title";
     mySubmission.parameters.storyText = @"This is my story";
-    mySubmission.parameters.categoryId = @"1020";
+    mySubmission.parameters.categoryId = @"1020235";
     mySubmission.parameters.userId = @"123abc";
     mySubmission.delegate = self;
-    [BVSettings instance].customerName = @"stories.apitestcustomer";
-    [BVSettings instance].passKey = @"2cpdrhohmgmwfz8vqyo48f52g";
     
-    [mySubmission startAsynchRequest];        
+    NSString *temp = [BVSettings instance].customerName;
+    [BVSettings instance].customerName = @"stories.apitestcustomer";    
+    [mySubmission startAsynchRequest];  
+    [BVSettings instance].customerName = temp;
+
     NSRunLoop *theRL = [NSRunLoop currentRunLoop];
     // Begin a run loop terminated when the requestComplete it set to true
     while (!requestComplete && [theRL runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]]);
@@ -294,7 +282,6 @@
     mySubmission.parameters.reviewId = @"83964";
     mySubmission.parameters.userId = @"123abc";
     mySubmission.delegate = self;
-    [BVSettings instance].passKey = @"2cpdrhohmgmwfz8vqyo48f52g";
     
     [mySubmission startAsynchRequest];            
     NSRunLoop *theRL = [NSRunLoop currentRunLoop];
@@ -311,8 +298,6 @@
     mySubmission.parameters.video = @"http://www.youtube.com/";
     mySubmission.parameters.userId = @"123abc";
     mySubmission.delegate = self;
-    [BVSettings instance].passKey = @"2cpdrhohmgmwfz8vqyo48f52g";
-    [BVSettings instance].customerName = @"reviews.apitestcustomer";
 
     [mySubmission startAsynchRequest];                
     NSRunLoop *theRL = [NSRunLoop currentRunLoop];
@@ -335,9 +320,6 @@
     
     mySubmission.parameters.photo = image;
     mySubmission.delegate = self;
-    [BVSettings instance].passKey = @"f5jyj7alrfvm7hh3mbykot8ui";
-    [BVSettings instance].apiVersion = @"5.1";
-    [BVSettings instance].customerName = @"reviews.apitestcustomer";
     [mySubmission startAsynchRequest];                
     
     NSRunLoop *theRL = [NSRunLoop currentRunLoop];
