@@ -22,4 +22,4 @@ This compiler flag instructs the linker to include all objects from the bv stati
 
 Navigate to your Project Settings -> Targets -> Build Phases.  Under "Link Binary With Libraries" remove libarclite_universal.a from the list of linked libraries.
 
-This error occurs when XCode automatically links against libarclite, usually when compiling an arc project for deployment with a non-arc iOS version, which conflicts with the included libarclite.  
+This error occurs when XCode automatically links against libarclite, usually when compiling an arc project for deployment with a pre-arc iOS version.  Removing the provided libarclite eliminates the linker conflict.  
