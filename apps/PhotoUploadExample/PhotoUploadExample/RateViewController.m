@@ -15,6 +15,13 @@
 // This comes into play when we receive notification that
 // photo upload has completed
 @property (nonatomic, assign) BOOL formHasBeenSubmitted;
+
+// Flag indicating whether the form is moved up 
+@property (nonatomic, assign) BOOL isMovedUp;
+
+// Checks to ensure there is submission data
+- (BOOL)validateFields;
+
 // Private method to kick of rating submission
 - (void)submitRating;
 @end
@@ -30,11 +37,13 @@
 @synthesize loadingLabel = _loadingLabel;
 @synthesize loadingBevel = _loadingBevel;
 @synthesize titleTextField = _titleView;
+@synthesize nicknameTextField = _nicknameTextField;
 @synthesize previewImageView = _photoPreview;
 @synthesize previewImage = _previewImage;
 @synthesize formHasBeenSubmitted = _formHasBeenSubmitted;
 @synthesize reviewSubmission = _reviewSubmission;
 @synthesize photoSubmission = _photoSubmission;
+@synthesize isMovedUp = _isMovedUp;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -42,6 +51,7 @@
     if (self) {
         // Custom initialization
         self.formHasBeenSubmitted = NO;
+        self.isMovedUp = NO;
     }
     return self;
 }
@@ -52,7 +62,7 @@
 	
     // RateView setup
     self.rateView.notSelectedImage = [UIImage imageNamed:@"empty_star.png"];
-    //self.rateView.halfSelectedImage = [UIImage imageNamed:@"half_star.png"];
+    self.rateView.halfSelectedImage = [UIImage imageNamed:@"half_star.png"];
     self.rateView.fullSelectedImage = [UIImage imageNamed:@"full_star.png"];
     self.rateView.rating = 0;
     self.rateView.editable = YES;
@@ -104,6 +114,7 @@
     [self setLoadingLabel:nil];
     [self setLoadingBevel:nil];
 
+    [self setNicknameTextField:nil];
     [super viewDidUnload];
 }
 
@@ -114,7 +125,7 @@
 
 // When the review text view begins editing, move the field up and
 // display the done button
-- (void)textViewDidBeginEditing:(UITextView *)textView{
+- (IBAction)textViewDidBeginEditing:(UITextView *)textView{
     [self setViewMovedUp:YES];
     self.navigationItem.rightBarButtonItem = self.doneButton;
 
@@ -129,23 +140,30 @@
 // When done is clicked, animated down if necessary, resign
 // first respondes, and hide the done button
 - (IBAction)doneClicked:(id)sender {
-    if(self.reviewTextView.isFirstResponder)
+    if(self.reviewTextView.isFirstResponder || self.nicknameTextField.isFirstResponder)
     {
         [self setViewMovedUp:NO];
     }
     [self.reviewTextView resignFirstResponder];
     [self.titleTextField resignFirstResponder];
+    [self.nicknameTextField resignFirstResponder];
     self.navigationItem.rightBarButtonItem = nil;
 }
 
 // Method to move the view up/down whenever the keyboard is shown/dismissed
--(void)setViewMovedUp:(BOOL)movedUp
+-(void)setViewMovedUp:(BOOL)up
 {
+    if(up == self.isMovedUp)
+    {
+        return;
+    }
+    self.isMovedUp = up;
+    
     [UIView beginAnimations:nil context:NULL];
     [UIView setAnimationDuration:0.3]; // if you want to slide up the view
     
     CGRect rect = self.view.frame;
-    if (movedUp)
+    if (up)
     {
         // 1. move the view's origin up so that the text field that will be hidden come above the keyboard 
         // 2. increase the size of the view so that the area behind the keyboard is covered up.
@@ -171,6 +189,12 @@
 
 - (void)submitRating
 {
+    // Check to make sure our fields have content.  If there is a problem, alert
+    // the user and don't submit.
+    if(![self validateFields]) {
+        return;
+    }
+    
     // If we have an imageURL, it means that the photo has successfully uploaded
     // and we can immediatly submit the review.
     if(self.imageUrl)
@@ -187,7 +211,7 @@
         mySubmission.parameters.rating = [NSString stringWithFormat:@"%d", rating];
         mySubmission.parameters.title = self.titleTextField.text;
         mySubmission.parameters.reviewText = self.reviewTextView.text;
-        mySubmission.parameters.userNickName = @"testnickname";
+        mySubmission.parameters.userNickName = self.nicknameTextField.text;
         mySubmission.parameters.photoURL.typeName = @"1";
         mySubmission.parameters.photoURL.typeValue = self.imageUrl;
         
@@ -225,22 +249,39 @@
     else if([request isKindOfClass:[BVSubmissionReview class]])
     {
         
-        // If the review request has responded, we're done.  Note the response and
-        // forward to the confirmation view.
-        
-        // In our case, it made sense to have the confirmation view be the only
-        // view in the navigation stack, so that a back press would revert to the 
-        // product view.  This may or may not be a best practice, depending on the
-        // implementation.
-        UINavigationController * navigationController = self.navigationController;
-        [navigationController popToRootViewControllerAnimated:NO];        
-        ConfirmViewController *confirmController = [self.storyboard instantiateViewControllerWithIdentifier:@"confirmViewController"];
-        
-        // Forward the response data and image so that the confirmation page 
-        // can display it.
-        confirmController.confirmData = response.rawResponse;
-        confirmController.reviewImage = self.previewImage;
-        [navigationController pushViewController:confirmController animated:YES];
+        if(response.hasErrors) {
+            
+            NSLog(@"%@", response.errors);
+            [self.overlay setHidden:YES];
+            
+            // If there are errors, reset the submission and alert the user.
+            NSDictionary *anError = [(NSArray*)response.errors objectAtIndex:0];
+            UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Whoops!"
+                                                              message:[anError objectForKey:@"Message"]                                                           delegate:nil
+                                                    cancelButtonTitle:@"OK"
+                                                    otherButtonTitles:nil];
+            [message show];
+        } else {
+
+            
+            // If the review request has gone through without errors, we're done.  Note the 
+            //response and forward to the confirmation view.
+            
+            // In our case, it made sense to have the confirmation view be the only
+            // view in the navigation stack, so that a back press would revert to the 
+            // product view.  This may or may not be a best practice, depending on the
+            // implementation.
+            UINavigationController * navigationController = self.navigationController;
+            [navigationController popToRootViewControllerAnimated:NO];        
+            ConfirmViewController *confirmController = [self.storyboard instantiateViewControllerWithIdentifier:@"confirmViewController"];
+            
+            // Forward the response data and image so that the confirmation page 
+            // can display it.
+            confirmController.confirmData = response.rawResponse;
+            confirmController.reviewImage = self.previewImage;
+            [navigationController pushViewController:confirmController animated:YES];
+
+        }
     }
 }
 
@@ -268,6 +309,30 @@
     
     [message show];
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (BOOL)validateFields {
+    
+    NSString *message;
+    if(self.titleTextField.text.length == 0) {
+        message = @"Please enter a title.";
+    } else if(self.nicknameTextField.text.length == 0) {
+        message = @"Please enter a nickname.";
+    } else if(self.reviewTextView.text.length == 0) {
+        message = @"Please enter a review.";
+    }
+    
+    if(message) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Whoops!" 
+                                                        message:message
+                                                       delegate:nil 
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        [alert show];
+        return false;
+    } else {
+        return true;
+    }
 }
 
 // This is the delegate method for the RateView to receive notifications

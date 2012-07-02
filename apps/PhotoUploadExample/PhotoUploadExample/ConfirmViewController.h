@@ -12,7 +12,7 @@
 #import "RateView.h"
 #import "BVIncludes.h"
 
-@interface ConfirmViewController : UIViewController<BVDelegate, UITableViewDataSource, UITabBarDelegate>
+@interface ConfirmViewController : UIViewController
 
 // External property for passing the review data to this view
 // controller
@@ -26,14 +26,6 @@
 @property (weak, nonatomic) IBOutlet UITextView *reviewTextView;
 @property (weak, nonatomic) IBOutlet UIImageView *reviewImageView;
 @property (weak, nonatomic) IBOutlet RateView *rateView;
-
-// Table view for displaying other reviews on this product
-@property (weak, nonatomic) IBOutlet UITableView *reviewsTable;
-// Internal property for storing product review data
-@property (strong, nonatomic) NSArray *reviewsData;
-
-@property (strong, nonatomic) BVBase *reviewsRequest;
-
 
 // Flash to indicate a successful submission
 @property (weak, nonatomic) IBOutlet UIView *submitFlash;
