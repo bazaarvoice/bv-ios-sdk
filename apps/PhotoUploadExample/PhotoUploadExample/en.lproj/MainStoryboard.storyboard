@@ -118,6 +118,17 @@ Specialty Dry Cycles — Provide just the right levels of drying for better fabr
                                     <view contentMode="scaleToFill" id="eOG-we-WV2">
                                         <rect key="frame" x="7" y="8" width="288" height="383"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        <subviews>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Nickname" adjustsFontSizeToFit="NO" minimumFontSize="14" clearButtonMode="whileEditing" id="aHw-1a-n3p">
+                                                <rect key="frame" x="19" y="195" width="251" height="31"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <action selector="textViewDidBeginEditing:" destination="ICT-5U-F0A" eventType="editingDidBegin" id="5tX-Ki-Snr"/>
+                                                </connections>
+                                            </textField>
+                                        </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                     </view>
                                 </subviews>
@@ -169,11 +180,11 @@ Specialty Dry Cycles — Provide just the right levels of drying for better fabr
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" id="iEQ-rw-N7U">
-                                <rect key="frame" x="81" y="127" width="158" height="120"/>
+                                <rect key="frame" x="81" y="129" width="158" height="74"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <view hidden="YES" opaque="NO" contentMode="scaleToFill" id="EoE-sE-9pI">
-                                <rect key="frame" x="1" y="-2" width="320" height="420"/>
+                                <rect key="frame" x="-499" y="-2" width="320" height="420"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" id="kVv-PR-9gj" customClass="RoundedCornerView">
@@ -219,6 +230,7 @@ Specialty Dry Cycles — Provide just the right levels of drying for better fabr
                         <outlet property="doneButton" destination="R9i-Tu-dAk" id="JU9-QO-qy1"/>
                         <outlet property="loadingBevel" destination="kVv-PR-9gj" id="Uc9-gE-CJU"/>
                         <outlet property="loadingLabel" destination="Mj6-cn-0hZ" id="Ty3-64-J0l"/>
+                        <outlet property="nicknameTextField" destination="aHw-1a-n3p" id="iO4-Vg-PZL"/>
                         <outlet property="overlay" destination="EoE-sE-9pI" id="R4I-IZ-7c0"/>
                         <outlet property="previewImageView" destination="iEQ-rw-N7U" id="yPm-7F-OKv"/>
                         <outlet property="progressBar" destination="orv-g2-VVM" id="FF6-Sx-lI0"/>
@@ -293,57 +305,6 @@ Specialty Dry Cycles — Provide just the right levels of drying for better fabr
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="118" sectionHeaderHeight="22" sectionFooterHeight="22" id="mI4-Wv-dRu">
-                                <rect key="frame" x="20" y="246" width="280" height="150"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ReviewCell" rowHeight="118" id="RLb-Kf-Mia" customClass="ReviewCell">
-                                        <rect key="frame" x="0.0" y="22" width="280" height="118"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="280" height="117"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <textView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" bouncesZoom="NO" editable="NO" text="Review" id="lt0-6j-SPS">
-                                                    <rect key="frame" x="8" y="30" width="265" height="80"/>
-                                                    <autoresizingMask key="autoresizingMask" heightSizable="YES"/>
-                                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <accessibility key="accessibilityConfiguration">
-                                                        <accessibilityTraits key="traits" none="YES" notEnabled="YES"/>
-                                                        <bool key="isElement" value="NO"/>
-                                                    </accessibility>
-                                                    <color key="textColor" red="0.054901961239999998" green="0.1647058874" blue="0.24705882370000001" alpha="1" colorSpace="deviceRGB"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                                </textView>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Username" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsFontSizeToFit="NO" id="NfH-3j-05N">
-                                                    <rect key="frame" x="13" y="8" width="167" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="0.054901961239999998" green="0.1647058874" blue="0.24705882370000001" alpha="1" colorSpace="deviceRGB"/>
-                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                </label>
-                                                <view contentMode="scaleToFill" id="trp-8h-oJP" customClass="RateView">
-                                                    <rect key="frame" x="179" y="8" width="89" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                                                </view>
-                                            </subviews>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </view>
-                                        <connections>
-                                            <outlet property="author" destination="NfH-3j-05N" id="N1g-Zu-Abn"/>
-                                            <outlet property="review" destination="lt0-6j-SPS" id="1Ko-Lu-dQa"/>
-                                            <outlet property="stars" destination="trp-8h-oJP" id="x7H-ta-qNj"/>
-                                        </connections>
-                                    </tableViewCell>
-                                </prototypes>
-                                <connections>
-                                    <outlet property="dataSource" destination="vQY-A6-nkG" id="mo1-zc-Stj"/>
-                                    <outlet property="delegate" destination="vQY-A6-nkG" id="Fzm-sy-E5K"/>
-                                </connections>
-                            </tableView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="zQe-MJ-KGH">
                                 <rect key="frame" x="92" y="51" width="203" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -358,7 +319,6 @@ Specialty Dry Cycles — Provide just the right levels of drying for better fabr
                         <outlet property="rateView" destination="MNg-gb-9IL" id="W6E-2I-I5R"/>
                         <outlet property="reviewImageView" destination="Kw5-iQ-4D3" id="hVq-lu-qxr"/>
                         <outlet property="reviewTextView" destination="31M-Go-7NB" id="P1Y-uF-eEf"/>
-                        <outlet property="reviewsTable" destination="mI4-Wv-dRu" id="tyn-a6-Y0t"/>
                         <outlet property="submitFlash" destination="ezw-Yq-ajg" id="S3j-em-Ocd"/>
                         <outlet property="titleLabel" destination="zQe-MJ-KGH" id="UeK-qS-AVp"/>
                     </connections>
@@ -381,7 +341,6 @@ Specialty Dry Cycles — Provide just the right levels of drying for better fabr
                 <relationship kind="outlet" name="rateView" candidateClass="RateView"/>
                 <relationship kind="outlet" name="reviewImageView" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="reviewTextView" candidateClass="UITextView"/>
-                <relationship kind="outlet" name="reviewsTable" candidateClass="UITableView"/>
                 <relationship kind="outlet" name="submitFlash" candidateClass="UIView"/>
                 <relationship kind="outlet" name="titleLabel" candidateClass="UILabel"/>
             </relationships>
@@ -398,20 +357,13 @@ Specialty Dry Cycles — Provide just the right levels of drying for better fabr
                 <relationship kind="outlet" name="doneButton" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="loadingBevel" candidateClass="RoundedCornerView"/>
                 <relationship kind="outlet" name="loadingLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="nicknameTextField" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="overlay" candidateClass="UIView"/>
                 <relationship kind="outlet" name="previewImageView" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="progressBar" candidateClass="UIProgressView"/>
                 <relationship kind="outlet" name="rateView" candidateClass="RateView"/>
                 <relationship kind="outlet" name="reviewTextView" candidateClass="UIPlaceHolderTextView"/>
                 <relationship kind="outlet" name="titleTextField" candidateClass="UITextField"/>
-            </relationships>
-        </class>
-        <class className="ReviewCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ReviewCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="author" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="review" candidateClass="UITextView"/>
-                <relationship kind="outlet" name="stars" candidateClass="RateView"/>
             </relationships>
         </class>
         <class className="RoundedCornerView" superclassName="UIView">

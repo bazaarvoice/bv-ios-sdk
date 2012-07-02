@@ -21,6 +21,8 @@
 @property (weak, nonatomic) IBOutlet UIPlaceHolderTextView *reviewTextView;
 // Review title entry field
 @property (weak, nonatomic) IBOutlet UITextField *titleTextField;
+// Field for nickname entry
+@property (weak, nonatomic) IBOutlet UITextField *nicknameTextField;
 // UIImageView to preview the image associated with this review
 @property (weak, nonatomic) IBOutlet UIImageView *previewImageView;
 
