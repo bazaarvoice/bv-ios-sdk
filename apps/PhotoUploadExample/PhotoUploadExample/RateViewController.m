@@ -205,9 +205,9 @@
         BVSubmissionReview *mySubmission = [[BVSubmissionReview alloc] init];
         
         // Fill in the request paramters
-        mySubmission.parameters.productId = @"100000132";
+        mySubmission.parameters.productId = @"10sdfsdf000132";
         // To do an actual submission, uncomment this line.  The default is "preview."
-        mySubmission.parameters.action = @"submit";
+        //mySubmission.parameters.action = @"submit";
         mySubmission.parameters.userId = @"123abc";
         int rating = (int)self.rateView.rating;
         mySubmission.parameters.rating = [NSString stringWithFormat:@"%d", rating];
