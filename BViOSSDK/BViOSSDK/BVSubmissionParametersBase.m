@@ -105,7 +105,7 @@
         _photoURL = [[BVParametersType alloc] init];
         _photoURL.prefixName = @"PhotoUrl";
     }
-    return _photoCaption;
+    return _photoURL;
 }
 
 - (BVParametersType*) productRecommendationId {
