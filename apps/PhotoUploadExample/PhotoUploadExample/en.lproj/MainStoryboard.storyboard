@@ -184,7 +184,7 @@ Specialty Dry Cycles — Provide just the right levels of drying for better fabr
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <view hidden="YES" opaque="NO" contentMode="scaleToFill" id="EoE-sE-9pI">
-                                <rect key="frame" x="-499" y="-2" width="320" height="420"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="420"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" id="kVv-PR-9gj" customClass="RoundedCornerView">

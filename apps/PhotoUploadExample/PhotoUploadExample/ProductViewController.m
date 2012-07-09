@@ -26,12 +26,12 @@
     // Set up the global BVSettings object to store parameters
     // which are common to all requests.  In general, this should
     // only need to be done once.
-    [BVSettings instance].passKey = @"u16cwr987fkx0hprzhrbqbmqo";
+    [BVSettings instance].passKey = @"KEY_REMOVED";
     // These are test endpoints, merely to illustrate use of the api
     // calls to our stating server.
-    [BVSettings instance].customerName = @"directbuy.ugc"; 
+    [BVSettings instance].customerName = @"reviews.apitestcustomer"; 
     [BVSettings instance].dataString = @"bvstaging/data";
-    [BVSettings instance].apiVersion = @"5.1";
+    [BVSettings instance].apiVersion = @"5.2";
     
     self.navigationController.navigationBar.tintColor = [BVColor primaryBrandColor];
     self.navigationController.navigationBar.alpha = .9;
@@ -100,7 +100,9 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
     BVSubmissionPhoto *mySubmission = [[BVSubmissionPhoto alloc] init];
     // With photo submission, we must explicitly set the content type. 
     // In this case, we are uploading a photo to a story
-    mySubmission.parameters.contentType = @"story";
+    mySubmission.parameters.contentType = @"review";
+    
+    // Image resizing is optional, but may be useful in some cases.
     //UIImage *im = [image resizedImageWithContentMode:UIViewContentModeScaleAspectFit bounds:CGSizeMake(1000, 1000) interpolationQuality:kCGInterpolationHigh];
     // Set the photo and delegate parameters
     mySubmission.parameters.photo = image;
