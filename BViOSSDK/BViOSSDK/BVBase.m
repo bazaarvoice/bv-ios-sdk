@@ -115,7 +115,7 @@
     id parameterValue; NSString *appendThisFragment;
     NSDictionary *parametersDict = self.parameters.dictionaryOfValues;
     NSString *returnValue = [NSString stringWithString:@""];
-    
+    NSLog(@"DICTIONARY: %@", parametersDict);
     for (NSString *key in parametersDict) {
         parameterValue = [parametersDict objectForKey:key];
         // If the parameter has a valid value, let's process it.

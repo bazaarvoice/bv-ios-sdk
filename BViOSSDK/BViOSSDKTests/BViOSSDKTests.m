@@ -201,14 +201,16 @@
     requestComplete = NO;
     receivedProgressCallback = NO;
     BVSubmissionReview *mySubmission = [[BVSubmissionReview alloc] init];
-    mySubmission.parameters.productId = @"1000001";
-    mySubmission.parameters.userId = @"123abc";
+    mySubmission.parameters.productId = @"100003401";
+    mySubmission.parameters.userId = @"123abcd";
     mySubmission.parameters.rating = @"5";
     mySubmission.parameters.title = @"Test title";
     mySubmission.parameters.reviewText = @"Some kind of review text.";
     mySubmission.parameters.userNickName = @"testnickname";
     mySubmission.parameters.videoUrl.typeName = @"1";
     mySubmission.parameters.videoUrl.typeValue = @"http://www.youtube.com/";
+    mySubmission.parameters.photoURL.typeName = @"1";
+    mySubmission.parameters.photoURL.typeValue = @"http://apitestcustomer.ugc.bazaarvoice.com/bvstaging/5555/ps_amazon_s3_3rgg6s4xvev0zhzbnabyneo21/photo.jpg";
     mySubmission.delegate = self;
     [mySubmission startAsynchRequest];                                
     NSRunLoop *theRL = [NSRunLoop currentRunLoop];
