@@ -205,13 +205,17 @@
         BVSubmissionReview *mySubmission = [[BVSubmissionReview alloc] init];
         
         // Fill in the request paramters
-        mySubmission.parameters.productId = @"1000001";
+        mySubmission.parameters.productId = @"100000132";
+        // To do an actual submission, uncomment this line.  The default is "preview."
+        mySubmission.parameters.action = @"submit";
         mySubmission.parameters.userId = @"123abc";
         int rating = (int)self.rateView.rating;
         mySubmission.parameters.rating = [NSString stringWithFormat:@"%d", rating];
         mySubmission.parameters.title = self.titleTextField.text;
         mySubmission.parameters.reviewText = self.reviewTextView.text;
         mySubmission.parameters.userNickName = self.nicknameTextField.text;
+        
+        // This type name is the index of the phot in the upload... it maps to photo_1 = ...
         mySubmission.parameters.photoURL.typeName = @"1";
         mySubmission.parameters.photoURL.typeValue = self.imageUrl;
         
@@ -237,6 +241,18 @@
         // If the photo request has responded, we want to identify the 
         // new photo url so that it can be included with the form submission
          NSString *url = [[[[response.rawResponse objectForKey:@"Photo"] objectForKey:@"Sizes"] objectForKey:@"normal"] objectForKey:@"Url"];
+        
+        if(response.hasErrors)
+        {           
+            // If there are errors, reset the submission and alert the user.
+            NSDictionary *anError = [(NSArray*)response.errors objectAtIndex:0];
+            UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Upload Error!"
+                                                              message:[anError objectForKey:@"Message"]                                                           delegate:nil
+                                                    cancelButtonTitle:@"OK"
+                                                    otherButtonTitles:nil];
+            [message show];
+            [self.navigationController popViewControllerAnimated:YES];
+        }
         self.imageUrl = url;
         
         // If the user has already clicked submit, kick off the review submission
@@ -252,12 +268,37 @@
         if(response.hasErrors) {
             
             NSLog(@"%@", response.errors);
+            NSLog(@"%@", response.rawResponse);
             [self.overlay setHidden:YES];
             
             // If there are errors, reset the submission and alert the user.
-            NSDictionary *anError = [(NSArray*)response.errors objectAtIndex:0];
+            NSString * errorMessage;
+            
+            if(response.errors.count > 0)
+            {
+                NSDictionary * anError = [(NSArray*)response.errors objectAtIndex:0];
+                errorMessage = [anError objectForKey:@"Message"];
+            } 
+            else if([response.rawResponse objectForKey:@"FormErrors"] > 0) 
+            {
+                NSDictionary * formErrors = [response.rawResponse objectForKey:@"FormErrors"];
+                NSDictionary * fieldErrors = [[formErrors allValues] objectAtIndex:0];
+                if(fieldErrors.count > 0)
+                {
+                    NSDictionary * anError = [[fieldErrors allValues] objectAtIndex:0];
+                    errorMessage = [anError objectForKey:@"Message"];
+                } else {
+                    errorMessage = @"An Error Occurred";
+                }
+            }
+            else
+            {
+                errorMessage = @"An Error Occurred";
+            }
+            
+             
             UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Whoops!"
-                                                              message:[anError objectForKey:@"Message"]                                                           delegate:nil
+                                                              message: errorMessage                                                         delegate:nil
                                                     cancelButtonTitle:@"OK"
                                                     otherButtonTitles:nil];
             [message show];
@@ -320,6 +361,8 @@
         message = @"Please enter a nickname.";
     } else if(self.reviewTextView.text.length == 0) {
         message = @"Please enter a review.";
+    } else if(self.rateView.rating == 0) {
+        message = @"Please provide a star rating.";
     }
     
     if(message) {
