@@ -63,3 +63,13 @@ To Generate Docs
 		- sudo ./xcode-select -switch /Applications/Xcode.app 
 		- Detailed instructions can be found here: https://github.com/tomaz/appledoc
 2. Within the bv-ios-sdk-dev directory run ./generate_docs.  Appledoc will parse comments from the project header files and output documentation to the docs directory.
+
+To Create A Point Release
+--
+Once the SDK is built, copy it to the bv-ios-sdk directory as appropriate.  Then, perform the following:
+	- Update CHANGELOG.md to reflect the changes and update README.md to the appropriate version number.
+	- Perform the standard github commit flow (add files, commit...)
+	- Tag the commit:
+		- git tag -a v1.X.Y -m "SDK Version 1.X.Y for API Version 5.X"
+	- Push the tags
+		- git push --tags
