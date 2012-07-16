@@ -67,9 +67,9 @@ To Generate Docs
 To Create A Point Release
 --
 Once the SDK is built, copy it to the bv-ios-sdk directory as appropriate.  Then, perform the following:
-	- Update CHANGELOG.md to reflect the changes and update README.md to the appropriate version number.
-	- Perform the standard github commit flow (add files, commit...)
-	- Tag the commit:
-		- git tag -a v1.X.Y -m "SDK Version 1.X.Y for API Version 5.X"
-	- Push the tags
-		- git push --tags
+- Update CHANGELOG.md to reflect the changes and update README.md to the appropriate version number.
+- Perform the standard github commit flow (add files, commit...)
+- Tag the commit:
+	- git tag -a v1.X.Y -m "SDK Version 1.X.Y for API Version 5.X"
+- Push the tags
+	- git push --tags
