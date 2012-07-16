@@ -21,3 +21,11 @@ Other Classes:
 - BVResponse - Encapsulates the response from the server
 - BVSettings - Encapsulates application level params for all requests
 - BVParametersType - Encapsulates a multi-part request parameter
+
+<h2>Older Versions</h2>
+Older versions of the SDK are tagged according to version number.  You can list available versions with:<br />
+<strong>git tag</strong>
+
+In general, version 1.X.Y of the SDK maps to version 5.X of the API.  To check out a particular version, use: 	
+<strong>git checkout [tag]</strong>
+
