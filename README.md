@@ -1,7 +1,7 @@
-Bazaarvoice iOS SDK
+Bazaarvoice iOS SDK (Version 1.2.1 for API Version 5.2)
 =
 
-**Version: 1.0**
+**Version: 1.2.1**
 
 Read the Quick Start guide to get familiar with installation and building a bare-bones, simple application that uses the SDK.
 
@@ -10,7 +10,7 @@ The documentation, located in the docs folder, provides additional information i
 Sample applications, located in the apps folder, provide example uses of the SDK and implementation best practices.
 
 Troubleshooting:
---
+---
 
 *Terminating app due to uncaught exception 'NSInvalidArgumentException', reason: '-[__NSCFString JSONValue]: unrecognized selector sent to instance 0x..."*
 
