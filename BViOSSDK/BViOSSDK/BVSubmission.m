@@ -7,7 +7,7 @@
 //
 
 #import "BVSubmission.h"
-#import "SBJson.h"
+#import "BVSBJson.h"
 
 @implementation BVSubmission
 @synthesize parameters = _parameters;

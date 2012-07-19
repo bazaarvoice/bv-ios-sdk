@@ -30,8 +30,8 @@
  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import "SBJsonStreamWriterState.h"
-#import "SBJsonStreamWriter.h"
+#import "BVSBJsonStreamWriterState.h"
+#import "BVSBJsonStreamWriter.h"
 
 #define SINGLETON \
 + (id)sharedInstance { \
@@ -41,97 +41,97 @@
 }
 
 
-@implementation SBJsonStreamWriterState
+@implementation BVSBJsonStreamWriterState
 + (id)sharedInstance { return nil; }
-- (BOOL)isInvalidState:(SBJsonStreamWriter*)writer { return NO; }
-- (void)appendSeparator:(SBJsonStreamWriter*)writer {}
-- (BOOL)expectingKey:(SBJsonStreamWriter*)writer { return NO; }
-- (void)transitionState:(SBJsonStreamWriter *)writer {}
-- (void)appendWhitespace:(SBJsonStreamWriter*)writer {
+- (BOOL)isInvalidState:(BVSBJsonStreamWriter*)writer { return NO; }
+- (void)appendSeparator:(BVSBJsonStreamWriter*)writer {}
+- (BOOL)expectingKey:(BVSBJsonStreamWriter*)writer { return NO; }
+- (void)transitionState:(BVSBJsonStreamWriter *)writer {}
+- (void)appendWhitespace:(BVSBJsonStreamWriter*)writer {
 	[writer appendBytes:"\n" length:1];
 	for (NSUInteger i = 0; i < writer.stateStack.count; i++)
 	    [writer appendBytes:"  " length:2];
 }
 @end
 
-@implementation SBJsonStreamWriterStateObjectStart
+@implementation BVSBJsonStreamWriterStateObjectStart
 
 SINGLETON
 
-- (void)transitionState:(SBJsonStreamWriter *)writer {
-	writer.state = [SBJsonStreamWriterStateObjectValue sharedInstance];
+- (void)transitionState:(BVSBJsonStreamWriter *)writer {
+	writer.state = [BVSBJsonStreamWriterStateObjectValue sharedInstance];
 }
-- (BOOL)expectingKey:(SBJsonStreamWriter *)writer {
+- (BOOL)expectingKey:(BVSBJsonStreamWriter *)writer {
 	writer.error = @"JSON object key must be string";
 	return YES;
 }
 @end
 
-@implementation SBJsonStreamWriterStateObjectKey
+@implementation BVSBJsonStreamWriterStateObjectKey
 
 SINGLETON
 
-- (void)appendSeparator:(SBJsonStreamWriter *)writer {
+- (void)appendSeparator:(BVSBJsonStreamWriter *)writer {
 	[writer appendBytes:"," length:1];
 }
 @end
 
-@implementation SBJsonStreamWriterStateObjectValue
+@implementation BVSBJsonStreamWriterStateObjectValue
 
 SINGLETON
 
-- (void)appendSeparator:(SBJsonStreamWriter *)writer {
+- (void)appendSeparator:(BVSBJsonStreamWriter *)writer {
 	[writer appendBytes:":" length:1];
 }
-- (void)transitionState:(SBJsonStreamWriter *)writer {
-    writer.state = [SBJsonStreamWriterStateObjectKey sharedInstance];
+- (void)transitionState:(BVSBJsonStreamWriter *)writer {
+    writer.state = [BVSBJsonStreamWriterStateObjectKey sharedInstance];
 }
-- (void)appendWhitespace:(SBJsonStreamWriter *)writer {
+- (void)appendWhitespace:(BVSBJsonStreamWriter *)writer {
 	[writer appendBytes:" " length:1];
 }
 @end
 
-@implementation SBJsonStreamWriterStateArrayStart
+@implementation BVSBJsonStreamWriterStateArrayStart
 
 SINGLETON
 
-- (void)transitionState:(SBJsonStreamWriter *)writer {
-    writer.state = [SBJsonStreamWriterStateArrayValue sharedInstance];
+- (void)transitionState:(BVSBJsonStreamWriter *)writer {
+    writer.state = [BVSBJsonStreamWriterStateArrayValue sharedInstance];
 }
 @end
 
-@implementation SBJsonStreamWriterStateArrayValue
+@implementation BVSBJsonStreamWriterStateArrayValue
 
 SINGLETON
 
-- (void)appendSeparator:(SBJsonStreamWriter *)writer {
+- (void)appendSeparator:(BVSBJsonStreamWriter *)writer {
 	[writer appendBytes:"," length:1];
 }
 @end
 
-@implementation SBJsonStreamWriterStateStart
+@implementation BVSBJsonStreamWriterStateStart
 
 SINGLETON
 
 
-- (void)transitionState:(SBJsonStreamWriter *)writer {
-    writer.state = [SBJsonStreamWriterStateComplete sharedInstance];
+- (void)transitionState:(BVSBJsonStreamWriter *)writer {
+    writer.state = [BVSBJsonStreamWriterStateComplete sharedInstance];
 }
-- (void)appendSeparator:(SBJsonStreamWriter *)writer {
+- (void)appendSeparator:(BVSBJsonStreamWriter *)writer {
 }
 @end
 
-@implementation SBJsonStreamWriterStateComplete
+@implementation BVSBJsonStreamWriterStateComplete
 
 SINGLETON
 
-- (BOOL)isInvalidState:(SBJsonStreamWriter*)writer {
+- (BOOL)isInvalidState:(BVSBJsonStreamWriter*)writer {
 	writer.error = @"Stream is closed";
 	return YES;
 }
 @end
 
-@implementation SBJsonStreamWriterStateError
+@implementation BVSBJsonStreamWriterStateError
 
 SINGLETON
 

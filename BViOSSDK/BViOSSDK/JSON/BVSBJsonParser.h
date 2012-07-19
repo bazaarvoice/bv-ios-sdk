@@ -32,13 +32,13 @@
 /**
  @brief Parse JSON Strings and NSData objects
 
- This uses SBJsonStreamParser internally.
+ This uses BVSBJsonStreamParser internally.
 
  @see @ref objc2json
 
  */
 
-@interface SBJsonParser : NSObject
+@interface BVSBJsonParser : NSObject
 
 /**
  @brief The maximum recursing depth.

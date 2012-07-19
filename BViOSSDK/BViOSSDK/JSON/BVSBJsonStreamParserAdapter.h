@@ -31,20 +31,20 @@
  */
 
 #import <Foundation/Foundation.h>
-#import "SBJsonStreamParser.h"
+#import "BVSBJsonStreamParser.h"
 
 typedef enum {
-	SBJsonStreamParserAdapterNone,
-	SBJsonStreamParserAdapterArray,
-	SBJsonStreamParserAdapterObject,
-} SBJsonStreamParserAdapterType;
+	BVSBJsonStreamParserAdapterNone,
+	BVSBJsonStreamParserAdapterArray,
+	BVSBJsonStreamParserAdapterObject,
+} BVSBJsonStreamParserAdapterType;
 
 /**
  @brief Delegate for getting objects & arrays from the stream parser adapter
  
  @see The TweetStream example project.
  */
-@protocol SBJsonStreamParserAdapterDelegate
+@protocol BVSBJsonStreamParserAdapterDelegate
 
 /**
  @brief Called if a JSON array is found
@@ -52,23 +52,23 @@ typedef enum {
  This method is called if a JSON array is found.
  
  */
-- (void)parser:(SBJsonStreamParser*)parser foundArray:(NSArray*)array;
+- (void)parser:(BVSBJsonStreamParser*)parser foundArray:(NSArray*)array;
 
 /**
  @brief Called when a JSON object is found
 
  This method is called if a JSON object is found.
  */
-- (void)parser:(SBJsonStreamParser*)parser foundObject:(NSDictionary*)dict;
+- (void)parser:(BVSBJsonStreamParser*)parser foundObject:(NSDictionary*)dict;
 
 @end
 
 /**
- @brief SBJsonStreamParserDelegate protocol adapter
+ @brief BVSBJsonStreamParserDelegate protocol adapter
  
- Rather than implementing the SBJsonStreamParserDelegate protocol yourself you will
+ Rather than implementing the BVSBJsonStreamParserDelegate protocol yourself you will
  most likely find it much more convenient to use an instance of this class and
- implement the SBJsonStreamParserAdapterDelegate protocol instead.
+ implement the BVSBJsonStreamParserAdapterDelegate protocol instead.
  
  The default behaviour is that the delegate only receives one call from
  either the -parser:foundArray: or -parser:foundObject: method when the
@@ -77,10 +77,10 @@ typedef enum {
  you will get one call for each full method.
  
  @code
- SBJsonStreamParserAdapter *adapter = [[[SBJsonStreamParserAdapter alloc] init] autorelease];
+ BVSBJsonStreamParserAdapter *adapter = [[[BVSBJsonStreamParserAdapter alloc] init] autorelease];
  adapter.delegate = self;
  
- SBJsonStreamParser *parser = [[[SBJsonStreamParser alloc] init] autorelease];
+ BVSBJsonStreamParser *parser = [[[BVSBJsonStreamParser alloc] init] autorelease];
  parser.delegate = adapter;
  parser.supportMultipleDocuments = YES;
 
@@ -103,11 +103,11 @@ typedef enum {
  being called on your delegate.
  
  @code
- SBJsonStreamParserAdapter *adapter = [[[SBJsonStreamParserAdapter alloc] init] autorelease];
+ BVSBJsonStreamParserAdapter *adapter = [[[BVSBJsonStreamParserAdapter alloc] init] autorelease];
  adapter.delegate = self;
  adapter.levelsToSkip = 1;
  
- SBJsonStreamParser *parser = [[[SBJsonStreamParser alloc] init] autorelease];
+ BVSBJsonStreamParser *parser = [[[BVSBJsonStreamParser alloc] init] autorelease];
  parser.delegate = adapter;
  
  // Note that this input contains A SINGLE top-level document
@@ -116,7 +116,7 @@ typedef enum {
  @endcode
  
 */
-@interface SBJsonStreamParserAdapter : NSObject <SBJsonStreamParserDelegate> {
+@interface BVSBJsonStreamParserAdapter : NSObject <BVSBJsonStreamParserDelegate> {
 @private
 	NSUInteger depth;
     NSMutableArray *array;
@@ -124,7 +124,7 @@ typedef enum {
 	NSMutableArray *keyStack;
 	NSMutableArray *stack;
 	
-	SBJsonStreamParserAdapterType currentType;
+	BVSBJsonStreamParserAdapterType currentType;
 }
 
 /**
@@ -141,8 +141,8 @@ typedef enum {
 
 /**
  @brief Your delegate object
- Set this to the object you want to receive the SBJsonStreamParserAdapterDelegate messages.
+ Set this to the object you want to receive the BVSBJsonStreamParserAdapterDelegate messages.
  */
-@property (unsafe_unretained) id<SBJsonStreamParserAdapterDelegate> delegate;
+@property (unsafe_unretained) id<BVSBJsonStreamParserAdapterDelegate> delegate;
 
 @end

@@ -1,5 +1,6 @@
 /*
- Copyright (c) 2011, Stig Brautaset. All rights reserved.
+ Copyright (c) 2010, Stig Brautaset.
+ All rights reserved.
  
  Redistribution and use in source and binary forms, with or without
  modification, are permitted provided that the following conditions are
@@ -31,28 +32,36 @@
 
 #import <Foundation/Foundation.h>
 
+typedef enum {
+    BVSBJson_token_error = -1,
+    BVSBJson_token_eof,
+    
+    BVSBJson_token_array_start,
+    BVSBJson_token_array_end,
+    
+    BVSBJson_token_object_start,
+    BVSBJson_token_object_end,
 
-@interface SBJsonUTF8Stream : NSObject {
-@private
-    const char *_bytes;
-    NSMutableData *_data;
-    NSUInteger _length;
-}
+    BVSBJson_token_separator,
+    BVSBJson_token_keyval_separator,
+    
+    BVSBJson_token_number,
+    BVSBJson_token_string,
+    BVSBJson_token_true,
+    BVSBJson_token_false,
+    BVSBJson_token_null,
+    
+} BVSBJson_token_t;
 
-@property (assign) NSUInteger index;
+@class BVSBJsonUTF8Stream;
+
+@interface BVSBJsonTokeniser : NSObject 
+
+@property (strong) BVSBJsonUTF8Stream *stream;
+@property (copy) NSString *error;
 
 - (void)appendData:(NSData*)data_;
 
-- (BOOL)haveRemainingCharacters:(NSUInteger)chars;
-
-- (void)skip;
-- (void)skipWhitespace;
-- (BOOL)skipCharacters:(const char *)chars length:(NSUInteger)len;
-
-- (BOOL)getUnichar:(unichar*)ch;
-- (BOOL)getNextUnichar:(unichar*)ch;
-- (BOOL)getRetainedStringFragment:(NSString**)string;
-
-- (NSString*)stringWithRange:(NSRange)range;
+- (BVSBJson_token_t)getToken:(NSObject**)token;
 
 @end
