@@ -7,7 +7,7 @@
 //
 
 #import "BVBase.h"
-#import "SBJson.h"
+#import "BVSBJson.h"
 
 #import <sys/socket.h>
 #import <netinet/in.h>

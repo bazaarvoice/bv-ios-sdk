@@ -1,5 +1,5 @@
 /*
- Copyright (C) 2009,2010 Stig Brautaset. All rights reserved.
+ Copyright (C) 2009 Stig Brautaset. All rights reserved.
  
  Redistribution and use in source and binary forms, with or without
  modification, are permitted provided that the following conditions are met:
@@ -27,74 +27,83 @@
  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import "SBJsonParser.h"
-#import "SBJsonStreamParser.h"
-#import "SBJsonStreamParserAdapter.h"
-#import "SBJsonStreamParserAccumulator.h"
+#import "BVSBJsonWriter.h"
+#import "BVSBJsonStreamWriter.h"
+#import "BVSBJsonStreamWriterAccumulator.h"
 
-@implementation SBJsonParser
 
-@synthesize maxDepth;
+@interface BVSBJsonWriter ()
+@property (copy) NSString *error;
+@end
+
+@implementation BVSBJsonWriter
+
+@synthesize sortKeys;
+@synthesize humanReadable;
+
 @synthesize error;
+@synthesize maxDepth;
 
 - (id)init {
     self = [super init];
-    if (self)
-        self.maxDepth = 32u;
+    if (self) {
+        self.maxDepth = 32u;        
+    }
     return self;
 }
 
 
-#pragma mark Methods
-
-- (id)objectWithData:(NSData *)data {
-
-    if (!data) {
-        self.error = @"Input was 'nil'";
-        return nil;
-    }
-
-	SBJsonStreamParserAccumulator *accumulator = [[SBJsonStreamParserAccumulator alloc] init];
-    
-    SBJsonStreamParserAdapter *adapter = [[SBJsonStreamParserAdapter alloc] init];
-    adapter.delegate = accumulator;
-	
-	SBJsonStreamParser *parser = [[SBJsonStreamParser alloc] init];
-	parser.maxDepth = self.maxDepth;
-	parser.delegate = adapter;
-	
-	switch ([parser parse:data]) {
-		case SBJsonStreamParserComplete:
-            return accumulator.value;
-			break;
-			
-		case SBJsonStreamParserWaitingForData:
-		    self.error = @"Unexpected end of input";
-			break;
-
-		case SBJsonStreamParserError:
-		    self.error = parser.error;
-			break;
-	}
-	
+- (NSString*)stringWithObject:(id)value {
+	NSData *data = [self dataWithObject:value];
+	if (data)
+		return [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
 	return nil;
-}
+}	
 
-- (id)objectWithString:(NSString *)repr {
-	return [self objectWithData:[repr dataUsingEncoding:NSUTF8StringEncoding]];
-}
-
-- (id)objectWithString:(NSString*)repr error:(NSError**)error_ {
-	id tmp = [self objectWithString:repr];
+- (NSString*)stringWithObject:(id)value error:(NSError**)error_ {
+    NSString *tmp = [self stringWithObject:value];
     if (tmp)
         return tmp;
     
     if (error_) {
 		NSDictionary *ui = [NSDictionary dictionaryWithObjectsAndKeys:error, NSLocalizedDescriptionKey, nil];
-        *error_ = [NSError errorWithDomain:@"org.brautaset.SBJsonParser.ErrorDomain" code:0 userInfo:ui];
+        *error_ = [NSError errorWithDomain:@"org.brautaset.BVSBJsonWriter.ErrorDomain" code:0 userInfo:ui];
 	}
 	
     return nil;
 }
 
+- (NSData*)dataWithObject:(id)object {	
+    self.error = nil;
+
+    BVSBJsonStreamWriterAccumulator *accumulator = [[BVSBJsonStreamWriterAccumulator alloc] init];
+    
+	BVSBJsonStreamWriter *streamWriter = [[BVSBJsonStreamWriter alloc] init];
+	streamWriter.sortKeys = self.sortKeys;
+	streamWriter.maxDepth = self.maxDepth;
+	streamWriter.humanReadable = self.humanReadable;
+    streamWriter.delegate = accumulator;
+	
+	BOOL ok = NO;
+	if ([object isKindOfClass:[NSDictionary class]])
+		ok = [streamWriter writeObject:object];
+	
+	else if ([object isKindOfClass:[NSArray class]])
+		ok = [streamWriter writeArray:object];
+		
+	else if ([object respondsToSelector:@selector(proxyForJson)])
+		return [self dataWithObject:[object proxyForJson]];
+	else {
+		self.error = @"Not valid type for JSON";
+		return nil;
+	}
+	
+	if (ok)
+		return accumulator.data;
+	
+	self.error = streamWriter.error;
+	return nil;	
+}
+	
+	
 @end

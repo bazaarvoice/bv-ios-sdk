@@ -27,21 +27,10 @@
  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import "SBJsonStreamParserAccumulator.h"
+#import "BVSBJsonStreamWriter.h"
 
-@implementation SBJsonStreamParserAccumulator
+@interface BVSBJsonStreamWriterAccumulator : NSObject <BVSBJsonStreamWriterDelegate>
 
-@synthesize value;
-
-
-#pragma mark SBJsonStreamParserAdapterDelegate
-
-- (void)parser:(SBJsonStreamParser*)parser foundArray:(NSArray *)array {
-	value = array;
-}
-
-- (void)parser:(SBJsonStreamParser*)parser foundObject:(NSDictionary *)dict {
-	value = dict;
-}
+@property (readonly, copy) NSMutableData* data;
 
 @end

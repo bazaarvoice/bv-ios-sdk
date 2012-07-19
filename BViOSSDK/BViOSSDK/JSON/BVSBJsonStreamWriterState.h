@@ -32,38 +32,38 @@
 
 #import <Foundation/Foundation.h>
 
-@class SBJsonStreamWriter;
+@class BVSBJsonStreamWriter;
 
-@interface SBJsonStreamWriterState : NSObject
+@interface BVSBJsonStreamWriterState : NSObject
 + (id)sharedInstance;
-- (BOOL)isInvalidState:(SBJsonStreamWriter*)writer;
-- (void)appendSeparator:(SBJsonStreamWriter*)writer;
-- (BOOL)expectingKey:(SBJsonStreamWriter*)writer;
-- (void)transitionState:(SBJsonStreamWriter*)writer;
-- (void)appendWhitespace:(SBJsonStreamWriter*)writer;
+- (BOOL)isInvalidState:(BVSBJsonStreamWriter*)writer;
+- (void)appendSeparator:(BVSBJsonStreamWriter*)writer;
+- (BOOL)expectingKey:(BVSBJsonStreamWriter*)writer;
+- (void)transitionState:(BVSBJsonStreamWriter*)writer;
+- (void)appendWhitespace:(BVSBJsonStreamWriter*)writer;
 @end
 
-@interface SBJsonStreamWriterStateObjectStart : SBJsonStreamWriterState
+@interface BVSBJsonStreamWriterStateObjectStart : BVSBJsonStreamWriterState
 @end
 
-@interface SBJsonStreamWriterStateObjectKey : SBJsonStreamWriterStateObjectStart
+@interface BVSBJsonStreamWriterStateObjectKey : BVSBJsonStreamWriterStateObjectStart
 @end
 
-@interface SBJsonStreamWriterStateObjectValue : SBJsonStreamWriterState
+@interface BVSBJsonStreamWriterStateObjectValue : BVSBJsonStreamWriterState
 @end
 
-@interface SBJsonStreamWriterStateArrayStart : SBJsonStreamWriterState
+@interface BVSBJsonStreamWriterStateArrayStart : BVSBJsonStreamWriterState
 @end
 
-@interface SBJsonStreamWriterStateArrayValue : SBJsonStreamWriterState
+@interface BVSBJsonStreamWriterStateArrayValue : BVSBJsonStreamWriterState
 @end
 
-@interface SBJsonStreamWriterStateStart : SBJsonStreamWriterState
+@interface BVSBJsonStreamWriterStateStart : BVSBJsonStreamWriterState
 @end
 
-@interface SBJsonStreamWriterStateComplete : SBJsonStreamWriterState
+@interface BVSBJsonStreamWriterStateComplete : BVSBJsonStreamWriterState
 @end
 
-@interface SBJsonStreamWriterStateError : SBJsonStreamWriterState
+@interface BVSBJsonStreamWriterStateError : BVSBJsonStreamWriterState
 @end
 
