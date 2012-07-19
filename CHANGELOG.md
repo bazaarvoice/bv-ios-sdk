@@ -1,3 +1,7 @@
+## 1.2.2 (Jul 19, 2012)
+
+* Fixes a collision in SBJSON library for clients including libraries which also utilize SBJSON.
+
 ## 1.2.1 (Jul 09, 2012)
 
 * Fixes a critical bug in review submission with photo attachment.
