@@ -12,7 +12,7 @@
 /*!
  Request class for answer submission
  
- See http://developer.bazaarvoice.com/api/5/1/answer-submission
+ See http://developer.bazaarvoice.com/api/5/2/answer-submission
  */
 
 

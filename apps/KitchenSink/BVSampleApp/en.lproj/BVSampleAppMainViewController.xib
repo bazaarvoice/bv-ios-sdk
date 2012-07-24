@@ -250,6 +250,7 @@
 						<string key="NSFrame">{{20, 441}, {118, 37}}</string>
 						<reference key="NSSuperview" ref="864303435"/>
 						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView" ref="560006983"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -257,6 +258,29 @@
 						<int key="IBUIContentVerticalAlignment">0</int>
 						<int key="IBUIButtonType">1</int>
 						<string key="IBUINormalTitle">Videos</string>
+						<reference key="IBUIHighlightedTitleColor" ref="151665020"/>
+						<object class="NSColor" key="IBUINormalTitleColor">
+							<int key="NSColorSpace">1</int>
+							<bytes key="NSRGB">MC4xOTYwNzg0MzQ2IDAuMzA5ODAzOTMyOSAwLjUyMTU2ODY1NgA</bytes>
+						</object>
+						<reference key="IBUINormalTitleShadowColor" ref="951382209"/>
+						<reference key="IBUIFontDescription" ref="224787075"/>
+						<reference key="IBUIFont" ref="7454693"/>
+					</object>
+					<object class="IBUIButton" id="560006983">
+						<reference key="NSNextResponder" ref="864303435"/>
+						<int key="NSvFlags">292</int>
+						<string key="NSFrame">{{158, 441}, {118, 37}}</string>
+						<reference key="NSSuperview" ref="864303435"/>
+						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView"/>
+						<string key="NSReuseIdentifierKey">_NS:9</string>
+						<bool key="IBUIOpaque">NO</bool>
+						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+						<int key="IBUIContentHorizontalAlignment">0</int>
+						<int key="IBUIContentVerticalAlignment">0</int>
+						<int key="IBUIButtonType">1</int>
+						<string key="IBUINormalTitle">Feedback</string>
 						<reference key="IBUIHighlightedTitleColor" ref="151665020"/>
 						<object class="NSColor" key="IBUINormalTitleColor">
 							<int key="NSColorSpace">1</int>
@@ -526,7 +550,7 @@
 				<string key="NSFrameSize">{296, 498}</string>
 				<reference key="NSSuperview"/>
 				<reference key="NSWindow"/>
-				<reference key="NSNextKeyView"/>
+				<reference key="NSNextKeyView" ref="257333490"/>
 				<string key="NSReuseIdentifierKey">_NS:9</string>
 				<object class="NSColor" key="IBUIBackgroundColor">
 					<int key="NSColorSpace">1</int>
@@ -709,6 +733,15 @@
 					</object>
 					<int key="connectionID">200</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchEventConnection" key="connection">
+						<string key="label">submissionFeedback</string>
+						<reference key="source" ref="560006983"/>
+						<reference key="destination" ref="372490531"/>
+						<int key="IBEventType">7</int>
+					</object>
+					<int key="connectionID">205</int>
+				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<array key="orderedObjects">
@@ -753,6 +786,7 @@
 							<reference ref="694279970"/>
 							<reference ref="257333490"/>
 							<reference ref="681105246"/>
+							<reference ref="560006983"/>
 						</array>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -856,6 +890,11 @@
 						<reference key="object" ref="681105246"/>
 						<reference key="parent" ref="864303435"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">203</int>
+						<reference key="object" ref="560006983"/>
+						<reference key="parent" ref="864303435"/>
+					</object>
 				</array>
 			</object>
 			<dictionary class="NSMutableDictionary" key="flattenedProperties">
@@ -883,13 +922,14 @@
 				<string key="182.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="183.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="184.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<string key="203.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="39.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 			</dictionary>
 			<dictionary class="NSMutableDictionary" key="unlocalizedProperties"/>
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">202</int>
+			<int key="maxID">205</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -909,6 +949,7 @@
 						<string key="showStory">id</string>
 						<string key="submissionAnswers">id</string>
 						<string key="submissionComments">id</string>
+						<string key="submissionFeedback">id</string>
 						<string key="submissionPhotos">id</string>
 						<string key="submissionQuestions">id</string>
 						<string key="submissionReview">id</string>
@@ -962,6 +1003,10 @@
 						</object>
 						<object class="IBActionInfo" key="submissionComments">
 							<string key="name">submissionComments</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="submissionFeedback">
+							<string key="name">submissionFeedback</string>
 							<string key="candidateClassName">id</string>
 						</object>
 						<object class="IBActionInfo" key="submissionPhotos">

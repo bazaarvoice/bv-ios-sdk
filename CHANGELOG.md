@@ -1,3 +1,8 @@
+## 1.2.3 (Jul 24, 2012)
+
+* Adds support for feedback submission.  See http://developer.bazaarvoice.com/api/5/2/feedback-submission.
+* Allows for multiple key/value pairs on a single BVParameterType.  For instance, tag\_1=something and tag\_2=something may be set on a single request.
+
 ## 1.2.2 (Jul 19, 2012)
 
 * Fixes a collision in SBJSON library for clients including libraries which also utilize SBJSON.

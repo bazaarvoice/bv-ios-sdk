@@ -12,7 +12,7 @@
 /*!
  Request class for video submission
  
- See http://developer.bazaarvoice.com/api/5/1/video-submission
+ See http://developer.bazaarvoice.com/api/5/2/video-submission
  */
 
 @interface BVSubmissionVideo : BVSubmission

@@ -12,7 +12,7 @@
 /*!
  Request class for question submission
  
- See http://developer.bazaarvoice.com/api/5/1/question-submission
+ See http://developer.bazaarvoice.com/api/5/2/question-submission
  */
 
 @interface BVSubmissionQuestion : BVSubmission
