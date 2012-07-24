@@ -11,7 +11,7 @@
 /*!
  Request class for question display
  
- See http://developer.bazaarvoice.com/api/5/1/question-display
+ See http://developer.bazaarvoice.com/api/5/2/question-display
  */
 
 @interface BVDisplayQuestion : BVBase

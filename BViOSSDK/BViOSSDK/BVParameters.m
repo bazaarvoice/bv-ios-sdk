@@ -8,6 +8,7 @@
 
 #import "BVParameters.h"
 
+
 @implementation BVParameters
 
 @synthesize include             =   _include;
@@ -69,22 +70,40 @@
 
 @end
 
+@interface BVParametersType ()
+
+@property (strong) NSMutableDictionary * paramsDictionary;
+
+@end
+
+
 @implementation BVParametersType
 
-@synthesize typeName                = _typeName;
-@synthesize typeValue               = _typeValue;
-@synthesize prefixName              = _prefixName;
+@synthesize paramsDictionary;
 
-- (NSDictionary*) dictionaryEntry {
-    NSString *keyConstructed;
-    NSDictionary *returnDict = nil;
+- (id)init {
+    self = [super init];
+    if (self) {
+        self.paramsDictionary = [[NSMutableDictionary alloc] init];
+    }
+    return self;
+}
 
-    if (self.typeValue) {
-        keyConstructed = [NSString stringWithFormat:@"%@_%@", self.prefixName, self.typeName];
-        returnDict = [NSDictionary dictionaryWithObject:self.typeValue forKey:keyConstructed];
+
+
+@synthesize prefixName = _prefixName;
+
+- (void)addKey:(NSString *)key andValue:(NSString*)value {
+    if(self.prefixName == nil){
+        @throw [NSException exceptionWithName:NSInternalInconsistencyException reason:@"Prefix Name is nil" userInfo:nil];
     }
     
-    return returnDict;
+    NSString *keyConstructed = [NSString stringWithFormat:@"%@_%@", self.prefixName, key];
+    [self.paramsDictionary setValue:value forKey:keyConstructed];
+}
+
+- (NSDictionary*) dictionaryEntry {
+    return self.paramsDictionary;
 }
 
 @end

@@ -58,20 +58,8 @@
 }
 
 - (NSString*) fragmentForKey:(NSString*)key usingDictionary:(NSDictionary*)parametersDict {
-    NSString *returnValue = nil; BVParametersType *parameterTypePass; NSString *parameterValue;
-    id kindOfParameter = [parametersDict objectForKey:key];
-    
-    if ([kindOfParameter isKindOfClass:[BVParametersType class]]) { // TODO: This will not happen now. Replaced BVParameterType to actual parameter.
-        parameterTypePass = [parametersDict objectForKey:key];
-        if ([kindOfParameter typeName] && [kindOfParameter typeValue]) {// Make sure we have values for both!
-            NSString *newKey = [key substringToIndex:([key length] - 4)];
-            returnValue = [NSString stringWithFormat:@"&%@_%@=%@", newKey, [kindOfParameter typeName], [kindOfParameter typeValue]];
-        }
-    }
-    else if ([kindOfParameter isKindOfClass:[NSString class]]) {
-        parameterValue = [parametersDict objectForKey:key];
-        returnValue = [NSString stringWithFormat:@"&%@=%@", key, kindOfParameter];
-    }
+    NSString *parameterValue = [parametersDict objectForKey:key];
+    NSString *returnValue = [NSString stringWithFormat:@"&%@=%@", key, parameterValue];
     returnValue = [returnValue stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     return returnValue;
 }

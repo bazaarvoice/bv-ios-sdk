@@ -42,13 +42,14 @@
 	
 	<option value="//api/name/prefixName">&nbsp;&nbsp;&nbsp;&nbsp;prefixName</option>
 	
-	<option value="//api/name/typeName">&nbsp;&nbsp;&nbsp;&nbsp;typeName</option>
-	
-	<option value="//api/name/typeValue">&nbsp;&nbsp;&nbsp;&nbsp;typeValue</option>
 	
 	
 	
 	
+	
+	<option value="instance_methods">Instance Methods</option>
+	
+	<option value="//api/name/addKey:andValue:">&nbsp;&nbsp;&nbsp;&nbsp;- addKey:andValue:</option>
 	
 	
 	
@@ -76,15 +77,17 @@
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/prefixName">prefixName</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/typeName">typeName</a></span></li>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/typeValue">typeValue</a></span></li>
-	
 </ul></li>
 
 
 
 
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/addKey:andValue:">addKey:andValue:</a></span></li>
+	
+</ul></li>
 
 
 			</ul>
@@ -121,9 +124,9 @@
 					<div class="section section-overview">
 						<a title="Overview" name="overview"></a>
 						<h2 class="subtitle subtitle-overview">Overview</h2>
-						<p>BVParametersType encapsulates a generic additional parameter to a request of the form [prefixName]_[typeName] = [typeValue].</p>
+						<p>BVParametersType encapsulates a generic additional parameter to a request of the form [prefixName]_[key] = [value].</p>
 
-<p>For example, BVParameter type might represent a paramteter to filter, sort, or limit nested content. Consider the case where we wish to pass a parameter Limit_Comments = 20, which would limit the number of nested comments included in the response to 20. There are 3 components to this parameter; the prefix (“Limit”), type (“Comments”), and the value (20). These values correspond to the 3 properties declared in BVParametersType.</p>
+<p>For example, a BVParameterType might represent a photo url we wish to attach to a review. Consider the case where we wish to pass a parameter PhotoUrl_1=TheUrl.  There are 3 components to this parameter; the prefix (“PhotoUrl”), key (“1”), and the value (&ldquo;TheUrl&rdquo;).</p>
 					</div>
 					
 					
@@ -142,23 +145,16 @@
 							<li>
 	<span class="tooltip">
 		<code><a href="#//api/name/prefixName">&nbsp;&nbsp;prefixName</a></code>
-		<span class="tooltip"><p>The prefix name of the constraint to apply.  For instance, &ldquo;Limit&rdquo;, &ldquo;Filter&rdquo; or &ldquo;Sort&rdquo;.</p></span>
+		<span class="tooltip"><p>The prefix name of the constraint to apply.  For instance, &ldquo;PhotoUrl&rdquo; or &ldquo;Tag&rdquo;.</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/typeName">&nbsp;&nbsp;typeName</a></code>
-		<span class="tooltip"><p>The type of the nested content upon which to apply this constraint.  For instance, &ldquo;Comments&rdquo; or &ldquo;Reviews&rdquo;.</p></span>
+		<code><a href="#//api/name/addKey:andValue:">&ndash;&nbsp;addKey:andValue:</a></code>
+		<span class="tooltip"><p>Adds a key/value pair to this parameter.</p></span>
 	</span>
-	<span class="task-item-suffix">property</span>
 	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/typeValue">&nbsp;&nbsp;typeValue</a></code>
-		<span class="tooltip"><p>The value for this limit, filter or sort.</p></span>
-	</span>
-	<span class="task-item-suffix">property</span>
 	
 </li>
 						</ul>
@@ -180,7 +176,7 @@
 	
 	
 	<div class="method-subsection brief-description">
-		<p>The prefix name of the constraint to apply.  For instance, &ldquo;Limit&rdquo;, &ldquo;Filter&rdquo; or &ldquo;Sort&rdquo;.</p>
+		<p>The prefix name of the constraint to apply.  For instance, &ldquo;PhotoUrl&rdquo; or &ldquo;Tag&rdquo;.</p>
 	</div>		
 	
     
@@ -209,57 +205,53 @@
 	
 </div>
 						
-						<div class="section-method">
-	<a name="//api/name/typeName" title="typeName"></a>
-	<h3 class="subsubtitle method-title">typeName</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<p>The type of the nested content upon which to apply this constraint.  For instance, &ldquo;Comments&rdquo; or &ldquo;Reviews&rdquo;.</p>
-	</div>		
-	
-    
-
-	<div class="method-subsection method-declaration"><code>@property (nonatomic, copy) NSString *typeName</code></div>
-
-    
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">BVParameters.h</code><br />
-	</div>				
-	
-	
-</div>
+					</div>
+					
+					
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Instance Methods" name="instance_methods"></a>
+						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
 						
 						<div class="section-method">
-	<a name="//api/name/typeValue" title="typeValue"></a>
-	<h3 class="subsubtitle method-title">typeValue</h3>
+	<a name="//api/name/addKey:andValue:" title="addKey:andValue:"></a>
+	<h3 class="subsubtitle method-title">addKey:andValue:</h3>
 	
 	
 	
 	<div class="method-subsection brief-description">
-		<p>The value for this limit, filter or sort.</p>
+		<p>Adds a key/value pair to this parameter.</p>
 	</div>		
 	
     
 
-	<div class="method-subsection method-declaration"><code>@property (nonatomic, copy) NSString *typeValue</code></div>
+	<div class="method-subsection method-declaration"><code>- (void)addKey:(NSString *)<em>key</em> andValue:(NSString *)<em>value</em></code></div>
 
     
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>key</em></dt>
+			<dd><p>The key to add.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>value</em></dt>
+			<dd><p>The value to add.</p>
+
+<p>For instance, if <a href="#//api/name/prefixName">prefixName</a> is set to &ldquo;PhotoUrl&rdquo;, we might add multiple image parameters with the following:</p>
+
+<p>[mySubmission.parameters.photoURL addKey:@&ldquo;1&rdquo; andValue:@&ldquo;&hellip;&rdquo;];
+[mySubmission.parameters.photoURL addKey:@&ldquo;2&rdquo; andValue:@&ldquo;&hellip;&rdquo;];</p>
+
+<p>This will generate parameters of PhotoUrl_1 and PhotoUrl_2 accordingly.</p></dd>
+		</dl>
+		
+	</div>
 	
 	
 	
@@ -284,10 +276,6 @@
 					</div>
 					
 					
-					
-					
-					
-					
 				</div>
 				<div class="main-navigation navigation-bottom">
 					<ul>
@@ -298,7 +286,7 @@
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2012 Bazaarvoice. All rights reserved. (Last updated: 2012-07-16)</span><br />
+						<p><span class="copyright">&copy; 2012 Bazaarvoice. All rights reserved. (Last updated: 2012-07-24)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.0.5 (build 789)</a>.</span></p>
 						

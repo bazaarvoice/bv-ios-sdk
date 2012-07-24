@@ -41,7 +41,6 @@
  
  @return the receiver encoded in JSON, or nil on error.
  
- @see @ref objc2json
  */
 - (NSString *)JSONRepresentation;
 
@@ -58,7 +57,6 @@
  
  @return the NSDictionary or NSArray represented by the receiver, or nil on error.
  
- @see @ref json2objc
  */
 - (id)JSONValue;
 

@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
-		<title>BVSubmissionParametersVideo Class Reference</title>
+		<title>BVSubmissionParametersFeedback Class Reference</title>
 		<meta id="xcode-display" name="xcode-display" content="render"/>
 		<meta name="viewport" content="width=550" />
 		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
@@ -17,7 +17,7 @@
 			</div>
 			
 			<div id="title" role="banner">
-				<h1 class="hideInXcode">BVSubmissionParametersVideo Class Reference</h1>
+				<h1 class="hideInXcode">BVSubmissionParametersFeedback Class Reference</h1>
 			</div>
 			<ul id="headerButtons" role="toolbar">
 				<li id="toc_button">
@@ -40,7 +40,15 @@
 	
 	<option value="properties">Properties</option>
 	
-	<option value="//api/name/video">&nbsp;&nbsp;&nbsp;&nbsp;video</option>
+	<option value="//api/name/contentId">&nbsp;&nbsp;&nbsp;&nbsp;contentId</option>
+	
+	<option value="//api/name/contentType">&nbsp;&nbsp;&nbsp;&nbsp;contentType</option>
+	
+	<option value="//api/name/feedbackType">&nbsp;&nbsp;&nbsp;&nbsp;feedbackType</option>
+	
+	<option value="//api/name/reasonText">&nbsp;&nbsp;&nbsp;&nbsp;reasonText</option>
+	
+	<option value="//api/name/vote">&nbsp;&nbsp;&nbsp;&nbsp;vote</option>
 	
 	
 	
@@ -70,7 +78,15 @@
 
 <li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#properties">Properties</a></span><ul>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/video">video</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/contentId">contentId</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/contentType">contentType</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/feedbackType">feedbackType</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/reasonText">reasonText</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/vote">vote</a></span></li>
 	
 </ul></li>
 
@@ -83,7 +99,7 @@
 		</nav>
 		<article>
 			<div id="contents" class="isShowingTOC" role="main">
-				<a title="BVSubmissionParametersVideo Class Reference" name="top"></a>
+				<a title="BVSubmissionParametersFeedback Class Reference" name="top"></a>
 				<div class="main-navigation navigation-top">
 					<ul>
 	<li><a href="../index.html">Index</a></li>
@@ -92,7 +108,7 @@
 				</div>
 				<div id="header">
 					<div class="section-header">
-						<h1 class="title title-header">BVSubmissionParametersVideo Class Reference</h1>
+						<h1 class="title title-header">BVSubmissionParametersFeedback Class Reference</h1>
 					</div>		
 				</div>
 				<div id="container">	
@@ -103,7 +119,7 @@
 	<td class="specification-value"><a href="../Classes/BVSubmissionParametersBase.html">BVSubmissionParametersBase</a> : <a href="../Classes/BVParameters.html">BVParameters</a> : NSObject</td>
 </tr><tr>
 	<td class="specification-title">Declared in</td>
-	<td class="specification-value">BVSubmissionParametersVideo.h<br />BVSubmissionParametersVideo.m</td>
+	<td class="specification-value">BVSubmissionParametersFeedback.h<br />BVSubmissionParametersFeedback.m</td>
 </tr>
 						</tbody></table></div>
 					
@@ -113,7 +129,7 @@
 					<div class="section section-overview">
 						<a title="Overview" name="overview"></a>
 						<h2 class="subtitle subtitle-overview">Overview</h2>
-						<p>BVSubmissionParamatersBase subclass specifically for use with <a href="../Classes/BVSubmissionVideo.html">BVSubmissionVideo</a> requests.</p>
+						<p>BVSubmissionParamatersBase subclass specifically for use with <a href="../Classes/BVSubmissionFeedback.html">BVSubmissionFeedback</a> requests.</p>
 					</div>
 					
 					
@@ -131,8 +147,36 @@
 						<ul class="task-list">
 							<li>
 	<span class="tooltip">
-		<code><a href="#//api/name/video">&nbsp;&nbsp;video</a></code>
-		<span class="tooltip"><p>Video for linking</p></span>
+		<code><a href="#//api/name/contentType">&nbsp;&nbsp;contentType</a></code>
+		<span class="tooltip"><p>Type of content with which the feedback is associated (review, story, question, answer, or comment)</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/contentId">&nbsp;&nbsp;contentId</a></code>
+		<span class="tooltip"><p>ID of the content with which the feedback is associated</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/feedbackType">&nbsp;&nbsp;feedbackType</a></code>
+		<span class="tooltip"><p>The type of feedback.  Valid values are &ldquo;inappropriate&rdquo; and &ldquo;helpfulness&rdquo;.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/vote">&nbsp;&nbsp;vote</a></code>
+		<span class="tooltip"><p>Helpfulness vote for this content. Valid votes are: Positive, Negative. This parameter is only required for feedbackType=helpfulness.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/reasonText">&nbsp;&nbsp;reasonText</a></code>
+		<span class="tooltip"><p>Reason this content has been flagged as inappropriate</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	
@@ -150,18 +194,18 @@
 						<h2 class="subtitle subtitle-methods">Properties</h2>
 						
 						<div class="section-method">
-	<a name="//api/name/video" title="video"></a>
-	<h3 class="subsubtitle method-title">video</h3>
+	<a name="//api/name/contentId" title="contentId"></a>
+	<h3 class="subsubtitle method-title">contentId</h3>
 	
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Video for linking</p>
+		<p>ID of the content with which the feedback is associated</p>
 	</div>		
 	
     
 
-	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSString *video</code></div>
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, copy) NSString *contentId</code></div>
 
     
 	
@@ -179,7 +223,151 @@
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">BVSubmissionParametersVideo.h</code><br />
+		<code class="declared-in-ref">BVSubmissionParametersFeedback.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/contentType" title="contentType"></a>
+	<h3 class="subsubtitle method-title">contentType</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Type of content with which the feedback is associated (review, story, question, answer, or comment)</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, copy) NSString *contentType</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">BVSubmissionParametersFeedback.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/feedbackType" title="feedbackType"></a>
+	<h3 class="subsubtitle method-title">feedbackType</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The type of feedback.  Valid values are &ldquo;inappropriate&rdquo; and &ldquo;helpfulness&rdquo;.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, copy) NSString *feedbackType</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">BVSubmissionParametersFeedback.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/reasonText" title="reasonText"></a>
+	<h3 class="subsubtitle method-title">reasonText</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Reason this content has been flagged as inappropriate</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, copy) NSString *reasonText</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">BVSubmissionParametersFeedback.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/vote" title="vote"></a>
+	<h3 class="subsubtitle method-title">vote</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Helpfulness vote for this content. Valid votes are: Positive, Negative. This parameter is only required for feedbackType=helpfulness.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, copy) NSString *vote</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">BVSubmissionParametersFeedback.h</code><br />
 	</div>				
 	
 	

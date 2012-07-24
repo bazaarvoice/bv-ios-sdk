@@ -10,28 +10,36 @@
 #import <Foundation/Foundation.h>
 
 
-/*!BVParametersType encapsulates a generic additional parameter to a request of the form [prefixName]_[typeName] = [typeValue]. 
+/*!BVParametersType encapsulates a generic additional parameter to a request of the form [prefixName]_[key] = [value]. 
  
- For example, BVParameter type might represent a paramteter to filter, sort, or limit nested content. Consider the case where we wish to pass a parameter Limit_Comments = 20, which would limit the number of nested comments included in the response to 20. There are 3 components to this parameter; the prefix (“Limit”), type (“Comments”), and the value (20). These values correspond to the 3 properties declared in BVParametersType.
- */
+ For example, a BVParameterType might represent a photo url we wish to attach to a review. Consider the case where we wish to pass a parameter PhotoUrl_1=TheUrl.  There are 3 components to this parameter; the prefix (“PhotoUrl”), key (“1”), and the value ("TheUrl"). 
+*/
 @interface BVParametersType : NSObject
 
 
 /*!
- The prefix name of the constraint to apply.  For instance, "Limit", "Filter" or "Sort".
+ The prefix name of the constraint to apply.  For instance, "PhotoUrl" or "Tag".
  */
 @property (nonatomic, copy) NSString* prefixName;
+
 /*!
- The type of the nested content upon which to apply this constraint.  For instance, "Comments" or "Reviews".
+ Adds a key/value pair to this parameter.  
+ @param key The key to add.
+ @param value The value to add.
+ 
+ For instance, if prefixName is set to "PhotoUrl", we might add multiple image parameters with the following:
+ 
+ [mySubmission.parameters.photoURL addKey:@"1" andValue:@"..."];
+ [mySubmission.parameters.photoURL addKey:@"2" andValue:@"..."];
+ 
+ ...
+ This will generate parameters of PhotoUrl_1 and PhotoUrl_2 accordingly.
  */
-@property (nonatomic, copy) NSString* typeName;
-/*!
- The value for this limit, filter or sort.
- */
-@property (nonatomic, copy) NSString* typeValue;
+- (void)addKey:(NSString *)key andValue:(NSString*)value;
 
 // NSDictionary key-value list of the parameters encapsulated by this object.
 - (NSDictionary*) dictionaryEntry;
+
 
 @end
 

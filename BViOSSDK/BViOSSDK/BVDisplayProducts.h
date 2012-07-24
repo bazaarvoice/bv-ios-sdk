@@ -11,7 +11,7 @@
 /*!
  Request class for product display
  
- See http://developer.bazaarvoice.com/api/5/1/product-display
+ See http://developer.bazaarvoice.com/api/5/2/product-display
  */
 
 @interface BVDisplayProducts : BVBase
