@@ -35,4 +35,5 @@
 - (IBAction)submissionComments;
 - (IBAction)submissionPhotos;
 - (IBAction)submissionVideos;
+- (IBAction)submissionFeedback;
 @end

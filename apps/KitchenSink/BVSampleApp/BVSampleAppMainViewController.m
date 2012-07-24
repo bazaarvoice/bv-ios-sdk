@@ -174,8 +174,7 @@
     mySubmission.parameters.title = @"Test title";
     mySubmission.parameters.reviewText = @"Some kind of review text.";
     mySubmission.parameters.userNickName = @"testnickname";
-    mySubmission.parameters.videoUrl.typeName = @"1";
-    mySubmission.parameters.videoUrl.typeValue = @"http://www.youtube.com/";
+    [mySubmission.parameters.videoUrl addKey:@"1" andValue:@"http://www.youtube.com/"];
     [BVSettings instance].passKey = @"2cpdrhohmgmwfz8vqyo48f52g";
     mySubmission.delegate = self;
     [mySubmission startAsynchRequest];                                  
@@ -256,6 +255,17 @@
     [BVSettings instance].passKey = @"2cpdrhohmgmwfz8vqyo48f52g";
     
     [mySubmission startAsynchRequest];                
+}
+
+- (IBAction)submissionFeedback {
+    BVSubmissionFeedback *mySubmission = [[BVSubmissionFeedback alloc] init];
+    mySubmission.parameters.contentType = @"review";
+    mySubmission.parameters.contentId = @"83964";
+    mySubmission.parameters.userId = @"123abc";
+    mySubmission.parameters.feedbackType = @"helpfulness";
+    mySubmission.parameters.vote = @"negative";
+    mySubmission.delegate = self;
+    [mySubmission startAsynchRequest];                      
 }
 
 @end

@@ -11,7 +11,7 @@
 /*!
 Request class for category display
 
-See http://developer.bazaarvoice.com/api/5/1/category-display
+See http://developer.bazaarvoice.com/api/5/2/category-display
  */
 
 @interface BVDisplayCategories : BVBase

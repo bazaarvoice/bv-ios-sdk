@@ -11,7 +11,7 @@
 /*!
  Request class for story display
  
- See http://developer.bazaarvoice.com/api/5/1/story-display
+ See http://developer.bazaarvoice.com/api/5/2/story-display
  */
 
 @interface BVDisplayStories : BVBase

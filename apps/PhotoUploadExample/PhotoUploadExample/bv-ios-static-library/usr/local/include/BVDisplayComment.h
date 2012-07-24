@@ -11,7 +11,7 @@
 /*!
  Request class for comment display
  
- See http://developer.bazaarvoice.com/api/5/1/comment-display
+ See http://developer.bazaarvoice.com/api/5/2/comment-display
  */
 
 

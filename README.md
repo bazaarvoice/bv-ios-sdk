@@ -1,5 +1,5 @@
 # Bazaarvoice iOS SDK 
-### *Version 1.2.2 for Bazaarvoice Platform API Version 5.2 (last updated: July 23, 2012)*
+### *Version 1.2.3 for Bazaarvoice Platform API Version 5.2 (last updated: July 24, 2012)*
 
 ## Introduction
 The Bazaarvoice software development kit (SDK) for iOS is an iOS static library that provides an easy way to generate REST calls to the Bazaarvoice Developer API. Using this SDK, mobile developers can quickly integrate Bazaarvoice content into their native iOS apps for iPhone and iPad on iOS 4 or newer.
@@ -36,14 +36,14 @@ This package includes the following:
 
 ## Troubleshooting
 
-*Terminating app due to uncaught exception 'NSInvalidArgumentException', reason: '-[__NSCFString JSONValue]: unrecognized selector sent to instance 0x..."*
+1. **Terminating app due to uncaught exception 'NSInvalidArgumentException', reason: '-[__NSCFString JSONValue]: unrecognized selector sent to instance 0x...**
 
-Make sure that you have added the -ObjC flag under Other Linker Flags in Build Settings.  
+	Make sure that you have added the -ObjC flag under Other Linker Flags in Build Settings.  
 
-This compiler flag instructs the linker to include all objects from the bv static library.
+	This compiler flag instructs the linker to include all objects from the bv static library.
 
-*Duplicate symbol _objc_retainedObject in /<project_path>/libarclite_universal.a(arclite.o) and /<toolchain path>/usr/lib/arc/libarclite_iphonesimulator.a(arclite.o) for architecture i386*
+2. **Duplicate symbol _objc_retainedObject in /<project_path>/libarclite_universal.a(arclite.o) and /<toolchain path>/usr/lib/arc/libarclite_iphonesimulator.a(arclite.o) for architecture i386**
 
-Navigate to your Project Settings -> Targets -> Build Phases.  Under "Link Binary With Libraries" remove libarclite_universal.a from the list of linked libraries.
+	Navigate to your Project Settings -> Targets -> Build Phases.  Under "Link Binary With Libraries" remove libarclite_universal.a from the list of linked libraries.
 
-This error occurs when XCode automatically links against libarclite, usually when compiling an arc project for deployment with a pre-arc iOS version. Removing the provided libarclite eliminates the linker conflict.
+	This error occurs when XCode automatically links against libarclite, usually when compiling an arc project for deployment with a pre-arc iOS version. Removing the provided libarclite eliminates the linker conflict.

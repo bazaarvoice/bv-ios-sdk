@@ -12,7 +12,7 @@
 /*!
  Request class for photo submission
  
- See http://developer.bazaarvoice.com/api/5/1/photo-submission
+ See http://developer.bazaarvoice.com/api/5/2/photo-submission
  */
 
 

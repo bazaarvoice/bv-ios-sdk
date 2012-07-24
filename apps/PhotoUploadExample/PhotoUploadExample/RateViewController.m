@@ -216,8 +216,7 @@
         mySubmission.parameters.userNickName = self.nicknameTextField.text;
         
         // This type name is the index of the phot in the upload... it maps to photo_1 = ...
-        mySubmission.parameters.photoURL.typeName = @"1";
-        mySubmission.parameters.photoURL.typeValue = self.imageUrl;
+        [mySubmission.parameters.photoURL addKey:@"1" andValue:self.imageUrl];
         
         // Set this object as the request delegate and kick off the request
         mySubmission.delegate = self;

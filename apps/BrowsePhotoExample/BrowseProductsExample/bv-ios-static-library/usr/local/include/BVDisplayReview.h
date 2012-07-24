@@ -11,7 +11,7 @@
 /*!
  Request class for review display
  
- See http://developer.bazaarvoice.com/api/5/1/review-display
+ See http://developer.bazaarvoice.com/api/5/2/review-display
  */
 
 @interface BVDisplayReview : BVBase

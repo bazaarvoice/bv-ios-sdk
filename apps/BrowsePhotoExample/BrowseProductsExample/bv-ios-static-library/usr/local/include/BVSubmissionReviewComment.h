@@ -12,7 +12,7 @@
 /*!
  Request class for review comment submission
  
- See http://developer.bazaarvoice.com/api/5/1/comment-submission
+ See http://developer.bazaarvoice.com/api/5/2/comment-submission
  */
 
 @interface BVSubmissionReviewComment : BVSubmission

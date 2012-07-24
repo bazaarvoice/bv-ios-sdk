@@ -26,5 +26,6 @@
 #import "BVSubmissionPhoto.h"
 #import "BVSubmissionStory.h"
 #import "BVSubmissionReviewComment.h"
+#import "BVSubmissionFeedback.h"
 
 #endif

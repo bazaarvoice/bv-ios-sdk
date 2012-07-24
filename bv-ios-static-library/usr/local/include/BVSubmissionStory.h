@@ -12,7 +12,7 @@
 /*!
  Request class for story submission
  
- See http://developer.bazaarvoice.com/api/5/1/story-submission
+ See http://developer.bazaarvoice.com/api/5/2/story-submission
  */
 
 @interface BVSubmissionStory : BVSubmission

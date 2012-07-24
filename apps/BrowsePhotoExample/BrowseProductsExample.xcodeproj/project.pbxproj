@@ -38,7 +38,7 @@
 		6F85EC101545FD5E00602078 /* NSDictionary+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F85EC0F1545FD5E00602078 /* NSDictionary+Utils.m */; };
 		6F85EC131546040500602078 /* camera_icon.gif in Resources */ = {isa = PBXBuildFile; fileRef = 6F85EC111546040500602078 /* camera_icon.gif */; };
 		6F85EC141546040500602078 /* loading_icon.gif in Resources */ = {isa = PBXBuildFile; fileRef = 6F85EC121546040500602078 /* loading_icon.gif */; };
-		6FE4623E15B892F60096323B /* libBViOSSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FE4621C15B892F60096323B /* libBViOSSDK.a */; };
+		6FE4628915B8C1D00096323B /* libBViOSSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FE4621C15B892F60096323B /* libBViOSSDK.a */; };
 		6FF9239015488E6500007431 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FF9238F15488E6500007431 /* MBProgressHUD.m */; };
 		6FF9239B1548980700007431 /* ReviewDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FF9239A1548980700007431 /* ReviewDetailViewController.m */; };
 /* End PBXBuildFile section */
@@ -55,6 +55,38 @@
 		6F648B4715642E180008A3F3 /* BVColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVColor.m; sourceTree = "<group>"; };
 		6F648B4A15642F4C0008A3F3 /* app-background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "app-background.png"; sourceTree = "<group>"; };
 		6F6D7CD71549B5E700FB971A /* libarclite_universal.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libarclite_universal.a; path = "bv-ios-static-library/libarclite_universal.a"; sourceTree = "<group>"; };
+		6F850A7A15BF44680024B1AC /* BVBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVBase.h; sourceTree = "<group>"; };
+		6F850A7B15BF44680024B1AC /* BVDisplayAnswer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVDisplayAnswer.h; sourceTree = "<group>"; };
+		6F850A7C15BF44680024B1AC /* BVDisplayCategories.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVDisplayCategories.h; sourceTree = "<group>"; };
+		6F850A7D15BF44680024B1AC /* BVDisplayComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVDisplayComment.h; sourceTree = "<group>"; };
+		6F850A7E15BF44680024B1AC /* BVDisplayProducts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVDisplayProducts.h; sourceTree = "<group>"; };
+		6F850A7F15BF44680024B1AC /* BVDisplayProfile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVDisplayProfile.h; sourceTree = "<group>"; };
+		6F850A8015BF44680024B1AC /* BVDisplayQuestion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVDisplayQuestion.h; sourceTree = "<group>"; };
+		6F850A8115BF44680024B1AC /* BVDisplayReview.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVDisplayReview.h; sourceTree = "<group>"; };
+		6F850A8215BF44680024B1AC /* BVDisplayStatistics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVDisplayStatistics.h; sourceTree = "<group>"; };
+		6F850A8315BF44680024B1AC /* BVDisplayStories.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVDisplayStories.h; sourceTree = "<group>"; };
+		6F850A8415BF44680024B1AC /* BVIncludes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVIncludes.h; sourceTree = "<group>"; };
+		6F850A8515BF44680024B1AC /* BVParameters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVParameters.h; sourceTree = "<group>"; };
+		6F850A8615BF44680024B1AC /* BVResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVResponse.h; sourceTree = "<group>"; };
+		6F850A8715BF44680024B1AC /* BVSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVSettings.h; sourceTree = "<group>"; };
+		6F850A8815BF44680024B1AC /* BVSubmission.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVSubmission.h; sourceTree = "<group>"; };
+		6F850A8915BF44680024B1AC /* BVSubmissionAnswer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVSubmissionAnswer.h; sourceTree = "<group>"; };
+		6F850A8A15BF44680024B1AC /* BVSubmissionFeedback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVSubmissionFeedback.h; sourceTree = "<group>"; };
+		6F850A8B15BF44680024B1AC /* BVSubmissionParametersAnswer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVSubmissionParametersAnswer.h; sourceTree = "<group>"; };
+		6F850A8C15BF44680024B1AC /* BVSubmissionParametersBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVSubmissionParametersBase.h; sourceTree = "<group>"; };
+		6F850A8D15BF44680024B1AC /* BVSubmissionParametersComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVSubmissionParametersComment.h; sourceTree = "<group>"; };
+		6F850A8E15BF44680024B1AC /* BVSubmissionParametersFeedback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVSubmissionParametersFeedback.h; sourceTree = "<group>"; };
+		6F850A8F15BF44680024B1AC /* BVSubmissionParametersPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVSubmissionParametersPhoto.h; sourceTree = "<group>"; };
+		6F850A9015BF44680024B1AC /* BVSubmissionParametersQuestion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVSubmissionParametersQuestion.h; sourceTree = "<group>"; };
+		6F850A9115BF44680024B1AC /* BVSubmissionParametersReview.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVSubmissionParametersReview.h; sourceTree = "<group>"; };
+		6F850A9215BF44680024B1AC /* BVSubmissionParametersStory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVSubmissionParametersStory.h; sourceTree = "<group>"; };
+		6F850A9315BF44680024B1AC /* BVSubmissionParametersVideo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVSubmissionParametersVideo.h; sourceTree = "<group>"; };
+		6F850A9415BF44680024B1AC /* BVSubmissionPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVSubmissionPhoto.h; sourceTree = "<group>"; };
+		6F850A9515BF44680024B1AC /* BVSubmissionQuestion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVSubmissionQuestion.h; sourceTree = "<group>"; };
+		6F850A9615BF44680024B1AC /* BVSubmissionReview.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVSubmissionReview.h; sourceTree = "<group>"; };
+		6F850A9715BF44680024B1AC /* BVSubmissionReviewComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVSubmissionReviewComment.h; sourceTree = "<group>"; };
+		6F850A9815BF44680024B1AC /* BVSubmissionStory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVSubmissionStory.h; sourceTree = "<group>"; };
+		6F850A9915BF44680024B1AC /* BVSubmissionVideo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVSubmissionVideo.h; sourceTree = "<group>"; };
 		6F85EB971545F52800602078 /* BrowseProductsExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BrowseProductsExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6F85EB9B1545F52800602078 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		6F85EB9D1545F52800602078 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -97,36 +129,6 @@
 		6F85EC111546040500602078 /* camera_icon.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = camera_icon.gif; path = Assets/camera_icon.gif; sourceTree = "<group>"; };
 		6F85EC121546040500602078 /* loading_icon.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = loading_icon.gif; path = Assets/loading_icon.gif; sourceTree = "<group>"; };
 		6FE4621C15B892F60096323B /* libBViOSSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libBViOSSDK.a; path = "bv-ios-static-library/libBViOSSDK.a"; sourceTree = "<group>"; };
-		6FE4622015B892F60096323B /* BVBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVBase.h; sourceTree = "<group>"; };
-		6FE4622115B892F60096323B /* BVDisplayAnswer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVDisplayAnswer.h; sourceTree = "<group>"; };
-		6FE4622215B892F60096323B /* BVDisplayCategories.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVDisplayCategories.h; sourceTree = "<group>"; };
-		6FE4622315B892F60096323B /* BVDisplayComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVDisplayComment.h; sourceTree = "<group>"; };
-		6FE4622415B892F60096323B /* BVDisplayProducts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVDisplayProducts.h; sourceTree = "<group>"; };
-		6FE4622515B892F60096323B /* BVDisplayProfile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVDisplayProfile.h; sourceTree = "<group>"; };
-		6FE4622615B892F60096323B /* BVDisplayQuestion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVDisplayQuestion.h; sourceTree = "<group>"; };
-		6FE4622715B892F60096323B /* BVDisplayReview.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVDisplayReview.h; sourceTree = "<group>"; };
-		6FE4622815B892F60096323B /* BVDisplayStatistics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVDisplayStatistics.h; sourceTree = "<group>"; };
-		6FE4622915B892F60096323B /* BVDisplayStories.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVDisplayStories.h; sourceTree = "<group>"; };
-		6FE4622A15B892F60096323B /* BVIncludes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVIncludes.h; sourceTree = "<group>"; };
-		6FE4622B15B892F60096323B /* BVParameters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVParameters.h; sourceTree = "<group>"; };
-		6FE4622C15B892F60096323B /* BVResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVResponse.h; sourceTree = "<group>"; };
-		6FE4622D15B892F60096323B /* BVSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVSettings.h; sourceTree = "<group>"; };
-		6FE4622E15B892F60096323B /* BVSubmission.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVSubmission.h; sourceTree = "<group>"; };
-		6FE4622F15B892F60096323B /* BVSubmissionAnswer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVSubmissionAnswer.h; sourceTree = "<group>"; };
-		6FE4623015B892F60096323B /* BVSubmissionParametersAnswer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVSubmissionParametersAnswer.h; sourceTree = "<group>"; };
-		6FE4623115B892F60096323B /* BVSubmissionParametersBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVSubmissionParametersBase.h; sourceTree = "<group>"; };
-		6FE4623215B892F60096323B /* BVSubmissionParametersComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVSubmissionParametersComment.h; sourceTree = "<group>"; };
-		6FE4623315B892F60096323B /* BVSubmissionParametersPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVSubmissionParametersPhoto.h; sourceTree = "<group>"; };
-		6FE4623415B892F60096323B /* BVSubmissionParametersQuestion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVSubmissionParametersQuestion.h; sourceTree = "<group>"; };
-		6FE4623515B892F60096323B /* BVSubmissionParametersReview.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVSubmissionParametersReview.h; sourceTree = "<group>"; };
-		6FE4623615B892F60096323B /* BVSubmissionParametersStory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVSubmissionParametersStory.h; sourceTree = "<group>"; };
-		6FE4623715B892F60096323B /* BVSubmissionParametersVideo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVSubmissionParametersVideo.h; sourceTree = "<group>"; };
-		6FE4623815B892F60096323B /* BVSubmissionPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVSubmissionPhoto.h; sourceTree = "<group>"; };
-		6FE4623915B892F60096323B /* BVSubmissionQuestion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVSubmissionQuestion.h; sourceTree = "<group>"; };
-		6FE4623A15B892F60096323B /* BVSubmissionReview.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVSubmissionReview.h; sourceTree = "<group>"; };
-		6FE4623B15B892F60096323B /* BVSubmissionReviewComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVSubmissionReviewComment.h; sourceTree = "<group>"; };
-		6FE4623C15B892F60096323B /* BVSubmissionStory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVSubmissionStory.h; sourceTree = "<group>"; };
-		6FE4623D15B892F60096323B /* BVSubmissionVideo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVSubmissionVideo.h; sourceTree = "<group>"; };
 		6FF9238E15488E6500007431 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MBProgressHUD.h; path = MBProgressHUD/MBProgressHUD.h; sourceTree = "<group>"; };
 		6FF9238F15488E6500007431 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MBProgressHUD.m; path = MBProgressHUD/MBProgressHUD.m; sourceTree = "<group>"; };
 		6FF923951548965600007431 /* ReviewDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReviewDetailViewController.h; sourceTree = "<group>"; };
@@ -142,7 +144,7 @@
 				6F85EB9E1545F52800602078 /* Foundation.framework in Frameworks */,
 				6F85EBA01545F52800602078 /* CoreGraphics.framework in Frameworks */,
 				6F6D7CF91549B5E700FB971A /* libarclite_universal.a in Frameworks */,
-				6FE4623E15B892F60096323B /* libBViOSSDK.a in Frameworks */,
+				6FE4628915B8C1D00096323B /* libBViOSSDK.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -152,11 +154,67 @@
 		6F6D7CD21549B5A300FB971A /* bv-ios-static-library */ = {
 			isa = PBXGroup;
 			children = (
+				6F850A7715BF44680024B1AC /* usr */,
 				6FE4621C15B892F60096323B /* libBViOSSDK.a */,
-				6FE4621D15B892F60096323B /* usr */,
 				6F6D7CD71549B5E700FB971A /* libarclite_universal.a */,
 			);
 			name = "bv-ios-static-library";
+			sourceTree = "<group>";
+		};
+		6F850A7715BF44680024B1AC /* usr */ = {
+			isa = PBXGroup;
+			children = (
+				6F850A7815BF44680024B1AC /* local */,
+			);
+			name = usr;
+			path = "bv-ios-static-library/usr";
+			sourceTree = "<group>";
+		};
+		6F850A7815BF44680024B1AC /* local */ = {
+			isa = PBXGroup;
+			children = (
+				6F850A7915BF44680024B1AC /* include */,
+			);
+			path = local;
+			sourceTree = "<group>";
+		};
+		6F850A7915BF44680024B1AC /* include */ = {
+			isa = PBXGroup;
+			children = (
+				6F850A7A15BF44680024B1AC /* BVBase.h */,
+				6F850A7B15BF44680024B1AC /* BVDisplayAnswer.h */,
+				6F850A7C15BF44680024B1AC /* BVDisplayCategories.h */,
+				6F850A7D15BF44680024B1AC /* BVDisplayComment.h */,
+				6F850A7E15BF44680024B1AC /* BVDisplayProducts.h */,
+				6F850A7F15BF44680024B1AC /* BVDisplayProfile.h */,
+				6F850A8015BF44680024B1AC /* BVDisplayQuestion.h */,
+				6F850A8115BF44680024B1AC /* BVDisplayReview.h */,
+				6F850A8215BF44680024B1AC /* BVDisplayStatistics.h */,
+				6F850A8315BF44680024B1AC /* BVDisplayStories.h */,
+				6F850A8415BF44680024B1AC /* BVIncludes.h */,
+				6F850A8515BF44680024B1AC /* BVParameters.h */,
+				6F850A8615BF44680024B1AC /* BVResponse.h */,
+				6F850A8715BF44680024B1AC /* BVSettings.h */,
+				6F850A8815BF44680024B1AC /* BVSubmission.h */,
+				6F850A8915BF44680024B1AC /* BVSubmissionAnswer.h */,
+				6F850A8A15BF44680024B1AC /* BVSubmissionFeedback.h */,
+				6F850A8B15BF44680024B1AC /* BVSubmissionParametersAnswer.h */,
+				6F850A8C15BF44680024B1AC /* BVSubmissionParametersBase.h */,
+				6F850A8D15BF44680024B1AC /* BVSubmissionParametersComment.h */,
+				6F850A8E15BF44680024B1AC /* BVSubmissionParametersFeedback.h */,
+				6F850A8F15BF44680024B1AC /* BVSubmissionParametersPhoto.h */,
+				6F850A9015BF44680024B1AC /* BVSubmissionParametersQuestion.h */,
+				6F850A9115BF44680024B1AC /* BVSubmissionParametersReview.h */,
+				6F850A9215BF44680024B1AC /* BVSubmissionParametersStory.h */,
+				6F850A9315BF44680024B1AC /* BVSubmissionParametersVideo.h */,
+				6F850A9415BF44680024B1AC /* BVSubmissionPhoto.h */,
+				6F850A9515BF44680024B1AC /* BVSubmissionQuestion.h */,
+				6F850A9615BF44680024B1AC /* BVSubmissionReview.h */,
+				6F850A9715BF44680024B1AC /* BVSubmissionReviewComment.h */,
+				6F850A9815BF44680024B1AC /* BVSubmissionStory.h */,
+				6F850A9915BF44680024B1AC /* BVSubmissionVideo.h */,
+			);
+			path = include;
 			sourceTree = "<group>";
 		};
 		6F85EB8C1545F52800602078 = {
@@ -254,60 +312,6 @@
 				6F85EBF71545F61C00602078 /* UIImageView+WebCache.m */,
 			);
 			name = SDWebImage;
-			sourceTree = "<group>";
-		};
-		6FE4621D15B892F60096323B /* usr */ = {
-			isa = PBXGroup;
-			children = (
-				6FE4621E15B892F60096323B /* local */,
-			);
-			name = usr;
-			path = "bv-ios-static-library/usr";
-			sourceTree = "<group>";
-		};
-		6FE4621E15B892F60096323B /* local */ = {
-			isa = PBXGroup;
-			children = (
-				6FE4621F15B892F60096323B /* include */,
-			);
-			path = local;
-			sourceTree = "<group>";
-		};
-		6FE4621F15B892F60096323B /* include */ = {
-			isa = PBXGroup;
-			children = (
-				6FE4622015B892F60096323B /* BVBase.h */,
-				6FE4622115B892F60096323B /* BVDisplayAnswer.h */,
-				6FE4622215B892F60096323B /* BVDisplayCategories.h */,
-				6FE4622315B892F60096323B /* BVDisplayComment.h */,
-				6FE4622415B892F60096323B /* BVDisplayProducts.h */,
-				6FE4622515B892F60096323B /* BVDisplayProfile.h */,
-				6FE4622615B892F60096323B /* BVDisplayQuestion.h */,
-				6FE4622715B892F60096323B /* BVDisplayReview.h */,
-				6FE4622815B892F60096323B /* BVDisplayStatistics.h */,
-				6FE4622915B892F60096323B /* BVDisplayStories.h */,
-				6FE4622A15B892F60096323B /* BVIncludes.h */,
-				6FE4622B15B892F60096323B /* BVParameters.h */,
-				6FE4622C15B892F60096323B /* BVResponse.h */,
-				6FE4622D15B892F60096323B /* BVSettings.h */,
-				6FE4622E15B892F60096323B /* BVSubmission.h */,
-				6FE4622F15B892F60096323B /* BVSubmissionAnswer.h */,
-				6FE4623015B892F60096323B /* BVSubmissionParametersAnswer.h */,
-				6FE4623115B892F60096323B /* BVSubmissionParametersBase.h */,
-				6FE4623215B892F60096323B /* BVSubmissionParametersComment.h */,
-				6FE4623315B892F60096323B /* BVSubmissionParametersPhoto.h */,
-				6FE4623415B892F60096323B /* BVSubmissionParametersQuestion.h */,
-				6FE4623515B892F60096323B /* BVSubmissionParametersReview.h */,
-				6FE4623615B892F60096323B /* BVSubmissionParametersStory.h */,
-				6FE4623715B892F60096323B /* BVSubmissionParametersVideo.h */,
-				6FE4623815B892F60096323B /* BVSubmissionPhoto.h */,
-				6FE4623915B892F60096323B /* BVSubmissionQuestion.h */,
-				6FE4623A15B892F60096323B /* BVSubmissionReview.h */,
-				6FE4623B15B892F60096323B /* BVSubmissionReviewComment.h */,
-				6FE4623C15B892F60096323B /* BVSubmissionStory.h */,
-				6FE4623D15B892F60096323B /* BVSubmissionVideo.h */,
-			);
-			path = include;
 			sourceTree = "<group>";
 		};
 		6FF9238C15488E4E00007431 /* MBProgressHUD */ = {
