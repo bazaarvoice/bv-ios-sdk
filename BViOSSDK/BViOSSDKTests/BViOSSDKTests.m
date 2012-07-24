@@ -27,6 +27,8 @@
 - (void) didReceiveResponse:(BVResponse *)response forRequest:(BVBase *)request {
     NSLog(@"\n\n");
     requestComplete = YES;
+    receivedResponse = response;
+    sentRequest = request;
     if (response.hasErrors) {
         NSLog(@"\n\n==========================\n\n");
         STFail(@"Error in Class: %@ \n Failure: %@", [request class], response.errors);
@@ -207,10 +209,9 @@
     mySubmission.parameters.title = @"Test title";
     mySubmission.parameters.reviewText = @"Some kind of review text.";
     mySubmission.parameters.userNickName = @"testnickname";
-    mySubmission.parameters.videoUrl.typeName = @"1";
-    mySubmission.parameters.videoUrl.typeValue = @"http://www.youtube.com/";
-    mySubmission.parameters.photoURL.typeName = @"1";
-    mySubmission.parameters.photoURL.typeValue = @"http://apitestcustomer.ugc.bazaarvoice.com/bvstaging/5555/ps_amazon_s3_3rgg6s4xvev0zhzbnabyneo21/photo.jpg";
+    [mySubmission.parameters.videoUrl addKey:@"1" andValue:@"http://www.youtube.com/"];
+    [mySubmission.parameters.photoURL addKey:@"1" andValue:@"http://apitestcustomer.ugc.bazaarvoice.com/bvstaging/5555/ps_amazon_s3_3rgg6s4xvev0zhzbnabyneo21/photo.jpg"];
+    [mySubmission.parameters.tag addKey:@"JeanSize" andValue:@"small"];
     mySubmission.delegate = self;
     [mySubmission startAsynchRequest];                                
     NSRunLoop *theRL = [NSRunLoop currentRunLoop];
@@ -328,6 +329,88 @@
     // Begin a run loop terminated when the requestComplete it set to true
     while (!requestComplete && [theRL runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]]);
     
+}
+
+- (void)testSubmissionFeedback {
+    requestComplete = NO;
+    receivedProgressCallback = NO;
+    BVSubmissionFeedback *mySubmission = [[BVSubmissionFeedback alloc] init];
+    mySubmission.parameters.contentType = @"review";
+    mySubmission.parameters.contentId = @"83964";
+    mySubmission.parameters.userId = @"123abc";
+    mySubmission.parameters.feedbackType = @"helpfulness";
+    mySubmission.parameters.vote = @"negative";
+    mySubmission.delegate = self;
+    [mySubmission startAsynchRequest];                
+    
+    NSRunLoop *theRL = [NSRunLoop currentRunLoop];
+    // Begin a run loop terminated when the requestComplete it set to true
+    while (!requestComplete && [theRL runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]]);
+    
+}
+
+- (void)testSubmissionFeedback2 {
+    requestComplete = NO;
+    receivedProgressCallback = NO;
+    BVSubmissionFeedback *mySubmission = [[BVSubmissionFeedback alloc] init];
+    mySubmission.parameters.contentType = @"review";
+    mySubmission.parameters.contentId = @"83964";
+    mySubmission.parameters.userId = @"123abc";
+    mySubmission.parameters.feedbackType = @"inappropriate";
+    mySubmission.parameters.reasonText = @"This post was not nice.";
+    mySubmission.delegate = self;
+    [mySubmission startAsynchRequest];                
+    
+    NSRunLoop *theRL = [NSRunLoop currentRunLoop];
+    // Begin a run loop terminated when the requestComplete it set to true
+    while (!requestComplete && [theRL runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]]);
+    
+}
+
+- (void)testParamsAttached {
+    requestComplete = NO;
+    receivedProgressCallback = NO;
+    BVSubmissionReview *mySubmission = [[BVSubmissionReview alloc] init];
+    mySubmission.parameters.productId = @"10000sadfgasdg3401";
+    mySubmission.parameters.userId = @"WHEEEEMYNAMEISSAME";
+    mySubmission.parameters.rating = @"5";
+    mySubmission.parameters.title = @"Test title";
+    mySubmission.parameters.reviewText = @"Some kind of review text. Some kind of review text. Some kind of review text. Some kind of review text. Some kind of review text. Some kind of review text. Some kind of review text. Some kind of review text. Some kind of review text.";
+    mySubmission.parameters.userNickName = @"testnickname4";
+    [mySubmission.parameters.photoURL addKey:@"1" andValue:@"http://apitestcustomer.ugc.bazaarvoice.com/bvstaging/5555/ps_amazon_s3_3rgg6s4xvev0zhzbnabyneo21/photo.jpg"];
+    [mySubmission.parameters.photoURL addKey:@"2" andValue:@"http://apitestcustomer.ugc.bazaarvoice.com/bvstaging/5555/ps_amazon_s3_a11b8t4wlgb914fjaiudaadvo/photo.jpg"];
+    [mySubmission.parameters.photoURL addKey:@"3" andValue:@"http://apitestcustomer.ugc.bazaarvoice.com/bvstaging/5555/ps_amazon_s3_5ugnhmmq24p1q35tlygrqalz9/photo.jpg"];
+    [mySubmission.parameters.tag addKey:@"JeansSize" andValue:@"small"];
+    [mySubmission.parameters.tag addKey:@"JeansFit" andValue:@"snug"];
+
+    mySubmission.delegate = self;
+    [mySubmission startAsynchRequest];                                
+    NSRunLoop *theRL = [NSRunLoop currentRunLoop];
+    // Begin a run loop terminated when the requestComplete it set to true
+    while (!requestComplete && [theRL runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]]);    
+    NSString *url = sentRequest.parameterURL;
+    NSLog(@"%@", url);
+    NSRange aRange = [url rangeOfString:@"PhotoUrl_1="];
+    if (aRange.location ==NSNotFound) {
+        NSAssert(false, @"PhotoUrl_1 was not included");
+    } 
+    aRange = [url rangeOfString:@"PhotoUrl_2="];
+    if (aRange.location ==NSNotFound) {
+        NSAssert(false, @"PhotoUrl_2 was not included");
+    }
+    aRange = [url rangeOfString:@"PhotoUrl_2="];
+    if (aRange.location ==NSNotFound) {
+        NSAssert(false, @"PhotoUrl_3 was not included");
+    } 
+    aRange = [url rangeOfString:@"tag_JeansSize=small"];
+    if (aRange.location ==NSNotFound) {
+        NSAssert(false, @"tag_JeansSize was not included");
+    } 
+    aRange = [url rangeOfString:@"tag_JeansFit=snug"];
+    if (aRange.location ==NSNotFound) {
+        NSAssert(false, @"tag_JeansFit=snug was not included");
+    } 
+
 }
 
 @end

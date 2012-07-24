@@ -139,6 +139,12 @@
 		6F334AE3154F239A00345C16 /* BVDisplayStatistics.h in Headers */ = {isa = PBXBuildFile; fileRef = 6F334AE1154F239A00345C16 /* BVDisplayStatistics.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6F334AE4154F239A00345C16 /* BVDisplayStatistics.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F334AE2154F239A00345C16 /* BVDisplayStatistics.m */; };
 		6F34A1CE1551E32E00F281BB /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F34A1CD1551E32E00F281BB /* SystemConfiguration.framework */; };
+		6FE462A415BF2A150096323B /* BVSubmissionParametersFeedback.h in Headers */ = {isa = PBXBuildFile; fileRef = 6FE462A215BF2A150096323B /* BVSubmissionParametersFeedback.h */; };
+		6FE462A515BF2A150096323B /* BVSubmissionParametersFeedback.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FE462A315BF2A150096323B /* BVSubmissionParametersFeedback.m */; };
+		6FE462A615BF2A150096323B /* BVSubmissionParametersFeedback.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FE462A315BF2A150096323B /* BVSubmissionParametersFeedback.m */; };
+		6FE462A915BF2A2B0096323B /* BVSubmissionFeedback.h in Headers */ = {isa = PBXBuildFile; fileRef = 6FE462A715BF2A2B0096323B /* BVSubmissionFeedback.h */; };
+		6FE462AA15BF2A2B0096323B /* BVSubmissionFeedback.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FE462A815BF2A2B0096323B /* BVSubmissionFeedback.m */; };
+		6FE462AB15BF2A2B0096323B /* BVSubmissionFeedback.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FE462A815BF2A2B0096323B /* BVSubmissionFeedback.m */; };
 		BF02D5D61548962C003BDADF /* bv533x533.png in Resources */ = {isa = PBXBuildFile; fileRef = BF02D5D51548962C003BDADF /* bv533x533.png */; };
 /* End PBXBuildFile section */
 
@@ -248,6 +254,10 @@
 		6F334AE1154F239A00345C16 /* BVDisplayStatistics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVDisplayStatistics.h; sourceTree = "<group>"; };
 		6F334AE2154F239A00345C16 /* BVDisplayStatistics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVDisplayStatistics.m; sourceTree = "<group>"; };
 		6F34A1CD1551E32E00F281BB /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		6FE462A215BF2A150096323B /* BVSubmissionParametersFeedback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVSubmissionParametersFeedback.h; sourceTree = "<group>"; };
+		6FE462A315BF2A150096323B /* BVSubmissionParametersFeedback.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVSubmissionParametersFeedback.m; sourceTree = "<group>"; };
+		6FE462A715BF2A2B0096323B /* BVSubmissionFeedback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVSubmissionFeedback.h; sourceTree = "<group>"; };
+		6FE462A815BF2A2B0096323B /* BVSubmissionFeedback.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVSubmissionFeedback.m; sourceTree = "<group>"; };
 		BF02D5D51548962C003BDADF /* bv533x533.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bv533x533.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -341,6 +351,10 @@
 				4D9264EA150F1AC10019574E /* BVSubmissionAnswer.m */,
 				4D9264EB150F1AC10019574E /* BVSubmissionParametersAnswer.h */,
 				4D9264EC150F1AC10019574E /* BVSubmissionParametersAnswer.m */,
+				6FE462A715BF2A2B0096323B /* BVSubmissionFeedback.h */,
+				6FE462A815BF2A2B0096323B /* BVSubmissionFeedback.m */,
+				6FE462A215BF2A150096323B /* BVSubmissionParametersFeedback.h */,
+				6FE462A315BF2A150096323B /* BVSubmissionParametersFeedback.m */,
 				4D9264ED150F1AC10019574E /* BVSubmissionParametersBase.h */,
 				4D9264EE150F1AC10019574E /* BVSubmissionParametersBase.m */,
 				4D9264FB150F1AC10019574E /* BVSubmissionPhoto.h */,
@@ -483,6 +497,8 @@
 				4D926592150F1AC10019574E /* BVSBJsonTokeniser.h in Headers */,
 				4D926595150F1AC10019574E /* BVSBJsonUTF8Stream.h in Headers */,
 				4D926598150F1AC10019574E /* BVSBJsonWriter.h in Headers */,
+				6FE462A415BF2A150096323B /* BVSubmissionParametersFeedback.h in Headers */,
+				6FE462A915BF2A2B0096323B /* BVSubmissionFeedback.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -640,6 +656,8 @@
 				4D926596150F1AC10019574E /* BVSBJsonUTF8Stream.m in Sources */,
 				4D926599150F1AC10019574E /* BVSBJsonWriter.m in Sources */,
 				6F334AE4154F239A00345C16 /* BVDisplayStatistics.m in Sources */,
+				6FE462A515BF2A150096323B /* BVSubmissionParametersFeedback.m in Sources */,
+				6FE462AA15BF2A2B0096323B /* BVSubmissionFeedback.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -688,6 +706,8 @@
 				4D926594150F1AC10019574E /* BVSBJsonTokeniser.m in Sources */,
 				4D926597150F1AC10019574E /* BVSBJsonUTF8Stream.m in Sources */,
 				4D92659A150F1AC10019574E /* BVSBJsonWriter.m in Sources */,
+				6FE462A615BF2A150096323B /* BVSubmissionParametersFeedback.m in Sources */,
+				6FE462AB15BF2A2B0096323B /* BVSubmissionFeedback.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
