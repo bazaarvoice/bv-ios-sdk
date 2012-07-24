@@ -139,10 +139,10 @@
 		6F334AE3154F239A00345C16 /* BVDisplayStatistics.h in Headers */ = {isa = PBXBuildFile; fileRef = 6F334AE1154F239A00345C16 /* BVDisplayStatistics.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6F334AE4154F239A00345C16 /* BVDisplayStatistics.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F334AE2154F239A00345C16 /* BVDisplayStatistics.m */; };
 		6F34A1CE1551E32E00F281BB /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F34A1CD1551E32E00F281BB /* SystemConfiguration.framework */; };
-		6FE462A415BF2A150096323B /* BVSubmissionParametersFeedback.h in Headers */ = {isa = PBXBuildFile; fileRef = 6FE462A215BF2A150096323B /* BVSubmissionParametersFeedback.h */; };
+		6FE462A415BF2A150096323B /* BVSubmissionParametersFeedback.h in Headers */ = {isa = PBXBuildFile; fileRef = 6FE462A215BF2A150096323B /* BVSubmissionParametersFeedback.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6FE462A515BF2A150096323B /* BVSubmissionParametersFeedback.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FE462A315BF2A150096323B /* BVSubmissionParametersFeedback.m */; };
 		6FE462A615BF2A150096323B /* BVSubmissionParametersFeedback.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FE462A315BF2A150096323B /* BVSubmissionParametersFeedback.m */; };
-		6FE462A915BF2A2B0096323B /* BVSubmissionFeedback.h in Headers */ = {isa = PBXBuildFile; fileRef = 6FE462A715BF2A2B0096323B /* BVSubmissionFeedback.h */; };
+		6FE462A915BF2A2B0096323B /* BVSubmissionFeedback.h in Headers */ = {isa = PBXBuildFile; fileRef = 6FE462A715BF2A2B0096323B /* BVSubmissionFeedback.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6FE462AA15BF2A2B0096323B /* BVSubmissionFeedback.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FE462A815BF2A2B0096323B /* BVSubmissionFeedback.m */; };
 		6FE462AB15BF2A2B0096323B /* BVSubmissionFeedback.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FE462A815BF2A2B0096323B /* BVSubmissionFeedback.m */; };
 		BF02D5D61548962C003BDADF /* bv533x533.png in Resources */ = {isa = PBXBuildFile; fileRef = BF02D5D51548962C003BDADF /* bv533x533.png */; };
@@ -478,6 +478,8 @@
 				4D92655B150F1AC10019574E /* BVSubmissionParametersReview.h in Headers */,
 				4D92655E150F1AC10019574E /* BVSubmissionParametersStory.h in Headers */,
 				4D926561150F1AC10019574E /* BVSubmissionParametersVideo.h in Headers */,
+				6FE462A915BF2A2B0096323B /* BVSubmissionFeedback.h in Headers */,
+				6FE462A415BF2A150096323B /* BVSubmissionParametersFeedback.h in Headers */,
 				4D926564150F1AC10019574E /* BVSubmissionPhoto.h in Headers */,
 				4D926567150F1AC10019574E /* BVSubmissionQuestion.h in Headers */,
 				4D92656A150F1AC10019574E /* BVSubmissionReview.h in Headers */,
@@ -497,8 +499,6 @@
 				4D926592150F1AC10019574E /* BVSBJsonTokeniser.h in Headers */,
 				4D926595150F1AC10019574E /* BVSBJsonUTF8Stream.h in Headers */,
 				4D926598150F1AC10019574E /* BVSBJsonWriter.h in Headers */,
-				6FE462A415BF2A150096323B /* BVSubmissionParametersFeedback.h in Headers */,
-				6FE462A915BF2A2B0096323B /* BVSubmissionFeedback.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
