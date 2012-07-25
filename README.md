@@ -6,12 +6,10 @@ The Bazaarvoice software development kit (SDK) for iOS is an iOS static library 
 
 Developers can display content as well as submit content such as Ratings & Reviews, Ask & Answer and Stories, including text and photo. Included reference apps and a Quick Start Guide will allow developers to integrate Bazaarvoice quickly, with little overhead.
 
-
-Read the Quick Start guide to get familiar with installation and building a bare-bones, simple application that uses the SDK.
-
-The documentation, located in the docs folder, provides additional information into the capabilities of the SDK itself.
-
-Sample applications, located in the apps folder, provide example uses of the SDK and implementation best practices.
+**Where to start:**
+1. Read the Quick Start guide to get familiar with installation and building a bare-bones, simple application that uses the SDK.
+2. The documentation, located in the docs folder, provides additional information into the capabilities of the SDK itself.
+3. Sample applications, located in the apps folder, provide example uses of the SDK and implementation best practices.
 
 ## Requirements
 * Bazaarvoice Platform API version 5.2 or older
