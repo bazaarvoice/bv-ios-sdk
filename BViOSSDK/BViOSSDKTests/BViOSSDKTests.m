@@ -74,10 +74,10 @@
     showDisplayRequest.parameters.include = @"Products";
     // TODO: This causes a bug -- filter and Sort both appear in the request?
     /*
-    showDisplayRequest.parameters.filterType.prefixName = @"Sort";
-    showDisplayRequest.parameters.filterType.typeName = @"Products";
-    showDisplayRequest.parameters.filterType.typeValue = @"id:asc";
+     showDisplayRequest.parameters.filterType.prefixName = @"Sort";
+     [showDisplayRequest.parameters.filterType addKey:@"products" andValue:@"id:asc"];
      */
+    
     showDisplayRequest.delegate = self;
     
     [showDisplayRequest startAsynchRequest];
@@ -380,8 +380,10 @@
     [mySubmission.parameters.photoURL addKey:@"1" andValue:@"http://apitestcustomer.ugc.bazaarvoice.com/bvstaging/5555/ps_amazon_s3_3rgg6s4xvev0zhzbnabyneo21/photo.jpg"];
     [mySubmission.parameters.photoURL addKey:@"2" andValue:@"http://apitestcustomer.ugc.bazaarvoice.com/bvstaging/5555/ps_amazon_s3_a11b8t4wlgb914fjaiudaadvo/photo.jpg"];
     [mySubmission.parameters.photoURL addKey:@"3" andValue:@"http://apitestcustomer.ugc.bazaarvoice.com/bvstaging/5555/ps_amazon_s3_5ugnhmmq24p1q35tlygrqalz9/photo.jpg"];
-    [mySubmission.parameters.tag addKey:@"JeansSize" andValue:@"small"];
-    [mySubmission.parameters.tag addKey:@"JeansFit" andValue:@"snug"];
+    [mySubmission.parameters.tag addKey:@"Pro_1" andValue:@"fit"];
+    [mySubmission.parameters.tag addKey:@"Pro_2" andValue:@"comfortable fit"];
+    [mySubmission.parameters.tagid addKey:@"Pro/fit" andValue:@"true"];
+    [mySubmission.parameters.tagid addKey:@"Pro/style" andValue:@"true"];
 
     mySubmission.delegate = self;
     [mySubmission startAsynchRequest];                                
@@ -402,15 +404,22 @@
     if (aRange.location ==NSNotFound) {
         NSAssert(false, @"PhotoUrl_3 was not included");
     } 
-    aRange = [url rangeOfString:@"tag_JeansSize=small"];
+    aRange = [url rangeOfString:@"tag_Pro_1=fit"];
     if (aRange.location ==NSNotFound) {
-        NSAssert(false, @"tag_JeansSize was not included");
+        NSAssert(false, @"tag_Pro_1 was not included");
     } 
-    aRange = [url rangeOfString:@"tag_JeansFit=snug"];
+    aRange = [url rangeOfString:@"tag_Pro_2=comfortable"];
     if (aRange.location ==NSNotFound) {
-        NSAssert(false, @"tag_JeansFit=snug was not included");
+        NSAssert(false, @"tag_Pro_2 was not included");
+    }
+    aRange = [url rangeOfString:@"tagid_Pro/fit=true"];
+    if (aRange.location ==NSNotFound) {
+        NSAssert(false, @"tagid_Pro/fit was not included");
+    } 
+    aRange = [url rangeOfString:@"tagid_Pro/style=true"];
+    if (aRange.location ==NSNotFound) {
+        NSAssert(false, @"tagid_Pro/style was not included");
     } 
 
 }
-
 @end

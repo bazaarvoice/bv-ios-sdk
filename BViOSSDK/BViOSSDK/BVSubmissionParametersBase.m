@@ -41,6 +41,7 @@
 @synthesize productRecommendationId         = _productRecommendationId;
 @synthesize sendEmailAlertWhenPublished     = _sendEmailAlertWhenPublished;
 @synthesize tag                             = _tag;
+@synthesize tagid                             = _tagid;
 @synthesize userEmail                       = _userEmail;
 @synthesize userId                          = _userId;
 @synthesize userLocation                    = _userLocation;
@@ -62,6 +63,7 @@
     [BVParamDict addEntriesFromDictionary:[self.photoURL dictionaryEntry]];
     [BVParamDict addEntriesFromDictionary:[self.productRecommendationId dictionaryEntry]];
     [BVParamDict addEntriesFromDictionary:[self.tag dictionaryEntry]];
+    [BVParamDict addEntriesFromDictionary:[self.tagid dictionaryEntry]];
     [BVParamDict addEntriesFromDictionary:[self.videoCaption dictionaryEntry]];
     [BVParamDict addEntriesFromDictionary:[self.videoUrl dictionaryEntry]];
     [BVParamDict addEntriesFromDictionary:returnDictionary];
@@ -124,6 +126,15 @@
         _tag.prefixName = @"tag";
     }
     return _tag;
+}
+
+- (BVParametersType*) tagid {
+    // Lazy instationation...
+    if (_tagid == nil) {
+        _tagid = [[BVParametersType alloc] init];
+        _tagid.prefixName = @"tagid";
+    }
+    return _tagid;
 }
 
 - (BVParametersType*) videoCaption {
