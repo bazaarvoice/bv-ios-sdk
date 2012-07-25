@@ -58,8 +58,8 @@
  A BVParametersType parameter with:
 
  - prefixName = "PhotoCaption"
- - typeName = <n>
- - typeValue = Caption text for the photo URL with the same value of <n>.
+ - key = <n>
+ - value = Caption text for the photo URL with the same value of <n>.
 */
 @property (nonatomic, strong) BVParametersType* photoCaption;
 /*!
@@ -68,8 +68,8 @@
  A BVParametersType parameter with:
  
  - prefixName = "PhotoUrl"
- - typeName = <n>
- - typeValue = A Bazaarvoice URL of a photo uploaded using the Data API, where <n> is a non-negative integer.
+ - key = <n>
+ - value = A Bazaarvoice URL of a photo uploaded using the Data API, where <n> is a non-negative integer.
  */
 @property (nonatomic, strong) BVParametersType* photoURL;
 /*!
@@ -78,8 +78,8 @@
  A BVParametersType parameter with:
  
  - prefixName = "ProductRecommendationId"
- - typeName = <n>
- - typeValue = A non-negative integer representing the product external ID of the <n>'th product recommendation (for Social Recommendations)
+ - key = <n>
+ - value = A non-negative integer representing the product external ID of the <n>'th product recommendation (for Social Recommendations)
  */
 @property (nonatomic, strong) BVParametersType* productRecommendationId;
 /*!
@@ -92,10 +92,20 @@
  A BVParametersType parameter with:
  
  - prefixName = "tag"
- - typeName = A parameter of the form <Dimension-External-Id>_<n>. <n> should be a non-negative integer starting at the number 1.  A concrete example of this parameter might be 'Pro_1'.
- - typeValue = Any free form text tag.
+ - key = A parameter of the form <Dimension-External-Id>_<n>. <n> should be a non-negative integer starting at the number 1.  A concrete example of this parameter might be 'Pro_1', which would result in a parameter tag_Pro_1.
+ - value = Any free form text tag.
  */
 @property (nonatomic, strong) BVParametersType* tag;
+
+/*!
+ BVParametersType param for a tagid.
+ 
+ A BVParametersType parameter with:
+ - prefixName = "tagid"
+ - key = Usually a parameter such as Pro/<text> which results in a paramter tagid_Pro/<text>.
+ - value = Any free form text tag.
+ */
+@property (nonatomic, strong) BVParametersType* tagid;
 /*!
  User's email address.
  */
@@ -118,8 +128,8 @@
  A BVParametersType parameter with:
 
  - prefixName = "VideoCaption"
- - typeName = <n>
- - typeValue = Caption text for the video URL with the same value of <n>.
+ - key = <n>
+ - value = Caption text for the video URL with the same value of <n>.
  */
 
 @property (nonatomic, strong) BVParametersType* videoCaption;
@@ -129,8 +139,8 @@
  A BVParametersType parameter with:
  
  - prefixName = "VideoUrl"
- - typeName = <n>
- - typeValue = Value is valid YouTube or Bazaarvoice video-upload URL where <n> is a non-negative integer.
+ - key = <n>
+ - value = Value is valid YouTube or Bazaarvoice video-upload URL where <n> is a non-negative integer.
  */
 @property (nonatomic, strong) BVParametersType* videoUrl;
 

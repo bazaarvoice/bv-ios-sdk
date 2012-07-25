@@ -12,7 +12,7 @@
 #import "BVParameters.h"
 
 #define SDK_HEADER_NAME @"X-UA-BV-SDK"
-#define SDK_HEADER_VALUE @"IOS_SDK_V122"
+#define SDK_HEADER_VALUE @"IOS_SDK_V123"
 
 @class BVBase;
 

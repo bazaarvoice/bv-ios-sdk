@@ -40,8 +40,8 @@
  A BVParametersType parameter with:
  
  - prefixName = "Rating"
- - typeName = <Dimension-External-Id>
- - typeValue = A positive integer between 1 and 5 and represents rating dimension value.
+ - key = <Dimension-External-Id>
+ - value = A positive integer between 1 and 5 and represents rating dimension value.
  
  A concrete example might be Rating_Quality where the value would represent the user's opinion of the quality of the product. 
  */
