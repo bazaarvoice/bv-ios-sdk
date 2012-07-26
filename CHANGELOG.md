@@ -1,3 +1,7 @@
+## 1.2.4 (Jul 26, 2012)
+
+* Includes build for armv6 architectures.
+
 ## 1.2.3 (Jul 25, 2012)
 
 * Adds support for feedback submission.  See http://developer.bazaarvoice.com/api/5/2/feedback-submission.
