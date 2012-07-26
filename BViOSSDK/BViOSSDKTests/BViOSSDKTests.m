@@ -382,8 +382,8 @@
     [mySubmission.parameters.photoURL addKey:@"3" andValue:@"http://apitestcustomer.ugc.bazaarvoice.com/bvstaging/5555/ps_amazon_s3_5ugnhmmq24p1q35tlygrqalz9/photo.jpg"];
     [mySubmission.parameters.tag addKey:@"Pro_1" andValue:@"fit"];
     [mySubmission.parameters.tag addKey:@"Pro_2" andValue:@"comfortable fit"];
-    [mySubmission.parameters.tagid addKey:@"Pro/fit" andValue:@"true"];
-    [mySubmission.parameters.tagid addKey:@"Pro/style" andValue:@"true"];
+    [mySubmission.parameters.tagid addKey:@"Pro/ProService" andValue:@"true"];
+    [mySubmission.parameters.tagid addKey:@"Con/ConFitness" andValue:@"true"];
 
     mySubmission.delegate = self;
     [mySubmission startAsynchRequest];                                
