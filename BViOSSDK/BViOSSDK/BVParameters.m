@@ -24,9 +24,7 @@
 @synthesize stats               =   _stats;
 
 - (NSDictionary*) dictionaryOfValues {
-    NSDictionary *returnDictionary = [self dictionaryWithValuesForKeys:[NSArray arrayWithObjects:@"include", @"filter", @"filterType"
-                                                                        , @"sort", @"sortType", @"search", @"offset", @"limit", @"limitType"
-                                                                        , @"callback", @"stats", nil]];
+    NSDictionary *returnDictionary = [self dictionaryWithValuesForKeys:[NSArray arrayWithObjects:@"include", @"filter", @"sort", @"search", @"offset", @"limit"                                                        , @"callback", @"stats", nil]];
     
     NSMutableDictionary *BVParamDict = [[NSMutableDictionary alloc] init];
     [BVParamDict addEntriesFromDictionary:[self.filterType dictionaryEntry]];
@@ -34,7 +32,8 @@
     [BVParamDict addEntriesFromDictionary:[self.limitType dictionaryEntry]];
     [BVParamDict addEntriesFromDictionary:returnDictionary];
     
-    returnDictionary = [NSDictionary dictionaryWithDictionary:BVParamDict]; // Return with the BVParams.
+    returnDictionary = [NSDictionary dictionaryWithDictionary:BVParamDict]; // Return with the BVParams.    
+    
     return returnDictionary;
 }
 
