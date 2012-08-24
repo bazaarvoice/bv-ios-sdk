@@ -1,3 +1,7 @@
+## 1.2.5 (Aug 24, 2012)
+
+* Fixes bug which was attaching unnecessary parameters in some cases.
+
 ## 1.2.4 (Jul 26, 2012)
 
 * Includes build for armv6 architectures.

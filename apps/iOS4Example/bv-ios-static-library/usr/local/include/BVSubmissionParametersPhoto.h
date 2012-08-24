@@ -6,7 +6,7 @@
 //  Copyright (c) 2012 Bazaarvoice Inc. All rights reserved.
 //
 
-#import <UIKIt/UIImage.h>
+#import <UIKit/UIImage.h>
 #import "BVSubmissionParametersBase.h"
 
 /*!
