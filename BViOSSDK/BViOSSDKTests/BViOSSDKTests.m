@@ -13,8 +13,7 @@
 - (void)setUp
 {
     [super setUp];
-    
-    // Set-up code here.
+    [BVSettings instance].customerName = @"reviews.apitestcustomer";
 }
 
 - (void)tearDown
@@ -22,6 +21,38 @@
     // Tear-down code here.
     
     [super tearDown];
+}
+
+- (void)checkParams:(NSMutableDictionary *)params {
+    NSString *url = sentRequest.rawURLRequest;
+    NSDictionary *baseDictionary = [NSDictionary 
+                                    dictionaryWithObjectsAndKeys:[BVSettings instance].apiVersion,
+                                    @"apiversion", 
+                                    [BVSettings instance].passKey, 
+                                    @"passkey",
+                                    nil];
+    [params addEntriesFromDictionary:baseDictionary];
+    NSMutableDictionary *foundParams = [[NSMutableDictionary alloc] init];
+    NSArray *comp1 = [url componentsSeparatedByString:@"?"];
+    NSString *query = [comp1 lastObject];
+    NSArray *queryElements = [query componentsSeparatedByString:@"&"];
+    for (NSString *element in queryElements) {
+        NSArray *keyVal = [element componentsSeparatedByString:@"="];
+        NSAssert(keyVal.count == 2, @"Malformed URL");
+        [foundParams setObject:[keyVal objectAtIndex:1] forKey:[keyVal objectAtIndex:0]];
+    }
+    
+    NSAssert(params.count == foundParams.count, @"Wrong number of URL params");
+    
+    NSArray *keyArray = [params allKeys];
+    int count = [keyArray count];
+    for (int i=0; i < count; i++) {
+        NSString * key = [keyArray objectAtIndex:i];
+        NSAssert([foundParams objectForKey:key], @"Request missing parameter %@", key);
+        NSString *requestVal = (NSString *)[foundParams objectForKey:key];
+        NSString *expectedVal = (NSString *)[params objectForKey:key];
+        NSAssert([requestVal isEqualToString:expectedVal], @"Request value of %@ does not match expected value of %@", requestVal, expectedVal);
+    }
 }
 
 - (void) didReceiveResponse:(BVResponse *)response forRequest:(BVBase *)request {
@@ -67,16 +98,32 @@
 }
 
 
+- (void)testShowReviewSparse {
+    requestComplete = NO;
+    BVDisplayReview *showDisplayRequest = [[BVDisplayReview alloc] init];
+    showDisplayRequest.delegate = self;
+    
+    [showDisplayRequest startAsynchRequest];
+    NSRunLoop *theRL = [NSRunLoop currentRunLoop];
+    // Begin a run loop terminated when the requestComplete it set to true
+    while (!requestComplete && [theRL runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]]);
+    [self checkParams:[NSMutableDictionary dictionaryWithObjectsAndKeys:nil]];     
+}
+
+
 - (void)testShowReview {
     requestComplete = NO;
     BVDisplayReview *showDisplayRequest = [[BVDisplayReview alloc] init];
-    showDisplayRequest.parameters.filter = @"Id:192612";
+    showDisplayRequest.parameters.filter = @"Id:6601211";
+    [showDisplayRequest.parameters.filterType addKey:@"products" andValue:@"id:009"];
     showDisplayRequest.parameters.include = @"Products";
-    // TODO: This causes a bug -- filter and Sort both appear in the request?
-    /*
-     showDisplayRequest.parameters.filterType.prefixName = @"Sort";
-     [showDisplayRequest.parameters.filterType addKey:@"products" andValue:@"id:asc"];
-     */
+    showDisplayRequest.parameters.limit = @"50";
+    [showDisplayRequest.parameters.limitType addKey:@"products" andValue:@"10"];
+    showDisplayRequest.parameters.offset = @"0";
+    showDisplayRequest.parameters.sort = @"id:asc";
+    [showDisplayRequest.parameters.sortType addKey:@"products" andValue:@"id:asc"];
+    showDisplayRequest.parameters.stats = @"reviews";
+    showDisplayRequest.parameters.search = @"Great sound";
     
     showDisplayRequest.delegate = self;
     
@@ -84,106 +131,315 @@
     NSRunLoop *theRL = [NSRunLoop currentRunLoop];
     // Begin a run loop terminated when the requestComplete it set to true
     while (!requestComplete && [theRL runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]]);
+    [self checkParams:[NSMutableDictionary dictionaryWithObjectsAndKeys:
+                       @"reviews", @"stats", @"id:asc", @"Sort_products", @"id:009", @"Filter_products", @"10", @"Limit_products", @"id:asc", @"sort", @"Products", @"include", @"0", @"offset", @"Id:6601211", @"filter", @"50", @"limit", @"Great%20sound", @"search", nil]];     
+}
+              
+- (void)testShowQuestionSparse {
+    [BVSettings instance].customerName = @"answers.apitestcustomer";
+    requestComplete = NO;
+    BVDisplayQuestion *showDisplayRequest = [[BVDisplayQuestion alloc] init];
+    showDisplayRequest.delegate = self;
+    
+    [showDisplayRequest startAsynchRequest];
+    NSRunLoop *theRL = [NSRunLoop currentRunLoop];
+    // Begin a run loop terminated when the requestComplete it set to true
+    while (!requestComplete && [theRL runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]]);
+    [self checkParams:[NSMutableDictionary dictionaryWithObjectsAndKeys:nil]];     
 }
 
 - (void)testShowQuestion {
+    [BVSettings instance].customerName = @"answers.apitestcustomer";
     requestComplete = NO;
     BVDisplayQuestion *showDisplayRequest = [[BVDisplayQuestion alloc] init];
-    showDisplayRequest.parameters.filter = @"Id:14898";
-    showDisplayRequest.parameters.include = @"Answers";
+    
+    showDisplayRequest.parameters.filter = @"Id:87757";
+    [showDisplayRequest.parameters.filterType addKey:@"products" andValue:@"id:test1"];
+    showDisplayRequest.parameters.include = @"Products";
+    showDisplayRequest.parameters.limit = @"50";
+    [showDisplayRequest.parameters.limitType addKey:@"products" andValue:@"10"];
+    showDisplayRequest.parameters.offset = @"0";
+    showDisplayRequest.parameters.sort = @"id:asc";
+    [showDisplayRequest.parameters.sortType addKey:@"products" andValue:@"id:asc"];
+    showDisplayRequest.parameters.stats = @"reviews";
+
+    
     showDisplayRequest.delegate = self;
     
     [showDisplayRequest startAsynchRequest];
     NSRunLoop *theRL = [NSRunLoop currentRunLoop];
     // Begin a run loop terminated when the requestComplete it set to true
     while (!requestComplete && [theRL runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]]);
+    
+    [self checkParams:[NSMutableDictionary dictionaryWithObjectsAndKeys:
+                       @"reviews", @"stats", @"id:asc", @"Sort_products", @"id:test1", @"Filter_products", @"10", @"Limit_products", @"id:asc", @"sort", @"Products", @"include", @"0", @"offset", @"Id:87757", @"filter", @"50", @"limit", nil]];     
+    
+
 }
 
-- (void)testShowAnswers {
+- (void)testShowAnswersSparse {
+    [BVSettings instance].customerName = @"answers.apitestcustomer";
     requestComplete = NO;
     BVDisplayAnswer *showDisplayRequest = [[BVDisplayAnswer alloc] init];
-    showDisplayRequest.parameters.filter = @"Id:16369";
-    showDisplayRequest.parameters.include = @"Questions";
     showDisplayRequest.delegate = self;
     
     [showDisplayRequest startAsynchRequest];
+    
     NSRunLoop *theRL = [NSRunLoop currentRunLoop];
     // Begin a run loop terminated when the requestComplete it set to true
     while (!requestComplete && [theRL runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]]);
+    
+    [self checkParams:[NSMutableDictionary dictionaryWithObjectsAndKeys:nil]];     
 }
 
-- (void)testShowStory {
+
+- (void)testShowAnswers {
+    [BVSettings instance].customerName = @"answers.apitestcustomer";
+    requestComplete = NO;
+    BVDisplayAnswer *showDisplayRequest = [[BVDisplayAnswer alloc] init];
+    
+    showDisplayRequest.parameters.filter = @"Id:6055";
+    [showDisplayRequest.parameters.filterType addKey:@"products" andValue:@"id:test0"];
+    showDisplayRequest.parameters.include = @"Products";
+    showDisplayRequest.parameters.limit = @"50";
+    [showDisplayRequest.parameters.limitType addKey:@"products" andValue:@"10"];
+    showDisplayRequest.parameters.offset = @"0";
+    showDisplayRequest.parameters.sort = @"id:asc";
+    [showDisplayRequest.parameters.sortType addKey:@"products" andValue:@"id:asc"];
+    showDisplayRequest.parameters.stats = @"Answers";
+    showDisplayRequest.delegate = self;
+    
+    [showDisplayRequest startAsynchRequest];
+    
+    NSRunLoop *theRL = [NSRunLoop currentRunLoop];
+    // Begin a run loop terminated when the requestComplete it set to true
+    while (!requestComplete && [theRL runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]]);
+
+    [self checkParams:[NSMutableDictionary dictionaryWithObjectsAndKeys:
+                       @"Answers", @"stats", @"id:asc", @"Sort_products", @"id:test0", @"Filter_products", @"10", @"Limit_products", @"id:asc", @"sort", @"Products", @"include", @"0", @"offset", @"Id:6055", @"filter", @"50", @"limit", nil]];
+}
+
+- (void)testShowStorySparse {
+    [BVSettings instance].customerName = @"stories.apitestcustomer";
     requestComplete = NO;
     BVDisplayStories *showDisplayRequest = [[BVDisplayStories alloc] init];
-    showDisplayRequest.parameters.filter = @"ProductId:1000001";
     showDisplayRequest.delegate = self;
     
     [showDisplayRequest startAsynchRequest];
     NSRunLoop *theRL = [NSRunLoop currentRunLoop];
     // Begin a run loop terminated when the requestComplete it set to true
     while (!requestComplete && [theRL runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]]);    
+    [self checkParams:[NSMutableDictionary dictionaryWithObjectsAndKeys:nil]];     
+}
+
+- (void)testShowStory {
+    [BVSettings instance].customerName = @"stories.apitestcustomer";
+    requestComplete = NO;
+    BVDisplayStories *showDisplayRequest = [[BVDisplayStories alloc] init];
+    showDisplayRequest.parameters.filter = @"Id:14181";
+    [showDisplayRequest.parameters.filterType addKey:@"Comments" andValue:@"id:1010"];
+    showDisplayRequest.parameters.include = @"Comments";
+    showDisplayRequest.parameters.limit = @"50";
+    [showDisplayRequest.parameters.limitType addKey:@"Comments" andValue:@"10"];
+    showDisplayRequest.parameters.offset = @"0";
+    showDisplayRequest.parameters.sort = @"id:asc";
+    [showDisplayRequest.parameters.sortType addKey:@"Comments" andValue:@"id:asc"];
+    showDisplayRequest.parameters.stats = @"Stories";
+    showDisplayRequest.delegate = self;
+
+    
+    [showDisplayRequest startAsynchRequest];
+    NSRunLoop *theRL = [NSRunLoop currentRunLoop];
+    // Begin a run loop terminated when the requestComplete it set to true
+    while (!requestComplete && [theRL runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]]);    
+    
+    [self checkParams:[NSMutableDictionary dictionaryWithObjectsAndKeys:
+                       @"Stories", @"stats", @"id:asc", @"Sort_Comments", @"id:1010", @"Filter_Comments", @"10", @"Limit_Comments", @"id:asc", @"sort", @"Comments", @"include", @"0", @"offset", @"Id:14181", @"filter", @"50", @"limit", nil]];     
+}
+
+
+- (void)testShowCommentsSparse {
+    requestComplete = NO;
+    BVDisplayReviewComment *showDisplayRequest = [[BVDisplayReviewComment alloc] init];
+    showDisplayRequest.delegate = self;
+    
+    [showDisplayRequest startAsynchRequest];
+    NSRunLoop *theRL = [NSRunLoop currentRunLoop];
+    // Begin a run loop terminated when the requestComplete it set to true
+    while (!requestComplete && [theRL runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]]);   
+    [self checkParams:[NSMutableDictionary dictionaryWithObjectsAndKeys:nil]];     
 }
 
 - (void)testShowComments {
     requestComplete = NO;
     BVDisplayReviewComment *showDisplayRequest = [[BVDisplayReviewComment alloc] init];
-    showDisplayRequest.parameters.filter = @"reviewid:192548";
     showDisplayRequest.delegate = self;
-    
+    showDisplayRequest.parameters.filter = @"reviewid:6597809";
+    [showDisplayRequest.parameters.filterType addKey:@"products" andValue:@"id:2323001"];
+    showDisplayRequest.parameters.include = @"Products";
+    showDisplayRequest.parameters.limit = @"50";
+    [showDisplayRequest.parameters.limitType addKey:@"products" andValue:@"10"];
+    showDisplayRequest.parameters.offset = @"0";
+    showDisplayRequest.parameters.sort = @"id:asc";
+    [showDisplayRequest.parameters.sortType addKey:@"products" andValue:@"id:asc"];
+    showDisplayRequest.parameters.stats = @"reviews";
+
     [showDisplayRequest startAsynchRequest];
     NSRunLoop *theRL = [NSRunLoop currentRunLoop];
     // Begin a run loop terminated when the requestComplete it set to true
-    while (!requestComplete && [theRL runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]]);    
+    while (!requestComplete && [theRL runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]]); 
+    
+    [self checkParams:[NSMutableDictionary dictionaryWithObjectsAndKeys:
+                       @"reviews", @"stats", @"id:asc", @"Sort_products", @"id:2323001", @"Filter_products", @"10", @"Limit_products", @"id:asc", @"sort", @"Products", @"include", @"0", @"offset", @"reviewid:6597809", @"filter", @"50", @"limit", nil]];     
 }
 
-- (void)testShowCommentStory {
+- (void)testShowCommentStorySparse {
+    [BVSettings instance].customerName = @"stories.apitestcustomer";    
     requestComplete = NO;
     BVDisplayStoryComment *showDisplayRequest = [[BVDisplayStoryComment alloc] init];
-    showDisplayRequest.parameters.filter = @"storyid:1593";
     showDisplayRequest.delegate = self;
     
     [showDisplayRequest startAsynchRequest];
     NSRunLoop *theRL = [NSRunLoop currentRunLoop];
     // Begin a run loop terminated when the requestComplete it set to true
     while (!requestComplete && [theRL runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]]);
+    [self checkParams:[NSMutableDictionary dictionaryWithObjectsAndKeys:nil]];     
+
+}
+
+- (void)testShowCommentStory {
+    [BVSettings instance].customerName = @"stories.apitestcustomer";    
+    requestComplete = NO;
+    BVDisplayStoryComment *showDisplayRequest = [[BVDisplayStoryComment alloc] init];
+    showDisplayRequest.parameters.filter = @"storyid:967";
+    [showDisplayRequest.parameters.filterType addKey:@"products" andValue:@"id:test1"];
+    showDisplayRequest.parameters.include = @"Products";
+    showDisplayRequest.parameters.limit = @"10";
+    [showDisplayRequest.parameters.limitType addKey:@"products" andValue:@"10"];
+    showDisplayRequest.parameters.offset = @"0";
+    showDisplayRequest.parameters.sort = @"id:asc";
+    [showDisplayRequest.parameters.sortType addKey:@"products" andValue:@"id:asc"];
+    showDisplayRequest.parameters.stats = @"reviews";
+
+    showDisplayRequest.delegate = self;
+    
+    [showDisplayRequest startAsynchRequest];
+    NSRunLoop *theRL = [NSRunLoop currentRunLoop];
+    // Begin a run loop terminated when the requestComplete it set to true
+    while (!requestComplete && [theRL runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]]);
+    
+    [self checkParams:[NSMutableDictionary dictionaryWithObjectsAndKeys:
+                       @"reviews", @"stats", @"id:asc", @"Sort_products", @"id:test1", @"Filter_products", @"10", @"Limit_products", @"id:asc", @"sort", @"Products", @"include", @"0", @"offset", @"storyid:967", @"filter", @"10", @"limit", nil]];     
+}
+
+- (void)testShowProfileSparse {
+    requestComplete = NO;
+    BVDisplayProfile *showDisplayRequest = [[BVDisplayProfile alloc] init];
+    showDisplayRequest.delegate = self;
+    
+    [showDisplayRequest startAsynchRequest];
+    NSRunLoop *theRL = [NSRunLoop currentRunLoop];
+    // Begin a run loop terminated when the requestComplete it set to true
+    while (!requestComplete && [theRL runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]]);
+
+    [self checkParams:[NSMutableDictionary dictionaryWithObjectsAndKeys:nil]];     
 }
 
 - (void)testShowProfile {
     requestComplete = NO;
     BVDisplayProfile *showDisplayRequest = [[BVDisplayProfile alloc] init];
-    showDisplayRequest.parameters.filter = @"TotalCommentCount:gte:20";
+    showDisplayRequest.parameters.filter = @"TotalCommentCount:gte:0";
+    showDisplayRequest.delegate = self;
+    
+    showDisplayRequest.parameters.filter = @"id:smartPP";
+    showDisplayRequest.parameters.limit = @"10";
+    showDisplayRequest.parameters.offset = @"0";
+    showDisplayRequest.parameters.sort = @"id:asc";
+    showDisplayRequest.parameters.stats = @"reviews";
+    
+    [showDisplayRequest startAsynchRequest];
+    NSRunLoop *theRL = [NSRunLoop currentRunLoop];
+    
+    // Begin a run loop terminated when the requestComplete it set to true
+    while (!requestComplete && [theRL runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]]);
+    [self checkParams:[NSMutableDictionary dictionaryWithObjectsAndKeys:
+                       @"reviews", @"stats", @"id:asc", @"sort",  @"0", @"offset", @"id:smartPP", @"filter", @"10", @"limit", nil]];     
+}
+
+- (void)testShowProductsSparse {
+    requestComplete = NO;
+    BVDisplayProducts *showDisplayRequest = [[BVDisplayProducts alloc] init];
     showDisplayRequest.delegate = self;
     
     [showDisplayRequest startAsynchRequest];
     NSRunLoop *theRL = [NSRunLoop currentRunLoop];
     // Begin a run loop terminated when the requestComplete it set to true
     while (!requestComplete && [theRL runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]]);
+    [self checkParams:[NSMutableDictionary dictionaryWithObjectsAndKeys:nil]];     
 }
 
 - (void)testShowProducts {
     requestComplete = NO;
     BVDisplayProducts *showDisplayRequest = [[BVDisplayProducts alloc] init];
     showDisplayRequest.parameters.filter = @"CategoryId:eq:testcategory1011";
+    [showDisplayRequest.parameters.filterType addKey:@"Reviews" andValue:@"id:83501"];
+    showDisplayRequest.parameters.include = @"Reviews";
+    showDisplayRequest.parameters.limit = @"10";
+    [showDisplayRequest.parameters.limitType addKey:@"Reviews" andValue:@"10"];
+    showDisplayRequest.parameters.offset = @"0";
+    showDisplayRequest.parameters.sort = @"id:asc";
+    [showDisplayRequest.parameters.sortType addKey:@"Reviews" andValue:@"id:asc"];
+    showDisplayRequest.parameters.stats = @"reviews";
+
     showDisplayRequest.delegate = self;
     
     [showDisplayRequest startAsynchRequest];
     NSRunLoop *theRL = [NSRunLoop currentRunLoop];
     // Begin a run loop terminated when the requestComplete it set to true
     while (!requestComplete && [theRL runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]]);
+    
+    [self checkParams:[NSMutableDictionary dictionaryWithObjectsAndKeys:
+                       @"reviews", @"stats", @"id:asc", @"Sort_Reviews", @"id:83501", @"Filter_Reviews", @"10", @"Limit_Reviews", @"id:asc", @"sort", @"Reviews", @"include", @"0", @"offset", @"CategoryId:eq:testcategory1011", @"filter", @"10", @"limit", nil]];     
+}
+
+- (void)testShowCateogrySparse {
+    requestComplete = NO;
+    BVDisplayCategories *showDisplayRequest = [[BVDisplayCategories alloc] init];
+    showDisplayRequest.delegate = self;
+    
+    [showDisplayRequest startAsynchRequest];
+    NSRunLoop *theRL = [NSRunLoop currentRunLoop];
+    // Begin a run loop terminated when the requestComplete it set to true
+    while (!requestComplete && [theRL runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]]);
+    [self checkParams:[NSMutableDictionary dictionaryWithObjectsAndKeys:nil]];     
 }
 
 - (void)testShowCateogry {
     requestComplete = NO;
     BVDisplayCategories *showDisplayRequest = [[BVDisplayCategories alloc] init];
     showDisplayRequest.parameters.filter = @"id:testCategory1011";
+    [showDisplayRequest.parameters.filterType addKey:@"products" andValue:@"id:test2"];
+    showDisplayRequest.parameters.include = @"Products";
+    showDisplayRequest.parameters.limit = @"10";
+    [showDisplayRequest.parameters.limitType addKey:@"products" andValue:@"10"];
+    showDisplayRequest.parameters.offset = @"0";
+    showDisplayRequest.parameters.sort = @"id:asc";
+    [showDisplayRequest.parameters.sortType addKey:@"products" andValue:@"id:asc"];
+    showDisplayRequest.parameters.stats = @"reviews";
+    
     showDisplayRequest.delegate = self;
     
     [showDisplayRequest startAsynchRequest];
     NSRunLoop *theRL = [NSRunLoop currentRunLoop];
     // Begin a run loop terminated when the requestComplete it set to true
     while (!requestComplete && [theRL runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]]);
+    
+    [self checkParams:[NSMutableDictionary dictionaryWithObjectsAndKeys:
+                       @"reviews", @"stats", @"id:asc", @"Sort_products", @"id:test2", @"Filter_products", @"10", @"Limit_products", @"id:asc", @"sort", @"Products", @"include", @"0", @"offset", @"id:testCategory1011", @"filter", @"10", @"limit", nil]];     
+    showDisplayRequest.delegate = self;
+    
+    [showDisplayRequest startAsynchRequest];
 }
-
 
 - (void)testShowStatistics {
     requestComplete = NO;
@@ -220,6 +476,7 @@
 }
 
 - (void)testSubmissionQuestions {
+    [BVSettings instance].customerName = @"answers.apitestcustomer";
     requestComplete = NO;
     receivedProgressCallback = NO;
     BVSubmissionQuestion *mySubmission = [[BVSubmissionQuestion alloc] init];
@@ -228,11 +485,7 @@
     mySubmission.parameters.userId = @"123abc";
     mySubmission.parameters.questionSummary = @"Some kind of summary";
     mySubmission.delegate = self;
-
-    NSString *temp = [BVSettings instance].customerName;
-    [BVSettings instance].customerName = @"answers.apitestcustomer";
     [mySubmission startAsynchRequest];                    
-    [BVSettings instance].customerName = temp;
 
     NSRunLoop *theRL = [NSRunLoop currentRunLoop];
     // Begin a run loop terminated when the requestComplete it set to true
@@ -240,6 +493,7 @@
 }
 
 - (void)testSubmissionAnswers {
+    [BVSettings instance].customerName = @"answers.apitestcustomer";
     requestComplete = NO;
     BVSubmissionAnswer *mySubmission = [[BVSubmissionAnswer alloc] init];
     mySubmission.parameters.questionId = @"6104";
@@ -247,10 +501,7 @@
     mySubmission.parameters.answerText = @"Some kind of answer";
     mySubmission.delegate = self;
    
-    NSString *temp = [BVSettings instance].customerName;
-    [BVSettings instance].customerName = @"answers.apitestcustomer";
     [mySubmission startAsynchRequest];    
-    [BVSettings instance].customerName = temp;
 
     NSRunLoop *theRL = [NSRunLoop currentRunLoop];
     // Begin a run loop terminated when the requestComplete it set to true
@@ -258,6 +509,7 @@
 }
 
 - (void)testSubmissionStories {
+    [BVSettings instance].customerName = @"stories.apitestcustomer";    
     requestComplete = NO;
     receivedProgressCallback = NO;
     BVSubmissionStory *mySubmission = [[BVSubmissionStory alloc] init];
@@ -267,10 +519,7 @@
     mySubmission.parameters.userId = @"123abc";
     mySubmission.delegate = self;
     
-    NSString *temp = [BVSettings instance].customerName;
-    [BVSettings instance].customerName = @"stories.apitestcustomer";    
     [mySubmission startAsynchRequest];  
-    [BVSettings instance].customerName = temp;
 
     NSRunLoop *theRL = [NSRunLoop currentRunLoop];
     // Begin a run loop terminated when the requestComplete it set to true
@@ -391,7 +640,6 @@
     // Begin a run loop terminated when the requestComplete it set to true
     while (!requestComplete && [theRL runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]]);    
     NSString *url = sentRequest.parameterURL;
-    NSLog(@"%@", url);
     NSRange aRange = [url rangeOfString:@"PhotoUrl_1="];
     if (aRange.location ==NSNotFound) {
         NSAssert(false, @"PhotoUrl_1 was not included");
@@ -412,14 +660,6 @@
     if (aRange.location ==NSNotFound) {
         NSAssert(false, @"tag_Pro_2 was not included");
     }
-    aRange = [url rangeOfString:@"tagid_Pro/fit=true"];
-    if (aRange.location ==NSNotFound) {
-        NSAssert(false, @"tagid_Pro/fit was not included");
-    } 
-    aRange = [url rangeOfString:@"tagid_Pro/style=true"];
-    if (aRange.location ==NSNotFound) {
-        NSAssert(false, @"tagid_Pro/style was not included");
-    } 
-
 }
+ 
 @end
