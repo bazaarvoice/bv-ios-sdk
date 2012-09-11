@@ -169,7 +169,7 @@
 - (IBAction)submissionReview {
     BVSubmissionReview *mySubmission = [[BVSubmissionReview alloc] init];
     mySubmission.parameters.productId = @"1000001";
-    mySubmission.parameters.userId = @"123abc";
+    mySubmission.parameters.userId = @"123abcd";
     mySubmission.parameters.rating = @"5";
     mySubmission.parameters.title = @"Test title";
     mySubmission.parameters.reviewText = @"Some kind of review text.";
@@ -188,9 +188,9 @@
     mySubmission.delegate = self;
     
     [BVSettings instance].passKey = @"2cpdrhohmgmwfz8vqyo48f52g";
-    NSString *temp = [BVSettings instance].customerName;
-    [BVSettings instance].customerName = @"answers.apitestcustomer";
     
+    NSString *temp = [BVSettings instance].customerName;
+    [BVSettings instance].customerName = @"answers.apitestcustomer.bazaarvoice.com";
     [mySubmission startAsynchRequest];                    
     [BVSettings instance].customerName = temp;
                                  
@@ -203,10 +203,9 @@
     mySubmission.parameters.answerText = @"Some kind of answer";
     mySubmission.delegate = self;
     [BVSettings instance].passKey = @"2cpdrhohmgmwfz8vqyo48f52g";
+    
     NSString *temp = [BVSettings instance].customerName;
-    [BVSettings instance].customerName = @"answers.apitestcustomer";
-    
-    
+    [BVSettings instance].customerName = @"answers.apitestcustomer.bazaarvoice.com";
     [mySubmission startAsynchRequest];    
     [BVSettings instance].customerName = temp;
 }
@@ -216,12 +215,15 @@
     mySubmission.parameters.title = @"This is the title";
     mySubmission.parameters.storyText = @"This is my story";
     mySubmission.parameters.categoryId = @"1020";
-    mySubmission.parameters.userId = @"123abc";
-    mySubmission.delegate = self;
-    [BVSettings instance].customerName = @"stories.apitestcustomer";
+    mySubmission.parameters.userId = @"123abcg";
     [BVSettings instance].passKey = @"2cpdrhohmgmwfz8vqyo48f52g";
+    mySubmission.delegate = self;
     
-    [mySubmission startAsynchRequest];        
+    NSString *temp = [BVSettings instance].customerName;
+    [BVSettings instance].customerName = @"stories.apitestcustomer.bazaarvoice.com";
+    [mySubmission startAsynchRequest];   
+    [BVSettings instance].customerName = temp;
+
 }
 
 - (IBAction)submissionComments {
@@ -231,7 +233,6 @@
     mySubmission.parameters.userId = @"123abc";
     mySubmission.delegate = self;
     [BVSettings instance].passKey = @"2cpdrhohmgmwfz8vqyo48f52g";
-    
     [mySubmission startAsynchRequest];            
 }
 - (IBAction)submissionPhotos {
@@ -242,8 +243,11 @@
     mySubmission.delegate = self;
     [BVSettings instance].passKey = @"f5jyj7alrfvm7hh3mbykot8ui";
     [BVSettings instance].apiVersion = @"5.1";
-    [BVSettings instance].customerName = @"reviews.apitestcustomer";
-    [mySubmission startAsynchRequest];         
+    
+    NSString *temp = [BVSettings instance].customerName;
+    [BVSettings instance].customerName = @"reviews.apitestcustomer.bazaarvoice.com";
+    [mySubmission startAsynchRequest];  
+    [BVSettings instance].customerName = temp;    
 }
 
 - (IBAction)submissionVideos {

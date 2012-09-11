@@ -12,9 +12,10 @@
 #import "BVParameters.h"
 
 #define SDK_HEADER_NAME @"X-UA-BV-SDK"
-#define SDK_HEADER_VALUE @"IOS_SDK_V125"
+#define SDK_HEADER_VALUE @"IOS_SDK_V126"
 
 @class BVBase;
+
 
 /*!
  BVDelegate is a protocol which notifies the client of API request status updates. Each request is guaranteed to result in one of either didReceiveResponse: or didFailToReceiveResponse:.  All submission requests will generate one or more didSendBodyData: callbacks.

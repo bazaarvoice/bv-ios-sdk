@@ -29,7 +29,7 @@
     [BVSettings instance].passKey = @"2cpdrhohmgmwfz8vqyo48f52g";
     // These are test endpoints, merely to illustrate use of the api
     // calls to our stating server.
-    [BVSettings instance].customerName = @"reviews.apitestcustomer"; 
+    [BVSettings instance].customerName = @"reviews.apitestcustomer.bazaarvoice.com"; 
     [BVSettings instance].dataString = @"bvstaging/data";
     [BVSettings instance].apiVersion = @"5.2";
     
