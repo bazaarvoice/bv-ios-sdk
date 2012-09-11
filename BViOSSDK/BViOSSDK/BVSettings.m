@@ -28,7 +28,7 @@ static BVSettings* BVSettingsSingleton = nil;
         // Initalization code here. PUt in reasonable defaults.
         self.passKey = @"KEY_REMOVED";
         self.apiVersion = @"5.2";
-        self.customerName = @"reviews.apitestcustomer";
+        self.customerName = @"reviews.apitestcustomer.bazaarvoice.com";
         self.dataString = @"bvstaging/data";
         self.formatString = @"json";
 	}

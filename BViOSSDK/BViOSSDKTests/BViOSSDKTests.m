@@ -13,7 +13,7 @@
 - (void)setUp
 {
     [super setUp];
-    [BVSettings instance].customerName = @"reviews.apitestcustomer";
+    [BVSettings instance].customerName = @"reviews.apitestcustomer.bazaarvoice.com";
 }
 
 - (void)tearDown
@@ -136,7 +136,7 @@
 }
               
 - (void)testShowQuestionSparse {
-    [BVSettings instance].customerName = @"answers.apitestcustomer";
+    [BVSettings instance].customerName = @"answers.apitestcustomer.bazaarvoice.com";
     requestComplete = NO;
     BVDisplayQuestion *showDisplayRequest = [[BVDisplayQuestion alloc] init];
     showDisplayRequest.delegate = self;
@@ -149,7 +149,7 @@
 }
 
 - (void)testShowQuestion {
-    [BVSettings instance].customerName = @"answers.apitestcustomer";
+    [BVSettings instance].customerName = @"answers.apitestcustomer.bazaarvoice.com";
     requestComplete = NO;
     BVDisplayQuestion *showDisplayRequest = [[BVDisplayQuestion alloc] init];
     
@@ -178,7 +178,7 @@
 }
 
 - (void)testShowAnswersSparse {
-    [BVSettings instance].customerName = @"answers.apitestcustomer";
+    [BVSettings instance].customerName = @"answers.apitestcustomer.bazaarvoice.com";
     requestComplete = NO;
     BVDisplayAnswer *showDisplayRequest = [[BVDisplayAnswer alloc] init];
     showDisplayRequest.delegate = self;
@@ -194,7 +194,7 @@
 
 
 - (void)testShowAnswers {
-    [BVSettings instance].customerName = @"answers.apitestcustomer";
+    [BVSettings instance].customerName = @"answers.apitestcustomer.bazaarvoice.com";
     requestComplete = NO;
     BVDisplayAnswer *showDisplayRequest = [[BVDisplayAnswer alloc] init];
     
@@ -220,7 +220,7 @@
 }
 
 - (void)testShowStorySparse {
-    [BVSettings instance].customerName = @"stories.apitestcustomer";
+    [BVSettings instance].customerName = @"stories.apitestcustomer.bazaarvoice.com";
     requestComplete = NO;
     BVDisplayStories *showDisplayRequest = [[BVDisplayStories alloc] init];
     showDisplayRequest.delegate = self;
@@ -233,7 +233,7 @@
 }
 
 - (void)testShowStory {
-    [BVSettings instance].customerName = @"stories.apitestcustomer";
+    [BVSettings instance].customerName = @"stories.apitestcustomer.bazaarvoice.com";
     requestComplete = NO;
     BVDisplayStories *showDisplayRequest = [[BVDisplayStories alloc] init];
     showDisplayRequest.parameters.filter = @"Id:14181";
@@ -294,7 +294,7 @@
 }
 
 - (void)testShowCommentStorySparse {
-    [BVSettings instance].customerName = @"stories.apitestcustomer";    
+    [BVSettings instance].customerName = @"stories.apitestcustomer.bazaarvoice.com";    
     requestComplete = NO;
     BVDisplayStoryComment *showDisplayRequest = [[BVDisplayStoryComment alloc] init];
     showDisplayRequest.delegate = self;
@@ -308,7 +308,7 @@
 }
 
 - (void)testShowCommentStory {
-    [BVSettings instance].customerName = @"stories.apitestcustomer";    
+    [BVSettings instance].customerName = @"stories.apitestcustomer.bazaarvoice.com";    
     requestComplete = NO;
     BVDisplayStoryComment *showDisplayRequest = [[BVDisplayStoryComment alloc] init];
     showDisplayRequest.parameters.filter = @"storyid:967";
@@ -476,7 +476,7 @@
 }
 
 - (void)testSubmissionQuestions {
-    [BVSettings instance].customerName = @"answers.apitestcustomer";
+    [BVSettings instance].customerName = @"answers.apitestcustomer.bazaarvoice.com";
     requestComplete = NO;
     receivedProgressCallback = NO;
     BVSubmissionQuestion *mySubmission = [[BVSubmissionQuestion alloc] init];
@@ -493,7 +493,7 @@
 }
 
 - (void)testSubmissionAnswers {
-    [BVSettings instance].customerName = @"answers.apitestcustomer";
+    [BVSettings instance].customerName = @"answers.apitestcustomer.bazaarvoice.com";
     requestComplete = NO;
     BVSubmissionAnswer *mySubmission = [[BVSubmissionAnswer alloc] init];
     mySubmission.parameters.questionId = @"6104";
@@ -509,7 +509,7 @@
 }
 
 - (void)testSubmissionStories {
-    [BVSettings instance].customerName = @"stories.apitestcustomer";    
+    [BVSettings instance].customerName = @"stories.apitestcustomer.bazaarvoice.com";    
     requestComplete = NO;
     receivedProgressCallback = NO;
     BVSubmissionStory *mySubmission = [[BVSubmissionStory alloc] init];
