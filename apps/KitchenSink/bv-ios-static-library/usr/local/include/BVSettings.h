@@ -8,7 +8,6 @@
 
 
 #import <Foundation/Foundation.h>
-#define BAZAARVOICECOM @"bazaarvoice.com"
 
 /*!
  BVSettings is a singleton object which contains credentials common to all API requests.
@@ -33,7 +32,7 @@
  */
 @property (nonatomic, copy) NSString* apiVersion;
 /*!
- The customer name used in the request. Default is set to reviews.apitestcustomer.
+ The customer name used in the request. Default is set to reviews.apitestcustomer.bazaarvoice.com
  */
 @property (nonatomic, copy) NSString* customerName;
 /*!

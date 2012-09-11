@@ -34,7 +34,7 @@
     
     // Global BV SDK setup.  In general this should only occur once
     [BVSettings instance].passKey = @"KEY_REMOVED";
-    [BVSettings instance].customerName = @"reviews.apitestcustomer"; 
+    [BVSettings instance].customerName = @"reviews.apitestcustomer.bazaarvoice.com"; 
     [BVSettings instance].dataString = @"bvstaging/data";
     [BVSettings instance].apiVersion = @"5.1";
     

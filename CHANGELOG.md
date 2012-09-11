@@ -1,3 +1,8 @@
+## 1.2.6 (Sep 11, 2012)
+
+* Removes ".bazaarvoice.com" from being appended to the BVSettings customerName.  This allows cnamed domains such as reviews.customer.com to be used as the base url.  
+Note: this will break existing implementations.  For instance, if the customerName was previously set to ugc.client, it should now be set to ugc.client.bazaarvoice.com.
+
 ## 1.2.5 (Aug 24, 2012)
 
 * Fixes bug which was attaching unnecessary parameters in some cases.
