@@ -117,7 +117,7 @@
 }
 
 - (NSString*) buildURLString {
-    NSString *buildString = [NSString stringWithFormat:@"http://%@.%@/%@/", self.settingsObject.customerName, BAZAARVOICECOM, self.settingsObject.dataString];
+    NSString *buildString = [NSString stringWithFormat:@"http://%@/%@/", self.settingsObject.customerName, self.settingsObject.dataString];
     buildString = [buildString stringByAppendingFormat:@"%@.%@?", self.displayType, self.settingsObject.formatString];
     buildString = [buildString stringByAppendingFormat:@"apiversion=%@&passkey=%@", self.settingsObject.apiVersion, self.settingsObject.passKey];
     buildString = [buildString stringByAppendingString:self.parameterURL];

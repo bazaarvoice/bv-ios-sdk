@@ -47,7 +47,7 @@
 
 //This method is overridden to not include parameters in the URL Request since Submissions are HTTP POSTs instead of GET’s in Display requests.
 - (NSString*) buildURLString {
-    NSString *buildString = [NSString stringWithFormat:@"http://%@.%@/%@/", self.settingsObject.customerName, BAZAARVOICECOM, self.settingsObject.dataString];
+    NSString *buildString = [NSString stringWithFormat:@"http://%@/%@/", self.settingsObject.customerName, self.settingsObject.dataString];
     buildString = [buildString stringByAppendingFormat:@"%@.%@", self.displayType, self.settingsObject.formatString];
     return buildString;
 }
