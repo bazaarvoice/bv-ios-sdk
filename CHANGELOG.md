@@ -1,3 +1,7 @@
+## 1.3.0 (Sep 18, 2012)
+
+* Updates API version to 5.3
+
 ## 1.2.6 (Sep 11, 2012)
 
 * Removes ".bazaarvoice.com" from being appended to the BVSettings customerName.  This allows cnamed domains such as reviews.customer.com to be used as the base url.  

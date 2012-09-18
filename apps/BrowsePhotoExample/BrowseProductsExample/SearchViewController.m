@@ -36,7 +36,6 @@
     [BVSettings instance].passKey = @"KEY_REMOVED";
     [BVSettings instance].customerName = @"reviews.apitestcustomer.bazaarvoice.com"; 
     [BVSettings instance].dataString = @"bvstaging/data";
-    [BVSettings instance].apiVersion = @"5.1";
     
     UIImage *image = [UIImage imageNamed:@"graphic-star.png"];
     UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
