@@ -28,7 +28,7 @@
  */
 @property (nonatomic, copy) NSString* passKey;
 /*!
- The API version used. The default is set to 5.1
+ The API version used. The default is set to 5.3
  */
 @property (nonatomic, copy) NSString* apiVersion;
 /*!
