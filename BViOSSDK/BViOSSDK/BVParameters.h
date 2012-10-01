@@ -74,7 +74,7 @@ BVParameters encapsulates the parameters that are common to all API requests.  I
  */
 @property (nonatomic, copy) NSString* search;
 /*!
- Search term to query upon nested content.  This is an "or" search and must include a type.  For example, reviews, comments etc.  When querying for products with the search term "Electric Dryer," the result returns products that have both "Electric" and "Dryer" in the Product Name or Product Description.
+ Search query for nested content of the form Search_<Type>=Query.  This is an "or" search and must include a type.  For example, reviews, comments etc.  When querying for products with the search term "Electric Dryer," the result returns products that have both "Electric" and "Dryer" in the Product Name or Product Description.
  */
 @property (nonatomic, strong) BVParametersType* searchType;
 /*!
