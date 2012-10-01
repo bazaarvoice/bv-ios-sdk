@@ -487,6 +487,7 @@
 		6F4B99BE153F4EB90040AF27 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Alex Medearis (UBFJTML2DG)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PhotoUploadExample/PhotoUploadExample-Prefix.pch";
 				INFOPLIST_FILE = "PhotoUploadExample/PhotoUploadExample-Info.plist";
@@ -497,6 +498,7 @@
 					"\"$(SRCROOT)/PhotoUploadExample/bv-ios-static-library\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "8D5BF28B-9E33-4F71-9876-AD79CA75400A";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;

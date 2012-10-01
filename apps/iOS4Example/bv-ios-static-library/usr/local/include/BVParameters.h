@@ -74,6 +74,10 @@ BVParameters encapsulates the parameters that are common to all API requests.  I
  */
 @property (nonatomic, copy) NSString* search;
 /*!
+ Search query for nested content of the form Search_[Type]=Query.  This is an "or" search and must include a type.  For example, reviews, comments etc.  When querying for products with the search term "Electric Dryer," the result returns products that have both "Electric" and "Dryer" in the Product Name or Product Description.
+ */
+@property (nonatomic, strong) BVParametersType* searchType;
+/*!
  Index at which to return results. By default, indexing begins at 0 when you issue a query. Using Limit=100, Offset=0 returns results 0-99. When changing this to Offset=1, results 1-100 are returned.
  */
 @property (nonatomic, copy) NSString* offset;
