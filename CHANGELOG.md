@@ -1,3 +1,7 @@
+## 1.3.1 (Oct 1, 2012)
+
+* Provides support for Search_Type parameters
+
 ## 1.3.0 (Sep 18, 2012)
 
 * Updates API version to 5.3
