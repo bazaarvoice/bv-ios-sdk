@@ -16,6 +16,7 @@
 @synthesize filterType          =   _filterType;
 @synthesize sort                =   _sort;
 @synthesize sortType            =   _sortType;
+@synthesize searchType            =   _searchType;
 @synthesize search              =   _search;
 @synthesize offset              =   _offset;
 @synthesize limit               =   _limit;
@@ -29,6 +30,7 @@
     NSMutableDictionary *BVParamDict = [[NSMutableDictionary alloc] init];
     [BVParamDict addEntriesFromDictionary:[self.filterType dictionaryEntry]];
     [BVParamDict addEntriesFromDictionary:[self.sortType dictionaryEntry]];
+    [BVParamDict addEntriesFromDictionary:[self.searchType dictionaryEntry]];
     [BVParamDict addEntriesFromDictionary:[self.limitType dictionaryEntry]];
     [BVParamDict addEntriesFromDictionary:returnDictionary];
     
@@ -55,6 +57,15 @@
         _sortType.prefixName = @"Sort";
     }
     return _sortType;
+}
+
+- (BVParametersType*) searchType {
+    // Lazy instationation...
+    if (_searchType == nil) {
+        _searchType = [[BVParametersType alloc] init];
+        _searchType.prefixName = @"Search";
+    }
+    return _searchType;
 }
 
 - (BVParametersType*) limitType {
