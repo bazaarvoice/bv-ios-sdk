@@ -134,6 +134,25 @@
     [self checkParams:[NSMutableDictionary dictionaryWithObjectsAndKeys:
                        @"reviews", @"stats", @"id:asc", @"Sort_products", @"id:009", @"Filter_products", @"10", @"Limit_products", @"id:asc", @"sort", @"Products", @"include", @"0", @"offset", @"Id:6601211", @"filter", @"50", @"limit", @"Great%20sound", @"search", nil]];     
 }
+
+- (void)testShowReviewIncludesSearch {
+    requestComplete = NO;
+    BVDisplayReview *showDisplayRequest = [[BVDisplayReview alloc] init];
+    showDisplayRequest.parameters.include = @"Products";
+    showDisplayRequest.parameters.sort = @"id:asc";
+    [showDisplayRequest.parameters.sortType addKey:@"products" andValue:@"id:asc"];
+    [showDisplayRequest.parameters.searchType addKey:@"products" andValue:@"Increase your potential to shine"];
+    
+    showDisplayRequest.delegate = self;
+    
+    [showDisplayRequest startAsynchRequest];
+    NSRunLoop *theRL = [NSRunLoop currentRunLoop];
+    // Begin a run loop terminated when the requestComplete it set to true
+    while (!requestComplete && [theRL runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]]);
+    [self checkParams:[NSMutableDictionary dictionaryWithObjectsAndKeys:
+                      @"id:asc", @"Sort_products", @"id:asc", @"sort", @"Products", @"include", @"Increase%20your%20potential%20to%20shine", @"Search_products", nil]];     
+}
+
               
 - (void)testShowQuestionSparse {
     [BVSettings instance].customerName = @"answers.apitestcustomer.bazaarvoice.com";
