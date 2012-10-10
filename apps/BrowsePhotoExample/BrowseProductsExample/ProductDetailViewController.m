@@ -104,8 +104,6 @@
                                             otherButtonTitles:nil];
     
     [message show];
-    [self.navigationController popViewControllerAnimated:YES];
-
     
 }
 - (void) setupProductInfo 

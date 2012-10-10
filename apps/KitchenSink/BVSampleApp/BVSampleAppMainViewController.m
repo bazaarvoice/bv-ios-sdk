@@ -57,6 +57,16 @@
     self.navigationController.navigationBar.hidden = NO;
 }
 
+- (void) didFailToReceiveResponse:(NSError *)err forRequest:(BVBase *)request {
+    UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Whoops!"
+                                                      message:@"An error occurred.  Please try again."
+                                                     delegate:nil
+                                            cancelButtonTitle:@"OK"
+                                            otherButtonTitles:nil];
+    [message show];
+
+}
+
 #pragma mark - Flipside View
 
 - (void)flipsideViewControllerDidFinish:(BVSampleAppFlipsideViewController *)controller
