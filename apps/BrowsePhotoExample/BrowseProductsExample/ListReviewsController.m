@@ -83,9 +83,7 @@
                                                      delegate:nil
                                             cancelButtonTitle:@"OK"
                                             otherButtonTitles:nil];
-    
     [message show];
-    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)viewDidUnload

@@ -1,4 +1,8 @@
-## 1.3.1 (Oct 1, 2012)
+## 1.3.3 (Oct 10, 2012)
+
+* Simplified error handling
+
+## 1.3.2 (Oct 10, 2012)
 
 * Updated for iPhone 5.  Drops support for armv6.
 
