@@ -17,7 +17,12 @@
     // Override point for customization after application launch.
     
     // Here we set the background image for the entire application
-    self.window.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"app-background.png"]];
+    if(self.window.bounds.size.height > 480){
+        self.window.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"app-background-586.png"]];
+    } else {
+        self.window.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"app-background.png"]];
+    }
+
     return YES;
 }
 							

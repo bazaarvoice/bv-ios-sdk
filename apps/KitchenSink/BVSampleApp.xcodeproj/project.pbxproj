@@ -19,7 +19,7 @@
 		4DA3E148150BCA0600E897AF /* BVSampleAppFlipsideViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DA3E146150BCA0600E897AF /* BVSampleAppFlipsideViewController.xib */; };
 		4DA3E21C150BE35900E897AF /* BVSampleAppResultsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DA3E21B150BE35900E897AF /* BVSampleAppResultsViewController.xib */; };
 		4DA3E21F150BE4AD00E897AF /* BVSampleAppResultsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DA3E21E150BE4AD00E897AF /* BVSampleAppResultsViewController.m */; };
-		BFB94E74153CBFCE00C6ECC7 /* libarclite_universal.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BFB94E52153CBFCE00C6ECC7 /* libarclite_universal.a */; };
+		6FEC434B16248F8300A85F0C /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FEC434A16248F8300A85F0C /* Default-568h@2x.png */; };
 		BFB94E75153CBFCE00C6ECC7 /* libBViOSSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BFB94E53153CBFCE00C6ECC7 /* libBViOSSDK.a */; };
 		BFE3F822154B0A1D00E9DA6D /* bv533x533.png in Resources */ = {isa = PBXBuildFile; fileRef = BFE3F821154B0A1D00E9DA6D /* bv533x533.png */; };
 		BFE3F824154B0A7100E9DA6D /* appicon.png in Resources */ = {isa = PBXBuildFile; fileRef = BFE3F823154B0A7100E9DA6D /* appicon.png */; };
@@ -78,6 +78,7 @@
 		6F334B24154F2A1D00345C16 /* BVSubmissionReviewComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVSubmissionReviewComment.h; sourceTree = "<group>"; };
 		6F334B25154F2A1D00345C16 /* BVSubmissionStory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVSubmissionStory.h; sourceTree = "<group>"; };
 		6F334B26154F2A1D00345C16 /* BVSubmissionVideo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVSubmissionVideo.h; sourceTree = "<group>"; };
+		6FEC434A16248F8300A85F0C /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = SOURCE_ROOT; };
 		BFB94E52153CBFCE00C6ECC7 /* libarclite_universal.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libarclite_universal.a; sourceTree = "<group>"; };
 		BFB94E53153CBFCE00C6ECC7 /* libBViOSSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libBViOSSDK.a; sourceTree = "<group>"; };
 		BFE3F821154B0A1D00E9DA6D /* bv533x533.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bv533x533.png; sourceTree = "<group>"; };
@@ -95,7 +96,6 @@
 				4DA3E12C150BCA0500E897AF /* UIKit.framework in Frameworks */,
 				4DA3E12E150BCA0500E897AF /* Foundation.framework in Frameworks */,
 				4DA3E130150BCA0500E897AF /* CoreGraphics.framework in Frameworks */,
-				BFB94E74153CBFCE00C6ECC7 /* libarclite_universal.a in Frameworks */,
 				BFB94E75153CBFCE00C6ECC7 /* libBViOSSDK.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -106,6 +106,7 @@
 		4DA3E11C150BCA0500E897AF = {
 			isa = PBXGroup;
 			children = (
+				6FEC434A16248F8300A85F0C /* Default-568h@2x.png */,
 				BFE3F829154B0A7E00E9DA6D /* Default@2x.png */,
 				BFE3F827154B0A7B00E9DA6D /* Default.png */,
 				BFE3F825154B0A7400E9DA6D /* appicon@2x.png */,
@@ -289,6 +290,7 @@
 				BFE3F826154B0A7400E9DA6D /* appicon@2x.png in Resources */,
 				BFE3F828154B0A7B00E9DA6D /* Default.png in Resources */,
 				BFE3F82A154B0A7E00E9DA6D /* Default@2x.png in Resources */,
+				6FEC434B16248F8300A85F0C /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

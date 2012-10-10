@@ -1,5 +1,9 @@
 ## 1.3.1 (Oct 1, 2012)
 
+* Updated for iPhone 5.  Drops support for armv6.
+
+## 1.3.1 (Oct 1, 2012)
+
 * Provides support for Search_Type parameters
 
 ## 1.3.0 (Sep 18, 2012)

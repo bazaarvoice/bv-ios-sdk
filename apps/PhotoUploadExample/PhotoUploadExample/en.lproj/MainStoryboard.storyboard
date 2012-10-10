@@ -1,15 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="1.1" toolsVersion="2182" systemVersion="11D50b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="7Sj-zt-yWf">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2843" systemVersion="11E53" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="7Sj-zt-yWf">
     <dependencies>
-        <deployment defaultVersion="1296" identifier="iOS"/>
-        <development defaultVersion="4200" identifier="xcode"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1181"/>
+        <deployment defaultVersion="1536" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1929"/>
     </dependencies>
     <scenes>
         <!--Navigation Controller - Rate It!-->
         <scene sceneID="qmK-hg-6NF">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="t8L-7j-OZf" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController title="Rate It!" definesPresentationContext="YES" id="7Sj-zt-yWf" sceneMemberID="viewController">
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="AIL-9j-Qto">
@@ -20,13 +18,13 @@
                         <segue destination="2" kind="relationship" relationship="rootViewController" id="1im-id-K1k"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="t8L-7j-OZf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-750" y="99"/>
         </scene>
         <!--Product View Controller-->
         <scene sceneID="5">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
                 <viewController id="2" customClass="ProductViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3">
                         <rect key="frame" x="0.0" y="64" width="320" height="416"/>
@@ -34,7 +32,7 @@
                         <subviews>
                             <view contentMode="scaleToFill" id="krx-vw-JOx">
                                 <rect key="frame" x="9" y="9" width="302" height="399"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <autoresizingMask key="autoresizingMask" heightSizable="YES"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" id="zaD-tS-kyA">
                                         <rect key="frame" x="7" y="8" width="288" height="383"/>
@@ -57,11 +55,11 @@
                             </imageView>
                             <view contentMode="scaleToFill" id="qxO-Pt-1Sv" customClass="RoundedCornerView">
                                 <rect key="frame" x="27" y="205" width="267" height="191"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES"/>
                                 <subviews>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" id="8Ka-p0-GhN">
                                         <rect key="frame" x="12" y="13" width="242" height="165"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES"/>
                                         <string key="text">Reliable and Efficient
 
 7.5 cu. ft. colossal capacity — Colossal-size stainless steel drum can take on everything the washer sends its way
@@ -99,13 +97,13 @@ Specialty Dry Cycles — Provide just the right levels of drying for better fabr
                         <segue destination="ICT-5U-F0A" kind="push" identifier="rate" id="2Yw-jz-bRc"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-327" y="99"/>
         </scene>
         <!--Rate View Controller-->
         <scene sceneID="p6b-u6-ePm">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Fpm-vL-z9F" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="ICT-5U-F0A" customClass="RateViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="EMb-yS-DbW">
                         <rect key="frame" x="0.0" y="64" width="320" height="416"/>
@@ -113,7 +111,7 @@ Specialty Dry Cycles — Provide just the right levels of drying for better fabr
                         <subviews>
                             <view contentMode="scaleToFill" id="UYL-FZ-J0Z">
                                 <rect key="frame" x="9" y="8" width="302" height="399"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" id="eOG-we-WV2">
                                         <rect key="frame" x="7" y="8" width="288" height="383"/>
@@ -136,11 +134,11 @@ Specialty Dry Cycles — Provide just the right levels of drying for better fabr
                             </view>
                             <view contentMode="scaleToFill" id="PTF-l5-dkb" customClass="RoundedCornerView">
                                 <rect key="frame" x="35" y="254" width="255" height="98"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES"/>
                                 <subviews>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="smX-Tb-oIh" customClass="UIPlaceHolderTextView">
                                         <rect key="frame" x="6" y="11" width="243" height="80"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES"/>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -153,7 +151,7 @@ Specialty Dry Cycles — Provide just the right levels of drying for better fabr
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="QKG-YG-bj7">
                                 <rect key="frame" x="123" y="356" width="75" height="37"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Submit">
                                     <color key="titleColor" red="0.0" green="0.69411764710000001" blue="0.56470588239999997" alpha="1" colorSpace="deviceRGB"/>
@@ -185,7 +183,7 @@ Specialty Dry Cycles — Provide just the right levels of drying for better fabr
                             </imageView>
                             <view hidden="YES" opaque="NO" contentMode="scaleToFill" id="EoE-sE-9pI">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="420"/>
-                                <autoresizingMask key="autoresizingMask"/>
+                                <autoresizingMask key="autoresizingMask" heightSizable="YES"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" id="kVv-PR-9gj" customClass="RoundedCornerView">
                                         <rect key="frame" x="60" y="105" width="200" height="195"/>
@@ -240,13 +238,13 @@ Specialty Dry Cycles — Provide just the right levels of drying for better fabr
                         <segue destination="vQY-A6-nkG" kind="push" identifier="confirm" id="ZH8-AL-nKp"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Fpm-vL-z9F" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="97" y="99"/>
         </scene>
         <!--Confirm View Controller-->
         <scene sceneID="Yzp-qk-gB4">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="VwH-In-zB4" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="confirmViewController" id="vQY-A6-nkG" customClass="ConfirmViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7F3-ZT-8Qy">
                         <rect key="frame" x="0.0" y="64" width="320" height="416"/>
@@ -254,7 +252,7 @@ Specialty Dry Cycles — Provide just the right levels of drying for better fabr
                         <subviews>
                             <view contentMode="scaleToFill" id="i5l-Lz-1vY">
                                 <rect key="frame" x="9" y="9" width="302" height="399"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" id="D58-Nc-j74">
                                         <rect key="frame" x="7" y="8" width="288" height="383"/>
@@ -291,12 +289,12 @@ Specialty Dry Cycles — Provide just the right levels of drying for better fabr
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </view>
                             <view contentMode="scaleToFill" id="WEg-dx-if3" customClass="RoundedCornerView">
-                                <rect key="frame" x="112" y="111" width="168" height="119"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <rect key="frame" x="112" y="111" width="168" height="277"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES"/>
                                 <subviews>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" id="31M-Go-7NB">
-                                        <rect key="frame" x="7" y="10" width="155" height="98"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <rect key="frame" x="7" y="10" width="155" height="259"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES"/>
                                         <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                         <color key="textColor" red="0.13725490868091583" green="0.12156862765550613" blue="0.12549020349979401" alpha="1" colorSpace="deviceRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
@@ -323,6 +321,7 @@ Specialty Dry Cycles — Provide just the right levels of drying for better fabr
                         <outlet property="titleLabel" destination="zQe-MJ-KGH" id="UeK-qS-AVp"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VwH-In-zB4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="528" y="99"/>
         </scene>
@@ -354,6 +353,10 @@ Specialty Dry Cycles — Provide just the right levels of drying for better fabr
         <class className="RateViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/RateViewController.h"/>
             <relationships>
+                <relationship kind="action" name="doneClicked:"/>
+                <relationship kind="action" name="submitClicked:"/>
+                <relationship kind="action" name="textViewDidBeginEditing:" candidateClass="UITextView"/>
+                <relationship kind="action" name="titleViewDidBeginEditing:"/>
                 <relationship kind="outlet" name="doneButton" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="loadingBevel" candidateClass="RoundedCornerView"/>
                 <relationship kind="outlet" name="loadingLabel" candidateClass="UILabel"/>
