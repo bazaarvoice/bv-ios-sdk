@@ -55,7 +55,7 @@
         returnValue = [returnValue stringByAppendingFormat:@"Offset: %d\n", self.offset];
         returnValue = [returnValue stringByAppendingFormat:@"Limit: %d\n", self.limit];
         returnValue = [returnValue stringByAppendingFormat:@"Total Results: %d\n", self.totalResults];
-        returnValue = [returnValue stringByAppendingFormat:@"Locale: %d\n", self.locale];
+        returnValue = [returnValue stringByAppendingFormat:@"Locale: %@\n", self.locale];
     }
     
     return returnValue;

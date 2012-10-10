@@ -102,7 +102,7 @@
 - (NSString*) parameterURL {
     id parameterValue; NSString *appendThisFragment;
     NSDictionary *parametersDict = self.parameters.dictionaryOfValues;
-    NSString *returnValue = [NSString stringWithString:@""];
+    NSString *returnValue = @"";
     for (NSString *key in parametersDict) {
         parameterValue = [parametersDict objectForKey:key];
         // If the parameter has a valid value, let's process it.
@@ -179,13 +179,13 @@
     newResponse.rawResponse = respDict;
     newResponse.rawURLRequest = self.rawURLRequest;
     
-    if ([self.delegate respondsToSelector:@selector(didReceiveResponse:forRequest:)])
+    if (self.delegate != nil && [self.delegate respondsToSelector:@selector(didReceiveResponse:forRequest:)])
         [self.delegate didReceiveResponse:newResponse forRequest:self];
 }
 
 - (void)connection:(NSURLConnection *)connection didSendBodyData:(NSInteger)bytesWritten totalBytesWritten:(NSInteger)totalBytesWritten totalBytesExpectedToWrite:(NSInteger)totalBytesExpectedToWrite
 {
-    if ([self.delegate respondsToSelector:@selector(didSendBodyData:totalBytesWritten:totalBytesExpectedToWrite:forRequest:)])
+    if (self.delegate != nil && [self.delegate respondsToSelector:@selector(didSendBodyData:totalBytesWritten:totalBytesExpectedToWrite:forRequest:)])
     {
         [self.delegate didSendBodyData:bytesWritten totalBytesWritten:totalBytesWritten totalBytesExpectedToWrite:totalBytesExpectedToWrite forRequest:self];
     }
@@ -203,7 +203,7 @@
     if(self.retriedUponFail)
     {
         NSLog(@"Errors: %@", error);
-        if ([self.delegate respondsToSelector:@selector(didFailToReceiveResponse:forRequest:)])
+        if (self.delegate != nil && [self.delegate respondsToSelector:@selector(didFailToReceiveResponse:forRequest:)])
             [self.delegate didFailToReceiveResponse:error forRequest:self];        
     } 
     else 

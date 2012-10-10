@@ -97,7 +97,7 @@
 		case BVSBJson_token_separator:
 			return @"value separator";
 			break;
-
+            
 		case BVSBJson_token_object_start:
 			return @"start of object";
 			break;
@@ -115,7 +115,7 @@
 }
 
 - (void)maxDepthError {
-    self.error = [NSString stringWithFormat:@"Input depth exceeds max depth of %lu", maxDepth];
+    self.error = [NSString stringWithFormat:@"Input depth exceeds max depth of %lu", (unsigned long)maxDepth];
     self.state = [BVSBJsonStreamParserStateError sharedInstance];
 }
 
