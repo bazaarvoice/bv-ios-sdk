@@ -1,15 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="1.1" toolsVersion="2182" systemVersion="11E53" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="a0c-xG-6v3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2843" systemVersion="11E53" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="a0c-xG-6v3">
     <dependencies>
-        <deployment defaultVersion="1296" identifier="iOS"/>
-        <development defaultVersion="4200" identifier="xcode"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1181"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1929"/>
     </dependencies>
     <scenes>
         <!--List Reviews Controller-->
         <scene sceneID="cPG-RZ-7H7">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="NoK-RN-FCU" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="Oxw-Ad-jTp" customClass="ListReviewsController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="vLR-83-P1Q" customClass="List">
                         <rect key="frame" x="0.0" y="64" width="320" height="416"/>
@@ -17,7 +14,7 @@
                         <subviews>
                             <view contentMode="scaleToFill" id="jAk-Us-Iac">
                                 <rect key="frame" x="9" y="8" width="302" height="399"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" id="n0U-Wt-Eiw">
                                         <rect key="frame" x="7" y="8" width="288" height="383"/>
@@ -83,21 +80,21 @@
                         <segue destination="faE-pS-ygo" kind="push" identifier="detail" id="I5A-yL-eD2"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NoK-RN-FCU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-131" y="143"/>
         </scene>
         <!--Product Detail View Controller-->
         <scene sceneID="s51-Sd-Xa6">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ncG-62-p1a" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="faE-pS-ygo" customClass="ProductDetailViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="6J9-pe-KIQ">
                         <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" id="OD7-0P-h8u">
-                                <rect key="frame" x="9" y="9" width="302" height="399"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <rect key="frame" x="9" y="8" width="302" height="399"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" id="MiX-S6-cXj">
                                         <rect key="frame" x="7" y="8" width="288" height="383"/>
@@ -192,7 +189,6 @@
                                 <rect key="frame" x="132" y="49" width="159" height="46"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                <color key="textColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -207,13 +203,13 @@
                         <segue destination="0eg-eH-eKb" kind="push" identifier="reviewDetail" id="zQt-9U-4tu"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ncG-62-p1a" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="283" y="143"/>
         </scene>
         <!--Review Detail View Controller-->
         <scene sceneID="npN-8E-0lj">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="k1j-pX-DuA" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="0eg-eH-eKb" customClass="ReviewDetailViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="uQs-Wz-ynZ">
                         <rect key="frame" x="0.0" y="64" width="320" height="416"/>
@@ -221,7 +217,7 @@
                         <subviews>
                             <view contentMode="scaleToFill" id="ayw-cN-gJ8">
                                 <rect key="frame" x="9" y="8" width="302" height="399"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" id="qX5-t4-E6m">
                                         <rect key="frame" x="7" y="8" width="288" height="383"/>
@@ -243,21 +239,21 @@
                                                 <color key="textColor" red="0.0" green="0.23529411852359772" blue="0.30588236451148987" alpha="1" colorSpace="deviceRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" id="CD7-Jn-afR">
+                                                <rect key="frame" x="4" y="152" width="280" height="231"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES"/>
+                                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                                <color key="textColor" red="0.13725490868091583" green="0.12156862765550613" blue="0.12549020349979401" alpha="1" colorSpace="deviceRGB"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                            </textView>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" red="0.88235294819999999" green="0.93725490570000003" blue="0.93725490570000003" alpha="0.79000000000000004" colorSpace="deviceRGB"/>
                             </view>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" id="CD7-Jn-afR">
-                                <rect key="frame" x="20" y="165" width="280" height="231"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                <color key="textColor" red="0.13725490868091583" green="0.12156862765550613" blue="0.12549020349979401" alpha="1" colorSpace="deviceRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
                         </subviews>
                     </view>
                     <navigationItem key="navigationItem" id="73h-hA-I8q"/>
@@ -268,13 +264,13 @@
                         <outlet property="starRating" destination="5CA-m3-hFz" id="q7X-jC-wX6"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="k1j-pX-DuA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="767" y="143"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="xEh-Bc-CGq">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Hnl-FV-2RA" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController definesPresentationContext="YES" id="a0c-xG-6v3" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="kBK-kQ-2hy">
                         <autoresizingMask key="autoresizingMask"/>
@@ -283,13 +279,13 @@
                         <segue destination="2ZO-5H-pcY" kind="relationship" relationship="rootViewController" id="rg8-QK-HN7"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Hnl-FV-2RA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-978" y="143"/>
         </scene>
         <!--Search View Controller-->
         <scene sceneID="YNV-kk-lIX">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Dlu-Bu-MYi" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="2ZO-5H-pcY" customClass="SearchViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="e4p-W9-prR">
                         <rect key="frame" x="0.0" y="64" width="320" height="416"/>
@@ -297,7 +293,7 @@
                         <subviews>
                             <view contentMode="scaleToFill" id="xyH-NE-kaW">
                                 <rect key="frame" x="9" y="8" width="302" height="399"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" id="atR-xT-ZoH">
                                         <rect key="frame" x="7" y="8" width="288" height="383"/>
@@ -309,7 +305,7 @@
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" image="bv.jpg" id="yG0-WI-K5d">
                                 <rect key="frame" x="72" y="47" width="177" height="99"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Dryer" borderStyle="roundedRect" minimumFontSize="17" clearButtonMode="whileEditing" id="yon-2q-wxL">
                                 <rect key="frame" x="55" y="154" width="210" height="31"/>
@@ -328,6 +324,7 @@
                         <segue destination="Oxw-Ad-jTp" kind="push" identifier="search" id="ksD-qG-2wo"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Dlu-Bu-MYi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-551" y="143"/>
         </scene>
@@ -381,6 +378,7 @@
         <class className="SearchViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SearchViewController.h"/>
             <relationships>
+                <relationship kind="action" name="performSearch:"/>
                 <relationship kind="outlet" name="searchBox" candidateClass="UITextField"/>
             </relationships>
         </class>

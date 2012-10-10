@@ -9,12 +9,13 @@
 /* Begin PBXBuildFile section */
 		6F015E30154AFAB300BE3E49 /* UIPlaceHolderTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F015E2F154AFAB300BE3E49 /* UIPlaceHolderTextView.m */; };
 		6F015E37154B029000BE3E49 /* ConfirmViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F015E36154B029000BE3E49 /* ConfirmViewController.m */; };
+		6F01FE1D1625E2CC007DE393 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F01FE1C1625E2CC007DE393 /* Default-568h@2x.png */; };
+		6F01FE2C162606C1007DE393 /* app-background-586.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F01FE2B162606C1007DE393 /* app-background-586.png */; };
 		6F334A5D154B08FB00345C16 /* NSDictionary+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F334A5C154B08FB00345C16 /* NSDictionary+Utils.m */; };
 		6F334A61154B11CD00345C16 /* BVNavigationItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F334A60154B11CC00345C16 /* BVNavigationItem.m */; };
 		6F334A63154B15C400345C16 /* bv.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F334A62154B15C400345C16 /* bv.png */; };
 		6F334A6D154B18E100345C16 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F334A69154B18E100345C16 /* Default@2x.png */; };
 		6F334A6E154B18E100345C16 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F334A6A154B18E100345C16 /* Default.png */; };
-		6F334AB9154B300600345C16 /* libarclite_universal.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F334A97154B300600345C16 /* libarclite_universal.a */; };
 		6F3618761559A430007B31DC /* libBViOSSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F3618541559A430007B31DC /* libBViOSSDK.a */; };
 		6F3618791559AE77007B31DC /* BVColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F3618781559AE77007B31DC /* BVColor.m */; };
 		6F36187C1559C03B007B31DC /* RoundedCornerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F36187B1559C03B007B31DC /* RoundedCornerView.m */; };
@@ -48,6 +49,8 @@
 		6F015E2F154AFAB300BE3E49 /* UIPlaceHolderTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIPlaceHolderTextView.m; sourceTree = "<group>"; };
 		6F015E35154B029000BE3E49 /* ConfirmViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfirmViewController.h; sourceTree = "<group>"; };
 		6F015E36154B029000BE3E49 /* ConfirmViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfirmViewController.m; sourceTree = "<group>"; };
+		6F01FE1C1625E2CC007DE393 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "PhotoUploadExample/Default-568h@2x.png"; sourceTree = SOURCE_ROOT; };
+		6F01FE2B162606C1007DE393 /* app-background-586.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "app-background-586.png"; path = "PhotoUploadExample/app-background-586.png"; sourceTree = SOURCE_ROOT; };
 		6F334A5B154B08FB00345C16 /* NSDictionary+Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+Utils.h"; sourceTree = "<group>"; };
 		6F334A5C154B08FB00345C16 /* NSDictionary+Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+Utils.m"; sourceTree = "<group>"; };
 		6F334A5F154B11CC00345C16 /* BVNavigationItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVNavigationItem.h; sourceTree = "<group>"; };
@@ -138,7 +141,6 @@
 				6F4B99A4153F4EB90040AF27 /* UIKit.framework in Frameworks */,
 				6F4B99A6153F4EB90040AF27 /* Foundation.framework in Frameworks */,
 				6F4B99A8153F4EB90040AF27 /* CoreGraphics.framework in Frameworks */,
-				6F334AB9154B300600345C16 /* libarclite_universal.a in Frameworks */,
 				6F3618761559A430007B31DC /* libBViOSSDK.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -216,9 +218,11 @@
 				6FDB996C15618A5A00A9E392 /* graphic-star.png */,
 				6F334A62154B15C400345C16 /* bv.png */,
 				6F935A5F1547054A00B9FC85 /* dryer.png */,
+				6F01FE1C1625E2CC007DE393 /* Default-568h@2x.png */,
 				6F334A69154B18E100345C16 /* Default@2x.png */,
 				6F334A6A154B18E100345C16 /* Default.png */,
 				6FDB99691561624400A9E392 /* app-background.png */,
+				6F01FE2B162606C1007DE393 /* app-background-586.png */,
 				6F4B99AA153F4EB90040AF27 /* Supporting Files */,
 			);
 			path = PhotoUploadExample;
@@ -387,6 +391,8 @@
 				BFDB5C9F154EE1D6001E80BF /* appicon@2x.png in Resources */,
 				6FDB996A1561624400A9E392 /* app-background.png in Resources */,
 				6FDB996D15618A5A00A9E392 /* graphic-star.png in Resources */,
+				6F01FE1D1625E2CC007DE393 /* Default-568h@2x.png in Resources */,
+				6F01FE2C162606C1007DE393 /* app-background-586.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -498,7 +504,7 @@
 					"\"$(SRCROOT)/PhotoUploadExample/bv-ios-static-library\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "8D5BF28B-9E33-4F71-9876-AD79CA75400A";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "3822D179-C923-4487-BDEF-705E5081C97E";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -506,6 +512,7 @@
 		6F4B99BF153F4EB90040AF27 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Alex Medearis (UBFJTML2DG)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PhotoUploadExample/PhotoUploadExample-Prefix.pch";
 				INFOPLIST_FILE = "PhotoUploadExample/PhotoUploadExample-Info.plist";
@@ -516,6 +523,7 @@
 					"\"$(SRCROOT)/PhotoUploadExample/bv-ios-static-library\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "3822D179-C923-4487-BDEF-705E5081C97E";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
