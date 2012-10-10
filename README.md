@@ -18,7 +18,7 @@ Developers can display content as well as submit content such as Ratings & Revie
  * API key to access client's staging and production data
  * Go to the [Bazaarvoice Developer Portal](http://developer.bazaarvoice.com) to get the above completed
 * Xcode IDE version 4.3 or newer
-* Note: This SDK is designed specifically for iOS 5, but also works for iOS 4
+* Built for iOS 5+
 
 ## What's Included
 This package includes the following:
