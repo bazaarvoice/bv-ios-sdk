@@ -347,9 +347,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		6F85EB961545F52800602078 /* BrowseProductsExample */ = {
+		6F85EB961545F52800602078 /* Browse Products */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 6F85EBB51545F52800602078 /* Build configuration list for PBXNativeTarget "BrowseProductsExample" */;
+			buildConfigurationList = 6F85EBB51545F52800602078 /* Build configuration list for PBXNativeTarget "Browse Products" */;
 			buildPhases = (
 				6F85EB931545F52800602078 /* Sources */,
 				6F85EB941545F52800602078 /* Frameworks */,
@@ -359,7 +359,7 @@
 			);
 			dependencies = (
 			);
-			name = BrowseProductsExample;
+			name = "Browse Products";
 			productName = BrowseProductsExample;
 			productReference = 6F85EB971545F52800602078 /* BrowseProductsExample.app */;
 			productType = "com.apple.product-type.application";
@@ -384,7 +384,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				6F85EB961545F52800602078 /* BrowseProductsExample */,
+				6F85EB961545F52800602078 /* Browse Products */,
 			);
 		};
 /* End PBXProject section */
@@ -549,7 +549,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		6F85EBB51545F52800602078 /* Build configuration list for PBXNativeTarget "BrowseProductsExample" */ = {
+		6F85EBB51545F52800602078 /* Build configuration list for PBXNativeTarget "Browse Products" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6F85EBB61545F52800602078 /* Debug */,

@@ -243,10 +243,9 @@
         
         if(response.hasErrors)
         {           
-            // If there are errors, reset the submission and alert the user.
-            NSDictionary *anError = [(NSArray*)response.errors objectAtIndex:0];
+            NSLog(@"%@", response.rawResponse);
             UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Upload Error!"
-                                                              message:[anError objectForKey:@"Message"]                                                           delegate:nil
+                                                              message:@"An error occurred uploading your photo.  Please try again later."                                                         delegate:nil
                                                     cancelButtonTitle:@"OK"
                                                     otherButtonTitles:nil];
             [message show];
@@ -342,7 +341,7 @@
     // again.
     [self.overlay setHidden:YES];
     UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Whoops!"
-                                                      message:@"An error occurred.  Please try again."
+                                                      message:@"An error occurred. Please try again."
                                                      delegate:nil
                                             cancelButtonTitle:@"OK"
                                             otherButtonTitles:nil];

@@ -64,7 +64,7 @@
 		6F3618781559AE77007B31DC /* BVColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVColor.m; sourceTree = "<group>"; };
 		6F36187A1559C03A007B31DC /* RoundedCornerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoundedCornerView.h; sourceTree = "<group>"; };
 		6F36187B1559C03B007B31DC /* RoundedCornerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoundedCornerView.m; sourceTree = "<group>"; };
-		6F4B999F153F4EB90040AF27 /* PhotoUploadExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotoUploadExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6F4B999F153F4EB90040AF27 /* Photo Upload.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Photo Upload.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6F4B99A3153F4EB90040AF27 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		6F4B99A5153F4EB90040AF27 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		6F4B99A7153F4EB90040AF27 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -173,7 +173,7 @@
 		6F4B99A0153F4EB90040AF27 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				6F4B999F153F4EB90040AF27 /* PhotoUploadExample.app */,
+				6F4B999F153F4EB90040AF27 /* Photo Upload.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -330,9 +330,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		6F4B999E153F4EB90040AF27 /* PhotoUploadExample */ = {
+		6F4B999E153F4EB90040AF27 /* Photo Upload */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 6F4B99BD153F4EB90040AF27 /* Build configuration list for PBXNativeTarget "PhotoUploadExample" */;
+			buildConfigurationList = 6F4B99BD153F4EB90040AF27 /* Build configuration list for PBXNativeTarget "Photo Upload" */;
 			buildPhases = (
 				6F4B999B153F4EB90040AF27 /* Sources */,
 				6F4B999C153F4EB90040AF27 /* Frameworks */,
@@ -342,9 +342,9 @@
 			);
 			dependencies = (
 			);
-			name = PhotoUploadExample;
+			name = "Photo Upload";
 			productName = PhotoUploadExample;
-			productReference = 6F4B999F153F4EB90040AF27 /* PhotoUploadExample.app */;
+			productReference = 6F4B999F153F4EB90040AF27 /* Photo Upload.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -368,7 +368,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				6F4B999E153F4EB90040AF27 /* PhotoUploadExample */,
+				6F4B999E153F4EB90040AF27 /* Photo Upload */,
 			);
 		};
 /* End PBXProject section */
@@ -540,7 +540,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		6F4B99BD153F4EB90040AF27 /* Build configuration list for PBXNativeTarget "PhotoUploadExample" */ = {
+		6F4B99BD153F4EB90040AF27 /* Build configuration list for PBXNativeTarget "Photo Upload" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6F4B99BE153F4EB90040AF27 /* Debug */,
