@@ -12,6 +12,8 @@
 #import "BVColor.h"
 #import <MobileCoreServices/UTCoreTypes.h>
 
+#define MIN_SIZE 533
+
 @interface ProductViewController ()
 // Private method to kick off photo submission
 - (BVSubmission *)submitPhoto:(UIImage *)image delegate:(id)delegate;
@@ -53,6 +55,7 @@
         picker.delegate = self;
         // Indicate that we only want images
         picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+        picker.cameraDevice = UIImagePickerControllerCameraDeviceRear;
         picker.mediaTypes = [NSArray arrayWithObjects:
                                   (NSString *) kUTTypeImage, nil];
         [self presentModalViewController:picker animated:YES];
@@ -71,6 +74,16 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
     // photo is uploading, but will upload the photo in the background
     // while the user fills out a form, rating etc.
     UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
+    
+    // MIN_SIZE is a client config-specific parameter
+    if(image.size.width < MIN_SIZE || image.size.height < MIN_SIZE){
+        UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Error!"
+                                                          message:@"This image is too small.  Please use the rear-facing camera."                                                         delegate:nil
+                                                cancelButtonTitle:@"OK"
+                                                otherButtonTitles:nil];
+        [message show];
+        return;
+    }
     [self performSegueWithIdentifier:@"rate" sender:image];
 }
 
