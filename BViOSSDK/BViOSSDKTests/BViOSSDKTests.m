@@ -243,12 +243,14 @@
     requestComplete = NO;
     BVDisplayStories *showDisplayRequest = [[BVDisplayStories alloc] init];
     showDisplayRequest.delegate = self;
+    showDisplayRequest.parameters.filter = @"Id:14181";
+
     
     [showDisplayRequest startAsynchRequest];
     NSRunLoop *theRL = [NSRunLoop currentRunLoop];
     // Begin a run loop terminated when the requestComplete it set to true
     while (!requestComplete && [theRL runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]]);    
-    [self checkParams:[NSMutableDictionary dictionaryWithObjectsAndKeys:nil]];     
+    [self checkParams:[NSMutableDictionary dictionaryWithObjectsAndKeys:@"Id:14181", @"filter",nil]];     
 }
 
 - (void)testShowStory {
