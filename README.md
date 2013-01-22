@@ -1,5 +1,10 @@
 # Bazaarvoice iOS SDK 
-### *Version 1.3.3* (Public Beta)	
+### *Version 1.3.3* (DEPRICATED)
+
+## Depricated
+This version of the iOS SDK has been depricated and is no longer maintained.  It is for legacy purposes only.  We recommend that clients use the latest version of the BV iOS SDK:
+
+[https://github.com/bazaarvoice/bv-ios-sdk-2](https://github.com/bazaarvoice/bv-ios-sdk-2)	
 
 ## Introduction
 The Bazaarvoice software development kit (SDK) for iOS is an iOS static library that provides an easy way to generate REST calls to the Bazaarvoice Developer API. Using this SDK, mobile developers can quickly integrate Bazaarvoice content into their native iOS apps for iPhone and iPad on iOS 4 or newer.

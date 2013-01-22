@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2843" systemVersion="11E53" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="7Sj-zt-yWf">
     <dependencies>
-        <deployment defaultVersion="1536" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1929"/>
     </dependencies>
     <scenes>
@@ -254,7 +253,7 @@ Specialty Dry Cycles — Provide just the right levels of drying for better fabr
                                 <rect key="frame" x="9" y="9" width="302" height="399"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" id="D58-Nc-j74">
+                                    <view contentMode="scaleAspectFit" id="D58-Nc-j74">
                                         <rect key="frame" x="7" y="8" width="288" height="383"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -353,10 +352,6 @@ Specialty Dry Cycles — Provide just the right levels of drying for better fabr
         <class className="RateViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/RateViewController.h"/>
             <relationships>
-                <relationship kind="action" name="doneClicked:"/>
-                <relationship kind="action" name="submitClicked:"/>
-                <relationship kind="action" name="textViewDidBeginEditing:" candidateClass="UITextView"/>
-                <relationship kind="action" name="titleViewDidBeginEditing:"/>
                 <relationship kind="outlet" name="doneButton" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="loadingBevel" candidateClass="RoundedCornerView"/>
                 <relationship kind="outlet" name="loadingLabel" candidateClass="UILabel"/>
