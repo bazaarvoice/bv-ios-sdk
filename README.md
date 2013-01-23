@@ -30,4 +30,8 @@ This package includes the following:
 * Photo upload example: Illustrates using the Bazaarvoice iOS SDK to submit a photo-review that includes a user generated photo (camera/gallery), star rating and review text.
 * “Kitchen Sink” app: Covers all the baseline method calls and their responses. It’s a good way for developers see the all the requests and responses of the SDK out of the box.
 
+## Updating from V1
+See the included V2UpdateGuide for information on how to update a project using the old BV iOS SDK to version 2.
+
+
 ## Troubleshooting
