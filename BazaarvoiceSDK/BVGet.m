@@ -84,6 +84,27 @@
     _requestURL = requestURL;
 }
 
+- (void)setSearch:(NSString *)search {
+    _search = search;
+    [self.network setUrlParameterWithName:@"Search" value:search];
+}
+
+- (void)setLocale:(NSString *)locale {
+    _locale = locale;
+    [self.network setUrlParameterWithName:@"Locale" value:locale];
+}
+
+- (void)setLimit:(int)limit{
+    _limit = limit;
+    [self.network setUrlParameterWithName:@"Limit" value:[NSString stringWithFormat:@"%d", limit]];
+}
+
+- (void)setOffset:(int)offset{
+    _offset = offset;
+    [self.network setUrlParameterWithName:@"Offset" value:[NSString stringWithFormat:@"%d", offset]];
+}
+
+
 - (NSString *)getIncludeTypeString:(BVIncludeType)includeType {
     switch (includeType) {
         case BVIncludeTypeAnswers:
@@ -137,16 +158,6 @@
     [self.network setUrlListParameterWithName:@"Stats" value:[self getIncludeStatsTypeString:type]];
 }
 
-- (void)setSearch:(NSString *)search {
-    _search = search;
-    [self.network setUrlParameterWithName:@"Search" value:search];
-}
-
-- (void)setLocale:(NSString *)locale {
-    _locale = locale;
-    [self.network setUrlParameterWithName:@"Locale" value:locale];
-}
-
 - (void)setSearchOnIncludedType:(BVIncludeType)type search:(NSString *)search {
     [self.network setUrlParameterWithName:[NSString stringWithFormat:@"Search_%@", [self getIncludeTypeString:type]] value:search];
 }
@@ -159,16 +170,6 @@
 - (void)setLimitOnIncludedType:(BVIncludeType)type value:(int)value {
     [self.network setUrlParameterWithName:[NSString stringWithFormat:@"Limit_%@", [self getIncludeTypeString:type]]
                             value:[NSString stringWithFormat:@"%d", value]];
-}
-
-- (void)setLimit:(int)limit{
-    _limit = limit;
-    [self.network setUrlParameterWithName:@"Limit" value:[NSString stringWithFormat:@"%d", limit]];
-}
-
-- (void)setOffset:(int)offset{
-    _offset = offset;
-    [self.network setUrlParameterWithName:@"Offset" value:[NSString stringWithFormat:@"%d", offset]];
 }
 
 - (NSString *)getEqualityString:(BVEquality)equality {
