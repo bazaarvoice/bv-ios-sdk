@@ -19,35 +19,54 @@
 @synthesize delegate = _delegate;
 @synthesize type = _type;
 @synthesize requestURL = _requestURL;
+
+/***** Used by All Types of BVPost Requests *******/
 @synthesize action = _action;
 @synthesize agreedToTermsAndConditions = _agreedToTermsAndConditions;
-@synthesize sendEmailAlertWhenPublished = _sendEmailAlertWhenPublished;
-@synthesize isRecommended = _isRecommended;
-@synthesize isUserAnonymous = _isUserAnonymous;
-
-@synthesize netPromoterScore = _netPromoterScore;
-@synthesize rating = _rating;
-
 @synthesize campaignId = _campaignId;
-@synthesize answerText = _answerText;
 @synthesize locale = _locale;
+@synthesize sendEmailAlertWhenPublished = _sendEmailAlertWhenPublished;
 @synthesize userEmail = _userEmail;
 @synthesize userId = _userId;
 @synthesize userLocation = _userLocation;
 @synthesize userNickname = _userNickname;
+
+/***** Used by Review, Question, Story *******/
 @synthesize productId = _productId;
+
+/***** Used by Review, Story, Comment *******/
 @synthesize title = _title;
+
+
+/***** Used by Question, Story *******/
+@synthesize answerText = _answerText;
 @synthesize categoryId = _categoryId;
+
+/***** Used by Review *******/
+@synthesize isRecommended = _isRecommended;
 @synthesize netPromoterComment = _netPromoterComment;
+@synthesize netPromoterScore = _netPromoterScore;
+@synthesize rating = _rating;
 @synthesize reviewText = _reviewText;
+
+/***** Used by Question *******/
+@synthesize isUserAnonymous = _isUserAnonymous;
 @synthesize questionSummary = _questionSummary;
 @synthesize questionDetails = _questionDetails;
+
+/***** Used by Answer *******/
 @synthesize questionId = _questionId;
+
+/***** Used by Story *******/
 @synthesize sendEmailAlertWhenCommented = _sendEmailAlertWhenCommented;
 @synthesize storyText = _storyText;
+
+/***** Used by Comment *******/
 @synthesize reviewId = _reviewId;
 @synthesize storyId = _storyId;
 @synthesize commentText = _commentText;
+
+/***** Used by Feedback *******/
 @synthesize contentType = _contentType;
 @synthesize contentId = _contentId;
 @synthesize feedbackType = _feedbackType;
@@ -108,6 +127,8 @@
     }
 }
 
+/***** Used by All Types of BVPost Requests *******/
+
 - (NSString *)getActionString:(BVAction)action {
     switch (action) {
         case BVActionPreview:
@@ -122,56 +143,24 @@
     [self.network setUrlParameterWithName:@"Action" value:[self getActionString:action]];
 }
 
-
 - (void)setAgreedToTermsAndConditions:(BOOL)agreedToTermsAndConditions{
     _agreedToTermsAndConditions = agreedToTermsAndConditions;
     [self.network setUrlParameterWithName:@"AgreedToTermsAndConditions" value:agreedToTermsAndConditions ? @"true": @"false"];
 }
-
-- (void)setSendEmailAlertWhenPublished:(BOOL)sendEmailAlertWhenPublished{
-	_sendEmailAlertWhenPublished = sendEmailAlertWhenPublished;
-	[self.network setUrlParameterWithName:@"SendEmailAlertWhenPublished" value:sendEmailAlertWhenPublished ? @"true": @"false"];
-}
-
-- (void)setSendEmailAlertWhenCommented:(BOOL)sendEmailAlertWhenCommented{
-	_sendEmailAlertWhenCommented = sendEmailAlertWhenCommented;
-	[self.network setUrlParameterWithName:@"SendEmailAlertWhenCommented" value:sendEmailAlertWhenCommented ? @"true": @"false"];
-}
-
-- (void)setIsRecommended:(BOOL)isRecommended{
-	_isRecommended = isRecommended;
-	[self.network setUrlParameterWithName:@"IsRecommended" value:isRecommended ? @"true": @"false"];
-}
-
-- (void)setIsUserAnonymous:(BOOL)isUserAnonymous{
-	_isUserAnonymous = isUserAnonymous;
-	[self.network setUrlParameterWithName:@"IsUserAnonymous" value:isUserAnonymous ? @"true": @"false"];
-}
-
-- (void)setNetPromoterScore:(int)netPromoterScore{
-	_netPromoterScore = netPromoterScore;
-	[self.network setUrlParameterWithName:@"NetPromoterScore" value:[NSString stringWithFormat:@"%d", netPromoterScore]];
-}
-
-- (void)setRating:(int)rating{
-	_rating = rating;
-	[self.network setUrlParameterWithName:@"Rating" value:[NSString stringWithFormat:@"%d", rating]];
-}
-
 
 - (void)setCampaignId:(NSString *)campaignId {
     _campaignId = campaignId;
     [self.network setUrlParameterWithName:@"CampaignId" value:campaignId];
 }
 
-- (void)setAnswerText:(NSString *)answerText {
-    _answerText = answerText;
-    [self.network setUrlParameterWithName:@"AnswerText" value:answerText];
-}
-
 - (void)setLocale:(NSString *)locale{
 	_locale = locale;
 	[self.network setUrlParameterWithName:@"Locale" value:locale];
+}
+
+- (void)setSendEmailAlertWhenPublished:(BOOL)sendEmailAlertWhenPublished{
+	_sendEmailAlertWhenPublished = sendEmailAlertWhenPublished;
+	[self.network setUrlParameterWithName:@"SendEmailAlertWhenPublished" value:sendEmailAlertWhenPublished ? @"true": @"false"];
 }
 
 - (void)setUserEmail:(NSString *)userEmail{
@@ -194,19 +183,70 @@
 	[self.network setUrlParameterWithName:@"UserNickname" value:userNickname];
 }
 
+- (void)setContextDataValue:(NSString *)dimensionExternalId value:(NSString *)value {
+    [self.network setUrlParameterWithName:[NSString stringWithFormat:@"ContextDataValue_%@", dimensionExternalId]
+                                    value:value];
+}
+
+- (void)addPhotoUrl:(NSString *)url withCaption:(NSString *)caption {
+    [self.network addNthUrlParameterWithName:@"PhotoCaption" value:caption];
+    [self.network addNthUrlParameterWithName:@"PhotoUrl" value:url];
+    
+}
+
+- (void)addProductRecommendationForIndex:(int)index withProductExternalId:(int)productExternalId {
+    [self.network setUrlParameterWithName:[NSString stringWithFormat:@"ProductRecommendationId_%d", index]
+                                    value:[NSString stringWithFormat:@"%d", productExternalId]];
+}
+
+- (void)addVideoUrl:(NSString *)url withCaption:(NSString *)caption {
+    [self.network addNthUrlParameterWithName:@"VideoCaption" value:caption];
+    [self.network addNthUrlParameterWithName:@"VideoUrl" value:url];
+}
+
+/***** Used by Review, Question, Answer, Story *******/
+
+- (void)setAdditionalField:(NSString *)dimensionExternalId value:(NSString *)value {
+    [self.network setUrlParameterWithName:[NSString stringWithFormat:@"AdditionalField_%@", dimensionExternalId]
+                                    value:value];
+}
+
+/***** Used by Review, Question, Story *******/
+
 - (void)setProductId:(NSString *)productId{
 	_productId = productId;
 	[self.network setUrlParameterWithName:@"ProductId" value:productId];
 }
+
+- (void)addTagForDimensionExternalId:(NSString *)dimensionExternalId value:(NSString *)value {
+    [self.network addNthUrlParameterWithName:[NSString stringWithFormat:@"tag_%@", dimensionExternalId]
+                                       value:value];
+}
+
+- (void)addTagIdForDimensionExternalId:(NSString *)dimensionExternalId value:(BOOL)value {
+    [self.network addNthUrlParameterWithName:[NSString stringWithFormat:@"tagid_%@", dimensionExternalId]
+                                       value:value ? @"true": @"false"];
+}
+
+/***** Used by Review, Story, Comment *******/
 
 - (void)setTitle:(NSString *)title{
 	_title = title;
 	[self.network setUrlParameterWithName:@"Title" value:title];
 }
 
+/***** Used by Question, Story *******/
+
 - (void)setCategoryId:(NSString *)categoryId{
 	_categoryId = categoryId;
 	[self.network setUrlParameterWithName:@"CategoryId" value:categoryId];
+}
+
+/***** Used by Review *******/
+
+- (void)setIsRecommended:(BOOL)isRecommended{
+	_isRecommended = isRecommended;
+	[self.network setUrlParameterWithName:@"IsRecommended" value:isRecommended ? @"true": @"false"];
 }
 
 - (void)setNetPromoterComment:(NSString *)netPromoterComment{
@@ -214,9 +254,31 @@
 	[self.network setUrlParameterWithName:@"NetPromoterComment" value:netPromoterComment];
 }
 
+- (void)setNetPromoterScore:(int)netPromoterScore{
+	_netPromoterScore = netPromoterScore;
+	[self.network setUrlParameterWithName:@"NetPromoterScore" value:[NSString stringWithFormat:@"%d", netPromoterScore]];
+}
+
+- (void)setRating:(int)rating{
+	_rating = rating;
+	[self.network setUrlParameterWithName:@"Rating" value:[NSString stringWithFormat:@"%d", rating]];
+}
+
 - (void)setReviewText:(NSString *)reviewText{
 	_reviewText = reviewText;
 	[self.network setUrlParameterWithName:@"ReviewText" value:reviewText];
+}
+
+- (void)setRatingForDimensionExternalId:(NSString *)dimensionExternalId value:(int)value {
+    [self.network setUrlParameterWithName:[NSString stringWithFormat:@"Rating_%@", dimensionExternalId]
+                                    value:[NSString stringWithFormat:@"%d", value]];
+}
+
+/***** Used by Question *******/
+
+- (void)setIsUserAnonymous:(BOOL)isUserAnonymous{
+	_isUserAnonymous = isUserAnonymous;
+	[self.network setUrlParameterWithName:@"IsUserAnonymous" value:isUserAnonymous ? @"true": @"false"];
 }
 
 - (void)setQuestionSummary:(NSString *)questionSummary{
@@ -229,15 +291,30 @@
 	[self.network setUrlParameterWithName:@"QuestionDetails" value:questionDetails];
 }
 
+/***** Used by Answer *******/
+- (void)setAnswerText:(NSString *)answerText {
+    _answerText = answerText;
+    [self.network setUrlParameterWithName:@"AnswerText" value:answerText];
+}
+
 - (void)setQuestionId:(NSString *)questionId{
 	_questionId = questionId;
 	[self.network setUrlParameterWithName:@"QuestionId" value:questionId];
+}
+
+/***** Used by Story *******/
+
+- (void)setSendEmailAlertWhenCommented:(BOOL)sendEmailAlertWhenCommented{
+	_sendEmailAlertWhenCommented = sendEmailAlertWhenCommented;
+	[self.network setUrlParameterWithName:@"SendEmailAlertWhenCommented" value:sendEmailAlertWhenCommented ? @"true": @"false"];
 }
 
 - (void)setStoryText:(NSString *)storyText{
 	_storyText = storyText;
 	[self.network setUrlParameterWithName:@"StoryText" value:storyText];
 }
+
+/***** Used by Comment *******/
 
 - (void)setReviewId:(NSString *)reviewId{
 	_reviewId = reviewId;
@@ -253,6 +330,8 @@
 	_commentText = commentText;
 	[self.network setUrlParameterWithName:@"CommentText" value:commentText];
 }
+
+/***** Used by Feedback *******/
 
 - (void)setContentId:(NSString *)contentId{
     _contentId = contentId;
@@ -282,11 +361,6 @@
 	[self.network setUrlParameterWithName:@"ContentType" value:[self getFeedbackContentTypeString:contentType]];
 }
 
-- (void)setReasonText:(NSString *)reasonText{
-    _reasonText = reasonText;
-	[self.network setUrlParameterWithName:@"ReasonText" value:reasonText];
-}
-
 - (NSString *)getFeedbackString:(BVFeedbackType)type{
     switch (type) {
         case BVFeedbackTypeHelpfulness:
@@ -299,6 +373,11 @@
 - (void)setFeedbackType:(BVFeedbackType)feedbackType{
     _feedbackType = feedbackType;
     [self.network setUrlParameterWithName:@"FeedbackType" value:[self getFeedbackString:feedbackType]];
+}
+
+- (void)setReasonText:(NSString *)reasonText{
+    _reasonText = reasonText;
+	[self.network setUrlParameterWithName:@"ReasonText" value:reasonText];
 }
 
 - (NSString *)getFeedbackVoteString:(BVFeedbackVoteType)type{
@@ -314,48 +393,6 @@
     _vote = vote;
     [self.network setUrlParameterWithName:@"Vote" value:[self getFeedbackVoteString:vote]];
 }
-
-
-- (void)setContextDataValue:(NSString *)dimensionExternalId value:(NSString *)value {
-    [self.network setUrlParameterWithName:[NSString stringWithFormat:@"ContextDataValue_%@", dimensionExternalId]
-                                    value:value];
-}
-
-- (void)setAdditionalField:(NSString *)dimensionExternalId value:(NSString *)value {
-    [self.network setUrlParameterWithName:[NSString stringWithFormat:@"AdditionalField_%@", dimensionExternalId]
-                                    value:value];
-}
-
-- (void)setRatingForDimensionExternalId:(NSString *)dimensionExternalId value:(int)value {
-    [self.network setUrlParameterWithName:[NSString stringWithFormat:@"Rating_%@", dimensionExternalId]
-                                    value:[NSString stringWithFormat:@"%d", value]];
-}
-
-- (void)addPhotoUrl:(NSString *)url withCaption:(NSString *)caption {
-    [self.network addNthUrlParameterWithName:@"PhotoCaption" value:caption];
-    [self.network addNthUrlParameterWithName:@"PhotoUrl" value:url];
-
-}
-- (void)addVideoUrl:(NSString *)url withCaption:(NSString *)caption {
-    [self.network addNthUrlParameterWithName:@"VideoCaption" value:caption];
-    [self.network addNthUrlParameterWithName:@"VideoUrl" value:url];
-}
-
-- (void)addProductRecommendationForIndex:(int)index withProductExternalId:(int)productExternalId {
-    [self.network setUrlParameterWithName:[NSString stringWithFormat:@"ProductRecommendationId_%d", index]
-                                    value:[NSString stringWithFormat:@"%d", productExternalId]];
-}
-
-- (void)addTagForDimensionExternalId:(NSString *)dimensionExternalId value:(NSString *)value {
-    [self.network addNthUrlParameterWithName:[NSString stringWithFormat:@"tag_%@", dimensionExternalId]
-                                       value:value];
-}
-
-- (void)addTagIdForDimensionExternalId:(NSString *)dimensionExternalId value:(BOOL)value {
-    [self.network addNthUrlParameterWithName:[NSString stringWithFormat:@"tagid_%@", dimensionExternalId]
-                                       value:value ? @"true": @"false"];
-}
-
 
 - (void)addGenericParameterWithName:(NSString *)name value:(NSString *)value {
     [self.network setUrlParameterWithName:name value:value];

@@ -81,8 +81,12 @@
             return @"question";
         case BVMediaPostContentTypeReview:
             return @"review";
+        case BVMediaPostContentTypeReviewComment:
+            return @"review_comment";
         case BVMediaPostContentTypeStory:
             return @"story";
+        case BVMediaPostContentTypeStoryComment:
+            return @"story_comment";
     }
 }
 

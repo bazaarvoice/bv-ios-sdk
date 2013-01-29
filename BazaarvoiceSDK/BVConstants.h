@@ -23,7 +23,7 @@ typedef enum {
     BVGetTypeStories
 } BVGetType;
 
-// type for BVPost=
+// type for BVPost
 typedef enum {
     BVPostTypeAnswer,
     BVPostTypeReviewComment,
@@ -43,9 +43,11 @@ typedef enum {
 // contentType for BVMediaPost
 typedef enum {
     BVMediaPostContentTypeReview,
+    BVMediaPostContentTypeReviewComment,
     BVMediaPostContentTypeQuestion,
     BVMediaPostContentTypeAnswer,
-    BVMediaPostContentTypeStory
+    BVMediaPostContentTypeStory,
+    BVMediaPostContentTypeStoryComment
 } BVMediaPostContentType;
 
 // equality for BVGet filters
