@@ -62,6 +62,7 @@ To Create A Point Release
 - Update the SDK\_HEADER\_VALUE in BVNetwork.h 
 - Update the version number under the project Build Settings -> Packaging -> Framework Version
 - Clean and build the SDK. Delete the old BVSDK.framework directory from bv-ios-sdk and copy the new BVSDK.framework directory into bv-ios-sdk.
+- Update the reference apps to use the new release.
 - Update CHANGELOG.md to reflect the changes and update README.md to the appropriate version number.
 - Perform the standard github commit flow (add files, commit, push...)
 - Tag the commit:
