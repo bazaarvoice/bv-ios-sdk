@@ -9,7 +9,7 @@
 //  term.
 
 #import <UIKit/UIKit.h>
-#import "BVGet.h"
+#import <BVSDK/BVSDK.h>
 
 @interface ListReviewsController : UIViewController<UITableViewDelegate, UITableViewDataSource, BVDelegate>
 

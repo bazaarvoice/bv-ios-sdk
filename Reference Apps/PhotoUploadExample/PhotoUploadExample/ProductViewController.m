@@ -10,15 +10,13 @@
 #import "UIImage+Resize.h"
 #import "RateViewController.h"
 #import "BVColor.h"
-#import "BVSettings.h"
-#import "BVMediaPost.h"
+#import <BVSDK/BVSDK.h>
 #import <MobileCoreServices/UTCoreTypes.h>
 
 #define MIN_SIZE 540
 
 @interface ProductViewController ()
-// Private method to kick off photo submission
-- (BVPost *)submitPhoto:(UIImage *)image delegate:(id)delegate;
+
 @end
 
 @implementation ProductViewController
@@ -100,7 +98,6 @@
                               interpolationQuality:kCGInterpolationHigh];
     }
     [self performSegueWithIdentifier:@"rate" sender:image];
-
 }
 
 // Camera/native SDK callbacks
@@ -139,14 +136,15 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
     // view controller as the delegate
     if ([segue.identifier isEqualToString:@"rate"]) {
         RateViewController *rateController = segue.destinationViewController;
-        rateController.photoSubmission = [self submitPhoto:sender delegate:rateController];
+        [self submitPhoto:sender delegate:rateController];
         rateController.previewImage = sender;
     }
 }
 
 // This function actually begins the photo upload via the BV SDK
-- (BVMediaPost *)submitPhoto:(UIImage *)image delegate:(id)delegate
+- (BVMediaPost *)submitPhoto:(UIImage *)image delegate:(RateViewController *)delegate
 {
+    
     // Create a photo submission request
     BVMediaPost *mySubmission = [[BVMediaPost alloc] initWithType:BVMediaPostTypePhoto];
     // With photo submission, we must explicitly set the content type. 
@@ -157,8 +155,12 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
     mySubmission.photo = image;
     // User that is uploading this photo
     mySubmission.userId = @"testuserid111";
+    
+    delegate.photoUploadRequest = mySubmission;
+    
     // Kick off the request
     [mySubmission sendRequestWithDelegate:delegate];
+    
 
     return mySubmission;
 }

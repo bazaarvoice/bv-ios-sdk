@@ -1,3 +1,6 @@
+## 2.1.0 (Jan. 30, 2012)
+
+* Adds omitted BVFeedbackContentType.  Updates directory structure to utilize BVSDK as a framework.
 
 ## 2.0.0 (Dec. 21, 2012)
 

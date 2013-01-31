@@ -9,7 +9,7 @@
 #import "RateViewController.h"
 #import "ConfirmViewController.h"
 #import "BVColor.h"
-#import "BVMediaPost.h"
+#import <BVSDK/BVSDK.h>
 
 @interface RateViewController ()
 // Flag indicating whether the form has been submitted
@@ -43,8 +43,8 @@
 @synthesize previewImage = _previewImage;
 @synthesize formHasBeenSubmitted = _formHasBeenSubmitted;
 @synthesize reviewSubmission = _reviewSubmission;
-@synthesize photoSubmission = _photoSubmission;
 @synthesize isMovedUp = _isMovedUp;
+@synthesize photoUploadRequest = _photoUploadRequest;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -99,7 +99,6 @@
     // This is necessary for the case that the user cancels.  We must set the
     // delegate to nil to avoid callbacks to a dealocated instance.
     self.reviewSubmission.delegate = nil;
-    self.photoSubmission.delegate = nil;
 }
 
 - (void)viewDidUnload

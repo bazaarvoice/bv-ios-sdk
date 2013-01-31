@@ -41,7 +41,7 @@
 		6F85EC101545FD5E00602078 /* NSDictionary+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F85EC0F1545FD5E00602078 /* NSDictionary+Utils.m */; };
 		6F85EC131546040500602078 /* camera_icon.gif in Resources */ = {isa = PBXBuildFile; fileRef = 6F85EC111546040500602078 /* camera_icon.gif */; };
 		6F85EC141546040500602078 /* loading_icon.gif in Resources */ = {isa = PBXBuildFile; fileRef = 6F85EC121546040500602078 /* loading_icon.gif */; };
-		6FC2297B169C8A0D00069BD0 /* libBazaarvoiceSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FC2297A169C8A0D00069BD0 /* libBazaarvoiceSDK.a */; };
+		6FF36C0D16BB05390098771B /* BVSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FF36C0C16BB05390098771B /* BVSDK.framework */; };
 		6FF9239015488E6500007431 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FF9238F15488E6500007431 /* MBProgressHUD.m */; };
 		6FF9239B1548980700007431 /* ReviewDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FF9239A1548980700007431 /* ReviewDetailViewController.m */; };
 /* End PBXBuildFile section */
@@ -102,13 +102,7 @@
 		6F85EC0F1545FD5E00602078 /* NSDictionary+Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+Utils.m"; sourceTree = "<group>"; };
 		6F85EC111546040500602078 /* camera_icon.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = camera_icon.gif; path = Assets/camera_icon.gif; sourceTree = "<group>"; };
 		6F85EC121546040500602078 /* loading_icon.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = loading_icon.gif; path = Assets/loading_icon.gif; sourceTree = "<group>"; };
-		6FC22974169C8A0D00069BD0 /* BVConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVConstants.h; sourceTree = "<group>"; };
-		6FC22975169C8A0D00069BD0 /* BVDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVDelegate.h; sourceTree = "<group>"; };
-		6FC22976169C8A0D00069BD0 /* BVGet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVGet.h; sourceTree = "<group>"; };
-		6FC22977169C8A0D00069BD0 /* BVMediaPost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVMediaPost.h; sourceTree = "<group>"; };
-		6FC22978169C8A0D00069BD0 /* BVPost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVPost.h; sourceTree = "<group>"; };
-		6FC22979169C8A0D00069BD0 /* BVSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVSettings.h; sourceTree = "<group>"; };
-		6FC2297A169C8A0D00069BD0 /* libBazaarvoiceSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libBazaarvoiceSDK.a; sourceTree = "<group>"; };
+		6FF36C0C16BB05390098771B /* BVSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = BVSDK.framework; sourceTree = "<group>"; };
 		6FF9238E15488E6500007431 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MBProgressHUD.h; path = MBProgressHUD/MBProgressHUD.h; sourceTree = "<group>"; };
 		6FF9238F15488E6500007431 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MBProgressHUD.m; path = MBProgressHUD/MBProgressHUD.m; sourceTree = "<group>"; };
 		6FF923951548965600007431 /* ReviewDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReviewDetailViewController.h; sourceTree = "<group>"; };
@@ -123,7 +117,7 @@
 				6F85EB9C1545F52800602078 /* UIKit.framework in Frameworks */,
 				6F85EB9E1545F52800602078 /* Foundation.framework in Frameworks */,
 				6F85EBA01545F52800602078 /* CoreGraphics.framework in Frameworks */,
-				6FC2297B169C8A0D00069BD0 /* libBazaarvoiceSDK.a in Frameworks */,
+				6FF36C0D16BB05390098771B /* BVSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -151,6 +145,7 @@
 		6F85EB9A1545F52800602078 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6FF36C0C16BB05390098771B /* BVSDK.framework */,
 				6F85EB9B1545F52800602078 /* UIKit.framework */,
 				6F85EB9D1545F52800602078 /* Foundation.framework */,
 				6F85EB9F1545F52800602078 /* CoreGraphics.framework */,
@@ -161,7 +156,6 @@
 		6F85EBA11545F52800602078 /* BrowseProductsExample */ = {
 			isa = PBXGroup;
 			children = (
-				6FC22972169C8A0D00069BD0 /* bv-ios-static-library */,
 				6FF9238C15488E4E00007431 /* MBProgressHUD */,
 				6FFE88B31547424A0013DFD9 /* Assets */,
 				6F85EBF51545F60A00602078 /* SDWebImage */,
@@ -229,28 +223,6 @@
 			name = SDWebImage;
 			sourceTree = "<group>";
 		};
-		6FC22972169C8A0D00069BD0 /* bv-ios-static-library */ = {
-			isa = PBXGroup;
-			children = (
-				6FC22973169C8A0D00069BD0 /* bvincludes */,
-				6FC2297A169C8A0D00069BD0 /* libBazaarvoiceSDK.a */,
-			);
-			path = "bv-ios-static-library";
-			sourceTree = "<group>";
-		};
-		6FC22973169C8A0D00069BD0 /* bvincludes */ = {
-			isa = PBXGroup;
-			children = (
-				6FC22974169C8A0D00069BD0 /* BVConstants.h */,
-				6FC22975169C8A0D00069BD0 /* BVDelegate.h */,
-				6FC22976169C8A0D00069BD0 /* BVGet.h */,
-				6FC22977169C8A0D00069BD0 /* BVMediaPost.h */,
-				6FC22978169C8A0D00069BD0 /* BVPost.h */,
-				6FC22979169C8A0D00069BD0 /* BVSettings.h */,
-			);
-			path = bvincludes;
-			sourceTree = "<group>";
-		};
 		6FF9238C15488E4E00007431 /* MBProgressHUD */ = {
 			isa = PBXGroup;
 			children = (
@@ -300,7 +272,7 @@
 		6F85EB8E1545F52800602078 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0430;
+				LastUpgradeCheck = 0460;
 			};
 			buildConfigurationList = 6F85EB911545F52800602078 /* Build configuration list for PBXProject "BrowseProductsExample" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -390,6 +362,10 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -415,6 +391,10 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -432,13 +412,16 @@
 		6F85EBB61545F52800602078 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BrowseProductsExample/BrowseProductsExample-Prefix.pch";
 				INFOPLIST_FILE = "BrowseProductsExample/BrowseProductsExample-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/BrowseProductsExample/bv-ios-static-library\"",
 					"\"$(SRCROOT)/BrowseProductsExample\"",
 					"\"$(SRCROOT)\"",
 				);
@@ -451,13 +434,16 @@
 		6F85EBB71545F52800602078 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BrowseProductsExample/BrowseProductsExample-Prefix.pch";
 				INFOPLIST_FILE = "BrowseProductsExample/BrowseProductsExample-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/BrowseProductsExample/bv-ios-static-library\"",
 					"\"$(SRCROOT)/BrowseProductsExample\"",
 					"\"$(SRCROOT)\"",
 				);

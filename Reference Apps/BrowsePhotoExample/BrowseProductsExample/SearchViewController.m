@@ -9,7 +9,9 @@
 #import "SearchViewController.h"
 #import "ListReviewsController.h"
 #import "BVColor.h"
-#import "BVSettings.h"
+
+
+#import <BVSDK/BVSDK.h>
 
 @interface SearchViewController ()
 

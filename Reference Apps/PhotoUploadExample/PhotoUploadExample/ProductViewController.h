@@ -13,6 +13,7 @@
 
 #import <UIKit/UIKit.h>
 #import "PhotoPickerPlus.h"
+#import <BVSDK/BVSDK.h>
 
 @interface ProductViewController : UIViewController<UINavigationControllerDelegate, UIImagePickerControllerDelegate, PhotoPickerPlusDelegate, UIActionSheetDelegate>
 
