@@ -7,11 +7,7 @@
 //
 
 #import "BVSampleAppMainViewController.h"
-#import "BVSettings.h"
-#import "BVConstants.h"
-#import "BVGet.h"
-#import "BVPost.h"
-#import "BVMediaPost.h"
+#import <BVSDK/BVSDK.h>
 
 @interface BVSampleAppMainViewController () {
     BOOL isVisible;    

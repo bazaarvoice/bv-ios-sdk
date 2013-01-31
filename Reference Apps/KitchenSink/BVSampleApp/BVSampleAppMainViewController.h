@@ -8,7 +8,7 @@
 
 #import "BVSampleAppFlipsideViewController.h"
 #import "BVSampleAppResultsViewController.h"
-#import "BVDelegate.h"
+#import <BVSDK/BVSDK.h>
 
 @interface BVSampleAppMainViewController : UIViewController <BVSampleAppFlipsideViewControllerDelegate, BVDelegate> {
     BVSampleAppResultsViewController *myResultsView;

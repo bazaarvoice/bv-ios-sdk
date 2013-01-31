@@ -420,7 +420,7 @@ NSString * const GCParcelNoUploads   = @"GCParcelNoUploads";
     self = [self init];
     if(self){
         for (NSString *key in [dictionary allKeys]) {
-            id _obj;
+            id _obj = nil;
             if ([key isEqualToString:@"user"]) {
                 _obj = [GCUser objectWithDictionary:[dictionary objectForKey:key]];
             }

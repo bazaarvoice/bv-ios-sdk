@@ -10,7 +10,7 @@
 
 
 #import <UIKit/UIKit.h>
-#import "BVGet.h"
+#import <BVSDK/BVSDK.h>
 
 @interface ProductDetailViewController : UIViewController<BVDelegate, UITableViewDelegate, UITableViewDataSource>
 

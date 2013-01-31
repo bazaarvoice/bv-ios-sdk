@@ -377,48 +377,6 @@ questionRequest.<a href="#//api/name/categoryId">categoryId</a> = @&ldquo;1020&r
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/sendEmailAlertWhenPublished">&nbsp;&nbsp;sendEmailAlertWhenPublished</a></code>
-		<span class="tooltip"><p>Boolean indicating whether or not the user wants to be notified when his/her content is published.</p></span>
-	</span>
-	<span class="task-item-suffix">property</span>
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/sendEmailAlertWhenCommented">&nbsp;&nbsp;sendEmailAlertWhenCommented</a></code>
-		<span class="tooltip"><p>Boolean indicating whether or not the user wants to be notified when a comment is posted on the content.</p></span>
-	</span>
-	<span class="task-item-suffix">property</span>
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/isRecommended">&nbsp;&nbsp;isRecommended</a></code>
-		<span class="tooltip"><p>Boolean answer to &ldquo;I would recommend this to a friend&rdquo;.  Required dependent on client settings.</p></span>
-	</span>
-	<span class="task-item-suffix">property</span>
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/isUserAnonymous">&nbsp;&nbsp;isUserAnonymous</a></code>
-		<span class="tooltip"><p>Indicates whether this submission should be displayed anonymously.</p></span>
-	</span>
-	<span class="task-item-suffix">property</span>
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/netPromoterScore">&nbsp;&nbsp;netPromoterScore</a></code>
-		<span class="tooltip"><p>Value is positive integer between 1 and 10 representing a numerical <a href="#//api/name/rating">rating</a> in response to “How would you rate this company?”</p></span>
-	</span>
-	<span class="task-item-suffix">property</span>
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/rating">&nbsp;&nbsp;rating</a></code>
-		<span class="tooltip"><p>Value is positive integer between 1 and 5, and represents review overall rating.  Required depending on client settings.</p></span>
-	</span>
-	<span class="task-item-suffix">property</span>
-	
-</li><li>
-	<span class="tooltip">
 		<code><a href="#//api/name/campaignId">&nbsp;&nbsp;campaignId</a></code>
 		<span class="tooltip"><p>Arbitrary text that may be saved alongside content to indicate vehicle by which content was captured, e.g. “post-purchase email”.</p></span>
 	</span>
@@ -426,15 +384,15 @@ questionRequest.<a href="#//api/name/categoryId">categoryId</a> = @&ldquo;1020&r
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/answerText">&nbsp;&nbsp;answerText</a></code>
-		<span class="tooltip"><p>Contains the text of an answer for a BVPostTypeAnswer request.</p></span>
+		<code><a href="#//api/name/locale">&nbsp;&nbsp;locale</a></code>
+		<span class="tooltip"><p>Locale to display Labels, Configuration, Product Attributes and Category Attributes in. The default value is the locale defined in the display associated with the API key.</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/locale">&nbsp;&nbsp;locale</a></code>
-		<span class="tooltip"><p>Locale to display Labels, Configuration, Product Attributes and Category Attributes in. The default value is the locale defined in the display associated with the API key.</p></span>
+		<code><a href="#//api/name/sendEmailAlertWhenPublished">&nbsp;&nbsp;sendEmailAlertWhenPublished</a></code>
+		<span class="tooltip"><p>Boolean indicating whether or not the user wants to be notified when his/her content is published.</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	
@@ -468,10 +426,59 @@ questionRequest.<a href="#//api/name/categoryId">categoryId</a> = @&ldquo;1020&r
 	
 </li><li>
 	<span class="tooltip">
+		<code><a href="#//api/name/setContextDataValue:value:">&ndash;&nbsp;setContextDataValue:value:</a></code>
+		<span class="tooltip"><p>Sets ContextDataValue for a particular dimensionExternalId. In general, this parameter is used for custom parameters that a client may want to track.  Some examples of this parameter include the following:</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/addPhotoUrl:withCaption:">&ndash;&nbsp;addPhotoUrl:withCaption:</a></code>
+		<span class="tooltip"><p>Associates a photo url and corresponding caption with this submission.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/addProductRecommendationForIndex:withProductExternalId:">&ndash;&nbsp;addProductRecommendationForIndex:withProductExternalId:</a></code>
+		<span class="tooltip"><p>Value is non-negative integer representing the product external ID of the <index>&lsquo;th product recommendation (for Social Recommendations)</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/addVideoUrl:withCaption:">&ndash;&nbsp;addVideoUrl:withCaption:</a></code>
+		<span class="tooltip"><p>Associates a video url and corresponding caption with this submission.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/setAdditionalField:value:">&ndash;&nbsp;setAdditionalField:value:</a></code>
+		<span class="tooltip"><p>Sets AdditionalField for a particular dimensionExternalId.  In general, this parameter is used to attach additional information to a submission.  A concrete example of the parameter might be a dimensionExternalId of'Seat' with a value of &lsquo;24F&rsquo; (describing the seat number at a stadium or on a plane) resulting in a parameter AdditionalField_Seat=24F.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
 		<code><a href="#//api/name/productId">&nbsp;&nbsp;productId</a></code>
 		<span class="tooltip"><p>The id of the product that this content is being submitted on.</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/addTagForDimensionExternalId:value:">&ndash;&nbsp;addTagForDimensionExternalId:value:</a></code>
+		<span class="tooltip"><p>Adds a tag with a particular dimensionExternalId and value.  For example, a client might add the value &ldquo;comfort&rdquo; for the dimensionExternalId of &ldquo;Pro&rdquo; and &ldquo;expensive&rdquo; with a dimensionExternalId of &ldquo;Con.&rdquo;</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/addTagIdForDimensionExternalId:value:">&ndash;&nbsp;addTagIdForDimensionExternalId:value:</a></code>
+		<span class="tooltip"><p>Adds a tagid field with a particular dimensionExternalId and value.  This corresponds to a checkbox in a form.  For example, a client might add the value true for the dimensionExternalId of &ldquo;Pro/comfort&rdquo; and true with a dimensionExternalId of &ldquo;Con/expensive&rdquo;</p></span>
+	</span>
+	
 	
 </li><li>
 	<span class="tooltip">
@@ -489,6 +496,13 @@ questionRequest.<a href="#//api/name/categoryId">categoryId</a> = @&ldquo;1020&r
 	
 </li><li>
 	<span class="tooltip">
+		<code><a href="#//api/name/isRecommended">&nbsp;&nbsp;isRecommended</a></code>
+		<span class="tooltip"><p>Boolean answer to &ldquo;I would recommend this to a friend&rdquo;.  Required dependent on client settings.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
 		<code><a href="#//api/name/netPromoterComment">&nbsp;&nbsp;netPromoterComment</a></code>
 		<span class="tooltip"><p>Text representing a user comment to explain numerical Net Promoter score.</p></span>
 	</span>
@@ -496,8 +510,36 @@ questionRequest.<a href="#//api/name/categoryId">categoryId</a> = @&ldquo;1020&r
 	
 </li><li>
 	<span class="tooltip">
+		<code><a href="#//api/name/netPromoterScore">&nbsp;&nbsp;netPromoterScore</a></code>
+		<span class="tooltip"><p>Value is positive integer between 1 and 10 representing a numerical <a href="#//api/name/rating">rating</a> in response to “How would you rate this company?”</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/rating">&nbsp;&nbsp;rating</a></code>
+		<span class="tooltip"><p>Value is positive integer between 1 and 5, and represents review overall rating.  Required depending on client settings.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
 		<code><a href="#//api/name/reviewText">&nbsp;&nbsp;reviewText</a></code>
 		<span class="tooltip"><p>Contains the text of an review for a BVPostTypeReview request.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/setRatingForDimensionExternalId:value:">&ndash;&nbsp;setRatingForDimensionExternalId:value:</a></code>
+		<span class="tooltip"><p>Sets a <a href="#//api/name/rating">rating</a> for a particular dimensionExternalId.  A concrete example might be a dimensionExternalId of &ldquo;Quality&rdquo; where the value would represent the user&rsquo;s opinion of the quality of the product.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/isUserAnonymous">&nbsp;&nbsp;isUserAnonymous</a></code>
+		<span class="tooltip"><p>Indicates whether this submission should be displayed anonymously.</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	
@@ -517,8 +559,22 @@ questionRequest.<a href="#//api/name/categoryId">categoryId</a> = @&ldquo;1020&r
 	
 </li><li>
 	<span class="tooltip">
+		<code><a href="#//api/name/answerText">&nbsp;&nbsp;answerText</a></code>
+		<span class="tooltip"><p>Contains the text of an answer for a BVPostTypeAnswer request.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
 		<code><a href="#//api/name/questionId">&nbsp;&nbsp;questionId</a></code>
 		<span class="tooltip"><p>The id of the category that this content is being submitted on for a BVPostTypeQuestion request. For such a request, one of <a href="#//api/name/productId">productId</a> or <a href="#//api/name/categoryId">categoryId</a> must be provided.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/sendEmailAlertWhenCommented">&nbsp;&nbsp;sendEmailAlertWhenCommented</a></code>
+		<span class="tooltip"><p>Boolean indicating whether or not the user wants to be notified when a comment is posted on the content.</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	
@@ -552,15 +608,15 @@ questionRequest.<a href="#//api/name/categoryId">categoryId</a> = @&ldquo;1020&r
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/contentType">&nbsp;&nbsp;contentType</a></code>
-		<span class="tooltip"><p>Type of content with which a BVPostTypeFeedback request is associated. (BVFeedbackContentTypeAnswer, BVFeedbackContentTypeQuestion, BVFeedbackContentTypeReview, BVFeedbackContentTypeReviewComment, BVFeedbackContentTypeStory, BVFeedbackContentTypeStoryComment)</p></span>
+		<code><a href="#//api/name/contentId">&nbsp;&nbsp;contentId</a></code>
+		<span class="tooltip"><p>ID of the content with which a BVPostTypeFeedback request is associated.</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/contentId">&nbsp;&nbsp;contentId</a></code>
-		<span class="tooltip"><p>ID of the content with which a BVPostTypeFeedback request is associated.</p></span>
+		<code><a href="#//api/name/contentType">&nbsp;&nbsp;contentType</a></code>
+		<span class="tooltip"><p>Type of content with which a BVPostTypeFeedback request is associated. (BVFeedbackContentTypeAnswer, BVFeedbackContentTypeQuestion, BVFeedbackContentTypeReview, BVFeedbackContentTypeReviewComment, BVFeedbackContentTypeStory, BVFeedbackContentTypeStoryComment)</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	
@@ -573,13 +629,6 @@ questionRequest.<a href="#//api/name/categoryId">categoryId</a> = @&ldquo;1020&r
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/vote">&nbsp;&nbsp;vote</a></code>
-		<span class="tooltip"><p>Helpfulness vote for this content. Valid votes are: BVFeedbackVoteTypePositive, NegatBVFeedbackVoteTypeNegative. This parameter is only required for feedbackType=BVFeedbackTypeHelpfulness.</p></span>
-	</span>
-	<span class="task-item-suffix">property</span>
-	
-</li><li>
-	<span class="tooltip">
 		<code><a href="#//api/name/reasonText">&nbsp;&nbsp;reasonText</a></code>
 		<span class="tooltip"><p>For BVPostTypeFeedback requests.  Reason this content has been flagged as inappropriate.</p></span>
 	</span>
@@ -587,59 +636,10 @@ questionRequest.<a href="#//api/name/categoryId">categoryId</a> = @&ldquo;1020&r
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/setContextDataValue:value:">&ndash;&nbsp;setContextDataValue:value:</a></code>
-		<span class="tooltip"><p>Sets ContextDataValue for a particular dimensionExternalId. In general, this parameter is used for custom parameters that a client may want to track.  Some examples of this parameter include the following:</p></span>
+		<code><a href="#//api/name/vote">&nbsp;&nbsp;vote</a></code>
+		<span class="tooltip"><p>Helpfulness vote for this content. Valid votes are: BVFeedbackVoteTypePositive, NegatBVFeedbackVoteTypeNegative. This parameter is only required for feedbackType=BVFeedbackTypeHelpfulness.</p></span>
 	</span>
-	
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/setAdditionalField:value:">&ndash;&nbsp;setAdditionalField:value:</a></code>
-		<span class="tooltip"><p>Sets AdditionalField for a particular dimensionExternalId.  In general, this parameter is used to attach additional information to a submission.  A concrete example of the parameter might be a dimensionExternalId of'Seat' with a value of &lsquo;24F&rsquo; (describing the seat number at a stadium or on a plane) resulting in a parameter AdditionalField_Seat=24F.</p></span>
-	</span>
-	
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/setRatingForDimensionExternalId:value:">&ndash;&nbsp;setRatingForDimensionExternalId:value:</a></code>
-		<span class="tooltip"><p>Sets a <a href="#//api/name/rating">rating</a> for a particular dimensionExternalId.  A concrete example might be a dimensionExternalId of &ldquo;Quality&rdquo; where the value would represent the user&rsquo;s opinion of the quality of the product.</p></span>
-	</span>
-	
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/addPhotoUrl:withCaption:">&ndash;&nbsp;addPhotoUrl:withCaption:</a></code>
-		<span class="tooltip"><p>Associates a photo url and corresponding caption with this submission.</p></span>
-	</span>
-	
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/addVideoUrl:withCaption:">&ndash;&nbsp;addVideoUrl:withCaption:</a></code>
-		<span class="tooltip"><p>Associates a video url and corresponding caption with this submission.</p></span>
-	</span>
-	
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/addProductRecommendationForIndex:withProductExternalId:">&ndash;&nbsp;addProductRecommendationForIndex:withProductExternalId:</a></code>
-		<span class="tooltip"><p>Value is non-negative integer representing the product external ID of the <index>&lsquo;th product recommendation (for Social Recommendations)</p></span>
-	</span>
-	
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/addTagForDimensionExternalId:value:">&ndash;&nbsp;addTagForDimensionExternalId:value:</a></code>
-		<span class="tooltip"><p>Adds a tag with a particular dimensionExternalId and value.  For example, a client might add the value &ldquo;comfort&rdquo; for the dimensionExternalId of &ldquo;Pro&rdquo; and &ldquo;expensive&rdquo; with a dimensionExternalId of &ldquo;Con.&rdquo;</p></span>
-	</span>
-	
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/addTagIdForDimensionExternalId:value:">&ndash;&nbsp;addTagIdForDimensionExternalId:value:</a></code>
-		<span class="tooltip"><p>Adds a tagid field with a particular dimensionExternalId and value.  This corresponds to a checkbox in a form.  For example, a client might add the value true for the dimensionExternalId of &ldquo;Pro/comfort&rdquo; and true with a dimensionExternalId of &ldquo;Con/expensive&rdquo;</p></span>
-	</span>
-	
+	<span class="task-item-suffix">property</span>
 	
 </li><li>
 	<span class="tooltip">
@@ -2599,7 +2599,7 @@ questionRequest.<a href="#//api/name/categoryId">categoryId</a> = @&ldquo;1020&r
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2012 Bazaarvoice. All rights reserved. (Last updated: 2012-12-07)</span><br />
+						<p><span class="copyright">&copy; 2013 Bazaarvoice. All rights reserved. (Last updated: 2013-01-31)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.0.5 (build 789)</a>.</span></p>
 						

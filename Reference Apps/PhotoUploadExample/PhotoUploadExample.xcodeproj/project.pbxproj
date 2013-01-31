@@ -99,7 +99,6 @@
 		6F4CC68A1540BE2800F16AE0 /* exifrotated.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6F4CC6891540BE2800F16AE0 /* exifrotated.jpg */; };
 		6F935A601547054A00B9FC85 /* dryer.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F935A5F1547054A00B9FC85 /* dryer.png */; };
 		6FB91CA7153F66E5009CB845 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FB91CA6153F66E5009CB845 /* MobileCoreServices.framework */; };
-		6FC229A8169C8D0300069BD0 /* libBazaarvoiceSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FC229A7169C8D0300069BD0 /* libBazaarvoiceSDK.a */; };
 		6FD71FBE154747BC00161834 /* RateView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FD71FBD154747BC00161834 /* RateView.m */; };
 		6FD71FC11548476B00161834 /* RateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FD71FC01548476B00161834 /* RateViewController.m */; };
 		6FDB996A1561624400A9E392 /* app-background.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FDB99691561624400A9E392 /* app-background.png */; };
@@ -110,6 +109,7 @@
 		6FE4625B154072D800AECFCD /* UIImage+RoundedCorner.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FE46258154072D800AECFCD /* UIImage+RoundedCorner.m */; };
 		6FE462671540A12700AECFCD /* empty_star.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FE462641540A12700AECFCD /* empty_star.png */; };
 		6FE462681540A12700AECFCD /* full_star.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FE462651540A12700AECFCD /* full_star.png */; };
+		6FF36C1116BB05D40098771B /* BVSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FF36C1016BB05D40098771B /* BVSDK.framework */; };
 		BFDB5C9D154EE1D1001E80BF /* appicon.png in Resources */ = {isa = PBXBuildFile; fileRef = BFDB5C9C154EE1D1001E80BF /* appicon.png */; };
 		BFDB5C9F154EE1D6001E80BF /* appicon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BFDB5C9E154EE1D6001E80BF /* appicon@2x.png */; };
 /* End PBXBuildFile section */
@@ -283,13 +283,6 @@
 		6F4CC6891540BE2800F16AE0 /* exifrotated.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = exifrotated.jpg; sourceTree = "<group>"; };
 		6F935A5F1547054A00B9FC85 /* dryer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dryer.png; sourceTree = "<group>"; };
 		6FB91CA6153F66E5009CB845 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
-		6FC229A1169C8D0300069BD0 /* BVConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVConstants.h; sourceTree = "<group>"; };
-		6FC229A2169C8D0300069BD0 /* BVDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVDelegate.h; sourceTree = "<group>"; };
-		6FC229A3169C8D0300069BD0 /* BVGet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVGet.h; sourceTree = "<group>"; };
-		6FC229A4169C8D0300069BD0 /* BVMediaPost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVMediaPost.h; sourceTree = "<group>"; };
-		6FC229A5169C8D0300069BD0 /* BVPost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVPost.h; sourceTree = "<group>"; };
-		6FC229A6169C8D0300069BD0 /* BVSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVSettings.h; sourceTree = "<group>"; };
-		6FC229A7169C8D0300069BD0 /* libBazaarvoiceSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libBazaarvoiceSDK.a; sourceTree = "<group>"; };
 		6FD71FBC154747BC00161834 /* RateView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RateView.h; path = StarRating/RateView.h; sourceTree = "<group>"; };
 		6FD71FBD154747BC00161834 /* RateView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RateView.m; path = StarRating/RateView.m; sourceTree = "<group>"; };
 		6FD71FBF1548476B00161834 /* RateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RateViewController.h; sourceTree = "<group>"; };
@@ -306,6 +299,7 @@
 		6FE46258154072D800AECFCD /* UIImage+RoundedCorner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+RoundedCorner.m"; path = "UIImageResizing/UIImage+RoundedCorner.m"; sourceTree = "<group>"; };
 		6FE462641540A12700AECFCD /* empty_star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = empty_star.png; path = StarRating/Assets/empty_star.png; sourceTree = "<group>"; };
 		6FE462651540A12700AECFCD /* full_star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = full_star.png; path = StarRating/Assets/full_star.png; sourceTree = "<group>"; };
+		6FF36C1016BB05D40098771B /* BVSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = BVSDK.framework; sourceTree = "<group>"; };
 		BFDB5C9C154EE1D1001E80BF /* appicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = appicon.png; path = ../appicon.png; sourceTree = "<group>"; };
 		BFDB5C9E154EE1D6001E80BF /* appicon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "appicon@2x.png"; path = "../appicon@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -326,7 +320,7 @@
 				6F4B99A4153F4EB90040AF27 /* UIKit.framework in Frameworks */,
 				6F4B99A6153F4EB90040AF27 /* Foundation.framework in Frameworks */,
 				6F4B99A8153F4EB90040AF27 /* CoreGraphics.framework in Frameworks */,
-				6FC229A8169C8D0300069BD0 /* libBazaarvoiceSDK.a in Frameworks */,
+				6FF36C1116BB05D40098771B /* BVSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -639,6 +633,7 @@
 		6F4B99A2153F4EB90040AF27 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6FF36C1016BB05D40098771B /* BVSDK.framework */,
 				6F4054E3167A39CE006F0D8D /* SystemConfiguration.framework */,
 				6F4054E1167A39C8006F0D8D /* Security.framework */,
 				6F4054DF167A39B8006F0D8D /* MessageUI.framework */,
@@ -657,7 +652,6 @@
 		6F4B99A9153F4EB90040AF27 /* PhotoUploadExample */ = {
 			isa = PBXGroup;
 			children = (
-				6FC2299F169C8D0300069BD0 /* bv-ios-static-library */,
 				BFDB5C9E154EE1D6001E80BF /* appicon@2x.png */,
 				BFDB5C9C154EE1D1001E80BF /* appicon.png */,
 				6F405404167A395B006F0D8D /* Chute SDK */,
@@ -708,28 +702,6 @@
 				6F4B99B1153F4EB90040AF27 /* PhotoUploadExample-Prefix.pch */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		6FC2299F169C8D0300069BD0 /* bv-ios-static-library */ = {
-			isa = PBXGroup;
-			children = (
-				6FC229A0169C8D0300069BD0 /* bvincludes */,
-				6FC229A7169C8D0300069BD0 /* libBazaarvoiceSDK.a */,
-			);
-			path = "bv-ios-static-library";
-			sourceTree = "<group>";
-		};
-		6FC229A0169C8D0300069BD0 /* bvincludes */ = {
-			isa = PBXGroup;
-			children = (
-				6FC229A1169C8D0300069BD0 /* BVConstants.h */,
-				6FC229A2169C8D0300069BD0 /* BVDelegate.h */,
-				6FC229A3169C8D0300069BD0 /* BVGet.h */,
-				6FC229A4169C8D0300069BD0 /* BVMediaPost.h */,
-				6FC229A5169C8D0300069BD0 /* BVPost.h */,
-				6FC229A6169C8D0300069BD0 /* BVSettings.h */,
-			);
-			path = bvincludes;
 			sourceTree = "<group>";
 		};
 		6FE4624B1540717500AECFCD /* UIImageResizing */ = {
@@ -790,7 +762,7 @@
 		6F4B9996153F4EB90040AF27 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0430;
+				LastUpgradeCheck = 0460;
 				ORGANIZATIONNAME = BazaarVoice;
 			};
 			buildConfigurationList = 6F4B9999153F4EB90040AF27 /* Build configuration list for PBXProject "PhotoUploadExample" */;
@@ -949,6 +921,11 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -965,6 +942,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				"OTHER_LDFLAGS[arch=*]" = "-ObjC";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -975,6 +953,11 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -985,6 +968,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				"OTHER_LDFLAGS[arch=*]" = "-ObjC";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -994,6 +978,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Alex Medearis (UBFJTML2DG)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+					"\"$(SRCROOT)/PhotoUploadExample\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PhotoUploadExample/PhotoUploadExample-Prefix.pch";
 				INFOPLIST_FILE = "PhotoUploadExample/PhotoUploadExample-Info.plist";
@@ -1001,7 +990,6 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/PhotoUploadExample\"",
-					"\"$(SRCROOT)/PhotoUploadExample/bv-ios-static-library\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "3822D179-C923-4487-BDEF-705E5081C97E";
@@ -1013,6 +1001,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Alex Medearis (UBFJTML2DG)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+					"\"$(SRCROOT)/PhotoUploadExample\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PhotoUploadExample/PhotoUploadExample-Prefix.pch";
 				INFOPLIST_FILE = "PhotoUploadExample/PhotoUploadExample-Info.plist";
@@ -1020,7 +1013,6 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/PhotoUploadExample\"",
-					"\"$(SRCROOT)/PhotoUploadExample/bv-ios-static-library\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "3822D179-C923-4487-BDEF-705E5081C97E";

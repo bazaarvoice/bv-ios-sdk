@@ -9,8 +9,7 @@
 
 #import <UIKit/UIKit.h>
 #import "RateView.h"
-#import "BVDelegate.h"
-#import "BVPost.h"
+#import <BVSDK/BVSDK.h>
 #import "UIPlaceHolderTextView.h"
 #import "RoundedCornerView.h"
 
@@ -27,8 +26,7 @@
 // UIImageView to preview the image associated with this review
 @property (weak, nonatomic) IBOutlet UIImageView *previewImageView;
 
-@property (strong, nonatomic) BVPost *photoSubmission;
-@property (strong, nonatomic) BVPost *reviewSubmission;
+@property (strong) BVPost *reviewSubmission;
 
 // Loading overlay
 @property (weak, nonatomic) IBOutlet UIView *overlay;
@@ -50,5 +48,7 @@
 // since a URL is not available until we finish the upload and receive
 // a response from the server.
 @property (strong, nonatomic) NSString *imageUrl;
+
+@property (strong) BVMediaPost *photoUploadRequest;
 
 @end
