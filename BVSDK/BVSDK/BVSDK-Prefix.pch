@@ -1,0 +1,7 @@
+//
+// Prefix header for all source files of the 'BVSDK' target in the 'BVSDK' project
+//
+
+#ifdef __OBJC__
+    #import <Foundation/Foundation.h>
+#endif

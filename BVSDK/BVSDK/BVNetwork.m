@@ -115,7 +115,7 @@ static NSString *urlEncode(id object) {
                            settings.staging ? @"/bvstaging" : @"",
                            endpoint,
                            [self getParamsString]];
-    NSLog(@"Request to send: %@", urlString);
+    //NSLog(@"Request to send: %@", urlString);
     
     // This is sort of a strange work-around.  This network object may be deallocated before the sender is deallocated, but
     // we still want the client to be able to know the url of this request.  Therefore, it is stored by the sender after the request
@@ -157,7 +157,7 @@ static NSString *urlEncode(id object) {
                            settings.baseURL,
                            settings.staging ? @"/bvstaging" : @"",
                            endpoint];
-    NSLog(@"Request to send: %@", urlString);
+    //NSLog(@"Request to send: %@", urlString);
     // This is sort of a strange work-around.  This network object may be deallocated before the sender is deallocated, but
     // we still want the client to be able to know the url of this request.  Therefore, it is stored by the sender after the request
     // is sent.
@@ -236,8 +236,8 @@ static NSString *urlEncode(id object) {
     // set request body
     [request setHTTPBody:body];
     
-    NSString *printString = [[NSString alloc] initWithData:body encoding:NSASCIIStringEncoding];
-    NSLog(@"Body: %@", printString);
+    //NSString *printString = [[NSString alloc] initWithData:body encoding:NSASCIIStringEncoding];
+    //NSLog(@"Body: %@", printString);
 }
 
 - (void)appendKey:(NSString *)key data:(NSData *)data toMultipartData:(NSMutableData *)body withBoundary:(NSString *)boundary {

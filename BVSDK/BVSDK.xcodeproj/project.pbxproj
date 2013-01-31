@@ -1,0 +1,606 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		6F19286516BAF23500D1BE1D /* BVSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = 6F19285816BAF23500D1BE1D /* BVSDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6F19286616BAF23500D1BE1D /* BVConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = 6F19285916BAF23500D1BE1D /* BVConstants.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6F19286716BAF23500D1BE1D /* BVDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 6F19285A16BAF23500D1BE1D /* BVDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6F19286816BAF23500D1BE1D /* BVNetwork.h in Headers */ = {isa = PBXBuildFile; fileRef = 6F19285B16BAF23500D1BE1D /* BVNetwork.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6F19286916BAF23500D1BE1D /* BVNetwork.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F19285C16BAF23500D1BE1D /* BVNetwork.m */; };
+		6F19286A16BAF23500D1BE1D /* BVNetwork.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F19285C16BAF23500D1BE1D /* BVNetwork.m */; };
+		6F19286B16BAF23500D1BE1D /* BVGet.h in Headers */ = {isa = PBXBuildFile; fileRef = 6F19285D16BAF23500D1BE1D /* BVGet.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6F19286C16BAF23500D1BE1D /* BVGet.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F19285E16BAF23500D1BE1D /* BVGet.m */; };
+		6F19286D16BAF23500D1BE1D /* BVGet.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F19285E16BAF23500D1BE1D /* BVGet.m */; };
+		6F19286E16BAF23500D1BE1D /* BVPost.h in Headers */ = {isa = PBXBuildFile; fileRef = 6F19285F16BAF23500D1BE1D /* BVPost.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6F19286F16BAF23500D1BE1D /* BVPost.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F19286016BAF23500D1BE1D /* BVPost.m */; };
+		6F19287016BAF23500D1BE1D /* BVPost.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F19286016BAF23500D1BE1D /* BVPost.m */; };
+		6F19287116BAF23500D1BE1D /* BVMediaPost.h in Headers */ = {isa = PBXBuildFile; fileRef = 6F19286116BAF23500D1BE1D /* BVMediaPost.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6F19287216BAF23500D1BE1D /* BVMediaPost.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F19286216BAF23500D1BE1D /* BVMediaPost.m */; };
+		6F19287316BAF23500D1BE1D /* BVMediaPost.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F19286216BAF23500D1BE1D /* BVMediaPost.m */; };
+		6F19287416BAF23500D1BE1D /* BVSettings.h in Headers */ = {isa = PBXBuildFile; fileRef = 6F19286316BAF23500D1BE1D /* BVSettings.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6F19287516BAF23500D1BE1D /* BVSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F19286416BAF23500D1BE1D /* BVSettings.m */; };
+		6F19287616BAF23500D1BE1D /* BVSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F19286416BAF23500D1BE1D /* BVSettings.m */; };
+		6F19288016BAF24000D1BE1D /* 0.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 6F19287716BAF24000D1BE1D /* 0.JPG */; };
+		6F19288216BAF24000D1BE1D /* 90cw.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 6F19287816BAF24000D1BE1D /* 90cw.JPG */; };
+		6F19288416BAF24000D1BE1D /* 270cw.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 6F19287916BAF24000D1BE1D /* 270cw.JPG */; };
+		6F19288616BAF24000D1BE1D /* 180.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 6F19287A16BAF24000D1BE1D /* 180.JPG */; };
+		6F19288816BAF24000D1BE1D /* submitted.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6F19287B16BAF24000D1BE1D /* submitted.jpg */; };
+		6F19288A16BAF24000D1BE1D /* bv533x533.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F19287C16BAF24000D1BE1D /* bv533x533.png */; };
+		6F19288C16BAF24000D1BE1D /* sample_mpeg4.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 6F19287D16BAF24000D1BE1D /* sample_mpeg4.mp4 */; };
+		6F19288E16BAF24000D1BE1D /* sample_iTunes.mov in Resources */ = {isa = PBXBuildFile; fileRef = 6F19287E16BAF24000D1BE1D /* sample_iTunes.mov */; };
+		6F19289016BAF25400D1BE1D /* rotated.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6F19288F16BAF25400D1BE1D /* rotated.jpg */; };
+		6F78ECEF16BAEF26003B89D7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6F78ECED16BAEF26003B89D7 /* InfoPlist.strings */; };
+		6F78ECF916BAEF26003B89D7 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F78ECF816BAEF26003B89D7 /* SenTestingKit.framework */; };
+		6F78ECFB16BAEF26003B89D7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F78ECFA16BAEF26003B89D7 /* UIKit.framework */; };
+		6F78ECFD16BAEF26003B89D7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F78ECFC16BAEF26003B89D7 /* Foundation.framework */; };
+		6F78ED0016BAEF26003B89D7 /* BVSDK.framework in Resources */ = {isa = PBXBuildFile; fileRef = 6F78ECE816BAEF26003B89D7 /* BVSDK.framework */; };
+		6F78ED0616BAEF26003B89D7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6F78ED0416BAEF26003B89D7 /* InfoPlist.strings */; };
+		6F78ED0916BAEF26003B89D7 /* BVSDKTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F78ED0816BAEF26003B89D7 /* BVSDKTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		6F78ECFE16BAEF26003B89D7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6F78ECDC16BAEF26003B89D7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6F78ECE716BAEF26003B89D7;
+			remoteInfo = BVSDK;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		6F19285816BAF23500D1BE1D /* BVSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVSDK.h; sourceTree = "<group>"; };
+		6F19285916BAF23500D1BE1D /* BVConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVConstants.h; sourceTree = "<group>"; };
+		6F19285A16BAF23500D1BE1D /* BVDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVDelegate.h; sourceTree = "<group>"; };
+		6F19285B16BAF23500D1BE1D /* BVNetwork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVNetwork.h; sourceTree = "<group>"; };
+		6F19285C16BAF23500D1BE1D /* BVNetwork.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVNetwork.m; sourceTree = "<group>"; };
+		6F19285D16BAF23500D1BE1D /* BVGet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVGet.h; sourceTree = "<group>"; };
+		6F19285E16BAF23500D1BE1D /* BVGet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVGet.m; sourceTree = "<group>"; };
+		6F19285F16BAF23500D1BE1D /* BVPost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVPost.h; sourceTree = "<group>"; };
+		6F19286016BAF23500D1BE1D /* BVPost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVPost.m; sourceTree = "<group>"; };
+		6F19286116BAF23500D1BE1D /* BVMediaPost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVMediaPost.h; sourceTree = "<group>"; };
+		6F19286216BAF23500D1BE1D /* BVMediaPost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVMediaPost.m; sourceTree = "<group>"; };
+		6F19286316BAF23500D1BE1D /* BVSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVSettings.h; sourceTree = "<group>"; };
+		6F19286416BAF23500D1BE1D /* BVSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVSettings.m; sourceTree = "<group>"; };
+		6F19287716BAF24000D1BE1D /* 0.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 0.JPG; sourceTree = "<group>"; };
+		6F19287816BAF24000D1BE1D /* 90cw.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 90cw.JPG; sourceTree = "<group>"; };
+		6F19287916BAF24000D1BE1D /* 270cw.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 270cw.JPG; sourceTree = "<group>"; };
+		6F19287A16BAF24000D1BE1D /* 180.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 180.JPG; sourceTree = "<group>"; };
+		6F19287B16BAF24000D1BE1D /* submitted.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = submitted.jpg; sourceTree = "<group>"; };
+		6F19287C16BAF24000D1BE1D /* bv533x533.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bv533x533.png; sourceTree = "<group>"; };
+		6F19287D16BAF24000D1BE1D /* sample_mpeg4.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sample_mpeg4.mp4; sourceTree = "<group>"; };
+		6F19287E16BAF24000D1BE1D /* sample_iTunes.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = sample_iTunes.mov; sourceTree = "<group>"; };
+		6F19288F16BAF25400D1BE1D /* rotated.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = rotated.jpg; sourceTree = "<group>"; };
+		6F78ECE816BAEF26003B89D7 /* BVSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BVSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6F78ECEC16BAEF26003B89D7 /* BVSDK-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "BVSDK-Info.plist"; sourceTree = "<group>"; };
+		6F78ECEE16BAEF26003B89D7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		6F78ECF016BAEF26003B89D7 /* BVSDK-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BVSDK-Prefix.pch"; sourceTree = "<group>"; };
+		6F78ECF616BAEF26003B89D7 /* BVSDKTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BVSDKTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		6F78ECF816BAEF26003B89D7 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		6F78ECFA16BAEF26003B89D7 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
+		6F78ECFC16BAEF26003B89D7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		6F78ED0316BAEF26003B89D7 /* BVSDKTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "BVSDKTests-Info.plist"; sourceTree = "<group>"; };
+		6F78ED0516BAEF26003B89D7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		6F78ED0716BAEF26003B89D7 /* BVSDKTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BVSDKTests.h; sourceTree = "<group>"; };
+		6F78ED0816BAEF26003B89D7 /* BVSDKTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BVSDKTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		6F78ECE216BAEF26003B89D7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6F78ECF216BAEF26003B89D7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6F78ECF916BAEF26003B89D7 /* SenTestingKit.framework in Frameworks */,
+				6F78ECFB16BAEF26003B89D7 /* UIKit.framework in Frameworks */,
+				6F78ECFD16BAEF26003B89D7 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		6F78ECDB16BAEF26003B89D7 = {
+			isa = PBXGroup;
+			children = (
+				6F78ECEA16BAEF26003B89D7 /* BVSDK */,
+				6F78ED0116BAEF26003B89D7 /* BVSDKTests */,
+				6F78ECF716BAEF26003B89D7 /* Frameworks */,
+				6F78ECE916BAEF26003B89D7 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		6F78ECE916BAEF26003B89D7 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				6F78ECE816BAEF26003B89D7 /* BVSDK.framework */,
+				6F78ECF616BAEF26003B89D7 /* BVSDKTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		6F78ECEA16BAEF26003B89D7 /* BVSDK */ = {
+			isa = PBXGroup;
+			children = (
+				6F19285816BAF23500D1BE1D /* BVSDK.h */,
+				6F19285916BAF23500D1BE1D /* BVConstants.h */,
+				6F19285A16BAF23500D1BE1D /* BVDelegate.h */,
+				6F19285B16BAF23500D1BE1D /* BVNetwork.h */,
+				6F19285C16BAF23500D1BE1D /* BVNetwork.m */,
+				6F19285D16BAF23500D1BE1D /* BVGet.h */,
+				6F19285E16BAF23500D1BE1D /* BVGet.m */,
+				6F19285F16BAF23500D1BE1D /* BVPost.h */,
+				6F19286016BAF23500D1BE1D /* BVPost.m */,
+				6F19286116BAF23500D1BE1D /* BVMediaPost.h */,
+				6F19286216BAF23500D1BE1D /* BVMediaPost.m */,
+				6F19286316BAF23500D1BE1D /* BVSettings.h */,
+				6F19286416BAF23500D1BE1D /* BVSettings.m */,
+				6F78ECEB16BAEF26003B89D7 /* Supporting Files */,
+			);
+			path = BVSDK;
+			sourceTree = "<group>";
+		};
+		6F78ECEB16BAEF26003B89D7 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				6F78ECEC16BAEF26003B89D7 /* BVSDK-Info.plist */,
+				6F78ECED16BAEF26003B89D7 /* InfoPlist.strings */,
+				6F78ECF016BAEF26003B89D7 /* BVSDK-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		6F78ECF716BAEF26003B89D7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6F78ECF816BAEF26003B89D7 /* SenTestingKit.framework */,
+				6F78ECFA16BAEF26003B89D7 /* UIKit.framework */,
+				6F78ECFC16BAEF26003B89D7 /* Foundation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		6F78ED0116BAEF26003B89D7 /* BVSDKTests */ = {
+			isa = PBXGroup;
+			children = (
+				6F19287716BAF24000D1BE1D /* 0.JPG */,
+				6F19287816BAF24000D1BE1D /* 90cw.JPG */,
+				6F19287916BAF24000D1BE1D /* 270cw.JPG */,
+				6F19287A16BAF24000D1BE1D /* 180.JPG */,
+				6F19287B16BAF24000D1BE1D /* submitted.jpg */,
+				6F19287C16BAF24000D1BE1D /* bv533x533.png */,
+				6F19287D16BAF24000D1BE1D /* sample_mpeg4.mp4 */,
+				6F19287E16BAF24000D1BE1D /* sample_iTunes.mov */,
+				6F78ED0716BAEF26003B89D7 /* BVSDKTests.h */,
+				6F78ED0816BAEF26003B89D7 /* BVSDKTests.m */,
+				6F19288F16BAF25400D1BE1D /* rotated.jpg */,
+				6F78ED0216BAEF26003B89D7 /* Supporting Files */,
+			);
+			path = BVSDKTests;
+			sourceTree = "<group>";
+		};
+		6F78ED0216BAEF26003B89D7 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				6F78ED0316BAEF26003B89D7 /* BVSDKTests-Info.plist */,
+				6F78ED0416BAEF26003B89D7 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		6F78ECE316BAEF26003B89D7 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6F19286516BAF23500D1BE1D /* BVSDK.h in Headers */,
+				6F19286616BAF23500D1BE1D /* BVConstants.h in Headers */,
+				6F19286716BAF23500D1BE1D /* BVDelegate.h in Headers */,
+				6F19286816BAF23500D1BE1D /* BVNetwork.h in Headers */,
+				6F19286B16BAF23500D1BE1D /* BVGet.h in Headers */,
+				6F19286E16BAF23500D1BE1D /* BVPost.h in Headers */,
+				6F19287116BAF23500D1BE1D /* BVMediaPost.h in Headers */,
+				6F19287416BAF23500D1BE1D /* BVSettings.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		6F78ECE716BAEF26003B89D7 /* BVSDK */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6F78ED0C16BAEF26003B89D7 /* Build configuration list for PBXNativeTarget "BVSDK" */;
+			buildPhases = (
+				6F78ECE016BAEF26003B89D7 /* ShellScript */,
+				6F78ECE116BAEF26003B89D7 /* Sources */,
+				6F78ECE216BAEF26003B89D7 /* Frameworks */,
+				6F78ECE316BAEF26003B89D7 /* Headers */,
+				6F78ECE416BAEF26003B89D7 /* Resources */,
+				6F78ECE516BAEF26003B89D7 /* ShellScript */,
+				6F78ECE616BAEF26003B89D7 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BVSDK;
+			productName = BVSDK;
+			productReference = 6F78ECE816BAEF26003B89D7 /* BVSDK.framework */;
+			productType = "com.apple.product-type.bundle";
+		};
+		6F78ECF516BAEF26003B89D7 /* BVSDKTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6F78ED0F16BAEF26003B89D7 /* Build configuration list for PBXNativeTarget "BVSDKTests" */;
+			buildPhases = (
+				6F78ECF116BAEF26003B89D7 /* Sources */,
+				6F78ECF216BAEF26003B89D7 /* Frameworks */,
+				6F78ECF316BAEF26003B89D7 /* Resources */,
+				6F78ECF416BAEF26003B89D7 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6F78ECFF16BAEF26003B89D7 /* PBXTargetDependency */,
+			);
+			name = BVSDKTests;
+			productName = BVSDKTests;
+			productReference = 6F78ECF616BAEF26003B89D7 /* BVSDKTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		6F78ECDC16BAEF26003B89D7 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0460;
+				ORGANIZATIONNAME = Bazaarvoice;
+			};
+			buildConfigurationList = 6F78ECDF16BAEF26003B89D7 /* Build configuration list for PBXProject "BVSDK" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 6F78ECDB16BAEF26003B89D7;
+			productRefGroup = 6F78ECE916BAEF26003B89D7 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				6F78ECE716BAEF26003B89D7 /* BVSDK */,
+				6F78ECF516BAEF26003B89D7 /* BVSDKTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		6F78ECE416BAEF26003B89D7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6F78ECEF16BAEF26003B89D7 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6F78ECF316BAEF26003B89D7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6F78ED0016BAEF26003B89D7 /* BVSDK.framework in Resources */,
+				6F78ED0616BAEF26003B89D7 /* InfoPlist.strings in Resources */,
+				6F19288016BAF24000D1BE1D /* 0.JPG in Resources */,
+				6F19288216BAF24000D1BE1D /* 90cw.JPG in Resources */,
+				6F19288416BAF24000D1BE1D /* 270cw.JPG in Resources */,
+				6F19288616BAF24000D1BE1D /* 180.JPG in Resources */,
+				6F19288816BAF24000D1BE1D /* submitted.jpg in Resources */,
+				6F19288A16BAF24000D1BE1D /* bv533x533.png in Resources */,
+				6F19288C16BAF24000D1BE1D /* sample_mpeg4.mp4 in Resources */,
+				6F19288E16BAF24000D1BE1D /* sample_iTunes.mov in Resources */,
+				6F19289016BAF25400D1BE1D /* rotated.jpg in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		6F78ECE016BAEF26003B89D7 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "set -e\n\nset +u\nif [[ $UFW_MASTER_SCRIPT_RUNNING ]]\nthen\n    # Nothing for the slave script to do\n    exit 0\nfi\nset -u\n\nif [[ \"$SDK_NAME\" =~ ([A-Za-z]+) ]]\nthen\n    UFW_SDK_PLATFORM=${BASH_REMATCH[1]}\nelse\n    echo \"Could not find platform name from SDK_NAME: $SDK_NAME\"\n    exit 1\nfi\n\nif [[ \"$SDK_NAME\" =~ ([0-9]+.*$) ]]\nthen\n\tUFW_SDK_VERSION=${BASH_REMATCH[1]}\nelse\n    echo \"Could not find sdk version  from SDK_NAME: $SDK_NAME\"\n    exit 1\nfi\n\nif [[ \"$UFW_SDK_PLATFORM\" = \"iphoneos\" ]]\nthen\n    UFW_OTHER_PLATFORM=iphonesimulator\nelse\n    UFW_OTHER_PLATFORM=iphoneos\nfi\n\nif [[ \"$BUILT_PRODUCTS_DIR\" =~ (.*)$UFW_SDK_PLATFORM$ ]]\nthen\n    UFW_OTHER_BUILT_PRODUCTS_DIR=\"${BASH_REMATCH[1]}${UFW_OTHER_PLATFORM}\"\nelse\n    echo \"Could not find $UFW_SDK_PLATFORM in $BUILT_PRODUCTS_DIR\"\n    exit 1\nfi\n\n\n# Short-circuit if all binaries are up to date\n\nif [[ -f \"${BUILT_PRODUCTS_DIR}/${EXECUTABLE_PATH}\" ]] && \\\n   [[ -f \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.embeddedframework/${EXECUTABLE_PATH}\" ]] && \\\n   [[ ! \"${BUILT_PRODUCTS_DIR}/${EXECUTABLE_PATH}\" -nt \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.embeddedframework/${EXECUTABLE_PATH}\" ]]\n   [[ -f \"${UFW_OTHER_BUILT_PRODUCTS_DIR}/${EXECUTABLE_PATH}\" ]] && \\\n   [[ -f \"${UFW_OTHER_BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.embeddedframework/${EXECUTABLE_PATH}\" ]] && \\\n   [[ ! \"${UFW_OTHER_BUILT_PRODUCTS_DIR}/${EXECUTABLE_PATH}\" -nt \"${UFW_OTHER_BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.embeddedframework/${EXECUTABLE_PATH}\" ]]\nthen\n    exit 0\nfi\n\n\n# Clean other platform if needed\n\nif [[ ! -f \"${BUILT_PRODUCTS_DIR}/${EXECUTABLE_PATH}\" ]]\nthen\n\techo \"Platform \\\"$UFW_SDK_PLATFORM\\\" was cleaned recently. Cleaning \\\"$UFW_OTHER_PLATFORM\\\" as well\"\n\techo xcodebuild -project \"${PROJECT_FILE_PATH}\" -target \"${TARGET_NAME}\" -configuration \"${CONFIGURATION}\" -sdk ${UFW_OTHER_PLATFORM}${UFW_SDK_VERSION} BUILD_DIR=\"${BUILD_DIR}\" CONFIGURATION_TEMP_DIR=\"${PROJECT_TEMP_DIR}/${CONFIGURATION}-${UFW_OTHER_PLATFORM}\" clean\n\txcodebuild -project \"${PROJECT_FILE_PATH}\" -target \"${TARGET_NAME}\" -configuration \"${CONFIGURATION}\" -sdk ${UFW_OTHER_PLATFORM}${UFW_SDK_VERSION} BUILD_DIR=\"${BUILD_DIR}\" CONFIGURATION_TEMP_DIR=\"${PROJECT_TEMP_DIR}/${CONFIGURATION}-${UFW_OTHER_PLATFORM}\" clean\nfi\n\n\n# Make sure we are building from fresh binaries\n\nrm -rf \"${BUILT_PRODUCTS_DIR}/${EXECUTABLE_PATH}\"\nrm -rf \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.embeddedframework\"\nrm -rf \"${UFW_OTHER_BUILT_PRODUCTS_DIR}/${EXECUTABLE_PATH}\"\nrm -rf \"${UFW_OTHER_BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.embeddedframework\"\n";
+		};
+		6F78ECE516BAEF26003B89D7 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "HEADERS_ROOT=$SRCROOT/$PRODUCT_NAME\nFRAMEWORK_HEADERS_DIR=\"$BUILT_PRODUCTS_DIR/$WRAPPER_NAME/Versions/$FRAMEWORK_VERSION/Headers\"\n\n## only header files expected at this point\nPUBLIC_HEADERS=$(find $FRAMEWORK_HEADERS_DIR/. -not -type d 2> /dev/null | sed -e \"s@.*/@@g\")\n\nFIND_OPTS=\"\"\nfor PUBLIC_HEADER in $PUBLIC_HEADERS; do\n  if [ -n \"$FIND_OPTS\" ]; then\n    FIND_OPTS=\"$FIND_OPTS -o\"\n  fi\n  FIND_OPTS=\"$FIND_OPTS -name '$PUBLIC_HEADER'\"\ndone\n\nif [ -n \"$FIND_OPTS\" ]; then\n  for ORIG_HEADER in $(eval \"find $HEADERS_ROOT/. $FIND_OPTS\" 2> /dev/null | sed -e \"s@^$HEADERS_ROOT/./@@g\"); do\n    PUBLIC_HEADER=$(basename $ORIG_HEADER)\n    RELATIVE_PATH=$(dirname $ORIG_HEADER)\n    if [ -e $FRAMEWORK_HEADERS_DIR/$PUBLIC_HEADER ]; then\n      mkdir -p \"$FRAMEWORK_HEADERS_DIR/$RELATIVE_PATH\"\n      mv \"$FRAMEWORK_HEADERS_DIR/$PUBLIC_HEADER\" \"$FRAMEWORK_HEADERS_DIR/$RELATIVE_PATH/$PUBLIC_HEADER\"\n    fi\n  done\nfi\n";
+		};
+		6F78ECE616BAEF26003B89D7 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "set -e\n\nset +u\nif [[ $UFW_MASTER_SCRIPT_RUNNING ]]\nthen\n    # Nothing for the slave script to do\n    exit 0\nfi\nset -u\nexport UFW_MASTER_SCRIPT_RUNNING=1\n\n\n# Functions\n\n## List files in the specified directory, storing to the specified array.\n#\n# @param $1 The path to list\n# @param $2 The name of the array to fill\n#\n##\nlist_files ()\n{\n    filelist=$(ls \"$1\")\n    while read line\n    do\n        eval \"$2[\\${#$2[*]}]=\\\"\\$line\\\"\"\n    done <<< \"$filelist\"\n}\n\n\n# Sanity check\n\nif [[ ! -f \"${BUILT_PRODUCTS_DIR}/${EXECUTABLE_PATH}\" ]]\nthen\n    echo \"Framework target \\\"${TARGET_NAME}\\\" had no source files to build from. Make sure your source files have the correct target membership\"\n    exit 1\nfi\n\n\n# Gather information\n\nif [[ \"$SDK_NAME\" =~ ([A-Za-z]+) ]]\nthen\n    UFW_SDK_PLATFORM=${BASH_REMATCH[1]}\nelse\n    echo \"Could not find platform name from SDK_NAME: $SDK_NAME\"\n    exit 1\nfi\n\nif [[ \"$SDK_NAME\" =~ ([0-9]+.*$) ]]\nthen\n    UFW_SDK_VERSION=${BASH_REMATCH[1]}\nelse\n    echo \"Could not find sdk version from SDK_NAME: $SDK_NAME\"\n    exit 1\nfi\n\nif [[ \"$UFW_SDK_PLATFORM\" = \"iphoneos\" ]]\nthen\n    UFW_OTHER_PLATFORM=iphonesimulator\nelse\n    UFW_OTHER_PLATFORM=iphoneos\nfi\n\nif [[ \"$BUILT_PRODUCTS_DIR\" =~ (.*)$UFW_SDK_PLATFORM$ ]]\nthen\n    UFW_OTHER_BUILT_PRODUCTS_DIR=\"${BASH_REMATCH[1]}${UFW_OTHER_PLATFORM}\"\nelse\n    echo \"Could not find $UFW_SDK_PLATFORM in $BUILT_PRODUCTS_DIR\"\n    exit 1\nfi\n\n\n# Short-circuit if all binaries are up to date.\n# We already checked the other platform in the prerun script.\n\nif [[ -f \"${BUILT_PRODUCTS_DIR}/${EXECUTABLE_PATH}\" ]] && [[ -f \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.embeddedframework/${EXECUTABLE_PATH}\" ]] && [[ ! \"${BUILT_PRODUCTS_DIR}/${EXECUTABLE_PATH}\" -nt \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.embeddedframework/${EXECUTABLE_PATH}\" ]]\nthen\n    exit 0\nfi\n\n\n# Make sure the other platform gets built\n\necho \"Build other platform\"\n\necho xcodebuild -project \"${PROJECT_FILE_PATH}\" -target \"${TARGET_NAME}\" -configuration \"${CONFIGURATION}\" -sdk ${UFW_OTHER_PLATFORM}${UFW_SDK_VERSION} BUILD_DIR=\"${BUILD_DIR}\" CONFIGURATION_TEMP_DIR=\"${PROJECT_TEMP_DIR}/${CONFIGURATION}-${UFW_OTHER_PLATFORM}\" $ACTION\nxcodebuild -project \"${PROJECT_FILE_PATH}\" -target \"${TARGET_NAME}\" -configuration \"${CONFIGURATION}\" -sdk ${UFW_OTHER_PLATFORM}${UFW_SDK_VERSION} BUILD_DIR=\"${BUILD_DIR}\" CONFIGURATION_TEMP_DIR=\"${PROJECT_TEMP_DIR}/${CONFIGURATION}-${UFW_OTHER_PLATFORM}\" $ACTION\n\n\n# Build the fat static library binary\n\necho \"Create universal static library\"\n\necho \"$PLATFORM_DEVELOPER_BIN_DIR/libtool\" -static \"${BUILT_PRODUCTS_DIR}/${EXECUTABLE_PATH}\" \"${UFW_OTHER_BUILT_PRODUCTS_DIR}/${EXECUTABLE_PATH}\" -o \"${BUILT_PRODUCTS_DIR}/${EXECUTABLE_PATH}.temp\"\n\"$PLATFORM_DEVELOPER_BIN_DIR/libtool\" -static \"${BUILT_PRODUCTS_DIR}/${EXECUTABLE_PATH}\" \"${UFW_OTHER_BUILT_PRODUCTS_DIR}/${EXECUTABLE_PATH}\" -o \"${BUILT_PRODUCTS_DIR}/${EXECUTABLE_PATH}.temp\"\n\necho mv \"${BUILT_PRODUCTS_DIR}/${EXECUTABLE_PATH}.temp\" \"${BUILT_PRODUCTS_DIR}/${EXECUTABLE_PATH}\"\nmv \"${BUILT_PRODUCTS_DIR}/${EXECUTABLE_PATH}.temp\" \"${BUILT_PRODUCTS_DIR}/${EXECUTABLE_PATH}\"\n\n\n# Build framework structure\n\necho \"Build symlinks\"\n\necho ln -sfh \"${FRAMEWORK_VERSION}\" \"${BUILT_PRODUCTS_DIR}/${WRAPPER_NAME}/Versions/Current\"\nln -sfh \"${FRAMEWORK_VERSION}\" \"${BUILT_PRODUCTS_DIR}/${WRAPPER_NAME}/Versions/Current\"\necho ln -sfh Versions/Current/Headers \"${BUILT_PRODUCTS_DIR}/${WRAPPER_NAME}/Headers\"\nln -sfh Versions/Current/Headers \"${BUILT_PRODUCTS_DIR}/${WRAPPER_NAME}/Headers\"\necho ln -sfh Versions/Current/Resources \"${BUILT_PRODUCTS_DIR}/${WRAPPER_NAME}/Resources\"\nln -sfh Versions/Current/Resources \"${BUILT_PRODUCTS_DIR}/${WRAPPER_NAME}/Resources\"\necho ln -sfh \"Versions/Current/${EXECUTABLE_NAME}\" \"${BUILT_PRODUCTS_DIR}/${WRAPPER_NAME}/${EXECUTABLE_NAME}\"\nln -sfh \"Versions/Current/${EXECUTABLE_NAME}\" \"${BUILT_PRODUCTS_DIR}/${WRAPPER_NAME}/${EXECUTABLE_NAME}\"\n\n\n# Link to binary for unit tests\n\nmkdir -p \"${BUILT_PRODUCTS_DIR}/.fake_fw_testing.framework\"\nln -sfh \"../${WRAPPER_NAME}/${EXECUTABLE_NAME}\" \"${BUILT_PRODUCTS_DIR}/.fake_fw_testing.framework/.fake_fw_testing\"\n\n\n# Build embedded framework structure\n\necho \"Build Embedded Framework\"\n\necho rm -rf \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.embeddedframework\"\nrm -rf \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.embeddedframework\"\necho mkdir -p \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.embeddedframework/Resources\"\nmkdir -p \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.embeddedframework/Resources\"\necho cp -a \"${BUILT_PRODUCTS_DIR}/${WRAPPER_NAME}\" \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.embeddedframework/\"\ncp -a \"${BUILT_PRODUCTS_DIR}/${WRAPPER_NAME}\" \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.embeddedframework/\"\n\ndeclare -a UFW_FILE_LIST\nlist_files \"${BUILT_PRODUCTS_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}\" UFW_FILE_LIST\nfor filename in \"${UFW_FILE_LIST[@]}\"\ndo\n    if [[ \"${filename}\" != \"Info.plist\" ]] && [[ ! \"${filename}\" =~ .*\\.lproj$ ]]\n    then\n        echo ln -sfh \"../${WRAPPER_NAME}/Resources/${filename}\" \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.embeddedframework/Resources/${filename}\"\n        ln -sfh \"../${WRAPPER_NAME}/Resources/${filename}\" \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.embeddedframework/Resources/${filename}\"\n    fi\ndone\n\n\n# Replace other platform's framework with a copy of this one (so that both have the same universal binary)\n\necho \"Copy from $UFW_SDK_PLATFORM to $UFW_OTHER_PLATFORM\"\n\necho rm -rf \"${BUILD_DIR}/${CONFIGURATION}-${UFW_OTHER_PLATFORM}\"\nrm -rf \"${BUILD_DIR}/${CONFIGURATION}-${UFW_OTHER_PLATFORM}\"\necho cp -a \"${BUILD_DIR}/${CONFIGURATION}-${UFW_SDK_PLATFORM}\" \"${BUILD_DIR}/${CONFIGURATION}-${UFW_OTHER_PLATFORM}\"\ncp -a \"${BUILD_DIR}/${CONFIGURATION}-${UFW_SDK_PLATFORM}\" \"${BUILD_DIR}/${CONFIGURATION}-${UFW_OTHER_PLATFORM}\"\n";
+		};
+		6F78ECF416BAEF26003B89D7 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		6F78ECE116BAEF26003B89D7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6F19286916BAF23500D1BE1D /* BVNetwork.m in Sources */,
+				6F19286C16BAF23500D1BE1D /* BVGet.m in Sources */,
+				6F19286F16BAF23500D1BE1D /* BVPost.m in Sources */,
+				6F19287216BAF23500D1BE1D /* BVMediaPost.m in Sources */,
+				6F19287516BAF23500D1BE1D /* BVSettings.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6F78ECF116BAEF26003B89D7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6F78ED0916BAEF26003B89D7 /* BVSDKTests.m in Sources */,
+				6F19286A16BAF23500D1BE1D /* BVNetwork.m in Sources */,
+				6F19286D16BAF23500D1BE1D /* BVGet.m in Sources */,
+				6F19287016BAF23500D1BE1D /* BVPost.m in Sources */,
+				6F19287316BAF23500D1BE1D /* BVMediaPost.m in Sources */,
+				6F19287616BAF23500D1BE1D /* BVSettings.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		6F78ECFF16BAEF26003B89D7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6F78ECE716BAEF26003B89D7 /* BVSDK */;
+			targetProxy = 6F78ECFE16BAEF26003B89D7 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		6F78ECED16BAEF26003B89D7 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6F78ECEE16BAEF26003B89D7 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		6F78ED0416BAEF26003B89D7 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6F78ED0516BAEF26003B89D7 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		6F78ED0A16BAEF26003B89D7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		6F78ED0B16BAEF26003B89D7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		6F78ED0D16BAEF26003B89D7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CONTENTS_FOLDER_PATH = "$(WRAPPER_NAME)/Versions/$(FRAMEWORK_VERSION)";
+				DEAD_CODE_STRIPPING = NO;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				FRAMEWORK_VERSION = 2.1;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "BVSDK/BVSDK-Prefix.pch";
+				INFOPLIST_FILE = "BVSDK/BVSDK-Info.plist";
+				INFOPLIST_PATH = "$(UNLOCALIZED_RESOURCES_FOLDER_PATH)/Info.plist";
+				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
+				LINK_WITH_STANDARD_LIBRARIES = NO;
+				MACH_O_TYPE = mh_object;
+				ONLY_ACTIVE_ARCH = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				UNLOCALIZED_RESOURCES_FOLDER_PATH = "$(CONTENTS_FOLDER_PATH)/Resources";
+				WRAPPER_EXTENSION = framework;
+			};
+			name = Debug;
+		};
+		6F78ED0E16BAEF26003B89D7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CONTENTS_FOLDER_PATH = "$(WRAPPER_NAME)/Versions/$(FRAMEWORK_VERSION)";
+				DEAD_CODE_STRIPPING = NO;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				FRAMEWORK_VERSION = 2.1;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "BVSDK/BVSDK-Prefix.pch";
+				INFOPLIST_FILE = "BVSDK/BVSDK-Info.plist";
+				INFOPLIST_PATH = "$(UNLOCALIZED_RESOURCES_FOLDER_PATH)/Info.plist";
+				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
+				LINK_WITH_STANDARD_LIBRARIES = NO;
+				MACH_O_TYPE = mh_object;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				UNLOCALIZED_RESOURCES_FOLDER_PATH = "$(CONTENTS_FOLDER_PATH)/Resources";
+				WRAPPER_EXTENSION = framework;
+			};
+			name = Release;
+		};
+		6F78ED1016BAEF26003B89D7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "BVSDK/BVSDK-Prefix.pch";
+				INFOPLIST_FILE = "BVSDKTests/BVSDKTests-Info.plist";
+				OTHER_LDFLAGS = (
+					"-framework",
+					SenTestingKit,
+					"-framework",
+					.fake_fw_testing,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		6F78ED1116BAEF26003B89D7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "BVSDK/BVSDK-Prefix.pch";
+				INFOPLIST_FILE = "BVSDKTests/BVSDKTests-Info.plist";
+				OTHER_LDFLAGS = (
+					"-framework",
+					SenTestingKit,
+					"-framework",
+					.fake_fw_testing,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		6F78ECDF16BAEF26003B89D7 /* Build configuration list for PBXProject "BVSDK" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6F78ED0A16BAEF26003B89D7 /* Debug */,
+				6F78ED0B16BAEF26003B89D7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6F78ED0C16BAEF26003B89D7 /* Build configuration list for PBXNativeTarget "BVSDK" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6F78ED0D16BAEF26003B89D7 /* Debug */,
+				6F78ED0E16BAEF26003B89D7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6F78ED0F16BAEF26003B89D7 /* Build configuration list for PBXNativeTarget "BVSDKTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6F78ED1016BAEF26003B89D7 /* Debug */,
+				6F78ED1116BAEF26003B89D7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 6F78ECDC16BAEF26003B89D7 /* Project object */;
+}

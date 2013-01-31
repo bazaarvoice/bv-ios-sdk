@@ -129,8 +129,6 @@
 	
 	<option value="//api/name/addVideoUrl:withCaption:">&nbsp;&nbsp;&nbsp;&nbsp;- addVideoUrl:withCaption:</option>
 	
-	<option value="//api/name/init">&nbsp;&nbsp;&nbsp;&nbsp;- init</option>
-	
 	<option value="//api/name/initWithType:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithType:</option>
 	
 	<option value="//api/name/requestURL">&nbsp;&nbsp;&nbsp;&nbsp;- requestURL</option>
@@ -259,8 +257,6 @@
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/addVideoUrl:withCaption:">addVideoUrl:withCaption:</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/init">init</a></span></li>
-	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithType:">initWithType:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/requestURL">requestURL</a></span></li>
@@ -334,7 +330,7 @@ questionRequest.<a href="#//api/name/categoryId">categoryId</a> = @&ldquo;1020&r
 						
 						
 						
-						<h3 class="subsubtitle task-title">Other Methods</h3>
+						
 
 						<ul class="task-list">
 							<li>
@@ -376,13 +372,6 @@ questionRequest.<a href="#//api/name/categoryId">categoryId</a> = @&ldquo;1020&r
 	<span class="tooltip">
 		<code><a href="#//api/name/agreedToTermsAndConditions">&nbsp;&nbsp;agreedToTermsAndConditions</a></code>
 		<span class="tooltip"><p>Boolean indicating whether or not the user agreed to the terms and conditions.  Required depending on the client&rsquo;s settings.</p></span>
-	</span>
-	<span class="task-item-suffix">property</span>
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/answerText">&nbsp;&nbsp;answerText</a></code>
-		<span class="tooltip"><p>Contains the text of an answer for a BVPostTypeAnswer request.</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	
@@ -570,6 +559,13 @@ questionRequest.<a href="#//api/name/categoryId">categoryId</a> = @&ldquo;1020&r
 	
 </li><li>
 	<span class="tooltip">
+		<code><a href="#//api/name/answerText">&nbsp;&nbsp;answerText</a></code>
+		<span class="tooltip"><p>Contains the text of an answer for a BVPostTypeAnswer request.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
 		<code><a href="#//api/name/questionId">&nbsp;&nbsp;questionId</a></code>
 		<span class="tooltip"><p>The id of the category that this content is being submitted on for a BVPostTypeQuestion request. For such a request, one of <a href="#//api/name/productId">productId</a> or <a href="#//api/name/categoryId">categoryId</a> must be provided.</p></span>
 	</span>
@@ -612,15 +608,15 @@ questionRequest.<a href="#//api/name/categoryId">categoryId</a> = @&ldquo;1020&r
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/contentType">&nbsp;&nbsp;contentType</a></code>
-		<span class="tooltip"><p>Type of content with which a BVPostTypeFeedback request is associated. (BVFeedbackContentTypeAnswer, BVFeedbackContentTypeQuestion, BVFeedbackContentTypeReview, BVFeedbackContentTypeReviewComment, BVFeedbackContentTypeStory, BVFeedbackContentTypeStoryComment)</p></span>
+		<code><a href="#//api/name/contentId">&nbsp;&nbsp;contentId</a></code>
+		<span class="tooltip"><p>ID of the content with which a BVPostTypeFeedback request is associated.</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/contentId">&nbsp;&nbsp;contentId</a></code>
-		<span class="tooltip"><p>ID of the content with which a BVPostTypeFeedback request is associated.</p></span>
+		<code><a href="#//api/name/contentType">&nbsp;&nbsp;contentType</a></code>
+		<span class="tooltip"><p>Type of content with which a BVPostTypeFeedback request is associated. (BVFeedbackContentTypeAnswer, BVFeedbackContentTypeQuestion, BVFeedbackContentTypeReview, BVFeedbackContentTypeReviewComment, BVFeedbackContentTypeStory, BVFeedbackContentTypeStoryComment)</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	
@@ -633,15 +629,15 @@ questionRequest.<a href="#//api/name/categoryId">categoryId</a> = @&ldquo;1020&r
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/vote">&nbsp;&nbsp;vote</a></code>
-		<span class="tooltip"><p>Helpfulness vote for this content. Valid votes are: BVFeedbackVoteTypePositive, NegatBVFeedbackVoteTypeNegative. This parameter is only required for feedbackType=BVFeedbackTypeHelpfulness.</p></span>
+		<code><a href="#//api/name/reasonText">&nbsp;&nbsp;reasonText</a></code>
+		<span class="tooltip"><p>For BVPostTypeFeedback requests.  Reason this content has been flagged as inappropriate.</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/reasonText">&nbsp;&nbsp;reasonText</a></code>
-		<span class="tooltip"><p>For BVPostTypeFeedback requests.  Reason this content has been flagged as inappropriate.</p></span>
+		<code><a href="#//api/name/vote">&nbsp;&nbsp;vote</a></code>
+		<span class="tooltip"><p>Helpfulness vote for this content. Valid votes are: BVFeedbackVoteTypePositive, NegatBVFeedbackVoteTypeNegative. This parameter is only required for feedbackType=BVFeedbackTypeHelpfulness.</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	
@@ -670,21 +666,6 @@ questionRequest.<a href="#//api/name/categoryId">categoryId</a> = @&ldquo;1020&r
 	<span class="tooltip">
 		<code><a href="#//api/name/sendRequestWithDelegate:">&ndash;&nbsp;sendRequestWithDelegate:</a></code>
 		<span class="tooltip"><p>Convenience method to set <a href="#//api/name/delegate">delegate</a> and <a href="#//api/name/send">send</a> request asynchronously.</p></span>
-	</span>
-	
-	
-</li>
-						</ul>
-						
-						
-						
-						<h3 class="subsubtitle task-title">Other Methods</h3>
-
-						<ul class="task-list">
-							<li>
-	<span class="tooltip">
-		<code><a href="#//api/name/init">&ndash;&nbsp;init</a></code>
-		<span class="tooltip"><p><strong><em> Used by Feedback </em></strong>***</p></span>
 	</span>
 	
 	
@@ -2278,42 +2259,6 @@ questionRequest.<a href="#//api/name/categoryId">categoryId</a> = @&ldquo;1020&r
 </div>
 						
 						<div class="section-method">
-	<a name="//api/name/init" title="init"></a>
-	<h3 class="subsubtitle method-title">init</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<p><strong><em> Used by Feedback </em></strong>***</p>
-	</div>		
-	
-    
-
-	<div class="method-subsection method-declaration"><code>- (id)init</code></div>
-
-    
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">BVPost.m</code><br />
-	</div>				
-	
-	
-</div>
-						
-						<div class="section-method">
 	<a name="//api/name/initWithType:" title="initWithType:"></a>
 	<h3 class="subsubtitle method-title">initWithType:</h3>
 	
@@ -2654,7 +2599,7 @@ questionRequest.<a href="#//api/name/categoryId">categoryId</a> = @&ldquo;1020&r
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2013 Bazaarvoice. All rights reserved. (Last updated: 2013-01-24)</span><br />
+						<p><span class="copyright">&copy; 2013 Bazaarvoice. All rights reserved. (Last updated: 2013-01-31)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.0.5 (build 789)</a>.</span></p>
 						

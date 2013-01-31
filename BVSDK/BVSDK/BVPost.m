@@ -20,7 +20,7 @@
 @synthesize type = _type;
 @synthesize requestURL = _requestURL;
 
-/***** Used by All Types of BVPost Requests *******/
+// Used by All Types of BVPost Requests 
 @synthesize action = _action;
 @synthesize agreedToTermsAndConditions = _agreedToTermsAndConditions;
 @synthesize campaignId = _campaignId;
@@ -31,42 +31,42 @@
 @synthesize userLocation = _userLocation;
 @synthesize userNickname = _userNickname;
 
-/***** Used by Review, Question, Story *******/
+//  Used by Review, Question, Story 
 @synthesize productId = _productId;
 
-/***** Used by Review, Story, Comment *******/
+//  Used by Review, Story, Comment 
 @synthesize title = _title;
 
 
-/***** Used by Question, Story *******/
+//  Used by Question, Story 
 @synthesize answerText = _answerText;
 @synthesize categoryId = _categoryId;
 
-/***** Used by Review *******/
+//  Used by Review 
 @synthesize isRecommended = _isRecommended;
 @synthesize netPromoterComment = _netPromoterComment;
 @synthesize netPromoterScore = _netPromoterScore;
 @synthesize rating = _rating;
 @synthesize reviewText = _reviewText;
 
-/***** Used by Question *******/
+//  Used by Question 
 @synthesize isUserAnonymous = _isUserAnonymous;
 @synthesize questionSummary = _questionSummary;
 @synthesize questionDetails = _questionDetails;
 
-/***** Used by Answer *******/
+//  Used by Answer 
 @synthesize questionId = _questionId;
 
-/***** Used by Story *******/
+//  Used by Story 
 @synthesize sendEmailAlertWhenCommented = _sendEmailAlertWhenCommented;
 @synthesize storyText = _storyText;
 
-/***** Used by Comment *******/
+//  Used by Comment 
 @synthesize reviewId = _reviewId;
 @synthesize storyId = _storyId;
 @synthesize commentText = _commentText;
 
-/***** Used by Feedback *******/
+//  Used by Feedback 
 @synthesize contentType = _contentType;
 @synthesize contentId = _contentId;
 @synthesize feedbackType = _feedbackType;
@@ -127,7 +127,7 @@
     }
 }
 
-/***** Used by All Types of BVPost Requests *******/
+//  Used by All Types of BVPost Requests 
 
 - (NSString *)getActionString:(BVAction)action {
     switch (action) {
@@ -204,14 +204,14 @@
     [self.network addNthUrlParameterWithName:@"VideoUrl" value:url];
 }
 
-/***** Used by Review, Question, Answer, Story *******/
+//  Used by Review, Question, Answer, Story 
 
 - (void)setAdditionalField:(NSString *)dimensionExternalId value:(NSString *)value {
     [self.network setUrlParameterWithName:[NSString stringWithFormat:@"AdditionalField_%@", dimensionExternalId]
                                     value:value];
 }
 
-/***** Used by Review, Question, Story *******/
+//  Used by Review, Question, Story 
 
 - (void)setProductId:(NSString *)productId{
 	_productId = productId;
@@ -228,21 +228,21 @@
                                        value:value ? @"true": @"false"];
 }
 
-/***** Used by Review, Story, Comment *******/
+//  Used by Review, Story, Comment 
 
 - (void)setTitle:(NSString *)title{
 	_title = title;
 	[self.network setUrlParameterWithName:@"Title" value:title];
 }
 
-/***** Used by Question, Story *******/
+//  Used by Question, Story 
 
 - (void)setCategoryId:(NSString *)categoryId{
 	_categoryId = categoryId;
 	[self.network setUrlParameterWithName:@"CategoryId" value:categoryId];
 }
 
-/***** Used by Review *******/
+//  Used by Review 
 
 - (void)setIsRecommended:(BOOL)isRecommended{
 	_isRecommended = isRecommended;
@@ -274,7 +274,7 @@
                                     value:[NSString stringWithFormat:@"%d", value]];
 }
 
-/***** Used by Question *******/
+//  Used by Question 
 
 - (void)setIsUserAnonymous:(BOOL)isUserAnonymous{
 	_isUserAnonymous = isUserAnonymous;
@@ -291,7 +291,7 @@
 	[self.network setUrlParameterWithName:@"QuestionDetails" value:questionDetails];
 }
 
-/***** Used by Answer *******/
+//  Used by Answer 
 - (void)setAnswerText:(NSString *)answerText {
     _answerText = answerText;
     [self.network setUrlParameterWithName:@"AnswerText" value:answerText];
@@ -302,7 +302,7 @@
 	[self.network setUrlParameterWithName:@"QuestionId" value:questionId];
 }
 
-/***** Used by Story *******/
+//  Used by Story 
 
 - (void)setSendEmailAlertWhenCommented:(BOOL)sendEmailAlertWhenCommented{
 	_sendEmailAlertWhenCommented = sendEmailAlertWhenCommented;
@@ -314,7 +314,7 @@
 	[self.network setUrlParameterWithName:@"StoryText" value:storyText];
 }
 
-/***** Used by Comment *******/
+//  Used by Comment 
 
 - (void)setReviewId:(NSString *)reviewId{
 	_reviewId = reviewId;
@@ -331,7 +331,7 @@
 	[self.network setUrlParameterWithName:@"CommentText" value:commentText];
 }
 
-/***** Used by Feedback *******/
+//  Used by Feedback 
 
 - (void)setContentId:(NSString *)contentId{
     _contentId = contentId;
