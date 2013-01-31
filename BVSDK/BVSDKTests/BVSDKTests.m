@@ -1,20 +1,19 @@
 //
-//  BazaarvoiceSDKTests.m
-//  BazaarvoiceSDKTests
+//  BVSDKTests.m
+//  BVSDKTests
 //
 //  Created by Bazaarvoice Engineering on 11/26/12.
 //  Copyright (c) 2012 Bazaarvoice Inc. All rights reserved.
 //
 
-#import "BazaarvoiceSDKTests.h"
+#import "BVSDKTests.h"
 #import "BVGet.h"
 #import "BVPost.h"
 #import "BVMediaPost.h"
 #import "BVSettings.h"
 #import "BVNetwork.h"
 
-@implementation BazaarvoiceSDKTests
-
+@implementation BVSDKTests
 - (void)setUp
 {
     [super setUp];
@@ -37,7 +36,7 @@
 
 - (void)checkParams:(NSMutableDictionary *)params {
     NSString *url = [sentRequest performSelector:@selector(requestURL)];
-                     NSDictionary *baseDictionary = [NSDictionary
+    NSDictionary *baseDictionary = [NSDictionary
                                     dictionaryWithObjectsAndKeys:BV_API_VERSION,
                                     @"ApiVersion",
                                     [BVSettings instance].passKey,
@@ -66,18 +65,18 @@
         NSAssert([requestVal isEqualToString:expectedVal], @"Request value of %@ does not match expected value of %@", requestVal, expectedVal);
     }
 }
- 
+
 - (void)didReceiveResponse:(NSDictionary *)response forRequest:(id)request{
     
     //NSLog(@"%@", response);
     requestComplete = YES;
     receivedResponse = response;
     sentRequest = request;
-
+    
     BOOL hasErrors = [[response objectForKey:@"HasErrors"] boolValue] || ([response objectForKey:@"HasErrors"] == nil);
     if (hasErrors) {
         NSLog(@"\n\n==========================\n\n");
-            STFail(@"Error in Class: %@ \n Failure: %@", [request class], [response objectForKey:@"Errors"]);
+        STFail(@"Error in Class: %@ \n Failure: %@", [request class], [response objectForKey:@"Errors"]);
         NSLog(@"\n\n==========================\n\n");
         NSLog(@"%@", response);
     }
@@ -143,7 +142,7 @@
     [showDisplayRequest addSortOnIncludedType:BVIncludeTypeProducts attribute:@"Id" ascending:YES];
     [showDisplayRequest setSearchOnIncludedType:BVIncludeTypeProducts search:@"Increase your potential to shine"];
     [showDisplayRequest sendRequestWithDelegate:self];
-
+    
     NSRunLoop *theRL = [NSRunLoop currentRunLoop];
     // Begin a run loop terminated when the requestComplete it set to true
     while (!requestComplete && [theRL runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]]);
@@ -176,7 +175,7 @@
     [showDisplayRequest addSortOnIncludedType:BVIncludeTypeProducts attribute:@"Id" ascending:YES];
     [showDisplayRequest addStatsOn:BVIncludeStatsTypeReviews];
     [showDisplayRequest sendRequestWithDelegate:self];
-
+    
     NSRunLoop *theRL = [NSRunLoop currentRunLoop];
     // Begin a run loop terminated when the requestComplete it set to true
     while (!requestComplete && [theRL runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]]);
@@ -227,7 +226,7 @@
     BVGet *showDisplayRequest = [[BVGet alloc] initWithType:BVGetTypeStories];
     [showDisplayRequest setFilterForAttribute:@"Id" equality:BVEqualityEqualTo value:@"14181"];
     [showDisplayRequest sendRequestWithDelegate:self];
-
+    
     NSRunLoop *theRL = [NSRunLoop currentRunLoop];
     // Begin a run loop terminated when the requestComplete it set to true
     while (!requestComplete && [theRL runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]]);
@@ -247,7 +246,7 @@
     [showDisplayRequest addSortOnIncludedType:BVIncludeTypeComments attribute:@"Id" ascending:YES];
     [showDisplayRequest addStatsOn:BVIncludeStatsTypeStories];
     [showDisplayRequest sendRequestWithDelegate:self];
-
+    
     NSRunLoop *theRL = [NSRunLoop currentRunLoop];
     // Begin a run loop terminated when the requestComplete it set to true
     while (!requestComplete && [theRL runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]]);
@@ -260,7 +259,7 @@
 - (void)testShowCommentsSparse {
     BVGet *showDisplayRequest = [[BVGet alloc] initWithType:BVGetTypeReviewCommments];
     [showDisplayRequest sendRequestWithDelegate:self];
-
+    
     NSRunLoop *theRL = [NSRunLoop currentRunLoop];
     // Begin a run loop terminated when the requestComplete it set to true
     while (!requestComplete && [theRL runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]]);
@@ -279,7 +278,7 @@
     [showDisplayRequest addSortOnIncludedType:BVIncludeTypeProducts attribute:@"Id" ascending:YES];
     [showDisplayRequest addStatsOn:BVIncludeStatsTypeReviews];
     [showDisplayRequest sendRequestWithDelegate:self];
-
+    
     NSRunLoop *theRL = [NSRunLoop currentRunLoop];
     // Begin a run loop terminated when the requestComplete it set to true
     while (!requestComplete && [theRL runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]]);
@@ -292,7 +291,7 @@
     [BVSettings instance].baseURL = @"stories.apitestcustomer.bazaarvoice.com";
     BVGet *showDisplayRequest = [[BVGet alloc] initWithType:BVGetTypeStoryCommments];
     [showDisplayRequest sendRequestWithDelegate:self];
-
+    
     NSRunLoop *theRL = [NSRunLoop currentRunLoop];
     // Begin a run loop terminated when the requestComplete it set to true
     while (!requestComplete && [theRL runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]]);
@@ -313,7 +312,7 @@
     [showDisplayRequest addSortOnIncludedType:BVIncludeTypeProducts attribute:@"Id" ascending:YES];
     [showDisplayRequest addStatsOn:BVIncludeStatsTypeReviews];
     [showDisplayRequest sendRequestWithDelegate:self];
-
+    
     NSRunLoop *theRL = [NSRunLoop currentRunLoop];
     // Begin a run loop terminated when the requestComplete it set to true
     while (!requestComplete && [theRL runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]]);
@@ -325,8 +324,8 @@
 - (void)testShowProfileSparse {
     BVGet *showDisplayRequest = [[BVGet alloc] initWithType:BVGetTypeAuthors];
     [showDisplayRequest sendRequestWithDelegate:self];
-
-        NSRunLoop *theRL = [NSRunLoop currentRunLoop];
+    
+    NSRunLoop *theRL = [NSRunLoop currentRunLoop];
     // Begin a run loop terminated when the requestComplete it set to true
     while (!requestComplete && [theRL runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]]);
     
@@ -343,7 +342,7 @@
     [showDisplayRequest addStatsOn:BVIncludeStatsTypeReviews];
     [showDisplayRequest sendRequestWithDelegate:self];
     
-    NSRunLoop *theRL = [NSRunLoop currentRunLoop];    
+    NSRunLoop *theRL = [NSRunLoop currentRunLoop];
     // Begin a run loop terminated when the requestComplete it set to true
     while (!requestComplete && [theRL runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]]);
     [self checkParams:[NSMutableDictionary dictionaryWithObjectsAndKeys:
@@ -384,7 +383,7 @@
 - (void)testShowCateogrySparse {
     BVGet *showDisplayRequest = [[BVGet alloc] initWithType:BVGetTypeCategories];
     [showDisplayRequest sendRequestWithDelegate:self];
-
+    
     NSRunLoop *theRL = [NSRunLoop currentRunLoop];
     // Begin a run loop terminated when the requestComplete it set to true
     while (!requestComplete && [theRL runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]]);
@@ -425,7 +424,7 @@
     
     [self checkParams:[NSMutableDictionary dictionaryWithObjectsAndKeys:
                        @"ProductId:eq:test1,test2,test3", @"Filter", @"Reviews,NativeReviews", @"Stats", nil]];
-
+    
 }
 
 
@@ -441,7 +440,7 @@
     request.userNickname = @"testnickname";
     [request addPhotoUrl:@"http://apitestcustomer.ugc.bazaarvoice.com/bvstaging/5555/ps_amazon_s3_3rgg6s4xvev0zhzbnabyneo21/photo.jpg" withCaption:nil];
     [request addVideoUrl:@"http://www.youtube.com" withCaption:nil];
-
+    
     [request sendRequestWithDelegate:self];
     NSRunLoop *theRL = [NSRunLoop currentRunLoop];
     while (!requestComplete && [theRL runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]]);
@@ -449,7 +448,7 @@
 
 - (void)testSubmissionQuestions {
     [BVSettings instance].baseURL = @"answers.apitestcustomer.bazaarvoice.com";
-
+    
     BVPost *request = [[BVPost alloc] initWithType:BVPostTypeQuestion];
     request.categoryId = @"1020";
     request.locale = @"en_US";
@@ -505,7 +504,7 @@
     request.commentText = @"This is my comment text";
     request.storyId = @"967";
     request.userId = @"123abc";
-
+    
     [request sendRequestWithDelegate:self];
     NSRunLoop *theRL = [NSRunLoop currentRunLoop];
     while (!requestComplete && [theRL runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]]);
@@ -515,18 +514,18 @@
 - (void)testSubmissionVideos {
     
     /*
-    requestComplete = NO;
-    receivedProgressCallback = NO;
-    BVSubmissionVideo *mySubmission = [[BVSubmissionVideo alloc] init];
-    mySubmission.parameters.contentType = @"review";
-    mySubmission.parameters.video = @"http://www.youtube.com/";
-    mySubmission.parameters.userId = @"123abc";
-    mySubmission.delegate = self;
-    
-    [mySubmission startAsynchRequest];
-    NSRunLoop *theRL = [NSRunLoop currentRunLoop];
-    // Begin a run loop terminated when the requestComplete it set to true
-    while (!requestComplete && [theRL runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]]);
+     requestComplete = NO;
+     receivedProgressCallback = NO;
+     BVSubmissionVideo *mySubmission = [[BVSubmissionVideo alloc] init];
+     mySubmission.parameters.contentType = @"review";
+     mySubmission.parameters.video = @"http://www.youtube.com/";
+     mySubmission.parameters.userId = @"123abc";
+     mySubmission.delegate = self;
+     
+     [mySubmission startAsynchRequest];
+     NSRunLoop *theRL = [NSRunLoop currentRunLoop];
+     // Begin a run loop terminated when the requestComplete it set to true
+     while (!requestComplete && [theRL runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]]);
      
      */
 }
@@ -535,7 +534,7 @@
 
 
 - (void)testSubmissionPhotos {
-
+    
     BVMediaPost *mySubmission = [[BVMediaPost alloc] initWithType:BVMediaPostTypePhoto];
     mySubmission.contentType = BVMediaPostContentTypeReview;
     mySubmission.userId = @"123";
@@ -571,7 +570,7 @@
     
     // Check image manually
     NSLog(@"%@", receivedResponse);
-
+    
 }
 
 - (void)testSubmissionVideo {
@@ -640,12 +639,11 @@
     [mySubmission addTagForDimensionExternalId:@"Pro" value:@"comfortable fit"];
     [mySubmission addTagIdForDimensionExternalId:@"Pro/ProService" value:true];
     [mySubmission addTagIdForDimensionExternalId:@"Con/ConFitness" value:true];
-
+    
     [mySubmission sendRequestWithDelegate:self];
     NSRunLoop *theRL = [NSRunLoop currentRunLoop];
     // Begin a run loop terminated when the requestComplete it set to true
     while (!requestComplete && [theRL runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]]);
 }
-
 
 @end
