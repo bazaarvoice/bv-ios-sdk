@@ -11,6 +11,7 @@
 		6F015E37154B029000BE3E49 /* ConfirmViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F015E36154B029000BE3E49 /* ConfirmViewController.m */; };
 		6F01FE1D1625E2CC007DE393 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F01FE1C1625E2CC007DE393 /* Default-568h@2x.png */; };
 		6F01FE2C162606C1007DE393 /* app-background-586.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F01FE2B162606C1007DE393 /* app-background-586.png */; };
+		6F30E79C16C2C77A00BFCFC3 /* BVSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F30E79B16C2C77A00BFCFC3 /* BVSDK.framework */; };
 		6F334A5D154B08FB00345C16 /* NSDictionary+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F334A5C154B08FB00345C16 /* NSDictionary+Utils.m */; };
 		6F334A61154B11CD00345C16 /* BVNavigationItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F334A60154B11CC00345C16 /* BVNavigationItem.m */; };
 		6F334A63154B15C400345C16 /* bv.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F334A62154B15C400345C16 /* bv.png */; };
@@ -109,7 +110,6 @@
 		6FE4625B154072D800AECFCD /* UIImage+RoundedCorner.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FE46258154072D800AECFCD /* UIImage+RoundedCorner.m */; };
 		6FE462671540A12700AECFCD /* empty_star.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FE462641540A12700AECFCD /* empty_star.png */; };
 		6FE462681540A12700AECFCD /* full_star.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FE462651540A12700AECFCD /* full_star.png */; };
-		6FF36C1116BB05D40098771B /* BVSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FF36C1016BB05D40098771B /* BVSDK.framework */; };
 		BFDB5C9D154EE1D1001E80BF /* appicon.png in Resources */ = {isa = PBXBuildFile; fileRef = BFDB5C9C154EE1D1001E80BF /* appicon.png */; };
 		BFDB5C9F154EE1D6001E80BF /* appicon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BFDB5C9E154EE1D6001E80BF /* appicon@2x.png */; };
 /* End PBXBuildFile section */
@@ -121,6 +121,7 @@
 		6F015E36154B029000BE3E49 /* ConfirmViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfirmViewController.m; sourceTree = "<group>"; };
 		6F01FE1C1625E2CC007DE393 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "PhotoUploadExample/Default-568h@2x.png"; sourceTree = SOURCE_ROOT; };
 		6F01FE2B162606C1007DE393 /* app-background-586.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "app-background-586.png"; path = "PhotoUploadExample/app-background-586.png"; sourceTree = SOURCE_ROOT; };
+		6F30E79B16C2C77A00BFCFC3 /* BVSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = BVSDK.framework; sourceTree = "<group>"; };
 		6F334A5B154B08FB00345C16 /* NSDictionary+Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+Utils.h"; sourceTree = "<group>"; };
 		6F334A5C154B08FB00345C16 /* NSDictionary+Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+Utils.m"; sourceTree = "<group>"; };
 		6F334A5F154B11CC00345C16 /* BVNavigationItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVNavigationItem.h; sourceTree = "<group>"; };
@@ -299,7 +300,6 @@
 		6FE46258154072D800AECFCD /* UIImage+RoundedCorner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+RoundedCorner.m"; path = "UIImageResizing/UIImage+RoundedCorner.m"; sourceTree = "<group>"; };
 		6FE462641540A12700AECFCD /* empty_star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = empty_star.png; path = StarRating/Assets/empty_star.png; sourceTree = "<group>"; };
 		6FE462651540A12700AECFCD /* full_star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = full_star.png; path = StarRating/Assets/full_star.png; sourceTree = "<group>"; };
-		6FF36C1016BB05D40098771B /* BVSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = BVSDK.framework; sourceTree = "<group>"; };
 		BFDB5C9C154EE1D1001E80BF /* appicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = appicon.png; path = ../appicon.png; sourceTree = "<group>"; };
 		BFDB5C9E154EE1D6001E80BF /* appicon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "appicon@2x.png"; path = "../appicon@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -320,7 +320,7 @@
 				6F4B99A4153F4EB90040AF27 /* UIKit.framework in Frameworks */,
 				6F4B99A6153F4EB90040AF27 /* Foundation.framework in Frameworks */,
 				6F4B99A8153F4EB90040AF27 /* CoreGraphics.framework in Frameworks */,
-				6FF36C1116BB05D40098771B /* BVSDK.framework in Frameworks */,
+				6F30E79C16C2C77A00BFCFC3 /* BVSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -633,7 +633,7 @@
 		6F4B99A2153F4EB90040AF27 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				6FF36C1016BB05D40098771B /* BVSDK.framework */,
+				6F30E79B16C2C77A00BFCFC3 /* BVSDK.framework */,
 				6F4054E3167A39CE006F0D8D /* SystemConfiguration.framework */,
 				6F4054E1167A39C8006F0D8D /* Security.framework */,
 				6F4054DF167A39B8006F0D8D /* MessageUI.framework */,

@@ -20,8 +20,8 @@
 		4DA3E21C150BE35900E897AF /* BVSampleAppResultsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DA3E21B150BE35900E897AF /* BVSampleAppResultsViewController.xib */; };
 		4DA3E21F150BE4AD00E897AF /* BVSampleAppResultsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DA3E21E150BE4AD00E897AF /* BVSampleAppResultsViewController.m */; };
 		6F229F7616729417005E24E3 /* sample_mpeg4.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 6F229F7516729417005E24E3 /* sample_mpeg4.mp4 */; };
+		6F30E79A16C2C73F00BFCFC3 /* BVSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F30E79916C2C73F00BFCFC3 /* BVSDK.framework */; };
 		6FEC434B16248F8300A85F0C /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FEC434A16248F8300A85F0C /* Default-568h@2x.png */; };
-		6FF36C0F16BB05860098771B /* BVSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FF36C0E16BB05860098771B /* BVSDK.framework */; };
 		BFE3F822154B0A1D00E9DA6D /* bv533x533.png in Resources */ = {isa = PBXBuildFile; fileRef = BFE3F821154B0A1D00E9DA6D /* bv533x533.png */; };
 		BFE3F824154B0A7100E9DA6D /* appicon.png in Resources */ = {isa = PBXBuildFile; fileRef = BFE3F823154B0A7100E9DA6D /* appicon.png */; };
 		BFE3F826154B0A7400E9DA6D /* appicon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BFE3F825154B0A7400E9DA6D /* appicon@2x.png */; };
@@ -50,8 +50,8 @@
 		4DA3E21D150BE4AD00E897AF /* BVSampleAppResultsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = BVSampleAppResultsViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		4DA3E21E150BE4AD00E897AF /* BVSampleAppResultsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = BVSampleAppResultsViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		6F229F7516729417005E24E3 /* sample_mpeg4.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sample_mpeg4.mp4; sourceTree = "<group>"; };
+		6F30E79916C2C73F00BFCFC3 /* BVSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = BVSDK.framework; sourceTree = "<group>"; };
 		6FEC434A16248F8300A85F0C /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = SOURCE_ROOT; };
-		6FF36C0E16BB05860098771B /* BVSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = BVSDK.framework; sourceTree = "<group>"; };
 		BFE3F821154B0A1D00E9DA6D /* bv533x533.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bv533x533.png; sourceTree = "<group>"; };
 		BFE3F823154B0A7100E9DA6D /* appicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = appicon.png; sourceTree = "<group>"; };
 		BFE3F825154B0A7400E9DA6D /* appicon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "appicon@2x.png"; sourceTree = "<group>"; };
@@ -67,7 +67,7 @@
 				4DA3E12C150BCA0500E897AF /* UIKit.framework in Frameworks */,
 				4DA3E12E150BCA0500E897AF /* Foundation.framework in Frameworks */,
 				4DA3E130150BCA0500E897AF /* CoreGraphics.framework in Frameworks */,
-				6FF36C0F16BB05860098771B /* BVSDK.framework in Frameworks */,
+				6F30E79A16C2C73F00BFCFC3 /* BVSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -99,7 +99,7 @@
 		4DA3E12A150BCA0500E897AF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				6FF36C0E16BB05860098771B /* BVSDK.framework */,
+				6F30E79916C2C73F00BFCFC3 /* BVSDK.framework */,
 				4DA3E12B150BCA0500E897AF /* UIKit.framework */,
 				4DA3E12D150BCA0500E897AF /* Foundation.framework */,
 				4DA3E12F150BCA0500E897AF /* CoreGraphics.framework */,
@@ -312,6 +312,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BVSampleApp/BVSampleApp-Prefix.pch";
 				INFOPLIST_FILE = "BVSampleApp/BVSampleApp-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				"OTHER_LDFLAGS[arch=*]" = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -329,6 +330,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BVSampleApp/BVSampleApp-Prefix.pch";
 				INFOPLIST_FILE = "BVSampleApp/BVSampleApp-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				"OTHER_LDFLAGS[arch=*]" = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";

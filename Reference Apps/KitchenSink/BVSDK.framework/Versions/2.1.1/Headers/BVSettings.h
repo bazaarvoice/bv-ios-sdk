@@ -9,7 +9,7 @@
 
 #import <Foundation/Foundation.h>
 
-#define BV_API_VERSION @"5.3"
+#define BV_API_VERSION @"5.4"
 
 /*!
  BVSettings is a singleton object which contains credentials common to all API requests.

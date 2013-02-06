@@ -58,6 +58,9 @@ BVGet *getReviewsRequest = [[ BVGet  alloc ] initWithType:BVGetTypeReviews ];  <
  Changes the offset for returned results.
  */
 @property (assign, nonatomic) int offset;
+/*
+ Boolean flag indicating whether to exclude content (reviews, questions, etc.) from other products in the same family as the requested product. This setting only affects any nested content that is returned. For example, "&filter=productid:eq:1101&include=reviews&excludeFamily=true" limits returned review content to just that of product 1101 and not any of the products in the same family. If a value is not defined, content on all products in the family is returned. */
+@property (assign, nonatomic) bool excludeFamily;
 
 /*!
  Related subjects to be included (e.g. Products, Categories, Authors, Reviews...).
