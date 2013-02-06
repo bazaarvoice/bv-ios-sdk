@@ -57,6 +57,11 @@ Locale to display Labels, Configuration, Product Attributes and Category Attribu
  A UIImage to be submitted.
  */
 @property (assign, nonatomic) UIImage * photo;
+/*!
+ URL of the photo to be uploaded. Use either the photo or photoUrl parameter to define the photo to upload. An error is returned if both parameters are defined. HTTP and HTTPS are the only protocols supported for the photoUrl parameter.
+ */
+@property (assign, nonatomic) NSString * photoUrl;
+
 
 /*!
  A video file to be submitted.

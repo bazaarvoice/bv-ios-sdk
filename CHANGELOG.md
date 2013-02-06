@@ -1,3 +1,7 @@
+## 2.1.1 (Feb. 12, 2013)
+
+* Fixes deployment target issue.  Updates to API 5.4
+
 ## 2.1.0 (Jan. 30, 2012)
 
 * Adds omitted BVFeedbackContentType.  Updates directory structure to utilize BVSDK as a framework.
