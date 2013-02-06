@@ -24,6 +24,7 @@
 @synthesize locale = _locale;
 @synthesize limit = _limit;
 @synthesize offset = _offset;
+@synthesize excludeFamily = _excludeFamily;
 @synthesize network = _network;
 
 - (id)init{
@@ -104,6 +105,10 @@
     [self.network setUrlParameterWithName:@"Offset" value:[NSString stringWithFormat:@"%d", offset]];
 }
 
+- (void)setExcludeFamily:(bool)excludeFamily{
+    _excludeFamily = excludeFamily;
+    [self.network setUrlParameterWithName:@"ExcludeFamily" value:excludeFamily ? @"true" : @"false"];
+}
 
 - (NSString *)getIncludeTypeString:(BVIncludeType)includeType {
     switch (includeType) {

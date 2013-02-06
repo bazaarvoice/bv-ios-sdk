@@ -169,6 +169,7 @@
     [showDisplayRequest setFilterOnIncludedType:BVIncludeTypeProducts forAttribute:@"Id" equality:BVEqualityEqualTo value:@"test1"];
     [showDisplayRequest addInclude:BVIncludeTypeProducts];
     showDisplayRequest.limit = 50;
+    showDisplayRequest.excludeFamily = true;
     [showDisplayRequest setLimitOnIncludedType:BVIncludeTypeProducts value:10];
     showDisplayRequest.offset = 0;
     [showDisplayRequest addSortForAttribute:@"Id" ascending:YES];
@@ -176,12 +177,13 @@
     [showDisplayRequest addStatsOn:BVIncludeStatsTypeReviews];
     [showDisplayRequest sendRequestWithDelegate:self];
     
+    
     NSRunLoop *theRL = [NSRunLoop currentRunLoop];
     // Begin a run loop terminated when the requestComplete it set to true
     while (!requestComplete && [theRL runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]]);
     
     [self checkParams:[NSMutableDictionary dictionaryWithObjectsAndKeys:
-                       @"Reviews", @"Stats", @"Id:asc", @"Sort_Products", @"Id:eq:test1", @"Filter_Products", @"10", @"Limit_Products", @"Id:asc", @"Sort", @"Products", @"Include", @"0", @"Offset", @"Id:eq:87757", @"Filter", @"50", @"Limit", nil]];
+                       @"Reviews", @"Stats", @"Id:asc", @"Sort_Products", @"Id:eq:test1", @"Filter_Products", @"10", @"Limit_Products", @"Id:asc", @"Sort", @"Products", @"Include", @"0", @"Offset", @"Id:eq:87757", @"Filter", @"50", @"Limit", @"true", @"ExcludeFamily", nil]];
     
     
 }
@@ -571,6 +573,19 @@
     // Check image manually
     NSLog(@"%@", receivedResponse);
     
+}
+
+- (void)testSubmissionPhotoURL {
+    
+    BVMediaPost *mySubmission = [[BVMediaPost alloc] initWithType:BVMediaPostTypePhoto];
+    mySubmission.contentType = BVMediaPostContentTypeReview;
+    mySubmission.userId = @"123";
+    mySubmission.photoUrl = @"http://media.salon.com/2012/11/oregon-st-stanford-football.jpeg-1280x960.jpg";
+    
+    [mySubmission sendRequestWithDelegate:self];
+    NSRunLoop *theRL = [NSRunLoop currentRunLoop];
+    // Begin a run loop terminated when the requestComplete it set to true
+    while (!requestComplete && [theRL runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]]);
 }
 
 - (void)testSubmissionVideo {
