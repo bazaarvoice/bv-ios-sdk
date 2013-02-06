@@ -26,6 +26,7 @@
 @synthesize locale = _locale;
 @synthesize userId = _userId;
 @synthesize photo = _photo;
+@synthesize photoUrl = _photoUrl;
 
 @synthesize network = _network;
 
@@ -110,6 +111,11 @@
 	[self.network setUrlParameterWithName:@"photo" value:photo];
 }
 
+- (void)setPhotoUrl:(NSString *)photoUrl{
+    _photoUrl = photoUrl;
+	[self.network setUrlParameterWithName:@"photoUrl" value:photoUrl];
+}
+
 - (void)setVideo:(NSData *)video withFormat:(BVVideoFormatType)format {
     _videoFormat = format;
     [self.network setUrlParameterWithName:@"video" value:video];
@@ -152,7 +158,11 @@
 }
 
 - (void)send {
-    [self.network sendMultipartPostWithEndpoint:[self getTypeString]];
+    if(self.photoUrl){
+        [self.network sendPostWithEndpoint:[self getTypeString]];
+    } else {
+        [self.network sendMultipartPostWithEndpoint:[self getTypeString]];        
+    }
 }
 
 @end
