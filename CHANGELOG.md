@@ -1,3 +1,7 @@
+## 2.1.2 (Feb. 12, 2013)
+
+* Contains debug build for client linking.
+
 ## 2.1.1 (Feb. 12, 2013)
 
 * Fixes deployment target issue.  Updates to API 5.4

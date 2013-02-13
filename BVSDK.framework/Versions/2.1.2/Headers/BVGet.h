@@ -46,19 +46,19 @@ BVGet *getReviewsRequest = [[ BVGet  alloc ] initWithType:BVGetTypeReviews ];  <
  Search term to query.  This is an "or" search.  For example, when querying for products with the search term "Electric Dryer," the result returns products that have both "Electric" and "Dryer" in the Product Name or Product Description.
  */
 @property (assign, nonatomic) NSString *search;
-/*
+/*!
  Locale to display Labels, Configuration, Product Attributes and Category Attributes in. The default value is the locale defined in the display associated with the API key. If specified, the locale value is also used as the default ContentLocale filter value.
  */
 @property (assign, nonatomic) NSString *locale;
-/*
+/*!
  Limits the maximum number of results that may be returned.
  */
 @property (assign, nonatomic) int limit;
-/*
+/*!
  Changes the offset for returned results.
  */
 @property (assign, nonatomic) int offset;
-/*
+/*!
  Boolean flag indicating whether to exclude content (reviews, questions, etc.) from other products in the same family as the requested product. This setting only affects any nested content that is returned. For example, "&filter=productid:eq:1101&include=reviews&excludeFamily=true" limits returned review content to just that of product 1101 and not any of the products in the same family. If a value is not defined, content on all products in the family is returned. */
 @property (assign, nonatomic) bool excludeFamily;
 
