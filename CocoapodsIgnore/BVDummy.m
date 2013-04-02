@@ -1,5 +1,5 @@
-#import "ParseDummy.h"
+#import "BVDummy.h"
 
-int ParseDummyFunction(void) {
+int BVDummyFunction(void) {
   return 0;
 }
