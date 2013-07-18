@@ -1,0 +1,49 @@
+The Bazaarvoice SDK is an iOS static library that provides an easy way to generate REST calls to the Bazaarvoice API.
+
+<h2>SDK Organization:</h2>
+
+With the Bazaarvoice iOS SDK 2.0, there are just 5 classes that the client needs to be familiar with.
+
+<h4>BVSettings</h4>
+Encapsulates all application-wide configuration information necessary to make requests via the Bazaarvoice SDK.  This includes things such as the base url, the passkey, whether to use staging and the request timeout interval.
+
+<h4>BVGet</h4>
+Handles all requests to the Bazaarvoice API which fetch, but do not modify data on the server.  This includes fetching answers, authors, categories, comments, products, questions, reviews, statistics and stories.
+
+<h4>BVPost</h4>
+Handles all requests to the Bazaarvoice API which submit content excluding photo and video uploads.  This includes submitting answers, review comments, story comments, feedback, questions, reviews and stories.
+
+<h4>BVMediaPost</h4>
+Handles all requests to the Bazaarvoice API which require a binary multipart post.  This includes submitting photos and videos.
+
+<h4>BVDelegate</h4>
+Delegate interface  to receive SDK callbacks when a response is received.  
+
+<h2>Making Requests</h2>
+Conceptually, there are 5 steps to making a request the Bazaarvoice SDK:
+
+ 1. Allocate a request (BVGet, BVPost or BVMediaPost)
+ 2. Initialize with the appropriate type (ex: BVGetTypeReviews, BVPostTypeAnswer...)
+ 3. Set parameters of the request (ex: limit, sort, filter, title...)
+ 4. Set a BVDelegate to receive updates when a response is received
+ 5. Send
+
+See the class documentation for BVGet, BVPost and BVMediaPost for example code.
+
+<h2>Conventions</h2>
+In order to make it easier to get up to speed with the iOS SDK, version 2.0 follows several conventions:
+
+<h4>BVConstants</h4>
+Where possible, we constrain parameters to a set of enumerated values.  These values are defined in BVConstants.h.
+
+<h4>Set/Add</h4>
+For most SDK requests, a particular parameter can only have one value.  For instance, a "limit" parameter can only be defined once.  Such parameters are defined as class properties where possible, or are defined as methods which begin with "set" in the case where the parameter takes multiple arguments.
+
+Other parameters can have multiple values.  For instance, a request may include statistics on more than one type.  Such parameters are defined as methods which begin with "add."  (addStatsOn:, addInclude etc.)
+
+<h2>Older Versions</h2>
+Older versions of the SDK are tagged according to version number.  You can list available versions with:<br />
+<strong>git tag</strong>
+
+In general, version 2.X.Y of the SDK maps to version 5.X of the API.  To check out a particular version, use: 	
+<strong>git checkout [tag]</strong>
