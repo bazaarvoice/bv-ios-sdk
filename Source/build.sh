@@ -1,5 +1,5 @@
 #!/bin/bash
-SDK_PATH=/Users/alex.medearis/Desktop/bv-ios-sdk
+SDK_PATH=..
 COCOAPODS_SPECS=/Users/alex.medearis/Desktop/Specs
 
 cd BVSDK
@@ -34,40 +34,18 @@ echo "Building..."
 rm -rf build
 /usr/bin/xcodebuild -target BVSDK -configuration Debug clean build
 
+cd ..
+cp -r BVSDK/build/Debug-iphoneos/BVSDK.framework .
+
 echo "Copying framework to SDK directories..."
 rm -rf "$SDK_PATH/BVSDK.framework"
 rm -rf "$SDK_PATH/Reference Apps/BrowsePhotoExample/BVSDK.framework"
 rm -rf "$SDK_PATH/Reference Apps/KitchenSink/BVSDK.framework"
 rm -rf "$SDK_PATH/Reference Apps/PhotoUploadExample/BVSDK.framework"
 
-cp -r ./build/Debug-iphoneos/BVSDK.framework "$SDK_PATH/"
-cp -r ./build/Debug-iphoneos/BVSDK.framework "$SDK_PATH/Reference Apps/BrowsePhotoExample/"
-cp -r ./build/Debug-iphoneos/BVSDK.framework "$SDK_PATH/Reference Apps/KitchenSink/"
-cp -r ./build/Debug-iphoneos/BVSDK.framework "$SDK_PATH/Reference Apps/PhotoUploadExample/"
+cp -r ./BVSDK.framework "$SDK_PATH/"
+cp -r ./BVSDK.framework "$SDK_PATH/Reference Apps/BrowsePhotoExample/"
+cp -r ./BVSDK.framework "$SDK_PATH/Reference Apps/KitchenSink/"
+cp -r ./BVSDK.framework "$SDK_PATH/Reference Apps/PhotoUploadExample/"
 
-echo "Enter a commit message"
-read commitmsg
-
-cd ..
-SDK_VER_NOV="${SDK_VER:1:1}.${SDK_VER:2:1}.${SDK_VER:3:1}"
-mkdir "$COCOAPODS_SPECS/Bazaarvoice/$SDK_VER_NOV"
-rm -rf "$COCOAPODS_SPECS/Bazaarvoice/$SDK_VER_NOV/*"
-cp Bazaarvoice.podspec.template Bazaarvoice.podspec
-sed -i '' "s/VERSIONNUM/$SDK_VER_NOV/g" ./Bazaarvoice.podspec
-mv ./Bazaarvoice.podspec "$COCOAPODS_SPECS/Bazaarvoice/$SDK_VER_NOV/"
-cd "$COCOAPODS_SPECS"
-#git commit -am "$commitmsg" 
-#git push
-
-cd "$SDK_PATH"
-NOW=$(date +"%b %d, %Y")
-CHANGELOG_STR="## $SDK_VER_NOV ($NOW) \n\n $commitmsg \n\n"
-echo -e "$CHANGELOG_STR$(cat CHANGELOG.md)" > CHANGELOG.md
-README_STR="### *Version $SDK_VER_NOV*"
-sed -i '' "2s/.*/$README_STR/" ./README.md
-
-#git commit -am "$commitmsg" 
-#git push
-#git tag -a "$SDK_VER" -m "SDK $SDK_VER for API Version 5.4"
-#git push --tags
-
+rm -rf ./BVSDK.framework
