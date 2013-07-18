@@ -1,0 +1,249 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1138\cocoasubrtf470
+{\fonttbl\f0\fswiss\fcharset204 Helvetica;\f1\froman\fcharset204 Times-Roman;\f2\fnil\fcharset0 Menlo-Regular;
+\f3\fmodern\fcharset0 CourierNewPSMT;}
+{\colortbl;\red255\green255\blue255;\red100\green56\blue32;\red196\green26\blue22;\red170\green13\blue145;
+\red92\green38\blue153;\red63\green110\blue116;\red0\green116\blue0;\red46\green13\blue110;\red38\green71\blue75;
+}
+\paperw20160\paperh28800\margl1440\margr1440\vieww21400\viewh19700\viewkind0
+\deftab720
+\pard\tx0\pardeftab720\li420\fi-420
+
+\f0\fs96 \cf0 Quick Start with the iOS SDK\
+
+\f1\fs32 \
+\pard\pardeftab720
+
+\f0 \cf0 1.  To work with production data, you need a developer API key.  Visit http://developer.bazaarvoice.com.  If you merely would like to get familiar with the SDK, you can use the baseUrl (apitestcustomer.bazaarvoice.com) and passKey (KEY_REMOVED) provided for testing in the Bazaarvoice Developer Portal.\
+\
+2. Open Xcode and Create a Single View Application -\'ad\uc0\u8208 -\'ad\u8208  we\'92ll use ARC and Storyboards.\
+\
+\pard\pardeftab720
+
+\fs24 \cf0 {{\NeXTGraphic Screen Shot 2012-12-06 at 2.26.52 PM.png \width14600 \height9860
+}¬}\pard\pardeftab720
+
+\fs32 \cf0 \
+\
+\pard\pardeftab720
+
+\fs24 \cf0 {{\NeXTGraphic Screen Shot 2012-12-06 at 2.28.06 PM.png \width14640 \height9840
+}¬}\pard\pardeftab720
+
+\fs32 \cf0 \
+\
+3.  Download the SDK from github or simply clone this repository. \
+\
+4.  If downloaded, unzip the downloaded SDK into a temporary folder. \
+\
+5.  Drag and drop the BVSDK.framework folder (which is inside the unzipped folder) into your Xcode project's "Frameworks" directory. Check the \'93Copy into destination\'92s group folder\'94 checkbox if it is not clicked. \
+\
+\pard\pardeftab720
+
+\fs24 \cf0 {{\NeXTGraphic Screen Shot 2012-12-06 at 2.38.17 PM.png \width14580 \height9860
+}¬}\pard\pardeftab720
+
+\fs32 \cf0 \
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab720\pardirnatural
+
+\fs24 \cf0 {{\NeXTGraphic Screen Shot 2013-01-30 at 2.47.05 PM.png \width5720 \height5460
+}¬}\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab720\pardirnatural
+
+\fs32 \cf0 \
+\
+\pard\pardeftab720
+\cf0  6. Inside the 
+\b ViewController.h 
+\b0 add the following import: \
+\
+\pard\tx640\pardeftab640\pardirnatural
+
+\f2\fs26 \cf2 \CocoaLigature0 #import \cf3 <BVSDK/BVSDK.h>\cf2 \
+
+\f0\fs32 \cf0 \CocoaLigature1 \
+\pard\pardeftab720
+\cf0 7. Also inside the 
+\b ViewController.h 
+\b0 file, set the 
+\b UIViewController 
+\b0 to conform to the 
+\b BVDelegate 
+\b0 protocol by adding \'93<BVDelegate>\'94 to the 
+\b UIViewController: \
+
+\b0 \uc0\u8232 
+\f2\fs26 \cf4 \CocoaLigature0 @interface\cf0  ViewController : \cf5 UIViewController\cf0 <\cf6 BVDelegate\cf0 >\
+\pard\tx640\pardeftab640\pardirnatural
+\cf4 @end
+\f3\fs32 \cf0 \CocoaLigature1 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab720\pardirnatural
+
+\f0 \cf0 \
+\pard\tx0\pardeftab720\li420\fi-420
+
+\b \cf0 8. Inside 
+\b0 the 
+\b ViewController.m 
+\b0 implement the 
+\b didReceiveResponse 
+\b0 method with the following code:
+\f1 \
+\
+\pard\tx640\pardeftab640\pardirnatural
+
+\f2\fs26 \cf0 \CocoaLigature0 - (\cf4 void\cf0 )didReceiveResponse:(\cf5 NSDictionary\cf0  *)response forRequest:(\cf4 id\cf0 )request \{\
+    \cf7 // This is just going to log the response out. You probably want to\cf0 \
+    \cf7 // do something more useful eventually.\cf0 \
+        \cf8 NSLog\cf0 (\cf3 @"Raw Response: %@"\cf0 , response);\
+\}
+\f1\fs32 \CocoaLigature1 \
+\pard\tx0\pardeftab720\li420\fi-420
+\cf0 \
+\pard\tx0\pardeftab720\li420\fi-420
+
+\f0 \cf0 9. In the 
+\b ViewController.m, 
+\b0 locate the 
+\b viewDidLoad 
+\b0 method.  Copy the following code in order to set up your 
+\b passKey, 
+\b0 your 
+\b baseUrl 
+\b0 and to specify that we will be using the 
+\b staging 
+\b0 server:\
+\pard\tx0\pardeftab720\li420\fi-420
+
+\f1 \cf0 \
+\pard\tx640\pardeftab640\pardirnatural
+
+\f2\fs26 \cf0 \CocoaLigature0 - (\cf4 void\cf0 )viewDidLoad\
+\{\
+    [\cf4 super\cf0  \cf8 viewDidLoad\cf0 ];\
+    \cf7 // Do any additional setup after loading the view, typically from\cf0 \
+    \cf7 // a nib.\cf0 \
+    [\cf6 BVSettings\cf0  \cf9 instance\cf0 ].\cf6 passKey\cf0  = \cf3 @"KEY_REMOVED"\cf0 ;\
+    [\cf6 BVSettings\cf0  \cf9 instance\cf0 ].\cf6 baseURL\cf0  = \cf3 @"reviews.apitestcustomer.bazaarvoice.com"\cf0 ;\
+    [\cf6 BVSettings\cf0  \cf9 instance\cf0 ].\cf6 staging\cf0  = \cf4 YES\cf0 ;\
+\}\
+
+\f1\fs32 \CocoaLigature1 \
+\pard\tx0\pardeftab720\li420\fi-420
+
+\f0 \cf0 10. Click on the 
+\b MainStoryboard.storyboard 
+\b0 file.\
+\
+11. Drag/drop a button onto the View in the storyboard.\
+\
+12. Double click the button and label it \'93Click Me!"\
+\
+.
+\fs24 {{\NeXTGraphic Screen Shot 2012-12-06 at 2.50.36 PM.png \width9880 \height13780
+}¬}
+\fs32 \
+\
+13. In the upper right hand corner, click the middle Editor icon to open the assistant editor.  This should result in two visible editors, the left displaying the 
+\b MainStoryboard.storyboard 
+\b0 file and the right displaying the 
+\b ViewController.h 
+\b0 file.  If this does not occur, use the breadcrumbs at the top to select the appropriate file(s).\
+\
+\pard\tx0\pardeftab720\li420\fi-420
+
+\fs24 \cf0 {{\NeXTGraphic Screen Shot 2012-12-06 at 2.53.11 PM.png \width2400 \height1120
+}¬}\pard\tx0\pardeftab720\li420\fi-420
+
+\fs32 \cf0 \
+\
+\pard\tx0\pardeftab720\li420\fi-420
+
+\fs24 \cf0 {{\NeXTGraphic Screen Shot 2012-12-06 at 2.57.09 PM.png \width7560 \height1400
+}¬}\pard\tx0\pardeftab720\li420\fi-420
+
+\fs32 \cf0 \
+\pard\tx0\pardeftab720\li420\fi-420
+
+\f1 \cf0 \
+\pard\pardeftab720
+
+\f0 \cf0 14. Control-click the newly created button.\
+\
+15. From "Touch Up Inside," click and drag into the 
+\b ViewController.h 
+\b0 file to wire up a new action.\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab720\pardirnatural
+
+\fs24 \cf0 {{\NeXTGraphic Screen Shot 2012-12-06 at 3.01.52 PM.png \width17680 \height14600
+}¬}\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab720\pardirnatural
+
+\fs32 \cf0 \
+\pard\pardeftab720
+\cf0 \
+16. Set name to \'93clickedButton\'94 and click "Connect."  This will automatically insert code for the new action into 
+\b ViewController.h 
+\b0 and
+\b  ViewController.m
+\b0 .  \
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab720\pardirnatural
+
+\fs24 \cf0 {{\NeXTGraphic Screen Shot 2012-12-06 at 3.02.15 PM.png \width5560 \height3340
+}¬}\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab720\pardirnatural
+
+\fs32 \cf0 \
+\
+\pard\pardeftab720
+\cf0 Your 
+\b ViewController.h 
+\b0 file should now appear as follows:\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab720\pardirnatural
+
+\fs24 \cf0 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab720\pardirnatural
+\cf0 {{\NeXTGraphic Screen Shot 2013-01-30 at 2.54.19 PM.png \width12200 \height4460
+}¬}\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab720\pardirnatural
+\cf0 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab720\pardirnatural
+
+\fs32 \cf0 \
+\pard\tx0\pardeftab720\li420\fi-420
+\cf0 17. Open 
+\b ViewController.m
+\b0 , find your \'93clickedButton\'94 method and copy the following code.  This will allocate and initialize a request to fetch reviews via the Bazaarvoice SDK.  It then sends the request with the ViewController instance as the delegate.\
+\pard\tx0\pardeftab720\li420\fi-420
+
+\f1 \cf0 \
+\pard\tx640\pardeftab640\pardirnatural
+
+\f2\fs26 \cf0 \CocoaLigature0 - (\cf4 IBAction\cf0 )clickedButton:(\cf4 id\cf0 )sender \{\
+    \cf6 BVGet\cf0  *reviewsRequest = [[\cf6 BVGet\cf0  \cf8 alloc\cf0 ] \cf9 initWithType\cf0 :\cf9 BVGetTypeReviews\cf0 ];\
+    [reviewsRequest \cf9 sendRequestWithDelegate\cf0 :\cf4 self\cf0 ];\
+\}
+\f1\fs32 \CocoaLigature1 \
+\pard\tx0\pardeftab720\li420\fi-420
+
+\f3 \cf0 \
+\pard\tx0\pardeftab720\li420\fi-420
+
+\f0 \cf0 18. Build and run the app and then click the button. You should see a raw response in the console log in Xcode. If not, start from the top and make sure you have followed each step in its entirety.\
+\
+NOTE: In more complex applications, it is the client's responsibility to set the request delegate to nil within the view controller's 
+\b dealloc
+\b0  method.  This prevents the case that the delegate is deallocated before a response is received.  Since this is a single view application, it is not necessary for the purposes of this guide.  See the references applications for examples.\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab720\pardirnatural
+
+\fs24 \cf0 {{\NeXTGraphic Screen Shot 2012-12-06 at 3.23.45 PM.png \width17320 \height14800
+}¬}\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab720\pardirnatural
+
+\fs32 \cf0 \
+\pard\tx0\pardeftab720\li420\fi-420
+\cf0 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab720\pardirnatural
+\cf0 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab720\pardirnatural
+
+\f1 \cf0 \
+}

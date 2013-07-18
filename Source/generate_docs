@@ -1,0 +1,5 @@
+cd  BVSDK/BVSDK
+appledoc --index-desc ../../desc.txt --project-name "Bazaarvoice iOS SDK" --no-repeat-first-par --project-company "Bazaarvoice" --company-id com.bazaarvoice --output . --no-install-docset .
+rm -rf ../../docs
+mv docset/Contents/Resources/Documents ../../docs
+rm -rf docset
