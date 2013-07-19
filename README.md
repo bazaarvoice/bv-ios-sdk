@@ -10,7 +10,7 @@ Developers can display content as well as submit content such as Ratings & Revie
  1. Read the Quick Start guide to get familiar with installation and building a bare-bones, simple application that uses the SDK.
  2. The documentation, located in the Docs folder, provides additional information into the capabilities of the SDK itself.
  3. Sample applications, located in the Reference Apps folder, provide example uses of the SDK and implementation best practices.
-4. The SDK Source is provided in the Source folder.
+ 4. The SDK Source is provided in the Source folder.
 
 ## Requirements
 * Bazaarvoice Platform API version 5.4 or older
