@@ -3,7 +3,7 @@
 //  PhotoUploadExample
 //
 //  Created by Bazaarvoice Engineering on 4/27/12.
-//  Copyright (c) 2012 BazaarVoice. All rights reserved.
+//  Copyright (c) 2012 Bazaarvoice. All rights reserved.
 //
 //  UIViewController for displaying confirmation of review submission
 //  to the user.

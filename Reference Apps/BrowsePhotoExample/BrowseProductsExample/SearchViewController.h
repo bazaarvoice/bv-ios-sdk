@@ -3,7 +3,7 @@
 //  BrowseProductsExample
 //
 //  Created by Bazaarvoice Engineering on 4/26/12.
-//  Copyright (c) 2012 BazaarVoice. All rights reserved.
+//  Copyright (c) 2012 Bazaarvoice. All rights reserved.
 //
 //  UIViewController for prompting the user for a search term
 // 

@@ -3,7 +3,7 @@
 //  BrowseProductsExample
 //
 //  Created by Bazaarvoice Engineering on 4/23/12.
-//  Copyright (c) 2012 BazaarVoice. All rights reserved.
+//  Copyright (c) 2012 Bazaarvoice. All rights reserved.
 //
 //  This category allows for graceful handling of null values in an
 //  NSDictionary when parsing JSON.  For example:

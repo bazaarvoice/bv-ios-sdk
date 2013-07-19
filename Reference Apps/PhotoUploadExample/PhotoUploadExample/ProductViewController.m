@@ -3,7 +3,7 @@
 //  PhotoUploadExample
 //
 //  Created by Bazaarvoice Engineering on 4/18/12.
-//  Copyright (c) 2012 BazaarVoice. All rights reserved.
+//  Copyright (c) 2012 Bazaarvoice. All rights reserved.
 //
 
 #import "ProductViewController.h"
@@ -31,7 +31,7 @@
     [BVSettings instance].passKey = @"KEY_REMOVED";
     // These are test endpoints, merely to illustrate use of the api
     // calls to our stating server.
-    [BVSettings instance].baseURL = @"reviews.apitestcustomer.bazaarvoice.com";
+    [BVSettings instance].baseURL = @"reviews.apitestcustomer.Bazaarvoice.com";
     [BVSettings instance].staging = YES;
     
     self.navigationController.navigationBar.tintColor = [BVColor primaryBrandColor];

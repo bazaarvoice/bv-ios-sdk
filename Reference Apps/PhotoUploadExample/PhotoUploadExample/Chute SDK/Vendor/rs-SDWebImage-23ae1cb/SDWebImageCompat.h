@@ -3,7 +3,6 @@
 //  SDWebImageCompat
 //
 //  Created by Jamie Pinkham on 3/15/11.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
 
 #import <TargetConditionals.h>

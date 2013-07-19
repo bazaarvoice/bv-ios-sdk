@@ -16,7 +16,7 @@ if [ $confirm != 'y' ]; then
 fi
 
 if [ $SDK_VER != $FRAMEWORK_VER ]; then
-	echo "Framework version does not equal SDK version.  Verify that you've set the framework version in the project properties (project.pbxjproj)"
+	echo "Framework version does not equal SDK version.  Verify that you've set the framework version in the project properties (project.pbxjproj or Target -> Build Settings -> Packaging -> Framework Version)"
     exit 1;
 fi
 
