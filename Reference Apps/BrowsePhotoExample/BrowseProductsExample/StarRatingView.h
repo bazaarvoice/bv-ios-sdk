@@ -3,7 +3,7 @@
 //  RateAndReviewExample
 //
 //  Created by Bazaarvoice Engineering on 4/23/12.
-//  Copyright (c) 2012 BazaarVoice. All rights reserved.
+//  Copyright (c) 2012 Bazaarvoice. All rights reserved.
 //
 //  This is a custom UIView for displaying an arbitrary floating
 //  point star rating (for instance, to display average star rating

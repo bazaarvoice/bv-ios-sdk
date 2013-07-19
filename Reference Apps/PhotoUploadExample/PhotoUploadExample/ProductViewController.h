@@ -3,7 +3,7 @@
 //  PhotoUploadExample
 //
 //  Created by Bazaarvoice Engineering on 4/18/12.
-//  Copyright (c) 2012 BazaarVoice. All rights reserved.
+//  Copyright (c) 2012 Bazaarvoice. All rights reserved.
 //
 //  UIViewController for the initial product screen.  For this demo, it
 //  contains purely static content, but presumably it might be a 

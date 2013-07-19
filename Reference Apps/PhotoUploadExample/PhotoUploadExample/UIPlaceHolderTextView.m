@@ -3,7 +3,7 @@
 //  PhotoUploadExample
 //
 //  Created by Alex Medearis on 4/27/12.
-//  Copyright (c) 2012 BazaarVoice. All rights reserved.
+//  Copyright (c) 2012 Bazaarvoice. All rights reserved.
 //
 
 #import "UIPlaceHolderTextView.h"
