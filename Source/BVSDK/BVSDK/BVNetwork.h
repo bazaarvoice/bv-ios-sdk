@@ -31,8 +31,6 @@
 
 @interface BVNetwork : NSObject<NSURLConnectionDataDelegate>
 
-- (id)initWithSender:(id)sender;
-
 @property (weak) id<BVDelegate> delegate;
 @property (strong) id sender;
 
@@ -41,8 +39,8 @@
 - (void)addUrlParameterWithName:(NSString *)name value:(NSString *)value;
 - (void)addNthUrlParameterWithName:(NSString *)name value:(NSString *)value;
 
-- (void)sendGetWithEndpoint:(NSString *)endpoint;
-- (void)sendPostWithEndpoint:(NSString *)endpoint;
-- (void)sendMultipartPostWithEndpoint:(NSString *)endpoint;
+- (void)sendGetWithEndpoint:(NSString *)endpoint sender:(id)sender;
+- (void)sendPostWithEndpoint:(NSString *)endpoint sender:(id)sender;
+- (void)sendMultipartPostWithEndpoint:(NSString *)endpoint sender:(id)sender;
 
 @end

@@ -25,8 +25,6 @@
 @interface BVSDKTests : SenTestCase<BVDelegate> {
     BOOL requestComplete;
     BOOL receivedProgressCallback;
-    id sentRequest;
-    NSDictionary * receivedResponse;
 }
 
 
