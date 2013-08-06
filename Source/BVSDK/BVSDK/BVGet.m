@@ -25,7 +25,7 @@
 #import "BVNetwork.h"
 
 @interface BVGet()
-@property (weak) BVNetwork *network;
+@property (strong) BVNetwork *network;
 @end
 
 @implementation BVGet
@@ -49,7 +49,7 @@
     if (self) {
         self.type = type;
 
-        BVNetwork *network = [[BVNetwork alloc] initWithSender:self];
+        BVNetwork *network = [[BVNetwork alloc] init];
         self.network = network;
         
         // Standard params
@@ -279,7 +279,7 @@
 
 
 - (void) send {
-    [self.network sendGetWithEndpoint:[self getTypeString]];
+    [self.network sendGetWithEndpoint:[self getTypeString] sender:self];
 }
 
 

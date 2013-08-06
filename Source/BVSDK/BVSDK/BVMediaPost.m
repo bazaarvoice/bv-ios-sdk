@@ -26,7 +26,7 @@
 @interface BVMediaPost() {
     BVVideoFormatType _videoFormat;
 }
-@property (weak) BVNetwork *network;
+@property (strong) BVNetwork *network;
 @end
 
 
@@ -62,7 +62,7 @@
     if (self) {
         self.type = type;
         
-        BVNetwork *network = [[BVNetwork alloc] initWithSender:self];
+        BVNetwork *network = [[BVNetwork alloc] init];
         self.network = network;
         
         // Standard params
@@ -172,9 +172,9 @@
 
 - (void)send {
     if(self.photoUrl){
-        [self.network sendPostWithEndpoint:[self getTypeString]];
+        [self.network sendPostWithEndpoint:[self getTypeString] sender:self];
     } else {
-        [self.network sendMultipartPostWithEndpoint:[self getTypeString]];        
+        [self.network sendMultipartPostWithEndpoint:[self getTypeString] sender:self];
     }
 }
 

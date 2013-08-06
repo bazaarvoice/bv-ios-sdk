@@ -24,7 +24,7 @@
 #import "BVNetwork.h"
 
 @interface BVPost()
-@property (weak) BVNetwork *network;
+@property (strong) BVNetwork *network;
 @end
 
 @implementation BVPost
@@ -95,7 +95,7 @@
     if (self) {
         self.type = type;
         
-        BVNetwork *network = [[BVNetwork alloc] initWithSender:self];
+        BVNetwork *network = [[BVNetwork alloc] init];
         self.network = network;
 
         
@@ -417,7 +417,7 @@
 }
 
 - (void) send {
-    [self.network sendPostWithEndpoint:[self getTypeString]];
+    [self.network sendPostWithEndpoint:[self getTypeString] sender:self];
 }
 
 

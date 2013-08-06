@@ -35,11 +35,10 @@
 @synthesize delegate = _delegate;
 @synthesize sender = _sender;
 
-- (id)initWithSender:(id)sender {
+- (id)init {
     self = [super init];
     if (self) {
         self.params = [[NSMutableDictionary alloc] init];
-        self.sender = sender;
     }
     return self;
 }
@@ -115,13 +114,15 @@ static NSString *urlEncode(id object) {
     return [parts componentsJoinedByString: @"&"];
 }
 
-- (void)sendGetWithEndpoint:(NSString *)endpoint {
+- (void)sendGetWithEndpoint:(NSString *)endpoint sender:(id)sender {
     if(self.delegate == nil){
         NSException *exception = [NSException exceptionWithName: @"DelegateNotSetException"
                                                          reason: @"A delegate must be set before a request is sent."
                                                        userInfo: nil];
         @throw exception;
     }
+    // This temporarily creates a retain cycle, but it will be cleared when the network request returns
+    self.sender = sender;
     BVSettings *settings = [BVSettings instance];
     NSString *urlString = [NSString stringWithFormat:@"http://%@%@/data/%@?%@",
                            settings.baseURL,
@@ -203,11 +204,13 @@ static NSString *urlEncode(id object) {
     }
 }
 
-- (void)sendPostWithEndpoint:(NSString *)endpoint {
+- (void)sendPostWithEndpoint:(NSString *)endpoint sender:(id)sender {
+    self.sender = sender;
     [self sendPostWithEndpoint:endpoint multipart:NO];
 }
 
-- (void)sendMultipartPostWithEndpoint:(NSString *)endpoint {
+- (void)sendMultipartPostWithEndpoint:(NSString *)endpoint sender:(id)sender {
+    self.sender = sender;
     [self sendPostWithEndpoint:endpoint multipart:YES];
 }
 
@@ -284,6 +287,8 @@ static NSString *urlEncode(id object) {
     if (self.delegate != nil && [self.delegate respondsToSelector:@selector(didReceiveResponse:forRequest:)]) {
         [self.delegate didReceiveResponse:response forRequest:self.sender];
     }
+    // Clear the sender to prevent a retain cycle
+    self.sender = nil;
 }
 
 - (void)connection:(NSURLConnection *)connection didSendBodyData:(NSInteger)bytesWritten totalBytesWritten:(NSInteger)totalBytesWritten totalBytesExpectedToWrite:(NSInteger)totalBytesExpectedToWrite
@@ -307,6 +312,8 @@ static NSString *urlEncode(id object) {
     if (self.delegate != nil && [self.delegate respondsToSelector:@selector(didFailToReceiveResponse:forRequest:)]){
         [self.delegate didFailToReceiveResponse:error forRequest:self.sender];
     }
+    // Clear the sender to prevent a retain cycle
+    self.sender = nil;
 }
 
 

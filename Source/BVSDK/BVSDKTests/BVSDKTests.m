@@ -47,8 +47,8 @@
 
 
 
-- (void)checkParams:(NSMutableDictionary *)params {
-    NSString *url = [sentRequest performSelector:@selector(requestURL)];
+- (void)checkParams:(NSMutableDictionary *)params withRequest:(id)request {
+    NSString *url = [request performSelector:@selector(requestURL)];
     NSDictionary *baseDictionary = [NSDictionary
                                     dictionaryWithObjectsAndKeys:BV_API_VERSION,
                                     @"ApiVersion",
@@ -81,10 +81,11 @@
 
 - (void)didReceiveResponse:(NSDictionary *)response forRequest:(id)request{
     
-    //NSLog(@"%@", response);
+    if([request isKindOfClass:[BVMediaPost class]]){
+        // Check video/photo upload manually
+        NSLog(@"%@", response);
+    }
     requestComplete = YES;
-    receivedResponse = response;
-    sentRequest = request;
     
     BOOL hasErrors = [[response objectForKey:@"HasErrors"] boolValue] || ([response objectForKey:@"HasErrors"] == nil);
     if (hasErrors) {
@@ -103,6 +104,8 @@
     else
     {
         STAssertNotNil(response, @"Invalid response for Class: %@", [request class]);
+        STAssertNotNil(request, @"Request is nil", [request class]);
+
     }
     NSLog(@"\n\n");
 }
@@ -122,7 +125,7 @@
     NSRunLoop *theRL = [NSRunLoop currentRunLoop];
     // Begin a run loop terminated when the requestComplete it set to true
     while (!requestComplete && [theRL runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]]);
-    [self checkParams:[NSMutableDictionary dictionaryWithObjectsAndKeys:nil]];
+    [self checkParams:[NSMutableDictionary dictionaryWithObjectsAndKeys:nil] withRequest:request];
 }
 
 
@@ -144,7 +147,7 @@
     // Begin a run loop terminated when the requestComplete it set to true
     while (!requestComplete && [theRL runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]]);
     [self checkParams:[NSMutableDictionary dictionaryWithObjectsAndKeys:
-                       @"Reviews", @"Stats", @"Id:asc", @"Sort_Products", @"Id:eq:009", @"Filter_Products", @"10", @"Limit_Products", @"Id:asc", @"Sort", @"Products", @"Include", @"0", @"Offset", @"Id:eq:6601211", @"Filter", @"50", @"Limit", @"Great%20sound", @"Search", nil]];
+                       @"Reviews", @"Stats", @"Id:asc", @"Sort_Products", @"Id:eq:009", @"Filter_Products", @"10", @"Limit_Products", @"Id:asc", @"Sort", @"Products", @"Include", @"0", @"Offset", @"Id:eq:6601211", @"Filter", @"50", @"Limit", @"Great%20sound", @"Search", nil] withRequest:showDisplayRequest];
 }
 
 
@@ -160,7 +163,7 @@
     // Begin a run loop terminated when the requestComplete it set to true
     while (!requestComplete && [theRL runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]]);
     [self checkParams:[NSMutableDictionary dictionaryWithObjectsAndKeys:
-                       @"Id:asc", @"Sort_Products", @"Id:asc", @"Sort", @"Products", @"Include", @"Increase%20your%20potential%20to%20shine", @"Search_Products", nil]];
+                       @"Id:asc", @"Sort_Products", @"Id:asc", @"Sort", @"Products", @"Include", @"Increase%20your%20potential%20to%20shine", @"Search_Products", nil] withRequest:showDisplayRequest];
 }
 
 
@@ -172,7 +175,7 @@
     NSRunLoop *theRL = [NSRunLoop currentRunLoop];
     // Begin a run loop terminated when the requestComplete it set to true
     while (!requestComplete && [theRL runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]]);
-    [self checkParams:[NSMutableDictionary dictionaryWithObjectsAndKeys:nil]];
+    [self checkParams:[NSMutableDictionary dictionaryWithObjectsAndKeys:nil] withRequest:showDisplayRequest];
 }
 
 - (void)testShowQuestion {
@@ -196,7 +199,7 @@
     while (!requestComplete && [theRL runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]]);
     
     [self checkParams:[NSMutableDictionary dictionaryWithObjectsAndKeys:
-                       @"Reviews", @"Stats", @"Id:asc", @"Sort_Products", @"Id:eq:test1", @"Filter_Products", @"10", @"Limit_Products", @"Id:asc", @"Sort", @"Products", @"Include", @"0", @"Offset", @"Id:eq:87757", @"Filter", @"50", @"Limit", @"true", @"ExcludeFamily", nil]];
+                       @"Reviews", @"Stats", @"Id:asc", @"Sort_Products", @"Id:eq:test1", @"Filter_Products", @"10", @"Limit_Products", @"Id:asc", @"Sort", @"Products", @"Include", @"0", @"Offset", @"Id:eq:87757", @"Filter", @"50", @"Limit", @"true", @"ExcludeFamily", nil] withRequest:showDisplayRequest];
     
     
 }
@@ -210,7 +213,7 @@
     // Begin a run loop terminated when the requestComplete it set to true
     while (!requestComplete && [theRL runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]]);
     
-    [self checkParams:[NSMutableDictionary dictionaryWithObjectsAndKeys:nil]];
+    [self checkParams:[NSMutableDictionary dictionaryWithObjectsAndKeys:nil] withRequest:showDisplayRequest];
 }
 
 
@@ -233,7 +236,7 @@
     while (!requestComplete && [theRL runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]]);
     
     [self checkParams:[NSMutableDictionary dictionaryWithObjectsAndKeys:
-                       @"Answers", @"Stats", @"Id:asc", @"Sort_Products", @"Id:eq:test0", @"Filter_Products", @"10", @"Limit_Products", @"Id:asc", @"Sort", @"Products", @"Include", @"0", @"Offset", @"Id:eq:6055", @"Filter", @"50", @"Limit", nil]];
+                       @"Answers", @"Stats", @"Id:asc", @"Sort_Products", @"Id:eq:test0", @"Filter_Products", @"10", @"Limit_Products", @"Id:asc", @"Sort", @"Products", @"Include", @"0", @"Offset", @"Id:eq:6055", @"Filter", @"50", @"Limit", nil] withRequest:showDisplayRequest];
 }
 
 - (void)testShowStorySparse {
@@ -245,7 +248,7 @@
     NSRunLoop *theRL = [NSRunLoop currentRunLoop];
     // Begin a run loop terminated when the requestComplete it set to true
     while (!requestComplete && [theRL runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]]);
-    [self checkParams:[NSMutableDictionary dictionaryWithObjectsAndKeys:@"Id:eq:14181", @"Filter",nil]];
+    [self checkParams:[NSMutableDictionary dictionaryWithObjectsAndKeys:@"Id:eq:14181", @"Filter",nil] withRequest:showDisplayRequest];
 }
 
 - (void)testShowStory {
@@ -267,7 +270,7 @@
     while (!requestComplete && [theRL runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]]);
     
     [self checkParams:[NSMutableDictionary dictionaryWithObjectsAndKeys:
-                       @"Stories", @"Stats", @"Id:asc", @"Sort_Comments", @"Id:eq:1010", @"Filter_Comments", @"10", @"Limit_Comments", @"Id:asc", @"Sort", @"Comments", @"Include", @"0", @"Offset", @"Id:eq:14181", @"Filter", @"50", @"Limit", nil]];
+                       @"Stories", @"Stats", @"Id:asc", @"Sort_Comments", @"Id:eq:1010", @"Filter_Comments", @"10", @"Limit_Comments", @"Id:asc", @"Sort", @"Comments", @"Include", @"0", @"Offset", @"Id:eq:14181", @"Filter", @"50", @"Limit", nil] withRequest:showDisplayRequest];
 }
 
 
@@ -278,7 +281,7 @@
     NSRunLoop *theRL = [NSRunLoop currentRunLoop];
     // Begin a run loop terminated when the requestComplete it set to true
     while (!requestComplete && [theRL runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]]);
-    [self checkParams:[NSMutableDictionary dictionaryWithObjectsAndKeys:nil]];
+    [self checkParams:[NSMutableDictionary dictionaryWithObjectsAndKeys:nil] withRequest:showDisplayRequest];
 }
 
 - (void)testShowComments {
@@ -299,7 +302,7 @@
     while (!requestComplete && [theRL runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]]);
     
     [self checkParams:[NSMutableDictionary dictionaryWithObjectsAndKeys:
-                       @"Reviews", @"Stats", @"Id:asc", @"Sort_Products", @"Id:eq:2323001", @"Filter_Products", @"10", @"Limit_Products", @"Id:asc", @"Sort", @"Products", @"Include", @"0", @"Offset", @"ReviewId:eq:6597809", @"Filter", @"50", @"Limit", nil]];
+                       @"Reviews", @"Stats", @"Id:asc", @"Sort_Products", @"Id:eq:2323001", @"Filter_Products", @"10", @"Limit_Products", @"Id:asc", @"Sort", @"Products", @"Include", @"0", @"Offset", @"ReviewId:eq:6597809", @"Filter", @"50", @"Limit", nil] withRequest:showDisplayRequest];
 }
 
 - (void)testShowCommentStorySparse {
@@ -310,7 +313,7 @@
     NSRunLoop *theRL = [NSRunLoop currentRunLoop];
     // Begin a run loop terminated when the requestComplete it set to true
     while (!requestComplete && [theRL runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]]);
-    [self checkParams:[NSMutableDictionary dictionaryWithObjectsAndKeys:nil]];
+    [self checkParams:[NSMutableDictionary dictionaryWithObjectsAndKeys:nil] withRequest:showDisplayRequest];
     
 }
 
@@ -333,7 +336,7 @@
     while (!requestComplete && [theRL runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]]);
     
     [self checkParams:[NSMutableDictionary dictionaryWithObjectsAndKeys:
-                       @"Reviews", @"Stats", @"Id:asc", @"Sort_Products", @"Id:eq:test1", @"Filter_Products", @"10", @"Limit_Products", @"Id:asc", @"Sort", @"Products", @"Include", @"0", @"Offset", @"StoryId:eq:967", @"Filter", @"10", @"Limit", nil]];
+                       @"Reviews", @"Stats", @"Id:asc", @"Sort_Products", @"Id:eq:test1", @"Filter_Products", @"10", @"Limit_Products", @"Id:asc", @"Sort", @"Products", @"Include", @"0", @"Offset", @"StoryId:eq:967", @"Filter", @"10", @"Limit", nil] withRequest:showDisplayRequest];
 }
 
 - (void)testShowProfileSparse {
@@ -344,7 +347,7 @@
     // Begin a run loop terminated when the requestComplete it set to true
     while (!requestComplete && [theRL runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]]);
     
-    [self checkParams:[NSMutableDictionary dictionaryWithObjectsAndKeys:nil]];
+    [self checkParams:[NSMutableDictionary dictionaryWithObjectsAndKeys:nil] withRequest:showDisplayRequest];
 }
 
 - (void)testShowProfile {
@@ -361,7 +364,7 @@
     // Begin a run loop terminated when the requestComplete it set to true
     while (!requestComplete && [theRL runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]]);
     [self checkParams:[NSMutableDictionary dictionaryWithObjectsAndKeys:
-                       @"Reviews", @"Stats", @"Id:asc", @"Sort",  @"0", @"Offset", @"Id:eq:smartPP", @"Filter", @"10", @"Limit", nil]];
+                       @"Reviews", @"Stats", @"Id:asc", @"Sort",  @"0", @"Offset", @"Id:eq:smartPP", @"Filter", @"10", @"Limit", nil] withRequest:showDisplayRequest];
 }
 
 - (void)testShowProductsSparse {
@@ -371,7 +374,7 @@
     NSRunLoop *theRL = [NSRunLoop currentRunLoop];
     // Begin a run loop terminated when the requestComplete it set to true
     while (!requestComplete && [theRL runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]]);
-    [self checkParams:[NSMutableDictionary dictionaryWithObjectsAndKeys:nil]];
+    [self checkParams:[NSMutableDictionary dictionaryWithObjectsAndKeys:nil] withRequest:showDisplayRequest];
 }
 
 - (void)testShowProducts {
@@ -392,7 +395,7 @@
     while (!requestComplete && [theRL runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]]);
     
     [self checkParams:[NSMutableDictionary dictionaryWithObjectsAndKeys:
-                       @"Reviews", @"Stats", @"Id:asc", @"Sort_Reviews", @"Id:eq:83501", @"Filter_Reviews", @"10", @"Limit_Reviews", @"Id:asc", @"Sort", @"Reviews", @"Include", @"0", @"Offset", @"CategoryId:eq:testcategory1011", @"Filter", @"10", @"Limit", nil]];
+                       @"Reviews", @"Stats", @"Id:asc", @"Sort_Reviews", @"Id:eq:83501", @"Filter_Reviews", @"10", @"Limit_Reviews", @"Id:asc", @"Sort", @"Reviews", @"Include", @"0", @"Offset", @"CategoryId:eq:testcategory1011", @"Filter", @"10", @"Limit", nil] withRequest:showDisplayRequest];
 }
 
 - (void)testShowCateogrySparse {
@@ -402,7 +405,7 @@
     NSRunLoop *theRL = [NSRunLoop currentRunLoop];
     // Begin a run loop terminated when the requestComplete it set to true
     while (!requestComplete && [theRL runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]]);
-    [self checkParams:[NSMutableDictionary dictionaryWithObjectsAndKeys:nil]];
+    [self checkParams:[NSMutableDictionary dictionaryWithObjectsAndKeys:nil] withRequest:showDisplayRequest];
 }
 
 - (void)testShowCateogry {
@@ -423,7 +426,7 @@
     while (!requestComplete && [theRL runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]]);
     
     [self checkParams:[NSMutableDictionary dictionaryWithObjectsAndKeys:
-                       @"Reviews", @"Stats", @"Id:asc", @"Sort_Products", @"Id:eq:test2", @"Filter_Products", @"10", @"Limit_Products", @"Id:asc", @"Sort", @"Products", @"Include", @"0", @"Offset", @"Id:eq:testCategory1011", @"Filter", @"10", @"Limit", nil]];
+                       @"Reviews", @"Stats", @"Id:asc", @"Sort_Products", @"Id:eq:test2", @"Filter_Products", @"10", @"Limit_Products", @"Id:asc", @"Sort", @"Products", @"Include", @"0", @"Offset", @"Id:eq:testCategory1011", @"Filter", @"10", @"Limit", nil] withRequest:showDisplayRequest];
 }
 
 - (void)testShowStatistics {
@@ -438,7 +441,7 @@
     while (!requestComplete && [theRL runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]]);
     
     [self checkParams:[NSMutableDictionary dictionaryWithObjectsAndKeys:
-                       @"ProductId:eq:test1,test2,test3", @"Filter", @"Reviews,NativeReviews", @"Stats", nil]];
+                       @"ProductId:eq:test1,test2,test3", @"Filter", @"Reviews,NativeReviews", @"Stats", nil] withRequest:showDisplayRequest];
     
 }
 
@@ -582,10 +585,6 @@
     NSRunLoop *theRL = [NSRunLoop currentRunLoop];
     // Begin a run loop terminated when the requestComplete it set to true
     while (!requestComplete && [theRL runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]]);
-    
-    // Check image manually
-    NSLog(@"%@", receivedResponse);
-    
 }
 
 - (void)testSubmissionPhotoURL {
@@ -615,9 +614,6 @@
     NSRunLoop *theRL = [NSRunLoop currentRunLoop];
     // Begin a run loop terminated when the requestComplete it set to true
     while (!requestComplete && [theRL runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]]);
-    
-    // Check video manually
-    NSLog(@"%@", receivedResponse);
 }
 
 
