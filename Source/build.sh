@@ -21,12 +21,8 @@ if [ $SDK_VER != $FRAMEWORK_VER ]; then
 fi
 
 cd ..
-echo "Cleaning up..."
-rm -rf "$SDK_PATH/docs"
 echo "Generating docs..."
-./generate_docs
-echo "Copying docs..." 
-cp -r ./docs "$SDK_PATH/"
+./generate_docs.sh
 
 cd BVSDK
 

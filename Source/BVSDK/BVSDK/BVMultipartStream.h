@@ -1,10 +1,11 @@
 //
-//  BVSDK.h
-//  BazaarvoiceSDK
+//  BVMultipartStream.h
+//  BVSDK
 //
-//  Simple header for including all other SDK headers in one line.
 //
-//  Created by Bazaarvoice Engineering on 1/30/13.
+//  NSInputStream subclass which alows for streaming multipart post parameters
+//
+//  Created by Bazaarvoice Engineering on 11/27/12.
 //
 //  Copyright 2013 Bazaarvoice, Inc.
 //
@@ -21,14 +22,13 @@
 //  limitations under the License.
 //
 
-#ifndef BazaarvoiceSDK_BVSDK_h
-#define BazaarvoiceSDK_BVSDK_h
 
-#import "BVConstants.h"
-#import "BVDelegate.h"
-#import "BVGet.h"
-#import "BVPost.h"
-#import "BVMediaPost.h"
-#import "BVSettings.h"
+#import <Foundation/Foundation.h>
 
-#endif
+@interface BVMultipartStream : NSInputStream
+
+@property (readonly) uint length;
+
+- (id)initWithParams:(NSDictionary *)params boundary:(NSString *)boundary sender:(id)sender;
+
+@end

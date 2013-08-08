@@ -81,11 +81,19 @@ Locale to display Labels, Configuration, Product Attributes and Category Attribu
 
 
 /*!
- A video file to be submitted.
+ A video to be submitted.
  @param video NSData representing a video file to be uploaded.  
  @param format Format of the video file to be uploaded.  This file may be of any of the valid format types defined by BVVideoFormatType.
  */
 - (void)setVideo:(NSData *)video withFormat:(BVVideoFormatType)format;
+
+/*!
+ A video file to be submitted.
+ @param file NSURL representing a video file on disk to be uploaded.
+ @param format Format of the video file to be uploaded.  This file may be of any of the valid format types defined by BVVideoFormatType.
+ */
+- (void)setVideoFile:(NSURL *)file withFormat:(BVVideoFormatType)format;
+
 
 /*!
  Adds a generic parameter to the request.  This method should be used as a last resort when another method does not exist for a particular request you would like to make.  Behavior may be undefined.
