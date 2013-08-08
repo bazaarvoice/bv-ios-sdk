@@ -34,7 +34,6 @@
 		6F19288C16BAF24000D1BE1D /* sample_mpeg4.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 6F19287D16BAF24000D1BE1D /* sample_mpeg4.mp4 */; };
 		6F19288E16BAF24000D1BE1D /* sample_iTunes.mov in Resources */ = {isa = PBXBuildFile; fileRef = 6F19287E16BAF24000D1BE1D /* sample_iTunes.mov */; };
 		6F19289016BAF25400D1BE1D /* rotated.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6F19288F16BAF25400D1BE1D /* rotated.jpg */; };
-		6F4BC91217B197C800D206FE /* BVMultipartStream.h in Headers */ = {isa = PBXBuildFile; fileRef = 6F4BC91017B197C800D206FE /* BVMultipartStream.h */; };
 		6F4BC91317B197C800D206FE /* BVMultipartStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F4BC91117B197C800D206FE /* BVMultipartStream.m */; };
 		6F5E8B8717B2C78100CC69DC /* BVMultipartStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F4BC91117B197C800D206FE /* BVMultipartStream.m */; };
 		6F78ECEF16BAEF26003B89D7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6F78ECED16BAEF26003B89D7 /* InfoPlist.strings */; };
@@ -221,7 +220,6 @@
 				6F19286E16BAF23500D1BE1D /* BVPost.h in Headers */,
 				6F19287116BAF23500D1BE1D /* BVMediaPost.h in Headers */,
 				6F19287416BAF23500D1BE1D /* BVSettings.h in Headers */,
-				6F4BC91217B197C800D206FE /* BVMultipartStream.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
