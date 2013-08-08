@@ -27,7 +27,9 @@
 #define MULTIPART_BOUNDARY @"----------------------------f3a1ba9c57bd"
 
 @interface BVNetwork ()
+// Dictionary of key-value parameters
 @property (strong) NSMutableDictionary *params;
+// Response data received
 @property (strong) NSMutableData *receivedData;
 @end
 
@@ -132,15 +134,10 @@ static NSString *urlEncode(id object) {
                            settings.staging ? @"/bvstaging" : @"",
                            endpoint,
                            [self getParamsString]];
-    //NSLog(@"Request to send: %@", urlString);
     
-    // This is sort of a strange work-around.  This network object may be deallocated before the sender is deallocated, but
-    // we still want the client to be able to know the url of this request.  Therefore, it is stored by the sender after the request
-    // is sent.
-    if([self.sender respondsToSelector:@selector(setRequestURL:)]) {
-        [self.sender performSelector:@selector(setRequestURL:) withObject:urlString];
+    // Store the request URL
+    _requestURL = urlString;
 
-    }
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc]
                                     initWithURL:[NSURL URLWithString:urlString]
                                     cachePolicy:NSURLRequestUseProtocolCachePolicy
@@ -174,14 +171,10 @@ static NSString *urlEncode(id object) {
                            settings.baseURL,
                            settings.staging ? @"/bvstaging" : @"",
                            endpoint];
-    //NSLog(@"Request to send: %@", urlString);
-    // This is sort of a strange work-around.  This network object may be deallocated before the sender is deallocated, but
-    // we still want the client to be able to know the url of this request.  Therefore, it is stored by the sender after the request
-    // is sent.
-    if([self.sender respondsToSelector:@selector(setRequestURL:)]) {
-        [self.sender performSelector:@selector(setRequestURL:) withObject:urlString];
-        
-    }
+    
+    // Store the request URL
+    _requestURL = urlString;
+    
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc]
                                     initWithURL:[NSURL URLWithString:urlString]
                                     cachePolicy:NSURLRequestUseProtocolCachePolicy
