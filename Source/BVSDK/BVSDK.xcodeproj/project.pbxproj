@@ -34,6 +34,9 @@
 		6F19288C16BAF24000D1BE1D /* sample_mpeg4.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 6F19287D16BAF24000D1BE1D /* sample_mpeg4.mp4 */; };
 		6F19288E16BAF24000D1BE1D /* sample_iTunes.mov in Resources */ = {isa = PBXBuildFile; fileRef = 6F19287E16BAF24000D1BE1D /* sample_iTunes.mov */; };
 		6F19289016BAF25400D1BE1D /* rotated.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6F19288F16BAF25400D1BE1D /* rotated.jpg */; };
+		6F4BC91217B197C800D206FE /* BVMultipartStream.h in Headers */ = {isa = PBXBuildFile; fileRef = 6F4BC91017B197C800D206FE /* BVMultipartStream.h */; };
+		6F4BC91317B197C800D206FE /* BVMultipartStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F4BC91117B197C800D206FE /* BVMultipartStream.m */; };
+		6F5E8B8717B2C78100CC69DC /* BVMultipartStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F4BC91117B197C800D206FE /* BVMultipartStream.m */; };
 		6F78ECEF16BAEF26003B89D7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6F78ECED16BAEF26003B89D7 /* InfoPlist.strings */; };
 		6F78ECF916BAEF26003B89D7 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F78ECF816BAEF26003B89D7 /* SenTestingKit.framework */; };
 		6F78ECFB16BAEF26003B89D7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F78ECFA16BAEF26003B89D7 /* UIKit.framework */; };
@@ -76,6 +79,8 @@
 		6F19287D16BAF24000D1BE1D /* sample_mpeg4.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sample_mpeg4.mp4; sourceTree = "<group>"; };
 		6F19287E16BAF24000D1BE1D /* sample_iTunes.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = sample_iTunes.mov; sourceTree = "<group>"; };
 		6F19288F16BAF25400D1BE1D /* rotated.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = rotated.jpg; sourceTree = "<group>"; };
+		6F4BC91017B197C800D206FE /* BVMultipartStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVMultipartStream.h; sourceTree = "<group>"; };
+		6F4BC91117B197C800D206FE /* BVMultipartStream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVMultipartStream.m; sourceTree = "<group>"; };
 		6F78ECE816BAEF26003B89D7 /* BVSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BVSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6F78ECEC16BAEF26003B89D7 /* BVSDK-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "BVSDK-Info.plist"; sourceTree = "<group>"; };
 		6F78ECEE16BAEF26003B89D7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -138,6 +143,8 @@
 				6F19285A16BAF23500D1BE1D /* BVDelegate.h */,
 				6F19285B16BAF23500D1BE1D /* BVNetwork.h */,
 				6F19285C16BAF23500D1BE1D /* BVNetwork.m */,
+				6F4BC91017B197C800D206FE /* BVMultipartStream.h */,
+				6F4BC91117B197C800D206FE /* BVMultipartStream.m */,
 				6F19285D16BAF23500D1BE1D /* BVGet.h */,
 				6F19285E16BAF23500D1BE1D /* BVGet.m */,
 				6F19285F16BAF23500D1BE1D /* BVPost.h */,
@@ -214,6 +221,7 @@
 				6F19286E16BAF23500D1BE1D /* BVPost.h in Headers */,
 				6F19287116BAF23500D1BE1D /* BVMediaPost.h in Headers */,
 				6F19287416BAF23500D1BE1D /* BVSettings.h in Headers */,
+				6F4BC91217B197C800D206FE /* BVMultipartStream.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -381,6 +389,7 @@
 				6F19286F16BAF23500D1BE1D /* BVPost.m in Sources */,
 				6F19287216BAF23500D1BE1D /* BVMediaPost.m in Sources */,
 				6F19287516BAF23500D1BE1D /* BVSettings.m in Sources */,
+				6F4BC91317B197C800D206FE /* BVMultipartStream.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -394,6 +403,7 @@
 				6F19287016BAF23500D1BE1D /* BVPost.m in Sources */,
 				6F19287316BAF23500D1BE1D /* BVMediaPost.m in Sources */,
 				6F19287616BAF23500D1BE1D /* BVSettings.m in Sources */,
+				6F5E8B8717B2C78100CC69DC /* BVMultipartStream.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -488,7 +498,7 @@
 				DEAD_CODE_STRIPPING = NO;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
-				FRAMEWORK_VERSION = 2.1.3;
+				FRAMEWORK_VERSION = 2.1.4;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BVSDK/BVSDK-Prefix.pch";
 				INFOPLIST_FILE = "BVSDK/BVSDK-Info.plist";
@@ -513,7 +523,7 @@
 				DEAD_CODE_STRIPPING = NO;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
-				FRAMEWORK_VERSION = 2.1.3;
+				FRAMEWORK_VERSION = 2.1.4;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BVSDK/BVSDK-Prefix.pch";

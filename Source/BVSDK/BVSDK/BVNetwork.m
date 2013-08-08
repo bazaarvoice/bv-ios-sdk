@@ -21,7 +21,10 @@
 
 #import "BVNetwork.h"
 #import "BVSettings.h"
+#import "BVMultipartStream.h"
 #import <UIKit/UIKit.h>
+
+#define MULTIPART_BOUNDARY @"----------------------------f3a1ba9c57bd"
 
 @interface BVNetwork ()
 @property (strong) NSMutableDictionary *params;
@@ -223,61 +226,12 @@ static NSString *urlEncode(id object) {
 
 // We need to generate a multi-part form POST
 - (void) setMultipartData:(NSMutableURLRequest *)request {
-    NSMutableData *body = [NSMutableData data];
-    NSString *boundary = @"----------------------------f3a1ba9c57bd";
-    NSString *contentType = [NSString stringWithFormat:@"multipart/form-data; boundary=%@", boundary];
+    NSString *contentType = [NSString stringWithFormat:@"multipart/form-data; boundary=%@", MULTIPART_BOUNDARY];
     [request addValue:contentType forHTTPHeaderField:@"Content-Type"];
-    
-    for (id key in self.params) {
-        id value = [self.params objectForKey: key];
-        if([value isKindOfClass:[NSArray class]]) {
-            for(NSString * valueString in value){
-                [self appendKey:key value:value toMultipartData:body withBoundary:boundary];
-            }
-        } else if([value isKindOfClass:[NSString class]]) {
-            [self appendKey:key value:value toMultipartData:body withBoundary:boundary];
-        } else if([value isKindOfClass:[UIImage class]]) {
-            UIImage * image = value;
-            [self appendKey:key data:UIImageJPEGRepresentation(image, 1.0) toMultipartData:body withBoundary:boundary];
-        } else if([value isKindOfClass:[NSData class]]) {
-            [self appendKey:key data:value toMultipartData:body withBoundary:boundary];
-        }
-    }
-    
-    // close form
-    [body appendData:[[NSString stringWithFormat:@"--%@--\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
-    
-    [request setValue:[NSString stringWithFormat:@"%d", [body length]] forHTTPHeaderField:@"Content-Length"];
-    
-    // set request body
-    [request setHTTPBody:body];
-    
-    //NSString *printString = [[NSString alloc] initWithData:body encoding:NSASCIIStringEncoding];
-    //NSLog(@"Body: %@", printString);
-}
-
-- (void)appendKey:(NSString *)key data:(NSData *)data toMultipartData:(NSMutableData *)body withBoundary:(NSString *)boundary {
-    NSString *filename;
-    // Video filenames are used to determine the video format... this is a workaround to create such a filename so the server can decode the video file
-    if([key isEqualToString:@"video"] && [self.sender respondsToSelector:@selector(getVideoExtensionString)]){
-        NSString * extension = [self.sender performSelector:@selector(getVideoExtensionString)];
-        filename = [NSString stringWithFormat:@"somefile.%@", extension];
-    } else {
-        filename = @"somefile";
-    }
-    
-    [body appendData:[[NSString stringWithFormat:@"--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
-    [body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"; filename=\"%@\"\r\n", key, filename] dataUsingEncoding:NSUTF8StringEncoding]];
-    [body appendData:[@"Content-Type: application/octet-stream\r\n\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
-    [body appendData:[NSData dataWithData:data]];
-    [body appendData:[@"\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
-}
-
-- (void)appendKey:(NSString *)key value:(NSString *)value toMultipartData:(NSMutableData *)body withBoundary:(NSString *)boundary {
-    [body appendData:[[NSString stringWithFormat:@"--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
-    [body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"\r\n\r\n", key] dataUsingEncoding:NSUTF8StringEncoding]];
-    [body appendData:[value dataUsingEncoding:NSUTF8StringEncoding]];
-    [body appendData:[@"\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
+    BVMultipartStream *bodyData = [[BVMultipartStream alloc] initWithParams:self.params boundary:MULTIPART_BOUNDARY sender:self.sender];
+    NSString *postLength = [NSString stringWithFormat:@"%d",[bodyData length]];
+    [request addValue:postLength forHTTPHeaderField:@"Content-Length"];
+    [request setHTTPBodyStream:bodyData];
 }
 
 #pragma mark NSURLConnection delegates

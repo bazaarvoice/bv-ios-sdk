@@ -616,6 +616,21 @@
     while (!requestComplete && [theRL runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]]);
 }
 
+- (void)testSubmissionVideoFile {
+    
+    BVMediaPost *mySubmission = [[BVMediaPost alloc] initWithType:BVMediaPostTypeVideo];
+    mySubmission.contentType = BVMediaPostContentTypeReview;
+    mySubmission.userId = @"123";
+    
+    NSBundle *bundle = [NSBundle bundleForClass:[self class]];
+    NSString *videoPath = [bundle pathForResource:@"sample_mpeg4" ofType:@"mp4"];
+    NSURL *videoURL = [NSURL URLWithString:videoPath];
+    [mySubmission setVideoFile:videoURL withFormat:BVVideoFormatTypeMP4];
+    [mySubmission sendRequestWithDelegate:self];
+    NSRunLoop *theRL = [NSRunLoop currentRunLoop];
+    // Begin a run loop terminated when the requestComplete it set to true
+    while (!requestComplete && [theRL runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]]);
+}
 
 
 - (void)testSubmissionFeedback {

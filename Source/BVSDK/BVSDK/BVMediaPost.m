@@ -134,6 +134,12 @@
     [self.network setUrlParameterWithName:@"video" value:video];
 }
 
+- (void)setVideoFile:(NSURL *)file withFormat:(BVVideoFormatType)format {
+    _videoFormat = format;
+    [self.network setUrlParameterWithName:@"video" value:file];
+}
+
+
 - (NSString *)getVideoExtensionString {
     switch(_videoFormat){
         case BVVideoFormatType3G2:
