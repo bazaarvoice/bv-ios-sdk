@@ -685,4 +685,27 @@
     while (!requestComplete && [theRL runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]]);
 }
 
+- (void)testOffMainThread {
+    BVPost *mySubmission = [[BVPost alloc] initWithType:BVPostTypeReview];
+    mySubmission.productId = @"10000sadfgasdg3401";
+    mySubmission.userId = @"WHEEEEMYNAMEISSAME";
+    mySubmission.rating = 5;
+    mySubmission.title = @"Test title";
+    mySubmission.reviewText = @"Some kind of review text. Some kind of review text. Some kind of review text. Some kind of review text. Some kind of review text. Some kind of review text. Some kind of review text. Some kind of review text. Some kind of review text.";
+    mySubmission.userNickname = @"testnickname4";
+    [mySubmission addPhotoUrl:@"http://apitestcustomer.ugc.bazaarvoice.com/bvstaging/5555/ps_amazon_s3_3rgg6s4xvev0zhzbnabyneo21/photo.jpg" withCaption:nil];
+    [mySubmission addPhotoUrl:@"http://apitestcustomer.ugc.bazaarvoice.com/bvstaging/5555/ps_amazon_s3_a11b8t4wlgb914fjaiudaadvo/photo.jpg" withCaption:@"This photo is cool!"];
+    [mySubmission addPhotoUrl:@"http://apitestcustomer.ugc.bazaarvoice.com/bvstaging/5555/ps_amazon_s3_5ugnhmmq24p1q35tlygrqalz9/photo.jpg" withCaption:nil];
+    [mySubmission addTagForDimensionExternalId:@"Pro" value:@"fit"];
+    [mySubmission addTagForDimensionExternalId:@"Pro" value:@"comfortable fit"];
+    [mySubmission addTagIdForDimensionExternalId:@"Pro/ProService" value:true];
+    [mySubmission addTagIdForDimensionExternalId:@"Con/ConFitness" value:true];
+    dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
+        [mySubmission sendRequestWithDelegate:self];
+    });
+    NSRunLoop *theRL = [NSRunLoop currentRunLoop];
+    // Begin a run loop terminated when the requestComplete it set to true
+    while (!requestComplete && [theRL runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]]);
+}
+
 @end

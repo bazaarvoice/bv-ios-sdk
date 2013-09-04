@@ -1,3 +1,7 @@
+## 2.1.5 (Sep. 4, 2013)
+
+* Fixes issue with making requests off of the main thread.
+
 ## 2.1.4 (Aug. 8, 2013)
 
 * Adds ability to upload video from disk.
