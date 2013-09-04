@@ -146,15 +146,18 @@ static NSString *urlEncode(id object) {
     // Attach the SDK version header to every request.
     [request addValue:SDK_HEADER_VALUE forHTTPHeaderField:SDK_HEADER_NAME];
     
-    
-    
-    NSURLConnection *theConnection =[[NSURLConnection alloc] initWithRequest:request delegate:self startImmediately:YES];
-    if (theConnection) {
+    NSURLConnection * connection = [[NSURLConnection alloc] initWithRequest:request
+                                                                   delegate:self startImmediately:NO];
+    if (connection) {
         // Create the NSMutableData to hold the received data.
         // receivedData is an instance variable declared elsewhere.
         self.receivedData = [NSMutableData data];
+        [connection scheduleInRunLoop:[NSRunLoop mainRunLoop]
+                              forMode:NSDefaultRunLoopMode];
+        [connection start];
     } else {
         // Inform the user that the connection failed.
+        NSLog(@"An error occurred generating the request");
     }
 }
 
@@ -190,13 +193,18 @@ static NSString *urlEncode(id object) {
     // Attach the SDK version header to every request.
     [request addValue:SDK_HEADER_VALUE forHTTPHeaderField:SDK_HEADER_NAME];
     
-    NSURLConnection *theConnection =[[NSURLConnection alloc] initWithRequest:request delegate:self startImmediately:YES];
-    if (theConnection) {
+    NSURLConnection * connection = [[NSURLConnection alloc] initWithRequest:request
+                                                                   delegate:self startImmediately:NO];
+    if (connection) {
         // Create the NSMutableData to hold the received data.
         // receivedData is an instance variable declared elsewhere.
         self.receivedData = [NSMutableData data];
+        [connection scheduleInRunLoop:[NSRunLoop mainRunLoop]
+                              forMode:NSDefaultRunLoopMode];
+        [connection start];
     } else {
         // Inform the user that the connection failed.
+        NSLog(@"An error occurred generating the request");
     }
 }
 
