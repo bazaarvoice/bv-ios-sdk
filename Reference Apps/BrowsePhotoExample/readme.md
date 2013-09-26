@@ -15,4 +15,4 @@ Some highlights:
 
 **Current Status**
 
-As of 12/19/12, this app includes many implementation best practices, but interaction and UI best practices are still in development.
+This app includes many implementation best practices, but interaction and UI best practices are still in development.
