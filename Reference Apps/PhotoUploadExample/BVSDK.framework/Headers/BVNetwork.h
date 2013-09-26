@@ -28,7 +28,7 @@
 
 // Header to include with all API requests to denote a mobile SDK request
 #define SDK_HEADER_NAME @"X-UA-BV-SDK"
-#define SDK_HEADER_VALUE @"IOS_SDK_V215"
+#define SDK_HEADER_VALUE @"IOS_SDK_V216"
 
 @interface BVNetwork : NSObject<NSURLConnectionDataDelegate>
 
