@@ -34,7 +34,13 @@
     [BVSettings instance].baseURL = @"reviews.apitestcustomer.Bazaarvoice.com";
     [BVSettings instance].staging = YES;
     
-    self.navigationController.navigationBar.tintColor = [BVColor primaryBrandColor];
+    self.navigationController.navigationBar.translucent = NO;
+    if([self.navigationController.navigationBar respondsToSelector:@selector(setBarTintColor:)]) {
+        self.navigationController.navigationBar.barTintColor = [BVColor secondaryBrandColor];
+    } else {
+        self.navigationController.navigationBar.tintColor = [BVColor primaryBrandColor];
+    }
+
     self.navigationController.navigationBar.alpha = .9;
 }
 
@@ -45,39 +51,7 @@
 
 // Handler for when the "rate" button is clicked
 - (IBAction)rateClicked:(id)sender {
-    UIActionSheet *popupQuery = [[UIActionSheet alloc] initWithTitle:@"Select Photo From:" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Camera", @"My Photos", nil];
-   [popupQuery showInView:self.view];
-}
-
-// Handler for when an item is selected from the "rate" action item list.  We present two possible ways to obtain photos.  The first
-// is from the camera.  The second is utilizing the Chute photo picker plus library.  See here:
-// https://github.com/chute/photo-picker-plus/
--(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
-	if (buttonIndex == 0) {
-        // First, check to make sure the camera is available.
-        if([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera])
-        {
-            // Kick off the image picker with this object as a delegate
-            // to receive callbacks when a photo has been taken
-            UIImagePickerController * picker = [[UIImagePickerController alloc] init];
-            picker.delegate = self;
-            // Indicate that we only want images
-            picker.sourceType = UIImagePickerControllerSourceTypeCamera;
-            picker.cameraDevice = UIImagePickerControllerCameraDeviceRear;
-            picker.mediaTypes = [NSArray arrayWithObjects:
-                                 (NSString *) kUTTypeImage, nil];
-            [self presentModalViewController:picker animated:YES];
-        }
-	} else if (buttonIndex == 1) {
-        PhotoPickerPlus *picker = [[PhotoPickerPlus alloc] init];
-        [picker setDelegate:self];
-        [picker setModalPresentationStyle:UIModalPresentationFormSheet];
-        [picker setModalInPopover:YES];
-        [picker setMultipleImageSelectionEnabled:NO];
-        [picker setSourceType:PhotoPickerPlusSourceTypeLibrary];
-        [self presentViewController:picker animated:YES completion:^(void){
-        }];
-    } 
+    [self showPhotoPickerPlus];
 }
 
 // Single endpoint for all photo selections -- camera or from picker
@@ -100,34 +74,34 @@
     [self performSegueWithIdentifier:@"rate" sender:image];
 }
 
-// Camera/native SDK callbacks
-- (void)imagePickerController:(UIImagePickerController *)picker
-didFinishPickingMediaWithInfo:(NSDictionary *)info
-{
+////////////////////////////
+//    Chute Photo Picker  //
+////////////////////////////
+
+- (void)imagePickerControllerDidCancel:(PhotoPickerViewController *)picker{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+
+- (void)showPhotoPickerPlus {
+    PhotoPickerViewController *picker = [PhotoPickerViewController new];
+    [picker setDelegate:self];
+    [picker setModalPresentationStyle:UIModalPresentationFormSheet];
+    [picker setModalInPopover:YES];
+    [picker setIsMultipleSelectionEnabled:NO];
+    [self presentViewController:picker animated:YES completion:nil];
+}
+
+- (void)imagePickerController:(id)picker didFinishPickingMediaWithInfo:(NSDictionary *)info{
+    //place code for when the user picks photos here and do any
+    //additional work such as removing the picker from the screen
     [self dismissModalViewControllerAnimated:YES];
     [self handlePickedPhotoWithInfo:info];
 }
 
--(void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
-{
-    // If the user cancels, dismiss and do nothing
-    [self dismissModalViewControllerAnimated:YES];
-}
-
-// PhotoPickerPlus callbacks
--(void) PhotoPickerPlusController:(PhotoPickerPlus *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info{
-    [self dismissModalViewControllerAnimated:YES];
-    [self handlePickedPhotoWithInfo:info];
-}
-
--(void) PhotoPickerPlusController:(PhotoPickerPlus *)picker didFinishPickingArrayOfMediaWithInfo:(NSArray *)info {
+- (void)imagePickerController:(PhotoPickerViewController *)picker didFinishPickingArrayOfMediaWithInfo:(NSArray *)info{
     // Not utilized -- this is for cases where multiple photo selection is allowed
 }
-
--(void) PhotoPickerPlusControllerDidCancel:(PhotoPickerPlus *)picker{
-    [self dismissModalViewControllerAnimated:YES];
-}
-
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Note that this is where we actually kick off the network

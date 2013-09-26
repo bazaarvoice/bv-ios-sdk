@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="11E53" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="7Sj-zt-yWf">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4510" systemVersion="12F37" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="7Sj-zt-yWf">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
+        <deployment defaultVersion="1280" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3742"/>
     </dependencies>
     <scenes>
         <!--Navigation Controller - Rate It!-->
@@ -26,15 +27,15 @@
             <objects>
                 <viewController id="2" customClass="ProductViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3">
-                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" id="krx-vw-JOx">
-                                <rect key="frame" x="9" y="9" width="302" height="399"/>
+                                <rect key="frame" x="9" y="9" width="302" height="463"/>
                                 <autoresizingMask key="autoresizingMask" heightSizable="YES"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" id="zaD-tS-kyA">
-                                        <rect key="frame" x="7" y="8" width="288" height="383"/>
+                                        <rect key="frame" x="7" y="8" width="288" height="447"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                     </view>
@@ -53,11 +54,11 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <view contentMode="scaleToFill" id="qxO-Pt-1Sv" customClass="RoundedCornerView">
-                                <rect key="frame" x="27" y="205" width="267" height="191"/>
+                                <rect key="frame" x="27" y="205" width="267" height="255"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES"/>
                                 <subviews>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" id="8Ka-p0-GhN">
-                                        <rect key="frame" x="12" y="13" width="242" height="165"/>
+                                        <rect key="frame" x="12" y="13" width="242" height="229"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES"/>
                                         <string key="text">Reliable and Efficient
 
@@ -82,9 +83,6 @@ Specialty Dry Cycles — Provide just the right levels of drying for better fabr
                                     <color key="titleColor" red="0.0" green="0.69411766529999996" blue="0.5647059083" alpha="1" colorSpace="deviceRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
                                 <connections>
                                     <action selector="rateClicked:" destination="2" eventType="touchUpInside" id="cf6-p3-Pou"/>
                                 </connections>
@@ -105,15 +103,15 @@ Specialty Dry Cycles — Provide just the right levels of drying for better fabr
             <objects>
                 <viewController id="ICT-5U-F0A" customClass="RateViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="EMb-yS-DbW">
-                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" id="UYL-FZ-J0Z">
-                                <rect key="frame" x="9" y="8" width="302" height="399"/>
+                                <rect key="frame" x="9" y="8" width="302" height="463"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" id="eOG-we-WV2">
-                                        <rect key="frame" x="7" y="8" width="288" height="383"/>
+                                        <rect key="frame" x="7" y="8" width="288" height="447"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <subviews>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Nickname" adjustsFontSizeToFit="NO" minimumFontSize="14" clearButtonMode="whileEditing" id="aHw-1a-n3p">
@@ -132,11 +130,11 @@ Specialty Dry Cycles — Provide just the right levels of drying for better fabr
                                 <color key="backgroundColor" red="0.88235294819999999" green="0.93725490570000003" blue="0.93725490570000003" alpha="0.79000000000000004" colorSpace="deviceRGB"/>
                             </view>
                             <view contentMode="scaleToFill" id="PTF-l5-dkb" customClass="RoundedCornerView">
-                                <rect key="frame" x="35" y="254" width="255" height="98"/>
+                                <rect key="frame" x="35" y="254" width="255" height="162"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES"/>
                                 <subviews>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="smX-Tb-oIh" customClass="UIPlaceHolderTextView">
-                                        <rect key="frame" x="6" y="11" width="243" height="80"/>
+                                        <rect key="frame" x="6" y="11" width="243" height="144"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES"/>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -149,15 +147,11 @@ Specialty Dry Cycles — Provide just the right levels of drying for better fabr
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="QKG-YG-bj7">
-                                <rect key="frame" x="123" y="356" width="75" height="37"/>
+                                <rect key="frame" x="123" y="420" width="75" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Submit">
                                     <color key="titleColor" red="0.0" green="0.69411764710000001" blue="0.56470588239999997" alpha="1" colorSpace="deviceRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="submitClicked:" destination="ICT-5U-F0A" eventType="touchUpInside" id="sqC-CS-mGU"/>
@@ -181,7 +175,7 @@ Specialty Dry Cycles — Provide just the right levels of drying for better fabr
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <view hidden="YES" opaque="NO" contentMode="scaleToFill" id="EoE-sE-9pI">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="420"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="484"/>
                                 <autoresizingMask key="autoresizingMask" heightSizable="YES"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" id="kVv-PR-9gj" customClass="RoundedCornerView">
@@ -189,7 +183,7 @@ Specialty Dry Cycles — Provide just the right levels of drying for better fabr
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <subviews>
                                             <progressView opaque="NO" contentMode="scaleToFill" progress="0.5" id="orv-g2-VVM">
-                                                <rect key="frame" x="30" y="141" width="150" height="9"/>
+                                                <rect key="frame" x="30" y="141" width="150" height="2"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <color key="progressTintColor" red="0.0" green="0.67058825492858887" blue="0.55686277151107788" alpha="1" colorSpace="deviceRGB"/>
                                             </progressView>
@@ -217,7 +211,7 @@ Specialty Dry Cycles — Provide just the right levels of drying for better fabr
                     </view>
                     <navigationItem key="navigationItem" id="Kzn-NI-GFD">
                         <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="R9i-Tu-dAk">
-                            <color key="tintColor" red="0.0" green="0.67058825492858887" blue="0.55686277151107788" alpha="1" colorSpace="deviceRGB"/>
+                            <color key="tintColor" red="0.18673560143721502" green="1" blue="0.47213426783967627" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="doneClicked:" destination="ICT-5U-F0A" id="bGA-yg-mhe"/>
                             </connections>
@@ -246,15 +240,15 @@ Specialty Dry Cycles — Provide just the right levels of drying for better fabr
             <objects>
                 <viewController storyboardIdentifier="confirmViewController" id="vQY-A6-nkG" customClass="ConfirmViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7F3-ZT-8Qy">
-                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" id="i5l-Lz-1vY">
-                                <rect key="frame" x="9" y="9" width="302" height="399"/>
+                                <rect key="frame" x="9" y="9" width="302" height="463"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES"/>
                                 <subviews>
                                     <view contentMode="scaleAspectFit" id="D58-Nc-j74">
-                                        <rect key="frame" x="7" y="8" width="288" height="383"/>
+                                        <rect key="frame" x="7" y="8" width="288" height="447"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                     </view>
@@ -288,11 +282,11 @@ Specialty Dry Cycles — Provide just the right levels of drying for better fabr
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </view>
                             <view contentMode="scaleToFill" id="WEg-dx-if3" customClass="RoundedCornerView">
-                                <rect key="frame" x="112" y="111" width="168" height="277"/>
+                                <rect key="frame" x="112" y="111" width="168" height="341"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES"/>
                                 <subviews>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" id="31M-Go-7NB">
-                                        <rect key="frame" x="7" y="10" width="155" height="259"/>
+                                        <rect key="frame" x="7" y="10" width="155" height="323"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES"/>
                                         <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                         <color key="textColor" red="0.13725490868091583" green="0.12156862765550613" blue="0.12549020349979401" alpha="1" colorSpace="deviceRGB"/>
@@ -329,57 +323,8 @@ Specialty Dry Cycles — Provide just the right levels of drying for better fabr
         <image name="bv.png" width="361" height="361"/>
         <image name="dryer.png" width="252" height="262"/>
     </resources>
-    <classes>
-        <class className="BVNavigationItem" superclassName="UINavigationItem">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/BVNavigationItem.h"/>
-        </class>
-        <class className="ConfirmViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ConfirmViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="rateView" candidateClass="RateView"/>
-                <relationship kind="outlet" name="reviewImageView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="reviewTextView" candidateClass="UITextView"/>
-                <relationship kind="outlet" name="submitFlash" candidateClass="UIView"/>
-                <relationship kind="outlet" name="titleLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="ProductViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ProductViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="rateClicked:"/>
-            </relationships>
-        </class>
-        <class className="RateView" superclassName="UIView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/RateView.h"/>
-        </class>
-        <class className="RateViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/RateViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="doneClicked:"/>
-                <relationship kind="action" name="submitClicked:"/>
-                <relationship kind="action" name="textViewDidBeginEditing:" candidateClass="UITextView"/>
-                <relationship kind="action" name="titleViewDidBeginEditing:"/>
-                <relationship kind="outlet" name="doneButton" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="loadingBevel" candidateClass="RoundedCornerView"/>
-                <relationship kind="outlet" name="loadingLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="nicknameTextField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="overlay" candidateClass="UIView"/>
-                <relationship kind="outlet" name="previewImageView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="progressBar" candidateClass="UIProgressView"/>
-                <relationship kind="outlet" name="rateView" candidateClass="RateView"/>
-                <relationship kind="outlet" name="reviewTextView" candidateClass="UIPlaceHolderTextView"/>
-                <relationship kind="outlet" name="titleTextField" candidateClass="UITextField"/>
-            </relationships>
-        </class>
-        <class className="RoundedCornerView" superclassName="UIView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/RoundedCornerView.h"/>
-        </class>
-        <class className="UIPlaceHolderTextView" superclassName="UITextView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/UIPlaceHolderTextView.h"/>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
-        <simulatedStatusBarMetrics key="statusBar" statusBarStyle="blackTranslucent"/>
+        <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>

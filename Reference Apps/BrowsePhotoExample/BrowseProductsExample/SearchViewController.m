@@ -33,7 +33,12 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    self.navigationController.navigationBar.tintColor = [BVColor primaryBrandColor];
+    self.navigationController.navigationBar.translucent = NO;
+    if([self.navigationController.navigationBar respondsToSelector:@selector(setBarTintColor:)]) {
+        self.navigationController.navigationBar.barTintColor = [BVColor secondaryBrandColor];
+    } else {
+        self.navigationController.navigationBar.tintColor = [BVColor primaryBrandColor];
+    }
     
     // Global BV SDK setup.  In general this should only occur once
     [BVSettings instance].passKey = @"KEY_REMOVED";

@@ -7,6 +7,7 @@
 //
 
 #import "BVSampleAppResultsViewController.h"
+#import <BVSDK/BVSDK.h>
 
 @interface BVSampleAppResultsViewController ()
 
@@ -29,7 +30,13 @@
 - (void)viewDidAppear:(BOOL)animated {
 	// Do any additional setup after loading the view.
     self.urlResultsView.text = [self.responseToDisplay description];
-    self.urlTextView.text = [self.requestToSend performSelector:@selector(requestURL)];
+    if([self.requestToSend isKindOfClass:[BVPost class]]) {
+        self.urlTextView.text = [(BVPost *)self.requestToSend requestURL];
+    } else if([self.requestToSend isKindOfClass:[BVGet class]]) {
+        self.urlTextView.text = [(BVGet *)self.requestToSend requestURL];
+    } else if([self.requestToSend isKindOfClass:[BVMediaPost class]]) {
+        self.urlTextView.text = [(BVMediaPost *)self.requestToSend requestURL];
+    }
 }
 
 - (void)viewDidLoad
