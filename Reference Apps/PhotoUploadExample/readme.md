@@ -1,6 +1,20 @@
 Bazaarvoice iOS SDK - Photo Review Upload Example
 =
 
+For simpler integration, this example now uses cocoapods for dependency management.  See http://cocoapods.org/ for details.
+
+To update dependencies:
+
+	pod install
+	
+To open project:
+	
+	open PhotoUploadExample.xcworkspace
+	
+Note: do not use the .xcproject file.
+
+=
+
 This example illustrates using the Bazaarvoice iOS SDK to submit a photo-review that include a user generated photo (camera/gallery), star rating and review text.
 Some highlights:
 
