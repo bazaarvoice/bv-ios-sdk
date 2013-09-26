@@ -27,7 +27,7 @@
 
 @interface BVMultipartStream : NSInputStream
 
-@property (readonly) uint length;
+@property (readonly) unsigned long length;
 
 - (id)initWithParams:(NSDictionary *)params boundary:(NSString *)boundary sender:(id)sender;
 

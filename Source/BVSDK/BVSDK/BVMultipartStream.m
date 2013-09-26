@@ -32,16 +32,16 @@
 @property (nonatomic, strong) NSInputStream * body;
 @property (nonatomic, strong) NSMutableData * footer;
 
-@property (readonly) uint length;
-@property (nonatomic) uint bodyLength;
-@property (nonatomic) uint bytesDelivered;
+@property (readonly) unsigned long length;
+@property (nonatomic) unsigned long bodyLength;
+@property (nonatomic) unsigned long bytesDelivered;
 
 @end
 
 
 @implementation BVMultipartStreamParam
 
-- (uint)length
+- (unsigned long)length
 {
     return self.header.length + self.bodyLength + self.footer.length;
 }
@@ -135,8 +135,8 @@
     }
     
     if (self.bytesDelivered >= (self.header.length + self.bodyLength) && bytesSent < maxLength) {
-        uint bytesRemaining = self.header.length + self.bodyLength + self.footer.length - self.bytesDelivered;
-        uint byteOffset = self.bytesDelivered - (self.header.length + self.bodyLength);
+        unsigned long bytesRemaining = self.header.length + self.bodyLength + self.footer.length - self.bytesDelivered;
+        unsigned long byteOffset = self.bytesDelivered - (self.header.length + self.bodyLength);
         bytesRead = MIN(bytesRemaining, maxLength - bytesSent);
         [self.footer getBytes:buffer + bytesSent range:NSMakeRange(byteOffset, bytesRead)];
         bytesSent += bytesRead;
@@ -218,9 +218,9 @@
 }
 
 - (BVMultipartStreamParam *)getParamForCurrentBytesDelivered {
-    uint byteDivider = 0;
+    unsigned long byteDivider = 0;
     for (BVMultipartStreamParam * streamParam in self.multipartParams){
-        uint newByteDivider = byteDivider + streamParam.length;
+        unsigned long newByteDivider = byteDivider + streamParam.length;
         if(self.bytesDelivered >= byteDivider && self.bytesDelivered < newByteDivider) {
             return streamParam;
         }
@@ -234,14 +234,14 @@
     _streamStatus = NSStreamStatusReading;
     BVMultipartStreamParam * currentParam = [self getParamForCurrentBytesDelivered];
 
-    uint bytesSent = [currentParam read:buffer maxLength:maxLength];
+    unsigned long bytesSent = [currentParam read:buffer maxLength:maxLength];
     self.bytesDelivered += bytesSent;
     
     // Close the request
     if (self.bytesDelivered >= ([self getLengthOfParams]) && bytesSent < maxLength) {
-        uint bytesRemaining = self.length - self.bytesDelivered;
-        uint byteOffset = self.bytesDelivered - [self getLengthOfParams];
-        uint bytesRead = MIN(bytesRemaining, maxLength - bytesSent);
+        unsigned long bytesRemaining = self.length - self.bytesDelivered;
+        unsigned long byteOffset = self.bytesDelivered - [self getLengthOfParams];
+        unsigned long bytesRead = MIN(bytesRemaining, maxLength - bytesSent);
         [self.requestFooter getBytes:buffer + bytesSent range:NSMakeRange(byteOffset, bytesRead)];
         bytesSent += bytesRead;
         self.bytesDelivered += bytesRead;
@@ -255,15 +255,15 @@
 - (void) close { _streamStatus = NSStreamStatusClosed; }
 - (void) open { _streamStatus = NSStreamStatusOpen; }
 
-- (uint)getLengthOfParams {
-    uint length = 0;
+- (unsigned long)getLengthOfParams {
+    unsigned long length = 0;
     for ( BVMultipartStreamParam * streamParam in self.multipartParams){
         length += streamParam.length;
     }
     return length;
 }
 
-- (uint) length {
+- (unsigned long) length {
     return [self getLengthOfParams] + self.requestFooter.length;
 }
 

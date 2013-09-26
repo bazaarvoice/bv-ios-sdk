@@ -220,7 +220,7 @@ static NSString *urlEncode(id object) {
 
 - (void) setPostData:(NSMutableURLRequest *)request {
     NSData *postData = [[self getParamsString] dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
-    NSString *postLength = [NSString stringWithFormat:@"%d",[postData length]];
+    NSString *postLength = [NSString stringWithFormat:@"%lu",(unsigned long)[postData length]];
     [request addValue:postLength forHTTPHeaderField:@"Content-Length"];
     [request setHTTPBody:postData];
 }
@@ -230,7 +230,7 @@ static NSString *urlEncode(id object) {
     NSString *contentType = [NSString stringWithFormat:@"multipart/form-data; boundary=%@", MULTIPART_BOUNDARY];
     [request addValue:contentType forHTTPHeaderField:@"Content-Type"];
     BVMultipartStream *bodyData = [[BVMultipartStream alloc] initWithParams:self.params boundary:MULTIPART_BOUNDARY sender:self.sender];
-    NSString *postLength = [NSString stringWithFormat:@"%d",[bodyData length]];
+    NSString *postLength = [NSString stringWithFormat:@"%lu",[bodyData length]];
     [request addValue:postLength forHTTPHeaderField:@"Content-Length"];
     [request setHTTPBodyStream:bodyData];
 }
