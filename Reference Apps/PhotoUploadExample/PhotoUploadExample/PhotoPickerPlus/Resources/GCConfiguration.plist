@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>oauth</key>
+	<dict>
+		<key>scope</key>
+		<string>all_resources manage_resources profile resources</string>
+		<key>client_id</key>
+		<string>5241de88018d164366000004</string>
+		<key>client_secret</key>
+		<string>6d19c0b62595f38c167d695c29d816fe8f03e969a0bdde34574a2776112cad0a</string>
+		<key>grant_type</key>
+		<string>authorization_code</string>
+		<key>redirect_uri</key>
+		<string>http://getchute.com/oauth/callback</string>
+	</dict>
+	<key>services</key>
+	<array>
+		<string>chute</string>
+		<string>facebook</string>
+		<string>google</string>
+		<string>trendabl</string>
+		<string>flickr</string>
+		<string>instagram</string>
+		<string>foursquare</string>
+	</array>
+	<key>local_features</key>
+	<array>
+		<string>take_photo</string>
+		<string>last_taken_photo</string>
+		<string>camera_photos</string>
+	</array>
+</dict>
+</plist>

@@ -12,9 +12,9 @@
 //  and a review submission flow.
 
 #import <UIKit/UIKit.h>
-#import "PhotoPickerPlus.h"
+#import "PhotoPickerViewController.h"
 #import <BVSDK/BVSDK.h>
 
-@interface ProductViewController : UIViewController<UINavigationControllerDelegate, UIImagePickerControllerDelegate, PhotoPickerPlusDelegate, UIActionSheetDelegate>
+@interface ProductViewController : UIViewController<UINavigationControllerDelegate, UIImagePickerControllerDelegate,PhotoPickerViewControllerDelegate, UIActionSheetDelegate>
 
 @end

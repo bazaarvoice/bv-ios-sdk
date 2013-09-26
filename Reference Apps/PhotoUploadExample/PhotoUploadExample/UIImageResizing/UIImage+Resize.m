@@ -119,13 +119,13 @@
     // Fix for a colorspace / transparency issue that affects some types of 
     // images. See here: http://vocaro.com/trevor/blog/2009/10/12/resize-a-uiimage-the-right-way/comment-page-2/#comment-39951
         
-    CGContextRef bitmap =CGBitmapContextCreate( NULL,
+    CGContextRef bitmap = CGBitmapContextCreate( NULL,
                                                newRect.size.width,
                                                newRect.size.height,
                                                8,
                                                0,
-                                               CGImageGetColorSpace( imageRef ),
-                                               kCGImageAlphaNoneSkipLast );
+                                               CGImageGetColorSpace(imageRef),
+                                               CGImageGetBitmapInfo(imageRef));
     
     // Rotate and/or flip the image if required by its orientation
     CGContextConcatCTM(bitmap, transform);
