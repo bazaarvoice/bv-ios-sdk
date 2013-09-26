@@ -17,6 +17,8 @@ Some highlights:
 
 **Current Status**
 
-As of 12/19/12, this app includes two examples of ways to get photos from the user.  Photos can be obtained from the camera via native APIs or from a third party such as Facebook or Instagram.  The 3rd party integration is done using the Chute SDK and PhotoPicker+ library.  
+As of 9/26/13, photos can be obtained from the camera via native APIs or from a third party such as Facebook or Instagram.  The photo picker is based on the Chute SDK and PhotoPicker+ library.  See:
+
+https://github.com/chute/photo-picker-plus-ios
 
 

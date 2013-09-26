@@ -1,3 +1,7 @@
+## 2.1.6 (Sep. 26, 2013)
+ 
+* Includes updates for iOS 7 and 64-bit slices
+
 ## 2.1.5 (Sep. 4, 2013)
 
 * Fixes issue with making requests off of the main thread.
