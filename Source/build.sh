@@ -1,26 +1,6 @@
 #!/bin/bash
 SDK_PATH=..
-COCOAPODS_SPECS=/Users/alex.medearis/Desktop/Specs
 
-cd BVSDK
-SDK_VER=$(grep "SDK_HEADER_VALUE @" BVSDK/BVNetwork.h)
-FRAMEWORK_VER=$(grep "FRAMEWORK_VERSION =" BVSDK.xcodeproj/project.pbxproj)
-
-SDK_VER="v${SDK_VER:36:3}"
-FRAMEWORK_VER="v${FRAMEWORK_VER:24:1}${FRAMEWORK_VER:26:1}${FRAMEWORK_VER:28:1}"
-
-echo "Version appears to be $SDK_VER, is that correct (y/n)? (if not, check BVNetwork.h)"
-read confirm
-if [ $confirm != 'y' ]; then
-        exit 1;
-fi
-
-if [ $SDK_VER != $FRAMEWORK_VER ]; then
-	echo "Framework version does not equal SDK version.  Verify that you've set the framework version in the project properties (project.pbxjproj or Target -> Build Settings -> Packaging -> Framework Version)"
-    exit 1;
-fi
-
-cd ..
 echo "Generating docs..."
 ./generate_docs.sh
 
@@ -45,3 +25,5 @@ cp -r ./BVSDK.framework "$SDK_PATH/Reference Apps/KitchenSink/"
 cp -r ./BVSDK.framework "$SDK_PATH/Reference Apps/PhotoUploadExample/"
 
 rm -rf ./BVSDK.framework
+
+echo "Done!"
