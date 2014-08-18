@@ -1,3 +1,7 @@
+## 2.2.0 (Aug 17, 2014) 
+
+* Updated BVSDK to v2.2.0 which supports iOS 8 and fixes 64-bit problems.
+
 ## 2.1.6 (Sep. 26, 2013)
  
 * Includes updates for iOS 7 and 64-bit slices

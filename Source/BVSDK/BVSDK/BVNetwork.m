@@ -3,33 +3,15 @@
 //  BazaarvoiceSDK
 //
 //  Created by Bazaarvoice Engineering on 11/27/12.
-//
-//  Copyright 2013 Bazaarvoice, Inc.
-//
-//  Licensed under the Apache License, Version 2.0 (the "License");
-//  you may not use this file except in compliance with the License.
-//  You may obtain a copy of the License at
-//
-//  http://www.apache.org/licenses/LICENSE-2.0
-//
-//  Unless required by applicable law or agreed to in writing, software
-//  distributed under the License is distributed on an "AS IS" BASIS,
-//  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-//  See the License for the specific language governing permissions and
-//  limitations under the License.
+//  Copyright (c) 2012 Bazaarvoice Inc. All rights reserved.
 //
 
 #import "BVNetwork.h"
 #import "BVSettings.h"
-#import "BVMultipartStream.h"
 #import <UIKit/UIKit.h>
 
-#define MULTIPART_BOUNDARY @"----------------------------f3a1ba9c57bd"
-
 @interface BVNetwork ()
-// Dictionary of key-value parameters
 @property (strong) NSMutableDictionary *params;
-// Response data received
 @property (strong) NSMutableData *receivedData;
 @end
 
@@ -40,10 +22,11 @@
 @synthesize delegate = _delegate;
 @synthesize sender = _sender;
 
-- (id)init {
+- (id)initWithSender:(id)sender {
     self = [super init];
     if (self) {
         self.params = [[NSMutableDictionary alloc] init];
+        self.sender = sender;
     }
     return self;
 }
@@ -119,25 +102,28 @@ static NSString *urlEncode(id object) {
     return [parts componentsJoinedByString: @"&"];
 }
 
-- (void)sendGetWithEndpoint:(NSString *)endpoint sender:(id)sender {
+- (void)sendGetWithEndpoint:(NSString *)endpoint {
     if(self.delegate == nil){
         NSException *exception = [NSException exceptionWithName: @"DelegateNotSetException"
                                                          reason: @"A delegate must be set before a request is sent."
                                                        userInfo: nil];
         @throw exception;
     }
-    // This temporarily creates a retain cycle, but it will be cleared when the network request returns
-    self.sender = sender;
     BVSettings *settings = [BVSettings instance];
     NSString *urlString = [NSString stringWithFormat:@"http://%@%@/data/%@?%@",
                            settings.baseURL,
                            settings.staging ? @"/bvstaging" : @"",
                            endpoint,
                            [self getParamsString]];
+    //NSLog(@"Request to send: %@", urlString);
     
-    // Store the request URL
-    _requestURL = urlString;
+    // This is sort of a strange work-around.  This network object may be deallocated before the sender is deallocated, but
+    // we still want the client to be able to know the url of this request.  Therefore, it is stored by the sender after the request
+    // is sent.
+    if([self.sender respondsToSelector:@selector(setRequestURL:)]) {
+        [self.sender performSelector:@selector(setRequestURL:) withObject:urlString];
 
+    }
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc]
                                     initWithURL:[NSURL URLWithString:urlString]
                                     cachePolicy:NSURLRequestUseProtocolCachePolicy
@@ -146,18 +132,15 @@ static NSString *urlEncode(id object) {
     // Attach the SDK version header to every request.
     [request addValue:SDK_HEADER_VALUE forHTTPHeaderField:SDK_HEADER_NAME];
     
-    NSURLConnection * connection = [[NSURLConnection alloc] initWithRequest:request
-                                                                   delegate:self startImmediately:NO];
-    if (connection) {
+    
+    
+    NSURLConnection *theConnection =[[NSURLConnection alloc] initWithRequest:request delegate:self startImmediately:YES];
+    if (theConnection) {
         // Create the NSMutableData to hold the received data.
         // receivedData is an instance variable declared elsewhere.
         self.receivedData = [NSMutableData data];
-        [connection scheduleInRunLoop:[NSRunLoop mainRunLoop]
-                              forMode:NSDefaultRunLoopMode];
-        [connection start];
     } else {
         // Inform the user that the connection failed.
-        NSLog(@"An error occurred generating the request");
     }
 }
 
@@ -174,10 +157,14 @@ static NSString *urlEncode(id object) {
                            settings.baseURL,
                            settings.staging ? @"/bvstaging" : @"",
                            endpoint];
-    
-    // Store the request URL
-    _requestURL = urlString;
-    
+    //NSLog(@"Request to send: %@", urlString);
+    // This is sort of a strange work-around.  This network object may be deallocated before the sender is deallocated, but
+    // we still want the client to be able to know the url of this request.  Therefore, it is stored by the sender after the request
+    // is sent.
+    if([self.sender respondsToSelector:@selector(setRequestURL:)]) {
+        [self.sender performSelector:@selector(setRequestURL:) withObject:urlString];
+        
+    }
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc]
                                     initWithURL:[NSURL URLWithString:urlString]
                                     cachePolicy:NSURLRequestUseProtocolCachePolicy
@@ -193,46 +180,88 @@ static NSString *urlEncode(id object) {
     // Attach the SDK version header to every request.
     [request addValue:SDK_HEADER_VALUE forHTTPHeaderField:SDK_HEADER_NAME];
     
-    NSURLConnection * connection = [[NSURLConnection alloc] initWithRequest:request
-                                                                   delegate:self startImmediately:NO];
-    if (connection) {
+    NSURLConnection *theConnection =[[NSURLConnection alloc] initWithRequest:request delegate:self startImmediately:YES];
+    if (theConnection) {
         // Create the NSMutableData to hold the received data.
         // receivedData is an instance variable declared elsewhere.
         self.receivedData = [NSMutableData data];
-        [connection scheduleInRunLoop:[NSRunLoop mainRunLoop]
-                              forMode:NSDefaultRunLoopMode];
-        [connection start];
     } else {
         // Inform the user that the connection failed.
-        NSLog(@"An error occurred generating the request");
     }
 }
 
-- (void)sendPostWithEndpoint:(NSString *)endpoint sender:(id)sender {
-    self.sender = sender;
+- (void)sendPostWithEndpoint:(NSString *)endpoint {
     [self sendPostWithEndpoint:endpoint multipart:NO];
 }
 
-- (void)sendMultipartPostWithEndpoint:(NSString *)endpoint sender:(id)sender {
-    self.sender = sender;
+- (void)sendMultipartPostWithEndpoint:(NSString *)endpoint {
     [self sendPostWithEndpoint:endpoint multipart:YES];
 }
 
 - (void) setPostData:(NSMutableURLRequest *)request {
     NSData *postData = [[self getParamsString] dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
-    NSString *postLength = [NSString stringWithFormat:@"%lu",(unsigned long)[postData length]];
+    NSString *postLength = [NSString stringWithFormat:@"%d",[postData length]];
     [request addValue:postLength forHTTPHeaderField:@"Content-Length"];
     [request setHTTPBody:postData];
 }
 
 // We need to generate a multi-part form POST
 - (void) setMultipartData:(NSMutableURLRequest *)request {
-    NSString *contentType = [NSString stringWithFormat:@"multipart/form-data; boundary=%@", MULTIPART_BOUNDARY];
+    NSMutableData *body = [NSMutableData data];
+    NSString *boundary = @"----------------------------f3a1ba9c57bd";
+    NSString *contentType = [NSString stringWithFormat:@"multipart/form-data; boundary=%@", boundary];
     [request addValue:contentType forHTTPHeaderField:@"Content-Type"];
-    BVMultipartStream *bodyData = [[BVMultipartStream alloc] initWithParams:self.params boundary:MULTIPART_BOUNDARY sender:self.sender];
-    NSString *postLength = [NSString stringWithFormat:@"%lu",[bodyData length]];
-    [request addValue:postLength forHTTPHeaderField:@"Content-Length"];
-    [request setHTTPBodyStream:bodyData];
+    
+    for (id key in self.params) {
+        id value = [self.params objectForKey: key];
+        if([value isKindOfClass:[NSArray class]]) {
+            for(NSString * valueString in value){
+                [self appendKey:key value:value toMultipartData:body withBoundary:boundary];
+            }
+        } else if([value isKindOfClass:[NSString class]]) {
+            [self appendKey:key value:value toMultipartData:body withBoundary:boundary];
+        } else if([value isKindOfClass:[UIImage class]]) {
+            UIImage * image = value;
+            [self appendKey:key data:UIImageJPEGRepresentation(image, 1.0) toMultipartData:body withBoundary:boundary];
+        } else if([value isKindOfClass:[NSData class]]) {
+            [self appendKey:key data:value toMultipartData:body withBoundary:boundary];
+        }
+    }
+    
+    // close form
+    [body appendData:[[NSString stringWithFormat:@"--%@--\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    [request setValue:[NSString stringWithFormat:@"%d", [body length]] forHTTPHeaderField:@"Content-Length"];
+    
+    // set request body
+    [request setHTTPBody:body];
+    
+    //NSString *printString = [[NSString alloc] initWithData:body encoding:NSASCIIStringEncoding];
+    //NSLog(@"Body: %@", printString);
+}
+
+- (void)appendKey:(NSString *)key data:(NSData *)data toMultipartData:(NSMutableData *)body withBoundary:(NSString *)boundary {
+    NSString *filename;
+    // Video filenames are used to determine the video format... this is a workaround to create such a filename so the server can decode the video file
+    if([key isEqualToString:@"video"] && [self.sender respondsToSelector:@selector(getVideoExtensionString)]){
+        NSString * extension = [self.sender performSelector:@selector(getVideoExtensionString)];
+        filename = [NSString stringWithFormat:@"somefile.%@", extension];
+    } else {
+        filename = @"somefile";
+    }
+    
+    [body appendData:[[NSString stringWithFormat:@"--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"; filename=\"%@\"\r\n", key, filename] dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:[@"Content-Type: application/octet-stream\r\n\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:[NSData dataWithData:data]];
+    [body appendData:[@"\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
+}
+
+- (void)appendKey:(NSString *)key value:(NSString *)value toMultipartData:(NSMutableData *)body withBoundary:(NSString *)boundary {
+    [body appendData:[[NSString stringWithFormat:@"--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"\r\n\r\n", key] dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:[value dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:[@"\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
 }
 
 #pragma mark NSURLConnection delegates
@@ -242,8 +271,6 @@ static NSString *urlEncode(id object) {
     if (self.delegate != nil && [self.delegate respondsToSelector:@selector(didReceiveResponse:forRequest:)]) {
         [self.delegate didReceiveResponse:response forRequest:self.sender];
     }
-    // Clear the sender to prevent a retain cycle
-    self.sender = nil;
 }
 
 - (void)connection:(NSURLConnection *)connection didSendBodyData:(NSInteger)bytesWritten totalBytesWritten:(NSInteger)totalBytesWritten totalBytesExpectedToWrite:(NSInteger)totalBytesExpectedToWrite
@@ -267,8 +294,6 @@ static NSString *urlEncode(id object) {
     if (self.delegate != nil && [self.delegate respondsToSelector:@selector(didFailToReceiveResponse:forRequest:)]){
         [self.delegate didFailToReceiveResponse:error forRequest:self.sender];
     }
-    // Clear the sender to prevent a retain cycle
-    self.sender = nil;
 }
 
 

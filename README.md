@@ -1,5 +1,5 @@
 # Bazaarvoice iOS SDK 
-### *Version 2.1.6*
+### *Version 2.2.0*
 
 ## Introduction
 The Bazaarvoice software development kit (SDK) for iOS is an iOS static library that provides an easy way to generate REST calls to the Bazaarvoice Developer API. Using this SDK, mobile developers can quickly integrate Bazaarvoice content into their native iOS apps for iPhone and iPad on iOS 5 or newer.
@@ -19,7 +19,7 @@ Developers can display content as well as submit content such as Ratings & Revie
  * API key to access client's staging and production data
  * Go to the [Bazaarvoice Developer Portal](http://developer.bazaarvoice.com) to get the above completed
 * Xcode IDE version 4.5 or newer
-* Built for iOS 5+
+* Built for iOS 5.1.1+
 
 ## What's Included
 This package includes the following:
