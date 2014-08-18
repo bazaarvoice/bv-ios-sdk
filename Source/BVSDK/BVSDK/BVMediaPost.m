@@ -3,20 +3,7 @@
 //  BazaarvoiceSDK
 //
 //  Created by Bazaarvoice Engineering on 11/29/12.
-//
-//  Copyright 2013 Bazaarvoice, Inc.
-//
-//  Licensed under the Apache License, Version 2.0 (the "License");
-//  you may not use this file except in compliance with the License.
-//  You may obtain a copy of the License at
-//
-//  http://www.apache.org/licenses/LICENSE-2.0
-//
-//  Unless required by applicable law or agreed to in writing, software
-//  distributed under the License is distributed on an "AS IS" BASIS,
-//  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-//  See the License for the specific language governing permissions and
-//  limitations under the License.
+//  Copyright (c) 2012 Bazaarvoice Inc. All rights reserved.
 //
 
 #import "BVMediaPost.h"
@@ -26,7 +13,7 @@
 @interface BVMediaPost() {
     BVVideoFormatType _videoFormat;
 }
-@property (strong) BVNetwork *network;
+@property BVNetwork *network;
 @end
 
 
@@ -62,7 +49,7 @@
     if (self) {
         self.type = type;
         
-        BVNetwork *network = [[BVNetwork alloc] init];
+        BVNetwork *network = [[BVNetwork alloc] initWithSender:self];
         self.network = network;
         
         // Standard params
@@ -82,8 +69,9 @@
     return self.network.delegate;
 }
 
--(NSString *)requestURL {
-    return self.network.requestURL;
+// Note: this is sort of a workaround... we want the requestURL to be read-only (which it appears as the client), but also the network needs to be able to set the requestURL.  This isn't actually used for anything internally -- it is purely for client debugging.
+-(void)setRequestURL:(NSString *)requestURL{
+    _requestURL = requestURL;
 }
 
 - (NSString *)getContentTypeString {
@@ -133,12 +121,6 @@
     [self.network setUrlParameterWithName:@"video" value:video];
 }
 
-- (void)setVideoFile:(NSURL *)file withFormat:(BVVideoFormatType)format {
-    _videoFormat = format;
-    [self.network setUrlParameterWithName:@"video" value:file];
-}
-
-
 - (NSString *)getVideoExtensionString {
     switch(_videoFormat){
         case BVVideoFormatType3G2:
@@ -177,9 +159,9 @@
 
 - (void)send {
     if(self.photoUrl){
-        [self.network sendPostWithEndpoint:[self getTypeString] sender:self];
+        [self.network sendPostWithEndpoint:[self getTypeString]];
     } else {
-        [self.network sendMultipartPostWithEndpoint:[self getTypeString] sender:self];
+        [self.network sendMultipartPostWithEndpoint:[self getTypeString]];        
     }
 }
 

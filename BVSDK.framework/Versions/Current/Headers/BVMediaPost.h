@@ -2,25 +2,8 @@
 //  BVMediaPost.h
 //  BazaarvoiceSDK
 //
-//  BVMediaPost is used for all requests to the Bazaarvoice
-//  API which require a binary multipart post.  This includes
-//  submitting photos and videos.
-//
 //  Created by Bazaarvoice Engineering on 11/29/12.
-//
-//  Copyright 2013 Bazaarvoice, Inc.
-//
-//  Licensed under the Apache License, Version 2.0 (the "License");
-//  you may not use this file except in compliance with the License.
-//  You may obtain a copy of the License at
-//
-//  http://www.apache.org/licenses/LICENSE-2.0
-//
-//  Unless required by applicable law or agreed to in writing, software
-//  distributed under the License is distributed on an "AS IS" BASIS,
-//  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-//  See the License for the specific language governing permissions and
-//  limitations under the License.
+//  Copyright (c) 2012 Bazaarvoice Inc. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -81,19 +64,11 @@ Locale to display Labels, Configuration, Product Attributes and Category Attribu
 
 
 /*!
- A video to be submitted.
+ A video file to be submitted.
  @param video NSData representing a video file to be uploaded.  
  @param format Format of the video file to be uploaded.  This file may be of any of the valid format types defined by BVVideoFormatType.
  */
 - (void)setVideo:(NSData *)video withFormat:(BVVideoFormatType)format;
-
-/*!
- A video file to be submitted.
- @param file NSURL representing a video file on disk to be uploaded.
- @param format Format of the video file to be uploaded.  This file may be of any of the valid format types defined by BVVideoFormatType.
- */
-- (void)setVideoFile:(NSURL *)file withFormat:(BVVideoFormatType)format;
-
 
 /*!
  Adds a generic parameter to the request.  This method should be used as a last resort when another method does not exist for a particular request you would like to make.  Behavior may be undefined.
