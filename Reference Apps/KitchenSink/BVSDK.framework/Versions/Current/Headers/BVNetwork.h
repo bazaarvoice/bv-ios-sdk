@@ -10,7 +10,7 @@
 #import "BVDelegate.h"
 
 #define SDK_HEADER_NAME @"X-UA-BV-SDK"
-#define SDK_HEADER_VALUE @"IOS_SDK_V221"
+#define SDK_HEADER_VALUE @"IOS_SDK_V222"
 
 @interface BVNetwork : NSObject<NSURLConnectionDataDelegate>
 

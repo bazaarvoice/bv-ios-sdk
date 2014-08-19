@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = 'BVSDK'
-  s.version      = '2.2.1'
+  s.version      = '2.2.2'
   s.license = { :type => 'Commercial', :text => 'See http://developer.bazaarvoice.com/API_Terms_of_Use' }
   s.platform     = 'ios', '5.0'
   s.summary      = 'Simple iOS SDK to interact with the Bazaarvoice platform API.'

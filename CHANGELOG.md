@@ -1,3 +1,7 @@
+## 2.2.2 (Aug 19, 2014) 
+
+ Updating CocoaPods.
+
 ## 2.2.1 (Aug 19, 2014) 
 
  Cleaning up. Fixed warnings.
