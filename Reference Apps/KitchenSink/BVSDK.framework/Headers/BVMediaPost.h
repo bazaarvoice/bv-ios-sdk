@@ -40,7 +40,7 @@
 /*!
  The URL that this request was sent to.  Is only available after the request has been sent.
  */
-@property (readonly) NSString *requestURL;
+@property (assign, nonatomic) NSString *requestURL;
 /*!
  The content type for which this media is being submitted. Review, question, answer or story.
  */

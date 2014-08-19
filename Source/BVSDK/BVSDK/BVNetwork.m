@@ -8,6 +8,7 @@
 
 #import "BVNetwork.h"
 #import "BVSettings.h"
+#import "BVMediaPost.h"
 #import <UIKit/UIKit.h>
 
 @interface BVNetwork ()
@@ -115,11 +116,10 @@ static NSString *urlEncode(id object) {
                            settings.staging ? @"/bvstaging" : @"",
                            endpoint,
                            [self getParamsString]];
-    //NSLog(@"Request to send: %@", urlString);
-    
-    // This is sort of a strange work-around.  This network object may be deallocated before the sender is deallocated, but
-    // we still want the client to be able to know the url of this request.  Therefore, it is stored by the sender after the request
-    // is sent.
+
+    // This network object may be deallocated before the sender is deallocated, but we still want
+    // the client to be able to know the url of this request.  Therefore, it is stored by the sender
+    // after the request is sent.
     if([self.sender respondsToSelector:@selector(setRequestURL:)]) {
         [self.sender performSelector:@selector(setRequestURL:) withObject:urlString];
 
@@ -157,10 +157,10 @@ static NSString *urlEncode(id object) {
                            settings.baseURL,
                            settings.staging ? @"/bvstaging" : @"",
                            endpoint];
-    //NSLog(@"Request to send: %@", urlString);
-    // This is sort of a strange work-around.  This network object may be deallocated before the sender is deallocated, but
-    // we still want the client to be able to know the url of this request.  Therefore, it is stored by the sender after the request
-    // is sent.
+    
+    // This network object may be deallocated before the sender is deallocated, but we still want
+    // the client to be able to know the url of this request.  Therefore, it is stored by the sender
+    // after the request is sent.
     if([self.sender respondsToSelector:@selector(setRequestURL:)]) {
         [self.sender performSelector:@selector(setRequestURL:) withObject:urlString];
         
@@ -200,7 +200,7 @@ static NSString *urlEncode(id object) {
 
 - (void) setPostData:(NSMutableURLRequest *)request {
     NSData *postData = [[self getParamsString] dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
-    NSString *postLength = [NSString stringWithFormat:@"%d",[postData length]];
+    NSString *postLength = [NSString stringWithFormat:@"%lu",(unsigned long)[postData length]];
     [request addValue:postLength forHTTPHeaderField:@"Content-Length"];
     [request setHTTPBody:postData];
 }
@@ -215,8 +215,8 @@ static NSString *urlEncode(id object) {
     for (id key in self.params) {
         id value = [self.params objectForKey: key];
         if([value isKindOfClass:[NSArray class]]) {
-            for(NSString * valueString in value){
-                [self appendKey:key value:value toMultipartData:body withBoundary:boundary];
+            for(NSString* valueString in value){
+                [self appendKey:key value:valueString toMultipartData:body withBoundary:boundary];
             }
         } else if([value isKindOfClass:[NSString class]]) {
             [self appendKey:key value:value toMultipartData:body withBoundary:boundary];
@@ -231,7 +231,7 @@ static NSString *urlEncode(id object) {
     // close form
     [body appendData:[[NSString stringWithFormat:@"--%@--\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
     
-    [request setValue:[NSString stringWithFormat:@"%d", [body length]] forHTTPHeaderField:@"Content-Length"];
+    [request setValue:[NSString stringWithFormat:@"%lu", (unsigned long)[body length]] forHTTPHeaderField:@"Content-Length"];
     
     // set request body
     [request setHTTPBody:body];
