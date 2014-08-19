@@ -40,7 +40,7 @@ BVGet *getReviewsRequest = [[ BVGet  alloc ] initWithType:BVGetTypeReviews ];  <
 /*!
  The URL that this request was sent to.  Is only available after the request has been sent.
  */
-@property (readonly) NSString *requestURL;
+@property (assign, nonatomic) NSString *requestURL;
 
 /*!
  Search term to query.  This is an "or" search.  For example, when querying for products with the search term "Electric Dryer," the result returns products that have both "Electric" and "Dryer" in the Product Name or Product Description.

@@ -43,7 +43,7 @@
 /*!
  The URL that this request was sent to.  Is only available after the request has been sent.
  */
-@property (readonly) NSString *requestURL;
+@property (assign, nonatomic) NSString *requestURL;
 
 /***** Used by All Types of BVPost Requests *******/
 

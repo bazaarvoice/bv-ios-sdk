@@ -103,7 +103,6 @@
     return self.network.delegate;
 }
 
-// Note: this is sort of a workaround... we want the requestURL to be read-only (which it appears as the client), but also the network needs to be able to set the requestURL
 -(void)setRequestURL:(NSString *)requestURL{
     _requestURL = requestURL;
 }
