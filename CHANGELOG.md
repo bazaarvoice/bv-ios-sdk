@@ -1,3 +1,7 @@
+## 2.2.3 (Sep 22, 2014) 
+
+ Fixing issue that caused review submission to fail when invoked on a background thread. 
+
 ## 2.2.2 (Aug 19, 2014) 
 
  Updating CocoaPods.
