@@ -448,6 +448,25 @@
     while (!requestComplete && [theRL runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]]);
 }
 
+- (void)testSubmissionReviewBackgroundThread
+{
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        BVPost *request = [[BVPost alloc] initWithType:BVPostTypeReview];
+        request.productId = @"100003401";
+        request.userId = @"123abcd";
+        request.rating = 5;
+        request.title = @"Test title";
+        request.reviewText = @"Some kind of review text.";
+        request.userNickname = @"testnickname";
+        [request addPhotoUrl:@"http://apitestcustomer.ugc.bazaarvoice.com/bvstaging/5555/ps_amazon_s3_3rgg6s4xvev0zhzbnabyneo21/photo.jpg" withCaption:nil];
+        [request addVideoUrl:@"http://www.youtube.com" withCaption:nil];
+        
+        [request sendRequestWithDelegate:self];
+    });
+    NSRunLoop *theRL = [NSRunLoop currentRunLoop];
+    while (!requestComplete && [theRL runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]]);
+}
+
 - (void)testSubmissionQuestions {
     [BVSettings instance].baseURL = @"answers.apitestcustomer.bazaarvoice.com";
     

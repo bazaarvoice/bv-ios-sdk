@@ -134,7 +134,10 @@ static NSString *urlEncode(id object) {
     
     
     
-    NSURLConnection *theConnection =[[NSURLConnection alloc] initWithRequest:request delegate:self startImmediately:YES];
+    NSURLConnection *theConnection =[[NSURLConnection alloc] initWithRequest:request delegate:self startImmediately:NO];
+    [theConnection scheduleInRunLoop:[NSRunLoop mainRunLoop]
+                             forMode:NSDefaultRunLoopMode];
+    [theConnection start];
     if (theConnection) {
         // Create the NSMutableData to hold the received data.
         // receivedData is an instance variable declared elsewhere.
@@ -180,7 +183,10 @@ static NSString *urlEncode(id object) {
     // Attach the SDK version header to every request.
     [request addValue:SDK_HEADER_VALUE forHTTPHeaderField:SDK_HEADER_NAME];
     
-    NSURLConnection *theConnection =[[NSURLConnection alloc] initWithRequest:request delegate:self startImmediately:YES];
+    NSURLConnection *theConnection =[[NSURLConnection alloc] initWithRequest:request delegate:self startImmediately:NO];
+        [theConnection scheduleInRunLoop:[NSRunLoop mainRunLoop]
+                                 forMode:NSDefaultRunLoopMode];
+        [theConnection start];
     if (theConnection) {
         // Create the NSMutableData to hold the received data.
         // receivedData is an instance variable declared elsewhere.
