@@ -1,1 +1,0 @@
-This directory contains assets used to generate documentation and other internal functions.  In general, it should not be modified by third parties.
