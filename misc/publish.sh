@@ -28,7 +28,7 @@ fi
 echo "Versions are equal!"
 
 echo "Generating docs..."
-./generate_docs
+./misc/generate_docs.sh
 
 echo "Enter a commit message"
 read commitmsg
