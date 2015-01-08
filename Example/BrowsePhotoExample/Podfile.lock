@@ -1,0 +1,19 @@
+PODS:
+  - BVSDK (2.2.4)
+  - SDWebImage (3.7.1):
+    - SDWebImage/Core (= 3.7.1)
+  - SDWebImage/Core (3.7.1)
+
+DEPENDENCIES:
+  - BVSDK (from `../../`)
+  - SDWebImage
+
+EXTERNAL SOURCES:
+  BVSDK:
+    :path: ../../
+
+SPEC CHECKSUMS:
+  BVSDK: 88fa8c4405adb9237568b8a7c1bddb3640046a1a
+  SDWebImage: 116e88633b5b416ea0ca4b334a4ac59cf72dd38d
+
+COCOAPODS: 0.35.0

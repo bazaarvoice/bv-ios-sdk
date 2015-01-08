@@ -1,0 +1,4 @@
+source 'https://github.com/CocoaPods/Specs.git'
+
+pod 'BVSDK', :path => '../../'
+pod 'Chute-SDK', :path => './Chute-SDK/'

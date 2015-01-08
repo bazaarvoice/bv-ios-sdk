@@ -1,0 +1,14 @@
+PODS:
+  - BVSDK (2.2.4)
+
+DEPENDENCIES:
+  - BVSDK (from `../`)
+
+EXTERNAL SOURCES:
+  BVSDK:
+    :path: ../
+
+SPEC CHECKSUMS:
+  BVSDK: 88fa8c4405adb9237568b8a7c1bddb3640046a1a
+
+COCOAPODS: 0.35.0
