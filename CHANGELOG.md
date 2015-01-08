@@ -1,3 +1,7 @@
+##  (Jan 08, 2015) 
+
+ Fixed CocoaPods, and 32/64 bit building error. 
+
 ## 2.2.3 (Sep 22, 2014) 
 
  Fixing issue that caused review submission to fail when invoked on a background thread. 
