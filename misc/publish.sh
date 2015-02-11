@@ -8,11 +8,11 @@ echo ""
 
 cd ..
 
-SDK_VER=$(grep "SDK_HEADER_VALUE @" Pod/Classes/BVNetwork.h)
-FRAMEWORK_VER=$(grep "s.version = " BVSDK.podspec)
+SDK_VER=$(grep "SDK_HEADER_VALUE @" Pod/Classes/BVNetwork.h) 
+FRAMEWORK_VER=$(grep "s.version = " BVSDK.podspec)           
 
-SDK_VER="v${SDK_VER:36:3}"
-FRAMEWORK_VER="v${FRAMEWORK_VER:15:1}${FRAMEWORK_VER:17:1}${FRAMEWORK_VER:19:1}"
+SDK_VER="${SDK_VER:36:1}.${SDK_VER:37:1}.${SDK_VER:38:1}" # format it from '225' to '2.2.5'
+FRAMEWORK_VER="${FRAMEWORK_VER:15:5}"                     # already formatted as 2.2.5
 
 echo "Version appears to be $SDK_VER, is that correct (y/n)? (if not, check BVNetwork.h)"
 read confirm
@@ -34,11 +34,15 @@ echo "Enter a commit message"
 read commitmsg
 
 NOW=$(date +"%b %d, %Y")
-CHANGELOG_STR="## $SDK_VER_NOV ($NOW) \n\n $commitmsg \n\n"
+CHANGELOG_STR="## $SDK_VER ($NOW) \n\n $commitmsg \n\n"
 echo -e "$CHANGELOG_STR$(cat CHANGELOG.md)" > CHANGELOG.md
 
-git commit -am "$commitmsg"
+git add .
+git commit -m "$commitmsg"
 git tag -a "$SDK_VER" -m "SDK $SDK_VER for API Version 5.4"
 
-echo "Done. Run `git push` and `git push --tags`. Then, deploy to cocoapods following instructions here: http://guides.cocoapods.org/making/using-pod-lib-create.html"
-
+echo ""
+echo "Done."
+echo "Run 'git push' and 'git push --tags' in bv-ios-sdk."
+echo "Then, deploy to cocoapods following instructions here: http://guides.cocoapods.org/making/using-pod-lib-create.html"
+echo ""
