@@ -1,4 +1,8 @@
-##  (Jan 08, 2015) 
+## 2.2.5 (Feb 11, 2015) 
+
+ Bumping cocoapods number 
+
+## 2.2.4 (Jan 08, 2015) 
 
  Fixed CocoaPods, and 32/64 bit building error. 
 
