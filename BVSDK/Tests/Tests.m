@@ -5,14 +5,11 @@
 //  Copyright (c) 2015 Bazaarvoice. All rights reserved.
 //
 
+
 #import <UIKit/UIKit.h>
 #import <XCTest/XCTest.h>
-#import "BVDelegate.h"
-#import "BVGet.h"
-#import "BVPost.h"
-#import "BVMediaPost.h"
-#import "BVSettings.h"
-#import "BVNetwork.h"
+#import <BVSDK/BVSDK.h>
+
 
 @interface BVSDKTests : XCTestCase<BVDelegate> {
     BOOL requestComplete;
@@ -25,32 +22,36 @@
 
 @implementation BVSDKTests
 
-- (void)setUp {
+- (void)setUp
+{
     [super setUp];
     
-    // Put setup code here. This method is called before the invocation of each test method in the class.
     requestComplete = NO;
     [BVSettings instance].staging = YES;
     [BVSettings instance].baseURL = @"reviews.apitestcustomer.bazaarvoice.com";
+    [BVSettings instance].clientId = @"apitestcustomer";
+    [BVSettings instance].appName = @"Test Shopping App";
     [BVSettings instance].passKey = @"2cpdrhohmgmwfz8vqyo48f52g";
 }
 
-- (void)tearDown {
-    // Put teardown code here. This method is called after the invocation of each test method in the class.
+- (void)tearDown
+{
+    // Tear-down code here.
+    
     [super tearDown];
 }
 
-
-
-- (void)checkParams:(NSMutableDictionary *)params {
+- (void)checkParams:(NSMutableDictionary *)params withoutAPIBase:(BOOL)withoutAPIBase {
     NSString *url = [sentRequest performSelector:@selector(requestURL)];
-    NSDictionary *baseDictionary = [NSDictionary
-                                    dictionaryWithObjectsAndKeys:BV_API_VERSION,
-                                    @"ApiVersion",
-                                    [BVSettings instance].passKey,
-                                    @"PassKey",
-                                    nil];
-    [params addEntriesFromDictionary:baseDictionary];
+    if (!withoutAPIBase) {
+        NSDictionary *baseDictionary = [NSDictionary
+                                        dictionaryWithObjectsAndKeys:BV_API_VERSION,
+                                        @"ApiVersion",
+                                        [BVSettings instance].passKey,
+                                        @"PassKey",
+                                        nil];
+        [params addEntriesFromDictionary:baseDictionary];
+    }
     NSMutableDictionary *foundParams = [[NSMutableDictionary alloc] init];
     NSArray *comp1 = [url componentsSeparatedByString:@"?"];
     NSString *query = [comp1 lastObject];
@@ -61,10 +62,11 @@
         [foundParams setObject:[keyVal objectAtIndex:1] forKey:[keyVal objectAtIndex:0]];
     }
     
-    NSAssert(params.count == foundParams.count, @"Wrong number of URL params... %lu expected vs %lu found\n request:%@", (unsigned long)params.count, (unsigned long)foundParams.count, url);
+    NSAssert(params.count == foundParams.count, @"Wrong number of URL params... %lu expected vs %lu found\n request:%@", (unsigned long) params.count, (unsigned long) foundParams.count, url);
     
     NSArray *keyArray = [params allKeys];
-    for (int i=0; i < [keyArray count]; i++) {
+    NSUInteger count = [keyArray count];
+    for (int i=0; i < count; i++) {
         NSString * key = [keyArray objectAtIndex:i];
         NSAssert([foundParams objectForKey:key], @"Request missing parameter %@", key);
         NSString *requestVal = (NSString *)[foundParams objectForKey:key];
@@ -73,9 +75,13 @@
     }
 }
 
+- (void)checkParams:(NSMutableDictionary *)params {
+    [self checkParams:params withoutAPIBase:NO];
+}
+
 - (void)didReceiveResponse:(NSDictionary *)response forRequest:(id)request{
     
-    NSLog(@"didReceiveResponse: %@", response);
+//    NSLog(@"%@", response);
     requestComplete = YES;
     receivedResponse = response;
     sentRequest = request;
@@ -121,6 +127,7 @@
 
 
 - (void)testShowReview {
+    
     BVGet *showDisplayRequest = [[ BVGet alloc ] initWithType:BVGetTypeReviews];
     [ showDisplayRequest setFilterForAttribute:@"Id" equality:BVEqualityEqualTo value:@"6601211"];
     [showDisplayRequest setFilterOnIncludedType:BVIncludeTypeProducts forAttribute:@"Id" equality:BVEqualityEqualTo value:@"009"];
@@ -134,13 +141,12 @@
     showDisplayRequest.search = @"Great sound";
     [showDisplayRequest sendRequestWithDelegate:self];
     
-    NSRunLoop *theRL = [NSRunLoop currentRunLoop];
     // Begin a run loop terminated when the requestComplete it set to true
+    NSRunLoop *theRL = [NSRunLoop currentRunLoop];
     while (!requestComplete && [theRL runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]]);
     [self checkParams:[NSMutableDictionary dictionaryWithObjectsAndKeys:
                        @"Reviews", @"Stats", @"Id:asc", @"Sort_Products", @"Id:eq:009", @"Filter_Products", @"10", @"Limit_Products", @"Id:asc", @"Sort", @"Products", @"Include", @"0", @"Offset", @"Id:eq:6601211", @"Filter", @"50", @"Limit", @"Great%20sound", @"Search", nil]];
 }
-
 
 - (void)testShowReviewIncludesSearch {
     BVGet *showDisplayRequest = [[BVGet alloc] initWithType:BVGetTypeReviews];
@@ -442,11 +448,10 @@
 {
     BVPost *request = [[BVPost alloc] initWithType:BVPostTypeReview];
     request.productId = @"100003401";
-    request.userId = [NSString stringWithFormat:@"ios-test-submitReview-%i", arc4random()];
-    NSLog(@"request userId: %@", request.userId);
+    request.userId = [NSString stringWithFormat:@"123abcd%i", arc4random()];
     request.rating = 5;
     request.title = @"Test title";
-    request.reviewText = @"Some kind of review text. There should be text after this ampersand & here's the text after the ampersand.";
+    request.reviewText = @"Some kind of review text.";
     request.userNickname = @"testnickname";
     [request addPhotoUrl:@"http://apitestcustomer.ugc.bazaarvoice.com/bvstaging/5555/ps_amazon_s3_3rgg6s4xvev0zhzbnabyneo21/photo.jpg" withCaption:nil];
     [request addVideoUrl:@"http://www.youtube.com" withCaption:nil];
@@ -461,7 +466,7 @@
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         BVPost *request = [[BVPost alloc] initWithType:BVPostTypeReview];
         request.productId = @"100003401";
-        request.userId = [NSString stringWithFormat:@"ios-test-submitReview2-%i", arc4random()];
+        request.userId = [NSString stringWithFormat:@"123abcd%i", arc4random()];
         request.rating = 5;
         request.title = @"Test title";
         request.reviewText = @"Some kind of review text.";
@@ -481,7 +486,7 @@
     BVPost *request = [[BVPost alloc] initWithType:BVPostTypeQuestion];
     request.categoryId = @"1020";
     request.locale = @"en_US";
-    request.userId = [NSString stringWithFormat:@"ios-test-submitQuestion-%i", arc4random()];
+    request.userId = @"123abcd";
     request.questionSummary =  @"Some kind of question";
     
     [request sendRequestWithDelegate:self];
@@ -494,7 +499,7 @@
     
     BVPost *request = [[BVPost alloc] initWithType:BVPostTypeAnswer];
     request.questionId = @"6104";
-    request.userId = [NSString stringWithFormat:@"ios-test-submitAnswer-%i", arc4random()];
+    request.userId = @"123abcd";
     request.questionSummary =  @"Some kind of answer";
     
     [request sendRequestWithDelegate:self];
@@ -509,7 +514,7 @@
     request.title = @"This is the title";
     request.storyText = @"This is my story";
     request.categoryId = @"1020235";
-    request.userId = [NSString stringWithFormat:@"ios-test-submitStory-%i", arc4random()];
+    request.userId = @"123abc";
     
     [request sendRequestWithDelegate:self];
     NSRunLoop *theRL = [NSRunLoop currentRunLoop];
@@ -520,7 +525,7 @@
     BVPost *request = [[BVPost alloc] initWithType:BVPostTypeReviewComment];
     request.commentText = @"This is my comment text";
     request.reviewId = @"83964";
-    request.userId = [NSString stringWithFormat:@"ios-test-submitReviewComment-%i", arc4random()];
+    request.userId = @"123abc";
     
     [request sendRequestWithDelegate:self];
     NSRunLoop *theRL = [NSRunLoop currentRunLoop];
@@ -532,7 +537,7 @@
     BVPost *request = [[BVPost alloc] initWithType:BVPostTypeStoryComment];
     request.commentText = @"This is my comment text";
     request.storyId = @"967";
-    request.userId = [NSString stringWithFormat:@"ios-test-submitStoryComment-%i", arc4random()];
+    request.userId = @"123abc";
     
     [request sendRequestWithDelegate:self];
     NSRunLoop *theRL = [NSRunLoop currentRunLoop];
@@ -566,7 +571,7 @@
     
     BVMediaPost *mySubmission = [[BVMediaPost alloc] initWithType:BVMediaPostTypePhoto];
     mySubmission.contentType = BVMediaPostContentTypeReview;
-    mySubmission.userId = [NSString stringWithFormat:@"ios-test-submitPhoto-%i", arc4random()];
+    mySubmission.userId = @"123";
     
     NSBundle *bundle = [NSBundle bundleForClass:[self class]];
     NSString *imagePath = [bundle pathForResource:@"bv533x533" ofType:@"png"];
@@ -583,7 +588,7 @@
     
     BVMediaPost *mySubmission = [[BVMediaPost alloc] initWithType:BVMediaPostTypePhoto];
     mySubmission.contentType = BVMediaPostContentTypeReview;
-    mySubmission.userId = [NSString stringWithFormat:@"ios-test-submitPhoto2-%i", arc4random()];
+    mySubmission.userId = @"123";
     
     NSBundle *bundle = [NSBundle bundleForClass:[self class]];
     NSString *imagePath = [bundle pathForResource:@"270cw" ofType:@"JPG"];
@@ -606,7 +611,7 @@
     
     BVMediaPost *mySubmission = [[BVMediaPost alloc] initWithType:BVMediaPostTypePhoto];
     mySubmission.contentType = BVMediaPostContentTypeReview;
-    mySubmission.userId = [NSString stringWithFormat:@"ios-test-submitPhoto3-%i", arc4random()];
+    mySubmission.userId = @"123";
     mySubmission.photoUrl = @"http://dogr.io/doge.png";
     
     [mySubmission sendRequestWithDelegate:self];
@@ -619,7 +624,7 @@
     
     BVMediaPost *mySubmission = [[BVMediaPost alloc] initWithType:BVMediaPostTypeVideo];
     mySubmission.contentType = BVMediaPostContentTypeReview;
-    mySubmission.userId = [NSString stringWithFormat:@"ios-test-submitVideo-%i", arc4random()];
+    mySubmission.userId = @"123";
     
     NSBundle *bundle = [NSBundle bundleForClass:[self class]];
     NSString *videoPath = [bundle pathForResource:@"sample_mpeg4" ofType:@"mp4"];
@@ -640,7 +645,7 @@
     BVPost *mySubmission = [[BVPost alloc] initWithType:BVPostTypeFeedback];
     mySubmission.contentType = BVFeedbackContentTypeReview;
     mySubmission.contentId = @"83964";
-    mySubmission.userId = [NSString stringWithFormat:@"ios-test-submitFeedback-%i", arc4random()];
+    mySubmission.userId = @"123abc";
     mySubmission.feedbackType = BVFeedbackTypeHelpfulness;
     mySubmission.vote = BVFeedbackVoteTypeNegative;
     [mySubmission sendRequestWithDelegate:self];
@@ -655,7 +660,7 @@
     BVPost *mySubmission = [[BVPost alloc] initWithType:BVPostTypeFeedback];
     mySubmission.contentType = BVFeedbackContentTypeReview;
     mySubmission.contentId = @"83964";
-    mySubmission.userId = [NSString stringWithFormat:@"ios-test-submitFeedback2-%i", arc4random()];
+    mySubmission.userId = @"123abc";
     mySubmission.feedbackType = BVFeedbackTypeInappropriate;
     mySubmission.reasonText = @"This post was not nice.";    [mySubmission sendRequestWithDelegate:self];
     [mySubmission sendRequestWithDelegate:self];
@@ -669,10 +674,10 @@
 - (void)testParamsAttached {
     BVPost *mySubmission = [[BVPost alloc] initWithType:BVPostTypeReview];
     mySubmission.productId = @"10000sadfgasdg3401";
-    mySubmission.userId = [NSString stringWithFormat:@"ios-test-paramsAttached-%i", arc4random()];
+    mySubmission.userId = [NSString stringWithFormat:@"WHEEEEMYNAMEISSAME%i", arc4random()];
     mySubmission.rating = 5;
     mySubmission.title = @"Test title";
-    mySubmission.reviewText = @"Some kind of review text. Special characters next, followed by done: !@#$%^&*()-=_+?'\"/\\~`<>; done.";
+    mySubmission.reviewText = @"Some kind of review text. Some kind of review text. Some kind of review text. Some kind of review text. Some kind of review text. Some kind of review text. Some kind of review text. Some kind of review text. Some kind of review text.";
     mySubmission.userNickname = @"testnickname4";
     [mySubmission addPhotoUrl:@"http://apitestcustomer.ugc.bazaarvoice.com/bvstaging/5555/ps_amazon_s3_3rgg6s4xvev0zhzbnabyneo21/photo.jpg" withCaption:nil];
     [mySubmission addPhotoUrl:@"http://apitestcustomer.ugc.bazaarvoice.com/bvstaging/5555/ps_amazon_s3_a11b8t4wlgb914fjaiudaadvo/photo.jpg" withCaption:@"This photo is cool!"];
@@ -687,6 +692,5 @@
     // Begin a run loop terminated when the requestComplete it set to true
     while (!requestComplete && [theRL runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]]);
 }
-
 
 @end

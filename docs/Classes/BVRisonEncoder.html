@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
-		<title>BVDelegate Protocol Reference</title>
+		<title>BVRisonEncoder Class Reference</title>
 		<meta id="xcode-display" name="xcode-display" content="render"/>
 		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
 		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
@@ -16,7 +16,7 @@
 			</div>
 			
 			<div id="title" role="banner">
-				<h1 class="hideInXcode">BVDelegate Protocol Reference</h1>
+				<h1 class="hideInXcode">BVRisonEncoder Class Reference</h1>
 			</div>
 			<ul id="headerButtons" role="toolbar">
 				<li id="toc_button">
@@ -39,15 +39,13 @@
 	
 	
 	
+	<option value="class_methods">Class Methods</option>
+	
+	<option value="//api/name/encode:">&nbsp;&nbsp;&nbsp;&nbsp;+ encode:</option>
+	
+	<option value="//api/name/urlEncode:">&nbsp;&nbsp;&nbsp;&nbsp;+ urlEncode:</option>
 	
 	
-	<option value="instance_methods">Instance Methods</option>
-	
-	<option value="//api/name/didFailToReceiveResponse:forRequest:">&nbsp;&nbsp;&nbsp;&nbsp;- didFailToReceiveResponse:forRequest:</option>
-	
-	<option value="//api/name/didReceiveResponse:forRequest:">&nbsp;&nbsp;&nbsp;&nbsp;- didReceiveResponse:forRequest:</option>
-	
-	<option value="//api/name/didSendBodyData:totalBytesWritten:totalBytesExpectedToWrite:forRequest:">&nbsp;&nbsp;&nbsp;&nbsp;- didSendBodyData:totalBytesWritten:totalBytesExpectedToWrite:forRequest:</option>
 	
 	
 	
@@ -73,24 +71,22 @@
 
 
 
-
-
-<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#class_methods">Class Methods</a></span><ul>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/didFailToReceiveResponse:forRequest:">didFailToReceiveResponse:forRequest:</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/encode:">encode:</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/didReceiveResponse:forRequest:">didReceiveResponse:forRequest:</a></span></li>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/didSendBodyData:totalBytesWritten:totalBytesExpectedToWrite:forRequest:">didSendBodyData:totalBytesWritten:totalBytesExpectedToWrite:forRequest:</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/urlEncode:">urlEncode:</a></span></li>
 	
 </ul></li>
+
+
 
 
 			</ul>
 		</nav>
 		<article>
 			<div id="contents" class="isShowingTOC" role="main">
-				<a title="BVDelegate Protocol Reference" name="top"></a>
+				<a title="BVRisonEncoder Class Reference" name="top"></a>
 				<div class="main-navigation navigation-top">
 					<ul>
 	<li><a href="../index.html">Index</a></li>
@@ -99,18 +95,18 @@
 				</div>
 				<div id="header">
 					<div class="section-header">
-						<h1 class="title title-header">BVDelegate Protocol Reference</h1>
+						<h1 class="title title-header">BVRisonEncoder Class Reference</h1>
 					</div>		
 				</div>
 				<div id="container">	
 					
 					<div class="section section-specification"><table cellspacing="0"><tbody>
 						<tr>
-	<td class="specification-title">Conforms to</td>
+	<td class="specification-title">Inherits from</td>
 	<td class="specification-value">NSObject</td>
 </tr><tr>
 	<td class="specification-title">Declared in</td>
-	<td class="specification-value">BVDelegate.h</td>
+	<td class="specification-value">BVRisonEncoder.h<br />BVRisonEncoder.m</td>
 </tr>
 						</tbody></table></div>
 					
@@ -120,7 +116,7 @@
 					<div class="section section-overview">
 						<a title="Overview" name="overview"></a>
 						<h2 class="subtitle subtitle-overview">Overview</h2>
-						<p>BVDelegate is a protocol which notifies the client of API request status updates. Each request is guaranteed to result in one of either didReceiveResponse: or didFailToReceiveResponse:.  All <a href="../Classes/BVPost.html">BVPost</a> or <a href="../Classes/BVMediaPost.html">BVMediaPost</a> requests will generate one or more didSendBodyData: callbacks.</p>
+						<p>BVRisonEncoder contains simple RISON format encoding logic used to shorten URI lengths.</p>
 					</div>
 					
 					
@@ -138,19 +134,13 @@
 						<ul class="task-list">
 							<li>
 	<span class="tooltip">
-		<code><a href="#//api/name/didReceiveResponse:forRequest:">&ndash;&nbsp;didReceiveResponse:forRequest:</a></code>
+		<code><a href="#//api/name/encode:">+&nbsp;encode:</a></code>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/didSendBodyData:totalBytesWritten:totalBytesExpectedToWrite:forRequest:">&ndash;&nbsp;didSendBodyData:totalBytesWritten:totalBytesExpectedToWrite:forRequest:</a></code>
-	</span>
-	
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/didFailToReceiveResponse:forRequest:">&ndash;&nbsp;didFailToReceiveResponse:forRequest:</a></code>
+		<code><a href="#//api/name/urlEncode:">+&nbsp;urlEncode:</a></code>
 	</span>
 	
 	
@@ -165,25 +155,23 @@
 					
 					
 					
-					
-					
 					<div class="section section-methods">
-						<a title="Instance Methods" name="instance_methods"></a>
-						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
+						<a title="Class Methods" name="class_methods"></a>
+						<h2 class="subtitle subtitle-methods">Class Methods</h2>
 						
 						<div class="section-method">
-	<a name="//api/name/didFailToReceiveResponse:forRequest:" title="didFailToReceiveResponse:forRequest:"></a>
-	<h3 class="subsubtitle method-title">didFailToReceiveResponse:forRequest:</h3>
+	<a name="//api/name/encode:" title="encode:"></a>
+	<h3 class="subsubtitle method-title">encode:</h3>
 	
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Delegate callback for the case that the request fails.</p>
+		<p>Encode the object to RISON format</p>
 	</div>		
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (void)didFailToReceiveResponse:(id)<em>err</em> forRequest:(id)<em>request</em></code></div>
+	<div class="method-subsection method-declaration"><code>+ (NSString *)encode:(id)<em>value</em></code></div>
 
     
 	
@@ -191,13 +179,8 @@
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
 		
 		<dl class="argument-def parameter-def">
-			<dt><em>err</em></dt>
-			<dd><p>Contains specifics about the error.</p></dd>
-		</dl>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>request</em></dt>
-			<dd><p>The object which generated the request.</p></dd>
+			<dt><em>value</em></dt>
+			<dd><p>The object to be encoded.</p></dd>
 		</dl>
 		
 	</div>
@@ -216,25 +199,25 @@
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">BVDelegate.h</code><br />
+		<code class="declared-in-ref">BVRisonEncoder.h</code><br />
 	</div>				
 	
 	
 </div>
 						
 						<div class="section-method">
-	<a name="//api/name/didReceiveResponse:forRequest:" title="didReceiveResponse:forRequest:"></a>
-	<h3 class="subsubtitle method-title">didReceiveResponse:forRequest:</h3>
+	<a name="//api/name/urlEncode:" title="urlEncode:"></a>
+	<h3 class="subsubtitle method-title">urlEncode:</h3>
 	
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Delegate callback for the case that the request is successful.</p>
+		<p>URL percent-encode a string with special considerations for RISON formatting.</p>
 	</div>		
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (void)didReceiveResponse:(id)<em>response</em> forRequest:(id)<em>request</em></code></div>
+	<div class="method-subsection method-declaration"><code>+ (NSString *)urlEncode:(id)<em>originalString</em></code></div>
 
     
 	
@@ -242,13 +225,8 @@
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
 		
 		<dl class="argument-def parameter-def">
-			<dt><em>response</em></dt>
-			<dd><p>The deserialized response.</p></dd>
-		</dl>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>request</em></dt>
-			<dd><p>The object which generated the request.</p></dd>
+			<dt><em>originalString</em></dt>
+			<dd><p>The string to be URL percent-encoded</p></dd>
 		</dl>
 		
 	</div>
@@ -267,74 +245,15 @@
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">BVDelegate.h</code><br />
-	</div>				
-	
-	
-</div>
-						
-						<div class="section-method">
-	<a name="//api/name/didSendBodyData:totalBytesWritten:totalBytesExpectedToWrite:forRequest:" title="didSendBodyData:totalBytesWritten:totalBytesExpectedToWrite:forRequest:"></a>
-	<h3 class="subsubtitle method-title">didSendBodyData:totalBytesWritten:totalBytesExpectedToWrite:forRequest:</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<p>Delegate callback to indicate that body data has been sent as part of this request.  This method will only be called for submission requests and will be called one or more times as the data is sent.</p>
-	</div>		
-	
-    
-
-	<div class="method-subsection method-declaration"><code>- (void)didSendBodyData:(id)<em>bytesWritten</em> totalBytesWritten:(id)<em>totalBytesWritten</em> totalBytesExpectedToWrite:(id)<em>totalBytesExpectedToWrite</em> forRequest:(id)<em>request</em></code></div>
-
-    
-	
-	<div class="method-subsection arguments-section parameters">
-		<h4 class="method-subtitle parameter-title">Parameters</h4>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>bytesWritten</em></dt>
-			<dd><p>The number of bytes written in this update.</p></dd>
-		</dl>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>totalBytesWritten</em></dt>
-			<dd><p>The total number of bytes written for this entire request.</p></dd>
-		</dl>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>totalBytesExpectedToWrite</em></dt>
-			<dd><p>The total number of bytes expected to be written as part of this request.</p></dd>
-		</dl>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>request</em></dt>
-			<dd><p>The object which generated the request.</p></dd>
-		</dl>
-		
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">BVDelegate.h</code><br />
+		<code class="declared-in-ref">BVRisonEncoder.h</code><br />
 	</div>				
 	
 	
 </div>
 						
 					</div>
+					
+					
 					
 					
                     

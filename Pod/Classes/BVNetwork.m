@@ -6,22 +6,22 @@
 //  Copyright (c) 2012 Bazaarvoice Inc. All rights reserved.
 //
 
+#import <UIKit/UIKit.h>
 #import "BVNetwork.h"
 #import "BVSettings.h"
 #import "BVMediaPost.h"
-#import <UIKit/UIKit.h>
+#import "BVAnalytics.h"
 
 @interface BVNetwork ()
 @property (strong) NSMutableDictionary *params;
 @property (strong) NSMutableData *receivedData;
+@property (strong) NSDictionary *responseHeaders;
+@property (strong) NSHTTPURLResponse *responseObject;
+@property NSInteger responseStatusCode;
 @end
 
-@implementation BVNetwork
 
-@synthesize receivedData = _receivedData;
-@synthesize params = _params;
-@synthesize delegate = _delegate;
-@synthesize sender = _sender;
+@implementation BVNetwork
 
 - (id)initWithSender:(id)sender {
     self = [super init];
@@ -82,7 +82,7 @@
 }
 
 static NSString *urlEncode(id object) {
-
+    
     NSString *string = [NSString stringWithFormat: @"%@", object];
     
     NSMutableCharacterSet *chars = NSCharacterSet.URLQueryAllowedCharacterSet.mutableCopy;
@@ -108,18 +108,23 @@ static NSString *urlEncode(id object) {
 }
 
 - (void)sendGetWithEndpoint:(NSString *)endpoint {
-    if(self.delegate == nil){
-        NSException *exception = [NSException exceptionWithName: @"DelegateNotSetException"
-                                                         reason: @"A delegate must be set before a request is sent."
-                                                       userInfo: nil];
-        @throw exception;
-    }
+    [self sendGetWithEndpoint:endpoint withUrlString:nil];
+}
+
+- (void)sendGetWithEndpoint:(NSString *)endpoint withUrlString:(NSString *)urlString {
     BVSettings *settings = [BVSettings instance];
-    NSString *urlString = [NSString stringWithFormat:@"http://%@%@/data/%@?%@",
-                           settings.baseURL,
-                           settings.staging ? @"/bvstaging" : @"",
-                           endpoint,
-                           [self getParamsString]];
+    if (urlString == nil) {
+        urlString = [NSString stringWithFormat:@"http://%@%@/data/%@?%@",
+                     settings.baseURL,
+                     settings.staging ? @"/bvstaging" : @"",
+                     endpoint,
+                     [self getParamsString]];
+    }
+    else {
+        urlString = [NSString stringWithFormat:@"%@?%@",
+                     urlString,
+                     [self getParamsString]];
+    }
 
     // This network object may be deallocated before the sender is deallocated, but we still want
     // the client to be able to know the url of this request.  Therefore, it is stored by the sender
@@ -274,11 +279,29 @@ static NSString *urlEncode(id object) {
     [body appendData:[@"\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
 }
 
+
+
 #pragma mark NSURLConnection delegates
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
     NSError *error = nil;
-    NSDictionary *response = [NSJSONSerialization JSONObjectWithData:self.receivedData options:NSJSONReadingMutableContainers error:&error];
+    NSDictionary *response;
+    if ([[self.responseHeaders objectForKey:@"Content-Type"] isEqualToString:@"application/json;charset=utf-8"]) {
+            response = [NSJSONSerialization JSONObjectWithData:self.receivedData options:NSJSONReadingMutableContainers error:&error];
+    }
+    else if (self.responseStatusCode == 200) {
+        NSMutableDictionary *result = [NSMutableDictionary dictionary];
+        [result setObject:self.responseObject.URL forKey:@"URL"];
+        [result setObject:@(self.responseStatusCode) forKey:@"statusCode"];
+        [result setObject:self.responseHeaders forKey:@"headers"];
+        [result setObject:@(NO) forKey:@"HasErrors"];
+        response = result;
+    }
     if (self.delegate != nil && [self.delegate respondsToSelector:@selector(didReceiveResponse:forRequest:)]) {
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [[BVAnalytics instance] queueAnalyticsEventForResponse:response forRequest:self.sender];
+        });
+        
         [self.delegate didReceiveResponse:response forRequest:self.sender];
     }
 }
@@ -293,6 +316,9 @@ static NSString *urlEncode(id object) {
 
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
+    self.responseObject = (NSHTTPURLResponse*) response;
+    self.responseHeaders = [self.responseObject allHeaderFields];
+    self.responseStatusCode = [self.responseObject statusCode];
     [self.receivedData setLength:0];
 }
 

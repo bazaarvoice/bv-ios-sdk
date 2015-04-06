@@ -1,3 +1,7 @@
+## 2.2.6 (Apr 06, 2015) 
+
+ Added Bazaarvoice-internal analytics t 
+
 ## 2.2.5 (Feb 11, 2015) 
 
  Bumping cocoapods number 

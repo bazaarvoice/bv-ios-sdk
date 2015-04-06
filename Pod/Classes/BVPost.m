@@ -16,63 +16,6 @@
 
 @implementation BVPost
 
-@synthesize delegate = _delegate;
-@synthesize type = _type;
-@synthesize requestURL = _requestURL;
-
-// Used by All Types of BVPost Requests 
-@synthesize action = _action;
-@synthesize agreedToTermsAndConditions = _agreedToTermsAndConditions;
-@synthesize campaignId = _campaignId;
-@synthesize locale = _locale;
-@synthesize sendEmailAlertWhenPublished = _sendEmailAlertWhenPublished;
-@synthesize userEmail = _userEmail;
-@synthesize userId = _userId;
-@synthesize userLocation = _userLocation;
-@synthesize userNickname = _userNickname;
-
-//  Used by Review, Question, Story 
-@synthesize productId = _productId;
-
-//  Used by Review, Story, Comment 
-@synthesize title = _title;
-
-
-//  Used by Question, Story 
-@synthesize answerText = _answerText;
-@synthesize categoryId = _categoryId;
-
-//  Used by Review 
-@synthesize isRecommended = _isRecommended;
-@synthesize netPromoterComment = _netPromoterComment;
-@synthesize netPromoterScore = _netPromoterScore;
-@synthesize rating = _rating;
-@synthesize reviewText = _reviewText;
-
-//  Used by Question 
-@synthesize isUserAnonymous = _isUserAnonymous;
-@synthesize questionSummary = _questionSummary;
-@synthesize questionDetails = _questionDetails;
-
-//  Used by Answer 
-@synthesize questionId = _questionId;
-
-//  Used by Story 
-@synthesize sendEmailAlertWhenCommented = _sendEmailAlertWhenCommented;
-@synthesize storyText = _storyText;
-
-//  Used by Comment 
-@synthesize reviewId = _reviewId;
-@synthesize storyId = _storyId;
-@synthesize commentText = _commentText;
-
-//  Used by Feedback 
-@synthesize contentType = _contentType;
-@synthesize contentId = _contentId;
-@synthesize feedbackType = _feedbackType;
-@synthesize vote = _vote;
-@synthesize reasonText = _reasonText;
-
 - (id)init{
     return [self initWithType:BVPostTypeReview];
 }
@@ -105,36 +48,6 @@
 
 -(void)setRequestURL:(NSString *)requestURL{
     _requestURL = requestURL;
-}
-
-- (NSString *)getTypeString {
-    switch (self.type) {
-        case BVPostTypeAnswer:
-            return @"submitanswer.json";
-        case BVPostTypeReviewComment:
-            return @"submitreviewcomment.json";
-        case BVPostTypeStoryComment:
-            return @"submitstorycomment.json";
-        case BVPostTypeFeedback:
-            return @"submitfeedback.json";
-        case BVPostTypeQuestion:
-            return @"submitquestion.json";
-        case BVPostTypeReview:
-            return @"submitreview.json";
-        case BVPostTypeStory:
-            return @"submitstory.json";
-    }
-}
-
-//  Used by All Types of BVPost Requests 
-
-- (NSString *)getActionString:(BVAction)action {
-    switch (action) {
-        case BVActionPreview:
-            return @"preview";
-        case BVActionSubmit:
-            return @"submit";
-    }
 }
 
 - (void)setAction:(BVAction)action {
@@ -337,36 +250,9 @@
 	[self.network setUrlParameterWithName:@"ContentId" value:contentId];
 }
 
-- (NSString *)getFeedbackContentTypeString:(BVFeedbackContentType)feedbackContentType {
-    switch (feedbackContentType) {
-        case BVFeedbackContentTypeAnswer:
-            return @"answer";
-        case BVFeedbackContentTypeQuestion:
-            return @"question";
-        case BVFeedbackContentTypeReview:
-            return @"review";
-        case BVFeedbackContentTypeReviewComment:
-            return @"review_comment";
-        case BVFeedbackContentTypeStory:
-            return @"story";
-        case BVFeedbackContentTypeStoryComment:
-            return @"story_comment";
-            
-    }
-}
-
 - (void)setContentType:(BVFeedbackContentType)contentType{
     _contentType = contentType;
 	[self.network setUrlParameterWithName:@"ContentType" value:[self getFeedbackContentTypeString:contentType]];
-}
-
-- (NSString *)getFeedbackString:(BVFeedbackType)type{
-    switch (type) {
-        case BVFeedbackTypeHelpfulness:
-            return @"helpfulness";
-        case BVFeedbackTypeInappropriate:
-            return @"inappropriate";
-    }
 }
 
 - (void)setFeedbackType:(BVFeedbackType)feedbackType{
@@ -377,15 +263,6 @@
 - (void)setReasonText:(NSString *)reasonText{
     _reasonText = reasonText;
 	[self.network setUrlParameterWithName:@"ReasonText" value:reasonText];
-}
-
-- (NSString *)getFeedbackVoteString:(BVFeedbackVoteType)type{
-    switch (type) {
-        case BVFeedbackVoteTypeNegative:
-            return @"Negative";
-        case BVFeedbackVoteTypePositive:
-            return @"Positive";
-    }
 }
 
 - (void)setVote:(BVFeedbackVoteType)vote{
@@ -404,6 +281,76 @@
 
 - (void) send {
     [self.network sendPostWithEndpoint:[self getTypeString]];
+}
+
+#pragma mark - helper methods
+
+- (NSString *)getTypeString {
+    switch (self.type) {
+        case BVPostTypeAnswer:
+            return @"submitanswer.json";
+        case BVPostTypeReviewComment:
+            return @"submitreviewcomment.json";
+        case BVPostTypeStoryComment:
+            return @"submitstorycomment.json";
+        case BVPostTypeFeedback:
+            return @"submitfeedback.json";
+        case BVPostTypeQuestion:
+            return @"submitquestion.json";
+        case BVPostTypeReview:
+            return @"submitreview.json";
+        case BVPostTypeStory:
+            return @"submitstory.json";
+    }
+}
+
+//  Used by All Types of BVPost Requests
+
+- (NSString *)getActionString:(BVAction)action {
+    switch (action) {
+        case BVActionPreview:
+            return @"preview";
+        case BVActionSubmit:
+            return @"submit";
+    }
+}
+
+// Used by Feedback
+
+- (NSString *)getFeedbackContentTypeString:(BVFeedbackContentType)feedbackContentType {
+    switch (feedbackContentType) {
+        case BVFeedbackContentTypeAnswer:
+            return @"answer";
+        case BVFeedbackContentTypeQuestion:
+            return @"question";
+        case BVFeedbackContentTypeReview:
+            return @"review";
+        case BVFeedbackContentTypeReviewComment:
+            return @"review_comment";
+        case BVFeedbackContentTypeStory:
+            return @"story";
+        case BVFeedbackContentTypeStoryComment:
+            return @"story_comment";
+            
+    }
+}
+
+- (NSString *)getFeedbackVoteString:(BVFeedbackVoteType)type{
+    switch (type) {
+        case BVFeedbackVoteTypeNegative:
+            return @"Negative";
+        case BVFeedbackVoteTypePositive:
+            return @"Positive";
+    }
+}
+
+- (NSString *)getFeedbackString:(BVFeedbackType)type{
+    switch (type) {
+        case BVFeedbackTypeHelpfulness:
+            return @"helpfulness";
+        case BVFeedbackTypeInappropriate:
+            return @"inappropriate";
+    }
 }
 
 
