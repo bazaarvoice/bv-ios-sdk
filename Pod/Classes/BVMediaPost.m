@@ -19,27 +19,6 @@
 
 @implementation BVMediaPost
 
-@synthesize type = _type;
-@synthesize delegate = _delegate;
-@synthesize requestURL = _requestURL;
-@synthesize contentType = _contentType;
-@synthesize locale = _locale;
-@synthesize userId = _userId;
-@synthesize photo = _photo;
-@synthesize photoUrl = _photoUrl;
-
-@synthesize network = _network;
-
-
-- (NSString *)getTypeString {
-    switch (self.type) {
-        case BVMediaPostTypePhoto:
-            return @"uploadphoto.json";
-        case BVMediaPostTypeVideo:
-            return @"uploadvideo.json";
-    }
-}
-
 - (id)init{
     return [self initWithType:BVMediaPostTypePhoto];
 }
@@ -73,23 +52,6 @@
     _requestURL = requestURL;
 }
 
-- (NSString *)getContentTypeString {
-    switch (self.contentType) {
-        case BVMediaPostContentTypeAnswer:
-            return @"answer";
-        case BVMediaPostContentTypeQuestion:
-            return @"question";
-        case BVMediaPostContentTypeReview:
-            return @"review";
-        case BVMediaPostContentTypeReviewComment:
-            return @"review_comment";
-        case BVMediaPostContentTypeStory:
-            return @"story";
-        case BVMediaPostContentTypeStoryComment:
-            return @"story_comment";
-    }
-}
-
 - (void)setContentType:(BVMediaPostContentType)contentType {
     _contentType = contentType;
     [self.network setUrlParameterWithName:@"ContentType" value:[self getContentTypeString]];
@@ -120,6 +82,52 @@
     [self.network setUrlParameterWithName:@"video" value:video];
 }
 
+
+- (void)addGenericParameterWithName:(NSString *)name value:(NSString *)value {
+    [self.network setUrlParameterWithName:name value:value];
+}
+
+- (void) sendRequestWithDelegate:(id<BVDelegate>)delegate {
+    [self setDelegate:delegate];
+    [self send];
+}
+
+- (void)send {
+    if(self.photoUrl){
+        [self.network sendPostWithEndpoint:[self getTypeString]];
+    } else {
+        [self.network sendMultipartPostWithEndpoint:[self getTypeString]];        
+    }
+}
+
+#pragma mark - helper methods
+
+- (NSString *)getTypeString {
+    switch (self.type) {
+        case BVMediaPostTypePhoto:
+            return @"uploadphoto.json";
+        case BVMediaPostTypeVideo:
+            return @"uploadvideo.json";
+    }
+}
+
+- (NSString *)getContentTypeString {
+    switch (self.contentType) {
+        case BVMediaPostContentTypeAnswer:
+            return @"answer";
+        case BVMediaPostContentTypeQuestion:
+            return @"question";
+        case BVMediaPostContentTypeReview:
+            return @"review";
+        case BVMediaPostContentTypeReviewComment:
+            return @"review_comment";
+        case BVMediaPostContentTypeStory:
+            return @"story";
+        case BVMediaPostContentTypeStoryComment:
+            return @"story_comment";
+    }
+}
+
 - (NSString *)getVideoExtensionString {
     switch(_videoFormat){
         case BVVideoFormatType3G2:
@@ -146,22 +154,6 @@
             return @"wmv";
     }
     
-}
-- (void)addGenericParameterWithName:(NSString *)name value:(NSString *)value {
-    [self.network setUrlParameterWithName:name value:value];
-}
-
-- (void) sendRequestWithDelegate:(id<BVDelegate>)delegate {
-    [self setDelegate:delegate];
-    [self send];
-}
-
-- (void)send {
-    if(self.photoUrl){
-        [self.network sendPostWithEndpoint:[self getTypeString]];
-    } else {
-        [self.network sendMultipartPostWithEndpoint:[self getTypeString]];        
-    }
 }
 
 @end

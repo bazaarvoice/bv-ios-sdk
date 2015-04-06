@@ -9,9 +9,9 @@ The Bazaarvoice software development kit (SDK) for iOS is an iOS library that pr
 Developers can display content as well as submit content such as Ratings & Reviews, Ask & Answer and Stories, including text and photo. Included reference apps and a Quick Start Guide will allow developers to integrate Bazaarvoice quickly, with little overhead.
 
 **Where to start:**
-1. Read the Quick Start guide to get familiar with installation and building a bare-bones, simple application that uses the SDK.
-2. The documentation, located in the Docs folder, provides additional information into the capabilities of the SDK itself.
-3. Sample applications, located in the Example folder, provide example uses of the SDK and implementation best practices.
+1. Read the Quick Start guide to get familiar with installation and building a bare-bones, simple application that uses the SDK.  
+2. The documentation, located in the Docs folder, provides additional information into the capabilities of the SDK itself.  
+3. Sample applications, located in the Example folder, provide example uses of the SDK and implementation best practices.  
 
 ## Installation
 
@@ -33,7 +33,7 @@ Alternatively, you can install the SDK by cloning or downloding this library and
 ## What's Included
 This package includes the following:
 
-* BVSDK.framework - iOS SDK based on Bazaarvoice Developer API
+* Source code, tests, example projects, and documentation for the Bazaarvocie iOS SDK.  
 * Quick Start Guide - Quickly get familiar with installation and building a bare-bones, simple application that uses the SDK
 * Reference applications:
  * Product browse example: Illustrates using the Bazaarvoice iOS SDK to query, browse and display ratings and reviews for products
@@ -45,7 +45,7 @@ This package includes the following:
 Unit tests can be run with:  
 * `open BVSDK/BVSDK.xcworkspace`  
 * Make sure 'BVSDK-Example' is the selected target to build  
-* Run the test suite with Cmd+u  
+* Run the test suite with Cmd+U  
 
 ## Updating from V1
 See the included V2UpdateGuide for information on how to update a project using the old BV iOS SDK to version 2.

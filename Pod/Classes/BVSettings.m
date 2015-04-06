@@ -11,10 +11,6 @@
 static BVSettings* BVSettingsSingleton = nil;
 
 @implementation BVSettings
-@synthesize passKey = _passKey;
-@synthesize baseURL = _baseURL;
-@synthesize staging = _staging;
-@synthesize timeout = _timeOutMs;
 
 + (BVSettings*) instance {
     if (BVSettingsSingleton == nil)
@@ -29,20 +25,16 @@ static BVSettings* BVSettingsSingleton = nil;
         // Initalization code here. PUt in reasonable defaults.
         self.passKey = @"KEY_REMOVED";
         self.baseURL = @"reviews.apitestcustomer.bazaarvoice.com";
+        self.clientId = @"apitestcustomer";
+        self.appName = @"Test Shopping App";
         self.staging = NO;
         self.timeout = 60;
 	}
 	return self;
 }
 
-- (void)dealloc {
-    // Set to nil because unsafe_unretained does not zero out pointers.
-    self.passKey = nil;
-    self.baseURL = nil;
-}
-
 - (NSString *)description {
-    NSString *returnValue = [NSString stringWithFormat:@"Setting Values:\n passKey = %@ \n apiVersion = %@ \n baseURL = %@ \n staging = %i \n" , self.passKey, BV_API_VERSION, self.baseURL, self.staging];
+    NSString *returnValue = [NSString stringWithFormat:@"Setting Values:\n passKey = %@ \n apiVersion = %@ \n baseURL = %@ \n clientId = %@ \n appName = %@ \n staging = %i \n" , self.passKey, BV_API_VERSION, self.baseURL, self.clientId, self.appName, self.staging];
     
     return returnValue;
 }
