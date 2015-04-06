@@ -12,20 +12,12 @@
 #import "BVNetwork.h"
 
 @interface BVGet()
+
 @property BVNetwork *network;
+
 @end
 
 @implementation BVGet
-
-@synthesize delegate = _delegate;
-@synthesize type = _type;
-@synthesize requestURL = _requestURL;
-@synthesize search = _search;
-@synthesize locale = _locale;
-@synthesize limit = _limit;
-@synthesize offset = _offset;
-@synthesize excludeFamily = _excludeFamily;
-@synthesize network = _network;
 
 - (id)init{
     return [self initWithType:BVGetTypeReviews];
@@ -47,31 +39,6 @@
     return self;
 }
 
-- (NSString *)getTypeString {
-    switch (self.type) {
-        case BVGetTypeAnswers:
-            return @"answers.json";
-        case BVGetTypeAuthors:
-            return @"authors.json";
-        case BVGetTypeCategories:
-            return @"categories.json";
-        case BVGetTypeReviewCommments:
-            return @"reviewcomments.json";
-        case BVGetTypeStoryCommments:
-            return @"storycomments.json";
-        case BVGetTypeProducts:
-            return @"products.json";
-        case BVGetTypeQuestions:
-            return @"questions.json";
-        case BVGetTypeReviews:
-            return @"reviews.json";
-        case BVGetTypeStatistics:
-            return @"statistics.json";
-        case BVGetTypeStories:
-            return @"stories.json";
-    }
-}
-
 - (void)setDelegate:(id<BVDelegate>)delegate {
     self.network.delegate = delegate;
 }
@@ -80,8 +47,19 @@
     return self.network.delegate;
 }
 
--(void)setRequestURL:(id)requestURL{
-    _requestURL = requestURL;
+- (void) sendRequestWithDelegate:(id<BVDelegate>)delegate {
+    [self setDelegate:delegate];
+    [self send];
+}
+
+- (void) send {
+    [self.network sendGetWithEndpoint:[self getTypeString]];
+}
+
+#pragma mark - Set request parameters
+
+- (void)setGenericParameterWithName:(NSString *)name value:(NSString *)value {
+    [self.network setUrlParameterWithName:name value:value];
 }
 
 - (void)setSearch:(NSString *)search {
@@ -109,27 +87,6 @@
     [self.network setUrlParameterWithName:@"ExcludeFamily" value:excludeFamily ? @"true" : @"false"];
 }
 
-- (NSString *)getIncludeTypeString:(BVIncludeType)includeType {
-    switch (includeType) {
-        case BVIncludeTypeAnswers:
-            return @"Answers";
-        case BVIncludeTypeAuthors:
-            return @"Authors";
-        case BVIncludeTypeCategories:
-            return @"Categories";
-        case BVIncludeTypeComments:
-            return @"Comments";
-        case BVIncludeTypeProducts:
-            return @"Products";
-        case BVIncludeTypeQuestions:
-            return @"Questions";
-        case BVIncludeTypeReviews:
-            return @"Reviews";
-        case BVIncludeTypeStories:
-            return @"Stories";
-    }
-}
-
 - (void)addInclude:(BVIncludeType)includeType {
     [self.network setUrlListParameterWithName:@"Include" value:[self getIncludeTypeString:includeType]];
 }
@@ -141,21 +98,6 @@
 
 - (void)addSortForAttribute:(NSString *)attribute ascending:(BOOL)ascending {
     [self.network setUrlListParameterWithName:@"Sort" value:[NSString stringWithFormat:@"%@:%@", attribute, ascending ? @"asc" : @"desc"]];
-}
-
-- (NSString *)getIncludeStatsTypeString:(BVIncludeStatsType)includeStatsType {
-    switch (includeStatsType) {
-        case BVIncludeStatsTypeAnswers:
-            return @"Answers";
-        case BVIncludeStatsTypeQuestions:
-            return @"Questions";
-        case BVIncludeStatsTypeReviews:
-            return @"Reviews";
-        case BVIncludeStatsTypeNativeReviews:
-            return @"NativeReviews";
-        case BVIncludeStatsTypeStories:
-            return @"Stories";
-    }
 }
 
 - (void)addStatsOn:(BVIncludeStatsType)type {
@@ -176,22 +118,7 @@
                             value:[NSString stringWithFormat:@"%d", value]];
 }
 
-- (NSString *)getEqualityString:(BVEquality)equality {
-    switch (equality) {
-        case BVEqualityEqualTo:
-            return @"eq";
-        case BVEqualityGreaterThan:
-            return @"gt";
-        case BVEqualityGreaterThanOrEqual:
-            return @"gte";
-        case BVEqualityLessThan:
-            return @"lt";
-        case BVEqualityLessThanOrEqual:
-            return @"lte";
-        case BVEqualityNotEqualTo:
-            return @"neq";
-    }
-}
+#pragma mark - Filter parameters
 
 
 - (void)setFilterForAttribute:(NSString *)attribute equality:(BVEquality)equality value:(NSString *)value {
@@ -254,18 +181,84 @@
                                    [values componentsJoinedByString:@","]]];
 }
 
-- (void)setGenericParameterWithName:(NSString *)name value:(NSString *)value {
-    [self.network setUrlParameterWithName:name value:value];
+#pragma mark - helper methods
+
+- (NSString *)getTypeString {
+    switch (self.type) {
+        case BVGetTypeAnswers:
+            return @"answers.json";
+        case BVGetTypeAuthors:
+            return @"authors.json";
+        case BVGetTypeCategories:
+            return @"categories.json";
+        case BVGetTypeReviewCommments:
+            return @"reviewcomments.json";
+        case BVGetTypeStoryCommments:
+            return @"storycomments.json";
+        case BVGetTypeProducts:
+            return @"products.json";
+        case BVGetTypeQuestions:
+            return @"questions.json";
+        case BVGetTypeReviews:
+            return @"reviews.json";
+        case BVGetTypeStatistics:
+            return @"statistics.json";
+        case BVGetTypeStories:
+            return @"stories.json";
+    }
 }
 
-- (void) sendRequestWithDelegate:(id<BVDelegate>)delegate {
-    [self setDelegate:delegate];
-    [self send];
+- (NSString *)getIncludeTypeString:(BVIncludeType)includeType {
+    switch (includeType) {
+        case BVIncludeTypeAnswers:
+            return @"Answers";
+        case BVIncludeTypeAuthors:
+            return @"Authors";
+        case BVIncludeTypeCategories:
+            return @"Categories";
+        case BVIncludeTypeComments:
+            return @"Comments";
+        case BVIncludeTypeProducts:
+            return @"Products";
+        case BVIncludeTypeQuestions:
+            return @"Questions";
+        case BVIncludeTypeReviews:
+            return @"Reviews";
+        case BVIncludeTypeStories:
+            return @"Stories";
+    }
 }
 
+- (NSString *)getIncludeStatsTypeString:(BVIncludeStatsType)includeStatsType {
+    switch (includeStatsType) {
+        case BVIncludeStatsTypeAnswers:
+            return @"Answers";
+        case BVIncludeStatsTypeQuestions:
+            return @"Questions";
+        case BVIncludeStatsTypeReviews:
+            return @"Reviews";
+        case BVIncludeStatsTypeNativeReviews:
+            return @"NativeReviews";
+        case BVIncludeStatsTypeStories:
+            return @"Stories";
+    }
+}
 
-- (void) send {
-    [self.network sendGetWithEndpoint:[self getTypeString]];
+- (NSString *)getEqualityString:(BVEquality)equality {
+    switch (equality) {
+        case BVEqualityEqualTo:
+            return @"eq";
+        case BVEqualityGreaterThan:
+            return @"gt";
+        case BVEqualityGreaterThanOrEqual:
+            return @"gte";
+        case BVEqualityLessThan:
+            return @"lt";
+        case BVEqualityLessThanOrEqual:
+            return @"lte";
+        case BVEqualityNotEqualTo:
+            return @"neq";
+    }
 }
 
 

@@ -15,5 +15,6 @@
 #import "BVPost.h"
 #import "BVMediaPost.h"
 #import "BVSettings.h"
+#import "BVAnalytics.h"
 
 #endif
