@@ -28,7 +28,6 @@
     
     requestComplete = NO;
     [BVSettings instance].staging = YES;
-    [BVSettings instance].baseURL = @"reviews.apitestcustomer.bazaarvoice.com";
     [BVSettings instance].clientId = @"apitestcustomer";
     [BVSettings instance].appName = @"Test Shopping App";
     [BVSettings instance].passKey = @"2cpdrhohmgmwfz8vqyo48f52g";
@@ -165,7 +164,6 @@
 
 
 - (void)testShowQuestionSparse {
-    [BVSettings instance].baseURL = @"answers.apitestcustomer.bazaarvoice.com";
     BVGet *showDisplayRequest = [[BVGet alloc] initWithType:BVGetTypeQuestions];
     [showDisplayRequest sendRequestWithDelegate:self];
     
@@ -176,7 +174,6 @@
 }
 
 - (void)testShowQuestion {
-    [BVSettings instance].baseURL = @"answers.apitestcustomer.bazaarvoice.com";
     BVGet *showDisplayRequest = [[BVGet alloc] initWithType:BVGetTypeQuestions];
     [showDisplayRequest setFilterForAttribute:@"Id" equality:BVEqualityEqualTo value:@"87757"];
     [showDisplayRequest setFilterOnIncludedType:BVIncludeTypeProducts forAttribute:@"Id" equality:BVEqualityEqualTo value:@"test1"];
@@ -202,7 +199,6 @@
 }
 
 - (void)testShowQuestionsSparse {
-    [BVSettings instance].baseURL = @"answers.apitestcustomer.bazaarvoice.com";
     BVGet *showDisplayRequest = [[BVGet alloc] initWithType:BVGetTypeQuestions];
     [showDisplayRequest sendRequestWithDelegate:self];
     
@@ -215,7 +211,6 @@
 
 
 - (void)testShowQuestions{
-    [BVSettings instance].baseURL = @"answers.apitestcustomer.bazaarvoice.com";
     BVGet *showDisplayRequest = [[BVGet alloc] initWithType:BVGetTypeQuestions];
     [showDisplayRequest setFilterForAttribute:@"Id" equality:BVEqualityEqualTo value:@"6055"];
     [showDisplayRequest setFilterOnIncludedType:BVIncludeTypeProducts forAttribute:@"Id" equality:BVEqualityEqualTo value:@"test0"];
@@ -237,7 +232,6 @@
 }
 
 - (void)testShowStorySparse {
-    [BVSettings instance].baseURL = @"stories.apitestcustomer.bazaarvoice.com";
     BVGet *showDisplayRequest = [[BVGet alloc] initWithType:BVGetTypeStories];
     [showDisplayRequest setFilterForAttribute:@"Id" equality:BVEqualityEqualTo value:@"14181"];
     [showDisplayRequest sendRequestWithDelegate:self];
@@ -249,7 +243,6 @@
 }
 
 - (void)testShowStory {
-    [BVSettings instance].baseURL = @"stories.apitestcustomer.bazaarvoice.com";
     BVGet *showDisplayRequest = [[BVGet alloc] initWithType:BVGetTypeStories];
     [showDisplayRequest setFilterForAttribute:@"Id" equality:BVEqualityEqualTo value:@"14181"];
     [showDisplayRequest setFilterOnIncludedType:BVIncludeTypeComments forAttribute:@"Id" equality:BVEqualityEqualTo value:@"1010"];
@@ -303,7 +296,6 @@
 }
 
 - (void)testShowCommentStorySparse {
-    [BVSettings instance].baseURL = @"stories.apitestcustomer.bazaarvoice.com";
     BVGet *showDisplayRequest = [[BVGet alloc] initWithType:BVGetTypeStoryCommments];
     [showDisplayRequest sendRequestWithDelegate:self];
     
@@ -315,7 +307,6 @@
 }
 
 - (void)testShowCommentStory {
-    [BVSettings instance].baseURL = @"stories.apitestcustomer.bazaarvoice.com";
     BVGet *showDisplayRequest = [[BVGet alloc] initWithType:BVGetTypeStoryCommments];
     [showDisplayRequest setFilterForAttribute:@"StoryId" equality:BVEqualityEqualTo value:@"967"];
     [showDisplayRequest setFilterOnIncludedType:BVIncludeTypeProducts forAttribute:@"Id" equality:BVEqualityEqualTo value:@"test1"];
@@ -481,8 +472,6 @@
 }
 
 - (void)testSubmissionQuestions {
-    [BVSettings instance].baseURL = @"answers.apitestcustomer.bazaarvoice.com";
-    
     BVPost *request = [[BVPost alloc] initWithType:BVPostTypeQuestion];
     request.categoryId = @"1020";
     request.locale = @"en_US";
@@ -495,8 +484,6 @@
 }
 
 - (void)testSubmissionAnswers {
-    [BVSettings instance].baseURL = @"answers.apitestcustomer.bazaarvoice.com";
-    
     BVPost *request = [[BVPost alloc] initWithType:BVPostTypeAnswer];
     request.questionId = @"6104";
     request.userId = @"123abcd";
@@ -508,8 +495,6 @@
 }
 
 - (void)testSubmissionStories {
-    [BVSettings instance].baseURL = @"stories.apitestcustomer.bazaarvoice.com";
-    
     BVPost *request = [[BVPost alloc] initWithType:BVPostTypeStory];
     request.title = @"This is the title";
     request.storyText = @"This is my story";
@@ -533,7 +518,6 @@
 }
 
 - (void)testSubmissionStoryComments {
-    [BVSettings instance].baseURL = @"stories.apitestcustomer.bazaarvoice.com";
     BVPost *request = [[BVPost alloc] initWithType:BVPostTypeStoryComment];
     request.commentText = @"This is my comment text";
     request.storyId = @"967";

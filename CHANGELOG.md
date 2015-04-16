@@ -1,3 +1,7 @@
+## 2.2.7 (Apr 16, 2015) 
+
+ Supporting the Bazaarvoice API Universal endpoint: api.bazaarvoice.com. The settings variable baseUrl is no longer needed. 
+
 ## 2.2.6 (Apr 06, 2015) 
 
  Added Bazaarvoice-internal analytics 

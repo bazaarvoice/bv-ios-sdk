@@ -114,9 +114,8 @@ static NSString *urlEncode(id object) {
 - (void)sendGetWithEndpoint:(NSString *)endpoint withUrlString:(NSString *)urlString {
     BVSettings *settings = [BVSettings instance];
     if (urlString == nil) {
-        urlString = [NSString stringWithFormat:@"http://%@%@/data/%@?%@",
-                     settings.baseURL,
-                     settings.staging ? @"/bvstaging" : @"",
+        urlString = [NSString stringWithFormat:@"http://%@api.bazaarvoice.com/data/%@?%@",
+                     settings.staging ? @"stg." : @"",
                      endpoint,
                      [self getParamsString]];
     }
@@ -165,9 +164,8 @@ static NSString *urlEncode(id object) {
         @throw exception;
     }
     BVSettings *settings = [BVSettings instance];
-    NSString *urlString = [NSString stringWithFormat:@"http://%@%@/data/%@",
-                           settings.baseURL,
-                           settings.staging ? @"/bvstaging" : @"",
+    NSString *urlString = [NSString stringWithFormat:@"http://%@api.bazaarvoice.com/data/%@",
+                           settings.staging ? @"stg." : @"",
                            endpoint];
     
     // This network object may be deallocated before the sender is deallocated, but we still want

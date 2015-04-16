@@ -16,6 +16,10 @@ Developers can display content as well as submit content such as Ratings & Revie
 ## Upgrading from previous version of SDK
 If you have a previous version of the BVSDK in your project, chances are you have `BVSDK.framework` in your project. Updating should be smooth and quick - simply delete BVSDK.framework and follow installation instructions below. All existing functionality should remain unchanged - so just follow the installation instructions below to get the updated SDK with proper 64-bit support and various bug fixes and improvements.
 
+#### Note on `baseUrl`
+
+In previous versions of the iOS SDK, a setting variable called `baseUrl` needed to be set. This is no longer needed, as all future api calls will hit the universal `[stg.]api.bazaarvoice.com` as per the [API Updating Guide](https://developer.bazaarvoice.com/apis/conversations/upgrading/upgrade_guide).
+
 ## Installation
 
 The easiest way to get the BVSDK is through [CocoaPods](http://cocoapods.org).  
@@ -70,7 +74,7 @@ Unit tests can be run with:
 * Run the test suite with Cmd+U  
 
 ## Updating from Bazaarvoice SDK V1
-See the included V2UpdateGuide for information on how to update a project using the old BV iOS SDK to version 2.
+The SDK was updated to version 2 on **January, 2013**. If updating from version 1, see the included V2UpdateGuide for information on how to update a project using the old BV iOS SDK to version 2.
 
 ## License
 See [Bazaarvoice's API Terms of Use](http://developer.bazaarvoice.com/API_Terms_of_Use). Except as otherwise noted, the Bazaarvoice iOS SDK licensed under the [Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.html).
