@@ -1,3 +1,7 @@
+## 2.2.7 (Apr 16, 2015) 
+
+ Supporting the universal api endpoint: api.bazaarvoice.com, as per the api updating guide found at developer.bazaarvoice.com 
+
 ## 2.2.6 (Apr 06, 2015) 
 
  Added Bazaarvoice-internal analytics 
