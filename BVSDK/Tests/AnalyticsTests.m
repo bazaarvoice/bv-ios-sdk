@@ -27,9 +27,7 @@
     [super setUp];
     
     [BVSettings instance].staging = YES;
-    [BVSettings instance].baseURL = @"reviews.apitestcustomer.bazaarvoice.com";
     [BVSettings instance].clientId = @"apitestcustomer";
-    [BVSettings instance].appName = @"Test Shopping App";
     [BVSettings instance].passKey = @"KEY_REMOVED";
     
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -119,7 +117,6 @@
     numberOfExpectedImpressionAnalyticsEvents = 1;
     numberOfExpectedPageviewAnalyticsEvents = 1;
     
-    [BVSettings instance].baseURL = @"answers.apitestcustomer.bazaarvoice.com";
     
     BVGet *showDisplayRequest = [[BVGet alloc] initWithType:BVGetTypeQuestions];
     [showDisplayRequest setFilterForAttribute:@"Id" equality:BVEqualityEqualTo value:@"6055"];
@@ -134,7 +131,6 @@
     numberOfExpectedImpressionAnalyticsEvents = 1;
     numberOfExpectedPageviewAnalyticsEvents = 0;
     
-    [BVSettings instance].baseURL = @"stories.apitestcustomer.bazaarvoice.com";
     
     BVGet *showDisplayRequest = [[BVGet alloc] initWithType:BVGetTypeStories];
     [showDisplayRequest setFilterForAttribute:@"Id" equality:BVEqualityEqualTo value:@"14181"];
