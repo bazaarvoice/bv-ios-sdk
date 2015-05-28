@@ -9,10 +9,10 @@
 
 Pod::Spec.new do |s|
   s.name = "BVSDK"
-  s.version = '2.2.7'
+  s.version = '2.2.8'
   s.homepage = 'http://developer.bazaarvoice.com'
   s.license = { :type => 'Commercial', :text => 'See http://developer.bazaarvoice.com/API_Terms_of_Use' }
-  s.author = { 'Bazaarvoice Mobile' => 'mobilecoreteam@bazaarvoice.com' }
+  s.author = { 'Bazaarvoice' => 'support@bazaarvoice.com' }
   s.source = { :git => "https://github.com/bazaarvoice/bv-ios-sdk.git", :tag => s.version.to_s }
   s.social_media_url = 'https://twitter.com/bazaarvoice'
   s.summary = 'Simple iOS SDK to interact with the Bazaarvoice platform API.'
