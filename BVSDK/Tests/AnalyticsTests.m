@@ -101,6 +101,39 @@
     [self fireReviewAnalyticsCompletesWithLimit:60];
 }
 
+-(void)testBigAnalyticsEvent {
+    
+    // bomb the analytics event with a ton of events, to make sure it doesn't crash.
+    // crash would occur when objects were taken out of the queue in different threads - NSMutableArray is not thread safe
+    // moving all array modifications to the main thread fixed the problem - only network requests happen on different threads now
+
+//    numberOfExpectedPageviewAnalyticsEvents = 1;
+//    numberOfExpectedImpressionAnalyticsEvents = 3;
+
+    BVGet *showDisplayRequest = [[ BVGet alloc ] initWithType:BVGetTypeReviews];
+    [showDisplayRequest setLimit:100];
+    [showDisplayRequest setSearch: @"Great sound"];
+    [showDisplayRequest addSortForAttribute:@"Id" ascending:YES];
+    [showDisplayRequest sendRequestWithDelegate:self];
+    
+    BVGet *showDisplayRequest2 = [[ BVGet alloc ] initWithType:BVGetTypeReviews];
+    [showDisplayRequest2 setLimit:100];
+    [showDisplayRequest2 setSearch: @"Great sound"];
+    [showDisplayRequest2 addSortForAttribute:@"Id" ascending:YES];
+    [showDisplayRequest2 sendRequestWithDelegate:self];
+    
+    BVGet *showDisplayRequest3 = [[ BVGet alloc ] initWithType:BVGetTypeReviews];
+    [showDisplayRequest3 setLimit:100];
+    [showDisplayRequest3 setSearch: @"Great sound"];
+    [showDisplayRequest3 addSortForAttribute:@"Id" ascending:YES];
+    [showDisplayRequest3 sendRequestWithDelegate:self];
+    
+    [impressionExpectation fulfill];
+    [pageviewExpectation fulfill];
+    
+    [self waitForExpectationsWithTimeout:30.0 handler:^(NSError *error) { }];
+}
+
 -(void)fireReviewAnalyticsCompletesWithLimit:(int)limit {
     
     BVGet *showDisplayRequest = [[ BVGet alloc ] initWithType:BVGetTypeReviews];

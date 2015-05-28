@@ -74,77 +74,69 @@ static BVAnalytics* BVAnalyticsSingleton = nil;
 }
 
 -(void)flushQueue {
-   
-    // Batch the queued up events, and send the request on a background thread
+    
+    // blanket error catching
     //
-    if([self.impressionQueue count] > 0) {
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
-            
-            // blanket error catching
+    @try {
+    
+        NSOperationQueue* networkQueue = [[NSOperationQueue alloc] init];
+       
+        // Batch the queued up events, and send the request on a background thread
+        //
+        if([self.impressionQueue count] > 0) {
+
+            // Ensure the url is under 2000 characters long. If it's longer, leave some events for the next queue flush
             //
-            @try {
-                // Ensure the url is under 2000 characters long. If it's longer, leave some events for the next queue flush
-                //
-                NSString* batchedEventsUrl = [self getBatchedEventsUrl:self.impressionQueue type:BVUGCImpression];
-                
-                // Form the NSURLRequest
-                //
-                NSURL *url = [[NSURL alloc] initWithString:batchedEventsUrl];
-                NSURLRequest* request = [[NSURLRequest alloc] initWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:10];
-                
-                // Send the request synchronously (we're on background thread)
-                //
-                [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
-                
+            NSString* batchedEventsUrl = [self getBatchedEventsUrl:self.impressionQueue type:BVUGCImpression];
+            
+            // Form the NSURLRequest
+            //
+            NSURL *url = [[NSURL alloc] initWithString:batchedEventsUrl];
+            NSURLRequest* request = [[NSURLRequest alloc] initWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:10];
+            
+            
+            [NSURLConnection sendAsynchronousRequest:request queue:networkQueue completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
                 // Used for testing purposes
                 //
-                [[NSNotificationCenter defaultCenter] postNotificationName:@"BV_INTERNAL_IMPRESSION_ANALYTICS_COMPLETED" object:nil];
-            }
-            @catch (NSException *exception)
-            {
-                // Print exception information
-                NSLog(@"BVSDK encountered an exception while trying to flush event queue: %@", exception.name);
-                NSLog(@"Reason: %@", exception.reason );
-            }
-        });
+                
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [[NSNotificationCenter defaultCenter] postNotificationName:@"BV_INTERNAL_IMPRESSION_ANALYTICS_COMPLETED" object:nil];
+                });
+            }];
+        }
+        
+        // Fire pageview events
+        //
+        if([self.pageviewQueue count] > 0){
+            
+            NSString* batchedEventsUrl = [self getBatchedEventsUrl:self.pageviewQueue type:BVProductPageview];
+            
+            // Format the pageview event into a full request
+            //
+            NSString* baseUrl = [self getBaseURL];
+            NSString* baseParamString = [self formatUrlParams:[self getBaseAnalyticsParams]];
+            NSString* formatedEventUrl = [NSString stringWithFormat:@"%@?%@%@", baseUrl, baseParamString, batchedEventsUrl];
+            
+            // Form and send the request synchronously (we're on background thread)
+            //
+            NSURL *url = [[NSURL alloc] initWithString:formatedEventUrl];
+            NSURLRequest* request = [[NSURLRequest alloc] initWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:10];
+            
+            
+            [NSURLConnection sendAsynchronousRequest:request queue:networkQueue completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+                // Used for testing purposes
+                //
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [[NSNotificationCenter defaultCenter] postNotificationName:@"BV_INTERNAL_PAGEVIEW_ANALYTICS_COMPLETED" object:nil];
+                });
+            }];
+        }
     }
     
-    // Fire pageview events
-    //
-    if([self.pageviewQueue count] > 0){
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
-            
-            // blanket error catching
-            //
-            @try {
-                
-                NSString* batchedEventsUrl = [self getBatchedEventsUrl:self.pageviewQueue type:BVProductPageview];
-                
-                // Format the pageview event into a full request
-                //
-                NSString* baseUrl = [self getBaseURL];
-                NSString* baseParamString = [self formatUrlParams:[self getBaseAnalyticsParams]];
-                NSString* formatedEventUrl = [NSString stringWithFormat:@"%@?%@%@", baseUrl, baseParamString, batchedEventsUrl];
-                
-                // Form and send the request synchronously (we're on background thread)
-                //
-                NSURL *url = [[NSURL alloc] initWithString:formatedEventUrl];
-                NSURLRequest* request = [[NSURLRequest alloc] initWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:10];
-                [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
-                
-//                NSLog(@"Sent analytics event: %@", batchedEventsUrl);
-                
-                // Used for testing purposes
-                //
-                [[NSNotificationCenter defaultCenter] postNotificationName:@"BV_INTERNAL_PAGEVIEW_ANALYTICS_COMPLETED" object:nil];
-            }
-            @catch (NSException *exception)
-            {
-                // Print exception information
-                NSLog(@"BVSDK encountered an exception while trying to flush event queue: %@", exception.name);
-                NSLog(@"Reason: %@", exception.reason );
-            }
-        });
+    @catch (NSException *exception)
+    {
+        NSLog(@"BVSDK encountered an exception while trying to flush event queue: %@", exception.name);
+        NSLog(@"Reason: %@", exception.reason );
     }
 }
 

@@ -1,3 +1,7 @@
+## 2.2.8 (May 27, 2015) 
+
+ Fixing errors caused by mutating an NSMutableArray in BVAnalytics.m on multiple threads (NSMutableArray is not thread safe) 
+
 ## 2.2.7 (Apr 16, 2015) 
 
  Supporting the universal api endpoint: api.bazaarvoice.com, as per the api updating guide found at developer.bazaarvoice.com 
