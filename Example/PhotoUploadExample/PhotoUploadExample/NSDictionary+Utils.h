@@ -1,9 +1,9 @@
 //
 //  NSDictionary+Utils.h
-//  BrowseProductsExample
+//  Bazaarvoice SDK - Photo Upload Example Application
 //
-//  Created by Bazaarvoice Engineering on 4/23/12.
-//  Copyright (c) 2012 Bazaarvoice. All rights reserved.
+//  Copyright 2015 Bazaarvoice Inc. All rights reserved.
+//
 //
 //  This category allows for graceful handling of null values in an
 //  NSDictionary when parsing JSON.  For example:

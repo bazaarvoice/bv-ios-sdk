@@ -1,9 +1,9 @@
 //
 //  ProductViewController.h
-//  PhotoUploadExample
+//  Bazaarvoice SDK - Photo Upload Example Application
 //
-//  Created by Bazaarvoice Engineering on 4/18/12.
-//  Copyright (c) 2012 Bazaarvoice. All rights reserved.
+//  Copyright 2015 Bazaarvoice Inc. All rights reserved.
+//
 //
 //  UIViewController for the initial product screen.  For this demo, it
 //  contains purely static content, but presumably it might be a 

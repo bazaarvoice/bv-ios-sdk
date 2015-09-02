@@ -1,9 +1,9 @@
 //
 //  ReviewDetailViewController.h
-//  BrowseProductsExample
+//  Bazaarvoice SDK - Demo Application
 //
-//  Created by Bazaarvoice Engineering on 4/25/12.
-//  Copyright (c) 2012 Bazaarvoice. All rights reserved.
+//  Copyright 2015 Bazaarvoice Inc. All rights reserved.
+//
 //
 //  UIViewController for displaying a specific review
 

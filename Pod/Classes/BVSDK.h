@@ -1,10 +1,10 @@
 //
 //  BVSDK.h
-//  BazaarvoiceSDK
+//  Bazaarvoice SDK
 //
-//  Created by Alex Medearis on 1/30/13.
-//  Copyright (c) 2013 Bazaarvoice. All rights reserved.
+//  Copyright 2015 Bazaarvoice Inc. All rights reserved.
 //
+
 
 #ifndef BazaarvoiceSDK_BVSDK_h
 #define BazaarvoiceSDK_BVSDK_h

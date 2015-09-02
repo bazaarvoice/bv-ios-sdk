@@ -1,35 +1,21 @@
 //
 //  BVSampleAppResultsViewController.m
-//  BVSampleApp
+//  Bazaarvoice SDK - Demo Application
 //
-//  Created by Bazaarvoice Engineering on 3/10/12.
-//  Copyright (c) 2012 Bazaarvoice Inc.. All rights reserved.
+//  Copyright 2015 Bazaarvoice Inc. All rights reserved.
 //
+
 
 #import "BVSampleAppResultsViewController.h"
 #import <BVSDK/BVSDK.h>
 
-@interface BVSampleAppResultsViewController ()
-
-@end
-
 @implementation BVSampleAppResultsViewController
-@synthesize urlTextView;
-@synthesize urlResultsView;
-@synthesize responseToDisplay = _responseToDisplay;
-
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
 
 - (void)viewDidAppear:(BOOL)animated {
-	// Do any additional setup after loading the view.
-    self.urlResultsView.text = [self.responseToDisplay description];
+
+    self.urlResultsView.text = [self prettyJson:self.responseToDisplay];
+    
+    
     if([self.requestToSend isKindOfClass:[BVPost class]]) {
         self.urlTextView.text = [(BVPost *)self.requestToSend requestURL];
     } else if([self.requestToSend isKindOfClass:[BVGet class]]) {
@@ -42,21 +28,28 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
     self.title = @"BVResponse";
-    [self.navigationController.navigationBar setTranslucent:NO];
 }
 
 - (void)viewDidUnload
 {
     [self setUrlResultsView:nil];
+    [self setUrlTextView:nil];
     [super viewDidUnload];
-    // Release any retained subviews of the main view.
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+// format dictionary as JSON with indents and line breaks.
+-(NSString*)prettyJson:(NSDictionary*)json {
+    NSError *error;
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:self.responseToDisplay
+                                                       options:NSJSONWritingPrettyPrinted
+                                                         error:&error];
+    
+    if (jsonData == nil) {
+        return [NSString stringWithFormat:@"Error: %@", error.localizedDescription];
+    } else {
+        return [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+    }
 }
 
 @end

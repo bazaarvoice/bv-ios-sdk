@@ -1,10 +1,10 @@
 //
 //  BVSettings.h
-//  BazaarvoiceSDK
-//  
-//  Created by Bazaarvoice Engineering on 2/21/12.
-//  Copyright (c) 2012 Bazaarvoice Inc. All rights reserved.
+//  Bazaarvoice SDK
 //
+//  Copyright 2015 Bazaarvoice Inc. All rights reserved.
+//
+
 
 
 #import <Foundation/Foundation.h>

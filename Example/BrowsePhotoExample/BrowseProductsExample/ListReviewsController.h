@@ -1,9 +1,8 @@
 //
 //  ListReviewsController.h
-//  RateAndReviewExample
+//  Bazaarvoice SDK - Demo Application
 //
-//  Created by Bazaarvoice Engineering on 4/23/12.
-//  Copyright (c) 2012 Bazaarvoice. All rights reserved.
+//  Copyright 2015 Bazaarvoice Inc. All rights reserved.
 //
 //  UIViewController for displaying a list of products for a given search
 //  term.

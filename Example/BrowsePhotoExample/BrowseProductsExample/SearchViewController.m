@@ -1,9 +1,8 @@
 //
 //  SearchViewController.m
-//  BrowseProductsExample
+//  Bazaarvoice SDK - Demo Application
 //
-//  Created by Bazaarvoice Engineering on 4/26/12.
-//  Copyright (c) 2012 Bazaarvoice. All rights reserved.
+//  Copyright 2015 Bazaarvoice Inc. All rights reserved.
 //
 
 #import "SearchViewController.h"
@@ -42,7 +41,6 @@
     
     // Global BV SDK setup.  In general this should only occur once
     [BVSettings instance].passKey = @"KEY_REMOVED";
-    [BVSettings instance].baseURL = @"reviews.apitestcustomer.bazaarvoice.com";
     [BVSettings instance].staging = YES;
     
     UIImage *image = [UIImage imageNamed:@"graphic-star.png"];

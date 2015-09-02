@@ -1,9 +1,8 @@
 //
 //  BVColor.m
-//  PhotoUploadExample
+//  Bazaarvoice SDK - Demo Application
 //
-//  Created by Bazaarvoice Engineering on 5/8/12.
-//  Copyright (c) 2012 Bazaarvoice. All rights reserved.
+//  Copyright 2015 Bazaarvoice Inc. All rights reserved.
 //
 
 #import "BVColor.h"

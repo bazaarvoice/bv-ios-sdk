@@ -1,10 +1,10 @@
 //
 //  AnalyticsTests.m
-//  BVSDK
+//  Bazaarvoice SDK
 //
-//  Created by Jason Harris on 2/22/15.
-//  Copyright (c) 2015 Jason Harris. All rights reserved.
+//  Copyright 2015 Bazaarvoice Inc. All rights reserved.
 //
+
 
 #import <UIKit/UIKit.h>
 #import <XCTest/XCTest.h>

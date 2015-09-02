@@ -1,10 +1,10 @@
 //
 //  NSDictionary+Utils.m
-//  BrowseProductsExample
+//  Bazaarvoice SDK - Photo Upload Example Application
 //
-//  Created by Bazaarvoice Engineering on 4/23/12.
-//  Copyright (c) 2012 Bazaarvoice. All rights reserved.
+//  Copyright 2015 Bazaarvoice Inc. All rights reserved.
 //
+
 #import "NSDictionary+Utils.h"
 
 @implementation NSDictionary (Utils)
