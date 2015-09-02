@@ -14,9 +14,7 @@
 		4DA3E138150BCA0500E897AF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DA3E137150BCA0500E897AF /* main.m */; };
 		4DA3E13C150BCA0600E897AF /* BVSampleAppAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DA3E13B150BCA0600E897AF /* BVSampleAppAppDelegate.m */; };
 		4DA3E13F150BCA0600E897AF /* BVSampleAppMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DA3E13E150BCA0600E897AF /* BVSampleAppMainViewController.m */; };
-		4DA3E142150BCA0600E897AF /* BVSampleAppFlipsideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DA3E141150BCA0600E897AF /* BVSampleAppFlipsideViewController.m */; };
 		4DA3E145150BCA0600E897AF /* BVSampleAppMainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DA3E143150BCA0600E897AF /* BVSampleAppMainViewController.xib */; };
-		4DA3E148150BCA0600E897AF /* BVSampleAppFlipsideViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DA3E146150BCA0600E897AF /* BVSampleAppFlipsideViewController.xib */; };
 		4DA3E21C150BE35900E897AF /* BVSampleAppResultsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DA3E21B150BE35900E897AF /* BVSampleAppResultsViewController.xib */; };
 		4DA3E21F150BE4AD00E897AF /* BVSampleAppResultsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DA3E21E150BE4AD00E897AF /* BVSampleAppResultsViewController.m */; };
 		4E541A4E93D73A6E1BEB841F /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 72FE5ECD71072466765CEE1A /* libPods.a */; };
@@ -41,10 +39,7 @@
 		4DA3E13B150BCA0600E897AF /* BVSampleAppAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = BVSampleAppAppDelegate.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		4DA3E13D150BCA0600E897AF /* BVSampleAppMainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = BVSampleAppMainViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		4DA3E13E150BCA0600E897AF /* BVSampleAppMainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = BVSampleAppMainViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		4DA3E140150BCA0600E897AF /* BVSampleAppFlipsideViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = BVSampleAppFlipsideViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
-		4DA3E141150BCA0600E897AF /* BVSampleAppFlipsideViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = BVSampleAppFlipsideViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		4DA3E144150BCA0600E897AF /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/BVSampleAppMainViewController.xib; sourceTree = "<group>"; };
-		4DA3E147150BCA0600E897AF /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/BVSampleAppFlipsideViewController.xib; sourceTree = "<group>"; };
 		4DA3E21B150BE35900E897AF /* BVSampleAppResultsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BVSampleAppResultsViewController.xib; sourceTree = "<group>"; };
 		4DA3E21D150BE4AD00E897AF /* BVSampleAppResultsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = BVSampleAppResultsViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		4DA3E21E150BE4AD00E897AF /* BVSampleAppResultsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = BVSampleAppResultsViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
@@ -121,15 +116,8 @@
 			children = (
 				4DA3E13A150BCA0600E897AF /* BVSampleAppAppDelegate.h */,
 				4DA3E13B150BCA0600E897AF /* BVSampleAppAppDelegate.m */,
-				4DA3E13D150BCA0600E897AF /* BVSampleAppMainViewController.h */,
-				4DA3E13E150BCA0600E897AF /* BVSampleAppMainViewController.m */,
-				4DA3E21D150BE4AD00E897AF /* BVSampleAppResultsViewController.h */,
-				4DA3E21E150BE4AD00E897AF /* BVSampleAppResultsViewController.m */,
-				4DA3E140150BCA0600E897AF /* BVSampleAppFlipsideViewController.h */,
-				4DA3E141150BCA0600E897AF /* BVSampleAppFlipsideViewController.m */,
-				4DA3E143150BCA0600E897AF /* BVSampleAppMainViewController.xib */,
-				4DA3E146150BCA0600E897AF /* BVSampleAppFlipsideViewController.xib */,
-				4DA3E21B150BE35900E897AF /* BVSampleAppResultsViewController.xib */,
+				736E4A281B97438F008FEC5E /* MainController */,
+				736E4A291B97439D008FEC5E /* ResultsController */,
 				6F229F7516729417005E24E3 /* sample_mpeg4.mp4 */,
 				BFE3F821154B0A1D00E9DA6D /* bv533x533.png */,
 				4DA3E132150BCA0500E897AF /* Supporting Files */,
@@ -146,6 +134,26 @@
 				4DA3E139150BCA0600E897AF /* BVSampleApp-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		736E4A281B97438F008FEC5E /* MainController */ = {
+			isa = PBXGroup;
+			children = (
+				4DA3E13D150BCA0600E897AF /* BVSampleAppMainViewController.h */,
+				4DA3E13E150BCA0600E897AF /* BVSampleAppMainViewController.m */,
+				4DA3E143150BCA0600E897AF /* BVSampleAppMainViewController.xib */,
+			);
+			name = MainController;
+			sourceTree = "<group>";
+		};
+		736E4A291B97439D008FEC5E /* ResultsController */ = {
+			isa = PBXGroup;
+			children = (
+				4DA3E21D150BE4AD00E897AF /* BVSampleAppResultsViewController.h */,
+				4DA3E21E150BE4AD00E897AF /* BVSampleAppResultsViewController.m */,
+				4DA3E21B150BE35900E897AF /* BVSampleAppResultsViewController.xib */,
+			);
+			name = ResultsController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -177,7 +185,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = BVSampleApp;
-				LastUpgradeCheck = 0610;
+				LastUpgradeCheck = 0640;
 			};
 			buildConfigurationList = 4DA3E121150BCA0500E897AF /* Build configuration list for PBXProject "BVSampleApp" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -203,7 +211,6 @@
 			files = (
 				4DA3E136150BCA0500E897AF /* InfoPlist.strings in Resources */,
 				4DA3E145150BCA0600E897AF /* BVSampleAppMainViewController.xib in Resources */,
-				4DA3E148150BCA0600E897AF /* BVSampleAppFlipsideViewController.xib in Resources */,
 				4DA3E21C150BE35900E897AF /* BVSampleAppResultsViewController.xib in Resources */,
 				BFE3F822154B0A1D00E9DA6D /* bv533x533.png in Resources */,
 				73E36AFA1A5F158D00D49761 /* Launch Screen.xib in Resources */,
@@ -257,7 +264,6 @@
 				4DA3E138150BCA0500E897AF /* main.m in Sources */,
 				4DA3E13C150BCA0600E897AF /* BVSampleAppAppDelegate.m in Sources */,
 				4DA3E13F150BCA0600E897AF /* BVSampleAppMainViewController.m in Sources */,
-				4DA3E142150BCA0600E897AF /* BVSampleAppFlipsideViewController.m in Sources */,
 				4DA3E21F150BE4AD00E897AF /* BVSampleAppResultsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -281,14 +287,6 @@
 			name = BVSampleAppMainViewController.xib;
 			sourceTree = "<group>";
 		};
-		4DA3E146150BCA0600E897AF /* BVSampleAppFlipsideViewController.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				4DA3E147150BCA0600E897AF /* en */,
-			);
-			name = BVSampleAppFlipsideViewController.xib;
-			sourceTree = "<group>";
-		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
@@ -309,6 +307,7 @@
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -344,6 +343,7 @@
 				COPY_PHASE_STRIP = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -369,7 +369,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BVSampleApp/BVSampleApp-Prefix.pch";
 				INFOPLIST_FILE = "BVSampleApp/BVSampleApp-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				"OTHER_LDFLAGS[arch=*]" = (
 					"-ObjC",
@@ -391,7 +391,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BVSampleApp/BVSampleApp-Prefix.pch";
 				INFOPLIST_FILE = "BVSampleApp/BVSampleApp-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				"OTHER_LDFLAGS[arch=*]" = (
 					"-ObjC",

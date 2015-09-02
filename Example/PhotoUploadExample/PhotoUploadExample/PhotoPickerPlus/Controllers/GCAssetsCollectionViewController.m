@@ -20,7 +20,6 @@
 @interface GCAssetsCollectionViewController ()
 
 @property (strong, nonatomic) NSMutableArray *selectedAssets;
-
 @property (nonatomic, strong) UIBarButtonItem *doneButton;
 
 @end

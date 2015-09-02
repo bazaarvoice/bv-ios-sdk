@@ -1,20 +1,17 @@
 //
 //  BVSampleAppMainViewController.h
-//  BVSampleApp
+//  Bazaarvoice SDK - Demo Application
 //
-//  Created by Bazaarvoice Engineering on 3/10/12.
-//  Copyright (c) 2012 Bazaarvoice Inc.. All rights reserved.
+//  Copyright 2015 Bazaarvoice Inc. All rights reserved.
 //
 
-#import "BVSampleAppFlipsideViewController.h"
+
 #import "BVSampleAppResultsViewController.h"
 #import <BVSDK/BVSDK.h>
 
-@interface BVSampleAppMainViewController : UIViewController <BVSampleAppFlipsideViewControllerDelegate, BVDelegate> {
+@interface BVSampleAppMainViewController : UIViewController <BVDelegate> {
     BVSampleAppResultsViewController *myResultsView;
 }
-
-- (IBAction)showInfo:(id)sender;
 
 //Display Classes
 - (IBAction)showReview;

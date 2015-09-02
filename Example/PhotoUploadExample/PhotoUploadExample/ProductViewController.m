@@ -1,9 +1,8 @@
 //
 //  ProductViewController.m
-//  PhotoUploadExample
+//  Bazaarvoice SDK - Photo Upload Example Application
 //
-//  Created by Bazaarvoice Engineering on 4/18/12.
-//  Copyright (c) 2012 Bazaarvoice. All rights reserved.
+//  Copyright 2015 Bazaarvoice Inc. All rights reserved.
 //
 
 #import "ProductViewController.h"
@@ -31,7 +30,6 @@
     [BVSettings instance].passKey = @"2cpdrhohmgmwfz8vqyo48f52g";
     // These are test endpoints, merely to illustrate use of the api
     // calls to our stating server.
-    [BVSettings instance].baseURL = @"reviews.apitestcustomer.Bazaarvoice.com";
     [BVSettings instance].staging = YES;
     
     self.navigationController.navigationBar.translucent = NO;

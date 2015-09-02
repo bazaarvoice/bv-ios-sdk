@@ -1,10 +1,10 @@
 //
 //  BVPost.m
-//  BazaarvoiceSDK
+//  Bazaarvoice SDK
 //
-//  Created by Bazaarvoice Engineering on 11/26/12.
-//  Copyright (c) 2012 Bazaarvoice Inc. All rights reserved.
+//  Copyright 2015 Bazaarvoice Inc. All rights reserved.
 //
+
 
 #import "BVPost.h"
 #import "BVSettings.h"

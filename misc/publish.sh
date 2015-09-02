@@ -30,19 +30,8 @@ echo "Versions are equal!"
 echo "Generating docs..."
 ./misc/generate_docs.sh
 
-echo "Enter a commit message"
-read commitmsg
-
-NOW=$(date +"%b %d, %Y")
-CHANGELOG_STR="## $SDK_VER ($NOW) \n\n $commitmsg \n\n"
-echo -e "$CHANGELOG_STR$(cat CHANGELOG.md)" > CHANGELOG.md
-
-git add .
-git commit -m "$commitmsg"
-git tag -a "$SDK_VER" -m "SDK $SDK_VER for API Version 5.4"
-
 echo ""
 echo "Done."
-echo "Run 'git push' and 'git push --tags' in bv-ios-sdk."
+echo "Commit and push everything. Remember to add a tag if this is a new version!"
 echo "Then, deploy to cocoapods following instructions here: http://guides.cocoapods.org/making/using-pod-lib-create.html"
 echo ""

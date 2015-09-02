@@ -1,9 +1,9 @@
 //
 //  UIPlaceHolderTextView.h
-//  PhotoUploadExample
+//  Bazaarvoice SDK - Photo Upload Example Application
 //
-//  Created by Bazaarvoice Engineering on 4/27/12.
-//  Copyright (c) 2012 Bazaarvoice. All rights reserved.
+//  Copyright 2015 Bazaarvoice Inc. All rights reserved.
+//
 //
 //  A custom UITextView which can display placeholder text
 

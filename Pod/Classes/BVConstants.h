@@ -1,10 +1,10 @@
 //
 //  BVConstants.h
-//  BazaarvoiceSDK
+//  Bazaarvoice SDK
 //
-//  Created by Bazaarvoice Engineering on 11/26/12.
-//  Copyright (c) 2012 Bazaarvoice Inc. All rights reserved.
+//  Copyright 2015 Bazaarvoice Inc. All rights reserved.
 //
+
 
 #ifndef BazaarvoiceSDK_BVConstants_h
 #define BazaarvoiceSDK_BVConstants_h

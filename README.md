@@ -77,4 +77,4 @@ Unit tests can be run with:
 The SDK was updated to version 2 on **January, 2013**. If updating from version 1, see the included V2UpdateGuide for information on how to update a project using the old BV iOS SDK to version 2.
 
 ## License
-See [Bazaarvoice's API Terms of Use](http://developer.bazaarvoice.com/API_Terms_of_Use). Except as otherwise noted, the Bazaarvoice iOS SDK licensed under the [Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.html).
+See [Bazaarvoice's API Terms of Use](https://developer.bazaarvoice.com/legal/terms_of_use). Except as otherwise noted, the Bazaarvoice iOS SDK licensed under the [Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.html).

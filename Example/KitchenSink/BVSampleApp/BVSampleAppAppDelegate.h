@@ -1,10 +1,10 @@
 //
 //  BVSampleAppAppDelegate.h
-//  BVSampleApp
+//  Bazaarvoice SDK - Demo Application
 //
-//  Created by Bazaarvoice Engineering on 3/10/12.
-//  Copyright (c) 2012 Bazaarvoice Inc.. All rights reserved.
+//  Copyright 2015 Bazaarvoice Inc. All rights reserved.
 //
+
 
 #import <UIKit/UIKit.h>
 
@@ -13,7 +13,6 @@
 @interface BVSampleAppAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
-@property (strong, nonatomic) BVSampleAppMainViewController *mainViewController;
 @property (strong, nonatomic) UINavigationController *mainNavController;
 
 @end

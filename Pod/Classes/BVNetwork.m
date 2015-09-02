@@ -1,10 +1,10 @@
 //
 //  BVNetwork.m
-//  BazaarvoiceSDK
+//  Bazaarvoice SDK
 //
-//  Created by Bazaarvoice Engineering on 11/27/12.
-//  Copyright (c) 2012 Bazaarvoice Inc. All rights reserved.
+//  Copyright 2015 Bazaarvoice Inc. All rights reserved.
 //
+
 
 #import <UIKit/UIKit.h>
 #import "BVNetwork.h"

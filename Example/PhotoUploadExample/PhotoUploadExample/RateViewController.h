@@ -1,9 +1,9 @@
 //
 //  RateViewController.h
-//  PhotoUploadExample
+//  Bazaarvoice SDK - Photo Upload Example Application
 //
-//  Created by Bazaarvoice Engineering on 4/25/12.
-//  Copyright (c) 2012 Bazaarvoice. All rights reserved.
+//  Copyright 2015 Bazaarvoice Inc. All rights reserved.
+//
 //
 //  UIViewController for the form submission screen.  
 

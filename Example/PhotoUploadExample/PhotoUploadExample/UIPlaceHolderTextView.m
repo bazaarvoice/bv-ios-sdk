@@ -1,9 +1,8 @@
 //
 //  UIPlaceHolderTextView.m
-//  PhotoUploadExample
+//  Bazaarvoice SDK - Photo Upload Example Application
 //
-//  Created by Alex Medearis on 4/27/12.
-//  Copyright (c) 2012 Bazaarvoice. All rights reserved.
+//  Copyright 2015 Bazaarvoice Inc. All rights reserved.
 //
 
 #import "UIPlaceHolderTextView.h"

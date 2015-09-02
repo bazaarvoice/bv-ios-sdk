@@ -1,9 +1,8 @@
 //
 //  ListReviewsController.m
-//  RateAndReviewExample
+//  Bazaarvoice SDK - Demo Application
 //
-//  Created by Bazaarvoice Engineering on 4/23/12.
-//  Copyright (c) 2012 Bazaarvoice. All rights reserved.
+//  Copyright 2015 Bazaarvoice Inc. All rights reserved.
 //
 
 #import "ListReviewsController.h"

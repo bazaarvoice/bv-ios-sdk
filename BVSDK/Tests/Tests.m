@@ -1,8 +1,8 @@
 //
 //  Tests.m
+//  Bazaarvoice SDK
 //
-//  Created by Alex Medearis on 1/30/13.
-//  Copyright (c) 2015 Bazaarvoice. All rights reserved.
+//  Copyright 2015 Bazaarvoice Inc. All rights reserved.
 //
 
 
