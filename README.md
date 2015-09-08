@@ -31,7 +31,7 @@ If you don't have CocoaPods installed:
 2. Convert your projects to a Cocoapods project by running `pod init` in your project directory. Afterwards, your project directory should look like this:  
 ![Project Directory](http://i.imgur.com/VL2SrBA.png)  
 You should then open the .xcworkspace from now on.
-3. Edit `Podfile` and simply add `pod "BVSDK"`.
+3. Edit the `Podfile` within the Pods directory and simply add `pod "BVSDK"`.
 4. run `pod install` in your project directory. Afterwards, when you open your `.xcworkspace`, your Project Navigator should look like this:  
 ![Project Navigator](http://i.imgur.com/1X24P4f.png)
 5. Awesome! The BVSDK is now included in your project. Add `#import <BVSDK/BVSDK.h>` **(Objective-C)** or `import BVSDK` **(Swift)** to include the sdk in your file. See the Quick-Start guide for a more complete example implementation.
