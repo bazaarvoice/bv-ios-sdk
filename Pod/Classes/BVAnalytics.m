@@ -78,9 +78,6 @@ static BVAnalytics* BVAnalyticsSingleton = nil;
     // blanket error catching
     //
     @try {
-    
-        NSOperationQueue* networkQueue = [[NSOperationQueue alloc] init];
-       
         // Batch the queued up events, and send the request on a background thread
         //
         if([self.impressionQueue count] > 0) {
@@ -94,8 +91,8 @@ static BVAnalytics* BVAnalyticsSingleton = nil;
             NSURL *url = [[NSURL alloc] initWithString:batchedEventsUrl];
             NSURLRequest* request = [[NSURLRequest alloc] initWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:10];
             
-            
-            [NSURLConnection sendAsynchronousRequest:request queue:networkQueue completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+            NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
+            NSURLSessionDataTask *sessionTask = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
                 // Used for testing purposes
                 //
                 
@@ -103,6 +100,7 @@ static BVAnalytics* BVAnalyticsSingleton = nil;
                     [[NSNotificationCenter defaultCenter] postNotificationName:@"BV_INTERNAL_IMPRESSION_ANALYTICS_COMPLETED" object:nil];
                 });
             }];
+            [sessionTask resume];
         }
         
         // Fire pageview events
@@ -122,14 +120,15 @@ static BVAnalytics* BVAnalyticsSingleton = nil;
             NSURL *url = [[NSURL alloc] initWithString:formatedEventUrl];
             NSURLRequest* request = [[NSURLRequest alloc] initWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:10];
             
-            
-            [NSURLConnection sendAsynchronousRequest:request queue:networkQueue completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+            NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
+            NSURLSessionDataTask *sessionTask = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
                 // Used for testing purposes
                 //
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [[NSNotificationCenter defaultCenter] postNotificationName:@"BV_INTERNAL_PAGEVIEW_ANALYTICS_COMPLETED" object:nil];
                 });
             }];
+            [sessionTask resume];
         }
     }
     
