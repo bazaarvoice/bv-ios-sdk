@@ -7,7 +7,7 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
-#import <BVSettings.h>
+#import "BVSettings.h"
 
 /*!
  BVAnalytics is a singleton object which queues, batches, and handles analytics event requests.
