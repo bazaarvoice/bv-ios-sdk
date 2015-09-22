@@ -12,7 +12,7 @@
 #define SDK_HEADER_NAME @"X-UA-BV-SDK"
 #define SDK_HEADER_VALUE @"IOS_SDK_V228"
 
-@interface BVNetwork : NSObject<NSURLConnectionDataDelegate>
+@interface BVNetwork : NSObject<NSURLSessionDataDelegate>
 
 - (id)initWithSender:(id)sender;
 
