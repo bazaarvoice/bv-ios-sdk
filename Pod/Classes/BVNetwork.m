@@ -285,10 +285,12 @@ static NSString *urlEncode(id object) {
 
 #pragma mark NSURLSession delegates
 
+
 - (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didSendBodyData:(int64_t)bytesSent totalBytesSent:(int64_t)totalBytesSent totalBytesExpectedToSend:(int64_t)totalBytesExpectedToSend {
-    if (self.delegate != nil && [self.delegate respondsToSelector:@selector(didSendBodyData:totalBytesWritten:totalBytesExpectedToWrite:forRequest:)])
+
+    if (self.delegate != nil && [self.delegate respondsToSelector:@selector(didSendBodyData:totalBytesSent:totalBytesExpectedToSend:forRequest:)])
     {
-        [self.delegate didSendBodyData:bytesSent totalBytesWritten:totalBytesSent totalBytesExpectedToWrite:totalBytesExpectedToSend forRequest:self.sender];
+        [self.delegate didSendBodyData:bytesSent totalBytesSent:totalBytesSent totalBytesExpectedToSend:totalBytesExpectedToSend forRequest:self.sender];
     }
 }
 
