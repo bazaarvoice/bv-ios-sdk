@@ -308,7 +308,9 @@ static NSString *urlEncode(id object) {
 - (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didCompleteWithError:(NSError *)error {
     if (error != nil) {
         if (self.delegate != nil && [self.delegate respondsToSelector:@selector(didFailToReceiveResponse:forRequest:)]){
-            [self.delegate didFailToReceiveResponse:error forRequest:self.sender];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self.delegate didFailToReceiveResponse:error forRequest:self.sender];
+            });
         }
     } else {
         NSError *error = nil;
@@ -328,9 +330,10 @@ static NSString *urlEncode(id object) {
             
             dispatch_async(dispatch_get_main_queue(), ^{
                 [[BVAnalytics instance] queueAnalyticsEventForResponse:response forRequest:self.sender];
+                [self.delegate didReceiveResponse:response forRequest:self.sender];
             });
             
-            [self.delegate didReceiveResponse:response forRequest:self.sender];
+            
         }
     }
 }
