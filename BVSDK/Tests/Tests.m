@@ -120,7 +120,7 @@
     NSRunLoop *theRL = [NSRunLoop currentRunLoop];
     // Begin a run loop terminated when the requestComplete it set to true
     while (!requestComplete && [theRL runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]]);
-    [self checkParams:[NSMutableDictionary dictionaryWithObjectsAndKeys:nil]];
+    [self checkParams:[NSMutableDictionary dictionary]];
 }
 
 
@@ -169,7 +169,7 @@
     NSRunLoop *theRL = [NSRunLoop currentRunLoop];
     // Begin a run loop terminated when the requestComplete it set to true
     while (!requestComplete && [theRL runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]]);
-    [self checkParams:[NSMutableDictionary dictionaryWithObjectsAndKeys:nil]];
+    [self checkParams:[NSMutableDictionary dictionary]];
 }
 
 - (void)testShowQuestion {
@@ -205,7 +205,7 @@
     // Begin a run loop terminated when the requestComplete it set to true
     while (!requestComplete && [theRL runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]]);
     
-    [self checkParams:[NSMutableDictionary dictionaryWithObjectsAndKeys:nil]];
+    [self checkParams:[NSMutableDictionary dictionary]];
 }
 
 
@@ -270,7 +270,7 @@
     NSRunLoop *theRL = [NSRunLoop currentRunLoop];
     // Begin a run loop terminated when the requestComplete it set to true
     while (!requestComplete && [theRL runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]]);
-    [self checkParams:[NSMutableDictionary dictionaryWithObjectsAndKeys:nil]];
+    [self checkParams:[NSMutableDictionary dictionary]];
 }
 
 - (void)testShowComments {
@@ -301,7 +301,7 @@
     NSRunLoop *theRL = [NSRunLoop currentRunLoop];
     // Begin a run loop terminated when the requestComplete it set to true
     while (!requestComplete && [theRL runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]]);
-    [self checkParams:[NSMutableDictionary dictionaryWithObjectsAndKeys:nil]];
+    [self checkParams:[NSMutableDictionary dictionary]];
     
 }
 
@@ -334,7 +334,7 @@
     // Begin a run loop terminated when the requestComplete it set to true
     while (!requestComplete && [theRL runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]]);
     
-    [self checkParams:[NSMutableDictionary dictionaryWithObjectsAndKeys:nil]];
+    [self checkParams:[NSMutableDictionary dictionary]];
 }
 
 - (void)testShowProfile {
@@ -361,7 +361,7 @@
     NSRunLoop *theRL = [NSRunLoop currentRunLoop];
     // Begin a run loop terminated when the requestComplete it set to true
     while (!requestComplete && [theRL runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]]);
-    [self checkParams:[NSMutableDictionary dictionaryWithObjectsAndKeys:nil]];
+    [self checkParams:[NSMutableDictionary dictionary]];
 }
 
 - (void)testShowProducts {
@@ -392,7 +392,7 @@
     NSRunLoop *theRL = [NSRunLoop currentRunLoop];
     // Begin a run loop terminated when the requestComplete it set to true
     while (!requestComplete && [theRL runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]]);
-    [self checkParams:[NSMutableDictionary dictionaryWithObjectsAndKeys:nil]];
+    [self checkParams:[NSMutableDictionary dictionary]];
 }
 
 - (void)testShowCateogry {
