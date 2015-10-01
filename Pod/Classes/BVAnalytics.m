@@ -32,10 +32,12 @@ static BVAnalytics* BVAnalyticsSingleton = nil;
 
 @implementation BVAnalytics
 
-+ (BVAnalytics*) instance {
-    if (BVAnalyticsSingleton == nil) {
-        BVAnalyticsSingleton = [[BVAnalytics alloc] init];
-    }
++ (BVAnalytics *) instance {
+    
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        BVAnalyticsSingleton = [[self alloc] init];
+    });
     
     return BVAnalyticsSingleton;
 }
