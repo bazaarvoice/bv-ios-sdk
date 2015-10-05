@@ -114,7 +114,7 @@ static NSString *urlEncode(id object) {
 - (void)sendGetWithEndpoint:(NSString *)endpoint withUrlString:(NSString *)urlString {
     BVSettings *settings = [BVSettings instance];
     if (urlString == nil) {
-        urlString = [NSString stringWithFormat:@"http://%@api.bazaarvoice.com/data/%@?%@",
+        urlString = [NSString stringWithFormat:@"https://%@api.bazaarvoice.com/data/%@?%@",
                      settings.staging ? @"stg." : @"",
                      endpoint,
                      [self getParamsString]];
@@ -166,7 +166,7 @@ static NSString *urlEncode(id object) {
         @throw exception;
     }
     BVSettings *settings = [BVSettings instance];
-    NSString *urlString = [NSString stringWithFormat:@"http://%@api.bazaarvoice.com/data/%@",
+    NSString *urlString = [NSString stringWithFormat:@"https://%@api.bazaarvoice.com/data/%@",
                            settings.staging ? @"stg." : @"",
                            endpoint];
     
