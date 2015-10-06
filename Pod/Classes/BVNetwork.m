@@ -290,7 +290,7 @@ static NSString *urlEncode(id object) {
 
     if (self.delegate != nil && [self.delegate respondsToSelector:@selector(didSendBodyData:totalBytesSent:totalBytesExpectedToSend:forRequest:)])
     {
-        [self.delegate didSendBodyData:bytesSent totalBytesSent:totalBytesSent totalBytesExpectedToSend:totalBytesExpectedToSend forRequest:self.sender];
+        [self.delegate didSendBodyData:(NSInteger)bytesSent totalBytesSent:(NSInteger)totalBytesSent totalBytesExpectedToSend:(NSInteger)totalBytesExpectedToSend forRequest:self.sender];
     }
 }
 
