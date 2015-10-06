@@ -8,10 +8,16 @@ The Bazaarvoice software development kit (SDK) for iOS is an iOS library that pr
 
 Developers can display content as well as submit content such as Ratings & Reviews, Ask & Answer and Stories, including text and photo. Included reference apps and a Quick Start Guide will allow developers to integrate Bazaarvoice quickly, with little overhead.
 
+
 **Where to start:**  
 1. Read the Quick Start guide to get familiar with installation and building a bare-bones, simple application that uses the SDK.  
 2. The documentation, located in the Docs folder, provides additional information into the capabilities of the SDK itself.  
-3. Sample applications, located in the Example folder, provide example uses of the SDK and implementation best practices.  
+3. Sample applications, located in the Example folder, provide example uses of the SDK and implementation best practices.   
+
+
+## Important note for iOS 9
+Apple introduced [App Transport Security](https://developer.apple.com/library/prerelease/ios/releasenotes/General/WhatsNewIniOS/Articles/iOS9.html#//apple_ref/doc/uid/TP40016198-SW14) in iOS 9. This requires apps to use `HTTPS://` only, to enhance security. This SDK uses only `HTTPS://`, however some data returned may not. For example, a product image URL. If this is the case, ATS may need to be disabled for your image hosting domain.  
+
 
 ## Upgrading from previous version of SDK
 If you have a previous version of the BVSDK in your project, chances are you have `BVSDK.framework` in your project. Updating should be smooth and quick - simply delete BVSDK.framework and follow installation instructions below. All existing functionality should remain unchanged - so just follow the installation instructions below to get the updated SDK with proper 64-bit support and various bug fixes and improvements.

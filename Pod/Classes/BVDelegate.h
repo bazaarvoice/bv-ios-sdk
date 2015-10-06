@@ -25,11 +25,11 @@
 /*!
  Delegate callback to indicate that body data has been sent as part of this request.  This method will only be called for submission requests and will be called one or more times as the data is sent.
  @param bytesWritten The number of bytes written in this update.
- @param totalBytesWritten The total number of bytes written for this entire request.
- @param totalBytesExpectedToWrite The total number of bytes expected to be written as part of this request.
+ @param totalBytesSent The total number of bytes written for this entire request.
+ @param totalBytesExpectedToSend The total number of bytes expected to be written as part of this request.
  @param request The object which generated the request.
  */
-- (void) didSendBodyData:(NSInteger)bytesWritten totalBytesWritten:(NSInteger)totalBytesWritten totalBytesExpectedToWrite:(NSInteger)totalBytesExpectedToWrite forRequest:(id)request;
+- (void) didSendBodyData:(int64_t)bytesSent totalBytesSent:(int64_t)totalBytesSent totalBytesExpectedToSend:(int64_t)totalBytesExpectedToSend forRequest:(id)request;
 
 /*!
  Delegate callback for the case that the request fails.

@@ -114,7 +114,7 @@ static NSString *urlEncode(id object) {
 - (void)sendGetWithEndpoint:(NSString *)endpoint withUrlString:(NSString *)urlString {
     BVSettings *settings = [BVSettings instance];
     if (urlString == nil) {
-        urlString = [NSString stringWithFormat:@"http://%@api.bazaarvoice.com/data/%@?%@",
+        urlString = [NSString stringWithFormat:@"https://%@api.bazaarvoice.com/data/%@?%@",
                      settings.staging ? @"stg." : @"",
                      endpoint,
                      [self getParamsString]];
@@ -142,11 +142,13 @@ static NSString *urlEncode(id object) {
     
     
     
-    NSURLConnection *theConnection =[[NSURLConnection alloc] initWithRequest:request delegate:self startImmediately:NO];
-    [theConnection scheduleInRunLoop:[NSRunLoop mainRunLoop]
-                             forMode:NSDefaultRunLoopMode];
-    [theConnection start];
-    if (theConnection) {
+    NSURLSession *session = [NSURLSession
+                             sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]
+                             delegate:self
+                             delegateQueue:nil];
+    NSURLSessionDataTask *sessionTask = [session dataTaskWithRequest:request];
+    [sessionTask resume];
+    if (sessionTask) {
         // Create the NSMutableData to hold the received data.
         // receivedData is an instance variable declared elsewhere.
         self.receivedData = [NSMutableData data];
@@ -164,7 +166,7 @@ static NSString *urlEncode(id object) {
         @throw exception;
     }
     BVSettings *settings = [BVSettings instance];
-    NSString *urlString = [NSString stringWithFormat:@"http://%@api.bazaarvoice.com/data/%@",
+    NSString *urlString = [NSString stringWithFormat:@"https://%@api.bazaarvoice.com/data/%@",
                            settings.staging ? @"stg." : @"",
                            endpoint];
     
@@ -190,11 +192,13 @@ static NSString *urlEncode(id object) {
     // Attach the SDK version header to every request.
     [request addValue:SDK_HEADER_VALUE forHTTPHeaderField:SDK_HEADER_NAME];
     
-    NSURLConnection *theConnection =[[NSURLConnection alloc] initWithRequest:request delegate:self startImmediately:NO];
-        [theConnection scheduleInRunLoop:[NSRunLoop mainRunLoop]
-                                 forMode:NSDefaultRunLoopMode];
-        [theConnection start];
-    if (theConnection) {
+    NSURLSession *session = [NSURLSession
+                             sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]
+                             delegate:self
+                             delegateQueue:nil];
+    NSURLSessionDataTask *sessionTask = [session dataTaskWithRequest:request];
+    [sessionTask resume];
+    if (sessionTask) {
         // Create the NSMutableData to hold the received data.
         // receivedData is an instance variable declared elsewhere.
         self.receivedData = [NSMutableData data];
@@ -279,56 +283,58 @@ static NSString *urlEncode(id object) {
 
 
 
-#pragma mark NSURLConnection delegates
-- (void)connectionDidFinishLoading:(NSURLConnection *)connection {
-    NSError *error = nil;
-    NSDictionary *response;
-    if ([[self.responseHeaders objectForKey:@"Content-Type"] isEqualToString:@"application/json;charset=utf-8"]) {
-            response = [NSJSONSerialization JSONObjectWithData:self.receivedData options:NSJSONReadingMutableContainers error:&error];
-    }
-    else if (self.responseStatusCode == 200) {
-        NSMutableDictionary *result = [NSMutableDictionary dictionary];
-        [result setObject:self.responseObject.URL forKey:@"URL"];
-        [result setObject:@(self.responseStatusCode) forKey:@"statusCode"];
-        [result setObject:self.responseHeaders forKey:@"headers"];
-        [result setObject:@(NO) forKey:@"HasErrors"];
-        response = result;
-    }
-    if (self.delegate != nil && [self.delegate respondsToSelector:@selector(didReceiveResponse:forRequest:)]) {
-        
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [[BVAnalytics instance] queueAnalyticsEventForResponse:response forRequest:self.sender];
-        });
-        
-        [self.delegate didReceiveResponse:response forRequest:self.sender];
-    }
-}
+#pragma mark NSURLSession delegates
 
-- (void)connection:(NSURLConnection *)connection didSendBodyData:(NSInteger)bytesWritten totalBytesWritten:(NSInteger)totalBytesWritten totalBytesExpectedToWrite:(NSInteger)totalBytesExpectedToWrite
-{
-    if (self.delegate != nil && [self.delegate respondsToSelector:@selector(didSendBodyData:totalBytesWritten:totalBytesExpectedToWrite:forRequest:)])
+
+- (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didSendBodyData:(int64_t)bytesSent totalBytesSent:(int64_t)totalBytesSent totalBytesExpectedToSend:(int64_t)totalBytesExpectedToSend {
+
+    if (self.delegate != nil && [self.delegate respondsToSelector:@selector(didSendBodyData:totalBytesSent:totalBytesExpectedToSend:forRequest:)])
     {
-        [self.delegate didSendBodyData:bytesWritten totalBytesWritten:totalBytesWritten totalBytesExpectedToWrite:totalBytesExpectedToWrite forRequest:self.sender];
+        [self.delegate didSendBodyData:bytesSent totalBytesSent:totalBytesSent totalBytesExpectedToSend:totalBytesExpectedToSend forRequest:self.sender];
     }
 }
 
-
-- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
+- (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask didReceiveResponse:(NSURLResponse *)response completionHandler:(void (^)(NSURLSessionResponseDisposition))completionHandler {
     self.responseObject = (NSHTTPURLResponse*) response;
     self.responseHeaders = [self.responseObject allHeaderFields];
     self.responseStatusCode = [self.responseObject statusCode];
     [self.receivedData setLength:0];
+    
+    completionHandler(NSURLSessionResponseAllow);
 }
 
-- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
+- (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask didReceiveData:(NSData *)data {
     [self.receivedData appendData:data];
 }
 
-- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
-    if (self.delegate != nil && [self.delegate respondsToSelector:@selector(didFailToReceiveResponse:forRequest:)]){
-        [self.delegate didFailToReceiveResponse:error forRequest:self.sender];
+- (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didCompleteWithError:(NSError *)error {
+    if (error != nil) {
+        if (self.delegate != nil && [self.delegate respondsToSelector:@selector(didFailToReceiveResponse:forRequest:)]){
+            [self.delegate didFailToReceiveResponse:error forRequest:self.sender];
+        }
+    } else {
+        NSError *error = nil;
+        NSDictionary *response;
+        if ([[self.responseHeaders objectForKey:@"Content-Type"] isEqualToString:@"application/json;charset=utf-8"]) {
+            response = [NSJSONSerialization JSONObjectWithData:self.receivedData options:NSJSONReadingMutableContainers error:&error];
+        }
+        else if (self.responseStatusCode == 200) {
+            NSMutableDictionary *result = [NSMutableDictionary dictionary];
+            [result setObject:self.responseObject.URL forKey:@"URL"];
+            [result setObject:@(self.responseStatusCode) forKey:@"statusCode"];
+            [result setObject:self.responseHeaders forKey:@"headers"];
+            [result setObject:@(NO) forKey:@"HasErrors"];
+            response = result;
+        }
+        if (self.delegate != nil && [self.delegate respondsToSelector:@selector(didReceiveResponse:forRequest:)]) {
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [[BVAnalytics instance] queueAnalyticsEventForResponse:response forRequest:self.sender];
+            });
+            
+            [self.delegate didReceiveResponse:response forRequest:self.sender];
+        }
     }
 }
-
 
 @end
