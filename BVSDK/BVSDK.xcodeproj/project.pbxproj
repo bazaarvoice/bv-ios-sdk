@@ -334,9 +334,8 @@
 				);
 				INFOPLIST_FILE = "Tests/Tests-Info.plist";
 				OTHER_LDFLAGS = (
-					"-ObjC",
-					"-l\"Pods-BVSDK-BVSDK\"",
 					"$(inherited)",
+					"-ObjC",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
@@ -357,9 +356,8 @@
 				GCC_PREFIX_HEADER = "Tests/Tests-Prefix.pch";
 				INFOPLIST_FILE = "Tests/Tests-Info.plist";
 				OTHER_LDFLAGS = (
-					"-ObjC",
-					"-l\"Pods-BVSDK-BVSDK\"",
 					"$(inherited)",
+					"-ObjC",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";

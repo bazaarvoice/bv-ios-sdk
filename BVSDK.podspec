@@ -4,14 +4,14 @@
 #
 # Any lines starting with a # are optional, but encouraged
 #
-# To learn more about a Podspec see http://guides.cocoapods.org/syntax/podspec.html
+# To learn more about a Podspec see https://guides.cocoapods.org/syntax/podspec.html
 #
 
 Pod::Spec.new do |s|
   s.name = "BVSDK"
-  s.version = '2.2.8'
-  s.homepage = 'http://developer.bazaarvoice.com'
-  s.license = { :type => 'Commercial', :text => 'See http://developer.bazaarvoice.com/API_Terms_of_Use' }
+  s.version = '2.2.10'
+  s.homepage = 'https://developer.bazaarvoice.com'
+  s.license = { :type => 'Commercial', :text => 'See https://developer.bazaarvoice.com/API_Terms_of_Use' }
   s.author = { 'Bazaarvoice' => 'support@bazaarvoice.com' }
   s.source = { :git => "https://github.com/bazaarvoice/bv-ios-sdk.git", :tag => s.version.to_s }
   s.social_media_url = 'https://twitter.com/bazaarvoice'
