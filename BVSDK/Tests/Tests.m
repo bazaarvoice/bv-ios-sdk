@@ -105,9 +105,10 @@
     NSLog(@"\n\n");
 }
 
-- (void)didSendBodyData:(NSInteger)bytesWritten totalBytesWritten:(NSInteger)totalBytesWritten totalBytesExpectedToWrite:(NSInteger)totalBytesExpectedToWrite forRequest:(id)request{
+-(void)didSendBodyData:(int64_t)bytesSent totalBytesSent:(int64_t)totalBytesSent totalBytesExpectedToSend:(int64_t)totalBytesExpectedToSend forRequest:(id)request {
     receivedProgressCallback = YES;
 }
+
 
 - (void)didFailToReceiveResponse:(NSError *)err forRequest:(id)request {
     requestComplete = YES;
@@ -443,8 +444,8 @@
     request.title = @"Test title";
     request.reviewText = @"Some kind of review text.";
     request.userNickname = @"testnickname";
-    [request addPhotoUrl:@"http://apitestcustomer.ugc.bazaarvoice.com/bvstaging/5555/ps_amazon_s3_3rgg6s4xvev0zhzbnabyneo21/photo.jpg" withCaption:nil];
-    [request addVideoUrl:@"http://www.youtube.com" withCaption:nil];
+    [request addPhotoUrl:@"https://apitestcustomer.ugc.bazaarvoice.com/bvstaging/5555/ps_amazon_s3_3rgg6s4xvev0zhzbnabyneo21/photo.jpg" withCaption:nil];
+    [request addVideoUrl:@"https://www.youtube.com" withCaption:nil];
     
     [request sendRequestWithDelegate:self];
     NSRunLoop *theRL = [NSRunLoop currentRunLoop];
@@ -461,8 +462,8 @@
         request.title = @"Test title";
         request.reviewText = @"Some kind of review text.";
         request.userNickname = @"testnickname";
-        [request addPhotoUrl:@"http://apitestcustomer.ugc.bazaarvoice.com/bvstaging/5555/ps_amazon_s3_3rgg6s4xvev0zhzbnabyneo21/photo.jpg" withCaption:nil];
-        [request addVideoUrl:@"http://www.youtube.com" withCaption:nil];
+        [request addPhotoUrl:@"https://apitestcustomer.ugc.bazaarvoice.com/bvstaging/5555/ps_amazon_s3_3rgg6s4xvev0zhzbnabyneo21/photo.jpg" withCaption:nil];
+        [request addVideoUrl:@"https://www.youtube.com" withCaption:nil];
         
         [request sendRequestWithDelegate:self];
     });
@@ -535,7 +536,7 @@
      receivedProgressCallback = NO;
      BVSubmissionVideo *mySubmission = [[BVSubmissionVideo alloc] init];
      mySubmission.parameters.contentType = @"review";
-     mySubmission.parameters.video = @"http://www.youtube.com/";
+     mySubmission.parameters.video = @"https://www.youtube.com/";
      mySubmission.parameters.userId = @"123abc";
      mySubmission.delegate = self;
      
@@ -595,7 +596,7 @@
     BVMediaPost *mySubmission = [[BVMediaPost alloc] initWithType:BVMediaPostTypePhoto];
     mySubmission.contentType = BVMediaPostContentTypeReview;
     mySubmission.userId = @"123";
-    mySubmission.photoUrl = @"http://dogr.io/doge.png";
+    mySubmission.photoUrl = @"https://dogr.io/doge.png";
     
     [mySubmission sendRequestWithDelegate:self];
     NSRunLoop *theRL = [NSRunLoop currentRunLoop];
@@ -662,9 +663,9 @@
     mySubmission.title = @"Test title";
     mySubmission.reviewText = @"Some kind of review text. Some kind of review text. Some kind of review text. Some kind of review text. Some kind of review text. Some kind of review text. Some kind of review text. Some kind of review text. Some kind of review text.";
     mySubmission.userNickname = @"testnickname4";
-    [mySubmission addPhotoUrl:@"http://apitestcustomer.ugc.bazaarvoice.com/bvstaging/5555/ps_amazon_s3_3rgg6s4xvev0zhzbnabyneo21/photo.jpg" withCaption:nil];
-    [mySubmission addPhotoUrl:@"http://apitestcustomer.ugc.bazaarvoice.com/bvstaging/5555/ps_amazon_s3_a11b8t4wlgb914fjaiudaadvo/photo.jpg" withCaption:@"This photo is cool!"];
-    [mySubmission addPhotoUrl:@"http://apitestcustomer.ugc.bazaarvoice.com/bvstaging/5555/ps_amazon_s3_5ugnhmmq24p1q35tlygrqalz9/photo.jpg" withCaption:nil];
+    [mySubmission addPhotoUrl:@"https://apitestcustomer.ugc.bazaarvoice.com/bvstaging/5555/ps_amazon_s3_3rgg6s4xvev0zhzbnabyneo21/photo.jpg" withCaption:nil];
+    [mySubmission addPhotoUrl:@"https://apitestcustomer.ugc.bazaarvoice.com/bvstaging/5555/ps_amazon_s3_a11b8t4wlgb914fjaiudaadvo/photo.jpg" withCaption:@"This photo is cool!"];
+    [mySubmission addPhotoUrl:@"https://apitestcustomer.ugc.bazaarvoice.com/bvstaging/5555/ps_amazon_s3_5ugnhmmq24p1q35tlygrqalz9/photo.jpg" withCaption:nil];
     [mySubmission addTagForDimensionExternalId:@"Pro" value:@"fit"];
     [mySubmission addTagForDimensionExternalId:@"Pro" value:@"comfortable fit"];
     [mySubmission addTagIdForDimensionExternalId:@"Pro/ProService" value:true];
