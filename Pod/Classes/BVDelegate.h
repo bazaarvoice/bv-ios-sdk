@@ -17,7 +17,7 @@
 
 @optional
 /*!
- Delegate callback for the case that the request is successful.
+ Delegate callback for the case that the request is successful. Issued on main thread.
  @param response The deserialized response.
  @param request The object which generated the request.
  */
@@ -32,7 +32,7 @@
 - (void) didSendBodyData:(int64_t)bytesSent totalBytesSent:(int64_t)totalBytesSent totalBytesExpectedToSend:(int64_t)totalBytesExpectedToSend forRequest:(id)request;
 
 /*!
- Delegate callback for the case that the request fails.
+ Delegate callback for the case that the request fails. Issued on main thread.
  @param err Contains specifics about the error.
  @param request The object which generated the request.
  */

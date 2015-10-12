@@ -245,7 +245,7 @@
 		6F85EB8E1545F52800602078 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0640;
+				LastUpgradeCheck = 0700;
 			};
 			buildConfigurationList = 6F85EB911545F52800602078 /* Build configuration list for PBXProject "BrowseProductsExample" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -372,6 +372,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -448,6 +449,7 @@
 					"$(OTHER_LDFLAGS)",
 				);
 				OTHER_LIBTOOLFLAGS = "$(OTHER_LDFLAGS) -l\"Pods-BVSDK\" -ObjC";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.bazaarvoice.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -476,6 +478,7 @@
 					"$(OTHER_LDFLAGS)",
 				);
 				OTHER_LIBTOOLFLAGS = "$(OTHER_LDFLAGS) -l\"Pods-BVSDK\" -ObjC";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.bazaarvoice.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
