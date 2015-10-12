@@ -1,10 +1,9 @@
-#### This is a test branch for Travis CI integration and update to XCode 7.0
 
 # Bazaarvoice iOS SDK 
 [![Version](https://img.shields.io/cocoapods/v/BVSDK.svg?style=flat)](http://cocoadocs.org/docsets/BVSDK)
 [![License](https://img.shields.io/cocoapods/l/BVSDK.svg?style=flat)](http://cocoadocs.org/docsets/BVSDK)
 [![Platform](https://img.shields.io/cocoapods/p/BVSDK.svg?style=flat)](http://cocoadocs.org/docsets/BVSDK)
-[![Build Status](https://travis-ci.org/austimkelly/bv-ios-sdk.svg?branch=master)](https://travis-ci.org/austimkelly/bv-ios-sdk)
+[![Build Status](https://travis-ci.org/bazaarvoice/bv-ios-sdk-dev.svg?branch=master)](https://travis-ci.org/bazaarvoice/bv-ios-sdk-dev)
 
 ## Introduction
 The Bazaarvoice software development kit (SDK) for iOS is an iOS library that provides an easy way to generate REST calls to the Bazaarvoice Developer API. Using this SDK, mobile developers can quickly integrate Bazaarvoice content into their native iOS apps for iPhone and iPad on iOS 7 or newer.
