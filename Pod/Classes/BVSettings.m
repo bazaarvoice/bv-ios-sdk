@@ -13,8 +13,6 @@ static BVSettings* BVSettingsSingleton = nil;
 @implementation BVSettings
 
 + (BVSettings *) instance {
-//    if (BVSettingsSingleton == nil)
-//        BVSettingsSingleton = [[BVSettings alloc] init];
     
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
