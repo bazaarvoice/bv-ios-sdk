@@ -596,7 +596,7 @@
     BVMediaPost *mySubmission = [[BVMediaPost alloc] initWithType:BVMediaPostTypePhoto];
     mySubmission.contentType = BVMediaPostContentTypeReview;
     mySubmission.userId = @"123";
-    mySubmission.photoUrl = @"http://dogr.io/doge.png";
+    mySubmission.photoUrl = @"https://dogr.herokuapp.com/doge.png";
     
     [mySubmission sendRequestWithDelegate:self];
     NSRunLoop *theRL = [NSRunLoop currentRunLoop];
