@@ -1,8 +1,0 @@
-source 'https://github.com/CocoaPods/Specs.git'
-
-
-target 'BVSDK', :exclusive => true do
-  pod "BVSDK", :path => "../"
-
-  
-end

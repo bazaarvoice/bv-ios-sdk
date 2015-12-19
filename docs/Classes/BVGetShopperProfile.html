@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<title>BVGetShopperProfile Class Reference</title>
+
+	<link rel="stylesheet" href="../css/style.css">
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1.4">
+	<meta name="generator" content="appledoc 2.2.1 (build 1334)">
+</head>
+<body class="appledoc">
+	<header>
+		<div class="container" class="hide-in-xcode">
+			
+			<h1 id="library-title">
+				<a href="../index.html">Bazaarvoice iOS SDK </a>
+			</h1>
+
+			<p id="developer-home">
+				<a href="../index.html">Bazaarvoice</a>
+			</p>
+			
+		</div>
+	</header>
+
+	<aside>
+		<div class="container">
+			<nav>
+				<ul id="header-buttons" role="toolbar">
+					<li><a href="../index.html">Index</a></li>
+<li><a href="../hierarchy.html">Hierarchy</a></li>
+
+					<li id="on-this-page" role="navigation">
+						<label>
+							On This Page
+
+							<div class="chevron">
+								<div class="chevy chevron-left"></div>
+								<div class="chevy chevron-right"></div>
+							</div>
+
+							<select id="jump-to">
+	<option value="top">Jump To&#133;</option>
+	
+	<option value="overview">Overview</option>
+	
+
+	
+	
+	<option value="tasks">Tasks</option>
+	
+	
+
+	
+	
+
+	
+
+	
+	<optgroup label="Instance Methods">
+		
+		<option value="//api/name/fetchProductRecommendations:withCompletionHandler:">- fetchProductRecommendations:withCompletionHandler:</option>
+		
+	</optgroup>
+	
+	
+</select>
+						</label>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</aside>
+
+	<article>
+		<div id="overview_contents" class="container">
+			<div id="content">
+				<main role="main">
+					<h1 class="title">BVGetShopperProfile Class Reference</h1>
+
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+	<th>Inherits from</th>
+	<td>NSObject</td>
+</tr><tr>
+	<th>Conforms to</th>
+	<td>BVGetShopperProfileBase</td>
+</tr><tr>
+	<th>Declared in</th>
+	<td>BVGetShopperProfile.h<br />BVGetShopperProfile.m</td>
+</tr>
+						</tbody></table></div>
+					
+
+                    
+					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p>The shopper profile contains product recommendations for a single user, based on a user&rsquo;s profile information, IDFA (if allowed) and provides the ability to filter by a user&rsquo;s interest. This class provides a convenience wrapper for fetching the product recommendations and handling analytic event handling to help shape the shopper profile. For user authentication, please see the BVAuthticatedUser class.</p>
+					</div>
+					
+					
+
+					
+					
+					<div class="section section-tasks">
+						<a title="Tasks" name="tasks"></a>
+						
+
+						
+						
+
+						<div class="task-list">
+							<div class="section-method">
+	<a name="//api/name/fetchProductRecommendations:withCompletionHandler:" title="fetchProductRecommendations:withCompletionHandler:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/fetchProductRecommendations:withCompletionHandler:">&ndash;&nbsp;fetchProductRecommendations:withCompletionHandler:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<pre><code>Gets a user's profile associted with the IDFA of the user's iOS device. The user's profile is fetched asynchronously with the result returned in the completion handler. Implementation should check for a non-nil NSError response and non-nil BVShopperProfile, either of which indicate an API failure.
+</code></pre>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)fetchProductRecommendations:(NSUInteger)<em>limit</em> withCompletionHandler:(void ( ^ ) ( BVShopperProfile *__nullable profile , NSError *__nullable error ))<em>completionHandler</em></code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<pre><code>If the device settings under Advertising has "Limit Ad Tracking" enabled, the API will return generic recommendations without using the device IDFA.
+</code></pre>
+
+<p>*
+*  @param limit             Number of product recommendations to return. Default is 20. Max is 50.
+*  @param interest          Interest to filter on.
+*  @param completionHandler Completion handler with <a href="../Classes/BVShopperProfile.html">BVShopperProfile</a> containing product recommendations. If an error occurs, error will be non-nil in the completionHandler.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BVGetShopperProfile.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+						</div>
+						
+					</div>
+					
+					
+
+                    
+                    
+          
+				</main>
+
+				<footer>
+					<div class="footer-copyright">
+						
+						<p class="copyright">Copyright &copy; 2015 Bazaarvoice. All rights reserved. Updated: 2015-12-16</p>
+						
+						
+						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>
+						
+					</div>
+				</footer>
+			</div>
+		</div>
+	</article>
+
+	<script src="../js/script.js"></script>
+</body>
+</html>
