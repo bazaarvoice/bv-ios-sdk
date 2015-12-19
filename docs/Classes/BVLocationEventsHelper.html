@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<title>BVLocationEventsHelper Class Reference</title>
+
+	<link rel="stylesheet" href="../css/style.css">
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1.4">
+	<meta name="generator" content="appledoc 2.2.1 (build 1334)">
+</head>
+<body class="appledoc">
+	<header>
+		<div class="container" class="hide-in-xcode">
+			
+			<h1 id="library-title">
+				<a href="../index.html">Bazaarvoice iOS SDK </a>
+			</h1>
+
+			<p id="developer-home">
+				<a href="../index.html">Bazaarvoice</a>
+			</p>
+			
+		</div>
+	</header>
+
+	<aside>
+		<div class="container">
+			<nav>
+				<ul id="header-buttons" role="toolbar">
+					<li><a href="../index.html">Index</a></li>
+<li><a href="../hierarchy.html">Hierarchy</a></li>
+
+					<li id="on-this-page" role="navigation">
+						<label>
+							On This Page
+
+							<div class="chevron">
+								<div class="chevy chevron-left"></div>
+								<div class="chevy chevron-right"></div>
+							</div>
+
+							<select id="jump-to">
+	<option value="top">Jump To&#133;</option>
+	
+	<option value="overview">Overview</option>
+	
+
+	
+	
+	<option value="tasks">Tasks</option>
+	
+	
+
+	
+	
+
+	
+	<optgroup label="Class Methods">
+		
+		<option value="//api/name/gimbalBeaconSighting:date:identifier:name:contextualTier1:contextualTier2:">+ gimbalBeaconSighting:date:identifier:name:contextualTier1:contextualTier2:</option>
+		
+		<option value="//api/name/gimbalBeaconSightingForVisits:date:beaconIdentifier:beaconName:arrivalDate:dwellTime:departureDate:visitIdentifier:visitName:contextualTier1:contextualTier2:">+ gimbalBeaconSightingForVisits:date:beaconIdentifier:beaconName:arrivalDate:dwellTime:departureDate:visitIdentifier:visitName:contextualTier1:contextualTier2:</option>
+		
+		<option value="//api/name/gimbalPlaceBeginVisit:dwellTime:departureDate:identifier:name:contextualTier1:contextualTier2:">+ gimbalPlaceBeginVisit:dwellTime:departureDate:identifier:name:contextualTier1:contextualTier2:</option>
+		
+		<option value="//api/name/gimbalPlaceEndVisit:dwellTime:departureDate:identifier:name:contextualTier1:contextualTier2:">+ gimbalPlaceEndVisit:dwellTime:departureDate:identifier:name:contextualTier1:contextualTier2:</option>
+		
+		<option value="//api/name/locationManager:didEnterRegion:contextualTier1:contextualTier2:">+ locationManager:didEnterRegion:contextualTier1:contextualTier2:</option>
+		
+		<option value="//api/name/locationManager:didExitRegion:contextualTier1:contextualTier2:">+ locationManager:didExitRegion:contextualTier1:contextualTier2:</option>
+		
+		<option value="//api/name/locationManager:didRangeBeacon:inRegion:contextualTier1:contextualTier2:">+ locationManager:didRangeBeacon:inRegion:contextualTier1:contextualTier2:</option>
+		
+		<option value="//api/name/locationManager:didUpdateLocation:contextualTier1:contextualTier2:">+ locationManager:didUpdateLocation:contextualTier1:contextualTier2:</option>
+		
+		<option value="//api/name/locationManager:didVisit:contextualTier1:contextualTier2:">+ locationManager:didVisit:contextualTier1:contextualTier2:</option>
+		
+	</optgroup>
+	
+
+	
+	
+</select>
+						</label>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</aside>
+
+	<article>
+		<div id="overview_contents" class="container">
+			<div id="content">
+				<main role="main">
+					<h1 class="title">BVLocationEventsHelper Class Reference</h1>
+
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+	<th>Inherits from</th>
+	<td>NSObject</td>
+</tr><tr>
+	<th>Declared in</th>
+	<td>BVLocationEventsHelper.h<br />BVLocationEventsHelper.m</td>
+</tr>
+						</tbody></table></div>
+					
+
+                    
+					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p>Static helper routes to post location-aware events.</p>
+					</div>
+					
+					
+
+					
+					
+					<div class="section section-tasks">
+						<a title="Tasks" name="tasks"></a>
+						
+
+						
+						
+
+						<div class="task-list">
+							<div class="section-method">
+	<a name="//api/name/locationManager:didEnterRegion:contextualTier1:contextualTier2:" title="locationManager:didEnterRegion:contextualTier1:contextualTier2:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/locationManager:didEnterRegion:contextualTier1:contextualTier2:">+&nbsp;locationManager:didEnterRegion:contextualTier1:contextualTier2:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Record the device entering a beacon/geofence region.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (void)locationManager:(CLLocationManager *)<em>manager</em> didEnterRegion:(CLCircularRegion *)<em>region</em> contextualTier1:(BVContextualInterest *)<em>tier1</em> contextualTier2:(BVContextualInterest *)<em>tier2</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>region</code></th>
+						<td><p>The geofence or beacon region entered.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>locationManager</code></th>
+						<td><p>The CLLocationManager object used in determining location.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>contextualTier1</code></th>
+						<td><p>the BV-specified tier 1 interest associated with this region. See BVContextualInterests.h</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>contextualTier2</code></th>
+						<td><p>the BV-specified tier 2 interest associated with this region. See BVContextualInterests.h</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BVLocationEventsHelper.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/locationManager:didExitRegion:contextualTier1:contextualTier2:" title="locationManager:didExitRegion:contextualTier1:contextualTier2:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/locationManager:didExitRegion:contextualTier1:contextualTier2:">+&nbsp;locationManager:didExitRegion:contextualTier1:contextualTier2:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Record the device exiting a beacon/geofence region.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (void)locationManager:(CLLocationManager *)<em>manager</em> didExitRegion:(CLCircularRegion *)<em>region</em> contextualTier1:(BVContextualInterest *)<em>tier1</em> contextualTier2:(BVContextualInterest *)<em>tier2</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>region</code></th>
+						<td><p>The geofence or beacon region entered.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>locationManager</code></th>
+						<td><p>The CLLocationManager object used in determining location.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>contextualTier1</code></th>
+						<td><p>the BV-specified tier 1 interest associated with this region. See BVContextualInterests.h</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>contextualTier2</code></th>
+						<td><p>the BV-specified tier 2 interest associated with this region. See BVContextualInterests.h</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BVLocationEventsHelper.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/locationManager:didVisit:contextualTier1:contextualTier2:" title="locationManager:didVisit:contextualTier1:contextualTier2:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/locationManager:didVisit:contextualTier1:contextualTier2:">+&nbsp;locationManager:didVisit:contextualTier1:contextualTier2:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Record the device visiting a location.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (void)locationManager:(CLLocationManager *)<em>manager</em> didVisit:(CLVisit *)<em>visit</em> contextualTier1:(BVContextualInterest *)<em>tier1</em> contextualTier2:(BVContextualInterest *)<em>tier2</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>visit</code></th>
+						<td><p>The visit object that the device entered.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>locationManager</code></th>
+						<td><p>The CLLocationManager object used in determining location.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>contextualTier1</code></th>
+						<td><p>the BV-specified tier 1 interest associated with this visit. See BVContextualInterests.h</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>contextualTier2</code></th>
+						<td><p>the BV-specified tier 2 interest associated with this visit. See BVContextualInterests.h</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BVLocationEventsHelper.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/locationManager:didRangeBeacon:inRegion:contextualTier1:contextualTier2:" title="locationManager:didRangeBeacon:inRegion:contextualTier1:contextualTier2:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/locationManager:didRangeBeacon:inRegion:contextualTier1:contextualTier2:">+&nbsp;locationManager:didRangeBeacon:inRegion:contextualTier1:contextualTier2:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Record the ranging a beacon. This should be called for every beacon ranged in locationDidRangeBeacon:inRegion in CLLocationManagerDelegate.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (void)locationManager:(CLLocationManager *)<em>manager</em> didRangeBeacon:(CLBeacon *)<em>beacon</em> inRegion:(CLBeaconRegion *)<em>region</em> contextualTier1:(BVContextualInterest *)<em>tier1</em> contextualTier2:(BVContextualInterest *)<em>tier2</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>beacon</code></th>
+						<td><p>The CLBeacon object that was ranged</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>region</code></th>
+						<td><p>The CLBeaconRegion object that was ranged</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>locationManager</code></th>
+						<td><p>The CLLocationManager object used in determining location.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>contextualTier1</code></th>
+						<td><p>the BV-specified tier 1 interest associated with this location. See BVContextualInterests.h</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>contextualTier2</code></th>
+						<td><p>the BV-specified tier 2 interest associated with this location. See BVContextualInterests.h</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BVLocationEventsHelper.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/locationManager:didUpdateLocation:contextualTier1:contextualTier2:" title="locationManager:didUpdateLocation:contextualTier1:contextualTier2:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/locationManager:didUpdateLocation:contextualTier1:contextualTier2:">+&nbsp;locationManager:didUpdateLocation:contextualTier1:contextualTier2:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Record the user location. This should be called for ever location update in locationDidUpdateLocations: in CLLocationManagerDelegate.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (void)locationManager:(CLLocationManager *)<em>manager</em> didUpdateLocation:(CLLocation *)<em>location</em> contextualTier1:(BVContextualInterest *)<em>tier1</em> contextualTier2:(BVContextualInterest *)<em>tier2</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>location</code></th>
+						<td><p>The CLLocation object that was updated.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>locationManager</code></th>
+						<td><p>The CLLocationManager object used in determining location.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>contextualTier1</code></th>
+						<td><p>the BV-specified tier 1 interest associated with this location. See BVContextualInterests.h</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>contextualTier2</code></th>
+						<td><p>the BV-specified tier 2 interest associated with this location. See BVContextualInterests.h</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BVLocationEventsHelper.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/gimbalBeaconSighting:date:identifier:name:contextualTier1:contextualTier2:" title="gimbalBeaconSighting:date:identifier:name:contextualTier1:contextualTier2:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/gimbalBeaconSighting:date:identifier:name:contextualTier1:contextualTier2:">+&nbsp;gimbalBeaconSighting:date:identifier:name:contextualTier1:contextualTier2:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Record the device receiving a gimbal beacon sighting event. This method has a direct correlation to beaconManager:didReceiveBeaconSighting:</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (void)gimbalBeaconSighting:(NSInteger)<em>RSSI</em> date:(NSDate *)<em>date</em> identifier:(NSString *)<em>identifier</em> name:(NSString *)<em>name</em> contextualTier1:(BVContextualInterest *)<em>tier1</em> contextualTier2:(BVContextualInterest *)<em>tier2</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>RSSI</code></th>
+						<td><p>The RSSI (signal strength) of the beacon sighting.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>date</code></th>
+						<td><p>The NSDate that the sighting occured</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>identifier</code></th>
+						<td><p>The GMBLBeacon&rsquo;s factory ID.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>name</code></th>
+						<td><p>The GMBLBeacon&rsquo;s name, assigned via the Gimbal Manager</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>contextualTier1</code></th>
+						<td><p>the BV-specified tier 1 interest associated with this sighting. See BVContextualInterests.h</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>contextualTier2</code></th>
+						<td><p>the BV-specified tier 2 interest associated with this sighting. See BVContextualInterests.h</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BVLocationEventsHelper.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/gimbalPlaceBeginVisit:dwellTime:departureDate:identifier:name:contextualTier1:contextualTier2:" title="gimbalPlaceBeginVisit:dwellTime:departureDate:identifier:name:contextualTier1:contextualTier2:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/gimbalPlaceBeginVisit:dwellTime:departureDate:identifier:name:contextualTier1:contextualTier2:">+&nbsp;gimbalPlaceBeginVisit:dwellTime:departureDate:identifier:name:contextualTier1:contextualTier2:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Record the device beginning a gimbal visit. This directly correlates to GMBLPlaceManagerDelegate&rsquo;s placeManager:didBeginVisit: method.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (void)gimbalPlaceBeginVisit:(NSDate *)<em>arrivalDate</em> dwellTime:(NSTimeInterval)<em>dwellTime</em> departureDate:(NSDate *)<em>departureDate</em> identifier:(NSString *)<em>identifier</em> name:(NSString *)<em>name</em> contextualTier1:(BVContextualInterest *)<em>tier1</em> contextualTier2:(BVContextualInterest *)<em>tier2</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>arrivalDate</code></th>
+						<td><p>Taken from the GMBLVisit object.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>dwellTime</code></th>
+						<td><p>Taken from the GMBLVisit object.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>departureDate</code></th>
+						<td><p>Taken from the GMBLVisit object.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>identifier</code></th>
+						<td><p>Taken from GMBLPlace object.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>name</code></th>
+						<td><p>Taken from GMBLPlace object.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>contextualTier2</code></th>
+						<td><p>the BV-specified tier 2 interest associated with this visit. See BVContextualInterests.h</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>contextualTier1</code></th>
+						<td><p>the BV-specified tier 1 interest associated with this visit. See BVContextualInterests.h</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BVLocationEventsHelper.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/gimbalPlaceEndVisit:dwellTime:departureDate:identifier:name:contextualTier1:contextualTier2:" title="gimbalPlaceEndVisit:dwellTime:departureDate:identifier:name:contextualTier1:contextualTier2:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/gimbalPlaceEndVisit:dwellTime:departureDate:identifier:name:contextualTier1:contextualTier2:">+&nbsp;gimbalPlaceEndVisit:dwellTime:departureDate:identifier:name:contextualTier1:contextualTier2:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Record the device exiting a gimbal visit. This directly correlates to GMBLPlaceManagerDelegate&rsquo;s placeManager:didEndVisit: method. See gimbalPlaceBeginVisit:dwellTime:departureTime:identifier:name:attributes for details on this method.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (void)gimbalPlaceEndVisit:(NSDate *)<em>arrivalDate</em> dwellTime:(NSTimeInterval)<em>dwellTime</em> departureDate:(NSDate *)<em>departureDate</em> identifier:(NSString *)<em>identifier</em> name:(NSString *)<em>name</em> contextualTier1:(BVContextualInterest *)<em>tier1</em> contextualTier2:(BVContextualInterest *)<em>tier2</em></code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BVLocationEventsHelper.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/gimbalBeaconSightingForVisits:date:beaconIdentifier:beaconName:arrivalDate:dwellTime:departureDate:visitIdentifier:visitName:contextualTier1:contextualTier2:" title="gimbalBeaconSightingForVisits:date:beaconIdentifier:beaconName:arrivalDate:dwellTime:departureDate:visitIdentifier:visitName:contextualTier1:contextualTier2:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/gimbalBeaconSightingForVisits:date:beaconIdentifier:beaconName:arrivalDate:dwellTime:departureDate:visitIdentifier:visitName:contextualTier1:contextualTier2:">+&nbsp;gimbalBeaconSightingForVisits:date:beaconIdentifier:beaconName:arrivalDate:dwellTime:departureDate:visitIdentifier:visitName:contextualTier1:contextualTier2:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Record the device receiving a gimbal beacon sighting event. This method has a direct correlation to placeManager:didReceiveBeaconSighting:forVisits:. All parameters (lol, so many) are detailed in the gimbalBeaconSighting: and gimbalPlaceBeginVisit: methods of this SDK, as this event is a combination of those two.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (void)gimbalBeaconSightingForVisits:(NSInteger)<em>RSSI</em> date:(NSDate *)<em>date</em> beaconIdentifier:(NSString *)<em>beaconIdentifier</em> beaconName:(NSString *)<em>beaconName</em> arrivalDate:(NSDate *)<em>arrivalDate</em> dwellTime:(NSTimeInterval)<em>dwellTime</em> departureDate:(NSDate *)<em>departureDate</em> visitIdentifier:(NSString *)<em>visitIdentifier</em> visitName:(NSString *)<em>visitName</em> contextualTier1:(BVContextualInterest *)<em>tier1</em> contextualTier2:(BVContextualInterest *)<em>tier2</em></code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BVLocationEventsHelper.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+						</div>
+						
+					</div>
+					
+					
+
+                    
+                    
+          
+				</main>
+
+				<footer>
+					<div class="footer-copyright">
+						
+						<p class="copyright">Copyright &copy; 2015 Bazaarvoice. All rights reserved. Updated: 2015-12-09</p>
+						
+						
+						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>
+						
+					</div>
+				</footer>
+			</div>
+		</div>
+	</article>
+
+	<script src="../js/script.js"></script>
+</body>
+</html>

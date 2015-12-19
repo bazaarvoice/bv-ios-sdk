@@ -1,0 +1,18 @@
+PODS:
+  - BVSDK (3.0.0):
+    - BVSDK/Core (= 3.0.0)
+  - BVSDK/BVAnalytics (3.0.0)
+  - BVSDK/Core (3.0.0):
+    - BVSDK/BVAnalytics
+
+DEPENDENCIES:
+  - BVSDK (from `../../../`)
+
+EXTERNAL SOURCES:
+  BVSDK:
+    :path: ../../../
+
+SPEC CHECKSUMS:
+  BVSDK: f37d98a73a490c3d406090c4c44d9247d615ae02
+
+COCOAPODS: 0.39.0

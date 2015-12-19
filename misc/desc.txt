@@ -1,25 +1,55 @@
 The Bazaarvoice SDK is an iOS static library that provides an easy way to generate REST calls to the Bazaarvoice API.
 
-<h2>SDK Organization:</h2>
+## SDK Organization:
 
-With the Bazaarvoice iOS SDK 2.0, there are just 5 classes that the client needs to be familiar with.
+The BVSDK is comprised of 3 main product features, also know as SDK modules. ALl features are initialized through a single SDK Manager: BVSDKManager. Each SDK product feature sits on top of two components required for all modules: BVCore and BVAnalytics.
 
-<h4>BVSettings</h4>
+The SDK modules are:
+
+### BVAdvertising
+
+When using the BVAdvertising module, there are three main types of advertisements you can dislay, all of which inherit from DFPBannerView:
+
+  * BVTargetedBannerView
+  * BVTargetedInterstitial
+  * BVTargetedAdLoader
+
+Please consult the [BVSDK Developer Wiki](https://github.com/bazaarvoice/bv-ios-sdk/wiki) for more details on using the BVAdvertising SDK module.
+
+### BVRecommendations
+
+Once you have initialized the SDK with your API key and client ID with the BVSDKManager, the only class you will need to fetch targeted recommendations is found in BVGetShopperProfile. Recommendations will be found in the BVShopperProfile module, which you can use to display results to your end-users.
+
+### BVRecommendationsUI
+
+If you wish to supply any of the easy-to-use recommendation widgets, the three main UI widgets are:
+
+ * BVRecommendationsCarouselView
+ * BVRecommendationsSharedView
+ * BVRecommendationsTableViewController
+
+ For best introducts, please see the Recommendations UI tutorial on the [BVSDK Developer Wiki](https://github.com/bazaarvoice/bv-ios-sdk/wiki).
+
+### BVConversations
+
+With the BVConverstaions SDK module, there are just 5 classes that the client needs to be familiar with.
+
+#### BVSettings
 Encapsulates all application-wide configuration information necessary to make requests via the Bazaarvoice SDK.  This includes things such as the base url, the passkey, whether to use staging and the request timeout interval.
 
-<h4>BVGet</h4>
+#### BVGet
 Handles all requests to the Bazaarvoice API which fetch, but do not modify data on the server.  This includes fetching answers, authors, categories, comments, products, questions, reviews, statistics and stories.
 
-<h4>BVPost</h4>
+#### BVPost
 Handles all requests to the Bazaarvoice API which submit content excluding photo and video uploads.  This includes submitting answers, review comments, story comments, feedback, questions, reviews and stories.
 
-<h4>BVMediaPost</h4>
+#### BVMediaPost
 Handles all requests to the Bazaarvoice API which require a binary multipart post.  This includes submitting photos and videos.
 
-<h4>BVDelegate</h4>
+#### BVDelegate
 Delegate interface  to receive SDK callbacks when a response is received.  
 
-<h2>Making Requests</h2>
+## Making Requests
 Conceptually, there are 5 steps to making a request the Bazaarvoice SDK:
 
  1. Allocate a request (BVGet, BVPost or BVMediaPost)
@@ -30,18 +60,8 @@ Conceptually, there are 5 steps to making a request the Bazaarvoice SDK:
 
 See the class documentation for BVGet, BVPost and BVMediaPost for example code.
 
-<h2>Conventions</h2>
-In order to make it easier to get up to speed with the iOS SDK, version 2.0 follows several conventions:
+## Older Versions
 
-<h4>BVConstants</h4>
-Where possible, we constrain parameters to a set of enumerated values.  These values are defined in BVConstants.h.
-
-<h4>Set/Add</h4>
-For most SDK requests, a particular parameter can only have one value.  For instance, a "limit" parameter can only be defined once.  Such parameters are defined as class properties where possible, or are defined as methods which begin with "set" in the case where the parameter takes multiple arguments.
-
-Other parameters can have multiple values.  For instance, a request may include statistics on more than one type.  Such parameters are defined as methods which begin with "add."  (addStatsOn:, addInclude etc.)
-
-<h2>Older Versions</h2>
 Older versions of the SDK are tagged according to version number.  You can list available versions with:<br />
 <strong>git tag</strong>
 

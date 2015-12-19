@@ -1,87 +1,38 @@
+![](./misc/logo-tagline.png)
+
+***
 
 # Bazaarvoice iOS SDK 
+
 [![Version](https://img.shields.io/cocoapods/v/BVSDK.svg?style=flat)](http://cocoadocs.org/docsets/BVSDK)
 [![License](https://img.shields.io/cocoapods/l/BVSDK.svg?style=flat)](http://cocoadocs.org/docsets/BVSDK)
 [![Platform](https://img.shields.io/cocoapods/p/BVSDK.svg?style=flat)](http://cocoadocs.org/docsets/BVSDK)
 [![Build Status](https://travis-ci.org/bazaarvoice/bv-ios-sdk.svg?branch=master)](https://travis-ci.org/bazaarvoice/bv-ios-sdk)
 
+## Full SDK Documentation
+
+For complete documentation, please refer to the [BVSDK Wiki](https://github.com/bazaarvoice/bv-ios-sdk-dev/wiki).
+
 ## Introduction
-The Bazaarvoice software development kit (SDK) for iOS is an iOS library that provides an easy way to generate REST calls to the Bazaarvoice Developer API. Using this SDK, mobile developers can quickly integrate Bazaarvoice content into their native iOS apps for iPhone and iPad on iOS 7 or newer.
+The Bazaarvoice software development kit (BVSDK) for iOS is an iOS library that provides an easy way to generate REST calls to the Bazaarvoice Developer API. Using this SDK, mobile developers can quickly integrate Bazaarvoice content into their native iOS apps for iPhone and iPad on iOS 8 or newer. The BVSDK is built with modularity in maind so you can install only the components you want to work with. The primary BVSDK modules are:
 
-Developers can display content as well as submit content such as Ratings & Reviews, Ask & Answer and Stories, including text and photo. Included reference apps and a Quick Start Guide will allow developers to integrate Bazaarvoice quickly, with little overhead.
+### Conversations
 
-**Where to start:**  
-1. Read the Quick Start guide to get familiar with installation and building a bare-bones, simple application that uses the SDK.  
-2. The documentation, located in the Docs folder, provides additional information into the capabilities of the SDK itself.  
-3. Sample applications, located in the Example folder, provide example uses of the SDK and implementation best practices.   
+The BVConverstaions module lets Developers display and submit content such as Ratings & Reviews, Ask & Answer and Stories, including text and photo. 
 
+### Advertising
 
-## Important note for iOS 9
-Apple introduced [App Transport Security](https://developer.apple.com/library/prerelease/ios/releasenotes/General/WhatsNewIniOS/Articles/iOS9.html#//apple_ref/doc/uid/TP40016198-SW14) in iOS 9. This requires apps to use `HTTPS://` only, to enhance security. This SDK uses only `HTTPS://`, however some data returned may not. For example, a product image URL. If this is the case, ATS may need to be disabled for your image hosting domain.  
+The BVAdvertising module allows use of Bazaarvoice's powerful shopper segment data with Google Mobile Ads. The BVAdvertising is architected so that you can use all aspects of the [DFP (Doubleclick For Publishers) SDK](https://developers.google.com/mobile-ads-sdk/docs/dfp/ios/quick-start) easily, with Bazaarvoice's shopper segment functionality built in.
 
+>**NOTE:** Previous users of the [BVAdsSDK on github](https://github.com/bazaarvoice/bv-ios-ads-sdk-dev) should update to the BVAdvertising module in this SDK.
 
-## Upgrading from previous version of SDK
-If you have a previous version of the BVSDK in your project, chances are you have `BVSDK.framework` in your project. Updating should be smooth and quick - simply delete BVSDK.framework and follow installation instructions below. All existing functionality should remain unchanged - so just follow the installation instructions below to get the updated SDK with proper 64-bit support and various bug fixes and improvements.
+### Recommendations
 
-#### Note on `baseUrl`
+>**Product Recommendations is currently in BETA! If you would like to participate in the Beta Pilot Program, please contact [Mobile Development at Bazaarvoice](mailto:mobilecoreteam@bazaarvoice.com)**
 
-In previous versions of the iOS SDK, a setting variable called `baseUrl` needed to be set. This is no longer needed, as all future api calls will hit the universal `[stg.]api.bazaarvoice.com` as per the [API Updating Guide](https://developer.bazaarvoice.com/apis/conversations/upgrading/upgrade_guide).
+The BVRecommendations allows developers to leverage Bazaarvoice's powerful Shopper Marketing product for targeted product recommendations. The BVRecommendationsUI module also allows developers to quickly build and skin UI components for quick integrations into mobile applications. 
 
-## Installation
+## Where do I start? 
 
-The easiest way to get the BVSDK is through [CocoaPods](http://cocoapods.org).  
-If you have CocoaPods installed for your project:  
-1. Add `pod "BVSDK"` to your Podfile and run `pod install`.   
+Start with the full documentation set on the [BVSDK Wiki](https://github.com/bazaarvoice/bv-ios-sdk-dev/wiki)!
 
-If you don't have CocoaPods installed:  
-1. Install Cocoapods with `sudo gem install cocoapods`  
-2. Convert your projects to a Cocoapods project by running `pod init` in your project directory. Afterwards, your project directory should look like this:    
-![Project Directory](http://i.imgur.com/VL2SrBA.png)    
-You should then open the .xcworkspace from now on.  
-3. Edit the `Podfile` within the Pods directory and simply add `pod "BVSDK"`.  
-4. run `pod install` in your project directory. Afterwards, when you open your `.xcworkspace`, your Project Navigator should look like this:    
-![Project Navigator](http://i.imgur.com/1X24P4f.png)  
-5. Awesome! The BVSDK is now included in your project. Add `#import <BVSDK/BVSDK.h>` **(Objective-C)** or `import BVSDK` **(Swift)** to include the sdk in your file. See the Quick-Start guide for a more complete example implementation.  
-***  
-Alternatively, you can install the SDK by cloning or downloding this library and adding the source files to your project:  
-1. Clone this repo, or download it with the "download zip" button:    
-![Download button](http://i.imgur.com/q3HUYCY.png)  
-2. Highlight the source files, in `Pod/Classes/`  
-![Highlight the source files](http://i.imgur.com/BzE4GPa.png)    
-and drag them into your Xcode project:  
-![Drag the source files into Xcode](http://i.imgur.com/SrsR0UH.png)  
-3. Select 'Copy Items if Neeeded', and continue:  
-![Select Copy Items if Needed](http://i.imgur.com/e4K1FI8.png)  
-4. Great! The SDK is included in your project. See #5 above for more instruction.  
-
-## Requirements
-* Bazaarvoice Platform API version 5.4 or older  
-* Signed Data Usage Amendment, if not already in place  
-* API configured and enabled by Bazaarvoice  
-* API key to access client's staging and production data  
-* Go to the [Bazaarvoice Developer Portal](http://developer.bazaarvoice.com) to get the above completed  
-* Xcode IDE version 6.0 or newer  
-* Built for iOS 7.0+  
-
-## What's Included
-This package includes the following:  
-
-* Source code, tests, example projects, and documentation for the Bazaarvocie iOS SDK.  
-* Quick Start Guide - Quickly get familiar with installation and building a bare-bones, simple application that uses the SDK  
-* Reference applications:  
- * Product browse example: Illustrates using the Bazaarvoice iOS SDK to query, browse and display ratings and reviews for products  
- * Photo upload example: Illustrates using the Bazaarvoice iOS SDK to submit a photo-review that includes a user generated photo (camera/gallery), star rating and review text.  
- * “Kitchen Sink” app: Covers all the baseline method calls and their responses. It’s a good way for developers see the all the requests and responses of the SDK out of the box.  
- * Source - For clients that require custom modifications or would like to contribute to the Bazaarvoice SDK.  See the README in the Source directory for more details.  
-
-## Running Tests  
-Unit tests can be run with:  
-* `open BVSDK/BVSDK.xcworkspace`  
-* Make sure 'BVSDK-Example' is the selected target to build  
-* Run the test suite with Cmd+U  
-
-## Updating from Bazaarvoice SDK V1
-The SDK was updated to version 2 on **January, 2013**. If updating from version 1, see the included V2UpdateGuide for information on how to update a project using the old BV iOS SDK to version 2.
-
-## License
-See [Bazaarvoice's API Terms of Use](https://developer.bazaarvoice.com/legal/terms_of_use). Except as otherwise noted, the Bazaarvoice iOS SDK licensed under the [Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.html).
