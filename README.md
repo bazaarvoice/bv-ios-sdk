@@ -11,7 +11,7 @@
 
 ## Full SDK Documentation
 
-For complete documentation, please refer to the [BVSDK Wiki](https://github.com/bazaarvoice/bv-ios-sdk-dev/wiki).
+For complete documentation, please refer to the [BVSDK Wiki](https://github.com/bazaarvoice/bv-ios-sdk/wiki).
 
 ## Introduction
 The Bazaarvoice software development kit (BVSDK) for iOS is an iOS library that provides an easy way to generate REST calls to the Bazaarvoice Developer API. Using this SDK, mobile developers can quickly integrate Bazaarvoice content into their native iOS apps for iPhone and iPad on iOS 8 or newer. The BVSDK is built with modularity in maind so you can install only the components you want to work with. The primary BVSDK modules are:
@@ -24,7 +24,7 @@ The BVConverstaions module lets Developers display and submit content such as Ra
 
 The BVAdvertising module allows use of Bazaarvoice's powerful shopper segment data with Google Mobile Ads. The BVAdvertising is architected so that you can use all aspects of the [DFP (Doubleclick For Publishers) SDK](https://developers.google.com/mobile-ads-sdk/docs/dfp/ios/quick-start) easily, with Bazaarvoice's shopper segment functionality built in.
 
->**NOTE:** Previous users of the [BVAdsSDK on github](https://github.com/bazaarvoice/bv-ios-ads-sdk-dev) should update to the BVAdvertising module in this SDK.
+>**NOTE:** Previous users of the [BVAdsSDK on github](https://github.com/bazaarvoice/bv-ios-ads-sdk) should update to the BVAdvertising module in this SDK.
 
 ### Recommendations
 
@@ -34,5 +34,5 @@ The BVRecommendations allows developers to leverage Bazaarvoice's powerful Shopp
 
 ## Where do I start? 
 
-Start with the full documentation set on the [BVSDK Wiki](https://github.com/bazaarvoice/bv-ios-sdk-dev/wiki)!
+Start with the full documentation set on the [BVSDK Wiki](https://github.com/bazaarvoice/bv-ios-sdk/wiki)!
 
