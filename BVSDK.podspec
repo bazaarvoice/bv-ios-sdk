@@ -26,12 +26,7 @@ Pod::Spec.new do |s|
   s.default_subspec = 'Core'
 
   s.subspec 'Core' do |core|
-     core.source_files = 'Pod/BVCommon/**/*.{h,m}', 'Pod/BVConversations/**/*.{h,m}'
-     core.dependency 'BVSDK/BVAnalytics'
-  end
-
-  s.subspec 'BVAnalytics' do |bva|
-    bva.source_files = 'Pod/BVAnalytics/**/*.{h,m}'
+     core.source_files = 'Pod/BVCommon/**/*.{h,m}', 'Pod/BVConversations/**/*.{h,m}', 'Pod/BVAnalytics/**/*.{h,m}'
   end
 
   s.subspec 'BVConversations' do |conversations|
