@@ -144,8 +144,7 @@
 -(void)testBigAnalyticsEvent {
     
     // bomb the analytics event with a ton of events, to make sure it doesn't crash.
-    // crash would occur when objects were taken out of the queue in different threads - NSMutableArray is not thread safe
-    // moving all array modifications to the main thread fixed the problem - only network requests happen on different threads now
+    // The event queue is protected by a dispatch barrier to ensure the analytics manager is thread-safe.
 
     numberOfExpectedPageviewAnalyticsEvents = 1;
     numberOfExpectedImpressionAnalyticsEvents = 1;
@@ -334,19 +333,26 @@
     numberOfExpectedImpressionAnalyticsEvents = 1;
     numberOfExpectedPageviewAnalyticsEvents = 0;
     
-    // General recommendations
-    NSString *widgetTypeString = [BVRecsAnalyticsHelper getWidgetTypeString:RecommendationsCarousel];
-    [BVRecsAnalyticsHelper queueEmbeddedRecommendationsPageViewEvent:nil withCategoryId:nil withClientId:TEST_CLIENT_ID withNumRecommendations:20 withWidgetType:widgetTypeString];
+    // General recommendations - Test by sending a bunch of events on threads with different priorities.
     
-    // Product-spefic recommendations
-    widgetTypeString = [BVRecsAnalyticsHelper getWidgetTypeString:RecommendationsStaticView];
-    [BVRecsAnalyticsHelper queueEmbeddedRecommendationsPageViewEvent:@"test-proudct-id" withCategoryId:nil withClientId:TEST_CLIENT_ID withNumRecommendations:20 withWidgetType:widgetTypeString];
+    dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void){
+        NSString *widgetTypeString = [BVRecsAnalyticsHelper getWidgetTypeString:RecommendationsCarousel];
+        [BVRecsAnalyticsHelper queueEmbeddedRecommendationsPageViewEvent:nil withCategoryId:nil withClientId:TEST_CLIENT_ID withNumRecommendations:20 withWidgetType:widgetTypeString];
+    });
+    
+    dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_LOW, 0), ^(void){
+        // Product-spefic recommendations
+        NSString * widgetTypeString = [BVRecsAnalyticsHelper getWidgetTypeString:RecommendationsStaticView];
+        [BVRecsAnalyticsHelper queueEmbeddedRecommendationsPageViewEvent:@"test-proudct-id" withCategoryId:nil withClientId:TEST_CLIENT_ID withNumRecommendations:20 withWidgetType:widgetTypeString];
+        
+    });
 
-    // Categorical recommendations
-    widgetTypeString = [BVRecsAnalyticsHelper getWidgetTypeString:RecommendationsTableView];
-    [BVRecsAnalyticsHelper queueEmbeddedRecommendationsPageViewEvent:nil withCategoryId:@"test-category-id" withClientId:TEST_CLIENT_ID withNumRecommendations:20 withWidgetType:widgetTypeString];
-    
-    [[BVAnalyticsManager sharedManager] flushQueue];
+    dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^(void){
+        // Categorical recommendations
+        NSString *widgetTypeString = [BVRecsAnalyticsHelper getWidgetTypeString:RecommendationsTableView];
+        [BVRecsAnalyticsHelper queueEmbeddedRecommendationsPageViewEvent:nil withCategoryId:@"test-category-id" withClientId:TEST_CLIENT_ID withNumRecommendations:20 withWidgetType:widgetTypeString];
+
+    });
     
     [self waitForAnalytics];
     

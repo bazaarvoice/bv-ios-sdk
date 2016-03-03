@@ -9,6 +9,7 @@
 #import "BVPost.h"
 #import "BVSettings.h"
 #import "BVNetwork.h"
+#import "BVConversationsAnalyticsHelper.h"
 
 @interface BVPost()
 @property BVNetwork *network;
@@ -287,6 +288,13 @@
     [self.network setUrlParameterWithName:@"Vote" value:[self getFeedbackVoteString:vote]];
 }
 
+- (void)setFingerPrint:(NSString *)fp{
+    
+    _fingerPrint = fp;
+    [self.network setUrlParameterWithName:@"fp" value:fp];
+    
+}
+
 - (void)addGenericParameterWithName:(NSString *)name value:(NSString *)value {
     [self.network setUrlParameterWithName:name value:value];
 }
@@ -298,6 +306,10 @@
 
 - (void) send {
     [self.network sendPostWithEndpoint:[self getTypeString]];
+    
+    // send a used feature event for the POST
+    [[BVConversationsAnalyticsHelper instance] queueAnalyticsEventForFeatureUsed:self];
+
 }
 
 #pragma mark - helper methods

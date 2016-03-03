@@ -126,6 +126,10 @@
     request.userNickname = @"testnickname";
     [request addPhotoUrl:@"http://apitestcustomer.ugc.bazaarvoice.com/bvstaging/5555/ps_amazon_s3_3rgg6s4xvev0zhzbnabyneo21/photo.jpg" withCaption:nil];
     [request addVideoUrl:@"http://www.youtube.com" withCaption:nil];
+#ifdef IOVATION_INSTALLED
+    NSString *blackbox = [DevicePrint blackbox];
+    request.fingerPrint = blackbox;
+#endif
     [request sendRequestWithDelegate:self];
 }
 
@@ -136,7 +140,11 @@
     request.locale = @"en_US";
     request.userId = @"123abcd";
     request.questionSummary =  @"Some kind of question";
-    
+#ifdef IOVATION_INSTALLED
+    NSString *blackbox = [DevicePrint blackbox];
+    request.fingerPrint = blackbox;
+#endif
+
     [request sendRequestWithDelegate:self];    
 }
 
@@ -146,7 +154,10 @@
     request.questionId = @"6104";
     request.userId = @"123abcd";
     request.questionSummary =  @"Some kind of answer";
-    
+#ifdef IOVATION_INSTALLED
+    NSString *blackbox = [DevicePrint blackbox];
+    request.fingerPrint = blackbox;
+#endif
     [request sendRequestWithDelegate:self];
 }
 
@@ -157,15 +168,24 @@
     request.storyText = @"This is my story";
     request.categoryId = @"1020235";
     request.userId = @"123abc";
-    
+#ifdef IOVATION_INSTALLED
+    NSString *blackbox = [DevicePrint blackbox];
+    request.fingerPrint = blackbox;
+#endif
     [request sendRequestWithDelegate:self];
 }
 
 - (IBAction)submissionComments {
+    
+
     BVPost *request = [[BVPost alloc] initWithType:BVPostTypeReviewComment];
     request.commentText = @"This is my comment text";
     request.reviewId = @"83964";
     request.userId = @"123abc";
+#ifdef IOVATION_INSTALLED
+    NSString *blackbox = [DevicePrint blackbox];
+    request.fingerPrint = blackbox;
+#endif
     
     [request sendRequestWithDelegate:self];    
 }
@@ -199,6 +219,10 @@
     mySubmission.userId = @"123abc";
     mySubmission.feedbackType = BVFeedbackTypeHelpfulness;
     mySubmission.vote = BVFeedbackVoteTypeNegative;
+#ifdef IOVATION_INSTALLED
+    NSString *blackbox = [DevicePrint blackbox];
+    mySubmission.fingerPrint = blackbox;
+#endif
     [mySubmission sendRequestWithDelegate:self];
 }
 

@@ -24,6 +24,8 @@
 @property (strong) NSMutableArray* pageviewQueue; // Page views
 @property NSTimer* queueFlushTimer;
 
+@property (nonatomic, strong) dispatch_queue_t concurrentEventQueue;
+
 @property BVAuthenticatedUser *bvAuthenticatedUser;
 @property NSString* BVID;
 
@@ -38,6 +40,8 @@ static BVAnalyticsManager *analyticsInstance = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         analyticsInstance = [[self alloc] init];
+        analyticsInstance->_concurrentEventQueue = dispatch_queue_create("com.bazaarvoice.analyticEventQueue",
+                                                                          DISPATCH_QUEUE_CONCURRENT);
     });
     
     return analyticsInstance;
@@ -228,20 +232,31 @@ static BVAnalyticsManager *analyticsInstance = nil;
     NSMutableDictionary *eventForQueue = [NSMutableDictionary dictionaryWithDictionary:eventData];
     [eventForQueue addEntriesFromDictionary:[self getCommonAnalyticsDict]];
     
-    [self.eventQueue addObject:eventForQueue];
+    dispatch_barrier_sync(self.concurrentEventQueue, ^{
+        // Update event queue
+        [self.eventQueue addObject:eventForQueue];
+        
+    });
     
     // schedule a queue flush, if not already scheduled
     // many times, a rush of events come very close to each other, and then things are quiet for a while.
-    if(self.queueFlushTimer == nil){
-
-    SEL flushQueueSelector = @selector(flushQueue);
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
         
-    self.queueFlushTimer = [NSTimer scheduledTimerWithTimeInterval:BV_QUEUE_FLUSH_INTERVAL
-                                                                target:self
-                                                              selector:flushQueueSelector
-                                                              userInfo:nil
-                                                               repeats:NO];
-    }
+        if(self.queueFlushTimer == nil){
+            
+            SEL flushQueueSelector = @selector(flushQueue);
+            
+            self.queueFlushTimer = [NSTimer scheduledTimerWithTimeInterval:BV_QUEUE_FLUSH_INTERVAL
+                                                                    target:self
+                                                                  selector:flushQueueSelector
+                                                                  userInfo:nil
+                                                                   repeats:NO];
+        }
+    });
+
+    
+    
     
 }
 
@@ -252,7 +267,12 @@ static BVAnalyticsManager *analyticsInstance = nil;
     NSMutableDictionary *eventForQueue = [NSMutableDictionary dictionaryWithDictionary:pageViewEvent];
     [eventForQueue addEntriesFromDictionary:[self getCommonAnalyticsDict]];
     
-    [self.pageviewQueue addObject:eventForQueue];
+    dispatch_barrier_sync(self.concurrentEventQueue, ^{
+        // Update PageView queue events
+        [self.pageviewQueue addObject:eventForQueue];
+    });
+    
+    
         
 }
 
@@ -280,8 +300,11 @@ static BVAnalyticsManager *analyticsInstance = nil;
             
         }];
         
-        // purge queue
-        [self.eventQueue removeAllObjects];
+        dispatch_barrier_sync(self.concurrentEventQueue, ^{
+            // purge queue
+            [self.eventQueue removeAllObjects];
+        });
+        
     }
     
     // send page view events
@@ -299,8 +322,10 @@ static BVAnalyticsManager *analyticsInstance = nil;
             
         }];
         
-        // purge pageview queue
-        [self.pageviewQueue removeAllObjects];
+        dispatch_barrier_sync(self.concurrentEventQueue, ^{
+            // purge pageview queue
+            [self.pageviewQueue removeAllObjects];
+        });
         
     }
 }
@@ -395,5 +420,6 @@ static BVAnalyticsManager *analyticsInstance = nil;
 -(void)setLogLevel:(BVLogLevel)logLevel{
     [[BVLogger sharedLogger] setLogLevel:logLevel];
 }
+
 
 @end
