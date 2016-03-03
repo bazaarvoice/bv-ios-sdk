@@ -274,6 +274,12 @@
 
 
 /*!
+  Mass advertising campaigns, trolling, and attempts at automated content submission are all sources of inauthentic content. To combat them Bazaarvoice has partnered with iovation, an industry leader in device reputation technology. Use this parameter to add the fingerPrint parameter to each POST request.
+ */
+@property (assign, nonatomic) NSString *fingerPrint;
+
+
+/*!
  Adds a generic parameter to the request.  This method should be used as a last resort when another method does not exist for a particular request you would like to make.  Behavior may be undefined.
  @param name of parameter.
  @param value of parameter.

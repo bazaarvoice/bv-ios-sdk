@@ -4,11 +4,19 @@
 
 #import <Availability.h>
 
-#ifndef __IPHONE_4_0
-#warning "This project uses features only available in iOS SDK 4.0 and later."
+#ifndef __IPHONE_8_0
+#warning "This project uses features only available in iOS SDK 8.0 and later."
 #endif
 
 #ifdef __OBJC__
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
+#endif
+
+
+#if __has_include(<iovation/DevicePrint.h>)
+    #define IOVATION_INSTALLED
+    #import <iovation/DevicePrint.h>
+#else
+    #warning iovation framework is not installed. This demo application will still work, but for truly authenticate reviews, please use iovation in your projets.
 #endif

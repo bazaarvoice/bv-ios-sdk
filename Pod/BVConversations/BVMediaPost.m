@@ -9,6 +9,7 @@
 #import "BVMediaPost.h"
 #import "BVNetwork.h"
 #import "BVSettings.h"
+#import "BVConversationsAnalyticsHelper.h"
 
 @interface BVMediaPost() {
     BVVideoFormatType _videoFormat;
@@ -103,6 +104,11 @@
     } else {
         [self.network sendMultipartPostWithEndpoint:[self getTypeString]];        
     }
+    
+    // send a used feature event for the POST
+    [[BVConversationsAnalyticsHelper instance] queueAnalyticsEventForMediaPost:self];
+
+
 }
 
 #pragma mark - helper methods

@@ -7,6 +7,7 @@
 
 #import "BVConversationsAnalyticsHelper.h"
 #import "BVAnalyticsManager.h"
+#import "BVPost.h"
 
 // type for BVGet
 typedef enum {
@@ -62,8 +63,36 @@ static BVConversationsAnalyticsHelper *BVAnalyticsSingleton = nil;
 }
 
 
+- (NSDictionary *)getFeatureUsedEventDict:(NSDictionary *)featureUsedInfo {
+    
+    NSMutableDictionary* parameters = [NSMutableDictionary dictionary];
+    [parameters addEntriesFromDictionary:[self getFeatureUsedParams]];
+    [parameters addEntriesFromDictionary:featureUsedInfo];
+    
+    return parameters;
+    
+    
+}
+
 #pragma mark - Public facing
 
+
+-(void)queueAnalyticsEventForFeatureUsed:(BVPost *)postObj {
+    
+    NSDictionary *postInfo = [self getRelevantInfoForPostType:postObj.type andResult:postObj];
+    NSDictionary *eventDict = [self getFeatureUsedEventDict:postInfo];
+    [[BVAnalyticsManager sharedManager] queueEvent:eventDict];
+    
+}
+
+
+-(void)queueAnalyticsEventForMediaPost:(BVMediaPost *)postObj {
+    
+    NSDictionary *postInfo = [self getRelevantInfoForMediaPostType:postObj.type andResult:postObj];
+    NSDictionary *eventDict = [self getFeatureUsedEventDict:postInfo];
+    [[BVAnalyticsManager sharedManager] queueEvent:eventDict];
+    
+}
 
 -(void)queueAnalyticsEventForResponse:(NSDictionary*)response forRequest:(id)sender {
     
@@ -112,10 +141,12 @@ static BVConversationsAnalyticsHelper *BVAnalyticsSingleton = nil;
         NSLog(@"BVSDK encountered an exception while queueing an event: %@", exception.name);
         NSLog(@"Reason: %@", exception.reason );
     }
+
 }
 
 
 #pragma mark - Internal Data formatting
+
 
 // Helper routines to format data according to API response
 
@@ -123,7 +154,7 @@ static BVConversationsAnalyticsHelper *BVAnalyticsSingleton = nil;
     return @{
              @"cl": @"Impression",
              @"type": @"UGC",
-             @"source": @"bv-ios-sdk"
+             @"source": @"native-mobile-sdk"
              };
 }
 
@@ -131,7 +162,16 @@ static BVConversationsAnalyticsHelper *BVAnalyticsSingleton = nil;
     return @{
              @"cl": @"PageView",
              @"type": @"Product",
-             @"source": @"bv-ios-sdk"
+             @"source": @"native-mobile-sdk"
+             };
+}
+
+
+-(NSDictionary*)getFeatureUsedParams {
+    return @{
+             @"cl": @"Feature",
+             @"type": @"Used",
+             @"source": @"native-mobile-sdk"
              };
 }
 
@@ -197,5 +237,82 @@ static BVConversationsAnalyticsHelper *BVAnalyticsSingleton = nil;
             return nil;
     }
 }
+
+
+-(NSDictionary*)getRelevantInfoForMediaPostType:(BVMediaPostType)type andResult:(BVMediaPost *)postObj {
+    
+    NSString *name;
+    
+    switch (type) {
+            
+        case BVMediaPostTypePhoto:
+            name =  @"Photo";
+            break;
+            
+        case BVMediaPostTypeVideo:
+            name =  @"Video";
+            break;
+            
+        default:
+            name = @"Unknown";
+    }
+    
+    return  @{
+              @"name" : name,
+              };
+    
+}
+
+
+-(NSDictionary*)getRelevantInfoForPostType:(BVPostType)type andResult:(BVPost *)postObj {
+    
+    NSString *productId = postObj.productId == nil ? @"" : postObj.productId;
+    NSString *categoryId = postObj.categoryId == nil ? @"" : postObj.categoryId;
+    NSString *fingerprinting = postObj.fingerPrint == nil ? @"false" : @"true";
+    NSString *name;
+    
+    switch (type) {
+        
+        case BVPostTypeAnswer:
+            name =  @"Answer";
+            break;
+            
+        case BVPostTypeReviewComment:
+            name =  @"Comment";
+            break;
+            
+        case BVPostTypeStoryComment:
+            name =  @"StoryComment";
+            break;
+            
+        case BVPostTypeFeedback:
+            name =  @"Feedback";
+            break;
+            
+        case BVPostTypeQuestion:
+            name =  @"Ask";
+            break;
+            
+        case BVPostTypeReview:
+            name =  @"Write";
+            break;
+            
+        case BVPostTypeStory:
+            name =  @"Story";
+            break;
+            
+        default:
+            name = @"Unknown";
+    }
+    
+    return  @{
+              @"productId" : productId,
+              @"categoryId" : productId,
+              @"fingerprinting" : fingerprinting,
+              @"name" : name
+              };
+    
+}
+
 
 @end

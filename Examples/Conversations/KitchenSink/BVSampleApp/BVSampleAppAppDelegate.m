@@ -53,6 +53,9 @@
         
     }
 
+#ifdef IOVATION_INSTALLED
+    [DevicePrint start];
+#endif
     
     return YES;
 }
