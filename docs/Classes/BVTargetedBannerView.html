@@ -58,6 +58,14 @@
 	
 	<optgroup label="Instance Methods">
 		
+		<option value="//api/name/adViewDidDismissScreen:">- adViewDidDismissScreen:</option>
+		
+		<option value="//api/name/adViewWillDismissScreen:">- adViewWillDismissScreen:</option>
+		
+		<option value="//api/name/adViewWillLeaveApplication:">- adViewWillLeaveApplication:</option>
+		
+		<option value="//api/name/adViewWillPresentScreen:">- adViewWillPresentScreen:</option>
+		
 		<option value="//api/name/getTargetedRequest">- getTargetedRequest</option>
 		
 	</optgroup>
@@ -98,7 +106,7 @@
 						
 
 						
-						
+						<h2 class="task-title">Other Methods</h2>
 
 						<div class="task-list">
 							<div class="section-method">
@@ -145,6 +153,182 @@
 </div>
 						</div>
 						
+
+						
+						<h2 class="task-title">Other Methods</h2>
+
+						<div class="task-list">
+							<div class="section-method">
+	<a name="//api/name/adViewWillPresentScreen:" title="adViewWillPresentScreen:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/adViewWillPresentScreen:">&ndash;&nbsp;adViewWillPresentScreen:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Tells the delegate that a full screen view will be presented in response to the user clicking on
+an ad. The delegate may want to pause animations and time sensitive interactions.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)adViewWillPresentScreen:(GADBannerView *)<em>bannerView</em></code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BVTargetedBannerView.m</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/adViewWillDismissScreen:" title="adViewWillDismissScreen:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/adViewWillDismissScreen:">&ndash;&nbsp;adViewWillDismissScreen:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Tells the delegate that the full screen view will be dismissed.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)adViewWillDismissScreen:(GADBannerView *)<em>bannerView</em></code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BVTargetedBannerView.m</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/adViewDidDismissScreen:" title="adViewDidDismissScreen:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/adViewDidDismissScreen:">&ndash;&nbsp;adViewDidDismissScreen:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Tells the delegate that the full screen view has been dismissed. The delegate should restart
+anything paused while handling <a href="#//api/name/adViewWillPresentScreen:">adViewWillPresentScreen:</a>.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)adViewDidDismissScreen:(GADBannerView *)<em>bannerView</em></code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BVTargetedBannerView.m</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/adViewWillLeaveApplication:" title="adViewWillLeaveApplication:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/adViewWillLeaveApplication:">&ndash;&nbsp;adViewWillLeaveApplication:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Tells the delegate that the user click will open another app, backgrounding the current
+application. The standard UIApplicationDelegate methods, like applicationDidEnterBackground:,
+are called immediately before this method is called.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)adViewWillLeaveApplication:(GADBannerView *)<em>bannerView</em></code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BVTargetedBannerView.m</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+						</div>
+						
 					</div>
 					
 					
@@ -157,7 +341,7 @@
 				<footer>
 					<div class="footer-copyright">
 						
-						<p class="copyright">Copyright &copy; 2015 Bazaarvoice. All rights reserved. Updated: 2015-12-09</p>
+						<p class="copyright">Copyright &copy; 2016 Bazaarvoice. All rights reserved. Updated: 2016-02-08</p>
 						
 						
 						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>

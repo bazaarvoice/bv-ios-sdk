@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BannerDemoViewController">
+            <connections>
+                <outlet property="bannerView" destination="RSt-9U-suP" id="YgZ-hU-AfG"/>
+                <outlet property="closeButton" destination="ybQ-uF-EbV" id="MBV-s1-vUD"/>
+                <outlet property="view" destination="iN0-l3-epB" id="upE-20-4HF"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="467" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bannerBackground.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="rIX-ci-n39">
+                    <rect key="frame" x="0.0" y="0.0" width="467" height="600"/>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ybQ-uF-EbV">
+                    <rect key="frame" x="8" y="17" width="56" height="40"/>
+                    <color key="backgroundColor" red="0.95686274509803926" green="0.95686274509803926" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="fqf-fh-7wW"/>
+                        <constraint firstAttribute="width" constant="56" id="n5v-G5-7M6"/>
+                    </constraints>
+                    <state key="normal" image="closeButton.png"/>
+                    <connections>
+                        <action selector="closeButtonPressed" destination="-1" eventType="touchUpInside" id="LW8-Qg-Ryx"/>
+                    </connections>
+                </button>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RSt-9U-suP" customClass="BVTargetedBannerView">
+                    <rect key="frame" x="73.5" y="550" width="320" height="50"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="WiD-S6-JPR"/>
+                        <constraint firstAttribute="width" constant="320" id="uOV-t5-V7D"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="0.95686274509803926" green="0.95686274509803926" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstItem="RSt-9U-suP" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="1sa-mx-Ar6"/>
+                <constraint firstItem="ybQ-uF-EbV" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="6eH-MI-WUU"/>
+                <constraint firstItem="ybQ-uF-EbV" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="17" id="8HC-hk-fun"/>
+                <constraint firstItem="rIX-ci-n39" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="9xx-Em-dvI"/>
+                <constraint firstAttribute="bottom" secondItem="RSt-9U-suP" secondAttribute="bottom" id="Ch8-DG-2Da"/>
+                <constraint firstAttribute="bottom" secondItem="rIX-ci-n39" secondAttribute="bottom" id="CwV-8S-UcI"/>
+                <constraint firstAttribute="bottom" secondItem="RSt-9U-suP" secondAttribute="bottom" id="EpY-Qs-95X"/>
+                <constraint firstAttribute="trailing" secondItem="rIX-ci-n39" secondAttribute="trailing" id="Uix-CD-AlN"/>
+                <constraint firstItem="rIX-ci-n39" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="XYe-Re-fbf"/>
+                <constraint firstItem="RSt-9U-suP" firstAttribute="centerX" secondItem="rIX-ci-n39" secondAttribute="centerX" id="dRh-wq-4Xq"/>
+                <constraint firstAttribute="trailing" secondItem="RSt-9U-suP" secondAttribute="trailing" id="qsf-sv-UeD"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="1sa-mx-Ar6"/>
+                    <exclude reference="Ch8-DG-2Da"/>
+                    <exclude reference="qsf-sv-UeD"/>
+                </mask>
+            </variation>
+            <point key="canvasLocation" x="274.5" y="287"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="bannerBackground.jpg" width="375" height="667"/>
+        <image name="closeButton.png" width="45" height="45"/>
+    </resources>
+</document>

@@ -1,10 +1,8 @@
 PODS:
-  - BVSDK/BVAdvertising (3.0.0):
+  - BVSDK/BVAdvertising (3.0.1):
     - BVSDK/Core
     - Google-Mobile-Ads-SDK (~> 7.6)
-  - BVSDK/BVAnalytics (3.0.0)
-  - BVSDK/Core (3.0.0):
-    - BVSDK/BVAnalytics
+  - BVSDK/Core (3.0.1)
   - FontAwesomeKit/Core (2.2.0)
   - FontAwesomeKit/FontAwesome (2.2.0):
     - FontAwesomeKit/Core
@@ -21,7 +19,7 @@ EXTERNAL SOURCES:
     :path: ../../
 
 SPEC CHECKSUMS:
-  BVSDK: f37d98a73a490c3d406090c4c44d9247d615ae02
+  BVSDK: 99b137fcafebddece8f182e8a62fd29d5959e424
   FontAwesomeKit: 025fd4dd1017fe4e3f8d47b03e024deedbb33cd4
   Google-Mobile-Ads-SDK: 0290020329c61183c4685304264b73382bc49fb4
   MBProgressHUD: c47f2c166c126cf2ce36498d80f33e754d4e93ad

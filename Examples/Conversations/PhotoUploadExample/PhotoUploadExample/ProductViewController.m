@@ -24,15 +24,6 @@
 {    
     [super viewDidLoad];
     
-    // Set up the global BVSettings object to store parameters
-    // which are common to all requests.  In general, this should
-    // only need to be done once.
-    [BVSDKManager sharedManager].apiKeyConversations = @"KEY_REMOVED";
-    [BVSDKManager sharedManager].clientId = @"apitestcustomer";
-    // These are test endpoints, merely to illustrate use of the api
-    // calls to our stating server.
-    [BVSDKManager sharedManager].staging = YES;
-    
     self.navigationController.navigationBar.translucent = NO;
     if([self.navigationController.navigationBar respondsToSelector:@selector(setBarTintColor:)]) {
         self.navigationController.navigationBar.barTintColor = [BVColor secondaryBrandColor];

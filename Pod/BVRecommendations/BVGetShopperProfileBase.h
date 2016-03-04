@@ -9,6 +9,7 @@
 #define BVRecommendationsPrivate_h
 
 #include "BVShopperProfile.h"
+#include "BVGetShopperProfile.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -26,8 +27,9 @@ typedef NS_OPTIONS(NSUInteger, BVProfileFilterOptions) {
 
 
 // Internal use only!
-- (void)_privateFetchShopperProfileWithIDFA:(NSString *)idfa
-                             withOptions:(BVProfileFilterOptions)filter
+- (void)_privateFetchShopperProfile:(NSString * __nullable)productId
+                             withCategoryId:(NSString * __nullable)categoryId
+                             withProfileOptions:(BVProfileFilterOptions)profileOptions
                                withLimit:(NSUInteger)limit
                        completionHandler:(void (^)(BVShopperProfile * __nullable profile, NSURLResponse * __nullable response, NSError * __nullable error))completionHandler;
 

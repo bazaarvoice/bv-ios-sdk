@@ -122,14 +122,16 @@ static BVConversationsAnalyticsHelper *BVAnalyticsSingleton = nil;
 -(NSDictionary*)getImpressionParams {
     return @{
              @"cl": @"Impression",
-             @"type": @"UGC"
+             @"type": @"UGC",
+             @"source": @"bv-ios-sdk"
              };
 }
 
 -(NSDictionary*)getPageViewParams {
     return @{
              @"cl": @"PageView",
-             @"type": @"Product"
+             @"type": @"Product",
+             @"source": @"bv-ios-sdk"
              };
 }
 

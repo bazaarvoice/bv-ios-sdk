@@ -24,12 +24,25 @@ class DemoTableViewController: UIViewController, BVRecommendationsUIDelegate, BV
         addChildViewController(tableViewController!)
         view.addSubview(tableViewController!.view)
         tableViewController!.didMoveToParentViewController(self)
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "reloadOnSettingsChange:", name: "settingsChanged", object: nil)
+
     }
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         
         tableViewController!.view.frame = self.view.bounds
+    }
+    
+    func reloadOnSettingsChange(notification:NSNotification){
+        
+        if (notification.object?.boolValue == true){
+            tableViewController?.reloadView()
+        } else {
+            tableViewController?.refreshView()
+        }
+        
     }
     
 // MARK: BVRecommendationsUIDelegate
@@ -51,11 +64,32 @@ class DemoTableViewController: UIViewController, BVRecommendationsUIDelegate, BV
         
         recommendationsView.removeCellOnDislike = true
         
-        print("styleRecommendationsView")
-    }
+        // Optionally, style the product view
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        
+        // example delegate method
+        recommendationsView.starsAndReviewStatsHidden = appDelegate.hideStars()
+        recommendationsView.starsColor = appDelegate.starsColor()
+        
+        if appDelegate.useCustomStars(){
+            recommendationsView.starsEmptyImage = UIImage(named: "like-unselected.png")
+            recommendationsView.starsFilledImage = UIImage(named: "heart-filled.png")
+        } else {
+            recommendationsView.starsEmptyImage = nil
+            recommendationsView.starsFilledImage = nil
+        }    }
     
     func didSelectProduct(product: BVProduct!) {
-        print("didSelectProduct \(product.name)")
+        
+        // Navigate to a demo produdct page
+        
+        let productView = ProductPageViewController(nibName:"ProductPageViewController", bundle: nil)
+        productView.title = product.productName
+        productView.product = product
+        
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let rootViewController = appDelegate.window!.rootViewController as! UINavigationController
+        rootViewController.pushViewController(productView, animated: true)
     }
     
     func didFailToLoadWithError(err: NSError!) {
@@ -63,15 +97,15 @@ class DemoTableViewController: UIViewController, BVRecommendationsUIDelegate, BV
     }
     
     func didToggleLike(product: BVProduct!) {
-        print("didToggleLike for \(product.name)");
+        print("didToggleLike for \(product.productName)");
     }
     
     func didToggleDislike(product: BVProduct!) {
-        print("didTogggleBan for \(product.name)")
+        print("didTogggleBan for \(product.productName)")
     }
     
     func didSelectShopNow(product: BVProduct!) {
-        print("didSelectShopNow for \(product.name)")
+        print("didSelectShopNow for \(product.productName)")
     }
     
 // MARK: BVRecommendationUIDatasource

@@ -20,5 +20,7 @@
 #import "BVContextualInterests.h"
 #import "BVLocationEventsHelper.h"
 #import "BVAdsAnalyticsHelper.h"
+#import "BVTargetedNativeContentAdView.h"
+#import "BVTargetedNativeAppInstallAdView.h"
 
 #endif /* BVAdvertising_h */

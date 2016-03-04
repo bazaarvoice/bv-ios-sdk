@@ -50,20 +50,21 @@
 
 -(void)setupDefaults {
     self.recommendations = [NSMutableArray array];
+    self.recommendationSettings = [[BVRecommendationContinerProps alloc] init];
     [self setupSubviews];
-    [self loadRecommendations];
     
-    self.errorView = (BVRecommendationsErrorView*)[[[NSBundle mainBundle] loadNibNamed:@"BVRecommendationsErrorView" owner:self options:nil] firstObject];
+    NSBundle* bundle = [NSBundle bundleWithIdentifier:BV_RECSUI_FRAMEWORK_BUNDLE_ID];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(recommendationsUpdated) name:BV_INTERNAL_PROFILE_UPDATED_COMPLETED object:nil];
+    self.errorView = (BVRecommendationsErrorView*)[[bundle loadNibNamed:@"BVRecommendationsErrorView" owner:self options:nil] firstObject];
+    
+    if (!self.errorView){
+        // statically built into app, load from app main bundle
+        self.errorView = (BVRecommendationsErrorView*)[[[NSBundle mainBundle] loadNibNamed:@"BVRecommendationsErrorView" owner:self options:nil] firstObject];
+    }
+    
 }
 
 -(void)dealloc {
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:BV_INTERNAL_PROFILE_UPDATED_COMPLETED object:nil];
-}
-
--(void)recommendationsUpdated {
-    [self loadRecommendations];
 }
 
 -(void)layoutSubviews {
@@ -85,8 +86,12 @@
     [self.collectionView.collectionViewLayout invalidateLayout];
 }
 
--(void)reloadView {
+- (void)refreshView {
     [self.collectionView reloadItemsAtIndexPaths:[self.collectionView indexPathsForVisibleItems]];
+}
+
+-(void)reloadView {
+    [self loadRecommendations];
 }
 
 -(void)setupSubviews {
@@ -97,7 +102,10 @@
     self.collectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:self.layout];
     [self.collectionView setDataSource:self];
     [self.collectionView setDelegate:self];
-    [self.collectionView registerNib:[UINib nibWithNibName:@"BVCarouselCell" bundle:nil] forCellWithReuseIdentifier:@"BVCarouselCell"];
+    
+    NSBundle* bundle = [NSBundle bundleWithIdentifier:BV_RECSUI_FRAMEWORK_BUNDLE_ID];
+    
+    [self.collectionView registerNib:[UINib nibWithNibName:@"BVCarouselCell" bundle:bundle] forCellWithReuseIdentifier:@"BVCarouselCell"];
     [self addSubview:self.collectionView];
     
 }
@@ -121,9 +129,28 @@
 
 -(void)loadRecommendations {
     
+    UIActivityIndicatorView *wheel = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    
+    NSString *productId = self.recommendationSettings.productId;
+    NSString *categoryId = self.recommendationSettings.categoryId;
+    NSUInteger limit = self.recommendationSettings.recommendationLimit;
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        
+        [self setNeedsLayout];
+        wheel.frame = self.bounds;
+        [self addSubview:wheel];
+        [wheel startAnimating];
+    });
+    
     BVGetShopperProfile *api = [[BVGetShopperProfile alloc] init];
     
-    [api fetchProductRecommendations:20 withCompletionHandler:^(BVShopperProfile * _Nullable profile, NSError * _Nullable error) {
+    [api _privateFetchShopperProfile:productId withCategoryId:categoryId withProfileOptions:0 withLimit:limit completionHandler:^(BVShopperProfile * _Nullable profile, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        
+        // completion
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [wheel removeFromSuperview];
+        });
         
         // completion
         if (profile && !error){
@@ -133,8 +160,8 @@
             NSLog(@"Recommendatons!: %lu", (unsigned long)[self.recommendations count]);
             
             dispatch_async(dispatch_get_main_queue(), ^{
-                [self.collectionView reloadData];
                 
+                [self.collectionView reloadData];
                 
                 if (self.delegate && [self.delegate respondsToSelector:@selector(didLoadUserRecommendations:)]) {
                     
@@ -142,11 +169,13 @@
                     
                 }
                 
+                [BVRecsAnalyticsHelper queueEmbeddedRecommendationsPageViewEvent:self.recommendationSettings.productId withCategoryId:self.recommendationSettings.categoryId withClientId:[BVSDKManager sharedManager].clientId withNumRecommendations:self.recommendations.count withWidgetType:[BVRecsAnalyticsHelper getWidgetTypeString:RecommendationsCarousel]];
+                
             });
             
             BOOL noRecommendations = [self.recommendations count] == 0;
             [self showErrorView:noRecommendations withText:@"No recommendations available"];
-
+            
         } else {
             
             // log the error
@@ -163,8 +192,8 @@
             [self showErrorView:true withText:@"An error occurred"];
             
         }
-        
     }];
+    
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
@@ -181,9 +210,9 @@
     [cell.recommendationsView addTarget:self action:@selector(cellTapped:) forControlEvents:UIControlEventTouchUpInside];
     
     // let the delegate style the cell
-    if(self.delegate && [self.delegate respondsToSelector:@selector(styleRecommendationsView:)]) {
+    if(self.datasource && [self.datasource respondsToSelector:@selector(styleRecommendationsView:)]) {
         
-        [self.delegate styleRecommendationsView:cell.recommendationsView];
+        [self.datasource styleRecommendationsView:cell.recommendationsView];
         
     }
     
@@ -192,7 +221,7 @@
 
 -(void)cellTapped:(BVRecommendationsSharedView*)tappedView {
     
-    [BVRecsAnalyticsHelper queueAnalyticsEventForProductFeatureUsed:tappedView.product withFeatureUsed:TapShopNow];
+    [BVRecsAnalyticsHelper queueAnalyticsEventForProductFeatureUsed:tappedView.product withFeatureUsed:TapShopNow withWidgetType:RecommendationsCarousel];
     
     if(self.delegate && [self.delegate respondsToSelector:@selector(didSelectProduct:)]) {
         
@@ -206,5 +235,19 @@
     
 }
 
+
+-(void)setDatasource:(id<BVRecommendationsUIDataSource>)datasource{
+    
+    // make the API call once the datasource is set.
+    _datasource = datasource;
+    [self loadRecommendations];
+    
+}
+
+#pragma mark UIScrollViewDelegate
+
+-(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
+    [BVRecsAnalyticsHelper queueAnalyticsEventForWidgetScroll:RecommendationsCarousel];
+}
 
 @end

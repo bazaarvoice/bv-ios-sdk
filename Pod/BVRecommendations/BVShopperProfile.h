@@ -32,21 +32,9 @@ NS_ASSUME_NONNULL_BEGIN
 - (id)initWithDictionary:(NSDictionary *)apiResponse;
 
 /*!
-    Given a product key, return the BVProduct model
-    @param productKey The client/id of the the product recommendation
-    @return BVProduct
- */
-- (nullable BVProduct *)productFromKey:(NSString *)productKey;
-
-/*!
     Brands the user likes. Dictionary where keys are brands and values are strenght, specified by strings: HIGH | MED | LOW
  */
 @property (strong, nonatomic) NSDictionary *brands;
-
-/*!
- The user ID used to construct the personalization.
- */
-@property (strong, nonatomic) NSString *userId;
 
 /*!
   Dictionary of user's interests

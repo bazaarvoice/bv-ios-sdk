@@ -14,6 +14,7 @@
 
 @interface BVInternalManager() {
     bool adTrackingEnabled;
+    NSMutableDictionary* adInfoMap;
 }
 
 @property BVAdsAnalyticsHelper* magpie;
@@ -43,6 +44,7 @@
     self = [super init];
     if(self){
         self.magpie = [[BVAdsAnalyticsHelper alloc] init];
+        adInfoMap = [NSMutableDictionary dictionary];
         
         // Start by assuming true. If different when reading the IDFA, flop this flag and send event reporting that limit ad tracking is enabled/disabled
         adTrackingEnabled = true;
@@ -100,59 +102,66 @@
 -(void)adRequested:(BVAdInfo*)adInfo {
     [self.magpie adRequested:adInfo];
 }
--(void)adDelivered:(BVAdInfo*)adInfo {
-    [self.magpie adDelivered:adInfo];
+
+-(void)adReceived:(BVAdInfo*)adInfo { //
+    [self.magpie adReceived:adInfo];
 }
+
+-(void)adDismissed:(BVAdInfo*)adInfo {
+    [self.magpie adDismissed:adInfo];
+}
+
+-(void)adConversion:(BVAdInfo *)adInfo {
+    [self.magpie adConversion:adInfo];
+}
+
 -(void)adShown:(BVAdInfo*)adInfo {
     [self.magpie adShown:adInfo];
 }
+
 -(void)adFailed:(BVAdInfo*)adInfo error:(GADRequestError*)error {
     [self.magpie adFailed:adInfo error:error];
 }
 
-#pragma mark - Location updates
-
--(void)didEnterRegion:(CLCircularRegion*)region location:(BVLocationWrapper*)location {
-    [self.magpie didEnterRegion:region
-                       location:location];
+-(void)nativeAdShown:(GADNativeAd*)nativeAd {
+    BVAdInfo* adInfo = [self getAdInfoForNativeAd:nativeAd];
+    [self adShown:adInfo];
 }
 
--(void)didExitRegion:(CLCircularRegion*)region location:(BVLocationWrapper*)location {
-    [self.magpie didExitRegion:region
-                      location:location];
+-(void)nativeAdConversion:(GADNativeAd*)nativeAd {
+    
+    BVAdInfo* adInfo = [self getAdInfoForNativeAd:nativeAd];
+    [self adConversion:adInfo];
+    
 }
 
--(void)didVisit:(CLVisit*)visit location:(BVLocationWrapper*)location {
-    [self.magpie didVisit:visit
-                 location:location];
+-(void)trackNativeAd:(GADNativeAd*)nativeAd withAdLoaderInfo:(BVAdInfo*)adLoaderInfo {
+    
+    BVAdType bvAdType = [self adTypeOfNativeAd:nativeAd];
+    
+    BVAdInfo* info = [[BVAdInfo alloc] initWithAdUnitId:adLoaderInfo.adUnitId adType:bvAdType];
+    info.customTargeting = adLoaderInfo.customTargeting;
+
+    [adInfoMap setObject:info forKey:[NSValue valueWithNonretainedObject:nativeAd]];
 }
 
--(void)didRangeBeacon:(CLBeacon*)beacon inRegion:(CLBeaconRegion*)region location:(BVLocationWrapper*)location {
-    [self.magpie didRangeBeacon:beacon
-                       inRegion:region
-                       location:location];
+-(BVAdInfo*)getAdInfoForNativeAd:(GADNativeAd*)nativeAd {
+    
+    return [adInfoMap objectForKey:[NSValue valueWithNonretainedObject:nativeAd]];
+    
 }
 
--(void)didUpdateLocation:(BVLocationWrapper*)location {
-    [self.magpie didUpdateLocation:location];
+-(BVAdType)adTypeOfNativeAd:(GADNativeAd*)nativeAd {
+    if([nativeAd isKindOfClass:[GADNativeContentAd class]]) {
+        return BVNativeContent;
+    }
+    else if([nativeAd isKindOfClass:[GADNativeCustomTemplateAd class]]) {
+        return BVNativeCustom;
+    }
+    else {
+        return BVNativeAppInstall;
+    }
 }
 
-#pragma mark - Gimbal-based Updates
-
--(void)gimbalSighting:(BVGMBLSighting*)sighting {
-    [self.magpie gimbalSighting:sighting];
-}
-
--(void)gimbalSighting:(BVGMBLSighting*)sighting forVisit:(BVGMBLVisit*)visit {
-    [self.magpie gimbalSighting:sighting forVisit:visit];
-}
-
--(void)gimbalPlaceBeginVisit:(BVGMBLVisit*)visit {
-    [self.magpie gimbalPlaceBeginVisit:visit];
-}
-
--(void)gimbalPlaceEndVisit:(BVGMBLVisit*)visit {
-    [self.magpie gimbalPlaceEndVisit:visit];
-}
 
 @end

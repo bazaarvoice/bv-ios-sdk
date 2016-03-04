@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "D4F585C4C10BC139D2BFB12B8C6036963F0292D2",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "D4F585C4C10BC139D2BFB12B8C6036963F0292D2" : 0,
+    "EBF438CC1AB750506F92D046BFD52461F7429FB1" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "B6DDF900-A9C5-451C-9334-829EDDBAC771",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "D4F585C4C10BC139D2BFB12B8C6036963F0292D2" : "bv-ios-sdk-dev\/",
+    "EBF438CC1AB750506F92D046BFD52461F7429FB1" : "..\/github\/SwiftAppMenuController-fork"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "BVProductRecsExample",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "Examples\/ProductRecommendations\/BVProductRecsExample.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:bazaarvoice\/bv-ios-sdk-dev.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "D4F585C4C10BC139D2BFB12B8C6036963F0292D2"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:austimkelly\/SwiftAppMenuController.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "EBF438CC1AB750506F92D046BFD52461F7429FB1"
+    }
+  ]
+}

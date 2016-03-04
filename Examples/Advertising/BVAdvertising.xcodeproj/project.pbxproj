@@ -7,34 +7,36 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7316FD6C1C52705100ECD983 /* bv_native.png in Resources */ = {isa = PBXBuildFile; fileRef = 7316FD6B1C52705100ECD983 /* bv_native.png */; };
 		7338A7011B76ED1B00903D96 /* UILabelWithInset.m in Sources */ = {isa = PBXBuildFile; fileRef = 7338A7001B76ED1B00903D96 /* UILabelWithInset.m */; };
 		7338A7041B76ED4000903D96 /* UIColor+BVColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 7338A7031B76ED4000903D96 /* UIColor+BVColor.m */; };
 		7338A7081B76EE3E00903D96 /* ForalPro-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 7338A7071B76EE3E00903D96 /* ForalPro-Regular.otf */; };
-		7338A7151B76EE7300903D96 /* closeButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7338A70C1B76EE7300903D96 /* closeButton@2x.png */; };
-		7338A7161B76EE7300903D96 /* closeButton@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7338A70D1B76EE7300903D96 /* closeButton@3x.png */; };
-		7338A71E1B76EED400903D96 /* bannerBackground@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7338A71C1B76EED400903D96 /* bannerBackground@2x.jpg */; };
-		7338A7221B76EEDA00903D96 /* basket@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7338A71F1B76EEDA00903D96 /* basket@2x.png */; };
 		7338A7231B76EEDA00903D96 /* nativeBackground@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7338A7201B76EEDA00903D96 /* nativeBackground@2x.jpg */; };
-		7338A7241B76EEDA00903D96 /* polo@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7338A7211B76EEDA00903D96 /* polo@2x.jpg */; };
 		7338A7281B76EEE200903D96 /* happyguy@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7338A7251B76EEE200903D96 /* happyguy@2x.jpg */; };
 		7338A7291B76EEE200903D96 /* interstitial@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7338A7261B76EEE200903D96 /* interstitial@2x.jpg */; };
 		7338A72A1B76EEE200903D96 /* native@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7338A7271B76EEE200903D96 /* native@2x.jpg */; };
 		7338A72D1B76EF0D00903D96 /* banner@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7338A72C1B76EF0D00903D96 /* banner@2x.jpg */; };
-		7338A7371B76EFB000903D96 /* BVAdTypesCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7338A7321B76EFB000903D96 /* BVAdTypesCell.m */; };
-		7338A7381B76EFB000903D96 /* BVProductsViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7338A7341B76EFB000903D96 /* BVProductsViewCell.m */; };
-		7338A7391B76EFB000903D96 /* MyContentAdView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7338A7361B76EFB000903D96 /* MyContentAdView.m */; };
 		7338A73C1B76EFBE00903D96 /* GimbalExample.m in Sources */ = {isa = PBXBuildFile; fileRef = 7338A73B1B76EFBE00903D96 /* GimbalExample.m */; };
 		7338A73F1B76EFCA00903D96 /* LocationExample.m in Sources */ = {isa = PBXBuildFile; fileRef = 7338A73E1B76EFCA00903D96 /* LocationExample.m */; };
-		7338A7461B76EFDA00903D96 /* BannerDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7338A7411B76EFDA00903D96 /* BannerDemoViewController.m */; };
-		7338A7471B76EFDA00903D96 /* InterstitialDemo.m in Sources */ = {isa = PBXBuildFile; fileRef = 7338A7431B76EFDA00903D96 /* InterstitialDemo.m */; };
-		7338A7481B76EFDA00903D96 /* NativeDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7338A7451B76EFDA00903D96 /* NativeDemoViewController.m */; };
 		734369781B6400220093721B /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 730537521B2A2560006D7A7F /* libz.dylib */; };
 		7347FE571B556DA2001BD361 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7347FE561B556DA2001BD361 /* main.m */; };
 		7347FE5A1B556DA2001BD361 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7347FE591B556DA2001BD361 /* AppDelegate.m */; };
 		7347FE651B556DA2001BD361 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7347FE631B556DA2001BD361 /* LaunchScreen.xib */; };
 		735F58C61BBC28260098EABD /* gear@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 735F58C41BBC28260098EABD /* gear@3x.png */; };
 		735F58C71BBC28260098EABD /* gear@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 735F58C51BBC28260098EABD /* gear@2x.png */; };
-		735F58CA1BBC2CDA0098EABD /* GeneralizedDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 735F58C91BBC2CDA0098EABD /* GeneralizedDemoViewController.m */; };
+		73747C2F1C3EF97A009E561C /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 73747C2E1C3EF97A009E561C /* RootViewController.xib */; };
+		73747C3B1C3EF98F009E561C /* BannerDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73747C311C3EF98F009E561C /* BannerDemoViewController.m */; };
+		73747C3C1C3EF98F009E561C /* BannerDemoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 73747C321C3EF98F009E561C /* BannerDemoViewController.xib */; };
+		73747C3D1C3EF98F009E561C /* InterstitialDemo.m in Sources */ = {isa = PBXBuildFile; fileRef = 73747C341C3EF98F009E561C /* InterstitialDemo.m */; };
+		73747C3E1C3EF98F009E561C /* GeneralizedDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73747C361C3EF98F009E561C /* GeneralizedDemoViewController.m */; };
+		73747C3F1C3EF98F009E561C /* NativeContentAdDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73747C381C3EF98F009E561C /* NativeContentAdDemoViewController.m */; };
+		73747C401C3EF98F009E561C /* NativeContentAdDemoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 73747C391C3EF98F009E561C /* NativeContentAdDemoViewController.xib */; };
+		73747C411C3EF98F009E561C /* NativeContentAdView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 73747C3A1C3EF98F009E561C /* NativeContentAdView.xib */; };
+		73747C451C3EF99D009E561C /* BVAdTypesCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 73747C431C3EF99D009E561C /* BVAdTypesCell.m */; };
+		73747C461C3EF99D009E561C /* BVAdTypesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 73747C441C3EF99D009E561C /* BVAdTypesCell.xib */; };
+		73747C491C3EFAA4009E561C /* bannerBackground@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 73747C481C3EFAA4009E561C /* bannerBackground@2x.jpg */; };
+		73747C4C1C3EFAC5009E561C /* closeButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 73747C4A1C3EFAC5009E561C /* closeButton@2x.png */; };
+		73747C4D1C3EFAC5009E561C /* closeButton@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 73747C4B1C3EFAC5009E561C /* closeButton@3x.png */; };
 		73A8AAA41B727C1E0015DD7F /* TargetedAdsDemoImages.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 73A8AAA31B727C1E0015DD7F /* TargetedAdsDemoImages.xcassets */; };
 		73F8AF771B569FCE00522183 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73F8AF761B569FCE00522183 /* RootViewController.m */; };
 		90CC379526E2AD25F650BFAF /* libPods-TargetedAdsDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F5E72ED3AA3A1A4BCB0916E /* libPods-TargetedAdsDemo.a */; };
@@ -53,6 +55,7 @@
 		6003F591195388D20070C39A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		6003F5AF195388D20070C39A /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		730537521B2A2560006D7A7F /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		7316FD6B1C52705100ECD983 /* bv_native.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bv_native.png; sourceTree = "<group>"; };
 		732494EE1B2927F1005F4399 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		732494F01B2927FE005F4399 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		732494F21B29280C005F4399 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
@@ -62,32 +65,15 @@
 		7338A7021B76ED4000903D96 /* UIColor+BVColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIColor+BVColor.h"; path = "Helper/UIColor+BVColor.h"; sourceTree = "<group>"; };
 		7338A7031B76ED4000903D96 /* UIColor+BVColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIColor+BVColor.m"; path = "Helper/UIColor+BVColor.m"; sourceTree = "<group>"; };
 		7338A7071B76EE3E00903D96 /* ForalPro-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "ForalPro-Regular.otf"; path = "Resources/ForalPro-Regular.otf"; sourceTree = "<group>"; };
-		7338A70C1B76EE7300903D96 /* closeButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "closeButton@2x.png"; path = "Resources/closeButton@2x.png"; sourceTree = "<group>"; };
-		7338A70D1B76EE7300903D96 /* closeButton@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "closeButton@3x.png"; path = "Resources/closeButton@3x.png"; sourceTree = "<group>"; };
-		7338A71C1B76EED400903D96 /* bannerBackground@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "bannerBackground@2x.jpg"; path = "Resources/bannerDemoScreen/bannerBackground@2x.jpg"; sourceTree = "<group>"; };
-		7338A71F1B76EEDA00903D96 /* basket@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "basket@2x.png"; path = "Resources/nativeDemoScreen/basket@2x.png"; sourceTree = "<group>"; };
 		7338A7201B76EEDA00903D96 /* nativeBackground@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "nativeBackground@2x.jpg"; path = "Resources/nativeDemoScreen/nativeBackground@2x.jpg"; sourceTree = "<group>"; };
-		7338A7211B76EEDA00903D96 /* polo@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "polo@2x.jpg"; path = "Resources/nativeDemoScreen/polo@2x.jpg"; sourceTree = "<group>"; };
 		7338A7251B76EEE200903D96 /* happyguy@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "happyguy@2x.jpg"; path = "Resources/rootScreen/happyguy@2x.jpg"; sourceTree = "<group>"; };
 		7338A7261B76EEE200903D96 /* interstitial@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "interstitial@2x.jpg"; path = "Resources/rootScreen/interstitial@2x.jpg"; sourceTree = "<group>"; };
 		7338A7271B76EEE200903D96 /* native@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "native@2x.jpg"; path = "Resources/rootScreen/native@2x.jpg"; sourceTree = "<group>"; };
 		7338A72C1B76EF0D00903D96 /* banner@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "banner@2x.jpg"; path = "Resources/rootScreen/banner@2x.jpg"; sourceTree = "<group>"; };
-		7338A7311B76EFB000903D96 /* BVAdTypesCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BVAdTypesCell.h; path = CustomAdViews/BVAdTypesCell.h; sourceTree = "<group>"; };
-		7338A7321B76EFB000903D96 /* BVAdTypesCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BVAdTypesCell.m; path = CustomAdViews/BVAdTypesCell.m; sourceTree = "<group>"; };
-		7338A7331B76EFB000903D96 /* BVProductsViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BVProductsViewCell.h; path = CustomAdViews/BVProductsViewCell.h; sourceTree = "<group>"; };
-		7338A7341B76EFB000903D96 /* BVProductsViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BVProductsViewCell.m; path = CustomAdViews/BVProductsViewCell.m; sourceTree = "<group>"; };
-		7338A7351B76EFB000903D96 /* MyContentAdView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyContentAdView.h; path = CustomAdViews/MyContentAdView.h; sourceTree = "<group>"; };
-		7338A7361B76EFB000903D96 /* MyContentAdView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyContentAdView.m; path = CustomAdViews/MyContentAdView.m; sourceTree = "<group>"; };
 		7338A73A1B76EFBE00903D96 /* GimbalExample.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GimbalExample.h; path = GimbalExample/GimbalExample.h; sourceTree = "<group>"; };
 		7338A73B1B76EFBE00903D96 /* GimbalExample.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GimbalExample.m; path = GimbalExample/GimbalExample.m; sourceTree = "<group>"; };
 		7338A73D1B76EFCA00903D96 /* LocationExample.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LocationExample.h; path = LocationExample/LocationExample.h; sourceTree = "<group>"; };
 		7338A73E1B76EFCA00903D96 /* LocationExample.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LocationExample.m; path = LocationExample/LocationExample.m; sourceTree = "<group>"; };
-		7338A7401B76EFDA00903D96 /* BannerDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BannerDemoViewController.h; path = AdDemoScreens/BannerDemoViewController.h; sourceTree = "<group>"; };
-		7338A7411B76EFDA00903D96 /* BannerDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BannerDemoViewController.m; path = AdDemoScreens/BannerDemoViewController.m; sourceTree = "<group>"; };
-		7338A7421B76EFDA00903D96 /* InterstitialDemo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InterstitialDemo.h; path = AdDemoScreens/InterstitialDemo.h; sourceTree = "<group>"; };
-		7338A7431B76EFDA00903D96 /* InterstitialDemo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = InterstitialDemo.m; path = AdDemoScreens/InterstitialDemo.m; sourceTree = "<group>"; };
-		7338A7441B76EFDA00903D96 /* NativeDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NativeDemoViewController.h; path = AdDemoScreens/NativeDemoViewController.h; sourceTree = "<group>"; };
-		7338A7451B76EFDA00903D96 /* NativeDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NativeDemoViewController.m; path = AdDemoScreens/NativeDemoViewController.m; sourceTree = "<group>"; };
 		7347FE521B556DA2001BD361 /* TargetedAdsDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TargetedAdsDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7347FE551B556DA2001BD361 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7347FE561B556DA2001BD361 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -96,8 +82,24 @@
 		7347FE641B556DA2001BD361 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		735F58C41BBC28260098EABD /* gear@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gear@3x.png"; sourceTree = "<group>"; };
 		735F58C51BBC28260098EABD /* gear@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gear@2x.png"; sourceTree = "<group>"; };
-		735F58C81BBC2CDA0098EABD /* GeneralizedDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GeneralizedDemoViewController.h; path = AdDemoScreens/GeneralizedDemoViewController.h; sourceTree = "<group>"; };
-		735F58C91BBC2CDA0098EABD /* GeneralizedDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GeneralizedDemoViewController.m; path = AdDemoScreens/GeneralizedDemoViewController.m; sourceTree = "<group>"; };
+		73747C2E1C3EF97A009E561C /* RootViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RootViewController.xib; sourceTree = "<group>"; };
+		73747C301C3EF98F009E561C /* BannerDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BannerDemoViewController.h; sourceTree = "<group>"; };
+		73747C311C3EF98F009E561C /* BannerDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BannerDemoViewController.m; sourceTree = "<group>"; };
+		73747C321C3EF98F009E561C /* BannerDemoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BannerDemoViewController.xib; sourceTree = "<group>"; };
+		73747C331C3EF98F009E561C /* InterstitialDemo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InterstitialDemo.h; sourceTree = "<group>"; };
+		73747C341C3EF98F009E561C /* InterstitialDemo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InterstitialDemo.m; sourceTree = "<group>"; };
+		73747C351C3EF98F009E561C /* GeneralizedDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeneralizedDemoViewController.h; sourceTree = "<group>"; };
+		73747C361C3EF98F009E561C /* GeneralizedDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeneralizedDemoViewController.m; sourceTree = "<group>"; };
+		73747C371C3EF98F009E561C /* NativeContentAdDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NativeContentAdDemoViewController.h; sourceTree = "<group>"; };
+		73747C381C3EF98F009E561C /* NativeContentAdDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NativeContentAdDemoViewController.m; sourceTree = "<group>"; };
+		73747C391C3EF98F009E561C /* NativeContentAdDemoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NativeContentAdDemoViewController.xib; sourceTree = "<group>"; };
+		73747C3A1C3EF98F009E561C /* NativeContentAdView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NativeContentAdView.xib; sourceTree = "<group>"; };
+		73747C421C3EF99D009E561C /* BVAdTypesCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVAdTypesCell.h; sourceTree = "<group>"; };
+		73747C431C3EF99D009E561C /* BVAdTypesCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVAdTypesCell.m; sourceTree = "<group>"; };
+		73747C441C3EF99D009E561C /* BVAdTypesCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BVAdTypesCell.xib; sourceTree = "<group>"; };
+		73747C481C3EFAA4009E561C /* bannerBackground@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "bannerBackground@2x.jpg"; sourceTree = "<group>"; };
+		73747C4A1C3EFAC5009E561C /* closeButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "closeButton@2x.png"; sourceTree = "<group>"; };
+		73747C4B1C3EFAC5009E561C /* closeButton@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "closeButton@3x.png"; sourceTree = "<group>"; };
 		73A8AAA31B727C1E0015DD7F /* TargetedAdsDemoImages.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = TargetedAdsDemoImages.xcassets; sourceTree = "<group>"; };
 		73F8AF751B569FCE00522183 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		73F8AF761B569FCE00522183 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
@@ -181,6 +183,14 @@
 			name = "Podspec Metadata";
 			sourceTree = "<group>";
 		};
+		7316FD6A1C52704600ECD983 /* bvNativeContentDemoScreen */ = {
+			isa = PBXGroup;
+			children = (
+				7316FD6B1C52705100ECD983 /* bv_native.png */,
+			);
+			name = bvNativeContentDemoScreen;
+			sourceTree = "<group>";
+		};
 		7338A6FC1B76EB6C00903D96 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
@@ -208,9 +218,7 @@
 		7338A72E1B76EF1500903D96 /* nativeDemoScreen */ = {
 			isa = PBXGroup;
 			children = (
-				7338A71F1B76EEDA00903D96 /* basket@2x.png */,
 				7338A7201B76EEDA00903D96 /* nativeBackground@2x.jpg */,
-				7338A7211B76EEDA00903D96 /* polo@2x.jpg */,
 			);
 			name = nativeDemoScreen;
 			sourceTree = "<group>";
@@ -218,7 +226,7 @@
 		7338A72F1B76EF2400903D96 /* bannerDemoScreen */ = {
 			isa = PBXGroup;
 			children = (
-				7338A71C1B76EED400903D96 /* bannerBackground@2x.jpg */,
+				73747C481C3EFAA4009E561C /* bannerBackground@2x.jpg */,
 			);
 			name = bannerDemoScreen;
 			sourceTree = "<group>";
@@ -238,12 +246,13 @@
 				7347FE591B556DA2001BD361 /* AppDelegate.m */,
 				73F8AF751B569FCE00522183 /* RootViewController.h */,
 				73F8AF761B569FCE00522183 /* RootViewController.m */,
+				73747C2E1C3EF97A009E561C /* RootViewController.xib */,
 				738DB1741B59701300575974 /* AdDemoScreens */,
+				73747C471C3EF9A4009E561C /* MiscViews */,
 				7338A6FC1B76EB6C00903D96 /* Helper */,
 				736021FB1B5D3D320058D9F2 /* Resources */,
 				737C43EC1B74F26F005C2912 /* LocationExample */,
 				737C43EB1B74F261005C2912 /* GimbalExample */,
-				738DB1751B59726200575974 /* CustomAdViews */,
 				7347FE631B556DA2001BD361 /* LaunchScreen.xib */,
 				73A8AAA31B727C1E0015DD7F /* TargetedAdsDemoImages.xcassets */,
 				7347FE541B556DA2001BD361 /* Supporting Files */,
@@ -263,14 +272,25 @@
 		736021FB1B5D3D320058D9F2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				7316FD6A1C52704600ECD983 /* bvNativeContentDemoScreen */,
 				7338A7301B76EF3500903D96 /* fonts */,
 				7338A72F1B76EF2400903D96 /* bannerDemoScreen */,
 				7338A72E1B76EF1500903D96 /* nativeDemoScreen */,
 				7338A72B1B76EEE900903D96 /* rootScreen */,
-				7338A70C1B76EE7300903D96 /* closeButton@2x.png */,
-				7338A70D1B76EE7300903D96 /* closeButton@3x.png */,
+				73747C4A1C3EFAC5009E561C /* closeButton@2x.png */,
+				73747C4B1C3EFAC5009E561C /* closeButton@3x.png */,
 			);
 			name = Resources;
+			sourceTree = "<group>";
+		};
+		73747C471C3EF9A4009E561C /* MiscViews */ = {
+			isa = PBXGroup;
+			children = (
+				73747C421C3EF99D009E561C /* BVAdTypesCell.h */,
+				73747C431C3EF99D009E561C /* BVAdTypesCell.m */,
+				73747C441C3EF99D009E561C /* BVAdTypesCell.xib */,
+			);
+			name = MiscViews;
 			sourceTree = "<group>";
 		};
 		737C43EB1B74F261005C2912 /* GimbalExample */ = {
@@ -294,29 +314,19 @@
 		738DB1741B59701300575974 /* AdDemoScreens */ = {
 			isa = PBXGroup;
 			children = (
-				7338A7401B76EFDA00903D96 /* BannerDemoViewController.h */,
-				7338A7411B76EFDA00903D96 /* BannerDemoViewController.m */,
-				7338A7421B76EFDA00903D96 /* InterstitialDemo.h */,
-				7338A7431B76EFDA00903D96 /* InterstitialDemo.m */,
-				7338A7441B76EFDA00903D96 /* NativeDemoViewController.h */,
-				7338A7451B76EFDA00903D96 /* NativeDemoViewController.m */,
-				735F58C81BBC2CDA0098EABD /* GeneralizedDemoViewController.h */,
-				735F58C91BBC2CDA0098EABD /* GeneralizedDemoViewController.m */,
+				73747C301C3EF98F009E561C /* BannerDemoViewController.h */,
+				73747C311C3EF98F009E561C /* BannerDemoViewController.m */,
+				73747C321C3EF98F009E561C /* BannerDemoViewController.xib */,
+				73747C331C3EF98F009E561C /* InterstitialDemo.h */,
+				73747C341C3EF98F009E561C /* InterstitialDemo.m */,
+				73747C371C3EF98F009E561C /* NativeContentAdDemoViewController.h */,
+				73747C381C3EF98F009E561C /* NativeContentAdDemoViewController.m */,
+				73747C391C3EF98F009E561C /* NativeContentAdDemoViewController.xib */,
+				73747C3A1C3EF98F009E561C /* NativeContentAdView.xib */,
+				73747C351C3EF98F009E561C /* GeneralizedDemoViewController.h */,
+				73747C361C3EF98F009E561C /* GeneralizedDemoViewController.m */,
 			);
 			name = AdDemoScreens;
-			sourceTree = "<group>";
-		};
-		738DB1751B59726200575974 /* CustomAdViews */ = {
-			isa = PBXGroup;
-			children = (
-				7338A7311B76EFB000903D96 /* BVAdTypesCell.h */,
-				7338A7321B76EFB000903D96 /* BVAdTypesCell.m */,
-				7338A7331B76EFB000903D96 /* BVProductsViewCell.h */,
-				7338A7341B76EFB000903D96 /* BVProductsViewCell.m */,
-				7338A7351B76EFB000903D96 /* MyContentAdView.h */,
-				7338A7361B76EFB000903D96 /* MyContentAdView.m */,
-			);
-			name = CustomAdViews;
 			sourceTree = "<group>";
 		};
 		83CA4E8C731019F2AEC6C5AD /* Pods */ = {
@@ -400,19 +410,23 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7338A7161B76EE7300903D96 /* closeButton@3x.png in Resources */,
+				73747C4D1C3EFAC5009E561C /* closeButton@3x.png in Resources */,
+				73747C461C3EF99D009E561C /* BVAdTypesCell.xib in Resources */,
+				73747C3C1C3EF98F009E561C /* BannerDemoViewController.xib in Resources */,
+				73747C401C3EF98F009E561C /* NativeContentAdDemoViewController.xib in Resources */,
 				7338A7281B76EEE200903D96 /* happyguy@2x.jpg in Resources */,
 				735F58C61BBC28260098EABD /* gear@3x.png in Resources */,
+				73747C491C3EFAA4009E561C /* bannerBackground@2x.jpg in Resources */,
 				73A8AAA41B727C1E0015DD7F /* TargetedAdsDemoImages.xcassets in Resources */,
-				7338A7241B76EEDA00903D96 /* polo@2x.jpg in Resources */,
 				7338A7291B76EEE200903D96 /* interstitial@2x.jpg in Resources */,
+				7316FD6C1C52705100ECD983 /* bv_native.png in Resources */,
 				7338A72A1B76EEE200903D96 /* native@2x.jpg in Resources */,
-				7338A71E1B76EED400903D96 /* bannerBackground@2x.jpg in Resources */,
-				7338A7221B76EEDA00903D96 /* basket@2x.png in Resources */,
-				7338A7151B76EE7300903D96 /* closeButton@2x.png in Resources */,
+				73747C2F1C3EF97A009E561C /* RootViewController.xib in Resources */,
 				7338A72D1B76EF0D00903D96 /* banner@2x.jpg in Resources */,
+				73747C4C1C3EFAC5009E561C /* closeButton@2x.png in Resources */,
 				7338A7081B76EE3E00903D96 /* ForalPro-Regular.otf in Resources */,
 				7347FE651B556DA2001BD361 /* LaunchScreen.xib in Resources */,
+				73747C411C3EF98F009E561C /* NativeContentAdView.xib in Resources */,
 				735F58C71BBC28260098EABD /* gear@2x.png in Resources */,
 				7338A7231B76EEDA00903D96 /* nativeBackground@2x.jpg in Resources */,
 			);
@@ -473,19 +487,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7338A7481B76EFDA00903D96 /* NativeDemoViewController.m in Sources */,
-				7338A7391B76EFB000903D96 /* MyContentAdView.m in Sources */,
-				7338A7371B76EFB000903D96 /* BVAdTypesCell.m in Sources */,
-				7338A7461B76EFDA00903D96 /* BannerDemoViewController.m in Sources */,
-				735F58CA1BBC2CDA0098EABD /* GeneralizedDemoViewController.m in Sources */,
+				73747C3B1C3EF98F009E561C /* BannerDemoViewController.m in Sources */,
 				7347FE5A1B556DA2001BD361 /* AppDelegate.m in Sources */,
 				73F8AF771B569FCE00522183 /* RootViewController.m in Sources */,
+				73747C451C3EF99D009E561C /* BVAdTypesCell.m in Sources */,
 				7338A73C1B76EFBE00903D96 /* GimbalExample.m in Sources */,
-				7338A7471B76EFDA00903D96 /* InterstitialDemo.m in Sources */,
+				73747C3D1C3EF98F009E561C /* InterstitialDemo.m in Sources */,
 				7347FE571B556DA2001BD361 /* main.m in Sources */,
+				73747C3F1C3EF98F009E561C /* NativeContentAdDemoViewController.m in Sources */,
+				73747C3E1C3EF98F009E561C /* GeneralizedDemoViewController.m in Sources */,
 				7338A7041B76ED4000903D96 /* UIColor+BVColor.m in Sources */,
 				7338A73F1B76EFCA00903D96 /* LocationExample.m in Sources */,
-				7338A7381B76EFB000903D96 /* BVProductsViewCell.m in Sources */,
 				7338A7011B76ED1B00903D96 /* UILabelWithInset.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -39,32 +39,34 @@
 
 - (void)interstitialDidReceiveAd:(GADInterstitial *)ad{
     
+    [[BVInternalManager sharedInstance] adReceived:adInfo];
+    
     if([self.delegate respondsToSelector:@selector(interstitialDidReceiveAd:)])
     {
         [self.delegate interstitialDidReceiveAd:ad];
     }
-    [[BVInternalManager sharedInstance] adDelivered:adInfo];
 }
 
 - (void)interstitial:(GADInterstitial *)ad didFailToReceiveAdWithError:(GADRequestError *)error {
+    
+    [[BVInternalManager sharedInstance] adFailed:adInfo error:error];
     
     if([self.delegate respondsToSelector:@selector(interstitial:didFailToReceiveAdWithError:)])
     {
         [self.delegate interstitial:ad didFailToReceiveAdWithError:error];
     }
-    
-    [[BVInternalManager sharedInstance] adFailed:adInfo error:error];
 }
 
 #pragma mark Display-Time Lifecycle Notifications
 
 - (void)interstitialWillPresentScreen:(GADInterstitial *)ad{
     
+    [self adShown];
+    
     if([self.delegate respondsToSelector:@selector(interstitialWillPresentScreen:)])
     {
         [self.delegate interstitialWillPresentScreen:ad];
     }
-    [self adShown];
 }
 
 - (void)interstitialWillDismissScreen:(GADInterstitial *)ad {
@@ -77,31 +79,40 @@
 
 - (void)interstitialDidDismissScreen:(GADInterstitial *)ad {
     
+    [self adDismissed];
+    
     if([self.delegate respondsToSelector:@selector(interstitialDidDismissScreen:)])
     {
         [self.delegate interstitialDidDismissScreen:ad];
     }
-    [self adDismissed];
 }
 
 - (void)interstitialWillLeaveApplication:(GADInterstitial *)ad {
 
+    [self adConversion];
+    
     if([self.delegate respondsToSelector:@selector(interstitialWillLeaveApplication:)])
     {
         [self.delegate interstitialWillLeaveApplication:ad];
     }
-    [self adDismissed];
 }
 
 -(void)adShown {
-    adInfo.adShownDateTime = [NSDate date];
+    
+    [[BVInternalManager sharedInstance] adShown:adInfo];
+    
 }
+
+-(void)adConversion {
+    
+    [[BVInternalManager sharedInstance] adConversion:adInfo];
+    
+}
+
 -(void)adDismissed {
-    if(adInfo.adDismissedTime == nil)
-    {
-        adInfo.adDismissedTime = [NSDate date];
-        [[BVInternalManager sharedInstance] adShown:adInfo];
-    }
+
+    [[BVInternalManager sharedInstance] adDismissed:adInfo];
+    
 }
 
 - (id)delegate {

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class DemoCarouselViewController: UIViewController, BVRecommendationsUIDelegate {
+class DemoCarouselViewController: UIViewController, BVRecommendationsUIDelegate, BVRecommendationsUIDataSource {
     
     @IBOutlet weak var descriptionLabel : UILabel?
     @IBOutlet weak var carouselView : BVRecommendationsCarouselView?
@@ -28,26 +28,24 @@ class DemoCarouselViewController: UIViewController, BVRecommendationsUIDelegate 
         carouselView?.topAndBottmPadding = 8;
         
         carouselView?.delegate = self;
+        carouselView?.datasource = self;
         
-        configureStarColor(0)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "reloadOnSettingsChange:", name: "settingsChanged", object: nil)
+        
     }
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
+    }
+    
+    func reloadOnSettingsChange(notification:NSNotification){
         
-        if self.view.bounds.size.height <= 500 {
-            self.descriptionLabel!.text = ""
+        if (notification.object?.boolValue == true){
+            carouselView?.reloadView()
+        } else {
+            carouselView?.refreshView()
         }
-    }
-    
-    @IBAction func HideStarsChangedValue(sender: UISwitch) {
-        starsHidden = sender.on
-        carouselView?.reloadView()
-    }
-    
-    @IBAction func CustomStarsChangedValue(sender: UISwitch) {
-        useCustomStars = sender.on
-        carouselView?.reloadView()
+        
     }
     
     @IBAction func CarouselHeightSliderChangedValue(sender: UISlider) {
@@ -55,43 +53,40 @@ class DemoCarouselViewController: UIViewController, BVRecommendationsUIDelegate 
         carouselView?.reloadView()
     }
     
-    @IBAction func SelectedStarColor(sender: UISegmentedControl) {
-        configureStarColor(sender.selectedSegmentIndex)
-        carouselView?.reloadView()
-    }
-    
-    func configureStarColor(selectedIndex:Int) {
-        if selectedIndex == 0 {
-            self.starColor = UIColor(red: 1.0, green: 0.73, blue: 0.04, alpha: 1.0) // yellow
-        }
-        else {
-            self.starColor = UIColor(red: 0.10, green: 0.76, blue: 0.03, alpha: 1.0) // green
-        }
-    }
-    
+
     //MARK: - BVRecommendationsUIDelegate
     
     func styleRecommendationsView(recommendationsView: BVRecommendationsSharedView!) {
-        // example delegate method
-        recommendationsView.starsAndReviewStatsHidden = self.starsHidden
-        recommendationsView.starsColor = self.starColor
         
-        if useCustomStars {
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        
+        // example delegate method
+        recommendationsView.starsAndReviewStatsHidden = appDelegate.hideStars()
+        recommendationsView.starsColor = appDelegate.starsColor()
+        
+        if appDelegate.useCustomStars(){
             recommendationsView.starsEmptyImage = UIImage(named: "like-unselected.png")
             recommendationsView.starsFilledImage = UIImage(named: "heart-filled.png")
-        }
-        else {
+        } else {
             recommendationsView.starsEmptyImage = nil
             recommendationsView.starsFilledImage = nil
         }
-        
+    
     }
     
     func didSelectProduct(product: BVProduct!) {
-        // example delegate method
-        // you may want to navigate the user to the product page, since they clicked on the product
-        print("User selected product in carousel: \(product.name)")
-    }
+        
+        // Navigate to a demo produdct page
+        
+        let productView = ProductPageViewController(nibName:"ProductPageViewController", bundle: nil)
+        productView.title = product.productName
+        productView.product = product
+        
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let rootViewController = appDelegate.window!.rootViewController as! UINavigationController
+        rootViewController.pushViewController(productView, animated: true)
+        
+    }   
     
     func didFailToLoadWithError(err: NSError!) {
         // example delegate method
@@ -100,6 +95,7 @@ class DemoCarouselViewController: UIViewController, BVRecommendationsUIDelegate 
     
     func didLoadUserRecommendations(profileRecommendations: BVShopperProfile!) {
         // example delegate method
+        
     }
     
 }

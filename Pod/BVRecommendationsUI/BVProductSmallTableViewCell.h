@@ -5,7 +5,7 @@
 //  Copyright 2015 Bazaarvoice Inc. All rights reserved.
 //
 
-#import "BVSDK.h"
+#import "BVCore.h"
 
 #import "BVRecommendationsSharedView.h"
 

@@ -8,6 +8,7 @@
 #import <UIKit/UIKit.h>
 
 #import "BVRecommendationUIProtocol.h"
+#import "BVRecommendationContinerProps.h"
 
 @protocol BVRecommendationsUIDelegate;
 @protocol BVRecommendationsUIDataSource;
@@ -35,16 +36,29 @@ typedef NS_ENUM(NSInteger, BVProductCellType){
 @property (strong, nonatomic, nullable) UIColor* progressWheelColor;
 @property (strong, nonatomic, nullable) UIColor* progressWheelBackgroundColor;
 
+/**
+ *  Properties you can configure for data/api control before setting the datasource property.
+ */
+@property (strong, nonatomic) BVRecommendationContinerProps * _Nonnull recommendationSettings;
 
 /**
- *  Delegate to style the product recommendation cells, react to errors, etc.
+ *  Delegate to handle product view events, react to errors, etc.
  */
 @property (weak, nonatomic, nullable) id <BVRecommendationsUIDelegate> delegate;
 
-
 /**
- *  Datasource providing list of user liked and user disliked products.
+ *  Provides the data requierments invoking the recommendations API as well as liked/banned product Ids.
  */
 @property (weak, nonatomic, nullable) id <BVRecommendationsUIDataSource> datasource;
+
+/**
+ *  Force data to be reloaded from scratch
+ */
+-(void)reloadView;
+
+/**
+ *  Force the UI to be reloaded.
+ */
+-(void)refreshView;
 
 @end
