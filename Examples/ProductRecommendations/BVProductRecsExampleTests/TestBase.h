@@ -11,7 +11,6 @@
 #include <FBSnapshotTestCase/FBSnapshotTestCase.h>
 #include <BVSDK/BVRecommendations.h>
 #include <BVSDK/BVRecommendationsUI.h>
-#include <BVSDK/BVProductLargeTableViewCell.h>
 
 @interface TestBase : FBSnapshotTestCase
 

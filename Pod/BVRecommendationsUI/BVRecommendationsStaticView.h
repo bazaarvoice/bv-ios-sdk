@@ -7,7 +7,7 @@
 
 #import <UIKit/UIKit.h>
 #import "BVRecommendationUIProtocol.h"
-
+#import "BVRecommendationContinerProps.h"
 
 @protocol BVRecommendationsUIDelegate;
 @protocol BVRecommendationsUIDataSource;
@@ -26,7 +26,6 @@
  */
 @property CGFloat cellPadding;
 
-
 /**
  *  Color of the cell separator line.
  */
@@ -34,21 +33,28 @@
 
 
 /**
- *  Delegate to style the product recommendation cells, react to errors, etc.
+ *  Delegate to handle product view events, react to errors, etc.
  */
 @property (weak, nonatomic, nullable) id <BVRecommendationsUIDelegate> delegate;
 
-
 /**
- *  Datasource providing list of user liked and user disliked products.
+ *  Provides the data requierments invoking the recommendations API as well as liked/banned product Ids.
  */
 @property (weak, nonatomic, nullable) id <BVRecommendationsUIDataSource> datasource;
 
+/**
+ *  Properties you can configure for data/api control before setting the datasource property.
+ */
+@property (strong, nonatomic) BVRecommendationContinerProps * _Nonnull recommendationSettings;
 
 /**
- *  Set the number of product recommendations to display in the BVRecommendationsStaticView.
+ *  Force data to be reloaded from scratch
  */
--(void)configureNumberOfRecommendations:(int)numberOfRecommendations;
+-(void)reloadView;
 
+/**
+ *  Force the UI to be reloaded.
+ */
+-(void)refreshView;
 
 @end

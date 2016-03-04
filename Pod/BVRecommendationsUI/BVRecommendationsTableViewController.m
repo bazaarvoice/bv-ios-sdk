@@ -69,13 +69,30 @@
 }
 
 -(void)setupDefaults {
+    self.recommendationSettings = [[BVRecommendationContinerProps alloc] init];
     self.progressWheelText = @"Loading...";
     self.progressWheelColor = [UIColor blackColor];
     self.progressWheelBackgroundColor = [UIColor whiteColor];
     
-    self.errorView = (BVRecommendationsErrorView*)[[[NSBundle mainBundle] loadNibNamed:@"BVRecommendationsErrorView" owner:self options:nil] firstObject];
+    NSBundle* bundle = [NSBundle bundleWithIdentifier:BV_RECSUI_FRAMEWORK_BUNDLE_ID];
+    
+    self.errorView = (BVRecommendationsErrorView*)[[bundle loadNibNamed:@"BVRecommendationsErrorView" owner:self options:nil] firstObject];
 
+    if (!self.errorView){
+        // statically built into app, load from app main bundle
+        self.errorView = (BVRecommendationsErrorView*)[[[NSBundle mainBundle] loadNibNamed:@"BVRecommendationsErrorView" owner:self options:nil] firstObject];
+    }
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(recommendationsUpdated) name:BV_INTERNAL_PROFILE_UPDATED_COMPLETED object:nil];
+}
+
+
+- (void)refreshView{
+    [self.tableView reloadData];
+}
+
+-(void)reloadView{
+    [self fetchProductRecommendations];
 }
 
 -(void)dealloc {
@@ -167,9 +184,13 @@
     
     [self showProgressHUD];
     
+    NSString *productId = self.recommendationSettings.productId;
+    NSString *categoryId = self.recommendationSettings.categoryId;
+    NSUInteger limit = self.recommendationSettings.recommendationLimit;
+    
     BVGetShopperProfile *api = [[BVGetShopperProfile alloc] init];
     
-    [api fetchProductRecommendations:50 withCompletionHandler:^(BVShopperProfile * _Nullable profile, NSError * _Nullable error) {
+    [api _privateFetchShopperProfile:productId withCategoryId:categoryId withProfileOptions:0 withLimit:limit completionHandler:^(BVShopperProfile * _Nullable profile, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         
         // completion
         if (profile && !error){
@@ -186,15 +207,18 @@
                     [self.delegate didLoadUserRecommendations:self.profileRecs];
                     
                 }
-            
+                
                 [self.tableView reloadData];
+                
+                 [BVRecsAnalyticsHelper queueEmbeddedRecommendationsPageViewEvent:self.recommendationSettings.productId withCategoryId:self.recommendationSettings.categoryId withClientId:[BVSDKManager sharedManager].clientId withNumRecommendations:self.recommendations.count withWidgetType:[BVRecsAnalyticsHelper getWidgetTypeString:RecommendationsTableView]];
+
                 
             });
             
             BOOL noRecommendations = [self.recommendations count] == 0;
             [self showErrorView:noRecommendations withText:@"No recommendations available"];
-
-        
+            
+            
         } else {
             // error
             if(self.delegate && [self.delegate respondsToSelector:@selector(didFailToLoadWithError:)]) {
@@ -214,6 +238,8 @@
         });
         
     }];
+    
+   
     
 }
 
@@ -241,15 +267,15 @@
     BVProduct *product = [self.recommendations objectAtIndex:indexPath.row];
     
     // Setting the product configures the UI elements in the cell
-    cell.recommendationsView.isDisliked = [self isBannedProduct:product.product_id];
-    cell.recommendationsView.isLiked = [self isFavoriteProduct:product.product_id];
+    cell.recommendationsView.isDisliked = [self isBannedProduct:product.productId];
+    cell.recommendationsView.isLiked = [self isFavoriteProduct:product.productId];
     [cell.recommendationsView addTarget:self action:@selector(cellTapped:) forControlEvents:UIControlEventTouchUpInside];
     
     
     cell.recommendationsView.product = product;
     
-    if(self.delegate && [self.delegate respondsToSelector:@selector(styleRecommendationsView:)]) {
-        [self.delegate styleRecommendationsView:cell.recommendationsView];
+    if(self.datasource && [self.datasource respondsToSelector:@selector(styleRecommendationsView:)]) {
+        [self.datasource styleRecommendationsView:cell.recommendationsView];
     }
     
     cell.recommendationsView.delegate = self;
@@ -269,7 +295,7 @@
 
 -(void)cellTapped:(BVRecommendationsSharedView*)tappedView {
     
-    [BVRecsAnalyticsHelper queueAnalyticsEventForProductFeatureUsed:tappedView.product withFeatureUsed:TapProduct];
+    [BVRecsAnalyticsHelper queueAnalyticsEventForProductFeatureUsed:tappedView.product withFeatureUsed:TapProduct withWidgetType:RecommendationsTableView];
     
     if(self.delegate && [self.delegate respondsToSelector:@selector(didSelectProduct:)]) {
         
@@ -288,14 +314,14 @@
 
 -(void)_didToggleLike:(BVProduct *)product withNewValue:(BOOL)flag {
     
-    [BVRecsAnalyticsHelper queueAnalyticsEventForProductFeatureUsed:product withFeatureUsed:TapLike];
+    [BVRecsAnalyticsHelper queueAnalyticsEventForProductFeatureUsed:product withFeatureUsed:TapLike withWidgetType:RecommendationsTableView];
     
-    [self.dislikedProductIds removeObject:product.product_id];
+    [self.dislikedProductIds removeObject:product.productId];
     
     if (flag){
-        [self.likedProductIds addObject:product.product_id];
+        [self.likedProductIds addObject:product.productId];
     } else {
-        [self.likedProductIds removeObject:product.product_id];
+        [self.likedProductIds removeObject:product.productId];
     }
     
     if (self.delegate && [self.delegate respondsToSelector:@selector(didToggleLike:)]){
@@ -310,9 +336,9 @@
 
 -(void)_didToggleDislike:(BVProduct *)product withNewValue:(BOOL)flag shouldRemove:(BOOL)remove {
     
-    [BVRecsAnalyticsHelper queueAnalyticsEventForProductFeatureUsed:product withFeatureUsed:TapUnlike];
+    [BVRecsAnalyticsHelper queueAnalyticsEventForProductFeatureUsed:product withFeatureUsed:TapUnlike withWidgetType:RecommendationsTableView];
     
-    [self.likedProductIds removeObject:product.product_id];
+    [self.likedProductIds removeObject:product.productId];
     
     if (remove) {
         NSUInteger index = [self.recommendations indexOfObject:product];
@@ -324,9 +350,9 @@
     }
     
     if (flag){
-        [self.dislikedProductIds addObject:product.product_id];
+        [self.dislikedProductIds addObject:product.productId];
     } else {
-        [self.dislikedProductIds removeObject:product.product_id];
+        [self.dislikedProductIds removeObject:product.productId];
     }
     
     // notify delegate
@@ -343,7 +369,7 @@
 
 - (void)_didSelectShopNow:(BVProduct *)product{
     
-    [BVRecsAnalyticsHelper queueAnalyticsEventForProductFeatureUsed:product withFeatureUsed:TapShopNow];
+    [BVRecsAnalyticsHelper queueAnalyticsEventForProductFeatureUsed:product withFeatureUsed:TapShopNow withWidgetType:RecommendationsTableView];
     
     if (self.delegate && [self.delegate respondsToSelector:@selector(didSelectShopNow:)]){
         
@@ -381,5 +407,11 @@
     [self.tableView reloadData];
 }
 
+
+#pragma mark UIScrollViewDelegate
+
+-(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
+    [BVRecsAnalyticsHelper queueAnalyticsEventForWidgetScroll:RecommendationsTableView];
+}
 
 @end

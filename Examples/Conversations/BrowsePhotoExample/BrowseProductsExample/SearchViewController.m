@@ -9,7 +9,6 @@
 #import "ListReviewsController.h"
 #import "BVColor.h"
 
-
 #import <BVSDK/BVConversations.h>
 
 @interface SearchViewController ()
@@ -38,11 +37,6 @@
     } else {
         self.navigationController.navigationBar.tintColor = [BVColor primaryBrandColor];
     }
-    
-    // Global BV SDK setup.  In general this should only occur once
-    [BVSDKManager sharedManager].apiKeyConversations = @"kuy3zj9pr3n7i0wxajrzj04xo";
-    [BVSDKManager sharedManager].clientId = @"apitestcustomer";
-    [BVSDKManager sharedManager].staging = YES;
     
     UIImage *image = [UIImage imageNamed:@"graphic-star.png"];
     UIImageView *imageView = [[UIImageView alloc] initWithImage:image];

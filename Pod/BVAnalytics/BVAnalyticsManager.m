@@ -16,6 +16,7 @@
 #define BV_MAGPIE_ENDPOINT @"https://network.bazaarvoice.com/event"
 #define BV_MAGPIE_STAGING_ENDPOINT @"https://network-stg.bazaarvoice.com/event"
 #define BV_QUEUE_FLUSH_INTERVAL 10.0
+#define BVID_STORAGE_KEY @"BVID_STORAGE_KEY"
 
 @interface BVAnalyticsManager ()
 
@@ -24,6 +25,7 @@
 @property NSTimer* queueFlushTimer;
 
 @property BVAuthenticatedUser *bvAuthenticatedUser;
+@property NSString* BVID;
 
 @end
 
@@ -44,12 +46,19 @@ static BVAnalyticsManager *analyticsInstance = nil;
 - (id) init {
     self = [super init];
     if (self != nil) {
+        
+        self.BVID = [[NSUserDefaults standardUserDefaults] stringForKey:BVID_STORAGE_KEY];
+        if(self.BVID == nil || [self.BVID length] == 0) {
+            self.BVID = [[NSUUID UUID] UUIDString];
+            [[NSUserDefaults standardUserDefaults] setValue:self.BVID forKey:BVID_STORAGE_KEY];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+        }
 
         self.eventQueue = [NSMutableArray array];
         self.pageviewQueue = [NSMutableArray array];
         
         [self registerForAppStateChanges];
-
+        
     }
     return self;
 }
@@ -59,7 +68,7 @@ static BVAnalyticsManager *analyticsInstance = nil;
     
     // get diagnostic data
     NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
-    NSString *idfa = [[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString];
+    
     NSString *bundleIdentifier = [[NSBundle mainBundle] bundleIdentifier];
     NSString* osVersion = [[UIDevice currentDevice] systemVersion];
     NSString *majorMinor = [infoDictionary objectForKey:@"CFBundleShortVersionString"];
@@ -71,7 +80,6 @@ static BVAnalyticsManager *analyticsInstance = nil;
     NSString *platform = [NSString stringWithCString:systemInfo.machine encoding:NSUTF8StringEncoding];
     
     NSMutableDictionary* params = [NSMutableDictionary dictionary];
-    [params setValue:idfa forKey:@"advertisingId"];
     [params setValue:bundleIdentifier forKey:@"mobileAppIdentifier"];
     [params setValue:appVersion forKey:@"mobileAppVersion"];
     [params setValue:osVersion forKey:@"mobileOSVersion"];
@@ -127,38 +135,33 @@ static BVAnalyticsManager *analyticsInstance = nil;
     return @{
              @"type": @"ProfileMobile",
              @"cl": @"Personalization",
-             @"bvProduct": @"PersonalizationProfile"
+             @"source": @"ProfileMobile",
+             @"bvProduct": @"ShopperMarketing"
              };
 }
 
 
 - (NSDictionary *)getCommonAnalyticsDict{
     
-    struct utsname systemInfo;
-    uname(&systemInfo);
-    NSString *platform = [NSString stringWithCString:systemInfo.machine encoding:NSUTF8StringEncoding];
-    NSString* osVersion = [[UIDevice currentDevice] systemVersion];
-    
-    NSString* environment = @"production";
-    if(self.isStagingServer){
-        environment = @"staging";
-    }
-
     NSMutableDictionary* params = [NSMutableDictionary dictionaryWithDictionary:@{
-                                                                                  @"source": @"bv-ios-sdk",
-                                                                                  // cookie monster mixin
-                                                                                  @"UA_Mobile": @"false",  // mobile-web is true?
-                                                                                  @"Dt" : [[BVAnalyticsManager sharedManager] formatDate:[NSDate date]],
-                                                                                  @"UA_Platform" : @"ios",
-                                                                                  @"UA_Platform_Version": osVersion,
-                                                                                  @"UA_Device": platform,
-                                                                                  @"HashedIP": @"jasonIP"
+                                                                                  @"mobileSource": @"bv-ios-sdk",
+                                                                                  @"HashedIP" : @"default",
+                                                                                  @"UA" : self.BVID
                                                                                 }];
     
-    [params setValue:self.bvAuthenticatedUser.userAuthString forKey:@"profileId"]; // may be null
     [params setValue:self.clientId forKey:@"client"];
-    [params setValue:environment forKey:@"environment"];
-    [params setValue:[self formatDate:[NSDate date]] forKey:@"Dt"];
+    
+    // idfa
+    //check it limit ad tracking is enabled
+    NSString *idfa = [[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString];
+    if([[ASIdentifierManager sharedManager] isAdvertisingTrackingEnabled]){
+        idfa = [[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString];
+    } else {
+        idfa = @"nontracking";
+    }
+    
+    [params setValue:idfa forKey:@"advertisingId"];
+    
     return params;
 }
 
@@ -171,9 +174,9 @@ static BVAnalyticsManager *analyticsInstance = nil;
     
     self.bvAuthenticatedUser = user;
     
-    NSMutableDictionary* eventData = [NSMutableDictionary dictionaryWithDictionary:[self getMobileDiagnosticParams]];
-    [eventData addEntriesFromDictionary:[self getCommonAnalyticsDict]];
+    NSMutableDictionary* eventData = [NSMutableDictionary dictionaryWithDictionary:[self getCommonAnalyticsDict]];
     [eventData addEntriesFromDictionary:[self getPersonalizationEventParams]];
+    [eventData setValue:self.bvAuthenticatedUser.userAuthString forKey:@"profileId"]; // may be null
     
     [self queueEvent:eventData];
     
@@ -187,7 +190,8 @@ static BVAnalyticsManager *analyticsInstance = nil;
 -(NSDictionary*)getAppStateEventParams {
     return @{
              @"cl": @"Lifecycle",
-             @"type": @"MobileApp"
+             @"type": @"MobileApp",
+             @"source": @"mobile-lifecycle"
              };
 }
 
@@ -215,12 +219,11 @@ static BVAnalyticsManager *analyticsInstance = nil;
     [self queueEvent:eventData];
 }
 
-
 #pragma mark - Event Queueing
 
 -(void)queueEvent:(NSDictionary*)eventData {
     
-    assert(self.clientId != nil);
+    NSAssert(self.clientId != nil, @"You must set the client id in the BVSDKManager class before using the SDK!");
     
     NSMutableDictionary *eventForQueue = [NSMutableDictionary dictionaryWithDictionary:eventData];
     [eventForQueue addEntriesFromDictionary:[self getCommonAnalyticsDict]];
@@ -312,7 +315,7 @@ static BVAnalyticsManager *analyticsInstance = nil;
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url];
     request.HTTPMethod = @"POST";
     [request setValue:@"application/json" forHTTPHeaderField: @"Content-Type"];// content type
-    
+        
     NSError *error = nil;
     NSData *data = [NSJSONSerialization dataWithJSONObject:eventData options:kNilOptions error:&error];
     

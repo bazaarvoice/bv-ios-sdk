@@ -25,7 +25,6 @@
 @property (weak, nonatomic) IBOutlet UIImageView *quoteImageView;
 @property (weak, nonatomic) IBOutlet UILabel *productQuoteLabel;
 @property (weak, nonatomic) IBOutlet UILabel *authorLabel;
-@property (weak, nonatomic) IBOutlet UILabel *locationLabel;
 @property (weak, nonatomic) IBOutlet HCSStarRatingView *starRating;
 
 
@@ -103,13 +102,11 @@
     
     self.productQuoteLabel.hidden = reviewAndAuthorHidden;
     self.authorLabel.hidden = reviewAndAuthorHidden;
-    self.locationLabel.hidden = reviewAndAuthorHidden;
     self.quoteImageView.hidden = reviewAndAuthorHidden;
     
     if (reviewAndAuthorHidden) {
         self.productQuoteLabel.text = @"";
         self.authorLabel.text = @"";
-        self.locationLabel.text = @"";
     }
 }
 
@@ -118,12 +115,10 @@
     _authorHidden = authorHidden;
     
     self.authorLabel.hidden = authorHidden;
-    self.locationLabel.hidden = authorHidden;
     self.quoteImageView.hidden = authorHidden;
     
     if (authorHidden) {
         self.authorLabel.text = @"";
-        self.locationLabel.text = @"";
     }
 }
 
@@ -199,7 +194,6 @@
     [self setFontFamily:fontName forView:self.rating];
     [self setFontFamily:fontName forView:self.productQuoteLabel];
     [self setFontFamily:fontName forView:self.authorLabel];
-    [self setFontFamily:fontName forView:self.locationLabel];
 }
 
 
@@ -265,17 +259,16 @@
     
     _product = product;
     
-    self.productName.text = product.name;
+    self.productName.text = product.productName;
 
-    self.numReviews.text = [NSString stringWithFormat:@"(%ld reviews)", (long)[product.num_reviews integerValue]];
-    self.rating.text = [NSString stringWithFormat:@"%.1f", [product.avg_rating floatValue]];
-    self.starRating.value = [product.avg_rating floatValue];
+    self.numReviews.text = [NSString stringWithFormat:@"(%ld reviews)", (long)[product.numReviews integerValue]];
+    self.rating.text = [NSString stringWithFormat:@"%.1f", [product.averageRating floatValue]];
+    self.starRating.value = [product.averageRating floatValue];
     
-    self.productQuoteLabel.text = product.reviewText;
-    self.authorLabel.text = product.reviewAuthor;
-    self.locationLabel.text = product.reviewAuthorLocation;
+    self.productQuoteLabel.text = product.review.reviewText;
+    self.authorLabel.text = product.review.reviewAuthorName;
 
-    bool hideQuoteImage = product.reviewText == nil || [product.reviewText length] == 0;
+    bool hideQuoteImage = product.review.reviewText == nil || [product.review.reviewText length] == 0;
     self.quoteImageView.hidden = hideQuoteImage;
     
     self.price.text = product.price;
@@ -289,7 +282,7 @@
     
     // TODO: Can add option for fade image in.
     // TODO: Need to have a placeholder in event image load fails.
-    [self.productImageView sd_setImageWithURL:[NSURL URLWithString:product.image_url]
+    [self.productImageView sd_setImageWithURL:[NSURL URLWithString:product.imageURL]
                                     completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
                                         
 //                                        //adjust aspect ratio if needed

@@ -9,6 +9,7 @@
 #import "BVGetShopperProfile.h"
 #import "BVStaticViewCell.h"
 #import "BVRecommendationsErrorView.h"
+#import "BVRecommendationContinerProps.h"
 
 @interface BVRecommendationsStaticView()<BVRecommendationCellDelegate>
 
@@ -49,12 +50,25 @@
 -(void)setupDefaults {
     self.recommendations = [NSMutableArray array];
     self.separatorViews = [NSMutableArray array];
-    self.numberOfRecs = 3; // default 3 recommendations
+    self.recommendationSettings = [[BVRecommendationContinerProps alloc] init];
+    self.numberOfRecs = 3;
+    self.recommendationSettings.recommendationLimit = self.numberOfRecs;
     self.separatorColor = [UIColor colorWithRed:0.86 green:0.86 blue:0.86 alpha:1.0];
     
-    self.errorView = (BVRecommendationsErrorView*)[[[NSBundle mainBundle] loadNibNamed:@"BVRecommendationsErrorView" owner:self options:nil] firstObject];
+    NSBundle* bundle = [NSBundle bundleWithIdentifier:BV_RECSUI_FRAMEWORK_BUNDLE_ID];
+    
+    self.errorView = (BVRecommendationsErrorView*)[[bundle loadNibNamed:@"BVRecommendationsErrorView" owner:self options:nil] firstObject];
+    
+    if (!self.errorView){
+         // statically built into app, load from app main bundle
+         self.errorView = (BVRecommendationsErrorView*)[[[NSBundle mainBundle] loadNibNamed:@"BVRecommendationsErrorView" owner:self options:nil] firstObject];
+    }
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(recommendationsUpdated) name:BV_INTERNAL_PROFILE_UPDATED_COMPLETED object:nil];
+}
+
+-(void)reloadView {
+    [self loadRecommendations];
 }
 
 -(void)dealloc {
@@ -62,12 +76,11 @@
 }
 
 -(void)recommendationsUpdated {
-    [self getRecommendations];
+    [self loadRecommendations];
 }
 
 -(void)configureNumberOfRecommendations:(int)numberOfRecommendations {
     self.numberOfRecs = numberOfRecommendations;
-    [self getRecommendations];
 }
 
 -(void)layoutSubviews {
@@ -76,15 +89,22 @@
     [self layoutCells];
 }
 
--(void)layoutCells {
-
+- (CGRect)calculateViewRect{
+    
     CGRect cellFrame = self.bounds;
     cellFrame.size.height /= self.numberOfRecs;
     cellFrame.size.height -= self.cellPadding;
     cellFrame.origin.y += self.cellPadding / 2;
     cellFrame.origin.x += self.cellPadding / 2;
     cellFrame.size.width -= self.cellPadding;
-    CGRect currentCellFrame = cellFrame;
+    return cellFrame;
+}
+
+-(void)layoutCells {
+
+    CGRect cellFrame = self.bounds;
+    
+    CGRect currentCellFrame = [self calculateViewRect];
     
     // layout cells
     for (BVStaticViewCell* cell in self.staticViewCells) {
@@ -122,47 +142,75 @@
     
 }
 
--(void)getRecommendations {
+-(void)loadRecommendations {
+    
+    UIActivityIndicatorView *wheel = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    
+    NSString *productId = self.recommendationSettings.productId;
+    NSString *categoryId = self.recommendationSettings.categoryId;
+    NSUInteger limit = self.recommendationSettings.recommendationLimit;
+
+    dispatch_async(dispatch_get_main_queue(), ^{
+        
+        [self setNeedsLayout];
+        wheel.frame = self.bounds;
+        [self addSubview:wheel];
+        [wheel startAnimating];
+    });
     
     BVGetShopperProfile *api = [[BVGetShopperProfile alloc] init];
     
-    [api fetchProductRecommendations:self.numberOfRecs withCompletionHandler:^(BVShopperProfile * _Nullable profile, NSError * _Nullable error) {
+    [api _privateFetchShopperProfile:productId withCategoryId:categoryId withProfileOptions:0 withLimit:limit completionHandler:^(BVShopperProfile * _Nullable profile, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         
         // completion
-        if (profile && !error){
+        {
             
-            self.recommendations = [NSMutableArray arrayWithArray:profile.recommendations];
+            // completion
             
             dispatch_async(dispatch_get_main_queue(), ^{
-                [self refreshView];
-                
-                // notify delegate
-                if (self.delegate && [self.delegate respondsToSelector:@selector(didLoadUserRecommendations:)]){
-                    
-                    [self.delegate didLoadUserRecommendations:profile];
-                    
-                }
-                
+                [wheel removeFromSuperview];
             });
             
-            BOOL noRecommendations = [self.recommendations count] == 0;
-            [self showErrorView:noRecommendations withText:@"No recommendations available"];
+            if (profile && !error){
+                
+                self.recommendations = [NSMutableArray arrayWithArray:profile.recommendations];
+                
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    
+                    [self refreshView];
+                    
+                    // notify delegate
+                    if (self.delegate && [self.delegate respondsToSelector:@selector(didLoadUserRecommendations:)]){
+                        
+                        [self.delegate didLoadUserRecommendations:profile];
+                        
+                    }
+                    
+                     [BVRecsAnalyticsHelper queueEmbeddedRecommendationsPageViewEvent:self.recommendationSettings.productId withCategoryId:self.recommendationSettings.categoryId withClientId:[BVSDKManager sharedManager].clientId withNumRecommendations:self.recommendations.count withWidgetType:[BVRecsAnalyticsHelper getWidgetTypeString:RecommendationsStaticView]];
+                    
+                });
+                
             
-        } else {
-            
-            // error
-            NSString* errorMessage = [NSString stringWithFormat:@"Recommendations failed to load. Error: %@", error];
-            [[BVLogger sharedLogger] error:errorMessage];
-            
-            if(self.delegate && [self.delegate respondsToSelector:@selector(didFailToLoadWithError:)]) {
-                [self.delegate didFailToLoadWithError:error];
+                BOOL noRecommendations = [self.recommendations count] == 0;
+                [self showErrorView:noRecommendations withText:@"No recommendations available"];
+                
+            } else {
+                
+                // error
+                NSString* errorMessage = [NSString stringWithFormat:@"Recommendations failed to load. Error: %@", error];
+                [[BVLogger sharedLogger] error:errorMessage];
+                
+                if(self.delegate && [self.delegate respondsToSelector:@selector(didFailToLoadWithError:)]) {
+                    [self.delegate didFailToLoadWithError:error];
+                }
+                
+                [self showErrorView:true withText:@"An error occurred"];
+                
             }
-
-            [self showErrorView:true withText:@"An error occurred"];
             
         }
-        
     }];
+    
 }
 
 -(void)refreshView {
@@ -181,15 +229,23 @@
             break;
         }
         
-        BVStaticViewCell* cell = [[[NSBundle mainBundle] loadNibNamed:@"BVStaticViewCell" owner:nil options:nil] firstObject];
+        NSBundle* bundle = [NSBundle bundleWithIdentifier:BV_RECSUI_FRAMEWORK_BUNDLE_ID];
+        
+        BVStaticViewCell* cell = [[bundle loadNibNamed:@"BVStaticViewCell" owner:nil options:nil] firstObject];
+        
+        if (!cell){
+            // statically built into app, load from app main bundle
+            cell = [[[NSBundle mainBundle] loadNibNamed:@"BVStaticViewCell" owner:nil options:nil] firstObject];
+        }
+        
         cell.recommendationsView.product = recommendation;
         cell.recommendationsView.delegate = self;
         
         [cell.recommendationsView addTarget:self action:@selector(cellTapped:) forControlEvents:UIControlEventTouchUpInside];
         
         // let the delegate style the cell
-        if(self.delegate && [self.delegate respondsToSelector:@selector(styleRecommendationsView:)]) {
-            [self.delegate styleRecommendationsView:cell.recommendationsView];
+        if(self.datasource && [self.datasource respondsToSelector:@selector(styleRecommendationsView:)]) {
+            [self.datasource styleRecommendationsView:cell.recommendationsView];
         }
         
         [self addSubview:cell];
@@ -216,7 +272,7 @@
 
 -(void)cellTapped:(BVRecommendationsSharedView*)tappedView {
     
-    [BVRecsAnalyticsHelper queueAnalyticsEventForProductFeatureUsed:tappedView.product withFeatureUsed:TapProduct];
+    [BVRecsAnalyticsHelper queueAnalyticsEventForProductFeatureUsed:tappedView.product withFeatureUsed:TapProduct withWidgetType:RecommendationsStaticView];
     
     if(self.delegate && [self.delegate respondsToSelector:@selector(didSelectProduct:)]) {
         
@@ -235,7 +291,7 @@
 
 - (void)_didToggleLike:(BVProduct *)product withNewValue:(BOOL)flag {
     
-    [BVRecsAnalyticsHelper queueAnalyticsEventForProductFeatureUsed:product withFeatureUsed:TapLike];
+    [BVRecsAnalyticsHelper queueAnalyticsEventForProductFeatureUsed:product withFeatureUsed:TapLike withWidgetType:RecommendationsStaticView];
     
     if(self.delegate && [self.delegate respondsToSelector:@selector(didToggleLike:)]) {
         
@@ -252,7 +308,7 @@
 
 - (void)_didToggleDislike:(BVProduct *)product withNewValue:(BOOL)flag shouldRemove:(BOOL)remove {
     
-    [BVRecsAnalyticsHelper queueAnalyticsEventForProductFeatureUsed:product withFeatureUsed:TapUnlike];
+    [BVRecsAnalyticsHelper queueAnalyticsEventForProductFeatureUsed:product withFeatureUsed:TapUnlike withWidgetType:RecommendationsStaticView];
     
     if(self.delegate && [self.delegate respondsToSelector:@selector(didToggleDislike:)]) {
         
@@ -269,7 +325,7 @@
 
 - (void)_didSelectShopNow:(BVProduct *)product {
     
-    [BVRecsAnalyticsHelper queueAnalyticsEventForProductFeatureUsed:product withFeatureUsed:TapShopNow];
+    [BVRecsAnalyticsHelper queueAnalyticsEventForProductFeatureUsed:product withFeatureUsed:TapShopNow withWidgetType:RecommendationsStaticView];
     
     if(self.delegate && [self.delegate respondsToSelector:@selector(didSelectShopNow:)]) {
 
@@ -288,5 +344,15 @@
     NSString* message = [NSString stringWithFormat:@"`BVRecommendationsUIDelegate` not set, or does not respond for `BVRecommendationsStaticView`. Action `%@` ignored.", ignoredAction];
     [[BVLogger sharedLogger] warning:message];
 }
+
+
+-(void)setDatasource:(id<BVRecommendationsUIDataSource>)datasource{
+    
+    // make the API call once the datasource is set.
+    _datasource = datasource;
+    [self loadRecommendations];
+    
+}
+
 
 @end

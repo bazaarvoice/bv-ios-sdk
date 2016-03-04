@@ -10,21 +10,36 @@ import UIKit
 class RootViewController: UIViewController {
 
     var pageMenu : CAPSPageMenu?
+    var navController = MenuController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.setRootViewStyle()
         
-        pageMenu = createPageMenu()
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "reloadOnSettingsChange:", name: "settingsChanged", object: nil)
         
+        pageMenu = createPageMenu()
         self.view.addSubview(pageMenu!.view)
+        
     }
     
     override func viewWillAppear(animated: Bool) {
+        
         super.viewWillAppear(animated)
         
-        pageMenu!.view.frame = CGRectMake(0, 0, self.view.bounds.width, self.view.bounds.height)
+        if (pageMenu != nil){
+            pageMenu!.view.frame = CGRectMake(0, 0, self.view.bounds.width, self.view.bounds.height)
+        }
+    }
+    
+    func reloadOnSettingsChange(notification:NSNotification){
+        
+        if (pageMenu == nil){
+            pageMenu = createPageMenu()
+            self.view.addSubview(pageMenu!.view)
+        }
+        
     }
     
     func createPageMenu() -> CAPSPageMenu {
@@ -34,7 +49,6 @@ class RootViewController: UIViewController {
         controllerArray.append(createCarousel())
         controllerArray.append(createTable())
         controllerArray.append(createStaticView())
-        
         let parameters = getPageMenuParameters()
         
         return CAPSPageMenu(viewControllers: controllerArray, frame: self.view.bounds, pageMenuOptions: parameters)
@@ -59,6 +73,7 @@ class RootViewController: UIViewController {
         return staticView
     }
     
+    
     func getPageMenuParameters() -> [CAPSPageMenuOption] {
         return [
             .MenuHeight(40),
@@ -75,6 +90,9 @@ class RootViewController: UIViewController {
     
     func setRootViewStyle() {
         
+        navController = self.navigationController as! MenuController
+        navController.setNavigationBarHidden(false, animated: false)
+        
         self.view.backgroundColor = UIColor.bazaarvoiceNavy()
         
         // set "bazaarvoice:" logo in navigationBar
@@ -84,5 +102,20 @@ class RootViewController: UIViewController {
         titleLabel.textAlignment = .Center
         titleLabel.font = UIFont(name: "ForalPro-Regular", size: 36)
         self.navigationItem.titleView = titleLabel
+        
+        let rightItem: UIBarButtonItem = UIBarButtonItem(image: UIImage(imageLiteral: "gear.png"), style:UIBarButtonItemStyle.Plain  , target: self, action:"settingsTapped")
+        rightItem.tintColor = UIColor.whiteColor()
+        self.navigationItem.rightBarButtonItem = rightItem
     }
+    
+    func settingsTapped() -> Void {
+
+        navController.openAndCloseMenu()
+        
+    }
+    
+    override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {
+        navController.closeMenu()
+    }
+    
 }

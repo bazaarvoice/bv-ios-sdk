@@ -56,43 +56,25 @@
 	
 	<optgroup label="Properties">
 		
-		<option value="//api/name/RKB">RKB</option>
+		<option value="//api/name/averageRating">averageRating</option>
 		
-		<option value="//api/name/RKI">RKI</option>
+		<option value="//api/name/imageURL">imageURL</option>
 		
-		<option value="//api/name/RKP">RKP</option>
-		
-		<option value="//api/name/RS">RS</option>
-		
-		<option value="//api/name/avg_rating">avg_rating</option>
-		
-		<option value="//api/name/client">client</option>
-		
-		<option value="//api/name/client_id">client_id</option>
-		
-		<option value="//api/name/image_url">image_url</option>
-		
-		<option value="//api/name/name">name</option>
-		
-		<option value="//api/name/num_reviews">num_reviews</option>
+		<option value="//api/name/numReviews">numReviews</option>
 		
 		<option value="//api/name/price">price</option>
 		
-		<option value="//api/name/product_description">product_description</option>
+		<option value="//api/name/productId">productId</option>
 		
-		<option value="//api/name/product_id">product_id</option>
+		<option value="//api/name/productName">productName</option>
 		
-		<option value="//api/name/product_key">product_key</option>
+		<option value="//api/name/productPageURL">productPageURL</option>
 		
-		<option value="//api/name/product_page_url">product_page_url</option>
+		<option value="//api/name/rawProductDict">rawProductDict</option>
 		
-		<option value="//api/name/reviewAuthor">reviewAuthor</option>
+		<option value="//api/name/review">review</option>
 		
-		<option value="//api/name/reviewAuthorLocation">reviewAuthorLocation</option>
-		
-		<option value="//api/name/reviewText">reviewText</option>
-		
-		<option value="//api/name/reviewTitle">reviewTitle</option>
+		<option value="//api/name/sponsored">sponsored</option>
 		
 	</optgroup>
 	
@@ -102,7 +84,7 @@
 	
 	<optgroup label="Instance Methods">
 		
-		<option value="//api/name/initWithDictionary:withProductKey:withRecStats:">- initWithDictionary:withProductKey:withRecStats:</option>
+		<option value="//api/name/initWithDictionary:withRecommendationStats:">- initWithDictionary:withRecommendationStats:</option>
 		
 	</optgroup>
 	
@@ -155,8 +137,8 @@
 
 						<div class="task-list">
 							<div class="section-method">
-	<a name="//api/name/initWithDictionary:withProductKey:withRecStats:" title="initWithDictionary:withProductKey:withRecStats:"></a>
-	<h3 class="method-title"><code><a href="#//api/name/initWithDictionary:withProductKey:withRecStats:">&ndash;&nbsp;initWithDictionary:withProductKey:withRecStats:</a></code>
+	<a name="//api/name/initWithDictionary:withRecommendationStats:" title="initWithDictionary:withRecommendationStats:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/initWithDictionary:withRecommendationStats:">&ndash;&nbsp;initWithDictionary:withRecommendationStats:</a></code>
 </h3>
 
 	<div class="method-info">
@@ -171,7 +153,7 @@
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>- (id)initWithDictionary:(NSDictionary *)<em>dict</em> withProductKey:(NSString *)<em>key</em> withRecStats:(NSDictionary *)<em>stats</em></code></div>
+			<div class="method-subsection method-declaration"><code>- (id)initWithDictionary:(NSDictionary *)<em>dict</em> withRecommendationStats:(NSDictionary *)<em>recommendationStats</em></code></div>
 
 		    
 			
@@ -181,17 +163,12 @@
 				
 					<tr>
 						<th scope="row" class="argument-name"><code>dict</code></th>
-						<td><p>The recommendations API response for a single product</p></td>
+						<td><p>The API response object for a product recommendation</p></td>
 					</tr>
 				
 					<tr>
-						<th scope="row" class="argument-name"><code>key</code></th>
-						<td><p>The recommendation key used to uniquely identify the product</p></td>
-					</tr>
-				
-					<tr>
-						<th scope="row" class="argument-name"><code>stats</code></th>
-						<td><p>Internal stats, may be nil</p></td>
+						<th scope="row" class="argument-name"><code>recommendationStats</code></th>
+						<td><p>The API response object for recommendation statistics</p></td>
 					</tr>
 				
 				</table>
@@ -223,90 +200,8 @@
 		</div>
 	</div>
 </div><div class="section-method">
-	<a name="//api/name/product_key" title="product_key"></a>
-	<h3 class="method-title"><code><a href="#//api/name/product_key">&nbsp;&nbsp;product_key</a></code>
-</h3>
-
-	<div class="method-info">
-		<div class="pointy-thing"></div>
-
-		<div class="method-info-container">
-			
-			
-			<div class="method-subsection brief-description">
-				<p>Unique idendifier combining the <a href="#//api/name/client">client</a> and product Id</p>
-			</div>
-			
-		    
-
-			<div class="method-subsection method-declaration"><code>@property (strong, nonatomic, nonnull) NSString *product_key</code></div>
-
-		    
-			
-
-			
-
-			
-
-			
-
-			
-
-			
-
-			
-			<div class="method-subsection declared-in-section">
-				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">BVProduct.h</code></p>
-			</div>
-			
-			
-		</div>
-	</div>
-</div><div class="section-method">
-	<a name="//api/name/client" title="client"></a>
-	<h3 class="method-title"><code><a href="#//api/name/client">&nbsp;&nbsp;client</a></code>
-</h3>
-
-	<div class="method-info">
-		<div class="pointy-thing"></div>
-
-		<div class="method-info-container">
-			
-			
-			<div class="method-subsection brief-description">
-				<p>The client on behalf the request was created</p>
-			</div>
-			
-		    
-
-			<div class="method-subsection method-declaration"><code>@property (strong, nonatomic) NSString *client</code></div>
-
-		    
-			
-
-			
-
-			
-
-			
-
-			
-
-			
-
-			
-			<div class="method-subsection declared-in-section">
-				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">BVProduct.h</code></p>
-			</div>
-			
-			
-		</div>
-	</div>
-</div><div class="section-method">
-	<a name="//api/name/product_id" title="product_id"></a>
-	<h3 class="method-title"><code><a href="#//api/name/product_id">&nbsp;&nbsp;product_id</a></code>
+	<a name="//api/name/productId" title="productId"></a>
+	<h3 class="method-title"><code><a href="#//api/name/productId">&nbsp;&nbsp;productId</a></code>
 </h3>
 
 	<div class="method-info">
@@ -321,7 +216,7 @@
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>@property (strong, nonatomic) NSString *product_id</code></div>
+			<div class="method-subsection method-declaration"><code>@property (strong, nonatomic) NSString *productId</code></div>
 
 		    
 			
@@ -346,90 +241,8 @@
 		</div>
 	</div>
 </div><div class="section-method">
-	<a name="//api/name/product_description" title="product_description"></a>
-	<h3 class="method-title"><code><a href="#//api/name/product_description">&nbsp;&nbsp;product_description</a></code>
-</h3>
-
-	<div class="method-info">
-		<div class="pointy-thing"></div>
-
-		<div class="method-info-container">
-			
-			
-			<div class="method-subsection brief-description">
-				<p>The product <a href="#//api/name/description">description</a> summary</p>
-			</div>
-			
-		    
-
-			<div class="method-subsection method-declaration"><code>@property (strong, nonatomic) NSString *product_description</code></div>
-
-		    
-			
-
-			
-
-			
-
-			
-
-			
-
-			
-
-			
-			<div class="method-subsection declared-in-section">
-				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">BVProduct.h</code></p>
-			</div>
-			
-			
-		</div>
-	</div>
-</div><div class="section-method">
-	<a name="//api/name/image_url" title="image_url"></a>
-	<h3 class="method-title"><code><a href="#//api/name/image_url">&nbsp;&nbsp;image_url</a></code>
-</h3>
-
-	<div class="method-info">
-		<div class="pointy-thing"></div>
-
-		<div class="method-info-container">
-			
-			
-			<div class="method-subsection brief-description">
-				<p>The product image thumbnail. Sizes may vary depending on the brand or <a href="#//api/name/client">client</a></p>
-			</div>
-			
-		    
-
-			<div class="method-subsection method-declaration"><code>@property (strong, nonatomic) NSString *image_url</code></div>
-
-		    
-			
-
-			
-
-			
-
-			
-
-			
-
-			
-
-			
-			<div class="method-subsection declared-in-section">
-				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">BVProduct.h</code></p>
-			</div>
-			
-			
-		</div>
-	</div>
-</div><div class="section-method">
-	<a name="//api/name/name" title="name"></a>
-	<h3 class="method-title"><code><a href="#//api/name/name">&nbsp;&nbsp;name</a></code>
+	<a name="//api/name/productName" title="productName"></a>
+	<h3 class="method-title"><code><a href="#//api/name/productName">&nbsp;&nbsp;productName</a></code>
 </h3>
 
 	<div class="method-info">
@@ -444,7 +257,7 @@
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>@property (strong, nonatomic) NSString *name</code></div>
+			<div class="method-subsection method-declaration"><code>@property (strong, nonatomic) NSString *productName</code></div>
 
 		    
 			
@@ -469,49 +282,8 @@
 		</div>
 	</div>
 </div><div class="section-method">
-	<a name="//api/name/client_id" title="client_id"></a>
-	<h3 class="method-title"><code><a href="#//api/name/client_id">&nbsp;&nbsp;client_id</a></code>
-</h3>
-
-	<div class="method-info">
-		<div class="pointy-thing"></div>
-
-		<div class="method-info-container">
-			
-			
-			<div class="method-subsection brief-description">
-				<p>The unique ID for the <a href="#//api/name/client">client</a></p>
-			</div>
-			
-		    
-
-			<div class="method-subsection method-declaration"><code>@property (strong, nonatomic) NSString *client_id</code></div>
-
-		    
-			
-
-			
-
-			
-
-			
-
-			
-
-			
-
-			
-			<div class="method-subsection declared-in-section">
-				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">BVProduct.h</code></p>
-			</div>
-			
-			
-		</div>
-	</div>
-</div><div class="section-method">
-	<a name="//api/name/product_page_url" title="product_page_url"></a>
-	<h3 class="method-title"><code><a href="#//api/name/product_page_url">&nbsp;&nbsp;product_page_url</a></code>
+	<a name="//api/name/productPageURL" title="productPageURL"></a>
+	<h3 class="method-title"><code><a href="#//api/name/productPageURL">&nbsp;&nbsp;productPageURL</a></code>
 </h3>
 
 	<div class="method-info">
@@ -526,7 +298,7 @@
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>@property (strong, nonatomic) NSString *product_page_url</code></div>
+			<div class="method-subsection method-declaration"><code>@property (strong, nonatomic) NSString *productPageURL</code></div>
 
 		    
 			
@@ -551,8 +323,49 @@
 		</div>
 	</div>
 </div><div class="section-method">
-	<a name="//api/name/avg_rating" title="avg_rating"></a>
-	<h3 class="method-title"><code><a href="#//api/name/avg_rating">&nbsp;&nbsp;avg_rating</a></code>
+	<a name="//api/name/imageURL" title="imageURL"></a>
+	<h3 class="method-title"><code><a href="#//api/name/imageURL">&nbsp;&nbsp;imageURL</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>The product image thumbnail. Sizes may vary depending on the brand or client</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (strong, nonatomic) NSString *imageURL</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BVProduct.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/averageRating" title="averageRating"></a>
+	<h3 class="method-title"><code><a href="#//api/name/averageRating">&nbsp;&nbsp;averageRating</a></code>
 </h3>
 
 	<div class="method-info">
@@ -567,7 +380,7 @@
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>@property (strong, nonatomic) NSNumber *avg_rating</code></div>
+			<div class="method-subsection method-declaration"><code>@property (strong, nonatomic) NSNumber *averageRating</code></div>
 
 		    
 			
@@ -592,8 +405,8 @@
 		</div>
 	</div>
 </div><div class="section-method">
-	<a name="//api/name/num_reviews" title="num_reviews"></a>
-	<h3 class="method-title"><code><a href="#//api/name/num_reviews">&nbsp;&nbsp;num_reviews</a></code>
+	<a name="//api/name/numReviews" title="numReviews"></a>
+	<h3 class="method-title"><code><a href="#//api/name/numReviews">&nbsp;&nbsp;numReviews</a></code>
 </h3>
 
 	<div class="method-info">
@@ -608,7 +421,7 @@
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>@property (strong, nonatomic) NSNumber *num_reviews</code></div>
+			<div class="method-subsection method-declaration"><code>@property (strong, nonatomic) NSNumber *numReviews</code></div>
 
 		    
 			
@@ -674,8 +487,8 @@
 		</div>
 	</div>
 </div><div class="section-method">
-	<a name="//api/name/reviewText" title="reviewText"></a>
-	<h3 class="method-title"><code><a href="#//api/name/reviewText">&nbsp;&nbsp;reviewText</a></code>
+	<a name="//api/name/review" title="review"></a>
+	<h3 class="method-title"><code><a href="#//api/name/review">&nbsp;&nbsp;review</a></code>
 </h3>
 
 	<div class="method-info">
@@ -685,12 +498,12 @@
 			
 			
 			<div class="method-subsection brief-description">
-				<p>Highlighted review for this product</p>
+				<p>Highlighted review for this product.</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>@property (strong, nonatomic) NSString *reviewText</code></div>
+			<div class="method-subsection method-declaration"><code>@property (strong, nonatomic) BVProductReview *review</code></div>
 
 		    
 			
@@ -715,8 +528,8 @@
 		</div>
 	</div>
 </div><div class="section-method">
-	<a name="//api/name/reviewTitle" title="reviewTitle"></a>
-	<h3 class="method-title"><code><a href="#//api/name/reviewTitle">&nbsp;&nbsp;reviewTitle</a></code>
+	<a name="//api/name/sponsored" title="sponsored"></a>
+	<h3 class="method-title"><code><a href="#//api/name/sponsored">&nbsp;&nbsp;sponsored</a></code>
 </h3>
 
 	<div class="method-info">
@@ -726,12 +539,12 @@
 			
 			
 			<div class="method-subsection brief-description">
-				<p>Title the customer gave on the review of this product.</p>
+				<p>Whether this recommendation is a sponsored piece of content or not</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>@property (strong, nonatomic) NSString *reviewTitle</code></div>
+			<div class="method-subsection method-declaration"><code>@property bool sponsored</code></div>
 
 		    
 			
@@ -756,8 +569,8 @@
 		</div>
 	</div>
 </div><div class="section-method">
-	<a name="//api/name/reviewAuthor" title="reviewAuthor"></a>
-	<h3 class="method-title"><code><a href="#//api/name/reviewAuthor">&nbsp;&nbsp;reviewAuthor</a></code>
+	<a name="//api/name/rawProductDict" title="rawProductDict"></a>
+	<h3 class="method-title"><code><a href="#//api/name/rawProductDict">&nbsp;&nbsp;rawProductDict</a></code>
 </h3>
 
 	<div class="method-info">
@@ -767,217 +580,12 @@
 			
 			
 			<div class="method-subsection brief-description">
-				<p>The author&rsquo;s <a href="#//api/name/name">name</a> for the review highlight</p>
+				<p>Internal use</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>@property (strong, nonatomic) NSString *reviewAuthor</code></div>
-
-		    
-			
-
-			
-
-			
-
-			
-
-			
-
-			
-
-			
-			<div class="method-subsection declared-in-section">
-				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">BVProduct.h</code></p>
-			</div>
-			
-			
-		</div>
-	</div>
-</div><div class="section-method">
-	<a name="//api/name/reviewAuthorLocation" title="reviewAuthorLocation"></a>
-	<h3 class="method-title"><code><a href="#//api/name/reviewAuthorLocation">&nbsp;&nbsp;reviewAuthorLocation</a></code>
-</h3>
-
-	<div class="method-info">
-		<div class="pointy-thing"></div>
-
-		<div class="method-info-container">
-			
-			
-			<div class="method-subsection brief-description">
-				<p>The city and/or state where the review resides</p>
-			</div>
-			
-		    
-
-			<div class="method-subsection method-declaration"><code>@property (strong, nonatomic) NSString *reviewAuthorLocation</code></div>
-
-		    
-			
-
-			
-
-			
-
-			
-
-			
-
-			
-
-			
-			<div class="method-subsection declared-in-section">
-				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">BVProduct.h</code></p>
-			</div>
-			
-			
-		</div>
-	</div>
-</div><div class="section-method">
-	<a name="//api/name/RKB" title="RKB"></a>
-	<h3 class="method-title"><code><a href="#//api/name/RKB">&nbsp;&nbsp;RKB</a></code>
-</h3>
-
-	<div class="method-info">
-		<div class="pointy-thing"></div>
-
-		<div class="method-info-container">
-			
-			
-			<div class="method-subsection brief-description">
-				<p>Internal only!</p>
-			</div>
-			
-		    
-
-			<div class="method-subsection method-declaration"><code>@property (strong, nonatomic) NSNumber *RKB</code></div>
-
-		    
-			
-
-			
-
-			
-
-			
-
-			
-
-			
-
-			
-			<div class="method-subsection declared-in-section">
-				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">BVProduct.h</code></p>
-			</div>
-			
-			
-		</div>
-	</div>
-</div><div class="section-method">
-	<a name="//api/name/RKI" title="RKI"></a>
-	<h3 class="method-title"><code><a href="#//api/name/RKI">&nbsp;&nbsp;RKI</a></code>
-</h3>
-
-	<div class="method-info">
-		<div class="pointy-thing"></div>
-
-		<div class="method-info-container">
-			
-			
-			<div class="method-subsection brief-description">
-				<p>Internal only!</p>
-			</div>
-			
-		    
-
-			<div class="method-subsection method-declaration"><code>@property (strong, nonatomic) NSNumber *RKI</code></div>
-
-		    
-			
-
-			
-
-			
-
-			
-
-			
-
-			
-
-			
-			<div class="method-subsection declared-in-section">
-				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">BVProduct.h</code></p>
-			</div>
-			
-			
-		</div>
-	</div>
-</div><div class="section-method">
-	<a name="//api/name/RKP" title="RKP"></a>
-	<h3 class="method-title"><code><a href="#//api/name/RKP">&nbsp;&nbsp;RKP</a></code>
-</h3>
-
-	<div class="method-info">
-		<div class="pointy-thing"></div>
-
-		<div class="method-info-container">
-			
-			
-			<div class="method-subsection brief-description">
-				<p>Internal only!</p>
-			</div>
-			
-		    
-
-			<div class="method-subsection method-declaration"><code>@property (strong, nonatomic) NSNumber *RKP</code></div>
-
-		    
-			
-
-			
-
-			
-
-			
-
-			
-
-			
-
-			
-			<div class="method-subsection declared-in-section">
-				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">BVProduct.h</code></p>
-			</div>
-			
-			
-		</div>
-	</div>
-</div><div class="section-method">
-	<a name="//api/name/RS" title="RS"></a>
-	<h3 class="method-title"><code><a href="#//api/name/RS">&nbsp;&nbsp;RS</a></code>
-</h3>
-
-	<div class="method-info">
-		<div class="pointy-thing"></div>
-
-		<div class="method-info-container">
-			
-			
-			<div class="method-subsection brief-description">
-				<p>Internal only!</p>
-			</div>
-			
-		    
-
-			<div class="method-subsection method-declaration"><code>@property (strong, nonatomic) NSString *RS</code></div>
+			<div class="method-subsection method-declaration"><code>@property (strong, nonatomic) NSDictionary *rawProductDict</code></div>
 
 		    
 			
@@ -1016,7 +624,7 @@
 				<footer>
 					<div class="footer-copyright">
 						
-						<p class="copyright">Copyright &copy; 2015 Bazaarvoice. All rights reserved. Updated: 2015-12-16</p>
+						<p class="copyright">Copyright &copy; 2016 Bazaarvoice. All rights reserved. Updated: 2016-02-08</p>
 						
 						
 						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>

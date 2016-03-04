@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9060" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -98,18 +98,6 @@
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="11"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.90000000000000002" translatesAutoresizingMaskIntoConstraints="NO" id="RE7-r5-HN7">
-                                <rect key="frame" x="117" y="300" width="50" height="13"/>
-                                <attributedString key="attributedText">
-                                    <fragment content="Austin, TX">
-                                        <attributes>
-                                            <color key="NSColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                            <font key="NSFont" size="11" name="HelveticaNeue"/>
-                                        </attributes>
-                                    </fragment>
-                                </attributedString>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ibf-TH-yiD">
                                 <rect key="frame" x="342" y="325" width="82" height="40"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
@@ -169,7 +157,6 @@
                             <constraint firstItem="jK3-20-tJr" firstAttribute="centerY" secondItem="3c1-Zp-qGt" secondAttribute="centerY" id="Svs-lZ-SmN"/>
                             <constraint firstItem="j57-Ua-aUJ" firstAttribute="top" secondItem="E8j-YR-5xo" secondAttribute="bottom" constant="6" id="T8H-RW-me4"/>
                             <constraint firstItem="j57-Ua-aUJ" firstAttribute="top" relation="lessThanOrEqual" secondItem="7OU-BE-pIX" secondAttribute="bottom" priority="250" constant="40" id="Yrs-fj-jYT"/>
-                            <constraint firstItem="RE7-r5-HN7" firstAttribute="centerY" secondItem="E8j-YR-5xo" secondAttribute="centerY" id="asa-Ze-a0X"/>
                             <constraint firstItem="jVX-MD-8oa" firstAttribute="height" secondItem="Hoj-5m-65s" secondAttribute="height" id="edi-hr-bAr"/>
                             <constraint firstItem="eE1-7a-iTP" firstAttribute="leading" secondItem="NOy-a0-dnA" secondAttribute="leadingMargin" id="fih-2W-xtv"/>
                             <constraint firstItem="7OU-BE-pIX" firstAttribute="top" secondItem="jK3-20-tJr" secondAttribute="bottom" constant="12" id="gJb-Fg-mhu"/>
@@ -185,7 +172,6 @@
                             <constraint firstItem="j57-Ua-aUJ" firstAttribute="leading" secondItem="NOy-a0-dnA" secondAttribute="leadingMargin" id="ryB-Hc-3aO"/>
                             <constraint firstItem="7OU-BE-pIX" firstAttribute="top" relation="greaterThanOrEqual" secondItem="eE1-7a-iTP" secondAttribute="bottom" constant="8" id="trD-0a-K8j"/>
                             <constraint firstAttribute="bottomMargin" secondItem="Hoj-5m-65s" secondAttribute="bottom" id="wAC-0W-AZq"/>
-                            <constraint firstItem="RE7-r5-HN7" firstAttribute="leading" secondItem="E8j-YR-5xo" secondAttribute="trailing" constant="3.5" id="zFU-5c-fX0"/>
                             <constraint firstItem="7OU-BE-pIX" firstAttribute="leading" secondItem="NOy-a0-dnA" secondAttribute="leading" constant="45" id="zle-cR-Why"/>
                         </constraints>
                         <connections>
@@ -193,7 +179,6 @@
                             <outlet property="buttonBorderSeparator" destination="j57-Ua-aUJ" id="KPh-Ab-4Kh"/>
                             <outlet property="dislikeButton" destination="jVX-MD-8oa" id="l0q-Cr-1fw"/>
                             <outlet property="likeButton" destination="Hoj-5m-65s" id="bYa-b8-2AH"/>
-                            <outlet property="locationLabel" destination="RE7-r5-HN7" id="z2c-Oz-ty6"/>
                             <outlet property="numReviews" destination="3cz-j1-itM" id="0J9-2F-X3X"/>
                             <outlet property="price" destination="hek-X4-5jP" id="Ynq-Dr-CPI"/>
                             <outlet property="productImageView" destination="7OU-BE-pIX" id="E3e-0U-FCn"/>

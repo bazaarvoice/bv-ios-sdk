@@ -22,15 +22,15 @@
 -(NSString*)getFormattedAdType {
     switch (self.adType) {
         case BVInterstitial:
-            return @"interstitial";
+            return @"Interstitial";
         case BVBanner:
-            return @"banner";
+            return @"Banner";
         case BVNativeContent:
-            return @"nativeContent";
+            return @"Native";
         case BVNativeAppInstall:
-            return @"nativeAppInstall";
+            return @"Native";
         case BVNativeCustom:
-            return @"nativeCustom";
+            return @"NativeCustom";
         default:
             return @"";
     }

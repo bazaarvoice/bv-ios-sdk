@@ -41,7 +41,7 @@ static BVAuthenticatedUser *user = nil;
     // set up the BVAdsSDK with your clientId, and AdsPassKey
     BVSDKManager *sdkManager = [BVSDKManager sharedManager];
     [sdkManager setClientId:@"apitestcustomer"]; // test customer
-    [sdkManager setApiKeyShopperAdvertising:@"4qhps77enfpw3kghuu8wendy"]; // test ads passkey
+    [sdkManager setApiKeyShopperAdvertising:@"3frgjjug4fr3zrgz9a8q9xp7"]; // test ads passkey
     [sdkManager setStaging:NO];
     [sdkManager setLogLevel:BVLogLevelError];
 
@@ -79,7 +79,7 @@ static BVAuthenticatedUser *user = nil;
     
     NSHTTPURLResponse *resp = (NSHTTPURLResponse *)[notification object];
     
-    XCTAssertFalse(resp.statusCode >= 300, @"Expected 2xx response, got: %ld", resp.statusCode);
+    XCTAssertFalse(resp.statusCode >= 300, @"Expected 2xx response, got: %ld", (long)resp.statusCode);
     
     [magpieEventExpectation fulfill];
     

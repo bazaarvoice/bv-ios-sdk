@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="BVTargetedNativeContentAdView">
+            <rect key="frame" x="0.0" y="0.0" width="310" height="304"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kCy-94-bTM">
+                    <rect key="frame" x="8" y="8" width="40" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="40" id="QoL-29-V5y"/>
+                        <constraint firstAttribute="height" constant="40" id="hSP-WL-eAL"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Headline Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3bz-xt-fAl">
+                    <rect key="frame" x="56" y="8" width="246" height="18"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Body that is really long and can take up to two lines" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hbh-cv-QO5">
+                    <rect key="frame" x="8" y="56" width="294" height="33.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="sFQ-lS-pyG">
+                    <rect key="frame" x="8" y="97" width="294" height="161"/>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Advertiser Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pt2-hY-Bg5">
+                    <rect key="frame" x="56" y="33" width="246" height="14.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="73w-EZ-022">
+                    <rect key="frame" x="109.5" y="266" width="91" height="30"/>
+                    <state key="normal" title="Call to Action">
+                        <color key="titleColor" red="0.14509804549999999" green="0.69411766529999996" blue="0.18823531269999999" alpha="1" colorSpace="deviceRGB"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="userInteractionEnabled" value="NO"/>
+                    </userDefinedRuntimeAttributes>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="kCy-94-bTM" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leadingMargin" id="329-L1-aIK"/>
+                <constraint firstAttribute="trailingMargin" secondItem="sFQ-lS-pyG" secondAttribute="trailing" id="6pP-rd-PzC"/>
+                <constraint firstItem="pt2-hY-Bg5" firstAttribute="bottom" secondItem="kCy-94-bTM" secondAttribute="bottom" id="CLO-f5-uX3"/>
+                <constraint firstItem="3bz-xt-fAl" firstAttribute="leading" secondItem="kCy-94-bTM" secondAttribute="trailing" constant="8" id="IRn-iZ-unF"/>
+                <constraint firstItem="Hbh-cv-QO5" firstAttribute="top" secondItem="kCy-94-bTM" secondAttribute="bottom" constant="8" id="Knk-43-s8u"/>
+                <constraint firstItem="Hbh-cv-QO5" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="LMB-dh-hC6"/>
+                <constraint firstAttribute="bottom" secondItem="sFQ-lS-pyG" secondAttribute="bottom" constant="46" id="MlP-S1-1Rw"/>
+                <constraint firstItem="sFQ-lS-pyG" firstAttribute="top" secondItem="Hbh-cv-QO5" secondAttribute="bottom" constant="7.5" id="P5h-dI-FGq"/>
+                <constraint firstItem="sFQ-lS-pyG" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leadingMargin" id="P7l-hw-tIt"/>
+                <constraint firstAttribute="trailingMargin" secondItem="Hbh-cv-QO5" secondAttribute="trailing" id="TDU-br-cvi"/>
+                <constraint firstAttribute="bottom" secondItem="73w-EZ-022" secondAttribute="bottom" constant="8" id="XHv-ci-uUB"/>
+                <constraint firstItem="kCy-94-bTM" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="topMargin" id="YPL-va-Jd5"/>
+                <constraint firstItem="73w-EZ-022" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="cx0-sX-StT"/>
+                <constraint firstItem="pt2-hY-Bg5" firstAttribute="leading" secondItem="kCy-94-bTM" secondAttribute="trailing" constant="8" id="eMw-Hq-vaJ"/>
+                <constraint firstAttribute="trailingMargin" secondItem="3bz-xt-fAl" secondAttribute="trailing" id="fs6-TM-Szy"/>
+                <constraint firstAttribute="trailingMargin" secondItem="pt2-hY-Bg5" secondAttribute="trailing" id="izu-Ww-deb"/>
+                <constraint firstItem="3bz-xt-fAl" firstAttribute="top" secondItem="kCy-94-bTM" secondAttribute="top" id="slw-wK-FQq"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="advertiserView" destination="pt2-hY-Bg5" id="5Bh-FM-YFH"/>
+                <outlet property="bodyView" destination="Hbh-cv-QO5" id="oXg-u6-H5w"/>
+                <outlet property="callToActionView" destination="73w-EZ-022" id="ZKS-4K-3yt"/>
+                <outlet property="headlineView" destination="3bz-xt-fAl" id="SYR-qa-a3d"/>
+                <outlet property="imageView" destination="sFQ-lS-pyG" id="Ldg-05-04N"/>
+                <outlet property="logoView" destination="kCy-94-bTM" id="ONO-DE-dxE"/>
+            </connections>
+            <point key="canvasLocation" x="196" y="77"/>
+        </view>
+    </objects>
+</document>

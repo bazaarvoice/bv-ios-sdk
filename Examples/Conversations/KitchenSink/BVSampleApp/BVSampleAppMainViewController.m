@@ -15,10 +15,7 @@
     [super viewDidLoad];
     
     self.title = @"Examples";
-    
-    [BVSDKManager sharedManager].apiKeyConversations = @"2cpdrhohmgmwfz8vqyo48f52g";
-    [BVSDKManager sharedManager].clientId = @"apitestcustomer";
-    [BVSDKManager sharedManager].staging = YES;
+
 }
 
 - (void)viewDidUnload

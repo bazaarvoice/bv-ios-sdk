@@ -57,7 +57,7 @@
     
 }
 - (NSString *)urlRootShopperAdvertising{
-    return self.staging ? @"https://stg.api.bazaarvoice.com" : @"https://api.bazaarvoice.com";
+    return self.staging ? @"https://my.network-stg.bazaarvoice.com" : @"https://my.network.bazaarvoice.com";
 }
 
 // SDK supports only a single client ID
@@ -102,8 +102,8 @@
 
 -(void)updateUserProfileForce {
     
-    NSAssert(self.apiKeyShopperAdvertising != nil, @"Updating a user profile requires the use of a Shopper Marketing key.");
-    NSAssert(self.clientId != nil, @"Updating a user profile requires a valid client Id.");
+    NSAssert(self.apiKeyShopperAdvertising != nil, @"You must supply a Shopper Advertising key in the BVSDKManager before using the Bazaarvoice SDK.");
+    NSAssert(self.clientId != nil, @"You must supply client id in the BVSDKManager before using the Bazaarvoice SDK.");
     
     [self.bvUser updateProfile:true withAPIKey:self.apiKeyShopperAdvertising isStaging:self.staging];
     

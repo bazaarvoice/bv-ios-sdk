@@ -9,4 +9,4 @@ script:
    - cd ./Tests
    - pod install
    - cd ..
-   - xcodebuild test -workspace ./Tests/BVSDK.xcworkspace -scheme "BVSDK-Example" -configuration Debug -sdk iphonesimulator
+   - xcodebuild test -workspace ./Tests/BVSDK.xcworkspace -scheme "BVSDK-Tests" -configuration Debug -sdk iphonesimulator

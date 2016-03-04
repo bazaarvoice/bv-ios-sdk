@@ -12,4 +12,6 @@
 #import "BVRecommendationsStaticView.h"
 #import "BVRecommendationsCarouselView.h"
 
+#define BV_RECSUI_FRAMEWORK_BUNDLE_ID @"org.cocoapods.BVSDK"
+
 #endif /* BVRecommendationsUI_h */

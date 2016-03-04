@@ -1,31 +1,24 @@
 //
 //  RootViewController.m
-//  Bazaarvoice SDK - Demo Application
+//  Bazaarvoice Mobile Ads SDK - Demo Application
 //
 //  Copyright 2015 Bazaarvoice Inc. All rights reserved.
 //
 
 #import "RootViewController.h"
 #import <MBProgressHUD/MBProgressHUD.h>
-#import "NativeDemoViewController.h"
 #import "UIColor+BVColor.h"
 #import "BVAdTypesCell.h"
-#import "UILabelWithInset.h"
 #import "BannerDemoViewController.h"
 #import "LocationExample.h"
 #import "InterstitialDemo.h"
+#import "NativeContentAdDemoViewController.h"
 #import "GeneralizedDemoViewController.h"
+
 
 @interface RootViewController ()<UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 
-@property UIImage* happyGuyBaseImage;
-@property UIImageView* happyGuy;
-@property UILabel* mobileAdTypesLabel;
-@property UILabelWithInset* descriptionLabel;
-
-@property UICollectionView* collectionView;
 @property InterstitialDemo* interstitialDemo;
-
 @property LocationExample* locationListener;
 
 @end
@@ -47,29 +40,6 @@
     self.locationListener = [[LocationExample alloc] init];
     
     
-    self.happyGuyBaseImage = [UIImage imageNamed:@"happyguy.jpg"];
-    self.happyGuy = [[UIImageView alloc] initWithImage:self.happyGuyBaseImage];
-    self.happyGuy.contentMode = UIViewContentModeScaleAspectFill;
-    [self.view addSubview:self.happyGuy];
-    
-    self.mobileAdTypesLabel = [[UILabel alloc] init];
-    self.mobileAdTypesLabel.text = @"Mobile Ad Types";
-    self.mobileAdTypesLabel.textColor = [UIColor bazaarvoiceNavy];
-    self.mobileAdTypesLabel.numberOfLines = 0;
-    self.mobileAdTypesLabel.lineBreakMode = NSLineBreakByWordWrapping;
-    self.mobileAdTypesLabel.font = [UIFont systemFontOfSize:self.view.bounds.size.width / 15];
-    self.mobileAdTypesLabel.textAlignment = NSTextAlignmentCenter;
-    [self.view addSubview:self.mobileAdTypesLabel];
-    
-    self.descriptionLabel = [[UILabelWithInset alloc] initWithInset:UIEdgeInsetsMake(0, 15, 0, 15)];
-    self.descriptionLabel.text = @"Bazaarvoice offers a wide range of mobile ad types to target your consumers across the Bazaarvoice network.";
-    self.descriptionLabel.textColor = [UIColor darkGrayColor];
-    self.descriptionLabel.numberOfLines = 3;
-    self.descriptionLabel.lineBreakMode = NSLineBreakByWordWrapping;
-    self.descriptionLabel.font = [UIFont systemFontOfSize:self.view.bounds.size.width / 26];
-    self.descriptionLabel.textAlignment = NSTextAlignmentCenter;
-    [self.view addSubview:self.descriptionLabel];
-    
     UIBarButtonItem* adUnitTestBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"gear.png"] style:UIBarButtonItemStyleDone target:self action:@selector(adUnitTestButtonPressed)];
     self.navigationItem.rightBarButtonItem = adUnitTestBarButtonItem;
     
@@ -78,11 +48,10 @@
     layout.itemSize = CGSizeMake(200,140);
     layout.sectionInset = UIEdgeInsetsMake(0,10,0,0);
     
-    self.collectionView = [[UICollectionView alloc] initWithFrame:self.view.frame collectionViewLayout:layout];
+    self.collectionView.collectionViewLayout = layout;
     [self.collectionView setDataSource:self];
     [self.collectionView setDelegate:self];
-    
-    [self.collectionView registerClass:[BVAdTypesCell class] forCellWithReuseIdentifier:@"cvCell"];
+    [self.collectionView registerNib:[UINib nibWithNibName:@"BVAdTypesCell" bundle:nil] forCellWithReuseIdentifier:@"cvCell"];
     [self.collectionView setBackgroundColor:[UIColor clearColor]];
     
     [self.view addSubview:self.collectionView];
@@ -110,36 +79,33 @@
     switch (indexPath.section) {
         case 0:
             itemData = @{
+                         @"imageName": @"native.jpg",
+                         @"title": @"Native Ads",
+                         @"subtitle": @"Native ads blend into regular content inside your app"
+                         };
+            break;
+        case 1:
+            itemData = @{
                          @"imageName": @"interstitial.jpg",
                          @"title": @"Interstitial Ad",
                          @"subtitle": @"Interstitial ads fill up the entire screen on your customer's device"
                          };
             break;
-        case 1:
+        case 2:
             itemData = @{
                          @"imageName": @"banner.jpg",
                          @"title": @"Mobile Banner Ads",
                          @"subtitle": @"Mobile banner ads on a mobile device"
                          };
             break;
-        case 2:
-            itemData = @{
-                         @"imageName": @"native.jpg",
-                         @"title": @"Native Ads",
-                         @"subtitle": @"Native ads blend into regular content inside your app"
-                         };
-            break;
         default:
             break;
     }
     
-    
-    static NSString *cellIdentifier = @"cvCell";
-    
-    BVAdTypesCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
-    cell.titleLabel.text = [itemData objectForKey:@"title"];
-    cell.descriptionLabel.text = [itemData objectForKey:@"subtitle"];
-    cell.imageView.image = [UIImage imageNamed:[itemData objectForKey:@"imageName"]];
+    BVAdTypesCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cvCell" forIndexPath:indexPath];
+    cell.cellTitleLabel.text = [itemData objectForKey:@"title"];
+    cell.cellDescriptionLabel.text = [itemData objectForKey:@"subtitle"];
+    cell.backgroundImage.image = [UIImage imageNamed:[itemData objectForKey:@"imageName"]];
     
     return cell;
     
@@ -161,35 +127,6 @@
     titleLabel.textAlignment = NSTextAlignmentCenter;
     titleLabel.font = [UIFont fontWithName:@"ForalPro-Regular" size:36];
     self.navigationItem.titleView = titleLabel;
-    
-    CGFloat ratio = self.view.bounds.size.width / self.happyGuyBaseImage.size.width;
-    CGFloat adjustedHeight = self.happyGuyBaseImage.size.height*ratio;
-    self.happyGuy.frame = CGRectMake(0,
-                                     0,
-                                     self.view.bounds.size.width,
-                                     adjustedHeight);
-    
-    self.mobileAdTypesLabel.frame = CGRectMake(0,
-                                               CGRectGetMaxY(self.happyGuy.frame) + self.view.bounds.size.height * 0.02,
-                                               self.view.bounds.size.width,
-                                               self.view.bounds.size.height * 0.06);
-    
-    self.descriptionLabel.frame = CGRectMake(0,
-                                             CGRectGetMaxY(self.mobileAdTypesLabel.frame),
-                                             self.view.bounds.size.width,
-                                             self.view.bounds.size.height * 0.12);
-    
-    self.collectionView.frame = CGRectMake(0,
-                                           CGRectGetMaxY(self.descriptionLabel.frame)+20,
-                                           self.view.bounds.size.width,
-                                           self.view.bounds.size.height - CGRectGetMaxY(self.descriptionLabel.frame) - 20*2);
-}
-
--(void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-    
-//    NSLog(@"Test ad unit id!!!!");
-//    [self adUnitTestButtonPressed];
 }
 
 -(void)adUnitTestButtonPressed {
@@ -200,20 +137,17 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     switch (indexPath.section) {
-        case 0:
-        {
-            [self requestInterstitial];
-        }
+        case 0: {
+                [self presentContentNativeScreen];
+            }
             break;
-        case 1:
-        {
-            [self presentBannerScreen];
-        }
+        case 1: {
+                [self requestInterstitial];
+            }
             break;
-        case 2:
-        {
-            [self presentNativeScreen];
-        }
+        case 2: {
+                [self presentBannerScreen];
+            }
             break;
         default:
             break;
@@ -228,13 +162,13 @@
     [self.interstitialDemo requestInterstitial];
 }
 
--(void)presentNativeScreen {
-    NativeDemoViewController* viewController = [[NativeDemoViewController alloc] init];
+-(void)presentContentNativeScreen {
+    NativeContentAdDemoViewController* viewController = [[NativeContentAdDemoViewController alloc] initWithNibName:@"NativeContentAdDemoViewController" bundle:nil];
     [self presentViewController:viewController animated:YES completion:nil];
 }
 
 -(void)presentBannerScreen {
-    BannerDemoViewController* viewController = [[BannerDemoViewController alloc] init];
+    BannerDemoViewController* viewController = [[BannerDemoViewController alloc] initWithNibName:@"BannerDemoViewController" bundle:nil];
     [self presentViewController:viewController animated:YES completion:nil];
 }
 

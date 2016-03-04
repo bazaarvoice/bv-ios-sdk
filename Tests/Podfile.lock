@@ -1,26 +1,24 @@
 PODS:
-  - BVSDK (3.0.0):
-    - BVSDK/Core (= 3.0.0)
-  - BVSDK/BVAdvertising (3.0.0):
+  - BVSDK (3.0.1):
+    - BVSDK/Core (= 3.0.1)
+  - BVSDK/BVAdvertising (3.0.1):
     - BVSDK/Core
     - Google-Mobile-Ads-SDK (~> 7.6)
-  - BVSDK/BVAnalytics (3.0.0)
-  - BVSDK/BVConversations (3.0.0):
+  - BVSDK/BVConversations (3.0.1):
     - BVSDK/Core
-  - BVSDK/BVRecommendations (3.0.0):
+  - BVSDK/BVRecommendations (3.0.1):
     - BVSDK/Core
-  - BVSDK/BVRecommendationsUI (3.0.0):
+  - BVSDK/BVRecommendationsUI (3.0.1):
     - BVSDK/BVRecommendations
     - HCSStarRatingView (~> 1.4.3)
     - SDWebImage
     - SVProgressHUD
-  - BVSDK/Core (3.0.0):
-    - BVSDK/BVAnalytics
-  - Google-Mobile-Ads-SDK (7.6.0)
+  - BVSDK/Core (3.0.1)
+  - Google-Mobile-Ads-SDK (7.7.0)
   - HCSStarRatingView (1.4.3)
-  - SDWebImage (3.7.3):
-    - SDWebImage/Core (= 3.7.3)
-  - SDWebImage/Core (3.7.3)
+  - SDWebImage (3.7.5):
+    - SDWebImage/Core (= 3.7.5)
+  - SDWebImage/Core (3.7.5)
   - SVProgressHUD (1.1.3)
 
 DEPENDENCIES:
@@ -34,10 +32,10 @@ EXTERNAL SOURCES:
     :path: ../
 
 SPEC CHECKSUMS:
-  BVSDK: f37d98a73a490c3d406090c4c44d9247d615ae02
-  Google-Mobile-Ads-SDK: 0290020329c61183c4685304264b73382bc49fb4
+  BVSDK: 358e995eaf8f5f41e345e4b4fbe271b25d961356
+  Google-Mobile-Ads-SDK: d290e523a6e2f223256abcbf8e0c778b55b1f04e
   HCSStarRatingView: bada6ae98258c3019531e0218030e2d5ad10765a
-  SDWebImage: 1d2b1a1efda1ade1b00b6f8498865f8ddedc8a84
+  SDWebImage: 69c6303e3348fba97e03f65d65d4fbc26740f461
   SVProgressHUD: 748080e4f36e603f6c02aec292664239df5279c1
 
 COCOAPODS: 0.39.0

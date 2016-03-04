@@ -7,14 +7,6 @@
 
 #import "BVShopperProfile.h"
 
-
-
-@interface BVShopperProfile ()
-
-@property (strong, nonatomic) NSDictionary *recommendationStats;
-
-@end
-
 @implementation BVShopperProfile
 
 
@@ -26,8 +18,6 @@
     self.interests = [NSDictionary dictionary];
     self.recommendations = [NSArray array];
     self.product_keys = [NSSet set];
-    
-    self.recommendationStats = [NSDictionary dictionary];
     
     return self;
 }
@@ -42,59 +32,45 @@
         
         self.brands = [profile objectForKey:@"brands"];
         
-        self.userId = [profile objectForKey:@"id"];
-        
         self.interests = [profile objectForKey:@"interests"];
         
-        self.recommendationStats = [profile objectForKey:@"recommendationStats"];
+        NSDictionary* recommendationStats = [profile objectForKey:@"recommendationStats"];
         
-        //NSArray *recommendationProductIds = [profile objectForKey:@"recommendations"];
-        NSDictionary *productsDict = [profile objectForKey:@"products"];
+        NSSet *recommendationProductIds = [profile objectForKey:@"recommendations"];
+        
+        NSDictionary* products = [profile objectForKey:@"products"];
         
         NSMutableArray *tmp = [NSMutableArray array];
-        if (productsDict){
+        
+        if (recommendationProductIds && products) {
             
-            for (NSString* productKey in productsDict) {
+            self.product_keys = recommendationProductIds;
+            
+            for (NSString* productKey in recommendationProductIds) {
                 
-                NSDictionary *oneProdDict = [productsDict objectForKey:productKey];
-                BVProduct *product = [[BVProduct alloc] initWithDictionary:oneProdDict withProductKey:productKey withRecStats:self.recommendationStats];
+                NSDictionary* product = [products objectForKey:productKey];
                 
-                if (product){
-                    [tmp addObject:product];
+                BVProduct *bvProduct = [[BVProduct alloc] initWithDictionary:product withRecommendationStats:recommendationStats];
+                
+                if (bvProduct){
+                    [tmp addObject:bvProduct];
                 }
+                
             }
+            
         }
         
         self.recommendations = [NSArray arrayWithArray:tmp];
-        
-        if ([profile objectForKey:@"recommendations"]){
-            self.product_keys = [NSSet setWithArray:[profile objectForKey:@"recommendations"]];
-        }
     }
     
     return self;
     
 }
 
-- (nullable BVProduct *)productFromKey:(NSString *)productKey{
-    
-    BVProduct *product = nil;
-    
-    for (BVProduct *prod in self.recommendations){
-        
-        if ([productKey isEqualToString:prod.product_key]){
-            product = prod;
-        }
-        
-    }
-    
-    return product;
-}
-
 
 - (NSString *)description{
     
-    return [NSString stringWithFormat:@"BVShopperProfile: ID:%@", self.userId];
+    return [NSString stringWithFormat:@"BVShopperProfile: Interests:%@\nBrands:%@", self.interests, self.brands];
     
 }
 

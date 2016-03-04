@@ -6,6 +6,9 @@
 //
 
 #import "AppDelegate.h"
+#import "SearchViewController.h"
+
+#import <BVSDK/BVConversations.h>
 
 @implementation AppDelegate
 
@@ -21,9 +24,43 @@
     } else {
         self.window.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"app-background.png"]];        
     }
+    
+    self.window.rootViewController = [self getRootViewController];
+    [self.window makeKeyAndVisible];
+    
+    #warning Configure the BVSDK with your client Id and API key!!!
+    NSString *myClientId = nil; // INSERT YOUR CLIEND ID!!!!
+    NSString *myConversationsAPIKey = nil; // INSERT YOUR CONVERSATIONS API KEY!!!
+    
+    if (myClientId != nil && myConversationsAPIKey != nil){
+        // Global BV SDK setup.  In general this should only occur once
+        [BVSDKManager sharedManager].apiKeyConversations = myConversationsAPIKey;
+        [BVSDKManager sharedManager].clientId = myClientId;
+        [BVSDKManager sharedManager].staging = YES;
+    } else {
+    
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"BVSDK Not Configured" message:@"Make sure you have set your API Key and Client ID in AppDelegate.m. Please contact Bazaarvoice if you need an evaluation key." preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            // completion
+            exit(1);
+        }];
+        
+        [alert addAction:okAction];
+        
+        [self.window.rootViewController presentViewController:alert animated:YES completion:^{
+        }];
+        
+    }
+
     return YES;
 }
-							
+
+-(UIViewController*)getRootViewController {
+    
+    return (SearchViewController *)((AppDelegate *)[[UIApplication sharedApplication] delegate]).window.rootViewController;
+}
+
 - (void)applicationWillResignActive:(UIApplication *)application
 {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

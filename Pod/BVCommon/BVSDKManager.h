@@ -24,7 +24,7 @@ NS_ASSUME_NONNULL_BEGIN
     // If using Converstations API, add this line:
     [BVSDKManager sharedManager].apiKeyConversations = @"YOUR_CONVERSATIONS_API_KEY";
     // If using Recommendations or Advertising, add this line:
-    [BVSDKManager sharedManager].apiKeyShopperMarketing = @"YOUR_SHOPPER_MARKETING_KEY";
+    [BVSDKManager sharedManager].apiKeyShopperAdvertising = @"YOUR_SHOPPER_MARKETING_KEY";
  
  
  ### Swift
@@ -34,7 +34,7 @@ NS_ASSUME_NONNULL_BEGIN
      // If using Converstations API, add this line:
      apiKeyConversations = "YOUR_CONVERSATIONS_API_KEY"
      // If using Recommendations or Advertising, add this line:
-     mgr.apiKeyShopperMarketing = "YOUR_SHOPPER_MARKETING_KEY"
+     mgr.apiKeyShopperAdvertising = "YOUR_SHOPPER_MARKETING_KEY"
      mgr.clientId = "YOUR_CLIENT_ID"
      mgr.staging = false  //  true for production
  

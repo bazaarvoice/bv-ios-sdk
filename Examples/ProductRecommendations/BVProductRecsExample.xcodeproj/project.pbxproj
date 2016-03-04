@@ -22,11 +22,18 @@
 		73A768631C0BAE6500652629 /* DemoCarouselViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 73A768621C0BAE6500652629 /* DemoCarouselViewController.xib */; };
 		73B2FCBC1C0C3F9400D1829E /* DemoStaticViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 73B2FCBB1C0C3F9300D1829E /* DemoStaticViewController.xib */; };
 		73D875F51BFF063F00BBE080 /* DemoStaticViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73D875F31BFF063F00BBE080 /* DemoStaticViewController.swift */; };
+		8734A28E1C44444800D40C19 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8734A28D1C44444800D40C19 /* SettingsViewController.swift */; };
+		8734A2901C44635400D40C19 /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8734A28F1C44635400D40C19 /* SettingsViewController.xib */; };
+		8734A2941C45298800D40C19 /* gear@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8734A2921C45298800D40C19 /* gear@2x.png */; };
+		8734A2951C45298800D40C19 /* gear@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8734A2931C45298800D40C19 /* gear@3x.png */; };
 		87A767BF1BE52B1400164C7F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A767BE1BE52B1400164C7F /* AppDelegate.swift */; };
 		87A767C11BE52B1400164C7F /* DemoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A767C01BE52B1400164C7F /* DemoTableViewController.swift */; };
 		87A767C61BE52B1400164C7F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 87A767C51BE52B1400164C7F /* Assets.xcassets */; };
 		87A767C91BE52B1400164C7F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 87A767C71BE52B1400164C7F /* LaunchScreen.storyboard */; };
 		87A767DF1BE52B1400164C7F /* BVProductRecsExampleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A767DE1BE52B1400164C7F /* BVProductRecsExampleUITests.swift */; };
+		87A9C3E71C46B19C006A4DB0 /* MenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A9C3E61C46B19C006A4DB0 /* MenuController.swift */; };
+		87ADE3A21C3C46B6006DEAD4 /* ProductPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87ADE3A11C3C46B6006DEAD4 /* ProductPageViewController.swift */; };
+		87ADE3A41C3C46E5006DEAD4 /* ProductPageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 87ADE3A31C3C46E5006DEAD4 /* ProductPageViewController.xib */; };
 		BD637537B4B01F82CD50A710 /* libPods-BVProductRecsExampleTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FA9969D8033F7553A40DFBE0 /* libPods-BVProductRecsExampleTests.a */; };
 		CCF9EE397A6E5D7D8DE5AACD /* libPods-BVProductRecsExampleUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A7B29FC0BD220AC82F616D2C /* libPods-BVProductRecsExampleUITests.a */; };
 /* End PBXBuildFile section */
@@ -71,6 +78,10 @@
 		73B2FCBB1C0C3F9300D1829E /* DemoStaticViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DemoStaticViewController.xib; sourceTree = "<group>"; };
 		73D875F31BFF063F00BBE080 /* DemoStaticViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoStaticViewController.swift; sourceTree = "<group>"; };
 		7BA6C6D9380EDFA848E1EB80 /* Pods-BVProductRecsExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BVProductRecsExample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BVProductRecsExample/Pods-BVProductRecsExample.debug.xcconfig"; sourceTree = "<group>"; };
+		8734A28D1C44444800D40C19 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		8734A28F1C44635400D40C19 /* SettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsViewController.xib; sourceTree = "<group>"; };
+		8734A2921C45298800D40C19 /* gear@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gear@2x.png"; sourceTree = "<group>"; };
+		8734A2931C45298800D40C19 /* gear@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gear@3x.png"; sourceTree = "<group>"; };
 		87A767BB1BE52B1400164C7F /* BVProductRecsExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BVProductRecsExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		87A767BE1BE52B1400164C7F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		87A767C01BE52B1400164C7F /* DemoTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoTableViewController.swift; sourceTree = "<group>"; };
@@ -81,6 +92,9 @@
 		87A767DE1BE52B1400164C7F /* BVProductRecsExampleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BVProductRecsExampleUITests.swift; sourceTree = "<group>"; };
 		87A767E01BE52B1400164C7F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		87A767EC1BE52F5C00164C7F /* BVProduct-Recs-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "BVProduct-Recs-Bridging-Header.h"; path = "../BVProduct-Recs-Bridging-Header.h"; sourceTree = "<group>"; };
+		87A9C3E61C46B19C006A4DB0 /* MenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuController.swift; sourceTree = "<group>"; };
+		87ADE3A11C3C46B6006DEAD4 /* ProductPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductPageViewController.swift; sourceTree = "<group>"; };
+		87ADE3A31C3C46E5006DEAD4 /* ProductPageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProductPageViewController.xib; sourceTree = "<group>"; };
 		9EAEB7B090C946CDF38EF755 /* Pods-BVProductRecsExampleTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BVProductRecsExampleTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BVProductRecsExampleTests/Pods-BVProductRecsExampleTests.debug.xcconfig"; sourceTree = "<group>"; };
 		A7B29FC0BD220AC82F616D2C /* libPods-BVProductRecsExampleUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BVProductRecsExampleUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8F71C6DC761A5B5F765FE9B /* Pods-BVProductRecsExampleTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BVProductRecsExampleTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-BVProductRecsExampleTests/Pods-BVProductRecsExampleTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -146,6 +160,7 @@
 		73A768611C0BA5EA00652629 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				8734A2911C45298800D40C19 /* img */,
 				87A767C71BE52B1400164C7F /* LaunchScreen.storyboard */,
 				87A767C51BE52B1400164C7F /* Assets.xcassets */,
 				73A7685F1C0BA5E100652629 /* ForalPro-Regular.otf */,
@@ -164,15 +179,28 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		8734A2911C45298800D40C19 /* img */ = {
+			isa = PBXGroup;
+			children = (
+				8734A2921C45298800D40C19 /* gear@2x.png */,
+				8734A2931C45298800D40C19 /* gear@3x.png */,
+			);
+			path = img;
+			sourceTree = SOURCE_ROOT;
+		};
 		879430331BE7B7B000BA4F45 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				8734A28D1C44444800D40C19 /* SettingsViewController.swift */,
+				8734A28F1C44635400D40C19 /* SettingsViewController.xib */,
 				87A767C01BE52B1400164C7F /* DemoTableViewController.swift */,
 				735997201C0B98E200D9AEDC /* DemoTableViewController.xib */,
 				73D875F31BFF063F00BBE080 /* DemoStaticViewController.swift */,
 				73B2FCBB1C0C3F9300D1829E /* DemoStaticViewController.xib */,
 				732B072D1C014F050035EBF8 /* DemoCarouselViewController.swift */,
 				73A768621C0BAE6500652629 /* DemoCarouselViewController.xib */,
+				87ADE3A11C3C46B6006DEAD4 /* ProductPageViewController.swift */,
+				87ADE3A31C3C46E5006DEAD4 /* ProductPageViewController.xib */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -207,6 +235,7 @@
 				879430331BE7B7B000BA4F45 /* ViewControllers */,
 				87A767BE1BE52B1400164C7F /* AppDelegate.swift */,
 				7359971E1C0B980900D9AEDC /* RootViewController.swift */,
+				87A9C3E61C46B19C006A4DB0 /* MenuController.swift */,
 				73A7685D1C0BA14D00652629 /* Util.swift */,
 				87A767EC1BE52F5C00164C7F /* BVProduct-Recs-Bridging-Header.h */,
 				87A767CA1BE52B1400164C7F /* Info.plist */,
@@ -360,7 +389,11 @@
 			files = (
 				87A767C91BE52B1400164C7F /* LaunchScreen.storyboard in Resources */,
 				73A768601C0BA5E100652629 /* ForalPro-Regular.otf in Resources */,
+				87ADE3A41C3C46E5006DEAD4 /* ProductPageViewController.xib in Resources */,
+				8734A2901C44635400D40C19 /* SettingsViewController.xib in Resources */,
+				8734A2941C45298800D40C19 /* gear@2x.png in Resources */,
 				73A768631C0BAE6500652629 /* DemoCarouselViewController.xib in Resources */,
+				8734A2951C45298800D40C19 /* gear@3x.png in Resources */,
 				87A767C61BE52B1400164C7F /* Assets.xcassets in Resources */,
 				73B2FCBC1C0C3F9400D1829E /* DemoStaticViewController.xib in Resources */,
 				735997211C0B98E200D9AEDC /* DemoTableViewController.xib in Resources */,
@@ -516,9 +549,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				87A9C3E71C46B19C006A4DB0 /* MenuController.swift in Sources */,
 				732B072E1C014F050035EBF8 /* DemoCarouselViewController.swift in Sources */,
 				73D875F51BFF063F00BBE080 /* DemoStaticViewController.swift in Sources */,
 				735997271C0B9BA400D9AEDC /* CAPSPageMenu.swift in Sources */,
+				8734A28E1C44444800D40C19 /* SettingsViewController.swift in Sources */,
+				87ADE3A21C3C46B6006DEAD4 /* ProductPageViewController.swift in Sources */,
 				73A7685E1C0BA14D00652629 /* Util.swift in Sources */,
 				7359971F1C0B980900D9AEDC /* RootViewController.swift in Sources */,
 				87A767C11BE52B1400164C7F /* DemoTableViewController.swift in Sources */,

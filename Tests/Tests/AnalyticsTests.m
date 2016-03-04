@@ -41,12 +41,12 @@
     [BVSDKManager sharedManager].apiKeyConversations = @"2cpdrhohmgmwfz8vqyo48f52g";
     
     // BVRecommendations & BVAdvertising SDK key.
-    [BVSDKManager sharedManager].apiKeyShopperAdvertising = @"4qhps77enfpw3kghuu8wendy";
-    
-    NSLog(@"BVSDK Info: %@", [BVSDKManager sharedManager].description);
+    [BVSDKManager sharedManager].apiKeyShopperAdvertising = @"3frgjjug4fr3zrgz9a8q9xp7";
     
     // Global logging level
     [[BVSDKManager sharedManager] setLogLevel:BVLogLevelError];
+    
+    NSLog(@"BVSDK Info: %@", [BVSDKManager sharedManager].description);
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(analyticsPageviewEventCompleted:)
@@ -135,11 +135,9 @@
 -(void)testAnalyticsCompletesBatched {
     
     numberOfExpectedPageviewAnalyticsEvents = 1;
-#if ANALYTICS_STRATEGY_GET == 1
-    numberOfExpectedImpressionAnalyticsEvents = 3;
-#else 
+
     numberOfExpectedImpressionAnalyticsEvents = 1;
-#endif
+
     [self fireReviewAnalyticsCompletesWithLimit:60];
 }
 
@@ -149,14 +147,8 @@
     // crash would occur when objects were taken out of the queue in different threads - NSMutableArray is not thread safe
     // moving all array modifications to the main thread fixed the problem - only network requests happen on different threads now
 
-#if ANALYTICS_STRATEGY_GET == 1
-    // Not sure how many events, so this is just a stress test, but in GET case we never bother to wait on any events
-    numberOfExpectedPageviewAnalyticsEvents = 0;
-    numberOfExpectedImpressionAnalyticsEvents = 0;
-#else
     numberOfExpectedPageviewAnalyticsEvents = 1;
     numberOfExpectedImpressionAnalyticsEvents = 1;
-#endif
     
     BVGet *showDisplayRequest = [[ BVGet alloc ] initWithType:BVGetTypeReviews];
     [showDisplayRequest setLimit:100];
@@ -176,13 +168,7 @@
     [showDisplayRequest3 addSortForAttribute:@"Id" ascending:YES];
     [showDisplayRequest3 sendRequestWithDelegate:self];
     
-#if ANALYTICS_STRATEGY_GET == 1
-    [impressionExpectation fulfill];
-    [pageviewExpectation fulfill];
-    [self waitForExpectationsWithTimeout:30.0 handler:^(NSError *error) { }];
-#else
-      [self waitForAnalytics];
-#endif
+    [self waitForAnalytics];
     
 }
 
@@ -319,7 +305,7 @@
     
     BVAdInfo *testInfo = [[BVAdInfo alloc] initWithAdUnitId:@"/9999/autotest/banner" adType:BVBanner];
     
-    [adsAnalyticsManager adDelivered:testInfo];
+    [adsAnalyticsManager adShown:testInfo];
     
     [self waitForAnalytics];
     
@@ -342,25 +328,40 @@
 
 #pragma mark Feature Used Tests
 
-- (void)testProductFeatureUsed{
+
+- (void)testProductWidgetPageView{
     
     numberOfExpectedImpressionAnalyticsEvents = 1;
     numberOfExpectedPageviewAnalyticsEvents = 0;
     
-    BVProduct *testProduct = [self createFakeProduct];
+    // General recommendations
+    NSString *widgetTypeString = [BVRecsAnalyticsHelper getWidgetTypeString:RecommendationsCarousel];
+    [BVRecsAnalyticsHelper queueEmbeddedRecommendationsPageViewEvent:nil withCategoryId:nil withClientId:TEST_CLIENT_ID withNumRecommendations:20 withWidgetType:widgetTypeString];
     
-    [BVRecsAnalyticsHelper queueAnalyticsEventForProductFeatureUsed:testProduct withFeatureUsed:TapLike];
-    [BVRecsAnalyticsHelper queueAnalyticsEventForProductFeatureUsed:testProduct withFeatureUsed:TapProduct];
-    [BVRecsAnalyticsHelper queueAnalyticsEventForProductFeatureUsed:testProduct withFeatureUsed:TapRatingsReviews];
-    [BVRecsAnalyticsHelper queueAnalyticsEventForProductFeatureUsed:testProduct withFeatureUsed:TapShopNow];
-    [BVRecsAnalyticsHelper queueAnalyticsEventForProductFeatureUsed:testProduct withFeatureUsed:TapUnlike];
+    // Product-spefic recommendations
+    widgetTypeString = [BVRecsAnalyticsHelper getWidgetTypeString:RecommendationsStaticView];
+    [BVRecsAnalyticsHelper queueEmbeddedRecommendationsPageViewEvent:@"test-proudct-id" withCategoryId:nil withClientId:TEST_CLIENT_ID withNumRecommendations:20 withWidgetType:widgetTypeString];
+
+    // Categorical recommendations
+    widgetTypeString = [BVRecsAnalyticsHelper getWidgetTypeString:RecommendationsTableView];
+    [BVRecsAnalyticsHelper queueEmbeddedRecommendationsPageViewEvent:nil withCategoryId:@"test-category-id" withClientId:TEST_CLIENT_ID withNumRecommendations:20 withWidgetType:widgetTypeString];
     
-#if ANALYTICS_STRATEGY_GET == 0
     [[BVAnalyticsManager sharedManager] flushQueue];
-#endif
     
     [self waitForAnalytics];
     
+}
+
+- (void)testProductWidgetSwiped{
+    
+    numberOfExpectedImpressionAnalyticsEvents = 1;
+    numberOfExpectedPageviewAnalyticsEvents = 0;
+    
+    [BVRecsAnalyticsHelper queueAnalyticsEventForWidgetScroll:RecommendationsCarousel];
+    
+    [[BVAnalyticsManager sharedManager] flushQueue];
+    
+    [self waitForAnalytics];
 }
 
 - (void)testProductRecommendationVisible{
@@ -372,25 +373,64 @@
     
     [BVRecsAnalyticsHelper queueAnalyticsEventForProdctView:testProduct];
     
-#if ANALYTICS_STRATEGY_GET == 0
     [[BVAnalyticsManager sharedManager] flushQueue];
-#endif
     
     [self waitForAnalytics];
     
 }
 
+- (void)testProductFeatureUsed{
+    
+    numberOfExpectedImpressionAnalyticsEvents = 1;
+    numberOfExpectedPageviewAnalyticsEvents = 0;
+    
+    BVProduct *testProduct = [self createFakeProduct];
+    
+    [BVRecsAnalyticsHelper queueAnalyticsEventForProductFeatureUsed:testProduct withFeatureUsed:TapLike withWidgetType:RecommendationsCustom];
+    [BVRecsAnalyticsHelper queueAnalyticsEventForProductFeatureUsed:testProduct withFeatureUsed:TapProduct withWidgetType:RecommendationsCarousel];
+    [BVRecsAnalyticsHelper queueAnalyticsEventForProductFeatureUsed:testProduct withFeatureUsed:TapRatingsReviews withWidgetType:RecommendationsStaticView];
+    [BVRecsAnalyticsHelper queueAnalyticsEventForProductFeatureUsed:testProduct withFeatureUsed:TapShopNow withWidgetType:RecommendationsTableView];
+    [BVRecsAnalyticsHelper queueAnalyticsEventForProductFeatureUsed:testProduct withFeatureUsed:TapUnlike withWidgetType:RecommendationsCarousel];
+    
+    [[BVAnalyticsManager sharedManager] flushQueue];
+    
+    [self waitForAnalytics];
+    
+}
+
+
 - (BVProduct *)createFakeProduct{
     
-    BVProduct *testProduct = [[BVProduct alloc] init];
-    testProduct.client = @"autotestclient";
-    testProduct.product_id = @"123456";
-    testProduct.name = @"Auto Test Prodct";
-    testProduct.client_id = @"testreseller";
-    testProduct.RKB = [NSNumber numberWithInt:1];
-    testProduct.RKI = [NSNumber numberWithInt:2];
-    testProduct.RKP = [NSNumber numberWithInt:3];
-    testProduct.RS = @"vav";
+    NSDictionary* fakeProduct = @{
+                                  @"client": @"apitestcustomer",
+                                  @"product": @"123456",
+                                  @"name": @"Converse shoes",
+                                  @"image_url": @"http://www.zomshopping.com/images/l/converse-shoes-black-chuck-taylor-all-star-classic-womens-mens-canvas-sneakers-low-40-178.jpg",
+                                  @"product_page_url": @"http://www.bazaarvoice.com/fakeurl",
+                                  @"interests": @[
+                                                @"Home & Garden",
+                                                @"Tools"
+                                                ],
+                                  @"category_ids": @[
+                                                   @"apitestcustomer/101253",
+                                                   @"apitestcustomer/100845",
+                                                   @"apitestcustomer/100896",
+                                                   @"apitestcustomer/102560",
+                                                   @"apitestcustomer/104244"
+                                                   ],
+                                  @"RS": @"vav",
+                                  @"sponsored": @"false"
+                                  };
+    
+    NSDictionary* recStats = @{
+                               @"RKB": @"1",
+                               @"RKI": @"2",
+                               @"RKP": @"3",
+                               @"RKT": @"5",
+                               @"RKC": @"4",
+                               };
+    
+    BVProduct *testProduct = [[BVProduct alloc] initWithDictionary:fakeProduct withRecommendationStats:recStats];
     
     return testProduct;
 }

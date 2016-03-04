@@ -8,6 +8,7 @@
 #ifndef BVRecommendationUIProtocol_h
 #define BVRecommendationUIProtocol_h
 
+#import "BVRecommendations.h"
 #import "BVRecommendationsUI.h"
 #import "BVShopperProfile.h"
 #import "BVRecommendationsSharedView.h"
@@ -18,12 +19,6 @@
 @protocol BVRecommendationsUIDelegate <NSObject>
 
 @required
-
-
-/**
- *  Configure the BVRecommendationsSharedView styling to your heart's desire.
- */
-- (void)styleRecommendationsView:(BVRecommendationsSharedView*)recommendationsView;
 
 
 /**
@@ -92,8 +87,12 @@
  */
 - (NSMutableSet *)setForBannedProductIds;
 
-@end
+/**
+ *  Configure the BVRecommendationsSharedView styling to your heart's desire. This method will be called once for each product recommendation cell in a recommendation container.
+ */
+- (void)styleRecommendationsView:(BVRecommendationsSharedView*)recommendationsView;
 
+@end
 
 
 #endif /* BVRecommendationUIProtocol_h */

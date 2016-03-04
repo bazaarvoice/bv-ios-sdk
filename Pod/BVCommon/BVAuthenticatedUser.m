@@ -30,8 +30,9 @@
         self.previousUpdateDate = [NSDate date];
         NSString *idfa = [[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString];
         NSString* adsPassKey = passKey;
-        NSString* baseUrl = [self getProfileUrl:isStage];
-        NSString* profileUrl = [NSString stringWithFormat:@"%@/magpie_idfa_%@?passkey=%@", baseUrl, idfa, adsPassKey];
+        NSString* baseUrl = [BVSDKManager sharedManager].urlRootShopperAdvertising;
+        
+        NSString* profileUrl = [NSString stringWithFormat:@"%@/users/magpie_idfa_%@?passkey=%@", baseUrl, idfa, adsPassKey];
         
         [[BVLogger sharedLogger] verbose:[NSString stringWithFormat:@"GET: %@", profileUrl]];
         
@@ -126,13 +127,5 @@
     return [keywords componentsJoinedByString:@" "];
 }
 
--(NSString*)getProfileUrl:(BOOL)isStaging {
-    if(isStaging){
-        return @"https://dev.api.bazaarvoice.com/shopper/users";
-    }
-    else {
-        return @"https://api.bazaarvoice.com/shopper/users";
-    }
-}
 
 @end

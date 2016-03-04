@@ -2,7 +2,7 @@
 //  BVConversations.h
 //  Pods
 //
-//  Created by Jason Harris on 12/17/15.
+//  Copyright 2016 Bazaarvoice Inc. All rights reserved.
 //
 //
 

@@ -11,7 +11,6 @@
 
 #include <BVSDK/BVRecommendations.h>
 #include <BVSDK/BVRecommendationsUI.h>
-#include <BVSDK/BVCarouselCell.h>
 
 
 #endif /* BVProductRecsExampleTests_Bridging_Header_h */

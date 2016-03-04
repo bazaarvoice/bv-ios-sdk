@@ -54,6 +54,12 @@
 
 	
 	
+	<optgroup label="Properties">
+		
+		<option value="//api/name/maxCacheAge">maxCacheAge</option>
+		
+	</optgroup>
+	
 
 	
 
@@ -61,6 +67,10 @@
 	<optgroup label="Instance Methods">
 		
 		<option value="//api/name/fetchProductRecommendations:withCompletionHandler:">- fetchProductRecommendations:withCompletionHandler:</option>
+		
+		<option value="//api/name/fetchProductRecommendationsForCategory:withLimit:withCompletionHandler:">- fetchProductRecommendationsForCategory:withLimit:withCompletionHandler:</option>
+		
+		<option value="//api/name/fetchProductRecommendationsForProduct:withLimit:withCompletionHandler:">- fetchProductRecommendationsForProduct:withLimit:withCompletionHandler:</option>
 		
 	</optgroup>
 	
@@ -115,6 +125,52 @@
 
 						<div class="task-list">
 							<div class="section-method">
+	<a name="//api/name/maxCacheAge" title="maxCacheAge"></a>
+	<h3 class="method-title"><code><a href="#//api/name/maxCacheAge">&nbsp;&nbsp;maxCacheAge</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Set the default cache duration, in seconds, for Shopper Profile API requests. Set to 0 for no caching. Default is 60 seconds.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) NSInteger maxCacheAge</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>@availability BVSDK 3.0.1 and later</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BVGetShopperProfile.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
 	<a name="//api/name/fetchProductRecommendations:withCompletionHandler:" title="fetchProductRecommendations:withCompletionHandler:"></a>
 	<h3 class="method-title"><code><a href="#//api/name/fetchProductRecommendations:withCompletionHandler:">&ndash;&nbsp;fetchProductRecommendations:withCompletionHandler:</a></code>
 </h3>
@@ -148,10 +204,139 @@
 </code></pre>
 
 <p>*
-*  @param limit             Number of product recommendations to return. Default is 20. Max is 50.
-*  @param interest          Interest to filter on.
+*  @param limit             Number of product recommendations to return. Default is 20, Max is 50.
 *  @param completionHandler Completion handler with <a href="../Classes/BVShopperProfile.html">BVShopperProfile</a> containing product recommendations. If an error occurs, error will be non-nil in the completionHandler.</p>
 			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BVGetShopperProfile.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/fetchProductRecommendationsForProduct:withLimit:withCompletionHandler:" title="fetchProductRecommendationsForProduct:withLimit:withCompletionHandler:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/fetchProductRecommendationsForProduct:withLimit:withCompletionHandler:">&ndash;&nbsp;fetchProductRecommendationsForProduct:withLimit:withCompletionHandler:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Get product recommendations for a user, based on the context of a product identifier. This recommendation strategy is useful for making product recommendations in the context of a product page.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)fetchProductRecommendationsForProduct:(NSString *)<em>productId</em> withLimit:(NSUInteger)<em>limit</em> withCompletionHandler:(void ( ^ ) ( BVShopperProfile *__nullable profile , NSError *__nullable error ))<em>completionHandler</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>productId</code></th>
+						<td><p>The product id (or key) comprised of the <client>/<product id></p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>limit</code></th>
+						<td><p>The maximum number of recommendations to return. Default is 20, max is 50.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>completionHandler</code></th>
+						<td><p>Completion handler with <a href="../Classes/BVShopperProfile.html">BVShopperProfile</a> containing product recommendations. If an error occurs, error will be non-nil in the completionHandler.</p>
+
+<p>@availability 3.0.1 and later</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BVGetShopperProfile.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/fetchProductRecommendationsForCategory:withLimit:withCompletionHandler:" title="fetchProductRecommendationsForCategory:withLimit:withCompletionHandler:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/fetchProductRecommendationsForCategory:withLimit:withCompletionHandler:">&ndash;&nbsp;fetchProductRecommendationsForCategory:withLimit:withCompletionHandler:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Get product recommendations for a user, based on the context of product category id.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)fetchProductRecommendationsForCategory:(NSString *)<em>categoryId</em> withLimit:(NSUInteger)<em>limit</em> withCompletionHandler:(void ( ^ ) ( BVShopperProfile *__nullable profile , NSError *__nullable error ))<em>completionHandler</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>categoryId</code></th>
+						<td><p>The category Id supplied by the client. Comprised of <cliend id>/<category id></p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>limit</code></th>
+						<td><p>The maximum number of recommendations to return. Default is 20, max is 50.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>completionHandler</code></th>
+						<td><p>Completion handler with <a href="../Classes/BVShopperProfile.html">BVShopperProfile</a> containing product recommendations. If an error occurs, error will be non-nil in the completionHandler.</p>
+
+<p>@availability 3.0.1 and later</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
 			
 
 			
@@ -182,7 +367,7 @@
 				<footer>
 					<div class="footer-copyright">
 						
-						<p class="copyright">Copyright &copy; 2015 Bazaarvoice. All rights reserved. Updated: 2015-12-16</p>
+						<p class="copyright">Copyright &copy; 2016 Bazaarvoice. All rights reserved. Updated: 2016-02-08</p>
 						
 						
 						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>

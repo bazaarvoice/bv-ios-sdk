@@ -6,11 +6,12 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "BVLocationEventsHelper.h"
 #import "BVLogger.h"
 #import "BVAuthenticatedUser.h"
 #import "BVAdInfo.h"
-#import "BVLocationWrapper.h"
+#import "BVTargetedInterstitial.h"
+#import "BVTargetedBannerView.h"
+#import "BVTargetedAdLoader.h"
 
 @interface BVInternalManager : NSObject
 
@@ -21,21 +22,17 @@
 
 // ad lifecycle
 -(void)adRequested:(BVAdInfo*)adInfo;
--(void)adDelivered:(BVAdInfo*)adInfo;
+-(void)adReceived:(BVAdInfo*)adInfo;
+-(void)adDismissed:(BVAdInfo*)adInfo;
+-(void)adConversion:(BVAdInfo*)adInfo;
+
 -(void)adShown:(BVAdInfo*)adInfo;
+-(void)nativeAdShown:(GADNativeAd*)nativeAd;
+-(void)nativeAdConversion:(GADNativeAd*)nativeAd;
+
 -(void)adFailed:(BVAdInfo*)adInfo error:(GADRequestError*)error;
+-(void)trackNativeAd:(GADNativeAd*)nativeAd withAdLoaderInfo:(BVAdInfo*)adLoaderInfo;
+-(BVAdInfo*)getAdInfoForNativeAd:(GADNativeAd*)nativeAd;
 
-// new location updates
--(void)didEnterRegion:(CLCircularRegion*)region location:(BVLocationWrapper*)location;
--(void)didExitRegion:(CLCircularRegion*)region location:(BVLocationWrapper*)location;
--(void)didVisit:(CLVisit*)visit location:(BVLocationWrapper*)location;
--(void)didRangeBeacon:(CLBeacon*)beacon inRegion:(CLBeaconRegion*)region location:(BVLocationWrapper*)location;
--(void)didUpdateLocation:(BVLocationWrapper*)location;
-
-// gimbal beacons
--(void)gimbalSighting:(BVGMBLSighting*)sighting;
--(void)gimbalSighting:(BVGMBLSighting*)sighting forVisit:(BVGMBLVisit*)visit;
--(void)gimbalPlaceBeginVisit:(BVGMBLVisit*)visit;
--(void)gimbalPlaceEndVisit:(BVGMBLVisit*)visit;
 
 @end

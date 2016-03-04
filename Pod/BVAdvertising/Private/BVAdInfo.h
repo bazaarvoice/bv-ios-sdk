@@ -13,10 +13,7 @@
 @property unsigned long long adLoadId;
 @property NSDictionary* customTargeting;
 @property NSString* adUnitId;
-@property NSNumber* visibleDuration;
 @property BVAdType adType;
-@property NSDate* adShownDateTime;
-@property NSDate* adDismissedTime;
 
 
 -(id)initWithAdUnitId:(NSString*)adUnitId adType:(BVAdType)adType;
