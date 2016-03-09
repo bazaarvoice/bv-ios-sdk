@@ -82,12 +82,13 @@
 }
 
 static NSString *urlEncode(id object) {
-    
+
     NSString *string = [NSString stringWithFormat: @"%@", object];
     
-    NSMutableCharacterSet *chars = NSCharacterSet.URLQueryAllowedCharacterSet.mutableCopy;
-    [chars removeCharactersInRange:NSMakeRange('&', 1)]; // %26
+    NSMutableCharacterSet *chars = [[NSCharacterSet URLQueryAllowedCharacterSet] mutableCopy];
+    [chars removeCharactersInString:@"+&"];
     return [string stringByAddingPercentEncodingWithAllowedCharacters:chars];
+
 }
 
 -(NSString*) getParamsString {
