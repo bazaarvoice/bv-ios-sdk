@@ -87,15 +87,16 @@
         
         NSHTTPURLResponse *urlResp = (NSHTTPURLResponse *)response;
         
-        if (!error && urlResp.statusCode < 300){
+        if ((!error && urlResp.statusCode < 300) && data != nil){
+            
             NSHTTPURLResponse *httpResp = (NSHTTPURLResponse *)response;
             
             NSError *errorJSON;
             NSDictionary* responseDict = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&errorJSON];
             
-            BVShopperProfile *profile = [[BVShopperProfile alloc] initWithDictionary:responseDict];
-            
             if (!errorJSON){
+                
+                BVShopperProfile *profile = [[BVShopperProfile alloc] initWithDictionary:responseDict];
                 
                 [[BVLogger sharedLogger] verbose:[NSString stringWithFormat:@"RESPONSE: (%ld): %@", (long)httpResp.statusCode, responseDict]];
                 
