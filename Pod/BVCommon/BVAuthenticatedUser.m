@@ -40,23 +40,34 @@
           
             // Completion
             NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
-            if (httpResponse && httpResponse.statusCode < 300){
+            if ((httpResponse && httpResponse.statusCode < 300) && data != nil){
                 
                 // Success
                 
                 NSError *errorJson;
                 NSDictionary* responseDict = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&errorJson];
                 
-                [[BVLogger sharedLogger] verbose:[NSString stringWithFormat:@"RESPONSE: (%ld): %@", (long)httpResponse.statusCode, responseDict]];
+                if (!errorJson){
+                    
+                    // JSON response parsing.
+                    [[BVLogger sharedLogger] verbose:[NSString stringWithFormat:@"RESPONSE: (%ld): %@", (long)httpResponse.statusCode, responseDict]];
+                    
+                    if([self.personalizedPreferences isEqualToDictionary:responseDict]){
+                        return; // No update
+                    }
+                    
+                    NSString* message = [NSString stringWithFormat:@"Profile for current user (may take a few moments to update): %@", responseDict];
+                    [[BVLogger sharedLogger] info:message];
+                    
+                    self.personalizedPreferences = responseDict;
                 
-                if([self.personalizedPreferences isEqualToDictionary:responseDict]){
-                    return; // No update
+                } else {
+                    
+                    // Malformed JSON
+                    NSString *errString = [NSString stringWithFormat:@"ERROR: Authenticated User Profile JSON error: %@", errorJson.localizedDescription];
+                    [[BVLogger sharedLogger] error:errString];
+                    
                 }
-                
-                NSString* message = [NSString stringWithFormat:@"Profile for current user (may take a few moments to update): %@", responseDict];
-                [[BVLogger sharedLogger] info:message];
-                
-                self.personalizedPreferences = responseDict;
                 
                 // For internal testing
                 dispatch_async(dispatch_get_main_queue(), ^{
@@ -66,7 +77,7 @@
             } else {
                 
                 // Failure
-                NSString *errString = [NSString stringWithFormat:@"ERROR: magpie response. HTTP Status(%ld) with error: %@", (long)httpResponse.statusCode, error];
+                NSString *errString = [NSString stringWithFormat:@"ERROR: Authenticated User Profile response. HTTP Status(%ld) with error: %@", (long)httpResponse.statusCode, error];
                 [[BVLogger sharedLogger] error:errString];
                 
                 // For internal testing

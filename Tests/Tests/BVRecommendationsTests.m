@@ -152,6 +152,17 @@ static BVAuthenticatedUser *user = nil;
 }
 
 
+- (void)testPraseEmptyShopperProfile {
+    
+    BVShopperProfile *profile = [[BVShopperProfile alloc] initWithDictionary:[NSDictionary dictionary]];
+    
+    XCTAssertTrue(profile.recommendations.count == 0, @"Profile recommenations size was not zero");
+    XCTAssertTrue(profile.interests.count == 0, @"Profile interests size was not zero");
+    XCTAssertTrue(profile.brands.count == 0, @"Profile brands size was not zero");
+    
+}
+
+
 
 - (void) waitForExpectations{
     [self waitForExpectationsWithTimeout:30.0 handler:^(NSError *error) {
