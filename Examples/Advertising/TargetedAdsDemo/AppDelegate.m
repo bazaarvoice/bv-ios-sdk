@@ -2,73 +2,63 @@
 //  AppDelegate.m
 //  Bazaarvoice SDK - Demo Application
 //
-//  Copyright 2015 Bazaarvoice Inc. All rights reserved.
+//  Copyright 2016 Bazaarvoice Inc. All rights reserved.
 //
 
-#import <BVSDK/BVAdvertising.h>
 #import "AppDelegate.h"
 #import "RootViewController.h"
+#import <BVSDK/BVSDK.h>
 
-
-@interface AppDelegate ()
-
-@end
 
 @implementation AppDelegate
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 
-    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    [self setupWindow];
     
-    // set status bar color
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:NO];
     
-    self.window.rootViewController = [self getRootViewController];
-    [self.window makeKeyAndVisible];
+    #warning ADD YOUR CLIENT ID AND SHOPPER ADVERTISING KEY HERE!!!
+    NSString *myClientId = @"REPLACE_ME";              // INSERT YOUR CLIEND ID!!!!
+    NSString *myShopperAdvertisingKey = @"REPLACE_ME"; // INSERT YOUR SHOPPER ADVERTISING KEY!!!
     
-    NSString *myClientId = nil; // INSERT YOUR CLIEND ID!!!!
-    NSString *myShopperAdvertisingKey = nil; // INSERT YOUR SHOPPER ADVERTISING KEY!!!
     
-    if (myClientId != nil && myShopperAdvertisingKey != nil){
+    if (![myClientId isEqualToString:@"REPLACE_ME"] && ![myShopperAdvertisingKey isEqualToString:@"REPLACE_ME"]){
     
-        // set up the BVAdsSDK with your clientId, and AdsPassKey
+        
+        // Configure BVSDKManager
         [[BVSDKManager sharedManager] setClientId:myClientId];
         [[BVSDKManager sharedManager] setApiKeyShopperAdvertising:myShopperAdvertisingKey];
-        [[BVSDKManager sharedManager] setLogLevel:BVLogLevelInfo];
+        [[BVSDKManager sharedManager] setLogLevel:BVLogLevelError];
         
-        // set BVAdvertising to staging for testing and development.
+        
+        // Set BVAdvertising to staging for testing and development. Set to NO for release.
         [[BVSDKManager sharedManager] setStaging:YES];
 
-        /*
-            Next, we have to tell BVSDK about the user. See the BVSDK wiki for more discussion on how to create this user auth string: https://github.com/bazaarvoice/bv-ios-sdk/wiki/BVSDK-UserAuthentication
-         
-            A user auth string would contain data in a query string format. For example:
-            userid=Example&email=user@example.com&age=28&gender=female&facebookId=123abc
-         */
         
-        // Example MD5 encoded auth string used
-        [[BVSDKManager sharedManager] setUserWithAuthString:@"aa05cf391c8d4738efb4d05f7b2ad7ce7573657269643d4f6d6e694368616e6e656c50726f66696c65313226656d61696c3d6a61736f6e406a61736f6e2e636f6d"]; // pre-populated with a small profile interested in "pets", "powersports", "gamefish", and others -- for testing purposes.
+        
+        // Next, we have to tell BVSDK about the user.
+        // See the BVSDK wiki for more discussion on how to create this user auth string: https://github.com/bazaarvoice/bv-ios-sdk/wiki/BVSDK-UserAuthentication
+        // A user auth string would contain data in a query string format. For example:
+        //     userid=Example&email=user@example.com&age=28&gender=female&facebookId=123abc
+        
+        
+        // Example auth string used, pre-populated with a small profile interested in "pets",
+        //     "powersports", "gamefish", and others -- for testing purposes.
+        [[BVSDKManager sharedManager] setUserWithAuthString:@"TOKEN_REMOVED"];
+        
     } else {
         
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"BVSDK Not Configured" message:@"Make sure you have set your API Key and Client ID in AppDelegate.m. Please contact Bazaarvoice if you need an evaluation key." preferredStyle:UIAlertControllerStyleAlert];
-        
-        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-            // completion
-            exit(1);
-        }];
-        
-        [alert addAction:okAction];
-        
-        [self.window.rootViewController presentViewController:alert animated:YES completion:^{
-        }];
+        [self showNotConfiguredError];
         
     }
     
     return YES;
 }
 
--(UINavigationController*)getRootViewController {
+-(void)setupWindow {
+    
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:NO]; // set status bar color
     
     UINavigationController* navigationController = [[UINavigationController alloc] initWithRootViewController:[[RootViewController alloc] init]];
     [navigationController.navigationBar setBarTintColor:[UIColor whiteColor]];
@@ -76,7 +66,30 @@
     [navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}];
     [navigationController.navigationBar setTranslucent:NO];
     [navigationController.navigationBar setBarStyle:UIBarStyleBlack];
-    return navigationController;
+    
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    [self.window setRootViewController:navigationController];
+    [self.window makeKeyAndVisible];
+    
+}
+
+-(void)showNotConfiguredError {
+    
+    NSString* alertTitle = @"BVSDK Not Configured";
+    NSString* alertMessage = @"Make sure you have set your API Key and Client ID in AppDelegate.m. Please contact Bazaarvoice if you do not have an API key.";
+    
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:alertTitle
+                                                                   message:alertMessage
+                                                            preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK"
+                                                       style:UIAlertActionStyleDefault
+                                                     handler:^(UIAlertAction * _Nonnull action) { exit(1); }];
+    
+    [alert addAction:okAction];
+    
+    [self.window.rootViewController presentViewController:alert animated:YES completion:nil];
+    
 }
 
 @end

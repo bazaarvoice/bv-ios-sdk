@@ -1,8 +1,8 @@
 //
 //  NativeAdTypesCell.h
-//  Bazaarvoice SDK
+//  Bazaarvoice SDK - Demo Application
 //
-//  Copyright 2015 Bazaarvoice Inc. All rights reserved.
+//  Copyright 2016 Bazaarvoice Inc. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

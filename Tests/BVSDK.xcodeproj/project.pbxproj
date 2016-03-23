@@ -13,9 +13,18 @@
 		6003F5B2195388D20070C39A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F591195388D20070C39A /* UIKit.framework */; };
 		6003F5BA195388D20070C39A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6003F5B8195388D20070C39A /* InfoPlist.strings */; };
 		6003F5BC195388D20070C39A /* BVConversationsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F5BB195388D20070C39A /* BVConversationsTests.m */; };
-		734411741A9AD48A007C90ED /* AnalyticsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 734411731A9AD48A007C90ED /* AnalyticsTests.m */; };
+		734411741A9AD48A007C90ED /* BVAnalyticsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 734411731A9AD48A007C90ED /* BVAnalyticsTest.m */; };
+		87185F041CAAE5E300FE27F1 /* BVCurationsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 87185F031CAAE5E300FE27F1 /* BVCurationsTests.m */; };
 		87577E9D1BD55DD500E1F39C /* BVRecommendationsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 87577E9C1BD55DD500E1F39C /* BVRecommendationsTests.m */; };
-		8757CFEF1BD176C600C0DE7C /* BVAdsSDKTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8757CFEE1BD176C600C0DE7C /* BVAdsSDKTests.m */; };
+		8757CFEF1BD176C600C0DE7C /* BVAdvertisingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8757CFEE1BD176C600C0DE7C /* BVAdvertisingTests.m */; };
+		87B351351CAB77C60030470B /* curationsFeedTest1.json in Resources */ = {isa = PBXBuildFile; fileRef = 87B351341CAB77C60030470B /* curationsFeedTest1.json */; };
+		87B351371CAB7B260030470B /* curationsMalformedFeedTest1.json in Resources */ = {isa = PBXBuildFile; fileRef = 87B351361CAB7B260030470B /* curationsMalformedFeedTest1.json */; };
+		87B351391CAC2E570030470B /* curations500Error.json in Resources */ = {isa = PBXBuildFile; fileRef = 87B351381CAC2E570030470B /* curations500Error.json */; };
+		87FED2E81CC5769F00B42ADB /* puppy.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 87FED2E71CC5769F00B42ADB /* puppy.jpg */; };
+		87FED2EE1CC65CC800B42ADB /* post_ErrorParsingBody.json in Resources */ = {isa = PBXBuildFile; fileRef = 87FED2ED1CC65CC800B42ADB /* post_ErrorParsingBody.json */; };
+		87FED2F01CC6644F00B42ADB /* post_successfulCreation.json in Resources */ = {isa = PBXBuildFile; fileRef = 87FED2EF1CC6644F00B42ADB /* post_successfulCreation.json */; };
+		87FED2F21CC8101600B42ADB /* test_pattern.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 87FED2F11CC8101600B42ADB /* test_pattern.jpg */; };
+		87FED3111CC9109400B42ADB /* post_MissingRequiredKey.json in Resources */ = {isa = PBXBuildFile; fileRef = 87FED3101CC9109400B42ADB /* post_MissingRequiredKey.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,10 +40,19 @@
 		6003F5B9195388D20070C39A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		6003F5BB195388D20070C39A /* BVConversationsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BVConversationsTests.m; sourceTree = "<group>"; };
 		606FC2411953D9B200FFA9A0 /* Tests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tests-Prefix.pch"; sourceTree = "<group>"; };
-		734411731A9AD48A007C90ED /* AnalyticsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnalyticsTests.m; sourceTree = "<group>"; };
+		734411731A9AD48A007C90ED /* BVAnalyticsTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVAnalyticsTest.m; sourceTree = "<group>"; };
 		75EABD4E79F8B233B8FB90DF /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		87185F031CAAE5E300FE27F1 /* BVCurationsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVCurationsTests.m; sourceTree = "<group>"; };
 		87577E9C1BD55DD500E1F39C /* BVRecommendationsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVRecommendationsTests.m; sourceTree = "<group>"; };
-		8757CFEE1BD176C600C0DE7C /* BVAdsSDKTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVAdsSDKTests.m; sourceTree = "<group>"; };
+		8757CFEE1BD176C600C0DE7C /* BVAdvertisingTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVAdvertisingTests.m; sourceTree = "<group>"; };
+		87B351341CAB77C60030470B /* curationsFeedTest1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = curationsFeedTest1.json; path = resources/curations/curationsFeedTest1.json; sourceTree = "<group>"; };
+		87B351361CAB7B260030470B /* curationsMalformedFeedTest1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = curationsMalformedFeedTest1.json; path = resources/curations/curationsMalformedFeedTest1.json; sourceTree = "<group>"; };
+		87B351381CAC2E570030470B /* curations500Error.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = curations500Error.json; sourceTree = "<group>"; };
+		87FED2E71CC5769F00B42ADB /* puppy.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = puppy.jpg; path = resources/curations/puppy.jpg; sourceTree = "<group>"; };
+		87FED2ED1CC65CC800B42ADB /* post_ErrorParsingBody.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = post_ErrorParsingBody.json; path = resources/curations/post_ErrorParsingBody.json; sourceTree = "<group>"; };
+		87FED2EF1CC6644F00B42ADB /* post_successfulCreation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = post_successfulCreation.json; path = resources/curations/post_successfulCreation.json; sourceTree = "<group>"; };
+		87FED2F11CC8101600B42ADB /* test_pattern.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = test_pattern.jpg; path = resources/curations/test_pattern.jpg; sourceTree = "<group>"; };
+		87FED3101CC9109400B42ADB /* post_MissingRequiredKey.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = post_MissingRequiredKey.json; path = resources/curations/post_MissingRequiredKey.json; sourceTree = "<group>"; };
 		C3CBD10270AE66AF21F4250E /* libPods-BVSDK.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BVSDK.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EEDB2BBB2F4C11AEBE5E733E /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		F28472ACDA63AEEA7CEE61DF /* Pods-BVSDK.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BVSDK.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BVSDK/Pods-BVSDK.debug.xcconfig"; sourceTree = "<group>"; };
@@ -90,10 +108,12 @@
 		6003F5B5195388D20070C39A /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				734411731A9AD48A007C90ED /* AnalyticsTests.m */,
-				8757CFEE1BD176C600C0DE7C /* BVAdsSDKTests.m */,
-				87577E9C1BD55DD500E1F39C /* BVRecommendationsTests.m */,
+				734411731A9AD48A007C90ED /* BVAnalyticsTest.m */,
+				8757CFEE1BD176C600C0DE7C /* BVAdvertisingTests.m */,
 				6003F5BB195388D20070C39A /* BVConversationsTests.m */,
+				87185F031CAAE5E300FE27F1 /* BVCurationsTests.m */,
+				87577E9C1BD55DD500E1F39C /* BVRecommendationsTests.m */,
+				87B3513A1CAC5E880030470B /* testData */,
 				6003F5B6195388D20070C39A /* Supporting Files */,
 			);
 			path = Tests;
@@ -128,6 +148,21 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		87B3513A1CAC5E880030470B /* testData */ = {
+			isa = PBXGroup;
+			children = (
+				87FED2E71CC5769F00B42ADB /* puppy.jpg */,
+				87FED2F11CC8101600B42ADB /* test_pattern.jpg */,
+				87B351341CAB77C60030470B /* curationsFeedTest1.json */,
+				87B351361CAB7B260030470B /* curationsMalformedFeedTest1.json */,
+				87B351381CAC2E570030470B /* curations500Error.json */,
+				87FED2ED1CC65CC800B42ADB /* post_ErrorParsingBody.json */,
+				87FED3101CC9109400B42ADB /* post_MissingRequiredKey.json */,
+				87FED2EF1CC6644F00B42ADB /* post_successfulCreation.json */,
+			);
+			name = testData;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -140,7 +175,7 @@
 				6003F5AB195388D20070C39A /* Frameworks */,
 				6003F5AC195388D20070C39A /* Resources */,
 				6F861EC1094AD0E88BC8782F /* Copy Pods Resources */,
-				8FE6291E14CBAC818FADA14F /* Embed Pods Frameworks */,
+				AD518701E9A79094650FEE4C /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -189,7 +224,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				87FED3111CC9109400B42ADB /* post_MissingRequiredKey.json in Resources */,
+				87B351351CAB77C60030470B /* curationsFeedTest1.json in Resources */,
+				87B351391CAC2E570030470B /* curations500Error.json in Resources */,
+				87FED2EE1CC65CC800B42ADB /* post_ErrorParsingBody.json in Resources */,
 				6003F5BA195388D20070C39A /* InfoPlist.strings in Resources */,
+				87FED2F21CC8101600B42ADB /* test_pattern.jpg in Resources */,
+				87FED2F01CC6644F00B42ADB /* post_successfulCreation.json in Resources */,
+				87FED2E81CC5769F00B42ADB /* puppy.jpg in Resources */,
+				87B351371CAB7B260030470B /* curationsMalformedFeedTest1.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -226,7 +269,7 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		8FE6291E14CBAC818FADA14F /* Embed Pods Frameworks */ = {
+		AD518701E9A79094650FEE4C /* Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -248,10 +291,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				734411741A9AD48A007C90ED /* AnalyticsTests.m in Sources */,
-				8757CFEF1BD176C600C0DE7C /* BVAdsSDKTests.m in Sources */,
+				734411741A9AD48A007C90ED /* BVAnalyticsTest.m in Sources */,
+				8757CFEF1BD176C600C0DE7C /* BVAdvertisingTests.m in Sources */,
 				87577E9D1BD55DD500E1F39C /* BVRecommendationsTests.m in Sources */,
 				6003F5BC195388D20070C39A /* BVConversationsTests.m in Sources */,
+				87185F041CAAE5E300FE27F1 /* BVCurationsTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -273,6 +317,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				API_KEY_CONVERSATIONS = "\\@\\\"KEY_REMOVED\\\"";
+				API_KEY_SHOPPER_ADVERTISING = "\\@\\\"3frgjjug4fr3zrgz9a8q9xp7\\\"";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -291,9 +337,12 @@
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = (
+				GCC_PREPROCESSOR_DEFINITIONS = "";
+				"GCC_PREPROCESSOR_DEFINITIONS[arch=*]" = (
 					"DEBUG=1",
 					"$(inherited)",
+					"TEST_KEY_CONVERSATIONS=$(API_KEY_CONVERSATIONS)",
+					"TEST_KEY_SHOPPER_ADVERTISING=$(API_KEY_SHOPPER_ADVERTISING)",
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -313,6 +362,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				API_KEY_CONVERSATIONS = "\\@\\\"KEY_REMOVED\\\"";
+				API_KEY_SHOPPER_ADVERTISING = "\\@\\\"3frgjjug4fr3zrgz9a8q9xp7\\\"";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -329,6 +380,11 @@
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PREPROCESSOR_DEFINITIONS = "";
+				"GCC_PREPROCESSOR_DEFINITIONS[arch=*]" = (
+					"TEST_KEY_CONVERSATIONS=$(API_KEY_CONVERSATIONS)",
+					"TEST_KEY_SHOPPER_ADVERTISING=$(API_KEY_SHOPPER_ADVERTISING)",
+				);
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;

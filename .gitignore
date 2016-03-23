@@ -28,3 +28,6 @@ Tests/Pods/*
 # Removing the pods from the example projects so that deployment never needs to update the SDK inside the reference apps themselves
 Examples/*/Pods/
 Examples/Conversations/*/Pods/
+
+# ignore jekyll generated content
+_site/

@@ -2,16 +2,19 @@
 //  NativeDemoViewController.m
 //  Bazaarvoice Mobile Ads SDK - Demo Application
 //
-//  Copyright 2015 Bazaarvoice Inc. All rights reserved.
+//  Copyright 2016 Bazaarvoice Inc. All rights reserved.
 //
 
 #import "NativeContentAdDemoViewController.h"
-#import <BVSDK/BVAdvertising.h>
 #import <QuartzCore/QuartzCore.h>
+#import <BVSDK/BVSDK.h>
+
+@import GoogleMobileAds;
+
 
 @interface NativeContentAdDemoViewController()<GADNativeContentAdLoaderDelegate>
 
-@property BVTargetedAdLoader* adLoader;
+@property GADAdLoader* adLoader;
 
 @end
 
@@ -21,16 +24,16 @@
     [super viewDidLoad];
     
     //Test adUnitId. Replace with your targeted adUnitId.
-    self.adLoader = [[BVTargetedAdLoader alloc]
+    self.adLoader = [[GADAdLoader alloc]
                      initWithAdUnitID:@"/6499/example/native"
                      rootViewController:self
                      adTypes:@[ kGADAdLoaderAdTypeNativeContent ]
                      options:nil];
     
     [self.adLoader setDelegate:self];
-    BVTargetedRequest* request = [self.adLoader getTargetedRequest];
+    DFPRequest* request = [DFPRequest request];
     request.testDevices = @[ kGADSimulatorID ];
-    
+    request.customTargeting = [[BVSDKManager sharedManager] getCustomTargeting];
     [self.adLoader loadRequest:request];
 }
 
@@ -41,7 +44,7 @@
     
     // configure our native content ad view with the given values, and display!
     
-    BVTargetedNativeContentAdView* contentAdView =
+    GADNativeContentAdView* contentAdView =
     [[[NSBundle mainBundle] loadNibNamed:@"NativeContentAdView"
                                    owner:nil
                                  options:nil] firstObject];
@@ -71,10 +74,6 @@
     
     // Add appInstallAdView to the view controller's view..
     [self.view addSubview:contentAdView];
-    
-    
-    
-    
     
     // add a border and shadow, just to highlight in this demo application
     contentAdView.layer.borderColor = [[UIColor grayColor] CGColor];

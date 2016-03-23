@@ -1,41 +1,43 @@
 PODS:
-  - BVSDK (3.1.2):
-    - BVSDK/Core (= 3.1.2)
-  - BVSDK/BVAdvertising (3.1.2):
+  - BVSDK (4.0.0):
+    - BVSDK/Core (= 4.0.0)
+  - BVSDK/BVAdvertising (4.0.0):
     - BVSDK/Core
-    - Google-Mobile-Ads-SDK (~> 7.6)
-  - BVSDK/BVConversations (3.1.2):
+  - BVSDK/BVConversations (4.0.0):
     - BVSDK/Core
-  - BVSDK/BVRecommendations (3.1.2):
+  - BVSDK/BVCurations (4.0.0):
     - BVSDK/Core
-  - BVSDK/BVRecommendationsUI (3.1.2):
-    - BVSDK/BVRecommendations
-    - HCSStarRatingView (~> 1.4.3)
-    - SDWebImage
-    - SVProgressHUD
-  - BVSDK/Core (3.1.2)
-  - Google-Mobile-Ads-SDK (7.7.0)
-  - HCSStarRatingView (1.4.3)
-  - SDWebImage (3.7.5):
-    - SDWebImage/Core (= 3.7.5)
-  - SDWebImage/Core (3.7.5)
-  - SVProgressHUD (1.1.3)
+  - BVSDK/BVRecommendations (4.0.0):
+    - BVSDK/Core
+  - BVSDK/Core (4.0.0)
+  - OHHTTPStubs (5.0.0):
+    - OHHTTPStubs/Default (= 5.0.0)
+  - OHHTTPStubs/Core (5.0.0)
+  - OHHTTPStubs/Default (5.0.0):
+    - OHHTTPStubs/Core
+    - OHHTTPStubs/JSON
+    - OHHTTPStubs/NSURLSession
+    - OHHTTPStubs/OHPathHelpers
+  - OHHTTPStubs/JSON (5.0.0):
+    - OHHTTPStubs/Core
+  - OHHTTPStubs/NSURLSession (5.0.0):
+    - OHHTTPStubs/Core
+  - OHHTTPStubs/OHPathHelpers (5.0.0)
 
 DEPENDENCIES:
   - BVSDK (from `../`)
   - BVSDK/BVAdvertising (from `../`)
   - BVSDK/BVConversations (from `../`)
-  - BVSDK/BVRecommendationsUI (from `../`)
+  - BVSDK/BVCurations (from `../`)
+  - BVSDK/BVRecommendations (from `../`)
+  - OHHTTPStubs
 
 EXTERNAL SOURCES:
   BVSDK:
     :path: ../
 
 SPEC CHECKSUMS:
-  BVSDK: c65458891046eb0b3d199cbe65d7f0239f5a5d5e
-  Google-Mobile-Ads-SDK: d290e523a6e2f223256abcbf8e0c778b55b1f04e
-  HCSStarRatingView: bada6ae98258c3019531e0218030e2d5ad10765a
-  SDWebImage: 69c6303e3348fba97e03f65d65d4fbc26740f461
-  SVProgressHUD: 748080e4f36e603f6c02aec292664239df5279c1
+  BVSDK: 179ee6171a4c9766a401ad4c3c09b976a4cf126f
+  OHHTTPStubs: a5d2e9eea07869d42ec03338325f398bc520e159
 
 COCOAPODS: 0.39.0
