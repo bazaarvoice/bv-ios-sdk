@@ -2,7 +2,7 @@
 //  BVProduct.h
 //  Bazaarvoice SDK
 //
-//  Copyright 2015 Bazaarvoice Inc. All rights reserved.
+//  Copyright 2016 Bazaarvoice Inc. All rights reserved.
 //
 
 #ifndef BVProduct_h
@@ -13,70 +13,69 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-/*!
-    Model contents for a single product recommendation display item
- */
+
+/// Model contents for a single product recommendation display item
 @interface BVProduct : NSObject
 
+
 /**
- *  A single product recommendation model object
- *
- *  @param dict The API response object for a product recommendation
- *  @param recommendationStats The API response object for recommendation statistics
- *
- *  @return A full initialized BVProduct model object
- */
+    A single product recommendation model object
+ 
+    @param dict The API response object for a product recommendation
+    @param recommendationStats The API response object for recommendation statistics
+ 
+    @return A full initialized BVProduct model object
+  */
 - (id)initWithDictionary:(NSDictionary *)dict withRecommendationStats:(NSDictionary*)recommendationStats;
 
-/**
- *  The unique idenfitier of the product
- */
+
+/// The unique idenfitier of the product
 @property (strong, nonatomic) NSString *productId;
 
-/**
- *  The product title
- */
+
+/// The product title
 @property (strong, nonatomic) NSString *productName;
 
-/**
- *  The fully qualified URL for this product.
- */
+
+/// The fully qualified URL for this product.
 @property (strong, nonatomic) NSString *productPageURL;
 
-/**
- *  The product image thumbnail. Sizes may vary depending on the brand or client
- */
+
+/// The product image thumbnail. Sizes may vary depending on the brand or client
 @property (strong, nonatomic) NSString *imageURL;
 
-/**
- *  The average (float) rating for this product
- */
+
+/// The average (float) rating for this product
 @property (strong, nonatomic) NSNumber *averageRating;
 
-/**
- *  The total number of reviews on the product (integer)
- */
+
+/// The total number of reviews on the product (integer)
 @property (strong, nonatomic) NSNumber *numReviews;
 
-/**
- *  Price, in USD
- */
+
+/// Price, in USD
 @property (strong, nonatomic) NSString *price;
 
-/**
- *  Highlighted review for this product.
- */
+
+/// Highlighted review for this product.
 @property (strong, nonatomic) BVProductReview* review;
 
-/**
- *  Whether this recommendation is a sponsored piece of content or not
- */
+
+/// Whether this recommendation is a sponsored piece of content or not
 @property bool sponsored;
 
-/**
- *  Internal use
- */
+
+/// Record a tap event -- the user tapped a product
+-(void)recordTap;
+
+
+/// Record an impression event -- the user was shown this product
+-(void)recordImpression;
+
+
+/// Internal use
 @property (strong, nonatomic) NSDictionary* rawProductDict;
+
 
 @end
 

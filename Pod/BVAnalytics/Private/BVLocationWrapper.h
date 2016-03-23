@@ -2,7 +2,7 @@
 //  BVLocationWrapper.h
 //  Bazaarvoice SDK
 //
-//  Copyright 2015 Bazaarvoice Inc. All rights reserved.
+//  Copyright 2016 Bazaarvoice Inc. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>

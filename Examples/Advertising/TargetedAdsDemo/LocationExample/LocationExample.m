@@ -2,12 +2,12 @@
 //  LocationListener.m
 //  Bazaarvoice SDK - Demo Application
 //
-//  Copyright 2015 Bazaarvoice Inc. All rights reserved.
+//  Copyright 2016 Bazaarvoice Inc. All rights reserved.
 //
 
 #import "LocationExample.h"
 #import <CoreLocation/CoreLocation.h>
-#import <BVSDK/BVAdvertising.h>
+#import <BVSDK/BVSDK.h>
 
 @interface LocationExample()<CLLocationManagerDelegate>
 

@@ -2,7 +2,7 @@
 //  BVMediaPost.m
 //  Bazaarvoice SDK
 //
-//  Copyright 2015 Bazaarvoice Inc. All rights reserved.
+//  Copyright 2016 Bazaarvoice Inc. All rights reserved.
 //
 
 
@@ -35,9 +35,8 @@
         // Standard params
         BVSDKManager *sdkManager = [BVSDKManager sharedManager];
         
-        // Make sure you set up your own passKey and clientId!
-        assert(sdkManager.apiKeyConversations != nil);
-        assert(sdkManager.clientId != nil);
+        // check that `apiKeyConversations` is valid. Will fail only in debug mode.
+        NSAssert(sdkManager.apiKeyConversations != nil && ![sdkManager.apiKeyConversations isEqualToString:@""], @"You must supply apiKeyConversations in the BVSDKManager before using the Bazaarvoice SDK.");
         
         [self.network setUrlParameterWithName:@"ApiVersion" value:BV_API_VERSION];
         [self.network setUrlParameterWithName:@"PassKey" value:sdkManager.apiKeyConversations];

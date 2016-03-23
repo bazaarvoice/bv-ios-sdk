@@ -1,0 +1,8 @@
+{
+    "detail": "Missing required key: `text`.",
+    "options": {
+        "client": "fake-client"
+    },
+    "remote_url": "https://curations.fake.url.com/fakeurl/fake-client_1461182503045",
+    "status": 400
+}

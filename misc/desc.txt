@@ -2,68 +2,30 @@ The Bazaarvoice SDK is an iOS static library that provides an easy way to genera
 
 ## SDK Organization:
 
-The BVSDK is comprised of 3 main product features, also know as SDK modules. ALl features are initialized through a single SDK Manager: BVSDKManager. Each SDK product feature sits on top of two components required for all modules: BVCore and BVAnalytics.
+The BVSDK is comprised of 4 main product features, also know as SDK modules. ALl features are initialized through a single SDK Manager: BVSDKManager. Each SDK product feature sits on top of two components required for all modules: BVCore and BVAnalytics.
 
 The SDK modules are:
 
 ### BVAdvertising
 
-When using the BVAdvertising module, there are three main types of advertisements you can dislay, all of which inherit from DFPBannerView:
-
-  * BVTargetedBannerView
-  * BVTargetedInterstitial
-  * BVTargetedAdLoader
-
-Please consult the [BVSDK Developer Wiki](https://github.com/bazaarvoice/bv-ios-sdk/wiki) for more details on using the BVAdvertising SDK module.
-
-### BVRecommendations
-
-Once you have initialized the SDK with your API key and client ID with the BVSDKManager, the only class you will need to fetch targeted recommendations is found in BVGetShopperProfile. Recommendations will be found in the BVShopperProfile module, which you can use to display results to your end-users.
-
-### BVRecommendationsUI
-
-If you wish to supply any of the easy-to-use recommendation widgets, the three main UI widgets are:
-
- * BVRecommendationsCarouselView
- * BVRecommendationsSharedView
- * BVRecommendationsTableViewController
-
- For best introducts, please see the Recommendations UI tutorial on the [BVSDK Developer Wiki](https://github.com/bazaarvoice/bv-ios-sdk/wiki).
+Wraps the ability to use 1st party data for serving up custom DFP advertisements.
 
 ### BVConversations
 
-With the BVConverstaions SDK module, there are just 5 classes that the client needs to be familiar with.
+API and analytics for the Bazaarvoice Conversations API.
 
-#### BVSettings
-Encapsulates all application-wide configuration information necessary to make requests via the Bazaarvoice SDK.  This includes things such as the base url, the passkey, whether to use staging and the request timeout interval.
+### BVCurations
 
-#### BVGet
-Handles all requests to the Bazaarvoice API which fetch, but do not modify data on the server.  This includes fetching answers, authors, categories, comments, products, questions, reviews, statistics and stories.
+API, UICollectionView widget, and analytics for the Curations REST API.
 
-#### BVPost
-Handles all requests to the Bazaarvoice API which submit content excluding photo and video uploads.  This includes submitting answers, review comments, story comments, feedback, questions, reviews and stories.
+### BVRecommendations
 
-#### BVMediaPost
-Handles all requests to the Bazaarvoice API which require a binary multipart post.  This includes submitting photos and videos.
+API, UI widgets, and analytics for the Product Recommendations REST API.
 
-#### BVDelegate
-Delegate interface  to receive SDK callbacks when a response is received.  
+### BV Pixel
 
-## Making Requests
-Conceptually, there are 5 steps to making a request the Bazaarvoice SDK:
+BVAnalyics also includes the BV Pixel feature for analytics tracking of transaction and non-commerce analytics.
 
- 1. Allocate a request (BVGet, BVPost or BVMediaPost)
- 2. Initialize with the appropriate type (ex: BVGetTypeReviews, BVPostTypeAnswer...)
- 3. Set parameters of the request (ex: limit, sort, filter, title...)
- 4. Set a BVDelegate to receive updates when a response is received
- 5. Send
+Please consult the [BVSDK Developer Wiki](https://github.com/bazaarvoice/bv-ios-sdk/wiki) for more details on installing and using the SDK modules.
 
-See the class documentation for BVGet, BVPost and BVMediaPost for example code.
 
-## Older Versions
-
-Older versions of the SDK are tagged according to version number.  You can list available versions with:<br />
-<strong>git tag</strong>
-
-In general, version 2.X.Y of the SDK maps to version 5.X of the API.  To check out a particular version, use: 	
-<strong>git checkout [tag]</strong>

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10109" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="KFf-2W-hJX">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10083"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--bazaarvoice:-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Curations" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Curations" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rEz-5N-1K6">
+                                <rect key="frame" x="254" y="76" width="90.5" height="25.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                <color key="textColor" red="0.10980392160000001" green="0.33725490200000002" blue="0.4549019608" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="11" translatesAutoresizingMaskIntoConstraints="NO" id="gCS-ck-rOY">
+                                <rect key="frame" x="20" y="109.5" width="560" height="47"/>
+                                <string key="text">Harness the wealth of social media content tailored for your marketing needs and display it right where it can go to work delivering engagement, trust, and conversation: your mobile experience.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="tWz-KD-ZRr" customClass="BVCurationsCollectionView">
+                                <rect key="frame" x="0.0" y="164" width="600" height="340"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="340" id="XVc-NM-X3G"/>
+                                </constraints>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ryE-aX-wtQ">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="rEz-5N-1K6" firstAttribute="top" relation="lessThanOrEqual" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="12" id="4iO-A2-JFt"/>
+                            <constraint firstItem="rEz-5N-1K6" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="588-eS-yLg"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="gCS-ck-rOY" secondAttribute="trailing" id="MJI-V5-HtR"/>
+                            <constraint firstItem="gCS-ck-rOY" firstAttribute="top" secondItem="rEz-5N-1K6" secondAttribute="bottom" constant="8" id="Op7-ht-oCh"/>
+                            <constraint firstItem="tWz-KD-ZRr" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="YZ0-eR-TNN"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="gCS-ck-rOY" secondAttribute="leading" id="YbI-rh-JWM"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="tWz-KD-ZRr" secondAttribute="trailing" constant="-20" id="cbs-Wj-cM0"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="tWz-KD-ZRr" secondAttribute="bottom" priority="250" id="qCU-aO-ulO"/>
+                            <constraint firstItem="tWz-KD-ZRr" firstAttribute="top" secondItem="gCS-ck-rOY" secondAttribute="bottom" constant="7.5" id="wcw-jh-YwL"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="bazaarvoice:" id="RnK-Hv-jb6"/>
+                    <connections>
+                        <outlet property="feedCarousel" destination="tWz-KD-ZRr" id="VC5-eG-WXb"/>
+                        <outlet property="summaryLabel1" destination="gCS-ck-rOY" id="klK-U8-3ZO"/>
+                        <outlet property="titleLabel" destination="rEz-5N-1K6" id="Gir-p8-VTD"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1814" y="364"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="1A0-fL-IkF">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="KFf-2W-hJX" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="TRB-9s-gmT">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="odL-ew-8gT"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gKX-Hj-5lR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1109" y="364"/>
+        </scene>
+    </scenes>
+</document>

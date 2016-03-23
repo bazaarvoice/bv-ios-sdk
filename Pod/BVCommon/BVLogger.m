@@ -2,7 +2,7 @@
 //  BVLogger.m
 //  Bazaarvoice SDK
 //
-//  Copyright 2015 Bazaarvoice Inc. All rights reserved.
+//  Copyright 2016 Bazaarvoice Inc. All rights reserved.
 //
 
 #import "BVLogger.h"
@@ -31,6 +31,12 @@ static BVLogger *sharedLoggerInstance = nil;
     return self;
 }
 
+-(void)analyticsMessage:(NSString*)message {
+    if(self.logLevel == BVLogLevelAnalyticsOnly) {
+        NSLog(@"%@: %@", BV_LOG_TAG, message);
+    }
+}
+
 -(void)verbose:(NSString*)message {
     [self printMessage:message forLogLevel:BVLogLevelVerbose];
 }
@@ -48,7 +54,7 @@ static BVLogger *sharedLoggerInstance = nil;
 }
 
 -(void)printMessage:(NSString*)message forLogLevel:(BVLogLevel)logLevel {
-    if(self.logLevel >= logLevel){
+    if(self.logLevel >= logLevel && self.logLevel != BVLogLevelAnalyticsOnly){
         NSLog(@"%@: %@", BV_LOG_TAG, message);
     }
 }

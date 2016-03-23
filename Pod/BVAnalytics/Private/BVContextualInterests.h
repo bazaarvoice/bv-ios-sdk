@@ -2,7 +2,7 @@
 //  BVContextualValues.h
 //  Bazaarvoice SDK
 //
-//  Copyright 2015 Bazaarvoice Inc. All rights reserved.
+//  Copyright 2016 Bazaarvoice Inc. All rights reserved.
 //
 // This file defines all Contextual Interest Tier 1 and Contextual Interest Tier 2 interest strings.
 // These values can be fed into BVAdsSDK via various location-powered methods defined in BVAdsSDK.h

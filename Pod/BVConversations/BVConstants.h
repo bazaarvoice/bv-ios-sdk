@@ -2,16 +2,15 @@
 //  BVConstants.h
 //  Bazaarvoice SDK
 //
-//  Copyright 2015 Bazaarvoice Inc. All rights reserved.
+//  Copyright 2016 Bazaarvoice Inc. All rights reserved.
 //
 
 
 #ifndef BazaarvoiceSDK_BVConstants_h
 #define BazaarvoiceSDK_BVConstants_h
 
-/**
- Type for BVGet
- */
+
+/// Type for BVGet
 typedef enum {
     BVGetTypeAnswers,
     BVGetTypeAuthors,
@@ -25,9 +24,8 @@ typedef enum {
     BVGetTypeStories
 } BVGetType;
 
-/**
- Type for BVPost
- */
+
+/// Type for BVPost
 typedef enum {
     BVPostTypeAnswer,
     BVPostTypeReviewComment,
@@ -38,17 +36,15 @@ typedef enum {
     BVPostTypeStory,
 } BVPostType;
 
-/**
- Type for BVMediaPost
- */
+
+/// Type for BVMediaPost
 typedef enum {
     BVMediaPostTypePhoto,
     BVMediaPostTypeVideo
 }BVMediaPostType;
 
-/**
- contentType for BVMediaPost
- */
+
+/// contentType for BVMediaPost
 typedef enum {
     BVMediaPostContentTypeReview,
     BVMediaPostContentTypeReviewComment,
@@ -58,9 +54,8 @@ typedef enum {
     BVMediaPostContentTypeStoryComment
 } BVMediaPostContentType;
 
-/**
- equality for BVGet filters
- */
+
+/// equality for BVGet filters
 typedef enum {
     BVEqualityGreaterThan,
     BVEqualityGreaterThanOrEqual,
@@ -70,33 +65,29 @@ typedef enum {
     BVEqualityNotEqualTo
 } BVEquality;
 
-/**
- action for BVPost
- */
+
+/// action for BVPost
 typedef enum {
     BVActionPreview,
     BVActionSubmit
 } BVAction;
 
-/**
- feedbackType for BVPost with BVPostTypeFeedback
- */
+
+/// feedbackType for BVPost with BVPostTypeFeedback
 typedef enum {
     BVFeedbackTypeInappropriate,
     BVFeedbackTypeHelpfulness
 } BVFeedbackType;
 
-/**
- vote for BVPost with BVPostTypeFeedback
- */
+
+/// vote for BVPost with BVPostTypeFeedback
 typedef enum {
     BVFeedbackVoteTypePositive,
     BVFeedbackVoteTypeNegative
 } BVFeedbackVoteType;
 
-/**
- contentType for BVPost with BVPostTypeFeedback
- */
+
+/// contentType for BVPost with BVPostTypeFeedback
 typedef enum {
     BVFeedbackContentTypeAnswer,
     BVFeedbackContentTypeQuestion,
@@ -106,9 +97,8 @@ typedef enum {
     BVFeedbackContentTypeStoryComment
 } BVFeedbackContentType;
 
-/**
- include for BVGet
- */
+
+/// include for BVGet
 typedef enum {
     BVIncludeTypeAnswers,
     BVIncludeTypeAuthors,
@@ -120,9 +110,8 @@ typedef enum {
     BVIncludeTypeStories
 } BVIncludeType;
 
-/**
- stats for BVGet
- */
+
+/// stats for BVGet
 typedef enum {
     BVIncludeStatsTypeReviews,
     BVIncludeStatsTypeNativeReviews,
@@ -131,9 +120,8 @@ typedef enum {
     BVIncludeStatsTypeStories,
 } BVIncludeStatsType;
 
-/**
- stats for BVGet
- */
+
+/// stats for BVGet
 typedef enum {
     BVVideoFormatType3GP,
     BVVideoFormatType3G2,

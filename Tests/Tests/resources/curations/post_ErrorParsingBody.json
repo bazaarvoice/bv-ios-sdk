@@ -1,0 +1,7 @@
+{
+"status": "encountered error while parsing request body",
+"code": 500,
+"options": {
+"clinet": "scissors"
+}
+}

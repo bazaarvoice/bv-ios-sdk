@@ -2,7 +2,7 @@
 //  BVSDKManager.m
 //  Bazaarvoice SDK
 //
-//  Copyright 2015 Bazaarvoice Inc. All rights reserved.
+//  Copyright 2016 Bazaarvoice Inc. All rights reserved.
 //
 
 #import "BVSDKManager.h"
@@ -101,10 +101,7 @@
 }
 
 -(void)updateUserProfileForce {
-    
-    NSAssert(self.apiKeyShopperAdvertising != nil, @"You must supply a Shopper Advertising key in the BVSDKManager before using the Bazaarvoice SDK.");
-    NSAssert(self.clientId != nil, @"You must supply client id in the BVSDKManager before using the Bazaarvoice SDK.");
-    
+        
     [self.bvUser updateProfile:true withAPIKey:self.apiKeyShopperAdvertising isStaging:self.staging];
     
 }
@@ -124,6 +121,14 @@
 
 - (BVAuthenticatedUser *)getBVAuthenticatedUser{
     return self.bvUser;
+}
+
+-(NSDictionary*)getCustomTargeting {
+    
+    // check that `apiKeyShopperAdvertising` is valid. Will fail only in debug mode.
+    NSAssert(self.apiKeyShopperAdvertising != nil && ![self.apiKeyShopperAdvertising isEqualToString:@""], @"You must supply apiKeyShopperAdvertising in the BVSDKManager before using BVAdvertising.");
+    
+    return [self.bvUser getTargetingKeywords];
 }
 
 

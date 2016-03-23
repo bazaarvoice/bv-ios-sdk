@@ -2,85 +2,59 @@
 //  BVRecsAnalyticsHelper.h
 //  Bazaarvoice SDK
 //
-//  Copyright 2015 Bazaarvoice Inc. All rights reserved.
+//  Copyright 2016 Bazaarvoice Inc. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 
 #import "BVAnalyticsManager.h"
 #import "BVShopperProfile.h"
+#import "BVRecommendationsLoader.h"
 
-/**
- *  When interacting with a BVRecommendationsUI component, this enum provides a list of features the user interacted with.
- */
-typedef NS_ENUM(NSInteger, BVProductFeatureUsed) {
-    /**
-     *  Use tapped like
-     */
-    TapLike = 0,
-    /**
-     *  User tapped dislike (ban)
-     */
-    TapUnlike,
-    /**
-     *  User tapped the shop now button
-     */
-    TapShopNow,
-    /**
-     *  User tapped the ratings and reviews widget
-     */
-    TapRatingsReviews,
-    /**
-     *  User tapped on the product
-     */
-    TapProduct
-};
+@class BVRecommendationsLoader;
 
-/**
- *  When interacting with a BVRecommendationsUI component, this enum provides a list of features the user interacted with.
- */
+/// When interacting with a BVRecommendationsUI component, this enum provides a list of container types the user interacted with.
 typedef NS_ENUM(NSInteger, BVProductRecommendationWidget) {
-    /**
-     *  Product recommendations from a hoizontally scrolling carousel
-     */
-    RecommendationsCarousel = 0,
-    /**
-     *  Product recommendations from a stacked view of recommendations
-     */
-    RecommendationsStaticView,
-    /**
-     *  Product recommendations from a UITableViewController
-     */
+    
+    /// Product recommendations from a horizontally scrolling collection view.
+    RecommendationsCarousel,
+    
+    /// Product recommendations from a UITableView
     RecommendationsTableView,
-    /**
-     *  Custom widget created.
-     */
+    
+    /// Custom widget created.
     RecommendationsCustom
+    
 };
 
 
-/**
- *  Helper class wrapping BVAnalyticsManager that sends BVRecommendation and BVRecommendationUI analytic events.
- */
+/// Used to send analytic events related to product recommendations
 @interface BVRecsAnalyticsHelper : NSObject
 
 
-+ (NSString *)getWidgetTypeString:(BVProductRecommendationWidget)widgetType;
+/**
+    Queue an analytic event for a visible BVProduct recommendation.
+ 
+    @param product - A BVProduct object that was visible on screen.
+ */
++ (void)queueAnalyticsEventForProductView:(BVProduct *)product;
+
 
 /**
- *  Queue an analytic event for a visible BVProduct recommendation.
- *
- *  @param product A valid BVProduct object that was visible on screen.
+    Queue an analytic event for a user tapping on a product view
+ 
+    @param product - The product that was tapped by the user
  */
-+(void)queueAnalyticsEventForProdctView:(BVProduct *)product;
++ (void)queueAnalyticsEventForProductTapped:(BVProduct *)product;
+
 
 /**
- *  Queue an analytic event for a user-interaction on a single-product view
- *
- *  @param product     A valid and visible project recommendation
- *  @param featureUsed The specific user-interaction
+    Queue an analytic event for a recommendations widget being loaded
+ 
+    @param widgetType - Type of widget that was loaded
  */
-+ (void)queueAnalyticsEventForProductFeatureUsed:(BVProduct *)product withFeatureUsed:(BVProductFeatureUsed)featureUsed withWidgetType:(BVProductRecommendationWidget)containerType;
++ (void)queueAnalyticsEventForRecommendationsOnPage:(BVProductRecommendationWidget)widgetType;
+
 
 /**
     Queue an analytic event for a recommendation widigit becoming visible on screen.
@@ -92,18 +66,15 @@ typedef NS_ENUM(NSInteger, BVProductRecommendationWidget) {
     @param widgetType - One of enum of BVProductRecommendationWidget
  
     @availability 3.0.1 and later
- 
  */
-+ (void)queueEmbeddedRecommendationsPageViewEvent:(NSString *)productId
-                                   withCategoryId:(NSString *)categoryId
-                                        withClientId:(NSString *)clientId
-                           withNumRecommendations:(NSInteger)numRecommendations
-                                   withWidgetType:(NSString *)widgetType;
++ (void)queueEmbeddedRecommendationsPageViewEvent:(BVRecommendationsRequest *)recommendationsRequest
+                                   withWidgetType:(BVProductRecommendationWidget)widgetType;
+
 
 /*
     Queue a view did scroll interaction event on a scrollable recommendations widget. This should only be sent once the view stops scrolling, in order to send too many events for every swipe.
  
-    @param widghetType - One of enum of BVProductRecommendationWidget
+    @param widgetType - One of enum of BVProductRecommendationWidget
  
     @availability 3.0.1 and later
  */

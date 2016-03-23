@@ -2,7 +2,7 @@
 //  BVAnalyticsManager.m
 //  Bazaarvoice SDK
 //
-//  Copyright 2015 Bazaarvoice Inc. All rights reserved.
+//  Copyright 2016 Bazaarvoice Inc. All rights reserved.
 //
 
 #import <AdSupport/AdSupport.h>
@@ -118,6 +118,15 @@ static BVAnalyticsManager *analyticsInstance = nil;
 }
 
 -(void)applicationDidFinishLaunching {
+    
+    BVSDKManager *sdkMgr = [BVSDKManager sharedManager];
+    NSString *clientId = sdkMgr.clientId;
+    
+    // check that `clientId` is valid
+    NSAssert(clientId != nil && ![clientId isEqualToString:@""], @"You must supply client id in the BVSDKManager before using the Bazaarvoice SDK.");
+    
+    NSAssert(![clientId isEqualToString:@"apitestcustomer"], @"You cannot use apitestcustomer as a client ID");
+    
     [self sendAppLaunchedEvent];
 }
 
@@ -145,7 +154,7 @@ static BVAnalyticsManager *analyticsInstance = nil;
 }
 
 
-- (NSDictionary *)getCommonAnalyticsDict{
+- (NSDictionary *)getCommonAnalyticsDictAnonymous:(BOOL)anonymous{
     
     NSMutableDictionary* params = [NSMutableDictionary dictionaryWithDictionary:@{
                                                                                   @"mobileSource": @"bv-ios-sdk",
@@ -158,7 +167,7 @@ static BVAnalyticsManager *analyticsInstance = nil;
     // idfa
     //check it limit ad tracking is enabled
     NSString *idfa = [[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString];
-    if([[ASIdentifierManager sharedManager] isAdvertisingTrackingEnabled]){
+    if([[ASIdentifierManager sharedManager] isAdvertisingTrackingEnabled] && !anonymous){
         idfa = [[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString];
     } else {
         idfa = @"nontracking";
@@ -178,7 +187,7 @@ static BVAnalyticsManager *analyticsInstance = nil;
     
     self.bvAuthenticatedUser = user;
     
-    NSMutableDictionary* eventData = [NSMutableDictionary dictionaryWithDictionary:[self getCommonAnalyticsDict]];
+    NSMutableDictionary* eventData = [NSMutableDictionary dictionaryWithDictionary:[self getCommonAnalyticsDictAnonymous:NO]];
     [eventData addEntriesFromDictionary:[self getPersonalizationEventParams]];
     [eventData setValue:self.bvAuthenticatedUser.userAuthString forKey:@"profileId"]; // may be null
     
@@ -214,7 +223,7 @@ static BVAnalyticsManager *analyticsInstance = nil;
 -(void)sendAppStateEvent:(NSString*)appState {
     // build param dictionary
 
-    NSMutableDictionary* eventData = [NSMutableDictionary dictionaryWithDictionary:[self getCommonAnalyticsDict]];
+    NSMutableDictionary* eventData = [NSMutableDictionary dictionaryWithDictionary:[self getCommonAnalyticsDictAnonymous:NO]];
     [eventData addEntriesFromDictionary:[self getMobileDiagnosticParams]];
     [eventData addEntriesFromDictionary:[self getAppStateEventParams]];
     [eventData setObject:appState forKey:@"appState"];
@@ -227,16 +236,29 @@ static BVAnalyticsManager *analyticsInstance = nil;
 
 -(void)queueEvent:(NSDictionary*)eventData {
     
-    NSAssert(self.clientId != nil, @"You must set the client id in the BVSDKManager class before using the SDK!");
+    [[BVLogger sharedLogger] analyticsMessage:[NSString stringWithFormat:@"%@ - %@", [eventData objectForKey:@"cl"], [eventData objectForKey:@"type"]]];
+    [self processEvent:eventData isAnonymous:NO];
+ }
+
+-(void)queueAnonymousEvent:(NSDictionary*)eventData {
+    [self processEvent:eventData isAnonymous:YES];
+}
+
+-(void)processEvent:(NSDictionary*)eventData isAnonymous:(BOOL)anonymous{
     
     NSMutableDictionary *eventForQueue = [NSMutableDictionary dictionaryWithDictionary:eventData];
-    [eventForQueue addEntriesFromDictionary:[self getCommonAnalyticsDict]];
+    [eventForQueue addEntriesFromDictionary:[self getCommonAnalyticsDictAnonymous:anonymous]];
     
     dispatch_barrier_sync(self.concurrentEventQueue, ^{
         // Update event queue
         [self.eventQueue addObject:eventForQueue];
         
     });
+    
+    [self scheduleEventQueueFlush];
+}
+
+-(void)scheduleEventQueueFlush{
     
     // schedule a queue flush, if not already scheduled
     // many times, a rush of events come very close to each other, and then things are quiet for a while.
@@ -254,18 +276,12 @@ static BVAnalyticsManager *analyticsInstance = nil;
                                                                    repeats:NO];
         }
     });
-
-    
-    
-    
 }
 
 - (void)queuePageViewEventDict:(NSDictionary *)pageViewEvent{
     
-    assert(self.clientId != nil);
-    
     NSMutableDictionary *eventForQueue = [NSMutableDictionary dictionaryWithDictionary:pageViewEvent];
-    [eventForQueue addEntriesFromDictionary:[self getCommonAnalyticsDict]];
+    [eventForQueue addEntriesFromDictionary:[self getCommonAnalyticsDictAnonymous:NO]];
     
     dispatch_barrier_sync(self.concurrentEventQueue, ^{
         // Update PageView queue events
@@ -344,7 +360,7 @@ static BVAnalyticsManager *analyticsInstance = nil;
     NSError *error = nil;
     NSData *data = [NSJSONSerialization dataWithJSONObject:eventData options:kNilOptions error:&error];
     
-    [[BVLogger sharedLogger] verbose:[NSString stringWithFormat:@"POST Event: %@\nWith Data:%@", url, eventData]];
+    [[BVLogger sharedLogger] analyticsMessage:[NSString stringWithFormat:@"POST Event: %@\nWith Data:%@", url, eventData]];
     
     if (!error){
         NSURLSessionUploadTask *postTask = [session uploadTaskWithRequest:request
@@ -370,7 +386,7 @@ static BVAnalyticsManager *analyticsInstance = nil;
                  
                  // Successful analyatics event sent
                  NSString* message = [NSString stringWithFormat:@"Analytics event sent successfully."];
-                 [[BVLogger sharedLogger] verbose:message];
+                 [[BVLogger sharedLogger] analyticsMessage:message];
                  
              }
              
@@ -415,10 +431,6 @@ static BVAnalyticsManager *analyticsInstance = nil;
         [[BVLogger sharedLogger] error:@"WARNING: Client apitestcustomer should not be used for production!!!"];
     }
     
-}
-
--(void)setLogLevel:(BVLogLevel)logLevel{
-    [[BVLogger sharedLogger] setLogLevel:logLevel];
 }
 
 

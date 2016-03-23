@@ -2,15 +2,18 @@
 //  InterstitialDemo.m
 //  Bazaarvoice Mobile Ads SDK - Demo Application
 //
-//  Copyright 2015 Bazaarvoice Inc. All rights reserved.
+//  Copyright 2016 Bazaarvoice Inc. All rights reserved.
 //
 
 #import "InterstitialDemo.h"
-#import <BVSDK/BVAdvertising.h>
+#import <BVSDK/BVSDK.h>
+
+@import GoogleMobileAds;
+
 
 @interface InterstitialDemo()<GADInterstitialDelegate>
 
-@property BVTargetedInterstitial* interstitial;
+@property DFPInterstitial* interstitial;
 @property UIViewController* rootViewController;
 
 @end
@@ -27,12 +30,12 @@
 
 -(void)requestInterstitial {
     
-    self.interstitial = [[BVTargetedInterstitial alloc] initWithAdUnitID:@"/6499/example/interstitial"]; //Test adUnitId. Replace with your targeted adUnitId.
+    self.interstitial = [[DFPInterstitial alloc] initWithAdUnitID:@"/6499/example/interstitial"]; //Test adUnitId. Replace with your targeted adUnitId.
     [self.interstitial setDelegate:self];
     
-    BVTargetedRequest* request = [self.interstitial getTargetedRequest];
+    DFPRequest* request = [DFPRequest request];
     request.testDevices = @[ kGADSimulatorID ];
-
+    request.customTargeting = [[BVSDKManager sharedManager] getCustomTargeting];
     [self.interstitial loadRequest:request];
 }
 
