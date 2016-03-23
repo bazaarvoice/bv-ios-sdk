@@ -307,7 +307,7 @@ static BVConversationsAnalyticsHelper *BVAnalyticsSingleton = nil;
     
     return  @{
               @"productId" : productId,
-              @"categoryId" : productId,
+              @"categoryId" : categoryId,
               @"fingerprinting" : fingerprinting,
               @"name" : name
               };

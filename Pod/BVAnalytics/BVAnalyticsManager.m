@@ -227,7 +227,9 @@ static BVAnalyticsManager *analyticsInstance = nil;
 
 -(void)queueEvent:(NSDictionary*)eventData {
     
-    NSAssert(self.clientId != nil, @"You must set the client id in the BVSDKManager class before using the SDK!");
+//  NSAssert(self.clientId != nil, @"You must set the client id in the BVSDKManager class before using the SDK!");
+    
+    [[BVLogger sharedLogger] analyticsMessage:[NSString stringWithFormat:@"%@ - %@", [eventData objectForKey:@"cl"], [eventData objectForKey:@"type"]]];
     
     NSMutableDictionary *eventForQueue = [NSMutableDictionary dictionaryWithDictionary:eventData];
     [eventForQueue addEntriesFromDictionary:[self getCommonAnalyticsDict]];
@@ -344,7 +346,7 @@ static BVAnalyticsManager *analyticsInstance = nil;
     NSError *error = nil;
     NSData *data = [NSJSONSerialization dataWithJSONObject:eventData options:kNilOptions error:&error];
     
-    [[BVLogger sharedLogger] verbose:[NSString stringWithFormat:@"POST Event: %@\nWith Data:%@", url, eventData]];
+    [[BVLogger sharedLogger] analyticsMessage:[NSString stringWithFormat:@"POST Event: %@\nWith Data:%@", url, eventData]];
     
     if (!error){
         NSURLSessionUploadTask *postTask = [session uploadTaskWithRequest:request
@@ -370,7 +372,7 @@ static BVAnalyticsManager *analyticsInstance = nil;
                  
                  // Successful analyatics event sent
                  NSString* message = [NSString stringWithFormat:@"Analytics event sent successfully."];
-                 [[BVLogger sharedLogger] verbose:message];
+                 [[BVLogger sharedLogger] analyticsMessage:message];
                  
              }
              

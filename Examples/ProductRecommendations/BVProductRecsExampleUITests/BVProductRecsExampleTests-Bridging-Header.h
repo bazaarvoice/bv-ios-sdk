@@ -10,7 +10,6 @@
 
 
 #include <BVSDK/BVRecommendations.h>
-#include <BVSDK/BVRecommendationsUI.h>
 
 
 #endif /* BVProductRecsExampleTests_Bridging_Header_h */

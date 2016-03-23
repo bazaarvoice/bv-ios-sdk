@@ -1,20 +1,21 @@
 platform :ios, '8.0'
 source 'https://github.com/CocoaPods/Specs.git'
 
-link_with 'BVProductRecsExample', 'BVProductRecsExampleTests', 'BVProductRecsExampleUITests'
+use_frameworks!
 
 target 'BVProductRecsExample' do
-	pod "BVSDK/BVRecommendationsUI", :path => "../../"
+	pod "BVSDK/BVRecommendations", :path => "../../"
 	pod 'SDWebImage'
+	pod 'NVActivityIndicatorView'
 end
 
 target 'BVProductRecsExampleTests' do
-	pod "BVSDK/BVRecommendationsUI", :path => "../../"
+	pod "BVSDK/BVRecommendations", :path => "../../"
 	pod 'SDWebImage'
 	pod 'FBSnapshotTestCase/Core'
 end	
 
 target 'BVProductRecsExampleUITests' do
-	pod "BVSDK/BVRecommendationsUI", :path => "../../"
+	pod "BVSDK/BVRecommendations", :path => "../../"
 	pod 'SDWebImage'
 end

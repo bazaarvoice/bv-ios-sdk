@@ -58,15 +58,23 @@
 	
 	<optgroup label="Class Methods">
 		
-		<option value="//api/name/queueAnalyticsEventForProdctView:">+ queueAnalyticsEventForProdctView:</option>
-		
-		<option value="//api/name/queueAnalyticsEventForProductFeatureUsed:withFeatureUsed:withWidgetType:">+ queueAnalyticsEventForProductFeatureUsed:withFeatureUsed:withWidgetType:</option>
-		
-		<option value="//api/name/queueEmbeddedRecommendationsPageViewEvent:withCategoryId:withClientId:withNumRecommendations:withWidgetType:">+ queueEmbeddedRecommendationsPageViewEvent:withCategoryId:withClientId:withNumRecommendations:withWidgetType:</option>
+		<option value="//api/name/sharedManager">+ sharedManager</option>
 		
 	</optgroup>
 	
 
+	
+	<optgroup label="Instance Methods">
+		
+		<option value="//api/name/queueAnalyticsEventForProductTapped:">- queueAnalyticsEventForProductTapped:</option>
+		
+		<option value="//api/name/queueAnalyticsEventForProductView:">- queueAnalyticsEventForProductView:</option>
+		
+		<option value="//api/name/queueAnalyticsEventForRecommendationsOnPage:">- queueAnalyticsEventForRecommendationsOnPage:</option>
+		
+		<option value="//api/name/queueEmbeddedRecommendationsPageViewEvent:withCategoryId:withNumRecommendations:withWidgetType:">- queueEmbeddedRecommendationsPageViewEvent:withCategoryId:withNumRecommendations:withWidgetType:</option>
+		
+	</optgroup>
 	
 	
 </select>
@@ -116,8 +124,49 @@
 
 						<div class="task-list">
 							<div class="section-method">
-	<a name="//api/name/queueAnalyticsEventForProdctView:" title="queueAnalyticsEventForProdctView:"></a>
-	<h3 class="method-title"><code><a href="#//api/name/queueAnalyticsEventForProdctView:">+&nbsp;queueAnalyticsEventForProdctView:</a></code>
+	<a name="//api/name/sharedManager" title="sharedManager"></a>
+	<h3 class="method-title"><code><a href="#//api/name/sharedManager">+&nbsp;sharedManager</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Create and get the singleton instance of the analytics manager.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (BVRecsAnalyticsHelper *)sharedManager</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BVRecsAnalyticsHelper.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/queueAnalyticsEventForProductView:" title="queueAnalyticsEventForProductView:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/queueAnalyticsEventForProductView:">&ndash;&nbsp;queueAnalyticsEventForProductView:</a></code>
 </h3>
 
 	<div class="method-info">
@@ -132,7 +181,7 @@
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>+ (void)queueAnalyticsEventForProdctView:(BVProduct *)<em>product</em></code></div>
+			<div class="method-subsection method-declaration"><code>- (void)queueAnalyticsEventForProductView:(BVProduct *)<em>product</em></code></div>
 
 		    
 			
@@ -169,8 +218,8 @@
 		</div>
 	</div>
 </div><div class="section-method">
-	<a name="//api/name/queueAnalyticsEventForProductFeatureUsed:withFeatureUsed:withWidgetType:" title="queueAnalyticsEventForProductFeatureUsed:withFeatureUsed:withWidgetType:"></a>
-	<h3 class="method-title"><code><a href="#//api/name/queueAnalyticsEventForProductFeatureUsed:withFeatureUsed:withWidgetType:">+&nbsp;queueAnalyticsEventForProductFeatureUsed:withFeatureUsed:withWidgetType:</a></code>
+	<a name="//api/name/queueAnalyticsEventForProductTapped:" title="queueAnalyticsEventForProductTapped:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/queueAnalyticsEventForProductTapped:">&ndash;&nbsp;queueAnalyticsEventForProductTapped:</a></code>
 </h3>
 
 	<div class="method-info">
@@ -180,12 +229,12 @@
 			
 			
 			<div class="method-subsection brief-description">
-				<p>Queue an analytic event for a user-interaction on a single-product view</p>
+				<p>Queue an analytic event for a user tap on a product view</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>+ (void)queueAnalyticsEventForProductFeatureUsed:(BVProduct *)<em>product</em> withFeatureUsed:(BVProductFeatureUsed)<em>featureUsed</em> withWidgetType:(BVProductRecommendationWidget)<em>containerType</em></code></div>
+			<div class="method-subsection method-declaration"><code>- (void)queueAnalyticsEventForProductTapped:(BVProduct *)<em>product</em></code></div>
 
 		    
 			
@@ -196,11 +245,6 @@
 					<tr>
 						<th scope="row" class="argument-name"><code>product</code></th>
 						<td><p>A valid and visible project recommendation</p></td>
-					</tr>
-				
-					<tr>
-						<th scope="row" class="argument-name"><code>featureUsed</code></th>
-						<td><p>The specific user-interaction</p></td>
 					</tr>
 				
 				</table>
@@ -227,8 +271,64 @@
 		</div>
 	</div>
 </div><div class="section-method">
-	<a name="//api/name/queueEmbeddedRecommendationsPageViewEvent:withCategoryId:withClientId:withNumRecommendations:withWidgetType:" title="queueEmbeddedRecommendationsPageViewEvent:withCategoryId:withClientId:withNumRecommendations:withWidgetType:"></a>
-	<h3 class="method-title"><code><a href="#//api/name/queueEmbeddedRecommendationsPageViewEvent:withCategoryId:withClientId:withNumRecommendations:withWidgetType:">+&nbsp;queueEmbeddedRecommendationsPageViewEvent:withCategoryId:withClientId:withNumRecommendations:withWidgetType:</a></code>
+	<a name="//api/name/queueAnalyticsEventForRecommendationsOnPage:" title="queueAnalyticsEventForRecommendationsOnPage:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/queueAnalyticsEventForRecommendationsOnPage:">&ndash;&nbsp;queueAnalyticsEventForRecommendationsOnPage:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Queue an analytic event for a recommendations widget being loaded</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)queueAnalyticsEventForRecommendationsOnPage:(BVProductRecommendationWidget)<em>widgetType</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>widgetType</code></th>
+						<td><ul>
+<li>One of enum of <a href="../Constants/BVProductRecommendationWidget.html">BVProductRecommendationWidget</a></li>
+</ul>
+</td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BVRecsAnalyticsHelper.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/queueEmbeddedRecommendationsPageViewEvent:withCategoryId:withNumRecommendations:withWidgetType:" title="queueEmbeddedRecommendationsPageViewEvent:withCategoryId:withNumRecommendations:withWidgetType:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/queueEmbeddedRecommendationsPageViewEvent:withCategoryId:withNumRecommendations:withWidgetType:">&ndash;&nbsp;queueEmbeddedRecommendationsPageViewEvent:withCategoryId:withNumRecommendations:withWidgetType:</a></code>
 </h3>
 
 	<div class="method-info">
@@ -244,7 +344,7 @@
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>+ (void)queueEmbeddedRecommendationsPageViewEvent:(NSString *)<em>productId</em> withCategoryId:(NSString *)<em>categoryId</em> withClientId:(NSString *)<em>clientId</em> withNumRecommendations:(NSInteger)<em>numRecommendations</em> withWidgetType:(NSString *)<em>widgetType</em></code></div>
+			<div class="method-subsection method-declaration"><code>- (void)queueEmbeddedRecommendationsPageViewEvent:(NSString *)<em>productId</em> withCategoryId:(NSString *)<em>categoryId</em> withNumRecommendations:(NSInteger)<em>numRecommendations</em> withWidgetType:(BVProductRecommendationWidget)<em>widgetType</em></code></div>
 
 		    
 			
@@ -269,14 +369,6 @@
 					</tr>
 				
 					<tr>
-						<th scope="row" class="argument-name"><code>clientId</code></th>
-						<td><ul>
-<li>The client Id used with the API call to fetch the recommendations.</li>
-</ul>
-</td>
-					</tr>
-				
-					<tr>
 						<th scope="row" class="argument-name"><code>numRecommendations</code></th>
 						<td><ul>
 <li>The number of recommendations used to fill the widget</li>
@@ -290,6 +382,14 @@
 <li><p>One of enum of <a href="../Constants/BVProductRecommendationWidget.html">BVProductRecommendationWidget</a></p>
 
 <p>  @availability 3.0.1 and later</p></li>
+</ul>
+</td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>clientId</code></th>
+						<td><ul>
+<li>The client Id used with the API call to fetch the recommendations.</li>
 </ul>
 </td>
 					</tr>
@@ -332,7 +432,7 @@
 				<footer>
 					<div class="footer-copyright">
 						
-						<p class="copyright">Copyright &copy; 2016 Bazaarvoice. All rights reserved. Updated: 2016-02-08</p>
+						<p class="copyright">Copyright &copy; 2016 Bazaarvoice. All rights reserved. Updated: 2016-03-30</p>
 						
 						
 						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>

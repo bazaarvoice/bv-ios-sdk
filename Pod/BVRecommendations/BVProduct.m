@@ -6,6 +6,13 @@
 //
 
 #import "BVProduct.h"
+#import "BVRecsAnalyticsHelper.h"
+
+@interface BVProduct()
+
+@property bool hasSentImpressionEvent;
+
+@end
 
 @implementation BVProduct
 
@@ -33,6 +40,24 @@
     }
         
     return self;
+}
+
+
+-(void)recordImpression {
+    
+    if(self.hasSentImpressionEvent) {
+        return;
+    }
+    self.hasSentImpressionEvent = true;
+    
+    [[BVRecsAnalyticsHelper sharedManager] queueAnalyticsEventForProductView:self];
+    
+}
+
+-(void)recordTap {
+ 
+    [[BVRecsAnalyticsHelper sharedManager] queueAnalyticsEventForProductTapped:self];
+    
 }
 
 

@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="14F1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DemoCarouselViewController" customModule="BVProductRecsExample" customModuleProvider="target">
             <connections>
-                <outlet property="carouselView" destination="6xO-mL-2Qo" id="ftt-Jj-yaY"/>
-                <outlet property="carouselViewHeight" destination="PiM-Jy-9TX" id="n1X-aQ-nIf"/>
+                <outlet property="carouselView" destination="3Tb-1s-FDN" id="hVY-tn-thC"/>
+                <outlet property="carouselViewHeightConstraint" destination="15Y-3u-ewJ" id="CCk-F0-arJ"/>
                 <outlet property="descriptionLabel" destination="Pfv-fe-vk6" id="NqD-df-pMZ"/>
                 <outlet property="view" destination="JyI-QO-JSb" id="B86-HA-8GX"/>
             </connections>
@@ -28,14 +28,8 @@ Try it out! Play with the UI properties in the settings view too.</string>
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <view contentMode="scaleToFill" verticalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="6xO-mL-2Qo" customClass="BVRecommendationsCarouselView">
-                    <rect key="frame" x="8" y="171" width="584" height="200"/>
-                    <constraints>
-                        <constraint firstAttribute="height" priority="250" constant="200" id="PiM-Jy-9TX"/>
-                    </constraints>
-                </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Carousel Size" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HW0-u5-yJA">
-                    <rect key="frame" x="8" y="132" width="138" height="21"/>
+                    <rect key="frame" x="8" y="132" width="138" height="20.5"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="138" id="Acx-Vl-d9A"/>
                     </constraints>
@@ -43,24 +37,36 @@ Try it out! Play with the UI properties in the settings view too.</string>
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <slider opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="100" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="200" minValue="150" maxValue="500" translatesAutoresizingMaskIntoConstraints="NO" id="0VO-UU-31r">
+                <slider opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="100" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="250" minValue="150" maxValue="400" translatesAutoresizingMaskIntoConstraints="NO" id="0VO-UU-31r">
                     <rect key="frame" x="166" y="128" width="428" height="31"/>
                     <connections>
-                        <action selector="CarouselHeightSliderChangedValue:" destination="-1" eventType="valueChanged" id="40Y-AC-Srt"/>
+                        <action selector="carouselHeightChanged:" destination="-1" eventType="valueChanged" id="gVC-sD-YEi"/>
                     </connections>
                 </slider>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="3Tb-1s-FDN" customClass="BVProductRecommendationsCollectionView">
+                    <rect key="frame" x="8" y="166" width="584" height="250"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="250" id="15Y-3u-ewJ"/>
+                    </constraints>
+                    <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="VXF-4D-A9f">
+                        <size key="itemSize" width="50" height="50"/>
+                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    </collectionViewFlowLayout>
+                </collectionView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="0VO-UU-31r" firstAttribute="leading" secondItem="HW0-u5-yJA" secondAttribute="trailing" constant="22" id="796-YJ-W7o"/>
+                <constraint firstAttribute="trailing" secondItem="3Tb-1s-FDN" secondAttribute="trailing" constant="8" id="MHs-ze-t3W"/>
                 <constraint firstItem="HW0-u5-yJA" firstAttribute="top" secondItem="Pfv-fe-vk6" secondAttribute="top" constant="116" id="Rd9-q7-mij"/>
-                <constraint firstItem="6xO-mL-2Qo" firstAttribute="top" secondItem="0VO-UU-31r" secondAttribute="bottom" constant="13" id="Thr-7d-dgk"/>
+                <constraint firstItem="3Tb-1s-FDN" firstAttribute="leading" secondItem="JyI-QO-JSb" secondAttribute="leading" constant="8" id="Rg3-3i-Uwj"/>
                 <constraint firstAttribute="trailingMargin" secondItem="Pfv-fe-vk6" secondAttribute="trailing" id="UyZ-BF-wVj"/>
                 <constraint firstItem="HW0-u5-yJA" firstAttribute="leading" secondItem="JyI-QO-JSb" secondAttribute="leading" constant="8" id="V8z-hJ-c93"/>
-                <constraint firstItem="6xO-mL-2Qo" firstAttribute="trailing" secondItem="JyI-QO-JSb" secondAttribute="trailing" constant="-8" id="Vzf-BB-pdl"/>
+                <constraint firstItem="3Tb-1s-FDN" firstAttribute="top" secondItem="0VO-UU-31r" secondAttribute="bottom" constant="8" id="Xot-eL-9pI"/>
                 <constraint firstItem="HW0-u5-yJA" firstAttribute="centerY" secondItem="0VO-UU-31r" secondAttribute="centerY" id="pBD-c4-SdN"/>
-                <constraint firstItem="6xO-mL-2Qo" firstAttribute="leading" secondItem="JyI-QO-JSb" secondAttribute="leading" constant="8" id="tIH-SP-GMF"/>
-                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="6xO-mL-2Qo" secondAttribute="bottom" constant="8" id="tTv-LE-2Sk"/>
                 <constraint firstAttribute="trailing" secondItem="0VO-UU-31r" secondAttribute="trailing" constant="8" id="vvC-0G-gyX"/>
                 <constraint firstItem="Pfv-fe-vk6" firstAttribute="top" secondItem="JyI-QO-JSb" secondAttribute="top" constant="16" id="wnT-TZ-ht6"/>
                 <constraint firstItem="Pfv-fe-vk6" firstAttribute="leading" secondItem="JyI-QO-JSb" secondAttribute="leadingMargin" id="z9b-eR-m0q"/>

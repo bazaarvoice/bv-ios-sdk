@@ -6,9 +6,6 @@
 //
 
 
-#ifndef BVGetShopperProfile_h
-#define BVGetShopperProfile_h
-
 #import <Foundation/Foundation.h>
 
 #import "BVCore.h"
@@ -30,6 +27,9 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @property (nonatomic, assign) NSInteger maxCacheAge;
 
+@property (readonly) NSString* _Nullable productId;
+@property (readonly) NSString* _Nullable categoryId;
+@property (readonly) NSUInteger limit;
 
 /*!
     Gets a user's profile associted with the IDFA of the user's iOS device. The user's profile is fetched asynchronously with the result returned in the completion handler. Implementation should check for a non-nil NSError response and non-nil BVShopperProfile, either of which indicate an API failure.
@@ -75,5 +75,3 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 NS_ASSUME_NONNULL_END
-
-#endif

@@ -10,7 +10,6 @@ import UIKit
 class RootViewController: UIViewController {
 
     var pageMenu : CAPSPageMenu?
-    var navController = MenuController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,6 +48,7 @@ class RootViewController: UIViewController {
         controllerArray.append(createCarousel())
         controllerArray.append(createTable())
         controllerArray.append(createStaticView())
+
         let parameters = getPageMenuParameters()
         
         return CAPSPageMenu(viewControllers: controllerArray, frame: self.view.bounds, pageMenuOptions: parameters)
@@ -73,7 +73,6 @@ class RootViewController: UIViewController {
         return staticView
     }
     
-    
     func getPageMenuParameters() -> [CAPSPageMenuOption] {
         return [
             .MenuHeight(40),
@@ -90,8 +89,8 @@ class RootViewController: UIViewController {
     
     func setRootViewStyle() {
         
-        navController = self.navigationController as! MenuController
-        navController.setNavigationBarHidden(false, animated: false)
+        self.navigationController?.setNavigationBarHidden(false, animated: false)
+        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
         
         self.view.backgroundColor = UIColor.bazaarvoiceNavy()
         
@@ -103,19 +102,6 @@ class RootViewController: UIViewController {
         titleLabel.font = UIFont(name: "ForalPro-Regular", size: 36)
         self.navigationItem.titleView = titleLabel
         
-        let rightItem: UIBarButtonItem = UIBarButtonItem(image: UIImage(imageLiteral: "gear.png"), style:UIBarButtonItemStyle.Plain  , target: self, action:"settingsTapped")
-        rightItem.tintColor = UIColor.whiteColor()
-        self.navigationItem.rightBarButtonItem = rightItem
-    }
-    
-    func settingsTapped() -> Void {
-
-        navController.openAndCloseMenu()
-        
-    }
-    
-    override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {
-        navController.closeMenu()
     }
     
 }

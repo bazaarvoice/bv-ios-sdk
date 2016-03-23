@@ -11,5 +11,7 @@
 #import "BVCore.h"
 #import "BVGetShopperProfile.h"
 #import "BVRecsAnalyticsHelper.h"
+#import "BVProductRecommendationView.h"
+#import "BVProductRecommendationsContainer.h"
 
 #endif /* BVRecommendations_h */

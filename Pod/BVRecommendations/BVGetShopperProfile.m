@@ -13,6 +13,14 @@
 #import "BVRecsAnalyticsHelper.h"
 #import "BVShopperProfileRequestCache.h"
 
+@interface BVGetShopperProfile()
+
+@property NSString* _Nullable productId;
+@property NSString* _Nullable categoryId;
+@property NSUInteger limit;
+
+@end
+
 @implementation BVGetShopperProfile
 
 - (void)_privateFetchShopperProfile:(NSString * __nullable)productId
@@ -177,6 +185,17 @@
                                     withLimit:(NSUInteger)limit
                         withCompletionHandler:(void (^)(BVShopperProfile * __nullable profile, NSError * __nullable error))completionHandler;{
     
+    self.productId = productId;
+    self.categoryId = nil;
+    self.limit = limit;
+    
+    if([self isSDKValid] == false) {
+        
+        completionHandler(nil, [self invalidSDKError]);
+        return;
+        
+    }
+    
     
     [self _privateFetchShopperProfile:productId withCategoryId:nil withProfileOptions:0 withLimit:limit completionHandler:^(BVShopperProfile * _Nullable profile, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         
@@ -190,7 +209,18 @@
                                     withLimit:(NSUInteger)limit
                         withCompletionHandler:(void (^)(BVShopperProfile * __nullable profile, NSError * __nullable error))completionHandler;{
     
+    self.productId = nil;
+    self.categoryId = categoryId;
+    self.limit = limit;
+    
 
+    if([self isSDKValid] == false) {
+        
+        completionHandler(nil, [self invalidSDKError]);
+        return;
+        
+    }
+    
     [self _privateFetchShopperProfile:nil withCategoryId:categoryId withProfileOptions:0 withLimit:limit completionHandler:^(BVShopperProfile * _Nullable profile, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         
         completionHandler(profile, error);
@@ -199,8 +229,18 @@
     
 }
 
-
 - (void)fetchProductRecommendations:(NSUInteger)limit withCompletionHandler:(void (^)(BVShopperProfile * __nullable profile, NSError * __nullable error))completionHandler{
+    
+    self.productId = nil;
+    self.categoryId = nil;
+    self.limit = limit;
+    
+    if([self isSDKValid] == false) {
+        
+        completionHandler(nil, [self invalidSDKError]);
+        return;
+        
+    }
     
     [self _privateFetchShopperProfile:nil withCategoryId:nil withProfileOptions:0 withLimit:limit completionHandler:^(BVShopperProfile * _Nullable profile, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         
@@ -222,6 +262,38 @@
     
     _maxCacheAge = maxCacheAge;
     [BVShopperProfileRequestCache sharedCache].cacheMaxAgeInSeconds = _maxCacheAge;
+    
+}
+
+-(BOOL)isSDKValid {
+    
+    NSString* clientId = [[BVSDKManager sharedManager] clientId];
+    NSString* passKey  = [[BVSDKManager sharedManager] apiKeyShopperAdvertising];
+    
+    if ([clientId isEqualToString:@""] || [passKey isEqualToString:@""]) {
+        return false;
+    }
+    
+    return true;
+    
+}
+
+-(NSError*)invalidSDKError {
+    
+    NSMutableDictionary* userInfo = [NSMutableDictionary dictionary];
+
+    NSString* clientId = [[BVSDKManager sharedManager] clientId];
+    NSString* passKey  = [[BVSDKManager sharedManager] apiKeyShopperAdvertising];
+    
+    if([clientId isEqualToString:@""]) {
+        [userInfo setValue:@"Client Id is not set." forKey:NSLocalizedDescriptionKey];
+    }
+    
+    if ([passKey isEqualToString:@""]) {
+        [userInfo setValue:@"apiKeyShopperAdvertising is not set." forKey:NSLocalizedDescriptionKey];
+    }
+
+    return [NSError errorWithDomain:BVErrDomain code:-1 userInfo:userInfo];
     
 }
 

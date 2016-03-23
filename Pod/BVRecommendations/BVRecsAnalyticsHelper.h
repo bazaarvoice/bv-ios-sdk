@@ -11,43 +11,13 @@
 #import "BVShopperProfile.h"
 
 /**
- *  When interacting with a BVRecommendationsUI component, this enum provides a list of features the user interacted with.
- */
-typedef NS_ENUM(NSInteger, BVProductFeatureUsed) {
-    /**
-     *  Use tapped like
-     */
-    TapLike = 0,
-    /**
-     *  User tapped dislike (ban)
-     */
-    TapUnlike,
-    /**
-     *  User tapped the shop now button
-     */
-    TapShopNow,
-    /**
-     *  User tapped the ratings and reviews widget
-     */
-    TapRatingsReviews,
-    /**
-     *  User tapped on the product
-     */
-    TapProduct
-};
-
-/**
- *  When interacting with a BVRecommendationsUI component, this enum provides a list of features the user interacted with.
+ *  When interacting with a BVRecommendationsUI component, this enum provides a list of container types the user interacted with.
  */
 typedef NS_ENUM(NSInteger, BVProductRecommendationWidget) {
     /**
      *  Product recommendations from a hoizontally scrolling carousel
      */
-    RecommendationsCarousel = 0,
-    /**
-     *  Product recommendations from a stacked view of recommendations
-     */
-    RecommendationsStaticView,
+    RecommendationsCarousel,
     /**
      *  Product recommendations from a UITableViewController
      */
@@ -64,6 +34,11 @@ typedef NS_ENUM(NSInteger, BVProductRecommendationWidget) {
  */
 @interface BVRecsAnalyticsHelper : NSObject
 
+/*!
+ Create and get the singleton instance of the analytics manager.
+ */
++ (BVRecsAnalyticsHelper *)sharedManager;
+
 
 + (NSString *)getWidgetTypeString:(BVProductRecommendationWidget)widgetType;
 
@@ -72,15 +47,21 @@ typedef NS_ENUM(NSInteger, BVProductRecommendationWidget) {
  *
  *  @param product A valid BVProduct object that was visible on screen.
  */
-+(void)queueAnalyticsEventForProdctView:(BVProduct *)product;
+-(void)queueAnalyticsEventForProductView:(BVProduct *)product;
 
 /**
- *  Queue an analytic event for a user-interaction on a single-product view
+ *  Queue an analytic event for a user tap on a product view
  *
  *  @param product     A valid and visible project recommendation
- *  @param featureUsed The specific user-interaction
  */
-+ (void)queueAnalyticsEventForProductFeatureUsed:(BVProduct *)product withFeatureUsed:(BVProductFeatureUsed)featureUsed withWidgetType:(BVProductRecommendationWidget)containerType;
+- (void)queueAnalyticsEventForProductTapped:(BVProduct *)product;
+
+/**
+ *  Queue an analytic event for a recommendations widget being loaded
+ *
+ *  @param widgetType - One of enum of BVProductRecommendationWidget
+ */
+- (void)queueAnalyticsEventForRecommendationsOnPage:(BVProductRecommendationWidget)widgetType;
 
 /**
     Queue an analytic event for a recommendation widigit becoming visible on screen.
@@ -94,11 +75,10 @@ typedef NS_ENUM(NSInteger, BVProductRecommendationWidget) {
     @availability 3.0.1 and later
  
  */
-+ (void)queueEmbeddedRecommendationsPageViewEvent:(NSString *)productId
+- (void)queueEmbeddedRecommendationsPageViewEvent:(NSString *)productId
                                    withCategoryId:(NSString *)categoryId
-                                        withClientId:(NSString *)clientId
                            withNumRecommendations:(NSInteger)numRecommendations
-                                   withWidgetType:(NSString *)widgetType;
+                                   withWidgetType:(BVProductRecommendationWidget)widgetType;
 
 /*
     Queue a view did scroll interaction event on a scrollable recommendations widget. This should only be sent once the view stops scrolling, in order to send too many events for every swipe.
@@ -107,6 +87,6 @@ typedef NS_ENUM(NSInteger, BVProductRecommendationWidget) {
  
     @availability 3.0.1 and later
  */
-+ (void)queueAnalyticsEventForWidgetScroll:(BVProductRecommendationWidget)widgetType;
+- (void)queueAnalyticsEventForWidgetScroll:(BVProductRecommendationWidget)widgetType;
 
 @end

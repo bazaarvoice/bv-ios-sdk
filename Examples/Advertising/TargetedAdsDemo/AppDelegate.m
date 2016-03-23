@@ -27,7 +27,7 @@
     self.window.rootViewController = [self getRootViewController];
     [self.window makeKeyAndVisible];
     
-    NSString *myClientId = nil; // INSERT YOUR CLIEND ID!!!!
+    NSString *myClientId = nil;              // INSERT YOUR CLIEND ID!!!!
     NSString *myShopperAdvertisingKey = nil; // INSERT YOUR SHOPPER ADVERTISING KEY!!!
     
     if (myClientId != nil && myShopperAdvertisingKey != nil){

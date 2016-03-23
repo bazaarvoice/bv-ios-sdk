@@ -78,6 +78,19 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @property (strong, nonatomic) NSDictionary* rawProductDict;
 
+/**
+ *  Record a tap event happening on this recommendation
+ */
+
+-(void)recordTap;
+
+/**
+ *  Internal use
+ */
+-(void)recordImpression;
+
+
+
 @end
 
 NS_ASSUME_NONNULL_END

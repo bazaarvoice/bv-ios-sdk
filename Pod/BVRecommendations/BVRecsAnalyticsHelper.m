@@ -12,11 +12,23 @@
 
 @implementation BVRecsAnalyticsHelper
 
+static BVRecsAnalyticsHelper *analyticsInstance = nil;
+
++ (BVRecsAnalyticsHelper *) sharedManager {
+    
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        analyticsInstance = [[self alloc] init];
+    });
+    
+    return analyticsInstance;
+}
+
 static const NSString *bvProductName = @"Recommendations";
 
-+(NSDictionary *)getRelavantInfoForRecommendationType:(BVProduct *)product isVisible:(BOOL)visible {
+-(NSDictionary *)getRelavantInfoForRecommendationType:(BVProduct *)product isVisible:(BOOL)visible {
     
-    NSDictionary* analyticValues = [BVRecsAnalyticsHelper getPrivateAnalyticInfoForProduct:product];
+    NSDictionary* analyticValues = [self getPrivateAnalyticInfoForProduct:product];
     
     NSMutableDictionary* info = [NSMutableDictionary dictionaryWithDictionary:analyticValues];
 
@@ -31,212 +43,139 @@ static const NSString *bvProductName = @"Recommendations";
 
 }
 
-+(NSDictionary*)getRecommendationParams {
+-(NSDictionary*)getRecommendationParams {
     return @{
              @"cl": @"Impression",
              @"type": @"Recommendation",
-             @"source": @"recommendation-mob"
+             @"source": @"recommendation-mob",
+             @"client": [[BVSDKManager sharedManager] clientId],
+             @"bvProduct": bvProductName
              };
 }
 
-+(NSDictionary*)getUsedFeatureParams {
+-(NSDictionary*)getUsedFeatureParams {
     return @{
              @"cl": @"Feature",
              @"type": @"Used",
-             @"source": @"recommendation-mob"
+             @"source": @"recommendation-mob",
+             @"client": [[BVSDKManager sharedManager] clientId],
+             @"bvProduct": bvProductName
              };
 }
 
-
-+(NSDictionary*)getRecommendationImpressionEvent:(NSDictionary *)productRec {
-    
-    NSMutableDictionary* parameters = [NSMutableDictionary dictionary];
-    [parameters addEntriesFromDictionary:[self getRecommendationParams]];
-    [parameters addEntriesFromDictionary:productRec];
-    
-    return parameters;
+- (NSDictionary*)getPageViewEmbeddedEventParams {
+    return @{
+             @"cl": @"PageView",
+             @"type": @"Embedded",
+             @"source": @"recommendation-mob",
+             @"client": [[BVSDKManager sharedManager] clientId],
+             @"bvProduct": bvProductName
+             };
 }
 
-
-+ (NSDictionary *)getFieldsForFeatureUsed:(BVProductFeatureUsed)featureUsed{
-    
-    NSDictionary *featureUsedDict;
-    
-    switch (featureUsed) {
-        case TapLike:
-            featureUsedDict = [NSDictionary dictionaryWithObjectsAndKeys:@"productliked", @"name", nil];
-            break;
-        case TapUnlike:
-            featureUsedDict = [NSDictionary dictionaryWithObjectsAndKeys:@"productdisliked", @"name", nil];
-            break;
-        case TapShopNow:
-            featureUsedDict = [NSDictionary dictionaryWithObjectsAndKeys:@"conversion", @"name", nil];
-            break;
-        case TapRatingsReviews:
-            featureUsedDict = [NSDictionary dictionaryWithObjectsAndKeys:@"conversion", @"name", nil];
-            break;
-        case TapProduct:
-            featureUsedDict = [NSDictionary dictionaryWithObjectsAndKeys:@"conversion", @"name", nil];
-            break;
-        default:
-            break;
-    }
-    
-    return featureUsedDict;
-    
-}
-
-+ (NSDictionary *)getFieldForWidgetType:(BVProductRecommendationWidget)widgetType{
-    
-    NSDictionary *widgetTypeDict = nil;
+- (NSDictionary *)getFieldForWidgetType:(BVProductRecommendationWidget)widgetType{
     
     switch (widgetType) {
         case RecommendationsCarousel:
-            widgetTypeDict = [NSDictionary dictionaryWithObjectsAndKeys:@"carousel", @"component", nil];
-            break;
-        case RecommendationsStaticView:
-            widgetTypeDict = [NSDictionary dictionaryWithObjectsAndKeys:@"staticview", @"component", nil];
-            break;
+            return @{@"component" : @"carousel"};
         case RecommendationsTableView:
-            widgetTypeDict = [NSDictionary dictionaryWithObjectsAndKeys:@"tableview", @"component", nil];
-            break;
+            return @{@"component" : @"tableview"};
         case RecommendationsCustom:
-            widgetTypeDict = [NSDictionary dictionaryWithObjectsAndKeys:@"custom", @"component", nil];
-            break;
-        default:
-            widgetTypeDict = [NSDictionary dictionaryWithObjectsAndKeys:@"unknown", @"component", nil];
-            break;
+            return @{@"component" : @"custom"};
     }
-    
-    return widgetTypeDict;
     
 }
 
 
 + (NSString *)getWidgetTypeString:(BVProductRecommendationWidget)widgetType{
     
-    NSString *widgetTypeString = nil;
-    
     switch (widgetType) {
         case RecommendationsCarousel:
-            widgetTypeString = @"carousel";
-            break;
-        case RecommendationsStaticView:
-            widgetTypeString = @"staticview";
-            break;
+            return @"carousel";
         case RecommendationsTableView:
-            widgetTypeString = @"tableview";
-            break;
+            return @"tableview";
         case RecommendationsCustom:
-            widgetTypeString = @"custom";
-            break;
-        default:
-            widgetTypeString = @"unknown";
-            break;
+            return @"custom";
     }
-    
-    return widgetTypeString;
     
 }
 
-+(NSDictionary*)getRecommendationContainerType:(NSDictionary *)productRec {
+-(NSDictionary*)getRecommendationContainerType:(NSDictionary *)productRec {
     
     NSMutableDictionary* parameters = [NSMutableDictionary dictionary];
     [parameters addEntriesFromDictionary:[self getRecommendationParams]];
     [parameters addEntriesFromDictionary:productRec];
-    
     return parameters;
+    
 }
 
 
-+(void)queueAnalyticsEventForProdctView:(BVProduct *)product{
+-(void)queueAnalyticsEventForProductView:(BVProduct *)product{
     
     if (!product){
         return;
     }
     
-    NSMutableDictionary* resultInfo = [NSMutableDictionary dictionaryWithDictionary:[self getRelavantInfoForRecommendationType:product isVisible:YES]];
-    if (resultInfo != nil){
-        [[BVAnalyticsManager sharedManager] queueEvent:[self getRecommendationImpressionEvent:resultInfo]];
-    }
+    NSMutableDictionary* event = [NSMutableDictionary dictionaryWithDictionary:[self getRelavantInfoForRecommendationType:product isVisible:YES]];
+    [event addEntriesFromDictionary:[self getRecommendationParams]];
+    [[BVAnalyticsManager sharedManager] queueEvent:event];
     
 }
 
-+ (void)queueAnalyticsEventForWidgetScroll:(BVProductRecommendationWidget)widgetType{
+- (void)queueAnalyticsEventForRecommendationsOnPage:(BVProductRecommendationWidget)widgetType{
     
-    BVAnalyticsManager *bvAnalyticsInstance = [BVAnalyticsManager sharedManager];
+    NSMutableDictionary* event = [NSMutableDictionary dictionaryWithDictionary:[self getUsedFeatureParams]];
+    [event addEntriesFromDictionary:[self getFieldForWidgetType:widgetType]];
+    [event setObject:@"InView" forKey:@"name"];
+    [[BVAnalyticsManager sharedManager] queueEvent:event];
     
-    NSMutableDictionary *resultInfo = [NSMutableDictionary dictionaryWithDictionary:[self getUsedFeatureParams]];
-    [resultInfo addEntriesFromDictionary:[self getFieldForWidgetType:widgetType]];
-    [resultInfo setObject:@"scrolled" forKey:@"name"];
-    [resultInfo setObject:bvProductName forKey:@"bvProduct"];
-    
-    [bvAnalyticsInstance queueEvent:resultInfo];
 }
 
-+ (void)queueAnalyticsEventForProductFeatureUsed:(BVProduct *)product withFeatureUsed:(BVProductFeatureUsed)featureUsed withWidgetType:(BVProductRecommendationWidget)widgetType{
+
+
+- (void)queueAnalyticsEventForWidgetScroll:(BVProductRecommendationWidget)widgetType{
+    
+    NSMutableDictionary *event = [NSMutableDictionary dictionaryWithDictionary:[self getUsedFeatureParams]];
+    [event addEntriesFromDictionary:[self getFieldForWidgetType:widgetType]];
+    [event setObject:@"Scrolled" forKey:@"name"];
+    [[BVAnalyticsManager sharedManager] queueEvent:event];
+    
+}
+
+- (void)queueAnalyticsEventForProductTapped:(BVProduct *)product{
     
     if (!product){
         return;
     }
-    
-    BVAnalyticsManager *bvAnalyticsInstance = [BVAnalyticsManager sharedManager];
 
-    NSMutableDictionary *resultInfo = [NSMutableDictionary dictionaryWithDictionary:[self getUsedFeatureParams]];
-    [resultInfo addEntriesFromDictionary:[self getRelavantInfoForRecommendationType:product isVisible:true]];
-    [resultInfo addEntriesFromDictionary:[self getFieldsForFeatureUsed:featureUsed]];
-    [resultInfo addEntriesFromDictionary:[self getFieldForWidgetType:widgetType]];
-    [bvAnalyticsInstance queueEvent:[self getRecommendationImpressionEvent:resultInfo]];
+    NSMutableDictionary *event = [NSMutableDictionary dictionaryWithDictionary:[self getUsedFeatureParams]];
+    [event addEntriesFromDictionary:[self getRelavantInfoForRecommendationType:product isVisible:true]];
+    [event setObject:@"conversion" forKey:@"name"];
+    [[BVAnalyticsManager sharedManager] queueEvent:event];
     
 }
 
-+(NSDictionary*)getPageViewEmbeddedEventParams {
-    return @{
-             @"cl": @"PageView",
-             @"type": @"Embedded",
-             @"source": @"recommendation-mob"
-             };
-}
 
-
-+ (void)queueEmbeddedRecommendationsPageViewEvent:(NSString *)productId
+- (void)queueEmbeddedRecommendationsPageViewEvent:(NSString *)productId
                                    withCategoryId:(NSString *)categoryId
-                                        withClientId:(NSString *)clientId
                            withNumRecommendations:(NSInteger)numRecommendations
-                                   withWidgetType:(NSString *)widgetType {
+                                   withWidgetType:(BVProductRecommendationWidget)widgetType {
     
-    BVAnalyticsManager *bvAnalyticsInstance = [BVAnalyticsManager sharedManager];
+    NSMutableDictionary* event = [NSMutableDictionary dictionary];
     
-    NSMutableDictionary* eventData = [NSMutableDictionary dictionary];
+    [event addEntriesFromDictionary:[self getPageViewEmbeddedEventParams]];
     
-    [eventData addEntriesFromDictionary:[self getPageViewEmbeddedEventParams]];
-    if (productId != nil){
-        [eventData setObject:productId forKey:@"productId"];
-    }
+    [event setValue:productId forKey:@"productId"];
+    [event setValue:categoryId forKey:@"categoryId"];
     
-    if (categoryId != nil){
-        [eventData setObject:categoryId forKey:@"categoryId"];
-    }
+    [event setObject:[BVRecsAnalyticsHelper getWidgetTypeString:widgetType] forKey:@"reportingGroup"];
+    [event setObject:@(numRecommendations) forKey:@"numRecommendations"];
     
-    if (clientId != nil){
-        [eventData setObject:clientId forKey:@"brand"];
-    }
-    
-    
-    [eventData setObject:[NSNumber numberWithInteger:numRecommendations] forKey:@"numRecommendations"];
-    
-    if (widgetType != nil){
-        [eventData setObject:widgetType forKey:@"reportingGroup"];
-    }
-    
-    [eventData setObject:bvProductName forKey:@"bvProduct"];
-    
-    [bvAnalyticsInstance queueEvent:eventData];
+    [[BVAnalyticsManager sharedManager] queueEvent:event];
     
 }
 
-
-+(NSDictionary*)getPrivateAnalyticInfoForProduct:(BVProduct*)product {
+-(NSDictionary*)getPrivateAnalyticInfoForProduct:(BVProduct*)product {
         
     NSMutableDictionary* productAnalytics = [NSMutableDictionary dictionary];
     
@@ -245,7 +184,7 @@ static const NSString *bvProductName = @"Recommendations";
         for (NSString* key in @[@"RKB", @"RKI", @"RKP", @"RKT", @"RKC"]) {
             
             if ([product.rawProductDict objectForKey:key] != nil){
-                NSNumber* value = [NSNumber numberWithInteger:[[product.rawProductDict objectForKey:key] integerValue]];
+                NSNumber* value = @([[product.rawProductDict objectForKey:key] integerValue]);
                 [productAnalytics setObject:value forKey:key];
             }
             

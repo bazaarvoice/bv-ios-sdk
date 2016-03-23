@@ -30,7 +30,11 @@ typedef NS_ENUM(NSUInteger, BVLogLevel) {
     /**
      *  Logs all info, errors, and warnings, including all API invocations and responeses.
      */
-    BVLogLevelVerbose = 4
+    BVLogLevelVerbose = 4,
+    /**
+     *  Logs only condensed analytic event information
+     */
+    BVLogLevelAnalyticsOnly = 5
 };
 
 /*!
@@ -78,5 +82,12 @@ typedef NS_ENUM(NSUInteger, BVLogLevel) {
  *  @param message The message to log
  */
 - (void)error:(NSString*)message;
+
+/**
+ *  Logs messages specific to analytic events that this SDK fires internally
+ *
+ *  @param message The message to log
+ */
+-(void)analyticsMessage:(NSString*)message;
 
 @end

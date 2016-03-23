@@ -6,95 +6,111 @@
 //
 
 import UIKit
+import BVSDK
+import SDWebImage
 
-class DemoStaticViewController: UIViewController, BVRecommendationsUIDelegate, BVRecommendationsUIDataSource {
+class DemoStaticViewController: UIViewController {
     
-    @IBOutlet weak var staticView : BVRecommendationsStaticView?
+    @IBOutlet weak var recommendationsContainerView : BVProductRecommendationsContainer!
+    var recommendations : [BVProduct]?
+    var spinner = Util.createSpinner()
+    var errorLabel = Util.createErrorLabel()
 
     override func viewDidLoad() {
+        
         super.viewDidLoad()
-        staticView?.recommendationSettings.recommendationLimit = 3;
-        staticView?.cellPadding = 5
-        staticView?.layer.borderColor = UIColor.lightGrayColor().CGColor
-        staticView?.layer.borderWidth = 0.5
-        staticView?.layer.cornerRadius = 5
-        staticView?.delegate = self
-        staticView?.datasource = self // kicks off the API call
+        self.loadRecommendations()
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "reloadOnSettingsChange:", name: "settingsChanged", object: nil)
+    }
+    
+    override func viewWillLayoutSubviews() {
+        
+        super.viewWillLayoutSubviews()
+        self.spinner.center = self.recommendationsContainerView.center
+        
+    }
+    
+    func loadRecommendations() {
+        
+        // add loading icon
+        self.view.addSubview(self.spinner)
+        self.errorLabel.removeFromSuperview()
+        
+        self.recommendationsContainerView.profile = BVGetShopperProfile()
+        self.recommendationsContainerView.profile.fetchProductRecommendations(4) { (profile:BVShopperProfile?, error:NSError?) -> Void in
+            
+            // remove loading icon
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
 
-    }
-    
-    func reloadOnSettingsChange(notification:NSNotification){
-        
-        if (notification.object?.boolValue == true){
-            staticView?.reloadView()
-        } else {
-            staticView?.refreshView()
+                self.spinner.removeFromSuperview()
+                
+                if error != nil {
+                    
+                    self.errorLabel.frame = self.recommendationsContainerView.bounds
+                    self.view.addSubview(self.errorLabel)
+                    print("Error: \(error!.localizedDescription)")
+                    
+                }
+                else {
+                    
+                    self.recommendations = profile?.recommendations as? [BVProduct]
+                    self.showRecommendations()
+                    
+                }
+                
+            })
+            
         }
-    
+        
     }
     
-    //MARK: BVRecommendationsUIDelegate
-    
-    
-    func styleRecommendationsView(recommendationsView: BVRecommendationsSharedView!) {
+    func showRecommendations() {
         
-        /*
-        * custom style your cell here. ex:
-        *
-        * recommendationsView.backgroundColor = UIColor.whiteColor()
-        * recommendationsView.priceHidden = true
-        * recommendationsView.shopButton?.backgroundColor = UIColor.lightGrayColor()
-        *
-        * recommendationsView.dislikeButtonHidden = true
-        * recommendationsView.likeImage = myLikeImage
-        * recommendationsView.likeImageSelected = myLikeImageSelected
-        *
-        */
-        // Optionally, style the product view
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let numRecommendations = CGFloat(self.recommendations!.count)
         
-        // example delegate method
-        recommendationsView.starsAndReviewStatsHidden = appDelegate.hideStars()
-        recommendationsView.starsColor = appDelegate.starsColor()
+        let bounds = recommendationsContainerView?.bounds
         
-        if appDelegate.useCustomStars(){
-            recommendationsView.starsEmptyImage = UIImage(named: "like-unselected.png")
-            recommendationsView.starsFilledImage = UIImage(named: "heart-filled.png")
-        } else {
-            recommendationsView.starsEmptyImage = nil
-            recommendationsView.starsFilledImage = nil
+        var productBounds = CGRectMake((bounds?.origin.x)!, (bounds?.origin.y)!, (bounds?.width)!, (bounds?.height)! / numRecommendations)
+        
+        for product in self.recommendations! {
+            
+            let productView = NSBundle.mainBundle().loadNibNamed("DemoStaticProductView", owner: self, options: nil).first as! DemoStaticProductView
+            
+            productView.bvProduct = product
+            productView.productName?.text = product.productName
+            productView.productImageView?.sd_setImageWithURL(NSURL(string: product.imageURL))
+            productView.rating?.text = "\(product.averageRating ?? 0)"
+            productView.numReviews?.text = "(\(product.numReviews ?? 0) reviews)"
+            productView.starRating?.value = CGFloat(product.averageRating ?? 0)
+            
+            productView.frame = productBounds
+            
+            let tapGesture = UITapGestureRecognizer(target: self, action: "viewTap:")
+            tapGesture.cancelsTouchesInView = false
+            productView.addGestureRecognizer(tapGesture)
+            
+            self.recommendationsContainerView?.addSubview(productView)
+            
+            productBounds.origin.y += productBounds.height
+            
         }
+        
     }
     
-    func didSelectProduct(product: BVProduct!) {
-        
-        // Navigate to a demo produdct page
-        
-        let productView = ProductPageViewController(nibName:"ProductPageViewController", bundle: nil)
-        productView.title = product.productName
-        productView.product = product
+    func viewTap(sender: UITapGestureRecognizer) {
+
+        let productView = sender.view as! DemoStaticProductView
+        let product = productView.bvProduct
+        product.recordTap()
+
+        let productDetailPage = ProductPageViewController(nibName:"ProductPageViewController", bundle: nil)
+        productDetailPage.title = product.productName
+        productDetailPage.product = product
         
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let rootViewController = appDelegate.window!.rootViewController as! UINavigationController
-        rootViewController.pushViewController(productView, animated: true)
-    }
-    
-    func didFailToLoadWithError(err: NSError!) {
-        print("didFailToLoadWithError called from DemoStaticViewController. \(err.localizedDescription)");
-    }
-    
-    func didToggleLike(product: BVProduct!) {
-        print("didToggleLike for \(product.productName)");
-    }
-    
-    func didToggleDislike(product: BVProduct!) {
-        print("didTogggleBan for \(product.productName)")
-    }
-    
-    func didSelectShopNow(product: BVProduct!) {
-        print("didSelectShopNow for \(product.productName)")
+        rootViewController.pushViewController(productDetailPage, animated: true)
+        
     }
 
 }

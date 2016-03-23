@@ -102,8 +102,8 @@
 
 -(void)updateUserProfileForce {
     
-    NSAssert(self.apiKeyShopperAdvertising != nil, @"You must supply a Shopper Advertising key in the BVSDKManager before using the Bazaarvoice SDK.");
-    NSAssert(self.clientId != nil, @"You must supply client id in the BVSDKManager before using the Bazaarvoice SDK.");
+//    NSAssert(self.apiKeyShopperAdvertising != nil, @"You must supply a Shopper Advertising key in the BVSDKManager before using the Bazaarvoice SDK.");
+//    NSAssert(self.clientId != nil, @"You must supply client id in the BVSDKManager before using the Bazaarvoice SDK.");
     
     [self.bvUser updateProfile:true withAPIKey:self.apiKeyShopperAdvertising isStaging:self.staging];
     

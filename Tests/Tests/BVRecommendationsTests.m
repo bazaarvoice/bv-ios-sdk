@@ -56,18 +56,8 @@ static BVAuthenticatedUser *user = nil;
     
 }
 
-//- (void)test1_UserProfile {
-//    
-//    userProfileExpectation = [self expectationWithDescription:@"Expecting user profile network event"];
-//    
-//    [[BVSDKManager sharedManager] setUserWithAuthString:@"aa05cf391c8d4738efb4d05f7b2ad7ce7573657269643d4f6d6e694368616e6e656c50726f66696c65313226656d61696c3d6a61736f6e406a61736f6e2e636f6d"]; // pre-populated with a small profile interested in "pets", "powersports", "gamefish", and others -- for testing purposes.
-//    
-//    [self waitForExpectations];
-//}
-//
-
 // Basic test that fetches the client's IDFA and returns the recommendations. In this case we most likely we'll just have empty data
-- (void)test2_ProfileWithClientIDFA {
+- (void)test1_ProfileWithClientIDFA {
     
     __weak XCTestExpectation *expectation = [self expectationWithDescription:@"Test Profile with Client IDFA Expectation"];
     
@@ -87,7 +77,7 @@ static BVAuthenticatedUser *user = nil;
 
 
 // Internal API test
-- (void)test3_PrivateProfileRecommendations {
+- (void)test2_PrivateProfileRecommendations {
     
     __weak XCTestExpectation *expectation = [self expectationWithDescription:@"Test Profile with Hard-Code IDFA Expectation"];
     
@@ -113,7 +103,7 @@ static BVAuthenticatedUser *user = nil;
 }
 
 
-- (void)test4_RecommendationsForProductId {
+- (void)test3_RecommendationsForProductId {
     
     __weak XCTestExpectation *expectation = [self expectationWithDescription:@"Test Recommendations with Product Id"];
     
@@ -132,7 +122,7 @@ static BVAuthenticatedUser *user = nil;
     
 }
 
-- (void)test5_RecommendationsForCategoryId {
+- (void)test4_RecommendationsForCategoryId {
     
     __weak XCTestExpectation *expectation = [self expectationWithDescription:@"Test Recommendations with Category Id"];
     

@@ -16,11 +16,11 @@
 /**
  *  Provides the master version of the SDK.
  */
-#define BV_SDK_VERSION @"3.1.2"
+#define BV_SDK_VERSION @"3.2.0"
 
 // Conversation SDK Version
 #define SDK_HEADER_NAME @"X-UA-BV-SDK"
-#define SDK_HEADER_VALUE @"IOS_SDK_V312"
+#define SDK_HEADER_VALUE @"IOS_SDK_V320"
 
 /**
  *  Error domain for NSError results, when present.

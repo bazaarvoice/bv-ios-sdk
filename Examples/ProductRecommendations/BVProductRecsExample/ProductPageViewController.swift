@@ -6,8 +6,10 @@
 //
 
 import Foundation
+import BVSDK
+import NVActivityIndicatorView
 
-class ProductPageViewController: UIViewController, BVRecommendationsUIDelegate, BVRecommendationsUIDataSource {
+class ProductPageViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     
     var product: BVProduct?
     
@@ -16,13 +18,20 @@ class ProductPageViewController: UIViewController, BVRecommendationsUIDelegate, 
     var categoryIds : [String]?
     
     @IBOutlet weak var categoryPickerButton: UIButton!
-    
     @IBOutlet weak var productImageView: UIImageView!
-    
     @IBOutlet weak var productTitleLabel: UILabel!
     
-    @IBOutlet weak var recommendationCarouselMixerStrategy: BVRecommendationsCarouselView!
-    @IBOutlet weak var recommendationCarouselCategory: BVRecommendationsCarouselView!
+    @IBOutlet weak var recommendationsInSameCategoryView : BVProductRecommendationsCollectionView!
+    @IBOutlet weak var recommendationsBasedOnProductView : BVProductRecommendationsCollectionView!
+    
+    var spinner1 = Util.createSpinner()
+    var spinner2 = Util.createSpinner()
+    
+    var errorLabel1 = Util.createErrorLabel()
+    var errorLabel2 = Util.createErrorLabel()
+    
+    var recommendationsBasedOnProduct : [BVProduct]?
+    var recommendationsInSameCategory : [BVProduct]?
     
     @IBOutlet weak var recommendationStrategyLabel: UILabel!
     
@@ -36,11 +45,7 @@ class ProductPageViewController: UIViewController, BVRecommendationsUIDelegate, 
         
         self.productImageView.sd_setImageWithURL(NSURL(string: product!.imageURL))
         
-        // configure the recommendations by strategy carousel
-        
-        // Mixer strategy carousel ------------------
-        
-        self.categoryIds = self.product?.rawProductDict["category_ids"] as! [String]
+        self.categoryIds = self.product?.rawProductDict["category_ids"] as? [String]
         if (self.categoryIds!.count > 0){
             self.selectedCategoryId = self.categoryIds![0]
         } else {
@@ -48,40 +53,109 @@ class ProductPageViewController: UIViewController, BVRecommendationsUIDelegate, 
             self.categoryPickerButton.hidden = true
         }
         
-        recommendationCarouselMixerStrategy?.layer.borderColor = UIColor.lightGrayColor().CGColor
-        recommendationCarouselMixerStrategy?.layer.borderWidth = 0.5
-        recommendationCarouselMixerStrategy?.layer.cornerRadius = 4
+        self.recommendationsBasedOnProductView?.dataSource = self
+        self.recommendationsBasedOnProductView?.delegate = self
+        self.recommendationsBasedOnProductView?.registerNib(UINib(nibName: "DemoCarouselCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "DemoCarouselCollectionViewCell")
         
-        recommendationCarouselMixerStrategy?.cellHorizontalSpacing = 8
-        recommendationCarouselMixerStrategy?.leftAndRightPadding = 8
-        recommendationCarouselMixerStrategy?.topAndBottmPadding = 8
+        self.recommendationsInSameCategoryView?.dataSource = self
+        self.recommendationsInSameCategoryView?.delegate = self
+        self.recommendationsInSameCategoryView?.registerNib(UINib(nibName: "DemoCarouselCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "DemoCarouselCollectionViewCell")
         
-        // recommendations view data properties
-        recommendationCarouselMixerStrategy?.recommendationSettings.productId = self.product?.productId
-        recommendationCarouselMixerStrategy?.recommendationSettings.maxAgeCache = 30
+        self.recommendationsBasedOnProductView?.layer.borderColor = UIColor.lightGrayColor().CGColor
+        self.recommendationsBasedOnProductView?.layer.borderWidth = 0.5
+        self.recommendationsBasedOnProductView?.layer.cornerRadius = 4
         
-        recommendationCarouselMixerStrategy.delegate = self
+        self.recommendationsInSameCategoryView?.layer.borderColor = UIColor.lightGrayColor().CGColor
+        self.recommendationsInSameCategoryView?.layer.borderWidth = 0.5
+        self.recommendationsInSameCategoryView?.layer.cornerRadius = 4
         
-        // Category carousel ---------------------
-        
-        recommendationCarouselCategory?.layer.borderColor = UIColor.lightGrayColor().CGColor
-        recommendationCarouselCategory?.layer.borderWidth = 0.5
-        recommendationCarouselCategory?.layer.cornerRadius = 4
-        
-        recommendationCarouselCategory?.cellHorizontalSpacing = 8
-        recommendationCarouselCategory?.leftAndRightPadding = 8
-        recommendationCarouselCategory?.topAndBottmPadding = 8
-        
-        // recommendations view data properties
-        recommendationCarouselCategory?.recommendationSettings.productId = nil
-        recommendationCarouselCategory?.recommendationSettings.categoryId = self.selectedCategoryId
-        recommendationCarouselCategory?.recommendationSettings.maxAgeCache = 30
-        
-        recommendationCarouselCategory.delegate = self
-        
-        self.reloadCategoryCarousel()
-        self.reloadMixerStrategyCarousel()
+        self.loadRecommendationsSimilarToProduct()
+        self.loadRecommendationsInSameCategory()
 
+    }
+    
+    
+    override func viewWillLayoutSubviews() {
+        
+        super.viewWillLayoutSubviews()
+        
+        // set the item size for the collection views
+        for carousel in [ self.recommendationsInSameCategoryView, self.recommendationsBasedOnProductView ] {
+            
+            let layout = (carousel?.collectionViewLayout) as! UICollectionViewFlowLayout
+            layout.itemSize = CGSizeMake((carousel?.bounds.height)!, (carousel?.bounds.height)!)
+            
+        }
+        
+        self.spinner1.center = self.recommendationsBasedOnProductView.center
+        self.spinner2.center = self.recommendationsInSameCategoryView.center
+        
+    }
+    
+    func loadRecommendationsSimilarToProduct() {
+        
+        // show activity spinner
+        self.view.addSubview(self.spinner1)
+        self.errorLabel1.removeFromSuperview()
+        
+        let recs = BVGetShopperProfile()
+        
+        recs.fetchProductRecommendationsForProduct(self.product!.productId, withLimit: 10) { (profile:BVShopperProfile?, error:NSError?) -> Void in
+            
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+            
+                self.spinner1.removeFromSuperview()
+                
+                if error != nil {
+                
+                    self.errorLabel1.frame = self.recommendationsBasedOnProductView.bounds
+                    self.recommendationsBasedOnProductView.addSubview(self.errorLabel1)
+                    
+                }
+                else {
+                    
+                    self.recommendationsBasedOnProduct = profile?.recommendations as? [BVProduct]
+                    self.recommendationsBasedOnProductView.reloadData()
+                    
+                }
+                
+            })
+            
+        }
+        
+    }
+    
+    func loadRecommendationsInSameCategory() {
+        
+        // show activity spinner
+        self.view.addSubview(self.spinner2)
+        self.errorLabel2.removeFromSuperview()
+        
+        let recs = BVGetShopperProfile()
+        
+        recs.fetchProductRecommendationsForCategory(self.selectedCategoryId ?? "", withLimit: 10) { (profile:BVShopperProfile?, error:NSError?) -> Void in
+            
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                
+                self.spinner2.removeFromSuperview()
+                
+                if error != nil {
+                    
+                    self.errorLabel2.frame = self.recommendationsInSameCategoryView.bounds
+                    self.recommendationsInSameCategoryView.addSubview(self.errorLabel2)
+                    
+                }
+                else {
+                    
+                    self.recommendationsInSameCategory = profile?.recommendations as? [BVProduct]
+                    self.recommendationsInSameCategoryView.reloadData()
+                    
+                }
+                
+            })
+            
+        }
+        
     }
     
     func setUpPopRootButton(){
@@ -106,26 +180,10 @@ class ProductPageViewController: UIViewController, BVRecommendationsUIDelegate, 
         
     }
     
-    func reloadMixerStrategyCarousel(){
-        
-        recommendationCarouselMixerStrategy.datasource = self
-    }
-    
-    func reloadCategoryCarousel(){
-        
-        recommendationCarouselCategory.datasource = self
-    }
-    
     
     @IBAction func selectCategory(sender: AnyObject) {
         
-        doCategoryPicker()
-    }
-    
-    
-    
-    func doCategoryPicker(){
-        
+        // let user pick what category to limit the recommendations to
         let optionMenu = UIAlertController(title: nil, message: "Select a category filter.", preferredStyle: .ActionSheet)
         
         let closure = { (action: UIAlertAction!) -> Void in let
@@ -136,9 +194,7 @@ class ProductPageViewController: UIViewController, BVRecommendationsUIDelegate, 
                 
                 self.selectedCategoryId = self.categoryIds![index!]
                 
-                self.recommendationCarouselCategory.recommendationSettings.categoryId = self.selectedCategoryId
-                
-                self.reloadCategoryCarousel()
+                self.loadRecommendationsInSameCategory()
                 
             }
         }
@@ -161,44 +217,67 @@ class ProductPageViewController: UIViewController, BVRecommendationsUIDelegate, 
         
     }
     
-    //MARK: -  BVRecommendationsUIDelegate
+    //MARK: UICollectionViewDelegate & UICollectionViewDatasource
     
-    func styleRecommendationsView(recommendationsView: BVRecommendationsSharedView!) {
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        // Optionally, style the product view
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        
-        // example delegate method
-        recommendationsView.starsAndReviewStatsHidden = appDelegate.hideStars()
-        recommendationsView.starsColor = appDelegate.starsColor()
-        
-        if appDelegate.useCustomStars(){
-            recommendationsView.starsEmptyImage = UIImage(named: "like-unselected.png")
-            recommendationsView.starsFilledImage = UIImage(named: "heart-filled.png")
-        } else {
-            recommendationsView.starsEmptyImage = nil
-            recommendationsView.starsFilledImage = nil
+        if collectionView == self.recommendationsInSameCategoryView {
+            return self.recommendationsInSameCategory?.count ?? 0
         }
-
+        else {
+            return self.recommendationsBasedOnProduct?.count ?? 0
+        }
+        
     }
     
-    func didSelectProduct(product: BVProduct!) {
-        //
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("DemoCarouselCollectionViewCell", forIndexPath: indexPath) as! DemoCarouselCollectionViewCell
+        
+        var product : BVProduct?
+        
+        if collectionView == self.recommendationsInSameCategoryView {
+            product = self.recommendationsInSameCategory![indexPath.row]
+        }
+        
+        if collectionView == self.recommendationsBasedOnProductView {
+            product = self.recommendationsBasedOnProduct![indexPath.row]
+        }
+        
+        cell.bvProduct = product!
+        cell.productName.text = product!.productName
+        cell.rating.text = "\(product!.averageRating ?? 0)"
+        cell.numReview.text = "(\(product!.numReviews ?? 0) reviews)"
+        cell.price.text = product!.price ?? ""
+        cell.starRating.value = CGFloat(product!.averageRating.floatValue)
+        
+        let imageUrl = NSURL(string: product!.imageURL)
+        cell.productImageView.sd_setImageWithURL(imageUrl)
+        
+        return cell
+        
+    }
+    
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        
+        var product : BVProduct?
+        
+        if collectionView == self.recommendationsInSameCategoryView {
+            product = self.recommendationsInSameCategory![indexPath.row]
+        }
+        
+        if collectionView == self.recommendationsBasedOnProductView {
+            product = self.recommendationsBasedOnProduct![indexPath.row]
+        }
+        
         let productView = ProductPageViewController(nibName:"ProductPageViewController", bundle: nil)
-        productView.title = product.productName
-        productView.product = product
+        productView.title = product!.productName
+        productView.product = product!
         
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let rootViewController = appDelegate.window!.rootViewController as! UINavigationController
         rootViewController.pushViewController(productView, animated: true)
         
     }
-    
-    func didFailToLoadWithError(err: NSError!) {
-        // error
-        
-    }
-    
-    //MARK: -  BVRecommendationsUIDatasource
     
 }

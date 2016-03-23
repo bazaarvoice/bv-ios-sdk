@@ -1,22 +1,19 @@
 PODS:
   - BVSDK/BVRecommendations (3.1.2):
     - BVSDK/Core
-  - BVSDK/BVRecommendationsUI (3.1.2):
-    - BVSDK/BVRecommendations
-    - HCSStarRatingView (~> 1.4.3)
-    - SDWebImage
-    - SVProgressHUD
+    - HCSStarRatingView
   - BVSDK/Core (3.1.2)
   - FBSnapshotTestCase/Core (2.0.7)
   - HCSStarRatingView (1.4.3)
+  - NVActivityIndicatorView (2.3)
   - SDWebImage (3.7.3):
     - SDWebImage/Core (= 3.7.3)
   - SDWebImage/Core (3.7.3)
-  - SVProgressHUD (1.1.3)
 
 DEPENDENCIES:
-  - BVSDK/BVRecommendationsUI (from `../../`)
+  - BVSDK/BVRecommendations (from `../../`)
   - FBSnapshotTestCase/Core
+  - NVActivityIndicatorView
   - SDWebImage
 
 EXTERNAL SOURCES:
@@ -24,10 +21,10 @@ EXTERNAL SOURCES:
     :path: ../../
 
 SPEC CHECKSUMS:
-  BVSDK: c65458891046eb0b3d199cbe65d7f0239f5a5d5e
+  BVSDK: 470a37a021e51b5e46cbe9c2d7cb199542cfaf89
   FBSnapshotTestCase: 7e85180d0d141a0cf472352edda7e80d7eaeb547
   HCSStarRatingView: bada6ae98258c3019531e0218030e2d5ad10765a
+  NVActivityIndicatorView: c7ef25ef527ab5e51b00322cb1ddd58681bcf2a3
   SDWebImage: 1d2b1a1efda1ade1b00b6f8498865f8ddedc8a84
-  SVProgressHUD: 748080e4f36e603f6c02aec292664239df5279c1
 
 COCOAPODS: 0.39.0

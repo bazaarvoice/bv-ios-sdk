@@ -28,12 +28,7 @@
 - (void)setUp
 {
     [super setUp];
-    
-    // Conversations SDK set up. This is the deprecated method of setting up the Conversations SDK.
-//    [BVSettings instance].staging = IS_STAGING;
-//    [BVSettings instance].clientId = TEST_CLIENT_ID;
-//    [BVSettings instance].passKey = @"2cpdrhohmgmwfz8vqyo48f52g";
-    
+        
     [BVSDKManager sharedManager].staging = IS_STAGING;
     [BVSDKManager sharedManager].clientId = TEST_CLIENT_ID;
     
@@ -334,24 +329,19 @@
     numberOfExpectedPageviewAnalyticsEvents = 0;
     
     // General recommendations - Test by sending a bunch of events on threads with different priorities.
-    
+
     dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void){
-        NSString *widgetTypeString = [BVRecsAnalyticsHelper getWidgetTypeString:RecommendationsCarousel];
-        [BVRecsAnalyticsHelper queueEmbeddedRecommendationsPageViewEvent:nil withCategoryId:nil withClientId:TEST_CLIENT_ID withNumRecommendations:20 withWidgetType:widgetTypeString];
+        [[BVRecsAnalyticsHelper sharedManager] queueEmbeddedRecommendationsPageViewEvent:nil withCategoryId:nil withNumRecommendations:20 withWidgetType:RecommendationsCarousel];
     });
     
     dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_LOW, 0), ^(void){
         // Product-spefic recommendations
-        NSString * widgetTypeString = [BVRecsAnalyticsHelper getWidgetTypeString:RecommendationsStaticView];
-        [BVRecsAnalyticsHelper queueEmbeddedRecommendationsPageViewEvent:@"test-proudct-id" withCategoryId:nil withClientId:TEST_CLIENT_ID withNumRecommendations:20 withWidgetType:widgetTypeString];
-        
+        [[BVRecsAnalyticsHelper sharedManager] queueEmbeddedRecommendationsPageViewEvent:@"test-product-id" withCategoryId:nil withNumRecommendations:20 withWidgetType:RecommendationsCustom];
     });
 
     dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^(void){
         // Categorical recommendations
-        NSString *widgetTypeString = [BVRecsAnalyticsHelper getWidgetTypeString:RecommendationsTableView];
-        [BVRecsAnalyticsHelper queueEmbeddedRecommendationsPageViewEvent:nil withCategoryId:@"test-category-id" withClientId:TEST_CLIENT_ID withNumRecommendations:20 withWidgetType:widgetTypeString];
-
+        [[BVRecsAnalyticsHelper sharedManager] queueEmbeddedRecommendationsPageViewEvent:nil withCategoryId:@"test-category-id" withNumRecommendations:20 withWidgetType:RecommendationsTableView];
     });
     
     [self waitForAnalytics];
@@ -363,7 +353,7 @@
     numberOfExpectedImpressionAnalyticsEvents = 1;
     numberOfExpectedPageviewAnalyticsEvents = 0;
     
-    [BVRecsAnalyticsHelper queueAnalyticsEventForWidgetScroll:RecommendationsCarousel];
+    [[BVRecsAnalyticsHelper sharedManager] queueAnalyticsEventForWidgetScroll:RecommendationsCarousel];
     
     [[BVAnalyticsManager sharedManager] flushQueue];
     
@@ -377,7 +367,7 @@
     
     BVProduct *testProduct = [self createFakeProduct];
     
-    [BVRecsAnalyticsHelper queueAnalyticsEventForProdctView:testProduct];
+    [[BVRecsAnalyticsHelper sharedManager] queueAnalyticsEventForProductView:testProduct];
     
     [[BVAnalyticsManager sharedManager] flushQueue];
     
@@ -391,12 +381,8 @@
     numberOfExpectedPageviewAnalyticsEvents = 0;
     
     BVProduct *testProduct = [self createFakeProduct];
-    
-    [BVRecsAnalyticsHelper queueAnalyticsEventForProductFeatureUsed:testProduct withFeatureUsed:TapLike withWidgetType:RecommendationsCustom];
-    [BVRecsAnalyticsHelper queueAnalyticsEventForProductFeatureUsed:testProduct withFeatureUsed:TapProduct withWidgetType:RecommendationsCarousel];
-    [BVRecsAnalyticsHelper queueAnalyticsEventForProductFeatureUsed:testProduct withFeatureUsed:TapRatingsReviews withWidgetType:RecommendationsStaticView];
-    [BVRecsAnalyticsHelper queueAnalyticsEventForProductFeatureUsed:testProduct withFeatureUsed:TapShopNow withWidgetType:RecommendationsTableView];
-    [BVRecsAnalyticsHelper queueAnalyticsEventForProductFeatureUsed:testProduct withFeatureUsed:TapUnlike withWidgetType:RecommendationsCarousel];
+
+    [[BVRecsAnalyticsHelper sharedManager] queueAnalyticsEventForProductTapped:testProduct];
     
     [[BVAnalyticsManager sharedManager] flushQueue];
     
