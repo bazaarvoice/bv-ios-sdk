@@ -1,12 +1,14 @@
 //
 //  GeneralizedDemoViewController.m
-//  Bazaarvoice Mobile Ads SDK - Demo Application
+//  Bazaarvoice SDK - Demo Application
 //
-//  Copyright 2015 Bazaarvoice Inc. All rights reserved.
+//  Copyright 2016 Bazaarvoice Inc. All rights reserved.
 //
 
 #import "GeneralizedDemoViewController.h"
-#import <BVSDK/BVAdvertising.h>
+
+@import GoogleMobileAds;
+
 
 @interface GeneralizedDemoViewController ()<GADInterstitialDelegate, GADNativeContentAdLoaderDelegate, GADNativeCustomTemplateAdLoaderDelegate, UITextFieldDelegate>
 {
@@ -42,9 +44,9 @@
 @property UIButton* goButton;
 
 // ads
-@property BVTargetedInterstitial* interstitial;
-@property BVTargetedBannerView* bannerView;
-@property BVTargetedAdLoader* adLoader;
+@property DFPInterstitial* interstitial;
+@property DFPBannerView* bannerView;
+@property GADAdLoader* adLoader;
 
 // special result container for native ads
 @property UIViewController* nativeResult;
@@ -329,10 +331,10 @@
 
 -(void)requestInterstitial:(NSString*)adUnitId targeting:(NSDictionary*)customTargeting {
     
-    self.interstitial = [[BVTargetedInterstitial alloc] initWithAdUnitID:adUnitId]; // @"/6499/example/interstitial"
+    self.interstitial = [[DFPInterstitial alloc] initWithAdUnitID:adUnitId]; // @"/6499/example/interstitial"
     [self.interstitial setDelegate:self];
     
-    BVTargetedRequest* request = [self.interstitial getTargetedRequest];
+    DFPRequest* request = [DFPRequest request];
     request.customTargeting = customTargeting; // override targeting for manual testing purposes
     [self.interstitial loadRequest:request];
 }
@@ -364,10 +366,10 @@
         return;
     }
     
-    self.bannerView = [[BVTargetedBannerView alloc] initWithAdSize:size];
+    self.bannerView = [[DFPBannerView alloc] initWithAdSize:size];
     self.bannerView.adUnitID = adUnitId; // @"/6499/example/banner"
     self.bannerView.rootViewController = self;
-    BVTargetedRequest* request = [self.bannerView getTargetedRequest];
+    DFPRequest* request = [DFPRequest request];
     request.customTargeting = customTargeting; // override targeting for manual testing purposes
     [self.bannerView loadRequest:request];
     
@@ -408,14 +410,14 @@
     
     NSArray* adTypes = @[ custom ? kGADAdLoaderAdTypeNativeCustomTemplate : kGADAdLoaderAdTypeNativeContent ];
     
-    self.adLoader = [[BVTargetedAdLoader alloc]
+    self.adLoader = [[GADAdLoader alloc]
                      initWithAdUnitID:adUnitId // @"/6499/example/native"
                      rootViewController:self
                      adTypes:adTypes
                      options:nil];
     
     [self.adLoader setDelegate:self];
-    BVTargetedRequest* request = [self.adLoader getTargetedRequest];
+    DFPRequest* request = [DFPRequest request];
     request.customTargeting = customTargeting; // override targeting for manual testing purposes
     [self.adLoader loadRequest:request];
 }
@@ -433,50 +435,43 @@
     overlay.alpha = 0.8;
     [self.nativeResult.view addSubview:overlay];
     
-    CGRect contentView = CGRectInset(self.nativeResult.view.bounds, 30, 50);
-    UIView* content = [[UIView alloc] initWithFrame: contentView];
-    content.layer.cornerRadius = 3;
-    content.backgroundColor = [UIColor whiteColor];
+    GADNativeContentAdView* contentAdView =
+    [[[NSBundle mainBundle] loadNibNamed:@"NativeContentAdView"
+                                   owner:nil
+                                 options:nil] firstObject];
     
-    UILabel* headlineLabel = [[UILabel alloc] initWithFrame:CGRectMake(0,0,contentView.size.width,20)];
-    headlineLabel.textColor = [UIColor blackColor];
-    headlineLabel.text = nativeContentAd.headline;
-    [content addSubview:headlineLabel];
+    // Associate the app install ad view with the app install ad object.
+    // This is required to make the ad clickable.
+    contentAdView.nativeContentAd = nativeContentAd;
     
-    UILabel* bodyLabel = [[UILabel alloc] initWithFrame:CGRectMake(0,CGRectGetMaxY(headlineLabel.frame),contentView.size.width,30)];
-    bodyLabel.textColor = [UIColor blackColor];
-    bodyLabel.text = nativeContentAd.body;
-    bodyLabel.font = [UIFont systemFontOfSize:10];
-    bodyLabel.numberOfLines = 0;
-    bodyLabel.lineBreakMode = NSLineBreakByWordWrapping;
-    [content addSubview:bodyLabel];
+    // Populate the app install ad view with the app install ad assets.
+    ((UIImageView *)contentAdView.logoView).image = nativeContentAd.logo.image;
+    ((UIImageView *)contentAdView.imageView).image = ((GADNativeAdImage *)[nativeContentAd.images firstObject]).image;
+    ((UILabel *)contentAdView.headlineView).text = nativeContentAd.headline;
+    ((UILabel *)contentAdView.advertiserView).text = nativeContentAd.advertiser;
+    ((UILabel *)contentAdView.bodyView).text = nativeContentAd.body;
+    [((UIButton *)contentAdView.callToActionView) setTitle:nativeContentAd.callToAction forState:UIControlStateNormal];
     
-    GADNativeAdImage* image = nativeContentAd.images[0];
-    UIImageView* imageView = [[UIImageView alloc] initWithImage:image.image];
-    imageView.frame = CGRectMake(0,CGRectGetMaxY(bodyLabel.frame), 200, 200);
-    imageView.contentMode = UIViewContentModeScaleAspectFit;
-    [content addSubview:imageView];
+    // In order for the SDK to process touch events properly, user interaction
+    // should be disabled on UIButtons. Must be disabled in nib -- just highlighted here for completeness.
+    contentAdView.callToActionView.userInteractionEnabled = NO;
     
-    UIImageView* logoView = [[UIImageView alloc] initWithImage:nativeContentAd.logo.image];
-    logoView.frame = CGRectMake(0,CGRectGetMaxY(imageView.frame), 30, 30);
-    logoView.contentMode = UIViewContentModeScaleAspectFit;
-    [content addSubview:logoView];
+    // size appropriately
+    CGFloat padding = self.view.bounds.size.width * 0.1;
+    contentAdView.frame = CGRectMake(padding,
+                                     self.view.bounds.size.height * 0.2,
+                                     self.view.bounds.size.width - padding*2,
+                                     self.view.bounds.size.height * 0.6);
     
-    UILabel* callToAction = [[UILabel alloc] initWithFrame:CGRectMake(0,CGRectGetMaxY(logoView.frame), contentView.size.width, 20)];
-    callToAction.textColor = [UIColor blackColor];
-    callToAction.text = nativeContentAd.callToAction;
-    callToAction.font = [UIFont systemFontOfSize:10];
-    callToAction.numberOfLines = 0;
-    callToAction.lineBreakMode = NSLineBreakByWordWrapping;
-    [content addSubview:callToAction];
-    
-    UILabel* advertiser = [[UILabel alloc] initWithFrame:CGRectMake(0,CGRectGetMaxY(callToAction.frame), contentView.size.width, 20)];
-    advertiser.textColor = [UIColor blackColor];
-    advertiser.text = nativeContentAd.advertiser;
-    advertiser.font = [UIFont systemFontOfSize:10];
-    advertiser.numberOfLines = 0;
-    advertiser.lineBreakMode = NSLineBreakByWordWrapping;
-    [content addSubview:advertiser];
+    // add a border and shadow, just to highlight in this demo application
+    contentAdView.layer.borderColor = [[UIColor grayColor] CGColor];
+    contentAdView.layer.borderWidth = 0.5;
+    contentAdView.layer.cornerRadius = 2;
+    contentAdView.layer.shadowColor = [[UIColor grayColor] CGColor];
+    contentAdView.layer.shadowOffset = CGSizeMake(0,5);
+    contentAdView.layer.shadowRadius = 5;
+    contentAdView.layer.shadowOpacity = 0.6;
+    contentAdView.layer.masksToBounds = NO;
     
     UIImage* closeButtonImage = [UIImage imageNamed:@"closeButton.png"];
     UIButton* closeButton = [[UIButton alloc] init];
@@ -485,7 +480,7 @@
     closeButton.frame = CGRectMake(0,0,closeButtonImage.size.width, closeButtonImage.size.height);
     [self.nativeResult.view addSubview:closeButton];
     
-    [self.nativeResult.view addSubview:content];
+    [self.nativeResult.view addSubview:contentAdView];
     
     [self.view addSubview:self.nativeResult.view];
     [self addChildViewController:self.nativeResult];

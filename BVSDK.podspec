@@ -9,7 +9,7 @@
 
 Pod::Spec.new do |s|
   s.name = "BVSDK"
-  s.version = '3.1.2'
+  s.version = '4.0.0'
   s.homepage = 'https://developer.bazaarvoice.com'
   s.license = { :type => 'Commercial', :text => 'See https://developer.bazaarvoice.com/API_Terms_of_Use' }
   s.author = { 'Bazaarvoice' => 'support@bazaarvoice.com' }
@@ -35,10 +35,6 @@ Pod::Spec.new do |s|
   end
 
   s.subspec 'BVAdvertising' do |ads|
-    ads.source_files = 'Pod/BVAdvertising/**/*.{h,m}'
-    # install Google Ads SDK, min of 7.6, and up to but not including 8.0
-    # NOTE: When using CocooaPods with "use_frameworks!" and a Swift app you cannot have a dependency # on a library that is not dynamic. You must install the SDK manually if using BVAdvertising.
-    ads.dependency 'Google-Mobile-Ads-SDK', '~> 7.6'
     ads.dependency 'BVSDK/Core'
   end
 
@@ -46,14 +42,10 @@ Pod::Spec.new do |s|
     recs.source_files = 'Pod/BVRecommendations/**/*.{h,m}'
     recs.dependency 'BVSDK/Core'
   end
-  
-s.subspec 'BVRecommendationsUI' do |recsui|
-    recsui.source_files = 'Pod/BVRecommendationsUI/**/*.{h,m}'
-    recsui.resource = "Pod/BVRecommendationsUI/**/*.{png,bundle,xib,nib}"
-    recsui.dependency 'BVSDK/BVRecommendations'
-    recsui.dependency 'SDWebImage'
-    recsui.dependency 'HCSStarRatingView', '~> 1.4.3'
-    recsui.dependency 'SVProgressHUD'
+
+  s.subspec 'BVCurations' do |curations|
+    curations.source_files = 'Pod/BVCurations/**/*.{h,m}'
+    curations.dependency 'BVSDK/Core'
   end
 
 end

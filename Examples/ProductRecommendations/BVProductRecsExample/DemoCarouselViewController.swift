@@ -1,82 +1,109 @@
 //
 //  CarouselViewController.swift
-//  Bazaarvoice SDK
+//  Bazaarvoice SDK Demo Application
 //
-//  Copyright 2015 Bazaarvoice Inc. All rights reserved.
+//  Copyright 2016 Bazaarvoice Inc. All rights reserved.
 //
 
 import UIKit
+import BVSDK
+import SDWebImage
 
-class DemoCarouselViewController: UIViewController, BVRecommendationsUIDelegate, BVRecommendationsUIDataSource {
+class DemoCarouselViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+    
+    var recommendations:[BVProduct]?
     
     @IBOutlet weak var descriptionLabel : UILabel?
-    @IBOutlet weak var carouselView : BVRecommendationsCarouselView?
-    @IBOutlet weak var carouselViewHeight : NSLayoutConstraint?
-    var starColor = UIColor.blackColor()
-    var starsHidden = false
-    var useCustomStars = false
+    @IBOutlet weak var carouselView : BVProductRecommendationsCollectionView!
+    @IBOutlet weak var carouselViewHeightConstraint : NSLayoutConstraint!
+    
+    var spinner = Util.createSpinner()
+    var errorLabel = Util.createErrorLabel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        carouselView?.layer.borderColor = UIColor.lightGrayColor().CGColor
-        carouselView?.layer.borderWidth = 0.5
-        carouselView?.layer.cornerRadius = 4;
+        carouselView.layer.borderColor = UIColor.lightGrayColor().CGColor
+        carouselView.layer.borderWidth = 0.5
+        carouselView.layer.cornerRadius = 4
         
-        carouselView?.cellHorizontalSpacing = 8;
-        carouselView?.leftAndRightPadding = 8;
-        carouselView?.topAndBottmPadding = 8;
+        carouselView.dataSource = self
+        carouselView.delegate = self
         
-        carouselView?.delegate = self;
-        carouselView?.datasource = self;
+        carouselView.registerNib(UINib(nibName: "DemoCarouselCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "DemoCarouselCollectionViewCell")
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "reloadOnSettingsChange:", name: "settingsChanged", object: nil)
-        
+        self.loadRecommendations()
+
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
     }
     
     override func viewWillLayoutSubviews() {
-        super.viewWillLayoutSubviews()
-    }
-    
-    func reloadOnSettingsChange(notification:NSNotification){
         
-        if (notification.object?.boolValue == true){
-            carouselView?.reloadView()
-        } else {
-            carouselView?.refreshView()
+        super.viewWillLayoutSubviews()
+        
+        if self.view.bounds.size.height <= 500 {
+            self.descriptionLabel!.text = ""
         }
         
+        let layout = (carouselView.collectionViewLayout) as! UICollectionViewFlowLayout
+        layout.itemSize = CGSizeMake(carouselView.bounds.height, carouselView.bounds.height)
+        
+        self.spinner.center = self.carouselView.center
+        
     }
     
-    @IBAction func CarouselHeightSliderChangedValue(sender: UISlider) {
-        carouselViewHeight?.constant = CGFloat(sender.value)
-        carouselView?.reloadView()
+    func loadRecommendations() {
+        
+        // add loading icon
+        self.view.addSubview(self.spinner)
+        self.errorLabel.removeFromSuperview()
+        
+        let request = BVRecommendationsRequest(limit: 20)
+        self.carouselView.loadRequest(request, completionHandler: { (recommendations:[BVProduct]) in
+            
+            // remove loading icon
+            self.spinner.removeFromSuperview()
+            self.recommendations = recommendations
+            self.carouselView?.reloadData()
+            
+        }) { (error:NSError) in
+            
+            // remove loading icon
+            self.spinner.removeFromSuperview()
+            self.errorLabel.frame = self.carouselView.bounds
+            self.carouselView.addSubview(self.errorLabel)
+            print("Error: \(error.localizedDescription)")
+            
+        }
+
+    }
+    
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        
+        return self.recommendations?.count ?? 0
+        
     }
     
 
-    //MARK: - BVRecommendationsUIDelegate
     
-    func styleRecommendationsView(recommendationsView: BVRecommendationsSharedView!) {
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("DemoCarouselCollectionViewCell", forIndexPath: indexPath) as! DemoCarouselCollectionViewCell
         
-        // example delegate method
-        recommendationsView.starsAndReviewStatsHidden = appDelegate.hideStars()
-        recommendationsView.starsColor = appDelegate.starsColor()
+        let product = self.recommendations![indexPath.row]
         
-        if appDelegate.useCustomStars(){
-            recommendationsView.starsEmptyImage = UIImage(named: "like-unselected.png")
-            recommendationsView.starsFilledImage = UIImage(named: "heart-filled.png")
-        } else {
-            recommendationsView.starsEmptyImage = nil
-            recommendationsView.starsFilledImage = nil
-        }
-    
+        cell.bvProduct = product
+        
+        return cell
+        
     }
     
-    func didSelectProduct(product: BVProduct!) {
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         
-        // Navigate to a demo produdct page
+        let product = self.recommendations![indexPath.row]
         
         let productView = ProductPageViewController(nibName:"ProductPageViewController", bundle: nil)
         productView.title = product.productName
@@ -86,15 +113,11 @@ class DemoCarouselViewController: UIViewController, BVRecommendationsUIDelegate,
         let rootViewController = appDelegate.window!.rootViewController as! UINavigationController
         rootViewController.pushViewController(productView, animated: true)
         
-    }   
-    
-    func didFailToLoadWithError(err: NSError!) {
-        // example delegate method
-        print("didFailToLoadWithError: called from CarouselViewController. \(err.localizedDescription)")
     }
     
-    func didLoadUserRecommendations(profileRecommendations: BVShopperProfile!) {
-        // example delegate method
+    @IBAction func carouselHeightChanged(sender: UISlider) {
+        
+        self.carouselViewHeightConstraint.constant = CGFloat(sender.value)
         
     }
     

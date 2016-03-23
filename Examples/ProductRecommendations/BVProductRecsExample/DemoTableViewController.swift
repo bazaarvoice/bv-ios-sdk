@@ -1,87 +1,95 @@
 //
-//  ViewController.swift
-//  Bazaarvoice SDK
+//  DemoTableViewController.swift
+//  Bazaarvoice SDK Demo Application
 //
-//  Copyright 2015 Bazaarvoice Inc. All rights reserved.
+//  Copyright © 2016 Bazaarvoice. All rights reserved.
 //
 
 import UIKit
+import BVSDK
 
-class DemoTableViewController: UIViewController, BVRecommendationsUIDelegate, BVRecommendationsUIDataSource {
+class DemoTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-    var tableViewController:BVRecommendationsTableViewController?
+    @IBOutlet var tableView : BVProductRecommendationsTableView!
+    
+    var recommendations:[BVProduct]?
+    
+    var spinner = Util.createSpinner()
+    
+    var errorLabel = Util.createErrorLabel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableViewController = BVRecommendationsTableViewController(nibName: "BVRecommendationsTableViewController", bundle: nil)
+        self.tableView.delegate = self
+        self.tableView.dataSource = self
+        self.tableView.estimatedRowHeight = 300
         
-        tableViewController!.delegate = self
-        tableViewController!.datasource = self
+        self.loadRecommendations()
         
-        // add tableView as child immediately.
-        // DemoTableViewController simply serves to demonstrate delegate/datasource interactions.
-        addChildViewController(tableViewController!)
-        view.addSubview(tableViewController!.view)
-        tableViewController!.didMoveToParentViewController(self)
-        
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "reloadOnSettingsChange:", name: "settingsChanged", object: nil)
+        self.tableView.registerNib(UINib(nibName: "DemoTableViewCell", bundle: nil), forCellReuseIdentifier: "DemoTableViewCell")
 
     }
     
     override func viewWillLayoutSubviews() {
-        super.viewWillLayoutSubviews()
         
-        tableViewController!.view.frame = self.view.bounds
+        super.viewWillLayoutSubviews()
+        self.spinner.center = self.view.center
+        
     }
     
-    func reloadOnSettingsChange(notification:NSNotification){
+    func loadRecommendations() {
         
-        if (notification.object?.boolValue == true){
-            tableViewController?.reloadView()
-        } else {
-            tableViewController?.refreshView()
+        self.view.addSubview(self.spinner)
+        self.errorLabel.removeFromSuperview()
+        
+    
+        let request = BVRecommendationsRequest(limit: 20)
+        self.tableView.loadRequest(request, completionHandler: { (recommendations:[BVProduct]) in
+            
+            self.spinner.removeFromSuperview()
+            self.recommendations = recommendations
+            self.tableView.reloadData()
+            
+        }) { (error:NSError) in
+            
+            self.spinner.removeFromSuperview()
+            self.errorLabel.frame = self.view.bounds
+            self.view.addSubview(self.errorLabel)
+            print("Error: \(error.localizedDescription)")
+            
         }
         
     }
     
-// MARK: BVRecommendationsUIDelegate
+
+    // MARK: - Table view data source
+
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1
+    }
+
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.recommendations?.count ?? 0;
+    }
+
     
-    func styleRecommendationsView(recommendationsView: BVRecommendationsSharedView!) {
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+
+        let cell = tableView.dequeueReusableCellWithIdentifier("DemoTableViewCell", forIndexPath: indexPath) as! DemoTableViewCell
         
-        /*
-         * custom style your cell here. ex:
-         *
-         * recommendationsView.backgroundColor = UIColor.whiteColor()
-         * recommendationsView.priceHidden = true
-         * recommendationsView.shopButton?.backgroundColor = UIColor.lightGrayColor()
-         *
-         * recommendationsView.dislikeButtonHidden = true
-         * recommendationsView.likeImage = myLikeImage
-         * recommendationsView.likeImageSelected = myLikeImageSelected
-         *
-         */
+        let product = self.recommendations![indexPath.row]
         
-        recommendationsView.removeCellOnDislike = true
-        
-        // Optionally, style the product view
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        
-        // example delegate method
-        recommendationsView.starsAndReviewStatsHidden = appDelegate.hideStars()
-        recommendationsView.starsColor = appDelegate.starsColor()
-        
-        if appDelegate.useCustomStars(){
-            recommendationsView.starsEmptyImage = UIImage(named: "like-unselected.png")
-            recommendationsView.starsFilledImage = UIImage(named: "heart-filled.png")
-        } else {
-            recommendationsView.starsEmptyImage = nil
-            recommendationsView.starsFilledImage = nil
-        }    }
+        cell.bvProduct = product
+
+        return cell
+    }
     
-    func didSelectProduct(product: BVProduct!) {
+    
+
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
-        // Navigate to a demo produdct page
+        let product = self.recommendations![indexPath.row]
         
         let productView = ProductPageViewController(nibName:"ProductPageViewController", bundle: nil)
         productView.title = product.productName
@@ -90,36 +98,7 @@ class DemoTableViewController: UIViewController, BVRecommendationsUIDelegate, BV
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let rootViewController = appDelegate.window!.rootViewController as! UINavigationController
         rootViewController.pushViewController(productView, animated: true)
+        
     }
     
-    func didFailToLoadWithError(err: NSError!) {
-        print("didFailToLoadWithError called from RecommendationTableViewController. \(err.localizedDescription)");
-    }
-    
-    func didToggleLike(product: BVProduct!) {
-        print("didToggleLike for \(product.productName)");
-    }
-    
-    func didToggleDislike(product: BVProduct!) {
-        print("didTogggleBan for \(product.productName)")
-    }
-    
-    func didSelectShopNow(product: BVProduct!) {
-        print("didSelectShopNow for \(product.productName)")
-    }
-    
-// MARK: BVRecommendationUIDatasource
-    
-    func setForBannedProductIds() -> NSMutableSet! {
-        // Set the list of bannded product IDs on the recommendations view controller
-        print("bannedProductIds")
-        return NSMutableSet()
-    }
-    
-    func setForFavoriteProductIds() -> NSMutableSet! {
-        // Set the list of favorite product IDs on the recommendations view controller
-        print("favoriteProductIds")
-        return NSMutableSet()
-    }
 }
-

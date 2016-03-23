@@ -1,9 +1,8 @@
 //
 //  BVProductReview.h
-//  Pods
+//  Bazaarvoice SDK
 //
-//  Created by Bazaarvoice on 1/11/16.
-//  Copyright © 2016 Bazaarvoice. All rights reserved.
+//  Copyright 2016 Bazaarvoice Inc. All rights reserved.
 //
 
 
@@ -11,23 +10,25 @@
 
 #define SET_IF_NOT_NULL(target, value) if(value != [NSNull null]) { target = value; }
 
+
+/// A product review written about a BVProduct
 @interface BVProductReview : NSObject
 
+
+/// Internal use
 -(id)initWithDict:(NSDictionary*)dict;
 
-/**
- *  Title the customer gave on the review of this product.
- */
+
+/// Title of the review. Example: "Great product!", "Drains batteries too quickly."
 @property (strong, nonatomic) NSString *reviewTitle;
 
-/**
- *  Highlighted review for this product
- */
+
+/// Body text of the review.
 @property (strong, nonatomic) NSString *reviewText;
 
-/**
- *  The author's name for the review highlight
- */
+
+/// The review author's name
 @property (strong, nonatomic) NSString *reviewAuthorName;
+
 
 @end

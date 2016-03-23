@@ -1,0 +1,45 @@
+PODS:
+  - BVSDK/BVCurations (4.0.0):
+    - BVSDK/Core
+  - BVSDK/Core (4.0.0)
+  - HCSStarRatingView (1.4.4)
+  - NVActivityIndicatorView (2.5)
+  - OHHTTPStubs (5.0.0):
+    - OHHTTPStubs/Default (= 5.0.0)
+  - OHHTTPStubs/Core (5.0.0)
+  - OHHTTPStubs/Default (5.0.0):
+    - OHHTTPStubs/Core
+    - OHHTTPStubs/JSON
+    - OHHTTPStubs/NSURLSession
+    - OHHTTPStubs/OHPathHelpers
+  - OHHTTPStubs/JSON (5.0.0):
+    - OHHTTPStubs/Core
+  - OHHTTPStubs/NSURLSession (5.0.0):
+    - OHHTTPStubs/Core
+  - OHHTTPStubs/OHPathHelpers (5.0.0)
+  - SDWebImage (3.7.5):
+    - SDWebImage/Core (= 3.7.5)
+  - SDWebImage/Core (3.7.5)
+  - youtube-ios-player-helper (0.1.6)
+
+DEPENDENCIES:
+  - BVSDK/BVCurations (from `../../`)
+  - HCSStarRatingView
+  - NVActivityIndicatorView
+  - OHHTTPStubs
+  - SDWebImage
+  - youtube-ios-player-helper (~> 0.1.4)
+
+EXTERNAL SOURCES:
+  BVSDK:
+    :path: ../../
+
+SPEC CHECKSUMS:
+  BVSDK: 179ee6171a4c9766a401ad4c3c09b976a4cf126f
+  HCSStarRatingView: 25f2497549b80f71fd1b0a2ed3631e5ccaa73362
+  NVActivityIndicatorView: 18e82784c9cb2d5f3df3129a3e4754eb075ebca0
+  OHHTTPStubs: a5d2e9eea07869d42ec03338325f398bc520e159
+  SDWebImage: 69c6303e3348fba97e03f65d65d4fbc26740f461
+  youtube-ios-player-helper: 21ab92db027c7ff86cb17a3843a3f6eafc8158d2
+
+COCOAPODS: 0.39.0

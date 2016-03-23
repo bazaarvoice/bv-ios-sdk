@@ -2,7 +2,7 @@
 //  RootViewController.m
 //  Bazaarvoice Mobile Ads SDK - Demo Application
 //
-//  Copyright 2015 Bazaarvoice Inc. All rights reserved.
+//  Copyright 2016 Bazaarvoice Inc. All rights reserved.
 //
 
 #import "RootViewController.h"
@@ -40,7 +40,7 @@
     self.locationListener = [[LocationExample alloc] init];
     
     
-    UIBarButtonItem* adUnitTestBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"gear.png"] style:UIBarButtonItemStyleDone target:self action:@selector(adUnitTestButtonPressed)];
+    UIBarButtonItem* adUnitTestBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"gear.png"] style:UIBarButtonSystemItemCamera target:self action:@selector(adUnitTestButtonPressed)];
     self.navigationItem.rightBarButtonItem = adUnitTestBarButtonItem;
     
     UICollectionViewFlowLayout *layout= [[UICollectionViewFlowLayout alloc] init];

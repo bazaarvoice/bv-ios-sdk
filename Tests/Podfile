@@ -4,5 +4,7 @@ target 'BVSDK', :exclusive => true do
     pod "BVSDK", :path => "../"
     pod "BVSDK/BVConversations", :path => "../"
     pod "BVSDK/BVAdvertising", :path => "../"
-    pod "BVSDK/BVRecommendationsUI", :path => "../"
+    pod "BVSDK/BVRecommendations", :path => "../"
+    pod "BVSDK/BVCurations", :path => "../"
+    pod 'OHHTTPStubs'
 end

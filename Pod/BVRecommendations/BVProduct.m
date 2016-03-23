@@ -2,10 +2,17 @@
 //  BVProduct.m
 //  Bazaarvoice SDK
 //
-//  Copyright 2015 Bazaarvoice Inc. All rights reserved.
+//  Copyright 2016 Bazaarvoice Inc. All rights reserved.
 //
 
 #import "BVProduct.h"
+#import "BVRecsAnalyticsHelper.h"
+
+@interface BVProduct()
+
+@property bool hasSentImpressionEvent;
+
+@end
 
 @implementation BVProduct
 
@@ -33,6 +40,24 @@
     }
         
     return self;
+}
+
+
+-(void)recordImpression {
+    
+    if(self.hasSentImpressionEvent) {
+        return;
+    }
+    self.hasSentImpressionEvent = true;
+    
+    [BVRecsAnalyticsHelper queueAnalyticsEventForProductView:self];
+    
+}
+
+-(void)recordTap {
+ 
+    [BVRecsAnalyticsHelper queueAnalyticsEventForProductTapped:self];
+    
 }
 
 

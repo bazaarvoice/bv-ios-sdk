@@ -26,16 +26,10 @@
     [super setUp];
     
     requestComplete = NO;
-    
-    // Deprecated method for setting up Coneverstaions API
-//    [BVSettings instance].staging = YES;
-//    [BVSettings instance].clientId = @"apitestcustomer";
-//    [BVSettings instance].passKey = @"2cpdrhohmgmwfz8vqyo48f52g";
-//    [[BVSettings instance] setLogLevel:BVLogLevelError];
-    
+        
     [BVSDKManager sharedManager].staging = YES;
     [BVSDKManager sharedManager].clientId = @"apitestcustomer";
-    [BVSDKManager sharedManager].apiKeyConversations = @"2cpdrhohmgmwfz8vqyo48f52g";
+    [BVSDKManager sharedManager].apiKeyConversations = TEST_KEY_CONVERSATIONS;
     [[BVSDKManager sharedManager] setLogLevel:BVLogLevelError];
     
 }
@@ -536,7 +530,7 @@
     [BVSDKManager sharedManager].apiKeyConversations = @"95fczpcfxcetspeg388pbrvy";
     [BVSDKManager sharedManager].staging = YES;
     [BVSDKManager sharedManager].clientId = @"bv-mobilesdk";
-    [BVAnalyticsManager sharedManager].logLevel = BVLogLevelError;
+    [[BVSDKManager sharedManager] setLogLevel:BVLogLevelError];
     
     BVPost *request = [[BVPost alloc] initWithType:BVPostTypeReview];
     request.rating = 5;
@@ -559,7 +553,7 @@
     [BVSDKManager sharedManager].apiKeyConversations = @"95fczpcfxcetspeg388pbrvy";
     [BVSDKManager sharedManager].staging = YES;
     [BVSDKManager sharedManager].clientId = @"bv-mobilesdk";
-    [BVAnalyticsManager sharedManager].logLevel = BVLogLevelError;
+    [[BVSDKManager sharedManager] setLogLevel:BVLogLevelError];
     
     BVPost *request = [[BVPost alloc] initWithType:BVPostTypeReview];
     request.commentText = @"This is a test comment for hosted authentication. In this case we use the authention token.";

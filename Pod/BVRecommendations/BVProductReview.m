@@ -1,9 +1,8 @@
 //
 //  BVProductReview.m
-//  Pods
+//  Bazaarvoice SDK
 //
-//  Created by Bazaarvoice on 1/11/16.
-//  Copyright © 2016 Bazaarvoice. All rights reserved.
+//  Copyright 2016 Bazaarvoice Inc. All rights reserved.
 //
 
 
