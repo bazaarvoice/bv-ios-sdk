@@ -1,0 +1,218 @@
+---
+layout: default
+title: "BV Pixel"
+permalink: bv_pixel.html
+---
+
+<div class="flex flex-row" id="content_title">
+	BV Pixel
+</div>
+<hr>
+
+<h3>What is it?</h3>
+<p>The BV Pixel tells Bazaarvoice when a customer converts in your iOS app. There are two types of BV Pixel tags:</p>
+<ul>
+	<li>Generic (non-commerce) conversion tags capture events such as newsletter signups, product registration, downloads of a PDF, and requests for more information about a product or service. You can generate ROI reports related to key performance indicators.</li>
+	<li>Transaction conversion tags capture purchase data -- when a customer buys a product. The data captured might include SKUs, email addresses, and postal addresses. You can generate ROI reports tied to revenue. After you install the BV Pixel, you can use this measurement dashboard to generate reports that show how users are interacting in your iOS app, and to understand the value of your implementation.</li>
+</ul>
+
+<br>
+<h3>Why is it important?</h3>
+<p>After you implement the BV Pixel in your iOS app, you can enable other useful features besides reporting. The maintenance-free post-interaction email feature is key to increasing the volume of your user-generated content. In addition, with the BV Pixel you can run A/B tests to evaluate best practices in your iOS app, live, before you implement them for all customers. You must install the BV Pixel before you can use these indispensable features.</p>
+
+<br>
+
+<div class="include" data-include="includes/installation.html" data-onload="setInstallationText('bv_pixel');"></div>
+<br/>
+<br/>
+
+<h3>Configuration</h3>
+
+<ul class="nav nav-tabs" role="tablist">
+  <li role="presentation" class="active"><a href="#swift" aria-controls="swift" role="tab" data-toggle="tab">Swift</a></li>
+  <li role="presentation"><a href="#objc" aria-controls="objc" role="tab" data-toggle="tab">Objective-C</a></li>
+</ul>
+
+<!-- Tab panes -->
+<div class="tab-content code-switcher">
+	<!-- swift -->
+	<div role="tabpanel" class="tab-pane active" id="swift">
+		<div class="flex flex-row">
+			<p>Import the SDK by adding this line to each file that uses the SDK:</p>
+		</div>
+<pre><code class="swift">import BVSDK
+</code></pre>
+		<div class="flex flex-row">
+			<p>Then add the following to your AppDelegate's <code>didFinishLaunchingWithOptions</code> function:</p>
+		</div>
+<pre><code class="swift">BVSDKManager.sharedManager().clientId = "YOUR_CLIENT_ID"
+BVSDKManager.sharedManager().staging = true // Set to false for production!
+</code></pre>
+	</div>
+	<!-- objective-c -->
+	<div role="tabpanel" class="tab-pane" id="objc">
+		<div class="flex flex-row">
+			<p>Import the SDK by including these headers:</p>
+		</div>
+<pre><code class="objective-c">#include &lt;BVSDK/BVSDK.h&gt;
+</code></pre>
+		<div class="flex flex-row">
+			<p>Then add the following to your AppDelegate's <code>didFinishLaunchingWithOptions</code> function:</p>
+		</div>
+<pre><code class="objective-c">[BVSDKManager sharedManager].clientId = @"YOUR_CLIENT_ID";
+[BVSDKManager sharedManager].staging = YES; // set to NO for production!
+</code></pre>
+	</div>
+
+</div>
+<br/>
+<br/>
+
+<h3>Using BV Pixel to track transaction conversions</h3>
+<ul class="nav nav-tabs" role="tablist">
+  <li role="presentation" class="active"><a href="#swift" aria-controls="swift" role="tab" data-toggle="tab">Swift</a></li>
+  <li role="presentation"><a href="#objc" aria-controls="objc" role="tab" data-toggle="tab">Objective-C</a></li>
+</ul>
+
+<div class="tab-content code-switcher">
+	<!-- swift -->
+	<div role="tabpanel" class="tab-pane active" id="swift">
+<pre><code class="swift">/*
+Construct an array of BVTransactionItem based on the transaction. 
+Sku is required but the more parameters provided the better
+*/
+
+let firstItem = BVTransactionItem("123", 
+  name: "cat food", 
+  category: "pets", 
+  price: 10.99, 
+  quantity: 1, 
+  imageUrl: "http://example.com/catfood.jpg")
+let secondItem = BVTransactionItem("321", 
+  name: "dog food", 
+  category: "pets", 
+  price: 14.99, 
+  quantity: 1, 
+  imageUrl: "http://example.com/dogfood.jpg")
+
+let transactionItems = [firstItem, secondItem]
+
+/*
+Construct a BVTransaction 
+OrderId, orderTotal, and orderItems are required
+You may include any other key value params you'd like
+BVTransaction also has convenience setters for commonly used params
+*/
+
+let transaction = BVTransaction("order id", 
+orderTotal: 33.11, 
+orderItems: transactionItems, 
+andOtherParams: ["state":"TX","email":"some.one@domain.com"])
+
+transaction.shipping = 4.99
+transaction.tax = 2.14
+
+/*
+Use the BVPixel to track the Conversion Transaction Event
+*/
+
+BVPixel.trackConversionTransaction(transaction)
+</code></pre>
+	</div>
+	<!-- objective-c -->
+	<div role="tabpanel" class="tab-pane" id="objc">
+<pre><code class="objectivec">/*
+Construct an array of BVTransactionItem based on the transaction. 
+Sku is required but the more parameters provided the better
+*/
+
+BVTransactionItem *firstItem = [[BVTransactionItem alloc]init:@"123"
+                         name:@"cat food"
+                     category:@"pets"
+                        price:10.99
+                     quantity:1
+                     imageUrl:@"http://example.com/catfood.jpg"];
+BVTransactionItem *secondItem = [[BVTransactionItem alloc]init:@"321"
+                          name:@"dog food"
+                      category:@"pets"
+                         price:14.99
+                      quantity:1
+                      imageUrl:@"http://example.com/dogfood.jpg"];
+
+NSArray *transactionItems = @[firstItem, secondItem];
+
+/*
+Construct a BVTransaction 
+OrderId, orderTotal, and orderItems are required
+You may include any other key value params you'd like
+BVTransaction also has convenience setters for commonly used params
+*/
+
+BVTransaction *transaction = [[BVTransaction alloc]init:@"order id"
+             orderTotal:33.11
+             orderItems:transactionItems
+         andOtherParams:@{@"state": @"TX", @"email": @"some.one@domain.com"}];
+
+transaction.shipping = 4.99;
+transaction.tax = 2.14;
+
+/*
+Use the BVPixel to track the Conversion Transaction Event
+*/
+
+[BVPixel trackConversionTransaction:transaction];
+</code></pre>							
+	</div>
+</div>
+<br>
+<br>
+
+<h3>Using BV Pixel to track generic non-commerce conversions</h3>
+<ul class="nav nav-tabs" role="tablist">
+	<li role="presentation" class="active"><a href="#swift" aria-controls="swift" role="tab" data-toggle="tab">Swift</a></li>
+	<li role="presentation"><a href="#objc" aria-controls="objc" role="tab" data-toggle="tab">Objective-C</a></li>
+</ul>
+
+<div class="tab-content code-switcher">
+	<!-- swift -->
+	<div role="tabpanel" class="tab-pane active" id="swift">
+<pre><code class="swift">/*
+Construct a BVConversion 
+Type and value are required. Label is recommended 
+You may include any other key value params you'd like
+*/
+
+let conversion = BVConversion("BrochureDownload", 
+value: "YourDefinedValue", 
+label: "Model xyz brochure", 
+otherParams: ["state":"TX","email":"some.one@domain.com"])
+
+/*
+Use the BVPixel to track the Non-commerce Conversion Event
+*/
+
+BVPixel.trackNonCommerceConversion(conversion)
+</code></pre>
+	</div>
+	<!-- objective-c -->
+	<div role="tabpanel" class="tab-pane" id="objc">
+<pre><code class="objectivec">/*
+Construct a BVConversion 
+Type and value are required. Label is recommended 
+You may include any other key value params you'd like
+*/
+
+BVConversion *conversion = [[BVConversion alloc]init:@"BroucherDownload"
+               value:@"YourDefinedValue"
+               label:@"Model xyz brochure"
+         otherParams:@{@"state":@"TX", @"email":@"some.one@domain.com"}];
+
+/*
+Use the BVPixel to track the Non-commerce Conversion Event
+*/
+
+[BVPixel trackNonCommerceConversion:conversion];
+</code></pre>							
+	</div>
+</div>
+<br>

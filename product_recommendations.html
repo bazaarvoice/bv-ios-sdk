@@ -1,0 +1,314 @@
+---
+layout: default
+title: "Product Recommendations"
+permalink: product_recommendations.html
+---
+
+<div class="flex flex-row" id="content_title">
+	Product Recommendations
+</div>
+<div class="flex flex-row">
+	<p class="bg-warning" style="padding:4px;"> <i class="fa fa-hand-o-right"></i>  Product recommendations is currently in a limited beta release. If you'd like to participate, please contact Bazaarvoice.</p>
+</div>
+<div class="flex flex-row">
+	<p>This guide shows how to implement product recommendations in your app.<br/>
+	NOTE: Make sure you have your API Key and Client ID before configuring the managers!<br/>
+	Also, you can check out the product recommendations example app under <code>/Example/BVProductRecsExample!</code></p>
+</div>
+<hr/>
+<br/>
+
+
+{% include installation.html %}
+
+<h3>Configuration</h3>
+
+<ul class="nav nav-tabs" role="tablist">
+  <li role="presentation" class="active"><a href="#swift" aria-controls="swift" role="tab" data-toggle="tab">Swift</a></li>
+  <li role="presentation"><a href="#objc" aria-controls="objc" role="tab" data-toggle="tab">Objective-C</a></li>
+</ul>
+
+<!-- Tab panes -->
+<div class="tab-content code-switcher">
+	<!-- swift -->
+	<div role="tabpanel" class="tab-pane active" id="swift">
+		<div class="flex flex-row">
+			<p>Import the SDK by adding this line to each file that uses the SDK:</p>
+		</div>
+<pre><code class="swift">import BVSDK
+</code></pre>
+		<div class="flex flex-row">
+			<p>Then add the following to your AppDelegate's <code>didFinishLaunchingWithOptions</code> function:</p>
+		</div>
+<pre><code class="swift">BVSDKManager.sharedManager().clientId = "YOUR_CLIENT_ID"
+BVSDKManager.sharedManager().apiKeyShopperAdvertising = "YOUR_API_KEY"
+BVSDKManager.sharedManager().staging = true // Set to false for production!
+</code></pre>
+	</div>
+	<!-- objective-c -->
+	<div role="tabpanel" class="tab-pane" id="objc">
+		<div class="flex flex-row">
+			<p>Import the SDK by including these headers:</p>
+		</div>
+<pre><code class="objective-c">#include &lt;BVSDK/BVSDK.h&gt;
+#include &lt;BVSDK/BVRecommendations.h&gt;
+</code></pre>
+		<div class="flex flex-row">
+			<p>Then add the following to your AppDelegate's <code>didFinishLaunchingWithOptions</code> function:</p>
+		</div>
+<pre><code class="objective-c">[BVSDKManager sharedManager].clientId = @"YOUR_CLIENT_ID";
+[BVSDKManager sharedManager].apiKeyShopperAdvertising = @"YOUR_API_KEY";
+[BVSDKManager sharedManager].staging = YES; // set to NO for production!
+</code></pre>
+	</div>
+
+</div>
+<br/>
+<br/>
+
+
+{% include set_user.html %}
+
+
+<h3>Showing some product recommendations</h3>
+<p>Product Recommendations are simply views presented to users. They're shown using the same classes you already use in your storyboards, and can be formatted to match your app's visual design. When a set of product recommendations load, your app will receive an array of <code>BVProduct</code> objects that contains its assets, and the app (rather than the SDK) is then responsible for displaying each <code>BVProduct</code> object.</p>
+<h5>Built-in views</h5>
+<p>BVSDK provides the following view containers to show multiple product recommendations:</p>
+<ul>
+	<li><code>BVProductRecommendationsCollectionView</code></li>
+	<li><code>BVProductRecommendationsTableView</code></li>
+	<li><code>BVProductRecommendationsContainer</code></li>
+</ul>
+<p>These classes should be used as the base view for the container you show your product recommendations in. BVSDK also provides the following view objects to show a single product recommendation:</p>
+<ul>
+	<li><code>BVRecommendationCollectionViewCell</code></li>
+	<li><code>BVRecommendationTableViewCell</code></li>
+	<li><code>BVProductRecommendationView</code></li>
+</ul>
+<p>Similarly, these classes should be used as the base class of the view you show the product recommendation in.</p>
+<br/>
+<br/>
+
+<h3>Example usage</h3>
+<p>Let's run through an example implementation of BVProductRecommendationsCollectionView. Following this example will produce a scrollable view of product recommendations, as shown below:</p>
+<img src="img/carousel.gif" style="height:200px;" class="center-block" />
+</br>
+<br/>
+
+<h5>First, we want to create a <code>BVRecommendationCollectionViewCell</code></h5>
+<ol>
+	<li>
+		<p>Create a <code>UICollectionViewCell</code> by selecting <strong>File > New > File</strong></p>
+		<img src="img/NewFile.png" style="height:400px" class="center-block" />
+		<br/>
+		<img src="img/DemoCell.png" style="height:400px" class="center-block" />
+	</li>
+	<br/>
+	<li>
+		<p>Set its superclass as <code>BVRecommendationCollectionViewCell</code> in the <code>DemoCell</code> file, and add appropriate view outlets:</p>
+		<!-- Tab panes -->
+		<ul class="nav nav-tabs" role="tablist">
+		  <li role="presentation" class="active"><a href="#swift" aria-controls="swift" role="tab" data-toggle="tab">Swift</a></li>
+		  <li role="presentation"><a href="#objc" aria-controls="objc" role="tab" data-toggle="tab">Objective-C</a></li>
+		</ul>
+		
+		<div class="tab-content code-switcher">
+			<!-- swift -->
+			<div role="tabpanel" class="tab-pane active" id="swift">
+<pre><code class="swift">class DemoCell: BVRecommendationCollectionViewCell {
+
+@IBOutlet weak var productName : UILabel!
+@IBOutlet weak var price : UILabel!
+@IBOutlet weak var numReview : UILabel!
+@IBOutlet weak var rating : UILabel!
+@IBOutlet weak var productImageView : UIImageView!
+@IBOutlet weak var starRating : HCSStarRatingView!
+
+}</code></pre>
+			</div>
+			<!-- objective-c -->
+			<div role="tabpanel" class="tab-pane" id="objc">
+				<p>TODO</p>
+			</div>
+		</div>
+		<blockquote>
+			TIP: The DemoCell outlets above are suggestions for how to build a custom cell. These outlets map efficiently to each BVProduct data object. However, these outlets are not required and you can configure your cell any way you like!
+		</blockquote>
+		<br/>
+
+	</li>
+
+	<li>
+		<p>In <code>DemoCell.xib</code>, add and position your views and hook up your outlets:</p>
+		<img src="img/DemoCellNib.png" style="height:520px" class="center-block" />
+	</li>
+
+</ol>
+<br/>
+<br/>
+
+<h5>Next, we want to create a <code>BVProductRecommendationsCollectionView</code></h5>
+<ol>
+	<li>
+		<p>Create a <code>UIViewController</code> by selecting <strong>File > New > File</strong></p>
+		<img src="img/NewFile.png" style="height:400px" class="center-block" />
+		<br/>
+		<img src="img/DemoViewController.png" style="height:400px" class="center-block" />
+		<br/>
+	</li>
+	<li>
+		<p>Add an outlet for the collection view:</p>
+		
+		<!-- Tab panes -->
+		<ul class="nav nav-tabs" role="tablist">
+		  <li role="presentation" class="active"><a href="#swift" aria-controls="swift" role="tab" data-toggle="tab">Swift</a></li>
+		  <li role="presentation"><a href="#objc" aria-controls="objc" role="tab" data-toggle="tab">Objective-C</a></li>
+		</ul>
+		
+		<div class="tab-content code-switcher">
+			<!-- swift -->
+			<div role="tabpanel" class="tab-pane active" id="swift">
+<pre><code class="swift">class DemoViewController: UIViewController {  
+@IBOutlet weak var recommendationsView : BVProductRecommendationsCollectionView!  
+}  </code></pre>
+			</div>
+			<!-- objective-c -->
+			<div role="tabpanel" class="tab-pane" id="objc">
+				<p>TODO</p>
+			</div>
+		</div>
+		<br/>
+
+	</li>
+	<li>
+		<p>Add a <code>UICollectionView</code> to your nib, and set its class to <code>BVProductRecommendationsCollectionView</code></p>
+		<img src="img/ViewControllerNib.png" style="height:280px" class="center-block"/>
+		<br/>
+	</li>
+	<li>
+		<p>Hook up the <code>BVProductRecommendationsCollectionView</code> to its outlet, <code>recommendationsView</code></p>
+		<img src="img/ViewControllerNibConnection.png" style="height:440px" class="center-block"/>
+	</li>
+</ol>
+<br/>
+<br/>
+
+<h5>Next, let's grab some product recommendations for this user</h5>
+<ol>
+	<li>
+		<p>Fetch product recommendations, and store them in a variable for later use. We also want to set up our <code>recommendationsView</code> delegate and datasource, and register the nib we created earlier</p>
+
+		<!-- Tab panes -->
+		<ul class="nav nav-tabs" role="tablist">
+		  <li role="presentation" class="active"><a href="#swift" aria-controls="swift" role="tab" data-toggle="tab">Swift</a></li>
+		  <li role="presentation"><a href="#objc" aria-controls="objc" role="tab" data-toggle="tab">Objective-C</a></li>
+		</ul>
+		
+		<div class="tab-content code-switcher">
+			<!-- swift -->
+			<div role="tabpanel" class="tab-pane active" id="swift">
+<pre><code class="swift">class DemoViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+
+@IBOutlet weak var recommendationsView : BVProductRecommendationsCollectionView!
+var recommendations : [BVProduct] = []
+
+override func viewDidLoad() {
+super.viewDidLoad()
+
+recommendationsView.registerNib(UINib(nibName: "DemoCell", bundle: nil), forCellWithReuseIdentifier: "DemoCellIdentifier")
+
+self.recommendationsView.delegate = self
+self.recommendationsView.dataSource = self
+
+let request = BVRecommendationsRequest(limit: 20)
+self.recommendationsView.loadRequest(request, completionHandler: { (recommendations:[BVProduct]) in
+
+self.recommendations = recommendations
+self.recommendationsView.reloadData()
+
+}) { (error:NSError) in
+// handle error case
+}
+
+}
+}
+</code></pre>
+			</div>
+			<!-- objective-c -->
+			<div role="tabpanel" class="tab-pane" id="objc">
+				<p>TODO</p>
+			</div>
+		</div>
+		<br/>
+
+	</li>
+	<li>
+		<p>Create and fill out <code>collectionView:numberOfItemsInSection:</code></p>
+
+		<!-- Tab panes -->
+		<ul class="nav nav-tabs" role="tablist">
+		  <li role="presentation" class="active"><a href="#swift" aria-controls="swift" role="tab" data-toggle="tab">Swift</a></li>
+		  <li role="presentation"><a href="#objc" aria-controls="objc" role="tab" data-toggle="tab">Objective-C</a></li>
+		</ul>
+		
+		<div class="tab-content code-switcher">
+			<!-- swift -->
+			<div role="tabpanel" class="tab-pane active" id="swift">
+<pre><code class="swift">func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+return self.recommendations.count ?? 0
+}</code></pre>
+			</div>
+			<!-- objective-c -->
+			<div role="tabpanel" class="tab-pane" id="objc">
+				<p>TODO</p>
+			</div>
+		</div>
+		<br/>
+
+	</li>
+
+	<li>
+		<p>Create a fill out <code>collectionView:cellForItemAtIndexPath:</code></p>
+		<blockquote>Note: the image loading is done with <a href="https://github.com/rs/SDWebImage">SDWebImage</a></blockquote>
+	
+		<!-- Tab panes -->
+		<ul class="nav nav-tabs" role="tablist">
+		  <li role="presentation" class="active"><a class="code-tab" href="#swift" aria-controls="swift" role="tab" data-toggle="tab">Swift</a></li>
+		  <li role="presentation"><a class="code-tab" href="#objc" aria-controls="objc" role="tab" data-toggle="tab">Objective-C</a></li>
+		</ul>
+		
+		<div class="tab-content code-switcher">
+			<!-- swift -->
+			<div role="tabpanel" class="tab-pane active" id="swift">
+<pre><code class="swift">func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+
+let cell = collectionView.dequeueReusableCellWithReuseIdentifier("DemoCellIdentifier", forIndexPath: indexPath) as! DemoCell
+
+let product = recommendations[indexPath.row]
+let imageUrl = NSURL(string: product.imageURL)
+
+// Must set the bvProduct on each cell
+cell.bvProduct = product
+
+cell.productName.text = product.productName
+cell.rating.text = "\(product.averageRating ?? 0)"
+cell.numReview.text = "(\(product.numReviews ?? 0) reviews)"
+cell.productImageView?.sd_setImageWithURL(imageUrl)
+
+return cell;
+}</code></pre>
+			</div>
+			<!-- objective-c -->
+			<div role="tabpanel" class="tab-pane" id="objc">
+				<p>TODO Objective-C</p>
+			</div>
+		</div>
+		<br/>
+
+	</li>
+	<li>
+		<h3>Run it!</h3>
+		<p>The app should populate the collection view with product recommendations. Some styling will be needed to look good, however <i class="fa fa-smile-o"></i></p>
+	</li>
+</ol>
+<br/>

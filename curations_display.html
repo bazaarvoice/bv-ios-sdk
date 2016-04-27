@@ -1,0 +1,139 @@
+---
+layout: default
+title: "Curations Display"
+permalink: curations_display.html
+---
+
+
+<div class="flex flex-row" id="content_title">
+	Curations
+</div>
+
+<p>The Curations module provides a fully customizable UICollectionView you can easily add to your iOS project to display Curations content. Installation and configuration instructions are given below. Or, if you just want to dig into the code, see the Curations example project under <code>/Example/Curations</code>.</p>
+
+<blockquote>Contact Bazaarvoice about setting up Curations, and to get your <code>apiKeyCurations</code>.</blockquote>
+
+<hr/>
+<br/>
+
+{% include installation.html %}
+
+<div class="flex flex-row">
+	<h3>Configuration</h3>
+</div>
+
+
+<ul class="nav nav-tabs" role="tablist">
+  <li role="presentation" class="active"><a href="#swift" aria-controls="swift" role="tab" data-toggle="tab">Swift</a></li>
+  <li role="presentation"><a href="#objc" aria-controls="objc" role="tab" data-toggle="tab">Objective-C</a></li>
+</ul>
+
+<!-- Tab panes -->
+<div class="tab-content code-switcher">
+	<!-- swift -->
+	<div role="tabpanel" class="tab-pane active" id="swift">
+		<div class="flex flex-row">
+			<p>Import the SDK by adding this line to each file that uses the SDK:</p>
+		</div>
+<pre><code class="swift">import BVSDK
+</code></pre>
+		<div class="flex flex-row">
+			<p>Then add the following to your AppDelegate's <code>didFinishLaunchingWithOptions</code> function:</p>
+		</div>
+<pre><code class="swift">BVSDKManager.sharedManager().clientId = "YOUR_CLIENT_ID"
+BVSDKManager.sharedManager().apiKeyCurations = "YOUR_API_KEY"
+BVSDKManager.sharedManager().staging = true // Set to false for production!
+</code></pre>
+	</div>
+	<!-- objective-c -->
+	<div role="tabpanel" class="tab-pane" id="objc">
+		<div class="flex flex-row">
+			<p>Import the SDK by including these headers:</p>
+		</div>
+<pre><code class="objectivec">#include &lt;BVSDK/BVSDK.h&gt;
+#include &lt;BVSDK/BVCurations.h&gt;
+</code></pre>
+		<div class="flex flex-row">
+			<p>Then add the following to your AppDelegate's <code>didFinishLaunchingWithOptions</code> function:</p>
+		</div>
+<pre><code class="objectivec">[BVSDKManager sharedManager].clientId = @"YOUR_CLIENT_ID";
+[BVSDKManager sharedManager].apiKeyCurations = @"YOUR_API_KEY";
+[BVSDKManager sharedManager].staging = YES; // set to NO for production!
+</code></pre>
+	</div>
+
+</div>
+<br/>
+<br/>
+
+
+{% include set_user.html %}
+
+
+<h3>Implementation</h3>
+<p>Users of this SDK are asked to implement ads using <a href="https://developers.google.com/mobile-ads-sdk/docs/dfp/ios/quick-start">DFP's SDK for iOS</a>. Contact Bazaarvoice about serving ads in your app to get everything properly set up in DFP. Once ads are implemented, continue on below:</p>
+<p>Adding targeting data to your advertisements is simple. For every <code>DFPRequest</code> that you use, set the <code>customTargeting</code> property as follows:</p>
+
+<!-- Tab navs -->
+<ul class="nav nav-tabs" role="tablist">
+  <li role="presentation" class="active"><a href="#swift" aria-controls="swift" role="tab" data-toggle="tab">Swift</a></li>
+  <li role="presentation"><a href="#objc" aria-controls="objc" role="tab" data-toggle="tab">Objective-C</a></li>
+</ul>
+
+<!-- Tab panes -->
+<div class="tab-content code-switcher">
+	<!-- swift -->
+	<div role="tabpanel" class="tab-pane active" id="swift">	
+		
+<pre><code class="swift">let request = DFPRequest.request();
+request.customTargeting = BVSDKManager.sharedManager().getCustomTargeting();
+...</code></pre>
+	</div>
+	<!-- objective-c -->
+	<div role="tabpanel" class="tab-pane" id="objc">
+<pre><code class="objectivec">DFPRequest *request = [DFPRequest request];
+request.customTargeting = [[BVSDKManager sharedManager] getCustomTargeting];
+...</code></pre>
+	</div>
+
+</div>
+<p style="padding-top:6px;">This sends along necessary information to DFP to properly target ads for that user.</p>
+<br>
+<br>
+
+<h3>Upgrading from old versions of BVSDK</h3>
+<p>Previously, DFP's SDK was included with the BVSDK, and users were asked to use special subclasses, like using <code>BVTargetedRequest</code> instead of <code>DFPRequest</code>. However, we've simplified this process greatly.</p>
+<p>Now, users of Bazaarvoice Advertising are asked to implement DFP ads on their own, following their <a href="https://developers.google.com/mobile-ads-sdk/docs/dfp/ios/quick-start">excellent documentation</a>. After ads are implemented and working well, adding in targeting information is a one-line change, described above.</p>
+<p>Specifically, once you upgrade your BVSDK installation:</p>
+<ul>
+	<li>Change <code>BVTargetedAdLoader</code> to <code>GADAdLoader</code></li>
+	<li>Change <code>BVTargetedRequest</code> to <code>DFPRequest</code></li>
+	<li>Change <code>BVTargetedInterstitial</code> to <code>DFPInterstitial</code></li>
+	<li>Change <code>BVTargetedBannerView</code> to <code>DFPBannerView</code></li>
+</ul>
+<br>
+<br>
+
+<h3>Contextual Interests</h3>
+<p>BVAdvertising is structured around categories that products belong to. The list is fully defined in <code>BVContextualInterests.h</code>. It is split into two tiers, with about 30 <i>tier one</i> categories, all with multiple sub-categories (<i>tier two</i>).</p>
+<p>For example, the Women's dresses section of a Target store would correspond to:</p>
+<ul>
+	<li>tier one: <code>tierOneApparelAndAccessories</code></li>
+	<li>tier two: <code>tierTwoApparelAndAccessoriesWomensDresses</code></li>
+</ul>
+<p>Similarly, the Television section of a BestBuy store would correspond to:</p>
+<ul>
+	<li>tier one: <code>tierOneConsumerElectronics</code></li>
+	<li>tier two: <code>tierTwoConsumerElectronicsTelevisions</code></li>
+</ul>
+<p>Note: all tier two categories are extensions of their tier one category names. Contextual Interest categories are used while sending location information to BVAdvertising, as defined below.</p>
+<br>
+<br>
+
+<h3>BVAdvertising + User Location</h3>
+<p>BVAdvertising provides many ways to integrate location data into a shopper's profile. All location related methods can be found in <code>BVLocationEventsHelper.h</code>, but a couple notes:</p>
+<ul>
+	<li>All location methods have <code>contextualTier1</code> and <code>contextualTier2</code> parameters. This allows you to send all location->interest mapping information available to BVAdvertising in order to give the shopper the best profile possible. See <code>BVContextualInterests.h</code> for a generated list of Contextual Tier 1 and Tier 2 strings.</li>
+	<li>We define methods that correlate strongly to <code>CLLocationManagerDelegate</code> methods -- and provide an example usage of CLLocationManager+BVAdvertising inside the <code>LocationExample.m</code> file.</li>
+	<li>We also define methods that correlate strongly to Gimbal Beacon delegate methods, specifically <code>GMBLPlaceManagerDelegate</code> and <code>GMBLBeaconManagerDelegate</code>. Similarly, we provide an example usage of Gimbal+BVAdvertising in the <code>GimbalExample.m</code> file.</li>
+</ul>

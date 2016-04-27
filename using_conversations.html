@@ -1,0 +1,151 @@
+---
+layout: default
+title: "Using Conversations"
+permalink: using_conversations.html
+---
+
+<div class="flex flex-row" id="content_title">
+	Conversations
+</div>
+
+<p>The Curations module is an easy-to-use wrapper around Bazaarvoice's <a href="https://developer.bazaarvoice.com/apis/conversations/">Conversations API</a>.</p>
+
+<blockquote>Contact Bazaarvoice about setting up Conversations, and to get your <code>apiKeyConversations</code>.</blockquote>
+
+<hr/>
+<br/>
+
+{% include installation.html %}
+
+<div class="flex flex-row">
+	<h3>Configuration</h3>
+</div>
+
+
+<ul class="nav nav-tabs" role="tablist">
+  <li role="presentation" class="active"><a href="#swift" aria-controls="swift" role="tab" data-toggle="tab">Swift</a></li>
+  <li role="presentation"><a href="#objc" aria-controls="objc" role="tab" data-toggle="tab">Objective-C</a></li>
+</ul>
+
+<!-- Tab panes -->
+<div class="tab-content code-switcher">
+	<!-- swift -->
+	<div role="tabpanel" class="tab-pane active" id="swift">
+		<div class="flex flex-row">
+			<p>Import the SDK by adding this line to each file that uses the SDK:</p>
+		</div>
+<pre><code class="swift">import BVSDK
+</code></pre>
+		<div class="flex flex-row">
+			<p>Then add the following to your AppDelegate's <code>didFinishLaunchingWithOptions</code> function:</p>
+		</div>
+<pre><code class="swift">BVSDKManager.sharedManager().clientId = "YOUR_CLIENT_ID"
+BVSDKManager.sharedManager().apiKeyConversations = "YOUR_API_KEY"
+BVSDKManager.sharedManager().staging = true // Set to false for production!
+</code></pre>
+	</div>
+	<!-- objective-c -->
+	<div role="tabpanel" class="tab-pane" id="objc">
+		<div class="flex flex-row">
+			<p>Import the SDK by including these headers:</p>
+		</div>
+<pre><code class="objectivec">#include &lt;BVSDK/BVSDK.h&gt;
+#include &lt;BVSDK/BVCurations.h&gt;
+</code></pre>
+		<div class="flex flex-row">
+			<p>Then add the following to your AppDelegate's <code>didFinishLaunchingWithOptions</code> function:</p>
+		</div>
+<pre><code class="objectivec">[BVSDKManager sharedManager].clientId = @"YOUR_CLIENT_ID";
+[BVSDKManager sharedManager].apiKeyConversations = @"YOUR_API_KEY";
+[BVSDKManager sharedManager].staging = YES; // set to NO for production!
+</code></pre>
+	</div>
+
+</div>
+<br/>
+<br/>
+
+<h3>Construct the API Request</h3>
+<p>At this point you should have the BVSDK installed and initialized, so we can now make an API call to the Conversations API</p>
+
+<ol>
+	<li>
+		<p>Add the <code>BVDelegate</code> protocol to your view controller</p>
+		<ul class="nav nav-tabs" role="tablist">
+		  <li role="presentation" class="active"><a href="#swift" aria-controls="swift" role="tab" data-toggle="tab">Swift</a></li>
+		  <li role="presentation"><a href="#objc" aria-controls="objc" role="tab" data-toggle="tab">Objective-C</a></li>
+		</ul>
+		<!-- Tab panes -->
+		<div class="tab-content code-switcher">
+			<!-- swift -->
+			<div role="tabpanel" class="tab-pane active" id="swift">
+<pre><code class="swift">import BVSDK
+class ViewController: UIViewController, BVDelegate {
+...</code></pre>
+			</div>
+			<!-- objective-c -->
+			<div role="tabpanel" class="tab-pane" id="objc">
+<pre><code class="objectivec">TODO</code></pre>
+			</div>
+		</div>
+		<br>
+	</li>
+
+	<li>
+		<p>Fill in the <code>BVDelegate:didReceiveResponse:forRequest:</code> function.</p>
+		<ul class="nav nav-tabs" role="tablist">
+		  <li role="presentation" class="active"><a href="#swift" aria-controls="swift" role="tab" data-toggle="tab">Swift</a></li>
+		  <li role="presentation"><a href="#objc" aria-controls="objc" role="tab" data-toggle="tab">Objective-C</a></li>
+		</ul>
+		<!-- Tab panes -->
+		<div class="tab-content code-switcher">
+			<!-- swift -->
+			<div role="tabpanel" class="tab-pane active" id="swift">
+<pre><code class="swift">func didReceiveResponse(response: [NSObject : AnyObject]!, forRequest request:
+AnyObject!) {
+print("Raw Response: ", response)
+}</code></pre>
+			</div>
+			<!-- objective-c -->
+			<div role="tabpanel" class="tab-pane" id="objc">
+<pre><code class="objectivec">TODO</code></pre>
+			</div>
+		</div>
+		<br>
+	</li>
+
+	<li>
+		<p>Make an API call. In the <code>viewDidLoad</code> function of your view controller make an API call to get some reviews:</p>
+		<ul class="nav nav-tabs" role="tablist">
+		  <li role="presentation" class="active"><a href="#swift" aria-controls="swift" role="tab" data-toggle="tab">Swift</a></li>
+		  <li role="presentation"><a href="#objc" aria-controls="objc" role="tab" data-toggle="tab">Objective-C</a></li>
+		</ul>
+		<!-- Tab panes -->
+		<div class="tab-content code-switcher">
+			<!-- swift -->
+			<div role="tabpanel" class="tab-pane active" id="swift">
+<pre><code class="swift">let request = BVGet(type: BVGetTypeReviews)
+request.sendRequestWithDelegate(self)
+</code></pre>
+			</div>
+			<!-- objective-c -->
+			<div role="tabpanel" class="tab-pane" id="objc">
+<pre><code class="objectivec">TODO</code></pre>
+			</div>
+		</div>
+		<br>
+	</li>
+
+	<li>
+		<p>Finally, run the application and check the console for a successful API call.</p>
+		<img src="img/conv_tut_final_run.png" style="height:480px" class="center-block" />
+		<br>
+	</li>
+
+	<li>
+		<p>Referencing the <a href="https://developer.bazaarvoice.com/apis/conversations/">Conversations API</a> is crucial to getting and submitting data to Bazaarvoice correctly.</p>
+		<p>In order the get more familiar with the Conversations module APIs, you should become familiar with the BVGet and BVPost classes which are used to construct all the Conversations API calls. Explore the example projects in the <code>Examples/</code> folder of the SDK from this repository.</p>
+	</li>
+
+
+</ol>

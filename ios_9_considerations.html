@@ -1,0 +1,23 @@
+---
+layout: default
+title: "iOS 9 Considerations"
+permalink: ios_9_considerations.html
+---
+
+<div class="flex flex-row" id="content_title">
+	iOS 9 Considerations
+</div>
+<hr>
+<p>Apple introduced <a href="https://developer.apple.com/library/prerelease/ios/releasenotes/General/WhatsNewIniOS/Articles/iOS9.html#//apple_ref/doc/uid/TP40016198-SW14">App Transport Security (ATS)</a> in iOS 9. This requires apps to use <code>https://</code> only, to enhance security. This SDK uses only <code>https://</code> however, some data returned may not. For example, a product image URL or Advertisement creative. If this is the case, ATS may need to be disabled for your image hosting domain.</p>
+
+<p>In order to ensure proper functionality, ATS can be disabled by adding the the following XML to your project's <code>Info.plist</code> file:</p>
+
+<pre><code class="xml">&lt;key&gt;NSAppTransportSecurity&lt;/key&gt;
+&lt;dict&gt;
+&lt;key&gt;NSAllowsArbitraryLoads&lt;/key&gt;
+&lt;true/&gt;
+&lt;/dict&gt;
+</code></pre>
+<br>
+<p>Note: the sample above should only be used for initial testing and development. For your production application, you should have a whitelisted set of domains under the <code>NSExceptionDomains</code> key.</p>
+<br>

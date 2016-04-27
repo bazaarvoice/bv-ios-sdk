@@ -1,0 +1,43 @@
+---
+layout: default
+title: "User Authentication Token"
+permalink: user_authentication_token.html
+---
+
+<div class="flex flex-row" id="content_title">
+	User Authentication Token
+</div>
+<hr>
+<p>Both the BVAdvertising and BVRecommendations modules support adding an authenticated user for shopper profile matching.</p>
+<p>Once a user is authenticated inside your user login workflow, the user authentication token can be set via <code>BVSDKManager#setUserWithAuthString()</code>.</p>
+
+<blockquote><strong>Note</strong>: the authentication token created with your existing Bazaarvoice implementation logic needs to be provided to the BVSDKManager. However, the steps to encrypt your authentication token are still applicable even if you are not a Conversations client.</blockquote>
+
+<br>
+<h5>Adding information about the user</h5>
+<p>The user auth string is an encrypted query string. In the documentation above, <code>date=2007­0527&userid=ID12345</code> is used as an example. This is then encrypted/signed appropriately, for security. You should add information (such as identity, demographics) in this query string, for example: <code>date=2007­0527&userid=ID12345&facebookId=abc123&age=28&gender=female</code>. Allowed keys (userid, gender, age, etc) are defined in <code>BVAuthenticatedUser.h</code> This information can then be safely passed like the examples below:</p>
+
+<br>
+<h5>Example Auth String - for testing purposes</h5>
+<p>This profile below interested in "pets", "powersports", "gamefish" and others. See the Contextual Interests section below for further explanation.</p>
+<ul class="nav nav-tabs" role="tablist">
+	<li role="presentation" class="active"><a href="#swift" aria-controls="swift" role="tab" data-toggle="tab">Swift</a></li>
+	<li role="presentation"><a href="#objc" aria-controls="objc" role="tab" data-toggle="tab">Objective-C</a></li>
+</ul>
+
+<div class="tab-content code-switcher">
+	<!-- swift -->
+	<div role="tabpanel" class="tab-pane active" id="swift">
+<pre><code class="swift">BVSDKManager.sharedManager().setUserWithAuthString("0ce436b29697d6bc74f30f724b9b0bb6646174653d31323334267573657269643d5265636f6d6d656e646174696f6e7353646b54657374")
+</code></pre>
+	</div>
+	<!-- objective-c -->
+	<div role="tabpanel" class="tab-pane" id="objc">
+<pre><code class="objectivec">[[BVSDKManager sharedManager] setUserWithAuthString:@"0ce436b29697d6bc74f30f724b9b0bb6646174653d31323334267573657269643d5265636f6d6d656e646174696f6e7353646b54657374"];
+</code></pre>							
+	</div>
+</div>
+<br>
+
+<p>Once <code>setAuthenticatedUser</code> has been called from the <code>BVSDKManager</code>, Bazaarvoice's back-end systems will begin matching data to this user's profile. This process is near real-time, but not instant. The SDK will poll to update the user profile and should reflect the user's interests within seconds.</p>
+<br>

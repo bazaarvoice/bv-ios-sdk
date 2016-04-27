@@ -1,0 +1,86 @@
+---
+layout: default
+title: Installation
+permalink: installation.html
+---
+
+<div class="flex flex-row" id="content_title">
+  Installation
+</div>
+<div class="flex flex-row">
+  This guide shows you how to install and import the Bazaarvoice SDK into your project.
+</div>
+<hr/>
+<br/>
+<div class="flex flex-row">
+  <h3>Prerequisites</h3>
+</div>
+<div class="flex flex-row">
+  <ul>
+    <li>Signed Data Usage Amendment, if not already in place</li>
+    <li>Minimum iOS deployment target of iOS 8.0</li>
+    <li>Xcode version 7.0 or higher</li>
+    <li>API key to access Bazaarvoice products</li>
+  </ul>
+  
+</div>
+<br/>
+
+<h3>Adding the SDK to your project</h3>
+<p>Installation with <a>Cocoapods</a> is the recommended approach to including BVSDK in your project. If you don't have Cocoapods installed on your machine, see the <a>Cocoapods installation guide</a>.</p> 
+<br/>
+
+<p>Edit your <code>Podfile</code> to include the following:</p>
+
+<div class="flex flex-row">
+
+<pre><code class="ruby"># Default install: Installs BVConversations and core modules.
+pod 'BVSDK/BVConversations'
+# Installs BVAdvertising and core modules.
+pod 'BVSDK/BVAdvertising'
+# Installs BVRecommendations Shopper Advertising API and core modules.
+pod 'BVSDK/BVRecommendations'
+# Installs BVCurations and core modules.
+pod 'BVSDK/BVCurations'
+</code></pre>
+</div>
+
+<p>When you have configured your Podfile, simply run <code>pod install</code> from your project directory to install the BVSDK modules. Then you can open the corresponding <code>.xcworkspace</code> file CocoaPods has created.</p>
+<p>Great! The SDK is included in your project. You can now add the required imports to your project.</p>
+
+<hr/>
+
+<div class="flex flex-row">
+  <h3>Importing the SDK</h3>
+</div>
+<div class="flex flex-row">
+  <p>Installation with <a>Cocoapods</a> is the recommended approach to including BVSDK in your project. If you don't have Cocoapods installed on your machine, see the <a>Cocoapods installation guide</a>.</p> 
+</div>
+<br/>
+
+
+<ul class="nav nav-tabs" role="tablist">
+  <li role="presentation" class="active"><a href="#swift" aria-controls="swift" role="tab" data-toggle="tab">Swift</a></li>
+  <li role="presentation"><a href="#objc" aria-controls="objc" role="tab" data-toggle="tab">Objective-C / Swift with bridging header</a></li>
+</ul>
+
+<!-- Tab panes -->
+<div class="tab-content code-switcher">
+  <div role="tabpanel" class="tab-pane active" id="swift">
+<pre><code class="swift">import BVSDK
+</code></pre>
+  </div>
+  <div role="tabpanel" class="tab-pane" id="objc">
+<pre><code class="objectivec">// Import BVSDK.h for all modules, including BVConversations
+#import &lt;BVSDK/BVSDK.h&gt;
+// When using BVRecommendations
+#import &lt;BVSDK/BVRecommendations.h&gt;
+// When using BVAdvertising
+#import &lt;BVSDK/BVAdvertising.h&gt;
+// When using BVCurations
+#import &lt;BVSDK/BVCurations.h&gt;
+// When using BVConversations
+#import &lt;BVSDK/BVConversations.h&gt;
+</code></pre>
+    </div>
+</div>
