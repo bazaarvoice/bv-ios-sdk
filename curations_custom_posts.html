@@ -1,138 +1,322 @@
----
-layout: default
-title: "Curations Custom Posts"
-permalink: curations_custom_posts.html
----
+<!DOCTYPE html>
+<html lang="en">
 
-<div class="flex flex-row" id="content_title">
-	Curations
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+  
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+  <script type="text/javascript" src="./assets/js/highlight.pack.js"></script>
+  
+  <script type="text/javascript" src="./assets/js/jquery_rotate.js"></script>
+  <script type="text/javascript" src="./assets/js/main.js"></script>
+  
+  <script>
+    
+$(function(){
+
+	// select the tab in the sidebar to reflect current page position
+
+	var tabName = "Curations Custom Posts";
+
+	$('.nav-link.active').removeClass('active');
+	var nav_link = $('.nav-link:contains("' + tabName + '")');
+	nav_link.addClass('active');
+	
+});
+  </script>
+
+  <script>hljs.initHighlightingOnLoad();</script>
+
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="./assets/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="./assets/css/bvbootstrap.css">
+  <link rel="stylesheet" type="text/css" href="./assets/css/highlightjs/default.min.css">
+  <link rel="stylesheet" type="text/css" href="./assets/css/main.css">
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="57x57" href="./public/apple-touch-icon-57x57.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="./public/apple-touch-icon-114x114.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="./public/apple-touch-icon-72x72.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="./public/apple-touch-icon-144x144.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="60x60" href="./public/apple-touch-icon-60x60.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="120x120" href="./public/apple-touch-icon-120x120.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="76x76" href="./public/apple-touch-icon-76x76.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="152x152" href="./public/apple-touch-icon-152x152.png" />
+  <link rel="icon" type="image/png" href="./public/favicon-196x196.png" sizes="196x196" />
+  <link rel="icon" type="image/png" href="./public/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/png" href="./public/favicon-32x32.png" sizes="32x32" />
+  <link rel="icon" type="image/png" href="./public/favicon-16x16.png" sizes="16x16" />
+  <link rel="icon" type="image/png" href="./public/favicon-128.png" sizes="128x128" />
+  <meta name="application-name" content="&nbsp;"/>
+  <meta name="msapplication-TileColor" content="#FFFFFF" />
+  <meta name="msapplication-TileImage" content="./public/mstile-144x144.png" />
+  <meta name="msapplication-square70x70logo" content="./public/mstile-70x70.png" />
+  <meta name="msapplication-square150x150logo" content="./public/mstile-150x150.png" />
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-56370630-4', 'auto');
+    ga('set', {
+      title: 'Curations Custom Posts'
+    });
+    ga('send', 'pageview');
+  </script>
+
+</head>
+
+
+  <body>
+    <div id="portal_container">
+      
+      <div id="portal_sidebar">
+	<div id="portal_nav">
+		
+		<div id="bv_logo">
+			<a href="/">
+				<font class="bv_teal">bazaar</font><font class="bv_white">voice</font><font class="bv_teal">:</font>				
+			</a>
+		</div>
+
+		<div>
+			<ul id="task_nav" class="nav nav-pills nav-stacked">
+				<li class="nav-item">
+					<a class="nav-link active" href="index.html">
+						<span><i class="m-r-1 fa fa-file-text-o"></i>Getting Started</span>     
+					</a>
+					<ul>
+						<li class="nav-item">
+							<a class="nav-link" href="installation.html">
+								<span>Installation and Configuration</span>
+							</a>
+						</li>
+					</ul>
+				</li>
+				<li class="nav-item">
+					<span class="nav-link" href="modules.html">
+						<span><i class="m-r-1 fa fa-cogs"></i>Modules</span>     
+					</span>
+					<ul>
+						<li class="nav-item">
+							<a class="nav-link" href="product_recommendations.html"><span>Product Recommendations</span></a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="advertising.html"><span>Advertising</span></a>
+						</li>
+						<li class="nav-item">
+							
+							<a class="nav-link" role="button" data-toggle="collapse" href="#curationsDropdown" aria-expanded="false" aria-controls="curationsDropdown">
+								<span><span>Curations</span><span style="float:right;"><i id="curationsDropdownArrow" class="fa fa-sort-desc  fa-rotate-270"></i></span></span>
+							</a>
+							<div class="collapse in" id="curationsDropdown">
+								<ul>
+									<li class="nav-item"><a class="nav-link" href="curations_display.html">Curations Display</a></li>
+									<li class="nav-item"><a class="nav-link" href="curations_custom_posts.html">Curations Custom Posts</a></li>
+								</ul>
+							</div>
+
+
+						</li>
+						<li class="nav-item">
+							
+							<a class="nav-link" role="button" data-toggle="collapse" href="#conversationsDropdown" aria-expanded="false" aria-controls="conversationsDropdown">
+								<span><span>Conversations</span><span style="float:right;"><i id="conversationsDropdownArrow" class="fa fa-sort-desc fa-rotate-270"></i></span></span>
+							</a>
+							<div class="collapse " id="conversationsDropdown">
+								<ul>
+									<li class="nav-item"><a class="nav-link" href="using_conversations.html">Using Conversations</a></li>
+									<li class="nav-item"><a class="nav-link" href="conversations_iovation.html">Authenticity with iovation</a></li>
+								</ul>
+							</div>
+
+						</li>
+					</ul>
+				</li>
+
+			 
+				<li class="nav-item">
+					<a class="nav-link" href="bv_pixel.html">
+						<span><i class="m-r-1 fa fa-dot-circle-o"></i>BV Pixel</span>     
+					</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="user_authentication_token.html">
+						<span><i class="m-r-1 fa fa-lock"></i>User Authentication Token</span>     
+					</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="ios_9_considerations.html">
+						<span><i class="m-r-1 fa fa-mobile"></i> iOS 9 Considerations</span>     
+					</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="example_projects.html">
+						<span><i class="m-r-1 fa fa-file-code-o"></i>Example Projects</span>     
+					</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="faq_support.html">
+						<span><i class="m-r-1 fa fa-question-circle"></i>FAQ & Support</span>     
+					</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="./assets/api_reference/index.html">
+						<span><i class="m-r-1 fa fa-book"></i>API Reference</span>     
+					</a>
+				</li>
+				<br>
+				<li class="nav-item">
+					<a class="nav-link" href="mailto:mobilecoreteam@bazaarvoice.com?subject=iOS SDK documentation feedback" style="border: 1px #fff solid;">
+						<span><i class="m-r-1 fa fa-envelope"></i>Feedback</span>     
+					</a>
+				</li>	
+			</ul>
+		</div>
+	</div>
 </div>
 
-<p>The Curations module provides a fully customizable UICollectionView you can easily add to your iOS project to display Curations content. Installation and configuration instructions are given below. Or, if you just want to dig into the code, see the Curations example project under <code>/Example/Curations</code>.</p>
+      <div id="application_container">
+        <div id="task_container">
+          <div id="task_content" class="app-content">
+            <div class="scroll-container scrollable--scrollbar">
+              <div class="page-container">
 
-<blockquote>Contact Bazaarvoice about setting up Curations, and to get your <code>apiKeyCurations</code>.</blockquote>
-
-<hr/>
-<br/>
-
-{% include installation.html %}
-
-<div class="flex flex-row">
-	<h3>Configuration</h3>
+                <div class="flex flex-row" id="content_title">
+	Curations Custom Posts
 </div>
+
+<p>This page shows how to use the Curations Custom Post API in order to send comments and photos to any of your custom groups.</p>
+<p>You should have a project with the BVCurations module installed as described in <a href="curations_display.html">Curations Display</a>.</p>
+<br>
+
+<h3>Creating a Custom Post Request</h3>
+<p>There are only 2 classes you need to be familiar with to create a Custom Post:</p>
+<ul>
+	<li>
+		<p><strong>BVCurationsAddPostRequest</strong>: This class provides default initalizers with the required parameters used to make the request. You can set any of the other properties defined in <code>BVCurationsAddPostRequest.h</code> when posting custom content.</p>
+	</li>
+	<li>
+		<p><strong>BVCurationsPhotoUploader</strong> - Uploads the custom post to your Curations group.</p>
+	</li>
+</ul>
+<br>
+
+<p class="bg-warning well-lg" style="padding:4px;"> <i class="fa fa-hand-o-right"></i>  Before you being implementation of ths module make sure you have verified your installed as details in the <a href="./installation.html">Installation and Configuraion page.</a></p>
+
+<h3>Example Custom Post</h3>
+<p>The examples below take a UIImage and upload it to your Curations group.</p>
 
 
 <ul class="nav nav-tabs" role="tablist">
   <li role="presentation" class="active"><a href="#swift" aria-controls="swift" role="tab" data-toggle="tab">Swift</a></li>
   <li role="presentation"><a href="#objc" aria-controls="objc" role="tab" data-toggle="tab">Objective-C</a></li>
 </ul>
+
 
 <!-- Tab panes -->
 <div class="tab-content code-switcher">
 	<!-- swift -->
 	<div role="tabpanel" class="tab-pane active" id="swift">
-		<div class="flex flex-row">
-			<p>Import the SDK by adding this line to each file that uses the SDK:</p>
-		</div>
-<pre><code class="swift">import BVSDK
-</code></pre>
-		<div class="flex flex-row">
-			<p>Then add the following to your AppDelegate's <code>didFinishLaunchingWithOptions</code> function:</p>
-		</div>
-<pre><code class="swift">BVSDKManager.sharedManager().clientId = "YOUR_CLIENT_ID"
-BVSDKManager.sharedManager().apiKeyCurations = "YOUR_API_KEY"
-BVSDKManager.sharedManager().staging = true // Set to false for production!
-</code></pre>
+<pre><code class="swift">// upload this UIImage to Curations with the BVSDK
+func uploadImageToCurations(image:UIImage) {
+    
+    // Required parameters
+    let aliasInput = "username"
+    let tokenInput = "user_token"
+    let textInput = "This is the user comment."
+    let groupsInput = ["YOUR-GROUP"]
+
+    let params = BVCurationsAddPostRequest(groups: groupsInput,
+        withAuthorAlias: aliasInput,
+        withToken: tokenInput,
+        withText: textInput,
+        withImage: image!)
+
+    // Some optional parameters
+    params.tags = ["tag1", "some-other-tag"]
+    // alternatively, you can upload a photo(s) via HTTPS instead of a UIImage
+    // params.photos = ["https://upload.wikimedia.org/wikipedia/commons/6/6f/Einstein-formal_portrait-35.jpg"]
+
+    let uploadAPI = BVCurationsPhotoUploader()
+
+    uploadAPI .submitCurationsContentWithParams(params, completionHandler: { () -> Void in
+        print("Upload success!")
+    }) { (error) -> Void in
+        print(error.localizedDescription)
+    }
+
+}</code></pre>
 	</div>
 	<!-- objective-c -->
 	<div role="tabpanel" class="tab-pane" id="objc">
-		<div class="flex flex-row">
-			<p>Import the SDK by including these headers:</p>
-		</div>
-<pre><code class="objectivec">#include &lt;BVSDK/BVSDK.h&gt;
-#include &lt;BVSDK/BVCurations.h&gt;
-</code></pre>
-		<div class="flex flex-row">
-			<p>Then add the following to your AppDelegate's <code>didFinishLaunchingWithOptions</code> function:</p>
-		</div>
-<pre><code class="objectivec">[BVSDKManager sharedManager].clientId = @"YOUR_CLIENT_ID";
-[BVSDKManager sharedManager].apiKeyCurations = @"YOUR_API_KEY";
-[BVSDKManager sharedManager].staging = YES; // set to NO for production!
-</code></pre>
+<pre><code class="objective-c">#include &lt;BVSDK/BVCurations.h&gt;
+
+...
+
+// upload this UIImage to Curations with the BVSDK
+- (void)uploadImageToCurations:(UIImage*)image {
+    
+    // Required params
+    NSString *aliasInput = @"username";
+    NSString *tokenInput = @"user_token";
+    NSString *textInput = @"This is the user comment";
+    NSArray *groupsInput = @[@"YOUR-GROUP"];
+
+    BVCurationsAddPostRequest *params = [[BVCurationsAddPostRequest alloc]
+                                         initWithGroups:groupsInput
+                                         withAuthorAlias:aliasInput
+                                         withToken:tokenInput
+                                         withText:textInput
+                                         withImage:image];
+
+    // Some optional params
+    params.tags = @[@"tag1", @"some-other-tag"];
+    // alternatively, you can upload a photo(s) via HTTPS instead of a UIImage
+    // params.photos = @[@"https://upload.wikimedia.org/wikipedia/commons/6/6f/Einstein-formal_portrait-35.jpg"];
+
+    BVCurationsPhotoUploader *uploadAPI = [[BVCurationsPhotoUploader alloc] init];
+
+    [uploadAPI submitCurationsContentWithParams:params completionHandler:^(void) {
+        // success!
+        NSLog(@"Successful Post!");
+    } withFailure:^(NSError *error) {
+        // error
+        NSLog(@"ERROR: %@", error.localizedDescription);
+    }];   
+}</code></pre>
 	</div>
 
 </div>
-<br/>
-<br/>
+<br>
+<br>
 
 
-{% include set_user.html %}
+<h5>Verifiying Uplaod</h5>
+<p>Once you have a successful Custom Post created, you can check your Curations management console to verify the content has been uploaded and is ready for moderation:</p>
+<img src="img/curations_custom_posts/curations_successful_custom_post.png" style="height:180px;" class="center-block" />
+<br>
 
 
-<h3>Implementation</h3>
-<p>Users of this SDK are asked to implement ads using <a href="https://developers.google.com/mobile-ads-sdk/docs/dfp/ios/quick-start">DFP's SDK for iOS</a>. Contact Bazaarvoice about serving ads in your app to get everything properly set up in DFP. Once ads are implemented, continue on below:</p>
-<p>Adding targeting data to your advertisements is simple. For every <code>DFPRequest</code> that you use, set the <code>customTargeting</code> property as follows:</p>
-
-<!-- Tab navs -->
-<ul class="nav nav-tabs" role="tablist">
-  <li role="presentation" class="active"><a href="#swift" aria-controls="swift" role="tab" data-toggle="tab">Swift</a></li>
-  <li role="presentation"><a href="#objc" aria-controls="objc" role="tab" data-toggle="tab">Objective-C</a></li>
-</ul>
-
-<!-- Tab panes -->
-<div class="tab-content code-switcher">
-	<!-- swift -->
-	<div role="tabpanel" class="tab-pane active" id="swift">	
-		
-<pre><code class="swift">let request = DFPRequest.request();
-request.customTargeting = BVSDKManager.sharedManager().getCustomTargeting();
-...</code></pre>
-	</div>
-	<!-- objective-c -->
-	<div role="tabpanel" class="tab-pane" id="objc">
-<pre><code class="objectivec">DFPRequest *request = [DFPRequest request];
-request.customTargeting = [[BVSDKManager sharedManager] getCustomTargeting];
-...</code></pre>
-	</div>
-
+<div class="well well-sm">
+	<h5>Author</h5>
+	<p>Copyright 2016 Bazaarvoice, Inc. All right reserved.</p>
+	<h5>License</h5>
+	<p>Use of this SDK is contingent on your agreement and conformance with <a href="http://www.bazaarvoice.com/legal/api-terms-of-use.html">Bazaarvoice's API Terms of Use</a>. Additionally, you agree to store all data acquired by this SDK or Bazaarvoice’s API only within the storage of the individual application instance using the SDK or API. You also agree to use the data acquired by the SDK or API only within the context of the same individual application instance and only for purposes consistent with that application’s purpose. Except as otherwise noted, the Bazaarvoice iOS SDK licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0.html">Apache License, Version 2.0</a>.</p>
 </div>
-<p style="padding-top:6px;">This sends along necessary information to DFP to properly target ads for that user.</p>
-<br>
 <br>
 
-<h3>Upgrading from old versions of BVSDK</h3>
-<p>Previously, DFP's SDK was included with the BVSDK, and users were asked to use special subclasses, like using <code>BVTargetedRequest</code> instead of <code>DFPRequest</code>. However, we've simplified this process greatly.</p>
-<p>Now, users of Bazaarvoice Advertising are asked to implement DFP ads on their own, following their <a href="https://developers.google.com/mobile-ads-sdk/docs/dfp/ios/quick-start">excellent documentation</a>. After ads are implemented and working well, adding in targeting information is a one-line change, described above.</p>
-<p>Specifically, once you upgrade your BVSDK installation:</p>
-<ul>
-	<li>Change <code>BVTargetedAdLoader</code> to <code>GADAdLoader</code></li>
-	<li>Change <code>BVTargetedRequest</code> to <code>DFPRequest</code></li>
-	<li>Change <code>BVTargetedInterstitial</code> to <code>DFPInterstitial</code></li>
-	<li>Change <code>BVTargetedBannerView</code> to <code>DFPBannerView</code></li>
-</ul>
-<br>
-<br>
 
-<h3>Contextual Interests</h3>
-<p>BVAdvertising is structured around categories that products belong to. The list is fully defined in <code>BVContextualInterests.h</code>. It is split into two tiers, with about 30 <i>tier one</i> categories, all with multiple sub-categories (<i>tier two</i>).</p>
-<p>For example, the Women's dresses section of a Target store would correspond to:</p>
-<ul>
-	<li>tier one: <code>tierOneApparelAndAccessories</code></li>
-	<li>tier two: <code>tierTwoApparelAndAccessoriesWomensDresses</code></li>
-</ul>
-<p>Similarly, the Television section of a BestBuy store would correspond to:</p>
-<ul>
-	<li>tier one: <code>tierOneConsumerElectronics</code></li>
-	<li>tier two: <code>tierTwoConsumerElectronicsTelevisions</code></li>
-</ul>
-<p>Note: all tier two categories are extensions of their tier one category names. Contextual Interest categories are used while sending location information to BVAdvertising, as defined below.</p>
-<br>
-<br>
-
-<h3>BVAdvertising + User Location</h3>
-<p>BVAdvertising provides many ways to integrate location data into a shopper's profile. All location related methods can be found in <code>BVLocationEventsHelper.h</code>, but a couple notes:</p>
-<ul>
-	<li>All location methods have <code>contextualTier1</code> and <code>contextualTier2</code> parameters. This allows you to send all location->interest mapping information available to BVAdvertising in order to give the shopper the best profile possible. See <code>BVContextualInterests.h</code> for a generated list of Contextual Tier 1 and Tier 2 strings.</li>
-	<li>We define methods that correlate strongly to <code>CLLocationManagerDelegate</code> methods -- and provide an example usage of CLLocationManager+BVAdvertising inside the <code>LocationExample.m</code> file.</li>
-	<li>We also define methods that correlate strongly to Gimbal Beacon delegate methods, specifically <code>GMBLPlaceManagerDelegate</code> and <code>GMBLBeaconManagerDelegate</code>. Similarly, we provide an example usage of Gimbal+BVAdvertising in the <code>GimbalExample.m</code> file.</li>
-</ul>
+              </div>
+            </div>
+          </div>
+        </div>        
+      </div>
+    </div>
+  </body>

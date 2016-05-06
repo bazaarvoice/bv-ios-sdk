@@ -1,139 +1,570 @@
----
-layout: default
-title: "Curations Display"
-permalink: curations_display.html
----
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+  
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+  <script type="text/javascript" src="./assets/js/highlight.pack.js"></script>
+  
+  <script type="text/javascript" src="./assets/js/jquery_rotate.js"></script>
+  <script type="text/javascript" src="./assets/js/main.js"></script>
+  
+  <script>
+    
+$(function(){
+
+	// select the tab in the sidebar to reflect current page position
+
+	var tabName = "Curations Display";
+
+	$('.nav-link.active').removeClass('active');
+	var nav_link = $('.nav-link:contains("' + tabName + '")');
+	nav_link.addClass('active');
+	
+});
+  </script>
+
+  <script>hljs.initHighlightingOnLoad();</script>
 
 
-<div class="flex flex-row" id="content_title">
-	Curations
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="./assets/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="./assets/css/bvbootstrap.css">
+  <link rel="stylesheet" type="text/css" href="./assets/css/highlightjs/default.min.css">
+  <link rel="stylesheet" type="text/css" href="./assets/css/main.css">
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="57x57" href="./public/apple-touch-icon-57x57.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="./public/apple-touch-icon-114x114.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="./public/apple-touch-icon-72x72.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="./public/apple-touch-icon-144x144.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="60x60" href="./public/apple-touch-icon-60x60.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="120x120" href="./public/apple-touch-icon-120x120.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="76x76" href="./public/apple-touch-icon-76x76.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="152x152" href="./public/apple-touch-icon-152x152.png" />
+  <link rel="icon" type="image/png" href="./public/favicon-196x196.png" sizes="196x196" />
+  <link rel="icon" type="image/png" href="./public/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/png" href="./public/favicon-32x32.png" sizes="32x32" />
+  <link rel="icon" type="image/png" href="./public/favicon-16x16.png" sizes="16x16" />
+  <link rel="icon" type="image/png" href="./public/favicon-128.png" sizes="128x128" />
+  <meta name="application-name" content="&nbsp;"/>
+  <meta name="msapplication-TileColor" content="#FFFFFF" />
+  <meta name="msapplication-TileImage" content="./public/mstile-144x144.png" />
+  <meta name="msapplication-square70x70logo" content="./public/mstile-70x70.png" />
+  <meta name="msapplication-square150x150logo" content="./public/mstile-150x150.png" />
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-56370630-4', 'auto');
+    ga('set', {
+      title: 'Curations Display'
+    });
+    ga('send', 'pageview');
+  </script>
+
+</head>
+
+
+  <body>
+    <div id="portal_container">
+      
+      <div id="portal_sidebar">
+	<div id="portal_nav">
+		
+		<div id="bv_logo">
+			<a href="/">
+				<font class="bv_teal">bazaar</font><font class="bv_white">voice</font><font class="bv_teal">:</font>				
+			</a>
+		</div>
+
+		<div>
+			<ul id="task_nav" class="nav nav-pills nav-stacked">
+				<li class="nav-item">
+					<a class="nav-link active" href="index.html">
+						<span><i class="m-r-1 fa fa-file-text-o"></i>Getting Started</span>     
+					</a>
+					<ul>
+						<li class="nav-item">
+							<a class="nav-link" href="installation.html">
+								<span>Installation and Configuration</span>
+							</a>
+						</li>
+					</ul>
+				</li>
+				<li class="nav-item">
+					<span class="nav-link" href="modules.html">
+						<span><i class="m-r-1 fa fa-cogs"></i>Modules</span>     
+					</span>
+					<ul>
+						<li class="nav-item">
+							<a class="nav-link" href="product_recommendations.html"><span>Product Recommendations</span></a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="advertising.html"><span>Advertising</span></a>
+						</li>
+						<li class="nav-item">
+							
+							<a class="nav-link" role="button" data-toggle="collapse" href="#curationsDropdown" aria-expanded="false" aria-controls="curationsDropdown">
+								<span><span>Curations</span><span style="float:right;"><i id="curationsDropdownArrow" class="fa fa-sort-desc  fa-rotate-270"></i></span></span>
+							</a>
+							<div class="collapse in" id="curationsDropdown">
+								<ul>
+									<li class="nav-item"><a class="nav-link" href="curations_display.html">Curations Display</a></li>
+									<li class="nav-item"><a class="nav-link" href="curations_custom_posts.html">Curations Custom Posts</a></li>
+								</ul>
+							</div>
+
+
+						</li>
+						<li class="nav-item">
+							
+							<a class="nav-link" role="button" data-toggle="collapse" href="#conversationsDropdown" aria-expanded="false" aria-controls="conversationsDropdown">
+								<span><span>Conversations</span><span style="float:right;"><i id="conversationsDropdownArrow" class="fa fa-sort-desc fa-rotate-270"></i></span></span>
+							</a>
+							<div class="collapse " id="conversationsDropdown">
+								<ul>
+									<li class="nav-item"><a class="nav-link" href="using_conversations.html">Using Conversations</a></li>
+									<li class="nav-item"><a class="nav-link" href="conversations_iovation.html">Authenticity with iovation</a></li>
+								</ul>
+							</div>
+
+						</li>
+					</ul>
+				</li>
+
+			 
+				<li class="nav-item">
+					<a class="nav-link" href="bv_pixel.html">
+						<span><i class="m-r-1 fa fa-dot-circle-o"></i>BV Pixel</span>     
+					</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="user_authentication_token.html">
+						<span><i class="m-r-1 fa fa-lock"></i>User Authentication Token</span>     
+					</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="ios_9_considerations.html">
+						<span><i class="m-r-1 fa fa-mobile"></i> iOS 9 Considerations</span>     
+					</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="example_projects.html">
+						<span><i class="m-r-1 fa fa-file-code-o"></i>Example Projects</span>     
+					</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="faq_support.html">
+						<span><i class="m-r-1 fa fa-question-circle"></i>FAQ & Support</span>     
+					</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="./assets/api_reference/index.html">
+						<span><i class="m-r-1 fa fa-book"></i>API Reference</span>     
+					</a>
+				</li>
+				<br>
+				<li class="nav-item">
+					<a class="nav-link" href="mailto:mobilecoreteam@bazaarvoice.com?subject=iOS SDK documentation feedback" style="border: 1px #fff solid;">
+						<span><i class="m-r-1 fa fa-envelope"></i>Feedback</span>     
+					</a>
+				</li>	
+			</ul>
+		</div>
+	</div>
 </div>
 
-<p>The Curations module provides a fully customizable UICollectionView you can easily add to your iOS project to display Curations content. Installation and configuration instructions are given below. Or, if you just want to dig into the code, see the Curations example project under <code>/Example/Curations</code>.</p>
+      <div id="application_container">
+        <div id="task_container">
+          <div id="task_content" class="app-content">
+            <div class="scroll-container scrollable--scrollbar">
+              <div class="page-container">
 
-<blockquote>Contact Bazaarvoice about setting up Curations, and to get your <code>apiKeyCurations</code>.</blockquote>
+                <div class="flex flex-row" id="content_title">
+	Curations Display
+</div>
+
+<p>This page describes how you can build display your custom Curations content in a Bazaarvoice-subclassed UICollectionView (<code>BVCurationsCollectionView</code>). The UICollectionView and UICollectionView cell wrap the Curations Display API and Bazaarvoice analytics, the latter providing you with rich user-interaction and ROI data. If you are familiar with the inner working of UICollectionView the concepts of creating a <code>BVCurationsCollectionView</code> will be fairly straight forward. However, even if you don't, you should be able to follow the steps below to create a basic Curations Display with your data.</p>
+
+<p class="bg-info well-lg" style="padding:4px;"><i class="fa fa-hand-o-right"></i>  Contact Bazaarvoice about setting up Curations, and to get your <strong>apiKeyCurations</strong>.</p>
 
 <hr/>
-<br/>
+<br>
 
-{% include installation.html %}
+<p class="bg-warning well-lg" style="padding:4px;"> <i class="fa fa-hand-o-right"></i>  Before you being implementation of ths module make sure you have verified your installed as details in the <a href="./installation.html">Installation and Configuraion page.</a></p>
 
-<div class="flex flex-row">
-	<h3>Configuration</h3>
-</div>
+<br>
+<h3>Adding a Curations User Interface</h3>
+<p>The BVCurations module provides a <code>BVCurationsCollectionView</code> which hosts the display data from the Curations API. In general all you need to do is subclass a <code>BVCurationsCollectionViewCell</code> with your own implementation and .xib file and then add the content to the <code>BVCurationsCollectionView</code> via the <code>UICollectionViewDataSource</code> protocol messages like you would any <code>UICollectionView</code> object.</p>
+
+<p>Using the UI views provided by the BVSDK provide you with all the analytics events necessary for calculating end-user interactions and ROI reporting. Also, because of the flexibility that <code>UICollectionView</code> provides, you can build and display your feed in any grid and flow style you like.</p>
+
+<br>
+<h3>Example</h3>
+<p>The following example will produce a scrollable grid with a Curations feed, similar to the one below:</p>
+<img src="img/curations_display/curations_tutorial_complete.png" style="height:240px;" class="center-block" />
+<br>
+
+<h5>First, we will create a subclass of BVCurationsCollectionViewCell</h5>
+<ul>
+	<li>
+		<p>Create a <code>BVCurationsCollectionViewCell</code> from <strong> File > New > File</strong></p>
+		<img src="img/curations_display/curations_cocoa_touch.png" style="height:150px;" class="center-block" />
+		<br>
+
+		<p>Name the class <code>DemoCollectionViewCell</code> and subclass from <code>
+		BVCurationsCollectionViewCell</code>:</p>
+		<img src="img/curations_display/curations_demo_cell.png" style="height:320px;" class="center-block" />
+	</li>
+	<li>
+		<p>Add a <code>UIImageView</code> outlet called <strong>feedImageView</strong>:</p>
+		<p>We'll use the <code>didSet</code> override to configure the UI when <code>feedItem</code> is set. Your <code>DemoCollectionViewCell</code> should look like:</p>
 
 
 <ul class="nav nav-tabs" role="tablist">
   <li role="presentation" class="active"><a href="#swift" aria-controls="swift" role="tab" data-toggle="tab">Swift</a></li>
   <li role="presentation"><a href="#objc" aria-controls="objc" role="tab" data-toggle="tab">Objective-C</a></li>
 </ul>
+
 
 <!-- Tab panes -->
 <div class="tab-content code-switcher">
 	<!-- swift -->
 	<div role="tabpanel" class="tab-pane active" id="swift">
-		<div class="flex flex-row">
-			<p>Import the SDK by adding this line to each file that uses the SDK:</p>
-		</div>
-<pre><code class="swift">import BVSDK
-</code></pre>
-		<div class="flex flex-row">
-			<p>Then add the following to your AppDelegate's <code>didFinishLaunchingWithOptions</code> function:</p>
-		</div>
-<pre><code class="swift">BVSDKManager.sharedManager().clientId = "YOUR_CLIENT_ID"
-BVSDKManager.sharedManager().apiKeyCurations = "YOUR_API_KEY"
-BVSDKManager.sharedManager().staging = true // Set to false for production!
+<pre><code class="swift">
+import UIKit
+import BVSDK
+import SDWebImage
+
+class DemoCollectionViewCell: BVCurationsCollectionViewCell {
+
+    @IBOutlet weak var feedImageView: UIImageView!
+
+    override var feedItem : BVCurationsFeedItem? {
+
+        didSet {
+
+            let photo : BVCurationsPhoto = self.feedItem!.photos.first!;
+            let imageUrl : NSURL = NSURL(string:photo.imageServiceUrl)!
+            self.feedImageView.sd_setImageWithURL(imageUrl)
+
+        }
+    }
+ }
 </code></pre>
 	</div>
 	<!-- objective-c -->
 	<div role="tabpanel" class="tab-pane" id="objc">
-		<div class="flex flex-row">
-			<p>Import the SDK by including these headers:</p>
-		</div>
-<pre><code class="objectivec">#include &lt;BVSDK/BVSDK.h&gt;
-#include &lt;BVSDK/BVCurations.h&gt;
-</code></pre>
-		<div class="flex flex-row">
-			<p>Then add the following to your AppDelegate's <code>didFinishLaunchingWithOptions</code> function:</p>
-		</div>
-<pre><code class="objectivec">[BVSDKManager sharedManager].clientId = @"YOUR_CLIENT_ID";
-[BVSDKManager sharedManager].apiKeyCurations = @"YOUR_API_KEY";
-[BVSDKManager sharedManager].staging = YES; // set to NO for production!
+<pre><code class="objective-c">
+#import "DemoCollectionViewCell.h"
+#import &ltSDWebImage/UIImageView+WebCache.h&gt
+
+@interface DemoCollectionViewCell()
+
+@property IBOutlet UIImageView *feedImageView;
+
+@end
+
+@implementation DemoCollectionViewCell
+
+- (void)setFeedItem:(BVCurationsFeedItem *)feedItem {
+    
+    super.feedItem = feedItem;
+    
+    BVCurationsPhoto *curationsPhoto = self.feedItem.photos.firstObject;
+    NSURL *imageURL = [NSURL URLWithString:curationsPhoto.url];
+    
+    [self.feedImageView sd_setImageWithURL:imageURL];
+        
+}
+
+@end
 </code></pre>
 	</div>
-
 </div>
-<br/>
-<br/>
+
+        <br>
+        <p class="bg-info well-lg" style="padding:4px;"><i class="fa fa-hand-o-right"></i>  Tip: this implementation is a minimal UI for a <strong>BVCurationsFeedItem</strong> object. You can add more elements and customize it heavily.</p>
+
+	</li>
+	<li>
+		<p>Create the view: <strong>File > New > File</strong> and select:</p>
+		<img src="img/curations_display/source_view.png" style="height:180px;" class="center-block" />
+	</li>
+	<p>Name the view <code>DemoCollectionViewCell</code></p>
+	<li>
+		<p>Now that you have <code>DemoCollectionViewCell.xib</code> created you need to:</p>
+		<ul>
+			<li>
+				<p>Add a <code>UICollectionViewCell</code> and set its height and width to 250</p>
+			</li>
+			<li>
+				<p>Delete the existing <code>UIView</code> (on the left in this picture), we do not need that.</p>
+				<img src="img/curations_display/add_cell_nib.png" style="height:420px;" class="center-block" />
+			</li>
+			
+		</ul>
+	</li>
+	<li>
+		<p>We can add a <code>UIImageView</code> to the <code>.xib</code>. Using the pin tool, pin it to all sides of the cell:</p>
+		<img src="img/curations_display/cell_add_imageview.png" style="height:340px;" class="center-block" />
+	</li>
+	<li>
+		<p>Set the <strong>Custom Class</strong> of the <code>.xib</code> to be <code>DemoCollectionViewCell</code>:</p>
+		<img src="img/curations_display/custom_class.png" style="height:280px;" class="center-block" />
+	</li>
+	<li>
+		<p>Now we have to connect the <code>UIImageView</code> to the <code>feedImageView</code> outlet in the source file. Select the <strong>Assistant Editor</strong> and connect the outlet:</p>
+		<img src="img/curations_display/connect_cell_outlet.png" style="height:380px;" class="center-block" />
+	</li>
+</ul>
+
+<h5>Add the UICollectionView to your ViewController</h5>
+<ul>
+	<li>
+		<p>Open your view controller in your <code>Main.storyboard</code> file. Then, drag and drop a <code>UICollectionView</code> object onto the View Controller.</p>
+		<img src="img/curations_display/add_collection_view.png" style="height:340px;" class="center-block" />
+	</li>
+	<li>
+		<p>Make the <code>UICollectionView</code> you just added full screen by pinning the edges to the parent container on all 4 sides:</p>
+		<img src="img/curations_display/collection_view_full_screen.png" style="height:340px;" class="center-block" />
+	</li>
+	<li>
+		<p>Set the <strong>Custom Class</strong> to <code>BVCurationsCollectionView</code></p>
+		<img src="img/curations_display/collection_view_custom_class.png" style="height:200px;" class="center-block" />
+	</li>
+	<li>
+		<p>Now with the <strong>Assistant Editor</strong> displaying the ViewController source, connect the <code>BVCurationsCollectionView</code> to the source code:</p>
+		<img src="img/curations_display/collection_view_outlet.png" style="height:360px;" class="center-block" />
+		<br>
+		<p>And name the outlet <code>curationsCollectionView</code></p>
+		<img src="img/curations_display/collection_view_outlet_name.png" style="height:180px;" class="center-block" />
+	</li>
+
+</ul>
+
+<h5>Finally, put it all together in the ViewController.</h5>
+<p>Once you have <code>BVCurationsCollectionView</code> set up and the <code>BVCurationsCollectionViewCell</code> source and .xib file ready, all you need to do is hook them up in your ViewController. The ViewController below exemplifies what a very minimal configuration would look like to draw a feed from the Curations API and handle a tap event on an item. Since <code>BVCurationsCollectionView</code> is configurable as a UICollectionView you can embed them anywhere it makes sense in your application's UX.</p>
+<p>The completed <code>ViewController</code> so you can see the full detail.</p>
 
 
-{% include set_user.html %}
-
-
-<h3>Implementation</h3>
-<p>Users of this SDK are asked to implement ads using <a href="https://developers.google.com/mobile-ads-sdk/docs/dfp/ios/quick-start">DFP's SDK for iOS</a>. Contact Bazaarvoice about serving ads in your app to get everything properly set up in DFP. Once ads are implemented, continue on below:</p>
-<p>Adding targeting data to your advertisements is simple. For every <code>DFPRequest</code> that you use, set the <code>customTargeting</code> property as follows:</p>
-
-<!-- Tab navs -->
 <ul class="nav nav-tabs" role="tablist">
   <li role="presentation" class="active"><a href="#swift" aria-controls="swift" role="tab" data-toggle="tab">Swift</a></li>
   <li role="presentation"><a href="#objc" aria-controls="objc" role="tab" data-toggle="tab">Objective-C</a></li>
 </ul>
 
+
 <!-- Tab panes -->
 <div class="tab-content code-switcher">
 	<!-- swift -->
-	<div role="tabpanel" class="tab-pane active" id="swift">	
-		
-<pre><code class="swift">let request = DFPRequest.request();
-request.customTargeting = BVSDKManager.sharedManager().getCustomTargeting();
-...</code></pre>
+	<div role="tabpanel" class="tab-pane active" id="swift">
+<pre><code class="swift">import UIKit
+import BVSDK
+
+class ViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+
+    @IBOutlet weak var curationsCollectionView: BVCurationsCollectionView!
+
+    var curationsFeedItems:[BVCurationsFeedItem]?
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        self.curationsCollectionView.registerNib(UINib(nibName: "DemoCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "DemoCell")
+
+        self.curationsCollectionView.delegate = self;
+        self.curationsCollectionView.dataSource = self;
+
+        let groups = ["__all__"]
+        let feedRequest = BVCurationsFeedRequest(groups: groups)
+        feedRequest.limit = 40
+        feedRequest.hasPhoto = true
+        feedRequest.withProductData = true
+
+        self.curationsCollectionView.loadFeedWithRequest(feedParams, withWidgetId: nil, completionHandler: { (feedItems) -> Void in
+            // success
+            // closure from request returned on main thread
+
+            self.curationsFeedItems = feedItems as? [BVCurationsFeedItem]
+            self.curationsCollectionView.reloadData()
+
+        }) { (error) -> Void in
+            // error
+
+            print("ERROR: Curations feed could not be retrieved. Error: " + error.localizedDescription)
+        }
+    }
+
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+
+        let layout = (curationsCollectionView.collectionViewLayout) as! UICollectionViewFlowLayout
+        layout.itemSize = CGSizeMake(curationsCollectionView.bounds.height, curationsCollectionView.bounds.height)
+
+        layout.scrollDirection = UICollectionViewScrollDirection.Vertical
+        layout.itemSize = CGSizeMake(curationsCollectionView.bounds.width / 2, curationsCollectionView.bounds.width / 2)
+
+        layout.minimumInteritemSpacing = 0
+        layout.minimumLineSpacing = 0
+    }
+
+    // MARK: UICollectionViewDatasource
+
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+
+        return self.curationsFeedItems?.count ?? 0
+
+    }
+
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("DemoCell", forIndexPath: indexPath) as! DemoCollectionViewCell
+
+        let feedItem : BVCurationsFeedItem = self.curationsFeedItems![indexPath.row]
+
+        cell.feedItem = feedItem;
+
+        return cell
+    }
+
+    // MARK: UICollectionViewDelegate
+
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+
+        let feedItem : BVCurationsFeedItem = curationsFeedItems![indexPath.row]
+
+        print("Selected: " + feedItem.description)
+
+    }
+}</code></pre>
 	</div>
 	<!-- objective-c -->
 	<div role="tabpanel" class="tab-pane" id="objc">
-<pre><code class="objectivec">DFPRequest *request = [DFPRequest request];
-request.customTargeting = [[BVSDKManager sharedManager] getCustomTargeting];
-...</code></pre>
+<pre><code class="objective-c">
+
+#import "ViewController.h"
+#import "DemoCollectionViewCell.h"
+#import &lt;BVSDK/BVCurations.h&gt;
+
+@interface ViewController () &lt;UICollectionViewDataSource, UICollectionViewDelegate&gt;
+
+@property (weak, nonatomic) IBOutlet BVCurationsCollectionView *curationsCollectionView;
+
+@property (strong, nonatomic) NSArray&lt;BVCurationsFeedItem *&gt; *curationsFeedItems;
+
+@end
+
+@implementation ViewController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    self.curationsFeedItems = [NSArray array];
+    
+    // Set up the UI
+    [self.curationsCollectionView registerNib:[UINib nibWithNibName:@"DemoCollectionViewCell" bundle:nil]
+                   forCellWithReuseIdentifier:@"DemoCell"];
+ 
+    self.curationsCollectionView.delegate = self;
+    self.curationsCollectionView.dataSource = self;
+    
+    // Create the request parameters
+    NSArray *groups = @[@"__all__"];
+    BVCurationsFeedRequest *feedRequest = [[BVCurationsFeedRequest alloc] initWithGroups:groups];
+    feedRequest.limit = 40;
+    feedRequest.hasPhoto = YES;
+    feedRequest.withProductData = YES;
+    
+    [self.curationsCollectionView loadFeedWithRequest:feedRequest withWidgetId:nil completionHandler:^(NSArray&lt;BVCurationsFeedItem *&gt; * _Nonnull feedItemsResult) {
+        // completion on main thread
+        NSLog(@"Success loading Curations Display!");
+        self.curationsFeedItems = feedItemsResult;
+        [self.curationsCollectionView reloadData];
+        
+    } withFailure:^(NSError * _Nonnull error) {
+        // error on main thread
+        NSLog(@"ERROR: Curations feed could not be retrieved. Error: %@", error.localizedDescription);
+    }];
+
+}
+
+- (void)viewWillLayoutSubviews{
+    [super viewWillLayoutSubviews];
+    
+    UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout *)self.curationsCollectionView.collectionViewLayout;
+    layout.itemSize = CGSizeMake(self.curationsCollectionView.bounds.size.height, self.curationsCollectionView.bounds.size.height);
+   
+    layout.scrollDirection = UICollectionViewScrollDirectionVertical;
+    layout.itemSize = CGSizeMake(self.curationsCollectionView.bounds.size.width / 2, self.curationsCollectionView.bounds.size.width / 2);
+    
+    layout.minimumInteritemSpacing = 0;
+    layout.minimumLineSpacing = 0;
+}
+
+#pragma mark - UICollectionViewDataSource
+
+-(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
+    return 1;
+}
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
+    return [self.curationsFeedItems count];
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
+    
+    DemoCollectionViewCell *cell = [self.curationsCollectionView dequeueReusableCellWithReuseIdentifier:@"DemoCell" forIndexPath:indexPath];
+    
+    cell.feedItem = [self.curationsFeedItems objectAtIndex:indexPath.row];
+    
+    return cell;
+    
+}
+
+#pragma mark UICollectionViewDelegate
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+    
+    BVCurationsFeedItem *selectedFeedItem = [self.curationsFeedItems objectAtIndex:indexPath.row];
+    
+    NSLog(@"Selected: %@", selectedFeedItem.description);
+    
+}
+
+@end
+</code></pre>
 	</div>
-
 </div>
-<p style="padding-top:6px;">This sends along necessary information to DFP to properly target ads for that user.</p>
+
+
+
 <br>
+<h5>Run it!</h5>
+<p>The app should populate the collection view with product recommendations. Some styling will be needed to look good, however <i class="fa fa-smile-o"></i></p>
+<img src="img/curations_display/final_project.png" style="height:460px;" class="center-block" />
 <br>
 
-<h3>Upgrading from old versions of BVSDK</h3>
-<p>Previously, DFP's SDK was included with the BVSDK, and users were asked to use special subclasses, like using <code>BVTargetedRequest</code> instead of <code>DFPRequest</code>. However, we've simplified this process greatly.</p>
-<p>Now, users of Bazaarvoice Advertising are asked to implement DFP ads on their own, following their <a href="https://developers.google.com/mobile-ads-sdk/docs/dfp/ios/quick-start">excellent documentation</a>. After ads are implemented and working well, adding in targeting information is a one-line change, described above.</p>
-<p>Specifically, once you upgrade your BVSDK installation:</p>
-<ul>
-	<li>Change <code>BVTargetedAdLoader</code> to <code>GADAdLoader</code></li>
-	<li>Change <code>BVTargetedRequest</code> to <code>DFPRequest</code></li>
-	<li>Change <code>BVTargetedInterstitial</code> to <code>DFPInterstitial</code></li>
-	<li>Change <code>BVTargetedBannerView</code> to <code>DFPBannerView</code></li>
-</ul>
-<br>
+
+<div class="well well-sm">
+	<h5>Author</h5>
+	<p>Copyright 2016 Bazaarvoice, Inc. All right reserved.</p>
+	<h5>License</h5>
+	<p>Use of this SDK is contingent on your agreement and conformance with <a href="http://www.bazaarvoice.com/legal/api-terms-of-use.html">Bazaarvoice's API Terms of Use</a>. Additionally, you agree to store all data acquired by this SDK or Bazaarvoice’s API only within the storage of the individual application instance using the SDK or API. You also agree to use the data acquired by the SDK or API only within the context of the same individual application instance and only for purposes consistent with that application’s purpose. Except as otherwise noted, the Bazaarvoice iOS SDK licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0.html">Apache License, Version 2.0</a>.</p>
+</div>
 <br>
 
-<h3>Contextual Interests</h3>
-<p>BVAdvertising is structured around categories that products belong to. The list is fully defined in <code>BVContextualInterests.h</code>. It is split into two tiers, with about 30 <i>tier one</i> categories, all with multiple sub-categories (<i>tier two</i>).</p>
-<p>For example, the Women's dresses section of a Target store would correspond to:</p>
-<ul>
-	<li>tier one: <code>tierOneApparelAndAccessories</code></li>
-	<li>tier two: <code>tierTwoApparelAndAccessoriesWomensDresses</code></li>
-</ul>
-<p>Similarly, the Television section of a BestBuy store would correspond to:</p>
-<ul>
-	<li>tier one: <code>tierOneConsumerElectronics</code></li>
-	<li>tier two: <code>tierTwoConsumerElectronicsTelevisions</code></li>
-</ul>
-<p>Note: all tier two categories are extensions of their tier one category names. Contextual Interest categories are used while sending location information to BVAdvertising, as defined below.</p>
-<br>
-<br>
 
-<h3>BVAdvertising + User Location</h3>
-<p>BVAdvertising provides many ways to integrate location data into a shopper's profile. All location related methods can be found in <code>BVLocationEventsHelper.h</code>, but a couple notes:</p>
-<ul>
-	<li>All location methods have <code>contextualTier1</code> and <code>contextualTier2</code> parameters. This allows you to send all location->interest mapping information available to BVAdvertising in order to give the shopper the best profile possible. See <code>BVContextualInterests.h</code> for a generated list of Contextual Tier 1 and Tier 2 strings.</li>
-	<li>We define methods that correlate strongly to <code>CLLocationManagerDelegate</code> methods -- and provide an example usage of CLLocationManager+BVAdvertising inside the <code>LocationExample.m</code> file.</li>
-	<li>We also define methods that correlate strongly to Gimbal Beacon delegate methods, specifically <code>GMBLPlaceManagerDelegate</code> and <code>GMBLBeaconManagerDelegate</code>. Similarly, we provide an example usage of Gimbal+BVAdvertising in the <code>GimbalExample.m</code> file.</li>
-</ul>
+              </div>
+            </div>
+          </div>
+        </div>        
+      </div>
+    </div>
+  </body>

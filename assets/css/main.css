@@ -22,6 +22,10 @@
 .nav-link {
 	color: #FFFFFF;
 }
+a.nav-link:hover {
+	color: #00AB8E;
+	background-color: #eee
+}
 #portal_sidebar .fa {
 	display:inherit;
 }
@@ -102,4 +106,25 @@ a.left.carousel-control, a.right.carousel-control {
 }
 .carousel-inner {
 	height: 360px;
+}
+img {
+	/*padding-top: 4px;*/
+	padding-bottom:10px;
+}
+
+th.ui-input-text {
+    width: 250px !important
+}
+
+step
+{
+    padding: 5px 10px;
+    background-color: #fff;
+    display: inline-block;
+    -moz-border-radius: 100px;
+    -webkit-border-radius: 100px;
+    border-radius: 100px;
+    -moz-box-shadow: 0px 0px 2px #888;
+    -webkit-box-shadow: 0px 0px 2px #888;
+    box-shadow: 0px 0px 2px #888;
 }

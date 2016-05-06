@@ -1,74 +1,221 @@
----
-layout: default
-title: "Product Recommendations"
-permalink: product_recommendations.html
----
+<!DOCTYPE html>
+<html lang="en">
 
-<div class="flex flex-row" id="content_title">
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+  
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+  <script type="text/javascript" src="./assets/js/highlight.pack.js"></script>
+  
+  <script type="text/javascript" src="./assets/js/jquery_rotate.js"></script>
+  <script type="text/javascript" src="./assets/js/main.js"></script>
+  
+  <script>
+    
+$(function(){
+
+	// select the tab in the sidebar to reflect current page position
+
+	var tabName = "Product Recommendations";
+
+	$('.nav-link.active').removeClass('active');
+	var nav_link = $('.nav-link:contains("' + tabName + '")');
+	nav_link.addClass('active');
+	
+});
+  </script>
+
+  <script>hljs.initHighlightingOnLoad();</script>
+
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="./assets/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="./assets/css/bvbootstrap.css">
+  <link rel="stylesheet" type="text/css" href="./assets/css/highlightjs/default.min.css">
+  <link rel="stylesheet" type="text/css" href="./assets/css/main.css">
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="57x57" href="./public/apple-touch-icon-57x57.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="./public/apple-touch-icon-114x114.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="./public/apple-touch-icon-72x72.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="./public/apple-touch-icon-144x144.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="60x60" href="./public/apple-touch-icon-60x60.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="120x120" href="./public/apple-touch-icon-120x120.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="76x76" href="./public/apple-touch-icon-76x76.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="152x152" href="./public/apple-touch-icon-152x152.png" />
+  <link rel="icon" type="image/png" href="./public/favicon-196x196.png" sizes="196x196" />
+  <link rel="icon" type="image/png" href="./public/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/png" href="./public/favicon-32x32.png" sizes="32x32" />
+  <link rel="icon" type="image/png" href="./public/favicon-16x16.png" sizes="16x16" />
+  <link rel="icon" type="image/png" href="./public/favicon-128.png" sizes="128x128" />
+  <meta name="application-name" content="&nbsp;"/>
+  <meta name="msapplication-TileColor" content="#FFFFFF" />
+  <meta name="msapplication-TileImage" content="./public/mstile-144x144.png" />
+  <meta name="msapplication-square70x70logo" content="./public/mstile-70x70.png" />
+  <meta name="msapplication-square150x150logo" content="./public/mstile-150x150.png" />
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-56370630-4', 'auto');
+    ga('set', {
+      title: 'Product Recommendations'
+    });
+    ga('send', 'pageview');
+  </script>
+
+</head>
+
+
+  <body>
+    <div id="portal_container">
+      
+      <div id="portal_sidebar">
+	<div id="portal_nav">
+		
+		<div id="bv_logo">
+			<a href="/">
+				<font class="bv_teal">bazaar</font><font class="bv_white">voice</font><font class="bv_teal">:</font>				
+			</a>
+		</div>
+
+		<div>
+			<ul id="task_nav" class="nav nav-pills nav-stacked">
+				<li class="nav-item">
+					<a class="nav-link active" href="index.html">
+						<span><i class="m-r-1 fa fa-file-text-o"></i>Getting Started</span>     
+					</a>
+					<ul>
+						<li class="nav-item">
+							<a class="nav-link" href="installation.html">
+								<span>Installation and Configuration</span>
+							</a>
+						</li>
+					</ul>
+				</li>
+				<li class="nav-item">
+					<span class="nav-link" href="modules.html">
+						<span><i class="m-r-1 fa fa-cogs"></i>Modules</span>     
+					</span>
+					<ul>
+						<li class="nav-item">
+							<a class="nav-link" href="product_recommendations.html"><span>Product Recommendations</span></a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="advertising.html"><span>Advertising</span></a>
+						</li>
+						<li class="nav-item">
+							
+							<a class="nav-link" role="button" data-toggle="collapse" href="#curationsDropdown" aria-expanded="false" aria-controls="curationsDropdown">
+								<span><span>Curations</span><span style="float:right;"><i id="curationsDropdownArrow" class="fa fa-sort-desc  fa-rotate-270"></i></span></span>
+							</a>
+							<div class="collapse " id="curationsDropdown">
+								<ul>
+									<li class="nav-item"><a class="nav-link" href="curations_display.html">Curations Display</a></li>
+									<li class="nav-item"><a class="nav-link" href="curations_custom_posts.html">Curations Custom Posts</a></li>
+								</ul>
+							</div>
+
+
+						</li>
+						<li class="nav-item">
+							
+							<a class="nav-link" role="button" data-toggle="collapse" href="#conversationsDropdown" aria-expanded="false" aria-controls="conversationsDropdown">
+								<span><span>Conversations</span><span style="float:right;"><i id="conversationsDropdownArrow" class="fa fa-sort-desc fa-rotate-270"></i></span></span>
+							</a>
+							<div class="collapse " id="conversationsDropdown">
+								<ul>
+									<li class="nav-item"><a class="nav-link" href="using_conversations.html">Using Conversations</a></li>
+									<li class="nav-item"><a class="nav-link" href="conversations_iovation.html">Authenticity with iovation</a></li>
+								</ul>
+							</div>
+
+						</li>
+					</ul>
+				</li>
+
+			 
+				<li class="nav-item">
+					<a class="nav-link" href="bv_pixel.html">
+						<span><i class="m-r-1 fa fa-dot-circle-o"></i>BV Pixel</span>     
+					</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="user_authentication_token.html">
+						<span><i class="m-r-1 fa fa-lock"></i>User Authentication Token</span>     
+					</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="ios_9_considerations.html">
+						<span><i class="m-r-1 fa fa-mobile"></i> iOS 9 Considerations</span>     
+					</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="example_projects.html">
+						<span><i class="m-r-1 fa fa-file-code-o"></i>Example Projects</span>     
+					</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="faq_support.html">
+						<span><i class="m-r-1 fa fa-question-circle"></i>FAQ & Support</span>     
+					</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="./assets/api_reference/index.html">
+						<span><i class="m-r-1 fa fa-book"></i>API Reference</span>     
+					</a>
+				</li>
+				<br>
+				<li class="nav-item">
+					<a class="nav-link" href="mailto:mobilecoreteam@bazaarvoice.com?subject=iOS SDK documentation feedback" style="border: 1px #fff solid;">
+						<span><i class="m-r-1 fa fa-envelope"></i>Feedback</span>     
+					</a>
+				</li>	
+			</ul>
+		</div>
+	</div>
+</div>
+
+      <div id="application_container">
+        <div id="task_container">
+          <div id="task_content" class="app-content">
+            <div class="scroll-container scrollable--scrollbar">
+              <div class="page-container">
+
+                <div class="flex flex-row" id="content_title">
 	Product Recommendations
 </div>
-<div class="flex flex-row">
-	<p class="bg-warning" style="padding:4px;"> <i class="fa fa-hand-o-right"></i>  Product recommendations is currently in a limited beta release. If you'd like to participate, please contact Bazaarvoice.</p>
-</div>
-<div class="flex flex-row">
-	<p>This guide shows how to implement product recommendations in your app.<br/>
-	NOTE: Make sure you have your API Key and Client ID before configuring the managers!<br/>
-	Also, you can check out the product recommendations example app under <code>/Example/BVProductRecsExample!</code></p>
-</div>
-<hr/>
-<br/>
 
+<p><span class="bg-warning well-lg" style="padding:4px;"> <i class="fa fa-hand-o-right"></i>  Product recommendations is currently in a limited beta release. If you'd like to participate, please contact <a href="mailto:mobilecoreteam@bazaarvoice.com">Bazarvoice.</a></span></p>
 
-{% include installation.html %}
+<p>This guide shows how to implement Product Recommendations in your app. The general walkthrough shows you Swift and Objective-C implementation for displaying Product Recommendations in a <code>UICollectonView</code>. If you are familiar with the design pattern of timplementing a <code>UICollectionView</code> or <code>UITableView</code> in iOS, implementing Bazaarvoice Product Recommendations will be a straightforward process.<p/>
 
-<h3>Configuration</h3>
+You can also see a reference implementation in the SDK under <code>/Example/BVProductRecsExample</code>. You can provide the example Product Recommendations app your own API Key and Client ID.
 
-<ul class="nav nav-tabs" role="tablist">
-  <li role="presentation" class="active"><a href="#swift" aria-controls="swift" role="tab" data-toggle="tab">Swift</a></li>
-  <li role="presentation"><a href="#objc" aria-controls="objc" role="tab" data-toggle="tab">Objective-C</a></li>
-</ul>
+</p>
+<hr>
 
-<!-- Tab panes -->
-<div class="tab-content code-switcher">
-	<!-- swift -->
-	<div role="tabpanel" class="tab-pane active" id="swift">
-		<div class="flex flex-row">
-			<p>Import the SDK by adding this line to each file that uses the SDK:</p>
-		</div>
-<pre><code class="swift">import BVSDK
-</code></pre>
-		<div class="flex flex-row">
-			<p>Then add the following to your AppDelegate's <code>didFinishLaunchingWithOptions</code> function:</p>
-		</div>
-<pre><code class="swift">BVSDKManager.sharedManager().clientId = "YOUR_CLIENT_ID"
-BVSDKManager.sharedManager().apiKeyShopperAdvertising = "YOUR_API_KEY"
-BVSDKManager.sharedManager().staging = true // Set to false for production!
-</code></pre>
-	</div>
-	<!-- objective-c -->
-	<div role="tabpanel" class="tab-pane" id="objc">
-		<div class="flex flex-row">
-			<p>Import the SDK by including these headers:</p>
-		</div>
-<pre><code class="objective-c">#include &lt;BVSDK/BVSDK.h&gt;
-#include &lt;BVSDK/BVRecommendations.h&gt;
-</code></pre>
-		<div class="flex flex-row">
-			<p>Then add the following to your AppDelegate's <code>didFinishLaunchingWithOptions</code> function:</p>
-		</div>
-<pre><code class="objective-c">[BVSDKManager sharedManager].clientId = @"YOUR_CLIENT_ID";
-[BVSDKManager sharedManager].apiKeyShopperAdvertising = @"YOUR_API_KEY";
-[BVSDKManager sharedManager].staging = YES; // set to NO for production!
-</code></pre>
-	</div>
+<p class="bg-warning well-lg" style="padding:4px;"> <i class="fa fa-hand-o-right"></i>  Before you being implementation of ths module make sure you have verified your installed as details in the <a href="./installation.html">Installation and Configuraion page.</a></p>
 
-</div>
-<br/>
-<br/>
+<hr>
 
+<h3>Set User Information</h3>
+<p>
+	Once a user is authenticated inside your user login workflow, set user information inside the <code>BVSDKManager#sharedManager()</code> object.
+</p>
 
-{% include set_user.html %}
+<p class="bg-info well-lg" style="padding:4px;"><i class="fa fa-hand-o-right"></i>  Note: the userAuthString created with your existing Bazaarvoice implementation logic needs to be given to the <strong>BVSDKManager</strong> object. However, the steps to encrypt your userAuthString are still applicable even if you are not a Conversations client.</p>
 
+<h5>Example Authentication String - for testing purposes</h5>
+<p>
+	If you don't have an authorization token set up yet, please refer to the example in <a href="./user_authentication_token.html">User Authentication Token</a>.
+</p>
 
 <h3>Showing some product recommendations</h3>
 <p>Product Recommendations are simply views presented to users. They're shown using the same classes you already use in your storyboards, and can be formatted to match your app's visual design. When a set of product recommendations load, your app will receive an array of <code>BVProduct</code> objects that contains its assets, and the app (rather than the SDK) is then responsible for displaying each <code>BVProduct</code> object.</p>
@@ -86,55 +233,71 @@ BVSDKManager.sharedManager().staging = true // Set to false for production!
 	<li><code>BVProductRecommendationView</code></li>
 </ul>
 <p>Similarly, these classes should be used as the base class of the view you show the product recommendation in.</p>
-<br/>
-<br/>
+<br>
 
 <h3>Example usage</h3>
 <p>Let's run through an example implementation of BVProductRecommendationsCollectionView. Following this example will produce a scrollable view of product recommendations, as shown below:</p>
 <img src="img/carousel.gif" style="height:200px;" class="center-block" />
-</br>
-<br/>
+<br>
+<br>
 
-<h5>First, we want to create a <code>BVRecommendationCollectionViewCell</code></h5>
+<h5>First, we want to create a subclass of <code>BVRecommendationCollectionViewCell</code>, called <code>DemoCell</code>	</h5>
 <ol>
 	<li>
 		<p>Create a <code>UICollectionViewCell</code> by selecting <strong>File > New > File</strong></p>
 		<img src="img/NewFile.png" style="height:400px" class="center-block" />
-		<br/>
+		<br>
 		<img src="img/DemoCell.png" style="height:400px" class="center-block" />
 	</li>
-	<br/>
+	<br>
 	<li>
 		<p>Set its superclass as <code>BVRecommendationCollectionViewCell</code> in the <code>DemoCell</code> file, and add appropriate view outlets:</p>
-		<!-- Tab panes -->
+
+<p class="bg-info well-lg" style="padding:4px;"><i class="fa fa-hand-o-right"></i>  The starRating object in this example is done with the open source project HCSStarRatingView</p>
+
 		<ul class="nav nav-tabs" role="tablist">
-		  <li role="presentation" class="active"><a href="#swift" aria-controls="swift" role="tab" data-toggle="tab">Swift</a></li>
-		  <li role="presentation"><a href="#objc" aria-controls="objc" role="tab" data-toggle="tab">Objective-C</a></li>
-		</ul>
+  <li role="presentation" class="active"><a href="#swift" aria-controls="swift" role="tab" data-toggle="tab">Swift</a></li>
+  <li role="presentation"><a href="#objc" aria-controls="objc" role="tab" data-toggle="tab">Objective-C</a></li>
+</ul>
 		
 		<div class="tab-content code-switcher">
 			<!-- swift -->
 			<div role="tabpanel" class="tab-pane active" id="swift">
 <pre><code class="swift">class DemoCell: BVRecommendationCollectionViewCell {
 
-@IBOutlet weak var productName : UILabel!
-@IBOutlet weak var price : UILabel!
-@IBOutlet weak var numReview : UILabel!
-@IBOutlet weak var rating : UILabel!
-@IBOutlet weak var productImageView : UIImageView!
-@IBOutlet weak var starRating : HCSStarRatingView!
+	@IBOutlet weak var productName : UILabel!
+	@IBOutlet weak var price : UILabel!
+	@IBOutlet weak var numReview : UILabel!
+	@IBOutlet weak var rating : UILabel!
+	@IBOutlet weak var productImageView : UIImageView!
+	@IBOutlet weak var starRating : HCSStarRatingView!
 
 }</code></pre>
 			</div>
 			<!-- objective-c -->
 			<div role="tabpanel" class="tab-pane" id="objc">
-				<p>TODO</p>
+				<p><pre><code class="objectivec">// DemoCell.h
+//  
+#import &lt;BVSDK/BVSDK.h&gt;
+#import &lt;BVSDK/BVRecommendations.h&gt;
+#import &lt;HCSStarRatingView/HCSStarRatingView.h&gt;
+
+@interface DemoCell : BVRecommendationCollectionViewCell
+	@property IBOutlet UILabel *productName;
+	@property IBOutlet UILabel *price;
+	@property IBOutlet UILabel *numReview;
+	@property IBOutlet UILabel *rating;
+	@property IBOutlet UIImageView *productImageView;
+	@property IBOutlet HCSStarRatingView *starRating;
+@end
+</code></pre></p>
 			</div>
 		</div>
-		<blockquote>
-			TIP: The DemoCell outlets above are suggestions for how to build a custom cell. These outlets map efficiently to each BVProduct data object. However, these outlets are not required and you can configure your cell any way you like!
-		</blockquote>
-		<br/>
+
+		<br>
+		<p class="bg-info well-lg" style="padding:4px;"><i class="fa fa-hand-o-right"></i>  Tip: the DemoCell outlets above are suggestions for how to build a custom cell. These outlets map efficiently to each BVProduct data object. However, these outlets are not required and you can configure your cell any way you like!</p>
+
+		<br>
 
 	</li>
 
@@ -144,65 +307,74 @@ BVSDKManager.sharedManager().staging = true // Set to false for production!
 	</li>
 
 </ol>
-<br/>
-<br/>
+<br>
 
-<h5>Next, we want to create a <code>BVProductRecommendationsCollectionView</code></h5>
+<h5>Next, we want to create a <code>BVProductRecommendationsCollectionView</code>. For this part, we'll create a <code>UIViewController</code> and put a <code>BVProductRecommendationsCollectionView</code> inside it.</h5>
 <ol>
 	<li>
 		<p>Create a <code>UIViewController</code> by selecting <strong>File > New > File</strong></p>
 		<img src="img/NewFile.png" style="height:400px" class="center-block" />
-		<br/>
+		<br>
 		<img src="img/DemoViewController.png" style="height:400px" class="center-block" />
-		<br/>
+		<br>
 	</li>
 	<li>
 		<p>Add an outlet for the collection view:</p>
 		
-		<!-- Tab panes -->
+
 		<ul class="nav nav-tabs" role="tablist">
-		  <li role="presentation" class="active"><a href="#swift" aria-controls="swift" role="tab" data-toggle="tab">Swift</a></li>
-		  <li role="presentation"><a href="#objc" aria-controls="objc" role="tab" data-toggle="tab">Objective-C</a></li>
-		</ul>
+  <li role="presentation" class="active"><a href="#swift" aria-controls="swift" role="tab" data-toggle="tab">Swift</a></li>
+  <li role="presentation"><a href="#objc" aria-controls="objc" role="tab" data-toggle="tab">Objective-C</a></li>
+</ul>
 		
+
 		<div class="tab-content code-switcher">
 			<!-- swift -->
 			<div role="tabpanel" class="tab-pane active" id="swift">
 <pre><code class="swift">class DemoViewController: UIViewController {  
-@IBOutlet weak var recommendationsView : BVProductRecommendationsCollectionView!  
+	@IBOutlet weak var recommendationsView : BVProductRecommendationsCollectionView!  
 }  </code></pre>
 			</div>
 			<!-- objective-c -->
 			<div role="tabpanel" class="tab-pane" id="objc">
-				<p>TODO</p>
+				<p><pre><code class="objectivec">// DemoViewController.h
+
+#import &lt;UIKit/UIKit.h&gt;
+#import &lt;BVSDK/BVRecommendations.h&gt;
+@interface DemoViewController : UIViewController
+
+@property IBOutlet BVProductRecommendationsCollectionView *recommendationsView;
+
+@end</code></pre></p>
 			</div>
 		</div>
-		<br/>
+		<br>
 
 	</li>
 	<li>
 		<p>Add a <code>UICollectionView</code> to your nib, and set its class to <code>BVProductRecommendationsCollectionView</code></p>
 		<img src="img/ViewControllerNib.png" style="height:280px" class="center-block"/>
-		<br/>
+		<br>
 	</li>
 	<li>
 		<p>Hook up the <code>BVProductRecommendationsCollectionView</code> to its outlet, <code>recommendationsView</code></p>
 		<img src="img/ViewControllerNibConnection.png" style="height:440px" class="center-block"/>
 	</li>
 </ol>
-<br/>
-<br/>
+<br>
+<br>
 
 <h5>Next, let's grab some product recommendations for this user</h5>
 <ol>
 	<li>
 		<p>Fetch product recommendations, and store them in a variable for later use. We also want to set up our <code>recommendationsView</code> delegate and datasource, and register the nib we created earlier</p>
 
-		<!-- Tab panes -->
+
 		<ul class="nav nav-tabs" role="tablist">
-		  <li role="presentation" class="active"><a href="#swift" aria-controls="swift" role="tab" data-toggle="tab">Swift</a></li>
-		  <li role="presentation"><a href="#objc" aria-controls="objc" role="tab" data-toggle="tab">Objective-C</a></li>
-		</ul>
+  <li role="presentation" class="active"><a href="#swift" aria-controls="swift" role="tab" data-toggle="tab">Swift</a></li>
+  <li role="presentation"><a href="#objc" aria-controls="objc" role="tab" data-toggle="tab">Objective-C</a></li>
+</ul>
+
 		
 		<div class="tab-content code-switcher">
 			<!-- swift -->
@@ -236,46 +408,111 @@ self.recommendationsView.reloadData()
 			</div>
 			<!-- objective-c -->
 			<div role="tabpanel" class="tab-pane" id="objc">
-				<p>TODO</p>
+				<pre><code class="objectivec">//  DemoViewController.m
+
+#import "DemoViewController.h"
+#import "DemoCell.h"
+
+@interface DemoViewController () <UICollectionViewDataSource, UICollectionViewDelegate>
+
+@property NSArray<BVProduct *>*products;
+
+@end
+
+@implementation DemoViewController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    self.products = [NSArray array];
+    
+        [self.recommendationsView registerNib:[UINib nibWithNibName:@"DemoCell" bundle:nil]
+                   forCellWithReuseIdentifier:@"DemoCellIdentifier"];
+    
+    self.recommendationsView.delegate = self;
+    self.recommendationsView.dataSource = self;
+    
+    [self loadRecommendations];
+    
+}
+
+// Fetch the product recommenations from the API method on the BVRecommendationsCollectionView container.
+- (void)loadRecommendations {
+    
+    BVRecommendationsRequest *request = [[BVRecommendationsRequest alloc] initWithLimit:20];
+    
+    [self.recommendationsView loadRequest:request completionHandler:^(NSArray<BVProduct *> * proudcts) {
+        NSLog(@"Recommendations Result: %@", proudcts.description);
+        self.products = proudcts;
+        [self.recommendationsView reloadData];
+    } errorHandler:^(NSError * error) {
+        NSLog(@"ERROR: %@", error.localizedDescription);
+    }];
+    
+}
+
+// Lays out the recommendationView with horitontal scrolling
+- (void)viewWillLayoutSubviews{
+    [super viewWillLayoutSubviews];
+    
+    UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout *)self.recommendationsView.collectionViewLayout;
+    layout.itemSize = CGSizeMake(self.recommendationsView.bounds.size.height, self.recommendationsView.bounds.size.height);
+    
+    layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
+    layout.itemSize = CGSizeMake(self.recommendationsView.bounds.size.width / 2, self.recommendationsView.bounds.size.width / 2);
+    
+    layout.minimumInteritemSpacing = 0;
+    layout.minimumLineSpacing = 0;
+}
+
+@end
+</code></pre>
+</p>
 			</div>
 		</div>
-		<br/>
+		<br>
 
 	</li>
 	<li>
 		<p>Create and fill out <code>collectionView:numberOfItemsInSection:</code></p>
 
-		<!-- Tab panes -->
+
 		<ul class="nav nav-tabs" role="tablist">
-		  <li role="presentation" class="active"><a href="#swift" aria-controls="swift" role="tab" data-toggle="tab">Swift</a></li>
-		  <li role="presentation"><a href="#objc" aria-controls="objc" role="tab" data-toggle="tab">Objective-C</a></li>
-		</ul>
+  <li role="presentation" class="active"><a href="#swift" aria-controls="swift" role="tab" data-toggle="tab">Swift</a></li>
+  <li role="presentation"><a href="#objc" aria-controls="objc" role="tab" data-toggle="tab">Objective-C</a></li>
+</ul>
+
 		
 		<div class="tab-content code-switcher">
 			<!-- swift -->
 			<div role="tabpanel" class="tab-pane active" id="swift">
 <pre><code class="swift">func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-return self.recommendations.count ?? 0
+	return self.recommendations.count ?? 0
 }</code></pre>
 			</div>
 			<!-- objective-c -->
 			<div role="tabpanel" class="tab-pane" id="objc">
-				<p>TODO</p>
+				<p><pre><code class="objectivec">- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
+    return self.products.count;
+}</code></pre>
+</p>
 			</div>
 		</div>
-		<br/>
+		<br>
 
 	</li>
 
 	<li>
 		<p>Create a fill out <code>collectionView:cellForItemAtIndexPath:</code></p>
-		<blockquote>Note: the image loading is done with <a href="https://github.com/rs/SDWebImage">SDWebImage</a></blockquote>
+
+<p class="bg-info well-lg" style="padding:4px;"><i class="fa fa-hand-o-right"></i>  Image loading in this demo is done with SDWebImage</p>
+		
 	
-		<!-- Tab panes -->
 		<ul class="nav nav-tabs" role="tablist">
-		  <li role="presentation" class="active"><a class="code-tab" href="#swift" aria-controls="swift" role="tab" data-toggle="tab">Swift</a></li>
-		  <li role="presentation"><a class="code-tab" href="#objc" aria-controls="objc" role="tab" data-toggle="tab">Objective-C</a></li>
-		</ul>
+  <li role="presentation" class="active"><a href="#swift" aria-controls="swift" role="tab" data-toggle="tab">Swift</a></li>
+  <li role="presentation"><a href="#objc" aria-controls="objc" role="tab" data-toggle="tab">Objective-C</a></li>
+</ul>
+		
 		
 		<div class="tab-content code-switcher">
 			<!-- swift -->
@@ -300,10 +537,22 @@ return cell;
 			</div>
 			<!-- objective-c -->
 			<div role="tabpanel" class="tab-pane" id="objc">
-				<p>TODO Objective-C</p>
+				<p><pre><code class="objectivec">- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
+    
+    DemoCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"DemoCellIdentifer" forIndexPath:indexPath];
+    
+    cell.bvProduct = [self.products objectAtIndex:indexPath.row];
+    NSURL *url = [NSURL URLWithString:cell.bvProduct.imageURL];
+    [cell.productImageView sd_setImageWithURL:url];
+    
+    // initialize your other outlets here...
+
+    return cell;
+    
+}</code></pre>/p>
 			</div>
 		</div>
-		<br/>
+		<br>
 
 	</li>
 	<li>
@@ -311,4 +560,22 @@ return cell;
 		<p>The app should populate the collection view with product recommendations. Some styling will be needed to look good, however <i class="fa fa-smile-o"></i></p>
 	</li>
 </ol>
-<br/>
+<br>
+
+
+<div class="well well-sm">
+	<h5>Author</h5>
+	<p>Copyright 2016 Bazaarvoice, Inc. All right reserved.</p>
+	<h5>License</h5>
+	<p>Use of this SDK is contingent on your agreement and conformance with <a href="http://www.bazaarvoice.com/legal/api-terms-of-use.html">Bazaarvoice's API Terms of Use</a>. Additionally, you agree to store all data acquired by this SDK or Bazaarvoice’s API only within the storage of the individual application instance using the SDK or API. You also agree to use the data acquired by the SDK or API only within the context of the same individual application instance and only for purposes consistent with that application’s purpose. Except as otherwise noted, the Bazaarvoice iOS SDK licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0.html">Apache License, Version 2.0</a>.</p>
+</div>
+<br>
+
+
+              </div>
+            </div>
+          </div>
+        </div>        
+      </div>
+    </div>
+  </body>

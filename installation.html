@@ -1,86 +1,648 @@
----
-layout: default
-title: Installation
-permalink: installation.html
----
+<!DOCTYPE html>
+<html lang="en">
 
-<div class="flex flex-row" id="content_title">
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+  
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+  <script type="text/javascript" src="./assets/js/highlight.pack.js"></script>
+  
+  <script type="text/javascript" src="./assets/js/jquery_rotate.js"></script>
+  <script type="text/javascript" src="./assets/js/main.js"></script>
+  
+  <script>
+    
+$(function(){
+
+	// select the tab in the sidebar to reflect current page position
+
+	var tabName = "Installation";
+
+	$('.nav-link.active').removeClass('active');
+	var nav_link = $('.nav-link:contains("' + tabName + '")');
+	nav_link.addClass('active');
+	
+});
+  </script>
+
+  <script>hljs.initHighlightingOnLoad();</script>
+
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="./assets/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="./assets/css/bvbootstrap.css">
+  <link rel="stylesheet" type="text/css" href="./assets/css/highlightjs/default.min.css">
+  <link rel="stylesheet" type="text/css" href="./assets/css/main.css">
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="57x57" href="./public/apple-touch-icon-57x57.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="./public/apple-touch-icon-114x114.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="./public/apple-touch-icon-72x72.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="./public/apple-touch-icon-144x144.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="60x60" href="./public/apple-touch-icon-60x60.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="120x120" href="./public/apple-touch-icon-120x120.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="76x76" href="./public/apple-touch-icon-76x76.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="152x152" href="./public/apple-touch-icon-152x152.png" />
+  <link rel="icon" type="image/png" href="./public/favicon-196x196.png" sizes="196x196" />
+  <link rel="icon" type="image/png" href="./public/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/png" href="./public/favicon-32x32.png" sizes="32x32" />
+  <link rel="icon" type="image/png" href="./public/favicon-16x16.png" sizes="16x16" />
+  <link rel="icon" type="image/png" href="./public/favicon-128.png" sizes="128x128" />
+  <meta name="application-name" content="&nbsp;"/>
+  <meta name="msapplication-TileColor" content="#FFFFFF" />
+  <meta name="msapplication-TileImage" content="./public/mstile-144x144.png" />
+  <meta name="msapplication-square70x70logo" content="./public/mstile-70x70.png" />
+  <meta name="msapplication-square150x150logo" content="./public/mstile-150x150.png" />
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-56370630-4', 'auto');
+    ga('set', {
+      title: 'Installation'
+    });
+    ga('send', 'pageview');
+  </script>
+
+</head>
+
+
+  <body>
+    <div id="portal_container">
+      
+      <div id="portal_sidebar">
+	<div id="portal_nav">
+		
+		<div id="bv_logo">
+			<a href="/">
+				<font class="bv_teal">bazaar</font><font class="bv_white">voice</font><font class="bv_teal">:</font>				
+			</a>
+		</div>
+
+		<div>
+			<ul id="task_nav" class="nav nav-pills nav-stacked">
+				<li class="nav-item">
+					<a class="nav-link active" href="index.html">
+						<span><i class="m-r-1 fa fa-file-text-o"></i>Getting Started</span>     
+					</a>
+					<ul>
+						<li class="nav-item">
+							<a class="nav-link" href="installation.html">
+								<span>Installation and Configuration</span>
+							</a>
+						</li>
+					</ul>
+				</li>
+				<li class="nav-item">
+					<span class="nav-link" href="modules.html">
+						<span><i class="m-r-1 fa fa-cogs"></i>Modules</span>     
+					</span>
+					<ul>
+						<li class="nav-item">
+							<a class="nav-link" href="product_recommendations.html"><span>Product Recommendations</span></a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="advertising.html"><span>Advertising</span></a>
+						</li>
+						<li class="nav-item">
+							
+							<a class="nav-link" role="button" data-toggle="collapse" href="#curationsDropdown" aria-expanded="false" aria-controls="curationsDropdown">
+								<span><span>Curations</span><span style="float:right;"><i id="curationsDropdownArrow" class="fa fa-sort-desc  fa-rotate-270"></i></span></span>
+							</a>
+							<div class="collapse " id="curationsDropdown">
+								<ul>
+									<li class="nav-item"><a class="nav-link" href="curations_display.html">Curations Display</a></li>
+									<li class="nav-item"><a class="nav-link" href="curations_custom_posts.html">Curations Custom Posts</a></li>
+								</ul>
+							</div>
+
+
+						</li>
+						<li class="nav-item">
+							
+							<a class="nav-link" role="button" data-toggle="collapse" href="#conversationsDropdown" aria-expanded="false" aria-controls="conversationsDropdown">
+								<span><span>Conversations</span><span style="float:right;"><i id="conversationsDropdownArrow" class="fa fa-sort-desc fa-rotate-270"></i></span></span>
+							</a>
+							<div class="collapse " id="conversationsDropdown">
+								<ul>
+									<li class="nav-item"><a class="nav-link" href="using_conversations.html">Using Conversations</a></li>
+									<li class="nav-item"><a class="nav-link" href="conversations_iovation.html">Authenticity with iovation</a></li>
+								</ul>
+							</div>
+
+						</li>
+					</ul>
+				</li>
+
+			 
+				<li class="nav-item">
+					<a class="nav-link" href="bv_pixel.html">
+						<span><i class="m-r-1 fa fa-dot-circle-o"></i>BV Pixel</span>     
+					</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="user_authentication_token.html">
+						<span><i class="m-r-1 fa fa-lock"></i>User Authentication Token</span>     
+					</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="ios_9_considerations.html">
+						<span><i class="m-r-1 fa fa-mobile"></i> iOS 9 Considerations</span>     
+					</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="example_projects.html">
+						<span><i class="m-r-1 fa fa-file-code-o"></i>Example Projects</span>     
+					</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="faq_support.html">
+						<span><i class="m-r-1 fa fa-question-circle"></i>FAQ & Support</span>     
+					</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="./assets/api_reference/index.html">
+						<span><i class="m-r-1 fa fa-book"></i>API Reference</span>     
+					</a>
+				</li>
+				<br>
+				<li class="nav-item">
+					<a class="nav-link" href="mailto:mobilecoreteam@bazaarvoice.com?subject=iOS SDK documentation feedback" style="border: 1px #fff solid;">
+						<span><i class="m-r-1 fa fa-envelope"></i>Feedback</span>     
+					</a>
+				</li>	
+			</ul>
+		</div>
+	</div>
+</div>
+
+      <div id="application_container">
+        <div id="task_container">
+          <div id="task_content" class="app-content">
+            <div class="scroll-container scrollable--scrollbar">
+              <div class="page-container">
+
+                <div class="flex flex-row" id="content_title">
   Installation
 </div>
-<div class="flex flex-row">
-  This guide shows you how to install and import the Bazaarvoice SDK into your project.
-</div>
-<hr/>
-<br/>
-<div class="flex flex-row">
-  <h3>Prerequisites</h3>
-</div>
-<div class="flex flex-row">
-  <ul>
-    <li>Signed Data Usage Amendment, if not already in place</li>
-    <li>Minimum iOS deployment target of iOS 8.0</li>
-    <li>Xcode version 7.0 or higher</li>
-    <li>API key to access Bazaarvoice products</li>
-  </ul>
-  
-</div>
-<br/>
+<p>This guide shows you how to install and configure the Bazaarvoice SDK (BVSDK) into your project.</p>
+<hr>
 
-<h3>Adding the SDK to your project</h3>
-<p>Installation with <a>Cocoapods</a> is the recommended approach to including BVSDK in your project. If you don't have Cocoapods installed on your machine, see the <a>Cocoapods installation guide</a>.</p> 
-<br/>
+<h3>Prerequisites</h3>
+<ul>
+  <li>Signed Data Usage Amendment, if not already in place.</li>
+  <li>Minimum iOS deployment target of iOS 8.0.</li>
+  <li>Xcode version 7.0 or higher.</li>
+  <li>Your Client ID.</li>
+  <li>API key(s) for the Bazaarvoice product you have enabled.</li>
+</ul>
+<br>
+
+
+
+
+<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true" style="box-shadow: 1px 2px 4px #999;">
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingOne">
+        
+        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#configurationCollapse" aria-expanded="true" aria-controls="configurationCollapse">
+          <div style="float: left;"><i id="configurationArrow" class="fa fa-chevron-right" style="color:#777;"></i></div>
+          <div style="float: left; padding-left:10px">
+            <h5><step>1</step> Select Configuration Options</h5>
+            <p style="color:#444; margin-bottom: 6px;">Step 1: Configure your SDK options.<br/>The values you set in this step will generate the necessary script and BVSDK intialization code to get you up and running quickly.</p>
+          </div>
+          <div style="clear:both;"></div>
+        </a>
+        
+    </div>
+    <div id="configurationCollapse" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+      <div class="panel-body">
+
+
+ <p/>
+
+Enter your client ID:
+ <input type="text" class="edit_ClientID" id="clientId" placeholder="This is your client name, e.g. bazaarvoice" style="border-color:red" size="40"/>
+  <br/>
+If you are unsure of your client ID or API key values, you can request help <a href="https://developer.bazaarvoice.com/support">through the support portal</a> or your implementation team.
+
+<table class="table">
+<tr>
+  <th>
+    Select One or More Module(s)
+  </th>
+   <th>
+    Enter API Key: 
+  </th>
+<tr>
+  <tr>
+  <th>
+    <input type="checkbox" class="cb_BVCurations"/> BVCurations 
+  </th>
+   <th>
+    <input type="text" class="key_BVCurations" placeholder="Curations API Key Here" size="50"/>
+  </th>
+<tr>
+  <tr>
+  <th>
+    <input type="checkbox" class="cb_BVConversations"/> BVConversations
+  </th>
+   <th>
+    <input type="text" class="key_BVConversations" placeholder="Conversations API Key Here" size="50"/>
+  </th>
+<tr>
+  <tr>
+  <th>
+    <input type="checkbox" class="cb_BVAdvertising"/> BVAdvertising
+    <br/>
+    <input type="checkbox" class="cb_BVRecommendations"/> BVRecommendations
+  </th>
+   <th>
+    <input type="text" class="key_ShoppeAdvertising" placeholder="Shopper Marketing API Key Here" size="50"/>
+  </th>
+<tr>
+</table>
+  
+<script type="text/javascript">
+
+// Determine whether or not to put red border on invalid text entry
+function validateTextInputs(){
+
+  // client id text box
+	if ($('.edit_ClientID').val() == '') {
+    $('.edit_ClientID').css('border-color', 'red');
+	}
+	else {
+    $('.edit_ClientID').css('border-color', '');
+	}
+
+  // API key checkboxes
+  if ($('.cb_BVCurations:checked').length > 0 && !$('.key_BVCurations').val()){
+      $('.key_BVCurations').css('border-color', 'red');
+  } else {
+      $('.key_BVCurations').css('border-color', '');
+  } 
+        
+  if ($('.cb_BVConversations:checked').length > 0 && !$('.key_BVConversations').val()){
+    $('.key_BVConversations').css('border-color', 'red');
+  } else {
+    $('.key_BVConversations').css('border-color', '');
+  } 
+  
+  if ( ($('.cb_BVAdvertising:checked').length > 0 || $('.cb_BVRecommendations:checked').length > 0)
+              && !$('.key_ShoppeAdvertising').val()){
+      $('.key_ShoppeAdvertising').css('border-color', 'red');
+  } else {
+      $('.key_ShoppeAdvertising').css('border-color', '');
+  } 
+  
+}
+
+function updateCodeSnippets(){
+        // Podfile ----
+         $('code.ruby#podfile').text('# Uncomment this line if you\'re using Swift')
+            .append('<br/># use_frameworks!<br/><br/>')
+         
+        if ($('.cb_BVCurations:checked').length > 0){
+          $('code.ruby#podfile').append("pod 'BVSDK/BVCurations'<br/>");
+        } 
+        
+        if ($('.cb_BVConversations:checked').length > 0){
+          $('code.ruby#podfile').append("pod 'BVSDK/BVConversations'<br/>");
+        } 
+        
+        if ($('.cb_BVAdvertising:checked').length > 0){
+          $('code.ruby#podfile').append("pod 'BVSDK/BVAdvertising'<br/>");
+        } 
+        
+        if ($('.cb_BVRecommendations:checked').length > 0){
+          $('code.ruby#podfile').append("pod 'BVSDK/BVRecommendations'<br/>");
+        } 
+
+        //////////////////////
+        // Swift Headers
+        //////////////////////
+        $('code.swift#swift-headers').text('// When using Dynamic Frameworks with Swift (not using Objective-C Bridging header),<br/>')
+            .append('// use the folling import in each of your .swift files<br/>')
+            .append('import BVSDK')
+        
+        ///////////////////////////
+        // Objective-C Headers ---
+        ///////////////////////////
+        $('code.objectivec#objc-headers').text('// Import BVSDK.h for all modules')
+            .append('<br/>#import &lt;BVSDK/BVSDK.h&gt;</br>')
+
+
+        if ($('.cb_BVCurations:checked').length > 0){
+          $('code.objectivec#objc-headers').append("#import &lt;BVSDK/BVCurations.h&gt;<br/>");
+        } 
+        
+        if ($('.cb_BVConversations:checked').length > 0){
+          $('code.objectivec#objc-headers').append("#import &lt;BVSDK/BVConversations.h&gt;<br/>");
+        } 
+        
+        if ($('.cb_BVAdvertising:checked').length > 0){
+          $('code.objectivec#objc-headers').append("#import &lt;BVSDK/BVAdvertising.h&gt;<br/>");
+        } 
+        
+        if ($('.cb_BVRecommendations:checked').length > 0){
+          $('code.objectivec#objc-headers').append("#import &lt;BVSDK/BVRecommendations.h&gt;<br/>");
+        } 
+
+        ////////////////////////////////
+        // Objective-C BVSDKManager ---
+        ////////////////////////////////
+        var REPLACE_ME  = "ERROR"
+        if ($('.edit_ClientID#clientId').val().length > 0){
+         clientId = $('.edit_ClientID#clientId').val()
+        } else {
+         clientId = REPLACE_ME
+        }
+
+        $('code.objectivec#objc-bvsdkmanager').text('[[BVSDKManager sharedManager] setClientId:@"' + clientId +  '"];')
+            .append('<br/>')
+        
+        if ($('.cb_BVCurations:checked').length > 0){
+           var curationsKey = $('.key_BVCurations').val()
+           $('code.objectivec#objc-bvsdkmanager').append('[[BVSDKManager sharedManager] setApiKeyCurations:@"' + curationsKey + '"];<br/>');
+        } 
+        
+        if ($('.cb_BVConversations:checked').length > 0){
+          var conversationsKey = $('.key_BVConversations').val()
+          $('code.objectivec#objc-bvsdkmanager').append('[[BVSDKManager sharedManager] setApiKeyConversations:@"' + conversationsKey + '"];<br/>');
+        } 
+        
+        if ($('.cb_BVAdvertising:checked').length > 0 || $('.cb_BVRecommendations:checked').length > 0){
+          var advertisingKey = $('.key_ShoppeAdvertising').val()
+          $('code.objectivec#objc-bvsdkmanager').append('[[BVSDKManager sharedManager] setApiKeyShopperAdvertising:@"' + advertisingKey + '"];<br/>');
+        } 
+
+        $('code.objectivec#objc-bvsdkmanager').append('[[BVSDKManager sharedManager] setStaging:YES];  // Set to NO for production!')
+
+        ////////////////////////////////
+        // Swift BVSDKManager ---
+        ////////////////////////////////
+        var REPLACE_ME  = "ERROR"
+        if ($('.edit_ClientID#clientId').val().length > 0){
+         clientId = $('.edit_ClientID#clientId').val()
+        } else {
+         clientId = REPLACE_ME
+        }
+
+        $('code.swift#swift-bvsdkmanager').text('BVSDKManager.sharedManager().clientId = "' + clientId + '"')
+        $('code.swift#swift-bvsdkmanager').append('<br/>BVSDKManager.sharedManager().staging = true; <br/>')
+        
+        if ($('.cb_BVCurations:checked').length > 0){
+           var curationsKey = $('.key_BVCurations').val()
+           $('code.swift#swift-bvsdkmanager').append('BVSDKManager.sharedManager().apiKeyCurations = "' + curationsKey + '"<br/>');
+        } 
+        
+        if ($('.cb_BVConversations:checked').length > 0){
+          var conversationsKey = $('.key_BVConversations').val()
+          $('code.swift#swift-bvsdkmanager').append('BVSDKManager.sharedManager().apiKeyConversations = "' + conversationsKey + '"<br/>');
+        } 
+        
+        if ($('.cb_BVAdvertising:checked').length > 0 || $('.cb_BVRecommendations:checked').length > 0){
+          var advertisingKey = $('.key_ShoppeAdvertising').val()
+          $('code.swift#swift-bvsdkmanager').append('BVSDKManager.sharedManager().setApiKeyShopperAdvertising = "' + advertisingKey + '"<br/>');
+        }
+
+
+}
+
+function formatCode() {
+
+  // You can use highlightBlock to highlight blocks dynamically inserted into the page. Just make sure you don't do it twice for already highlighted blocks.
+
+  //If your code container relies on <br> tags instead of line breaks (i.e. if it's not <pre>) set the useBR option to true:
+  hljs.configure({useBR: true});
+  $('pre code').each(function(i, block) {
+      hljs.highlightBlock(block);
+    });
+
+}
+
+// Handle text box input changes
+$(':text').on('input',function(e){
+	validateTextInputs()
+  updateCodeSnippets()
+  formatCode()
+});
+
+
+// Handle checkbox toggles
+$(':checkbox').on('click', function() {
+  validateTextInputs()
+  updateCodeSnippets()
+  formatCode()
+       
+});
+</script>
+
+		</div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true" style="box-shadow: 1px 2px 4px #999;">
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingOne">
+        
+        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#installationCocoaPods" aria-expanded="true" aria-controls="installationCocoaPods">
+          <div style="float: left;"><i id="installationCocoaPodsArrow" class="fa fa-chevron-right" style="color:#777;"></i></div>
+          <div style="float: left; padding-left:10px">
+            <h5><step>2</step> Install the SDK With CocoaPods</h5>
+            <p style="color:#444; margin-bottom: 6px;">Step 2: Configure  your Podfile for CocoaPods installation.</p>
+          </div>
+          <div style="clear:both;"></div>
+        </a>
+        
+    </div>
+    <div id="installationCocoaPods" class="panel-collapse collapse " role="tabpanel" aria-labelledby="headingOne">
+      <div class="panel-body">
+
+
+<p>Installation with <a>Cocoapods</a> is the recommended approach to including BVSDK in your project. If you don't have Cocoapods installed on your machine, see the <a href="https://guides.cocoapods.org/using/getting-started.html">Cocoapods installation guide</a>.</p> 
 
 <p>Edit your <code>Podfile</code> to include the following:</p>
 
-<div class="flex flex-row">
-
-<pre><code class="ruby"># Default install: Installs BVConversations and core modules.
-pod 'BVSDK/BVConversations'
-# Installs BVAdvertising and core modules.
-pod 'BVSDK/BVAdvertising'
-# Installs BVRecommendations Shopper Advertising API and core modules.
-pod 'BVSDK/BVRecommendations'
-# Installs BVCurations and core modules.
-pod 'BVSDK/BVCurations'
+<pre><code class="ruby" id="podfile"># Default install: Installs BVConversations and core modules.
+pod 'BVSDK'
 </code></pre>
-</div>
 
 <p>When you have configured your Podfile, simply run <code>pod install</code> from your project directory to install the BVSDK modules. Then you can open the corresponding <code>.xcworkspace</code> file CocoaPods has created.</p>
-<p>Great! The SDK is included in your project. You can now add the required imports to your project.</p>
+<p>Great! The SDK is included in your project. You can add the required imports to your project in the next step.</p>
 
-<hr/>
-
-<div class="flex flex-row">
-  <h3>Importing the SDK</h3>
+		</div>
+    </div>
+  </div>
 </div>
-<div class="flex flex-row">
-  <p>Installation with <a>Cocoapods</a> is the recommended approach to including BVSDK in your project. If you don't have Cocoapods installed on your machine, see the <a>Cocoapods installation guide</a>.</p> 
-</div>
-<br/>
 
+
+
+
+<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true" style="box-shadow: 1px 2px 4px #999;">
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingOne">
+        
+        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#installationHeaderFiles" aria-expanded="true" aria-controls="installationHeaderFiles">
+          <div style="float: left;"><i id="installationHeaderFilesArrow" class="fa fa-chevron-right" style="color:#777;"></i></div>
+          <div style="float: left; padding-left:10px">
+            <h5><step>3</step> Configue Headers/Imports</h5>
+            <p style="color:#444; margin-bottom: 6px;">Step 3: Add the right header file imports.</p>
+          </div>
+          <div style="clear:both;"></div>
+        </a>
+        
+    </div>
+    <div id="installationHeaderFiles" class="panel-collapse collapse " role="tabpanel" aria-labelledby="headingOne">
+      <div class="panel-body">
+
+
+<p>Add the right import statements so you can reference the BVSDK modules you are working with.</p> 
+<br>
 
 <ul class="nav nav-tabs" role="tablist">
   <li role="presentation" class="active"><a href="#swift" aria-controls="swift" role="tab" data-toggle="tab">Swift</a></li>
   <li role="presentation"><a href="#objc" aria-controls="objc" role="tab" data-toggle="tab">Objective-C / Swift with bridging header</a></li>
 </ul>
 
-<!-- Tab panes -->
+<!-- Tab panes for including headers/imports -->
 <div class="tab-content code-switcher">
   <div role="tabpanel" class="tab-pane active" id="swift">
-<pre><code class="swift">import BVSDK
+<pre><code class="swift" id="swift-headers">// When using Dynamic Frameworks with Swift (not using Objective-C Bridging header),
+// use the folling import in each of your .swift files
+import BVSDK
 </code></pre>
   </div>
   <div role="tabpanel" class="tab-pane" id="objc">
-<pre><code class="objectivec">// Import BVSDK.h for all modules, including BVConversations
+<pre><code class="objectivec" id="objc-headers">// Import BVSDK.h for all modules, including BVConversations
 #import &lt;BVSDK/BVSDK.h&gt;
-// When using BVRecommendations
-#import &lt;BVSDK/BVRecommendations.h&gt;
-// When using BVAdvertising
-#import &lt;BVSDK/BVAdvertising.h&gt;
-// When using BVCurations
-#import &lt;BVSDK/BVCurations.h&gt;
-// When using BVConversations
-#import &lt;BVSDK/BVConversations.h&gt;
 </code></pre>
     </div>
 </div>
+
+		</div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true" style="box-shadow: 1px 2px 4px #999;">
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingOne">
+        
+        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#installationBVSDKManager" aria-expanded="true" aria-controls="installationBVSDKManager">
+          <div style="float: left;"><i id="installationBVSDKManagerArrow" class="fa fa-chevron-right" style="color:#777;"></i></div>
+          <div style="float: left; padding-left:10px">
+            <h5><step>4</step> Initialize the BVSDKManager</h5>
+            <p style="color:#444; margin-bottom: 6px;">Step 4: Initilize the <code>BVSDKManager</code> in your XCode project.</p>
+          </div>
+          <div style="clear:both;"></div>
+        </a>
+        
+    </div>
+    <div id="installationBVSDKManager" class="panel-collapse collapse " role="tabpanel" aria-labelledby="headingOne">
+      <div class="panel-body">
+
+
+<p>Insert the code below in your <code>AppDelegate#applicationDidFinishLaunching</code></p> 
+
+<ul class="nav nav-tabs" role="tablist">
+  <li role="presentation" class="active"><a href="#swift" aria-controls="swift" role="tab" data-toggle="tab">Swift</a></li>
+  <li role="presentation"><a href="#objc" aria-controls="objc" role="tab" data-toggle="tab">Objective-C / Swift with bridging header</a></li>
+</ul>
+
+<!-- Tab panes for including headers/imports -->
+<div class="tab-content code-switcher">
+  <div role="tabpanel" class="tab-pane active" id="swift">
+<pre><code class="swift" id="swift-bvsdkmanager">// You haven't selected a configuration option yet in Step 1!
+</code></pre>
+  </div>
+  <div role="tabpanel" class="tab-pane" id="objc">
+<pre><code class="objectivec" id="objc-bvsdkmanager">// You haven't selected a configuration option yet in Step 1!
+</code></pre>
+    </div>
+</div>
+
+		</div>
+    </div>
+  </div>
+</div>
+
+<br>
+<hr>
+<h3>Manual Installation</h3>
+<p>Please note that manual installation is <strong>not recommended</strong>, due to difficulty of dependencies and upgrading SDK versions.</p>
+<p>However, if needed, you can install the SDK by cloning or downloding this library and adding the source files to your project:</p>
+
+
+
+
+<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true" style="box-shadow: 1px 2px 4px #999;">
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingOne">
+        
+        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#manualInstallation" aria-expanded="true" aria-controls="manualInstallation">
+          <div style="float: left;"><i id="manualInstallationArrow" class="fa fa-chevron-right" style="color:#777;"></i></div>
+          <div style="float: left; padding-left:10px">
+            <h5>Manual installation</h5>
+            <p style="color:#444; margin-bottom: 6px;">Click here to see how to install the SDK manually.</p>
+          </div>
+          <div style="clear:both;"></div>
+        </a>
+        
+    </div>
+    <div id="manualInstallation" class="panel-collapse collapse " role="tabpanel" aria-labelledby="headingOne">
+      <div class="panel-body">
+
+
+
+<p>Clone this repo, or download the <a href="https://github.com/bazaarvoice/bv-ios-sdk-dev/releases">latest release from github</a>:</p>
+<img src="img/manual_installation/download.png" style="height:200px;" class="center-block" />
+
+<p>Copy all the source folders (under <code>/Pod</code>) into your project. Make sure to select <strong>Copy items if needed</strong>.</p>
+<video id="manualInstallVid" width="540" height="300" autoplay loop class="center-block">
+  <source src="img/manual_installation/manual_installation.mp4" type="video/mp4" title="No video playback capabilities">
+  <source src="img/manual_installation/manual_installation.ogg" type="video/ogg" title="No video playback capabilities">
+
+</video>
+<script> 
+    document.getElementById('manualInstallVid').play(); 
+</script>
+
+		</div>
+    </div>
+  </div>
+</div>
+
+<br>
+
+
+<div class="well well-sm">
+	<h5>Author</h5>
+	<p>Copyright 2016 Bazaarvoice, Inc. All right reserved.</p>
+	<h5>License</h5>
+	<p>Use of this SDK is contingent on your agreement and conformance with <a href="http://www.bazaarvoice.com/legal/api-terms-of-use.html">Bazaarvoice's API Terms of Use</a>. Additionally, you agree to store all data acquired by this SDK or Bazaarvoice’s API only within the storage of the individual application instance using the SDK or API. You also agree to use the data acquired by the SDK or API only within the context of the same individual application instance and only for purposes consistent with that application’s purpose. Except as otherwise noted, the Bazaarvoice iOS SDK licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0.html">Apache License, Version 2.0</a>.</p>
+</div>
+<br>
+
+
+              </div>
+            </div>
+          </div>
+        </div>        
+      </div>
+    </div>
+  </body>

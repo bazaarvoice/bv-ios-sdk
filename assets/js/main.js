@@ -1,8 +1,6 @@
 
 $(function(){
 
-	selectTab();
-
 	// Number all tabs and tab content areas so that we can switch all code areas between swift and objective-c
 	var index = 0;
 	$('a[href*="swift"]').each(function (e) {
@@ -41,21 +39,47 @@ $(function(){
 		$(this).tab('show');
 	  });
 	});
+
+	// Listen for collapsing elements, to animate their arrow
+	function listenForCollapseAndRotate(collapsable_element, arrow_element, closed_start, closed_end, open_start, open_end) {
+		collapsable_element.on('hide.bs.collapse', function () {
+			
+			arrow_element.rotate({
+			    angle:open_start,
+			    animateTo:open_end,
+			    duration:500,
+			    easing: $.easing.easeInOutExpo
+			  });
+
+		});
+		collapsable_element.on('show.bs.collapse', function () {
+			
+			arrow_element.rotate({
+			    angle:closed_start,
+			    animateTo:closed_end,
+			    duration:500,
+			    easing: $.easing.easeInOutExpo
+			  });
+
+		});
+	}
+
+	// installation / configuration on all pages
+	listenForCollapseAndRotate($('#installationCollapse'), $('#installationArrow'), 0, 90, 90, 360);
+	listenForCollapseAndRotate($('#configurationCollapse'), $('#configurationArrow'), 0, 90, 90, 360);
+
+	// sidebar
+	listenForCollapseAndRotate($('#curationsDropdown'), $('#curationsDropdownArrow'), 270, 0, 0, 270);
+	listenForCollapseAndRotate($('#conversationsDropdown'), $('#conversationsDropdownArrow'), 270, 0, 0, 270);
+
+	// installation page
+	listenForCollapseAndRotate($('#installationCocoaPods'), $('#installationCocoaPodsArrow'), 270, 0, 0, 270);
+	listenForCollapseAndRotate($('#installationHeaderFiles'), $('#installationHeaderFilesArrow'), 270, 0, 0, 270);
+	listenForCollapseAndRotate($('#installationBVSDKManager'), $('#installationBVSDKManagerArrow'), 270, 0, 0, 270);
+	listenForCollapseAndRotate($('#manualInstallation'), $('#manualInstallationArrow'), 270, 0, 0, 270);
+
 	
 });
-
-function selectTab() {
-
-	var tabName = "{{ page.title }}";
-	debugger;
-	$('.nav-link.active').removeClass('active');
-	var nav_link = $('.nav-link:contains("' + tabName + '")');
-	nav_link.addClass('active');
-	nav_link.parents('.collapse').each(function(){
-		$(this).attr('class', $(this).attr('class') + "in");
-	});
-
-}
 
 function setInstallationText(module) {
 
