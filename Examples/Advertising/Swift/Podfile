@@ -1,0 +1,10 @@
+platform :ios, '8.0'
+use_frameworks!
+
+target 'TargetedAdsDemo' do
+	pod "BVSDK/BVAdvertising", :path => "../../../"
+	pod 'Google-Mobile-Ads-SDK'	
+	pod 'MBProgressHUD', '~> 0.9.1'
+	pod 'FontAwesomeKit/FontAwesome'
+end
+

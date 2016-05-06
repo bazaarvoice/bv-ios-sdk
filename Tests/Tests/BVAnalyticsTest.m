@@ -12,11 +12,15 @@
 #import <BVSDK/BVConversations.h>
 #import <BVSDK/BVRecommendations.h>
 
+#import "BVBaseStubTestCase.h"
+
+#define ANALYTICS_TEST_USING_MOCK_DATA 1 // Setting to 1 uses mock result. Set to 0 to make network request.
+
 @interface BVAnalyticsManager (TestAccessors)
 @property (strong) NSMutableArray* eventQueue;
 @end
 
-@interface BVAnalyticsTests : XCTestCase<BVDelegate> {
+@interface BVAnalyticsTests : BVBaseStubTestCase<BVDelegate> {
     XCTestExpectation *impressionExpectation;
     XCTestExpectation *pageviewExpectation;
     int numberOfExpectedImpressionAnalyticsEvents;
@@ -24,8 +28,9 @@
 }
 @end
 
-#define TEST_CLIENT_ID @"apitestclient"
+#define TEST_CLIENT_ID @"IOS_UNIT_TEST"
 #define IS_STAGING YES
+#define TEST_KEY_SHOPPER_ADVERTISING @"fakeshopperadskey"
 
 @implementation BVAnalyticsTests
 
@@ -63,6 +68,9 @@
 }
 
 -(void)tearDown {
+    
+    [super tearDown];
+    
     [[NSNotificationCenter defaultCenter] removeObserver:self
                                                     name:@"BV_INTERNAL_PAGEVIEW_ANALYTICS_COMPLETED"
                                                   object:nil];
@@ -123,20 +131,34 @@
     }
 }
 
+#pragma mark BVConversations analytics
+
 -(void)testAnalyticsCompletesSmall {
+    
+#if ANALYTICS_TEST_USING_MOCK_DATA == 1
+    [self addStubWith200ResponseForJSONFileNamed:@"testShowReview.json"];
+#endif
     
     numberOfExpectedImpressionAnalyticsEvents = 1;
     numberOfExpectedPageviewAnalyticsEvents = 1;
     [self fireReviewAnalyticsCompletesWithLimit:1];
+    
+    [[BVAnalyticsManager sharedManager] flushQueue];
 }
 
 -(void)testAnalyticsCompletesBatched {
+    
+#if ANALYTICS_TEST_USING_MOCK_DATA == 1
+    [self addStubWith200ResponseForJSONFileNamed:@"testShowReview.json"];
+#endif
     
     numberOfExpectedPageviewAnalyticsEvents = 1;
 
     numberOfExpectedImpressionAnalyticsEvents = 1;
 
     [self fireReviewAnalyticsCompletesWithLimit:60];
+    
+    [[BVAnalyticsManager sharedManager] flushQueue];
 }
 
 -(void)testBigAnalyticsEvent {
@@ -144,6 +166,10 @@
     // bomb the analytics event with a ton of events, to make sure it doesn't crash.
     // The event queue is protected by a dispatch barrier to ensure the analytics manager is thread-safe.
 
+#if ANALYTICS_TEST_USING_MOCK_DATA == 1
+    [self addStubWith200ResponseForJSONFileNamed:@"testShowReview.json"];
+#endif
+    
     numberOfExpectedPageviewAnalyticsEvents = 1;
     numberOfExpectedImpressionAnalyticsEvents = 1;
     
@@ -165,6 +191,8 @@
     [showDisplayRequest3 addSortForAttribute:@"Id" ascending:YES];
     [showDisplayRequest3 sendRequestWithDelegate:self];
     
+    [[BVAnalyticsManager sharedManager] flushQueue];
+    
     [self waitForAnalytics];
     
 }
@@ -182,6 +210,9 @@
 
 -(void)testAnalyticsQuestion {
     
+#if ANALYTICS_TEST_USING_MOCK_DATA == 1
+    [self addStubWith200ResponseForJSONFileNamed:@"testShowQuestion.json"];
+#endif
     numberOfExpectedImpressionAnalyticsEvents = 1;
     numberOfExpectedPageviewAnalyticsEvents = 1;
     
@@ -196,9 +227,12 @@
 
 -(void)testAnalyticsStories {
     
+#if ANALYTICS_TEST_USING_MOCK_DATA == 1
+    [self addStubWith200ResponseForJSONFileNamed:@"testShowStory.json"];
+#endif
+    
     numberOfExpectedImpressionAnalyticsEvents = 1;
     numberOfExpectedPageviewAnalyticsEvents = 0;
-    
     
     BVGet *showDisplayRequest = [[BVGet alloc] initWithType:BVGetTypeStories];
     [showDisplayRequest setFilterForAttribute:@"Id" equality:BVEqualityEqualTo value:@"14181"];
@@ -210,6 +244,10 @@
 
 
 -(void)testAnalyticsProducts {
+    
+#if ANALYTICS_TEST_USING_MOCK_DATA == 1
+    [self addStubWith200ResponseForJSONFileNamed:@"testShowProducts.json"];
+#endif
     
     numberOfExpectedImpressionAnalyticsEvents = 1;
     numberOfExpectedPageviewAnalyticsEvents = 1;
@@ -225,6 +263,10 @@
 
 -(void)testAnalyticsCategories {
     
+#if ANALYTICS_TEST_USING_MOCK_DATA == 1
+    [self addStubWith200ResponseForJSONFileNamed:@"testShowCategory.json"];
+#endif
+    
     numberOfExpectedImpressionAnalyticsEvents = 1;
     numberOfExpectedPageviewAnalyticsEvents = 0;
     
@@ -239,6 +281,10 @@
 
 -(void)testAnalyticsStatistics {
     
+#if ANALYTICS_TEST_USING_MOCK_DATA == 1
+    [self addStubWith200ResponseForJSONFileNamed:@"testShowStatistics.json"];
+#endif
+    
     numberOfExpectedImpressionAnalyticsEvents = 1;
     numberOfExpectedPageviewAnalyticsEvents = 1;
     
@@ -251,36 +297,15 @@
     [self waitForAnalytics];
 }
 
-#pragma mark Recommendations Tests
 
-//-(void)testAnalyticsRecommendations {
-//    
-//    numberOfExpectedImpressionAnalyticsEvents = 1;
-//    numberOfExpectedPageviewAnalyticsEvents = 0; 
-//    
-//    BVGetShopperProfile *recs = [[BVGetShopperProfile alloc] init];
-//    
-//    NSString *idfaString = [[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString];
-//    
-//    [recs fetchProductRecommendations:20 withInterest:nil withCompletionHandler:^(BVShopperProfile * _Nullable profile, NSError * _Nullable error) {
-//        // completion
-//        XCTAssertNil(error, @"Error should be nil: %@", error.debugDescription);
-//        
-//        XCTAssertNotNil(profile, @"Profile should not be nil");
-//        
-//        NSString *testUserId = [NSString stringWithFormat:@"magpie_idfa_%@", idfaString];
-//        
-//        XCTAssertTrue([profile.userId isEqualToString:testUserId], @"The profile ID and Input IDFA were not the same!");
-//    }];
-//    
-//    [self waitForAnalytics];
-//}
-
-
-#pragma mark Feature Used Tests
+#pragma mark BVRecommendations - Feature Used Tests
 
 
 - (void)testProductWidgetPageView{
+    
+#if ANALYTICS_TEST_USING_MOCK_DATA == 1
+    [self addStubWith200ResponseForJSONFileNamed:@"emptyJSON.json"];
+#endif
     
     numberOfExpectedImpressionAnalyticsEvents = 1;
     numberOfExpectedPageviewAnalyticsEvents = 0;
@@ -308,8 +333,14 @@
 
 - (void)testProductWidgetSwiped{
     
+#if ANALYTICS_TEST_USING_MOCK_DATA == 1
+    [self addStubWith200ResponseForJSONFileNamed:@"emptyJSON.json"];
+#endif
+    
     numberOfExpectedImpressionAnalyticsEvents = 1;
     numberOfExpectedPageviewAnalyticsEvents = 0;
+    
+    [self addStubWith200ResponseForJSONFileNamed:@""];
     
     [BVRecsAnalyticsHelper queueAnalyticsEventForWidgetScroll:RecommendationsCarousel];
     
@@ -319,6 +350,10 @@
 }
 
 - (void)testProductRecommendationVisible{
+    
+#if ANALYTICS_TEST_USING_MOCK_DATA == 1
+     [self addStubWith200ResponseForJSONFileNamed:@"emptyJSON.json"];
+#endif
     
     numberOfExpectedImpressionAnalyticsEvents = 1;
     numberOfExpectedPageviewAnalyticsEvents = 0;
@@ -335,8 +370,14 @@
 
 - (void)testProductFeatureUsed{
     
+#if ANALYTICS_TEST_USING_MOCK_DATA == 1
+    [self addStubWith200ResponseForJSONFileNamed:@"emptyJSON.json"];
+#endif
+    
     numberOfExpectedImpressionAnalyticsEvents = 1;
     numberOfExpectedPageviewAnalyticsEvents = 0;
+    
+    [self addStubWith200ResponseForJSONFileNamed:@""];
     
     BVProduct *testProduct = [self createFakeProduct];
 
@@ -389,9 +430,13 @@
 
 - (void)testTransactionConversionNoPII{
 
+#if ANALYTICS_TEST_USING_MOCK_DATA == 1
+    [self addStubWith200ResponseForJSONFileNamed:@"emptyJSON.json"];
+#endif
+    
     numberOfExpectedImpressionAnalyticsEvents = 1;
     numberOfExpectedPageviewAnalyticsEvents = 0;
-
+    
     NSArray* orderItems = @[[[BVTransactionItem alloc]initWithSku:@"123" name:@"test product" category:@"home and garden" price:99.99 quantity:1 imageUrl:nil]];
     BVTransaction* transaction = [[BVTransaction alloc]initWithOrderId:@"testorderid" orderTotal:99.99 orderItems:orderItems andOtherParams:@{@"state":@"TX", @"city": @"Austin"}];
     [BVPixel trackConversionTransaction:transaction];
@@ -404,6 +449,10 @@
 }
 
 - (void)testTransactionConversionPII{
+    
+#if ANALYTICS_TEST_USING_MOCK_DATA == 1
+    [self addStubWith200ResponseForJSONFileNamed:@"emptyJSON.json"];
+#endif
     
     numberOfExpectedImpressionAnalyticsEvents = 1;
     numberOfExpectedPageviewAnalyticsEvents = 0;
@@ -423,6 +472,10 @@
 
 - (void)testNonTransactionConversionNoPII{
     
+#if ANALYTICS_TEST_USING_MOCK_DATA == 1
+    [self addStubWith200ResponseForJSONFileNamed:@"emptyJSON.json"];
+#endif
+    
     numberOfExpectedImpressionAnalyticsEvents = 1;
     numberOfExpectedPageviewAnalyticsEvents = 0;
     
@@ -437,6 +490,10 @@
 }
 
 - (void)testNonTransactionConversionPII{
+    
+#if ANALYTICS_TEST_USING_MOCK_DATA == 1
+    [self addStubWith200ResponseForJSONFileNamed:@"emptyJSON.json"];
+#endif
     
     numberOfExpectedImpressionAnalyticsEvents = 1;
     numberOfExpectedPageviewAnalyticsEvents = 0;

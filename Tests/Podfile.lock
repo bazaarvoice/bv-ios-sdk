@@ -1,15 +1,15 @@
 PODS:
-  - BVSDK (4.0.0):
-    - BVSDK/Core (= 4.0.0)
-  - BVSDK/BVAdvertising (4.0.0):
+  - BVSDK (4.0.2):
+    - BVSDK/Core (= 4.0.2)
+  - BVSDK/BVAdvertising (4.0.2):
     - BVSDK/Core
-  - BVSDK/BVConversations (4.0.0):
+  - BVSDK/BVConversations (4.0.2):
     - BVSDK/Core
-  - BVSDK/BVCurations (4.0.0):
+  - BVSDK/BVCurations (4.0.2):
     - BVSDK/Core
-  - BVSDK/BVRecommendations (4.0.0):
+  - BVSDK/BVRecommendations (4.0.2):
     - BVSDK/Core
-  - BVSDK/Core (4.0.0)
+  - BVSDK/Core (4.0.2)
   - OHHTTPStubs (5.0.0):
     - OHHTTPStubs/Default (= 5.0.0)
   - OHHTTPStubs/Core (5.0.0)
@@ -37,7 +37,7 @@ EXTERNAL SOURCES:
     :path: ../
 
 SPEC CHECKSUMS:
-  BVSDK: 179ee6171a4c9766a401ad4c3c09b976a4cf126f
+  BVSDK: 9b5bc0d7dad08f6846428627546d90f16aae85b7
   OHHTTPStubs: a5d2e9eea07869d42ec03338325f398bc520e159
 
 COCOAPODS: 0.39.0

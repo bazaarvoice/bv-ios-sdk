@@ -1,0 +1,22 @@
+{
+    "Data":{},
+    "HasErrors":false,
+    "Form":[],
+    "FormErrors":{},
+    "TypicalHoursToPost":72,
+    "SubmissionId":"3bjfuudsrjt516vitpvwnqrli",
+    "Review":{
+        "SendEmailAlertWhenPublished":false,
+        "SendEmailAlertWhenCommented":false,
+        "SubmissionTime":"2011-11-16T13:51:01.196-00:00",
+        "Rating":5,
+        "IsRecommended":false,
+        "ReviewText":"testtesttesttesttesttestesttest",
+        "TypicalHoursToPost":null,
+        "Id":null,
+        "SubmissionId":null,
+        "Title":"This product is really nifty"
+    },
+    "Locale":"en_US",
+    "Errors":[]
+}

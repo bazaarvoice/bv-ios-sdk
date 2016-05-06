@@ -56,8 +56,16 @@
                                                                fromData:httpBody
                                                       completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         
-            //completion
-          
+              //completion
+              if (error){
+                  
+                  // Error from the task itself
+                  [[BVLogger sharedLogger] error:[NSString stringWithFormat:@"ERROR: %@", error.localizedDescription]];
+                  
+                  [self errorOnMainThread:error handler:failureHandler];
+                  return;
+              }
+                                                          
               NSError *errorJSON;
               NSDictionary* responseDict = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&errorJSON];
                                                           
@@ -100,15 +108,6 @@
                   
                   [self errorOnMainThread:err handler:failureHandler];
               }
-                                                          
-        
-        if (error){
-            
-            // Error from the task itself
-            [[BVLogger sharedLogger] error:[NSString stringWithFormat:@"ERROR: %@", error.localizedDescription]];
-            
-            [self errorOnMainThread:error handler:failureHandler];
-        }
         
     }];
     

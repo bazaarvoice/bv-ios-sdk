@@ -1,5 +1,5 @@
 //
-//  Tests.m
+//  BVConversationsTests.m
 //  Bazaarvoice SDK
 //
 //  Copyright 2015 Bazaarvoice Inc. All rights reserved.
@@ -10,7 +10,11 @@
 #import <XCTest/XCTest.h>
 #import <BVSDK/BVConversations.h>
 
-@interface BVConversationsTests : XCTestCase<BVDelegate> {
+#import "BVBaseStubTestCase.h"
+
+#define CONVERSATIONS_TEST_USING_MOCK_DATA 1 // Setting to 1 uses mock result. Set to 0 to make network request.
+
+@interface BVConversationsTests : BVBaseStubTestCase<BVDelegate> {
     BOOL requestComplete;
     BOOL receivedProgressCallback;
     id sentRequest;
@@ -116,7 +120,14 @@
     requestComplete = YES;
 }
 
+#pragma mark BVGet tests
+
 - (void)testShowReviewSparse {
+    
+#if CONVERSATIONS_TEST_USING_MOCK_DATA == 1
+    [self addStubWith200ResponseForJSONFileNamed:@"testShowReviewSparse.json"];
+#endif
+    
     BVGet *request = [[BVGet alloc] init];
     [request sendRequestWithDelegate:self];
     
@@ -128,6 +139,10 @@
 
 
 - (void)testShowReview {
+    
+#if CONVERSATIONS_TEST_USING_MOCK_DATA == 1
+    [self addStubWith200ResponseForJSONFileNamed:@"testShowReview.json"];
+#endif
     
     BVGet *showDisplayRequest = [[ BVGet alloc ] initWithType:BVGetTypeReviews];
     [ showDisplayRequest setFilterForAttribute:@"Id" equality:BVEqualityEqualTo value:@"6601211"];
@@ -150,6 +165,11 @@
 }
 
 - (void)testShowReviewIncludesSearch {
+    
+#if CONVERSATIONS_TEST_USING_MOCK_DATA == 1
+    [self addStubWith200ResponseForJSONFileNamed:@"testShowReviewIncludesSearch.json"];
+#endif
+    
     BVGet *showDisplayRequest = [[BVGet alloc] initWithType:BVGetTypeReviews];
     [showDisplayRequest addInclude:BVIncludeTypeProducts];
     [showDisplayRequest addSortForAttribute:@"Id" ascending:YES];
@@ -166,6 +186,11 @@
 
 
 - (void)testShowQuestionSparse {
+    
+#if CONVERSATIONS_TEST_USING_MOCK_DATA == 1
+    [self addStubWith200ResponseForJSONFileNamed:@"testShowQuestionSparse.json"];
+#endif
+    
     BVGet *showDisplayRequest = [[BVGet alloc] initWithType:BVGetTypeQuestions];
     [showDisplayRequest sendRequestWithDelegate:self];
     
@@ -176,6 +201,11 @@
 }
 
 - (void)testShowQuestion {
+    
+#if CONVERSATIONS_TEST_USING_MOCK_DATA == 1
+    [self addStubWith200ResponseForJSONFileNamed:@"testShowQuestion.json"];
+#endif
+    
     BVGet *showDisplayRequest = [[BVGet alloc] initWithType:BVGetTypeQuestions];
     [showDisplayRequest setFilterForAttribute:@"Id" equality:BVEqualityEqualTo value:@"87757"];
     [showDisplayRequest setFilterOnIncludedType:BVIncludeTypeProducts forAttribute:@"Id" equality:BVEqualityEqualTo value:@"test1"];
@@ -201,6 +231,11 @@
 }
 
 - (void)testShowQuestionsSparse {
+    
+#if CONVERSATIONS_TEST_USING_MOCK_DATA == 1
+    [self addStubWith200ResponseForJSONFileNamed:@"testShowQuestionsSparse.json"];
+#endif
+    
     BVGet *showDisplayRequest = [[BVGet alloc] initWithType:BVGetTypeQuestions];
     [showDisplayRequest sendRequestWithDelegate:self];
     
@@ -213,6 +248,11 @@
 
 
 - (void)testShowQuestions{
+    
+#if CONVERSATIONS_TEST_USING_MOCK_DATA == 1
+    [self addStubWith200ResponseForJSONFileNamed:@"testShowQuestions.json"];
+#endif
+    
     BVGet *showDisplayRequest = [[BVGet alloc] initWithType:BVGetTypeQuestions];
     [showDisplayRequest setFilterForAttribute:@"Id" equality:BVEqualityEqualTo value:@"6055"];
     [showDisplayRequest setFilterOnIncludedType:BVIncludeTypeProducts forAttribute:@"Id" equality:BVEqualityEqualTo value:@"test0"];
@@ -234,6 +274,11 @@
 }
 
 - (void)testShowStorySparse {
+    
+#if CONVERSATIONS_TEST_USING_MOCK_DATA == 1
+    [self addStubWith200ResponseForJSONFileNamed:@"testShowStorySparse.json"];
+#endif
+    
     BVGet *showDisplayRequest = [[BVGet alloc] initWithType:BVGetTypeStories];
     [showDisplayRequest setFilterForAttribute:@"Id" equality:BVEqualityEqualTo value:@"14181"];
     [showDisplayRequest sendRequestWithDelegate:self];
@@ -245,6 +290,11 @@
 }
 
 - (void)testShowStory {
+    
+#if CONVERSATIONS_TEST_USING_MOCK_DATA == 1
+    [self addStubWith200ResponseForJSONFileNamed:@"testShowStory.json"];
+#endif
+    
     BVGet *showDisplayRequest = [[BVGet alloc] initWithType:BVGetTypeStories];
     [showDisplayRequest setFilterForAttribute:@"Id" equality:BVEqualityEqualTo value:@"14181"];
     [showDisplayRequest setFilterOnIncludedType:BVIncludeTypeComments forAttribute:@"Id" equality:BVEqualityEqualTo value:@"1010"];
@@ -267,6 +317,11 @@
 
 
 - (void)testShowCommentsSparse {
+    
+#if CONVERSATIONS_TEST_USING_MOCK_DATA == 1
+    [self addStubWith200ResponseForJSONFileNamed:@"testShowCommentsSparse.json"];
+#endif
+    
     BVGet *showDisplayRequest = [[BVGet alloc] initWithType:BVGetTypeReviewCommments];
     [showDisplayRequest sendRequestWithDelegate:self];
     
@@ -277,6 +332,11 @@
 }
 
 - (void)testShowComments {
+    
+#if CONVERSATIONS_TEST_USING_MOCK_DATA == 1
+    [self addStubWith200ResponseForJSONFileNamed:@"testShowComments.json"];
+#endif
+    
     BVGet *showDisplayRequest = [[BVGet alloc] initWithType:BVGetTypeReviewCommments];
     [showDisplayRequest setFilterForAttribute:@"ReviewId" equality:BVEqualityEqualTo value:@"6597809"];
     [showDisplayRequest setFilterOnIncludedType:BVIncludeTypeProducts forAttribute:@"Id" equality:BVEqualityEqualTo value:@"2323001"];
@@ -298,6 +358,11 @@
 }
 
 - (void)testShowCommentStorySparse {
+    
+#if CONVERSATIONS_TEST_USING_MOCK_DATA == 1
+    [self addStubWith200ResponseForJSONFileNamed:@"testShowCommentStorySparse.json"];
+#endif
+    
     BVGet *showDisplayRequest = [[BVGet alloc] initWithType:BVGetTypeStoryCommments];
     [showDisplayRequest sendRequestWithDelegate:self];
     
@@ -309,6 +374,11 @@
 }
 
 - (void)testShowCommentStory {
+    
+#if CONVERSATIONS_TEST_USING_MOCK_DATA == 1
+    [self addStubWith200ResponseForJSONFileNamed:@"testShowCommentStory.json"];
+#endif
+    
     BVGet *showDisplayRequest = [[BVGet alloc] initWithType:BVGetTypeStoryCommments];
     [showDisplayRequest setFilterForAttribute:@"StoryId" equality:BVEqualityEqualTo value:@"967"];
     [showDisplayRequest setFilterOnIncludedType:BVIncludeTypeProducts forAttribute:@"Id" equality:BVEqualityEqualTo value:@"test1"];
@@ -330,6 +400,11 @@
 }
 
 - (void)testShowProfileSparse {
+    
+#if CONVERSATIONS_TEST_USING_MOCK_DATA == 1
+    [self addStubWith200ResponseForJSONFileNamed:@"testShowProfileSparse.json"];
+#endif
+    
     BVGet *showDisplayRequest = [[BVGet alloc] initWithType:BVGetTypeAuthors];
     [showDisplayRequest sendRequestWithDelegate:self];
     
@@ -341,6 +416,11 @@
 }
 
 - (void)testShowProfile {
+    
+#if CONVERSATIONS_TEST_USING_MOCK_DATA == 1
+    [self addStubWith200ResponseForJSONFileNamed:@"testShowProfile.json"];
+#endif
+    
     BVGet *showDisplayRequest = [[BVGet alloc] initWithType:BVGetTypeAuthors];
     [showDisplayRequest setFilterForAttribute:@"TotalCommentCount" equality:BVEqualityGreaterThanOrEqual value:@"0"];
     [showDisplayRequest setFilterForAttribute:@"Id" equality:BVEqualityEqualTo value:@"smartPP"];
@@ -358,6 +438,11 @@
 }
 
 - (void)testShowProductsSparse {
+    
+#if CONVERSATIONS_TEST_USING_MOCK_DATA == 1
+    [self addStubWith200ResponseForJSONFileNamed:@"testShowProductsSparse.json"];
+#endif
+    
     BVGet *showDisplayRequest = [[BVGet alloc] initWithType:BVGetTypeProducts];
     [showDisplayRequest sendRequestWithDelegate:self];
     
@@ -368,6 +453,11 @@
 }
 
 - (void)testShowProducts {
+    
+#if CONVERSATIONS_TEST_USING_MOCK_DATA == 1
+    [self addStubWith200ResponseForJSONFileNamed:@"testShowProducts.json"];
+#endif
+    
     BVGet *showDisplayRequest = [[BVGet alloc] initWithType:BVGetTypeProducts];
     [showDisplayRequest setFilterForAttribute:@"CategoryId" equality:BVEqualityEqualTo value:@"testcategory1011"];
     [showDisplayRequest setFilterOnIncludedType:BVIncludeTypeReviews forAttribute:@"Id" equality:BVEqualityEqualTo value:@"83501"];
@@ -389,6 +479,11 @@
 }
 
 - (void)testShowCateogrySparse {
+    
+#if CONVERSATIONS_TEST_USING_MOCK_DATA == 1
+    [self addStubWith200ResponseForJSONFileNamed:@"testShowCategorySparse.json"];
+#endif
+    
     BVGet *showDisplayRequest = [[BVGet alloc] initWithType:BVGetTypeCategories];
     [showDisplayRequest sendRequestWithDelegate:self];
     
@@ -399,6 +494,11 @@
 }
 
 - (void)testShowCateogry {
+    
+#if CONVERSATIONS_TEST_USING_MOCK_DATA == 1
+    [self addStubWith200ResponseForJSONFileNamed:@"testShowCategory.json"];
+#endif
+    
     BVGet *showDisplayRequest = [[BVGet alloc] initWithType:BVGetTypeCategories];
     [showDisplayRequest setFilterForAttribute:@"Id" equality:BVEqualityEqualTo value:@"testCategory1011"];
     [showDisplayRequest setFilterOnIncludedType:BVIncludeTypeProducts forAttribute:@"Id" equality:BVEqualityEqualTo value:@"test2"];
@@ -420,6 +520,11 @@
 }
 
 - (void)testShowStatistics {
+    
+#if CONVERSATIONS_TEST_USING_MOCK_DATA == 1
+    [self addStubWith200ResponseForJSONFileNamed:@"testShowStatistics.json"];
+#endif
+    
     BVGet *showDisplayRequest = [[BVGet alloc] initWithType:BVGetTypeStatistics];
     [showDisplayRequest setFilterForAttribute:@"ProductId" equality:BVEqualityEqualTo values:[NSArray arrayWithObjects:@"test1", @"test2", @"test3", nil]];
     [showDisplayRequest addStatsOn:BVIncludeStatsTypeReviews];
@@ -435,8 +540,13 @@
     
 }
 
+#pragma mark BVPost tests
 
+// A Note on test stubs for POST from: https://github.com/AliSoftware/OHHTTPStubs#Known_limitations
 
+/*
+OHHTTPStubs don't simulate data upload. The NSURLProtocolClient @protocol does not provide a way to signal the delegate that data has been sent (only that some has been loaded), so any data in the HTTPBody or HTTPBodyStream of an NSURLRequest, or data provided to -[NSURLSession uploadTaskWithRequest:fromData:]; will be ignored, and more importantly, the -URLSession:task:didSendBodyData:totalBytesSent:totalBytesExpectedToSend: delegate method will never be called when you stub the request using OHHTTPStubs.
+*/
 - (void)testSubmissionReview
 {
     NSLog(@"BVSDK Info: %@", [BVSDKManager sharedManager].description);
@@ -458,6 +568,7 @@
 
 - (void)testSubmissionReviewBackgroundThread
 {
+    
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         BVPost *request = [[BVPost alloc] initWithType:BVPostTypeReview];
         request.productId = @"100003401";
@@ -476,6 +587,7 @@
 }
 
 - (void)testSubmissionQuestions {
+    
     BVPost *request = [[BVPost alloc] initWithType:BVPostTypeQuestion];
     request.categoryId = @"1020";
     request.locale = @"en_US";
@@ -488,6 +600,7 @@
 }
 
 - (void)testSubmissionAnswers {
+    
     BVPost *request = [[BVPost alloc] initWithType:BVPostTypeAnswer];
     request.questionId = @"6104";
     request.userId = @"123abcd";
@@ -499,6 +612,7 @@
 }
 
 - (void)testSubmissionStories {
+    
     BVPost *request = [[BVPost alloc] initWithType:BVPostTypeStory];
     request.title = @"This is the title";
     request.storyText = @"This is my story";
@@ -511,6 +625,7 @@
 }
 
 - (void)testSubmissionReviewComments {
+    
     BVPost *request = [[BVPost alloc] initWithType:BVPostTypeReviewComment];
     request.commentText = @"This is my comment text";
     request.reviewId = @"83964";
@@ -566,24 +681,24 @@
 }
 
 
-- (void)testSubmissionVideos {
-    
-    /*
-     requestComplete = NO;
-     receivedProgressCallback = NO;
-     BVSubmissionVideo *mySubmission = [[BVSubmissionVideo alloc] init];
-     mySubmission.parameters.contentType = @"review";
-     mySubmission.parameters.video = @"https://www.youtube.com/";
-     mySubmission.parameters.userId = @"123abc";
-     mySubmission.delegate = self;
-     
-     [mySubmission startAsynchRequest];
-     NSRunLoop *theRL = [NSRunLoop currentRunLoop];
-     // Begin a run loop terminated when the requestComplete it set to true
-     while (!requestComplete && [theRL runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]]);
-     
-     */
-}
+//- (void)testSubmissionVideos {
+//    
+//    /*
+//     requestComplete = NO;
+//     receivedProgressCallback = NO;
+//     BVSubmissionVideo *mySubmission = [[BVSubmissionVideo alloc] init];
+//     mySubmission.parameters.contentType = @"review";
+//     mySubmission.parameters.video = @"https://www.youtube.com/";
+//     mySubmission.parameters.userId = @"123abc";
+//     mySubmission.delegate = self;
+//     
+//     [mySubmission startAsynchRequest];
+//     NSRunLoop *theRL = [NSRunLoop currentRunLoop];
+//     // Begin a run loop terminated when the requestComplete it set to true
+//     while (!requestComplete && [theRL runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]]);
+//     
+//     */
+//}
 
 
 
@@ -642,7 +757,7 @@
 }
 
 - (void)testSubmissionVideo {
-    
+        
     BVMediaPost *mySubmission = [[BVMediaPost alloc] initWithType:BVMediaPostTypeVideo];
     mySubmission.contentType = BVMediaPostContentTypeReview;
     mySubmission.userId = @"123";
@@ -663,6 +778,7 @@
 
 
 - (void)testSubmissionFeedback {
+    
     BVPost *mySubmission = [[BVPost alloc] initWithType:BVPostTypeFeedback];
     mySubmission.contentType = BVFeedbackContentTypeReview;
     mySubmission.contentId = @"83964";
@@ -678,6 +794,7 @@
 }
 
 - (void)testSubmissionFeedback2 {
+    
     BVPost *mySubmission = [[BVPost alloc] initWithType:BVPostTypeFeedback];
     mySubmission.contentType = BVFeedbackContentTypeReview;
     mySubmission.contentId = @"83964";
@@ -693,6 +810,7 @@
 
 
 - (void)testParamsAttached {
+    
     BVPost *mySubmission = [[BVPost alloc] initWithType:BVPostTypeReview];
     mySubmission.productId = @"10000sadfgasdg3401";
     mySubmission.userId = [NSString stringWithFormat:@"WHEEEEMYNAMEISSAME%i", arc4random()];

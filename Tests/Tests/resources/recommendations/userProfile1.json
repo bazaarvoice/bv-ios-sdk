@@ -1,0 +1,14 @@
+{
+	"profile": {
+		"interests": {
+			"uncategorized": "MED",
+			"apparelaccessories": "HIGH",
+			"womensmaternity": "MED",
+			"womensshoes": "LOW"
+		},
+		"brands": {
+			"brand1": "MED",
+			"anotherbrand": "MED"
+		}
+	}
+}

@@ -7,9 +7,10 @@
 
 #import <XCTest/XCTest.h>
 #import <BVSDK/BVCurations.h>
-#import <OHHTTPStubs/OHHTTPStubs.h>
-#import <OHHTTPStubs/OHPathHelpers.h>
 
+#import "BVBaseStubTestCase.h"
+
+// Utility buldle locator for location image resources by name
 @interface BundleLocator : NSObject
 @end
 
@@ -30,7 +31,7 @@
 @end
 
 
-@interface BVCurationsTests : XCTestCase
+@interface BVCurationsTests : BVBaseStubTestCase
 
 @end
 
@@ -44,29 +45,20 @@
     [[BVSDKManager sharedManager] setApiKeyCurations:@"fakeymcfakersonfakekey"];
     [[BVSDKManager sharedManager] setClientId:@"test-classic"];
     [[BVSDKManager sharedManager] setStaging:YES];
-    [[BVSDKManager sharedManager] setLogLevel:BVLogLevelVerbose];
+    [[BVSDKManager sharedManager] setLogLevel:BVLogLevelError];
     
 }
 
 - (void)tearDown {
     // Put teardown code here. This method is called after the invocation of each test method in the class.
     [super tearDown];
-     [OHHTTPStubs removeAllStubs];
     
 }
 
 // Test normal parse result from a feed
 - (void)testFetchCurations {
     
-    [OHHTTPStubs stubRequestsPassingTest:^BOOL(NSURLRequest *request) {
-        return [request.URL.host containsString:@"api.bazaarvoice.com"];
-    } withStubResponse:^OHHTTPStubsResponse*(NSURLRequest *request) {
-        // This is our normal use case
-        return [[OHHTTPStubsResponse responseWithFileAtPath:OHPathForFile(@"curationsFeedTest1.json", self.class)
-                                                                  statusCode:200
-                                                                     headers:@{@"Content-Type":@"application/json"}]
-                                 responseTime:OHHTTPStubsDownloadSpeedWifi];
-    }];
+    [self addStubWith200ResponseForJSONFileNamed:@"curationsFeedTest1.json"];
     
     __weak XCTestExpectation *expectation = [self expectationWithDescription:@"testFetchCurations"];
     
@@ -120,15 +112,7 @@
 // Test proper failure of malformed JSON
 - (void)testFetchCurationsMalformedJSON {
     
-    [OHHTTPStubs stubRequestsPassingTest:^BOOL(NSURLRequest *request) {
-        return [request.URL.host containsString:@"api.bazaarvoice.com"];
-    } withStubResponse:^OHHTTPStubsResponse*(NSURLRequest *request) {
-        // return malformed JSON object
-        return [[OHHTTPStubsResponse responseWithFileAtPath:OHPathForFile(@"curationsMalformedFeedTest1.json", self.class)
-                                                 statusCode:200
-                                                    headers:@{@"Content-Type":@"application/json"}]
-                responseTime:OHHTTPStubsDownloadSpeedWifi];
-    }];
+    [self addStubWith200ResponseForJSONFileNamed:@"malformedJSON.json"];
     
     __weak XCTestExpectation *expectation = [self expectationWithDescription:@"testFetchCurationsMalformedJSON"];
     
@@ -158,15 +142,7 @@
 // Test proper failure of empty body but 200 response
 - (void)testEmptyBodyFromFeedRequest {
     
-    [OHHTTPStubs stubRequestsPassingTest:^BOOL(NSURLRequest *request) {
-        return [request.URL.host containsString:@"api.bazaarvoice.com"];
-    } withStubResponse:^OHHTTPStubsResponse*(NSURLRequest *request) {
-        // successful response, but no body
-        return [[OHHTTPStubsResponse responseWithFileAtPath:OHPathForFile(@"", self.class)
-                                                 statusCode:200
-                                                    headers:@{@"Content-Type":@"application/json"}]
-                responseTime:OHHTTPStubsDownloadSpeedWifi];
-    }];
+    [self addStubWith200ResponseForJSONFileNamed:@""];
     
     __weak XCTestExpectation *expectation = [self expectationWithDescription:@"testEmptyBodyFromFeedRequest"];
     
@@ -196,15 +172,7 @@
 // HTTP status 500
 - (void)testServerError500 {
     
-    [OHHTTPStubs stubRequestsPassingTest:^BOOL(NSURLRequest *request) {
-        return [request.URL.host containsString:@"api.bazaarvoice.com"];
-    } withStubResponse:^OHHTTPStubsResponse*(NSURLRequest *request) {
-        // successful response, but no body
-        return [[OHHTTPStubsResponse responseWithFileAtPath:OHPathForFile(@"", self.class)
-                                                 statusCode:500
-                                                    headers:@{@"Content-Type":@"application/json"}]
-                responseTime:OHHTTPStubsDownloadSpeedWifi];
-    }];
+    [self addStubWithResultFile:@"" statusCode:500 withHeaders:@{@"Content-Type":@"application/json"}];
     
     __weak XCTestExpectation *expectation = [self expectationWithDescription:@"testEmptyBodyFromFeedRequest"];
     
@@ -234,24 +202,17 @@
 // Test proper failure of empty body but 200 response
 - (void)testNon200Status {
     
-    [OHHTTPStubs stubRequestsPassingTest:^BOOL(NSURLRequest *request) {
-        return [request.URL.host containsString:@"api.bazaarvoice.com"];
-    } withStubResponse:^OHHTTPStubsResponse*(NSURLRequest *request) {
-        // successful HTTP code, but error in body
-        return [[OHHTTPStubsResponse responseWithFileAtPath:OHPathForFile(@"curations500Error.json", self.class)
-                                                 statusCode:200
-                                                    headers:@{
-                                                              @"Content-Type":@"application/json;charset=utf-8",
-                                                              @"Access-Control-Allow-Origin" : @"*",
-                                                              @"Connection" : @"keep-alive",
-                                                              @"Date" : @"Wed, 30 Mar 2016 15:52:51 GMT",
-                                                              @"Server" : @"nginx/1.6.2",
-                                                              @"Vary" : @"Accept-Encoding",
-                                                              @"X-Mashery-Responder" : @"prod-j-worker-bv-us-west-1c-06.mashery.com"
-                                                              }]
-                responseTime:OHHTTPStubsDownloadSpeedWifi];
-    }];
+    [self addStubWithResultFile:@"curations500Error.json" statusCode:200 withHeaders:@{
+                                                                                       @"Content-Type":@"application/json;charset=utf-8",
+                                                                                       @"Access-Control-Allow-Origin" : @"*",
+                                                                                       @"Connection" : @"keep-alive",
+                                                                                       @"Date" : @"Wed, 30 Mar 2016 15:52:51 GMT",
+                                                                                       @"Server" : @"nginx/1.6.2",
+                                                                                       @"Vary" : @"Accept-Encoding",
+                                                                                       @"X-Mashery-Responder" : @"prod-j-worker-bv-us-west-1c-06.mashery.com"
+                                                                                       }];
     
+        
     __weak XCTestExpectation *expectation = [self expectationWithDescription:@"testNon200Status"];
     
     BVCurationsFeedRequest *feedRequest = [[BVCurationsFeedRequest alloc] initWithGroups:@[ @"livebv" ]];
@@ -456,17 +417,8 @@
     
      __weak XCTestExpectation *expectation = [self expectationWithDescription:@"testPostPhotoSuccess"];
     
-    [OHHTTPStubs stubRequestsPassingTest:^BOOL(NSURLRequest *request) {
-        return [request.URL.host containsString:@"api.bazaarvoice.com"];
-    } withStubResponse:^OHHTTPStubsResponse*(NSURLRequest *request) {
-        // successful response, but no body
-        return [[OHHTTPStubsResponse responseWithFileAtPath:OHPathForFile(@"post_successfulCreation.json", self.class)
-                                                 statusCode:201
-                                                    headers:@{@"Content-Type":@"application/json"}]
-                responseTime:OHHTTPStubsDownloadSpeedWifi];
-    }];
+    [self addStubWith200ResponseForJSONFileNamed:@"post_successfulCreation.json"];
     
-
     // Construct the parmas with required
     NSString *aliasInput = @"mobileUnitTest";
     NSString *tokenInput = @"mobilecoreteam@bazaarvoice.com";
@@ -486,10 +438,6 @@
     
     [uploadAPI submitCurationsContentWithParams:params completionHandler:^(void) {
         // completion
-        NSLog(@"Successful Test!");
-        
-        // TODO: Assert if data is nil
-        
         [expectation fulfill];
     } withFailure:^(NSError *error) {
         // error
@@ -508,16 +456,7 @@
     
     __weak XCTestExpectation *expectation = [self expectationWithDescription:@"testPostPhotoFail"];
     
-        [OHHTTPStubs stubRequestsPassingTest:^BOOL(NSURLRequest *request) {
-            return [request.URL.host containsString:@"api.bazaarvoice.com"];
-        } withStubResponse:^OHHTTPStubsResponse*(NSURLRequest *request) {
-            // successful response, but no body
-            return [[OHHTTPStubsResponse responseWithFileAtPath:OHPathForFile(@"post_ErrorParsingBody.json", self.class)
-                                                     statusCode:200
-                                                        headers:@{@"Content-Type":@"application/json"}]
-                    responseTime:OHHTTPStubsDownloadSpeedWifi];
-        }];
-    
+    [self addStubWith200ResponseForJSONFileNamed:@"post_ErrorParsingBody.json"];
     
     // Construct the parmas with required
     NSString *aliasInput = @"mobileUnitTest";
@@ -538,7 +477,6 @@
     
     [uploadAPI submitCurationsContentWithParams:params completionHandler:^(void) {
         // completion
-        NSLog(@"success");
         XCTAssertTrue(NO, @"Success block called in test which should have failed.");
         [expectation fulfill];
     } withFailure:^(NSError *error) {
@@ -560,16 +498,7 @@
     
     __weak XCTestExpectation *expectation = [self expectationWithDescription:@"testPostMissingRequiredKey"];
     
-    [OHHTTPStubs stubRequestsPassingTest:^BOOL(NSURLRequest *request) {
-        return [request.URL.host containsString:@"api.bazaarvoice.com"];
-    } withStubResponse:^OHHTTPStubsResponse*(NSURLRequest *request) {
-        // successful response, but no body
-        return [[OHHTTPStubsResponse responseWithFileAtPath:OHPathForFile(@"post_MissingRequiredKey.json", self.class)
-                                                 statusCode:200
-                                                    headers:@{@"Content-Type":@"application/json"}]
-                responseTime:OHHTTPStubsDownloadSpeedWifi];
-    }];
-    
+    [self addStubWith200ResponseForJSONFileNamed:@"post_MissingRequiredKey.json"];
     
     // Construct the parmas with required
     NSString *aliasInput = @"";
@@ -584,7 +513,6 @@
     
     [uploadAPI submitCurationsContentWithParams:params completionHandler:^(void) {
         // completion
-        NSLog(@"success");
         XCTAssertTrue(NO, @"Success block called in test which should have failed.");
         [expectation fulfill];
     } withFailure:^(NSError *error) {
@@ -605,16 +533,7 @@
     
     __weak XCTestExpectation *expectation = [self expectationWithDescription:@"testPostMalformedJSONResponse"];
     
-    [OHHTTPStubs stubRequestsPassingTest:^BOOL(NSURLRequest *request) {
-        return [request.URL.host containsString:@"api.bazaarvoice.com"];
-    } withStubResponse:^OHHTTPStubsResponse*(NSURLRequest *request) {
-        // successful response, but no body
-        return [[OHHTTPStubsResponse responseWithFileAtPath:OHPathForFile(@"curationsMalformedFeedTest1.json", self.class)
-                                                 statusCode:200
-                                                    headers:@{@"Content-Type":@"application/json"}]
-                responseTime:OHHTTPStubsDownloadSpeedWifi];
-    }];
-    
+    [self addStubWith200ResponseForJSONFileNamed:@"malformedJSON.json"];
     
     // Construct the parmas with required
     NSString *aliasInput = @"";
@@ -629,12 +548,10 @@
     
     [uploadAPI submitCurationsContentWithParams:params completionHandler:^(void) {
         // completion
-        NSLog(@"success");
         XCTAssertTrue(NO, @"Success block called in test which should have failed.");
         [expectation fulfill];
     } withFailure:^(NSError *error) {
         // error
-        NSLog(@"ERROR: %@", error.localizedDescription);
         XCTAssertNotNil(error, @"Got a nil NSError object");
         XCTAssertEqual(error.code, -1, @"Expected error code -1");
         
@@ -649,7 +566,6 @@
 - (void)testPostNilRequestObject {
     
     __weak XCTestExpectation *expectation = [self expectationWithDescription:@"testPostNilRequestObject"];
-    
     
     // Hit the API - which should never make an API call and just return the error handler
     BVCurationsPhotoUploader *uploadAPI = [[BVCurationsPhotoUploader alloc] init];

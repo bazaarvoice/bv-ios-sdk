@@ -1,0 +1,19 @@
+{
+    "Data":{},
+    "HasErrors":false,
+    "Form":[],
+    "FormErrors":{},
+    "Question":{
+        "SendEmailAlertWhenPublished":false,
+        "SendEmailAlertWhenAnswered":false,
+        "QuestionSummary":"testtesttesttesttesttest",
+        "SubmissionTime":"2011-11-16T13:51:01.196-00:00",
+        "TypicalHoursToPost":null,
+        "SubmissionId":null,
+        "QuestionDetails":null
+    },
+    "TypicalHoursToPost":72,
+    "SubmissionId":"evm3y6jw5a9sd7y0yjehtgns",
+    "Locale":"en_US",
+    "Errors":[]
+}
