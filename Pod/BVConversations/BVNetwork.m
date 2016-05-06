@@ -314,6 +314,7 @@ static NSString *urlEncode(id object) {
 - (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didCompleteWithError:(NSError *)error {
     if (error != nil) {
         if (self.delegate != nil && [self.delegate respondsToSelector:@selector(didFailToReceiveResponse:forRequest:)]){
+            [[BVLogger sharedLogger] error:[NSString stringWithFormat:@"RESPONSE ERROR: %@", error.localizedDescription]];
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self.delegate didFailToReceiveResponse:error forRequest:self.sender];
             });
@@ -323,6 +324,7 @@ static NSString *urlEncode(id object) {
         NSDictionary *response;
         if ([[self.responseHeaders objectForKey:@"Content-Type"] isEqualToString:@"application/json;charset=utf-8"]) {
             response = [NSJSONSerialization JSONObjectWithData:self.receivedData options:NSJSONReadingMutableContainers error:&error];
+            [[BVLogger sharedLogger] verbose:[NSString stringWithFormat:@"RESPONSE: %@ (%d)", response, self.responseStatusCode]];
         }
         else if (self.responseStatusCode == 200) {
             NSMutableDictionary *result = [NSMutableDictionary dictionary];

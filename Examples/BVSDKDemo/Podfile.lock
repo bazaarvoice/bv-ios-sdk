@@ -1,0 +1,80 @@
+PODS:
+  - BVSDK (4.0.2):
+    - BVSDK/Core (= 4.0.2)
+  - BVSDK/BVAdvertising (4.0.2):
+    - BVSDK/Core
+  - BVSDK/BVConversations (4.0.2):
+    - BVSDK/Core
+  - BVSDK/BVCurations (4.0.2):
+    - BVSDK/Core
+  - BVSDK/BVRecommendations (4.0.2):
+    - BVSDK/Core
+  - BVSDK/Core (4.0.2)
+  - FontAwesomeKit/Core (2.2.0)
+  - FontAwesomeKit/FontAwesome (2.2.0):
+    - FontAwesomeKit/Core
+  - Google-Mobile-Ads-SDK (7.8.1)
+  - HCSStarRatingView (1.4.5)
+  - NVActivityIndicatorView (2.7)
+  - OHHTTPStubs (5.0.0):
+    - OHHTTPStubs/Default (= 5.0.0)
+  - OHHTTPStubs/Core (5.0.0)
+  - OHHTTPStubs/Default (5.0.0):
+    - OHHTTPStubs/Core
+    - OHHTTPStubs/JSON
+    - OHHTTPStubs/NSURLSession
+    - OHHTTPStubs/OHPathHelpers
+  - OHHTTPStubs/JSON (5.0.0):
+    - OHHTTPStubs/Core
+  - OHHTTPStubs/NSURLSession (5.0.0):
+    - OHHTTPStubs/Core
+  - OHHTTPStubs/OHPathHelpers (5.0.0)
+  - SDForms (0.9.3):
+    - HCSStarRatingView
+  - SDWebImage (3.7.6):
+    - SDWebImage/Core (= 3.7.6)
+  - SDWebImage/Core (3.7.6)
+  - SwiftyJSON (2.3.2)
+  - youtube-ios-player-helper (0.1.6)
+
+DEPENDENCIES:
+  - BVSDK (from `../../`)
+  - BVSDK/BVAdvertising (from `../../`)
+  - BVSDK/BVConversations (from `../../`)
+  - BVSDK/BVCurations (from `../../`)
+  - BVSDK/BVRecommendations (from `../../`)
+  - FontAwesomeKit/FontAwesome
+  - Google-Mobile-Ads-SDK
+  - HCSStarRatingView
+  - NVActivityIndicatorView
+  - OHHTTPStubs
+  - SDForms (from `https://github.com/austimkelly/SDForms.git`, branch `master`)
+  - SDWebImage
+  - SwiftyJSON
+  - youtube-ios-player-helper (~> 0.1.4)
+
+EXTERNAL SOURCES:
+  BVSDK:
+    :path: ../../
+  SDForms:
+    :branch: master
+    :git: https://github.com/austimkelly/SDForms.git
+
+CHECKOUT OPTIONS:
+  SDForms:
+    :commit: 81151ba9b58376dd3b1934908956be3cabdf27ac
+    :git: https://github.com/austimkelly/SDForms.git
+
+SPEC CHECKSUMS:
+  BVSDK: 9b5bc0d7dad08f6846428627546d90f16aae85b7
+  FontAwesomeKit: 025fd4dd1017fe4e3f8d47b03e024deedbb33cd4
+  Google-Mobile-Ads-SDK: 3c2a6656117989469bfe7645640aa1de024a4c6c
+  HCSStarRatingView: bff3f89314d3b5013ce826ea11897d3129ff6b8c
+  NVActivityIndicatorView: dc80f18fb27ac92f0aa87246cc13dc39ed3e9ee0
+  OHHTTPStubs: a5d2e9eea07869d42ec03338325f398bc520e159
+  SDForms: 67ace4be00b3a97bec7164a817eb085e3148c523
+  SDWebImage: c325cf02c30337336b95beff20a13df489ec0ec9
+  SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
+  youtube-ios-player-helper: 21ab92db027c7ff86cb17a3843a3f6eafc8158d2
+
+COCOAPODS: 0.39.0

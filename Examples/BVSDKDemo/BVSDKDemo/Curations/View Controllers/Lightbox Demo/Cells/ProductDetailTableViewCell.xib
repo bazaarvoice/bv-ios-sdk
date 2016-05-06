@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ProductDetailTableViewCell" rowHeight="128" id="KGk-i7-Jjw" customClass="ProductDetailTableViewCell" customModule="BVSDKDemo" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="128"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="127.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="Q6r-Fj-6dF">
+                        <rect key="frame" x="8" y="14" width="100" height="100"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="100" id="gY7-g4-nPR"/>
+                            <constraint firstAttribute="height" constant="100" id="i4h-i8-2Rb"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Product Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qPo-oo-r4b">
+                        <rect key="frame" x="127" y="13" width="185" height="18"/>
+                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EaJ-oU-VNC">
+                        <rect key="frame" x="195" y="75" width="117" height="39"/>
+                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="39" id="QuZ-bK-IAP"/>
+                            <constraint firstAttribute="width" constant="117" id="hzE-Sf-VeV"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
+                        <state key="normal" title="Shop Now">
+                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="titleShadowColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                        </state>
+                        <connections>
+                            <action selector="shopNowTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="eZe-CR-F1T"/>
+                        </connections>
+                    </button>
+                    <view userInteractionEnabled="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="84x-52-6L4" customClass="HCSStarRatingView">
+                        <rect key="frame" x="127" y="39" width="61" height="23"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="tintColor" red="0.99607843139999996" green="0.85490196080000003" blue="0.062745098040000002" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5.00 (1000 reviews)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="77E-yA-5J8">
+                        <rect key="frame" x="196" y="44" width="116" height="16"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="qPo-oo-r4b" firstAttribute="leading" secondItem="Q6r-Fj-6dF" secondAttribute="trailing" constant="19" id="0kx-7o-xWY"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="EaJ-oU-VNC" secondAttribute="trailing" id="31k-eI-WOf"/>
+                    <constraint firstItem="84x-52-6L4" firstAttribute="leading" secondItem="Q6r-Fj-6dF" secondAttribute="trailing" constant="19" id="8XN-wL-H5V"/>
+                    <constraint firstItem="84x-52-6L4" firstAttribute="top" secondItem="qPo-oo-r4b" secondAttribute="bottom" constant="8" id="AVU-ry-LwL"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="qPo-oo-r4b" secondAttribute="trailing" id="E07-wc-ejl"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="EaJ-oU-VNC" secondAttribute="bottom" constant="6" id="Eyb-Ef-SQF"/>
+                    <constraint firstAttribute="leadingMargin" secondItem="Q6r-Fj-6dF" secondAttribute="leading" id="G2r-gO-FmS"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="84x-52-6L4" secondAttribute="bottom" constant="57.5" id="KSX-OR-E1m"/>
+                    <constraint firstItem="77E-yA-5J8" firstAttribute="leading" secondItem="qPo-oo-r4b" secondAttribute="trailing" constant="-116" id="NUF-J6-aGe"/>
+                    <constraint firstItem="EaJ-oU-VNC" firstAttribute="top" secondItem="77E-yA-5J8" secondAttribute="bottom" constant="15" id="RDU-It-LfO"/>
+                    <constraint firstItem="77E-yA-5J8" firstAttribute="leading" secondItem="84x-52-6L4" secondAttribute="trailing" constant="8" id="bwK-xG-6Fi"/>
+                    <constraint firstItem="qPo-oo-r4b" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="5" id="hte-Se-5qC"/>
+                    <constraint firstItem="Q6r-Fj-6dF" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="qte-8g-ygl"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="77E-yA-5J8" secondAttribute="trailing" id="xqU-hN-ao4"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="productImageView" destination="Q6r-Fj-6dF" id="Okd-JZ-ZWw"/>
+                <outlet property="productNameLabel" destination="qPo-oo-r4b" id="aoo-Jm-OQe"/>
+                <outlet property="ratingLabel" destination="77E-yA-5J8" id="r4j-in-ZYH"/>
+                <outlet property="ratingStars" destination="84x-52-6L4" id="BgE-B2-0PJ"/>
+                <outlet property="shopNowButton" destination="EaJ-oU-VNC" id="csW-Oz-rR0"/>
+            </connections>
+            <point key="canvasLocation" x="701" y="494"/>
+        </tableViewCell>
+    </objects>
+</document>

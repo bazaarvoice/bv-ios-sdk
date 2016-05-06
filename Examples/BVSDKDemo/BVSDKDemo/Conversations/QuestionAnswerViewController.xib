@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9059" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="QuestionAnswerViewController" customModule="BVSDKDemo" customModuleProvider="target">
+            <connections>
+                <outlet property="header" destination="ExN-ZL-DUp" id="fdQ-8O-ZCb"/>
+                <outlet property="tableView" destination="8ZU-Mh-B4v" id="aOo-7J-pg3"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="8ZU-Mh-B4v">
+                    <rect key="frame" x="0.0" y="80" width="600" height="520"/>
+                    <animations/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </tableView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ExN-ZL-DUp" customClass="ProductDetailHeaderView" customModule="BVSDKDemo" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="80"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Pa3-0I-5iK">
+                            <rect key="frame" x="8" y="8" width="64" height="64"/>
+                            <animations/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="Pa3-0I-5iK" secondAttribute="height" multiplier="1:1" id="0i9-GK-O8q"/>
+                                <constraint firstAttribute="height" constant="122" id="H3y-Ru-6YB"/>
+                            </constraints>
+                            <variation key="default">
+                                <mask key="constraints">
+                                    <exclude reference="0i9-GK-O8q"/>
+                                    <exclude reference="H3y-Ru-6YB"/>
+                                </mask>
+                            </variation>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Product Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="7jr-hR-Ics">
+                            <rect key="frame" x="80" y="15.5" width="115" height="21.5"/>
+                            <animations/>
+                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="18"/>
+                            <color key="textColor" red="0.0" green="0.2392156869" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qhb-Xo-sSn" customClass="HCSStarRatingView">
+                            <rect key="frame" x="80" y="41" width="100" height="20"/>
+                            <animations/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="tintColor" red="1" green="0.87245499150000005" blue="0.052647804600000001" alpha="1" colorSpace="deviceRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="20" id="dZW-ag-P20"/>
+                                <constraint firstAttribute="width" constant="100" id="sg6-EX-bzI"/>
+                            </constraints>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="allowsHalfStars" value="YES"/>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="accurateHalfStars" value="YES"/>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="continuous" value="YES"/>
+                                <userDefinedRuntimeAttribute type="number" keyPath="value">
+                                    <real key="value" value="4.4000000000000004"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </view>
+                    </subviews>
+                    <animations/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="7jr-hR-Ics" firstAttribute="bottom" secondItem="ExN-ZL-DUp" secondAttribute="centerY" constant="-3" id="2hn-lq-wNM"/>
+                        <constraint firstItem="qhb-Xo-sSn" firstAttribute="leading" secondItem="7jr-hR-Ics" secondAttribute="leading" id="OaQ-Tt-MkF"/>
+                        <constraint firstItem="7jr-hR-Ics" firstAttribute="leading" secondItem="Pa3-0I-5iK" secondAttribute="trailing" constant="8" id="SGY-lG-H2U"/>
+                        <constraint firstItem="qhb-Xo-sSn" firstAttribute="top" secondItem="7jr-hR-Ics" secondAttribute="bottom" constant="4" id="Ygv-5Q-xPI"/>
+                        <constraint firstItem="Pa3-0I-5iK" firstAttribute="top" secondItem="ExN-ZL-DUp" secondAttribute="topMargin" id="fhB-LN-6Bp"/>
+                        <constraint firstAttribute="height" constant="80" id="hXw-id-7np"/>
+                        <constraint firstAttribute="bottomMargin" secondItem="Pa3-0I-5iK" secondAttribute="bottom" id="iEw-ch-bPl"/>
+                        <constraint firstItem="7jr-hR-Ics" firstAttribute="top" secondItem="Pa3-0I-5iK" secondAttribute="top" id="mBV-c9-n3k"/>
+                        <constraint firstItem="Pa3-0I-5iK" firstAttribute="leading" secondItem="ExN-ZL-DUp" secondAttribute="leadingMargin" id="qIZ-oD-hgd"/>
+                        <constraint firstItem="Pa3-0I-5iK" firstAttribute="width" secondItem="Pa3-0I-5iK" secondAttribute="height" multiplier="1:1" id="xg6-0m-6za"/>
+                    </constraints>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="mBV-c9-n3k"/>
+                        </mask>
+                    </variation>
+                    <connections>
+                        <outlet property="productImage" destination="Pa3-0I-5iK" id="jSn-N0-8L3"/>
+                        <outlet property="productName" destination="7jr-hR-Ics" id="LeS-gu-Can"/>
+                        <outlet property="productStars" destination="qhb-Xo-sSn" id="avK-Hc-hFL"/>
+                    </connections>
+                </view>
+            </subviews>
+            <animations/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="ExN-ZL-DUp" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="6rf-AJ-BJY"/>
+                <constraint firstItem="8ZU-Mh-B4v" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="80" id="9mD-ag-WVi"/>
+                <constraint firstItem="ExN-ZL-DUp" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="F2q-oo-M4t"/>
+                <constraint firstItem="8ZU-Mh-B4v" firstAttribute="top" secondItem="ExN-ZL-DUp" secondAttribute="bottom" id="NoK-O9-dC6"/>
+                <constraint firstAttribute="trailing" secondItem="ExN-ZL-DUp" secondAttribute="trailing" id="ORs-J3-vAc"/>
+                <constraint firstAttribute="trailing" secondItem="8ZU-Mh-B4v" secondAttribute="trailing" id="mDW-NG-qae"/>
+                <constraint firstAttribute="bottom" secondItem="8ZU-Mh-B4v" secondAttribute="bottom" id="miy-VF-fUS"/>
+                <constraint firstItem="8ZU-Mh-B4v" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="rR1-AS-eq1"/>
+            </constraints>
+        </view>
+    </objects>
+</document>
