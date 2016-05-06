@@ -1,6 +1,0 @@
-source :rubygems
-
-gem "guard-xcode"
-gem "guard"
-gem "growl"
-gem "rb-readline"

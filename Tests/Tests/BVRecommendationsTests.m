@@ -7,13 +7,12 @@
 
 #import <XCTest/XCTest.h>
 #import <AdSupport/ASIdentifierManager.h>
-#import <BVSDK/BVConversations.h>
 #import <BVSDK/BVRecommendations.h>
 
-static BVAuthenticatedUser *user = nil;
+#import "BVBaseStubTestCase.h"
 
-@interface BVRecommendationsTests : XCTestCase{
-    XCTestExpectation *userProfileExpectation;
+@interface BVRecommendationsTests : BVBaseStubTestCase{
+    
 }
 @end
 
@@ -24,55 +23,37 @@ static BVAuthenticatedUser *user = nil;
     [super setUp];
     // Put setup code here. This method is called before the invocation of each test method in the class.
     
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(userProfileUpdated:)
-                                                 name:@"BV_INTERNAL_PROFILE_UPDATED_COMPLETED"
-                                               object:nil];
-    
-    [[BVSDKManager sharedManager] setApiKeyShopperAdvertising:TEST_KEY_SHOPPER_ADVERTISING]; // test recs passkey
-    [[BVSDKManager sharedManager] setClientId:@"apitestcustomer"];
-    [[BVSDKManager sharedManager] setStaging:NO];
-    [[BVSDKManager sharedManager] setLogLevel:BVLogLevelInfo];
+    [[BVSDKManager sharedManager] setApiKeyShopperAdvertising:@"fakekey"]; // test recs passkey
+    [[BVSDKManager sharedManager] setClientId:@"iosunittest"];
+    [[BVSDKManager sharedManager] setStaging:YES];
+    [[BVSDKManager sharedManager] setLogLevel:BVLogLevelError];
 }
 
 - (void)tearDown {
     // Put teardown code here. This method is called after the invocation of each test method in the class.
-    [[NSNotificationCenter defaultCenter] removeObserver:self
-                                                    name:@"BV_INTERNAL_PROFILE_UPDATED_COMPLETED"
-                                                  object:nil];
     [super tearDown];
-}
-
-- (void)userProfileUpdated:(NSNotification *)notification{
-    
-    XCTAssertNotNil(notification, @"Notifcation was nil from user profile fetch");
-    
-    user = (BVAuthenticatedUser *)[notification object];
-    XCTAssertNotNil(user, @"User profile is nil after profile fetch");
-    NSDictionary *keywords = [user getTargetingKeywords];
-    XCTAssertNotNil(keywords, @"User profile keywords are nil after profile fetch");
-    
-    [userProfileExpectation fulfill];
     
 }
 
-// Basic test that fetches the client's IDFA and returns the recommendations. In this case we most likely we'll just have empty data
-- (void)test1_ProfileWithClientIDFA {
+// Basic test that fetches the client's IDFA and returns an array of product recommenations.
+- (void)testFetchProductRecommendations {
     
-    __weak XCTestExpectation *expectation = [self expectationWithDescription:@"Test Profile with Client IDFA Expectation"];
+    __weak XCTestExpectation *expectation = [self expectationWithDescription:@"testFetchProductRecommendations"];
     
-
+    [self addStubWith200ResponseForJSONFileNamed:@"recommendationsResult.json"];
     
     BVRecommendationsRequest* request = [[BVRecommendationsRequest alloc] initWithLimit:10];
     BVRecommendationsLoader* loader = [[BVRecommendationsLoader alloc] init];
     [loader loadRequest:request completionHandler:^(NSArray<BVProduct *> * _Nonnull recommendations) {
         
-        XCTAssertNotNil(recommendations, @"Profile should not be nil");
+        XCTAssertTrue([recommendations count] > 0, @"Recommendation result should not be size 0");
         [expectation fulfill];
         
     } errorHandler:^(NSError * _Nonnull error) {
         
         XCTFail(@"Error handler should not have been called");
+        
+        [expectation fulfill];
         
     }];
     
@@ -80,47 +61,47 @@ static BVAuthenticatedUser *user = nil;
 }
 
 
-// Internal API test
-- (void)test2_PrivateProfileRecommendations {
+- (void)testRecommendationsByProductId {
     
-    __weak XCTestExpectation *expectation = [self expectationWithDescription:@"Test Profile with Hard-Code IDFA Expectation"];
+    __weak XCTestExpectation *expectation = [self expectationWithDescription:@"testRecommendationsByProductId"];
     
-    if(![[ASIdentifierManager sharedManager] isAdvertisingTrackingEnabled]){
-        XCTAssert(@"Limit Ad Tracking needs to be disabled for this test.");
-        return;
-    }
+    [self addStubWith200ResponseForJSONFileNamed:@"recommendationsByProductId.json"];
     
-    BVRecommendationsRequest* request = [[BVRecommendationsRequest alloc] initWithLimit:10];
+    BVRecommendationsRequest* request = [[BVRecommendationsRequest alloc] initWithLimit:10 withProductId:@"client/productId1234"];
     BVRecommendationsLoader* loader = [[BVRecommendationsLoader alloc] init];
     [loader loadRequest:request completionHandler:^(NSArray<BVProduct *> * _Nonnull recommendations) {
         
-        XCTAssertNotNil(recommendations, @"Profile should not be nil");
+         XCTAssertTrue([recommendations count] > 0, @"Recommendation result should not be size 0");
         [expectation fulfill];
         
     } errorHandler:^(NSError * _Nonnull error) {
         
         XCTFail(@"Error handler should not have been called");
+        [expectation fulfill];
         
     }];
-        
+    
     [self waitForExpectations];
+    
 }
 
-
-- (void)test3_RecommendationsForProductId {
+- (void)testRecommendationsByCategoryId {
     
-    __weak XCTestExpectation *expectation = [self expectationWithDescription:@"Test Recommendations with Product Id"];
+    __weak XCTestExpectation *expectation = [self expectationWithDescription:@"testRecommendationsByCategoryId"];
     
-    BVRecommendationsRequest* request = [[BVRecommendationsRequest alloc] initWithLimit:10 withProductId:@"qvc/a268640"];
+    [self addStubWith200ResponseForJSONFileNamed:@"recommendationsByCategoryId.json"];
+    
+    BVRecommendationsRequest* request = [[BVRecommendationsRequest alloc] initWithLimit:10 withCategoryId:@"client/categoryId0100"];
     BVRecommendationsLoader* loader = [[BVRecommendationsLoader alloc] init];
     [loader loadRequest:request completionHandler:^(NSArray<BVProduct *> * _Nonnull recommendations) {
         
-        XCTAssertNotNil(recommendations, @"Profile should not be nil");
+         XCTAssertTrue([recommendations count] > 0, @"Recommendation result should not be size 0");
         [expectation fulfill];
         
     } errorHandler:^(NSError * _Nonnull error) {
         
         XCTFail(@"Error handler should not have been called");
+        [expectation fulfill];
         
     }];
     
@@ -128,28 +109,61 @@ static BVAuthenticatedUser *user = nil;
     
 }
 
-- (void)test4_RecommendationsForCategoryId {
+
+// Malformed JSON test
+- (void)testFetchProductRecommendationsMalformedJSONResponse {
     
-    __weak XCTestExpectation *expectation = [self expectationWithDescription:@"Test Recommendations with Category Id"];
+    __weak XCTestExpectation *expectation = [self expectationWithDescription:@"testFetchProductRecommendationsMalformedJSONResponse"];
     
-    BVRecommendationsRequest* request = [[BVRecommendationsRequest alloc] initWithLimit:10 withCategoryId:@"qvc/0100"];
+    [self addStubWith200ResponseForJSONFileNamed:@"malformedJSON.json"];
+    
+    BVRecommendationsRequest* request = [[BVRecommendationsRequest alloc] initWithLimit:3];
     BVRecommendationsLoader* loader = [[BVRecommendationsLoader alloc] init];
     [loader loadRequest:request completionHandler:^(NSArray<BVProduct *> * _Nonnull recommendations) {
         
-        XCTAssertNotNil(recommendations, @"Profile should not be nil");
+        XCTAssertTrue(NO, @"Success block called in test which should have failed.");
+        [expectation fulfill];
+        
+    } errorHandler:^(NSError * _Nonnull error) {
+        
+        XCTAssertNotNil(error, @"Got a nil NSError object");
+        XCTAssertEqual(error.code, 3840, @"Expected error code -1");
+        
+        [expectation fulfill];
+        
+    }];
+    
+    [self waitForExpectations];
+}
+
+
+// <null> values in JSON. Ensures if bad json is sent from server the serializer won't barf
+- (void)testFetchProductRecommendationsNullJSON {
+    
+    __weak XCTestExpectation *expectation = [self expectationWithDescription:@"testFetchProductRecommendationsNullJSON"];
+    
+    [self addStubWith200ResponseForJSONFileNamed:@"recommendationsNullJSON.json"];
+    
+    BVRecommendationsRequest* request = [[BVRecommendationsRequest alloc] initWithLimit:2];
+    BVRecommendationsLoader* loader = [[BVRecommendationsLoader alloc] init];
+    [loader loadRequest:request completionHandler:^(NSArray<BVProduct *> * _Nonnull recommendations) {
+        
+         XCTAssertTrue([recommendations count] == 1, @"Recommendation result should size should be 1");
         [expectation fulfill];
         
     } errorHandler:^(NSError * _Nonnull error) {
         
         XCTFail(@"Error handler should not have been called");
         
+        [expectation fulfill];
+        
     }];
     
     [self waitForExpectations];
-    
 }
 
 
+// Test, just ensure BVShopperProfile initializes arrays by default
 - (void)testPraseEmptyShopperProfile {
     
     BVShopperProfile *profile = [[BVShopperProfile alloc] initWithDictionary:[NSDictionary dictionary]];
@@ -159,7 +173,6 @@ static BVAuthenticatedUser *user = nil;
     XCTAssertTrue(profile.brands.count == 0, @"Profile brands size was not zero");
     
 }
-
 
 
 - (void) waitForExpectations{

@@ -1,0 +1,239 @@
+{
+    "HasErrors": false,
+    "Includes": {
+        "Reviews": {
+            "83501": {
+                "TagDimensions": {},
+                "TagDimensionsOrder": [],
+                "AdditionalFieldsOrder": [],
+                "Cons": null,
+                "IsRecommended": true,
+                "IsRatingsOnly": true,
+                "UserNickname": "Carmen",
+                "Pros": null,
+                "Photos": [],
+                "ContextDataValues": {
+                    "Gender": {
+                        "Value": "Male",
+                        "ValueLabel": "Male",
+                        "DimensionLabel": "Gender",
+                        "Id": "Gender"
+                    }
+                },
+                "Videos": [],
+                "ContextDataValuesOrder": ["Gender"],
+                "SubmissionId": null,
+                "LastModificationTime": "2013-03-08T21:25:36.000+00:00",
+                "TotalFeedbackCount": 0,
+                "TotalPositiveFeedbackCount": 0,
+                "BadgesOrder": [],
+                "UserLocation": null,
+                "Badges": {},
+                "AuthorId": "jfiodja",
+                "SecondaryRatingsOrder": [],
+                "IsFeatured": false,
+                "IsSyndicated": false,
+                "ProductRecommendationIds": [],
+                "Title": null,
+                "ProductId": "test2",
+                "AdditionalFields": {},
+                "CampaignId": null,
+                "Helpfulness": null,
+                "TotalNegativeFeedbackCount": 0,
+                "SubmissionTime": "2009-05-15T19:02:03.000+00:00",
+                "ContentLocale": "en_US",
+                "Rating": 4,
+                "RatingRange": 5,
+                "ReviewText": null,
+                "TotalCommentCount": 0,
+                "ModerationStatus": "APPROVED",
+                "ClientResponses": [],
+                "Id": "83501",
+                "SecondaryRatings": {},
+                "CommentIds": [],
+                "LastModeratedTime": "2013-03-08T21:25:36.000+00:00"
+            }
+        },
+        "ReviewsOrder": ["83501"]
+    },
+    "Offset": 0,
+    "TotalResults": 2,
+    "Locale": "en_US",
+    "Errors": [],
+    "Results": [{
+                "Brand": {
+                "Name": "GE",
+                "Id": "otttwtzo9imo28ssfm58x1hm"
+                },
+                "ISBNs": [],
+                "UPCs": [],
+                "Attributes": {},
+                "Description": "This extra-large capacity dryer lets you choose between 8 dry cycles, so you can use the proper settings for your clothes. The auto dry function uses thermostats to tell when\n                your laundry is dry, reducing wear and tear.",
+                "ManufacturerPartNumbers": [],
+                "QuestionIds": [],
+                "ProductPageUrl": null,
+                "BrandExternalId": "otttwtzo9imo28ssfm58x1hm",
+                "FamilyIds": [],
+                "AttributesOrder": [],
+                "ImageUrl": "http://myshco.com/productImages/profile.png",
+                "EANs": [],
+                "Name": "GE Profile 7.5 Cu. Ft. Colossal Capacity Electric Dryer",
+                "CategoryId": "testCategory1011",
+                "TotalReviewCount": 74,
+                "ReviewIds": ["83501"],
+                "Id": "test2",
+                "StoryIds": [],
+                "ReviewStatistics": {
+                "ContextDataDistributionOrder": [],
+                "HelpfulVoteCount": 0,
+                "NotRecommendedCount": 15,
+                "AverageOverallRating": 4.2297,
+                "SecondaryRatingsAveragesOrder": [],
+                "FeaturedReviewCount": 3,
+                "TagDistributionOrder": ["Pro", "Con"],
+                "NotHelpfulVoteCount": 0,
+                "OverallRatingRange": 5,
+                "SecondaryRatingsAverages": {},
+                "RatingDistribution": [{
+                                       "Count": 5,
+                                       "RatingValue": 2
+                                       }, {
+                                       "Count": 13,
+                                       "RatingValue": 3
+                                       }, {
+                                       "Count": 16,
+                                       "RatingValue": 4
+                                       }, {
+                                       "Count": 40,
+                                       "RatingValue": 5
+                                       }],
+                "TotalReviewCount": 74,
+                "RatingsOnlyReviewCount": 7,
+                "RecommendedCount": 51,
+                "TagDistribution": {
+                "Pro": {
+                "Values": [{
+                           "Value": "Organic Fabric",
+                           "Count": 26
+                           }, {
+                           "Value": "Quality",
+                           "Count": 20
+                           }, {
+                           "Value": "American Made",
+                           "Count": 2
+                           }, {
+                           "Value": "adsfasdfa",
+                           "Count": 1
+                           }, {
+                           "Value": "beautiful",
+                           "Count": 1
+                           }, {
+                           "Value": "Color",
+                           "Count": 1
+                           }, {
+                           "Value": "Design",
+                           "Count": 1
+                           }, {
+                           "Value": "dsklnvdklsv svdkjvsd",
+                           "Count": 1
+                           }, {
+                           "Value": "fbdfb fbb fdfb",
+                           "Count": 1
+                           }, {
+                           "Value": "fkljnv f",
+                           "Count": 1
+                           }],
+                "Label": "Pros",
+                "Id": "Pro"
+                },
+                "Con": {
+                "Values": [{
+                           "Value": "Features",
+                           "Count": 22
+                           }, {
+                           "Value": "Quality",
+                           "Count": 20
+                           }, {
+                           "Value": "asdlnksdvkl ksdvjlklsdvj",
+                           "Count": 1
+                           }, {
+                           "Value": "bitter",
+                           "Count": 1
+                           }, {
+                           "Value": "Capacity",
+                           "Count": 1
+                           }, {
+                           "Value": "lovely",
+                           "Count": 1
+                           }, {
+                           "Value": "quality too high",
+                           "Count": 1
+                           }, {
+                           "Value": "too many features",
+                           "Count": 1
+                           }, {
+                           "Value": "too organic",
+                           "Count": 1
+                           }],
+                "Label": "Cons",
+                "Id": "Con"
+                }
+                },
+                "ContextDataDistribution": {},
+                "FirstSubmissionTime": "2009-05-15T19:01:31.000+00:00",
+                "LastSubmissionTime": "2014-10-14T05:44:53.000+00:00"
+                },
+                "ModelNumbers": []
+                }, {
+                "Brand": {
+                "Name": "GE",
+                "Id": "otttwtzo9imo28ssfm58x1hm"
+                },
+                "ISBNs": [],
+                "UPCs": [],
+                "Description": "PreciseAir Convection System נDelivers even air and heat circulation for superior baking and roasting results. Extra-Large Oven Capacity provides a large oven interior ideal\n                for cooking more items at once. Self-Clean Oven conveniently cleans the oven cavity without need of scrubbing.",
+                "ManufacturerPartNumbers": [],
+                "Attributes": {},
+                "QuestionIds": [],
+                "ProductPageUrl": null,
+                "BrandExternalId": "otttwtzo9imo28ssfm58x1hm",
+                "FamilyIds": [],
+                "AttributesOrder": [],
+                "ImageUrl": "http://myshco.com/productImages/cafe.png",
+                "EANs": [],
+                "Name": "GE Cafe 30\" Free Standing Gas Range",
+                "CategoryId": "testCategory1011",
+                "TotalReviewCount": 4,
+                "ReviewIds": [],
+                "Id": "test6",
+                "StoryIds": [],
+                "ReviewStatistics": {
+                "ContextDataDistributionOrder": [],
+                "HelpfulVoteCount": 5,
+                "NotRecommendedCount": 0,
+                "AverageOverallRating": 4.5,
+                "SecondaryRatingsAveragesOrder": [],
+                "FeaturedReviewCount": 0,
+                "TagDistributionOrder": [],
+                "NotHelpfulVoteCount": 0,
+                "OverallRatingRange": 5,
+                "SecondaryRatingsAverages": {},
+                "RatingDistribution": [{
+                                       "Count": 1,
+                                       "RatingValue": 3
+                                       }, {
+                                       "Count": 3,
+                                       "RatingValue": 5
+                                       }],
+                "TotalReviewCount": 4,
+                "RatingsOnlyReviewCount": 0,
+                "RecommendedCount": 1,
+                "TagDistribution": {},
+                "ContextDataDistribution": {},
+                "FirstSubmissionTime": "2012-03-21T16:23:04.000+00:00",
+                "LastSubmissionTime": "2015-05-04T23:13:57.000+00:00"
+                },
+                "ModelNumbers": []
+                }],
+    "Limit": 10
+}

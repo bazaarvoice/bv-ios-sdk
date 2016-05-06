@@ -22,12 +22,11 @@ DerivedData
 # Bundler
 .bundle
 
-#Pods
-Tests/Pods/*
-
-# Removing the pods from the example projects so that deployment never needs to update the SDK inside the reference apps themselves
-Examples/*/Pods/
-Examples/Conversations/*/Pods/
+# Ignore all Pods directories
+Pods/
 
 # ignore jekyll generated content
 _site/
+
+# ignore internal testing files
+demoAppConfigs.plist

@@ -2,6 +2,9 @@ language: objective-c
 osx_image: xcode7
 podfile: ./Tests/Podfile
 
+git:
+  depth: 1
+
 script:
 #  - echo print xctool version
 #  - xctool -v

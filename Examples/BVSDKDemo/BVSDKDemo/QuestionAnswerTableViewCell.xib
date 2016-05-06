@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9059" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="135" id="KGk-i7-Jjw" customClass="QuestionAnswerTableViewCell" customModule="BVSDKDemo" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="135"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="134.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W6S-7L-bnW" customClass="CardView" customModule="BVSDKDemo" customModuleProvider="target">
+                        <rect key="frame" x="8" y="8" width="304" height="126.5"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Question Summary" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WRK-2y-frH">
+                                <rect key="frame" x="8" y="8" width="288" height="19.5"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <color key="textColor" red="0.0" green="0.2392156869" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Question Detail Block" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RnA-a8-K1F">
+                                <rect key="frame" x="8" y="62" width="288" height="14.5"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2 days ago from Johnny" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ciY-1Q-D4Z">
+                                <rect key="frame" x="8" y="31" width="288" height="14.5"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="X of Y users found this helpful" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6iV-XG-XE9">
+                                <rect key="frame" x="8" y="103.5" width="288" height="14.5"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="WRK-2y-frH" firstAttribute="top" secondItem="W6S-7L-bnW" secondAttribute="topMargin" id="1RA-ck-2vZ"/>
+                            <constraint firstItem="ciY-1Q-D4Z" firstAttribute="top" secondItem="WRK-2y-frH" secondAttribute="bottom" constant="4" id="1xE-hB-cqH"/>
+                            <constraint firstItem="RnA-a8-K1F" firstAttribute="leading" secondItem="WRK-2y-frH" secondAttribute="leading" id="34J-L6-3u0"/>
+                            <constraint firstAttribute="trailing" secondItem="6iV-XG-XE9" secondAttribute="trailing" constant="8" id="4Q3-yG-Cz3"/>
+                            <constraint firstAttribute="bottom" secondItem="6iV-XG-XE9" secondAttribute="bottom" constant="8.5" id="A2h-WX-dqm"/>
+                            <constraint firstItem="RnA-a8-K1F" firstAttribute="top" secondItem="ciY-1Q-D4Z" secondAttribute="bottom" constant="16" id="E6E-id-7bU"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="ciY-1Q-D4Z" secondAttribute="trailing" id="FGJ-Y3-d8w"/>
+                            <constraint firstItem="WRK-2y-frH" firstAttribute="leading" secondItem="W6S-7L-bnW" secondAttribute="leadingMargin" id="FtP-5H-RjG"/>
+                            <constraint firstItem="6iV-XG-XE9" firstAttribute="top" relation="greaterThanOrEqual" secondItem="RnA-a8-K1F" secondAttribute="bottom" constant="12" id="PfC-GJ-xBJ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="WRK-2y-frH" secondAttribute="trailing" id="WYg-hZ-uEs"/>
+                            <constraint firstItem="ciY-1Q-D4Z" firstAttribute="leading" secondItem="WRK-2y-frH" secondAttribute="leading" id="gs6-mh-xfe"/>
+                            <constraint firstItem="RnA-a8-K1F" firstAttribute="trailing" secondItem="WRK-2y-frH" secondAttribute="trailing" id="rUc-l3-zuW"/>
+                            <constraint firstItem="6iV-XG-XE9" firstAttribute="leading" secondItem="W6S-7L-bnW" secondAttribute="leading" constant="8" id="rj0-nB-RRt"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <animations/>
+                <color key="backgroundColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
+                <constraints>
+                    <constraint firstItem="W6S-7L-bnW" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="Itz-kC-WWt"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="W6S-7L-bnW" secondAttribute="trailing" id="Rhi-1u-WfV"/>
+                    <constraint firstAttribute="bottom" secondItem="W6S-7L-bnW" secondAttribute="bottom" id="q4V-ml-U6a"/>
+                    <constraint firstItem="W6S-7L-bnW" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="t5k-PY-wMp"/>
+                </constraints>
+            </tableViewCellContentView>
+            <animations/>
+            <connections>
+                <outlet property="questionBody" destination="RnA-a8-K1F" id="mmh-ef-erG"/>
+                <outlet property="questionMetaData" destination="ciY-1Q-D4Z" id="SfS-Er-6qu"/>
+                <outlet property="questionTitle" destination="WRK-2y-frH" id="y67-VW-GHs"/>
+                <outlet property="usersFoundHelpfulLabel" destination="6iV-XG-XE9" id="ufE-hL-q1O"/>
+            </connections>
+            <point key="canvasLocation" x="64" y="145.5"/>
+        </tableViewCell>
+    </objects>
+</document>

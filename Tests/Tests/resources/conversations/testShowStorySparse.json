@@ -1,0 +1,63 @@
+{
+    "Includes": {},
+    "HasErrors": false,
+    "Offset": 0,
+    "TotalResults": 1,
+    "Locale": "en_US",
+    "Errors": [],
+    "Results": [{
+                "TagDimensions": {},
+                "TagDimensionsOrder": [],
+                "AdditionalFieldsOrder": [],
+                "StoryText": "This is a test. Seriously, it's a test, let it go already.",
+                "UserNickname": "9c8a89c4",
+                "Photos": [{
+                           "Caption": null,
+                           "Sizes": {
+                           "thumbnail": {
+                           "Url": "https://stories.apitestcustomer.bazaarvoice.com/bvstaging/stories/5555/433090/photoThumb.jpg",
+                           "Id": "thumbnail"
+                           },
+                           "normal": {
+                           "Url": "https://stories.apitestcustomer.bazaarvoice.com/bvstaging/stories/5555/433090/photo.jpg",
+                           "Id": "normal"
+                           }
+                           },
+                           "SizesOrder": ["thumbnail", "normal"],
+                           "Id": "433090"
+                           }],
+                "CategoryId": "yellow",
+                "ContextDataValues": {},
+                "Videos": [],
+                "ContextDataValuesOrder": [],
+                "LastModificationTime": "2012-08-09T20:45:02.000+00:00",
+                "SubmissionId": "9kwu7tbxpovwl6htgt75iyznh",
+                "TotalFeedbackCount": 0,
+                "TotalPositiveFeedbackCount": 0,
+                "BadgesOrder": [],
+                "UserLocation": null,
+                "Badges": {},
+                "AuthorId": "9c8a89c4",
+                "IsFeatured": false,
+                "IsSyndicated": null,
+                "ProductId": null,
+                "ProductRecommendationIds": [],
+                "Title": "Luveentest",
+                "AdditionalFields": {},
+                "CampaignId": null,
+                "TotalNegativeFeedbackCount": 0,
+                "SubmissionTime": "2012-08-09T20:32:26.000+00:00",
+                "ContentLocale": "en_US",
+                "StoryRating": {
+                "Range": 5,
+                "AverageScore": 0.0
+                },
+                "TotalCommentCount": 0,
+                "ModerationStatus": "APPROVED",
+                "ClientResponses": [],
+                "Id": "14181",
+                "CommentIds": [],
+                "LastModeratedTime": "2012-08-09T20:45:02.000+00:00"
+                }],
+    "Limit": 10
+}
