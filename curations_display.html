@@ -389,7 +389,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         feedRequest.hasPhoto = true
         feedRequest.withProductData = true
 
-        self.curationsCollectionView.loadFeedWithRequest(feedParams, withWidgetId: nil, completionHandler: { (feedItems) -> Void in
+        self.curationsCollectionView.loadFeedWithRequest(feedRequest, withWidgetId: nil, completionHandler: { (feedItems) -> Void in
             // success
             // closure from request returned on main thread
 
