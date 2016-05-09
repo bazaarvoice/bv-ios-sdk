@@ -194,7 +194,9 @@ $(function(){
 
 <p>Bazaarvoice has partenered with <a href="iovation_bvsample">iovation</a>, an industry leader in device reputation technology, to ensure authenticity of user generated content. The Bazaarvoice native mobile SDKs for Android and iOS support the ability to include the iovation fingerprint along with Conversations API requests using the <code>BVPost</code> request object.</p>
 
-<p>Please contact your Bazaarvoice support representative to request an evaluation of the iovation integration. Further tehcnical information can be found on the <a href="https://developer.bazaarvoice.com/apis/conversations/tutorials/device_fingerprinting">Bazaarvoice developer portal</a>.</p>
+<p>Please contact your Bazaarvoice support representative to request an evaluation of the iovation integration. Further tehcnical information can be found in the <a href="https://developer.bazaarvoice.com/apis/conversations/tutorials/device_fingerprinting">Device Fingerprinting</a> section on the Bazaarvoice Developer Portal. 
+
+Mobile Specific iovation integration details can be located at <a href="https://developer.bazaarvoice.com/apis/conversations/tutorials/Device_Fingerprinting%20mobile">Mobile Device Fingerprinting on the Bazaarvoice Developer portal.</a></p>
 <br> 
 
 <h3>iOS Integration</h3>
@@ -217,18 +219,28 @@ $(function(){
 <div class="tab-content code-switcher">
 	<!-- swift -->
 	<div role="tabpanel" class="tab-pane active" id="swift">
-<pre><code class="swift">let request = BVPost(type:POST_TYPE);
-request.fingerPrint = DevicePrint.blackbox();
-...</code></pre>
+<pre><code class="swift">let request = BVPost(type:BVPostTypeReview)  // Add the proper BVPostType here
+request.fingerPrint = DevicePrint.blackbox()
+request.action = BVActionSubmit // ...or use BVActionPreview for dry-run
+... add in your other parameters ...</code></pre>
 	</div>
 	<!-- objective-c -->
 	<div role="tabpanel" class="tab-pane" id="objc">
-<pre><code class="objectivec">BVPost *request = [[BVPost alloc] initWithType:POST_TYPE];
+<pre><code class="objectivec">BVPost *request = [[BVPost alloc] initWithType:BVPostTypeReview];  // Add the proper BVPostType here
 request.fingerPrint = [DevicePrint blackbox];
-...</code></pre>
+[request setAction:BVActionSubmit];  // ...or use BVActionPreview for dry-run
+... add in your other parameters ...</code></pre>
 	</div>
 </div>
 <br>
+
+<p/>
+
+<h3>Validating Your Iovation Integration</h3>
+
+Once you have the iovation SDK installed with the BVSDK in your application you can begin to POST Conversations content. Once you have sent events (such as the one outlined in the SampleApplication) you can contact your Bazaarvoice Implementation Team or Authenticity Team to verify your integration is set-up and working correctly in production. 
+
+<p/>
 
 <h3>Sample Application</h3>
 <p>The Conversations Kitchen Sink application contains iovation hooks that are enabled when you add the <code>iovation.framework</code> to the project. If want to run the Kitchen Sink app with iovation, just follow these steps:</p>	
