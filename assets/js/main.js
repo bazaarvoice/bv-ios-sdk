@@ -27,16 +27,18 @@ $(function(){
 
 	// when swift/objective-c tab clicked, swap tabs on each element on screen
 	$('a[href*="objc"]').click(function (e) {
-	  e.preventDefault()
-	  $('a[href*="objc"]').each(function(){
+	  e.preventDefault();
+	  $('a[href*="objc"]').each(function(e){
 		$(this).tab('show');
+		  e.preventDefault()
 	  });
 	});
 
 	$('a[href*="swift"]').click(function (e) {
-	  e.preventDefault()
-	  $('a[href*="swift"]').each(function(){
+	  e.preventDefault();
+	  $('a[href*="swift"]').each(function(e){
 		$(this).tab('show');
+		  e.preventDefault()
 	  });
 	});
 

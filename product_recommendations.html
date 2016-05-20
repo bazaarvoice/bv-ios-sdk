@@ -22,7 +22,9 @@ $(function(){
 	var tabName = "Product Recommendations";
 
 	$('.nav-link.active').removeClass('active');
+	console.log('active tab: ', tabName);
 	var nav_link = $('.nav-link:contains("' + tabName + '")');
+	console.log('actual nav link:', nav_link);
 	nav_link.addClass('active');
 	
 });
@@ -76,111 +78,132 @@ $(function(){
   <body>
     <div id="portal_container">
       
-      <div id="portal_sidebar">
-	<div id="portal_nav">
-		
-		<div id="bv_logo">
-			<a href="/">
-				<font class="bv_teal">bazaar</font><font class="bv_white">voice</font><font class="bv_teal">:</font>				
-			</a>
-		</div>
+      <nav class="navbar-fixed-top">
+    <div class="navbar-header">
+        <div class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+             aria-expanded="false">
+            <i class="fa fa-bars fa-3"
+               style="color:#fffff5; background-color: #00AB8E; padding:7px; border-radius: 3px;"></i>
 
-		<div>
-			<ul id="task_nav" class="nav nav-pills nav-stacked">
-				<li class="nav-item">
-					<a class="nav-link active" href="index.html">
-						<span><i class="m-r-1 fa fa-file-text-o"></i>Getting Started</span>     
-					</a>
-					<ul>
-						<li class="nav-item">
-							<a class="nav-link" href="installation.html">
-								<span>Installation and Configuration</span>
-							</a>
-						</li>
-					</ul>
-				</li>
-				<li class="nav-item">
-					<span class="nav-link" href="modules.html">
-						<span><i class="m-r-1 fa fa-cogs"></i>Modules</span>     
-					</span>
-					<ul>
-						<li class="nav-item">
-							<a class="nav-link" href="product_recommendations.html"><span>Product Recommendations</span></a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="advertising.html"><span>Advertising</span></a>
-						</li>
-						<li class="nav-item">
-							
-							<a class="nav-link" role="button" data-toggle="collapse" href="#curationsDropdown" aria-expanded="false" aria-controls="curationsDropdown">
-								<span><span>Curations</span><span style="float:right;"><i id="curationsDropdownArrow" class="fa fa-sort-desc  fa-rotate-270"></i></span></span>
-							</a>
-							<div class="collapse " id="curationsDropdown">
-								<ul>
-									<li class="nav-item"><a class="nav-link" href="curations_display.html">Curations Display</a></li>
-									<li class="nav-item"><a class="nav-link" href="curations_custom_posts.html">Curations Custom Posts</a></li>
-								</ul>
-							</div>
+            <a href="/" class="bv_logo" style="font-size: 22px;">
+                <span class="bv_teal">&nbsp;bazaar</span><span class="bv_white">voice</span><span
+                    class="bv_teal">:</span>
+            </a>
+        </div>
 
+    </div>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav side-nav nav-stacked nav-pills">
+            <div class="bv_logo">
+                <a href="/">
+                    <span class="bv_teal">bazaar</span><span class="bv_white">voice</span><span class="bv_teal">:</span>
+                </a>
+            </div>
+            <li class="nav-item">
+                <a class="nav-link active" href="index.html">
+                    <span><i class="m-r-1 fa fa-file-text-o"></i>Getting Started</span>
+                </a>
+                <ul>
+                    <li class="nav-item">
+                        <a class="nav-link" href="installation.html">
+                            <span>Installation and Configuration</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="nav-item">
+                <span class="nav-link" href="modules.html">
+                    <span><i class="m-r-1 fa fa-cogs"></i>Modules</span>
+                </span>
+                <ul>
+                    <li class="nav-item">
+                        <a class="nav-link" href="product_recommendations.html"><span>Product Recommendations</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="advertising.html"><span>Advertising</span></a>
+                    </li>
+                    <li class="nav-item">
 
-						</li>
-						<li class="nav-item">
-							
-							<a class="nav-link" role="button" data-toggle="collapse" href="#conversationsDropdown" aria-expanded="false" aria-controls="conversationsDropdown">
-								<span><span>Conversations</span><span style="float:right;"><i id="conversationsDropdownArrow" class="fa fa-sort-desc fa-rotate-270"></i></span></span>
-							</a>
-							<div class="collapse " id="conversationsDropdown">
-								<ul>
-									<li class="nav-item"><a class="nav-link" href="using_conversations.html">Using Conversations</a></li>
-									<li class="nav-item"><a class="nav-link" href="conversations_iovation.html">Authenticity with iovation</a></li>
-								</ul>
-							</div>
+                        <a class="nav-link" role="button" data-toggle="collapse" href="#curationsDropdown"
+                           aria-expanded="false" aria-controls="curationsDropdown">
+                                <span><span>Curations</span><span style="float:right;"><i id="curationsDropdownArrow"
+                                                                                          class="fa fa-sort-desc  fa-rotate-270"></i></span></span>
+                        </a>
+                        <div class="collapse "
+                             id="curationsDropdown">
+                            <ul>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="curations_display.html"><span>Curations Display</span></a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="curations_custom_posts.html"><span>Curations Custom Posts</span></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" role="button" data-toggle="collapse" href="#conversationsDropdown"
+                           aria-expanded="false" aria-controls="conversationsDropdown">
+                                <span><span>Conversations</span><span style="float:right;"><i
+                                        id="conversationsDropdownArrow"
+                                        class="fa fa-sort-desc fa-rotate-270"></i></span></span>
+                        </a>
+                        <div class="collapse "
+                             id="conversationsDropdown">
+                            <ul>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="using_conversations.html"><span>Using Conversations</span></a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="conversations_iovation.html"><span>Authenticity with iovation</span></a>
+                                </li>
+                            </ul>
+                        </div>
 
-						</li>
-					</ul>
-				</li>
-
-			 
-				<li class="nav-item">
-					<a class="nav-link" href="bv_pixel.html">
-						<span><i class="m-r-1 fa fa-dot-circle-o"></i>BV Pixel</span>     
-					</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="user_authentication_token.html">
-						<span><i class="m-r-1 fa fa-lock"></i>User Authentication Token</span>     
-					</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="ios_9_considerations.html">
-						<span><i class="m-r-1 fa fa-mobile"></i> iOS 9 Considerations</span>     
-					</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="example_projects.html">
-						<span><i class="m-r-1 fa fa-file-code-o"></i>Example Projects</span>     
-					</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="faq_support.html">
-						<span><i class="m-r-1 fa fa-question-circle"></i>FAQ & Support</span>     
-					</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="./assets/api_reference/index.html">
-						<span><i class="m-r-1 fa fa-book"></i>API Reference</span>     
-					</a>
-				</li>
-				<br>
-				<li class="nav-item">
-					<a class="nav-link" href="mailto:mobilecoreteam@bazaarvoice.com?subject=iOS SDK documentation feedback" style="border: 1px #fff solid;">
-						<span><i class="m-r-1 fa fa-envelope"></i>Feedback</span>     
-					</a>
-				</li>	
-			</ul>
-		</div>
-	</div>
-</div>
+                    </li>
+                </ul>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="bv_pixel.html">
+                    <span><i class="m-r-1 fa fa-dot-circle-o"></i>BV Pixel</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="user_authentication_token.html">
+                    <span><i class="m-r-1 fa fa-lock"></i>User Authentication Token</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="ios_9_considerations.html">
+                    <span><i class="m-r-1 fa fa-mobile"></i> iOS 9 Considerations</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="example_projects.html">
+                    <span><i class="m-r-1 fa fa-file-code-o"></i>Example Projects</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="faq_support.html">
+                    <span><i class="m-r-1 fa fa-question-circle"></i>FAQ & Support</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="./assets/api_reference/index.html">
+                    <span><i class="m-r-1 fa fa-book"></i>API Reference</span>
+                </a>
+            </li>
+            <br>
+            <li class="nav-item">
+                <a class="nav-link"
+                   href="mailto:mobilecoreteam@bazaarvoice.com?subject=iOS SDK documentation feedback"
+                   style="border: 1px #fff solid;">
+                    <span><i class="m-r-1 fa fa-envelope"></i>Feedback</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</nav>
 
       <div id="application_container">
         <div id="task_container">
@@ -201,7 +224,7 @@ You can also see a reference implementation in the SDK under <code>/Example/BVPr
 </p>
 <hr>
 
-<p class="bg-warning well-lg" style="padding:4px;"> <i class="fa fa-hand-o-right"></i>  Before you being implementation of ths module make sure you have verified your installed as details in the <a href="./installation.html">Installation and Configuraion page.</a></p>
+<p class="bg-warning well-lg" style="padding:4px;"> <i class="fa fa-hand-o-right"></i>  Before you being implementation of ths module make sure you have verified your installed as details in the <a href="./installation.html">Installation and Configuration page.</a></p>
 
 <hr>
 
@@ -237,7 +260,7 @@ You can also see a reference implementation in the SDK under <code>/Example/BVPr
 
 <h3>Example usage</h3>
 <p>Let's run through an example implementation of BVProductRecommendationsCollectionView. Following this example will produce a scrollable view of product recommendations, as shown below:</p>
-<img src="img/carousel.gif" style="height:200px;" class="center-block" />
+<img src="img/carousel.gif" style="height:200px;" class="center-block img-fluid" />
 <br>
 <br>
 
@@ -245,9 +268,9 @@ You can also see a reference implementation in the SDK under <code>/Example/BVPr
 <ol>
 	<li>
 		<p>Create a <code>UICollectionViewCell</code> by selecting <strong>File > New > File</strong></p>
-		<img src="img/NewFile.png" style="height:400px" class="center-block" />
+		<img src="img/NewFile.png" style="height:400px" class="center-block img-fluid" />
 		<br>
-		<img src="img/DemoCell.png" style="height:400px" class="center-block" />
+		<img src="img/DemoCell.png" style="height:400px" class="center-block img-fluid" />
 	</li>
 	<br>
 	<li>
@@ -303,7 +326,7 @@ You can also see a reference implementation in the SDK under <code>/Example/BVPr
 
 	<li>
 		<p>In <code>DemoCell.xib</code>, add and position your views and hook up your outlets:</p>
-		<img src="img/DemoCellNib.png" style="height:520px" class="center-block" />
+		<img src="img/DemoCellNib.png" style="height:520px" class="center-block img-fluid" />
 	</li>
 
 </ol>
@@ -313,9 +336,9 @@ You can also see a reference implementation in the SDK under <code>/Example/BVPr
 <ol>
 	<li>
 		<p>Create a <code>UIViewController</code> by selecting <strong>File > New > File</strong></p>
-		<img src="img/NewFile.png" style="height:400px" class="center-block" />
+		<img src="img/NewFile.png" style="height:400px" class="center-block img-fluid" />
 		<br>
-		<img src="img/DemoViewController.png" style="height:400px" class="center-block" />
+		<img src="img/DemoViewController.png" style="height:400px" class="center-block img-fluid" />
 		<br>
 	</li>
 	<li>
@@ -353,12 +376,12 @@ You can also see a reference implementation in the SDK under <code>/Example/BVPr
 	</li>
 	<li>
 		<p>Add a <code>UICollectionView</code> to your nib, and set its class to <code>BVProductRecommendationsCollectionView</code></p>
-		<img src="img/ViewControllerNib.png" style="height:280px" class="center-block"/>
+		<img src="img/ViewControllerNib.png" style="height:280px" class="center-block img-fluid"/>
 		<br>
 	</li>
 	<li>
 		<p>Hook up the <code>BVProductRecommendationsCollectionView</code> to its outlet, <code>recommendationsView</code></p>
-		<img src="img/ViewControllerNibConnection.png" style="height:440px" class="center-block"/>
+		<img src="img/ViewControllerNibConnection.png" style="height:440px" class="center-block img-fluid"/>
 	</li>
 </ol>
 <br>
@@ -375,7 +398,7 @@ You can also see a reference implementation in the SDK under <code>/Example/BVPr
   <li role="presentation"><a href="#objc" aria-controls="objc" role="tab" data-toggle="tab">Objective-C</a></li>
 </ul>
 
-		
+
 		<div class="tab-content code-switcher">
 			<!-- swift -->
 			<div role="tabpanel" class="tab-pane active" id="swift">
@@ -423,24 +446,24 @@ self.recommendationsView.reloadData()
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+
     self.products = [NSArray array];
-    
+
         [self.recommendationsView registerNib:[UINib nibWithNibName:@"DemoCell" bundle:nil]
                    forCellWithReuseIdentifier:@"DemoCellIdentifier"];
-    
+
     self.recommendationsView.delegate = self;
     self.recommendationsView.dataSource = self;
-    
+
     [self loadRecommendations];
-    
+
 }
 
 // Fetch the product recommenations from the API method on the BVRecommendationsCollectionView container.
 - (void)loadRecommendations {
-    
+
     BVRecommendationsRequest *request = [[BVRecommendationsRequest alloc] initWithLimit:20];
-    
+
     [self.recommendationsView loadRequest:request completionHandler:^(NSArray<BVProduct *> * proudcts) {
         NSLog(@"Recommendations Result: %@", proudcts.description);
         self.products = proudcts;
@@ -448,19 +471,19 @@ self.recommendationsView.reloadData()
     } errorHandler:^(NSError * error) {
         NSLog(@"ERROR: %@", error.localizedDescription);
     }];
-    
+
 }
 
 // Lays out the recommendationView with horitontal scrolling
 - (void)viewWillLayoutSubviews{
     [super viewWillLayoutSubviews];
-    
+
     UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout *)self.recommendationsView.collectionViewLayout;
     layout.itemSize = CGSizeMake(self.recommendationsView.bounds.size.height, self.recommendationsView.bounds.size.height);
-    
+
     layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
     layout.itemSize = CGSizeMake(self.recommendationsView.bounds.size.width / 2, self.recommendationsView.bounds.size.width / 2);
-    
+
     layout.minimumInteritemSpacing = 0;
     layout.minimumLineSpacing = 0;
 }
@@ -482,7 +505,7 @@ self.recommendationsView.reloadData()
   <li role="presentation"><a href="#objc" aria-controls="objc" role="tab" data-toggle="tab">Objective-C</a></li>
 </ul>
 
-		
+
 		<div class="tab-content code-switcher">
 			<!-- swift -->
 			<div role="tabpanel" class="tab-pane active" id="swift">
@@ -506,14 +529,14 @@ self.recommendationsView.reloadData()
 		<p>Create a fill out <code>collectionView:cellForItemAtIndexPath:</code></p>
 
 <p class="bg-info well-lg" style="padding:4px;"><i class="fa fa-hand-o-right"></i>  Image loading in this demo is done with SDWebImage</p>
-		
-	
+
+
 		<ul class="nav nav-tabs" role="tablist">
   <li role="presentation" class="active"><a href="#swift" aria-controls="swift" role="tab" data-toggle="tab">Swift</a></li>
   <li role="presentation"><a href="#objc" aria-controls="objc" role="tab" data-toggle="tab">Objective-C</a></li>
 </ul>
-		
-		
+
+
 		<div class="tab-content code-switcher">
 			<!-- swift -->
 			<div role="tabpanel" class="tab-pane active" id="swift">
@@ -538,17 +561,17 @@ return cell;
 			<!-- objective-c -->
 			<div role="tabpanel" class="tab-pane" id="objc">
 				<p><pre><code class="objectivec">- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
-    
+
     DemoCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"DemoCellIdentifer" forIndexPath:indexPath];
-    
+
     cell.bvProduct = [self.products objectAtIndex:indexPath.row];
     NSURL *url = [NSURL URLWithString:cell.bvProduct.imageURL];
     [cell.productImageView sd_setImageWithURL:url];
-    
+
     // initialize your other outlets here...
 
     return cell;
-    
+
 }</code></pre>/p>
 			</div>
 		</div>

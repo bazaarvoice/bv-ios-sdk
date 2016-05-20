@@ -34,7 +34,7 @@ a, a code {
 }
 
 a:hover, a:hover code {
-	text-decoration: underline;
+	/*text-decoration: underline;*/
 	color: #36C;
 }
 
