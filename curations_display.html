@@ -189,7 +189,7 @@ $(function(){
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="./assets/api_reference/index.html">
+                <a class="nav-link" href="./ios-assets/api_reference/index.html">
                     <span><i class="m-r-1 fa fa-book"></i>API Reference</span>
                 </a>
             </li>
@@ -216,13 +216,17 @@ $(function(){
 </div>
 
 <p>This page describes how you can build display your custom Curations content in a Bazaarvoice-subclassed UICollectionView (<code>BVCurationsCollectionView</code>). The UICollectionView and UICollectionView cell wrap the Curations Display API and Bazaarvoice analytics, the latter providing you with rich user-interaction and ROI data. If you are familiar with the inner working of UICollectionView the concepts of creating a <code>BVCurationsCollectionView</code> will be fairly straight forward. However, even if you don't, you should be able to follow the steps below to create a basic Curations Display with your data.</p>
+</p>
+The completed project for this code walkthrough for Swift and Objective-C is in the SDK path <code>/Examples/Curations</code>.  For a more comprehensive demonstration of the Conversations API, please also see the BVSDKDemo project under <code>/Examples/BVSDKDemo</code>.
+</p>
+
 
 <p class="bg-info well-lg" style="padding:4px;"><i class="fa fa-hand-o-right"></i>  Contact Bazaarvoice about setting up Curations, and to get your <strong>apiKeyCurations</strong>.</p>
 
 <hr/>
 <br>
 
-<p class="bg-warning well-lg" style="padding:4px;"> <i class="fa fa-hand-o-right"></i>  Before you being implementation of ths module make sure you have verified your installed as details in the <a href="./installation.html">Installation and Configuration page.</a></p>
+<p class="bg-warning well-lg" style="padding:4px;"> <i class="fa fa-hand-o-right"></i>  Before you begin implementation of ths module make sure you have verified your installed as details in the <a href="./installation.html">Installation and Configuration page.</a></p>
 
 <br>
 <h3>Adding a Curations User Interface</h3>
@@ -233,19 +237,19 @@ $(function(){
 <br>
 <h3>Example</h3>
 <p>The following example will produce a scrollable grid with a Curations feed, similar to the one below:</p>
-<img src="img/curations_display/curations_tutorial_complete.png" style="height:240px;" class="center-block img-fluid" />
+<img src="ios-img/curations_display/curations_tutorial_complete.png" style="height:240px;" class="center-block img-fluid" />
 <br>
 
 <h5>First, we will create a subclass of BVCurationsCollectionViewCell</h5>
 <ul>
 	<li>
 		<p>Create a <code>BVCurationsCollectionViewCell</code> from <strong> File > New > File</strong></p>
-		<img src="img/curations_display/curations_cocoa_touch.png" style="height:150px;" class="center-block img-fluid" />
+		<img src="ios-img/curations_display/curations_cocoa_touch.png" style="height:150px;" class="center-block img-fluid" />
 		<br>
 
 		<p>Name the class <code>DemoCollectionViewCell</code> and subclass from <code>
 		BVCurationsCollectionViewCell</code>:</p>
-		<img src="img/curations_display/curations_demo_cell.png" style="height:320px;" class="center-block img-fluid" />
+		<img src="ios-img/curations_display/curations_demo_cell.png" style="height:320px;" class="center-block img-fluid" />
 	</li>
 	<li>
 		<p>Add a <code>UIImageView</code> outlet called <strong>feedImageView</strong>:</p>
@@ -275,7 +279,7 @@ class DemoCollectionViewCell: BVCurationsCollectionViewCell {
 
         didSet {
 
-            let photo : BVCurationsPhoto = self.feedItem!.photos.first!;
+            let photo : BVCurationsPhoto = self.feedItem!.photos.first!
             let imageUrl : NSURL = NSURL(string:photo.imageServiceUrl)!
             self.feedImageView.sd_setImageWithURL(imageUrl)
 
@@ -315,12 +319,12 @@ class DemoCollectionViewCell: BVCurationsCollectionViewCell {
 </div>
 
         <br>
-        <p class="bg-info well-lg" style="padding:4px;"><i class="fa fa-hand-o-right"></i>  Tip: this implementation is a minimal UI for a <strong>BVCurationsFeedItem</strong> object. You can add more elements and customize it heavily.</p>
+        <p class="bg-info well-lg" style="padding:4px;"><i class="fa fa-hand-o-right"></i>  TIP: This implementation is a minimal UI for a <strong>BVCurationsFeedItem</strong> object. You can add more elements and customize the view to your wildest dreams!</p>
 
 	</li>
 	<li>
 		<p>Create the view: <strong>File > New > File</strong> and select:</p>
-		<img src="img/curations_display/source_view.png" style="height:180px;" class="center-block img-fluid" />
+		<img src="ios-img/curations_display/source_view.png" style="height:180px;" class="center-block img-fluid" />
 	</li>
 	<p>Name the view <code>DemoCollectionViewCell</code></p>
 	<li>
@@ -331,22 +335,26 @@ class DemoCollectionViewCell: BVCurationsCollectionViewCell {
 			</li>
 			<li>
 				<p>Delete the existing <code>UIView</code> (on the left in this picture), we do not need that.</p>
-				<img src="img/curations_display/add_cell_nib.png" style="height:420px;" class="center-block img-fluid" />
+				<img src="ios-img/curations_display/add_cell_nib.png" style="height:420px;" class="center-block img-fluid" />
 			</li>
 			
 		</ul>
 	</li>
 	<li>
 		<p>We can add a <code>UIImageView</code> to the <code>.xib</code>. Using the pin tool, pin it to all sides of the cell:</p>
-		<img src="img/curations_display/cell_add_imageview.png" style="height:340px;" class="center-block img-fluid" />
+		<img src="ios-img/curations_display/cell_add_imageview.png" style="height:340px;" class="center-block img-fluid" />
 	</li>
 	<li>
 		<p>Set the <strong>Custom Class</strong> of the <code>.xib</code> to be <code>DemoCollectionViewCell</code>:</p>
-		<img src="img/curations_display/custom_class.png" style="height:280px;" class="center-block img-fluid" />
+		<img src="ios-img/curations_display/custom_class.png" style="height:280px;" class="center-block img-fluid" />
 	</li>
+    <li>
+        <p>Set the <strong>Collection Reusable View Identifier</strong> of the <code>.xib</code> to be <code>DemoCell</code>:</p>
+        <img src="ios-img/curations_display/reuse_identifier.png" style="height:300px;" class="center-block img-fluid" />
+    </li>
 	<li>
 		<p>Now we have to connect the <code>UIImageView</code> to the <code>feedImageView</code> outlet in the source file. Select the <strong>Assistant Editor</strong> and connect the outlet:</p>
-		<img src="img/curations_display/connect_cell_outlet.png" style="height:380px;" class="center-block img-fluid" />
+		<img src="ios-img/curations_display/connect_cell_outlet.png" style="height:380px;" class="center-block img-fluid" />
 	</li>
 </ul>
 
@@ -354,22 +362,22 @@ class DemoCollectionViewCell: BVCurationsCollectionViewCell {
 <ul>
 	<li>
 		<p>Open your view controller in your <code>Main.storyboard</code> file. Then, drag and drop a <code>UICollectionView</code> object onto the View Controller.</p>
-		<img src="img/curations_display/add_collection_view.png" style="height:340px;" class="center-block img-fluid" />
+		<img src="ios-img/curations_display/add_collection_view.png" style="height:340px;" class="center-block img-fluid" />
 	</li>
 	<li>
 		<p>Make the <code>UICollectionView</code> you just added full screen by pinning the edges to the parent container on all 4 sides:</p>
-		<img src="img/curations_display/collection_view_full_screen.png" style="height:340px;" class="center-block img-fluid" />
+		<img src="ios-img/curations_display/collection_view_full_screen.png" style="height:340px;" class="center-block img-fluid" />
 	</li>
 	<li>
 		<p>Set the <strong>Custom Class</strong> to <code>BVCurationsCollectionView</code></p>
-		<img src="img/curations_display/collection_view_custom_class.png" style="height:200px;" class="center-block img-fluid" />
+		<img src="ios-img/curations_display/collection_view_custom_class.png" style="height:200px;" class="center-block img-fluid" />
 	</li>
 	<li>
 		<p>Now with the <strong>Assistant Editor</strong> displaying the ViewController source, connect the <code>BVCurationsCollectionView</code> to the source code:</p>
-		<img src="img/curations_display/collection_view_outlet.png" style="height:360px;" class="center-block img-fluid" />
+		<img src="ios-img/curations_display/collection_view_outlet.png" style="height:360px;" class="center-block img-fluid" />
 		<br>
 		<p>And name the outlet <code>curationsCollectionView</code></p>
-		<img src="img/curations_display/collection_view_outlet_name.png" style="height:180px;" class="center-block img-fluid" />
+		<img src="ios-img/curations_display/collection_view_outlet_name.png" style="height:180px;" class="center-block img-fluid" />
 	</li>
 
 </ul>
@@ -403,8 +411,8 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
 
         self.curationsCollectionView.registerNib(UINib(nibName: "DemoCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "DemoCell")
 
-        self.curationsCollectionView.delegate = self;
-        self.curationsCollectionView.dataSource = self;
+        self.curationsCollectionView.delegate = self
+        self.curationsCollectionView.dataSource = self
 
         let groups = ["__all__"]
         let feedRequest = BVCurationsFeedRequest(groups: groups)
@@ -453,7 +461,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
 
         let feedItem : BVCurationsFeedItem = self.curationsFeedItems![indexPath.row]
 
-        cell.feedItem = feedItem;
+        cell.feedItem = feedItem
 
         return cell
     }
@@ -570,8 +578,8 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
 
 <br>
 <h5>Run it!</h5>
-<p>The app should populate the collection view with product recommendations. Some styling will be needed to look good, however <i class="fa fa-smile-o"></i></p>
-<img src="img/curations_display/final_project.png" style="height:460px;" class="center-block img-fluid" />
+<p>The app should populate the collection view with the Curations group feed. Some styling will be needed to look good, however <i class="fa fa-smile-o"></i></p>
+<img src="ios-img/curations_display/final_project.png" style="height:460px;" class="center-block img-fluid" />
 <br>
 
 

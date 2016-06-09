@@ -189,7 +189,7 @@ $(function(){
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="./assets/api_reference/index.html">
+                <a class="nav-link" href="./ios-assets/api_reference/index.html">
                     <span><i class="m-r-1 fa fa-book"></i>API Reference</span>
                 </a>
             </li>
@@ -223,7 +223,7 @@ $(function(){
 <hr>
 <br>
 
-<p class="bg-warning well-lg" style="padding:4px;"> <i class="fa fa-hand-o-right"></i>  Before you being implementation of ths module make sure you have verified your installed as details in the <a href="./installation.html">Installation and Configuration page.</a></p>
+<p class="bg-warning well-lg" style="padding:4px;"> <i class="fa fa-hand-o-right"></i>  Before you begin implementation of ths module make sure you have verified your installed as details in the <a href="./installation.html">Installation and Configuration page.</a></p>
 
 
 <h3>Set User Information</h3>
@@ -256,8 +256,8 @@ $(function(){
 	<!-- swift -->
 	<div role="tabpanel" class="tab-pane active" id="swift">	
 		
-<pre><code class="swift">let request = DFPRequest.request();
-request.customTargeting = BVSDKManager.sharedManager().getCustomTargeting();
+<pre><code class="swift">let request = DFPRequest()
+request.customTargeting = BVSDKManager.sharedManager().getCustomTargeting()
 ...</code></pre>
 	</div>
 	<!-- objective-c -->

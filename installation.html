@@ -189,7 +189,7 @@ $(function(){
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="./assets/api_reference/index.html">
+                <a class="nav-link" href="./ios-assets/api_reference/index.html">
                     <span><i class="m-r-1 fa fa-book"></i>API Reference</span>
                 </a>
             </li>
@@ -436,7 +436,7 @@ $(function(){
 
             if ($('.cb_BVAdvertising:checked').length > 0 || $('.cb_BVRecommendations:checked').length > 0){
               var advertisingKey = $('.key_ShoppeAdvertising').val()
-              $('code.swift#swift-bvsdkmanager').append('BVSDKManager.sharedManager().setApiKeyShopperAdvertising = "' + advertisingKey + '"<br/>');
+              $('code.swift#swift-bvsdkmanager').append('BVSDKManager.sharedManager().apiKeyShopperAdvertising = "' + advertisingKey + '"<br/>');
             }
 
 
@@ -624,12 +624,12 @@ $(function(){
 
 
     <p>Clone this repo, or download the <a href="https://github.com/bazaarvoice/bv-ios-sdk-dev/releases">latest release from github</a>:</p>
-    <img src="img/manual_installation/download.png" style="height:200px;" class="center-block img-fluid" />
+    <img src="ios-img/manual_installation/download.png" style="height:200px;" class="center-block img-fluid" />
 
     <p>Copy all the source folders (under <code>/Pod</code>) into your project. Make sure to select <strong>Copy items if needed</strong>.</p>
     <video id="manualInstallVid" width="540" height="300" autoplay loop class="center-block img-fluid">
-      <source src="img/manual_installation/manual_installation.mp4" type="video/mp4" title="No video playback capabilities">
-      <source src="img/manual_installation/manual_installation.ogg" type="video/ogg" title="No video playback capabilities">
+      <source src="ios-img/manual_installation/manual_installation.mp4" type="video/mp4" title="No video playback capabilities">
+      <source src="ios-img/manual_installation/manual_installation.ogg" type="video/ogg" title="No video playback capabilities">
 
     </video>
     <script>

@@ -189,7 +189,7 @@ $(function(){
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="./assets/api_reference/index.html">
+                <a class="nav-link" href="./ios-assets/api_reference/index.html">
                     <span><i class="m-r-1 fa fa-book"></i>API Reference</span>
                 </a>
             </li>
@@ -219,12 +219,12 @@ $(function(){
 
 <p>This guide shows how to implement Product Recommendations in your app. The general walkthrough shows you Swift and Objective-C implementation for displaying Product Recommendations in a <code>UICollectonView</code>. If you are familiar with the design pattern of timplementing a <code>UICollectionView</code> or <code>UITableView</code> in iOS, implementing Bazaarvoice Product Recommendations will be a straightforward process.<p/>
 
-You can also see a reference implementation in the SDK under <code>/Example/BVProductRecsExample</code>. You can provide the example Product Recommendations app your own API Key and Client ID.
+The completed project for this code walkthrough for Swift and Objective-C is in the SDK path <code>/Examples/ProductRecommendations</code>. For a more comprehensive demonstration of the Conversations API, please also see the BVSDKDemo project under <code>/Examples/BVSDKDemo</code>.
 
 </p>
 <hr>
 
-<p class="bg-warning well-lg" style="padding:4px;"> <i class="fa fa-hand-o-right"></i>  Before you being implementation of ths module make sure you have verified your installed as details in the <a href="./installation.html">Installation and Configuration page.</a></p>
+<p class="bg-warning well-lg" style="padding:4px;"> <i class="fa fa-hand-o-right"></i>  Before you begin implementation of ths module make sure you have verified your installed as details in the <a href="./installation.html">Installation and Configuration page.</a></p>
 
 <hr>
 
@@ -260,7 +260,7 @@ You can also see a reference implementation in the SDK under <code>/Example/BVPr
 
 <h3>Example usage</h3>
 <p>Let's run through an example implementation of BVProductRecommendationsCollectionView. Following this example will produce a scrollable view of product recommendations, as shown below:</p>
-<img src="img/carousel.gif" style="height:200px;" class="center-block img-fluid" />
+<img src="ios-img/carousel.gif" style="height:200px;" class="center-block img-fluid" />
 <br>
 <br>
 
@@ -268,9 +268,9 @@ You can also see a reference implementation in the SDK under <code>/Example/BVPr
 <ol>
 	<li>
 		<p>Create a <code>UICollectionViewCell</code> by selecting <strong>File > New > File</strong></p>
-		<img src="img/NewFile.png" style="height:400px" class="center-block img-fluid" />
+		<img src="ios-img/NewFile.png" style="height:400px" class="center-block img-fluid" />
 		<br>
-		<img src="img/DemoCell.png" style="height:400px" class="center-block img-fluid" />
+		<img src="ios-img/DemoCell.png" style="height:400px" class="center-block img-fluid" />
 	</li>
 	<br>
 	<li>
@@ -286,7 +286,12 @@ You can also see a reference implementation in the SDK under <code>/Example/BVPr
 		<div class="tab-content code-switcher">
 			<!-- swift -->
 			<div role="tabpanel" class="tab-pane active" id="swift">
-<pre><code class="swift">class DemoCell: BVRecommendationCollectionViewCell {
+<pre><code class="swift">//  DemoCell.swift
+
+import BVSDK
+import HCSStarRatingView
+
+class DemoCell: BVRecommendationCollectionViewCell {
 
 	@IBOutlet weak var productName : UILabel!
 	@IBOutlet weak var price : UILabel!
@@ -295,23 +300,57 @@ You can also see a reference implementation in the SDK under <code>/Example/BVPr
 	@IBOutlet weak var productImageView : UIImageView!
 	@IBOutlet weak var starRating : HCSStarRatingView!
 
+	override var bvProduct: BVProduct! {
+        
+        didSet {
+            
+            let imageUrl = NSURL(string: bvProduct.imageURL)
+            self.productName.text = bvProduct.productName
+            self.rating.text = "\(bvProduct.averageRating ?? 0)"
+            self.numReview.text = "(\(bvProduct.numReviews ?? 0) reviews)"
+            self.starRating.value = (CGFloat)(bvProduct.averageRating.floatValue)
+            self.productImageView?.sd_setImageWithURL(imageUrl)
+            
+        }
+        
+    }
+
 }</code></pre>
 			</div>
 			<!-- objective-c -->
 			<div role="tabpanel" class="tab-pane" id="objc">
-				<p><pre><code class="objectivec">// DemoCell.h
+				<p><pre><code class="objectivec">// DemoCell.m
 //  
-#import &lt;BVSDK/BVSDK.h&gt;
-#import &lt;BVSDK/BVRecommendations.h&gt;
-#import &lt;HCSStarRatingView/HCSStarRatingView.h&gt;
+#import "DemoCell.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 
-@interface DemoCell : BVRecommendationCollectionViewCell
-	@property IBOutlet UILabel *productName;
-	@property IBOutlet UILabel *price;
-	@property IBOutlet UILabel *numReview;
-	@property IBOutlet UILabel *rating;
-	@property IBOutlet UIImageView *productImageView;
-	@property IBOutlet HCSStarRatingView *starRating;
+@interface DemoCell ()
+
+@property IBOutlet UILabel *productName;
+@property IBOutlet UILabel *price;
+@property IBOutlet UILabel *numReview;
+@property IBOutlet UILabel *rating;
+@property IBOutlet UIImageView *productImageView;
+@property IBOutlet HCSStarRatingView *starRating;
+
+@end
+
+@implementation DemoCell
+
+- (void)setBvProduct:(BVProduct *)bvProduct {
+    
+    super.bvProduct = bvProduct;
+    
+    NSURL *url = [NSURL URLWithString:self.bvProduct.imageURL];
+    [self.productImageView sd_setImageWithURL:url];
+    self.productName.text = bvProduct.productName;
+    self.rating.text = [NSString stringWithFormat:@"%.1f", [bvProduct.averageRating floatValue]];
+    self.starRating.value = [bvProduct.averageRating floatValue];
+    self.numReview.text = [NSString stringWithFormat:@"(%ld)", [bvProduct.numReviews longValue]];
+    self.price.text = bvProduct.price;
+   
+}
+
 @end
 </code></pre></p>
 			</div>
@@ -326,7 +365,7 @@ You can also see a reference implementation in the SDK under <code>/Example/BVPr
 
 	<li>
 		<p>In <code>DemoCell.xib</code>, add and position your views and hook up your outlets:</p>
-		<img src="img/DemoCellNib.png" style="height:520px" class="center-block img-fluid" />
+		<img src="ios-img/DemoCellNib.png" style="height:520px" class="center-block img-fluid" />
 	</li>
 
 </ol>
@@ -336,9 +375,9 @@ You can also see a reference implementation in the SDK under <code>/Example/BVPr
 <ol>
 	<li>
 		<p>Create a <code>UIViewController</code> by selecting <strong>File > New > File</strong></p>
-		<img src="img/NewFile.png" style="height:400px" class="center-block img-fluid" />
+		<img src="ios-img/NewFile.png" style="height:400px" class="center-block img-fluid" />
 		<br>
-		<img src="img/DemoViewController.png" style="height:400px" class="center-block img-fluid" />
+		<img src="ios-img/DemoViewController.png" style="height:400px" class="center-block img-fluid" />
 		<br>
 	</li>
 	<li>
@@ -376,12 +415,12 @@ You can also see a reference implementation in the SDK under <code>/Example/BVPr
 	</li>
 	<li>
 		<p>Add a <code>UICollectionView</code> to your nib, and set its class to <code>BVProductRecommendationsCollectionView</code></p>
-		<img src="img/ViewControllerNib.png" style="height:280px" class="center-block img-fluid"/>
+		<img src="ios-img/ViewControllerNib.png" style="height:280px" class="center-block img-fluid"/>
 		<br>
 	</li>
 	<li>
 		<p>Hook up the <code>BVProductRecommendationsCollectionView</code> to its outlet, <code>recommendationsView</code></p>
-		<img src="img/ViewControllerNibConnection.png" style="height:440px" class="center-block img-fluid"/>
+		<img src="ios-img/ViewControllerNibConnection.png" style="height:440px" class="center-block img-fluid"/>
 	</li>
 </ol>
 <br>
@@ -410,20 +449,20 @@ var recommendations : [BVProduct] = []
 override func viewDidLoad() {
 super.viewDidLoad()
 
-recommendationsView.registerNib(UINib(nibName: "DemoCell", bundle: nil), forCellWithReuseIdentifier: "DemoCellIdentifier")
+	recommendationsView.registerNib(UINib(nibName: "DemoCell", bundle: nil), forCellWithReuseIdentifier: "DemoCellIdentifier")
 
-self.recommendationsView.delegate = self
-self.recommendationsView.dataSource = self
+	self.recommendationsView.delegate = self
+	self.recommendationsView.dataSource = self
 
-let request = BVRecommendationsRequest(limit: 20)
-self.recommendationsView.loadRequest(request, completionHandler: { (recommendations:[BVProduct]) in
+	let request = BVRecommendationsRequest(limit: 20)
+	self.recommendationsView.loadRequest(request, completionHandler: { (recommendations:[BVProduct]) in
 
-self.recommendations = recommendations
-self.recommendationsView.reloadData()
+	self.recommendations = recommendations
+	self.recommendationsView.reloadData()
 
-}) { (error:NSError) in
-// handle error case
-}
+	}) { (error:NSError) in
+	// handle error case
+	}
 
 }
 }
@@ -542,27 +581,19 @@ self.recommendationsView.reloadData()
 			<div role="tabpanel" class="tab-pane active" id="swift">
 <pre><code class="swift">func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
 
-let cell = collectionView.dequeueReusableCellWithReuseIdentifier("DemoCellIdentifier", forIndexPath: indexPath) as! DemoCell
+	let cell = collectionView.dequeueReusableCellWithReuseIdentifier("DemoCellIdentifier", forIndexPath: indexPath) as! DemoCell
 
-let product = recommendations[indexPath.row]
-let imageUrl = NSURL(string: product.imageURL)
+	let product = recommendations[indexPath.row]
+	cell.bvProduct = product
 
-// Must set the bvProduct on each cell
-cell.bvProduct = product
-
-cell.productName.text = product.productName
-cell.rating.text = "\(product.averageRating ?? 0)"
-cell.numReview.text = "(\(product.numReviews ?? 0) reviews)"
-cell.productImageView?.sd_setImageWithURL(imageUrl)
-
-return cell;
+	return cell;
 }</code></pre>
 			</div>
 			<!-- objective-c -->
 			<div role="tabpanel" class="tab-pane" id="objc">
 				<p><pre><code class="objectivec">- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
 
-    DemoCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"DemoCellIdentifer" forIndexPath:indexPath];
+    DemoCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"DemoCellIdentifier" forIndexPath:indexPath];
 
     cell.bvProduct = [self.products objectAtIndex:indexPath.row];
     NSURL *url = [NSURL URLWithString:cell.bvProduct.imageURL];
@@ -572,7 +603,7 @@ return cell;
 
     return cell;
 
-}</code></pre>/p>
+}</code></pre></p>
 			</div>
 		</div>
 		<br>
@@ -581,6 +612,8 @@ return cell;
 	<li>
 		<h3>Run it!</h3>
 		<p>The app should populate the collection view with product recommendations. Some styling will be needed to look good, however <i class="fa fa-smile-o"></i></p>
+		<br/>
+		<img src="ios-img/recommendations/final_project.png" style="height:460px;" class="center-block img-fluid" />
 	</li>
 </ol>
 <br>
