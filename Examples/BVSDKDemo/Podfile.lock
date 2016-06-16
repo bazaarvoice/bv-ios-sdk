@@ -15,25 +15,25 @@ PODS:
     - FontAwesomeKit/Core
   - Google-Mobile-Ads-SDK (7.8.1)
   - HCSStarRatingView (1.4.5)
-  - NVActivityIndicatorView (2.7)
-  - OHHTTPStubs (5.0.0):
-    - OHHTTPStubs/Default (= 5.0.0)
-  - OHHTTPStubs/Core (5.0.0)
-  - OHHTTPStubs/Default (5.0.0):
+  - NVActivityIndicatorView (2.8)
+  - OHHTTPStubs (5.1.0):
+    - OHHTTPStubs/Default (= 5.1.0)
+  - OHHTTPStubs/Core (5.1.0)
+  - OHHTTPStubs/Default (5.1.0):
     - OHHTTPStubs/Core
     - OHHTTPStubs/JSON
     - OHHTTPStubs/NSURLSession
     - OHHTTPStubs/OHPathHelpers
-  - OHHTTPStubs/JSON (5.0.0):
+  - OHHTTPStubs/JSON (5.1.0):
     - OHHTTPStubs/Core
-  - OHHTTPStubs/NSURLSession (5.0.0):
+  - OHHTTPStubs/NSURLSession (5.1.0):
     - OHHTTPStubs/Core
-  - OHHTTPStubs/OHPathHelpers (5.0.0)
+  - OHHTTPStubs/OHPathHelpers (5.1.0)
   - SDForms (0.9.3):
     - HCSStarRatingView
-  - SDWebImage (3.7.6):
-    - SDWebImage/Core (= 3.7.6)
-  - SDWebImage/Core (3.7.6)
+  - SDWebImage (3.8.1):
+    - SDWebImage/Core (= 3.8.1)
+  - SDWebImage/Core (3.8.1)
   - SwiftyJSON (2.3.2)
   - youtube-ios-player-helper (0.1.6)
 
@@ -51,7 +51,7 @@ DEPENDENCIES:
   - SDForms (from `https://github.com/austimkelly/SDForms.git`, branch `master`)
   - SDWebImage
   - SwiftyJSON
-  - youtube-ios-player-helper (~> 0.1.4)
+  - youtube-ios-player-helper (~> 0.1.6)
 
 EXTERNAL SOURCES:
   BVSDK:
@@ -62,7 +62,7 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   SDForms:
-    :commit: 81151ba9b58376dd3b1934908956be3cabdf27ac
+    :commit: e0723faeb8e53c7ca080ad381791862f60bfff9f
     :git: https://github.com/austimkelly/SDForms.git
 
 SPEC CHECKSUMS:
@@ -70,11 +70,13 @@ SPEC CHECKSUMS:
   FontAwesomeKit: 025fd4dd1017fe4e3f8d47b03e024deedbb33cd4
   Google-Mobile-Ads-SDK: 3c2a6656117989469bfe7645640aa1de024a4c6c
   HCSStarRatingView: bff3f89314d3b5013ce826ea11897d3129ff6b8c
-  NVActivityIndicatorView: dc80f18fb27ac92f0aa87246cc13dc39ed3e9ee0
-  OHHTTPStubs: a5d2e9eea07869d42ec03338325f398bc520e159
+  NVActivityIndicatorView: 6aba1dbbd893f615a9452c9e66ae46473e1ce092
+  OHHTTPStubs: 592f74439d2d72615115cf99a954237a3fbe26e5
   SDForms: 67ace4be00b3a97bec7164a817eb085e3148c523
-  SDWebImage: c325cf02c30337336b95beff20a13df489ec0ec9
+  SDWebImage: 35f9627a3e44b4f292a8a8ce6a531fa488239b91
   SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
   youtube-ios-player-helper: 21ab92db027c7ff86cb17a3843a3f6eafc8158d2
 
-COCOAPODS: 0.39.0
+PODFILE CHECKSUM: 4d3de6fff0b1ba1f085b66502f863cc6ce9149e0
+
+COCOAPODS: 1.0.1

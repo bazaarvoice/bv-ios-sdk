@@ -12,7 +12,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="56"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="56"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="55.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fF3-j7-Aeq">
@@ -31,7 +31,7 @@
                         </state>
                     </button>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9co-wA-WQQ">
-                        <rect key="frame" x="0.0" y="39" width="320" height="1"/>
+                        <rect key="frame" x="0.0" y="54" width="320" height="1"/>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="1" id="BgE-sZ-BXi"/>
@@ -67,10 +67,10 @@
                     <constraint firstAttribute="bottom" secondItem="9co-wA-WQQ" secondAttribute="bottom" id="QjI-d8-jqU"/>
                     <constraint firstAttribute="trailing" secondItem="9co-wA-WQQ" secondAttribute="trailing" id="ZP7-L5-DJh"/>
                     <constraint firstItem="eYL-Nq-Rmq" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="a5K-4t-lE7"/>
-                    <constraint firstItem="eYL-Nq-Rmq" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="e4P-cl-xQe"/>
                     <constraint firstItem="Jhz-oz-kbo" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="eug-0N-0SC"/>
+                    <constraint firstItem="eYL-Nq-Rmq" firstAttribute="centerY" secondItem="fF3-j7-Aeq" secondAttribute="centerY" id="mhP-2u-pIh"/>
                     <constraint firstItem="fF3-j7-Aeq" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="tz4-b5-aHi"/>
-                    <constraint firstAttribute="bottom" secondItem="fF3-j7-Aeq" secondAttribute="bottom" id="yvt-Jl-MBm"/>
+                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="fF3-j7-Aeq" secondAttribute="bottom" id="yvt-Jl-MBm"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
