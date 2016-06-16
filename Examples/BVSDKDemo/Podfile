@@ -3,24 +3,36 @@ platform :ios, '8.0'
 # Uncomment this line if you're using Swift
 use_frameworks!
 
+def common_pods
+	
+	pod 'OHHTTPStubs'
+	pod 'SwiftyJSON'
+	pod 'BVSDK', :path => "../../"
+	pod 'BVSDK/BVCurations', :path => "../../"
+
+end
+
 target 'BVSDKDemo' do
+
+	common_pods
 
 	pod 'SDWebImage'
 	pod 'Google-Mobile-Ads-SDK'
 	pod 'HCSStarRatingView'
 	pod 'NVActivityIndicatorView'
 	pod 'FontAwesomeKit/FontAwesome'
-    pod 'OHHTTPStubs'
-    pod "youtube-ios-player-helper", "~> 0.1.4"
-    pod 'SwiftyJSON'
-
+    pod "youtube-ios-player-helper", "~> 0.1.6"
     pod 'SDForms', :git => 'https://github.com/austimkelly/SDForms.git', :branch => 'master'
     
-	pod 'BVSDK', :path => "../../"
 	pod 'BVSDK/BVRecommendations', :path => "../../"
 	pod 'BVSDK/BVAdvertising', :path => "../../"
-	pod 'BVSDK/BVCurations', :path => "../../"
 	pod 'BVSDK/BVConversations', :path => "../../"
+
+end
+
+target 'Curations Custom Post Extension' do
+
+	common_pods
 
 end
 
