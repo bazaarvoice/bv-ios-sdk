@@ -10,19 +10,19 @@ PODS:
   - BVSDK/BVRecommendations (4.0.2):
     - BVSDK/Core
   - BVSDK/Core (4.0.2)
-  - OHHTTPStubs (5.0.0):
-    - OHHTTPStubs/Default (= 5.0.0)
-  - OHHTTPStubs/Core (5.0.0)
-  - OHHTTPStubs/Default (5.0.0):
+  - OHHTTPStubs (5.1.0):
+    - OHHTTPStubs/Default (= 5.1.0)
+  - OHHTTPStubs/Core (5.1.0)
+  - OHHTTPStubs/Default (5.1.0):
     - OHHTTPStubs/Core
     - OHHTTPStubs/JSON
     - OHHTTPStubs/NSURLSession
     - OHHTTPStubs/OHPathHelpers
-  - OHHTTPStubs/JSON (5.0.0):
+  - OHHTTPStubs/JSON (5.1.0):
     - OHHTTPStubs/Core
-  - OHHTTPStubs/NSURLSession (5.0.0):
+  - OHHTTPStubs/NSURLSession (5.1.0):
     - OHHTTPStubs/Core
-  - OHHTTPStubs/OHPathHelpers (5.0.0)
+  - OHHTTPStubs/OHPathHelpers (5.1.0)
 
 DEPENDENCIES:
   - BVSDK (from `../`)
@@ -38,6 +38,8 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   BVSDK: 9b5bc0d7dad08f6846428627546d90f16aae85b7
-  OHHTTPStubs: a5d2e9eea07869d42ec03338325f398bc520e159
+  OHHTTPStubs: 592f74439d2d72615115cf99a954237a3fbe26e5
 
-COCOAPODS: 0.39.0
+PODFILE CHECKSUM: 5103587da362292b61e098e7abbbddf0d87c671a
+
+COCOAPODS: 1.0.1

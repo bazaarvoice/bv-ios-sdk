@@ -1,4 +1,10 @@
 PODS:
+  - Bolts (1.7.0):
+    - Bolts/AppLinks (= 1.7.0)
+    - Bolts/Tasks (= 1.7.0)
+  - Bolts/AppLinks (1.7.0):
+    - Bolts/Tasks
+  - Bolts/Tasks (1.7.0)
   - BVSDK (4.0.2):
     - BVSDK/Core (= 4.0.2)
   - BVSDK/BVAdvertising (4.0.2):
@@ -10,6 +16,15 @@ PODS:
   - BVSDK/BVRecommendations (4.0.2):
     - BVSDK/Core
   - BVSDK/Core (4.0.2)
+  - Crashlytics (3.7.1):
+    - Fabric (~> 1.6.3)
+  - Fabric (1.6.7)
+  - FBSDKCoreKit (4.13.1):
+    - Bolts (~> 1.7)
+  - FBSDKLoginKit (4.13.1):
+    - FBSDKCoreKit
+  - FBSDKShareKit (4.13.1):
+    - FBSDKCoreKit
   - FontAwesomeKit/Core (2.2.0)
   - FontAwesomeKit/FontAwesome (2.2.0):
     - FontAwesomeKit/Core
@@ -43,6 +58,11 @@ DEPENDENCIES:
   - BVSDK/BVConversations (from `../../`)
   - BVSDK/BVCurations (from `../../`)
   - BVSDK/BVRecommendations (from `../../`)
+  - Crashlytics
+  - Fabric
+  - FBSDKCoreKit
+  - FBSDKLoginKit
+  - FBSDKShareKit
   - FontAwesomeKit/FontAwesome
   - Google-Mobile-Ads-SDK
   - HCSStarRatingView
@@ -66,7 +86,13 @@ CHECKOUT OPTIONS:
     :git: https://github.com/austimkelly/SDForms.git
 
 SPEC CHECKSUMS:
+  Bolts: a0058fa3b331c5a1e4402d534f2dae36dbff31e4
   BVSDK: 9b5bc0d7dad08f6846428627546d90f16aae85b7
+  Crashlytics: 3cdd4c9655be68032a0cf0379e0fb5ef6af22cad
+  Fabric: caf7580c725e64db144f610ac65cd60956911dc7
+  FBSDKCoreKit: 2807fe0da2ddb49a1469da6d6ff597f99912980f
+  FBSDKLoginKit: 6d350cb6a22d6956e9d078885de6ee8a0ebc51b4
+  FBSDKShareKit: c9438df7573b33780ac8c3451201c5ebb260ffca
   FontAwesomeKit: 025fd4dd1017fe4e3f8d47b03e024deedbb33cd4
   Google-Mobile-Ads-SDK: 3c2a6656117989469bfe7645640aa1de024a4c6c
   HCSStarRatingView: bff3f89314d3b5013ce826ea11897d3129ff6b8c
@@ -77,6 +103,6 @@ SPEC CHECKSUMS:
   SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
   youtube-ios-player-helper: 21ab92db027c7ff86cb17a3843a3f6eafc8158d2
 
-PODFILE CHECKSUM: 4d3de6fff0b1ba1f085b66502f863cc6ce9149e0
+PODFILE CHECKSUM: 5c81d7b0d5ca3e749a79df8a4080f60bf214e16a
 
 COCOAPODS: 1.0.1

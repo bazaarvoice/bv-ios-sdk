@@ -125,8 +125,22 @@ static BVConversationsAnalyticsHelper *BVAnalyticsSingleton = nil;
                     //
                     NSString* productId = [resultInfo objectForKey:@"productId"];
                     if(productId != nil && [pageViewProductIds containsObject:productId] == false){
-
-                        [[BVAnalyticsManager sharedManager] queuePageViewEventDict:[self getPageViewEventDict:@{ @"productId": productId }]];
+                        
+                        NSMutableDictionary *pageViewEventDict = [NSMutableDictionary dictionaryWithDictionary:@{ @"productId": productId }];
+                        
+                        NSString* categoryId = nil;
+                        SET_IF_NOT_NULL(categoryId, [resultInfo objectForKey:@"categoryId"])
+                        if (categoryId != nil){
+                            [pageViewEventDict setValue:categoryId forKey:@"categoryId"];
+                        }
+                        
+                        NSString* brand = nil;
+                        SET_IF_NOT_NULL(brand, [resultInfo objectForKey:@"brand"])
+                        if (brand != nil){
+                            [pageViewEventDict setValue:brand forKey:@"brand"];
+                        }
+                        
+                       [[BVAnalyticsManager sharedManager] queuePageViewEventDict:[self getPageViewEventDict:pageViewEventDict]];
 
                         [pageViewProductIds addObject:productId];
                     }
@@ -217,13 +231,23 @@ static BVConversationsAnalyticsHelper *BVAnalyticsSingleton = nil;
                      };
             break;
             
-        case BVGetTypeProducts:
-            return @{
-                     @"contentType": @"Product",
-                     @"contentId": [result objectForKey:@"Id"],
-                     @"productId": [result objectForKey:@"Id"],
-                     @"categoryId": [result objectForKey:@"CategoryId"]
-                     };
+        case BVGetTypeProducts: {
+            
+            NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithDictionary:@{
+                                                           @"contentType": @"Product",
+                                                           @"contentId": [result objectForKey:@"Id"],
+                                                           @"productId": [result objectForKey:@"Id"],
+                                                           @"categoryId": [result objectForKey:@"CategoryId"]
+                                                           }];
+            
+            NSString *brand = nil;
+            SET_IF_NOT_NULL(brand, [result objectForKey:@"BrandExternalId"])
+            if (brand != nil){
+                [dict setObject:brand forKey:@"brand"];
+            }
+            
+            return [NSDictionary dictionaryWithDictionary:dict];
+        }
             
         case BVGetTypeQuestions:
             return @{

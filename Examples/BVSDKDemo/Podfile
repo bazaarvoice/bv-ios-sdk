@@ -16,6 +16,8 @@ target 'BVSDKDemo' do
 
 	common_pods
 
+	pod 'Fabric'
+	pod 'Crashlytics'
 	pod 'SDWebImage'
 	pod 'Google-Mobile-Ads-SDK'
 	pod 'HCSStarRatingView'
@@ -27,6 +29,10 @@ target 'BVSDKDemo' do
 	pod 'BVSDK/BVRecommendations', :path => "../../"
 	pod 'BVSDK/BVAdvertising', :path => "../../"
 	pod 'BVSDK/BVConversations', :path => "../../"
+    
+    pod 'FBSDKCoreKit'
+    pod 'FBSDKLoginKit'
+    pod 'FBSDKShareKit'
 
 end
 

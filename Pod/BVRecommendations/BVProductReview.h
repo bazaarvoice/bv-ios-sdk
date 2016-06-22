@@ -8,9 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-#define SET_IF_NOT_NULL(target, value) if(value != [NSNull null]) { target = value; }
-
-
 /// A product review written about a BVProduct
 @interface BVProductReview : NSObject
 

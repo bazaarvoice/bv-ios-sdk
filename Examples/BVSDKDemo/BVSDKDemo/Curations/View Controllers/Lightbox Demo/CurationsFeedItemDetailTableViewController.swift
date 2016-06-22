@@ -11,7 +11,6 @@ import SDWebImage
 import AVKit
 import AVFoundation
 
-
 class CurationsFeedItemDetailTableViewController: UITableViewController {
     
     var itemIndex: Int = 0
@@ -22,6 +21,8 @@ class CurationsFeedItemDetailTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        ProfileUtils.trackViewController(self)
         
         self.tableView.registerNib(UINib(nibName: "CurationsFeedItemDetailCell", bundle: nil), forCellReuseIdentifier: "CurationsFeedItemDetailCell")
         
