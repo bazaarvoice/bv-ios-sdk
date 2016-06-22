@@ -6,12 +6,11 @@
 //
 //
 
+#import "BVCore.h"
 #import "BVCurationsFeedItem.h"
 #import "BVCurationsAnalyticsHelper.h"
 
 @interface BVCurationsFeedItem()
-
-#define SET_IF_NOT_NULL(target, value) if(value != [NSNull null]) { target = value; }
 
 @property bool hasSentImpressionEvent;
 

@@ -23,7 +23,9 @@ class AskAQuestionViewController: BaseUGCViewController, SDFormDelegate, SDFormD
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        ProfileUtils.trackViewController(self)
+        
         self.title = "Ask a Question!"
         
         // add a SUBMIT button...

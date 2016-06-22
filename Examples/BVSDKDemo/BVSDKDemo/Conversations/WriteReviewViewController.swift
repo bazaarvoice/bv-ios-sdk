@@ -26,6 +26,8 @@ class WriteReviewViewController: BaseUGCViewController, BVDelegate, SDFormDelega
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        ProfileUtils.trackViewController(self)
+        
         self.title = "Write a Review"
         
         // a working example of posting a review.

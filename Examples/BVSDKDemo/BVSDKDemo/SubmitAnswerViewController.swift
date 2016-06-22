@@ -38,6 +38,8 @@ class SubmitAnswerViewController: BaseUGCViewController, BVDelegate, SDFormDeleg
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        ProfileUtils.trackViewController(self)
+        
         self.title = "Submit an Answer"
         
         // a working example of posting an answer.

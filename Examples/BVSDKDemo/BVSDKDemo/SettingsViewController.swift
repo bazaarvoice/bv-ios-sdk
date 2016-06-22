@@ -54,7 +54,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         self.view.backgroundColor = UIColor.whiteColor()
         showClientInput()
         
-        self.title = "Demo Client Settings"
+        self.title = "Demo Config"
         
     }
     
@@ -76,7 +76,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         
         super.viewDidLayoutSubviews()
         
-        let paddingX = self.view.bounds.width / 8
+        let paddingX = self.view.bounds.width / 32
         let leftX = paddingX
         let width = self.view.bounds.width - paddingX*2
         
@@ -89,12 +89,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        return 1 + (DemoConfigManager.configs?.count ?? 0)
-        
-    }
-    
+
     func getConfiguredProductsString(config: DemoConfig) -> String {
         
         var strings:[String] = []
@@ -135,41 +130,6 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        
-        let cell = tableView.dequeueReusableCellWithIdentifier(reuseIdentifier) ??
-                   UITableViewCell(style: .Subtitle, reuseIdentifier: reuseIdentifier)
-        
-        cell.accessoryType = .None
-        
-        if indexPath.row == 0 {
-            
-            cell.textLabel?.text = "Use all mock data"
-            cell.detailTextLabel?.text = "Recommendations, Advertising, Curations, Conversations"
-            
-            if shouldMock() {
-                cell.accessoryType = .Checkmark
-            }
-            
-        }
-        else {
-        
-            let config = DemoConfigManager.configs![indexPath.row-1]
-            
-            cell.textLabel?.text = config.clientId
-            cell.detailTextLabel?.text = getConfiguredProductsString(config)
-            if isCurrentlySelected(config) {
-                cell.accessoryType = .Checkmark
-            }
-            
-        }
-        
-        cell.detailTextLabel?.textColor = UIColor.grayColor()
-        
-        return cell
-        
-    }
-    
     func isCurrentlySelected(config: DemoConfig) -> Bool {
         
         return BVSDKManager.sharedManager().clientId == config.clientId
@@ -179,37 +139,135 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         
     }
     
+    // MARK: UITableViewDataSource
+    
+    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        
+        if section == 0{
+            return "Client Configuration Selection"
+        } else if section == 1 {
+            return "User Profile Details"
+        }
+        
+        return ""
+        
+    }
+    
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        
+        return 2
+        
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        if (section == 0){
+            return 1 + (DemoConfigManager.configs?.count ?? 0)
+        } else if section == 1 {
+            return 1;
+        }
+        
+        return 0
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCellWithIdentifier(reuseIdentifier) ??
+                   UITableViewCell(style: .Subtitle, reuseIdentifier: reuseIdentifier)
+        
+        if indexPath.section == 0 {
+            cell.accessoryType = .None
+            
+            if indexPath.row == 0 {
+                
+                cell.textLabel?.text = "(Mock) Endurance Cycles"
+                cell.detailTextLabel?.text = "Recommendations, Advertising, Curations, Conversations"
+                
+                if shouldMock() {
+                    cell.accessoryType = .Checkmark
+                }
+                
+            }
+            else {
+            
+                let config = DemoConfigManager.configs![indexPath.row-1]
+                
+                cell.textLabel?.text = config.displayName
+                cell.detailTextLabel?.text = getConfiguredProductsString(config)
+                if isCurrentlySelected(config) {
+                    cell.accessoryType = .Checkmark
+                }
+                
+            }
+        } else if indexPath.section == 1 {
+            
+            cell.textLabel?.text = "Profile"
+            cell.accessoryType = .DisclosureIndicator
+        }
+        
+        
+        cell.detailTextLabel?.textColor = UIColor.grayColor()
+        
+        return cell
+        
+    }
+    
+    // MARK: UITableViewDelegate
+    
+    func tableView(tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        if (view.isKindOfClass(UITableViewHeaderFooterView)) {
+            let headerView = view as! UITableViewHeaderFooterView
+            
+            // Label
+            headerView.textLabel!.textColor = UIColor.whiteColor()
+            headerView.contentView.backgroundColor = UIColor.bazaarvoiceNavy()
+            
+        }
+    }
+    
+    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 44
+    }
+    
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
         var selectedConfigDisplayName : String? = nil
         
-        if indexPath.row == 0 {
-            self.setMockData()
+        if indexPath.section == 0 {
+            
+            if indexPath.row == 0 {
+                self.setMockData()
+            }
+            else {
+            
+                let config = DemoConfigManager.configs?[indexPath.row-1]
+                
+                /// read keys from file (for BV development).
+                /// If key is "REPLACE_ME", app with show demo data.
+                BVSDKManager.sharedManager().clientId = config!.clientId
+                BVSDKManager.sharedManager().apiKeyShopperAdvertising = config!.shopperAdvertisingKey
+                BVSDKManager.sharedManager().apiKeyConversations = config!.conversationsKey
+                BVSDKManager.sharedManager().apiKeyCurations = config!.curationsKey
+                
+                selectedConfigDisplayName = config!.displayName
+                
+            }
+            
+            let defaults = NSUserDefaults(suiteName: "group.bazaarvoice.bvsdkdemo")
+            defaults!.setObject(selectedConfigDisplayName, forKey: MockDataManager.PRESELECTED_CONFIG_DISPLAY_NAME_KEY)
+            defaults!.synchronize()
+            
+            self.clientTableView.deselectRowAtIndexPath(indexPath, animated: true)
+            self.clientTableView.reloadRowsAtIndexPaths(
+                self.clientTableView.indexPathsForVisibleRows!,
+                withRowAnimation: .Automatic)
+        
+        } else if indexPath.section == 1 {
+            
+            let vc = ProfileViewController(nibName: "ProfileViewController", bundle: nil)
+            self.navigationController?.pushViewController(vc, animated: true)
+            
         }
-        else {
-        
-            let config = DemoConfigManager.configs?[indexPath.row-1]
-            
-            /// read keys from file (for BV development).
-            /// If key is "REPLACE_ME", app with show demo data.
-            BVSDKManager.sharedManager().clientId = config!.clientId
-            BVSDKManager.sharedManager().apiKeyShopperAdvertising = config!.shopperAdvertisingKey
-            BVSDKManager.sharedManager().apiKeyConversations = config!.conversationsKey
-            BVSDKManager.sharedManager().apiKeyCurations = config!.curationsKey
-            
-            selectedConfigDisplayName = config!.displayName
-            
-        }
-        
-        let defaults = NSUserDefaults(suiteName: "group.bazaarvoice.bvsdkdemo")
-        defaults!.setObject(selectedConfigDisplayName, forKey: MockDataManager.PRESELECTED_CONFIG_DISPLAY_NAME_KEY)
-        defaults!.synchronize()
-        
-        self.clientTableView.deselectRowAtIndexPath(indexPath, animated: true)
-        self.clientTableView.reloadRowsAtIndexPaths(
-            self.clientTableView.indexPathsForVisibleRows!,
-            withRowAnimation: .Automatic)
-        
     }
 
 }

@@ -55,6 +55,8 @@ class NewProductPageViewController: UIViewController, BVDelegate, UITableViewDel
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        ProfileUtils.trackViewController(self)
+        
         // load a native content ad
         self.loadNativeAd()
         

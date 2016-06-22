@@ -18,8 +18,9 @@
                         <rect key="frame" x="8" y="0.0" width="304" height="47.5"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oqR-cT-yPl">
-                                <rect key="frame" x="0.0" y="0.0" width="304" height="38"/>
+                                <rect key="frame" x="0.0" y="0.0" width="304" height="45"/>
                                 <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="NTM-3f-LT4"/>
                                     <constraint firstAttribute="width" secondItem="oqR-cT-yPl" secondAttribute="height" multiplier="40:5" id="YkK-NL-DNn"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="14"/>
@@ -31,16 +32,21 @@
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="YkK-NL-DNn"/>
+                                    </mask>
+                                </variation>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="T8d-E4-HwM">
-                                <rect key="frame" x="8" y="8.5" width="20" height="20"/>
+                                <rect key="frame" x="8" y="12" width="20" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="K66-oI-T5l"/>
                                     <constraint firstAttribute="width" constant="20" id="NiO-Yn-0hg"/>
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ofs-om-81x">
-                                <rect key="frame" x="276" y="8.5" width="20" height="20"/>
+                                <rect key="frame" x="276" y="12" width="20" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="5pB-Ct-ew4"/>
                                     <constraint firstAttribute="width" constant="20" id="PEc-2P-i1b"/>

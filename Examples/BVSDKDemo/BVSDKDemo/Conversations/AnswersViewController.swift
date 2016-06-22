@@ -27,6 +27,8 @@ class AnswersViewController: BaseUGCViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        ProfileUtils.trackViewController(self)
+        
         self.title = "Answers"
         
         let nib1 = UINib(nibName: "AnswerListHeaderCell", bundle: nil)
