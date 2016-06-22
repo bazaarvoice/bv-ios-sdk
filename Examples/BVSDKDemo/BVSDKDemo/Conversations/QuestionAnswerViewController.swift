@@ -16,6 +16,8 @@ class QuestionAnswerViewController: BaseUGCViewController, BVDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        ProfileUtils.trackViewController(self)
+        
         self.title = "Questions"
         
         let nib1 = UINib(nibName: "CallToActionCell", bundle: nil)

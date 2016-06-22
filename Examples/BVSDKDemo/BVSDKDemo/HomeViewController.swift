@@ -9,6 +9,7 @@ import UIKit
 import FontAwesomeKit
 import BVSDK
 import GoogleMobileAds
+import FBSDKLoginKit
 
 let ADVERT_INDEX_PATH = 5
 
@@ -28,6 +29,8 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+       ProfileUtils.trackViewController(self)
         
         self.addSettingsButton()
         
@@ -50,6 +53,30 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         let versionString = NSBundle.mainBundle().infoDictionary?["CFBundleShortVersionString"] as? String
         let buildNum = NSBundle.mainBundle().infoDictionary?["CFBundleVersion"] as? String
         self.versionLabel.text = "v" + versionString! + "(" + buildNum! + ")"
+        
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        // check that user is logged in to facebook
+        if (ProfileUtils.isFacebookInstalled()) {
+            // The app ID was set so we can authenticate the user
+            if(FBSDKAccessToken.currentAccessToken() == nil) {
+                let loginViewController = FacebookLoginViewController()
+                self.presentViewController(loginViewController, animated: true, completion: nil)
+            }
+            else {
+                if let profile = FBSDKProfile.currentProfile() {
+                    
+                    ProfileUtils.trackFBLogin(profile.name)
+                    if SITE_AUTH == 1 {
+                        ProfileUtils.sharedInstance.setUserAuthString()
+                    }
+
+                }
+            }
+        }
         
     }
     
@@ -180,7 +207,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     func getRecommendationForIndexPath(indexPath: NSIndexPath) -> BVProduct {
         
         let indexOffset = (indexPath.row > ADVERT_INDEX_PATH) ? 2 : 1
-        
+
         return self.recommendations![indexPath.row - indexOffset]
         
     }
@@ -268,10 +295,12 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         
         print("Received HomePage native ad")
         
-        let nativeAdCell = recommendationsCollectionView.cellForItemAtIndexPath(NSIndexPath(forRow: ADVERT_INDEX_PATH, inSection: 0)) as! HomeAdvertisementCollectionViewCell
+        if recommendationsCollectionView.cellForItemAtIndexPath(NSIndexPath(forRow: ADVERT_INDEX_PATH, inSection: 0)) != nil {
         
-        nativeAdCell.nativeContentAd = nativeContentAd
-        
+            let nativeAdCell = recommendationsCollectionView.cellForItemAtIndexPath(NSIndexPath(forRow: ADVERT_INDEX_PATH, inSection: 0)) as! HomeAdvertisementCollectionViewCell
+            
+            nativeAdCell.nativeContentAd = nativeContentAd
+        }
     }
     
     func adLoader(var adLoader: GADAdLoader, didFailToReceiveAdWithError error: GADRequestError) {

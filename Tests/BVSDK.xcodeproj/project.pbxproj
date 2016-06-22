@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4729C397401C17410FCE8205 /* libPods-BVSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C3CBD10270AE66AF21F4250E /* libPods-BVSDK.a */; };
 		6003F5B0195388D20070C39A /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F5AF195388D20070C39A /* XCTest.framework */; };
 		6003F5B1195388D20070C39A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58D195388D20070C39A /* Foundation.framework */; };
 		6003F5B2195388D20070C39A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F591195388D20070C39A /* UIKit.framework */; };
@@ -54,11 +53,14 @@
 		87FED2F01CC6644F00B42ADB /* post_successfulCreation.json in Resources */ = {isa = PBXBuildFile; fileRef = 87FED2EF1CC6644F00B42ADB /* post_successfulCreation.json */; };
 		87FED2F21CC8101600B42ADB /* test_pattern.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 87FED2F11CC8101600B42ADB /* test_pattern.jpg */; };
 		87FED3111CC9109400B42ADB /* post_MissingRequiredKey.json in Resources */ = {isa = PBXBuildFile; fileRef = 87FED3101CC9109400B42ADB /* post_MissingRequiredKey.json */; };
+		B92E675C06AD2F3635E9034B /* libPods-BVSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4048A69C4DD584A88D8F77EB /* libPods-BVSDK.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		04B6EE3C7CC7BCF5574887EC /* Pods-BVSDK.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BVSDK.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BVSDK/Pods-BVSDK.debug.xcconfig"; sourceTree = "<group>"; };
 		1FE77B80B93F4AB02AC1E667 /* BVSDK.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = BVSDK.podspec; path = ../BVSDK.podspec; sourceTree = "<group>"; };
-		369FA6274E61B2F7875E57EF /* Pods-BVSDK.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BVSDK.release.xcconfig"; path = "Pods/Target Support Files/Pods-BVSDK/Pods-BVSDK.release.xcconfig"; sourceTree = "<group>"; };
+		4048A69C4DD584A88D8F77EB /* libPods-BVSDK.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BVSDK.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5C37076C0FF8DC8D4A6DF11B /* Pods-BVSDK.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BVSDK.release.xcconfig"; path = "Pods/Target Support Files/Pods-BVSDK/Pods-BVSDK.release.xcconfig"; sourceTree = "<group>"; };
 		6003F58A195388D20070C39A /* BVSDK.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BVSDK.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6003F58D195388D20070C39A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		6003F58F195388D20070C39A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -112,9 +114,7 @@
 		87FED2EF1CC6644F00B42ADB /* post_successfulCreation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = post_successfulCreation.json; path = resources/curations/post_successfulCreation.json; sourceTree = "<group>"; };
 		87FED2F11CC8101600B42ADB /* test_pattern.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = test_pattern.jpg; path = resources/curations/test_pattern.jpg; sourceTree = "<group>"; };
 		87FED3101CC9109400B42ADB /* post_MissingRequiredKey.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = post_MissingRequiredKey.json; path = resources/curations/post_MissingRequiredKey.json; sourceTree = "<group>"; };
-		C3CBD10270AE66AF21F4250E /* libPods-BVSDK.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BVSDK.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EEDB2BBB2F4C11AEBE5E733E /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
-		F28472ACDA63AEEA7CEE61DF /* Pods-BVSDK.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BVSDK.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BVSDK/Pods-BVSDK.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,7 +125,7 @@
 				6003F5B0195388D20070C39A /* XCTest.framework in Frameworks */,
 				6003F5B2195388D20070C39A /* UIKit.framework in Frameworks */,
 				6003F5B1195388D20070C39A /* Foundation.framework in Frameworks */,
-				4729C397401C17410FCE8205 /* libPods-BVSDK.a in Frameworks */,
+				B92E675C06AD2F3635E9034B /* libPods-BVSDK.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -139,7 +139,7 @@
 				6003F5B5195388D20070C39A /* Tests */,
 				6003F58C195388D20070C39A /* Frameworks */,
 				6003F58B195388D20070C39A /* Products */,
-				8701B6BB667516365C5DF591 /* Pods */,
+				722152B0EA2D508A2B4122C6 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -159,7 +159,7 @@
 				6003F58F195388D20070C39A /* CoreGraphics.framework */,
 				6003F591195388D20070C39A /* UIKit.framework */,
 				6003F5AF195388D20070C39A /* XCTest.framework */,
-				C3CBD10270AE66AF21F4250E /* libPods-BVSDK.a */,
+				4048A69C4DD584A88D8F77EB /* libPods-BVSDK.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -200,11 +200,11 @@
 			name = "Podspec Metadata";
 			sourceTree = "<group>";
 		};
-		8701B6BB667516365C5DF591 /* Pods */ = {
+		722152B0EA2D508A2B4122C6 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				F28472ACDA63AEEA7CEE61DF /* Pods-BVSDK.debug.xcconfig */,
-				369FA6274E61B2F7875E57EF /* Pods-BVSDK.release.xcconfig */,
+				04B6EE3C7CC7BCF5574887EC /* Pods-BVSDK.debug.xcconfig */,
+				5C37076C0FF8DC8D4A6DF11B /* Pods-BVSDK.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -283,12 +283,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6003F5C2195388D20070C39A /* Build configuration list for PBXNativeTarget "BVSDK" */;
 			buildPhases = (
-				70621DA920D3B2972C3D34D8 /* Check Pods Manifest.lock */,
+				9AC2F303C18531FE3321AAEC /* [CP] Check Pods Manifest.lock */,
 				6003F5AA195388D20070C39A /* Sources */,
 				6003F5AB195388D20070C39A /* Frameworks */,
 				6003F5AC195388D20070C39A /* Resources */,
-				6F861EC1094AD0E88BC8782F /* Copy Pods Resources */,
-				AD518701E9A79094650FEE4C /* Embed Pods Frameworks */,
+				FF89ED52F77D6F023B4AD19C /* [CP] Embed Pods Frameworks */,
+				E9DA83A1FA53AF7E78D32B42 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -380,29 +380,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		6F861EC1094AD0E88BC8782F /* Copy Pods Resources */ = {
+		9AC2F303C18531FE3321AAEC /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BVSDK/Pods-BVSDK-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		70621DA920D3B2972C3D34D8 /* Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -410,14 +395,29 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		AD518701E9A79094650FEE4C /* Embed Pods Frameworks */ = {
+		E9DA83A1FA53AF7E78D32B42 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Embed Pods Frameworks";
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BVSDK/Pods-BVSDK-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FF89ED52F77D6F023B4AD19C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -536,7 +536,7 @@
 		};
 		6003F5C3195388D20070C39A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F28472ACDA63AEEA7CEE61DF /* Pods-BVSDK.debug.xcconfig */;
+			baseConfigurationReference = 04B6EE3C7CC7BCF5574887EC /* Pods-BVSDK.debug.xcconfig */;
 			buildSettings = {
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
@@ -563,7 +563,7 @@
 		};
 		6003F5C4195388D20070C39A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 369FA6274E61B2F7875E57EF /* Pods-BVSDK.release.xcconfig */;
+			baseConfigurationReference = 5C37076C0FF8DC8D4A6DF11B /* Pods-BVSDK.release.xcconfig */;
 			buildSettings = {
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",

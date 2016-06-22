@@ -5,7 +5,7 @@
 //  Copyright 2016 Bazaarvoice Inc. All rights reserved.
 //
 
-
+#import "BVCore.h"
 #import "BVProductReview.h"
 
 @implementation BVProductReview

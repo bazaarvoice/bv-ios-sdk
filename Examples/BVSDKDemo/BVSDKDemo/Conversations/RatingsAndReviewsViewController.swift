@@ -15,6 +15,8 @@ class RatingsAndReviewsViewController: BaseUGCViewController, BVDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        ProfileUtils.trackViewController(self)
+        
         let nib = UINib(nibName: "RatingTableViewCell", bundle: nil)
         tableView.registerNib(nib, forCellReuseIdentifier: "RatingTableViewCell")
         tableView.estimatedRowHeight = 40

@@ -7,6 +7,10 @@
 
 import UIKit
 import BVSDK
+import Fabric
+import Crashlytics
+import FBSDKCoreKit
+
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -20,8 +24,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         BVSDKManager.sharedManager().apiKeyConversations = "REPLACE_ME"
         BVSDKManager.sharedManager().apiKeyShopperAdvertising = "REPLACE_ME"
         BVSDKManager.sharedManager().staging = false
-        BVSDKManager.sharedManager().setLogLevel(.Verbose)
-        
+        BVSDKManager.sharedManager().setLogLevel(.Info)
+
         MockDataManager.sharedInstance // start data mocking service
         
         window = UIWindow(frame: UIScreen.mainScreen().bounds)
@@ -30,7 +34,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         self.setupAuthenticatedUser()
         
+        if (ProfileUtils.isFabricInstalled()) {
+            self.setupFabric()
+        }
+        
+        if (ProfileUtils.isFacebookInstalled()) {
+            FBSDKProfile.enableUpdatesOnAccessTokenChange(true)
+            FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
+        }
+        
         return true
+    }
+    
+    func applicationDidBecomeActive(application: UIApplication) {
+        if (ProfileUtils.isFacebookInstalled()) {
+            FBSDKAppEvents.activateApp()
+        }
+    }
+    
+    func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
+        return FBSDKApplicationDelegate.sharedInstance().application(application, openURL: url, sourceApplication: sourceApplication, annotation: annotation)
     }
     
     
@@ -46,8 +69,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             Example auth string given below.
             Pre-populated with a small profile interested in men's and women's apparel -- for testing and demonstration purposes.
          */
+        if SITE_AUTH != 1 {
         BVSDKManager.sharedManager().setUserWithAuthString("TOKEN_REMOVED")
-        
+        }
+    
+    }
+    
+    func setupFabric() {
+        Fabric.with([Crashlytics.self, Answers.self])
     }
     
     
