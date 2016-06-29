@@ -185,7 +185,7 @@ $(function(){
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="faq_support.html">
-                    <span><i class="m-r-1 fa fa-question-circle"></i>FAQ & Support</span>
+                    <span><i class="m-r-1 fa fa-question-circle"></i>FAQ and Support</span>
                 </a>
             </li>
             <li class="nav-item">
@@ -214,16 +214,16 @@ $(function(){
                 <div class="flex flex-row" id="content_title">
   Installation
 </div>
-<p>This guide shows you how to install and configure the Bazaarvoice SDK (BVSDK) into your project.</p>
+<p>This guide shows you how to install and configure the Bazaarvoice Mobile SDK into your iOS app.</p>
 <hr>
 
 <h3>Prerequisites</h3>
 <ul>
-  <li>Signed Data Usage Amendment, if not already in place.</li>
-  <li>Minimum iOS deployment target of iOS 8.0.</li>
-  <li>Xcode version 7.0 or higher.</li>
-  <li>Your Client ID.</li>
-  <li>API key(s) for the Bazaarvoice product you have enabled.</li>
+  <li>Signed Data Usage Amendment, if not already in place</li>
+  <li>Minimum iOS deployment target of iOS 8.0</li>
+  <li>Xcode version 7.0 or higher</li>
+  <li>Your Client ID</li>
+  <li>API key(s) for the Bazaarvoice product you have enabled</li>
 </ul>
 <br>
 
@@ -239,7 +239,7 @@ $(function(){
           <h5 style="margin-bottom: 0;"><step>1</step> <span>Select Configuration Options</h5>
       </div>
       <div class="flex flex-row">
-          <p style="color:#444; margin-bottom: 6px;">Step 1: Configure your SDK options.<br/>The values you set in this step will generate the necessary script and BVSDK intialization code to get you up and running quickly.</span></p>
+          <p style="color:#444; margin-bottom: 6px;">Configure your SDK options.<br/>The values you set will generate the necessary script and Mobile SDK intialization code to get you up and running quickly.</span></p>
       </div>
       <div style="clear:both;"></div>
     </a>
@@ -249,47 +249,47 @@ $(function(){
 
     <div class="flex flex-row" style="align-items: center">
         <div class="cel-fl-2">
-            Enter your client ID:
+            Enter your Client ID:
         </div>
         <div class="cel-fl-10">
-            <input type="text" class="edit_ClientID" id="clientId" placeholder="This is your client name, e.g. bazaarvoice" style="border-color:red" size="40"/>
+            <input type="text" class="edit_ClientID" id="clientId" placeholder="your client name, such as bazaarvoice" style="border-color:red" size="40"/>
         </div>
     </div>
     <div class="flex flex-row">
-        <p>If you are unsure of your client ID or API key values, you can request help <a href="https://developer.bazaarvoice.com/support"> through the support portal </a> or your implementation team.</p>
+        <p>If you don't know your client ID or API key values, contact <a href="https://developer.bazaarvoice.com/support">Client Care</a> or your implementation team.</p>
     </div>
 
     <div class="table-responsive">
         <table class="table">
             <tr>
                 <th>
-                    Select One or More Module(s)
+                    Select one or more module(s):
                 </th>
                 <th>
-                    Enter API Key:
+                    Enter API key:
                 </th>
             <tr>
                 <td>
-                    <input type="checkbox" class="cb_BVCurations"/> <b>BVCurations</b>
+                    <input type="checkbox" class="cb_BVCurations"/> <b>Curations</b>
                 </td>
                 <td>
-                    <input type="text" class="key_BVCurations" placeholder="Curations API Key Here" style="width:100%"/>
-                </td>
-            <tr>
-                <td>
-                    <input type="checkbox" class="cb_BVConversations"/> <b>BVConversations</b>
-                </td>
-                <td>
-                    <input type="text" class="key_BVConversations" placeholder="Conversations API Key Here" style="width:100%"/>
+                    <input type="text" class="key_BVCurations" placeholder="Curations API Key here" style="width:100%"/>
                 </td>
             <tr>
                 <td>
-                    <input type="checkbox" class="cb_BVAdvertising"/> <b>BVAdvertising</b>
+                    <input type="checkbox" class="cb_BVConversations"/> <b>Conversations</b>
+                </td>
+                <td>
+                    <input type="text" class="key_BVConversations" placeholder="Conversations API Key here" style="width:100%"/>
+                </td>
+            <tr>
+                <td>
+                    <input type="checkbox" class="cb_BVAdvertising"/> <b>Advertising</b>
                     <br/>
-                    <input type="checkbox" class="cb_BVRecommendations"/> <b>BVRecommendations</b>
+                    <input type="checkbox" class="cb_BVRecommendations"/> <b>Product Recommendations</b>
                 </td>
                 <td>
-                    <input type="text" class="key_ShoppeAdvertising" placeholder="Shopper Marketing API Key Here" style="width:100%"/>
+                    <input type="text" class="key_ShoppeAdvertising" placeholder="Shopper Advertising API Key here" style="width:100%"/>
                 </td>
             <tr>
         </table>
@@ -486,7 +486,7 @@ $(function(){
           <h5 style="margin-bottom: 0;"><step>2</step> Install the SDK With CocoaPods</h5>
       </div>
       <div class="flex flex-row">
-          <p style="color:#444; margin-bottom: 6px;">Step 2: Configure  your Podfile for CocoaPods installation.</p>
+          <p style="color:#444; margin-bottom: 6px;">Configure your Podfile for CocoaPods installation.</p>
       </div>
       <div style="clear:both;"></div>
     </a>
@@ -494,16 +494,16 @@ $(function(){
   <div id="installationCocoaPods" class="panel-collapse collapse " role="tabpanel" aria-labelledby="headingOne">
     <div class="panel-body">
 
-    <p>Installation with <a>Cocoapods</a> is the recommended approach to including BVSDK in your project. If you don't have Cocoapods installed on your machine, see the <a href="https://guides.cocoapods.org/using/getting-started.html">Cocoapods installation guide</a>.</p>
+    <p>Bazaarvoice recommends installation with <a>Cocoapods</a> to include the Mobile SDK in your project. If Cocoapods is not installed on your computer, refer to the <a href="https://guides.cocoapods.org/using/getting-started.html">Cocoapods installation guide</a> for installation instructions.</p>
 
     <p>Edit your <code>Podfile</code> to include the following:</p>
 
-    <pre><code class="ruby" id="podfile"># Default install: Installs BVConversations and core modules.
-    pod 'BVSDK'
+    <pre><code class="ruby" id="podfile"># Default install: Installs Conversations and core modules.
+pod 'BVSDK'
     </code></pre>
 
-    <p>When you have configured your Podfile, simply run <code>pod install</code> from your project directory to install the BVSDK modules. Then you can open the corresponding <code>.xcworkspace</code> file CocoaPods has created.</p>
-    <p>Great! The SDK is included in your project. You can add the required imports to your project in the next step.</p>
+    <p>After you configure your Podfile, run <code>pod install</code> from your project directory to install the SDK modules. Then open the corresponding <code>.xcworkspace</code> file CocoaPods has created.</p>
+    <p>The Mobile SDK is now included in your project. Add the required imports to your project in the next step.</p>
 
     		</div>
     </div>
@@ -517,10 +517,10 @@ $(function(){
     <a role="button" data-toggle="collapse" data-parent="#accordion" href="#installationHeaderFiles" aria-expanded="false" aria-controls="installationHeaderFiles" style="text-decoration: none">
       <div class="flex flex-row" style="align-items: center; padding-bottom: 10px;">
           <i id="installationHeaderFilesArrow" class="fa fa-chevron-right" style="color:#777; padding-right: 10px;"></i>
-          <h5 style="margin-bottom: 0;"><step>3</step> Configue Headers/Imports</h5>
+          <h5 style="margin-bottom: 0;"><step>3</step> Configure Headers/Imports</h5>
       </div>
       <div class="flex flex-row">
-          <p style="color:#444; margin-bottom: 6px;">Step 3: Add the right header file imports.</p>
+          <p style="color:#444; margin-bottom: 6px;">Add the correct header file imports.</p>
       </div>
       <div style="clear:both;"></div>
     </a>
@@ -528,7 +528,7 @@ $(function(){
   <div id="installationHeaderFiles" class="panel-collapse collapse " role="tabpanel" aria-labelledby="headingOne">
     <div class="panel-body">
 
-    <p>Add the right import statements so you can reference the BVSDK modules you are working with.</p>
+    <p>Add the correct import statements so you can reference the Mobile SDK modules you are using.</p>
     <br>
 
     <ul class="nav nav-tabs" role="tablist">
@@ -540,13 +540,13 @@ $(function(){
     <div class="tab-content code-switcher">
       <div role="tabpanel" class="tab-pane active" id="swift">
     <pre><code class="swift" id="swift-headers">// When using Dynamic Frameworks with Swift (not using Objective-C Bridging header),
-    // use the folling import in each of your .swift files
-    import BVSDK
+// use the folling import in each of your .swift files
+import BVSDK
     </code></pre>
       </div>
       <div role="tabpanel" class="tab-pane" id="objc">
-    <pre><code class="objectivec" id="objc-headers">// Import BVSDK.h for all modules, including BVConversations
-    #import &lt;BVSDK/BVSDK.h&gt;
+    <pre><code class="objectivec" id="objc-headers">// Import BVSDK.h for all modules, including Conversations
+#import &lt;BVSDK/BVSDK.h&gt;
     </code></pre>
         </div>
     </div>
@@ -566,7 +566,7 @@ $(function(){
           <h5 style="margin-bottom: 0;"><step>4</step> Initialize the BVSDKManager</h5>
       </div>
       <div class="flex flex-row">
-          <p style="color:#444; margin-bottom: 6px;">Step 4: Initilize the <code>BVSDKManager</code> in your XCode project.</p>
+          <p style="color:#444; margin-bottom: 6px;">Initialize the <code>BVSDKManager</code> in your XCode project.</p>
       </div>
       <div style="clear:both;"></div>
     </a>
@@ -574,7 +574,7 @@ $(function(){
   <div id="installationBVSDKManager" class="panel-collapse collapse " role="tabpanel" aria-labelledby="headingOne">
     <div class="panel-body">
 
-    <p>Insert the code below in your <code>AppDelegate#applicationDidFinishLaunching</code></p>
+    <p>Insert the following code in your <code>AppDelegate#applicationDidFinishLaunching</code></p>
 
     <ul class="nav nav-tabs" role="tablist">
       <li role="presentation" class="active"><a href="#swift" aria-controls="swift" role="tab" data-toggle="tab">Swift</a></li>
@@ -600,8 +600,8 @@ $(function(){
     <br>
     <hr>
     <h3>Manual Installation</h3>
-    <p>Please note that manual installation is <strong>not recommended</strong>, due to difficulty of dependencies and upgrading SDK versions.</p>
-    <p>However, if needed, you can install the SDK by cloning or downloding this library and adding the source files to your project:</p>
+    <p>Manual installation is <strong>not recommended</strong>, due to difficulty of dependencies and upgrading SDK versions.</p>
+    <p>If necessary, however, you can install the Mobile SDK manually by cloning or downloding this library and adding the source files to your project:</p>
 
     
 
@@ -614,7 +614,7 @@ $(function(){
           <h5 style="margin-bottom: 0;">Manual installation</h5>
       </div>
       <div class="flex flex-row">
-          <p style="color:#444; margin-bottom: 6px;">Click here to see how to install the SDK manually.</p>
+          <p style="color:#444; margin-bottom: 6px;">Click to read manual instructions.</p>
       </div>
       <div style="clear:both;"></div>
     </a>
@@ -623,7 +623,7 @@ $(function(){
     <div class="panel-body">
 
 
-    <p>Clone this repo, or download the <a href="https://github.com/bazaarvoice/bv-ios-sdk-dev/releases">latest release from github</a>:</p>
+    <p>Clone this repo, or download the <a href="https://github.com/bazaarvoice/bv-ios-sdk-dev/releases">latest release from GitHub</a>:</p>
     <img src="ios-img/manual_installation/download.png" style="height:200px;" class="center-block img-fluid" />
 
     <p>Copy all the source folders (under <code>/Pod</code>) into your project. Make sure to select <strong>Copy items if needed</strong>.</p>
@@ -646,9 +646,9 @@ $(function(){
 
 <div class="well well-sm">
 	<h5>Author</h5>
-	<p>Copyright 2016 Bazaarvoice, Inc. All right reserved.</p>
+	<p>Copyright 2016 Bazaarvoice, Inc. All rights reserved.</p>
 	<h5>License</h5>
-	<p>Use of this SDK is contingent on your agreement and conformance with <a href="http://www.bazaarvoice.com/legal/api-terms-of-use.html">Bazaarvoice's API Terms of Use</a>. Additionally, you agree to store all data acquired by this SDK or Bazaarvoice’s API only within the storage of the individual application instance using the SDK or API. You also agree to use the data acquired by the SDK or API only within the context of the same individual application instance and only for purposes consistent with that application’s purpose. Except as otherwise noted, the Bazaarvoice iOS SDK licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0.html">Apache License, Version 2.0</a>.</p>
+	<p>Use of the Bazaarvoice Mobile SDKs is contingent on your agreement and conformance with <a href="http://www.bazaarvoice.com/legal/api-terms-of-use.html">Bazaarvoice's API Terms of Use</a>. Additionally, you agree to store all data acquired by the SDK or Bazaarvoice's API only within the storage of the individual application instance using the SDK or API. You also agree to use the data acquired by the SDK or API only within the context of the same individual application instance and only for purposes consistent with that application's purpose. Except as otherwise noted, the Bazaarvoice iOS SDK is licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0.html">Apache License, Version 2.0</a>.</p>
 </div>
 <br>
 

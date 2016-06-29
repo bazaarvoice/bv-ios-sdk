@@ -185,7 +185,7 @@ $(function(){
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="faq_support.html">
-                    <span><i class="m-r-1 fa fa-question-circle"></i>FAQ & Support</span>
+                    <span><i class="m-r-1 fa fa-question-circle"></i>FAQ and Support</span>
                 </a>
             </li>
             <li class="nav-item">
@@ -215,26 +215,25 @@ $(function(){
 	Curations Custom Posts
 </div>
 
-<p>This page shows how to use the Curations Custom Post API in order to send comments and photos to any of your custom groups.</p>
-<p>You should have a project with the BVCurations module installed as described in <a href="curations_display.html">Curations Display</a>.</p>
+<p>This guide shows how to use the Curations Custom Post API to send comments and photos to any of your custom groups.</p>
+<p>Before you start the procedures in this guide, you must <a href="curations_display.html">install the Curations module</a> of the Bazaarvoice Mobile SDK for iOS.</p>
 <br>
 
 <h3>Creating a Custom Post Request</h3>
-<p>There are only 2 classes you need to be familiar with to create a Custom Post:</p>
+<p>You need to be familiar with only the following two classes to create a Custom Post:</p>
 <ul>
-	<li>
-		<p><strong>BVCurationsAddPostRequest</strong>: This class provides default initalizers with the required parameters used to make the request. You can set any of the other properties defined in <code>BVCurationsAddPostRequest.h</code> when posting custom content.</p>
+	<li><strong>BVCurationsAddPostRequest</strong>&#8212;This class provides default initalizers with the required parameters used to make the request. You can set any of the other properties defined in <code>BVCurationsAddPostRequest.h</code> when posting custom content.
 	</li>
-	<li>
-		<p><strong>BVCurationsPhotoUploader</strong> - Uploads the custom post to your Curations group.</p>
+	<li><strong>BVCurationsPhotoUploader</strong>&#8212;Uploads the custom post to your Curations group.
 	</li>
 </ul>
 <br>
 
-<p class="bg-warning well-lg" style="padding:4px;"> <i class="fa fa-hand-o-right"></i>  Before you begin implementation of ths module make sure you have verified your installed as details in the <a href="./installation.html">Installation and Configuration page.</a></p>
+<p class="bg-warning well-lg" style="padding:4px;"> <i class="fa fa-hand-o-right"></i>  Important: Before you start implementing this Mobile SDK module, verify your installation by checking the steps on the <a href="./installation.html">Installation and Configuration</a> page.</p>
+
 
 <h3>Example Custom Post</h3>
-<p>The examples below take a UIImage and upload it to your Curations group.</p>
+<p>The following example uploads a UIImage to your Curations group.</p>
 
 
 <ul class="nav nav-tabs" role="tablist">
@@ -321,17 +320,17 @@ func uploadImageToCurations(image:UIImage) {
 <br>
 
 
-<h5>Verifiying Uplaod</h5>
-<p>Once you have a successful Custom Post created, you can check your Curations management console to verify the content has been uploaded and is ready for moderation:</p>
+<h5>Verifiying Your Uplaod</h5>
+<p>After you successfully create a Custom Post, check your Curations management console to verify the content has been uploaded and is ready for moderation, as shown in the following example:</p>
 <img src="ios-img/curations_custom_posts/curations_successful_custom_post.png" style="height:180px;" class="center-block img-fluid" />
 <br>
 
 
 <div class="well well-sm">
 	<h5>Author</h5>
-	<p>Copyright 2016 Bazaarvoice, Inc. All right reserved.</p>
+	<p>Copyright 2016 Bazaarvoice, Inc. All rights reserved.</p>
 	<h5>License</h5>
-	<p>Use of this SDK is contingent on your agreement and conformance with <a href="http://www.bazaarvoice.com/legal/api-terms-of-use.html">Bazaarvoice's API Terms of Use</a>. Additionally, you agree to store all data acquired by this SDK or Bazaarvoice’s API only within the storage of the individual application instance using the SDK or API. You also agree to use the data acquired by the SDK or API only within the context of the same individual application instance and only for purposes consistent with that application’s purpose. Except as otherwise noted, the Bazaarvoice iOS SDK licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0.html">Apache License, Version 2.0</a>.</p>
+	<p>Use of the Bazaarvoice Mobile SDKs is contingent on your agreement and conformance with <a href="http://www.bazaarvoice.com/legal/api-terms-of-use.html">Bazaarvoice's API Terms of Use</a>. Additionally, you agree to store all data acquired by the SDK or Bazaarvoice's API only within the storage of the individual application instance using the SDK or API. You also agree to use the data acquired by the SDK or API only within the context of the same individual application instance and only for purposes consistent with that application's purpose. Except as otherwise noted, the Bazaarvoice iOS SDK is licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0.html">Apache License, Version 2.0</a>.</p>
 </div>
 <br>
 

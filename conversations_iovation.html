@@ -185,7 +185,7 @@ $(function(){
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="faq_support.html">
-                    <span><i class="m-r-1 fa fa-question-circle"></i>FAQ & Support</span>
+                    <span><i class="m-r-1 fa fa-question-circle"></i>FAQ and Support</span>
                 </a>
             </li>
             <li class="nav-item">
@@ -215,21 +215,20 @@ $(function(){
 	Authenticity using device fingerprinting
 </div>
 
-<p>Bazaarvoice has partenered with <a href="iovation_bvsample">iovation</a>, an industry leader in device reputation technology, to ensure authenticity of user generated content. The Bazaarvoice native mobile SDKs for Android and iOS support the ability to include the iovation fingerprint along with Conversations API requests using the <code>BVPost</code> request object.</p>
+<p>Bazaarvoice has partenered with <a href="iovation_bvsample">iovation</a>, an industry leader in device reputation technology, to ensure authenticity in consumer-generated content. Bazaarvoice Mobile SDKs for Android and iOS support the ability to include the iovation fingerprint along with Conversations API requests, using the <code>BVPost</code> request object. Contact your Bazaarvoice support representative to request an evaluation of the iovation integration.</p>
 
-<p>Please contact your Bazaarvoice support representative to request an evaluation of the iovation integration. Further tehcnical information can be found in the <a href="https://developer.bazaarvoice.com/apis/conversations/tutorials/device_fingerprinting">Device Fingerprinting</a> section on the Bazaarvoice Developer Portal. 
-
-Mobile Specific iovation integration details can be located at <a href="https://developer.bazaarvoice.com/apis/conversations/tutorials/Device_Fingerprinting%20mobile">Mobile Device Fingerprinting on the Bazaarvoice Developer portal.</a></p>
+<p>Refer to the <a href="https://developer.bazaarvoice.com/apis/conversations/tutorials/device_fingerprinting">Device Fingerprinting</a> spage of the Bazaarvoice Developer Portal for technical details about creating and submitting device fingerprinting information from iovation with consumer-generated content. Refer to the <a href="https://developer.bazaarvoice.com/apis/conversations/tutorials/Device_Fingerprinting%20mobile">Mobile Device Fingerprinting</a> page of the Developer Portal for mobile-specific details about integrating with iovation.</p>
 <br> 
 
 <h3>iOS Integration</h3>
 
 <br/>
 
-<p class="bg-warning well-lg" style="padding:4px;"> <i class="fa fa-hand-o-right"></i>  Before you begin implementation of ths module make sure you have verified your installed as details in the <a href="./installation.html">Installation and Configuration page.</a></p>
+<p class="bg-warning well-lg" style="padding:4px;"> <i class="fa fa-hand-o-right"></i>  Important: Before you start implementing this Mobile SDK module, verify your installation by checking the steps on the <a href="./installation.html">Installation and Configuration</a> page.</p>
 
 
-<p>Once you have the <code>iovation.framework</code> integrated into your project and the <code>DevicePrint</code> is started, the integration is very simple. For any <code>BVPost</code> request object created, simply add these lines:</p>
+
+<p>After you integrate the <code>iovation.framework</code> and the <code>DevicePrint</code> starts, the rest of the integration process is simple. For any <code>BVPost</code> request object created, add the following:</p>
 
 
 <ul class="nav nav-tabs" role="tablist">
@@ -242,7 +241,7 @@ Mobile Specific iovation integration details can be located at <a href="https://
 <div class="tab-content code-switcher">
 	<!-- swift -->
 	<div role="tabpanel" class="tab-pane active" id="swift">
-<pre><code class="swift">let request = BVPost(type:BVPostTypeReview)  // Add the proper BVPostType here
+<pre><code class="swift">let request = BVPost(type:BVPostTypeReview)  // Add the correct BVPostType here
 request.fingerPrint = DevicePrint.blackbox()
 request.action = BVActionSubmit // ...or use BVActionPreview for dry-run
 ... add in your other parameters ...</code></pre>
@@ -261,7 +260,7 @@ request.fingerPrint = [DevicePrint blackbox];
 
 <h3>Validating Your Iovation Integration</h3>
 
-Once you have the iovation SDK installed with the BVSDK in your application you can begin to POST Conversations content. Once you have sent events (such as the one outlined in the SampleApplication) you can contact your Bazaarvoice Implementation Team or Authenticity Team to verify your integration is set-up and working correctly in production. 
+After you install the iovation SDK with the Bazaarvoice Mobile SDK in your application, you can begin to POST Conversations content. After you have sent events, such as the one outlined in the SampleApplication, contact your Bazaarvoice implementation team or authenticity team to verify your integration is set up and working correctly in your production environment. 
 
 <p/>
 
@@ -270,9 +269,9 @@ Once you have the iovation SDK installed with the BVSDK in your application you 
 
 <div class="well well-sm">
 	<h5>Author</h5>
-	<p>Copyright 2016 Bazaarvoice, Inc. All right reserved.</p>
+	<p>Copyright 2016 Bazaarvoice, Inc. All rights reserved.</p>
 	<h5>License</h5>
-	<p>Use of this SDK is contingent on your agreement and conformance with <a href="http://www.bazaarvoice.com/legal/api-terms-of-use.html">Bazaarvoice's API Terms of Use</a>. Additionally, you agree to store all data acquired by this SDK or Bazaarvoice’s API only within the storage of the individual application instance using the SDK or API. You also agree to use the data acquired by the SDK or API only within the context of the same individual application instance and only for purposes consistent with that application’s purpose. Except as otherwise noted, the Bazaarvoice iOS SDK licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0.html">Apache License, Version 2.0</a>.</p>
+	<p>Use of the Bazaarvoice Mobile SDKs is contingent on your agreement and conformance with <a href="http://www.bazaarvoice.com/legal/api-terms-of-use.html">Bazaarvoice's API Terms of Use</a>. Additionally, you agree to store all data acquired by the SDK or Bazaarvoice's API only within the storage of the individual application instance using the SDK or API. You also agree to use the data acquired by the SDK or API only within the context of the same individual application instance and only for purposes consistent with that application's purpose. Except as otherwise noted, the Bazaarvoice iOS SDK is licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0.html">Apache License, Version 2.0</a>.</p>
 </div>
 <br>
 

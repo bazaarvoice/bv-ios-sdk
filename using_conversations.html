@@ -185,7 +185,7 @@ $(function(){
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="faq_support.html">
-                    <span><i class="m-r-1 fa fa-question-circle"></i>FAQ & Support</span>
+                    <span><i class="m-r-1 fa fa-question-circle"></i>FAQ and Support</span>
                 </a>
             </li>
             <li class="nav-item">
@@ -215,9 +215,9 @@ $(function(){
 	Conversations
 </div>
 
-<p>The Curations module is an easy-to-use wrapper around Bazaarvoice's <a href="https://developer.bazaarvoice.com/apis/conversations/">Conversations API</a>.</p>
+<p>TUse the Bazaarvoice Mobile SDKs to enable Conversations functionality, such as Ratings and Reviews. The Conversations module provides an easy-to-use wrapper around the <a href="https://developer.bazaarvoice.com/apis/conversations/">Conversations API</a>. Contact Bazaarvoice to set up Conversations.</p>
 
-<p class="bg-info well-lg" style="padding:4px;"><i class="fa fa-hand-o-right"></i>  Contact Bazaarvoice about setting up Conversations, and to get your <strong>apiKeyConversations</strong>.</p>
+<p class="bg-info well-lg" style="padding:4px;"><i class="fa fa-hand-o-right"></i>  Important: You will need your <strong>apiKeyConversations</strong> to implement and use Conversations with Mobile SDKs.</p>
 
 </p>
 The completed project for this code walkthrough for Swift and Objective-C is in the SDK path <code>/Examples/Conversations</code>. For a more comprehensive demonstration of the Conversations API, please also see the BVSDKDemo project under <code>/Examples/BVSDKDemo</code>.
@@ -226,14 +226,14 @@ The completed project for this code walkthrough for Swift and Objective-C is in 
 <hr>
 <br>
 
-<p class="bg-warning well-lg" style="padding:4px;"> <i class="fa fa-hand-o-right"></i>  Before you begin implementation of ths module make sure you have verified your installed as details in the <a href="./installation.html">Installation and Configuration page.</a></p>
+<p class="bg-warning well-lg" style="padding:4px;"> <i class="fa fa-hand-o-right"></i>  Important: Before you start implementing this Mobile SDK module, verify your installation by checking the steps on the <a href="./installation.html">Installation and Configuration</a> page.</p>
 
-<h3>Construct the API Request</h3>
-<p>At this point you should have the BVSDK installed and initialized, so we can now make an API call to the Conversations API</p>
+
+<h3>Constructing the API Request</h3>
+<p>After you install and initialize the Bazaarvoice Mobile SDK for iOS, complete the following steps to make an API call to the Conversations API.</p>
 
 <ol>
-	<li>
-		<p>Add the <code>BVDelegate</code> protocol to your view controller</p>
+	<li>Add the <code>BVDelegate</code> protocol to your view controller:<br><br>
 		
 
 		<ul class="nav nav-tabs" role="tablist">
@@ -261,8 +261,7 @@ class ViewController: UIViewController, BVDelegate {
 		<br>
 	</li>
 
-	<li>
-		<p>Fill in the <code>BVDelegate:didReceiveResponse:forRequest:</code> function.</p>
+	<li>Fill in the <code>BVDelegate:didReceiveResponse:forRequest:</code> function:<br><br>
 		<ul class="nav nav-tabs" role="tablist">
 		  <li role="presentation" class="active"><a href="#swift" aria-controls="swift" role="tab" data-toggle="tab">Swift</a></li>
 		  <li role="presentation"><a href="#objc" aria-controls="objc" role="tab" data-toggle="tab">Objective-C</a></li>
@@ -286,8 +285,7 @@ AnyObject!) {
 		<br>
 	</li>
 
-	<li>
-		<p>Make an API call. In the <code>viewDidLoad</code> function of your view controller make an API call to get some reviews:</p>
+	<li>In the <code>viewDidLoad</code> function of your view controller, make an API call to get reviews:<br><br>
 
 
 		<ul class="nav nav-tabs" role="tablist">
@@ -312,26 +310,23 @@ request.sendRequestWithDelegate(self)
 		<br>
 	</li>
 
-	<li>
-		<p>Finally, run the application and check the console for a successful API call.</p>
+	<li>Run the application and check the console for a successful API call, as shown in the following screenshot.<br><br>
 		<img src="ios-img/conv_tut_final_run.png" style="height:480px" class="center-block img-fluid" />
 		<br>
 	</li>
 
-	<li>
-		<p>Referencing the <a href="https://developer.bazaarvoice.com/apis/conversations/">Conversations API</a> is crucial to getting and submitting data to Bazaarvoice correctly.</p>
-		<p>In order the get more familiar with the Conversations module APIs, you should become familiar with the BVGet and BVPost classes which are used to construct all the Conversations API calls. Explore the example projects in the <code>Examples/</code> folder of the SDK from this repository.</p>
-	</li>
+	<li>Referencing the <a href="https://developer.bazaarvoice.com/apis/conversations/">Conversations API</a> is crucial to getting and submitting data to Bazaarvoice correctly.</li></ol>
+		<p>To use Conversations module APIs correctly and efficiently, you should become familiar with the BVGet and BVPost classes that are used to construct all Conversations API calls. For assistance, review the <a href="https://bazaarvoice.github.io/bv-ios-sdk/example_projects.html">Example Projects</a> page.</p>
+	
 
 
-</ol>
 
 
 <div class="well well-sm">
 	<h5>Author</h5>
-	<p>Copyright 2016 Bazaarvoice, Inc. All right reserved.</p>
+	<p>Copyright 2016 Bazaarvoice, Inc. All rights reserved.</p>
 	<h5>License</h5>
-	<p>Use of this SDK is contingent on your agreement and conformance with <a href="http://www.bazaarvoice.com/legal/api-terms-of-use.html">Bazaarvoice's API Terms of Use</a>. Additionally, you agree to store all data acquired by this SDK or Bazaarvoice’s API only within the storage of the individual application instance using the SDK or API. You also agree to use the data acquired by the SDK or API only within the context of the same individual application instance and only for purposes consistent with that application’s purpose. Except as otherwise noted, the Bazaarvoice iOS SDK licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0.html">Apache License, Version 2.0</a>.</p>
+	<p>Use of the Bazaarvoice Mobile SDKs is contingent on your agreement and conformance with <a href="http://www.bazaarvoice.com/legal/api-terms-of-use.html">Bazaarvoice's API Terms of Use</a>. Additionally, you agree to store all data acquired by the SDK or Bazaarvoice's API only within the storage of the individual application instance using the SDK or API. You also agree to use the data acquired by the SDK or API only within the context of the same individual application instance and only for purposes consistent with that application's purpose. Except as otherwise noted, the Bazaarvoice iOS SDK is licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0.html">Apache License, Version 2.0</a>.</p>
 </div>
 <br>
 

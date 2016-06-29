@@ -185,7 +185,7 @@ $(function(){
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="faq_support.html">
-                    <span><i class="m-r-1 fa fa-question-circle"></i>FAQ & Support</span>
+                    <span><i class="m-r-1 fa fa-question-circle"></i>FAQ and Support</span>
                 </a>
             </li>
             <li class="nav-item">
@@ -215,45 +215,44 @@ $(function(){
 	Curations Display
 </div>
 
-<p>This page describes how you can build display your custom Curations content in a Bazaarvoice-subclassed UICollectionView (<code>BVCurationsCollectionView</code>). The UICollectionView and UICollectionView cell wrap the Curations Display API and Bazaarvoice analytics, the latter providing you with rich user-interaction and ROI data. If you are familiar with the inner working of UICollectionView the concepts of creating a <code>BVCurationsCollectionView</code> will be fairly straight forward. However, even if you don't, you should be able to follow the steps below to create a basic Curations Display with your data.</p>
+<p>Use the Curations module of the Bazaarvoice Mobile SDKs to harness a wealth of social media content tailored for your marketing needs, and display it where it can deliver engagement, trust, and conversion: your iOS app.</p>
+<p>You can build and display your custom Curations content in a Bazaarvoice-subclassed UICollectionView (<code>BVCurationsCollectionView</code>). The UICollectionView and UICollectionView cell wrap the Curations Display API and Bazaarvoice analytics, the latter providing you with rich user-interaction and ROI (return on investment) data. If you are familiar with UICollectionView, creating a <code>BVCurationsCollectionView</code> will be fairly straightforward. However, even if you aren't, you should be able to complete the following steps to create a basic Curations display with your data.</p>
+
 </p>
 The completed project for this code walkthrough for Swift and Objective-C is in the SDK path <code>/Examples/Curations</code>.  For a more comprehensive demonstration of the Conversations API, please also see the BVSDKDemo project under <code>/Examples/BVSDKDemo</code>.
 </p>
 
-
-<p class="bg-info well-lg" style="padding:4px;"><i class="fa fa-hand-o-right"></i>  Contact Bazaarvoice about setting up Curations, and to get your <strong>apiKeyCurations</strong>.</p>
+<p class="bg-info well-lg" style="padding:4px;"><i class="fa fa-hand-o-right"></i>  You must have Bazaarvoice Curations enabled to use the Curations module. Contact Bazaarvoice to set up Curations and to get your <strong>apiKeyCurations</strong>.</p>
 
 <hr/>
 <br>
 
-<p class="bg-warning well-lg" style="padding:4px;"> <i class="fa fa-hand-o-right"></i>  Before you begin implementation of ths module make sure you have verified your installed as details in the <a href="./installation.html">Installation and Configuration page.</a></p>
+<p class="bg-warning well-lg" style="padding:4px;"> <i class="fa fa-hand-o-right"></i>  Important: Before you start implementing this Mobile SDK module, verify your installation by checking the steps on the <a href="./installation.html">Installation and Configuration</a> page.</p>
+
 
 <br>
 <h3>Adding a Curations User Interface</h3>
-<p>The BVCurations module provides a <code>BVCurationsCollectionView</code> which hosts the display data from the Curations API. In general all you need to do is subclass a <code>BVCurationsCollectionViewCell</code> with your own implementation and .xib file and then add the content to the <code>BVCurationsCollectionView</code> via the <code>UICollectionViewDataSource</code> protocol messages like you would any <code>UICollectionView</code> object.</p>
+<p>The Curations module provides a <code>BVCurationsCollectionView</code>, which hosts the display data from the Curations API. All you need to do is subclass a <code>BVCurationsCollectionViewCell</code> with your own implementation and .xib file, then add the content to the <code>BVCurationsCollectionView</code> with the <code>UICollectionViewDataSource</code> protocol messages as you would any <code>UICollectionView</code> object.</p>
 
-<p>Using the UI views provided by the BVSDK provide you with all the analytics events necessary for calculating end-user interactions and ROI reporting. Also, because of the flexibility that <code>UICollectionView</code> provides, you can build and display your feed in any grid and flow style you like.</p>
+<p>Using the UI views provided by the Mobile SDK provides you with all the analytics events necessary for calculating end-user interactions and ROI reporting. Also, because of the flexibility that <code>UICollectionView</code> provides, you can build and display your feed in any grid and flow style you like.</p>
 
 <br>
 <h3>Example</h3>
-<p>The following example will produce a scrollable grid with a Curations feed, similar to the one below:</p>
+<p>The following example produces a scrollable grid with a Curations feed, similar to the following screenshot:</p>
 <img src="ios-img/curations_display/curations_tutorial_complete.png" style="height:240px;" class="center-block img-fluid" />
 <br>
 
-<h5>First, we will create a subclass of BVCurationsCollectionViewCell</h5>
-<ul>
-	<li>
-		<p>Create a <code>BVCurationsCollectionViewCell</code> from <strong> File > New > File</strong></p>
+<h5>Create a subclass of BVCurationsCollectionViewCell.</h5>
+<ol>
+	<li>Create a <code>BVCurationsCollectionViewCell</code> from <strong> File > New > File</strong>, as shown in the following screenshot.<br><br>
 		<img src="ios-img/curations_display/curations_cocoa_touch.png" style="height:150px;" class="center-block img-fluid" />
 		<br>
-
-		<p>Name the class <code>DemoCollectionViewCell</code> and subclass from <code>
-		BVCurationsCollectionViewCell</code>:</p>
+</li>
+		<li>Name the class <code>DemoCollectionViewCell</code> and subclass from <code>
+		BVCurationsCollectionViewCell</code>, as shown in the following screenshot.<br><br>
 		<img src="ios-img/curations_display/curations_demo_cell.png" style="height:320px;" class="center-block img-fluid" />
 	</li>
-	<li>
-		<p>Add a <code>UIImageView</code> outlet called <strong>feedImageView</strong>:</p>
-		<p>We'll use the <code>didSet</code> override to configure the UI when <code>feedItem</code> is set. Your <code>DemoCollectionViewCell</code> should look like:</p>
+	<li>Add a <code>UIImageView</code> outlet called <strong>feedImageView</strong>. Use the <code>didSet</code> override to configure the UI when <code>feedItem</code> is set. Your <code>DemoCollectionViewCell</code> should look like the following example:<br><br>
 
 
 <ul class="nav nav-tabs" role="tablist">
@@ -319,33 +318,28 @@ class DemoCollectionViewCell: BVCurationsCollectionViewCell {
 </div>
 
         <br>
-        <p class="bg-info well-lg" style="padding:4px;"><i class="fa fa-hand-o-right"></i>  TIP: This implementation is a minimal UI for a <strong>BVCurationsFeedItem</strong> object. You can add more elements and customize the view to your wildest dreams!</p>
+        <p class="bg-info well-lg" style="padding:4px;"><i class="fa fa-hand-o-right"></i>  Tip: This implementation is a minimal UI for a <strong>BVCurationsFeedItem</strong> object. You can add more elements and customize the UI extensively.</p>
 
 	</li>
+	<li>Create the view: <strong>File > New > File</strong> and select:<br><br>
+		<img src="ios-img/curations_display/source_view.png" style="height:180px;" class="center-block img-fluid" /><br><br>
+	
+	Name the view <code>DemoCollectionViewCell</code>.</li>
 	<li>
-		<p>Create the view: <strong>File > New > File</strong> and select:</p>
-		<img src="ios-img/curations_display/source_view.png" style="height:180px;" class="center-block img-fluid" />
-	</li>
-	<p>Name the view <code>DemoCollectionViewCell</code></p>
-	<li>
-		<p>Now that you have <code>DemoCollectionViewCell.xib</code> created you need to:</p>
+	After you create <code>DemoCollectionViewCell.xib</code>, complete the following steps:<br><br>
 		<ul>
-			<li>
-				<p>Add a <code>UICollectionViewCell</code> and set its height and width to 250</p>
+			<li>Add a <code>UICollectionViewCell</code> and set its height and width to 250.
 			</li>
-			<li>
-				<p>Delete the existing <code>UIView</code> (on the left in this picture), we do not need that.</p>
+			<li>Delete the existing <code>UIView</code>, located on the left in the following screenshot.<br><br>
 				<img src="ios-img/curations_display/add_cell_nib.png" style="height:420px;" class="center-block img-fluid" />
 			</li>
 			
 		</ul>
 	</li>
-	<li>
-		<p>We can add a <code>UIImageView</code> to the <code>.xib</code>. Using the pin tool, pin it to all sides of the cell:</p>
+	<li>Add a <code>UIImageView</code> to the <code>.xib</code>. Using the pin tool, pin it to all sides of the cell:<br><br>
 		<img src="ios-img/curations_display/cell_add_imageview.png" style="height:340px;" class="center-block img-fluid" />
 	</li>
-	<li>
-		<p>Set the <strong>Custom Class</strong> of the <code>.xib</code> to be <code>DemoCollectionViewCell</code>:</p>
+	<li>Set the <strong>Custom Class</strong> of the <code>.xib</code> to be <code>DemoCollectionViewCell</code>:<br><br>
 		<img src="ios-img/curations_display/custom_class.png" style="height:280px;" class="center-block img-fluid" />
 	</li>
     <li>
@@ -353,38 +347,34 @@ class DemoCollectionViewCell: BVCurationsCollectionViewCell {
         <img src="ios-img/curations_display/reuse_identifier.png" style="height:300px;" class="center-block img-fluid" />
     </li>
 	<li>
-		<p>Now we have to connect the <code>UIImageView</code> to the <code>feedImageView</code> outlet in the source file. Select the <strong>Assistant Editor</strong> and connect the outlet:</p>
+		<p>Connect the <code>UIImageView</code> to the <code>feedImageView</code> outlet in the source file. Select the <strong>Assistant Editor</strong> and connect the outlet:</p>
 		<img src="ios-img/curations_display/connect_cell_outlet.png" style="height:380px;" class="center-block img-fluid" />
 	</li>
-</ul>
+</ol>
 
-<h5>Add the UICollectionView to your ViewController</h5>
-<ul>
-	<li>
-		<p>Open your view controller in your <code>Main.storyboard</code> file. Then, drag and drop a <code>UICollectionView</code> object onto the View Controller.</p>
+<h5>Add the UICollectionView to your ViewController.</h5>
+<ol>
+	<li>Open your view controller in your <code>Main.storyboard</code> file. Drag and drop a <code>UICollectionView</code> object onto the View Controller:<br><br>
 		<img src="ios-img/curations_display/add_collection_view.png" style="height:340px;" class="center-block img-fluid" />
 	</li>
-	<li>
-		<p>Make the <code>UICollectionView</code> you just added full screen by pinning the edges to the parent container on all 4 sides:</p>
+	<li>Make the <code>UICollectionView</code> you just added full-screen by pinning the edges to the parent container on all four sides:<br><br>
 		<img src="ios-img/curations_display/collection_view_full_screen.png" style="height:340px;" class="center-block img-fluid" />
 	</li>
-	<li>
-		<p>Set the <strong>Custom Class</strong> to <code>BVCurationsCollectionView</code></p>
+	<li>Set the <strong>Custom Class</strong> to <code>BVCurationsCollectionView</code>:<br><br>
 		<img src="ios-img/curations_display/collection_view_custom_class.png" style="height:200px;" class="center-block img-fluid" />
 	</li>
-	<li>
-		<p>Now with the <strong>Assistant Editor</strong> displaying the ViewController source, connect the <code>BVCurationsCollectionView</code> to the source code:</p>
+	<li>With the <strong>Assistant Editor</strong> displaying the ViewController source, connect the <code>BVCurationsCollectionView</code> to the source code:<br><br>
 		<img src="ios-img/curations_display/collection_view_outlet.png" style="height:360px;" class="center-block img-fluid" />
-		<br>
-		<p>And name the outlet <code>curationsCollectionView</code></p>
+		<br><br>
+		<p>Name the outlet <code>curationsCollectionView</code>:<br><br>
 		<img src="ios-img/curations_display/collection_view_outlet_name.png" style="height:180px;" class="center-block img-fluid" />
 	</li>
 
-</ul>
+</ol>
 
-<h5>Finally, put it all together in the ViewController.</h5>
-<p>Once you have <code>BVCurationsCollectionView</code> set up and the <code>BVCurationsCollectionViewCell</code> source and .xib file ready, all you need to do is hook them up in your ViewController. The ViewController below exemplifies what a very minimal configuration would look like to draw a feed from the Curations API and handle a tap event on an item. Since <code>BVCurationsCollectionView</code> is configurable as a UICollectionView you can embed them anywhere it makes sense in your application's UX.</p>
-<p>The completed <code>ViewController</code> so you can see the full detail.</p>
+<h5>Assemble everything in the ViewController.</h5>
+<p>After you set up <code>BVCurationsCollectionView</code> and have the <code>BVCurationsCollectionViewCell</code> source and .xib file ready, all you need to do is connect them in your ViewController. The following ViewController exemplifies what a very minimal configuration would look like to draw a feed from the Curations API and handle a tap event on an item. Since <code>BVCurationsCollectionView</code> is configurable as a UICollectionView, you can embed them anywhere it makes sense in your application's user interface.</p>
+<p>The following example shows the completed <code>ViewController</code> in full detail.</p>
 
 
 <ul class="nav nav-tabs" role="tablist">
@@ -574,20 +564,18 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
 	</div>
 </div>
 
-
-
 <br>
-<h5>Run it!</h5>
-<p>The app should populate the collection view with the Curations group feed. Some styling will be needed to look good, however <i class="fa fa-smile-o"></i></p>
+<h5>Run the application</h5>
+<p>The app should populate the collection view with the Curations display. Although the app should run correctly, it will still need styling to look professional. </p>
 <img src="ios-img/curations_display/final_project.png" style="height:460px;" class="center-block img-fluid" />
 <br>
 
 
 <div class="well well-sm">
 	<h5>Author</h5>
-	<p>Copyright 2016 Bazaarvoice, Inc. All right reserved.</p>
+	<p>Copyright 2016 Bazaarvoice, Inc. All rights reserved.</p>
 	<h5>License</h5>
-	<p>Use of this SDK is contingent on your agreement and conformance with <a href="http://www.bazaarvoice.com/legal/api-terms-of-use.html">Bazaarvoice's API Terms of Use</a>. Additionally, you agree to store all data acquired by this SDK or Bazaarvoice’s API only within the storage of the individual application instance using the SDK or API. You also agree to use the data acquired by the SDK or API only within the context of the same individual application instance and only for purposes consistent with that application’s purpose. Except as otherwise noted, the Bazaarvoice iOS SDK licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0.html">Apache License, Version 2.0</a>.</p>
+	<p>Use of the Bazaarvoice Mobile SDKs is contingent on your agreement and conformance with <a href="http://www.bazaarvoice.com/legal/api-terms-of-use.html">Bazaarvoice's API Terms of Use</a>. Additionally, you agree to store all data acquired by the SDK or Bazaarvoice's API only within the storage of the individual application instance using the SDK or API. You also agree to use the data acquired by the SDK or API only within the context of the same individual application instance and only for purposes consistent with that application's purpose. Except as otherwise noted, the Bazaarvoice iOS SDK is licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0.html">Apache License, Version 2.0</a>.</p>
 </div>
 <br>
 

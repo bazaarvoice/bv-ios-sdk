@@ -19,7 +19,7 @@ $(function(){
 
 	// select the tab in the sidebar to reflect current page position
 
-	var tabName = "FAQ & Support";
+	var tabName = "FAQ and Support";
 
 	$('.nav-link.active').removeClass('active');
 	console.log('active tab: ', tabName);
@@ -67,7 +67,7 @@ $(function(){
 
     ga('create', 'UA-56370630-4', 'auto');
     ga('set', {
-      title: 'FAQ & Support'
+      title: 'FAQ and Support'
     });
     ga('send', 'pageview');
   </script>
@@ -185,7 +185,7 @@ $(function(){
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="faq_support.html">
-                    <span><i class="m-r-1 fa fa-question-circle"></i>FAQ & Support</span>
+                    <span><i class="m-r-1 fa fa-question-circle"></i>FAQ and Support</span>
                 </a>
             </li>
             <li class="nav-item">
@@ -212,24 +212,20 @@ $(function(){
               <div class="page-container">
 
                 <div class="flex flex-row" id="content_title">
-	FAQ & Support
+	FAQ and Support
 </div>
 <hr>
 <h3>Frequently Asked Questions</h3>
 <br>
-<ul>
-	<li>
-		<h5 class="question">Does the BVSDK Use IDFA?</h5>
-		<p class="answer">Yes, the IDFA is used for both the BVAdvertising and BVRecommendations modules. The BVSDK will check if the user has "Limit Ad Tracking" enabled, and respects it if enabled.</p>
-		<p class="answer">Any applications using the BVAdvertising or BVRecommendations modules will need to submit their applications via iTunes Connect letting Apple know that IDFA is using for targeted advertising.</p>
-	</li>
-	<li>
-		<h5 class="question">How do I migrate from BVSDK 3 to BVSDK 4?</h5>
-		<p>There are only a few changes necessary for migrating to version 4 of BVSDK:</p>
+<h5 class="question">Does the Bazaarvoice Mobile SDK use IDFA?</h5>
+		<p class="answer">Yes, the SDK uses IDFA for both the Advertising and Product Recommendations modules. The SDK checks whether the user has "Limit Ad Tracking" enabled, and respects the option if enabled.</p>
+		<p class="answer">If you use the Advertising module and/or the Product Recommendations module, you must submit applications via iTunes Connect, letting Apple know that the app uses IDFA for targeted advertising.</p>
+	
+<h5 class="question">How do I migrate from version 3 to version 4 of the Mobile SDK?</h5>
+		<p>Only a few changes are necessary to upgrade to version 4 of the Mobile SDK:</p>
 		<ul>
-			<li>
-				<p><strong>Product recommendations</strong>: the BVRecommendations and BVRecommendationsUI modules has been combined into one: BVRecommendations.</p>
-				<p>The usage pattern for product recommendations has changed from:</p>
+			<li><strong>Product Recommendations</strong>&#8212;The BVRecommendations and BVRecommendationsUI modules are now combined into the Product Recommendations module.</p>
+				<p>Also, the Product Recommendations usage pattern has changed. Version 3 separated callbacks (success and failure) along with the removal of <code>BVGetShopperProfile</code>:</p>
 
 
 <ul class="nav nav-tabs" role="tablist">
@@ -253,7 +249,7 @@ shopperProfileAPI.fetchProductRecommendations(25, withInterest: nil) { (profile,
         print("error: \(error?.localizedDescription)")
     }
 }</code></pre>
-				<p>To separate callbacks (success and failure) along with the removal of <code>BVGetShopperProfile</code>. Now, recommendations are fetched from within the view container object, as shown below:</p>
+				<p>In version 4, recommendations are fetched from within the view container object:</p>
 <pre><code class="swift">@IBOutlet weak var recommendationsView : BVProductRecommendationsCollectionView! 
 
 // ...
@@ -288,7 +284,7 @@ self.recommendationsView.loadRequest(request, completionHandler: { (recommendati
     }
     
 }];</code></pre>
-				<p>To separate callbacks (success and failure) along with the removal of <code>BVGetShopperProfile</code>. Now, recommendations are fetched from within the view container object, as shown below:</p>
+				<p>In version 4, recommendations are fetched from within the view container object:</p>
 <pre><code class="objectivec">BVProductRecommendationsCollectionView* carouselView = [[BVProductRecommendationsCollectionView alloc] init];
     
 BVRecommendationsRequest* request = [[BVRecommendationsRequest alloc] initWithLimit:20];
@@ -309,19 +305,16 @@ BVRecommendationsRequest* request = [[BVRecommendationsRequest alloc] initWithLi
 			</li>
 			
 			<li>
-				<p><strong>Targeted Advertising</strong>: BVSDK 4.0 removes the dependency on Google's DFP SDK completely. This greatly simplifies things in this SDK and in your app. Please see <a href="advertising.html#Upgrading"> for detailed instructions on the upgrade process</a>.</p>
+				<p><strong>Targeted Advertising</strong>&#8212;Version 4 of the Mobile SDK removes the dependency on Google's DFP SDK completely, making the SDK easier to implement. Refer to the Upgrading section of the <a href="advertising.html#Upgrading">Advertising</a> page for detailed instructions.</p>
 			</li>
 		</ul>
-	</li>
-	<li>
-		<h5 class="question">How do I migrate from BVSDK 2?</h5>
-		<p>BVSDK V2 is included in this SDK, largely unchanged, as the <code>Conversations</code> module. To upgrade from BVSDK V2:</p>	
-		<ul>
-			<li>
-				<p>Update your installation by installing via Cocoapods, as described in the <a href="installation.html">installation instructions</a>.</p>
+	
+		<h5 class="question">How do I migrate from version 2 to version 4 of the Mobile SDK?</h5>
+		<p>Version 2 is included in the latest Mobile SDK as the <code>Conversations</code> module, with few changes. Complete the following instructions to upgrade from version 2:</p>	
+		<ol>
+			<li>Use the <a href="installation.html">installation instructions</a> to update your installation with Cocoapods.
 			</li>
-			<li>
-				<p>Modify your import statements to be:</p>
+			<li>Modify your import statements:<br><br>
 
 
 
@@ -344,8 +337,7 @@ BVRecommendationsRequest* request = [[BVRecommendationsRequest alloc] initWithLi
 
 
 			</li>
-			<li>
-				<p>The SDK initialization inside your <code>AppDelegate</code> file should be changed to look as follows:</p>
+			<li>Modify the SDK initialization inside your <code>AppDelegate</code> file:<br><br>
 
 
 
@@ -372,25 +364,23 @@ BVSDKManager.sharedManager().apiKeyConversations = "YOUR_CONVERSATIONS_API_KEY"<
 
 
 			</li>
-		</ul>
-	</li>
-</ul>
+		</ol>
+	
 <br>
 
 <h3>Support</h3>
-<p>Have problems/questions implementing this SDK? Contact <a href="mailto:mobilecoreteam@bazaarvoice.com">Mobile Development at Bazaarvoice</a>!</p>
-<p>If you have any questions with licensing or general configuration of the Conversations API, please contact <a href="mailto:support@bazaarvoice.com">Bazaarvoice Support</a>.</p>
-<h5>Pull Requests & Issue Tracking</h5>
-<p>If you have any particular enhancements you would like to contribute to the BVSDK, feel free to fork this repository and and create a pull request!</p>
-<p>If you have other general enhancements or requests feel free to drop a request in the Github issue tracker for this repository.</p>
+<p>If you have problems/questions implementing the Mobile SDK, contact <a href="mailto:mobilecoreteam@bazaarvoice.com">Mobile Development at Bazaarvoice</a>.</p>
+<p>If you have questions about licensing or general configuration of the Conversations API, contact <a href="mailto:support@bazaarvoice.com">Bazaarvoice Client Care</a>.</p>
+<h5>Pull Requests and Issue Tracking</h5>
+<p>If you would like to contribute specific enhancements to the Mobile SDKs, feel free to fork this repository and and create a pull request. For general enhancements or requests, you can drop a request in the GitHub issue tracker for this repository.</p>
 <br>
 
 
 <div class="well well-sm">
 	<h5>Author</h5>
-	<p>Copyright 2016 Bazaarvoice, Inc. All right reserved.</p>
+	<p>Copyright 2016 Bazaarvoice, Inc. All rights reserved.</p>
 	<h5>License</h5>
-	<p>Use of this SDK is contingent on your agreement and conformance with <a href="http://www.bazaarvoice.com/legal/api-terms-of-use.html">Bazaarvoice's API Terms of Use</a>. Additionally, you agree to store all data acquired by this SDK or Bazaarvoice’s API only within the storage of the individual application instance using the SDK or API. You also agree to use the data acquired by the SDK or API only within the context of the same individual application instance and only for purposes consistent with that application’s purpose. Except as otherwise noted, the Bazaarvoice iOS SDK licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0.html">Apache License, Version 2.0</a>.</p>
+	<p>Use of the Bazaarvoice Mobile SDKs is contingent on your agreement and conformance with <a href="http://www.bazaarvoice.com/legal/api-terms-of-use.html">Bazaarvoice's API Terms of Use</a>. Additionally, you agree to store all data acquired by the SDK or Bazaarvoice's API only within the storage of the individual application instance using the SDK or API. You also agree to use the data acquired by the SDK or API only within the context of the same individual application instance and only for purposes consistent with that application's purpose. Except as otherwise noted, the Bazaarvoice iOS SDK is licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0.html">Apache License, Version 2.0</a>.</p>
 </div>
 <br>
 

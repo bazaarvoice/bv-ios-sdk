@@ -185,7 +185,7 @@ $(function(){
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="faq_support.html">
-                    <span><i class="m-r-1 fa fa-question-circle"></i>FAQ & Support</span>
+                    <span><i class="m-r-1 fa fa-question-circle"></i>FAQ and Support</span>
                 </a>
             </li>
             <li class="nav-item">
@@ -215,9 +215,9 @@ $(function(){
 	iOS 9 Considerations
 </div>
 <hr>
-<p>Apple introduced <a href="https://developer.apple.com/library/prerelease/ios/releasenotes/General/WhatsNewIniOS/Articles/iOS9.html#//apple_ref/doc/uid/TP40016198-SW14">App Transport Security (ATS)</a> in iOS 9. This requires apps to use <code>https://</code> only, to enhance security. This SDK uses only <code>https://</code> however, some data returned may not. For example, a product image URL or Advertisement creative. If this is the case, ATS may need to be disabled for your image hosting domain.</p>
+<p>Apple introduced <a href="https://developer.apple.com/library/prerelease/ios/releasenotes/General/WhatsNewIniOS/Articles/iOS9.html#//apple_ref/doc/uid/TP40016198-SW14">App Transport Security (ATS)</a> in iOS 9. ATS requires apps to use <code>https://</code> only, to enhance security. The Bazaarvoice Mobile SDK for iOS uses only <code>https://</code>, but some data returned might not include this protocol. For example, a product image URL associated with an ad might use <code>http://</code>. If this occurs, you might need to disable ATS for your image hosting domain.</p>
 
-<p>In order to ensure proper functionality, ATS can be disabled by adding the the following XML to your project's <code>Info.plist</code> file:</p>
+<p>To ensure your Mobile SDK integration works correctly, disable ATS by adding the following XML to your app's <code>Info.plist</code> file:</p>
 
 <pre><code class="xml">&lt;key&gt;NSAppTransportSecurity&lt;/key&gt;
 &lt;dict&gt;
@@ -226,15 +226,15 @@ $(function(){
 &lt;/dict&gt;
 </code></pre>
 <br>
-<p>Note: the sample above should only be used for initial testing and development. For your production application, you should have a whitelisted set of domains under the <code>NSExceptionDomains</code> key.</p>
+<p>Note: Use the above sample only for initial testing and development. For your production application, you should include a whitelisted set of domains under the <code>NSExceptionDomains</code> key.</p>
 <br>
 
 
 <div class="well well-sm">
 	<h5>Author</h5>
-	<p>Copyright 2016 Bazaarvoice, Inc. All right reserved.</p>
+	<p>Copyright 2016 Bazaarvoice, Inc. All rights reserved.</p>
 	<h5>License</h5>
-	<p>Use of this SDK is contingent on your agreement and conformance with <a href="http://www.bazaarvoice.com/legal/api-terms-of-use.html">Bazaarvoice's API Terms of Use</a>. Additionally, you agree to store all data acquired by this SDK or Bazaarvoice’s API only within the storage of the individual application instance using the SDK or API. You also agree to use the data acquired by the SDK or API only within the context of the same individual application instance and only for purposes consistent with that application’s purpose. Except as otherwise noted, the Bazaarvoice iOS SDK licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0.html">Apache License, Version 2.0</a>.</p>
+	<p>Use of the Bazaarvoice Mobile SDKs is contingent on your agreement and conformance with <a href="http://www.bazaarvoice.com/legal/api-terms-of-use.html">Bazaarvoice's API Terms of Use</a>. Additionally, you agree to store all data acquired by the SDK or Bazaarvoice's API only within the storage of the individual application instance using the SDK or API. You also agree to use the data acquired by the SDK or API only within the context of the same individual application instance and only for purposes consistent with that application's purpose. Except as otherwise noted, the Bazaarvoice iOS SDK is licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0.html">Apache License, Version 2.0</a>.</p>
 </div>
 <br>
 

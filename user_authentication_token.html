@@ -185,7 +185,7 @@ $(function(){
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="faq_support.html">
-                    <span><i class="m-r-1 fa fa-question-circle"></i>FAQ & Support</span>
+                    <span><i class="m-r-1 fa fa-question-circle"></i>FAQ and Support</span>
                 </a>
             </li>
             <li class="nav-item">
@@ -215,20 +215,20 @@ $(function(){
 	User Authentication Token
 </div>
 <hr>
-<p>Both the BVAdvertising and BVRecommendations modules support adding an authenticated user for shopper profile matching.</p>
-<p>Once a user is authenticated inside your user login workflow, the user authentication token can be set via <code>BVSDKManager#setUserWithAuthString()</code>.</p>
+<p>Both the Advertising and Product Recommendations modules sof the Bazaarvoice Mobile SDKs support adding an authenticated user for shopper profile matching.</p>
+<p>After a user is authenticated inside your user login workflow, use <code>BVSDKManager#setUserWithAuthString()</code> to set up the user authentication token.</p>
 
 
-<p class="bg-info well-lg" style="padding:4px;"><i class="fa fa-hand-o-right"></i>  Note: the authentication token created with your existing Bazaarvoice implementation logic needs to be provided to the BVSDKManager. However, the steps to encrypt your authentication token are still applicable even if you are not a Conversations client.</p>
+<p class="bg-info well-lg" style="padding:4px;"><i class="fa fa-hand-o-right"></i>  Note: The authentication token created with your existing Bazaarvoice implementation logic needs to be provided to the BVSDKManager. However, the steps to encrypt your authentication token are still applicable even if you are not a Conversations client.</p>
 
 
 <br>
-<h5>Adding information about the user</h5>
-<p>The user auth string is an encrypted query string. In the documentation above, <code>date=2007­0527&userid=ID12345</code> is used as an example. This is then encrypted/signed appropriately, for security. You should add information (such as identity, demographics) in this query string, for example: <code>date=2007­0527&userid=ID12345&facebookId=abc123&age=28&gender=female</code>. Allowed keys (userid, gender, age, etc) are defined in <code>BVAuthenticatedUser.h</code> This information can then be safely passed like the examples below:</p>
+<h5>Adding User Information</h5>
+<p>The user auth string is an encrypted query string, such as <code>date=2007­0527&userid=ID12345</code>. This string is then encrypted/signed appropriately for security. Add information such as identity, demographics in this query string, for example:</p><p> <code>date=2007­0527&userid=ID12345&facebookId=abc123&age=28&gender=female</code></p><p> Allowed keys such as userid, gender, and age are defined in <code>BVAuthenticatedUser.h</code>. This information can then be safely passed, as shown in the following example auth string.</p>
 
 <br>
-<h5>Example Auth String - for testing purposes</h5>
-<p>This profile below interested in "pets", "powersports", "gamefish" and others. See the Contextual Interests section below for further explanation.</p>
+<h5>Example Auth String for Testing</h5>
+<p>The user's interests in the following profile includde "pets", "powersports", and "gamefish". Refer to the the Determining Contextual Interests section of the <a href="https://bazaarvoice.github.io/bv-ios-sdk/advertising.html">Advertising</a> page for a detailed explanation.</p>
 <ul class="nav nav-tabs" role="tablist">
 	<li role="presentation" class="active"><a href="#swift" aria-controls="swift" role="tab" data-toggle="tab">Swift</a></li>
 	<li role="presentation"><a href="#objc" aria-controls="objc" role="tab" data-toggle="tab">Objective-C</a></li>
@@ -250,15 +250,15 @@ BVSDKManager.sharedManager().setUserWithAuthString("0ce436b29697d6bc74f30f724b9b
 </div>
 <br>
 
-<p>Once <code>setAuthenticatedUser</code> has been called from the <code>BVSDKManager</code>, Bazaarvoice's back-end systems will begin matching data to this user's profile. This process is near real-time, but not instant. The SDK will poll to update the user profile and should reflect the user's interests within seconds.</p>
+<p>After <code>setAuthenticatedUser</code> has been called from the <code>BVSDKManager</code>, Bazaarvoice will begin matching data to this user's profile. The process runs nearly in real-time, but is not instant. The Mobile SDK will poll to update the user profile and should reflect the user's interests within seconds.</p>
 <br>
 
 
 <div class="well well-sm">
 	<h5>Author</h5>
-	<p>Copyright 2016 Bazaarvoice, Inc. All right reserved.</p>
+	<p>Copyright 2016 Bazaarvoice, Inc. All rights reserved.</p>
 	<h5>License</h5>
-	<p>Use of this SDK is contingent on your agreement and conformance with <a href="http://www.bazaarvoice.com/legal/api-terms-of-use.html">Bazaarvoice's API Terms of Use</a>. Additionally, you agree to store all data acquired by this SDK or Bazaarvoice’s API only within the storage of the individual application instance using the SDK or API. You also agree to use the data acquired by the SDK or API only within the context of the same individual application instance and only for purposes consistent with that application’s purpose. Except as otherwise noted, the Bazaarvoice iOS SDK licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0.html">Apache License, Version 2.0</a>.</p>
+	<p>Use of the Bazaarvoice Mobile SDKs is contingent on your agreement and conformance with <a href="http://www.bazaarvoice.com/legal/api-terms-of-use.html">Bazaarvoice's API Terms of Use</a>. Additionally, you agree to store all data acquired by the SDK or Bazaarvoice's API only within the storage of the individual application instance using the SDK or API. You also agree to use the data acquired by the SDK or API only within the context of the same individual application instance and only for purposes consistent with that application's purpose. Except as otherwise noted, the Bazaarvoice iOS SDK is licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0.html">Apache License, Version 2.0</a>.</p>
 </div>
 <br>
 

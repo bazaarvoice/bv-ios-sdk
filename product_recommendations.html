@@ -185,7 +185,7 @@ $(function(){
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="faq_support.html">
-                    <span><i class="m-r-1 fa fa-question-circle"></i>FAQ & Support</span>
+                    <span><i class="m-r-1 fa fa-question-circle"></i>FAQ and Support</span>
                 </a>
             </li>
             <li class="nav-item">
@@ -215,68 +215,69 @@ $(function(){
 	Product Recommendations
 </div>
 
-<p><span class="bg-warning well-lg" style="padding:4px;"> <i class="fa fa-hand-o-right"></i>  Product recommendations is currently in a limited beta release. If you'd like to participate, please contact <a href="mailto:mobilecoreteam@bazaarvoice.com">Bazarvoice.</a></span></p>
+<p><span class="bg-warning well-lg" style="padding:4px;"> <i class="fa fa-hand-o-right"></i>The Product Recommendations module is currently in limited beta release. If you'd like to participate, contact <a href="mailto:mobilecoreteam@bazaarvoice.com">Bazaarvoice.</a></span></p>
 
-<p>This guide shows how to implement Product Recommendations in your app. The general walkthrough shows you Swift and Objective-C implementation for displaying Product Recommendations in a <code>UICollectonView</code>. If you are familiar with the design pattern of timplementing a <code>UICollectionView</code> or <code>UITableView</code> in iOS, implementing Bazaarvoice Product Recommendations will be a straightforward process.<p/>
+<p>Use the following guide to fetch and display product recommendations in your iOS app with Bazaarvoice Mobile SDKs. The instructions include Swift and Objective-C implementation to display Product Recommendations in a <code>UICollectonView</code>. If you are familiar with the design pattern of implementing a <code>UICollectionView</code> or <code>UITableView</code> in iOS, implementing the Product Recommendations module should be straightforward.</p>
 
 The completed project for this code walkthrough for Swift and Objective-C is in the SDK path <code>/Examples/ProductRecommendations</code>. For a more comprehensive demonstration of the Conversations API, please also see the BVSDKDemo project under <code>/Examples/BVSDKDemo</code>.
-
 </p>
+
 <hr>
 
-<p class="bg-warning well-lg" style="padding:4px;"> <i class="fa fa-hand-o-right"></i>  Before you begin implementation of ths module make sure you have verified your installed as details in the <a href="./installation.html">Installation and Configuration page.</a></p>
+<p class="bg-warning well-lg" style="padding:4px;"> <i class="fa fa-hand-o-right"></i>  Important: Before you start implementing this Mobile SDK module, verify your installation by checking the steps on the <a href="./installation.html">Installation and Configuration</a> page.</p>
+
 
 <hr>
 
 <h3>Set User Information</h3>
 <p>
-	Once a user is authenticated inside your user login workflow, set user information inside the <code>BVSDKManager#sharedManager()</code> object.
+	After a user is authenticated inside your user login workflow, set user information inside the <code>BVSDKManager#sharedManager()</code> object.
 </p>
 
-<p class="bg-info well-lg" style="padding:4px;"><i class="fa fa-hand-o-right"></i>  Note: the userAuthString created with your existing Bazaarvoice implementation logic needs to be given to the <strong>BVSDKManager</strong> object. However, the steps to encrypt your userAuthString are still applicable even if you are not a Conversations client.</p>
+<p class="bg-info well-lg" style="padding:4px;"><i class="fa fa-hand-o-right"></i>  Note: You must give the userAuthString created with your existing Bazaarvoice implementation logic to the <strong>BVSDKManager</strong> object. However, the steps to encrypt your userAuthString are applicable even if you are not a Conversations client.</p>
 
-<h5>Example Authentication String - for testing purposes</h5>
+<h5>Example Authentication String for Testing</h5>
 <p>
-	If you don't have an authorization token set up yet, please refer to the example in <a href="./user_authentication_token.html">User Authentication Token</a>.
+	If you haven't yet set up an authorization token, use the <a href="./user_authentication_token.html">User Authentication Token</a> example.
 </p>
 
-<h3>Showing some product recommendations</h3>
-<p>Product Recommendations are simply views presented to users. They're shown using the same classes you already use in your storyboards, and can be formatted to match your app's visual design. When a set of product recommendations load, your app will receive an array of <code>BVProduct</code> objects that contains its assets, and the app (rather than the SDK) is then responsible for displaying each <code>BVProduct</code> object.</p>
+<h3>Displaying product recommendations</h3>
+<p>Product recommendations are simply views presented to users. Use the classes you already use in your storyboards to display the recommendations. You can format them to match your app's visual design. When a set of product recommendations loads, your app receives an array of <code>BVProduct</code> objects that contains its assets, and the app (rather than the SDK) is then responsible for displaying each <code>BVProduct</code> object.</p>
 <h5>Built-in views</h5>
-<p>BVSDK provides the following view containers to show multiple product recommendations:</p>
+<p>THe Bazaarvoice Mobile SDK provides the following view containers to show multiple product recommendations:</p>
 <ul>
 	<li><code>BVProductRecommendationsCollectionView</code></li>
 	<li><code>BVProductRecommendationsTableView</code></li>
 	<li><code>BVProductRecommendationsContainer</code></li>
 </ul>
-<p>These classes should be used as the base view for the container you show your product recommendations in. BVSDK also provides the following view objects to show a single product recommendation:</p>
+<p>Use the above classes as the base view for the container where you show your product recommendations. The Mobile SDK also provides the following view objects to show a single product recommendation:</p>
 <ul>
 	<li><code>BVRecommendationCollectionViewCell</code></li>
 	<li><code>BVRecommendationTableViewCell</code></li>
 	<li><code>BVProductRecommendationView</code></li>
 </ul>
-<p>Similarly, these classes should be used as the base class of the view you show the product recommendation in.</p>
+<p>Use the above classes as the base class of the view where you show the product recommendation.</p>
 <br>
 
 <h3>Example usage</h3>
-<p>Let's run through an example implementation of BVProductRecommendationsCollectionView. Following this example will produce a scrollable view of product recommendations, as shown below:</p>
+<p>The following example shows an implementation of BVProductRecommendationsCollectionView. Follow this example to produce a scrollable view of product recommendations:</p>
 <img src="ios-img/carousel.gif" style="height:200px;" class="center-block img-fluid" />
 <br>
 <br>
 
-<h5>First, we want to create a subclass of <code>BVRecommendationCollectionViewCell</code>, called <code>DemoCell</code>	</h5>
+<h5>First, complete the following steps to create a subclass of <code>BVRecommendationCollectionViewCell</code> called <code>DemoCell</code></h5>
 <ol>
 	<li>
-		<p>Create a <code>UICollectionViewCell</code> by selecting <strong>File > New > File</strong></p>
+		<p>Create a <code>UICollectionViewCell</code> by selecting <strong>File > New > File</strong></p>.
 		<img src="ios-img/NewFile.png" style="height:400px" class="center-block img-fluid" />
 		<br>
 		<img src="ios-img/DemoCell.png" style="height:400px" class="center-block img-fluid" />
 	</li>
 	<br>
 	<li>
-		<p>Set its superclass as <code>BVRecommendationCollectionViewCell</code> in the <code>DemoCell</code> file, and add appropriate view outlets:</p>
+		<p>Use the following code to set its superclass as <code>BVRecommendationCollectionViewCell</code> in the <code>DemoCell</code> file, and add appropriate view outlets.</p>
 
-<p class="bg-info well-lg" style="padding:4px;"><i class="fa fa-hand-o-right"></i>  The starRating object in this example is done with the open source project HCSStarRatingView</p>
+<p class="bg-info well-lg" style="padding:4px;"><i class="fa fa-hand-o-right"></i>  Note: The starRating object in this example is done with the open-source project HCSStarRatingView.</p>
 
 		<ul class="nav nav-tabs" role="tablist">
   <li role="presentation" class="active"><a href="#swift" aria-controls="swift" role="tab" data-toggle="tab">Swift</a></li>
@@ -357,24 +358,24 @@ class DemoCell: BVRecommendationCollectionViewCell {
 		</div>
 
 		<br>
-		<p class="bg-info well-lg" style="padding:4px;"><i class="fa fa-hand-o-right"></i>  Tip: the DemoCell outlets above are suggestions for how to build a custom cell. These outlets map efficiently to each BVProduct data object. However, these outlets are not required and you can configure your cell any way you like!</p>
+		<p class="bg-info well-lg" style="padding:4px;"><i class="fa fa-hand-o-right"></i>  Tip: The above DemoCell outlets are suggestions for building a custom cell. The outlets map efficiently to each BVProduct data object. However, the outlets are not required and you can configure your cell any way you want.</p>
 
 		<br>
 
 	</li>
 
 	<li>
-		<p>In <code>DemoCell.xib</code>, add and position your views and hook up your outlets:</p>
+		<p>In <code>DemoCell.xib</code>, add and position your views and hook up your outlets, as shown in the following screenshot.</p>
 		<img src="ios-img/DemoCellNib.png" style="height:520px" class="center-block img-fluid" />
 	</li>
 
 </ol>
 <br>
 
-<h5>Next, we want to create a <code>BVProductRecommendationsCollectionView</code>. For this part, we'll create a <code>UIViewController</code> and put a <code>BVProductRecommendationsCollectionView</code> inside it.</h5>
+<h5>Next, complete the following steps to create a <code>BVProductRecommendationsCollectionView</code>. In this example, you'll create a <code>UIViewController</code> and put a <code>BVProductRecommendationsCollectionView</code> inside it.</h5>
 <ol>
 	<li>
-		<p>Create a <code>UIViewController</code> by selecting <strong>File > New > File</strong></p>
+		<p>Create a <code>UIViewController</code> by selecting <strong>File > New > File</strong>.</p>
 		<img src="ios-img/NewFile.png" style="height:400px" class="center-block img-fluid" />
 		<br>
 		<img src="ios-img/DemoViewController.png" style="height:400px" class="center-block img-fluid" />
@@ -414,22 +415,22 @@ class DemoCell: BVRecommendationCollectionViewCell {
 
 	</li>
 	<li>
-		<p>Add a <code>UICollectionView</code> to your nib, and set its class to <code>BVProductRecommendationsCollectionView</code></p>
+		<p>Add a <code>UICollectionView</code> to your nib, and set its class to <code>BVProductRecommendationsCollectionView</code>.</p>
 		<img src="ios-img/ViewControllerNib.png" style="height:280px" class="center-block img-fluid"/>
 		<br>
 	</li>
 	<li>
-		<p>Hook up the <code>BVProductRecommendationsCollectionView</code> to its outlet, <code>recommendationsView</code></p>
+		<p>Connect the <code>BVProductRecommendationsCollectionView</code> to its outlet, <code>recommendationsView</code>.</p>
 		<img src="ios-img/ViewControllerNibConnection.png" style="height:440px" class="center-block img-fluid"/>
 	</li>
 </ol>
 <br>
 <br>
 
-<h5>Next, let's grab some product recommendations for this user</h5>
+<h5>Next, complete the following steps to get product recommendations for a user.</h5>
 <ol>
 	<li>
-		<p>Fetch product recommendations, and store them in a variable for later use. We also want to set up our <code>recommendationsView</code> delegate and datasource, and register the nib we created earlier</p>
+		<p>Use the following code to fetch product recommendations and store them in a variable for later use. You'll also set up your <code>recommendationsView</code> delegate and data source, and register the nib you created earlier.</p>
 
 
 		<ul class="nav nav-tabs" role="tablist">
@@ -536,7 +537,7 @@ super.viewDidLoad()
 
 	</li>
 	<li>
-		<p>Create and fill out <code>collectionView:numberOfItemsInSection:</code></p>
+		<p>Create and complete <code>collectionView:numberOfItemsInSection</code>.</p>
 
 
 		<ul class="nav nav-tabs" role="tablist">
@@ -565,9 +566,9 @@ super.viewDidLoad()
 	</li>
 
 	<li>
-		<p>Create a fill out <code>collectionView:cellForItemAtIndexPath:</code></p>
+		<p>Create and complete <code>collectionView:cellForItemAtIndexPath</code>.</p>
 
-<p class="bg-info well-lg" style="padding:4px;"><i class="fa fa-hand-o-right"></i>  Image loading in this demo is done with SDWebImage</p>
+<p class="bg-info well-lg" style="padding:4px;"><i class="fa fa-hand-o-right"></i>  Note: Image loading in this demo uses SDWebImage</p>
 
 
 		<ul class="nav nav-tabs" role="tablist">
@@ -610,20 +611,21 @@ super.viewDidLoad()
 
 	</li>
 	<li>
-		<h3>Run it!</h3>
-		<p>The app should populate the collection view with product recommendations. Some styling will be needed to look good, however <i class="fa fa-smile-o"></i></p>
+		<h3>Run the app.</h3>
+		<p>The app should populate the collection view with product recommendations. Although the app should run correctly, it will still need styling to look professional.</p>
 		<br/>
 		<img src="ios-img/recommendations/final_project.png" style="height:460px;" class="center-block img-fluid" />
 	</li>
 </ol>
+
 <br>
 
 
 <div class="well well-sm">
 	<h5>Author</h5>
-	<p>Copyright 2016 Bazaarvoice, Inc. All right reserved.</p>
+	<p>Copyright 2016 Bazaarvoice, Inc. All rights reserved.</p>
 	<h5>License</h5>
-	<p>Use of this SDK is contingent on your agreement and conformance with <a href="http://www.bazaarvoice.com/legal/api-terms-of-use.html">Bazaarvoice's API Terms of Use</a>. Additionally, you agree to store all data acquired by this SDK or Bazaarvoice’s API only within the storage of the individual application instance using the SDK or API. You also agree to use the data acquired by the SDK or API only within the context of the same individual application instance and only for purposes consistent with that application’s purpose. Except as otherwise noted, the Bazaarvoice iOS SDK licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0.html">Apache License, Version 2.0</a>.</p>
+	<p>Use of the Bazaarvoice Mobile SDKs is contingent on your agreement and conformance with <a href="http://www.bazaarvoice.com/legal/api-terms-of-use.html">Bazaarvoice's API Terms of Use</a>. Additionally, you agree to store all data acquired by the SDK or Bazaarvoice's API only within the storage of the individual application instance using the SDK or API. You also agree to use the data acquired by the SDK or API only within the context of the same individual application instance and only for purposes consistent with that application's purpose. Except as otherwise noted, the Bazaarvoice iOS SDK is licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0.html">Apache License, Version 2.0</a>.</p>
 </div>
 <br>
 
