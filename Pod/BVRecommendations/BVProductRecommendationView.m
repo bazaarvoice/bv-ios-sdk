@@ -11,17 +11,17 @@
 
 @implementation BVRecommendationCollectionViewCell
 
--(void)setBvProduct:(BVProduct *)bvProduct {
+-(void)setBvRecommendedProduct:(BVRecommendedProduct *)bvRecommendedProduct {
     
-    _bvProduct = bvProduct;
+    _bvRecommendedProduct = bvRecommendedProduct;
     
-    [bvProduct recordImpression];
+    [_bvRecommendedProduct recordImpression];
     
 }
 
 -(void)recommendationViewClicked {
     
-    [self.bvProduct recordTap];
+    [self.bvRecommendedProduct recordTap];
     
 }
 
@@ -67,17 +67,17 @@
 
 @implementation BVRecommendationTableViewCell
 
--(void)setBvProduct:(BVProduct *)bvProduct {
+-(void)setBvRecommendedProduct:(BVRecommendedProduct *)bvRecommendedProduct {
     
-    _bvProduct = bvProduct;
+    _bvRecommendedProduct = bvRecommendedProduct;
     
-    [bvProduct recordImpression];
+    [_bvRecommendedProduct recordImpression];
     
 }
 
 -(void)recommendationViewClicked {
     
-    [self.bvProduct recordTap];
+    [self.bvRecommendedProduct recordTap];
     
 }
 
@@ -124,17 +124,17 @@
 
 @implementation BVProductRecommendationView
 
--(void)setBvProduct:(BVProduct *)bvProduct {
+-(void)setBvRecommendedProduct:(BVRecommendedProduct *)bvRecommendedProduct {
     
-    _bvProduct = bvProduct;
+    _bvRecommendedProduct = bvRecommendedProduct;
     
-    [bvProduct recordImpression];
+    [_bvRecommendedProduct recordImpression];
     
 }
 
 -(void)recommendationViewClicked {
     
-    [self.bvProduct recordTap];
+    [_bvRecommendedProduct recordTap];
     
 }
 

@@ -33,11 +33,11 @@ typedef NS_ENUM(NSInteger, BVProductRecommendationWidget) {
 
 
 /**
-    Queue an analytic event for a visible BVProduct recommendation.
+    Queue an analytic event for a visible BVRecommendedProduct recommendation.
  
     @param product - A BVProduct object that was visible on screen.
  */
-+ (void)queueAnalyticsEventForProductView:(BVProduct *)product;
++ (void)queueAnalyticsEventForProductView:(BVRecommendedProduct *)product;
 
 
 /**
@@ -45,7 +45,7 @@ typedef NS_ENUM(NSInteger, BVProductRecommendationWidget) {
  
     @param product - The product that was tapped by the user
  */
-+ (void)queueAnalyticsEventForProductTapped:(BVProduct *)product;
++ (void)queueAnalyticsEventForProductTapped:(BVRecommendedProduct *)product;
 
 
 /**

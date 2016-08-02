@@ -8,50 +8,66 @@
 import UIKit
 import BVSDK
 
-class RatingsAndReviewsViewController: BaseUGCViewController, BVDelegate {
-
-    var reviews : [Review] = []
+class RatingsAndReviewsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    
+    @IBOutlet weak var tableView: BVReviewsTableView!
+    @IBOutlet weak var header : ProductDetailHeaderView!
+    var spinner = Util.createSpinner(UIColor.bazaarvoiceNavy(), size: CGSizeMake(44,44), padding: 0)
+    
+    let product : BVRecommendedProduct
+    var reviews : [BVReview] = []
+    
+    init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?, product:BVRecommendedProduct) {
+        self.product = product
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.title = "Reviews"
+        
         ProfileUtils.trackViewController(self)
         
-        let nib = UINib(nibName: "RatingTableViewCell", bundle: nil)
-        tableView.registerNib(nib, forCellReuseIdentifier: "RatingTableViewCell")
+        header.product = product
+        
+        self.view.backgroundColor = UIColor.appBackground()
+        self.tableView.backgroundColor = self.view.backgroundColor
+        
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.allowsSelection = false
         tableView.estimatedRowHeight = 40
         tableView.rowHeight = UITableViewAutomaticDimension
-        tableView.allowsSelection = false
+        tableView.registerNib(UINib(nibName: "RatingTableViewCell", bundle: nil), forCellReuseIdentifier: "RatingTableViewCell")
         
         // add a Write Review button...
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Write a review", style: .Plain, target: self, action: "writeReviewTapped")
-        
-        self.title = "Reviews"
         
         self.loadReviews()
         
     }
     
     func loadReviews() {
+
+        let request = BVReviewsRequest(productId: product.productId, limit: 20, offset: 0)
         
-        let get = BVGet(type: BVGetTypeReviews)
-        get.setFilterForAttribute("ProductId", equality: BVEqualityEqualTo, value: product.productId)
-        get.addInclude(BVIncludeTypeProducts)
-        get.addStatsOn(BVIncludeStatsTypeReviews)
-        get.limit = 20
-        get.sendRequestWithDelegate(self)
-        
-    }
-    
-    // MARK: BVDelegate
-    
-    func didReceiveResponse(response: [NSObject : AnyObject]!, forRequest request: AnyObject!) {
-        
-        self.spinner.removeFromSuperview()
-        
-        reviews = ConversationsResponse<Review>(apiResponse: response).results
-        
-        tableView.reloadData()
+        self.tableView.load(request, success: { (response) in
+            
+            self.spinner.removeFromSuperview()
+            self.reviews = response.results
+            self.tableView.reloadData()
+            
+            })
+        { (errors) in
+            
+            print("An error occurred: \(errors)")
+            
+        }
         
     }
     
@@ -66,26 +82,18 @@ class RatingsAndReviewsViewController: BaseUGCViewController, BVDelegate {
     
     // MARK: UITableViewDatasource
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         return reviews.count
         
     }
     
     
-    override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        
-        return 0
-        
-    }
-    
-    
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCellWithIdentifier("RatingTableViewCell") as! RatingTableViewCell
         
         cell.review = reviews[indexPath.row]
-    
         
         return cell
         
@@ -100,7 +108,5 @@ class RatingsAndReviewsViewController: BaseUGCViewController, BVDelegate {
         return;
         
     }
-
-    
 
 }

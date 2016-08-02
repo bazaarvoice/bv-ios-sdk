@@ -50,7 +50,7 @@
                 
                 NSDictionary* product = [products objectForKey:productKey];
                 
-                BVProduct *bvProduct = [[BVProduct alloc] initWithDictionary:product withRecommendationStats:recommendationStats];
+                BVRecommendedProduct *bvProduct = [[BVRecommendedProduct alloc] initWithDictionary:product withRecommendationStats:recommendationStats];
                 
                 if (bvProduct){
                     [tmp addObject:bvProduct];

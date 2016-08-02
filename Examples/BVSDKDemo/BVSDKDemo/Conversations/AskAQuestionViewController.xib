@@ -10,8 +10,6 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AskAQuestionViewController" customModule="BVSDKDemo" customModuleProvider="target">
             <connections>
                 <outlet property="header" destination="sJ1-SC-JWH" id="Q4Z-bZ-FUB"/>
-                <outlet property="productImageView" destination="cp5-rb-NeI" id="eqw-uB-0gI"/>
-                <outlet property="productNameLabel" destination="3IR-JI-I8x" id="mVO-CB-HCB"/>
                 <outlet property="tableView" destination="bgo-yI-qTR" id="ytB-lB-wwN"/>
                 <outlet property="view" destination="Rkp-gb-aGU" id="dUp-qL-vY6"/>
             </connections>

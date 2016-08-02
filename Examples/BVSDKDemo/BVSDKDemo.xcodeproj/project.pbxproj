@@ -103,7 +103,6 @@
 		8783098D1CECF3F70097FC48 /* QuestionAnswerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8783098B1CECF3F70097FC48 /* QuestionAnswerViewController.xib */; };
 		878309901CECF4140097FC48 /* RatingsAndReviewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8783098E1CECF4140097FC48 /* RatingsAndReviewsViewController.swift */; };
 		878309911CECF4140097FC48 /* RatingsAndReviewsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8783098F1CECF4140097FC48 /* RatingsAndReviewsViewController.xib */; };
-		878309931CED039C0097FC48 /* BaseUGCViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878309921CED039C0097FC48 /* BaseUGCViewController.swift */; };
 		878309961CEDF4070097FC48 /* AskAQuestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878309941CEDF4070097FC48 /* AskAQuestionViewController.swift */; };
 		878309971CEDF4070097FC48 /* AskAQuestionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 878309951CEDF4070097FC48 /* AskAQuestionViewController.xib */; };
 		8791449A1CF8BAAE00976220 /* revolution_cycles.png in Resources */ = {isa = PBXBuildFile; fileRef = 879144991CF8BAAE00976220 /* revolution_cycles.png */; };
@@ -272,7 +271,6 @@
 		8783098B1CECF3F70097FC48 /* QuestionAnswerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = QuestionAnswerViewController.xib; path = Conversations/QuestionAnswerViewController.xib; sourceTree = "<group>"; };
 		8783098E1CECF4140097FC48 /* RatingsAndReviewsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RatingsAndReviewsViewController.swift; path = Conversations/RatingsAndReviewsViewController.swift; sourceTree = "<group>"; };
 		8783098F1CECF4140097FC48 /* RatingsAndReviewsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RatingsAndReviewsViewController.xib; path = Conversations/RatingsAndReviewsViewController.xib; sourceTree = "<group>"; };
-		878309921CED039C0097FC48 /* BaseUGCViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseUGCViewController.swift; path = Conversations/BaseUGCViewController.swift; sourceTree = "<group>"; };
 		878309941CEDF4070097FC48 /* AskAQuestionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AskAQuestionViewController.swift; path = Conversations/AskAQuestionViewController.swift; sourceTree = "<group>"; };
 		878309951CEDF4070097FC48 /* AskAQuestionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AskAQuestionViewController.xib; path = Conversations/AskAQuestionViewController.xib; sourceTree = "<group>"; };
 		879144991CF8BAAE00976220 /* revolution_cycles.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = revolution_cycles.png; sourceTree = "<group>"; };
@@ -623,7 +621,6 @@
 				738E72471CEEE48A00D30617 /* ProductDetailHeaderView.swift */,
 				7338438E1CED58A300928760 /* RatingsAndReviews */,
 				73F020F11CED4E6300FC7D7D /* QuestionAnswer */,
-				878309921CED039C0097FC48 /* BaseUGCViewController.swift */,
 				739BDAC81CED47DE007D52CC /* ConversationsModel.swift */,
 			);
 			name = Conversations;
@@ -1172,7 +1169,6 @@
 				878309901CECF4140097FC48 /* RatingsAndReviewsViewController.swift in Sources */,
 				7356B23C1CF89FCA004B0121 /* AnswerListHeaderCell.swift in Sources */,
 				733BCF001CF7BE5300045FC2 /* CallToActionCell.swift in Sources */,
-				878309931CED039C0097FC48 /* BaseUGCViewController.swift in Sources */,
 				734CF3541CE0414400132462 /* HomeViewController.swift in Sources */,
 				736D4CB71CDEC5730095EE6B /* DemoCarouselCollectionViewCell.swift in Sources */,
 				733BCF061CF81F2800045FC2 /* SubmitAnswerViewController.swift in Sources */,
@@ -1363,7 +1359,7 @@
 				CODE_SIGN_ENTITLEMENTS = BVSDKDemo/BVSDKDemo.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 19;
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = "$(inherited)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/BVSDKDemo",
@@ -1393,7 +1389,7 @@
 				CODE_SIGN_ENTITLEMENTS = BVSDKDemo/BVSDKDemo.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CURRENT_PROJECT_VERSION = 19;
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = "$(inherited)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/BVSDKDemo",

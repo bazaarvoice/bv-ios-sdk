@@ -15,7 +15,7 @@ class ProductDetailHeaderView: UIView {
     @IBOutlet weak var productName : UILabel!
     @IBOutlet weak var productStars : HCSStarRatingView!
 
-    var product : BVProduct! {
+    var product : BVRecommendedProduct! {
         didSet {
             
             productImage.sd_setImageWithURL(NSURL(string: product.imageURL))

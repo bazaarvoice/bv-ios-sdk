@@ -6,33 +6,27 @@
 //
 
 import UIKit
+import BVSDK
 
-class QuestionAnswerTableViewCell: UITableViewCell {
+class QuestionAnswerTableViewCell: BVQuestionTableViewCell {
     
     @IBOutlet weak var questionTitle : UILabel!
     @IBOutlet weak var questionMetaData : UILabel!
     @IBOutlet weak var questionBody : UILabel!
     @IBOutlet weak var usersFoundHelpfulLabel: UILabel!
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        
-//        self.layer.borderColor = UIColor.lightGrayColor().CGColor
-//        self.layer.borderWidth = 0.5
-        
-    }
-    
-    var question : Question? {
+    override var question : BVQuestion? {
         
         didSet {
+            
             questionTitle.text = question?.questionSummary
             questionBody.text  = question?.questionDetails
             questionMetaData.text = question?.userNickname
             
-            if (question?.totalFeedbackCount > 0){
+            if question?.totalFeedbackCount?.intValue > 0 {
                 
-                let totalFeedbackCountString = String(question!.totalFeedbackCount)
-                let totalPositiveFeedbackCountString = String(question!.totalPositiveFeedbackCount)
+                let totalFeedbackCountString = question?.totalFeedbackCount?.stringValue ?? ""
+                let totalPositiveFeedbackCountString = question?.totalPositiveFeedbackCount?.stringValue ?? ""
                 
                 let helpfulText = totalPositiveFeedbackCountString + " of " + totalFeedbackCountString +  " users found this question helpful"
                 

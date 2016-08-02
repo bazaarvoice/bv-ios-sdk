@@ -9,15 +9,19 @@ import UIKit
 import BVSDK
 import FontAwesomeKit
 
-class AnswersViewController: BaseUGCViewController {
+class AnswersViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-    let question : Question
+    @IBOutlet weak var tableView: BVAnswersTableView!
+    @IBOutlet weak var header : ProductDetailHeaderView!
+    var spinner = Util.createSpinner(UIColor.bazaarvoiceNavy(), size: CGSizeMake(44,44), padding: 0)
     
-    init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?, product: BVProduct, question: Question) {
-        
+    let product : BVRecommendedProduct
+    let question : BVQuestion
+    
+    init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?, product: BVRecommendedProduct, question: BVQuestion) {
         self.question = question
-        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil, product: product)
-        
+        self.product = product
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -27,9 +31,19 @@ class AnswersViewController: BaseUGCViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        ProfileUtils.trackViewController(self)
-        
         self.title = "Answers"
+        
+        ProfileUtils.trackViewController(self)
+
+        header.product = product
+        
+        self.view.backgroundColor = UIColor.appBackground()
+        self.tableView.backgroundColor = UIColor.appBackground()
+        
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.estimatedRowHeight = 40
+        tableView.rowHeight = UITableViewAutomaticDimension
         
         let nib1 = UINib(nibName: "AnswerListHeaderCell", bundle: nil)
         tableView.registerNib(nib1, forCellReuseIdentifier: "AnswerListHeaderCell")
@@ -39,8 +53,6 @@ class AnswersViewController: BaseUGCViewController {
 
         let nib3 = UINib(nibName: "AnswerTableViewCell", bundle: nil)
         tableView.registerNib(nib3, forCellReuseIdentifier: "AnswerTableViewCell")
-        tableView.estimatedRowHeight = 40
-        tableView.rowHeight = UITableViewAutomaticDimension
         
     }
 
@@ -52,7 +64,7 @@ class AnswersViewController: BaseUGCViewController {
         
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     
         if section == 0 {
             return 2
@@ -63,11 +75,7 @@ class AnswersViewController: BaseUGCViewController {
         
     }
     
-    override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return CGFloat.min
-    }
-
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         if indexPath.section == 0 {
             
@@ -106,6 +114,7 @@ class AnswersViewController: BaseUGCViewController {
     func writeAnAnswerTapped() {
         
         let vc = SubmitAnswerViewController(nibName: "SubmitAnswerViewController", bundle: nil, product:product,  question: question)
+        
         self.navigationController?.pushViewController(vc, animated: true)
         
     }

@@ -21,7 +21,7 @@
     Load product recommendations based on data fed in from `request`.
 
     @param request             The request parameters to load
-    @param completionHandler   Completion handler which returns an array of `BVProduct` product recommendations
+    @param completionHandler   Completion handler which returns an array of `BVRecommendedProduct` product recommendations
     @param errorHandler        Error handler which returns an `NSError` if the request has failed.
 
     @availability 3.3.0 and later

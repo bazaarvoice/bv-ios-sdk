@@ -1,36 +1,36 @@
 PODS:
-  - Bolts (1.7.0):
-    - Bolts/AppLinks (= 1.7.0)
-    - Bolts/Tasks (= 1.7.0)
-  - Bolts/AppLinks (1.7.0):
+  - Bolts (1.8.4):
+    - Bolts/AppLinks (= 1.8.4)
+    - Bolts/Tasks (= 1.8.4)
+  - Bolts/AppLinks (1.8.4):
     - Bolts/Tasks
-  - Bolts/Tasks (1.7.0)
-  - BVSDK (4.0.2):
-    - BVSDK/Core (= 4.0.2)
-  - BVSDK/BVAdvertising (4.0.2):
+  - Bolts/Tasks (1.8.4)
+  - BVSDK (4.1.0):
+    - BVSDK/Core (= 4.1.0)
+  - BVSDK/BVAdvertising (4.1.0):
     - BVSDK/Core
-  - BVSDK/BVConversations (4.0.2):
+  - BVSDK/BVConversations (4.1.0):
     - BVSDK/Core
-  - BVSDK/BVCurations (4.0.2):
+  - BVSDK/BVCurations (4.1.0):
     - BVSDK/Core
-  - BVSDK/BVRecommendations (4.0.2):
+  - BVSDK/BVRecommendations (4.1.0):
     - BVSDK/Core
-  - BVSDK/Core (4.0.2)
-  - Crashlytics (3.7.1):
+  - BVSDK/Core (4.1.0)
+  - Crashlytics (3.7.2):
     - Fabric (~> 1.6.3)
   - Fabric (1.6.7)
-  - FBSDKCoreKit (4.13.1):
+  - FBSDKCoreKit (4.14.0):
     - Bolts (~> 1.7)
-  - FBSDKLoginKit (4.13.1):
+  - FBSDKLoginKit (4.14.0):
     - FBSDKCoreKit
-  - FBSDKShareKit (4.13.1):
+  - FBSDKShareKit (4.14.0):
     - FBSDKCoreKit
   - FontAwesomeKit/Core (2.2.0)
   - FontAwesomeKit/FontAwesome (2.2.0):
     - FontAwesomeKit/Core
-  - Google-Mobile-Ads-SDK (7.8.1)
+  - Google-Mobile-Ads-SDK (7.9.1)
   - HCSStarRatingView (1.4.5)
-  - NVActivityIndicatorView (2.8)
+  - NVActivityIndicatorView (2.9)
   - OHHTTPStubs (5.1.0):
     - OHHTTPStubs/Default (= 5.1.0)
   - OHHTTPStubs/Core (5.1.0)
@@ -86,17 +86,17 @@ CHECKOUT OPTIONS:
     :git: https://github.com/austimkelly/SDForms.git
 
 SPEC CHECKSUMS:
-  Bolts: a0058fa3b331c5a1e4402d534f2dae36dbff31e4
-  BVSDK: 9b5bc0d7dad08f6846428627546d90f16aae85b7
-  Crashlytics: 3cdd4c9655be68032a0cf0379e0fb5ef6af22cad
+  Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
+  BVSDK: 5619fd07fac1705c309529783bde5f349d662449
+  Crashlytics: 130ab943f8c78cda7a814b434f270b2e2c8a3cba
   Fabric: caf7580c725e64db144f610ac65cd60956911dc7
-  FBSDKCoreKit: 2807fe0da2ddb49a1469da6d6ff597f99912980f
-  FBSDKLoginKit: 6d350cb6a22d6956e9d078885de6ee8a0ebc51b4
-  FBSDKShareKit: c9438df7573b33780ac8c3451201c5ebb260ffca
+  FBSDKCoreKit: 6e020b5db0b5bd1e01f5fb0902131befd129a502
+  FBSDKLoginKit: da563567a108050ef83739c8c8c001ee9e25fa13
+  FBSDKShareKit: e8e5d4ccef69b41132fe33acda26db1e33143e33
   FontAwesomeKit: 025fd4dd1017fe4e3f8d47b03e024deedbb33cd4
-  Google-Mobile-Ads-SDK: 3c2a6656117989469bfe7645640aa1de024a4c6c
+  Google-Mobile-Ads-SDK: 575583d7eae25793bb81ad8673737d1b4ecbedc5
   HCSStarRatingView: bff3f89314d3b5013ce826ea11897d3129ff6b8c
-  NVActivityIndicatorView: 6aba1dbbd893f615a9452c9e66ae46473e1ce092
+  NVActivityIndicatorView: 0084f6be71bdf4735b5424ebfb530b1e3db3276c
   OHHTTPStubs: 592f74439d2d72615115cf99a954237a3fbe26e5
   SDForms: 67ace4be00b3a97bec7164a817eb085e3148c523
   SDWebImage: 35f9627a3e44b4f292a8a8ce6a531fa488239b91

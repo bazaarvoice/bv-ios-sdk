@@ -9,7 +9,7 @@ import UIKit
 import BVSDK
 import SDForms
 
-class AskAQuestionViewController: BaseUGCViewController, SDFormDelegate, SDFormDataSource, BVDelegate {
+class AskAQuestionViewController: UIViewController, SDFormDelegate, SDFormDataSource {
 
     var form : SDForm?
     
@@ -19,7 +19,21 @@ class AskAQuestionViewController: BaseUGCViewController, SDFormDelegate, SDFormD
     var formFields : [SDFormField] = []
     var sectionTitles : [String] = []
     
-    var questionParameters = BVPost(type: BVPostTypeQuestion)
+    var questionSubmissionParameters = QuestionSubmissionParamsHolder()
+    
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var header : ProductDetailHeaderView!
+    var spinner = Util.createSpinner(UIColor.bazaarvoiceNavy(), size: CGSizeMake(44,44), padding: 0)
+    let product: BVRecommendedProduct
+    
+    init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?, product: BVRecommendedProduct?) {
+        self.product = product!
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,22 +41,16 @@ class AskAQuestionViewController: BaseUGCViewController, SDFormDelegate, SDFormD
         ProfileUtils.trackViewController(self)
         
         self.title = "Ask a Question!"
+        header.product = product
         
-        // add a SUBMIT button...
+        self.view.backgroundColor = UIColor.appBackground()
+        self.tableView.backgroundColor = UIColor.whiteColor()
+        
+        // add a submit button
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Submit", style: .Done, target: self, action: "submitTapped")
         
         // form scrolling above keyboard
         self.tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 300, right: 0)
-        
-        // init BVPost params
-        questionParameters!.action = BVActionPreview // don't actually just submit for real, this is just for demo
-        questionParameters!.productId = product.productId
-        questionParameters!.locale = "en_US"
-        questionParameters!.userId = ""
-        questionParameters!.questionSummary = ""
-        questionParameters!.questionDetails = ""
-        questionParameters!.sendEmailAlertWhenPublished = true
-        questionParameters!.agreedToTermsAndConditions = false
         
         self.initFormFields()
     
@@ -50,22 +58,22 @@ class AskAQuestionViewController: BaseUGCViewController, SDFormDelegate, SDFormD
     
     func initFormFields(){
         
-        let questionField = SDMultilineTextField(object: self.questionParameters, relatedPropertyKey: "questionSummary")
+        let questionField = SDMultilineTextField(object: self.questionSubmissionParameters, relatedPropertyKey: "questionSummary")
         questionField.placeholder = "Example: How do I get replacement bolts?"
         
-        let moreDetailsField = SDMultilineTextField(object: self.questionParameters, relatedPropertyKey: "questionDetails")
+        let moreDetailsField = SDMultilineTextField(object: self.questionSubmissionParameters, relatedPropertyKey: "questionDetails")
         moreDetailsField.placeholder = "Example: I have looked at the manual and can't figure out what I'm doing wrong."
         
-        let nickNameField : SDTextFormField = SDTextFormField(object: self.questionParameters, relatedPropertyKey: "userNickname")
+        let nickNameField : SDTextFormField = SDTextFormField(object: self.questionSubmissionParameters, relatedPropertyKey: "userNickname")
         nickNameField.placeholder = "Display name for the question"
         
-        let emailAddressField : SDTextFormField = SDTextFormField(object: self.questionParameters, relatedPropertyKey: "userEmail")
+        let emailAddressField : SDTextFormField = SDTextFormField(object: self.questionSubmissionParameters, relatedPropertyKey: "userEmail")
         emailAddressField.placeholder = "Enter a valid email address."
         
-        let emailOKSwitchField = SDSwitchField(object: self.questionParameters, relatedPropertyKey: "sendEmailAlertWhenPublished")
+        let emailOKSwitchField = SDSwitchField(object: self.questionSubmissionParameters, relatedPropertyKey: "sendEmailAlertWhenPublished")
         emailOKSwitchField.title = "Send me status by email?"
         
-        let agreeTermsAndConditions = SDSwitchField(object: self.questionParameters, relatedPropertyKey: "agreedToTermsAndConditions")
+        let agreeTermsAndConditions = SDSwitchField(object: self.questionSubmissionParameters, relatedPropertyKey: "agreedToTermsAndConditions")
         agreeTermsAndConditions.title = "Agree?"
         
         // Keep the formFields and sectionTitles in the same order if you switch them around.
@@ -89,73 +97,38 @@ class AskAQuestionViewController: BaseUGCViewController, SDFormDelegate, SDFormD
         
         self.tableView.resignFirstResponder()
         
-        // a working example of posting a review.
-        // still the antiquated SDK, but it works :P
+        // Submit the question
         
-        self.questionParameters!.sendRequestWithDelegate(self)
+        let submission = BVQuestionSubmission(productId: product.productId)
+        submission.action = .Preview // don't actually just submit for real, this is just for demo
+        submission.questionSummary = self.questionSubmissionParameters.questionSummary as? String
+        submission.questionDetails = self.questionSubmissionParameters.questionDetails as? String
+        submission.userNickname = self.questionSubmissionParameters.userNickname as? String
+        submission.userEmail = self.questionSubmissionParameters.userEmail as? String
+        submission.sendEmailAlertWhenPublished = self.questionSubmissionParameters.sendEmailAlertWhenPublished
+        submission.agreedToTermsAndConditions = self.questionSubmissionParameters.agreedToTermsAndConditions
         
-    }
-    
-    // MARK: BVDelegate
-    
-    func hasErrors(response: NSDictionary) -> Bool {
-        
-        return (response.objectForKey("HasErrors") != nil && response.objectForKey("HasErrors")?.boolValue == true)
-        
-    }
-    
-    func didReceiveResponse(response: [NSObject : AnyObject]!, forRequest request: AnyObject!) {
-        
-        let responseDict = response as NSDictionary
-        
-        if (self.hasErrors(responseDict)){
+        submission.submit({ (response) in
             
-            var errorMessage = "Unknown error"
-            if responseDict.objectForKey("Errors")!.count > 0{
-                errorMessage = (responseDict.objectForKey("Errors")?.objectAtIndex(0).objectForKey("Message") as? String)!
-            } else {
-                let fieldErrors = responseDict.objectForKey("FormErrors")?.objectForKey("FieldErrors") as? NSDictionary
-                var summedErrorMessage = ""
-                for (_,value) in fieldErrors! {
-                    let message = value.objectForKey("Message") as! String
-                    let field = value.objectForKey("Field") as! String
-                    summedErrorMessage += field + ": " + message + "\n"
+            dispatch_async(dispatch_get_main_queue(), { 
+                SweetAlert().showAlert("Success!", subTitle: "Your question was submitted. It may take up to 72 hours for us to respond.", style: .Success)
+                self.navigationController?.popViewControllerAnimated(true)
+            })
+            
+        }) { (errors) in
+            
+            dispatch_async(dispatch_get_main_queue(), {
+                var errorMessage = ""
+                for error in errors {
+                    errorMessage += "\(error)."
                 }
-                errorMessage = summedErrorMessage
-            }
-            
-            SweetAlert().showAlert("Error Sumbitting Question", subTitle: errorMessage, style: .Error)
-            
-            self.spinner.removeFromSuperview()
-            
-            
-        } else {
-            
-            SweetAlert().showAlert("Success!", subTitle: "Your question was submitted. It may take up to 72 hours for us to respond.", style: .Success)
-             self.navigationController?.popViewControllerAnimated(true)
+                
+                SweetAlert().showAlert("Error Sumbitting Question", subTitle: errorMessage, style: .Error)
+                
+                self.spinner.removeFromSuperview()
+            })
             
         }
-        
-        self.spinner.removeFromSuperview()
-        
-    }
-    
-    func didFailToReceiveResponse(err: NSError!, forRequest request: AnyObject!) {
-        // error
-        SweetAlert().showAlert("Error!", subTitle: err.localizedDescription, style: .Error)
-        self.spinner.removeFromSuperview()
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    // MARK: UITableViewDataSource
-    
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        return 1
         
     }
 
@@ -193,5 +166,17 @@ class AskAQuestionViewController: BaseUGCViewController, SDFormDelegate, SDFormD
         return self;
     }
     
+    
+}
+
+@objc class QuestionSubmissionParamsHolder : NSObject {
+    
+    var questionSummary : NSString?
+    var questionDetails : NSString?
+    var userNickname : NSString?
+    var userEmail : NSString?
+    
+    var sendEmailAlertWhenPublished:NSNumber?
+    var agreedToTermsAndConditions:NSNumber?
     
 }

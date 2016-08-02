@@ -35,12 +35,13 @@
 		879144CF1CFE070D00976220 /* NativeContentAdView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 879144CE1CFE070D00976220 /* NativeContentAdView.xib */; };
 		879144D31CFE093B00976220 /* BannerDemoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 879144D21CFE093B00976220 /* BannerDemoViewController.xib */; };
 		879144DF1CFE12DD00976220 /* NativeContentAdDemoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 879144DE1CFE12DD00976220 /* NativeContentAdDemoViewController.xib */; };
-		9C369200BE60FD1C0DE9C0B4 /* libPods-TargetedAdsDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D87BBDF1998F7975E9757A5 /* libPods-TargetedAdsDemo.a */; };
+		B16F178EFE8EB3DC573FA5A3 /* libPods-TargetedAdsDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 059EDD030E6D252EBA18D78B /* libPods-TargetedAdsDemo.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		04A00EE500E9A609C2CD05D5 /* Pods-TargetedAdsDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TargetedAdsDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-TargetedAdsDemo/Pods-TargetedAdsDemo.release.xcconfig"; sourceTree = "<group>"; };
+		059EDD030E6D252EBA18D78B /* libPods-TargetedAdsDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TargetedAdsDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3AD5645BE6A5A2E5AD9AF776 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
-		3D6ECE5776982FD1707943E0 /* Pods-TargetedAdsDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TargetedAdsDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-TargetedAdsDemo/Pods-TargetedAdsDemo.release.xcconfig"; sourceTree = "<group>"; };
 		6003F58D195388D20070C39A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		6003F58F195388D20070C39A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		6003F591195388D20070C39A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -83,14 +84,13 @@
 		73A8AAA31B727C1E0015DD7F /* TargetedAdsDemoImages.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = TargetedAdsDemoImages.xcassets; sourceTree = "<group>"; };
 		73F8AF751B569FCE00522183 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		73F8AF761B569FCE00522183 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
-		7D5CA2E4A4D9759C12A91A40 /* Pods-TargetedAdsDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TargetedAdsDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TargetedAdsDemo/Pods-TargetedAdsDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		879144C41CFDF8D300976220 /* closeButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "closeButton@2x.png"; path = "../../shared/closeButton@2x.png"; sourceTree = "<group>"; };
 		879144C51CFDF8D300976220 /* closeButton@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "closeButton@3x.png"; path = "../../shared/closeButton@3x.png"; sourceTree = "<group>"; };
 		879144CE1CFE070D00976220 /* NativeContentAdView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NativeContentAdView.xib; path = ../../shared/NativeContentAdView.xib; sourceTree = "<group>"; };
 		879144D21CFE093B00976220 /* BannerDemoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BannerDemoViewController.xib; path = ../../shared/BannerDemoViewController.xib; sourceTree = "<group>"; };
 		879144DE1CFE12DD00976220 /* NativeContentAdDemoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NativeContentAdDemoViewController.xib; path = ../../shared/NativeContentAdDemoViewController.xib; sourceTree = "<group>"; };
+		8FDED8B3BB22013075BAB7EA /* Pods-TargetedAdsDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TargetedAdsDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TargetedAdsDemo/Pods-TargetedAdsDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		9C4B68C4415227436AA0E10A /* BVAdsSDK.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = BVAdsSDK.podspec; path = ../BVAdsSDK.podspec; sourceTree = "<group>"; };
-		9D87BBDF1998F7975E9757A5 /* libPods-TargetedAdsDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TargetedAdsDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA961434CED5EDB4FCCE8BB8 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -100,13 +100,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				734369781B6400220093721B /* libz.dylib in Frameworks */,
-				9C369200BE60FD1C0DE9C0B4 /* libPods-TargetedAdsDemo.a in Frameworks */,
+				B16F178EFE8EB3DC573FA5A3 /* libPods-TargetedAdsDemo.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2F5D1DD5810ECD7318F56B9B /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				8FDED8B3BB22013075BAB7EA /* Pods-TargetedAdsDemo.debug.xcconfig */,
+				04A00EE500E9A609C2CD05D5 /* Pods-TargetedAdsDemo.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		6003F581195388D10070C39A = {
 			isa = PBXGroup;
 			children = (
@@ -114,7 +123,7 @@
 				7347FE531B556DA2001BD361 /* TargetedAdsDemo */,
 				6003F58C195388D20070C39A /* Frameworks */,
 				6003F58B195388D20070C39A /* Products */,
-				B3D3D71132290D2A3A3B9917 /* Pods */,
+				2F5D1DD5810ECD7318F56B9B /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -138,7 +147,7 @@
 				6003F58F195388D20070C39A /* CoreGraphics.framework */,
 				6003F591195388D20070C39A /* UIKit.framework */,
 				6003F5AF195388D20070C39A /* XCTest.framework */,
-				9D87BBDF1998F7975E9757A5 /* libPods-TargetedAdsDemo.a */,
+				059EDD030E6D252EBA18D78B /* libPods-TargetedAdsDemo.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -261,15 +270,6 @@
 			name = AdDemoScreens;
 			sourceTree = "<group>";
 		};
-		B3D3D71132290D2A3A3B9917 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				7D5CA2E4A4D9759C12A91A40 /* Pods-TargetedAdsDemo.debug.xcconfig */,
-				3D6ECE5776982FD1707943E0 /* Pods-TargetedAdsDemo.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -277,13 +277,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7347FE721B556DA2001BD361 /* Build configuration list for PBXNativeTarget "TargetedAdsDemo" */;
 			buildPhases = (
-				6B3575F3C74F40B3E1059748 /* 📦 Check Pods Manifest.lock */,
+				74F874E142E3D3286F19028F /* [CP] Check Pods Manifest.lock */,
 				7347FE4E1B556DA2001BD361 /* Sources */,
 				7347FE4F1B556DA2001BD361 /* Frameworks */,
 				7347FE501B556DA2001BD361 /* Resources */,
-				CF431B32D8B910865AF729A5 /* 📦 Embed Pods Frameworks */,
-				F2C0428285A953128889CB0B /* 📦 Copy Pods Resources */,
-				2E27C5CA6E0BD5F9FE1E4EAA /* Embed Pods Frameworks */,
+				1708A0412A84DDF04B981DCF /* [CP] Embed Pods Frameworks */,
+				EED3E982C4DE45E5D09C36D6 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -356,14 +355,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		2E27C5CA6E0BD5F9FE1E4EAA /* Embed Pods Frameworks */ = {
+		1708A0412A84DDF04B981DCF /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Embed Pods Frameworks";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -371,14 +370,14 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TargetedAdsDemo/Pods-TargetedAdsDemo-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		6B3575F3C74F40B3E1059748 /* 📦 Check Pods Manifest.lock */ = {
+		74F874E142E3D3286F19028F /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -386,29 +385,14 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		CF431B32D8B910865AF729A5 /* 📦 Embed Pods Frameworks */ = {
+		EED3E982C4DE45E5D09C36D6 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TargetedAdsDemo/Pods-TargetedAdsDemo-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		F2C0428285A953128889CB0B /* 📦 Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "📦 Copy Pods Resources";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -525,7 +509,7 @@
 		};
 		7347FE731B556DA2001BD361 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7D5CA2E4A4D9759C12A91A40 /* Pods-TargetedAdsDemo.debug.xcconfig */;
+			baseConfigurationReference = 8FDED8B3BB22013075BAB7EA /* Pods-TargetedAdsDemo.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -559,7 +543,7 @@
 		};
 		7347FE741B556DA2001BD361 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3D6ECE5776982FD1707943E0 /* Pods-TargetedAdsDemo.release.xcconfig */;
+			baseConfigurationReference = 04A00EE500E9A609C2CD05D5 /* Pods-TargetedAdsDemo.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;

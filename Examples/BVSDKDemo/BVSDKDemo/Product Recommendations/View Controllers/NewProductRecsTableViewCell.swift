@@ -13,14 +13,14 @@ class NewProductRecsTableViewCell: UITableViewCell, UICollectionViewDataSource, 
     
     @IBOutlet weak var recommendationsCarousel: BVProductRecommendationsCollectionView!
     
-    var products : [BVProduct]?
+    var products : [BVRecommendedProduct]?
     
     var adLoader : GADAdLoader?
     var nativeContentAd : GADNativeContentAd?
     
     let specialAdIndex = 4
     
-    var referenceProduct : BVProduct? {
+    var referenceProduct : BVRecommendedProduct? {
         
         didSet {
             
@@ -43,7 +43,7 @@ class NewProductRecsTableViewCell: UITableViewCell, UICollectionViewDataSource, 
         
     }
     
-    var onProductRecTapped : ((selectedProduct : BVProduct) -> Void)? = nil
+    var onProductRecTapped : ((selectedProduct : BVRecommendedProduct) -> Void)? = nil
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -124,7 +124,7 @@ class NewProductRecsTableViewCell: UITableViewCell, UICollectionViewDataSource, 
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("DemoCarouselCollectionViewCell", forIndexPath: indexPath) as! DemoCarouselCollectionViewCell
         
         // TODO: This shold be set in the cell itself...not here...
-        cell.bvProduct = product
+        cell.bvRecommendedProduct = product
         cell.productName.text = product.productName
         cell.price.text = product.price ?? ""
         cell.starRating.value = CGFloat(product.averageRating.floatValue)

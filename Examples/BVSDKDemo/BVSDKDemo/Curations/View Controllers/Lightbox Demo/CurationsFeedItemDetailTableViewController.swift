@@ -273,7 +273,7 @@ class CurationsFeedItemDetailTableViewController: UITableViewController {
                 
                 // Demo just to navigate to a page. Really we'd navigate to the native product page here.
                 
-                let bvProduct = BVProduct()
+                let bvProduct = BVRecommendedProduct()
                 bvProduct.productId = product.productId
                 bvProduct.productName = product.productName
                 bvProduct.imageURL = product.productImageUrl

@@ -12,7 +12,7 @@ import FontAwesomeKit
 import GoogleMobileAds
 
 
-class NewProductPageViewController: UIViewController, BVDelegate, UITableViewDelegate, UITableViewDataSource, GADNativeContentAdLoaderDelegate {
+class NewProductPageViewController: BVProductDisplayPageViewController, UITableViewDelegate, UITableViewDataSource, GADNativeContentAdLoaderDelegate {
 
     enum ProductDetailSection : Int {
         case Ratings = 0
@@ -39,9 +39,9 @@ class NewProductPageViewController: UIViewController, BVDelegate, UITableViewDel
     var adLoader : GADAdLoader?
     var nativeContentAd : GADNativeContentAd?
 
-    let selectedProduct : BVProduct
+    let selectedProduct : BVRecommendedProduct
     
-    init(nibName: String?, bundle: NSBundle?, product: BVProduct) {
+    init(nibName: String?, bundle: NSBundle?, product: BVRecommendedProduct) {
         
         selectedProduct = product
         super.init(nibName: nibName, bundle: bundle)
@@ -102,11 +102,32 @@ class NewProductPageViewController: UIViewController, BVDelegate, UITableViewDel
     func loadConversationsStats() {
         
         let productId = selectedProduct.productId
-        let get = BVGet(type: BVGetTypeProducts)
-        get.setFilterForAttribute("id", equality: BVEqualityEqualTo, value: productId)
-        get.addStatsOn(BVIncludeStatsTypeReviews)
-        get.addStatsOn(BVIncludeStatsTypeQuestions)
-        get.sendRequestWithDelegate(self)
+        let request = BVProductDisplayPageRequest(productId: productId)
+                          .includeStatistics(.Reviews)
+                          .includeStatistics(.Questions)
+        
+        request.load({ (response) in
+            
+            let product = response.result
+            
+            self.product = product
+            
+            guard let totalReviewCount = product?.reviewStatistics?.totalReviewCount as? Int,
+                let totalQuestionCount = product?.qaStatistics?.totalQuestionCount as? Int,
+                let totalAnswerCount = product?.qaStatistics?.totalAnswerCount as? Int else {
+                    return
+            }
+            
+            self.totalReviewCount = totalReviewCount
+            self.totalQuestionCount = totalQuestionCount
+            self.totalAnswerCount = totalAnswerCount
+            self.tableView.reloadData()
+            
+        }) { (errors) in
+            
+            print("An error occurred: \(errors)")
+                
+        }
         
     }
     
@@ -134,16 +155,18 @@ class NewProductPageViewController: UIViewController, BVDelegate, UITableViewDel
     
     func didReceiveResponse(response: [NSObject : AnyObject]!, forRequest request: AnyObject!) {
         
-        let results = ConversationsResponse<Product>(apiResponse: response).results
+        let product = BVProductsResponse(apiResponse: response).result
 
-        guard let product = results.first, reviewStats = product.reviewStatistics, qaStats = product.qaStatistics else {
+        guard let totalReviewCount = product?.reviewStatistics?.totalReviewCount as? Int,
+              let totalQuestionCount = product?.qaStatistics?.totalQuestionCount as? Int,
+              let totalAnswerCount = product?.qaStatistics?.totalAnswerCount as? Int else {
             return
         }
         
         dispatch_async(dispatch_get_main_queue()) { 
-            self.totalReviewCount = reviewStats["TotalReviewCount"] as? Int
-            self.totalQuestionCount = qaStats["TotalQuestionCount"] as? Int
-            self.totalAnswerCount = qaStats["TotalAnswerCount"] as? Int
+            self.totalReviewCount = totalReviewCount
+            self.totalQuestionCount = totalQuestionCount
+            self.totalAnswerCount = totalAnswerCount
             self.tableView.reloadData()
         }
         

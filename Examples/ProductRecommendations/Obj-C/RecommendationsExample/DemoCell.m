@@ -21,17 +21,17 @@
 
 @implementation DemoCell
 
-- (void)setBvProduct:(BVProduct *)bvProduct {
+- (void)setBvRecommendedProduct:(BVRecommendedProduct *)bvRecommendedProduct {
     
-    super.bvProduct = bvProduct;
+    super.bvRecommendedProduct = bvRecommendedProduct;
     
-    NSURL *url = [NSURL URLWithString:self.bvProduct.imageURL];
+    NSURL *url = [NSURL URLWithString:self.bvRecommendedProduct.imageURL];
     [self.productImageView sd_setImageWithURL:url];
-    self.productName.text = bvProduct.productName;
-    self.rating.text = [NSString stringWithFormat:@"%.1f", [bvProduct.averageRating floatValue]];
-    self.starRating.value = [bvProduct.averageRating floatValue];
-    self.numReview.text = [NSString stringWithFormat:@"(%ld)", [bvProduct.numReviews longValue]];
-    self.price.text = bvProduct.price;
+    self.productName.text = bvRecommendedProduct.productName;
+    self.rating.text = [NSString stringWithFormat:@"%.1f", [bvRecommendedProduct.averageRating floatValue]];
+    self.starRating.value = [bvRecommendedProduct.averageRating floatValue];
+    self.numReview.text = [NSString stringWithFormat:@"(%ld)", [bvRecommendedProduct.numReviews longValue]];
+    self.price.text = bvRecommendedProduct.price;
    
 }
 

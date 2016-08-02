@@ -9,9 +9,9 @@ import UIKit
 import BVSDK
 import SDForms
 
-class SubmitAnswerViewController: BaseUGCViewController, BVDelegate, SDFormDelegate, SDFormDataSource {
+class SubmitAnswerViewController: UIViewController, SDFormDelegate, SDFormDataSource {
     
-    let postAnswerParams = BVPost(type: BVPostTypeAnswer)
+    var answerSubmissionParameters = AnswerSubmissionParamsHolder()
     
     // For using SDFormField, this demo presumes one field item per section.
     // Hence, the section header will contain the tile, and the row will just contain the widget
@@ -21,13 +21,18 @@ class SubmitAnswerViewController: BaseUGCViewController, BVDelegate, SDFormDeleg
     
     var form : SDForm?
     
-    let selectedQuestion : Question!
+    let selectedQuestion : BVQuestion!
+    let product : BVRecommendedProduct
     
-    init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?, product: BVProduct, question: Question) {
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var header : ProductDetailHeaderView!
+    var spinner = Util.createSpinner(UIColor.bazaarvoiceNavy(), size: CGSizeMake(44,44), padding: 0)
+    
+    init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?, product: BVRecommendedProduct, question: BVQuestion) {
         
         selectedQuestion = question
-        
-        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil, product: product)
+        self.product = product
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         
     }
     
@@ -42,19 +47,11 @@ class SubmitAnswerViewController: BaseUGCViewController, BVDelegate, SDFormDeleg
         
         self.title = "Submit an Answer"
         
-        // a working example of posting an answer.
-        postAnswerParams.action = BVActionPreview // Don't actually post, just run in preview mode!
+        header.product = product
         
-        // We need to use the same userId for answer content
-        let userId = "123abc\(arc4random())"
+        self.view.backgroundColor = UIColor.appBackground()
         
-        postAnswerParams.questionId = selectedQuestion.questionId
-        postAnswerParams.title = ""
-        postAnswerParams.answerText = ""
-        postAnswerParams.userNickname = ""
-        postAnswerParams.userEmail = ""
-        postAnswerParams.sendEmailAlertWhenPublished = true
-        postAnswerParams.authenticatedUser = userId
+        self.tableView.backgroundColor = UIColor.whiteColor()
         
         // form scrolling above keyboard
         self.tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 300, right: 0)
@@ -67,36 +64,58 @@ class SubmitAnswerViewController: BaseUGCViewController, BVDelegate, SDFormDeleg
     
     func submitTapped() {
         
-        // TODO: Add in field validator here....
-        // Otherwise the API will validate for us.
+        // NOTE: This sample doens't do field validation so we let the API do it for us.
+        // Typically your UI Controller would do some basic validation and guide your user on the required fields and field lengths.
         
         self.spinner.center = self.view.center
         self.view.addSubview(self.spinner)
-        
-        submitAnswer()
-        
-    }
-    
-    func submitAnswer(){
-        
         self.tableView.resignFirstResponder()
         
-        postAnswerParams.sendRequestWithDelegate(self)
+        let submission = BVAnswerSubmission(questionId: selectedQuestion.identifier ?? "", answerText: answerSubmissionParameters.answerText as? String ?? "")
+        submission.action = .Preview // Don't actually post, just run in preview mode!
+        submission.userNickname = answerSubmissionParameters.userNickname as? String
+        submission.userEmail = answerSubmissionParameters.userEmail as? String
+        submission.sendEmailAlertWhenPublished = answerSubmissionParameters.sendEmailAlertWhenPublished
+        let userId = "123abc\(arc4random())"
+        submission.userId = userId
+        
+        submission.submit({ (response) in
+            
+            dispatch_async(dispatch_get_main_queue(), {
+                SweetAlert().showAlert("Success!", subTitle: "Your answer was submitted. It may take up to 72 hours for us to respond.", style: .Success)
+                self.navigationController?.popViewControllerAnimated(true)
+            })
+
+        }) { (errors) in
+                
+            dispatch_async(dispatch_get_main_queue(), {
+                var errorMessage = ""
+                for error in errors {
+                    errorMessage += "\(error)."
+                }
+                
+                SweetAlert().showAlert("Error Sumbitting Question", subTitle: errorMessage, style: .Error)
+                
+                self.spinner.removeFromSuperview()
+            })
+
+        }   
+        
     }
     
     
     func initFormFields(){
         
-        let answerField = SDMultilineTextField(object: postAnswerParams, relatedPropertyKey: "answerText")
+        let answerField = SDMultilineTextField(object: answerSubmissionParameters, relatedPropertyKey: "answerText")
         answerField.placeholder = "Answer"
         
-        let nickNameField : SDTextFormField = SDTextFormField(object: postAnswerParams, relatedPropertyKey: "userNickname")
+        let nickNameField : SDTextFormField = SDTextFormField(object: answerSubmissionParameters, relatedPropertyKey: "userNickname")
         nickNameField.placeholder = "Nickname"
         
-        let emailAddressField : SDTextFormField = SDTextFormField(object: postAnswerParams, relatedPropertyKey: "userEmail")
+        let emailAddressField : SDTextFormField = SDTextFormField(object: answerSubmissionParameters, relatedPropertyKey: "userEmail")
         emailAddressField.placeholder = "Enter a valid email address"
         
-        let emailOKSwitchField = SDSwitchField(object: postAnswerParams, relatedPropertyKey: "sendEmailAlertWhenPublished")
+        let emailOKSwitchField = SDSwitchField(object: answerSubmissionParameters, relatedPropertyKey: "sendEmailAlertWhenPublished")
         emailOKSwitchField.title = "Send me status by email?"
         
         // Keep the formFields and sectionTitles in the same order if you switch them around.
@@ -107,65 +126,6 @@ class SubmitAnswerViewController: BaseUGCViewController, BVDelegate, SDFormDeleg
         self.form = SDForm(tableView: self.tableView)
         self.form?.delegate = self
         self.form?.dataSource = self
-        
-    }
-    
-    // MARK: BVDelegate
-    
-    func hasErrors(response: NSDictionary) -> Bool {
-        
-        return (response.objectForKey("HasErrors") != nil && response.objectForKey("HasErrors")?.boolValue == true)
-        
-    }
-    
-    func didReceiveResponse(response: [NSObject : AnyObject]!, forRequest request: AnyObject!) {
-        
-        if (request as? BVPost) != nil {
-            
-            let responseDict = response as NSDictionary
-            
-            if self.hasErrors(responseDict){
-                
-                var errorMessage = "Unknown error"
-                if responseDict.objectForKey("Errors")!.count > 0{
-                    errorMessage = (responseDict.objectForKey("Errors")?.objectAtIndex(0).objectForKey("Message") as? String)!
-                } else {
-                    let fieldErrors = responseDict.objectForKey("FormErrors")?.objectForKey("FieldErrors") as? NSDictionary
-                    var summedErrorMessage = ""
-                    for (_,value) in fieldErrors! {
-                        let message = value.objectForKey("Message") as! String
-                        let field = value.objectForKey("Field") as! String
-                        summedErrorMessage += field + ": " + message + "\n"
-                    }
-                    errorMessage = summedErrorMessage
-                }
-                
-                SweetAlert().showAlert("Error Uploading Answer", subTitle: errorMessage, style: .Error)
-                
-                self.spinner.removeFromSuperview()
-                
-            } else {
-                SweetAlert().showAlert("Success!", subTitle: "Your answer was submitted. It may take up to 72 hours before your post is live.", style: .Success)
-                self.navigationController?.popViewControllerAnimated(true)
-            }
-            
-            self.spinner.removeFromSuperview()
-            
-        }
-        
-    }
-    
-    func didFailToReceiveResponse(err: NSError!, forRequest request: AnyObject!) {
-        // error
-        SweetAlert().showAlert("Error!", subTitle: err.localizedDescription, style: .Error)
-        self.spinner.removeFromSuperview()
-    }
-    
-    // MARK: UITableViewDataSource
-    
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        return 1
         
     }
     
@@ -208,5 +168,13 @@ class SubmitAnswerViewController: BaseUGCViewController, BVDelegate, SDFormDeleg
         return self;
     }
     
+}
+
+@objc class AnswerSubmissionParamsHolder : NSObject {
+    
+    var answerText : NSString?
+    var userNickname : NSString?
+    var userEmail : NSString?
+    var sendEmailAlertWhenPublished:NSNumber?
     
 }
