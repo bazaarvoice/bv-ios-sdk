@@ -9,7 +9,7 @@
 #define BVRecommendations_h
 
 #import "BVCore.h"
-#import "BVProduct.h"
+#import "BVRecommendedProduct.h"
 #import "BVRecommendationsLoader.h"
 #import "BVRecsAnalyticsHelper.h"
 #import "BVProductRecommendationView.h"

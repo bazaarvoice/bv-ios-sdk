@@ -7,29 +7,64 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		08528E6284A41DD78AC9C652 /* libPods-ConversationsExample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E942619EF089A3523FFF26DC /* libPods-ConversationsExample.a */; };
+		873C795B1D4BF0C90048AD55 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 873C795A1D4BF0C90048AD55 /* ViewController.m */; };
+		874863881D4BDA8F00B43F00 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 874863841D4BDA8F00B43F00 /* LaunchScreen.storyboard */; };
+		874863891D4BDA8F00B43F00 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 874863861D4BDA8F00B43F00 /* Main.storyboard */; };
+		8748638C1D4BDDCF00B43F00 /* MyReviewTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8748638B1D4BDDCF00B43F00 /* MyReviewTableViewCell.m */; };
+		874863921D4BE47300B43F00 /* MyQuestionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 874863911D4BE47300B43F00 /* MyQuestionTableViewCell.m */; };
+		874863971D4BE5FB00B43F00 /* MyAnswerTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 874863931D4BE5FB00B43F00 /* MyAnswerTableViewCell.xib */; };
+		874863981D4BE5FB00B43F00 /* MyQuestionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 874863941D4BE5FB00B43F00 /* MyQuestionTableViewCell.xib */; };
+		874863991D4BE5FB00B43F00 /* MyReviewTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 874863951D4BE5FB00B43F00 /* MyReviewTableViewCell.xib */; };
+		8748639A1D4BE5FB00B43F00 /* StatisticTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 874863961D4BE5FB00B43F00 /* StatisticTableViewCell.xib */; };
 		876DF5591CF4E87B005D841F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 876DF5581CF4E87B005D841F /* main.m */; };
 		876DF55C1CF4E87B005D841F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 876DF55B1CF4E87B005D841F /* AppDelegate.m */; };
-		876DF55F1CF4E87B005D841F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 876DF55E1CF4E87B005D841F /* ViewController.m */; };
-		876DF5621CF4E87B005D841F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 876DF5601CF4E87B005D841F /* Main.storyboard */; };
-		876DF5641CF4E87B005D841F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 876DF5631CF4E87B005D841F /* Assets.xcassets */; };
-		876DF5671CF4E87B005D841F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 876DF5651CF4E87B005D841F /* LaunchScreen.storyboard */; };
+		87C768431D4BB0AB0091E5A1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 87C768391D4BB0AB0091E5A1 /* Assets.xcassets */; };
+		87C7684C1D4BB1660091E5A1 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87C7684B1D4BB1660091E5A1 /* RootViewController.m */; };
+		87EB7D7D1D4BF2140014D5F9 /* QuestionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87EB7D7C1D4BF2140014D5F9 /* QuestionsViewController.m */; };
+		87EB7D801D4BF5040014D5F9 /* PDPViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87EB7D7F1D4BF5040014D5F9 /* PDPViewController.m */; };
+		87EB7D831D4BFB890014D5F9 /* StatisticTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 87EB7D821D4BFB890014D5F9 /* StatisticTableViewCell.m */; };
+		87EB7D861D4CCF0D0014D5F9 /* InlineRatingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87EB7D851D4CCF0D0014D5F9 /* InlineRatingsViewController.m */; };
+		87FF7F2B1D4F90B300019D54 /* AnswersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87FF7F2A1D4F90B300019D54 /* AnswersViewController.m */; };
+		87FF7F311D4F91B100019D54 /* MyAnswerTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 87FF7F301D4F91B100019D54 /* MyAnswerTableViewCell.m */; };
+		CC11302CA4967E3306E80E8B /* Pods_ConversationsExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00DA1C5CD00EE68690FD143A /* Pods_ConversationsExample.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		4DDCCD3CFDBC641C2846B2F7 /* Pods-ConversationsExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ConversationsExample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ConversationsExample/Pods-ConversationsExample.debug.xcconfig"; sourceTree = "<group>"; };
+		00DA1C5CD00EE68690FD143A /* Pods_ConversationsExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ConversationsExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0805DFF68F2200FDCA49BE4A /* Pods-ConversationsExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ConversationsExample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ConversationsExample/Pods-ConversationsExample.debug.xcconfig"; sourceTree = "<group>"; };
+		51881DC8EBF9E9D2AB6B810B /* Pods-ConversationsExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ConversationsExample.release.xcconfig"; path = "Pods/Target Support Files/Pods-ConversationsExample/Pods-ConversationsExample.release.xcconfig"; sourceTree = "<group>"; };
+		873C79591D4BF0C90048AD55 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		873C795A1D4BF0C90048AD55 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		874863851D4BDA8F00B43F00 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		874863871D4BDA8F00B43F00 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Main.storyboard; sourceTree = "<group>"; };
+		8748638A1D4BDDCF00B43F00 /* MyReviewTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyReviewTableViewCell.h; path = ConversationsExample/MyReviewTableViewCell.h; sourceTree = SOURCE_ROOT; };
+		8748638B1D4BDDCF00B43F00 /* MyReviewTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyReviewTableViewCell.m; path = ConversationsExample/MyReviewTableViewCell.m; sourceTree = SOURCE_ROOT; };
+		874863901D4BE47300B43F00 /* MyQuestionTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyQuestionTableViewCell.h; sourceTree = "<group>"; };
+		874863911D4BE47300B43F00 /* MyQuestionTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyQuestionTableViewCell.m; sourceTree = "<group>"; };
+		874863931D4BE5FB00B43F00 /* MyAnswerTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyAnswerTableViewCell.xib; sourceTree = "<group>"; };
+		874863941D4BE5FB00B43F00 /* MyQuestionTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyQuestionTableViewCell.xib; sourceTree = "<group>"; };
+		874863951D4BE5FB00B43F00 /* MyReviewTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyReviewTableViewCell.xib; sourceTree = "<group>"; };
+		874863961D4BE5FB00B43F00 /* StatisticTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StatisticTableViewCell.xib; sourceTree = "<group>"; };
 		876DF5541CF4E87A005D841F /* ConversationsExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ConversationsExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		876DF5581CF4E87B005D841F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		876DF55A1CF4E87B005D841F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		876DF55B1CF4E87B005D841F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		876DF55D1CF4E87B005D841F /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		876DF55E1CF4E87B005D841F /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		876DF5611CF4E87B005D841F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		876DF5631CF4E87B005D841F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		876DF5661CF4E87B005D841F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		876DF5681CF4E87B005D841F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		DA5BFC277659FB7E736E4531 /* Pods-ConversationsExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ConversationsExample.release.xcconfig"; path = "Pods/Target Support Files/Pods-ConversationsExample/Pods-ConversationsExample.release.xcconfig"; sourceTree = "<group>"; };
-		E942619EF089A3523FFF26DC /* libPods-ConversationsExample.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ConversationsExample.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		87C768391D4BB0AB0091E5A1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../../shared/Assets.xcassets; sourceTree = "<group>"; };
+		87C7684A1D4BB1660091E5A1 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RootViewController.h; path = ConversationsExample/RootViewController.h; sourceTree = SOURCE_ROOT; };
+		87C7684B1D4BB1660091E5A1 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RootViewController.m; path = ConversationsExample/RootViewController.m; sourceTree = SOURCE_ROOT; };
+		87EB7D7B1D4BF2140014D5F9 /* QuestionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionsViewController.h; sourceTree = "<group>"; };
+		87EB7D7C1D4BF2140014D5F9 /* QuestionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionsViewController.m; sourceTree = "<group>"; };
+		87EB7D7E1D4BF5040014D5F9 /* PDPViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDPViewController.h; sourceTree = "<group>"; };
+		87EB7D7F1D4BF5040014D5F9 /* PDPViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDPViewController.m; sourceTree = "<group>"; };
+		87EB7D811D4BFB890014D5F9 /* StatisticTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatisticTableViewCell.h; sourceTree = "<group>"; };
+		87EB7D821D4BFB890014D5F9 /* StatisticTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatisticTableViewCell.m; sourceTree = "<group>"; };
+		87EB7D841D4CCF0D0014D5F9 /* InlineRatingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InlineRatingsViewController.h; sourceTree = "<group>"; };
+		87EB7D851D4CCF0D0014D5F9 /* InlineRatingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InlineRatingsViewController.m; sourceTree = "<group>"; };
+		87FF7F291D4F90B300019D54 /* AnswersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnswersViewController.h; sourceTree = "<group>"; };
+		87FF7F2A1D4F90B300019D54 /* AnswersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnswersViewController.m; sourceTree = "<group>"; };
+		87FF7F2F1D4F91B100019D54 /* MyAnswerTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyAnswerTableViewCell.h; sourceTree = "<group>"; };
+		87FF7F301D4F91B100019D54 /* MyAnswerTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyAnswerTableViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,19 +72,20 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				08528E6284A41DD78AC9C652 /* libPods-ConversationsExample.a in Frameworks */,
+				CC11302CA4967E3306E80E8B /* Pods_ConversationsExample.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		64BD81E8EF679A827FD0B175 /* Frameworks */ = {
+		874863831D4BDA8F00B43F00 /* Base.lproj */ = {
 			isa = PBXGroup;
 			children = (
-				E942619EF089A3523FFF26DC /* libPods-ConversationsExample.a */,
+				874863841D4BDA8F00B43F00 /* LaunchScreen.storyboard */,
+				874863861D4BDA8F00B43F00 /* Main.storyboard */,
 			);
-			name = Frameworks;
+			path = Base.lproj;
 			sourceTree = "<group>";
 		};
 		876DF54B1CF4E87A005D841F = {
@@ -57,8 +93,8 @@
 			children = (
 				876DF5561CF4E87A005D841F /* ConversationsExample */,
 				876DF5551CF4E87A005D841F /* Products */,
-				E6D053C2EF48534166842722 /* Pods */,
-				64BD81E8EF679A827FD0B175 /* Frameworks */,
+				C1A8296DBF1DE3DE406983E4 /* Pods */,
+				BDF941087129F5455E368D0F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -73,14 +109,13 @@
 		876DF5561CF4E87A005D841F /* ConversationsExample */ = {
 			isa = PBXGroup;
 			children = (
+				87FF7F321D4F91BA00019D54 /* ViewControllers */,
+				87FF7F331D4F91C200019D54 /* TableViewCells */,
 				876DF55A1CF4E87B005D841F /* AppDelegate.h */,
 				876DF55B1CF4E87B005D841F /* AppDelegate.m */,
-				876DF55D1CF4E87B005D841F /* ViewController.h */,
-				876DF55E1CF4E87B005D841F /* ViewController.m */,
-				876DF5601CF4E87B005D841F /* Main.storyboard */,
-				876DF5631CF4E87B005D841F /* Assets.xcassets */,
-				876DF5651CF4E87B005D841F /* LaunchScreen.storyboard */,
 				876DF5681CF4E87B005D841F /* Info.plist */,
+				874863831D4BDA8F00B43F00 /* Base.lproj */,
+				87C768391D4BB0AB0091E5A1 /* Assets.xcassets */,
 				876DF5571CF4E87A005D841F /* Supporting Files */,
 			);
 			path = ConversationsExample;
@@ -94,11 +129,57 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		E6D053C2EF48534166842722 /* Pods */ = {
+		87FF7F321D4F91BA00019D54 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				4DDCCD3CFDBC641C2846B2F7 /* Pods-ConversationsExample.debug.xcconfig */,
-				DA5BFC277659FB7E736E4531 /* Pods-ConversationsExample.release.xcconfig */,
+				87C7684A1D4BB1660091E5A1 /* RootViewController.h */,
+				87C7684B1D4BB1660091E5A1 /* RootViewController.m */,
+				873C79591D4BF0C90048AD55 /* ViewController.h */,
+				873C795A1D4BF0C90048AD55 /* ViewController.m */,
+				87EB7D7B1D4BF2140014D5F9 /* QuestionsViewController.h */,
+				87EB7D7C1D4BF2140014D5F9 /* QuestionsViewController.m */,
+				87FF7F291D4F90B300019D54 /* AnswersViewController.h */,
+				87FF7F2A1D4F90B300019D54 /* AnswersViewController.m */,
+				87EB7D7E1D4BF5040014D5F9 /* PDPViewController.h */,
+				87EB7D7F1D4BF5040014D5F9 /* PDPViewController.m */,
+				87EB7D841D4CCF0D0014D5F9 /* InlineRatingsViewController.h */,
+				87EB7D851D4CCF0D0014D5F9 /* InlineRatingsViewController.m */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		87FF7F331D4F91C200019D54 /* TableViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				8748638A1D4BDDCF00B43F00 /* MyReviewTableViewCell.h */,
+				8748638B1D4BDDCF00B43F00 /* MyReviewTableViewCell.m */,
+				874863901D4BE47300B43F00 /* MyQuestionTableViewCell.h */,
+				874863911D4BE47300B43F00 /* MyQuestionTableViewCell.m */,
+				87FF7F2F1D4F91B100019D54 /* MyAnswerTableViewCell.h */,
+				87FF7F301D4F91B100019D54 /* MyAnswerTableViewCell.m */,
+				87EB7D811D4BFB890014D5F9 /* StatisticTableViewCell.h */,
+				87EB7D821D4BFB890014D5F9 /* StatisticTableViewCell.m */,
+				874863931D4BE5FB00B43F00 /* MyAnswerTableViewCell.xib */,
+				874863941D4BE5FB00B43F00 /* MyQuestionTableViewCell.xib */,
+				874863951D4BE5FB00B43F00 /* MyReviewTableViewCell.xib */,
+				874863961D4BE5FB00B43F00 /* StatisticTableViewCell.xib */,
+			);
+			name = TableViewCells;
+			sourceTree = "<group>";
+		};
+		BDF941087129F5455E368D0F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				00DA1C5CD00EE68690FD143A /* Pods_ConversationsExample.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C1A8296DBF1DE3DE406983E4 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				0805DFF68F2200FDCA49BE4A /* Pods-ConversationsExample.debug.xcconfig */,
+				51881DC8EBF9E9D2AB6B810B /* Pods-ConversationsExample.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -110,12 +191,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 876DF56B1CF4E87B005D841F /* Build configuration list for PBXNativeTarget "ConversationsExample" */;
 			buildPhases = (
-				8EB5A09127D57F4DDD74732C /* Check Pods Manifest.lock */,
+				86139011AED4AE9D314DA998 /* [CP] Check Pods Manifest.lock */,
 				876DF5501CF4E87A005D841F /* Sources */,
 				876DF5511CF4E87A005D841F /* Frameworks */,
 				876DF5521CF4E87A005D841F /* Resources */,
-				47105D54A14BED96473164E3 /* Embed Pods Frameworks */,
-				8E03A437ED9871E44E08BF83 /* Copy Pods Resources */,
+				28C77DE22A8AE2C47581085E /* [CP] Embed Pods Frameworks */,
+				92A40C857D267ABE8E9A62C4 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -163,23 +244,27 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				876DF5671CF4E87B005D841F /* LaunchScreen.storyboard in Resources */,
-				876DF5641CF4E87B005D841F /* Assets.xcassets in Resources */,
-				876DF5621CF4E87B005D841F /* Main.storyboard in Resources */,
+				874863891D4BDA8F00B43F00 /* Main.storyboard in Resources */,
+				8748639A1D4BE5FB00B43F00 /* StatisticTableViewCell.xib in Resources */,
+				874863991D4BE5FB00B43F00 /* MyReviewTableViewCell.xib in Resources */,
+				87C768431D4BB0AB0091E5A1 /* Assets.xcassets in Resources */,
+				874863881D4BDA8F00B43F00 /* LaunchScreen.storyboard in Resources */,
+				874863971D4BE5FB00B43F00 /* MyAnswerTableViewCell.xib in Resources */,
+				874863981D4BE5FB00B43F00 /* MyQuestionTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		47105D54A14BED96473164E3 /* Embed Pods Frameworks */ = {
+		28C77DE22A8AE2C47581085E /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Embed Pods Frameworks";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -187,34 +272,34 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ConversationsExample/Pods-ConversationsExample-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		8E03A437ED9871E44E08BF83 /* Copy Pods Resources */ = {
+		86139011AED4AE9D314DA998 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ConversationsExample/Pods-ConversationsExample-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		8EB5A09127D57F4DDD74732C /* Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		92A40C857D267ABE8E9A62C4 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ConversationsExample/Pods-ConversationsExample-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -224,29 +309,38 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				876DF55F1CF4E87B005D841F /* ViewController.m in Sources */,
+				87FF7F2B1D4F90B300019D54 /* AnswersViewController.m in Sources */,
+				87EB7D861D4CCF0D0014D5F9 /* InlineRatingsViewController.m in Sources */,
+				87EB7D831D4BFB890014D5F9 /* StatisticTableViewCell.m in Sources */,
+				873C795B1D4BF0C90048AD55 /* ViewController.m in Sources */,
+				87EB7D801D4BF5040014D5F9 /* PDPViewController.m in Sources */,
+				8748638C1D4BDDCF00B43F00 /* MyReviewTableViewCell.m in Sources */,
+				87EB7D7D1D4BF2140014D5F9 /* QuestionsViewController.m in Sources */,
+				87FF7F311D4F91B100019D54 /* MyAnswerTableViewCell.m in Sources */,
 				876DF55C1CF4E87B005D841F /* AppDelegate.m in Sources */,
+				874863921D4BE47300B43F00 /* MyQuestionTableViewCell.m in Sources */,
 				876DF5591CF4E87B005D841F /* main.m in Sources */,
+				87C7684C1D4BB1660091E5A1 /* RootViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		876DF5601CF4E87B005D841F /* Main.storyboard */ = {
+		874863841D4BDA8F00B43F00 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				876DF5611CF4E87B005D841F /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		876DF5651CF4E87B005D841F /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				876DF5661CF4E87B005D841F /* Base */,
+				874863851D4BDA8F00B43F00 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		874863861D4BDA8F00B43F00 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				874863871D4BDA8F00B43F00 /* Base */,
+			);
+			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -336,7 +430,7 @@
 		};
 		876DF56C1CF4E87B005D841F /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4DDCCD3CFDBC641C2846B2F7 /* Pods-ConversationsExample.debug.xcconfig */;
+			baseConfigurationReference = 0805DFF68F2200FDCA49BE4A /* Pods-ConversationsExample.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = ConversationsExample/Info.plist;
@@ -349,7 +443,7 @@
 		};
 		876DF56D1CF4E87B005D841F /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DA5BFC277659FB7E736E4531 /* Pods-ConversationsExample.release.xcconfig */;
+			baseConfigurationReference = 51881DC8EBF9E9D2AB6B810B /* Pods-ConversationsExample.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = ConversationsExample/Info.plist;

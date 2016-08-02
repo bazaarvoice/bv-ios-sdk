@@ -53,6 +53,16 @@ static BVLogger *sharedLoggerInstance = nil;
     [self printMessage:message forLogLevel:BVLogLevelError];
 }
 
+-(void)printError:(nonnull NSError*)error {
+    [self printMessage:[error localizedDescription] forLogLevel:BVLogLevelError];
+}
+
+-(void)printErrors:(nonnull NSArray<NSError*>*)errors {
+    for (NSError* error in errors) {
+        [self printError:error];
+    }
+}
+
 -(void)printMessage:(NSString*)message forLogLevel:(BVLogLevel)logLevel {
     if(self.logLevel >= logLevel && self.logLevel != BVLogLevelAnalyticsOnly){
         NSLog(@"%@: %@", BV_LOG_TAG, message);

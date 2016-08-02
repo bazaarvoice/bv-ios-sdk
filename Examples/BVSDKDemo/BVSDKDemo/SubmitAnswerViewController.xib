@@ -9,9 +9,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SubmitAnswerViewController" customModule="BVSDKDemo" customModuleProvider="target">
             <connections>
-                <outlet property="header" destination="Ge7-ql-R5O" id="3IY-Dj-esX"/>
-                <outlet property="productImageView" destination="hqf-xO-Kgu" id="AfV-P3-jYN"/>
-                <outlet property="productNameLabel" destination="sMI-sN-IL5" id="caL-IK-lSZ"/>
+                <outlet property="header" destination="Ge7-ql-R5O" id="Xre-t0-7Sk"/>
                 <outlet property="tableView" destination="I5M-SW-ahB" id="ti0-cd-NYt"/>
                 <outlet property="view" destination="qBT-3o-TKK" id="GAe-IN-ZZx"/>
             </connections>

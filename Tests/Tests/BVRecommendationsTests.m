@@ -44,7 +44,7 @@
     
     BVRecommendationsRequest* request = [[BVRecommendationsRequest alloc] initWithLimit:10];
     BVRecommendationsLoader* loader = [[BVRecommendationsLoader alloc] init];
-    [loader loadRequest:request completionHandler:^(NSArray<BVProduct *> * _Nonnull recommendations) {
+    [loader loadRequest:request completionHandler:^(NSArray<BVRecommendedProduct *> * _Nonnull recommendations) {
         
         XCTAssertTrue([recommendations count] > 0, @"Recommendation result should not be size 0");
         [expectation fulfill];
@@ -69,7 +69,7 @@
     
     BVRecommendationsRequest* request = [[BVRecommendationsRequest alloc] initWithLimit:10 withProductId:@"client/productId1234"];
     BVRecommendationsLoader* loader = [[BVRecommendationsLoader alloc] init];
-    [loader loadRequest:request completionHandler:^(NSArray<BVProduct *> * _Nonnull recommendations) {
+    [loader loadRequest:request completionHandler:^(NSArray<BVRecommendedProduct *> * _Nonnull recommendations) {
         
          XCTAssertTrue([recommendations count] > 0, @"Recommendation result should not be size 0");
         [expectation fulfill];
@@ -93,7 +93,7 @@
     
     BVRecommendationsRequest* request = [[BVRecommendationsRequest alloc] initWithLimit:10 withCategoryId:@"client/categoryId0100"];
     BVRecommendationsLoader* loader = [[BVRecommendationsLoader alloc] init];
-    [loader loadRequest:request completionHandler:^(NSArray<BVProduct *> * _Nonnull recommendations) {
+    [loader loadRequest:request completionHandler:^(NSArray<BVRecommendedProduct *> * _Nonnull recommendations) {
         
          XCTAssertTrue([recommendations count] > 0, @"Recommendation result should not be size 0");
         [expectation fulfill];
@@ -119,7 +119,7 @@
     
     BVRecommendationsRequest* request = [[BVRecommendationsRequest alloc] initWithLimit:3];
     BVRecommendationsLoader* loader = [[BVRecommendationsLoader alloc] init];
-    [loader loadRequest:request completionHandler:^(NSArray<BVProduct *> * _Nonnull recommendations) {
+    [loader loadRequest:request completionHandler:^(NSArray<BVRecommendedProduct *> * _Nonnull recommendations) {
         
         XCTAssertTrue(NO, @"Success block called in test which should have failed.");
         [expectation fulfill];
@@ -146,7 +146,7 @@
     
     BVRecommendationsRequest* request = [[BVRecommendationsRequest alloc] initWithLimit:2];
     BVRecommendationsLoader* loader = [[BVRecommendationsLoader alloc] init];
-    [loader loadRequest:request completionHandler:^(NSArray<BVProduct *> * _Nonnull recommendations) {
+    [loader loadRequest:request completionHandler:^(NSArray<BVRecommendedProduct *> * _Nonnull recommendations) {
         
          XCTAssertTrue([recommendations count] == 1, @"Recommendation result should size should be 1");
         [expectation fulfill];

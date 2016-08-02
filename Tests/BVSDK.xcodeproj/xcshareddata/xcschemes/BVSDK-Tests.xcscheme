@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "6003F5AD195388D20070C39A"
-               BuildableName = "BVSDK.xctest"
-               BlueprintName = "BVSDK"
+               BuildableName = "BVSDK-Tests.xctest"
+               BlueprintName = "BVSDK-Tests"
                ReferencedContainer = "container:BVSDK.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -33,8 +33,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "6003F5AD195388D20070C39A"
-               BuildableName = "BVSDK.xctest"
-               BlueprintName = "BVSDK"
+               BuildableName = "BVSDK-Tests.xctest"
+               BlueprintName = "BVSDK-Tests"
                ReferencedContainer = "container:BVSDK.xcodeproj">
             </BuildableReference>
          </TestableReference>
@@ -43,8 +43,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "6003F5AD195388D20070C39A"
-            BuildableName = "BVSDK.xctest"
-            BlueprintName = "BVSDK"
+            BuildableName = "BVSDK-Tests.xctest"
+            BlueprintName = "BVSDK-Tests"
             ReferencedContainer = "container:BVSDK.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -66,8 +66,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "6003F5AD195388D20070C39A"
-            BuildableName = "BVSDK.xctest"
-            BlueprintName = "BVSDK"
+            BuildableName = "BVSDK-Tests.xctest"
+            BlueprintName = "BVSDK-Tests"
             ReferencedContainer = "container:BVSDK.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -85,8 +85,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "6003F5AD195388D20070C39A"
-            BuildableName = "BVSDK.xctest"
-            BlueprintName = "BVSDK"
+            BuildableName = "BVSDK-Tests.xctest"
+            BlueprintName = "BVSDK-Tests"
             ReferencedContainer = "container:BVSDK.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

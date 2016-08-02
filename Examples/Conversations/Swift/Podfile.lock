@@ -1,7 +1,7 @@
 PODS:
-  - BVSDK/BVConversations (4.0.2):
+  - BVSDK/BVConversations (4.1.0):
     - BVSDK/Core
-  - BVSDK/Core (4.0.2)
+  - BVSDK/Core (4.1.0)
 
 DEPENDENCIES:
   - BVSDK/BVConversations (from `../../../`)
@@ -11,6 +11,8 @@ EXTERNAL SOURCES:
     :path: ../../../
 
 SPEC CHECKSUMS:
-  BVSDK: 9b5bc0d7dad08f6846428627546d90f16aae85b7
+  BVSDK: 5619fd07fac1705c309529783bde5f349d662449
 
-COCOAPODS: 0.39.0
+PODFILE CHECKSUM: ff51a28f7873cf9d401e0c25277fa303397c7510
+
+COCOAPODS: 1.0.1

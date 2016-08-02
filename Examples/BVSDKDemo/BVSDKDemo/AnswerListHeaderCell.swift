@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import BVSDK
 
 class AnswerListHeaderCell: UITableViewCell {
     
@@ -17,16 +18,16 @@ class AnswerListHeaderCell: UITableViewCell {
         super.awakeFromNib()
     }
     
-    var question : Question! {
+    var question : BVQuestion! {
         didSet {
             questionTitle.text = question.questionSummary
             questionText.text = question.questionDetails
             
             
-            if let submissionTime = question.submissionTime, let nickname = question.author?.userNickname {
+            if let submissionTime = question.submissionTime, let nickname = question.userNickname {
                 questionMetaData.text = dateTimeAgo(submissionTime) + " by " + nickname
             }
-            else if let nickname = question.author?.userNickname {
+            else if let nickname = question.userNickname {
                 questionMetaData.text = nickname
             }
             else if let submissionTime = question.submissionTime {

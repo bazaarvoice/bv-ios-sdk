@@ -6,8 +6,9 @@
 
 import UIKit
 import HCSStarRatingView
+import BVSDK
 
-class RatingTableViewCell: UITableViewCell {
+class RatingTableViewCell: BVReviewTableViewCell {
     
     @IBOutlet weak var reviewText : UILabel!
     @IBOutlet weak var reviewTitle : UILabel!
@@ -21,7 +22,7 @@ class RatingTableViewCell: UITableViewCell {
         super.awakeFromNib()
     }
     
-    var review : Review? {
+    override var review : BVReview? {
         
         didSet {
             
@@ -40,35 +41,35 @@ class RatingTableViewCell: UITableViewCell {
             
             
             reviewTitle.text = review!.title
-            reviewStars.value = CGFloat(review!.rating!)
-            if (review!.thumbNailImageUrl != nil) {
-                reviewPhoto.sd_setImageWithURL(NSURL(string: review!.thumbNailImageUrl!))
+            reviewStars.value = CGFloat(review!.rating)
+            if let photoUrl = review?.photos.first?.sizes?.normalUrl {
+                reviewPhoto.sd_setImageWithURL(NSURL(string: photoUrl))
             }
             else {
                 reviewPhoto.image = nil
             }
             
-            if let submissionTime = review!.submissionTime, let nickname = review!.author?.userNickname {
+            if let submissionTime = review?.submissionTime, let nickname = review?.userNickname {
                 reviewAuthor.text = dateTimeAgo(submissionTime) + " by " + nickname
             }
-            else if let nickname = review!.author?.userNickname {
+            else if let nickname = review?.userNickname {
                 reviewAuthor.text = nickname
             }
-            else if let submissionTime = review!.submissionTime {
+            else if let submissionTime = review?.submissionTime {
                 reviewAuthor.text = dateTimeAgo(submissionTime) + " by Anonymous"
             }
             else {
                 reviewAuthor.text = "Anonymous"
             }
             
-            if let authorLocation = review!.userLocation {
+            if let authorLocation = review?.userLocation {
                 reviewAuthorLocation.text = authorLocation
             }
             else {
                 reviewAuthorLocation.text = ""
             }
             
-            if (review?.totalFeedbackCount > 0){
+            if review?.totalFeedbackCount?.intValue > 0 {
                 
                 let totalFeedbackCountString = String(review!.totalFeedbackCount)
                 let totalPositiveFeedbackCountString = String(review!.totalPositiveFeedbackCount)

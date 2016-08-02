@@ -70,7 +70,7 @@
     
     DemoCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"DemoCellIdentifier" forIndexPath:indexPath];
     
-    cell.bvProduct = [self.products objectAtIndex:indexPath.row];
+    cell.bvRecommendedProduct = [self.products objectAtIndex:indexPath.row];
     
     return cell;
     

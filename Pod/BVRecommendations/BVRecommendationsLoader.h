@@ -19,7 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface BVRecommendationsLoader : NSObject
 
 
-typedef void (^recommendationsCompletionHandler)(NSArray<BVProduct*>*);
+typedef void (^recommendationsCompletionHandler)(NSArray<BVRecommendedProduct*>*);
 typedef void (^recommendationsErrorHandler)(NSError*);
 
 
@@ -27,7 +27,7 @@ typedef void (^recommendationsErrorHandler)(NSError*);
     Load product recommendations based on data fed in from `request`.
  
     @param request             The request parameters to load
-    @param completionHandler   Completion handler which returns an array of `BVProduct` product recommendations
+    @param completionHandler   Completion handler which returns an array of `BVRecommendedProduct` product recommendations
     @param errorHandler        Error handler which returns an `NSError` if the request has failed.
  
     @availability 3.3.0 and later
