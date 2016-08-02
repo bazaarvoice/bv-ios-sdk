@@ -13,18 +13,17 @@
 #include "BVAnalyticsManager.h"
 #include "BVPixel.h"
 #include "BVAuthenticatedUser.h"
+#include "BVNullHelper.h"
+#include "BVErrorCodeConstants.h"
 
 /// Provides the master version of the SDK.
-#define BV_SDK_VERSION @"4.0.3"
+#define BV_SDK_VERSION @"4.1.0"
 
 /// Conversation SDK Version
 #define SDK_HEADER_NAME @"X-UA-BV-SDK"
-#define SDK_HEADER_VALUE @"IOS_SDK_V403"
+#define SDK_HEADER_VALUE @"IOS_SDK_V410"
 
 /// Error domain for NSError results, when present.
 #define BVErrDomain @"com.bvsdk.bazaarvoice"
-
-#define SET_IF_NOT_NULL(target, value) if(value != [NSNull null]) { target = value; }
-
 
 #endif

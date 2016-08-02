@@ -6,10 +6,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <BVSDK/BVConversations.h>
 
-@interface ViewController : UIViewController <BVDelegate>
 
+@interface ViewController : UIViewController
 
 @end
-

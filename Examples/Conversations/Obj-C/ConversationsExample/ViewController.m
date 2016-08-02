@@ -6,37 +6,59 @@
 //
 
 #import "ViewController.h"
+#import "MyReviewTableViewCell.h"
 
-@interface ViewController ()
+@import BVSDK;
+
+@interface ViewController () <UITableViewDataSource>
+
+@property (weak, nonatomic) IBOutlet BVReviewsTableView *reviewsTableView;
+
+@property NSArray<BVReview *> *reviews;
 
 @end
+
 
 @implementation ViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-- (IBAction)loadReviewsTapped:(id)sender {
     
-    // This is the most minimal of Conversations requests.
-    // For fetching Conversations content, such as reviews and questions,
-    // explore the other options in the BVGet request object.
-    BVGet *request = [[BVGet alloc] initWithType:BVGetTypeReviews];
-    [request sendRequestWithDelegate:self];
+    self.reviews = [NSArray array];
     
+    self.reviewsTableView.dataSource = self;
+    self.reviewsTableView.estimatedRowHeight = 44;
+    self.reviewsTableView.rowHeight = UITableViewAutomaticDimension;
+    [self.reviewsTableView registerNib:[UINib nibWithNibName:@"MyReviewTableViewCell" bundle:nil] forCellReuseIdentifier:@"MyReviewTableViewCell"];
+    
+    BVReviewsRequest* request = [[BVReviewsRequest alloc] initWithProductId:@"test1" limit:20 offset:0];
+    [self.reviewsTableView load:request success:^(BVReviewsResponse * _Nonnull response) {
+        self.reviews = response.results;
+        [self.reviewsTableView reloadData];
+    } failure:^(NSArray<NSError *> * _Nonnull errors) {
+        NSLog(@"Error loading reviews");
+    }];
+
 }
 
-#pragma mark BVDelegate
 
-- (void) didReceiveResponse:(NSDictionary *)response forRequest:(id)request {
-    NSLog(@"Raw Response: %@", response);
+#pragma mark UITableViewDatasource
+
+-(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
+    return @"Review Responses";
+}
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return [self.reviews count];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    MyReviewTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MyReviewTableViewCell"];
+
+    cell.review = [self.reviews objectAtIndex:indexPath.row];
+
+    return cell;
 }
 
 

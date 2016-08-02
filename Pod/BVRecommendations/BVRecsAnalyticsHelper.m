@@ -16,7 +16,7 @@ static BVRecsAnalyticsHelper *analyticsInstance = nil;
 
 static const NSString *bvProductName = @"Recommendations";
 
-+(NSDictionary *)getRelavantInfoForRecommendationType:(BVProduct *)product isVisible:(BOOL)visible {
++(NSDictionary *)getRelavantInfoForRecommendationType:(BVRecommendedProduct *)product isVisible:(BOOL)visible {
     
     NSDictionary* analyticValues = [self getPrivateAnalyticInfoForProduct:product];
     
@@ -100,7 +100,7 @@ static const NSString *bvProductName = @"Recommendations";
 }
 
 
-+(void)queueAnalyticsEventForProductView:(BVProduct *)product{
++(void)queueAnalyticsEventForProductView:(BVRecommendedProduct *)product{
     
     if (!product){
         return;
@@ -132,7 +132,7 @@ static const NSString *bvProductName = @"Recommendations";
     
 }
 
-+ (void)queueAnalyticsEventForProductTapped:(BVProduct *)product{
++ (void)queueAnalyticsEventForProductTapped:(BVRecommendedProduct *)product{
     
     if (!product){
         return;
@@ -160,7 +160,7 @@ static const NSString *bvProductName = @"Recommendations";
     
 }
 
-+(NSDictionary*)getPrivateAnalyticInfoForProduct:(BVProduct*)product {
++(NSDictionary*)getPrivateAnalyticInfoForProduct:(BVRecommendedProduct*)product {
         
     NSMutableDictionary* productAnalytics = [NSMutableDictionary dictionary];
     

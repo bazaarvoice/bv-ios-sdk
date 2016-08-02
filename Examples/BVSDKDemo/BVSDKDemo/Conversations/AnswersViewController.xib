@@ -10,8 +10,6 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AnswersViewController" customModule="BVSDKDemo" customModuleProvider="target">
             <connections>
                 <outlet property="header" destination="DAm-zl-oXi" id="G3S-oT-FtI"/>
-                <outlet property="productImageView" destination="h1o-7K-dF5" id="IjA-6f-8Qw"/>
-                <outlet property="productNameLabel" destination="Q3m-0f-tGr" id="wff-n4-pcb"/>
                 <outlet property="tableView" destination="uxG-qk-FHB" id="v0F-GA-1Z6"/>
                 <outlet property="view" destination="76g-xU-bsU" id="kuC-kJ-naV"/>
             </connections>
@@ -21,7 +19,7 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="uxG-qk-FHB">
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="uxG-qk-FHB" customClass="BVAnswersTableView">
                     <rect key="frame" x="0.0" y="80" width="600" height="520"/>
                     <color key="backgroundColor" red="0.96078431610000004" green="0.96078431610000004" blue="0.96078431610000004" alpha="1" colorSpace="calibratedRGB"/>
                     <color key="separatorColor" red="0.96078431610000004" green="0.96078431610000004" blue="0.96078431610000004" alpha="1" colorSpace="calibratedRGB"/>

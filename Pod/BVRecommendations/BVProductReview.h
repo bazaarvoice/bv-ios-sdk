@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-/// A product review written about a BVProduct
+/// A product review written about a BVRecommendedProduct
 @interface BVProductReview : NSObject
 
 

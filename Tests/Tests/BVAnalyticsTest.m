@@ -358,7 +358,7 @@
     numberOfExpectedImpressionAnalyticsEvents = 1;
     numberOfExpectedPageviewAnalyticsEvents = 0;
     
-    BVProduct *testProduct = [self createFakeProduct];
+    BVRecommendedProduct *testProduct = [self createFakeProduct];
     
     [BVRecsAnalyticsHelper queueAnalyticsEventForProductView:testProduct];
     
@@ -379,7 +379,7 @@
     
     [self addStubWith200ResponseForJSONFileNamed:@""];
     
-    BVProduct *testProduct = [self createFakeProduct];
+    BVRecommendedProduct *testProduct = [self createFakeProduct];
 
     [BVRecsAnalyticsHelper queueAnalyticsEventForProductTapped:testProduct];
     
@@ -390,7 +390,7 @@
 }
 
 
-- (BVProduct *)createFakeProduct{
+- (BVRecommendedProduct *)createFakeProduct{
     
     NSDictionary* fakeProduct = @{
                                   @"client": @"apitestcustomer",
@@ -421,7 +421,7 @@
                                @"RKC": @"4",
                                };
     
-    BVProduct *testProduct = [[BVProduct alloc] initWithDictionary:fakeProduct withRecommendationStats:recStats];
+    BVRecommendedProduct *testProduct = [[BVRecommendedProduct alloc] initWithDictionary:fakeProduct withRecommendationStats:recStats];
     
     return testProduct;
 }

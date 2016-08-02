@@ -6,14 +6,16 @@
 //
 
 import UIKit
+import BVSDK
 
-class AnswerTableViewCell: UITableViewCell {
+class AnswerTableViewCell: BVAnswerTableViewCell {
 
     @IBOutlet weak var writtenAtLabel : UILabel!
     @IBOutlet weak var authorNickname : UILabel!
     @IBOutlet weak var answerText : UILabel!
     @IBOutlet weak var usersFoundHelpfulLabel: UILabel!
-    var answer : Answer? {
+    
+    override var answer : BVAnswer? {
         didSet {
             authorNickname.text = answer!.userNickname
             answerText.text = answer!.answerText
@@ -24,10 +26,10 @@ class AnswerTableViewCell: UITableViewCell {
                 writtenAtLabel.text = ""
             }
             
-            if (answer?.totalFeedbackCount > 0){
+            if answer?.totalFeedbackCount?.intValue > 0 {
                 
-                let totalFeedbackCountString = String(answer!.totalFeedbackCount)
-                let totalPositiveFeedbackCountString = String(answer!.totalPositiveFeedbackCount)
+                let totalFeedbackCountString = answer?.totalFeedbackCount?.stringValue ?? ""
+                let totalPositiveFeedbackCountString = answer?.totalPositiveFeedbackCount?.stringValue ?? ""
                 
                 let helpfulText = totalPositiveFeedbackCountString + " of " + totalFeedbackCountString +  " users found this answer helpful"
                 
@@ -51,10 +53,6 @@ class AnswerTableViewCell: UITableViewCell {
             }
             
         }
-    }
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
     }
     
 }

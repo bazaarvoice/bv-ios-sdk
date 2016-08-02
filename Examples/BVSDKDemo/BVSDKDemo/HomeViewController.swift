@@ -19,7 +19,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     
     @IBOutlet weak var recommendationsCollectionView: BVProductRecommendationsCollectionView!
     
-    var recommendations:[BVProduct]?
+    var recommendations:[BVRecommendedProduct]?
     var spinner = Util.createSpinner()
     var errorLabel = Util.createErrorLabel()
     
@@ -91,6 +91,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
             let request = DFPRequest()
             //request.testDevices = [kDFPSimulatorID]
             request.customTargeting = BVSDKManager.sharedManager().getCustomTargeting()
+            request.customTargeting!["cities"] = "undefined"
             adLoader?.loadRequest(request)
         }
     }
@@ -169,7 +170,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         self.errorLabel.removeFromSuperview()
         
         let request = BVRecommendationsRequest(limit: 20)
-        self.recommendationsCollectionView.loadRequest(request, completionHandler: { (recommendations:[BVProduct]) in
+        self.recommendationsCollectionView.loadRequest(request, completionHandler: { (recommendations:[BVRecommendedProduct]) in
             
             
             // remove loading icon
@@ -204,7 +205,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         
     }
     
-    func getRecommendationForIndexPath(indexPath: NSIndexPath) -> BVProduct {
+    func getRecommendationForIndexPath(indexPath: NSIndexPath) -> BVRecommendedProduct {
         
         let indexOffset = (indexPath.row > ADVERT_INDEX_PATH) ? 2 : 1
 
@@ -257,7 +258,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
             
             let cell = collectionView.dequeueReusableCellWithReuseIdentifier("DemoCarouselCollectionViewCell", forIndexPath: indexPath) as! DemoCarouselCollectionViewCell
             
-            cell.bvProduct = getRecommendationForIndexPath(indexPath)
+            cell.bvRecommendedProduct = getRecommendationForIndexPath(indexPath)
             
             return cell
             
@@ -303,7 +304,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         }
     }
     
-    func adLoader(var adLoader: GADAdLoader, didFailToReceiveAdWithError error: GADRequestError) {
+    func adLoader(adLoader: GADAdLoader, didFailToReceiveAdWithError error: GADRequestError) {
         print("Failed to receive advertisement: " + error.localizedDescription)
         self.adLoader = nil
 

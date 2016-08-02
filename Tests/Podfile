@@ -1,6 +1,6 @@
-source 'https://github.com/CocoaPods/Specs.git'
+use_frameworks!
 
-target 'BVSDK' do
+target 'BVSDK-Tests' do
     pod "BVSDK", :path => "../"
     pod "BVSDK/BVConversations", :path => "../"
     pod "BVSDK/BVAdvertising", :path => "../"
@@ -8,3 +8,4 @@ target 'BVSDK' do
     pod "BVSDK/BVCurations", :path => "../"
     pod 'OHHTTPStubs'
 end
+

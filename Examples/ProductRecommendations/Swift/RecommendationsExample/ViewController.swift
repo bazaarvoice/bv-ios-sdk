@@ -10,7 +10,7 @@ import BVSDK
 class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
     @IBOutlet weak var recommendationsView : BVProductRecommendationsCollectionView!
-    var recommendations : [BVProduct] = []
+    var recommendations : [BVRecommendedProduct] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,7 +21,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         self.recommendationsView.dataSource = self
         
         let request = BVRecommendationsRequest(limit: 20)
-        self.recommendationsView.loadRequest(request, completionHandler: { (recommendations:[BVProduct]) in
+        self.recommendationsView.loadRequest(request, completionHandler: { (recommendations:[BVRecommendedProduct]) in
             
             self.recommendations = recommendations
             self.recommendationsView.reloadData()
@@ -57,7 +57,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         let product = recommendations[indexPath.row]
         
         // Must set the bvProduct on each cell
-        cell.bvProduct = product
+        cell.bvRecommendedProduct = product
         
         return cell;
     }

@@ -16,7 +16,7 @@ class NewProductCurationsTableViewCell: UITableViewCell, UICollectionViewDelegat
     
     var curationsFeed : [BVCurationsFeedItem]?
     
-    var product : BVProduct? {
+    var product : BVRecommendedProduct? {
         
         didSet {
             

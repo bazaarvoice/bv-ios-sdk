@@ -18,15 +18,15 @@ class DemoCell: BVRecommendationCollectionViewCell {
     @IBOutlet weak var productImageView : UIImageView!
     @IBOutlet weak var starRating : HCSStarRatingView!
     
-    override var bvProduct: BVProduct! {
+    override var bvRecommendedProduct: BVRecommendedProduct! {
         
         didSet {
             
-            let imageUrl = NSURL(string: bvProduct.imageURL)
-            self.productName.text = bvProduct.productName
-            self.rating.text = "\(bvProduct.averageRating ?? 0)"
-            self.numReview.text = "(\(bvProduct.numReviews ?? 0) reviews)"
-            self.starRating.value = (CGFloat)(bvProduct.averageRating.floatValue)
+            let imageUrl = NSURL(string: bvRecommendedProduct.imageURL)
+            self.productName.text = bvRecommendedProduct.productName
+            self.rating.text = "\(bvRecommendedProduct.averageRating ?? 0)"
+            self.numReview.text = "(\(bvRecommendedProduct.numReviews ?? 0) reviews)"
+            self.starRating.value = (CGFloat)(bvRecommendedProduct.averageRating.floatValue)
             self.productImageView?.sd_setImageWithURL(imageUrl)
             
         }

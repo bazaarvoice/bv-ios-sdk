@@ -9,7 +9,7 @@
 #define BVShopperProfile_h
 
 #import <Foundation/Foundation.h>
-#import "BVProduct.h"
+#import "BVRecommendedProduct.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -36,11 +36,11 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic) NSDictionary *interests;
 
 
-/// Array of BVProduct objects, recommended for the user.
+/// Array of BVRecommendedProduct objects, recommended for the user.
 @property (strong, nonatomic) NSArray *recommendations;
 
 
-/// Product recommendation keys associated with the recommended BVProduct(s).
+/// Product recommendation keys associated with the recommended BVRecommendedProduct(s).
 @property (strong, nonatomic) NSSet *product_keys;  // Array of keys by product
 
 

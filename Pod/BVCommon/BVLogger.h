@@ -37,7 +37,7 @@ typedef NS_ENUM(NSUInteger, BVLogLevel) {
 
 
 /// Singleton object. Use [BVLogger sharedLogger] whenever interacting with the logger.
-+(BVLogger*)sharedLogger;
++(nonnull BVLogger*)sharedLogger;
 
 
 /// Only messages of |logLevel| and below are logged.
@@ -45,23 +45,31 @@ typedef NS_ENUM(NSUInteger, BVLogLevel) {
 
 
 /// Logs message with log level BVLogLevelVerbose.
-- (void)verbose:(NSString*) message;
+- (void)verbose:(nonnull NSString*) message;
 
 
 /// Logs message with log level BVLogLevelInfo.
-- (void)info:(NSString*)message;
+- (void)info:(nonnull NSString*)message;
 
 
 /// Logs message with log level BVLogLevelWarning.
-- (void)warning:(NSString*)message;
+- (void)warning:(nonnull NSString*)message;
 
 
 /// Logs message with log level BVLogLevelError.
-- (void)error:(NSString*)message;
+- (void)error:(nonnull NSString*)message;
+
+
+/// Logs all errors with log level BVLogLevelError.
+-(void)printError:(nonnull NSError*)error;
+
+
+/// Logs all errors with log level BVLogLevelError.
+-(void)printErrors:(nonnull NSArray<NSError*>*)errors;
 
 
 /// Logs messages specific to analytic events that this SDK fires internally
--(void)analyticsMessage:(NSString*)message;
+-(void)analyticsMessage:(nonnull NSString*)message;
 
 
 @end

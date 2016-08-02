@@ -1,45 +1,57 @@
 //
 //  ViewController.swift
-//  ConversationsExample
+//  Conversations
 //
-//  Created by Tim Kelly on 5/24/16.
 //  Copyright © 2016 Bazaarvoice. All rights reserved.
 //
 
 import UIKit
 import BVSDK
 
-class ViewController: UIViewController, BVDelegate {
+
+class ViewController: UIViewController, UITableViewDataSource {
+    
+    @IBOutlet weak var reviewsTableView : BVReviewsTableView!
+    var reviews : [BVReview] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
-    
-    @IBAction func loadReviewsTapped(sender: AnyObject) {
         
-        // This is the most minimal of Conversations requests.
-        // For fetching Conversations content, such as reviews and questions,
-        // explore the other options in the BVGet request object.
-        let request = BVGet(type: BVGetTypeReviews)
-        request.sendRequestWithDelegate(self)
+        reviewsTableView.dataSource = self
+        reviewsTableView.estimatedRowHeight = 44
+        reviewsTableView.rowHeight = UITableViewAutomaticDimension
+        reviewsTableView.registerNib(UINib(nibName: "MyReviewTableViewCell", bundle: nil), forCellReuseIdentifier: "MyReviewTableViewCell")
+        
+        let reviewsRequest = BVReviewsRequest(productId: "test1", limit: 20, offset: 0)
+        reviewsTableView.load(reviewsRequest, success: { (response) in
+            
+            self.reviews = response.results
+            self.reviewsTableView.reloadData()
+            
+            }) { (error) in
+                
+            print(error)
+                
+        }
         
     }
-   
     
-    // MARK: BVDelegate
+    // MARK: UITableViewDatasource
     
-    func didReceiveResponse(response: [NSObject : AnyObject]!, forRequest request:
-        AnyObject!) {
-        print("Raw Response: ", response)
+    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return "Review Responses"
     }
     
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return reviews.count
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let tableCell = tableView.dequeueReusableCellWithIdentifier("MyReviewTableViewCell") as! MyReviewTableViewCell
+        
+        tableCell.review = reviews[indexPath.row]
+        
+        return tableCell
+    }
 
 }
-

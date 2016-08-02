@@ -208,7 +208,7 @@
         [delegate_interceptor.receiver tableView:tableView didSelectRowAtIndexPath:indexPath];
     }
     
-    BVProduct* product = [cellToProductMap objectForKey:[BVProductRecommendationsContainer formatIndex:indexPath]];
+    BVRecommendedProduct* product = [cellToProductMap objectForKey:[BVProductRecommendationsContainer formatIndex:indexPath]];
     if(product != nil) {
         [product recordTap];
     }
@@ -224,7 +224,7 @@
     if([cell isKindOfClass:[BVRecommendationTableViewCell class]]) {
         
         BVRecommendationTableViewCell* bvCell = (BVRecommendationTableViewCell*)cell;
-        BVProduct* product = bvCell.bvProduct;
+        BVRecommendedProduct* product = bvCell.bvRecommendedProduct;
         if(product != nil){
             [cellToProductMap setObject:product forKey:[BVProductRecommendationsContainer formatIndex:indexPath]];
         }
@@ -388,7 +388,7 @@
         [delegate_interceptor.receiver collectionView:collectionView didSelectItemAtIndexPath:indexPath];
     }
     
-    BVProduct* product = [cellToProductMap objectForKey:[BVProductRecommendationsContainer formatIndex:indexPath]];
+    BVRecommendedProduct* product = [cellToProductMap objectForKey:[BVProductRecommendationsContainer formatIndex:indexPath]];
     if(product != nil) {
         [product recordTap];
     }
@@ -404,13 +404,13 @@
     if([cell isKindOfClass:[BVRecommendationCollectionViewCell class]]) {
         
         BVRecommendationCollectionViewCell* bvCell = (BVRecommendationCollectionViewCell*)cell;
-        BVProduct* product = bvCell.bvProduct;
+        BVRecommendedProduct* product = bvCell.bvRecommendedProduct;
         if(product != nil){
             [cellToProductMap setObject:product forKey:[BVProductRecommendationsContainer formatIndex:indexPath]];
         }
         else {
             // error, cell must have product set
-            [NSException raise:BVErrDomain format:@"BVRecommendationCollectionViewCell has nil `bvProduct` property. This must be set in `cellForItemAtIndexPath`."];
+            [NSException raise:BVErrDomain format:@"BVRecommendationCollectionViewCell has nil `bvRecommendedProduct` property. This must be set in `cellForItemAtIndexPath`."];
         }
         
     }

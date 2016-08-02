@@ -125,7 +125,7 @@ static BVAnalyticsManager *analyticsInstance = nil;
     // check that `clientId` is valid
     NSAssert(clientId != nil && ![clientId isEqualToString:@""], @"You must supply client id in the BVSDKManager before using the Bazaarvoice SDK.");
     
-    NSAssert(![clientId isEqualToString:@"apitestcustomer"], @"You cannot use apitestcustomer as a client ID");
+//    NSAssert(![clientId isEqualToString:@"apitestcustomer"], @"You cannot use apitestcustomer as a client ID");
     
     [self sendAppLaunchedEvent];
 }
@@ -236,7 +236,7 @@ static BVAnalyticsManager *analyticsInstance = nil;
 
 -(void)queueEvent:(NSDictionary*)eventData {
     
-    [[BVLogger sharedLogger] analyticsMessage:[NSString stringWithFormat:@"%@ - %@", [eventData objectForKey:@"cl"], [eventData objectForKey:@"type"]]];
+    [[BVLogger sharedLogger] analyticsMessage:[NSString stringWithFormat:@"%@ - %@ - %@", [eventData objectForKey:@"cl"], [eventData objectForKey:@"type"], [eventData objectForKey:@"name"]]];
     [self processEvent:eventData isAnonymous:NO];
  }
 
@@ -427,9 +427,9 @@ static BVAnalyticsManager *analyticsInstance = nil;
     
     _clientId = clientId;
     
-    if ([_clientId isEqualToString:@"apitestcustomer"]){
-        [[BVLogger sharedLogger] error:@"WARNING: Client apitestcustomer should not be used for production!!!"];
-    }
+//    if ([_clientId isEqualToString:@"apitestcustomer"]){
+//        [[BVLogger sharedLogger] error:@"WARNING: Client apitestcustomer should not be used for production!!!"];
+//    }
     
 }
 

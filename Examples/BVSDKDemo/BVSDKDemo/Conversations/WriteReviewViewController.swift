@@ -10,10 +10,9 @@ import BVSDK
 import SDForms
 import FontAwesomeKit
 
-class WriteReviewViewController: BaseUGCViewController, BVDelegate, SDFormDelegate, SDFormDataSource {
+class WriteReviewViewController: UIViewController, SDFormDelegate, SDFormDataSource {
     
-    let postReviewParams = BVPost(type: BVPostTypeReview)
-    let postPhotoParams = BVMediaPost(type: BVMediaPostTypePhoto)
+    let reviewSubmissionParameters = SubmissionParameterHolder()
     
     // For using SDFormField, this demo presumes one field item per section.
     // Hence, the section header will contain the tile, and the row will just contain the widget
@@ -22,6 +21,19 @@ class WriteReviewViewController: BaseUGCViewController, BVDelegate, SDFormDelega
     var sectionTitles : [String] = []
     
     var form : SDForm?
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var header : ProductDetailHeaderView!
+    var spinner = Util.createSpinner(UIColor.bazaarvoiceNavy(), size: CGSizeMake(44,44), padding: 0)
+    let product: BVRecommendedProduct
+    
+    init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?, product: BVRecommendedProduct?) {
+        self.product = product!
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,97 +42,96 @@ class WriteReviewViewController: BaseUGCViewController, BVDelegate, SDFormDelega
         
         self.title = "Write a Review"
         
-        // a working example of posting a review.
-        postReviewParams.action = BVActionPreview // Don't actually post, just run in preview mode!
+        header.product = product
         
-        // We need to use the same userId for both the photo post and review content
-        let userId = "123abc\(arc4random())"
+        self.view.backgroundColor = UIColor.appBackground()
         
-        postReviewParams.productId = product.productId
-        //postReviewParams.userId = userId
-        postReviewParams.rating = 0
-        postReviewParams.title = ""
-        postReviewParams.reviewText = ""
-        postReviewParams.userNickname = ""
-        postReviewParams.isRecommended = true
-        postReviewParams.userEmail = ""
-        postReviewParams.sendEmailAlertWhenPublished = true
-        postReviewParams.rating = 0
-        postReviewParams.authenticatedUser = userId
-        
-        // With photo submission, we must explicitly set the content type.
-        // In this case, we are uploading a photo to a review
-        postPhotoParams.contentType = BVMediaPostContentTypeReview
-        postPhotoParams.userId = userId
+        self.tableView.backgroundColor = UIColor.whiteColor()
         
         // form scrolling above keyboard
         self.tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 300, right: 0)
         
         // add a SUBMIT button...
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "SUBMIT", style: .Plain, target: self, action: "submitTapped")
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Submit", style: .Plain, target: self, action: "submitTapped")
         
         self.initFormFields()
     }
     
     func submitTapped() {
         
-        // TODO: Add in field validator here....
-        // Otherwise the API will validate for us.
+        // NOTE: This sample doens't do field validation so we let the API do it for us.
+        // Typically your UI Controller would do some basic validation and guide your user on the required fields and field lengths.
         
         self.spinner.center = self.view.center
         self.view.addSubview(self.spinner)
         
-        // Sumbitting a photo is optional, but if we do have a photo
-        // we will make the media post request first for the photo and
-        // when that is successful we'll submit the actual review.
-        if (postPhotoParams.photo) != nil {
-            submitPhoto()
-        } else {
-            submitReview()
+        // create a fill out the reviewSubmission object
+        let reviewSubmission = BVReviewSubmission(reviewTitle: self.reviewSubmissionParameters.title as? String ?? "",
+                                                reviewText: self.reviewSubmissionParameters.reviewText as? String ?? "",
+                                                rating: UInt(self.reviewSubmissionParameters.rating?.integerValue ?? 0),
+                                                productId: self.product.productId)
+        
+        // a working example of posting a review.
+        reviewSubmission.action = BVSubmissionAction.Preview // Don't actually post, just run in preview mode!
+        
+        // We need to use the same userId for both the photo post and review content
+        let userId = "123abc\(arc4random())"
+        
+        reviewSubmission.userNickname = self.reviewSubmissionParameters.userNickname as? String
+        reviewSubmission.userEmail = self.reviewSubmissionParameters.userEmail as? String
+        reviewSubmission.userId = userId
+        reviewSubmission.isRecommended = self.reviewSubmissionParameters.isRecommended
+        reviewSubmission.sendEmailAlertWhenPublished = self.reviewSubmissionParameters.sendEmailAlertWhenPublished
+        reviewSubmission.hostedAuthenticationEmail = self.reviewSubmissionParameters.userEmail as? String
+        if let photo = self.reviewSubmissionParameters.photo {
+            reviewSubmission.addPhoto(photo, withPhotoCaption: nil)
         }
         
-    }
-    
-    func submitReview(){
+        reviewSubmission.submit({ (response) in
+            
+            dispatch_async(dispatch_get_main_queue(), { 
+                SweetAlert().showAlert("Success!", subTitle: "Your review was submitted. It may take up to 72 hours before your post is live.", style: .Success)
+                self.navigationController?.popViewControllerAnimated(true)
+            })
+            
+        }) { (errors) in
+            
+            dispatch_async(dispatch_get_main_queue(), {
+                SweetAlert().showAlert("Error!", subTitle: errors.first?.localizedDescription, style: .Error)
+                self.spinner.removeFromSuperview()
+            })
+            
+        }
         
-        self.tableView.resignFirstResponder()
-        
-        postReviewParams.sendRequestWithDelegate(self)
-    }
-    
-    func submitPhoto(){
-        
-        postPhotoParams.sendRequestWithDelegate(self)
-
     }
     
     
     func initFormFields(){
         
-        let recommendProductSwitch = SDSwitchField(object: postReviewParams, relatedPropertyKey: "isRecommended")
+        let recommendProductSwitch = SDSwitchField(object: reviewSubmissionParameters, relatedPropertyKey: "isRecommended")
         recommendProductSwitch.title = "I recommend this product."
         
-        let ratingStars = SDRatingStarsField(object: postReviewParams, relatedPropertyKey: "rating")
+        let ratingStars = SDRatingStarsField(object: reviewSubmissionParameters, relatedPropertyKey: "rating")
         ratingStars.maximumValue = 5
         ratingStars.minimumValue = 0
         ratingStars.starsColor = UIColor.bazaarvoiceGold()
         
-        let reviewTitleField = SDTextFormField(object: postReviewParams, relatedPropertyKey: "title")
+        let reviewTitleField = SDTextFormField(object: reviewSubmissionParameters, relatedPropertyKey: "title")
         reviewTitleField.placeholder = "Add your review title"
         
-        let reviewField = SDMultilineTextField(object: postReviewParams, relatedPropertyKey: "reviewText")
+        let reviewField = SDMultilineTextField(object: reviewSubmissionParameters, relatedPropertyKey: "reviewText")
         reviewField.placeholder = "Add your thoughts and experinces with this product."
         
-        let nickNameField : SDTextFormField = SDTextFormField(object: postReviewParams, relatedPropertyKey: "userNickname")
+        let nickNameField : SDTextFormField = SDTextFormField(object: reviewSubmissionParameters, relatedPropertyKey: "userNickname")
         nickNameField.placeholder = "Display name for the question"
         
-        let emailAddressField : SDTextFormField = SDTextFormField(object: postReviewParams, relatedPropertyKey: "userEmail")
+        let emailAddressField : SDTextFormField = SDTextFormField(object: reviewSubmissionParameters, relatedPropertyKey: "userEmail")
         emailAddressField.placeholder = "Enter a valid email address."
         
-        let emailOKSwitchField = SDSwitchField(object: postReviewParams, relatedPropertyKey: "sendEmailAlertWhenPublished")
+        let emailOKSwitchField = SDSwitchField(object: reviewSubmissionParameters, relatedPropertyKey: "sendEmailAlertWhenPublished")
         emailOKSwitchField.title = "Send me status by email?"
         
-        let photoField = SDPhotoField(object: postPhotoParams, relatedPropertyKey: "photo")
+        let photoField = SDPhotoField(object: reviewSubmissionParameters, relatedPropertyKey: "photo")
         photoField.presentingMode = SDFormFieldPresentingModeModal;
         photoField.title = "photo"
         let cameraIcon = FAKFontAwesome.cameraIconWithSize(22)
@@ -135,101 +146,6 @@ class WriteReviewViewController: BaseUGCViewController, BVDelegate, SDFormDelega
         self.form = SDForm(tableView: self.tableView)
         self.form?.delegate = self
         self.form?.dataSource = self
-        
-    }
-
-    // MARK: BVDelegate
-    
-    func hasErrors(response: NSDictionary) -> Bool {
-        
-        return (response.objectForKey("HasErrors") != nil && response.objectForKey("HasErrors")?.boolValue == true)
-        
-    }
-    
-    func didReceiveResponse(response: [NSObject : AnyObject]!, forRequest request: AnyObject!) {
-        
-        if (request as? BVMediaPost) != nil {
-            
-            // If the photo request has responded, we want to identify the
-            // new photo url so that it can be included with the form submission
-            
-            if (response != nil) {
-                
-                let responseDict = response as NSDictionary
-                
-                if self.hasErrors(responseDict) {
-                    
-                    var errorMessage = ""
-                    if responseDict.objectForKey("Errors")!.count > 0{
-                        errorMessage = (responseDict.objectForKey("Errors")?.objectAtIndex(0).objectForKey("Message") as? String)!
-                    } else {
-                        errorMessage = (responseDict.objectForKey("FormErrors")?.objectForKey("FieldErrors")?.objectForKey("photo")?.objectForKey("Message") as? String)!
-                    }
-                    
-                    SweetAlert().showAlert("Error Uploading Photo", subTitle: errorMessage, style: .Error)
-                    
-                    self.spinner.removeFromSuperview()
-                    
-                } else {
-                    
-                    // Successfully uploaded the photo, now sumbit the review portion.
-                    
-                    let photoUrl = responseDict.objectForKey("Photo")?.objectForKey("Sizes")?.objectForKey("normal")?.objectForKey("Url") as! String
-                    print("Photo uploaded to: " + photoUrl)
-                    
-                    self.postReviewParams.addPhotoUrl(photoUrl, withCaption: nil)
-                    
-                    self.submitReview()
-                
-                }
-
-            }
-            
-        } else if (request as? BVPost) != nil {
-            
-             let responseDict = response as NSDictionary
-            
-            if self.hasErrors(responseDict){
-                
-                var errorMessage = "Unknown error"
-                if responseDict.objectForKey("Errors")!.count > 0{
-                    errorMessage = (responseDict.objectForKey("Errors")?.objectAtIndex(0).objectForKey("Message") as? String)!
-                } else {
-                    let fieldErrors = responseDict.objectForKey("FormErrors")?.objectForKey("FieldErrors") as? NSDictionary
-                    var summedErrorMessage = ""
-                    for (_,value) in fieldErrors! {
-                        let message = value.objectForKey("Message") as! String
-                        let field = value.objectForKey("Field") as! String
-                        summedErrorMessage += field + ": " + message + "\n"
-                    }
-                    errorMessage = summedErrorMessage
-                }
-                
-                SweetAlert().showAlert("Error Uploading Review", subTitle: errorMessage, style: .Error)
-                
-                self.spinner.removeFromSuperview()
-                
-            } else {
-                SweetAlert().showAlert("Success!", subTitle: "Your review was submitted. It may take up to 72 hours before your post is live.", style: .Success)
-                self.navigationController?.popViewControllerAnimated(true)
-            }
-            
-            self.spinner.removeFromSuperview()
-            
-        }
-    }
-    
-    func didFailToReceiveResponse(err: NSError!, forRequest request: AnyObject!) {
-        // error
-        SweetAlert().showAlert("Error!", subTitle: err.localizedDescription, style: .Error)
-        self.spinner.removeFromSuperview()
-    }
-    
-    // MARK: UITableViewDataSource
-    
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        return 1
         
     }
     
@@ -279,4 +195,19 @@ class WriteReviewViewController: BaseUGCViewController, BVDelegate, SDFormDelega
     }
 
 
+}
+
+@objc class SubmissionParameterHolder : NSObject {
+    
+    var rating : NSNumber?
+    var title : NSString?
+    var reviewText : NSString?
+    var userNickname : NSString?
+    var userEmail : NSString?
+    
+    var isRecommended:NSNumber?
+    var sendEmailAlertWhenPublished:NSNumber?
+    
+    var photo : UIImage?
+    
 }

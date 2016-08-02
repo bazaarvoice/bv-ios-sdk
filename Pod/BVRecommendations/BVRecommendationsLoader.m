@@ -139,7 +139,7 @@
     
 }
 
--(void)completionOnMainThread:(NSArray<BVProduct*>*)recommendations handler:(recommendationsCompletionHandler)completionHandler {
+-(void)completionOnMainThread:(NSArray<BVRecommendedProduct*>*)recommendations handler:(recommendationsCompletionHandler)completionHandler {
     
     dispatch_async(dispatch_get_main_queue(), ^{
         completionHandler(recommendations);
