@@ -7,6 +7,7 @@
 
 #import <Foundation/Foundation.h>
 
+/// A successfully submitted review.
 @interface BVSubmittedReview : NSObject
 
 @property NSString* _Nullable title;
