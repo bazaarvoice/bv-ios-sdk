@@ -12,7 +12,48 @@
 
 typedef void (^ReviewSubmissionCompletion)(BVReviewSubmissionResponse* _Nonnull response);
 
+
+/**
+ Class to use to submit a review to the Bazaarvoice platform.
+ 
+ Of the many parameters possible on a BVReviewSubmission, the ones needed for submission depend on your specific implementation.
+ 
+ For a description of possible fields see our API documentation at:
+ https://developer.bazaarvoice.com/docs/read/conversations/reviews/submit/5_4
+ 
+ @availability 4.1.0 and later
+ */
 @interface BVReviewSubmission : NSObject
+
+/**
+ Create a new BVReviewSubmission.
+ 
+ @param reviewTitle    The user-provided title of the review.
+ @param reviewText     The user-provided body of the review.
+ @param rating         The user-provided rating: 1-5.
+ @param productId      The productId that this review is associated with.
+ */
+-(nonnull instancetype)initWithReviewTitle:(nonnull NSString*)reviewTitle reviewText:(nonnull NSString*)reviewText rating:(NSUInteger)rating productId:(nonnull NSString*)productId;
+-(nonnull instancetype) __unavailable init;
+
+/**
+ Submit a user-provided photo attached to this answer.
+ 
+ @param image           The user-provded image attached to this answer.
+ @param photoCaption    The user-provided caption for the photo.
+ */
+-(void)addPhoto:(nonnull UIImage*)image withPhotoCaption:(nullable NSString*)photoCaption;
+
+/**
+ Submit this answer to the Bazaarvoice platform. If the `action` of this object is set to `BVSubmissionActionPreview` then the submission will NOT actually take place.
+ 
+ A submission can fail for many reasons, and is dependent on your submission configuration.
+ 
+ @param success    The success block is called when a successful submission occurs.
+ @param failure    The failure block is called when an unsuccessful submission occurs. This could be for a number of reasons: network failures, submission parameters invalid, or server errors occur.
+ */
+-(void)submit:(nonnull ReviewSubmissionCompletion)success failure:(nonnull ConversationsFailureHandler)failure;
+
 
 @property BVSubmissionAction action;
 
@@ -38,12 +79,6 @@ typedef void (^ReviewSubmissionCompletion)(BVReviewSubmissionResponse* _Nonnull 
 @property NSString* _Nullable fingerPrint;
 
 @property (readonly) NSString* _Nonnull productId;
-
--(nonnull instancetype)initWithReviewTitle:(nonnull NSString*)reviewTitle reviewText:(nonnull NSString*)reviewText rating:(NSUInteger)rating productId:(nonnull NSString*)productId;
--(nonnull instancetype) __unavailable init;
--(void)submit:(nonnull ReviewSubmissionCompletion)success failure:(nonnull ConversationsFailureHandler)failure;
-
--(void)addPhoto:(nonnull UIImage*)image withPhotoCaption:(nullable NSString*)photoCaption;
 
 -(void)addAdditionalField:(nonnull NSString*)fieldName value:(nonnull NSString*)value;
 -(void)addContextDataValueString:(nonnull NSString*)contextDataValueName value:(nonnull NSString*)value;

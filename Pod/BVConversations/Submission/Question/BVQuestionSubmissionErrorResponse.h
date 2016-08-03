@@ -9,6 +9,7 @@
 #import "BVSubmissionErrorResponse.h"
 #import "BVSubmittedQuestion.h"
 
+/// Failed question submission response.
 @interface BVQuestionSubmissionErrorResponse : BVSubmissionErrorResponse
 
 @property BVSubmittedQuestion* _Nullable question;
