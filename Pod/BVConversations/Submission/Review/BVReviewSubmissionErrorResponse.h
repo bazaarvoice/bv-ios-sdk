@@ -9,6 +9,7 @@
 #import "BVSubmissionErrorResponse.h"
 #import "BVSubmittedReview.h"
 
+/// Failed review submission response.
 @interface BVReviewSubmissionErrorResponse : BVSubmissionErrorResponse
 
 @property BVSubmittedReview* _Nullable review;

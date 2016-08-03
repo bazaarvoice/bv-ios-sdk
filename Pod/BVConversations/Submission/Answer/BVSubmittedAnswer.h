@@ -7,6 +7,7 @@
 
 #import <Foundation/Foundation.h>
 
+/// A successfully submitted answer.
 @interface BVSubmittedAnswer : NSObject
 
 @property NSString* _Nullable answerText;
