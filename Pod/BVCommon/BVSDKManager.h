@@ -49,6 +49,9 @@ NS_ASSUME_NONNULL_BEGIN
 +(instancetype)sharedManager;
 
 
+- (id) init __attribute__((unavailable("Must use sharedManager for the BVSDKManager")));
+
+
 /// Set the log level for getting log and event info. Default is BVLogLevel.kBVLogLevelError
 -(void)setLogLevel:(BVLogLevel)logLevel;
 
