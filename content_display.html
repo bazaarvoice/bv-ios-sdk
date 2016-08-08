@@ -1,0 +1,1244 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+  
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+  <script type="text/javascript" src="./assets/js/highlight.pack.js"></script>
+  
+  <script type="text/javascript" src="./assets/js/jquery_rotate.js"></script>
+  <script type="text/javascript" src="./assets/js/main.js"></script>
+  
+  <script>
+    
+$(function(){
+
+	// select the tab in the sidebar to reflect current page position
+
+	var tabName = "Content Display";
+
+	$('.nav-link.active').removeClass('active');
+	console.log('active tab: ', tabName);
+	var nav_link = $('.nav-link:contains("' + tabName + '")');
+	console.log('actual nav link:', nav_link);
+	nav_link.addClass('active');
+	
+});
+  </script>
+
+  <script>hljs.initHighlightingOnLoad();</script>
+
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="./assets/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="./assets/css/bvbootstrap.css">
+  <link rel="stylesheet" type="text/css" href="./assets/css/highlightjs/default.min.css">
+  <link rel="stylesheet" type="text/css" href="./assets/css/main.css">
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="57x57" href="./public/apple-touch-icon-57x57.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="./public/apple-touch-icon-114x114.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="./public/apple-touch-icon-72x72.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="./public/apple-touch-icon-144x144.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="60x60" href="./public/apple-touch-icon-60x60.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="120x120" href="./public/apple-touch-icon-120x120.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="76x76" href="./public/apple-touch-icon-76x76.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="152x152" href="./public/apple-touch-icon-152x152.png" />
+  <link rel="icon" type="image/png" href="./public/favicon-196x196.png" sizes="196x196" />
+  <link rel="icon" type="image/png" href="./public/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/png" href="./public/favicon-32x32.png" sizes="32x32" />
+  <link rel="icon" type="image/png" href="./public/favicon-16x16.png" sizes="16x16" />
+  <link rel="icon" type="image/png" href="./public/favicon-128.png" sizes="128x128" />
+  <meta name="application-name" content="&nbsp;"/>
+  <meta name="msapplication-TileColor" content="#FFFFFF" />
+  <meta name="msapplication-TileImage" content="./public/mstile-144x144.png" />
+  <meta name="msapplication-square70x70logo" content="./public/mstile-70x70.png" />
+  <meta name="msapplication-square150x150logo" content="./public/mstile-150x150.png" />
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-56370630-4', 'auto');
+    ga('set', {
+      title: 'Content Display'
+    });
+    ga('send', 'pageview');
+  </script>
+
+</head>
+
+
+  <body>
+    <div id="portal_container">
+      
+      <nav class="navbar-fixed-top">
+    <div class="navbar-header">
+        <div class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+             aria-expanded="false">
+            <i class="fa fa-bars fa-3"
+               style="color:#fffff5; background-color: #00AB8E; padding:7px; border-radius: 3px;"></i>
+
+            <a href="/" class="bv_logo" style="font-size: 22px;">
+                <span class="bv_teal">&nbsp;bazaar</span><span class="bv_white">voice</span><span
+                    class="bv_teal">:</span>
+            </a>
+        </div>
+
+    </div>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav side-nav nav-stacked nav-pills">
+            <div class="bv_logo">
+                <a href="/">
+                    <span class="bv_teal">bazaar</span><span class="bv_white">voice</span><span class="bv_teal">:</span>
+                </a>
+            </div>
+            <li class="nav-item">
+                <a class="nav-link active" href="index.html">
+                    <span><i class="m-r-1 fa fa-file-text-o"></i>Getting Started</span>
+                </a>
+                <ul>
+                    <li class="nav-item">
+                        <a class="nav-link" href="installation.html">
+                            <span>Installation and Configuration</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="nav-item">
+                <span class="nav-link" href="modules.html">
+                    <span><i class="m-r-1 fa fa-cogs"></i>Modules</span>
+                </span>
+                <ul>
+                    <li class="nav-item">
+                        <a class="nav-link" href="product_recommendations.html"><span>Product Recommendations</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="advertising.html"><span>Advertising</span></a>
+                    </li>
+                    <li class="nav-item">
+
+                        <a class="nav-link" role="button" data-toggle="collapse" href="#curationsDropdown"
+                           aria-expanded="false" aria-controls="curationsDropdown">
+                                <span><span>Curations</span><span style="float:right;"><i id="curationsDropdownArrow"
+                                                                                          class="fa fa-sort-desc  fa-rotate-270"></i></span></span>
+                        </a>
+                        <div class="collapse "
+                             id="curationsDropdown">
+                            <ul>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="curations_display.html"><span>Curations Display</span></a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="curations_custom_posts.html"><span>Curations Custom Posts</span></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" role="button" data-toggle="collapse" href="#conversationsDropdown"
+                           aria-expanded="false" aria-controls="conversationsDropdown">
+                                <span><span>Conversations</span><span style="float:right;"><i
+                                        id="conversationsDropdownArrow"
+                                        class="fa fa-sort-desc fa-rotate-270"></i></span></span>
+                        </a>
+                        <div class="collapse in"
+                             id="conversationsDropdown">
+                            <ul>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="content_display.html"><span>Content Display</span></a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="content_submission.html"><span>Content Submission</span></a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="conversations_iovation.html"><span>Authenticity with iovation</span></a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="upgrading_conversations.html"><span>Upgrading Conversations</span></a>
+                                </li>
+                            </ul>
+                        </div>
+
+                    </li>
+                </ul>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="bv_pixel.html">
+                    <span><i class="m-r-1 fa fa-dot-circle-o"></i>BV Pixel</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="user_authentication_token.html">
+                    <span><i class="m-r-1 fa fa-lock"></i>User Authentication Token</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="ios_9_considerations.html">
+                    <span><i class="m-r-1 fa fa-mobile"></i> iOS 9 Considerations</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="example_projects.html">
+                    <span><i class="m-r-1 fa fa-file-code-o"></i>Example Projects</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="faq_support.html">
+                    <span><i class="m-r-1 fa fa-question-circle"></i>FAQ and Support</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="./ios-assets/api_reference/index.html">
+                    <span><i class="m-r-1 fa fa-book"></i>API Reference</span>
+                </a>
+            </li>
+            <br>
+            <li class="nav-item">
+                <a class="nav-link"
+                   href="mailto:mobilecoreteam@bazaarvoice.com?subject=iOS SDK documentation feedback"
+                   style="border: 1px #fff solid;">
+                    <span><i class="m-r-1 fa fa-envelope"></i>Feedback</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+      <div id="application_container">
+        <div id="task_container">
+          <div id="task_content" class="app-content">
+            <div class="scroll-container scrollable--scrollbar">
+              <div class="page-container">
+
+                <div class="flex flex-row" id="content_title">
+	Conversations - Content Display
+</div>
+
+<p>Use the Bazaarvoice Mobile SDKs to enable Conversations functionality, such as Ratings and Reviews. The Conversations module provides an easy-to-use wrapper around the <a href="https://developer.bazaarvoice.com/apis/conversations/">Conversations API</a>. Contact Bazaarvoice to set up Conversations.</p>
+
+<p class="bg-info well-lg" style="padding:4px;"><i class="fa fa-hand-o-right"></i>  Important: You will need your <strong>apiKeyConversations</strong> to implement and use Conversations with Mobile SDKs.</p>
+
+</p>
+The completed project for this code walkthrough for Swift and Objective-C is in the SDK path <code>/Examples/Conversations</code>. For a more comprehensive demonstration of the Conversations SDK, please also see the BVSDKDemo project under <code>/Examples/BVSDKDemo</code>.
+
+
+<hr>
+
+<p class="bg-warning well-lg" style="padding:4px;"> <i class="fa fa-hand-o-right"></i>  Important: Before you start implementing this Mobile SDK module, verify your installation by checking the steps on the <a href="./installation.html">Installation and Configuration</a> page.</p>
+
+<br><br>
+<h4>Basics</h4>
+<p>Displaying content is centered around the idea of a <strong>Product Display Page</strong>. For example, the following example page is populated using a single <code>ProductDisplayPageRequest</code>, and shown inside of a <code>BVProductDisplayPageViewController</code>.</p>
+
+<img src="ios-img/conversations/productDisplayPageRequest.jpg" style="height:410px; box-shadow: 0px 0px 8px #444;" class="center-block img-fluid" />
+
+<br>
+<p>We're showing very common pieces of content here: average rating, number of reviews, and number of questions/answers. After showing the <strong>Product Display Page</strong>, you can paginate through more <strong>Reviews</strong> and <strong>Question/Answers</strong> (discussed below). Lastly, you can load <strong>Bulk Ratings</strong> for multiple products at a time, which is useful when showing stars and number of reviews on a category page.</p>
+<br>
+<hr>
+
+
+<ul class="nav nav-tabs" role="tablist">
+  <li role="presentation" class="active"><a href="#pdp" aria-controls="pdp" role="tab" data-toggle="tab">Product Display Page</a></li>
+  <li role="presentation"><a href="#reviews" aria-controls="reviews" role="tab" data-toggle="tab">Reviews</a></li>
+  <li role="presentation"><a href="#questionsanswers" aria-controls="questionsanswers" role="tab" data-toggle="tab">Questions & Answers</a></li>
+  <li role="presentation"><a href="#bulkratings" aria-controls="bulkratings" role="tab" data-toggle="tab">Bulk Ratings</a></li>
+</ul>
+<div class="tab-content code-switcher">
+	
+	<div role="tabpanel" class="tab-pane active" id="pdp">
+
+	<!-- Product display page -->
+		<br>
+<h4>Loading a Product Display Page</h4>
+<p>When showing a product display page, use a <code>BVProductDisplayPageRequest</code> to fetch useful data like <code>reviewStatistics</code> or to include the first 10 <code>BVReview</code> reviews. Then, display this data inside a designated <code>BVProductDisplayPageViewController</code>, discussed below.</p>
+<p>First, let's look at a simple <code>BVProductDisplayPageRequest</code></p>
+
+
+<ul class="nav nav-tabs" role="tablist">
+  <li role="presentation" class="pull-right"><a style="padding-top:4px; padding-bottom:4px;" href="#objc" aria-controls="objc" role="tab" data-toggle="tab">Objective-C</a></li>
+  <li role="presentation" class="active pull-right"><a style="padding-top:4px; padding-bottom:4px;" href="#swift" aria-controls="swift" role="tab" data-toggle="tab">Swift</a></li>
+</ul>
+<!-- Tab panes -->
+<div class="tab-content code-switcher">
+	<!-- swift -->
+	<div role="tabpanel" class="tab-pane active" id="swift">
+<pre><code class="swift">// request product information, including statistics on reviews and questions/answers.
+let request = BVProductDisplayPageRequest(productId: "test1")
+            	.includeStatistics(.Reviews)
+            	.includeStatistics(.Questions)</code></pre>
+	</div>
+	<!-- objective-c -->
+	<div role="tabpanel" class="tab-pane" id="objc">
+<pre><code class="objectivec">// request product information, including statistics on reviews and questions/answers.
+BVProductDisplayPageRequest* request = [[BVProductDisplayPageRequest alloc] initWithProductId:@"test1"];
+
+[request includeStatistics:PDPContentTypeReviews];
+[request includeStatistics:PDPContentTypeQuestions];</code></pre>
+	</div>
+</div>
+<br>
+
+<p>In the code above, a <code>ProductDisplayPageRequest</code> is created for productId <strong>test1</strong>. We also include statistics for reviews and questions/answers. You may want to include some actual content with it, as shown below. We also sort the included reviews by their submissionTime.
+
+
+<ul class="nav nav-tabs" role="tablist">
+  <li role="presentation" class="pull-right"><a style="padding-top:4px; padding-bottom:4px;" href="#objc" aria-controls="objc" role="tab" data-toggle="tab">Objective-C</a></li>
+  <li role="presentation" class="active pull-right"><a style="padding-top:4px; padding-bottom:4px;" href="#swift" aria-controls="swift" role="tab" data-toggle="tab">Swift</a></li>
+</ul>
+<!-- Tab panes -->
+<div class="tab-content code-switcher">
+	<!-- swift -->
+	<div role="tabpanel" class="tab-pane active" id="swift">
+<pre><code class="swift">// request product information, including the first 5 questions and 10 reviews, sorted by their submissionTime.
+let request = BVProductDisplayPageRequest(productId: "test1")
+            	.includeContent(.Reviews, limit: 10)
+            	.includeContent(.Questions, limit: 5)
+            	.sortIncludedReviews(.SubmissionTime, order: .Descending)</code></pre>
+	</div>
+	<!-- objective-c -->
+	<div role="tabpanel" class="tab-pane" id="objc">
+<pre><code class="objectivec">// request product information, including statistics on reviews and questions/answers.
+BVProductDisplayPageRequest* request = [[BVProductDisplayPageRequest alloc] initWithProductId:@"test1"];
+
+[request includeContent:PDPContentTypeReviews limit:10];
+[request includeContent:PDPContentTypeQuestions limit:5];
+[request sortIncludedReviews:BVSortOptionReviewsSubmissionTime order:BVSortOrderDescending];</code></pre>
+	</div>
+</div>
+<br>
+
+
+<p><strong>Let's load this request!</strong></p>
+<p>To do so, simply call the <code>load</code> function on the request object, and use the success and failure blocks appropriately.</p>
+
+<ul class="nav nav-tabs" role="tablist">
+  <li role="presentation" class="pull-right"><a style="padding-top:4px; padding-bottom:4px;" href="#objc" aria-controls="objc" role="tab" data-toggle="tab">Objective-C</a></li>
+  <li role="presentation" class="active pull-right"><a style="padding-top:4px; padding-bottom:4px;" href="#swift" aria-controls="swift" role="tab" data-toggle="tab">Swift</a></li>
+</ul>
+<!-- Tab panes -->
+<div class="tab-content code-switcher">
+	<!-- swift -->
+	<div role="tabpanel" class="tab-pane active" id="swift">
+<pre><code class="swift">// load the data
+request.load({ (response: BVProductsResponse) in
+    
+    if let product = response.result {
+                
+        product.reviewStatistics?.averageOverallRating // number of stars: 4.1
+        product.reviewStatistics?.totalReviewCount     // number of reviews: 8
+                
+        product.qaStatistics?.totalQuestionCount       // number of questions: 2
+        product.qaStatistics?.totalAnswerCount         // number of answers: 4
+                
+    }
+
+}) { (errors:[NSError]) in
+    // handle failure appropriately
+}</code></pre>
+	</div>
+	<!-- objective-c -->
+	<div role="tabpanel" class="tab-pane" id="objc">
+<pre><code class="objectivec">// load the data
+[request load:^(BVProductsResponse * _Nonnull response) {
+    
+    BVProduct* product = response.result;
+    
+    if (product) {
+        
+        product.reviewStatistics.averageOverallRating; // number of stars: 4.1
+        product.reviewStatistics.totalReviewCount;     // number of stars: 4.1
+        
+        product.qaStatistics.totalQuestionCount;       // number of questions: 2
+        product.qaStatistics.totalAnswerCount;         // number of answers: 4
+        
+    }
+    
+} failure:^(NSArray<NSError *> * _Nonnull errors) {
+    // handle failure appropriately
+}];</code></pre>
+	</div>
+</div>
+<br>
+
+
+
+<h5>Displaying a Product Display Page</h5>
+<p>Use a <code>BVProductDisplayPageViewController</code>, <code>BVProductDisplayPageTableViewController</code>, or <code>BVProductDisplayPageCollectionViewController</code> to display this content.</p>
+<ul>
+	<li>
+		<p>Create a new Cocoa Touch Class called <strong>ProductDisplayViewController</strong> and make it subclass <code>BVProductDisplayPageViewController</code>:</p>
+		<img src="ios-img/conversations/new_file_product.png" style="height:360px; box-shadow: 0px 0px 8px #444;" class="center-block img-fluid" />
+		<br>
+		<p>And import <code>BVSDK</code> from <strong>ProductDisplayViewController</strong>.</p>
+	</li>
+	<li>
+		<p>Now, modify <code>viewDidLoad</code> to load a <strong>ProductDisplayPageRequest</strong> and set <code>self.product</code> when loaded:</p>
+<ul class="nav nav-tabs" role="tablist">
+  <li role="presentation" class="pull-right"><a style="padding-top:4px; padding-bottom:4px;" href="#objc" aria-controls="objc" role="tab" data-toggle="tab">Objective-C</a></li>
+  <li role="presentation" class="active pull-right"><a style="padding-top:4px; padding-bottom:4px;" href="#swift" aria-controls="swift" role="tab" data-toggle="tab">Swift</a></li>
+</ul>
+<!-- Tab panes -->
+<div class="tab-content code-switcher">
+	<!-- swift -->
+	<div role="tabpanel" class="tab-pane active" id="swift">
+<pre><code class="swift">import BVSDK
+
+class ProductPageViewController: BVProductDisplayPageViewController {
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        // load product display information for product "test1"
+        let request = BVProductDisplayPageRequest(productId: "test1")
+        
+        request.load({ (response: BVProductsResponse) in
+            
+            // tell 'BVProductDisplayPageViewController' which product is being shown in this view controller
+            self.product = response.result
+            
+        }) { (errors: [NSError]) in
+            // handle error appropriately
+        }
+        
+    }
+}
+</code></pre>
+	</div>
+	<!-- objective-c -->
+	<div role="tabpanel" class="tab-pane" id="objc">
+<pre><code class="objectivec">@import BVSDK;
+
+@interface ProductPageViewController : BVProductDisplayPageViewController
+
+@end
+
+@implementation ProductPageViewController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    // load product display information for product "test1"
+    BVProductDisplayPageRequest* request = [[BVProductDisplayPageRequest alloc] initWithProductId:@"test1"];
+    
+    [request load:^(BVProductsResponse * _Nonnull response) {
+        
+        // tell 'BVProductDisplayPageViewController' which product is being shown in this view controller
+        self.product = response.result;
+        
+    } failure:^(NSArray&lt;NSError *&gt; * _Nonnull errors) {
+        // handle error appropriately
+    }];
+    
+}
+
+@end</code></pre>
+	</div>
+</div>
+<br>
+	</li>
+</ul>
+
+	</div>
+	
+	<div role="tabpanel" class="tab-pane" id="reviews">
+	
+		<!-- reviews -->
+		<br>
+<h4>Loading more Reviews</h4>
+<p>As shown previously, you should use a <code>ProductDisplayPageRequest</code> to load the first page of CGC that your users will see (up 20 reviews). When loading reviews, you should request and display reviews in a <code>BVReviewsCollectionView</code> or <code>BVReviewsTableView</code> container:</p>
+
+
+<ul class="nav nav-tabs" role="tablist">
+  <li role="presentation" class="pull-right"><a style="padding-top:4px; padding-bottom:4px;" href="#objc" aria-controls="objc" role="tab" data-toggle="tab">Objective-C</a></li>
+  <li role="presentation" class="active pull-right"><a style="padding-top:4px; padding-bottom:4px;" href="#swift" aria-controls="swift" role="tab" data-toggle="tab">Swift</a></li>
+</ul>
+<!-- Tab panes -->
+<div class="tab-content code-switcher">
+	<!-- swift -->
+	<div role="tabpanel" class="tab-pane active" id="swift">
+<pre><code class="swift">// Add a BVReviewsTableView to your UIViewController and connect the outlet.
+@IBOutlet weak var reviewsTableView : BVReviewsTableView!
+var reviews : [BVReview] = []
+...
+
+// Now load the reviews from the BVReviewsTableView.
+// request 10 reviews, starting at index 20
+let reviewsRequest = BVReviewsRequest(productId: "test1", limit: 10, offset: 20)
+        reviewsTableView.load(reviewsRequest, success: { (response) in
+            
+            self.reviews = response.results
+            self.reviewsTableView.reloadData()
+            
+            }) { (error) in
+                
+            print(error)
+                
+        }</code></pre>
+	</div>
+	<!-- objective-c -->
+	<div role="tabpanel" class="tab-pane" id="objc">
+<pre><code class="objectivec">// Add a BVReviewsTableView to your UIViewController and connect the outlet.
+@property (weak, nonatomic) IBOutlet BVReviewsTableView *reviewsTableView;
+@property NSArray<BVReview *> *reviews;
+...
+
+// Now load the reviews from the BVReviewsTableView.
+// request 10 reviews, starting at index 20
+BVReviewsRequest* request = [[BVReviewsRequest alloc] initWithProductId:@"test1" limit:10 offset:20];
+    [self.reviewsTableView load:request success:^(BVReviewsResponse * _Nonnull response) {
+        self.reviews = response.results;
+        [self.reviewsTableView reloadData];
+    } failure:^(NSArray<NSError *> * _Nonnull errors) {
+        NSLog(@"Error loading reviews");
+    }];</code></pre>
+	</div>
+</div>
+<br>
+<p>A <code>BVReviewsRequest</code> requires three parameters:</p>
+<ul>
+	<li><code>productId</code> - the productId that you want reviews for</li>
+	<li><code>limit</code> - max number of reviews to fetch (maximum of 20)</li>
+	<li><code>offset</code> - the index to start on</li>
+</ul>
+<p>A combination of limit and offset should be used to load more pages of reviews upon the user's request.</p>
+<p>You can add filters and sorts to the request, as shown below:</p>
+
+<ul class="nav nav-tabs" role="tablist">
+  <li role="presentation" class="pull-right"><a style="padding-top:4px; padding-bottom:4px;" href="#objc" aria-controls="objc" role="tab" data-toggle="tab">Objective-C</a></li>
+  <li role="presentation" class="active pull-right"><a style="padding-top:4px; padding-bottom:4px;" href="#swift" aria-controls="swift" role="tab" data-toggle="tab">Swift</a></li>
+</ul>
+<!-- Tab panes -->
+<div class="tab-content code-switcher">
+	<!-- swift -->
+	<div role="tabpanel" class="tab-pane active" id="swift">
+<pre><code class="swift">// request 10 reviews that have photos, starting at index 0, sorted by overall rating.
+let request = BVReviewsRequest(productId: "test1", limit: 10, offset: 0)
+            	.addFilter(.HasPhotos, filterOperator: .EqualTo, value: "true")
+            	.addSort(.Rating, order: .Descending)</code></pre>
+	</div>
+	<!-- objective-c -->
+	<div role="tabpanel" class="tab-pane" id="objc">
+<pre><code class="objectivec">// request 10 reviews that have photos, starting at index 0, sorted by overall rating.
+BVReviewsRequest* request = [[BVReviewsRequest alloc] initWithProductId:@"test1" limit:10 offset:20];
+
+[request addFilter:BVReviewFilterTypeHasPhotos filterOperator:BVFilterOperatorEqualTo value:@"true"]
+[request addSort:BVSortOptionReviewsRating order:BVSortOrderDescending];</code></pre>
+	</div>
+</div>
+
+<br>
+
+<p>Similarly to the <code>ProductDisplayPageRequest</code>, loading reviews is simply done by calling the <code>load()</code> method on the <code>BVReviewsCollectionView</code>or <code>BVReviewsTableView</code> container as shown above.</p>
+
+<br>
+
+
+
+<br>
+<h4>Displaying reviews</h4>
+<p>Multiple reviews should be shown in one of the following container view:</p>
+<ul>
+	<li><code>BVReviewView</code></li>
+	<li><code>BVReviewTableView</code></li>
+	<li><code>BVReviewCollectionView</code></li>
+</ul> 
+
+<p>Each review should be shown using one of the following views:
+<ul>
+	<li><code>BVReviewView</code></li>
+	<li><code>BVReviewTableViewCell</code></li>
+	<li><code>BVReviewCollectionViewCell</code></li>
+</ul>
+
+<br>
+<p>Let's create a UIViewController that holds a <code>BVReviewTableView</code> and display 10 reviews in it using <code>BVReviewTableViewCell</code>.</p>
+<ul>
+	<li>
+		<p>Create a new Cocoa Touch Class called <strong>DemoReviewViewController</strong> and make it subclass <code>UIViewController</code>:</p>
+		<img src="ios-img/conversations/demo_review_view_controller.png" style="height:360px; box-shadow: 0px 0px 8px #444;" class="center-block img-fluid" />
+		<br>
+	</li>
+	<li>
+		<p>Import <code>BVSDK</code> from <strong>DemoReviewViewController</strong>, and add an instance of <code>BVReviewTableView</code>.</p>
+		<ul class="nav nav-tabs" role="tablist">
+  <li role="presentation" class="pull-right"><a style="padding-top:4px; padding-bottom:4px;" href="#objc" aria-controls="objc" role="tab" data-toggle="tab">Objective-C</a></li>
+  <li role="presentation" class="active pull-right"><a style="padding-top:4px; padding-bottom:4px;" href="#swift" aria-controls="swift" role="tab" data-toggle="tab">Swift</a></li>
+</ul>
+		<!-- Tab panes -->
+		<div class="tab-content code-switcher">
+			<!-- swift -->
+			<div role="tabpanel" class="tab-pane active" id="swift">
+<pre><code class="swift">import UIKit
+import BVSDK
+
+class DemoReviewsViewController: UIViewController {
+    
+    @IBOutlet weak var tableView : BVReviewsTableView!
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+
+}</code></pre>
+			</div>
+			<!-- objective-c -->
+			<div role="tabpanel" class="tab-pane" id="objc">
+		<pre><code class="objectivec">@import BVSDK;
+
+@interface DemoReviewsViewController()
+
+@property (nonatomic, weak) IBOutlet BVReviewsTableView *tableView;
+
+@end
+
+// ...
+
+@implementation DemoReviewsViewController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+}
+
+@end</code></pre>
+			</div>
+		</div>
+		<br>
+	</li>
+
+	<li>
+		<p>In <code>DemoReviewViewController.xib</code>, add a <code>UITableView</code> to your view and add appropriate constraints. Change it's class to <code>BVReviewTableView</code>, and hook it up to your <code>IBOutlet</code>:</p>
+		<img src="ios-img/conversations/hook_up_tableview.png" style="height:320px; box-shadow: 0px 0px 8px #444;" class="center-block img-fluid" />
+		<br>
+	</li>
+	<li>
+		<p>Create a subclass of <code>UITableViewCell</code> named <strong>DemoReviewTableViewCell</strong>:</p>
+		<img src="ios-img/conversations/demo_review_table_view_cell.png" style="height:360px; box-shadow: 0px 0px 8px #444;" class="center-block img-fluid" />
+		<br>
+	</li>
+	<li>
+		<p>Change the type of <strong>DemoReviewTableViewCell</strong> to <code>BVReviewTableViewCell</code> and add appropriate UI elements. Note in the code below that you can override the <code>review</code> property to update the UI elements:</p>
+		<ul class="nav nav-tabs" role="tablist">
+  <li role="presentation" class="pull-right"><a style="padding-top:4px; padding-bottom:4px;" href="#objc" aria-controls="objc" role="tab" data-toggle="tab">Objective-C</a></li>
+  <li role="presentation" class="active pull-right"><a style="padding-top:4px; padding-bottom:4px;" href="#swift" aria-controls="swift" role="tab" data-toggle="tab">Swift</a></li>
+</ul>
+		<!-- Tab panes -->
+		<div class="tab-content code-switcher">
+			<!-- swift -->
+			<div role="tabpanel" class="tab-pane active" id="swift">
+<pre><code class="swift">import UIKit
+import BVSDK
+
+class DemoReviewTableViewCell: BVReviewTableViewCell {
+    
+    @IBOutlet weak var reviewTitle : UILabel!
+    @IBOutlet weak var reviewText : UILabel!
+
+    override var review: BVReview! {
+        didSet {
+            reviewTitle.text = review.title
+            reviewText.text = review.reviewText
+        }
+    }
+    
+}</code></pre>
+			</div>
+			<!-- objective-c -->
+			<div role="tabpanel" class="tab-pane" id="objc">
+		<pre><code class="objectivec">@import BVSDK;
+
+@interface DemoReviewTableViewCell : BVReviewTableViewCell
+
+@property (nonatomic, weak) IBOutlet UILabel *reviewTitle;
+@property (nonatomic, weak) IBOutlet UILabel *reviewText;
+
+@end
+
+// ...
+
+@implementation DemoReviewTableViewCell
+
+-(void)setReview:(BVReview *)review {
+    [super setReview:review];
+    
+    self.reviewTitle.text = review.title;
+    self.reviewText.text = review.reviewText;
+}
+
+@end</code></pre>
+			</div>
+		</div>
+		<br>
+	</li>
+	<li>
+		<p>Add your <strong>reviewText</strong> and <strong>reviewTitle</strong> <code>UILabel</code>s to <strong>DemoReviewTableViewCell.xib</strong>, and hook up your outlets:</p>
+		<img src="ios-img/conversations/hook_up_review_cell.png" style="height:360px; box-shadow: 0px 0px 8px #444;" class="center-block img-fluid" />
+		<br>
+	</li>
+
+	<li>
+		<p>Finally, inside <strong>DemoReviewViewController</strong>, use a <code>BVReviewsRequest</code> object to load 10 reviews. Use instances of <strong>DemoReviewTableViewCell</strong> to display:</p>
+		<ul class="nav nav-tabs" role="tablist">
+  <li role="presentation" class="pull-right"><a style="padding-top:4px; padding-bottom:4px;" href="#objc" aria-controls="objc" role="tab" data-toggle="tab">Objective-C</a></li>
+  <li role="presentation" class="active pull-right"><a style="padding-top:4px; padding-bottom:4px;" href="#swift" aria-controls="swift" role="tab" data-toggle="tab">Swift</a></li>
+</ul>
+		<!-- Tab panes -->
+		<div class="tab-content code-switcher">
+			<!-- swift -->
+			<div role="tabpanel" class="tab-pane active" id="swift">
+<pre><code class="swift">import UIKit
+import BVSDK
+
+class DemoReviewsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    
+    @IBOutlet weak var tableView : BVReviewsTableView!
+    var reviews : [BVReview] = []
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        self.tableView.delegate = self
+        self.tableView.dataSource = self
+        
+        let request = BVReviewsRequest(productId: "test1", limit: 10, offset: 20)
+        request.load({ (response: BVReviewsResponse) in
+            
+            self.reviews = response.results
+            self.tableView.reloadData()
+            
+        }) { (errors: [NSError]) in
+            // handle failure appropriately
+        }
+
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.reviews.count
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCellWithIdentifier("DemoReviewTableViewCell") as! DemoReviewTableViewCell
+        
+        cell.review = self.reviews[indexPath.row]
+        
+        return cell
+        
+    }
+
+}</code></pre>
+			</div>
+			<!-- objective-c -->
+			<div role="tabpanel" class="tab-pane" id="objc">
+		<pre><code class="objectivec">@import BVSDK;
+
+@interface DemoReviewsViewController : UIViewController<UITableViewDelegate, UITableViewDataSource>
+
+@property (nonatomic, weak) IBOutlet BVReviewsTableView *tableView;
+@property (nonatomic, strong) NSArray<BVReview*>* reviews;
+
+@end
+
+// ...
+
+@implementation DemoReviewsViewController
+
+-(void)viewDidLoad {
+    [super viewDidLoad];
+    
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
+    
+    BVReviewsRequest* request = [[BVReviewsRequest alloc] initWithProductId:@"test1" limit:10 offset:20];
+    [request load:^(BVReviewsResponse * _Nonnull response) {
+        
+        self.reviews = response.results;
+        [self.tableView reloadData];
+        
+    } failure:^(NSArray * _Nonnull errors) {
+        // handle failure appropriately
+    }];
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return [self.reviews count];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    DemoReviewTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"DemoReviewTableViewCell"];
+    
+    cell.review = [self.reviews objectAtIndex:indexPath.row];
+    
+    return cell;
+    
+}
+
+@end</code></pre>
+			</div>
+		</div>
+		<br>
+	</li>
+</ul>
+
+
+
+	</div>
+	
+	<div role="tabpanel" class="tab-pane" id="questionsanswers">
+
+		<!-- Q&A -->
+		<br>
+<h4>Loading more Questions/Answers</h4>
+
+
+
+<p>Similarly to reviews, you should use a <code>ProductDisplayPageRequest</code> to load the first page of Questions/Answers (up the first 20 questions). When loading questions, you should request and display questions in a <code>BVQuestionsCollectionView</code> or <code>BVQuestionsTableView</code> container::</p>
+
+<ul class="nav nav-tabs" role="tablist">
+  <li role="presentation" class="pull-right"><a style="padding-top:4px; padding-bottom:4px;" href="#objc" aria-controls="objc" role="tab" data-toggle="tab">Objective-C</a></li>
+  <li role="presentation" class="active pull-right"><a style="padding-top:4px; padding-bottom:4px;" href="#swift" aria-controls="swift" role="tab" data-toggle="tab">Swift</a></li>
+</ul>
+<!-- Tab panes -->
+<div class="tab-content code-switcher">
+	<!-- swift -->
+	<div role="tabpanel" class="tab-pane active" id="swift">
+<pre><code class="swift">// Add a BVQuestionsTableView to your UIViewController and connect the outlet.
+@IBOutlet weak var questionsTableView : BVQuestionsTableView!
+var reviews : [BVQuestion] = []
+...
+
+// Now load the reviews from the BVQuestionsTableView.
+// request 10 reviews, starting at index 20
+let questionsRequest = BVQuestionsRequest(productId: "test1", limit: 10, offset: 20)
+
+questionsTableView.load(questionsRequest, success: { (response) in
+            
+            self.questions = response.results
+            self.questionsTableView.reloadData()
+            
+            }) { (error) in
+                
+            print(error)
+                
+        }</code></pre>
+	</div>
+	<!-- objective-c -->
+	<div role="tabpanel" class="tab-pane" id="objc">
+<pre><code class="objectivec">// Add a BVQuestionsTableView to your UIViewController and connect the outlet.
+@property (weak, nonatomic) IBOutlet BVQuestionsTableView *questionsTableView;
+@property NSArray<BVQuestion *> *questions;
+...
+
+// Now load the reviews from the BVReviewsTableView.
+// request 10 reviews, starting at index 20
+BVQuestionsRequest* request = [[BVQuestionsRequest alloc] initWithProductId:@"test1" limit:10 offset:20];
+    [self.questionsTableView load:request success:^(BVReviewsResponse * _Nonnull response) {
+        self.questions = response.results;
+        [self.questionsTableView reloadData];
+    } failure:^(NSArray<NSError *> * _Nonnull errors) {
+        NSLog(@"Error loading questions");
+    }];</code></pre>
+	</div>
+</div>
+<br>
+
+
+
+<p>A <code>QuestionsAndAnswersRequest</code> requires the same three parameters as <code>BVQuestionsRequest</code>:</p>
+<ul>
+	<li><code>productId</code> - the productId that you want reviews for</li>
+	<li><code>limit</code> - max number of reviews to fetch (maximum of 20)</li>
+	<li><code>offset</code> - the index to start on</li>
+</ul>
+<p>A combination of limit and offset should be used to load more pages of reviews upon the user's request.</p>
+
+
+
+<p>You can add filters and sorts to the request, as shown below:</p>
+<ul class="nav nav-tabs" role="tablist">
+  <li role="presentation" class="pull-right"><a style="padding-top:4px; padding-bottom:4px;" href="#objc" aria-controls="objc" role="tab" data-toggle="tab">Objective-C</a></li>
+  <li role="presentation" class="active pull-right"><a style="padding-top:4px; padding-bottom:4px;" href="#swift" aria-controls="swift" role="tab" data-toggle="tab">Swift</a></li>
+</ul>
+<!-- Tab panes -->
+<div class="tab-content code-switcher">
+	<!-- swift -->
+	<div role="tabpanel" class="tab-pane active" id="swift">
+<pre><code class="swift">// request 10 questions that have answers, starting at index 0, sorted by the number of answers each question has.
+let request = BVQuestionsAndAnswersRequest(productId: "test1", limit: 10, offset: 20)
+                    .addFilter(.HasAnswers, filterOperator: .EqualTo, value: "true")
+                    .addSort(.TotalAnswerCount, order: .Descending)
+</code></pre>
+	</div>
+	<!-- objective-c -->
+	<div role="tabpanel" class="tab-pane" id="objc">
+<pre><code class="objectivec">// request 10 questions that have answers, starting at index 0, sorted by the number of answers each question has.
+BVQuestionsAndAnswersRequest* request = [[BVQuestionsAndAnswersRequest alloc] initWithProductId:@"test1" limit:10 offset:0];
+[request addFilter:BVQuestionFilterTypeHasAnswers filterOperator:BVFilterOperatorEqualTo value:@"true"];
+[request addSort:BVSortOptionQuestionsTotalAnswerCount order:BVSortOrderDescending];</code></pre>
+	</div>
+</div>
+<br>
+
+<br>
+
+
+<br>
+<h4>Displaying questions & answers</h4>
+<p>Questions & Answers should be shown in one of the following container view:</p>
+<ul>
+	<li><code>BVQuestionsView</code></li>
+	<li><code>BVQuestionsTableView</code></li>
+	<li><code>BVQuestionsCollectionView</code></li>
+	<li><code>BVAnswersView</code></li>
+	<li><code>BVAnswersTableView</code></li>
+	<li><code>BVAnswersCollectionView</code></li>
+</ul> 
+
+<p>Each question/answer should be shown using one of the following views:
+<ul>
+	<li><code>BVQuestionView</code></li>
+	<li><code>BVQuestionTableViewCell</code></li>
+	<li><code>BVQuestionCollectionViewCell</code></li>
+	<li><code>BVAnswerView</code></li>
+	<li><code>BVAnswerTableViewCell</code></li>
+	<li><code>BVAnswerCollectionViewCell</code></li>
+</ul>
+
+<br>
+<p>Let's create a UIViewController that holds a <code>BVQuestionTableView</code> and display 10 questions in it using <code>BVQuestionTableViewCell</code>s.</p>
+<ul>
+	<li>
+		<p>Create a new Cocoa Touch Class called <strong>DemoQuestionViewController</strong> and make it subclass <code>UIViewController</code>:</p>
+		<img src="ios-img/conversations/demo_question_view_controller.png" style="height:360px; box-shadow: 0px 0px 8px #444;" class="center-block img-fluid" />
+		<br>
+	</li>
+	<li>
+		<p>Import <code>BVSDK</code> from <strong>DemoQuestionViewController</strong>, and add an instance of <code>BVQuestionsTableView</code>.</p>
+		<ul class="nav nav-tabs" role="tablist">
+  <li role="presentation" class="pull-right"><a style="padding-top:4px; padding-bottom:4px;" href="#objc" aria-controls="objc" role="tab" data-toggle="tab">Objective-C</a></li>
+  <li role="presentation" class="active pull-right"><a style="padding-top:4px; padding-bottom:4px;" href="#swift" aria-controls="swift" role="tab" data-toggle="tab">Swift</a></li>
+</ul>
+		<!-- Tab panes -->
+		<div class="tab-content code-switcher">
+			<!-- swift -->
+			<div role="tabpanel" class="tab-pane active" id="swift">
+<pre><code class="swift">import UIKit
+import BVSDK
+
+class DemoQuestionViewController: UIViewController {
+    
+    @IBOutlet weak var questionsTableView : BVQuestionsTableView!
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+}</code></pre>
+			</div>
+			<!-- objective-c -->
+			<div role="tabpanel" class="tab-pane" id="objc">
+<pre><code class="objectivec">@import BVSDK;
+
+@interface DemoQuestionsViewController()
+
+@property (nonatomic, weak) IBOutlet BVQuestionsTableView *tableView;
+
+@end
+
+// ...
+
+@implementation DemoQuestionsViewController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+}
+
+@end</code></pre>
+			</div>
+		</div>
+		<br>
+	</li>
+
+
+	<li>
+		<p>In <code>DemoQuestionViewController.xib</code>, add a <code>UITableView</code> to your view and add appropriate constraints. Change it's class to <code>BVQuestionTableView</code>, and hook it up to your <code>IBOutlet</code>:</p>
+		<img src="ios-img/conversations/hook_up_tableview_questions.png" style="height:320px; box-shadow: 0px 0px 8px #444;" class="center-block img-fluid" />
+		<br>
+	</li>
+	<li>
+		<p>Create a subclass of <code>UITableViewCell</code> named <strong>DemoQuestionTableViewCell</strong>:</p>
+		<img src="ios-img/conversations/demo_review_table_view_cell.png" style="height:360px; box-shadow: 0px 0px 8px #444;" class="center-block img-fluid" />
+		<br>
+	</li>
+	<li>
+		<p>Change the type of <strong>DemoQuestionTableViewCell</strong> to <code>BVQuestionTableViewCell</code> and add appropriate UI elements. Note in the code below that you can override the <code>question</code> property to update the UI elements:</p>
+		<ul class="nav nav-tabs" role="tablist">
+  <li role="presentation" class="pull-right"><a style="padding-top:4px; padding-bottom:4px;" href="#objc" aria-controls="objc" role="tab" data-toggle="tab">Objective-C</a></li>
+  <li role="presentation" class="active pull-right"><a style="padding-top:4px; padding-bottom:4px;" href="#swift" aria-controls="swift" role="tab" data-toggle="tab">Swift</a></li>
+</ul>
+		<!-- Tab panes -->
+		<div class="tab-content code-switcher">
+			<!-- swift -->
+			<div role="tabpanel" class="tab-pane active" id="swift">
+<pre><code class="swift">import UIKit
+import BVSDK
+
+class DemoQuestionTableViewCell: BVQuestionTableViewCell {
+    
+    @IBOutlet weak var questionSummary : UILabel!
+    @IBOutlet weak var questionDetails : UILabel!
+    
+    override var question: BVQuestion! {
+        didSet {
+            questionSummary.text = question.questionSummary
+            questionDetails.text = question.questionDetails
+        }
+    }
+}</code></pre>
+			</div>
+			<!-- objective-c -->
+			<div role="tabpanel" class="tab-pane" id="objc">
+		<pre><code class="objectivec">@import BVSDK;
+
+@interface DemoQuestionTableViewCell : BVQuestionTableViewCell
+
+@property (nonatomic, weak) IBOutlet UILabel *questionSummary;
+@property (nonatomic, weak) IBOutlet UILabel *questionDetails;
+
+@end
+
+// ...
+
+@implementation DemoQuestionTableViewCell
+
+-(void)setQuestion:(BVQuestion *)question {
+    [super setQuestion:question];
+    
+    self.questionSummary.text = question.questionSummary;
+    self.questionDetails.text = question.questionDetails;
+}
+
+@end</code></pre>
+			</div>
+		</div>
+		<br>
+	</li>
+	<li>
+		<p>Add your <strong>questionSummary</strong> and <strong>questionDetails</strong> <code>UILabel</code>s to <strong>DemoQuestionTableViewCell.xib</strong>, and hook up your outlets:</p>
+		<img src="ios-img/conversations/hook_up_question_cell.png" style="height:320px; box-shadow: 0px 0px 8px #444;" class="center-block img-fluid" />
+		<br>
+	</li>
+
+	<li>
+		<p>Finally, inside <strong>DemoQuestionViewController</strong>, use a <code>BVQuestionsAndAnswersRequest</code> object to load 10 questions and their associated answers. Use instances of <strong>DemoQuestionTableViewCell</strong> to display:</p>
+		<p class="bg-info well-lg" style="padding:4px;"><i class="fa fa-hand-o-right"></i>  Note: answers are not displayed in this tutorial but should be displayed alongside questions.</p>
+
+		<ul class="nav nav-tabs" role="tablist">
+  <li role="presentation" class="pull-right"><a style="padding-top:4px; padding-bottom:4px;" href="#objc" aria-controls="objc" role="tab" data-toggle="tab">Objective-C</a></li>
+  <li role="presentation" class="active pull-right"><a style="padding-top:4px; padding-bottom:4px;" href="#swift" aria-controls="swift" role="tab" data-toggle="tab">Swift</a></li>
+</ul>
+		<!-- Tab panes -->
+		<div class="tab-content code-switcher">
+			<!-- swift -->
+			<div role="tabpanel" class="tab-pane active" id="swift">
+<pre><code class="swift">import UIKit
+import BVSDK
+
+class DemoQuestionViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    
+    @IBOutlet weak var tableView : BVQuestionsTableView!
+    var reviews : [BVQuestion] = []
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        self.tableView.delegate = self
+        self.tableView.dataSource = self
+        
+        let request = BVQuestionsAndAnswersRequest(productId: "test1", limit: 10, offset: 20)
+        request.load({ (response: BVQuestionsAndAnswersResponse) in
+            
+            self.questions = response.results
+            self.tableView.reloadData()
+            
+        }) { (errors: [NSError]) in
+            // handle failure appropriately
+        }
+
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.questions.count
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCellWithIdentifier("DemoQuestionTableViewCell") as! DemoQuestionTableViewCell
+        
+        cell.question = self.questions[indexPath.row]
+        
+        return cell
+        
+    }
+
+}</code></pre>
+			</div>
+			<!-- objective-c -->
+			<div role="tabpanel" class="tab-pane" id="objc">
+		<pre><code class="objectivec">@import BVSDK;
+
+@interface DemoQuestionsViewController : UIViewController&lt;UITableViewDelegate, UITableViewDataSource&gt;
+
+@property (nonatomic, weak) IBOutlet BVQuestionsTableView *tableView;
+@property (nonatomic, strong) NSArray&lt;BVQuestion*&gt;* questions;
+
+@end
+
+// ...
+
+@implementation DemoQuestionsViewController
+
+-(void)viewDidLoad {
+    [super viewDidLoad];
+    
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
+    
+    BVQuestionsAndAnswersRequest* request = [[BVQuestionsAndAnswersRequest alloc] initWithProductId:@"test1" limit:10 offset:20];
+    [request load:^(BVQuestionsAndAnswersResponse * _Nonnull response) {
+        
+        self.questions = response.results;
+        [self.tableView reloadData];
+        
+    } failure:^(NSArray * _Nonnull errors) {
+        // handle failure appropriately
+    }];
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return [self.questions count];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    DemoQuestionTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"DemoQuestionTableViewCell"];
+    
+    cell.question = [self.reviews objectAtIndex:indexPath.row];
+    
+    return cell;
+    
+}
+
+@end</code></pre>
+			</div>
+		</div>
+		<br>
+	</li>
+</ul>
+
+	</div>
+	
+	<div role="tabpanel" class="tab-pane" id="bulkratings">
+
+		<!-- Bulk ratings -->
+		<br>
+<h4>Showing Bulk Ratings</h4>
+<p>To show product rating statistics on a category page, use a <code>BVBulkRatingsRequest</code>. For example, on a category page like this one:</p>
+<img src="ios-img/conversations/category_page.png" style="height:410px; box-shadow: 0px 0px 8px #444;" class="center-block img-fluid" />
+<br>
+<p>Getting each product's rating statistics can be done with the following single request:</p>
+
+<ul class="nav nav-tabs" role="tablist">
+  <li role="presentation" class="pull-right"><a style="padding-top:4px; padding-bottom:4px;" href="#objc" aria-controls="objc" role="tab" data-toggle="tab">Objective-C</a></li>
+  <li role="presentation" class="active pull-right"><a style="padding-top:4px; padding-bottom:4px;" href="#swift" aria-controls="swift" role="tab" data-toggle="tab">Swift</a></li>
+</ul>
+<!-- Tab panes -->
+<div class="tab-content code-switcher">
+	<!-- swift -->
+	<div role="tabpanel" class="tab-pane active" id="swift">
+<pre><code class="swift">// Load rating statistics for four products. Can load up to 50 per request.
+let productIds = ["test1", "test2", "test3", "test4"]
+let request = BVBulkRatingsRequest(productIds: productIds, statistics: .All)</code></pre>
+	</div>
+	<!-- objective-c -->
+	<div role="tabpanel" class="tab-pane" id="objc">
+<pre><code class="objectivec">// Load rating statistics for four products. Can load up to 50 per request.
+NSArray<NSString*>* productIds = @[@"test1", @"test2", @"test3", @"test4"];
+BVBulkRatingsRequest* request = [[BVBulkRatingsRequest alloc] initWithProductIds:productIds statistics:BulkRatingsStatsTypeAll];</code></pre>
+	</div>
+</div>
+<br>
+
+
+
+<p>Which can be loaded with:</p>
+<ul class="nav nav-tabs" role="tablist">
+  <li role="presentation" class="pull-right"><a style="padding-top:4px; padding-bottom:4px;" href="#objc" aria-controls="objc" role="tab" data-toggle="tab">Objective-C</a></li>
+  <li role="presentation" class="active pull-right"><a style="padding-top:4px; padding-bottom:4px;" href="#swift" aria-controls="swift" role="tab" data-toggle="tab">Swift</a></li>
+</ul>
+<!-- Tab panes -->
+<div class="tab-content code-switcher">
+	<!-- swift -->
+	<div role="tabpanel" class="tab-pane active" id="swift">
+<pre><code class="swift">request.load({ (response: BVBulkRatingsResponse) in
+ 
+    let ratings = response.results
+            
+    for rating in ratings {
+        let productId = rating.productId
+        let averageOverallRating = rating.reviewStatistics?.averageOverallRating
+        let totalReviewCount = rating.reviewStatistics?.totalReviewCount
+    }
+
+}) { (errors: [NSError]) in
+    // handle failure appropriately
+}</code></pre>
+	</div>
+	<!-- objective-c -->
+	<div role="tabpanel" class="tab-pane" id="objc">
+<pre><code class="objectivec">[request load:^(BVBulkRatingsResponse * _Nonnull response) {
+        
+    NSArray<BVProductStatistics*>* ratings = response.results;
+    
+    for (BVProductStatistics* rating in ratings) {
+        NSString* productId = rating.productId;
+        NSNumber* averageOverallRating = rating.reviewStatistics.averageOverallRating;
+        NSNumber* totalReviewCount = rating.reviewStatistics.totalReviewCount;
+    }
+    
+} failure:^(NSArray<NSError *> * _Nonnull errors) {
+    // handle failure appropriately
+}];</code></pre>
+	</div>
+</div>
+<br>
+
+	</div>
+</div>
+<br>
+
+
+
+<div class="well well-sm">
+	<h5>Author</h5>
+	<p>Copyright 2016 Bazaarvoice, Inc. All rights reserved.</p>
+	<h5>License</h5>
+	<p>Use of the Bazaarvoice Mobile SDKs is contingent on your agreement and conformance with <a href="http://www.bazaarvoice.com/legal/api-terms-of-use.html">Bazaarvoice's API Terms of Use</a>. Additionally, you agree to store all data acquired by the SDK or Bazaarvoice's API only within the storage of the individual application instance using the SDK or API. You also agree to use the data acquired by the SDK or API only within the context of the same individual application instance and only for purposes consistent with that application's purpose. Except as otherwise noted, the Bazaarvoice iOS SDK is licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0.html">Apache License, Version 2.0</a>.</p>
+</div>
+<br>
+
+
+              </div>
+            </div>
+          </div>
+        </div>        
+      </div>
+    </div>
+  </body>

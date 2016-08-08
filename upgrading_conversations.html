@@ -19,7 +19,7 @@ $(function(){
 
 	// select the tab in the sidebar to reflect current page position
 
-	var tabName = "Advertising";
+	var tabName = "Upgrading Conversations";
 
 	$('.nav-link.active').removeClass('active');
 	console.log('active tab: ', tabName);
@@ -67,7 +67,7 @@ $(function(){
 
     ga('create', 'UA-56370630-4', 'auto');
     ga('set', {
-      title: 'Advertising'
+      title: 'Upgrading Conversations'
     });
     ga('send', 'pageview');
   </script>
@@ -148,7 +148,7 @@ $(function(){
                                         id="conversationsDropdownArrow"
                                         class="fa fa-sort-desc fa-rotate-270"></i></span></span>
                         </a>
-                        <div class="collapse "
+                        <div class="collapse in"
                              id="conversationsDropdown">
                             <ul>
                                 <li class="nav-item">
@@ -218,103 +218,303 @@ $(function(){
               <div class="page-container">
 
                 <div class="flex flex-row" id="content_title">
-	Targeted Advertising
+	Upgrading from an old version of BVSDK
 </div>
 
-<p>The Advertising module of the Bazaarvoice Mobile SDKs is powered by Bazaarvoice's powerful shopper segment data and delivers highly targeted ads to your users. You must have Shopper Advertising enabled to use the Advertising module.</p>
-<p>Bazaarvoice creates custom ad markup using <a href="https://developers.google.com/doubleclick-publishers/docs/rel_notes">DoubleClick for Publishers (DFP)</a> based on your specifications. You can use the Bazaarvoice Mobile SDKs to easily pair the DFP SDK with the Advertising module. Contact Bazaarvoice to set up targeted ads in DFP.</p>
+<p>The <strong>Conversations</strong> module has recently been upgraded extensively, making it much easier to display and submit Consumer Generated Content. Upgrading to the latest BVSDK will require a couple changes:</p>
 
-<p class="bg-info well-lg" style="padding:4px;"><i class="fa fa-hand-o-right"></i>  Important: You will need your <code>apiKeyShopperAdvertising</code> and DFP <code>adUnitId</code>s to implement and use the Advertising module.</p>
+<br>
+<h3>Installation</h3>
+<p>Installation through Cocoapods is strongly recommended. If the SDK had previously been installed manually, just delete it from your project and follow the <a href="installation.html">installation guides</a>. If previously installed with Cocoapods, simply run <code>pod update</code> from your project's directory to download the latest version. Then:</p>
+<ol>
+    <li>Modify your import statements:<br><br>
 
+        <ul class="nav nav-tabs" role="tablist">
+  <li role="presentation" class="active"><a href="#swift" aria-controls="swift" role="tab" data-toggle="tab">Swift</a></li>
+  <li role="presentation"><a href="#objc" aria-controls="objc" role="tab" data-toggle="tab">Objective-C</a></li>
+</ul>
+        
+        <div class="tab-content code-switcher">
+            <!-- swift -->
+            <div role="tabpanel" class="tab-pane active" id="swift">
+<pre><code class="swift">import BVSDK</code></pre>
+            </div>
+            <!-- objective-c -->
+            <div role="tabpanel" class="tab-pane" id="objc">
+<pre><code class="objectivec">#import &lt;BVSDK/BVSDK.h&gt;</code></pre>
+            </div>
+        </div>
+        <br>
+
+
+    </li>
+    <li>Modify the SDK initialization inside your <code>AppDelegate</code> file:<br><br>
+        <ul class="nav nav-tabs" role="tablist">
+  <li role="presentation" class="active"><a href="#swift" aria-controls="swift" role="tab" data-toggle="tab">Swift</a></li>
+  <li role="presentation"><a href="#objc" aria-controls="objc" role="tab" data-toggle="tab">Objective-C</a></li>
+</ul>
+        
+        <div class="tab-content code-switcher">
+            <!-- swift -->
+            <div role="tabpanel" class="tab-pane active" id="swift">
+<pre><code class="swift">BVSDKManager.sharedManager().staging = true  // set to false for production!
+BVSDKManager.sharedManager().clientId = "YOUR_CLIENT_ID"
+BVSDKManager.sharedManager().apiKeyConversations = "YOUR_CONVERSATIONS_API_KEY"</code></pre>
+            </div>
+            <!-- objective-c -->
+            <div role="tabpanel" class="tab-pane" id="objc">
+<pre><code class="objectivec">[BVSDKManager sharedManager].staging = YES; // set to NO for production!
+[BVSDKManager sharedManager].clientId = @"YOUR_CLIENT_ID";
+[BVSDKManager sharedManager].apiKeyConversations = @"YOUR_CONVERSATIONS_API_KEY";</code></pre>
+            </div>
+        </div>
+
+
+    </li>
+</ol>
+
+
+
+
+<br>
+<h3>Content display</h3>
+<p>Previously, all content display was powered using a <code>BVGet</code> object. This has been deprecated in favor of these 4 request objects:</p>
+<ul>
+	<li><code>BVProductDisplayPageRequest</code></li>
+	<li><code>BVReviewsRequest</code></li>
+	<li><code>BVQuestionAndAnswersRequest</code></li>
+	<li><code>BVBulkRatingsRequest</code></li>
+</ul>
+<p>Using the above requestobjects make loading data easier by using success and failure blocks. As well, the display results contain easy to use model object such as, <code>BVReview</code>, <code>BVQuestion</code>, <code>BVAnswer</code> and <code>BVProduct</code>.</p>
 <hr>
-<br>
 
-<p class="bg-warning well-lg" style="padding:4px;"> <i class="fa fa-hand-o-right"></i>  Important: Before you start implementing this Mobile SDK module, verify your installation by checking the steps on the <a href="./installation.html">Installation and Configuration</a> page.</p>
+<h3>Content display - old pattern</h3>
 
-
-
-<h3>Set User Information</h3>
-<p>
-	After a user is authenticated inside your user login workflow, set user information inside the <code>BVSDKManager#sharedManager()</code> object.
-</p>
-
-<p class="bg-info well-lg" style="padding:4px;"><i class="fa fa-hand-o-right"></i>  Note: You must give the userAuthString created with your existing Bazaarvoice implementation logic to the <strong>BVSDKManager</strong> object. However, the steps to encrypt your userAuthString are applicable even if you are not a Conversations client.</p>
-
-<h5>Example Authentication String for Testing</h5>
-<p>
-	If you haven't yet set up an authorization token, use the <a href="./user_authentication_token.html">User Authentication Token</a> example.
-</p>
-
-
-<br>
-<h3>Implementing Ads</h3>
-<p>Bazaarvoice recommends you implement advertisements using <a href="https://developers.google.com/mobile-ads-sdk/docs/dfp/ios/quick-start">DFP's SDK for iOS</a>. Contact Bazaarvoice for assistance. After ads are implemented, use the following instructions to add targeting data.</p>
-<p>For every <code>DFPRequest</code> you use, set the <code>customTargeting</code> property with the following code:</p>
-
-
+<p>For example, loading reviews previously looked like this:</p>
 <ul class="nav nav-tabs" role="tablist">
   <li role="presentation" class="active"><a href="#swift" aria-controls="swift" role="tab" data-toggle="tab">Swift</a></li>
   <li role="presentation"><a href="#objc" aria-controls="objc" role="tab" data-toggle="tab">Objective-C</a></li>
 </ul>
-
-
 <!-- Tab panes -->
 <div class="tab-content code-switcher">
 	<!-- swift -->
-	<div role="tabpanel" class="tab-pane active" id="swift">	
-		
-<pre><code class="swift">let request = DFPRequest()
-request.customTargeting = BVSDKManager.sharedManager().getCustomTargeting()
-...</code></pre>
+	<div role="tabpanel" class="tab-pane active" id="swift">
+<pre><code class="swift">import BVSDK
+class ViewController: UIViewController, BVDelegate {
+
+    override func viewDidLoad(){
+        super.viewDidLoad()
+
+        let request = BVGet(type: BVGetTypeReviews)
+        request.sendRequestWithDelegate(self)
+    }
+
+    func didReceiveResponse(response: [NSObject : AnyObject]!, forRequest request: AnyObject!) {
+        print("Raw, hard to use response: ", response)
+    }
+
+    func didFailToReceiveResponse(err: NSError!, forRequest request: AnyObject!) {
+        // failure
+    }
+
+    func didSendBodyData(bytesSent: Int64, totalBytesSent: Int64, totalBytesExpectedToSend: Int64, forRequest request: AnyObject!) {
+        // huh?
+    }
+
+}</code></pre>
 	</div>
 	<!-- objective-c -->
 	<div role="tabpanel" class="tab-pane" id="objc">
-<pre><code class="objectivec">DFPRequest *request = [DFPRequest request];
-request.customTargeting = [[BVSDKManager sharedManager] getCustomTargeting];
-...</code></pre>
+<pre><code class="objectivec">#import &lt;BVSDK/BVConversations.h&gt;
+@interface ViewController : UIViewController &lt;BVDelegate&gt; {
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    BVGet *request = [[BVGet alloc] initWithType:BVGetTypeReviews];
+    [request sendRequestWithDelegate:self];
+}
+
+- (void) didReceiveResponse:(NSDictionary *)response forRequest:(id)request {
+    // Handle response, and parse lots and lots of JSON
+}
+
+- (void) didFailToReceiveResponse:(NSError*)err forRequest:(id)request {
+    // Handle error
+}
+
+}
+</code></pre>
 	</div>
-
 </div>
-<p style="padding-top:6px;">The above code sends DFP the information necessary to target ads correctly.</p>
-<br>
 <br>
 
-<a name="Upgrading" style="color:#444; text-decoration: none;"><h3>Upgrading from Older Versions of Bazaarvoice Mobile SDKs</h3></a>
-<p>In previous versions, the Mobile SDKs included the DFP SDK, and you needed to use subclasses like <code>BVTargetedRequest</code> instead of <code>DFPRequest</code>. However, Bazaarvoice has simplified this process greatly with the latest Mobile SDKs. If you want to use the Advertising module of the most up-to-date Mobile SDKs, you must implement DFP ads yourself. Google provides <a href="https://developers.google.com/mobile-ads-sdk/docs/dfp/ios/quick-start">excellent documentation</a> to guide you through the process. After ads are implemented and working well, use the code in the "Implementing Ads" section to add targeting information.</p>
-<p>Complete the following steps to finish upgrading your Mobile SDK:</p>
-<ul>
-	<li>Change <code>BVTargetedAdLoader</code> to <code>GADAdLoader</code></li>
-	<li>Change <code>BVTargetedRequest</code> to <code>DFPRequest</code></li>
-	<li>Change <code>BVTargetedInterstitial</code> to <code>DFPInterstitial</code></li>
-	<li>Change <code>BVTargetedBannerView</code> to <code>DFPBannerView</code></li>
+<h3>Content display - new pattern!</h3>
+
+<p>As you can see from the above examples, that's a lot of code. Loading reviews now has a greatly simplified usage pattern and all the model objects are parsed for you. For example, a request of reviews for a single product now looks like:</p>
+<ul class="nav nav-tabs" role="tablist">
+  <li role="presentation" class="active"><a href="#swift" aria-controls="swift" role="tab" data-toggle="tab">Swift</a></li>
+  <li role="presentation"><a href="#objc" aria-controls="objc" role="tab" data-toggle="tab">Objective-C</a></li>
 </ul>
-<br>
+<!-- Tab panes -->
+<div class="tab-content code-switcher">
+    <!-- swift -->
+    <div role="tabpanel" class="tab-pane active" id="swift">
+<pre><code class="swift">let reviews = BVReviewsRequest(productId: "test1", limit: 20, offset: 0)
+request.load({ (response: BVReviewsResponse) in
+            
+    let reviews = response.results
+    
+}) { (errors: [NSError]) in
+    // handle failure appropriately
+}</code></pre>
+</div>
+<!-- objective-c -->
+<div role="tabpanel" class="tab-pane" id="objc">
+<pre><code class="objectivec">[request load:^(BVReviewsResponse * _Nonnull response) {
+        
+    NSArray&lt;BVReview*&gt;* reviews = response.results;
+    
+} failure:^(NSArray&lt;NSError *&gt; * _Nonnull errors) {
+    // handle failure appropriately
+}];</code></pre>
+    </div>
+</div>
 <br>
 
-<h3>Determining Contextual Interests</h3>
-<p>The Advertising module is structured around categories. You can find a complete list in <code>BVContextualInterests.h</code>. The list is split into two tiers, with about 30 Tier One categories, each of which includes multiple Tier Two subcategories.</p>
-<p>For example, the Women's dresses section of a department store would correspond to the following product categories:</p>
-<ul>
-	<li>Tier One: <code>tierOneApparelAndAccessories</code></li>
-	<li>Tier Two: <code>tierTwoApparelAndAccessoriesWomensDresses</code></li>
-</ul>
-<p>Similarly, the Television section of an electronics store would correspond to the following product categories:</p>
-<ul>
-	<li>Tier One: <code>tierOneConsumerElectronics</code></li>
-	<li>Tier Two: <code>tierTwoConsumerElectronicsTelevisions</code></li>
-</ul>
-<p>All Tier Two categories are extensions of their Tier One category names.<p></p>Contextual interest categories are used while sending location information to the Advertising module, as defined in the following section.</p>
+<p>The patern for Reviews applies similarly for <strong>Products</strong>, <strong>Questions & Answers</strong>, and <strong>Bulk Ratings</strong>.</p>
+
 <br>
+<h3>Content submission</h3>
+<p>Content submission has changed in the same way that content display has. Previously, a <code>BVPost</code> object would handle submitting every type of content. Now, use the more specific:</p>
+<ul>
+    <li><code>BVReviewSubmission</code></li>
+    <li><code>BVQuestionSubmission</code></li>
+    <li><code>BVAnswerSubmission</code></li>
+</ul>
+<p>to submit Consumer Generated Content to the Bazaarvoice platform.</p>
+
+<hr/>
+
+<h4>Content submission - old pattern</h4>
+
+<p>For example, submitting a review previously looked like:</p>
+<ul class="nav nav-tabs" role="tablist">
+  <li role="presentation" class="active"><a href="#swift" aria-controls="swift" role="tab" data-toggle="tab">Swift</a></li>
+  <li role="presentation"><a href="#objc" aria-controls="objc" role="tab" data-toggle="tab">Objective-C</a></li>
+</ul>
+<!-- Tab panes -->
+<div class="tab-content code-switcher">
+    <!-- swift -->
+    <div role="tabpanel" class="tab-pane active" id="swift">
+<pre><code class="swift">import BVSDK
+class ViewController: UIViewController, BVDelegate {
+
+    override func viewDidLoad(){
+        super.viewDidLoad()
+
+        BVPost *request = [[BVPost alloc] initWithType:BVPostTypeReview];
+        request.productId = @"test1";
+        request.rating = 4;
+        request.title = @"Review title goes here";
+        request.reviewText = @"Review text goes here";
+        ...
+        
+        [request sendRequestWithDelegate:self];
+    }
+
+    func didReceiveResponse(response: [NSObject : AnyObject]!, forRequest request: AnyObject!) {
+        print("Again, hard to use raw response: ", response)
+    }
+
+    func didFailToReceiveResponse(err: NSError!, forRequest request: AnyObject!) {
+        // failure
+    }
+
+    func didSendBodyData(bytesSent: Int64, totalBytesSent: Int64, totalBytesExpectedToSend: Int64, forRequest request: AnyObject!) {
+        // but why?
+    }
+
+}</code></pre>
+</div>
+<!-- objective-c -->
+<div role="tabpanel" class="tab-pane" id="objc">
+<pre><code class="objectivec">#import &lt;BVSDK/BVConversations.h&gt;
+@interface ViewController : UIViewController &lt;BVDelegate&gt; {
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    BVPost *request = [[BVPost alloc] initWithType:BVPostTypeReview];
+    request.productId = @"100003401";
+    request.userId = [NSString stringWithFormat:@"123abcd%i", arc4random()];
+    request.rating = 5;
+    request.title = @"Test title";
+    request.reviewText = @"Some kind of review text.";
+    request.userNickname = @"testnickname";
+    [request addVideoUrl:@"https://www.youtube.com" withCaption:nil];
+    
+    [request sendRequestWithDelegate:self];
+}
+
+- (void) didReceiveResponse:(NSDictionary *)response forRequest:(id)request {
+    // Handle response, and parse lots and lots of JSON
+}
+
+- (void) didFailToReceiveResponse:(NSError*)err forRequest:(id)request {
+    // Handle error
+}
+
+}
+
+</code></pre>
+    </div>
+</div>
 <br>
 
-<h3>Notes on Advertising and User Location</h3>
-<p>The Advertising module provides many ways to integrate location data into a shopper's profile. AYou can find all location-related methods in <code>BVLocationEventsHelper.h</code>. Bear in mind the following information:</p>
-<ul>
-	<li>All location methods have <code>contextualTier1</code> and <code>contextualTier2</code> parameters. This allows you to send all location->interest mapping information available to the Advertising module to give the shopper the best profile possible. Refer to <code>BVContextualInterests.h</code> for a generated list of Contextual Tier 1 and Tier 2 strings.</li>
-	<li>Bazaarvoice defines methods that correlate strongly to <code>CLLocationManagerDelegate</code> methods. You can find example usage of CLLocationManager+BVAdvertising inside the <code>LocationExample.m</code> file.</li>
-	<li>Bazaarvoice also defines methods that correlate strongly to Gimbal Beacon delegate methods, specifically <code>GMBLPlaceManagerDelegate</code> and <code>GMBLBeaconManagerDelegate</code>. You can find example usage of Gimbal+BVAdvertising in the <code>GimbalExample.m</code> file.</li>
+<h4>Content submission - new pattern!</h4>
+
+<p>Doing that same review submission now looks like:</p>
+<ul class="nav nav-tabs" role="tablist">
+  <li role="presentation" class="active"><a href="#swift" aria-controls="swift" role="tab" data-toggle="tab">Swift</a></li>
+  <li role="presentation"><a href="#objc" aria-controls="objc" role="tab" data-toggle="tab">Objective-C</a></li>
 </ul>
+<!-- Tab panes -->
+<div class="tab-content code-switcher">
+    <!-- swift -->
+    <div role="tabpanel" class="tab-pane active" id="swift">
+<pre><code class="swift">let review = BVReviewSubmission(reviewTitle: "Review title goes here",
+                                 reviewText: "Review text goes here",
+                                     rating: 4,
+                                  productId: "test1")
+
+// submit the review
+review.submit({ (reviewSubmission: BVReviewSubmissionResponse) in
+    // review submitted successfully! 🎉
+}, failure: { (errors: [NSError]) in
+    // handle failure appropriately
+})</code></pre>
+</div>
+<!-- objective-c -->
+<div role="tabpanel" class="tab-pane" id="objc">
+<pre><code class="objectivec">BVReviewSubmission* review = [[BVReviewSubmission alloc] initWithReviewTitle:@"Review title goes here"
+                                                                  reviewText:@"Review text goes here"
+                                                                      rating:4
+                                                                   productId:@"test1"];
+
+// user added a photo to this review
+[review addPhoto:userPhoto withPhotoCaption:userPhotoCaption];
+
+// submit the review
+[review submit:^(BVReviewSubmissionResponse * _Nonnull response) {
+    // review submitted successfully! 🎉
+} failure:^(NSArray&lt;NSError *&gt; * _Nonnull errors) {
+    // handle failure appropriately
+}];</code></pre>
+    </div>
+</div>
 <br>
+
+<p>The design pattern again are similar for submitting <strong>Questions</strong> and <strong>Answers</strong>.</p>
+<br><br>
 
 
 <div class="well well-sm">

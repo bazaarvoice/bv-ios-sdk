@@ -19,7 +19,7 @@ $(function(){
 
 	// select the tab in the sidebar to reflect current page position
 
-	var tabName = "Advertising";
+	var tabName = "Content Submission";
 
 	$('.nav-link.active').removeClass('active');
 	console.log('active tab: ', tabName);
@@ -67,7 +67,7 @@ $(function(){
 
     ga('create', 'UA-56370630-4', 'auto');
     ga('set', {
-      title: 'Advertising'
+      title: 'Content Submission'
     });
     ga('send', 'pageview');
   </script>
@@ -148,7 +148,7 @@ $(function(){
                                         id="conversationsDropdownArrow"
                                         class="fa fa-sort-desc fa-rotate-270"></i></span></span>
                         </a>
-                        <div class="collapse "
+                        <div class="collapse in"
                              id="conversationsDropdown">
                             <ul>
                                 <li class="nav-item">
@@ -218,102 +218,248 @@ $(function(){
               <div class="page-container">
 
                 <div class="flex flex-row" id="content_title">
-	Targeted Advertising
+	Conversations - Content Submission
 </div>
 
-<p>The Advertising module of the Bazaarvoice Mobile SDKs is powered by Bazaarvoice's powerful shopper segment data and delivers highly targeted ads to your users. You must have Shopper Advertising enabled to use the Advertising module.</p>
-<p>Bazaarvoice creates custom ad markup using <a href="https://developers.google.com/doubleclick-publishers/docs/rel_notes">DoubleClick for Publishers (DFP)</a> based on your specifications. You can use the Bazaarvoice Mobile SDKs to easily pair the DFP SDK with the Advertising module. Contact Bazaarvoice to set up targeted ads in DFP.</p>
+<p>The BVSDK makes it easy to upload Consumer Generated Content (Reviews, Questions, Answers) to the Bazaarvoice platform. The <a href="https://developer.bazaarvoice.com/apis/conversations/">full API documentation</a> details what each field represents which is not covered here. Contact Bazaarvoice to set up Conversations if you haven't done so already.</p>
 
-<p class="bg-info well-lg" style="padding:4px;"><i class="fa fa-hand-o-right"></i>  Important: You will need your <code>apiKeyShopperAdvertising</code> and DFP <code>adUnitId</code>s to implement and use the Advertising module.</p>
+<p class="bg-info well-lg" style="padding:4px;"><i class="fa fa-hand-o-right"></i>  Important: You will need your <strong>apiKeyConversations</strong> to implement and use Conversations with Mobile SDKs.</p>
+
+</p>
+The completed project for this code walkthrough for Swift and Objective-C is in the SDK path <code>/Examples/Conversations</code>. For a more comprehensive demonstration of the Conversations SDK, please also see the BVSDKDemo project under <code>/Examples/BVSDKDemo</code>.
+
 
 <hr>
-<br>
 
 <p class="bg-warning well-lg" style="padding:4px;"> <i class="fa fa-hand-o-right"></i>  Important: Before you start implementing this Mobile SDK module, verify your installation by checking the steps on the <a href="./installation.html">Installation and Configuration</a> page.</p>
 
-
-
-<h3>Set User Information</h3>
-<p>
-	After a user is authenticated inside your user login workflow, set user information inside the <code>BVSDKManager#sharedManager()</code> object.
-</p>
-
-<p class="bg-info well-lg" style="padding:4px;"><i class="fa fa-hand-o-right"></i>  Note: You must give the userAuthString created with your existing Bazaarvoice implementation logic to the <strong>BVSDKManager</strong> object. However, the steps to encrypt your userAuthString are applicable even if you are not a Conversations client.</p>
-
-<h5>Example Authentication String for Testing</h5>
-<p>
-	If you haven't yet set up an authorization token, use the <a href="./user_authentication_token.html">User Authentication Token</a> example.
-</p>
-
-
 <br>
-<h3>Implementing Ads</h3>
-<p>Bazaarvoice recommends you implement advertisements using <a href="https://developers.google.com/mobile-ads-sdk/docs/dfp/ios/quick-start">DFP's SDK for iOS</a>. Contact Bazaarvoice for assistance. After ads are implemented, use the following instructions to add targeting data.</p>
-<p>For every <code>DFPRequest</code> you use, set the <code>customTargeting</code> property with the following code:</p>
-
+<h4>Review Submission</h4>
+<p>To start, let's upload a simple Review. Create a <code>ReviewSubmission</code> object and fill out appropriate fields.</p>
+<p>Note that a <code>ReviewSubmission</code> object requires a <code>reviewTitle</code>, <code>reviewText</code>, <code>rating</code>, and <code>productId</code> (for which this review corresponds to).</p>
 
 <ul class="nav nav-tabs" role="tablist">
   <li role="presentation" class="active"><a href="#swift" aria-controls="swift" role="tab" data-toggle="tab">Swift</a></li>
   <li role="presentation"><a href="#objc" aria-controls="objc" role="tab" data-toggle="tab">Objective-C</a></li>
 </ul>
-
-
 <!-- Tab panes -->
 <div class="tab-content code-switcher">
 	<!-- swift -->
-	<div role="tabpanel" class="tab-pane active" id="swift">	
-		
-<pre><code class="swift">let request = DFPRequest()
-request.customTargeting = BVSDKManager.sharedManager().getCustomTargeting()
-...</code></pre>
+	<div role="tabpanel" class="tab-pane active" id="swift">
+<pre><code class="swift">let review = BVReviewSubmission(reviewTitle: "Review title goes here",
+                                 reviewText: "Review text goes here",
+                                     rating: 4,
+                                  productId: "test1")    
+review.userNickname = userNickname // "Samantha55"
+review.userId = userId             // user's external ID
+review.userEmail = userEmail       // "test@test.com"
+review.sendEmailAlertWhenPublished = true
+review.agreedToTermsAndConditions  = true
+
+// user added a photo to this review
+review.addPhoto(userPhoto, withPhotoCaption: userPhotoCaption)</code></pre>
 	</div>
 	<!-- objective-c -->
 	<div role="tabpanel" class="tab-pane" id="objc">
-<pre><code class="objectivec">DFPRequest *request = [DFPRequest request];
-request.customTargeting = [[BVSDKManager sharedManager] getCustomTargeting];
-...</code></pre>
+<pre><code class="objectivec">BVReviewSubmission* review = [[BVReviewSubmission alloc] initWithReviewTitle:@"Review title goes here"
+                                                                  reviewText:@"Review text goes here"
+                                                                      rating:4
+                                                                   productId:@"test1"];
+review.userNickname = userNickname; // "Samantha55"
+review.userId = userId;             // user's external ID
+review.userEmail = userEmail;       // "test@test.com"
+review.sendEmailAlertWhenPublished = [NSNumber numberWithBool:YES];
+review.agreedToTermsAndConditions  = [NSNumber numberWithBool:YES];
+
+// user added a photo to this review
+[review addPhoto:userPhoto withPhotoCaption:userPhotoCaption];</code></pre>
 	</div>
-
 </div>
-<p style="padding-top:6px;">The above code sends DFP the information necessary to target ads correctly.</p>
+<br>
+<p>All available fields are detailed in <code>ReviewSubmission.h</code> and further in <a href="https://developer.bazaarvoice.com/apis/conversations/">Bazaarvoice's API Documentation</a>. Required fields, and specific rules per field (<font color="#666"><i>"reviewText must be longer than X characters"</i></font>) is dependent on your specific deployment setup.</p>
+
+<br>
+<p>Submitting this review is as easy as calling <code>submit</code>:</p>
+<ul class="nav nav-tabs" role="tablist">
+  <li role="presentation" class="active"><a href="#swift" aria-controls="swift" role="tab" data-toggle="tab">Swift</a></li>
+  <li role="presentation"><a href="#objc" aria-controls="objc" role="tab" data-toggle="tab">Objective-C</a></li>
+</ul>
+<div class="tab-content code-switcher">
+	<div role="tabpanel" class="tab-pane active" id="swift">
+<pre><code class="swift">review.submit({ (reviewSubmission: BVReviewSubmissionResponse) in
+    // review submitted successfully! 🎉
+}, failure: { (errors: [NSError]) in
+    // handle failure appropriately
+})</code></pre>
+	</div>
+	<div role="tabpanel" class="tab-pane" id="objc">
+<pre><code class="objectivec">[review submit:^(BVReviewSubmissionResponse * _Nonnull response) {
+    // review submitted successfully! 🎉
+} failure:^(NSArray<NSError *> * _Nonnull errors) {
+    // handle failure appropriately
+}];</code></pre>
+	</div>
+</div>
+<br>
+<p>However, submitting content is very error-prone: the user forgets to fill out a field, or chooses the same nickname as a different reviewer. Giving the user a chance to correct the problems is essential, and easy to do:</p>
+
+<ul class="nav nav-tabs" role="tablist">
+  <li role="presentation" class="active"><a href="#swift" aria-controls="swift" role="tab" data-toggle="tab">Swift</a></li>
+  <li role="presentation"><a href="#objc" aria-controls="objc" role="tab" data-toggle="tab">Objective-C</a></li>
+</ul>
+<div class="tab-content code-switcher">
+	<div role="tabpanel" class="tab-pane active" id="swift">
+<pre><code class="swift">review.submit({ (reviewSubmission: BVReviewSubmissionResponse) in
+    // review submitted successfully! 🎉
+}, failure: { (errors: [NSError]) in
+
+    for error in errors {
+    
+        // If fields had errors, useful information is available in the error
+        let fieldErrorName = error.userInfo[BVFieldErrorName] as? String
+        let fieldErrorMessage = error.userInfo[BVFieldErrorMessage] as? String
+    
+        if fieldErrorName == "reviewText" {
+            // fieldErrorMessage = "You must enter review text."
+            displayErrorForReviewText(fieldErrorMessage)
+        }
+
+        if fieldErrorName == "rating" {
+            // fieldErrorMessage = "This field must be between 1 and 5."
+            displayErrorForRating(fieldErrorMessage)
+        }
+
+    }
+
+})
+</code></pre>
+	</div>
+	<div role="tabpanel" class="tab-pane" id="objc">
+<pre><code class="objectivec">[review submit:^(BVReviewSubmissionResponse * _Nonnull response) {
+    // review submitted successfully! 🎉
+} failure:^(NSArray<NSError *> * _Nonnull errors) {
+    
+    for (NSError* error in errors) {
+
+        // If fields had errors, useful information is available in the error
+        NSString* fieldErrorName = error.userInfo[BVFieldErrorName];
+        NSString* fieldErrorMessage = error.userInfo[BVFieldErrorMessage];
+        
+        if (fieldErrorName && [fieldErrorName isEqualToString:@"reviewText"]) {
+            // fieldErrorMessage = "You must enter review text."
+            [self displayErrorForReviewText:fieldErrorMessage];
+        }
+        
+        if (fieldErrorName && [fieldErrorName isEqualToString:@"rating"]) {
+            // fieldErrorMessage = "This field must be between 1 and 5."
+            [self displayErrorForRating:fieldErrorMessage];
+        }
+
+    }
+}];</code></pre>
+	</div>
+</div>
 <br>
 <br>
 
-<a name="Upgrading" style="color:#444; text-decoration: none;"><h3>Upgrading from Older Versions of Bazaarvoice Mobile SDKs</h3></a>
-<p>In previous versions, the Mobile SDKs included the DFP SDK, and you needed to use subclasses like <code>BVTargetedRequest</code> instead of <code>DFPRequest</code>. However, Bazaarvoice has simplified this process greatly with the latest Mobile SDKs. If you want to use the Advertising module of the most up-to-date Mobile SDKs, you must implement DFP ads yourself. Google provides <a href="https://developers.google.com/mobile-ads-sdk/docs/dfp/ios/quick-start">excellent documentation</a> to guide you through the process. After ads are implemented and working well, use the code in the "Implementing Ads" section to add targeting information.</p>
-<p>Complete the following steps to finish upgrading your Mobile SDK:</p>
-<ul>
-	<li>Change <code>BVTargetedAdLoader</code> to <code>GADAdLoader</code></li>
-	<li>Change <code>BVTargetedRequest</code> to <code>DFPRequest</code></li>
-	<li>Change <code>BVTargetedInterstitial</code> to <code>DFPInterstitial</code></li>
-	<li>Change <code>BVTargetedBannerView</code> to <code>DFPBannerView</code></li>
+
+
+
+<h4>Question Submission</h4>
+<p>Submitting a question is nearly identical to submitting a review, detailed above. Create an instance of <code>QuestionSubmission</code>, and submit it!</p>
+<p>Note that an <code>QuestionSubmission</code> object requires a <code>productId</code> for which this question corresponds to.</p>
+<ul class="nav nav-tabs" role="tablist">
+  <li role="presentation" class="active"><a href="#swift" aria-controls="swift" role="tab" data-toggle="tab">Swift</a></li>
+  <li role="presentation"><a href="#objc" aria-controls="objc" role="tab" data-toggle="tab">Objective-C</a></li>
 </ul>
+<!-- Tab panes -->
+<div class="tab-content code-switcher">
+	<!-- swift -->
+	<div role="tabpanel" class="tab-pane active" id="swift">
+<pre><code class="swift">// create question submission and fill out with user-input values
+let question = BVQuestionSubmission(productId: "test1")    
+question.questionSummary = userQuestion // "Heavy?"
+question.questionDetails = userQuestion // "How much does this weigh?"
+question.userNickname = userNickname // "Samantha55"
+question.userId = userId             // user's external ID
+question.userEmail = userEmail       // "test@test.com"
+question.agreedToTermsAndConditions  = true
+
+// submit the question
+question.submit({ (questionSubmission: BVQuestionSubmissionResponse) in
+    // question submitted successfully! 🎉
+}, failure: { (errors: [NSError]) in
+    // handle failure appropriately
+})</code></pre>
+	</div>
+	<!-- objective-c -->
+	<div role="tabpanel" class="tab-pane" id="objc">
+<pre><code class="objectivec">// create question submission and fill out with user-input values
+BVQuestionSubmission* question = [[BVQuestionSubmission alloc] initWithProductId:@"test1"];
+question.questionSummary = userQuestion; // "Heavy?"
+question.questionDetails = userQuestion; // "How much does this weigh?"
+question.userNickname = userNickname;    // "Samantha55"
+question.userId = userId;                // user's external ID
+question.userEmail = userEmail;          // "test@test.com"
+question.agreedToTermsAndConditions;  [NSNumber numberWithBool:YES];
+
+// submit the question
+[question submit:^(BVQuestionSubmissionResponse * _Nonnull response) {
+    // question submitted successfully! 🎉
+} failure:^(NSArray<NSError *> * _Nonnull errors) {
+    // handle failure appropriately
+}];</code></pre>
+	</div>
+</div>
 <br>
 <br>
 
-<h3>Determining Contextual Interests</h3>
-<p>The Advertising module is structured around categories. You can find a complete list in <code>BVContextualInterests.h</code>. The list is split into two tiers, with about 30 Tier One categories, each of which includes multiple Tier Two subcategories.</p>
-<p>For example, the Women's dresses section of a department store would correspond to the following product categories:</p>
-<ul>
-	<li>Tier One: <code>tierOneApparelAndAccessories</code></li>
-	<li>Tier Two: <code>tierTwoApparelAndAccessoriesWomensDresses</code></li>
-</ul>
-<p>Similarly, the Television section of an electronics store would correspond to the following product categories:</p>
-<ul>
-	<li>Tier One: <code>tierOneConsumerElectronics</code></li>
-	<li>Tier Two: <code>tierTwoConsumerElectronicsTelevisions</code></li>
-</ul>
-<p>All Tier Two categories are extensions of their Tier One category names.<p></p>Contextual interest categories are used while sending location information to the Advertising module, as defined in the following section.</p>
-<br>
-<br>
 
-<h3>Notes on Advertising and User Location</h3>
-<p>The Advertising module provides many ways to integrate location data into a shopper's profile. AYou can find all location-related methods in <code>BVLocationEventsHelper.h</code>. Bear in mind the following information:</p>
-<ul>
-	<li>All location methods have <code>contextualTier1</code> and <code>contextualTier2</code> parameters. This allows you to send all location->interest mapping information available to the Advertising module to give the shopper the best profile possible. Refer to <code>BVContextualInterests.h</code> for a generated list of Contextual Tier 1 and Tier 2 strings.</li>
-	<li>Bazaarvoice defines methods that correlate strongly to <code>CLLocationManagerDelegate</code> methods. You can find example usage of CLLocationManager+BVAdvertising inside the <code>LocationExample.m</code> file.</li>
-	<li>Bazaarvoice also defines methods that correlate strongly to Gimbal Beacon delegate methods, specifically <code>GMBLPlaceManagerDelegate</code> and <code>GMBLBeaconManagerDelegate</code>. You can find example usage of Gimbal+BVAdvertising in the <code>GimbalExample.m</code> file.</li>
+
+<h4>Answer Submission</h4>
+<p>Likewise, submitting an answer is nearly identical to submitting a review or question. Create an instance of <code>AnswerSubmission</code>, and submit it!</p>
+<p>Note that an <code>AnswerSubmission</code> object requires a <code>questionId</code> for which this answer responds to, and <code>answerText</code>, which is the body of the answer.</p>
+
+<ul class="nav nav-tabs" role="tablist">
+  <li role="presentation" class="active"><a href="#swift" aria-controls="swift" role="tab" data-toggle="tab">Swift</a></li>
+  <li role="presentation"><a href="#objc" aria-controls="objc" role="tab" data-toggle="tab">Objective-C</a></li>
 </ul>
+<!-- Tab panes -->
+<div class="tab-content code-switcher">
+	<!-- swift -->
+	<div role="tabpanel" class="tab-pane active" id="swift">
+<pre><code class="swift">// create answer submission and fill out with user-input values
+let answer = BVAnswerSubmission(questionId: userQuestionId, answerText: userAnswerText) 
+answer.userNickname = userNickname // "Samantha55"
+answer.userId = userId             // user's external ID
+answer.userEmail = userEmail       // "test@test.com"
+answer.agreedToTermsAndConditions = true
+
+// submit the answer
+answer.submit({ (answerSubmission: BVAnswerSubmissionResponse) in
+    // answer submitted successfully! 🎉
+}, failure: { (errors: [NSError]) in
+    // handle failure appropriately
+})</code></pre>
+	</div>
+	<!-- objective-c -->
+	<div role="tabpanel" class="tab-pane" id="objc">
+<pre><code class="objectivec">// create answer submission and fill out with user-input values
+BVAnswerSubmission* answer = [[BVAnswerSubmission alloc] initWithQuestionId:userQuestionId answerText:userAnswerText];
+answer.userNickname = userNickname; // "Samantha55"
+answer.userId = userId;             // user's external ID
+answer.userEmail = userEmail;       // "test@test.com"
+answer.agreedToTermsAndConditions = [NSNumber numberWithBool:YES];
+
+// submit the answer
+[answer submit:^(BVAnswerSubmissionResponse * _Nonnull response) {
+    // answer submitted successfully! 🎉
+} failure:^(NSArray<NSError *> * _Nonnull errors) {
+    // handle failure appropriately
+}];</code></pre>
+	</div>
+</div>
+<br>
 <br>
 
 

@@ -152,10 +152,16 @@ $(function(){
                              id="conversationsDropdown">
                             <ul>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="using_conversations.html"><span>Using Conversations</span></a>
+                                    <a class="nav-link" href="content_display.html"><span>Content Display</span></a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="content_submission.html"><span>Content Submission</span></a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="conversations_iovation.html"><span>Authenticity with iovation</span></a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="upgrading_conversations.html"><span>Upgrading Conversations</span></a>
                                 </li>
                             </ul>
                         </div>
@@ -242,7 +248,7 @@ The completed project for this code walkthrough for Swift and Objective-C is in 
 </p>
 
 <h3>Displaying product recommendations</h3>
-<p>Product recommendations are simply views presented to users. Use the classes you already use in your storyboards to display the recommendations. You can format them to match your app's visual design. When a set of product recommendations loads, your app receives an array of <code>BVProduct</code> objects that contains its assets, and the app (rather than the SDK) is then responsible for displaying each <code>BVProduct</code> object.</p>
+<p>Product recommendations are simply views presented to users. Use the classes you already use in your storyboards to display the recommendations. You can format them to match your app's visual design. When a set of product recommendations loads, your app receives an array of <code>BVRecommendedProduct</code> objects that contains its assets, and the app (rather than the SDK) is then responsible for displaying each <code>BVRecommendedProduct</code> object.</p>
 <h5>Built-in views</h5>
 <p>THe Bazaarvoice Mobile SDK provides the following view containers to show multiple product recommendations:</p>
 <ul>
@@ -294,22 +300,22 @@ import HCSStarRatingView
 
 class DemoCell: BVRecommendationCollectionViewCell {
 
-	@IBOutlet weak var productName : UILabel!
-	@IBOutlet weak var price : UILabel!
-	@IBOutlet weak var numReview : UILabel!
-	@IBOutlet weak var rating : UILabel!
-	@IBOutlet weak var productImageView : UIImageView!
-	@IBOutlet weak var starRating : HCSStarRatingView!
+    @IBOutlet weak var productName : UILabel!
+    @IBOutlet weak var price : UILabel!
+    @IBOutlet weak var numReview : UILabel!
+    @IBOutlet weak var rating : UILabel!
+    @IBOutlet weak var productImageView : UIImageView!
+    @IBOutlet weak var starRating : HCSStarRatingView!
 
-	override var bvProduct: BVProduct! {
+    override var bvRecommendedProduct: BVRecommendedProduct! {
         
         didSet {
             
-            let imageUrl = NSURL(string: bvProduct.imageURL)
-            self.productName.text = bvProduct.productName
-            self.rating.text = "\(bvProduct.averageRating ?? 0)"
-            self.numReview.text = "(\(bvProduct.numReviews ?? 0) reviews)"
-            self.starRating.value = (CGFloat)(bvProduct.averageRating.floatValue)
+            let imageUrl = NSURL(string: bvRecommendedProduct.imageURL)
+            self.productName.text = bvRecommendedProduct.productName
+            self.rating.text = "\(bvRecommendedProduct.averageRating ?? 0)"
+            self.numReview.text = "(\(bvRecommendedProduct.numReviews ?? 0) reviews)"
+            self.starRating.value = (CGFloat)(bvRecommendedProduct.averageRating.floatValue)
             self.productImageView?.sd_setImageWithURL(imageUrl)
             
         }
@@ -338,17 +344,17 @@ class DemoCell: BVRecommendationCollectionViewCell {
 
 @implementation DemoCell
 
-- (void)setBvProduct:(BVProduct *)bvProduct {
+- (void)setBvRecommendedProduct:(BVRecommendedProduct *)bvRecommendedProduct {
     
-    super.bvProduct = bvProduct;
+    super.bvRecommendedProduct = bvRecommendedProduct;
     
-    NSURL *url = [NSURL URLWithString:self.bvProduct.imageURL];
+    NSURL *url = [NSURL URLWithString:self.bvRecommendedProduct.imageURL];
     [self.productImageView sd_setImageWithURL:url];
-    self.productName.text = bvProduct.productName;
-    self.rating.text = [NSString stringWithFormat:@"%.1f", [bvProduct.averageRating floatValue]];
-    self.starRating.value = [bvProduct.averageRating floatValue];
-    self.numReview.text = [NSString stringWithFormat:@"(%ld)", [bvProduct.numReviews longValue]];
-    self.price.text = bvProduct.price;
+    self.productName.text = bvRecommendedProduct.productName;
+    self.rating.text = [NSString stringWithFormat:@"%.1f", [bvRecommendedProduct.averageRating floatValue]];
+    self.starRating.value = [bvRecommendedProduct.averageRating floatValue];
+    self.numReview.text = [NSString stringWithFormat:@"(%ld)", [bvRecommendedProduct.numReviews longValue]];
+    self.price.text = bvRecommendedProduct.price;
    
 }
 
@@ -358,7 +364,7 @@ class DemoCell: BVRecommendationCollectionViewCell {
 		</div>
 
 		<br>
-		<p class="bg-info well-lg" style="padding:4px;"><i class="fa fa-hand-o-right"></i>  Tip: The above DemoCell outlets are suggestions for building a custom cell. The outlets map efficiently to each BVProduct data object. However, the outlets are not required and you can configure your cell any way you want.</p>
+		<p class="bg-info well-lg" style="padding:4px;"><i class="fa fa-hand-o-right"></i>  Tip: The above DemoCell outlets are suggestions for building a custom cell. The outlets map efficiently to each BVRecommendedProduct data object. However, the outlets are not required and you can configure your cell any way you want.</p>
 
 		<br>
 
@@ -395,7 +401,7 @@ class DemoCell: BVRecommendationCollectionViewCell {
 			<!-- swift -->
 			<div role="tabpanel" class="tab-pane active" id="swift">
 <pre><code class="swift">class DemoViewController: UIViewController {  
-	@IBOutlet weak var recommendationsView : BVProductRecommendationsCollectionView!  
+    @IBOutlet weak var recommendationsView : BVProductRecommendationsCollectionView!  
 }  </code></pre>
 			</div>
 			<!-- objective-c -->
@@ -444,28 +450,27 @@ class DemoCell: BVRecommendationCollectionViewCell {
 			<div role="tabpanel" class="tab-pane active" id="swift">
 <pre><code class="swift">class DemoViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
 
-@IBOutlet weak var recommendationsView : BVProductRecommendationsCollectionView!
-var recommendations : [BVProduct] = []
+    @IBOutlet weak var recommendationsView : BVProductRecommendationsCollectionView!
+    var recommendations : [BVRecommendedProduct] = []
 
-override func viewDidLoad() {
-super.viewDidLoad()
+    override func viewDidLoad() {
+        super.viewDidLoad()
 
-	recommendationsView.registerNib(UINib(nibName: "DemoCell", bundle: nil), forCellWithReuseIdentifier: "DemoCellIdentifier")
+        recommendationsView.registerNib(UINib(nibName: "DemoCell", bundle: nil), forCellWithReuseIdentifier: "DemoCellIdentifier")
 
-	self.recommendationsView.delegate = self
-	self.recommendationsView.dataSource = self
+        self.recommendationsView.delegate = self
+        self.recommendationsView.dataSource = self
 
-	let request = BVRecommendationsRequest(limit: 20)
-	self.recommendationsView.loadRequest(request, completionHandler: { (recommendations:[BVProduct]) in
+        let request = BVRecommendationsRequest(limit: 20)
+        self.recommendationsView.loadRequest(request, completionHandler: { (recommendations:[BVRecommendedProduct]) in
 
-	self.recommendations = recommendations
-	self.recommendationsView.reloadData()
+            self.recommendations = recommendations
+            self.recommendationsView.reloadData()
 
-	}) { (error:NSError) in
-	// handle error case
-	}
-
-}
+        }) { (error:NSError) in
+            // handle error case
+        }
+    }
 }
 </code></pre>
 			</div>
@@ -476,9 +481,9 @@ super.viewDidLoad()
 #import "DemoViewController.h"
 #import "DemoCell.h"
 
-@interface DemoViewController () <UICollectionViewDataSource, UICollectionViewDelegate>
+@interface DemoViewController () &lt;UICollectionViewDataSource, UICollectionViewDelegate&gt;
 
-@property NSArray<BVProduct *>*products;
+@property NSArray&lt;BVRecommendedProduct *&gt;* products;
 
 @end
 
@@ -489,8 +494,8 @@ super.viewDidLoad()
 
     self.products = [NSArray array];
 
-        [self.recommendationsView registerNib:[UINib nibWithNibName:@"DemoCell" bundle:nil]
-                   forCellWithReuseIdentifier:@"DemoCellIdentifier"];
+    UINib* nib = [UINib nibWithNibName:@"DemoCell" bundle:nil];
+    [self.recommendationsView registerNib:nib forCellWithReuseIdentifier:@"DemoCellIdentifier"];
 
     self.recommendationsView.delegate = self;
     self.recommendationsView.dataSource = self;
@@ -504,7 +509,7 @@ super.viewDidLoad()
 
     BVRecommendationsRequest *request = [[BVRecommendationsRequest alloc] initWithLimit:20];
 
-    [self.recommendationsView loadRequest:request completionHandler:^(NSArray<BVProduct *> * proudcts) {
+    [self.recommendationsView loadRequest:request completionHandler:^(NSArray&lt;BVRecommendedProduct *&gt; * proudcts) {
         NSLog(@"Recommendations Result: %@", proudcts.description);
         self.products = proudcts;
         [self.recommendationsView reloadData];
@@ -550,7 +555,7 @@ super.viewDidLoad()
 			<!-- swift -->
 			<div role="tabpanel" class="tab-pane active" id="swift">
 <pre><code class="swift">func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-	return self.recommendations.count ?? 0
+    return self.recommendations.count ?? 0
 }</code></pre>
 			</div>
 			<!-- objective-c -->
@@ -582,12 +587,12 @@ super.viewDidLoad()
 			<div role="tabpanel" class="tab-pane active" id="swift">
 <pre><code class="swift">func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
 
-	let cell = collectionView.dequeueReusableCellWithReuseIdentifier("DemoCellIdentifier", forIndexPath: indexPath) as! DemoCell
+    let cell = collectionView.dequeueReusableCellWithReuseIdentifier("DemoCellIdentifier", forIndexPath: indexPath) as! DemoCell
 
-	let product = recommendations[indexPath.row]
-	cell.bvProduct = product
+    let product = recommendations[indexPath.row]
+    cell.bvProduct = product
 
-	return cell;
+    return cell;
 }</code></pre>
 			</div>
 			<!-- objective-c -->
@@ -596,8 +601,8 @@ super.viewDidLoad()
 
     DemoCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"DemoCellIdentifier" forIndexPath:indexPath];
 
-    cell.bvProduct = [self.products objectAtIndex:indexPath.row];
-    NSURL *url = [NSURL URLWithString:cell.bvProduct.imageURL];
+    cell.bvRecommendedProduct = [self.products objectAtIndex:indexPath.row];
+    NSURL *url = [NSURL URLWithString:cell.bvRecommendedProduct.imageURL];
     [cell.productImageView sd_setImageWithURL:url];
 
     // initialize your other outlets here...

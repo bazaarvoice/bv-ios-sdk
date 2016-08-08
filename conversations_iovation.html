@@ -152,10 +152,16 @@ $(function(){
                              id="conversationsDropdown">
                             <ul>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="using_conversations.html"><span>Using Conversations</span></a>
+                                    <a class="nav-link" href="content_display.html"><span>Content Display</span></a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="content_submission.html"><span>Content Submission</span></a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="conversations_iovation.html"><span>Authenticity with iovation</span></a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="upgrading_conversations.html"><span>Upgrading Conversations</span></a>
                                 </li>
                             </ul>
                         </div>
@@ -215,6 +221,8 @@ $(function(){
 	Authenticity using device fingerprinting
 </div>
 
+<p><span class="bg-warning well-lg" style="padding:4px;"> <i class="fa fa-hand-o-right"></i> Note: Iovation is requied for US customers implementing UGC Content Submission with the Conversations API.</a></span></p>
+
 <p>Bazaarvoice has partenered with <a href="iovation_bvsample">iovation</a>, an industry leader in device reputation technology, to ensure authenticity in consumer-generated content. Bazaarvoice Mobile SDKs for Android and iOS support the ability to include the iovation fingerprint along with Conversations API requests, using the <code>BVPost</code> request object. Contact your Bazaarvoice support representative to request an evaluation of the iovation integration.</p>
 
 <p>Refer to the <a href="https://developer.bazaarvoice.com/apis/conversations/tutorials/device_fingerprinting">Device Fingerprinting</a> spage of the Bazaarvoice Developer Portal for technical details about creating and submitting device fingerprinting information from iovation with consumer-generated content. Refer to the <a href="https://developer.bazaarvoice.com/apis/conversations/tutorials/Device_Fingerprinting%20mobile">Mobile Device Fingerprinting</a> page of the Developer Portal for mobile-specific details about integrating with iovation.</p>
@@ -241,17 +249,19 @@ $(function(){
 <div class="tab-content code-switcher">
 	<!-- swift -->
 	<div role="tabpanel" class="tab-pane active" id="swift">
-<pre><code class="swift">let request = BVPost(type:BVPostTypeReview)  // Add the correct BVPostType here
-request.fingerPrint = DevicePrint.blackbox()
-request.action = BVActionSubmit // ...or use BVActionPreview for dry-run
-... add in your other parameters ...</code></pre>
+<pre><code class="swift">let review = ReviewSubmission( ... )    
+
+review.fingerPrint = DevicePrint.blackbox()
+
+// ...add in your other parameters (reviewText, reviewTitle, userNickname, etc.)...</code></pre>
 	</div>
 	<!-- objective-c -->
 	<div role="tabpanel" class="tab-pane" id="objc">
-<pre><code class="objectivec">BVPost *request = [[BVPost alloc] initWithType:BVPostTypeReview];  // Add the proper BVPostType here
-request.fingerPrint = [DevicePrint blackbox];
-[request setAction:BVActionSubmit];  // ...or use BVActionPreview for dry-run
-... add in your other parameters ...</code></pre>
+<pre><code class="objectivec">BVReviewSubmission *review = [[BVReviewSubmission alloc] init... ];  
+
+review.fingerPrint = [DevicePrint blackbox];
+
+// ...add in your other parameters (reviewText, reviewTitle, userNickname, etc.)...</code></pre>
 	</div>
 </div>
 <br>
