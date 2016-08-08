@@ -11,7 +11,6 @@
 
 @interface BVAuthenticatedUser()
 
-@property NSDate* previousUpdateDate;
 @property NSDictionary* personalizedPreferences;
 
 @end
@@ -27,7 +26,6 @@
     
     if(force || [self shouldUpdateProfile]){
         
-        self.previousUpdateDate = [NSDate date];
         NSString *idfa = [[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString];
         NSString* adsPassKey = passKey;
         NSString* baseUrl = [BVSDKManager sharedManager].urlRootShopperAdvertising;
@@ -95,10 +93,8 @@
 
 -(bool)shouldUpdateProfile {
 
-    int profileLifeSeconds = 300;
-    int timeSinceLastUpdate = [[NSDate date] timeIntervalSinceDate:self.previousUpdateDate];
-    
-    return self.previousUpdateDate == nil || timeSinceLastUpdate > profileLifeSeconds;
+    // Return true if the profile does not have any targeting keywords at all
+    return [self getTargetingKeywords] == nil || [[self getTargetingKeywords] allKeys].count == 0;
 }
 
 -(NSDictionary*)getTargetingKeywords {

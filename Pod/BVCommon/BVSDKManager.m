@@ -96,14 +96,15 @@
     [self setUserId:userAuthString];
 }
 
--(void)maybeUpdateUserProfile {
+// Update the user profile by calling the /users/ endpoint if the targeting params are empty.
+-(void)updateUserProfileIfEmpty {
     [self.bvUser updateProfile:false withAPIKey:self.apiKeyShopperAdvertising isStaging:self.staging];
 }
 
+
+// Udpate the user profile by calling the /users/ endpoint, regardless of the current state of the targeting params
 -(void)updateUserProfileForce {
-        
     [self.bvUser updateProfile:true withAPIKey:self.apiKeyShopperAdvertising isStaging:self.staging];
-    
 }
 
 -(void)setUserId:(NSString*)userAuthString{
@@ -112,11 +113,14 @@
     
     [[BVAnalyticsManager sharedManager] sendPersonalizationEvent:self.bvUser];
     
+    [NSObject cancelPreviousPerformRequestsWithTarget:self];
+    
     // try to grab the profile as soon as its available
     [self updateUserProfileForce];
-    [self performSelector:@selector(updateUserProfileForce) withObject:nil afterDelay:5.0];
-    [self performSelector:@selector(updateUserProfileForce) withObject:nil afterDelay:12.0];
-    [self performSelector:@selector(updateUserProfileForce) withObject:nil afterDelay:24.0];
+    [self performSelector:@selector(updateUserProfileIfEmpty) withObject:self afterDelay:5.0];
+    [self performSelector:@selector(updateUserProfileIfEmpty) withObject:self afterDelay:12.0];
+    [self performSelector:@selector(updateUserProfileIfEmpty) withObject:self afterDelay:24.0];
+    
 }
 
 - (BVAuthenticatedUser *)getBVAuthenticatedUser{
