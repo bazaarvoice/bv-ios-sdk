@@ -228,36 +228,48 @@
             if (httpError) {
                 // network error was generated
                 [[BVLogger sharedLogger] printError:httpError];
-                failure(@[httpError]);
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    failure(@[httpError]);
+                });
             }
             else if(statusCode >= 300){
                 // HTTP status code indicates failure
                 NSError* statusError = [NSError errorWithDomain:@"com.bazaarvoice.bvsdk" code:BV_ERROR_NETWORK_FAILED userInfo:@{NSLocalizedDescriptionKey:@"Review upload failed."}];
                 [[BVLogger sharedLogger] printError:statusError];
-                failure(@[statusError]);
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    failure(@[statusError]);
+                });
             }
             else if (jsonParsingError) {
                 // json parsing failed
                 [[BVLogger sharedLogger] printError:jsonParsingError];
-                failure(@[jsonParsingError]);
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    failure(@[jsonParsingError]);
+                });
             }
             else if(errorResponse){
                 // api returned successfully, but has bazaarvoice-specific errors. Example: 'invalid api key'
                 NSArray<NSError*>* errors = [errorResponse toNSErrors];
                 [[BVLogger sharedLogger] printErrors:errors];
-                failure(errors);
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    failure(errors);
+                });
             }
             else {
                 // success!
                 BVReviewSubmissionResponse* response = [[BVReviewSubmissionResponse alloc] initWithApiResponse:json];
-                success(response);
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    success(response);
+                });
             }
             
         }
         @catch (NSException *exception) {
             NSError* unexpectedError = [NSError errorWithDomain:BVErrDomain code:BV_ERROR_UNKNOWN userInfo:@{NSLocalizedDescriptionKey:@"An unknown parsing error occurred."}];
             [[BVLogger sharedLogger] printError: unexpectedError];
-            failure(@[unexpectedError]);
+            dispatch_async(dispatch_get_main_queue(), ^{
+                failure(@[unexpectedError]);
+            });
         }
         
     }];
