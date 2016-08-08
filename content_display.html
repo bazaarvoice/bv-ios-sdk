@@ -547,8 +547,8 @@ BVReviewsRequest* request = [[BVReviewsRequest alloc] initWithProductId:@"test1"
 <p>Multiple reviews should be shown in one of the following container view:</p>
 <ul>
 	<li><code>BVReviewView</code></li>
-	<li><code>BVReviewTableView</code></li>
-	<li><code>BVReviewCollectionView</code></li>
+	<li><code>BVReviewsTableView</code></li>
+	<li><code>BVReviewsCollectionView</code></li>
 </ul> 
 
 <p>Each review should be shown using one of the following views:
@@ -567,7 +567,7 @@ BVReviewsRequest* request = [[BVReviewsRequest alloc] initWithProductId:@"test1"
 		<br>
 	</li>
 	<li>
-		<p>Import <code>BVSDK</code> from <strong>DemoReviewViewController</strong>, and add an instance of <code>BVReviewTableView</code>.</p>
+		<p>Import <code>BVSDK</code> from <strong>DemoReviewViewController</strong>, and add an instance of <code>BVReviewsTableView</code>.</p>
 		<ul class="nav nav-tabs" role="tablist">
   <li role="presentation" class="pull-right"><a style="padding-top:4px; padding-bottom:4px;" href="#objc" aria-controls="objc" role="tab" data-toggle="tab">Objective-C</a></li>
   <li role="presentation" class="active pull-right"><a style="padding-top:4px; padding-bottom:4px;" href="#swift" aria-controls="swift" role="tab" data-toggle="tab">Swift</a></li>
@@ -614,7 +614,7 @@ class DemoReviewsViewController: UIViewController {
 	</li>
 
 	<li>
-		<p>In <code>DemoReviewViewController.xib</code>, add a <code>UITableView</code> to your view and add appropriate constraints. Change it's class to <code>BVReviewTableView</code>, and hook it up to your <code>IBOutlet</code>:</p>
+		<p>In <code>DemoReviewViewController.xib</code>, add a <code>UITableView</code> to your view and add appropriate constraints. Change its class to <code>BVReviewsTableView</code>, and hook it up to your <code>IBOutlet</code>:</p>
 		<img src="ios-img/conversations/hook_up_tableview.png" style="height:320px; box-shadow: 0px 0px 8px #444;" class="center-block img-fluid" />
 		<br>
 	</li>
@@ -968,7 +968,7 @@ class DemoQuestionViewController: UIViewController {
 
 
 	<li>
-		<p>In <code>DemoQuestionViewController.xib</code>, add a <code>UITableView</code> to your view and add appropriate constraints. Change it's class to <code>BVQuestionTableView</code>, and hook it up to your <code>IBOutlet</code>:</p>
+		<p>In <code>DemoQuestionViewController.xib</code>, add a <code>UITableView</code> to your view and add appropriate constraints. Change its class to <code>BVQuestionsTableView</code>, and hook it up to your <code>IBOutlet</code>:</p>
 		<img src="ios-img/conversations/hook_up_tableview_questions.png" style="height:320px; box-shadow: 0px 0px 8px #444;" class="center-block img-fluid" />
 		<br>
 	</li>
