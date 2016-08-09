@@ -472,16 +472,16 @@ var reviews : [BVReview] = []
 // Now load the reviews from the BVReviewsTableView.
 // request 10 reviews, starting at index 20
 let reviewsRequest = BVReviewsRequest(productId: "test1", limit: 10, offset: 20)
-        reviewsTableView.load(reviewsRequest, success: { (response) in
-            
-            self.reviews = response.results
-            self.reviewsTableView.reloadData()
-            
-            }) { (error) in
-                
-            print(error)
-                
-        }</code></pre>
+reviewsTableView.load(reviewsRequest, success: { (response) in
+    
+    self.reviews = response.results
+    self.reviewsTableView.reloadData()
+    
+    }) { (error) in
+        
+    print(error)
+        
+}</code></pre>
 	</div>
 	<!-- objective-c -->
 	<div role="tabpanel" class="tab-pane" id="objc">
@@ -706,9 +706,10 @@ class DemoReviewsViewController: UIViewController, UITableViewDelegate, UITableV
         
         self.tableView.delegate = self
         self.tableView.dataSource = self
+        self.tableView.registerNib(UINib(nibName: "DemoReviewTableViewCell", bundle: nil), forCellReuseIdentifier: "DemoReviewTableViewCell")
         
         let request = BVReviewsRequest(productId: "test1", limit: 10, offset: 20)
-        request.load({ (response: BVReviewsResponse) in
+        self.tableView.load({ (response: BVReviewsResponse) in
             
             self.reviews = response.results
             self.tableView.reloadData()
@@ -755,9 +756,10 @@ class DemoReviewsViewController: UIViewController, UITableViewDelegate, UITableV
     
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
-    
+    [self.tableView registerNib:[UINib nibWithNibName:@"DemoReviewTableViewCell" bundle:nil] forCellReuseIdentifier:@"DemoReviewTableViewCell"];
+
     BVReviewsRequest* request = [[BVReviewsRequest alloc] initWithProductId:@"test1" limit:10 offset:20];
-    [request load:^(BVReviewsResponse * _Nonnull response) {
+    [self.tableView load:^(BVReviewsResponse * _Nonnull response) {
         
         self.reviews = response.results;
         [self.tableView reloadData];
@@ -840,12 +842,12 @@ questionsTableView.load(questionsRequest, success: { (response) in
 // Now load the reviews from the BVReviewsTableView.
 // request 10 reviews, starting at index 20
 BVQuestionsRequest* request = [[BVQuestionsRequest alloc] initWithProductId:@"test1" limit:10 offset:20];
-    [self.questionsTableView load:request success:^(BVReviewsResponse * _Nonnull response) {
-        self.questions = response.results;
-        [self.questionsTableView reloadData];
-    } failure:^(NSArray<NSError *> * _Nonnull errors) {
-        NSLog(@"Error loading questions");
-    }];</code></pre>
+[self.questionsTableView load:request success:^(BVReviewsResponse * _Nonnull response) {
+    self.questions = response.results;
+    [self.questionsTableView reloadData];
+} failure:^(NSArray<NSError *> * _Nonnull errors) {
+    NSLog(@"Error loading questions");
+}];</code></pre>
 	</div>
 </div>
 <br>
@@ -1061,9 +1063,10 @@ class DemoQuestionViewController: UIViewController, UITableViewDelegate, UITable
         
         self.tableView.delegate = self
         self.tableView.dataSource = self
-        
+        self.tableView.registerNib(UINib(nibName: "DemoQuestionTableViewCell", bundle: nil), forCellReuseIdentifier: "DemoQuestionTableViewCell")
+
         let request = BVQuestionsAndAnswersRequest(productId: "test1", limit: 10, offset: 20)
-        request.load({ (response: BVQuestionsAndAnswersResponse) in
+        self.tableView.load({ (response: BVQuestionsAndAnswersResponse) in
             
             self.questions = response.results
             self.tableView.reloadData()
@@ -1110,9 +1113,10 @@ class DemoQuestionViewController: UIViewController, UITableViewDelegate, UITable
     
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
-    
+    [self.tableView registerNib:[UINib nibWithNibName:@"DemoQuestionTableViewCell" bundle:nil] forCellReuseIdentifier:@"DemoQuestionTableViewCell"];
+
     BVQuestionsAndAnswersRequest* request = [[BVQuestionsAndAnswersRequest alloc] initWithProductId:@"test1" limit:10 offset:20];
-    [request load:^(BVQuestionsAndAnswersResponse * _Nonnull response) {
+    [self.tableView load:^(BVQuestionsAndAnswersResponse * _Nonnull response) {
         
         self.questions = response.results;
         [self.tableView reloadData];
