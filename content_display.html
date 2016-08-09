@@ -814,11 +814,11 @@ class DemoReviewsViewController: UIViewController, UITableViewDelegate, UITableV
 	<div role="tabpanel" class="tab-pane active" id="swift">
 <pre><code class="swift">// Add a BVQuestionsTableView to your UIViewController and connect the outlet.
 @IBOutlet weak var questionsTableView : BVQuestionsTableView!
-var reviews : [BVQuestion] = []
+var questions : [BVQuestion] = []
 ...
 
-// Now load the reviews from the BVQuestionsTableView.
-// request 10 reviews, starting at index 20
+// Now load the questions from the BVQuestionsTableView.
+// request 10 questions, starting at index 20
 let questionsRequest = BVQuestionsRequest(productId: "test1", limit: 10, offset: 20)
 
 questionsTableView.load(questionsRequest, success: { (response) in
@@ -839,10 +839,10 @@ questionsTableView.load(questionsRequest, success: { (response) in
 @property NSArray<BVQuestion *> *questions;
 ...
 
-// Now load the reviews from the BVReviewsTableView.
-// request 10 reviews, starting at index 20
+// Now load the questions from the BVQuestionsTableView.
+// request 10 questions, starting at index 20
 BVQuestionsRequest* request = [[BVQuestionsRequest alloc] initWithProductId:@"test1" limit:10 offset:20];
-[self.questionsTableView load:request success:^(BVReviewsResponse * _Nonnull response) {
+[self.questionsTableView load:request success:^(BVQuestionsResponse * _Nonnull response) {
     self.questions = response.results;
     [self.questionsTableView reloadData];
 } failure:^(NSArray<NSError *> * _Nonnull errors) {
@@ -856,11 +856,11 @@ BVQuestionsRequest* request = [[BVQuestionsRequest alloc] initWithProductId:@"te
 
 <p>A <code>QuestionsAndAnswersRequest</code> requires the same three parameters as <code>BVQuestionsRequest</code>:</p>
 <ul>
-	<li><code>productId</code> - the productId that you want reviews for</li>
-	<li><code>limit</code> - max number of reviews to fetch (maximum of 20)</li>
+	<li><code>productId</code> - the productId that you want questions for</li>
+	<li><code>limit</code> - max number of questions to fetch (maximum of 20)</li>
 	<li><code>offset</code> - the index to start on</li>
 </ul>
-<p>A combination of limit and offset should be used to load more pages of reviews upon the user's request.</p>
+<p>A combination of limit and offset should be used to load more pages of quesitons upon the user's request.</p>
 
 
 
@@ -1056,7 +1056,7 @@ import BVSDK
 class DemoQuestionViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var tableView : BVQuestionsTableView!
-    var reviews : [BVQuestion] = []
+    var questions : [BVQuestion] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -1134,7 +1134,7 @@ class DemoQuestionViewController: UIViewController, UITableViewDelegate, UITable
     
     DemoQuestionTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"DemoQuestionTableViewCell"];
     
-    cell.question = [self.reviews objectAtIndex:indexPath.row];
+    cell.question = [self.questions objectAtIndex:indexPath.row];
     
     return cell;
     
