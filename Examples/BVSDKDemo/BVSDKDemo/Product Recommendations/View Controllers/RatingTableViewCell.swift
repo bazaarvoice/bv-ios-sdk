@@ -70,9 +70,9 @@ class RatingTableViewCell: BVReviewTableViewCell {
             }
             
             if review?.totalFeedbackCount?.intValue > 0 {
-                
-                let totalFeedbackCountString = String(review!.totalFeedbackCount)
-                let totalPositiveFeedbackCountString = String(review!.totalPositiveFeedbackCount)
+                                
+                let totalFeedbackCountString = review?.totalFeedbackCount?.stringValue ?? ""
+                let totalPositiveFeedbackCountString = review?.totalPositiveFeedbackCount?.stringValue ?? ""
                 
                  let helpfulText = totalPositiveFeedbackCountString + " of " + totalFeedbackCountString +  " users found this review helpful"
                 

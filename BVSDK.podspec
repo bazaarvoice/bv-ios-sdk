@@ -48,4 +48,10 @@ Pod::Spec.new do |s|
     curations.dependency 'BVSDK/Core'
   end
 
+  s.subspec 'BVLocation' do |location|
+    location.source_files = 'Pod/BVLocation/**/*.{h,m}'
+    location.vendored_frameworks = 'Pod/Frameworks/Gimbal.framework'
+    location.library = 'z'
+    location.dependency 'BVSDK/Core'
+  end
 end

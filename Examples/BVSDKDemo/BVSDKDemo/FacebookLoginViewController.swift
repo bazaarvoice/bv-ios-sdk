@@ -10,28 +10,26 @@ import FBSDKLoginKit
 
 class FacebookLoginViewController: UIViewController {
     
-    let button = FBSDKLoginButton()
+    @IBOutlet weak var fbLoginButton: FBSDKLoginButton!
+    
     let descriptionLabel = UILabel()
     
     override func viewWillAppear(animated: Bool) {
+        
         super.viewWillAppear(animated)
         
-        self.view.backgroundColor = UIColor.whiteColor()
+        self.navigationController?.navigationBarHidden = true
         
         // check that user is logged in to facebook
-        if(FBSDKAccessToken.currentAccessToken() == nil) {
-            self.view.addSubview(button)
-        }
-        else {
-            button.removeFromSuperview()
+        if(FBSDKAccessToken.currentAccessToken() != nil) {
+            fbLoginButton.removeFromSuperview()
             self.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
         }
-        
+       
     }
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
-        button.center = self.view.center
     }
 
 }

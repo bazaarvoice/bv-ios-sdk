@@ -1,0 +1,382 @@
+{
+    "HasErrors": false,
+    "Includes": {
+        "Products": {
+            "6-bv": {
+                "Brand": {
+                    "Name": "Endurance",
+                    "Id": "Endurance"
+                },
+                "UPCs": ["100000000052"],
+                "ISBNs": [],
+                "Description": null,
+                "ManufacturerPartNumbers": [],
+                "Attributes": {},
+                "QuestionIds": [],
+                "BrandExternalId": "Endurance",
+                "ProductPageUrl": "http://www.endurancecycles.com/products/endurance-apex-2",
+                "FamilyIds": [],
+                "AttributesOrder": [],
+                "ImageUrl": "http://cdn.shopify.com/s/files/1/0796/3917/files/Endurance_Apex_2_THUMB.png?5905770545529023052",
+                "EANs": [],
+                "Name": "Endurance Apex 2",
+                "CategoryId": "WomensBikes",
+                "TotalReviewCount": 40,
+                "ReviewIds": [],
+                "Id": "6-bv",
+                "StoryIds": [],
+                "ReviewStatistics": {
+                    "ContextDataDistributionOrder": ["Age", "Gender", "PrimaryUse", "Experience", "Brand", "Where"],
+                    "HelpfulVoteCount": 13,
+                    "NotRecommendedCount": 2,
+                    "AverageOverallRating": 4.3,
+                    "SecondaryRatingsAveragesOrder": ["Value", "Comfort", "Quality"],
+                    "FeaturedReviewCount": 0,
+                    "TagDistributionOrder": [],
+                    "NotHelpfulVoteCount": 0,
+                    "OverallRatingRange": 5,
+                    "SecondaryRatingsAverages": {
+                        "Value": {
+                            "Id": "Value",
+                            "AverageRating": 4.275
+                        },
+                        "Quality": {
+                            "Id": "Quality",
+                            "AverageRating": 3.975
+                        },
+                        "Comfort": {
+                            "Id": "Comfort",
+                            "AverageRating": 3.775
+                        }
+                    },
+                    "RatingDistribution": [{
+                                           "Count": 4,
+                                           "RatingValue": 1
+                                           }, {
+                                           "Count": 1,
+                                           "RatingValue": 2
+                                           }, {
+                                           "Count": 2,
+                                           "RatingValue": 3
+                                           }, {
+                                           "Count": 5,
+                                           "RatingValue": 4
+                                           }, {
+                                           "Count": 28,
+                                           "RatingValue": 5
+                                           }],
+                    "TotalReviewCount": 40,
+                    "RatingsOnlyReviewCount": 0,
+                    "RecommendedCount": 38,
+                    "TagDistribution": {},
+                    "ContextDataDistribution": {
+                        "Where": {
+                            "Values": [{
+                                       "Value": "Endurance-website",
+                                       "Count": 9
+                                       }, {
+                                       "Value": "Performance-Bicycles",
+                                       "Count": 8
+                                       }, {
+                                       "Value": "Rugged-Outfitters",
+                                       "Count": 9
+                                       }, {
+                                       "Value": "Other",
+                                       "Count": 14
+                                       }],
+                            "Label": "Where",
+                            "Id": "Where"
+                        },
+                        "Brand": {
+                            "Values": [{
+                                       "Value": "This-is-my-first-bike",
+                                       "Count": 9
+                                       }, {
+                                       "Value": "Trek",
+                                       "Count": 11
+                                       }, {
+                                       "Value": "Specialized",
+                                       "Count": 5
+                                       }, {
+                                       "Value": "Diamondback",
+                                       "Count": 2
+                                       }, {
+                                       "Value": "Schwinn",
+                                       "Count": 1
+                                       }, {
+                                       "Value": "Endurance",
+                                       "Count": 7
+                                       }, {
+                                       "Value": "Other",
+                                       "Count": 5
+                                       }],
+                            "Label": "Brand",
+                            "Id": "Brand"
+                        },
+                        "Experience": {
+                            "Values": [{
+                                       "Value": "Beginner",
+                                       "Count": 15
+                                       }, {
+                                       "Value": "Intermediate",
+                                       "Count": 20
+                                       }, {
+                                       "Value": "Expert",
+                                       "Count": 5
+                                       }],
+                            "Label": "Experience",
+                            "Id": "Experience"
+                        },
+                        "PrimaryUse": {
+                            "Values": [{
+                                       "Value": "Commuting",
+                                       "Count": 1
+                                       }, {
+                                       "Value": "Racing",
+                                       "Count": 19
+                                       }, {
+                                       "Value": "Leisure",
+                                       "Count": 3
+                                       }, {
+                                       "Value": "Exercise",
+                                       "Count": 17
+                                       }],
+                            "Label": "Primary Use",
+                            "Id": "PrimaryUse"
+                        },
+                        "Age": {
+                            "Values": [{
+                                       "Value": "25to34",
+                                       "Count": 23
+                                       }, {
+                                       "Value": "35to44",
+                                       "Count": 13
+                                       }, {
+                                       "Value": "45to54",
+                                       "Count": 4
+                                       }],
+                            "Label": "Age",
+                            "Id": "Age"
+                        },
+                        "Gender": {
+                            "Values": [{
+                                       "Value": "Female",
+                                       "Count": 40
+                                       }],
+                            "Label": "Gender",
+                            "Id": "Gender"
+                        }
+                    },
+                    "FirstSubmissionTime": "2016-06-02T00:36:59.000+00:00",
+                    "LastSubmissionTime": "2016-06-30T02:42:25.000+00:00"
+                },
+                "ModelNumbers": []
+            }
+        },
+        "ProductsOrder": ["6-bv"]
+    },
+    "Offset": 0,
+    "TotalResults": 2,
+    "Locale": "en_US",
+    "Errors": [],
+    "Results": [{
+                "TagDimensions": {},
+                "TagDimensionsOrder": [],
+                "AdditionalFieldsOrder": [],
+                "Cons": null,
+                "IsRecommended": true,
+                "IsRatingsOnly": false,
+                "UserNickname": "endurancegirl5765",
+                "Pros": null,
+                "Photos": [],
+                "ContextDataValues": {
+                "Experience": {
+                "Value": "Expert",
+                "ValueLabel": "Expert",
+                "DimensionLabel": "Experience",
+                "Id": "Experience"
+                },
+                "PrimaryUse": {
+                "Value": "Racing",
+                "ValueLabel": "Racing",
+                "DimensionLabel": "Primary Use",
+                "Id": "PrimaryUse"
+                },
+                "Age": {
+                "Value": "25to34",
+                "ValueLabel": "25 to 34",
+                "DimensionLabel": "Age",
+                "Id": "Age"
+                },
+                "Gender": {
+                "Value": "Female",
+                "ValueLabel": "Female",
+                "DimensionLabel": "Gender",
+                "Id": "Gender"
+                }
+                },
+                "Videos": [],
+                "ContextDataValuesOrder": ["Age", "Gender", "PrimaryUse", "Experience"],
+                "LastModificationTime": "2016-07-01T05:00:27.000+00:00",
+                "SubmissionId": "kybro1forybf9ojdlswnbj2sx",
+                "TotalFeedbackCount": 0,
+                "TotalPositiveFeedbackCount": 0,
+                "BadgesOrder": [],
+                "UserLocation": "Chicago",
+                "Badges": {},
+                "AuthorId": "le1t709r02084pna4o4hdojb8",
+                "IsFeatured": false,
+                "SecondaryRatingsOrder": ["Value", "Comfort", "Quality"],
+                "IsSyndicated": false,
+                "ProductRecommendationIds": [],
+                "Title": "Compliments",
+                "ProductId": "6-bv",
+                "AdditionalFields": {},
+                "CampaignId": null,
+                "Helpfulness": null,
+                "TotalNegativeFeedbackCount": 0,
+                "SubmissionTime": "2016-06-15T01:09:45.000+00:00",
+                "Rating": 5,
+                "ContentLocale": "en_US",
+                "RatingRange": 5,
+                "TotalCommentCount": 0,
+                "ReviewText": "It looks fantastic, I keep getting compliments on it everywhere I go. Really love this bike, I've got the tri bike model but did not like the tri-handlebars so I've purchased shimano Utegra shifters from Performance Bicycles and a RSA drop handlebars, installed it myself, even though this bike has internal cabling - it is guided and installation is super easy, it took me about 2 hours to get handlebar and shifters replaced as well as putting new cables for brakes and shifters. Love this bike",
+                "ModerationStatus": "APPROVED",
+                "ClientResponses": [],
+                "Id": "98246968",
+                "CommentIds": [],
+                "SecondaryRatings": {
+                "Value": {
+                "Value": 5,
+                "ValueLabel": null,
+                "MaxLabel": null,
+                "Label": "How would you rate the value of this product?",
+                "Id": "Value",
+                "ValueRange": 5,
+                "MinLabel": null,
+                "DisplayType": "NORMAL"
+                },
+                "Quality": {
+                "Value": 5,
+                "ValueLabel": null,
+                "MaxLabel": null,
+                "Label": "How would you rate the quality of this product?",
+                "Id": "Quality",
+                "ValueRange": 5,
+                "MinLabel": null,
+                "DisplayType": "NORMAL"
+                },
+                "Comfort": {
+                "Value": 4,
+                "ValueLabel": null,
+                "MaxLabel": null,
+                "Label": "How would you rate the comfort of the product?",
+                "Id": "Comfort",
+                "ValueRange": 5,
+                "MinLabel": null,
+                "DisplayType": "NORMAL"
+                }
+                },
+                "LastModeratedTime": "2016-06-15T01:22:09.000+00:00"
+                }, {
+                "TagDimensions": {},
+                "TagDimensionsOrder": [],
+                "AdditionalFieldsOrder": [],
+                "Cons": null,
+                "IsRecommended": false,
+                "IsRatingsOnly": false,
+                "UserNickname": "girlfromatlanta2938",
+                "Pros": null,
+                "Photos": [],
+                "ContextDataValues": {
+                "Experience": {
+                "Value": "Beginner",
+                "ValueLabel": "Beginner",
+                "DimensionLabel": "Experience",
+                "Id": "Experience"
+                },
+                "PrimaryUse": {
+                "Value": "Leisure",
+                "ValueLabel": "Leisure",
+                "DimensionLabel": "Primary Use",
+                "Id": "PrimaryUse"
+                },
+                "Age": {
+                "Value": "45to54",
+                "ValueLabel": "45 to 54",
+                "DimensionLabel": "Age",
+                "Id": "Age"
+                },
+                "Gender": {
+                "Value": "Female",
+                "ValueLabel": "Female",
+                "DimensionLabel": "Gender",
+                "Id": "Gender"
+                }
+                },
+                "Videos": [],
+                "ContextDataValuesOrder": ["Age", "Gender", "PrimaryUse", "Experience"],
+                "LastModificationTime": "2016-07-01T05:00:26.000+00:00",
+                "SubmissionId": "9nr1lt2sei3gt7f3fmev5zx2h",
+                "TotalFeedbackCount": 0,
+                "TotalPositiveFeedbackCount": 0,
+                "BadgesOrder": [],
+                "UserLocation": "Chicago",
+                "Badges": {},
+                "AuthorId": "lq0rcos2ptc7eksub3c8r3kzs",
+                "IsFeatured": false,
+                "SecondaryRatingsOrder": ["Value", "Comfort", "Quality"],
+                "IsSyndicated": false,
+                "ProductRecommendationIds": [],
+                "Title": "Foothills and Mountains",
+                "ProductId": "6-bv",
+                "AdditionalFields": {},
+                "CampaignId": null,
+                "Helpfulness": null,
+                "TotalNegativeFeedbackCount": 0,
+                "SubmissionTime": "2016-06-13T13:38:41.000+00:00",
+                "Rating": 1,
+                "ContentLocale": "en_US",
+                "RatingRange": 5,
+                "TotalCommentCount": 0,
+                "ReviewText": "I received this as a gift and I ride in the foothills and mountains near Changmai Thailand. The seat is painful for me and the shifting is rough. For the money I would definitely not recommend it as a entry level bike. It needs a lot of investments like wheel upgrades, lighter tires and a new seat. By the time you buy what you need to bring this up to speed, you can buy a higher quality bike",
+                "ModerationStatus": "APPROVED",
+                "ClientResponses": [],
+                "Id": "98246931",
+                "CommentIds": [],
+                "SecondaryRatings": {
+                "Value": {
+                "Value": 1,
+                "ValueLabel": null,
+                "MaxLabel": null,
+                "Label": "How would you rate the value of this product?",
+                "Id": "Value",
+                "ValueRange": 5,
+                "MinLabel": null,
+                "DisplayType": "NORMAL"
+                },
+                "Quality": {
+                "Value": 1,
+                "ValueLabel": null,
+                "MaxLabel": null,
+                "Label": "How would you rate the quality of this product?",
+                "Id": "Quality",
+                "ValueRange": 5,
+                "MinLabel": null,
+                "DisplayType": "NORMAL"
+                },
+                "Comfort": {
+                "Value": 1,
+                "ValueLabel": null,
+                "MaxLabel": null,
+                "Label": "How would you rate the comfort of the product?",
+                "Id": "Comfort",
+                "ValueRange": 5,
+                "MinLabel": null,
+                "DisplayType": "NORMAL"
+                }
+                },
+                "LastModeratedTime": "2016-06-13T13:51:15.000+00:00"
+                }],
+    "Limit": 20
+}

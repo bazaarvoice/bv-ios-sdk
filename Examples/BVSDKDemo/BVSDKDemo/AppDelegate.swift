@@ -11,9 +11,8 @@ import Fabric
 import Crashlytics
 import FBSDKCoreKit
 
-
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, BVLocationNotificationDelegate {
 
     var window: UIWindow?
 
@@ -23,9 +22,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         BVSDKManager.sharedManager().apiKeyCurations = "REPLACE_ME"
         BVSDKManager.sharedManager().apiKeyConversations = "REPLACE_ME"
         BVSDKManager.sharedManager().apiKeyShopperAdvertising = "REPLACE_ME"
+        //BVSDKManager.sharedManager().apiKeyLocation = "00000000-0000-0000-0000-000000000000" // Setting the location key will initialize the location manager
         BVSDKManager.sharedManager().staging = false
-        BVSDKManager.sharedManager().setLogLevel(.Info)
+        BVSDKManager.sharedManager().setLogLevel(.Error)
 
+        // Listen for push notifications when app is in background
+        BVLocationManager.setNotificationDelegate(self)
+        
         MockDataManager.sharedInstance // start data mocking service
         
         window = UIWindow(frame: UIScreen.mainScreen().bounds)
@@ -60,7 +63,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func setupAuthenticatedUser() -> Void {
         
         /*
-            Next, we have to tell BVSDK about the user. See the BVSDK wiki for more discussion on how to create this user auth string: https://github.com/bazaarvoice/bv-ios-sdk/wiki/BVSDK-UserAuthentication
+            Next, we have to tell BVSDK about the user. See the BVSDK wiki for more discussion on how to create this user auth string: https://bazaarvoice.github.io/bv-ios-sdk/user_authentication_token.html
 
             A user auth string would contain data in a query string format. For example:
             userid=Example&email=user@example.com&age=28&gender=female&facebookId=123abc
@@ -88,6 +91,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return navController
         
     }()
+    
+    // MARK: BVLocationNotificationDelegate
+    
+    func shouldShowNotificationForVisit(visit: BVVisit) -> Bool {
+        return true
+    }
+    
+    func notificationWillBePresented( notication : UILocalNotification) -> UILocalNotification {
+        return notication
+    }
+
     
 }
 

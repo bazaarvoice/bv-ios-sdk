@@ -7,6 +7,8 @@ PODS:
     - BVSDK/Core
   - BVSDK/BVCurations (4.1.0):
     - BVSDK/Core
+  - BVSDK/BVLocation (4.1.0):
+    - BVSDK/Core
   - BVSDK/BVRecommendations (4.1.0):
     - BVSDK/Core
   - BVSDK/Core (4.1.0)
@@ -29,6 +31,7 @@ DEPENDENCIES:
   - BVSDK/BVAdvertising (from `../`)
   - BVSDK/BVConversations (from `../`)
   - BVSDK/BVCurations (from `../`)
+  - BVSDK/BVLocation (from `../`)
   - BVSDK/BVRecommendations (from `../`)
   - OHHTTPStubs
 
@@ -37,9 +40,9 @@ EXTERNAL SOURCES:
     :path: ../
 
 SPEC CHECKSUMS:
-  BVSDK: 5619fd07fac1705c309529783bde5f349d662449
+  BVSDK: e5e7453437f0555fab7f62babf6a6943a90ca931
   OHHTTPStubs: 592f74439d2d72615115cf99a954237a3fbe26e5
 
-PODFILE CHECKSUM: 03897f582ff7f8099d1814cb03d04177629fd8a6
+PODFILE CHECKSUM: e45330138819fb917f8716394bcae386105dd0b3
 
 COCOAPODS: 1.0.1

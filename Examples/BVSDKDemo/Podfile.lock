@@ -13,6 +13,8 @@ PODS:
     - BVSDK/Core
   - BVSDK/BVCurations (4.1.0):
     - BVSDK/Core
+  - BVSDK/BVLocation (4.1.0):
+    - BVSDK/Core
   - BVSDK/BVRecommendations (4.1.0):
     - BVSDK/Core
   - BVSDK/Core (4.1.0)
@@ -50,6 +52,9 @@ PODS:
     - SDWebImage/Core (= 3.8.1)
   - SDWebImage/Core (3.8.1)
   - SwiftyJSON (2.3.2)
+  - XLActionController (2.0.0):
+    - XLActionController/Core (= 2.0.0)
+  - XLActionController/Core (2.0.0)
   - youtube-ios-player-helper (0.1.6)
 
 DEPENDENCIES:
@@ -57,6 +62,7 @@ DEPENDENCIES:
   - BVSDK/BVAdvertising (from `../../`)
   - BVSDK/BVConversations (from `../../`)
   - BVSDK/BVCurations (from `../../`)
+  - BVSDK/BVLocation (from `../../`)
   - BVSDK/BVRecommendations (from `../../`)
   - Crashlytics
   - Fabric
@@ -71,6 +77,7 @@ DEPENDENCIES:
   - SDForms (from `https://github.com/austimkelly/SDForms.git`, branch `master`)
   - SDWebImage
   - SwiftyJSON
+  - XLActionController
   - youtube-ios-player-helper (~> 0.1.6)
 
 EXTERNAL SOURCES:
@@ -87,7 +94,7 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
-  BVSDK: 5619fd07fac1705c309529783bde5f349d662449
+  BVSDK: e5e7453437f0555fab7f62babf6a6943a90ca931
   Crashlytics: 130ab943f8c78cda7a814b434f270b2e2c8a3cba
   Fabric: caf7580c725e64db144f610ac65cd60956911dc7
   FBSDKCoreKit: 6e020b5db0b5bd1e01f5fb0902131befd129a502
@@ -101,8 +108,9 @@ SPEC CHECKSUMS:
   SDForms: 67ace4be00b3a97bec7164a817eb085e3148c523
   SDWebImage: 35f9627a3e44b4f292a8a8ce6a531fa488239b91
   SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
+  XLActionController: 97ed31237413db4d9401c6a559270f4d2b4de136
   youtube-ios-player-helper: 21ab92db027c7ff86cb17a3843a3f6eafc8158d2
 
-PODFILE CHECKSUM: 5c81d7b0d5ca3e749a79df8a4080f60bf214e16a
+PODFILE CHECKSUM: 51f8c99171ed988ecd91fddd0a030ccc115e1dc1
 
 COCOAPODS: 1.0.1
