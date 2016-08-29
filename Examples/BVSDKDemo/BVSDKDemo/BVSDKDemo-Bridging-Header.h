@@ -4,6 +4,8 @@
 
 
 #import <SDForms/SDForms.h>
+#import "LocationPickerView.h"
+#import "JPSThumbnail.h"
 
 #if __has_include("BVUserAuthStringGenerator.h")
     // For internal testing only

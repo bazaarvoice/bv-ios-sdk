@@ -324,7 +324,7 @@ static NSString *urlEncode(id object) {
         NSDictionary *response;
         if ([[self.responseHeaders objectForKey:@"Content-Type"] isEqualToString:@"application/json;charset=utf-8"]) {
             response = [NSJSONSerialization JSONObjectWithData:self.receivedData options:NSJSONReadingMutableContainers error:&error];
-            [[BVLogger sharedLogger] verbose:[NSString stringWithFormat:@"RESPONSE: %@ (%d)", response, self.responseStatusCode]];
+            [[BVLogger sharedLogger] verbose:[NSString stringWithFormat:@"RESPONSE: %@ (%ld)", response, (long)self.responseStatusCode]];
         }
         else if (self.responseStatusCode == 200) {
             NSMutableDictionary *result = [NSMutableDictionary dictionary];

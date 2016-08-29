@@ -107,7 +107,8 @@ public class ProfileUtils: NSObject {
                 self.loginProfile.removeAll()
                 self.loginProfile = userProfileDict
                 
-                // shared encoding key for 'branddemo' - so shoud be able to get a usable profile with this
+                // This macro section here with SITE_AUTH is shows you might make an asynchronous call
+                // to generate a user authentication string for setting profile information.
                 if SITE_AUTH == 1 {
                     BVUserAuthStringGenerator.generateUAS(userProfileDict, withCompletion: { (uas, error) in
                         if (error == nil){

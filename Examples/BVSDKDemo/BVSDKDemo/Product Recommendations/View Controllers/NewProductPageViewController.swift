@@ -17,13 +17,15 @@ class NewProductPageViewController: BVProductDisplayPageViewController, UITableV
     enum ProductDetailSection : Int {
         case Ratings = 0
         case Questions
+        case Location
         case Curations
         case CurationsAddPhoto
+        case CurationsPhotoMap
         case Recommendations
         
         
         static func count() -> Int {
-            return 5
+            return 7
         }
     }
     
@@ -34,12 +36,16 @@ class NewProductPageViewController: BVProductDisplayPageViewController, UITableV
     @IBOutlet weak var productImage : UIImageView!
     @IBOutlet weak var productImageHeight : NSLayoutConstraint!
     
-    var totalReviewCount, totalQuestionCount, totalAnswerCount : Int?
+    private var totalReviewCount, totalQuestionCount, totalAnswerCount : Int?
     
-    var adLoader : GADAdLoader?
-    var nativeContentAd : GADNativeContentAd?
+    private var adLoader : GADAdLoader?
+    private var nativeContentAd : GADNativeContentAd?
 
-    let selectedProduct : BVRecommendedProduct
+    private let selectedProduct : BVRecommendedProduct
+    
+    private var defaultStoreId = "0"
+    
+    private var curationsCell : NewProductCurationsTableViewCell!
     
     init(nibName: String?, bundle: NSBundle?, product: BVRecommendedProduct) {
         
@@ -56,6 +62,8 @@ class NewProductPageViewController: BVProductDisplayPageViewController, UITableV
         super.viewDidLoad()
         
         ProfileUtils.trackViewController(self)
+        
+        defaultStoreId = LocationPreferenceUtils.getDefaultStore() != nil ? (LocationPreferenceUtils.getDefaultStore()?.storeId)! : "0"
         
         // load a native content ad
         self.loadNativeAd()
@@ -96,6 +104,16 @@ class NewProductPageViewController: BVProductDisplayPageViewController, UITableV
         let nibConversationsCell = UINib(nibName: "ProductPageButtonCell", bundle: nil)
         tableView.registerNib(nibConversationsCell, forCellReuseIdentifier: "ProductPageButtonCell")
         
+        
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        let currentStoreDefault = LocationPreferenceUtils.getDefaultStore()
+        if currentStoreDefault != nil && defaultStoreId != currentStoreDefault?.storeId {
+            let indexPath = NSIndexPath(forRow: 0, inSection: ProductDetailSection.Location.rawValue)
+            self.tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Top)
+            defaultStoreId = (currentStoreDefault?.storeId)!
+        }
         
     }
     
@@ -151,25 +169,6 @@ class NewProductPageViewController: BVProductDisplayPageViewController, UITableV
         
         self.navigationController?.popToRootViewControllerAnimated(true)
     
-    }
-    
-    func didReceiveResponse(response: [NSObject : AnyObject]!, forRequest request: AnyObject!) {
-        
-        let product = BVProductsResponse(apiResponse: response).result
-
-        guard let totalReviewCount = product?.reviewStatistics?.totalReviewCount as? Int,
-              let totalQuestionCount = product?.qaStatistics?.totalQuestionCount as? Int,
-              let totalAnswerCount = product?.qaStatistics?.totalAnswerCount as? Int else {
-            return
-        }
-        
-        dispatch_async(dispatch_get_main_queue()) { 
-            self.totalReviewCount = totalReviewCount
-            self.totalQuestionCount = totalQuestionCount
-            self.totalAnswerCount = totalAnswerCount
-            self.tableView.reloadData()
-        }
-        
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -239,17 +238,25 @@ class NewProductPageViewController: BVProductDisplayPageViewController, UITableV
         switch product {
             case .Ratings, .Questions:
                 return BVSDKManager.sharedManager().apiKeyConversations != "REPLACE_ME"
-            case .Curations, .CurationsAddPhoto:
+            case .Curations, .CurationsAddPhoto, .CurationsPhotoMap:
                 return BVSDKManager.sharedManager().apiKeyCurations != "REPLACE_ME"
             case .Recommendations:
                 return BVSDKManager.sharedManager().apiKeyShopperAdvertising != "REPLACE_ME"
+            case .Location:
+                return true
         }
         
     }
     
+    
+    // MARK: UITableViewDatasource
+    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 
         switch section {
+            
+            case ProductDetailSection.Location.rawValue:
+                return 1
             
             case ProductDetailSection.Ratings.rawValue:
                 return sdkIsConfiguredFor(.Ratings) ? 1 : 0
@@ -264,6 +271,9 @@ class NewProductPageViewController: BVProductDisplayPageViewController, UITableV
                 return sdkIsConfiguredFor(.Curations) ? 1 : 0
             
             case ProductDetailSection.CurationsAddPhoto.rawValue:
+                return sdkIsConfiguredFor(.CurationsAddPhoto) ? 1 : 0
+            
+            case ProductDetailSection.CurationsPhotoMap.rawValue:
                 return sdkIsConfiguredFor(.CurationsAddPhoto) ? 1 : 0
             
             default:
@@ -283,10 +293,10 @@ class NewProductPageViewController: BVProductDisplayPageViewController, UITableV
     
     func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         
-        if section == ProductDetailSection.Ratings.rawValue {
-            return CGFloat.min
-        }
-        else if section == ProductDetailSection.Curations.rawValue {
+        if section == ProductDetailSection.Ratings.rawValue ||
+            section == ProductDetailSection.Curations.rawValue ||
+            section == ProductDetailSection.CurationsAddPhoto.rawValue ||
+            section == ProductDetailSection.Questions.rawValue{
             return CGFloat.min
         }
         else {
@@ -329,7 +339,7 @@ class NewProductPageViewController: BVProductDisplayPageViewController, UITableV
             
         if indexPath.section == ProductDetailSection.Curations.rawValue {
             
-            let curationsCell = tableView.dequeueReusableCellWithIdentifier("NewProductCurationsTableViewCell") as! NewProductCurationsTableViewCell
+            curationsCell = tableView.dequeueReusableCellWithIdentifier("NewProductCurationsTableViewCell") as! NewProductCurationsTableViewCell
             
             curationsCell.product = selectedProduct
             
@@ -342,7 +352,6 @@ class NewProductPageViewController: BVProductDisplayPageViewController, UITableV
                 titleLabel.text = "Social Feed";
                 titleLabel.textColor = UIColor.whiteColor()
                 titleLabel.textAlignment = .Center
-                titleLabel.font = UIFont(name: "ForalPro-Regular", size: 36)
                 targetVC.navigationItem.titleView = titleLabel
                 
                 targetVC.socialFeedItems = feedItems
@@ -392,6 +401,26 @@ class NewProductPageViewController: BVProductDisplayPageViewController, UITableV
             
         }
         
+        if indexPath.section == ProductDetailSection.Location.rawValue {
+            
+            let cell = tableView.dequeueReusableCellWithIdentifier("ProductPageButtonCell") as! ProductPageButtonCell
+            
+            cell.button.removeTarget(nil, action: nil, forControlEvents: .AllEvents)
+            cell.button.addTarget(self, action: "locationSettingsPressed", forControlEvents: .TouchUpInside)
+            cell.setCustomLeftIcon(FAKFontAwesome.mapMarkerIconWithSize)
+            cell.setCustomRightIcon(FAKFontAwesome.chevronRightIconWithSize)
+           
+            var buttonText = "Set your default store location!"
+            if let defaultStore = LocationPreferenceUtils.getDefaultStore() {
+                buttonText = "My Store: " + defaultStore.storeCity + ", " + defaultStore.storeState
+            }
+            
+            cell.button.setTitle(buttonText, forState: .Normal)
+
+            return cell
+            
+        }
+        
         if indexPath.section == ProductDetailSection.CurationsAddPhoto.rawValue {
             
             let cell = tableView.dequeueReusableCellWithIdentifier("ProductPageButtonCell") as! ProductPageButtonCell
@@ -405,6 +434,20 @@ class NewProductPageViewController: BVProductDisplayPageViewController, UITableV
             return cell
             
         }
+        
+        if indexPath.section == ProductDetailSection.CurationsPhotoMap.rawValue {
+            
+            let cell = tableView.dequeueReusableCellWithIdentifier("ProductPageButtonCell") as! ProductPageButtonCell
+            
+            cell.button.removeTarget(nil, action: nil, forControlEvents: .AllEvents)
+            cell.button.addTarget(self, action: "curationsViewPhotoMapPressed", forControlEvents: .TouchUpInside)
+            cell.setCustomLeftIcon(FAKFontAwesome.locationArrowIconWithSize)
+            cell.setCustomRightIcon(FAKFontAwesome.chevronRightIconWithSize)
+            cell.button.setTitle("Photos by Location", forState: .Normal)
+            
+            return cell
+            
+        }
                 
         // should not get here...
         return cell
@@ -413,11 +456,16 @@ class NewProductPageViewController: BVProductDisplayPageViewController, UITableV
     
     func ratingsButtonPressed() {
         
+        if totalReviewCount == nil {
+            totalReviewCount = 0
+        }
+        
         let ratingsVC = RatingsAndReviewsViewController(
             nibName: "RatingsAndReviewsViewController",
             bundle: nil,
-            product: selectedProduct
-        )
+            product: selectedProduct,
+            totalReviewCount: totalReviewCount!)
+        
         self.navigationController?.pushViewController(ratingsVC, animated: true)
         
     }
@@ -431,6 +479,14 @@ class NewProductPageViewController: BVProductDisplayPageViewController, UITableV
         )
         self.navigationController?.pushViewController(questionsVC, animated: true)
 
+    }
+    
+    func locationSettingsPressed() {
+        
+        let locationSettingsVC = LocationSettings(nibName:"LocationSettings", bundle: nil)
+        
+        self.navigationController?.pushViewController(locationSettingsVC, animated: true)
+        
     }
     
     func curationsAddPhotoPressed() {
@@ -450,6 +506,15 @@ class NewProductPageViewController: BVProductDisplayPageViewController, UITableV
         self.presentViewController(submitPhotoVC, animated: true, completion: nil)
     }
 
+    func curationsViewPhotoMapPressed() {
+        
+        let curationsPhotoMapVC = CurationsPhotoMapViewController(curationsFeed: curationsCell.curationsFeed!)
+        
+        self.navigationController?.pushViewController(curationsPhotoMapVC, animated: true)
+        
+    }
+
+    
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
         self.tableView.deselectRowAtIndexPath(indexPath, animated: true)

@@ -30,6 +30,8 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         let tableView = UITableView()
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.estimatedRowHeight = 88
+        tableView.rowHeight = UITableViewAutomaticDimension
         
         return tableView
         
@@ -103,6 +105,9 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         if config.conversationsKey != "REPLACE_ME" {
             strings.append("Conversations")
         }
+        if (config.locationKey != "00000000-0000-0000-0000-000000000000"){
+            strings.append("Location")
+        }
         
         return strings.joinWithSeparator(", ")
         
@@ -114,6 +119,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         BVSDKManager.sharedManager().apiKeyShopperAdvertising = "REPLACE_ME"
         BVSDKManager.sharedManager().apiKeyConversations = "REPLACE_ME"
         BVSDKManager.sharedManager().apiKeyCurations = "REPLACE_ME"
+        BVSDKManager.sharedManager().apiKeyLocation = "00000000-0000-0000-0000-000000000000"
         
     }
     
@@ -175,6 +181,9 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         let cell = tableView.dequeueReusableCellWithIdentifier(reuseIdentifier) ??
                    UITableViewCell(style: .Subtitle, reuseIdentifier: reuseIdentifier)
         
+        cell.detailTextLabel?.numberOfLines = 0
+        cell.textLabel?.numberOfLines = 0
+        
         if indexPath.section == 0 {
             cell.accessoryType = .None
             
@@ -225,8 +234,12 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         }
     }
     
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 66
+    }
+    
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 44
+        return 40
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
@@ -248,6 +261,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
                 BVSDKManager.sharedManager().apiKeyShopperAdvertising = config!.shopperAdvertisingKey
                 BVSDKManager.sharedManager().apiKeyConversations = config!.conversationsKey
                 BVSDKManager.sharedManager().apiKeyCurations = config!.curationsKey
+                BVSDKManager.sharedManager().apiKeyLocation = config!.locationKey
                 
                 selectedConfigDisplayName = config!.displayName
                 

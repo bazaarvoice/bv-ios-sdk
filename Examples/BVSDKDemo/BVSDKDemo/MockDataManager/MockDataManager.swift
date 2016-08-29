@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  MockDataManager.swift
 //  BVSDKDemo
 //
 //  Copyright © 2016 Bazaarvoice. All rights reserved.
@@ -35,6 +35,7 @@ class MockDataManager {
             BVSDKManager.sharedManager().apiKeyCurations = matchingConfig!.curationsKey
             BVSDKManager.sharedManager().apiKeyConversations = matchingConfig!.conversationsKey
             BVSDKManager.sharedManager().apiKeyShopperAdvertising = matchingConfig!.shopperAdvertisingKey
+            BVSDKManager.sharedManager().apiKeyLocation = matchingConfig!.locationKey
         }
         
     }
@@ -188,8 +189,23 @@ class MockDataManager {
         
         if url.containsString(conversationsMatch) {
             
+            // Conversations requests will vary depending on parameters
+            // Hence check for specific parameters to set mock results.
+            
+            var conversationsReviewsResultMockFile = "conversationsReviewsEnduranceCycles.json" // default, sorted by most recent
+            
+            if url.containsString("Sort=Rating:desc"){
+                conversationsReviewsResultMockFile = "conversationsReviewsEnduranceCycles_SortHighestRated.json"
+            } else if url.containsString("Sort=Rating:asc"){
+                conversationsReviewsResultMockFile = "conversationsReviewsEnduranceCycles_SortLowestRated.json"
+            } else if url.containsString("Sort=Helpfulness:desc"){
+                conversationsReviewsResultMockFile = "conversationsReviewsEnduranceCycles_SortMostHelpful.json"
+            } else if url.containsString("UserLocation:eq"){
+                conversationsReviewsResultMockFile = "conversationsReviewsEnduranceCycles_FilterLocation.json"
+            }
+            
             return OHHTTPStubsResponse(
-                fileAtPath: OHPathForFile("conversationsReviewsEnduranceCycles.json", self.dynamicType)!,
+                fileAtPath: OHPathForFile(conversationsReviewsResultMockFile, self.dynamicType)!,
                 statusCode: 200,
                 headers: ["Content-Type": "application/json;charset=utf-8"]
             )
@@ -305,7 +321,7 @@ class DemoConfigManager {
 
 class DemoConfig {
     
-    let clientId, displayName, curationsKey, conversationsKey, shopperAdvertisingKey : String
+    let clientId, displayName, curationsKey, conversationsKey, shopperAdvertisingKey, locationKey : String
     
     init(dictionary:NSDictionary) {
         
@@ -314,6 +330,7 @@ class DemoConfig {
         curationsKey = dictionary["apiKeyCurations"] as! String
         conversationsKey = dictionary["apiKeyConversations"] as! String
         shopperAdvertisingKey = dictionary["apiKeyShopperAdvertising"] as! String
+        locationKey = dictionary["apiKeyLocation"] as! String
         
     }
 }

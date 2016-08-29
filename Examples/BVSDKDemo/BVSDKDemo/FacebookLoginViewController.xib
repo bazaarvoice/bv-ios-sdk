@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FacebookLoginViewController" customModule="BVSDKDemo" customModuleProvider="target">
+            <connections>
+                <outlet property="fbLoginButton" destination="LHC-KZ-JXD" id="KRq-gn-9fI"/>
+                <outlet property="view" destination="iN0-l3-epB" id="wQR-uH-ZTq"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LHC-KZ-JXD" customClass="FBSDKLoginButton">
+                    <rect key="frame" x="221" y="269" width="158" height="30"/>
+                    <state key="normal" title="Facebook Login Button"/>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="Login with Facebook for your personalized recommendations." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HI1-l4-MFR">
+                    <rect key="frame" x="43" y="312" width="537" height="16"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="endurance_cycles_logo" translatesAutoresizingMaskIntoConstraints="NO" id="dIj-vg-TQH">
+                    <rect key="frame" x="180" y="74" width="240" height="112"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="112" id="KRw-Z5-anr"/>
+                        <constraint firstAttribute="width" constant="240" id="OeU-tp-foj"/>
+                    </constraints>
+                </imageView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="HI1-l4-MFR" secondAttribute="trailing" constant="20" id="5PB-yD-NGu"/>
+                <constraint firstItem="dIj-vg-TQH" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="AcN-qE-dxW"/>
+                <constraint firstItem="LHC-KZ-JXD" firstAttribute="top" secondItem="dIj-vg-TQH" secondAttribute="bottom" priority="250" constant="83" id="Hqz-Mc-Zbs"/>
+                <constraint firstItem="dIj-vg-TQH" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="74" id="Jj6-i8-GdB"/>
+                <constraint firstAttribute="bottom" secondItem="HI1-l4-MFR" secondAttribute="bottom" constant="272" id="Ozb-DJ-RO2"/>
+                <constraint firstItem="LHC-KZ-JXD" firstAttribute="leading" secondItem="HI1-l4-MFR" secondAttribute="trailing" constant="-424" id="YuH-zw-WGS"/>
+                <constraint firstItem="HI1-l4-MFR" firstAttribute="top" secondItem="LHC-KZ-JXD" secondAttribute="bottom" constant="13" id="c4Q-Ks-GSD"/>
+                <constraint firstItem="HI1-l4-MFR" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="43" id="dGx-Cn-QdK"/>
+                <constraint firstItem="LHC-KZ-JXD" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="eNk-hc-UqL"/>
+                <constraint firstAttribute="trailing" secondItem="LHC-KZ-JXD" secondAttribute="trailing" constant="39" id="lsC-bq-1Ad"/>
+                <constraint firstItem="LHC-KZ-JXD" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="95" id="uGe-WW-h2f"/>
+            </constraints>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="YuH-zw-WGS"/>
+                    <exclude reference="lsC-bq-1Ad"/>
+                    <exclude reference="uGe-WW-h2f"/>
+                </mask>
+            </variation>
+        </view>
+    </objects>
+    <resources>
+        <image name="endurance_cycles_logo" width="225" height="112"/>
+    </resources>
+</document>

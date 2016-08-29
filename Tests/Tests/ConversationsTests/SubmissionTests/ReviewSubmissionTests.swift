@@ -79,7 +79,7 @@ class ReviewSubmissionTests: XCTestCase {
         review.submit({ (reviewSubmission) in
             XCTFail()
         }, failure: { (errors) in
-            errors.forEach { print("error: \($0)") }
+            errors.forEach { print("Expected Failure Item: \($0)") }
             XCTAssertEqual(errors.count, 5)
             expectation.fulfill()
         })

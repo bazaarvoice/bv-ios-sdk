@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>storeZip</key>
+		<string>78735</string>
+		<key>storeState</key>
+		<string>TX</string>
+		<key>storeCity</key>
+		<string>Austin</string>
+		<key>storeName</key>
+		<string>Endurance Cycles Austin</string>
+		<key>storeId</key>
+		<string>1</string>
+		<key>storeAddress</key>
+		<string>South, 10901 Stonelake Blvd</string>
+		<key>storeTel</key>
+		<string>(512) 551-6000</string>
+		<key>latitude</key>
+		<string>30.3994293</string>
+		<key>longitude</key>
+		<string>-97.7380764</string>
+	</dict>
+	
+    <dict>
+        <key>storeZip</key>
+        <string>94107</string>
+        <key>storeState</key>
+        <string>CA</string>
+        <key>storeCity</key>
+        <string>San Francisco</string>
+        <key>storeName</key>
+        <string>Endurance Cycles San Francisco</string>
+        <key>storeId</key>
+        <string>2</string>
+        <key>storeAddress</key>
+        <string>642 Harrison Street, 2nd Floor</string>
+        <key>storeTel</key>
+        <string>(866) 522-9227</string>
+        <key>latitude</key>
+        <string>37.783826</string>
+        <key>longitude</key>
+        <string>-122.398632</string>
+    </dict>
+
+<dict>
+    <key>storeZip</key>
+    <string>10003</string>
+    <key>storeState</key>
+    <string>NY</string>
+    <key>storeCity</key>
+    <string>New York</string>
+    <key>storeName</key>
+    <string>Endurance Cycles Manhattan</string>
+    <key>storeId</key>
+    <string>3</string>
+    <key>storeAddress</key>
+    <string>19 Union Square West, 6th Floor</string>
+    <key>storeTel</key>
+    <string>(866) 522-9227</string>
+    <key>latitude</key>
+    <string>40.7361079</string>
+    <key>longitude</key>
+    <string>-73.9934307</string>
+</dict>
+
+<dict>
+    <key>storeZip</key>
+    <string>60654</string>
+    <key>storeState</key>
+    <string>IL</string>
+    <key>storeCity</key>
+    <string>Chicago</string>
+    <key>storeName</key>
+    <string>Endurance Cycles Chicago</string>
+    <key>storeId</key>
+    <string>4</string>
+    <key>storeAddress</key>
+    <string>300 North LaSalle Street, Suite 2250</string>
+    <key>storeTel</key>
+    <string>(866) 522-9227</string>
+    <key>latitude</key>
+    <string>41.8882179</string>
+    <key>longitude</key>
+    <string>-87.6353247</string>
+</dict>
+
+</array>
+</plist>
