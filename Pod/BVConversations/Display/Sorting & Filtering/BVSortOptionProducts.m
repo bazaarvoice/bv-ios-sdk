@@ -29,6 +29,7 @@
         case BVSortOptionProductsTotalQuestionCount: return @"TotalQuestionCount";
         case BVSortOptionProductsTotalReviewCount: return @"TotalReviewCount";
         case BVSortOptionProductsTotalStoryCount: return @"TotalStoryCount";
+        case BVSortOptionProductsHelpfulness: return @"Helpfulness";
             
     }
     

@@ -99,6 +99,17 @@
 		871AD40A1D088B9A006583E5 /* submitPhotoWithReview.json in Resources */ = {isa = PBXBuildFile; fileRef = 871AD4091D088B9A006583E5 /* submitPhotoWithReview.json */; };
 		871AD4111D08A5B8006583E5 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871AD40F1D08A5B8006583E5 /* ProfileViewController.swift */; };
 		871AD4121D08A5B8006583E5 /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 871AD4101D08A5B8006583E5 /* ProfileViewController.xib */; };
+		8731F40C1D10659A0046C484 /* enduranceCyclesAustin.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 8731F40B1D10659A0046C484 /* enduranceCyclesAustin.gpx */; };
+		8747F1E11D11C2A000DC8E42 /* LocationPermissionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8747F1DE1D11C2A000DC8E42 /* LocationPermissionViewController.swift */; };
+		8747F1E21D11C2A000DC8E42 /* PermissionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8747F1DF1D11C2A000DC8E42 /* PermissionViewController.swift */; };
+		8747F1E31D11C2A000DC8E42 /* PermissionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8747F1E01D11C2A000DC8E42 /* PermissionViewController.xib */; };
+		8763B3191D1DC65B00C71F54 /* enduranceCyclesSanFrancisco.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 8763B3181D1DC65B00C71F54 /* enduranceCyclesSanFrancisco.gpx */; };
+		876FF1B61D21DDFF000ED410 /* FacebookLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 876FF1B51D21DDFF000ED410 /* FacebookLoginViewController.xib */; };
+		876FF1B81D22C0D7000ED410 /* NotificationPermissionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 876FF1B71D22C0D7000ED410 /* NotificationPermissionViewController.swift */; };
+		8772167E1D3FDAD4007E5C6C /* conversationsReviewsEnduranceCycles_FilterLocation.json in Resources */ = {isa = PBXBuildFile; fileRef = 8772167A1D3FDAD4007E5C6C /* conversationsReviewsEnduranceCycles_FilterLocation.json */; };
+		8772167F1D3FDAD4007E5C6C /* conversationsReviewsEnduranceCycles_SortHighestRated.json in Resources */ = {isa = PBXBuildFile; fileRef = 8772167B1D3FDAD4007E5C6C /* conversationsReviewsEnduranceCycles_SortHighestRated.json */; };
+		877216801D3FDAD4007E5C6C /* conversationsReviewsEnduranceCycles_SortLowestRated.json in Resources */ = {isa = PBXBuildFile; fileRef = 8772167C1D3FDAD4007E5C6C /* conversationsReviewsEnduranceCycles_SortLowestRated.json */; };
+		877216811D3FDAD4007E5C6C /* conversationsReviewsEnduranceCycles_SortMostHelpful.json in Resources */ = {isa = PBXBuildFile; fileRef = 8772167D1D3FDAD4007E5C6C /* conversationsReviewsEnduranceCycles_SortMostHelpful.json */; };
 		8783098C1CECF3F70097FC48 /* QuestionAnswerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8783098A1CECF3F70097FC48 /* QuestionAnswerViewController.swift */; };
 		8783098D1CECF3F70097FC48 /* QuestionAnswerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8783098B1CECF3F70097FC48 /* QuestionAnswerViewController.xib */; };
 		878309901CECF4140097FC48 /* RatingsAndReviewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8783098E1CECF4140097FC48 /* RatingsAndReviewsViewController.swift */; };
@@ -107,11 +118,24 @@
 		878309971CEDF4070097FC48 /* AskAQuestionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 878309951CEDF4070097FC48 /* AskAQuestionViewController.xib */; };
 		8791449A1CF8BAAE00976220 /* revolution_cycles.png in Resources */ = {isa = PBXBuildFile; fileRef = 879144991CF8BAAE00976220 /* revolution_cycles.png */; };
 		87A3192B1CF4938E000D3D0F /* conversationsQuestionsIncludeAnswers.json in Resources */ = {isa = PBXBuildFile; fileRef = 87A3192A1CF4938E000D3D0F /* conversationsQuestionsIncludeAnswers.json */; };
-		87A3192D1CF4939F000D3D0F /* curationsEnduranceCycles.json in Resources */ = {isa = PBXBuildFile; fileRef = 87A3192C1CF4939F000D3D0F /* curationsEnduranceCycles.json */; };
 		87A3192F1CF493AF000D3D0F /* recommendationsResult.json in Resources */ = {isa = PBXBuildFile; fileRef = 87A3192E1CF493AF000D3D0F /* recommendationsResult.json */; };
 		87A319311CF493D5000D3D0F /* userProfile1.json in Resources */ = {isa = PBXBuildFile; fileRef = 87A319301CF493D5000D3D0F /* userProfile1.json */; };
 		87A319331CF493E3000D3D0F /* curationsEnduranceCycles.json in Resources */ = {isa = PBXBuildFile; fileRef = 87A319321CF493E3000D3D0F /* curationsEnduranceCycles.json */; };
 		87A319351CF4942F000D3D0F /* conversationsReviewsEnduranceCycles.json in Resources */ = {isa = PBXBuildFile; fileRef = 87A319341CF4942F000D3D0F /* conversationsReviewsEnduranceCycles.json */; };
+		87BA80821D342E3200AFA54D /* LocationSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87BA80801D342E3200AFA54D /* LocationSettings.swift */; };
+		87BA80831D342E3200AFA54D /* LocationSettings.xib in Resources */ = {isa = PBXBuildFile; fileRef = 87BA80811D342E3200AFA54D /* LocationSettings.xib */; };
+		87BA80851D34309600AFA54D /* StoreLocations.plist in Resources */ = {isa = PBXBuildFile; fileRef = 87BA80841D34309600AFA54D /* StoreLocations.plist */; };
+		87BA80871D3434C500AFA54D /* LocationPreferenceUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87BA80861D3434C500AFA54D /* LocationPreferenceUtils.swift */; };
+		87BA808C1D34458B00AFA54D /* LocationPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 87BA80891D34458B00AFA54D /* LocationPickerView.m */; };
+		87BA808D1D34458B00AFA54D /* UIImage+Icons.m in Sources */ = {isa = PBXBuildFile; fileRef = 87BA808B1D34458B00AFA54D /* UIImage+Icons.m */; };
+		87BA80901D344D9800AFA54D /* StoreLocationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87BA808E1D344D9800AFA54D /* StoreLocationTableViewCell.swift */; };
+		87BA80911D344D9800AFA54D /* StoreLocationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 87BA808F1D344D9800AFA54D /* StoreLocationTableViewCell.xib */; };
+		87BB4C7C1D36EB3300C860BE /* CurationsPhotoMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87BB4C7B1D36EB3300C860BE /* CurationsPhotoMapViewController.swift */; };
+		87BB4C841D372B2600C860BE /* JPSThumbnailAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 87BB4C801D372B2600C860BE /* JPSThumbnailAnnotation.m */; };
+		87BB4C851D372B2600C860BE /* JPSThumbnailAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 87BB4C821D372B2600C860BE /* JPSThumbnailAnnotationView.m */; };
+		87BB4C861D372B2600C860BE /* JPSThumnail.m in Sources */ = {isa = PBXBuildFile; fileRef = 87BB4C831D372B2600C860BE /* JPSThumnail.m */; };
+		87BB4C8B1D38201F00C860BE /* BVSDKDemoActionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87BB4C8A1D38201F00C860BE /* BVSDKDemoActionController.swift */; };
+		87BB4C8D1D3821B400C860BE /* BVSDKDemoActionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 87BB4C8C1D3821B400C860BE /* BVSDKDemoActionCell.xib */; };
 		87CD52201CE3F88800FC2726 /* ExtensionShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736D4CCD1CDED0C40095EE6B /* ExtensionShareViewController.swift */; };
 		87CD52211CE3F88C00FC2726 /* BaseDemoComposeServiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7385D8641CE3AD7600CA5F5E /* BaseDemoComposeServiceViewController.swift */; };
 		87CD52221CE3F89000FC2726 /* CurationsDemoConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736D4CCB1CDED0C40095EE6B /* CurationsDemoConstants.swift */; };
@@ -253,7 +277,7 @@
 		7385D86A1CE3AE9900CA5F5E /* DemoCustomPostViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DemoCustomPostViewController.swift; path = "../BVSDKDemo/Curations/Curations Custom Post Extension/DemoCustomPostViewController.swift"; sourceTree = "<group>"; };
 		738E72471CEEE48A00D30617 /* ProductDetailHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductDetailHeaderView.swift; sourceTree = "<group>"; };
 		738E724B1CEEE91F00D30617 /* CardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
-		739A6D2A1CFF78DF0068B823 /* FacebookLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookLoginViewController.swift; sourceTree = "<group>"; };
+		739A6D2A1CFF78DF0068B823 /* FacebookLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FacebookLoginViewController.swift; path = BVSDKDemo/FacebookLoginViewController.swift; sourceTree = "<group>"; };
 		739BDAC81CED47DE007D52CC /* ConversationsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationsModel.swift; sourceTree = "<group>"; };
 		739C0EF01CDDA0BD00CE771B /* BVDemoNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BVDemoNavigationController.swift; sourceTree = "<group>"; };
 		739C0EF91CDE716400CE771B /* BVSDKDemo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BVSDKDemo-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -267,6 +291,17 @@
 		871AD4091D088B9A006583E5 /* submitPhotoWithReview.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = submitPhotoWithReview.json; sourceTree = "<group>"; };
 		871AD40F1D08A5B8006583E5 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		871AD4101D08A5B8006583E5 /* ProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileViewController.xib; sourceTree = "<group>"; };
+		8731F40B1D10659A0046C484 /* enduranceCyclesAustin.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = enduranceCyclesAustin.gpx; path = gpx/enduranceCyclesAustin.gpx; sourceTree = "<group>"; };
+		8747F1DE1D11C2A000DC8E42 /* LocationPermissionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LocationPermissionViewController.swift; path = BVSDKDemo/Login/LocationPermissionViewController.swift; sourceTree = "<group>"; };
+		8747F1DF1D11C2A000DC8E42 /* PermissionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PermissionViewController.swift; path = BVSDKDemo/Login/PermissionViewController.swift; sourceTree = "<group>"; };
+		8747F1E01D11C2A000DC8E42 /* PermissionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PermissionViewController.xib; path = BVSDKDemo/Login/PermissionViewController.xib; sourceTree = "<group>"; };
+		8763B3181D1DC65B00C71F54 /* enduranceCyclesSanFrancisco.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = enduranceCyclesSanFrancisco.gpx; path = gpx/enduranceCyclesSanFrancisco.gpx; sourceTree = "<group>"; };
+		876FF1B51D21DDFF000ED410 /* FacebookLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FacebookLoginViewController.xib; path = BVSDKDemo/FacebookLoginViewController.xib; sourceTree = "<group>"; };
+		876FF1B71D22C0D7000ED410 /* NotificationPermissionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NotificationPermissionViewController.swift; path = BVSDKDemo/NotificationPermissionViewController.swift; sourceTree = "<group>"; };
+		8772167A1D3FDAD4007E5C6C /* conversationsReviewsEnduranceCycles_FilterLocation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = conversationsReviewsEnduranceCycles_FilterLocation.json; path = ../../../Tests/Tests/resources/conversations/sortingReviews/conversationsReviewsEnduranceCycles_FilterLocation.json; sourceTree = "<group>"; };
+		8772167B1D3FDAD4007E5C6C /* conversationsReviewsEnduranceCycles_SortHighestRated.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = conversationsReviewsEnduranceCycles_SortHighestRated.json; path = ../../../Tests/Tests/resources/conversations/sortingReviews/conversationsReviewsEnduranceCycles_SortHighestRated.json; sourceTree = "<group>"; };
+		8772167C1D3FDAD4007E5C6C /* conversationsReviewsEnduranceCycles_SortLowestRated.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = conversationsReviewsEnduranceCycles_SortLowestRated.json; path = ../../../Tests/Tests/resources/conversations/sortingReviews/conversationsReviewsEnduranceCycles_SortLowestRated.json; sourceTree = "<group>"; };
+		8772167D1D3FDAD4007E5C6C /* conversationsReviewsEnduranceCycles_SortMostHelpful.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = conversationsReviewsEnduranceCycles_SortMostHelpful.json; path = ../../../Tests/Tests/resources/conversations/sortingReviews/conversationsReviewsEnduranceCycles_SortMostHelpful.json; sourceTree = "<group>"; };
 		8783098A1CECF3F70097FC48 /* QuestionAnswerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = QuestionAnswerViewController.swift; path = Conversations/QuestionAnswerViewController.swift; sourceTree = "<group>"; };
 		8783098B1CECF3F70097FC48 /* QuestionAnswerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = QuestionAnswerViewController.xib; path = Conversations/QuestionAnswerViewController.xib; sourceTree = "<group>"; };
 		8783098E1CECF4140097FC48 /* RatingsAndReviewsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RatingsAndReviewsViewController.swift; path = Conversations/RatingsAndReviewsViewController.swift; sourceTree = "<group>"; };
@@ -275,11 +310,29 @@
 		878309951CEDF4070097FC48 /* AskAQuestionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AskAQuestionViewController.xib; path = Conversations/AskAQuestionViewController.xib; sourceTree = "<group>"; };
 		879144991CF8BAAE00976220 /* revolution_cycles.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = revolution_cycles.png; sourceTree = "<group>"; };
 		87A3192A1CF4938E000D3D0F /* conversationsQuestionsIncludeAnswers.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = conversationsQuestionsIncludeAnswers.json; path = ../../../Tests/Tests/resources/conversations/conversationsQuestionsIncludeAnswers.json; sourceTree = "<group>"; };
-		87A3192C1CF4939F000D3D0F /* curationsEnduranceCycles.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = curationsEnduranceCycles.json; path = ../../../Tests/Tests/resources/curations/curationsEnduranceCycles.json; sourceTree = "<group>"; };
 		87A3192E1CF493AF000D3D0F /* recommendationsResult.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = recommendationsResult.json; path = ../../../Tests/Tests/resources/recommendations/recommendationsResult.json; sourceTree = "<group>"; };
 		87A319301CF493D5000D3D0F /* userProfile1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = userProfile1.json; path = ../../../Tests/Tests/resources/recommendations/userProfile1.json; sourceTree = "<group>"; };
 		87A319321CF493E3000D3D0F /* curationsEnduranceCycles.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = curationsEnduranceCycles.json; path = ../../../Tests/Tests/resources/curations/curationsEnduranceCycles.json; sourceTree = "<group>"; };
 		87A319341CF4942F000D3D0F /* conversationsReviewsEnduranceCycles.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = conversationsReviewsEnduranceCycles.json; path = ../../../Tests/Tests/resources/conversations/conversationsReviewsEnduranceCycles.json; sourceTree = "<group>"; };
+		87BA80801D342E3200AFA54D /* LocationSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LocationSettings.swift; path = Location/LocationSettings.swift; sourceTree = "<group>"; };
+		87BA80811D342E3200AFA54D /* LocationSettings.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LocationSettings.xib; path = Location/LocationSettings.xib; sourceTree = "<group>"; };
+		87BA80841D34309600AFA54D /* StoreLocations.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = StoreLocations.plist; sourceTree = "<group>"; };
+		87BA80861D3434C500AFA54D /* LocationPreferenceUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationPreferenceUtils.swift; sourceTree = "<group>"; };
+		87BA80881D34458B00AFA54D /* LocationPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LocationPickerView.h; path = ../LocationPickerView.h; sourceTree = "<group>"; };
+		87BA80891D34458B00AFA54D /* LocationPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LocationPickerView.m; path = ../LocationPickerView.m; sourceTree = "<group>"; };
+		87BA808A1D34458B00AFA54D /* UIImage+Icons.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+Icons.h"; path = "../UIImage+Icons.h"; sourceTree = "<group>"; };
+		87BA808B1D34458B00AFA54D /* UIImage+Icons.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+Icons.m"; path = "../UIImage+Icons.m"; sourceTree = "<group>"; };
+		87BA808E1D344D9800AFA54D /* StoreLocationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StoreLocationTableViewCell.swift; path = Location/StoreLocationTableViewCell.swift; sourceTree = "<group>"; };
+		87BA808F1D344D9800AFA54D /* StoreLocationTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = StoreLocationTableViewCell.xib; path = Location/StoreLocationTableViewCell.xib; sourceTree = "<group>"; };
+		87BB4C7B1D36EB3300C860BE /* CurationsPhotoMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurationsPhotoMapViewController.swift; sourceTree = "<group>"; };
+		87BB4C7E1D372B2600C860BE /* JPSThumbnail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPSThumbnail.h; sourceTree = "<group>"; };
+		87BB4C7F1D372B2600C860BE /* JPSThumbnailAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPSThumbnailAnnotation.h; sourceTree = "<group>"; };
+		87BB4C801D372B2600C860BE /* JPSThumbnailAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JPSThumbnailAnnotation.m; sourceTree = "<group>"; };
+		87BB4C811D372B2600C860BE /* JPSThumbnailAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPSThumbnailAnnotationView.h; sourceTree = "<group>"; };
+		87BB4C821D372B2600C860BE /* JPSThumbnailAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JPSThumbnailAnnotationView.m; sourceTree = "<group>"; };
+		87BB4C831D372B2600C860BE /* JPSThumnail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JPSThumnail.m; sourceTree = "<group>"; };
+		87BB4C8A1D38201F00C860BE /* BVSDKDemoActionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BVSDKDemoActionController.swift; sourceTree = "<group>"; };
+		87BB4C8C1D3821B400C860BE /* BVSDKDemoActionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BVSDKDemoActionCell.xib; sourceTree = "<group>"; };
 		87CD52301CE4E03400FC2726 /* BVSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BVSDK.framework; path = "Pods/../build/Debug-iphoneos/BVSDK.framework"; sourceTree = "<group>"; };
 		87CD523B1CE57ABD00FC2726 /* NewProductRecsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewProductRecsTableViewCell.swift; sourceTree = "<group>"; };
 		87CD523C1CE57ABD00FC2726 /* NewProductRecsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewProductRecsTableViewCell.xib; sourceTree = "<group>"; };
@@ -389,12 +442,16 @@
 				73571C961CEE4DB700FF3220 /* BVSDKDemo.entitlements */,
 				73DD1A081CE026E500BCF87C /* MockDataManager */,
 				73199AED1CDD84E4006CC59D /* AppDelegate.swift */,
+				87BB4C8A1D38201F00C860BE /* BVSDKDemoActionController.swift */,
+				87BB4C8C1D3821B400C860BE /* BVSDKDemoActionCell.xib */,
 				871AD40E1D089F29006583E5 /* Settings */,
+				8747F1DD1D11C20E00DC8E42 /* Login */,
 				733BCEFD1CF752C500045FC2 /* HomeView */,
 				739C0EF01CDDA0BD00CE771B /* BVDemoNavigationController.swift */,
 				736D4C921CDEC5730095EE6B /* Product Recommendations */,
 				736D4CC91CDED0C40095EE6B /* Curations */,
 				739C0EEF1CDD9EB700CE771B /* Conversations */,
+				87BA807B1D342C7900AFA54D /* Location */,
 				736D4CC81CDECF130095EE6B /* Supporting Files */,
 				736D4CC51CDEC8DC0095EE6B /* Resources */,
 			);
@@ -452,7 +509,6 @@
 				733BCEF91CF74E5500045FC2 /* HomeAdvertisementCollectionViewCell.swift */,
 				733BCEFA1CF74E5500045FC2 /* HomeAdvertisementCollectionViewCell.xib */,
 				879144991CF8BAAE00976220 /* revolution_cycles.png */,
-				739A6D2A1CFF78DF0068B823 /* FacebookLoginViewController.swift */,
 			);
 			name = HomeView;
 			sourceTree = "<group>";
@@ -517,8 +573,10 @@
 		736D4CC51CDEC8DC0095EE6B /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				8731F40D1D1065A20046C484 /* GPX */,
 				733BCEEF1CF638E000045FC2 /* Home Header Images */,
 				736D4CC61CDEC8EB0095EE6B /* FontAwesome.otf */,
+				87BA80841D34309600AFA54D /* StoreLocations.plist */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -537,6 +595,8 @@
 		736D4CC91CDED0C40095EE6B /* Curations */ = {
 			isa = PBXGroup;
 			children = (
+				87BB4C7D1D372B1700C860BE /* ThumbnailMapViewer */,
+				87BB4C7B1D36EB3300C860BE /* CurationsPhotoMapViewController.swift */,
 				7385D8661CE3AD7600CA5F5E /* ShareViewController.swift */,
 				7385D8641CE3AD7600CA5F5E /* BaseDemoComposeServiceViewController.swift */,
 				736D4CCB1CDED0C40095EE6B /* CurationsDemoConstants.swift */,
@@ -629,10 +689,10 @@
 		73DD1A081CE026E500BCF87C /* MockDataManager */ = {
 			isa = PBXGroup;
 			children = (
+				877216791D3FDABF007E5C6C /* ConversationsSorting */,
 				73DD1A061CE021DC00BCF87C /* MockDataManager.swift */,
 				87A3192A1CF4938E000D3D0F /* conversationsQuestionsIncludeAnswers.json */,
 				87A319341CF4942F000D3D0F /* conversationsReviewsEnduranceCycles.json */,
-				87A3192C1CF4939F000D3D0F /* curationsEnduranceCycles.json */,
 				87A319321CF493E3000D3D0F /* curationsEnduranceCycles.json */,
 				871AD4041D074E2F006583E5 /* post_successfulCreation.json */,
 				87A3192E1CF493AF000D3D0F /* recommendationsResult.json */,
@@ -678,6 +738,69 @@
 				871AD4101D08A5B8006583E5 /* ProfileViewController.xib */,
 			);
 			name = Settings;
+			sourceTree = "<group>";
+		};
+		8731F40D1D1065A20046C484 /* GPX */ = {
+			isa = PBXGroup;
+			children = (
+				8731F40B1D10659A0046C484 /* enduranceCyclesAustin.gpx */,
+				8763B3181D1DC65B00C71F54 /* enduranceCyclesSanFrancisco.gpx */,
+			);
+			name = GPX;
+			sourceTree = "<group>";
+		};
+		8747F1DD1D11C20E00DC8E42 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				876FF1B71D22C0D7000ED410 /* NotificationPermissionViewController.swift */,
+				8747F1DE1D11C2A000DC8E42 /* LocationPermissionViewController.swift */,
+				8747F1DF1D11C2A000DC8E42 /* PermissionViewController.swift */,
+				8747F1E01D11C2A000DC8E42 /* PermissionViewController.xib */,
+				739A6D2A1CFF78DF0068B823 /* FacebookLoginViewController.swift */,
+				876FF1B51D21DDFF000ED410 /* FacebookLoginViewController.xib */,
+			);
+			name = Login;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		877216791D3FDABF007E5C6C /* ConversationsSorting */ = {
+			isa = PBXGroup;
+			children = (
+				8772167A1D3FDAD4007E5C6C /* conversationsReviewsEnduranceCycles_FilterLocation.json */,
+				8772167B1D3FDAD4007E5C6C /* conversationsReviewsEnduranceCycles_SortHighestRated.json */,
+				8772167C1D3FDAD4007E5C6C /* conversationsReviewsEnduranceCycles_SortLowestRated.json */,
+				8772167D1D3FDAD4007E5C6C /* conversationsReviewsEnduranceCycles_SortMostHelpful.json */,
+			);
+			name = ConversationsSorting;
+			sourceTree = "<group>";
+		};
+		87BA807B1D342C7900AFA54D /* Location */ = {
+			isa = PBXGroup;
+			children = (
+				87BA80881D34458B00AFA54D /* LocationPickerView.h */,
+				87BA80891D34458B00AFA54D /* LocationPickerView.m */,
+				87BA808A1D34458B00AFA54D /* UIImage+Icons.h */,
+				87BA808B1D34458B00AFA54D /* UIImage+Icons.m */,
+				87BA80801D342E3200AFA54D /* LocationSettings.swift */,
+				87BA80811D342E3200AFA54D /* LocationSettings.xib */,
+				87BA80861D3434C500AFA54D /* LocationPreferenceUtils.swift */,
+				87BA808E1D344D9800AFA54D /* StoreLocationTableViewCell.swift */,
+				87BA808F1D344D9800AFA54D /* StoreLocationTableViewCell.xib */,
+			);
+			name = Location;
+			sourceTree = "<group>";
+		};
+		87BB4C7D1D372B1700C860BE /* ThumbnailMapViewer */ = {
+			isa = PBXGroup;
+			children = (
+				87BB4C7E1D372B2600C860BE /* JPSThumbnail.h */,
+				87BB4C7F1D372B2600C860BE /* JPSThumbnailAnnotation.h */,
+				87BB4C801D372B2600C860BE /* JPSThumbnailAnnotation.m */,
+				87BB4C811D372B2600C860BE /* JPSThumbnailAnnotationView.h */,
+				87BB4C821D372B2600C860BE /* JPSThumbnailAnnotationView.m */,
+				87BB4C831D372B2600C860BE /* JPSThumnail.m */,
+			);
+			name = ThumbnailMapViewer;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -838,12 +961,15 @@
 				878309911CECF4140097FC48 /* RatingsAndReviewsViewController.xib in Resources */,
 				736D4CF61CDED0C40095EE6B /* DemoCurationsCollectionViewCell.xib in Resources */,
 				87CD52421CE610A500FC2726 /* NewProductCurationsTableViewCell.xib in Resources */,
+				87BA80911D344D9800AFA54D /* StoreLocationTableViewCell.xib in Resources */,
 				87A319351CF4942F000D3D0F /* conversationsReviewsEnduranceCycles.json in Resources */,
+				877216811D3FDAD4007E5C6C /* conversationsReviewsEnduranceCycles_SortMostHelpful.json in Resources */,
 				7338438D1CED545200928760 /* AnswerTableViewCell.xib in Resources */,
 				73571C9D1CEE823C00FF3220 /* ProductPageButtonCell.xib in Resources */,
 				87A3192B1CF4938E000D3D0F /* conversationsQuestionsIncludeAnswers.json in Resources */,
 				8783098D1CECF3F70097FC48 /* QuestionAnswerViewController.xib in Resources */,
 				737FA0BC1CF8ADB100864B1B /* submitAnswer.json in Resources */,
+				8763B3191D1DC65B00C71F54 /* enduranceCyclesSanFrancisco.gpx in Resources */,
 				7356B23D1CF89FCA004B0121 /* AnswerListHeaderCell.xib in Resources */,
 				730A646E1CE5548400580E9C /* NewProductPageViewController.xib in Resources */,
 				73F020F51CED4E8D00FC7D7D /* QuestionAnswerTableViewCell.xib in Resources */,
@@ -851,16 +977,22 @@
 				878309971CEDF4070097FC48 /* AskAQuestionViewController.xib in Resources */,
 				737FA0BA1CF8AD8200864B1B /* submitQuestion.json in Resources */,
 				733BCEEE1CF6300100045FC2 /* HomeHeaderCollectionViewCell.xib in Resources */,
-				87A3192D1CF4939F000D3D0F /* curationsEnduranceCycles.json in Resources */,
+				8772167F1D3FDAD4007E5C6C /* conversationsReviewsEnduranceCycles_SortHighestRated.json in Resources */,
 				732E188F1CE65682000A3EC9 /* NewNativeAdCollectionViewCell.xib in Resources */,
 				87A3192F1CF493AF000D3D0F /* recommendationsResult.json in Resources */,
 				736D4CF21CDED0C40095EE6B /* loading@2x.png in Resources */,
+				8772167E1D3FDAD4007E5C6C /* conversationsReviewsEnduranceCycles_FilterLocation.json in Resources */,
 				8791449A1CF8BAAE00976220 /* revolution_cycles.png in Resources */,
 				736D4D0B1CDED2870095EE6B /* DemoCurationsController.xib in Resources */,
 				73199AF81CDD84E4006CC59D /* LaunchScreen.storyboard in Resources */,
 				730A64721CE56A1700580E9C /* RatingTableViewCell.xib in Resources */,
+				876FF1B61D21DDFF000ED410 /* FacebookLoginViewController.xib in Resources */,
+				87BB4C8D1D3821B400C860BE /* BVSDKDemoActionCell.xib in Resources */,
 				733843921CED58C800928760 /* WriteReviewViewController.xib in Resources */,
+				87BA80831D342E3200AFA54D /* LocationSettings.xib in Resources */,
+				877216801D3FDAD4007E5C6C /* conversationsReviewsEnduranceCycles_SortLowestRated.json in Resources */,
 				73A2A0031CDED62800494733 /* Assets.xcassets in Resources */,
+				8747F1E31D11C2A000DC8E42 /* PermissionViewController.xib in Resources */,
 				736D4CB81CDEC5730095EE6B /* DemoCarouselCollectionViewCell.xib in Resources */,
 				736D4CFF1CDED0C40095EE6B /* CurationsImageTableViewCell.xib in Resources */,
 				736D4D051CDED0C40095EE6B /* CurationsFeedItemDetailTableViewController.xib in Resources */,
@@ -873,6 +1005,7 @@
 				871AD4121D08A5B8006583E5 /* ProfileViewController.xib in Resources */,
 				733BCEFC1CF74E5500045FC2 /* HomeAdvertisementCollectionViewCell.xib in Resources */,
 				736D4CF11CDED0C40095EE6B /* icon_bvlogo.png in Resources */,
+				8731F40C1D10659A0046C484 /* enduranceCyclesAustin.gpx in Resources */,
 				733071C21CEF963D00B9F505 /* conversationsProductsIncludeStats.json in Resources */,
 				736D4CB31CDEC5730095EE6B /* gear@2x.png in Resources */,
 				871AD40A1D088B9A006583E5 /* submitPhotoWithReview.json in Resources */,
@@ -884,6 +1017,7 @@
 				736D4CC71CDEC8EB0095EE6B /* FontAwesome.otf in Resources */,
 				871AD4051D074E2F006583E5 /* post_successfulCreation.json in Resources */,
 				733BCF011CF7BE5300045FC2 /* CallToActionCell.xib in Resources */,
+				87BA80851D34309600AFA54D /* StoreLocations.plist in Resources */,
 				736D4D071CDED0C40095EE6B /* CurationsFeedPageViewController.xib in Resources */,
 				736D4CFD1CDED0C40095EE6B /* CurationsFeedItemDetailCell.xib in Resources */,
 				87A319331CF493E3000D3D0F /* curationsEnduranceCycles.json in Resources */,
@@ -1147,10 +1281,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				739A6D2B1CFF78DF0068B823 /* FacebookLoginViewController.swift in Sources */,
+				87BA808C1D34458B00AFA54D /* LocationPickerView.m in Sources */,
+				87BB4C861D372B2600C860BE /* JPSThumnail.m in Sources */,
 				871AD3F31D063A57006583E5 /* ProfileUtils.swift in Sources */,
 				736D4D041CDED0C40095EE6B /* CurationsFeedItemDetailTableViewController.swift in Sources */,
 				733843881CED541A00928760 /* AnswersViewController.swift in Sources */,
 				87CD523D1CE57ABD00FC2726 /* NewProductRecsTableViewCell.swift in Sources */,
+				8747F1E21D11C2A000DC8E42 /* PermissionViewController.swift in Sources */,
+				87BA80821D342E3200AFA54D /* LocationSettings.swift in Sources */,
 				736D4D0A1CDED2870095EE6B /* DemoCurationsController.swift in Sources */,
 				871AD4111D08A5B8006583E5 /* ProfileViewController.swift in Sources */,
 				733843911CED58C800928760 /* WriteReviewViewController.swift in Sources */,
@@ -1162,27 +1300,35 @@
 				7348C3721CE05A30000B6F3C /* SettingsViewController.swift in Sources */,
 				739BDAC91CED47DE007D52CC /* ConversationsModel.swift in Sources */,
 				736D4CF51CDED0C40095EE6B /* DemoCurationsCollectionViewCell.swift in Sources */,
+				87BA80901D344D9800AFA54D /* StoreLocationTableViewCell.swift in Sources */,
 				736D4CEE1CDED0C40095EE6B /* DateTimeAgo.swift in Sources */,
 				736D4CB11CDEC5730095EE6B /* SweetAlert.swift in Sources */,
+				87BB4C851D372B2600C860BE /* JPSThumbnailAnnotationView.m in Sources */,
 				73199AEE1CDD84E4006CC59D /* AppDelegate.swift in Sources */,
 				739C0EF11CDDA0BD00CE771B /* BVDemoNavigationController.swift in Sources */,
 				878309901CECF4140097FC48 /* RatingsAndReviewsViewController.swift in Sources */,
 				7356B23C1CF89FCA004B0121 /* AnswerListHeaderCell.swift in Sources */,
+				876FF1B81D22C0D7000ED410 /* NotificationPermissionViewController.swift in Sources */,
 				733BCF001CF7BE5300045FC2 /* CallToActionCell.swift in Sources */,
+				87BB4C8B1D38201F00C860BE /* BVSDKDemoActionController.swift in Sources */,
 				734CF3541CE0414400132462 /* HomeViewController.swift in Sources */,
 				736D4CB71CDEC5730095EE6B /* DemoCarouselCollectionViewCell.swift in Sources */,
+				87BA808D1D34458B00AFA54D /* UIImage+Icons.m in Sources */,
 				733BCF061CF81F2800045FC2 /* SubmitAnswerViewController.swift in Sources */,
 				736D4D021CDED0C40095EE6B /* ProductDetailTableViewCell.swift in Sources */,
 				738E72491CEEE48A00D30617 /* ProductDetailHeaderView.swift in Sources */,
 				733BCEED1CF6300100045FC2 /* HomeHeaderCollectionViewCell.swift in Sources */,
 				7385D8671CE3AD7600CA5F5E /* BaseDemoComposeServiceViewController.swift in Sources */,
 				736D4CFE1CDED0C40095EE6B /* CurationsImageTableViewCell.swift in Sources */,
+				8747F1E11D11C2A000DC8E42 /* LocationPermissionViewController.swift in Sources */,
+				87BB4C7C1D36EB3300C860BE /* CurationsPhotoMapViewController.swift in Sources */,
 				73F020F41CED4E8D00FC7D7D /* QuestionAnswerTableViewCell.swift in Sources */,
 				736D4CB61CDEC5730095EE6B /* Util.swift in Sources */,
 				7385D8691CE3AD7600CA5F5E /* ShareViewController.swift in Sources */,
 				7385D86B1CE3AE9900CA5F5E /* DemoCustomPostViewController.swift in Sources */,
 				878309961CEDF4070097FC48 /* AskAQuestionViewController.swift in Sources */,
 				7338438C1CED545200928760 /* AnswerTableViewCell.swift in Sources */,
+				87BB4C841D372B2600C860BE /* JPSThumbnailAnnotation.m in Sources */,
 				736D4CED1CDED0C40095EE6B /* CurationsDemoConstants.swift in Sources */,
 				732E188E1CE65682000A3EC9 /* NewNativeAdCollectionViewCell.swift in Sources */,
 				730A646D1CE5548400580E9C /* NewProductPageViewController.swift in Sources */,
@@ -1190,6 +1336,7 @@
 				736D4CFC1CDED0C40095EE6B /* CurationsFeedItemDetailCell.swift in Sources */,
 				736D4D061CDED0C40095EE6B /* CurationsFeedMasterViewController.swift in Sources */,
 				8783098C1CECF3F70097FC48 /* QuestionAnswerViewController.swift in Sources */,
+				87BA80871D3434C500AFA54D /* LocationPreferenceUtils.swift in Sources */,
 				87CD52411CE610A500FC2726 /* NewProductCurationsTableViewCell.swift in Sources */,
 				736D4CEF1CDED0C40095EE6B /* ExtensionShareViewController.swift in Sources */,
 			);
@@ -1358,7 +1505,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = BVSDKDemo/BVSDKDemo.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 19;
+				CURRENT_PROJECT_VERSION = 26;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = "$(inherited)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1367,7 +1514,7 @@
 				INFOPLIST_FILE = BVSDKDemo/Info.plist;
 				INSTALL_GROUP = "";
 				INSTALL_OWNER = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\"";
 				PRODUCT_BUNDLE_IDENTIFIER = com.bazaarvoice.BVSDKDemo;
@@ -1388,7 +1535,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = BVSDKDemo/BVSDKDemo.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				CURRENT_PROJECT_VERSION = 19;
+				CURRENT_PROJECT_VERSION = 26;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = "$(inherited)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1397,7 +1544,7 @@
 				INFOPLIST_FILE = BVSDKDemo/Info.plist;
 				INSTALL_GROUP = "";
 				INSTALL_OWNER = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\"";
 				PRODUCT_BUNDLE_IDENTIFIER = com.bazaarvoice.BVSDKDemo;
@@ -1467,7 +1614,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Curations Custom Post Extension/Curations Custom Post Extension.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 19;
+				CURRENT_PROJECT_VERSION = 26;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/build/Debug-iphoneos",
@@ -1493,7 +1640,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Curations Custom Post Extension/Curations Custom Post Extension.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				CURRENT_PROJECT_VERSION = 19;
+				CURRENT_PROJECT_VERSION = 26;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/build/Debug-iphoneos",

@@ -26,7 +26,8 @@ typedef NS_ENUM(NSInteger, BVSortOptionProducts) {
     BVSortOptionProductsTotalAnswerCount,
     BVSortOptionProductsTotalQuestionCount,
     BVSortOptionProductsTotalReviewCount,
-    BVSortOptionProductsTotalStoryCount
+    BVSortOptionProductsTotalStoryCount,
+    BVSortOptionProductsHelpfulness
 };
 
 @interface BVSortOptionProductsUtil : NSObject

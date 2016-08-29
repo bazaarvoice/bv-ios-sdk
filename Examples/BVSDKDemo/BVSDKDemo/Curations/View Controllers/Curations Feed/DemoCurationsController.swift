@@ -194,7 +194,6 @@ class DemoCurationsController: UIViewController, UICollectionViewDataSource, UIC
         titleLabel.text = "Social Feed";
         titleLabel.textColor = UIColor.whiteColor()
         titleLabel.textAlignment = .Center
-        titleLabel.font = UIFont(name: "ForalPro-Regular", size: 36)
         targetVC.navigationItem.titleView = titleLabel
         
         targetVC.socialFeedItems = self.curationsFeedItems

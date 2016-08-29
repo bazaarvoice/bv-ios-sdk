@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
@@ -9,8 +10,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RatingsAndReviewsViewController" customModule="BVSDKDemo" customModuleProvider="target">
             <connections>
-                <outlet property="header" destination="3xO-Tq-KLn" id="lmH-Eq-2dT"/>
-                <outlet property="tableView" destination="mDi-oH-qeH" id="fVf-Tk-DKh"/>
+                <outlet property="header" destination="3xO-Tq-KLn" id="dIb-Mr-nD1"/>
+                <outlet property="tableView" destination="mDi-oH-qeH" id="W4h-Nd-3E1"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -22,6 +23,10 @@
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="mDi-oH-qeH" customClass="BVReviewsTableView">
                     <rect key="frame" x="0.0" y="80" width="600" height="520"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="2QZ-4A-Fk5"/>
+                        <outlet property="delegate" destination="-1" id="ZHc-4S-0zL"/>
+                    </connections>
                 </tableView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3xO-Tq-KLn" customClass="ProductDetailHeaderView" customModule="BVSDKDemo" customModuleProvider="target">
                     <rect key="frame" x="0.0" y="0.0" width="600" height="80"/>

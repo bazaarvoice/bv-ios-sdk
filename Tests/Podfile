@@ -6,6 +6,7 @@ target 'BVSDK-Tests' do
     pod "BVSDK/BVAdvertising", :path => "../"
     pod "BVSDK/BVRecommendations", :path => "../"
     pod "BVSDK/BVCurations", :path => "../"
+    pod "BVSDK/BVLocation", :path => "../"
     pod 'OHHTTPStubs'
 end
 

@@ -7,6 +7,7 @@
 
 import UIKit
 import NVActivityIndicatorView
+import FontAwesomeKit
 
 class Util: NSObject {
     
@@ -34,6 +35,29 @@ class Util: NSObject {
         errorLabel.textColor = UIColor.lightGrayColor()
         errorLabel.numberOfLines = 1
         return errorLabel
+        
+    }
+    
+    /// Get a default light grey icon
+    static func getFontAwesomeIconImage(icon : ((size: CGFloat) -> FAKFontAwesome!)) -> UIImage {
+        
+        return self.getFontAwesomeIconImage(icon, color: UIColor.lightGrayColor(), alpha: 0.5, size: 20)
+    
+    }
+    
+    /// Get an icon with specified size, color, and alpha
+    static func getFontAwesomeIconImage(icon : ((size: CGFloat) -> FAKFontAwesome!),
+                                        color : UIColor,
+                                        alpha : CGFloat,
+                                        size : CGFloat) -> UIImage {
+        
+        let newIcon = icon(size: size)
+        newIcon.addAttribute(
+            NSForegroundColorAttributeName,
+            value: color.colorWithAlphaComponent(alpha)
+        )
+        
+        return newIcon.imageWithSize(CGSize(width: size, height: size))
         
     }
     
@@ -148,9 +172,5 @@ struct Platform {
     }
     
 }
-
-
-
-
 
 

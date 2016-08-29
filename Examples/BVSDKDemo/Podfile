@@ -23,12 +23,14 @@ target 'BVSDKDemo' do
 	pod 'HCSStarRatingView'
 	pod 'NVActivityIndicatorView'
 	pod 'FontAwesomeKit/FontAwesome'
+    pod 'XLActionController'
     pod "youtube-ios-player-helper", "~> 0.1.6"
     pod 'SDForms', :git => 'https://github.com/austimkelly/SDForms.git', :branch => 'master'
     
 	pod 'BVSDK/BVRecommendations', :path => "../../"
 	pod 'BVSDK/BVAdvertising', :path => "../../"
 	pod 'BVSDK/BVConversations', :path => "../../"
+	pod 'BVSDK/BVLocation', :path => "../../"
     
     pod 'FBSDKCoreKit'
     pod 'FBSDKLoginKit'

@@ -29,6 +29,7 @@
 		738C5E8D1D472D6700A0D58E /* QuestionSubmissionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 738C5E7F1D472D6700A0D58E /* QuestionSubmissionTests.swift */; };
 		738C5E8E1D472D6700A0D58E /* ReviewSubmissionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 738C5E801D472D6700A0D58E /* ReviewSubmissionTests.swift */; };
 		87185F041CAAE5E300FE27F1 /* BVCurationsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 87185F031CAAE5E300FE27F1 /* BVCurationsTests.m */; };
+		87542E8F1D5D434C00E3AFE5 /* BVLocationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 87542E8E1D5D434C00E3AFE5 /* BVLocationTests.m */; };
 		87577E9D1BD55DD500E1F39C /* BVRecommendationsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 87577E9C1BD55DD500E1F39C /* BVRecommendationsTests.m */; };
 		8757CFEF1BD176C600C0DE7C /* BVUserProfileTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8757CFEE1BD176C600C0DE7C /* BVUserProfileTests.m */; };
 		8787E4A91CDBCE8A004F65C2 /* userProfile1.json in Resources */ = {isa = PBXBuildFile; fileRef = 8787E4A81CDBCE8A004F65C2 /* userProfile1.json */; };
@@ -101,6 +102,7 @@
 		738C5E801D472D6700A0D58E /* ReviewSubmissionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewSubmissionTests.swift; sourceTree = "<group>"; };
 		75EABD4E79F8B233B8FB90DF /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		87185F031CAAE5E300FE27F1 /* BVCurationsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVCurationsTests.m; sourceTree = "<group>"; };
+		87542E8E1D5D434C00E3AFE5 /* BVLocationTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVLocationTests.m; sourceTree = "<group>"; };
 		87577E9C1BD55DD500E1F39C /* BVRecommendationsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVRecommendationsTests.m; sourceTree = "<group>"; };
 		8757CFEE1BD176C600C0DE7C /* BVUserProfileTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVUserProfileTests.m; sourceTree = "<group>"; };
 		8787E4A81CDBCE8A004F65C2 /* userProfile1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = userProfile1.json; path = resources/recommendations/userProfile1.json; sourceTree = "<group>"; };
@@ -203,6 +205,7 @@
 				87577E9C1BD55DD500E1F39C /* BVRecommendationsTests.m */,
 				8787E4B81CDCC623004F65C2 /* BVBaseStubTestCase.h */,
 				8787E4B61CDCC46A004F65C2 /* BVBaseStubTestCase.m */,
+				87542E8E1D5D434C00E3AFE5 /* BVLocationTests.m */,
 				87B3513A1CAC5E880030470B /* testData */,
 				6003F5B6195388D20070C39A /* Supporting Files */,
 			);
@@ -524,6 +527,7 @@
 				738C5E8C1D472D6700A0D58E /* PhotoUploadTests.swift in Sources */,
 				738C5E861D472D6700A0D58E /* ConversationsTests.swift in Sources */,
 				8787E4B71CDCC46A004F65C2 /* BVBaseStubTestCase.m in Sources */,
+				87542E8F1D5D434C00E3AFE5 /* BVLocationTests.m in Sources */,
 				738C5E8B1D472D6700A0D58E /* AnswerSubmissionTests.swift in Sources */,
 				738C5E881D472D6700A0D58E /* FilterTests.swift in Sources */,
 				87577E9D1BD55DD500E1F39C /* BVRecommendationsTests.m in Sources */,

@@ -63,8 +63,8 @@
 /// Lat/Long coordinates for a given BVCurationsFeedItem objects. Items may be nil.
 @interface BVCurationsCoordinates : NSObject
 
-    @property NSString* latitude;
-    @property NSString* longitude;
+    @property NSNumber* latitude;
+    @property NSNumber* longitude;
 
     -(id)initWithDict:(NSDictionary*)dict;
 

@@ -79,6 +79,9 @@ NS_ASSUME_NONNULL_BEGIN
 /// Your private API key for the BVCurations API
 @property (nonatomic, strong) NSString *apiKeyCurations;
 
+/// Your private API key for the BVLocations API
+@property (nonatomic, strong) NSString *apiKeyLocation;
+
 
 /**
     Set user information. Associates a user profile with device for taylored advertising and recommendations.
