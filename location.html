@@ -19,7 +19,7 @@ $(function(){
 
 	// select the tab in the sidebar to reflect current page position
 
-	var tabName = "Using Conversations";
+	var tabName = "Location";
 
 	$('.nav-link.active').removeClass('active');
 	console.log('active tab: ', tabName);
@@ -67,7 +67,7 @@ $(function(){
 
     ga('create', 'UA-56370630-4', 'auto');
     ga('set', {
-      title: 'Using Conversations'
+      title: 'Location'
     });
     ga('send', 'pageview');
   </script>
@@ -117,7 +117,7 @@ $(function(){
                 </span>
                 <ul>
                     <li class="nav-item">
-                        <a class="nav-link" href="product_recommendations.html"><span>Product Recommendations</span></a>
+                        <a class="nav-link" href="product_recommendations.html"><span>Product Recommendations (Beta)</span></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="advertising.html"><span>Advertising</span></a>
@@ -148,18 +148,27 @@ $(function(){
                                         id="conversationsDropdownArrow"
                                         class="fa fa-sort-desc fa-rotate-270"></i></span></span>
                         </a>
-                        <div class="collapse in"
+                        <div class="collapse "
                              id="conversationsDropdown">
                             <ul>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="using_conversations.html"><span>Using Conversations</span></a>
+                                    <a class="nav-link" href="content_display.html"><span>Content Display</span></a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="content_submission.html"><span>Content Submission</span></a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="conversations_iovation.html"><span>Authenticity with iovation</span></a>
                                 </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="upgrading_conversations.html"><span>Upgrading Conversations</span></a>
+                                </li>
                             </ul>
                         </div>
 
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="location.html"><span>Location (Beta)</span></a>
                     </li>
                 </ul>
             </li>
@@ -212,113 +221,152 @@ $(function(){
               <div class="page-container">
 
                 <div class="flex flex-row" id="content_title">
-	Conversations
+	Location
 </div>
 
-<p>TUse the Bazaarvoice Mobile SDKs to enable Conversations functionality, such as Ratings and Reviews. The Conversations module provides an easy-to-use wrapper around the <a href="https://developer.bazaarvoice.com/apis/conversations/">Conversations API</a>. Contact Bazaarvoice to set up Conversations.</p>
+<p><span class="bg-warning well-lg" style="padding:4px;"> <i class="fa fa-hand-o-right"></i> The Location module is currently in limited beta release. If you'd like to participate, contact <a href="mailto:mobilecoreteam@bazaarvoice.com">Bazaarvoice.</a></span></p>
 
-<p class="bg-info well-lg" style="padding:4px;"><i class="fa fa-hand-o-right"></i>  Important: You will need your <strong>apiKeyConversations</strong> to implement and use Conversations with Mobile SDKs.</p>
-
-</p>
-The completed project for this code walkthrough for Swift and Objective-C is in the SDK path <code>/Examples/Conversations</code>. For a more comprehensive demonstration of the Conversations API, please also see the BVSDKDemo project under <code>/Examples/BVSDKDemo</code>.
+<p>The Location module of the Bazaarvoice Mobile SDK facilitates knowing when your shoppers are entering and exiting your physical retail locations. You will be provided a very valuable opportunity to present shopper with your location aware content. Perhaps you have a simple greeting or coupon? Aside from the value you add within your mobile experience, Bazaarvoice can use this location context to enhance our existing products. Rating and Reviews filtered down to the city level, recommended products for nearby people like you, local social media content (Curations), and more are all possible by using the Location module.</p>
 
 
-<hr>
+<p class="bg-info well-lg" style="padding:4px;"><i class="fa fa-hand-o-right"></i>  You must have Bazaarvoice Location enabled to use the Location module. Contact Bazaarvoice to set up Location and to get your <strong>apiKeyLocation</strong>.</p>
+
+<hr/>
 <br>
 
 <p class="bg-warning well-lg" style="padding:4px;"> <i class="fa fa-hand-o-right"></i>  Important: Before you start implementing this Mobile SDK module, verify your installation by checking the steps on the <a href="./installation.html">Installation and Configuration</a> page.</p>
 
 
-<h3>Constructing the API Request</h3>
-<p>After you install and initialize the Bazaarvoice Mobile SDK for iOS, complete the following steps to make an API call to the Conversations API.</p>
+<br>
 
-<ol>
-	<li>Add the <code>BVDelegate</code> protocol to your view controller:<br><br>
-		
+<h2>Using the Location Module</h2>
+<br>
+<h4>Requesting User Location Permission</h4>
+<p>You will always need to obtain on permission for user location.: the Location module cannot function without this. Please follow best practices when requesting permission. Request to use location at a time when it is contexually relavent, such as when trying to use a "Store Finder." Ask your users from your own dialog first, then present the actual system prompt if the user opts in. This way you can provide the detailed benefits they would receive if they grant permission. Conusult the Apple Developer documentation <a href="https://developer.apple.com/library/ios/documentation/UserExperience/Conceptual/LocationAwarenessPG/CoreLocation/CoreLocation.html">Location and Maps Programming guide for details on requesting user location in your app</a> for more information on requesting your end user's location.
+</p>
 
-		<ul class="nav nav-tabs" role="tablist">
+<br>
+<h4>Listening When Users Enter/Exit your Locations</h4>
+<p>After location perissions have been granted you can use the Location module as follows.</p>
+<ul class="nav nav-tabs" role="tablist">
   <li role="presentation" class="active"><a href="#swift" aria-controls="swift" role="tab" data-toggle="tab">Swift</a></li>
   <li role="presentation"><a href="#objc" aria-controls="objc" role="tab" data-toggle="tab">Objective-C</a></li>
 </ul>
+<div class="tab-content code-switcher">
+	<!-- swift -->
+	<div role="tabpanel" class="tab-pane active" id="swift">
+<pre><code class="swift">import UIKit
+import BVSDK
 
+class MyViewController: UIViewController, BVLocationManagerDelegate {
 
-		<!-- Tab panes -->
-		<div class="tab-content code-switcher">
-			<!-- swift -->
-			<div role="tabpanel" class="tab-pane active" id="swift">
-<pre><code class="swift">import BVSDK
-class ViewController: UIViewController, BVDelegate {
-...</code></pre>
-			</div>
-			<!-- objective-c -->
-			<div role="tabpanel" class="tab-pane" id="objc">
-<pre><code class="objectivec">// ViewController.h
-#import &lt;BVSDK/BVConversations.h&gt;
-@interface ViewController : UIViewController &lt;BVDelegate&gt; {
-}</code></pre>
-			</div>
-		</div>
-		<br>
-	</li>
+	//Any class that you would like to listen to when a user enters and exits your retail locations should
+	//Conform to BVLocationManagerDelegate and call the following method to let the SDK know to send notifications
+	BVLocationManager.registerForLocationUpdates(self)
 
-	<li>Fill in the <code>BVDelegate:didReceiveResponse:forRequest:</code> function:<br><br>
-		<ul class="nav nav-tabs" role="tablist">
-		  <li role="presentation" class="active"><a href="#swift" aria-controls="swift" role="tab" data-toggle="tab">Swift</a></li>
-		  <li role="presentation"><a href="#objc" aria-controls="objc" role="tab" data-toggle="tab">Objective-C</a></li>
-		</ul>
-		<!-- Tab panes -->
-		<div class="tab-content code-switcher">
-			<!-- swift -->
-			<div role="tabpanel" class="tab-pane active" id="swift">
-<pre><code class="swift">func didReceiveResponse(response: [NSObject : AnyObject]!, forRequest request:
-AnyObject!) {
-  print("Raw Response: ", response)
-}</code></pre>
-			</div>
-			<!-- objective-c -->
-			<div role="tabpanel" class="tab-pane" id="objc">
-<pre><code class="objectivec">- (void) didReceiveResponse:(NSDictionary *)response forRequest:(id)request {
-    NSLog(@"Raw Response: %@", response);
-}</code></pre>
-			</div>
-		</div>
-		<br>
-	</li>
+	//You must call the following to start locations updates
+	BVLocationManager.startLocationUpdates()
 
-	<li>In the <code>viewDidLoad</code> function of your view controller, make an API call to get reviews:<br><br>
-
-
-		<ul class="nav nav-tabs" role="tablist">
-  <li role="presentation" class="active"><a href="#swift" aria-controls="swift" role="tab" data-toggle="tab">Swift</a></li>
-  <li role="presentation"><a href="#objc" aria-controls="objc" role="tab" data-toggle="tab">Objective-C</a></li>
-</ul>
-		
-		<!-- Tab panes -->
-		<div class="tab-content code-switcher">
-			<!-- swift -->
-			<div role="tabpanel" class="tab-pane active" id="swift">
-<pre><code class="swift">let request = BVGet(type: BVGetTypeReviews)
-request.sendRequestWithDelegate(self)
+	//You registered delegate(s) will be notified via these two delegate methods
+	func didBeginVisit(visit: BVVisit) {
+	        
+	}
+	   
+	func didEndVisit(visit: BVVisit) {
+	        
+	}
+}
 </code></pre>
-			</div>
-			<!-- objective-c -->
-			<div role="tabpanel" class="tab-pane" id="objc">
-<pre><code class="objectivec">BVGet *request = [[BVGet alloc] initWithType:BVGetTypeReviews];
-[request sendRequestWithDelegate:self];</code></pre>
-			</div>
-		</div>
-		<br>
-	</li>
+	</div>
+<div role="tabpanel" class="tab-pane" id="objc">
+<pre><code class="objective-c">@interface MyViewController : UIViewController &lt;BVLocationManagerDelegate&gt;
 
-	<li>Run the application and check the console for a successful API call, as shown in the following screenshot.<br><br>
-		<img src="ios-img/conv_tut_final_run.png" style="height:480px" class="center-block img-fluid" />
-		<br>
-	</li>
+@end
 
-	<li>Referencing the <a href="https://developer.bazaarvoice.com/apis/conversations/">Conversations API</a> is crucial to getting and submitting data to Bazaarvoice correctly.</li></ol>
-		<p>To use Conversations module APIs correctly and efficiently, you should become familiar with the BVGet and BVPost classes that are used to construct all Conversations API calls. For assistance, review the <a href="https://bazaarvoice.github.io/bv-ios-sdk/example_projects.html">Example Projects</a> page.</p>
-	
+@implementation MyViewController
 
+	//Any class that you would like to listen to when a user enters and exits your retail locations should
+	//Conform to BVLocationManagerDelegate and call the following method to let the SDK know to send notifications
+	[BVLocationManager registerForLocationUpdates:self];
+
+	//You must call the following to start locations updates
+	[BVLocationManager startLocationUpdates];
+
+	//You registered delegate(s) will be notified via these two delegate methods
+	-(void)didBeginVisit:(BVVisit* _Nonnull)visit {
+	    
+	}
+
+	-(void)didEndVisit:(BVVisit* _Nonnull)visit {
+	    
+	}
+@end
+</code></pre>
+	</div>
+
+</div>
+<br>
+
+<h4>Notifcations when User Enters Location</h4>
+<p class="bg-info well-lg" style="padding:4px;"><i class="fa fa-hand-o-right"></i>  Contact Bazaarvoice to set up notifications</p>
+<p>The Location module also supports notifications. Notifications may be dynamically configured by contacting Bazaarvoice. You will also have an opportunity in code to decided where a notification is displayed or not and modify the notification to be displayed. Note notifications delegate methods will only be invoked when app is in the background.</p>
+<ul class="nav nav-tabs" role="tablist">
+  <li role="presentation" class="active"><a href="#swift" aria-controls="swift" role="tab" data-toggle="tab">Swift</a></li>
+  <li role="presentation"><a href="#objc" aria-controls="objc" role="tab" data-toggle="tab">Objective-C</a></li>
+</ul>
+<div class="tab-content code-switcher">
+	<!-- swift -->
+	<div role="tabpanel" class="tab-pane active" id="swift">
+<pre><code class="swift">import UIKit
+import BVSDK
+
+class MyViewContoller: UIViewController, BVLocationNotificationDelegate {
+
+	//Set the single BVLocationNotificationDelegate to handle notifications. Be default notifications will not be shown.
+	//You must explcility implement shouldShowNotificationForVisit() to show them.
+	BVLocationManager.setNotificationDelegate(self)
+
+	//Decide whether the notificaiton should be shown for particular visit
+	func shouldShowNotificationForVisit(visit: BVVisit) -> Bool {
+	        return true
+	}
+	 
+	//If shouldShowNotificationForVisit returned true then this method will be called  with your preconfigured
+	//notification. Here you may edit any property of the notification. If null is returned, the preconfigured notification
+	//will be shown.
+	func notificationWillBePresented( notification : UILocalNotification) -> UILocalNotification {
+	    return notification
+	}
+}
+</code></pre>
+</div>
+	<div role="tabpanel" class="tab-pane" id="objc">
+<pre><code class="objective-c">@interface MyViewController : UIViewController &lt;BVLocationNotificationDelegate&gt;
+
+@end
+
+@implementation MyViewController
+
+	//Set the single BVLocationNotificationDelegate to handle notifications. Be default notifications will not be shown.
+	//You must explcility implement shouldShowNotificationForVisit() to show them.
+	[BVLocationManager setNotificationDelegate:self];
+
+	//Decide whether the notificaiton should be shown for particular visit
+	-(BOOL)shouldShowNotificationForVisit:(BVVisit* _Nonnull)visit {
+	    return YES;
+	}
+	 
+	//If shouldShowNotificationForVisit returned true then this method will be called  with your preconfigured
+	//notification. Here you may edit any property of the notification. If null is returned, the preconfigured notification
+	//will be shown.
+	-( UILocalNotification* _Nonnull )notificationWillBePresented:(UILocalNotification* _Nonnull)notification {
+	    return notification;
+	}
+@end
+</code></pre>
+</div>
+</div>
+<br>
 
 
 

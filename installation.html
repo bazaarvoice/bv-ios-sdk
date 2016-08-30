@@ -117,7 +117,7 @@ $(function(){
                 </span>
                 <ul>
                     <li class="nav-item">
-                        <a class="nav-link" href="product_recommendations.html"><span>Product Recommendations</span></a>
+                        <a class="nav-link" href="product_recommendations.html"><span>Product Recommendations (Beta)</span></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="advertising.html"><span>Advertising</span></a>
@@ -166,6 +166,9 @@ $(function(){
                             </ul>
                         </div>
 
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="location.html"><span>Location (Beta)</span></a>
                     </li>
                 </ul>
             </li>
@@ -298,6 +301,14 @@ $(function(){
                     <input type="text" class="key_ShoppeAdvertising" placeholder="Shopper Advertising API Key here" style="width:100%"/>
                 </td>
             <tr>
+              <tr>
+                <td>
+                    <input type="checkbox" class="cb_BVLocation"/> <b>Location</b>
+                </td>
+                <td>
+                    <input type="text" class="key_BVCLocation" placeholder="Location API Key here" style="width:100%"/>
+                </td>
+            <tr>
         </table>
     </div>
 
@@ -334,6 +345,12 @@ $(function(){
           $('.key_ShoppeAdvertising').css('border-color', '');
       }
 
+      if ($('.cb_BVLocation:checked').length > 0 && !$('.key_BVCLocation').val()){
+          $('.key_BVCLocation').css('border-color', 'red');
+      } else {
+          $('.key_BVCLocation').css('border-color', '');
+      }
+
     }
 
     function updateCodeSnippets(){
@@ -357,6 +374,10 @@ $(function(){
               $('code.ruby#podfile').append("pod 'BVSDK/BVRecommendations'<br/>");
             }
 
+            if ($('.cb_BVLocation:checked').length > 0){
+              $('code.ruby#podfile').append("pod 'BVSDK/BVLocation'<br/>");
+            }
+
             //////////////////////
             // Swift Headers
             //////////////////////
@@ -369,7 +390,6 @@ $(function(){
             ///////////////////////////
             $('code.objectivec#objc-headers').text('// Import BVSDK.h for all modules')
                 .append('<br/>#import &lt;BVSDK/BVSDK.h&gt;</br>')
-
 
             if ($('.cb_BVCurations:checked').length > 0){
               $('code.objectivec#objc-headers').append("#import &lt;BVSDK/BVCurations.h&gt;<br/>");
@@ -385,6 +405,10 @@ $(function(){
 
             if ($('.cb_BVRecommendations:checked').length > 0){
               $('code.objectivec#objc-headers').append("#import &lt;BVSDK/BVRecommendations.h&gt;<br/>");
+            }
+
+            if ($('.cb_BVLocation:checked').length > 0){
+              $('code.objectivec#objc-headers').append("#import &lt;BVSDK/BVLocation.h&gt;<br/>");
             }
 
             ////////////////////////////////
@@ -415,6 +439,11 @@ $(function(){
               $('code.objectivec#objc-bvsdkmanager').append('[[BVSDKManager sharedManager] setApiKeyShopperAdvertising:@"' + advertisingKey + '"];<br/>');
             }
 
+            if ($('.cb_BVLocation:checked').length > 0 || $('.cb_BVLocation:checked').length > 0){
+              var locationKey = $('.key_BVCLocation').val()
+              $('code.objectivec#objc-bvsdkmanager').append('[[BVSDKManager sharedManager] setApiKeyLocation:@"' + locationKey + '"];<br/>');
+            }
+
             $('code.objectivec#objc-bvsdkmanager').append('[[BVSDKManager sharedManager] setStaging:YES];  // Set to NO for production!')
 
             ////////////////////////////////
@@ -440,9 +469,9 @@ $(function(){
               $('code.swift#swift-bvsdkmanager').append('BVSDKManager.sharedManager().apiKeyConversations = "' + conversationsKey + '"<br/>');
             }
 
-            if ($('.cb_BVAdvertising:checked').length > 0 || $('.cb_BVRecommendations:checked').length > 0){
-              var advertisingKey = $('.key_ShoppeAdvertising').val()
-              $('code.swift#swift-bvsdkmanager').append('BVSDKManager.sharedManager().apiKeyShopperAdvertising = "' + advertisingKey + '"<br/>');
+            if ($('.cb_BVLocation:checked').length > 0 || $('.cb_BVLocation:checked').length > 0){
+              var locationKey = $('.key_BVCLocation').val()
+              $('code.swift#swift-bvsdkmanager').append('BVSDKManager.sharedManager().apiKeyLocation = "' + locationKey + '"<br/>');
             }
 
 
