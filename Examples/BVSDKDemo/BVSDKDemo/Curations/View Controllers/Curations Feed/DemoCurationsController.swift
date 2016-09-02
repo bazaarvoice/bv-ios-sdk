@@ -189,13 +189,6 @@ class DemoCurationsController: UIViewController, UICollectionViewDataSource, UIC
         print("Selected: " + feedItem.description)
         
         let targetVC = CurationsFeedMasterViewController()
-        
-        let titleLabel = UILabel(frame: CGRectMake(0,0,200,44))
-        titleLabel.text = "Social Feed";
-        titleLabel.textColor = UIColor.whiteColor()
-        titleLabel.textAlignment = .Center
-        targetVC.navigationItem.titleView = titleLabel
-        
         targetVC.socialFeedItems = self.curationsFeedItems
         targetVC.startIndex = indexPath.row
         self.navigationController?.pushViewController(targetVC, animated: true)

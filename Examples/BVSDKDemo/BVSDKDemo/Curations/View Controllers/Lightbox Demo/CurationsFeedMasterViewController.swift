@@ -18,7 +18,12 @@ class CurationsFeedMasterViewController: UIViewController, UIPageViewControllerD
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view.
+        let titleLabel = UILabel(frame: CGRectMake(0,0,200,44))
+        titleLabel.text = "Social Feed";
+        titleLabel.textColor = UIColor.whiteColor()
+        titleLabel.textAlignment = .Center
+        self.navigationItem.titleView = titleLabel
+        
         createPageViewController()
     }
 
