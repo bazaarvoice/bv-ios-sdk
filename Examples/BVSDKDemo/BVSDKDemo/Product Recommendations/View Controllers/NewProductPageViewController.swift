@@ -347,13 +347,6 @@ class NewProductPageViewController: BVProductDisplayPageViewController, UITableV
                 (selectedIndex, feedItems) -> Void in
                 // navigate to lightbox
                 let targetVC = CurationsFeedMasterViewController()
-                
-                let titleLabel = UILabel(frame: CGRectMake(0,0,200,44))
-                titleLabel.text = "Social Feed";
-                titleLabel.textColor = UIColor.whiteColor()
-                titleLabel.textAlignment = .Center
-                targetVC.navigationItem.titleView = titleLabel
-                
                 targetVC.socialFeedItems = feedItems
                 targetVC.startIndex = selectedIndex
                 self.navigationController?.pushViewController(targetVC, animated: true)
@@ -508,7 +501,8 @@ class NewProductPageViewController: BVProductDisplayPageViewController, UITableV
 
     func curationsViewPhotoMapPressed() {
         
-        let curationsPhotoMapVC = CurationsPhotoMapViewController(curationsFeed: curationsCell.curationsFeed!)
+        let curationsPhotoMapVC = CurationsPhotoMapViewController(nibName: "CurationsPhotoMapViewController", bundle: nil)
+        curationsPhotoMapVC.curationsFeed = curationsCell!.curationsFeed!
         
         self.navigationController?.pushViewController(curationsPhotoMapVC, animated: true)
         

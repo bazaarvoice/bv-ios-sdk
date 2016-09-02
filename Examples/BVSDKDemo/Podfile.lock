@@ -5,19 +5,19 @@ PODS:
   - Bolts/AppLinks (1.8.4):
     - Bolts/Tasks
   - Bolts/Tasks (1.8.4)
-  - BVSDK (4.1.0):
-    - BVSDK/Core (= 4.1.0)
-  - BVSDK/BVAdvertising (4.1.0):
+  - BVSDK (4.2.0):
+    - BVSDK/Core (= 4.2.0)
+  - BVSDK/BVAdvertising (4.2.0):
     - BVSDK/Core
-  - BVSDK/BVConversations (4.1.0):
+  - BVSDK/BVConversations (4.2.0):
     - BVSDK/Core
-  - BVSDK/BVCurations (4.1.0):
+  - BVSDK/BVCurations (4.2.0):
     - BVSDK/Core
-  - BVSDK/BVLocation (4.1.0):
+  - BVSDK/BVLocation (4.2.0):
     - BVSDK/Core
-  - BVSDK/BVRecommendations (4.1.0):
+  - BVSDK/BVRecommendations (4.2.0):
     - BVSDK/Core
-  - BVSDK/Core (4.1.0)
+  - BVSDK/Core (4.2.0)
   - Crashlytics (3.7.2):
     - Fabric (~> 1.6.3)
   - Fabric (1.6.7)
@@ -82,7 +82,7 @@ DEPENDENCIES:
 
 EXTERNAL SOURCES:
   BVSDK:
-    :path: ../../
+    :path: "../../"
   SDForms:
     :branch: master
     :git: https://github.com/austimkelly/SDForms.git
@@ -94,7 +94,7 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
-  BVSDK: e5e7453437f0555fab7f62babf6a6943a90ca931
+  BVSDK: 01a40e535a958ecbc49d2fceebc0619c992d1f7e
   Crashlytics: 130ab943f8c78cda7a814b434f270b2e2c8a3cba
   Fabric: caf7580c725e64db144f610ac65cd60956911dc7
   FBSDKCoreKit: 6e020b5db0b5bd1e01f5fb0902131befd129a502
