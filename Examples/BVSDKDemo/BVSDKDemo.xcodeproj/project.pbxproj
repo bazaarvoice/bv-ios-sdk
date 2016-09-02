@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		15D5BEC81D79D10200D34EA0 /* JPSThumbnailAnnotation+Curations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D5BEC71D79D10200D34EA0 /* JPSThumbnailAnnotation+Curations.swift */; };
+		15D5BECA1D7A05E900D34EA0 /* CurationsPhotoMapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 15D5BEC91D7A05E900D34EA0 /* CurationsPhotoMapViewController.xib */; };
+		15D5BECE1D7A0AB500D34EA0 /* minusBtn.png in Resources */ = {isa = PBXBuildFile; fileRef = 15D5BECD1D7A0AB500D34EA0 /* minusBtn.png */; };
 		38D2C7BB6AACB7270402D02C /* Pods_Curations_Custom_Post_Extension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB53E90B95F50C5FE5524F5E /* Pods_Curations_Custom_Post_Extension.framework */; };
 		3E0277AF411535E7F42416F0 /* Pods_BVSDKDemoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCC100C4860B3529E5ECD824 /* Pods_BVSDKDemoUITests.framework */; };
 		730A646D1CE5548400580E9C /* NewProductPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 730A646B1CE5548400580E9C /* NewProductPageViewController.swift */; };
@@ -189,6 +192,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		15D5BEC71D79D10200D34EA0 /* JPSThumbnailAnnotation+Curations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "JPSThumbnailAnnotation+Curations.swift"; sourceTree = "<group>"; };
+		15D5BEC91D7A05E900D34EA0 /* CurationsPhotoMapViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CurationsPhotoMapViewController.xib; path = Resources/CurationsPhotoMapViewController.xib; sourceTree = "<group>"; };
+		15D5BECD1D7A0AB500D34EA0 /* minusBtn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = minusBtn.png; sourceTree = "<group>"; };
 		2241824302D6124ADB7FD0DB /* Pods-BVSDKDemoUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BVSDKDemoUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-BVSDKDemoUITests/Pods-BVSDKDemoUITests.release.xcconfig"; sourceTree = "<group>"; };
 		2A5FBF66A5A7DFAEB4B72C05 /* Pods_BVSDKDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BVSDKDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		33F92A847F034B8A38C62DA0 /* Pods-Curations Custom Post Extension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Curations Custom Post Extension.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Curations Custom Post Extension/Pods-Curations Custom Post Extension.debug.xcconfig"; sourceTree = "<group>"; };
@@ -573,6 +579,7 @@
 		736D4CC51CDEC8DC0095EE6B /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				15D5BECD1D7A0AB500D34EA0 /* minusBtn.png */,
 				8731F40D1D1065A20046C484 /* GPX */,
 				733BCEEF1CF638E000045FC2 /* Home Header Images */,
 				736D4CC61CDEC8EB0095EE6B /* FontAwesome.otf */,
@@ -597,6 +604,7 @@
 			children = (
 				87BB4C7D1D372B1700C860BE /* ThumbnailMapViewer */,
 				87BB4C7B1D36EB3300C860BE /* CurationsPhotoMapViewController.swift */,
+				15D5BEC91D7A05E900D34EA0 /* CurationsPhotoMapViewController.xib */,
 				7385D8661CE3AD7600CA5F5E /* ShareViewController.swift */,
 				7385D8641CE3AD7600CA5F5E /* BaseDemoComposeServiceViewController.swift */,
 				736D4CCB1CDED0C40095EE6B /* CurationsDemoConstants.swift */,
@@ -799,6 +807,7 @@
 				87BB4C811D372B2600C860BE /* JPSThumbnailAnnotationView.h */,
 				87BB4C821D372B2600C860BE /* JPSThumbnailAnnotationView.m */,
 				87BB4C831D372B2600C860BE /* JPSThumnail.m */,
+				15D5BEC71D79D10200D34EA0 /* JPSThumbnailAnnotation+Curations.swift */,
 			);
 			name = ThumbnailMapViewer;
 			sourceTree = "<group>";
@@ -978,6 +987,7 @@
 				737FA0BA1CF8AD8200864B1B /* submitQuestion.json in Resources */,
 				733BCEEE1CF6300100045FC2 /* HomeHeaderCollectionViewCell.xib in Resources */,
 				8772167F1D3FDAD4007E5C6C /* conversationsReviewsEnduranceCycles_SortHighestRated.json in Resources */,
+				15D5BECE1D7A0AB500D34EA0 /* minusBtn.png in Resources */,
 				732E188F1CE65682000A3EC9 /* NewNativeAdCollectionViewCell.xib in Resources */,
 				87A3192F1CF493AF000D3D0F /* recommendationsResult.json in Resources */,
 				736D4CF21CDED0C40095EE6B /* loading@2x.png in Resources */,
@@ -1016,6 +1026,7 @@
 				732E188B1CE653ED000A3EC9 /* config in Resources */,
 				736D4CC71CDEC8EB0095EE6B /* FontAwesome.otf in Resources */,
 				871AD4051D074E2F006583E5 /* post_successfulCreation.json in Resources */,
+				15D5BECA1D7A05E900D34EA0 /* CurationsPhotoMapViewController.xib in Resources */,
 				733BCF011CF7BE5300045FC2 /* CallToActionCell.xib in Resources */,
 				87BA80851D34309600AFA54D /* StoreLocations.plist in Resources */,
 				736D4D071CDED0C40095EE6B /* CurationsFeedPageViewController.xib in Resources */,
@@ -1287,6 +1298,7 @@
 				736D4D041CDED0C40095EE6B /* CurationsFeedItemDetailTableViewController.swift in Sources */,
 				733843881CED541A00928760 /* AnswersViewController.swift in Sources */,
 				87CD523D1CE57ABD00FC2726 /* NewProductRecsTableViewCell.swift in Sources */,
+				15D5BEC81D79D10200D34EA0 /* JPSThumbnailAnnotation+Curations.swift in Sources */,
 				8747F1E21D11C2A000DC8E42 /* PermissionViewController.swift in Sources */,
 				87BA80821D342E3200AFA54D /* LocationSettings.swift in Sources */,
 				736D4D0A1CDED2870095EE6B /* DemoCurationsController.swift in Sources */,
