@@ -248,10 +248,11 @@ public class BVSDKDemoActionController: ActionController<BVSDKDemoActionCell, St
             path.addQuadCurveToPoint(CGPoint(x: 0, y: topSpace), controlPoint: CGPoint(x: frame.width/2, y: topSpace - diff))
             path.closePath()
             
-            let context = UIGraphicsGetCurrentContext()
-            CGContextAddPath(context, path.CGPath)
-            UIColor.bazaarvoiceNavy().set()
-            CGContextFillPath(context)
+            if let context = UIGraphicsGetCurrentContext(){
+                CGContextAddPath(context, path.CGPath)
+                UIColor.bazaarvoiceNavy().set()
+                CGContextFillPath(context)
+            }
         }
     }
 }
