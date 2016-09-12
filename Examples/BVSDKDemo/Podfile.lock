@@ -5,19 +5,19 @@ PODS:
   - Bolts/AppLinks (1.8.4):
     - Bolts/Tasks
   - Bolts/Tasks (1.8.4)
-  - BVSDK (4.2.0):
-    - BVSDK/Core (= 4.2.0)
-  - BVSDK/BVAdvertising (4.2.0):
+  - BVSDK (4.2.1):
+    - BVSDK/Core (= 4.2.1)
+  - BVSDK/BVAdvertising (4.2.1):
     - BVSDK/Core
-  - BVSDK/BVConversations (4.2.0):
+  - BVSDK/BVConversations (4.2.1):
     - BVSDK/Core
-  - BVSDK/BVCurations (4.2.0):
+  - BVSDK/BVCurations (4.2.1):
     - BVSDK/Core
-  - BVSDK/BVLocation (4.2.0):
+  - BVSDK/BVLocation (4.2.1):
     - BVSDK/Core
-  - BVSDK/BVRecommendations (4.2.0):
+  - BVSDK/BVRecommendations (4.2.1):
     - BVSDK/Core
-  - BVSDK/Core (4.2.0)
+  - BVSDK/Core (4.2.1)
   - Crashlytics (3.7.2):
     - Fabric (~> 1.6.3)
   - Fabric (1.6.7)
@@ -82,7 +82,7 @@ DEPENDENCIES:
 
 EXTERNAL SOURCES:
   BVSDK:
-    :path: "../../"
+    :path: ../../
   SDForms:
     :branch: master
     :git: https://github.com/austimkelly/SDForms.git
@@ -94,7 +94,7 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
-  BVSDK: 01a40e535a958ecbc49d2fceebc0619c992d1f7e
+  BVSDK: fb8d0e2ed1646f3a1c14a09f8a00eb553ebc88fb
   Crashlytics: 130ab943f8c78cda7a814b434f270b2e2c8a3cba
   Fabric: caf7580c725e64db144f610ac65cd60956911dc7
   FBSDKCoreKit: 6e020b5db0b5bd1e01f5fb0902131befd129a502
@@ -111,6 +111,6 @@ SPEC CHECKSUMS:
   XLActionController: 97ed31237413db4d9401c6a559270f4d2b4de136
   youtube-ios-player-helper: 21ab92db027c7ff86cb17a3843a3f6eafc8158d2
 
-PODFILE CHECKSUM: 51f8c99171ed988ecd91fddd0a030ccc115e1dc1
+PODFILE CHECKSUM: 14074dd889cd7492556f3c69a3f324d6897e95b0
 
 COCOAPODS: 1.0.1

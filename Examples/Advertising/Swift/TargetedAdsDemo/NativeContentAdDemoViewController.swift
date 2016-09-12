@@ -41,7 +41,7 @@ class NativeContentAdDemoViewController: UIViewController, GADNativeContentAdLoa
         
         // configure our native content ad view with the given values, and display!
         
-        let contentAdView = NSBundle.mainBundle().loadNibNamed("NativeContentAdView", owner: nil, options: nil)[0] as! GADNativeContentAdView
+        let contentAdView = NSBundle.mainBundle().loadNibNamed("NativeContentAdView", owner: nil, options: nil)![0] as! GADNativeContentAdView
         
         // Associate the app install ad view with the app install ad object.
         // This is required to make the ad clickable.
