@@ -89,7 +89,7 @@ class BaseDemoComposeServiceViewController: SLComposeServiceViewController {
             // sizing here is a little vodoo...cough...hacky
             img.drawInRect(CGRectMake((size.width-size.height)/2, 0, size.height+20, size.height))
         }
-        let image: UIImage = UIGraphicsGetImageFromCurrentImageContext()
+        let image: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
         return image
     }
@@ -98,9 +98,18 @@ class BaseDemoComposeServiceViewController: SLComposeServiceViewController {
     func imageWithImage(image:UIImage, scaledToSize newSize:CGSize) -> UIImage{
         UIGraphicsBeginImageContextWithOptions(newSize, false, 0.0);
         image.drawInRect(CGRectMake(0, 0, newSize.width, newSize.height))
-        let newImage:UIImage = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        return newImage
+        
+        if let newImage:UIImage = UIGraphicsGetImageFromCurrentImageContext(){
+            UIGraphicsEndImageContext()
+            return newImage
+        } else {
+            // wasn't able to get graphics context to scale image
+            print("Error getting graphics context.")
+            UIGraphicsEndImageContext()
+            return image
+        }
+        
+        
     }
     
 

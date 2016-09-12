@@ -1,17 +1,17 @@
 PODS:
-  - BVSDK (4.1.0):
-    - BVSDK/Core (= 4.1.0)
-  - BVSDK/BVAdvertising (4.1.0):
+  - BVSDK (4.2.1):
+    - BVSDK/Core (= 4.2.1)
+  - BVSDK/BVAdvertising (4.2.1):
     - BVSDK/Core
-  - BVSDK/BVConversations (4.1.0):
+  - BVSDK/BVConversations (4.2.1):
     - BVSDK/Core
-  - BVSDK/BVCurations (4.1.0):
+  - BVSDK/BVCurations (4.2.1):
     - BVSDK/Core
-  - BVSDK/BVLocation (4.1.0):
+  - BVSDK/BVLocation (4.2.1):
     - BVSDK/Core
-  - BVSDK/BVRecommendations (4.1.0):
+  - BVSDK/BVRecommendations (4.2.1):
     - BVSDK/Core
-  - BVSDK/Core (4.1.0)
+  - BVSDK/Core (4.2.1)
   - OHHTTPStubs (5.1.0):
     - OHHTTPStubs/Default (= 5.1.0)
   - OHHTTPStubs/Core (5.1.0)
@@ -40,9 +40,9 @@ EXTERNAL SOURCES:
     :path: ../
 
 SPEC CHECKSUMS:
-  BVSDK: e5e7453437f0555fab7f62babf6a6943a90ca931
+  BVSDK: fb8d0e2ed1646f3a1c14a09f8a00eb553ebc88fb
   OHHTTPStubs: 592f74439d2d72615115cf99a954237a3fbe26e5
 
-PODFILE CHECKSUM: e45330138819fb917f8716394bcae386105dd0b3
+PODFILE CHECKSUM: 4a0dde118c062018ddcd485961583c2205de1274
 
 COCOAPODS: 1.0.1
