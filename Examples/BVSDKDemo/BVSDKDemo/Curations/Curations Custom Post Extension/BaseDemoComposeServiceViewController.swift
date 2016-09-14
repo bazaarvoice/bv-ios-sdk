@@ -109,8 +109,5 @@ class BaseDemoComposeServiceViewController: SLComposeServiceViewController {
             return image
         }
         
-        
     }
-    
-
 }

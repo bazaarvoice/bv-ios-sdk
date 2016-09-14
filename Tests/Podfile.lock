@@ -1,17 +1,17 @@
 PODS:
-  - BVSDK (4.3.0):
-    - BVSDK/Core (= 4.3.0)
-  - BVSDK/BVAdvertising (4.3.0):
+  - BVSDK (5.0.0):
+    - BVSDK/Core (= 5.0.0)
+  - BVSDK/BVAdvertising (5.0.0):
     - BVSDK/Core
-  - BVSDK/BVConversations (4.3.0):
+  - BVSDK/BVConversations (5.0.0):
     - BVSDK/Core
-  - BVSDK/BVCurations (4.3.0):
+  - BVSDK/BVCurations (5.0.0):
     - BVSDK/Core
-  - BVSDK/BVLocation (4.3.0):
+  - BVSDK/BVLocation (5.0.0):
     - BVSDK/Core
-  - BVSDK/BVRecommendations (4.3.0):
+  - BVSDK/BVRecommendations (5.0.0):
     - BVSDK/Core
-  - BVSDK/Core (4.3.0)
+  - BVSDK/Core (5.0.0)
   - OHHTTPStubs (5.1.0):
     - OHHTTPStubs/Default (= 5.1.0)
   - OHHTTPStubs/Core (5.1.0)
@@ -25,6 +25,8 @@ PODS:
   - OHHTTPStubs/NSURLSession (5.1.0):
     - OHHTTPStubs/Core
   - OHHTTPStubs/OHPathHelpers (5.1.0)
+  - OHHTTPStubs/Swift (5.1.0):
+    - OHHTTPStubs/Core
 
 DEPENDENCIES:
   - BVSDK (from `../`)
@@ -34,15 +36,16 @@ DEPENDENCIES:
   - BVSDK/BVLocation (from `../`)
   - BVSDK/BVRecommendations (from `../`)
   - OHHTTPStubs (~> 5.1)
+  - OHHTTPStubs/Swift
 
 EXTERNAL SOURCES:
   BVSDK:
     :path: ../
 
 SPEC CHECKSUMS:
-  BVSDK: 9af238e5f5313e10d12192ab107243dbd69e1a9b
+  BVSDK: edd09ab57d464649334783012c19002c2e546fb0
   OHHTTPStubs: 592f74439d2d72615115cf99a954237a3fbe26e5
 
-PODFILE CHECKSUM: 482c9155c42239c76762fbfeced7c27bf7a7625d
+PODFILE CHECKSUM: b95ae659eeda5fe14764eca6ece20629d4f8381a
 
 COCOAPODS: 1.0.1

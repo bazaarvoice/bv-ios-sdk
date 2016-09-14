@@ -9,6 +9,7 @@
 #import "BVCore.h"
 #import "BVLogger.h"
 #import "BVAuthenticatedUser.h"
+#import "BVStoreReviewNotificationProperties.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -55,26 +56,27 @@ NS_ASSUME_NONNULL_BEGIN
 /// Set the log level for getting log and event info. Default is BVLogLevel.kBVLogLevelError
 -(void)setLogLevel:(BVLogLevel)logLevel;
 
-
 /// Client ID associated with the API key
 @property (nonatomic, strong) NSString *clientId;
-
 
 /// Boolean indicating whether this request should go to staging (true) or production (false).  Default is production (false).
 @property (nonatomic, assign) BOOL staging;
 
-
 /// Read-only value of urlRoot for Shopper Advertising APIs. Varies depending on value of staging.
 @property (nonatomic, readonly) NSString *urlRootShopperAdvertising;
-
 
 /// Your private API key for the BVConversations product
 @property (nonatomic, strong) NSString *apiKeyConversations;
 
 
+/// Your private API key for the BVConversations, Store Reviews product
+@property (nonatomic, strong) NSString *apiKeyConversationsStores;
+
+/// The category of the Notification Content Extension you will use for store review notifications
+@property (nonatomic, strong) NSString *storeReviewContentExtensionCategory;
+
 /// Your private API key for the BVRecommendations and BVAdvertising products (Shopper Advertising)
 @property (nonatomic, strong) NSString *apiKeyShopperAdvertising;
-
 
 /// Your private API key for the BVCurations API
 @property (nonatomic, strong) NSString *apiKeyCurations;
@@ -95,6 +97,10 @@ NS_ASSUME_NONNULL_BEGIN
 /// The authenticed user retrieved after calling setUserWithAuthString. The model may be empty until the BV user profile has been reconcilled.
 @property (strong, readonly) BVAuthenticatedUser *bvUser;
 
+/**
+These properties are available after setting the BVSDKManager#apiKeyLConversationsStores. Clients typically do not need to access these properties except for help in debugging. 
+ */
+@property (strong, readonly) BVStoreReviewNotificationProperties *bvStoreReviewNotificationProperties;
 
 /**
     Generate DFP (Doubleclick For Publsher's) compatible custom targeting.
@@ -109,7 +115,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// Network timeout in seconds.  Default is 60 seconds.  Note that iOS may set a minimum timeout of 240 seconds for post requests.
 @property (nonatomic, assign) float timeout;
-
 
 NS_ASSUME_NONNULL_END
 

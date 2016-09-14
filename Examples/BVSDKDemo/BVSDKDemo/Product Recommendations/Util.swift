@@ -110,7 +110,11 @@ extension UIImageView {
 // Utility to check if a partcilar ViewController wants to support different orientations than the default build.
 extension UINavigationController {
     public override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
-        return self.visibleViewController!.supportedInterfaceOrientations()
+        if let visible = visibleViewController {
+            return visible.supportedInterfaceOrientations()
+        }
+        
+        return .Portrait
     }
     
     public override func shouldAutorotate() -> Bool {

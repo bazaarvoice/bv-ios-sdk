@@ -138,6 +138,20 @@
     [[BVAnalyticsManager sharedManager] queueEvent:event];
 
 }
+    
++(void)queueAnalyticsEventForStorePageView:(BVStore* _Nullable)store {
+    
+    if(store == nil) {
+        return;
+    }
+    
+    NSMutableDictionary* event = [self productPageViewEvent];
+    event[@"productId"] = store.identifier;
+    event[@"categoryId"] = store.categoryId;
+    [[BVAnalyticsManager sharedManager] queueEvent:event];
+    
+}
+
 
 +(void)queueAnalyticsEventForProductPageView:(nullable NSString*)productId numReviews:(nullable NSNumber*)numReviews numQuestions:(nullable NSNumber*)numQuestions {
     

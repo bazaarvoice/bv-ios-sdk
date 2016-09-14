@@ -55,7 +55,7 @@
     [request addValue:contentType forHTTPHeaderField:@"Content-Type"];
 
     [self appendKey:@"apiversion" value:@"5.4" toMultipartData:body withBoundary:boundary];
-    [self appendKey:@"passkey" value:[[BVSDKManager sharedManager] apiKeyConversations] toMultipartData:body withBoundary:boundary];
+    [self appendKey:@"passkey" value:[self getPasskey] toMultipartData:body withBoundary:boundary];
     [self appendKey:@"contenttype" value:[self BVPhotoContentTypeToString:type] toMultipartData:body withBoundary:boundary];
     [self appendKey:@"photo" data: UIImagePNGRepresentation(self.photo) toMultipartData:body withBoundary:boundary];
     
@@ -145,6 +145,10 @@
     [body appendData:[@"Content-Type: application/octet-stream\r\n\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
     [body appendData:[NSData dataWithData:data]];
     [body appendData:[@"\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
+}
+
+- (NSString * _Nonnull)getPasskey{
+    return [BVSDKManager sharedManager].apiKeyConversations;
 }
 
 @end

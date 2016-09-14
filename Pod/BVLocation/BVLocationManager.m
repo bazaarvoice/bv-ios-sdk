@@ -5,7 +5,6 @@
 //  Copyright 2016 Bazaarvoice Inc. All rights reserved.
 //
 
-
 #import "BVLocationManager.h"
 #import "BVLogger.h"
 #import "BVSDKManager.h"
@@ -13,6 +12,7 @@
 #import "BVVisit.h"
 #import "BVPlaceAttributes.h"
 #import "BVLocationAnalyticsHelper.h"
+#import "BVReviewNotificationCenter.h"
 
 @interface DelegateContainer : NSObject
 @property (nonatomic, weak) id<BVLocationManagerDelegate> delegate;
@@ -24,10 +24,8 @@
 @interface BVLocationManager()
 
 @property (nonatomic, strong) GMBLPlaceManager *placeManager;
-@property (nonatomic, strong) GMBLCommunicationManager *communicationManager;
 @property (nonatomic, strong) NSString *apiKey;
 @property (nonatomic, strong) NSMutableArray *registeredDelegates;
-@property (nonatomic, weak) id<BVLocationNotificationDelegate> notificationDelegate;
 
 @end
 
@@ -60,18 +58,11 @@
     
     NSAssert([[[BVSDKManager sharedManager] clientId] length], @"You must supply client id in the BVSDKManager before using the Bazaarvoice SDK.");
     if ([self.class isValidUUID:_apiKey]) {
-        
         [[BVLogger sharedLogger] verbose:@"Initializing Location Manager"];
         
         [Gimbal setAPIKey:_apiKey options:nil];
-        
         _placeManager = [[GMBLPlaceManager alloc]init];
         _placeManager.delegate = (id)self;
-        
-        _communicationManager = [[GMBLCommunicationManager alloc]init];
-        _communicationManager.delegate = (id)self;
-        
-        
     }else {
         NSAssert(NO, @"You must provide a valid Location API Key before using BVLocation");
     }
@@ -135,6 +126,8 @@
         [BVLocationAnalyticsHelper queueAnalyticsEventForGimbalVisit:visit];
     }
     
+    [self registerStoreVisitNotification:visit withAttributes:attributeDictionary];
+    
     [self callbackToDelegates:@selector(didEndVisit:) withAttributes:attributeDictionary];
 }
 
@@ -150,6 +143,44 @@
         [attributeDictionary setObject:[attributes stringForKey:key] forKey:key];
     }
     return [NSDictionary dictionaryWithDictionary:attributeDictionary];
+}
+
+- (void)registerStoreVisitNotification:(GMBLVisit *)visit withAttributes:(NSDictionary *)attributes{
+    
+    NSString *clientId = [attributes objectForKey:PLACE_CLIENT_ID];
+    
+    if (![clientId isEqualToString:[BVSDKManager sharedManager].clientId]) {
+        return;
+    }
+    
+    BVSDKManager *sdkMgr = [BVSDKManager sharedManager];
+    if ([self isClientConfiguredForPush:sdkMgr])
+    {
+        // Check and make sure the visit time has been met before trying to queue a notification
+        BVStoreReviewNotificationProperties *noteProps = [BVSDKManager sharedManager].bvStoreReviewNotificationProperties;
+        
+        NSTimeInterval visitDuration = [visit.departureDate timeIntervalSinceDate:visit.arrivalDate];
+        
+        if (visitDuration >= noteProps.visitDuration){
+            
+            // queue up the notification....
+            NSString *storeId = [attributes objectForKey:PLACE_STORE_ID];
+            [[BVReviewNotificationCenter sharedCenter] queueStoreReview:storeId];
+            
+        } else {
+            
+            [[BVLogger sharedLogger] verbose:[NSString stringWithFormat:@"Vist time of %d, not long enough to post notification. Need %d seconds.", visitDuration, noteProps.visitDuration]];
+        }
+    }
+}
+
+-(BOOL)isClientConfiguredForPush:(BVSDKManager *)sdkMgr {
+    UIRemoteNotificationType types = [[UIApplication sharedApplication] currentUserNotificationSettings];
+    return (types != UIRemoteNotificationTypeNone &&
+            sdkMgr.apiKeyConversationsStores &&
+            sdkMgr.storeReviewContentExtensionCategory &&
+            sdkMgr.bvStoreReviewNotificationProperties &&
+            sdkMgr.bvStoreReviewNotificationProperties.notificationsEnabled);
 }
 
 - (void)callbackToDelegates:(SEL)selector withAttributes:(NSDictionary *)attributes{
@@ -202,41 +233,6 @@
     return [[BVVisit alloc]initWithName:name address:address city:city state:state zipCode:zipCode storeId:storeId];
 }
 
-#pragma mark a GMBLCommunicationManagerDelegate
-
-- (NSArray *)communicationManager:(GMBLCommunicationManager *)manager presentLocalNotificationsForCommunications:(NSArray *)communications forVisit:(GMBLVisit *)visit {
-    
-    if ([[UIApplication sharedApplication] applicationState] == UIApplicationStateActive) {
-        return nil;
-    }
-    
-    NSMutableArray *filteredCommunications = [NSMutableArray new];
-    for ( GMBLCommunication *comm in communications) {
-        NSDictionary *attributes = [self gimbalAttributesToDictionary:visit.place.attributes];
-        NSString *clientId = [attributes objectForKey:PLACE_CLIENT_ID];
-        if (![clientId isEqualToString:[[BVSDKManager sharedManager] clientId]]) {
-            continue;
-        }
-        
-        BVVisit *bvVisit = [self attibutesToBVVisit: attributes];
-        
-        if (_notificationDelegate && [_notificationDelegate shouldShowNotificationForVisit:bvVisit]) {
-            [filteredCommunications addObject: comm];
-        }
-    }
-    
-    return filteredCommunications;
-}
-
-- (UILocalNotification *)communicationManager:(GMBLCommunicationManager *)manager prepareNotificationForDisplay: (UILocalNotification *)notification forCommunication:(GMBLCommunication *)communication {
-    
-    if (_notificationDelegate){
-        return [_notificationDelegate notificationWillBePresented:notification];
-    }
-    
-    return nil;
-}
-
 + (void)registerForLocationUpdates:(id<BVLocationManagerDelegate>)delegate {
     
     if (!delegate){
@@ -265,10 +261,6 @@
     }
     
     return nil;
-}
-
-+(void)setNotificationDelegate:(__weak id<BVLocationNotificationDelegate>)delegate {
-    [[self sharedManager] setNotificationDelegate:delegate];
 }
 
 @end

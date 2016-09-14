@@ -7,6 +7,8 @@
 
 import UIKit
 import FontAwesomeKit
+import BVSDK
+import HCSStarRatingView
 
 class StoreLocationTableViewCell: UITableViewCell {
 
@@ -24,24 +26,64 @@ class StoreLocationTableViewCell: UITableViewCell {
     
     @IBOutlet weak var selectedIcon: UIImageView!
     
-    var storeLocation : StoreLocation! {
+    @IBOutlet weak var starRating: HCSStarRatingView!
+    
+    @IBOutlet weak var numReviewsLabel: UILabel!
+    
+    var onNumReviewsLabelTapped : ((store : BVStore) -> Void)? = nil
+    
+    var store : BVStore! {
         
         didSet {
-            self.storeNameLabel.text = storeLocation!.storeName
-            self.addressLine1Label.text = storeLocation!.storeAddress
-            self.addressLine2Label.text = "\(storeLocation!.storeCity)" + "," + " \(storeLocation!.storeState)" + " " +  "\(storeLocation!.storeZip)"
-            self.phoneNumberLabel.text = storeLocation!.storeTel
-            self.hoursLabel.text = "10am - 9pm"
-            if storeLocation.distainceInMilesFromCurrentLocation > 0 {
-                self.distanceLabel.text = String(format: "(%.1f mi)", storeLocation.distainceInMilesFromCurrentLocation!)
+            self.storeNameLabel.text = store.name
+            self.addressLine1Label.text = store.storeLocation?.address
+            
+            if store!.storeLocation!.city != nil && store!.storeLocation!.state != nil && store!.storeLocation!.postalcode != nil {
+                self.addressLine2Label.text = "\(store!.storeLocation!.city!)" + "," + " \(store!.storeLocation!.state!)" + " " +  "\(store!.storeLocation!.postalcode!)"
+                self.hoursLabel.text = "10am - 9pm"
+            } else {
+                self.addressLine2Label.text = ""
+                self.hoursLabel.text = ""
+            }
+            
+            var ratingValue : CGFloat = 0.0
+            if store.reviewStatistics?.averageOverallRating != nil {
+                ratingValue = CGFloat((store.reviewStatistics?.averageOverallRating?.floatValue)!)
+            }
+            
+            self.starRating.value =  ratingValue
+            self.numReviewsLabel.text = "(\(store.reviewStatistics!.totalReviewCount!.integerValue))"
+            self.numReviewsLabel.userInteractionEnabled = true
+            let tapGesture = UITapGestureRecognizer(target: self, action: "didTapNumReviewsLabel:")
+            self.numReviewsLabel.addGestureRecognizer(tapGesture)
+            
+            if store.storeLocation!.phone != nil {
+                self.phoneNumberLabel.text = store.storeLocation!.phone
+            } else {
+                self.phoneNumberLabel.text = ""
+            }
+            
+            if store.distanceInMetersFromCurrentLocation() > 0.0 {
+                self.distanceLabel.text = String(format: "(%.1f mi)", store.distanceInMetersFromCurrentLocation()/1609.344)
             } else {
                 self.distanceLabel.text = ""
             }
             
-            
             self.setCheckOff()
         }
         
+    }
+    
+    @IBAction func tappedReviewsHotSpot(sender: AnyObject) {
+        onNumReviewsLabelTapped!(store: self.store)
+    }
+    
+    
+    func didTapNumReviewsLabel(sender: UITapGestureRecognizer)
+    {
+        if self.onNumReviewsLabelTapped != nil {
+            onNumReviewsLabelTapped!(store: self.store)
+        }
     }
     
     func setCheckOff(){

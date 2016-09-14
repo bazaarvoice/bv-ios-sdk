@@ -7,105 +7,102 @@
 
 import Foundation
 import CoreLocation
+import BVSDK
 
-class StoreLocation {
+/// An NSUserDefaults cachable class that saves off some of the properties of a BVStore object so we can quickly get the user's default store selection. Only contains a subset of BVStore object properties.
+class CachableDefaultStore : NSObject, NSCoding {
     
-    var storeName, storeAddress, storeCity, storeState, storeZip, storeTel, storeId, latitude, longitude : String!
-    var distainceInMilesFromCurrentLocation : CGFloat?
+    var city, state, identifier : String!
     
-    init(dict : Dictionary<String, String>){
+    init(store : BVStore){
         
-        self.storeName = dict["storeName"]
-        self.storeAddress = dict["storeAddress"]
-        self.storeCity = dict["storeCity"]
-        self.storeState = dict["storeState"]
-        self.storeZip = dict["storeZip"]
-        self.storeTel = dict["storeTel"]
-        self.storeId = dict["storeId"]
-        self.latitude = dict["latitude"]
-        self.longitude = dict["longitude"]
+        if store.storeLocation?.city == nil && store.storeLocation?.state == nil {
+            self.city = store.name
+            self.state = ""
+        } else {
+            self.city = store.storeLocation?.city
+            self.state = store.storeLocation?.state
+        }
+        
+        self.identifier = store.identifier
+    
+    }
+    
+    init(storeId: String, city:String, state: String) {
+        self.identifier = storeId
+        
+        self.city = city
+        self.state = state
         
     }
     
-    func getLocation() -> CLLocation {
+    required convenience init(coder aDecoder: NSCoder) {
+        let identifier = aDecoder.decodeObjectForKey("storeId") as! String
+        var city = aDecoder.decodeObjectForKey("city") as? String
+        var state = aDecoder.decodeObjectForKey("state") as? String
         
-        var storeLong = 0.0
-        var storeLat = 0.0
-        if let tmp = NSNumberFormatter().numberFromString(self.longitude) {
-            storeLong = Double(tmp)
+        if city == nil {
+            city = ""
         }
         
-        if let tmpLat = NSNumberFormatter().numberFromString(self.latitude) {
-            storeLat = Double(tmpLat)
+        if state == nil {
+            state = ""
         }
         
-        return CLLocation(latitude: storeLat, longitude: storeLong)
-        
+        self.init(storeId: identifier, city: city!, state: state!)
+    }
+    
+    func encodeWithCoder(aCoder: NSCoder) {
+        aCoder.encodeObject(identifier, forKey: "storeId")
+        aCoder.encodeObject(city, forKey: "city")
+        aCoder.encodeObject(state, forKey: "state")
     }
     
 }
 
 class LocationPreferenceUtils {
     
-    static let storeLocations : [StoreLocation]? = {
+    static func isDefaultStoreId(storeId : String!) -> Bool {
         
-        guard let path = NSBundle.mainBundle().pathForResource("StoreLocations", ofType: "plist") else { return nil }
-        guard let contents = NSArray(contentsOfFile: path) else { return nil }
-        
-        return contents.map{ StoreLocation(dict: $0 as! Dictionary) }
-        
-    }()
-    
-    
-    static func setDefaultStore(store : StoreLocation?){
-        
-        let defaults = NSUserDefaults(suiteName: "group.bazaarvoice.bvsdkdemo")
-        var storeId = "0" // Store ID of 0 means no default is set
-        if (store) != nil {
-            storeId = store!.storeId
-        }
-        defaults!.setObject(storeId, forKey: "DefaultStoreLocation")
-        defaults!.synchronize()
-        
-    }
-    
-    static func getDefaultStore() -> StoreLocation? {
-        
-        var store : StoreLocation?
-        
-        let defaults = NSUserDefaults(suiteName: "group.bazaarvoice.bvsdkdemo")
-        if let storeId = defaults!.stringForKey("DefaultStoreLocation"){
-            for currStore in LocationPreferenceUtils.storeLocations! {
-                if storeId == currStore.storeId {
-                    store = currStore
-                    break
-                }
-            }
-        }
-        
-        return store
-        
-    }
-    
-    
-    static func isDefaultStore(store : StoreLocation!) -> Bool {
-        
-        let defaultStore = self.getDefaultStore()
-        if (defaultStore?.storeId == store.storeId){
+        let defaultCachedStore = self.getDefaultStore()
+        if (defaultCachedStore?.identifier == storeId){
             return true
         }
 
         return false
+    }
+    
+    static func setDefaultStore(store: CachableDefaultStore){
+        
+        let archivedStore = NSKeyedArchiver.archivedDataWithRootObject(store)
+        
+        let defaults = NSUserDefaults(suiteName: "group.bazaarvoice.bvsdkdemo")
+        defaults!.setObject(archivedStore, forKey: "DefaultBVStore")
+        defaults!.synchronize()
+
+    }
+    
+    static func getDefaultStore() -> CachableDefaultStore? {
+        
+        if let savedStoreData = NSUserDefaults(suiteName: "group.bazaarvoice.bvsdkdemo")?.objectForKey("DefaultBVStore") as? NSData {
+            return NSKeyedUnarchiver.unarchiveObjectWithData(savedStoreData) as? CachableDefaultStore
+        }
+        
+        return nil
         
     }
     
-    /// Calculate the distance in miles between two coordinates
-    static func distanceInMilesFromLocation(locationA : CLLocation, locationB : CLLocation) -> CGFloat {
+    static func isDefaultStore(store: BVStore) -> Bool {
+    
+        var isDefault = false
         
-        let distanceMeters : CLLocationDistance = locationA.distanceFromLocation(locationB)
+        if let defaultStore = self.getDefaultStore(){
+            if (defaultStore.identifier == store.identifier){
+                isDefault = true
+            }
+        }
         
-        return CGFloat(distanceMeters) / 1609.344
-        
+        return isDefault
     }
     
 }

@@ -10,6 +10,7 @@
 #import "NSBundle+DiagnosticInformation.h"
 #import "BVConversationsErrorResponse.h"
 #import "BVConversationsAnalyticsUtil.h"
+#import "BVStoreReviewsResponse.h"
 
 @implementation BVConversationsRequest
 
@@ -18,7 +19,7 @@
     NSMutableArray<BVStringKeyValuePair*>* params = [NSMutableArray array];
     
     [params addObject:[BVStringKeyValuePair pairWithKey:@"apiversion" value:@"5.4"]];
-    [params addObject:[BVStringKeyValuePair pairWithKey:@"passkey" value:[BVSDKManager sharedManager].apiKeyConversations]];
+    [params addObject:[BVStringKeyValuePair pairWithKey:@"passkey" value:[self getPassKey]]];
     [params addObject:[BVStringKeyValuePair pairWithKey:@"_appId" value:[NSBundle mainBundle].bundleIdentifier]];
     [params addObject:[BVStringKeyValuePair pairWithKey:@"_appVersion" value:[NSBundle_DiagnosticInformation releaseVersionNumber]]];
     [params addObject:[BVStringKeyValuePair pairWithKey:@"_buildNumber" value:[NSBundle_DiagnosticInformation buildVersionNumber]]];
@@ -64,7 +65,6 @@
     
 }
 
-
 - (void)loadProducts:(BVConversationsRequest * _Nonnull)request completion:(void (^ _Nonnull)(BVProductsResponse * _Nonnull response))completion failure:(void (^ _Nonnull)(NSArray<NSError *> * _Nonnull errors))failure {
     
     [self loadContent:request completion:^(NSDictionary * _Nonnull response) {
@@ -74,6 +74,39 @@
             completion(productsResponse);
         });
         [self sendProductsAnalytics:productsResponse];
+        
+    } failure:failure];
+    
+}
+    
+- (void)loadStores:(BVConversationsRequest * _Nonnull)request completion:(void (^ _Nonnull)(BVBulkStoresResponse * _Nonnull response))completion failure:(void (^ _Nonnull)(NSArray<NSError *> * _Nonnull errors))failure {
+    
+    [self loadContent:request completion:^(NSDictionary * _Nonnull response) {
+        BVBulkStoresResponse* storesResponse = [[BVBulkStoresResponse alloc] initWithApiResponse:response];
+        // invoke success callback on main thread
+        dispatch_async(dispatch_get_main_queue(), ^{
+            completion(storesResponse);
+        });
+        
+        if ([storesResponse.results count] == 1){
+             [self sendStoreAnalytics:storesResponse.results[0]];
+        }
+        
+    } failure:failure];
+    
+}
+
+- (void)loadStoreReviews:(BVConversationsRequest * _Nonnull)request completion:(void (^ _Nonnull)(BVStoreReviewsResponse * _Nonnull response))completion failure:(void (^ _Nonnull)(NSArray<NSError *> * _Nonnull errors))failure {
+    
+    [self loadContent:request completion:^(NSDictionary * _Nonnull response) {
+        BVStoreReviewsResponse* reviewResponse = [[BVStoreReviewsResponse alloc] initWithApiResponse:response];
+        // invoke success callback on main thread
+        dispatch_async(dispatch_get_main_queue(), ^{
+            completion(reviewResponse);
+        });
+        
+        [self sendReviewsAnalytics:reviewResponse];
+        
     } failure:failure];
     
 }
@@ -176,14 +209,14 @@
 
 - (NSError * _Nonnull)limitError:(NSInteger)limit {
     
-    NSString* message = [NSString stringWithFormat:@"Invalid `limit` value: Parameter 'limit' has invalid value: %li - must be between 1 and 20.", limit];
+    NSString* message = [NSString stringWithFormat:@"Invalid `limit` value: Parameter 'limit' has invalid value: %li - must be between 1 and 100.", limit];
     return [NSError errorWithDomain:BVErrDomain code:BV_ERROR_INVALID_LIMIT userInfo:@{NSLocalizedDescriptionKey: message}];
     
 }
 
 - (NSError * _Nonnull)tooManyProductsError:(NSArray<NSString *> * _Nonnull)productIds {
     
-    NSString* message = [NSString stringWithFormat:@"Too many productIds requested: %li. Must be between 1 and 50.", [productIds count]];
+    NSString* message = [NSString stringWithFormat:@"Too many productIds requested: %li. Must be between 1 and 100.", [productIds count]];
     return [NSError errorWithDomain:BVErrDomain code:BV_ERROR_TOO_MANY_PRODUCTS userInfo:@{NSLocalizedDescriptionKey: message}];
     
 }
@@ -249,7 +282,19 @@
     }
     
 }
+    
+- (void)sendStoreAnalytics:(BVStore*)store {
+    
+    if (store) {
+        // send pageview for product
+        [BVConversationsAnalyticsUtil queueAnalyticsEventForStorePageView:store];
+    }
+    
+}
 
+- (NSString * _Nonnull)getPassKey{
+   return [BVSDKManager sharedManager].apiKeyConversations;
+}
 
 
 @end

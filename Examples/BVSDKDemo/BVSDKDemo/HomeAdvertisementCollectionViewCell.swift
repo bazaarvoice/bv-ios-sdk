@@ -24,7 +24,7 @@ class HomeAdvertisementCollectionViewCell: UICollectionViewCell {
             let callToActionLabel = nativeContentAdView.callToActionView as! UILabel
             
             titleLabel.text = nativeContentAd?.headline
-            imageView.image = (nativeContentAd?.images[0] as! GADNativeAdImage).image
+            imageView.image = (nativeContentAd?.images![0] as! GADNativeAdImage).image
             bodyLabel.text = nativeContentAd?.body
             callToActionLabel.text = nativeContentAd?.callToAction
             
