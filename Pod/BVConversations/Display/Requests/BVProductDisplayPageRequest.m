@@ -81,12 +81,25 @@
     NSString* filterValue = [filter toParameterString];
     [params addObject:[BVStringKeyValuePair pairWithKey:@"Filter" value:filterValue]];
     
-    [params addObject:[self sortParams:self.reviewSorts withKey:@"Sort_Reviews"]];
-    [params addObject:[self sortParams:self.questionSorts withKey:@"Sort_Questions"]];
-    [params addObject:[self sortParams:self.answerSorts withKey:@"Sort_Answers"]];
+    if (self.reviewSorts.count > 0){
+        [params addObject:[self sortParams:self.reviewSorts withKey:@"Sort_Reviews"]];
+    }
     
-    [params addObject:[BVStringKeyValuePair pairWithKey:@"Include" value:[self includesToParams:self.includes]]];
-    [params addObject:[BVStringKeyValuePair pairWithKey:@"Stats" value:[self statisticsToParams:self.PDPContentTypeStatistics]]];
+    if (self.questionSorts.count > 0){
+        [params addObject:[self sortParams:self.questionSorts withKey:@"Sort_Questions"]];
+    }
+    
+    if (self.answerSorts.count > 0){
+        [params addObject:[self sortParams:self.answerSorts withKey:@"Sort_Answers"]];
+    }
+    
+    if (self.includes.count > 0){
+        [params addObject:[BVStringKeyValuePair pairWithKey:@"Include" value:[self includesToParams:self.includes]]];
+    }
+    
+    if ([self statisticsToParams:self.PDPContentTypeStatistics].length > 0){
+        [params addObject:[BVStringKeyValuePair pairWithKey:@"Stats" value:[self statisticsToParams:self.PDPContentTypeStatistics]]];
+    }
     
     for (PDPInclude* include in self.includes) {
         if(include.limit != nil) {

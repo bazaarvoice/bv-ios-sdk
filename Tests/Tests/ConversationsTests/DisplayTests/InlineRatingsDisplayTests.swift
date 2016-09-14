@@ -58,7 +58,9 @@ class InlineRatingsDisplayTests: XCTestCase {
             XCTFail("inline ratings request error: \(error)")
         }
         
-        self.waitForExpectationsWithTimeout(10) { (error) in print("request took way too long") }
+        self.waitForExpectationsWithTimeout(10) { (error) in
+            XCTAssertNil(error, "Something went horribly wrong, request took too long.")
+        }
         
     }
     
@@ -66,14 +68,11 @@ class InlineRatingsDisplayTests: XCTestCase {
         
         let expectation = expectationWithDescription("inline ratings display should complete")
         
-        let tooManyProductIds = [
-            "1", "2", "3", "4", "5", "6", "7", "8", "9", "10",
-            "11", "12", "13", "14", "15", "16", "17", "18", "19", "20",
-            "21", "22", "23", "24", "25", "26", "27", "28", "29", "30",
-            "31", "32", "33", "34", "35", "36", "37", "38", "39", "40",
-            "41", "42", "43", "44", "45", "46", "47", "48", "49", "50",
-            "51"
-        ]
+        var tooManyProductIds: [String] = []
+        
+        for i in 0 ... 110{
+            tooManyProductIds += [String(i)]
+        }
         
         let request = BVBulkRatingsRequest(productIds: tooManyProductIds, statistics: .All)
         
@@ -83,7 +82,9 @@ class InlineRatingsDisplayTests: XCTestCase {
             expectation.fulfill()
         }
         
-        self.waitForExpectationsWithTimeout(10) { (error) in print("request took way too long") }
+        self.waitForExpectationsWithTimeout(10) { (error) in
+            XCTAssertNil(error, "Something went horribly wrong, request took too long.")
+        }
         
     }
     

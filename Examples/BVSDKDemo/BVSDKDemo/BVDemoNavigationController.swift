@@ -8,7 +8,7 @@
 import UIKit
 
 class BVDemoNavigationController: UINavigationController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -18,7 +18,5 @@ class BVDemoNavigationController: UINavigationController {
         self.navigationBar.barTintColor = UIColor.bazaarvoiceNavy()
         self.navigationBar.tintColor = UIColor.whiteColor()
         self.navigationBar.barStyle = .Black;
-        
-    }
-
+    }    
 }

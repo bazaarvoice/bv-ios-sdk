@@ -13,10 +13,11 @@
 #import "BVPost.h"
 #import "BVMediaPost.h"
 #import "BVSettings.h"
+#import "BVBaseAnalyticsHelper.h"
 
 
 /// BVConversationsAnalyticsHelper is a singleton object which queues analytic events created from the conversations module.
-@interface BVConversationsAnalyticsHelper : NSObject
+@interface BVConversationsAnalyticsHelper : BVBaseAnalyticsHelper
 
 
 /// Singleton pattern.

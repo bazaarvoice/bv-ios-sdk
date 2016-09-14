@@ -8,6 +8,8 @@
 #ifndef BVBaseStubTestCase_h
 #define BVBaseStubTestCase_h
 
+#import <XCTest/XCTest.h>
+
 // 3rd Party
 #import <OHHTTPStubs/OHHTTPStubs.h>
 #import <OHHTTPStubs/OHPathHelpers.h>

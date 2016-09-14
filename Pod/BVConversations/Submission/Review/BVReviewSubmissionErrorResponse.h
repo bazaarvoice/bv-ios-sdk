@@ -1,5 +1,5 @@
 //
-//  ReviewSubmissionErrorResponse.h
+//  BVReviewSubmissionErrorResponse.h
 //  Conversations
 //
 //  Copyright © 2016 Bazaarvoice. All rights reserved.

@@ -7,6 +7,9 @@
 
 #import "BVSDKManager.h"
 #import "BVCore.h"
+#import "BVNotificationConfiguration.h"
+
+#define NOTIFICATION_CONFIG_ROOT @"https://s3.amazonaws.com"
 
 @interface BVSDKManager ()
 
@@ -36,6 +39,7 @@
     if(self){
         
         _bvUser = [[BVAuthenticatedUser alloc] init];
+        _bvStoreReviewNotificationProperties = nil;
         
         // make sure analytics has been started
         [BVAnalyticsManager sharedManager];
@@ -45,13 +49,15 @@
         _clientId = nil;
         _apiKeyConversations = nil;
         _apiKeyShopperAdvertising = nil;
+        _apiKeyConversationsStores = nil;
+        _apiKeyLocation = nil;
     }
     return self;
 }
 
 - (NSString *)description{
 
-    NSString *returnValue = [NSString stringWithFormat:@"Setting Values:\n conversations API key = %@ \n shopper marketing API key = %@ \n BVSDK Version = %@ \n clientId = %@ \n staging = %i \n" , self.apiKeyConversations, self.apiKeyShopperAdvertising, BV_SDK_VERSION, self.clientId, self.staging];
+    NSString *returnValue = [NSString stringWithFormat:@"Setting Values:\n conversations API key = %@ \n shopper marketing API key = %@ \n conversations for stores API key = %@ \n BVSDK Version = %@ \n clientId = %@ \n staging = %i \n" , self.apiKeyConversations, self.apiKeyShopperAdvertising, self.apiKeyConversationsStores, BV_SDK_VERSION, self.clientId, self.staging];
     
     return returnValue;
     
@@ -78,6 +84,24 @@
 
 -(void)setApiKeyConversations:(NSString *)apiKeyConversations{
     _apiKeyConversations = apiKeyConversations;
+}
+
+- (void)setApiKeyConversationsStores:(NSString *)apiKeyConversationsStores{
+    _apiKeyConversationsStores = apiKeyConversationsStores;
+    [self loadNotificationConfiguration];
+}
+
+-(void)loadNotificationConfiguration {
+    
+        NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@/incubator-mobile-apps/conversations-stores/%@/ios/geofenceConfig.json", NOTIFICATION_CONFIG_ROOT, [[BVSDKManager sharedManager] clientId]]];
+        [BVNotificationConfiguration loadConfiguration:url completion:^(BVStoreReviewNotificationProperties * _Nonnull response) {
+            [[BVLogger sharedLogger] verbose:@"Successfully loaded BVStoreReviewNotificationProperties"];
+            _bvStoreReviewNotificationProperties = response;
+    
+        } failure:^(NSError * _Nonnull errors) {
+            [[BVLogger sharedLogger] error:@"ERROR: Failed to load BVStoreReviewNotificationProperties"];
+        }];
+
 }
 
 -(void)setLogLevel:(BVLogLevel)logLevel {
@@ -134,6 +158,5 @@
     
     return [self.bvUser getTargetingKeywords];
 }
-
 
 @end

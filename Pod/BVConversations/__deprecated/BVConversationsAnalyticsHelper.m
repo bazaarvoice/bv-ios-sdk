@@ -164,32 +164,6 @@ static BVConversationsAnalyticsHelper *BVAnalyticsSingleton = nil;
 
 // Helper routines to format data according to API response
 
--(NSDictionary*)getImpressionParams {
-    return @{
-             @"cl": @"Impression",
-             @"type": @"UGC",
-             @"source": @"native-mobile-sdk"
-             };
-}
-
--(NSDictionary*)getPageViewParams {
-    return @{
-             @"cl": @"PageView",
-             @"type": @"Product",
-             @"source": @"native-mobile-sdk"
-             };
-}
-
-
--(NSDictionary*)getFeatureUsedParams {
-    return @{
-             @"cl": @"Feature",
-             @"type": @"Used",
-             @"source": @"native-mobile-sdk"
-             };
-}
-
-
 -(NSDictionary*)getRelevantInfoForGetType:(BVGetType)type andResult:(NSDictionary*)result {
     switch (type) {
             

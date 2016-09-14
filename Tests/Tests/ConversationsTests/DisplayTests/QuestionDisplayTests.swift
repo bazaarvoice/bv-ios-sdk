@@ -61,7 +61,9 @@ class QuestionDisplayTests: XCTestCase {
             
         }
         
-        self.waitForExpectationsWithTimeout(10) { (error) in print("request took way too long") }
+        self.waitForExpectationsWithTimeout(10) { (error) in
+            XCTAssertNil(error, "Something went horribly wrong, request took too long.")
+        }
         
     }
     

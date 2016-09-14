@@ -39,13 +39,20 @@ class CurationsPhotoMapViewController: UIViewController, MKMapViewDelegate {
     override func viewDidAppear(animated: Bool) {
         if !hasShownDefault {
             hasShownDefault = true
-            guard let store = LocationPreferenceUtils.getDefaultStore()else{ return }
-            for ann in annotations {
+            /*
+
+            guard let storeId = LocationPreferenceUtils.getDefaultStoreId() else {
+                return
+            }
+            
+            // TODO: This should be fetching a store with lat/long from the default store selected.
+                       for ann in annotations {
                 if ann.coordinate.latitude == Double(store.latitude) {
                     mapView.selectAnnotation(ann, animated: true)
                     break
                 }
             }
+             */
         }
     }
     

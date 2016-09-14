@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import UserNotifications
 
 class NotificationPermissionViewController: PermissionViewController {
     
@@ -23,8 +24,15 @@ class NotificationPermissionViewController: PermissionViewController {
     }
     
     override func enablePressed(sender: UIButton) {
-        let settings = UIUserNotificationSettings(forTypes: [.Alert, .Badge, .Sound], categories: nil)
-        UIApplication.sharedApplication().registerUserNotificationSettings(settings)
+        
+        if #available(iOS 10.0, *) {
+            let center = UNUserNotificationCenter.currentNotificationCenter()
+            center.requestAuthorizationWithOptions([.Sound, .Alert, .Badge]){ (success, error) in
+            };
+        }else {
+            let settings = UIUserNotificationSettings(forTypes: [.Alert, .Badge, .Sound], categories: nil)
+            UIApplication.sharedApplication().registerUserNotificationSettings(settings)
+        }
         self.navigationController?.dismissViewControllerAnimated(true, completion: nil)
     }
     

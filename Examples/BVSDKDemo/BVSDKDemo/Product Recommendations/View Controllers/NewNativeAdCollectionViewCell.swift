@@ -20,7 +20,7 @@ class NewNativeAdCollectionViewCell: UICollectionViewCell {
             
             headlineLabel.text = nativeContentAd?.headline
             bodyLabel.text = nativeContentAd?.body
-            let image = nativeContentAd?.images[0] as! GADNativeAdImage
+            let image = nativeContentAd?.images![0] as! GADNativeAdImage
             imageView.image = image.image
             
             nativeContentAdView.nativeContentAd = nativeContentAd

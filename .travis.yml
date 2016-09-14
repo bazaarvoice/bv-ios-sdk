@@ -8,21 +8,24 @@ git:
 before_install:
 #  - gem update cocoapods --no-ri --no-rdoc
   - gem install cocoapods -v '1.0.1'
-  - gem install xcpretty --no-ri --no-rdoc
+  - gem install xcpretty --no-ri --no-rdoc --no-document --quiet
   - SIMULATOR_ID=$(xcrun instruments -s | grep -o "iPhone 6 (10.0) \[.*\]" | grep -o "\[.*\]" | sed "s/^\[\(.*\)\]$/\1/")
 
 
 script:
+   - set -o pipefail
    - open -a "simulator" --args -CurrentDeviceUDID $SIMULATOR_ID
-
-# Run the unit tests on the available simulator
-   - cd ./Tests
-   - pod update
-   - cd ..
-   - xcodebuild test -workspace ./Tests/BVSDK.xcworkspace -scheme "BVSDK-Tests" -configuration Debug -sdk iphonesimulator -destination "platform=iOS Simulator,id=$SIMULATOR_ID,OS=10.0" | xcpretty -c
 
 # Sanity test to make sure BVSDKDemo installs dependencies and builds OK
    - cd ./Examples/BVSDKDemo
    - pod update
    - cd ../..
-   - xcodebuild -workspace ./Examples/BVSDKDemo/BVSDKDemo.xcworkspace -scheme "BVSDKDemo" -configuration Debug -sdk iphonesimulator | egrep -A 5 "(error|warning):"
+   - xcodebuild -workspace ./Examples/BVSDKDemo/BVSDKDemo.xcworkspace -scheme "BVSDKDemo" -configuration Debug -sdk iphonesimulator | xcpretty -c
+
+
+# Run the unit tests on the available simulator
+   - cd ./Tests
+   - pod install
+   - cd ..
+   - xcodebuild test -workspace ./Tests/BVSDK.xcworkspace -scheme "BVSDK-Tests" -configuration Debug -sdk iphonesimulator -destination "platform=iOS Simulator,id=$SIMULATOR_ID,OS=10.0" | xcpretty -c
+

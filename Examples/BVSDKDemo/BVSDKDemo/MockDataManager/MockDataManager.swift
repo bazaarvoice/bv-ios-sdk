@@ -34,6 +34,7 @@ class MockDataManager {
             BVSDKManager.sharedManager().clientId = matchingConfig!.clientId
             BVSDKManager.sharedManager().apiKeyCurations = matchingConfig!.curationsKey
             BVSDKManager.sharedManager().apiKeyConversations = matchingConfig!.conversationsKey
+            BVSDKManager.sharedManager().apiKeyConversationsStores = matchingConfig!.conversationsStoresKey
             BVSDKManager.sharedManager().apiKeyShopperAdvertising = matchingConfig!.shopperAdvertisingKey
             BVSDKManager.sharedManager().apiKeyLocation = matchingConfig!.locationKey
         }
@@ -66,6 +67,7 @@ class MockDataManager {
     let submitReviewPhotoMatch = "bazaarvoice.com/data/uploadphoto"
     let submitQuestionMatch = "bazaarvoice.com/data/submitquestion"
     let submitAnswerMatch = "bazaarvoice.com/data/submitanswer"
+    let notificationConfigMatch = "s3.amazonaws.com/incubator-mobile-apps/conversations-stores"
     
     func shouldMockResponseForRequest(request: NSURLRequest) -> Bool {
         
@@ -96,8 +98,9 @@ class MockDataManager {
         let containsSubmitPhotoReviews = url.containsString(submitReviewPhotoMatch)
         let containsSubmitQuestion = url.containsString(submitQuestionMatch)
         let containsSubmitAnswers = url.containsString(submitAnswerMatch)
+        let notificationConfig = url.containsString(notificationConfigMatch)
         
-        return containsCurations || containsCurationsPhotoPost || containsRecommendations || containsProfile || containsConversations || containsConversationsQuestions || containsConversationsProducts || containsSubmitReviews || containsSubmitPhotoReviews || containsSubmitQuestion || containsSubmitAnswers
+        return containsCurations || containsCurationsPhotoPost || containsRecommendations || containsProfile || containsConversations || containsConversationsQuestions || containsConversationsProducts || containsSubmitReviews || containsSubmitPhotoReviews || containsSubmitQuestion || containsSubmitAnswers || notificationConfig
         
     }
     
@@ -107,11 +110,9 @@ class MockDataManager {
         
         return manager.apiKeyCurations == "REPLACE_ME"
             && manager.apiKeyConversations == "REPLACE_ME"
+            && manager.apiKeyConversationsStores == "REPLACE_ME"
             && manager.apiKeyShopperAdvertising == "REPLACE_ME"
-        
     }
-    
-    
     
     let headers = ["Content-Type": "application/json"]
     
@@ -224,11 +225,26 @@ class MockDataManager {
         
         if url.containsString(conversationsProductMatch) {
             
-            return OHHTTPStubsResponse(
-                fileAtPath: OHPathForFile("conversationsProductsIncludeStats.json", self.dynamicType)!,
-                statusCode: 200,
-                headers: ["Content-Type": "application/json;charset=utf-8"]
-            )
+            // In the demp app, when requesting product status we just use the Filter=Id:eq:<id> param
+            // When we request a store list, we use the Offset parameter. 
+            // So we'll use that info
+            if url.containsString("Offset=0"){
+            
+                return OHHTTPStubsResponse(
+                    fileAtPath: OHPathForFile("storeBulkFeedWithStatistics.json", self.dynamicType)!,
+                    statusCode: 200,
+                    headers: ["Content-Type": "application/json;charset=utf-8"]
+                )
+                
+            } else {
+            
+                return OHHTTPStubsResponse(
+                    fileAtPath: OHPathForFile("conversationsProductsIncludeStats.json", self.dynamicType)!,
+                    statusCode: 200,
+                    headers: ["Content-Type": "application/json;charset=utf-8"]
+                )
+            
+            }
             
         }
         
@@ -271,6 +287,17 @@ class MockDataManager {
             )
             
         }
+        
+        if url.containsString(notificationConfigMatch) {
+            
+            return OHHTTPStubsResponse(
+                fileAtPath: OHPathForFile("testNotificationConfig.json", self.dynamicType)!,
+                statusCode: 200,
+                headers: ["Content-Type": "application/json;charset=utf-8"]
+            )
+            
+        }
+
         
         return OHHTTPStubsResponse()
         
@@ -321,7 +348,7 @@ class DemoConfigManager {
 
 class DemoConfig {
     
-    let clientId, displayName, curationsKey, conversationsKey, shopperAdvertisingKey, locationKey : String
+    let clientId, displayName, curationsKey, conversationsKey, conversationsStoresKey, shopperAdvertisingKey, locationKey : String
     
     init(dictionary:NSDictionary) {
         
@@ -329,6 +356,7 @@ class DemoConfig {
         displayName = dictionary["displayName"] as! String
         curationsKey = dictionary["apiKeyCurations"] as! String
         conversationsKey = dictionary["apiKeyConversations"] as! String
+        conversationsStoresKey = dictionary["apiKeyConversationsStores"] as! String
         shopperAdvertisingKey = dictionary["apiKeyShopperAdvertising"] as! String
         locationKey = dictionary["apiKeyLocation"] as! String
         

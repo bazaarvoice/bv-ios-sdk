@@ -41,7 +41,7 @@
 
 - (void)load:(void (^ _Nonnull)(BVBulkRatingsResponse * _Nonnull response))success failure:(ConversationsFailureHandler _Nonnull)failure {
     
-    if([self.productIds count] > 50) {
+    if([self.productIds count] > 100) {
         // invalid request
         [self sendError:[self tooManyProductsError:self.productIds] failureCallback:failure];
     }

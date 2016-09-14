@@ -25,11 +25,6 @@
 +(void)unregisterForLocationUpdates:(id<BVLocationManagerDelegate> _Nonnull)delegate;
 
 /**
-    Set the single delegate that will handle formatting a push notification and deciding whether to show or not.
-*/
-+(void)setNotificationDelegate:( __weak id<BVLocationNotificationDelegate> _Nullable)delegate;
-
-/**
     Start updating location; All registered delegates will receive callbacks
 */
 +(void)startLocationUpdates;
@@ -52,27 +47,5 @@
 /// All registered delegates will receive this callback whenever a user exits a store belonging to the client of the SDK.
 @optional
 -(void)didEndVisit:(BVVisit* _Nonnull)visit;
-
-@end
-
-@protocol BVLocationNotificationDelegate<NSObject>
-
-/**
-    Only performed if Application is not in the foreground
-    Called before presenting a notification.
-    @param The location for where the notification is to be presented
-    @return YES if you would like the notification presented or NO if not.
- */
-@required
--(BOOL)shouldShowNotificationForVisit:(BVVisit* _Nonnull)visit;
-
-/**
-    Only performed if Application is not in the foreground
-    Called before presenting a notification.
-    @param notification A notification containing preconfigured information that can be modified.
-    @return The notification to be presented. If nil is returned preconfigured notification will be shown.
- */
-@required
--( UILocalNotification* _Nonnull )notificationWillBePresented:(UILocalNotification* _Nonnull)notification;
 
 @end
