@@ -34,7 +34,10 @@
         
         [[BVLogger sharedLogger] verbose:[NSString stringWithFormat:@"GET: %@", profileUrl]];
         
-        NSURLSessionDataTask *profileTask = [[NSURLSession sharedSession] dataTaskWithURL:[NSURL URLWithString:profileUrl] completionHandler:^(NSData *data, NSURLResponse *response, NSError *error){
+        NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
+        NSURLSession *session = [NSURLSession sessionWithConfiguration:config];
+        
+        NSURLSessionDataTask *profileTask = [session dataTaskWithURL:[NSURL URLWithString:profileUrl] completionHandler:^(NSData *data, NSURLResponse *response, NSError *error){
           
             // Completion
             NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;

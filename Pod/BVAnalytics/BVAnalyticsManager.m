@@ -427,11 +427,10 @@ static BVAnalyticsManager *analyticsInstance = nil;
     
     _clientId = clientId;
     
-//    if ([_clientId isEqualToString:@"apitestcustomer"]){
-//        [[BVLogger sharedLogger] error:@"WARNING: Client apitestcustomer should not be used for production!!!"];
-//    }
+    if ([_clientId isEqualToString:@"apitestcustomer"]){
+        [[BVLogger sharedLogger] error:@"WARNING: Client apitestcustomer should not be used for production!!!"];
+    }
     
 }
-
 
 @end

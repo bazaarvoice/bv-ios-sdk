@@ -281,14 +281,7 @@ class CurationsFeedItemDetailTableViewController: UITableViewController {
                 let productView = NewProductPageViewController(nibName:"NewProductPageViewController", bundle: nil, product: bvProduct)
                 
                 self.navigationController?.pushViewController(productView, animated: true)
-                
-//                if ((selectedProduct.productPageUrl) != nil){
-//                    let url = NSURL(string: selectedProduct.productPageUrl)!
-//                    UIApplication.sharedApplication().openURL(url)
-//                } else {
-//                    print("ERROR: No product URL found for " + product.description)
-//                }
-                
+                                
             }
             return productDetailCell!
         }

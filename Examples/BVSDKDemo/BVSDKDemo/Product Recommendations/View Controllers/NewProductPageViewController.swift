@@ -63,7 +63,7 @@ class NewProductPageViewController: BVProductDisplayPageViewController, UITableV
         
         ProfileUtils.trackViewController(self)
         
-        defaultStoreId = LocationPreferenceUtils.getDefaultStore() != nil ? (LocationPreferenceUtils.getDefaultStore()?.storeId)! : "0"
+        defaultStoreId = LocationPreferenceUtils.getDefaultStore() != nil ? (LocationPreferenceUtils.getDefaultStore()?.identifier)! : "0"
         
         // load a native content ad
         self.loadNativeAd()
@@ -108,11 +108,11 @@ class NewProductPageViewController: BVProductDisplayPageViewController, UITableV
     }
     
     override func viewDidAppear(animated: Bool) {
-        let currentStoreDefault = LocationPreferenceUtils.getDefaultStore()
-        if currentStoreDefault != nil && defaultStoreId != currentStoreDefault?.storeId {
+        let cachedDefaultStore = LocationPreferenceUtils.getDefaultStore()
+        if cachedDefaultStore != nil && self.defaultStoreId != cachedDefaultStore?.identifier {
             let indexPath = NSIndexPath(forRow: 0, inSection: ProductDetailSection.Location.rawValue)
             self.tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Top)
-            defaultStoreId = (currentStoreDefault?.storeId)!
+            defaultStoreId = (cachedDefaultStore?.identifier)!
         }
         
     }
@@ -404,8 +404,8 @@ class NewProductPageViewController: BVProductDisplayPageViewController, UITableV
             cell.setCustomRightIcon(FAKFontAwesome.chevronRightIconWithSize)
            
             var buttonText = "Set your default store location!"
-            if let defaultStore = LocationPreferenceUtils.getDefaultStore() {
-                buttonText = "My Store: " + defaultStore.storeCity + ", " + defaultStore.storeState
+            if let defaultCachedStore = LocationPreferenceUtils.getDefaultStore() {
+                buttonText = "My Store: " + defaultCachedStore.city + ", " + defaultCachedStore.state
             }
             
             cell.button.setTitle(buttonText, forState: .Normal)

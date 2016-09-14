@@ -6,7 +6,6 @@
 //
 
 #import "BVReviewSubmission.h"
-#import "BVUploadablePhoto.h"
 #import "BVReviewSubmissionErrorResponse.h"
 #import "BVSDKManager.h"
 #import "BVConversationsAnalyticsUtil.h"
@@ -17,8 +16,6 @@
 @property NSString* _Nonnull reviewText;
 @property NSString* _Nonnull reviewTitle;
 @property (readwrite) NSString* _Nonnull productId;
-
-@property NSMutableArray<BVUploadablePhoto*>* _Nonnull photos;
 
 @property NSMutableDictionary* _Nonnull additionalFields;
 @property NSMutableDictionary* _Nonnull contextDataValues;
@@ -289,7 +286,7 @@
                                            @"productId": self.productId
                                        }];
     
-    parameters[@"passkey"] = [BVSDKManager sharedManager].apiKeyConversations;
+    parameters[@"passkey"] = [self getPasskey];
     parameters[@"action"] = [BVSubmissionActionUtil toString:BVSubmissionAction];
     
     parameters[@"campaignid"] = self.campaignId;
@@ -362,6 +359,10 @@
     
     return parameters;
     
+}
+
+- (NSString * _Nonnull)getPasskey{
+    return [BVSDKManager sharedManager].apiKeyConversations;
 }
 
 @end

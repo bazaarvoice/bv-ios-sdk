@@ -65,7 +65,7 @@
 
 - (void)load:(void (^ _Nonnull)(BVReviewsResponse * _Nonnull response))success failure:(ConversationsFailureHandler _Nonnull)failure {
     
-    if (self.limit < 1 || self.limit > 20) {
+    if (self.limit < 1 || self.limit > 100) {
         // invalid request
         [self sendError:[super limitError:self.limit] failureCallback:failure];
     }

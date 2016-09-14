@@ -9,6 +9,10 @@ import UIKit
 import HCSStarRatingView
 import BVSDK
 
+/**
+If the header in your this detail view is a BVRecommended, set the product variable.
+If the header in your detail view is a BVStore, set the store variable
+*/
 class ProductDetailHeaderView: UIView {
     
     @IBOutlet weak var productImage : UIImageView!
@@ -22,6 +26,26 @@ class ProductDetailHeaderView: UIView {
             productName.text = product.productName
             if (productStars != nil){
                 productStars.value = CGFloat(product.averageRating)
+            }
+            
+        }
+    }
+    
+    var store : BVStore! {
+        didSet {
+            
+            if store.imageUrl != nil {
+                productImage.sd_setImageWithURL(NSURL(string: store.imageUrl!))
+            }
+            
+            if (store.name != nil){
+                productName.text = store.name
+            }
+            
+            if (productStars != nil && store.reviewStatistics?.averageOverallRating != nil){
+                productStars.value = CGFloat((store.reviewStatistics?.averageOverallRating)!)
+            } else if productStars != nil {
+                productStars.value = 0
             }
             
         }

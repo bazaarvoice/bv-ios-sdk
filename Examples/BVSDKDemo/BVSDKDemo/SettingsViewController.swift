@@ -105,6 +105,9 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         if config.conversationsKey != "REPLACE_ME" {
             strings.append("Conversations")
         }
+        if config.conversationsStoresKey != "REPLACE_ME" {
+            strings.append("Conversations Stores")
+        }
         if (config.locationKey != "00000000-0000-0000-0000-000000000000"){
             strings.append("Location")
         }
@@ -118,6 +121,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         BVSDKManager.sharedManager().clientId = "REPLACE_ME"
         BVSDKManager.sharedManager().apiKeyShopperAdvertising = "REPLACE_ME"
         BVSDKManager.sharedManager().apiKeyConversations = "REPLACE_ME"
+        BVSDKManager.sharedManager().apiKeyConversationsStores = "REPLACE_ME"
         BVSDKManager.sharedManager().apiKeyCurations = "REPLACE_ME"
         BVSDKManager.sharedManager().apiKeyLocation = "00000000-0000-0000-0000-000000000000"
         
@@ -130,9 +134,10 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         let sdk = BVSDKManager.sharedManager()
         let curations = sdk.apiKeyCurations == "" || sdk.apiKeyCurations == "REPLACE_ME"
         let conversations = sdk.apiKeyConversations == "" || sdk.apiKeyConversations == "REPLACE_ME"
+        let conversationsStores = sdk.apiKeyConversationsStores == "" || sdk.apiKeyConversationsStores == "REPLACE_ME"
         let recommendations = sdk.apiKeyShopperAdvertising == "" || sdk.apiKeyShopperAdvertising == "REPLACE_ME"
         
-        return  curations && conversations && recommendations
+        return  curations && conversations && conversationsStores && recommendations
         
     }
     
@@ -141,6 +146,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         return BVSDKManager.sharedManager().clientId == config.clientId
             && BVSDKManager.sharedManager().apiKeyShopperAdvertising == config.shopperAdvertisingKey
             && BVSDKManager.sharedManager().apiKeyConversations == config.conversationsKey
+            && BVSDKManager.sharedManager().apiKeyConversationsStores == config.conversationsStoresKey
             && BVSDKManager.sharedManager().apiKeyCurations == config.curationsKey
         
     }
@@ -190,7 +196,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
             if indexPath.row == 0 {
                 
                 cell.textLabel?.text = "(Mock) Endurance Cycles"
-                cell.detailTextLabel?.text = "Recommendations, Advertising, Curations, Conversations"
+                cell.detailTextLabel?.text = "Recommendations, Advertising, Curations, Conversations, Stores"
                 
                 if shouldMock() {
                     cell.accessoryType = .Checkmark
@@ -260,6 +266,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
                 BVSDKManager.sharedManager().clientId = config!.clientId
                 BVSDKManager.sharedManager().apiKeyShopperAdvertising = config!.shopperAdvertisingKey
                 BVSDKManager.sharedManager().apiKeyConversations = config!.conversationsKey
+                BVSDKManager.sharedManager().apiKeyConversationsStores = config!.conversationsStoresKey
                 BVSDKManager.sharedManager().apiKeyCurations = config!.curationsKey
                 BVSDKManager.sharedManager().apiKeyLocation = config!.locationKey
                 

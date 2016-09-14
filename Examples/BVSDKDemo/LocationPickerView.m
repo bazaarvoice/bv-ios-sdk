@@ -145,6 +145,16 @@
         if (self.mapViewDidLoadBlock) {
             self.mapViewDidLoadBlock(self);
         }
+    } else {
+        
+        if ([self.delegate respondsToSelector:@selector(locationPicker:mapViewDidLoad:)]) {
+            [self.delegate locationPicker:self mapViewDidLoad:self.mapView];
+        }
+        
+        if (self.mapViewDidLoadBlock) {
+            self.mapViewDidLoadBlock(self);
+        }
+        
     }
     
     // Add tap gesture to table

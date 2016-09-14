@@ -8,6 +8,7 @@ target 'BVSDK-Tests' do
     pod "BVSDK/BVCurations", :path => "../"
     pod "BVSDK/BVLocation", :path => "../"
     pod 'OHHTTPStubs', '~> 5.1'
+    pod 'OHHTTPStubs/Swift'
 end
 
 post_install do |installer|

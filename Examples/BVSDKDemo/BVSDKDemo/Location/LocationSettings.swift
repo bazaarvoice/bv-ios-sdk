@@ -8,11 +8,16 @@
 import UIKit
 import MapKit
 import FontAwesomeKit
+import BVSDK
 
 class LocationSettings: UIViewController, UITableViewDelegate, UITableViewDataSource, LocationPickerViewDelegate, MKMapViewDelegate, CLLocationManagerDelegate {
 
-    private var storeLocations : [StoreLocation] = []
-    private var defaultStore : StoreLocation?
+    private var stores : [BVStore] = []
+    
+    private var userDefaultStore : BVStore?
+    private var initialStoreIdOnLoad : String?
+    
+    private let spinner = Util.createSpinner()
     
     private var locationPickerView : LocationPickerView?
     
@@ -25,30 +30,90 @@ class LocationSettings: UIViewController, UITableViewDelegate, UITableViewDataSo
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
-        self.title = "Available Locations"
+        self.title = "Stores"
         
-        self.storeLocations = LocationPreferenceUtils.storeLocations!
-        self.defaultStore = LocationPreferenceUtils.getDefaultStore()
-    
-        if defaultStore != nil {
-            // remove default store from storeLocations array
-            var count = 0
-            for store in storeLocations {
-                if store.storeId == defaultStore?.storeId{
-                    self.storeLocations.removeAtIndex(count)
-                    break
-                }
-                count += 1
-            }
-            
-        }
-        
-        self.setUpLocationPicker()
-        self.initLocation()
+        self.loadStoresAsync()
         
     }
 
+    override func viewWillDisappear(animated: Bool) {
+        // If the default store changed, queue up a notification for the newly set store.
+        let cachedStore = LocationPreferenceUtils.getDefaultStore()
+        if userDefaultStore != nil && initialStoreIdOnLoad != nil && initialStoreIdOnLoad != cachedStore?.identifier {
+            BVReviewNotificationCenter.sharedCenter().queueStoreReview(initialStoreIdOnLoad!)
+        }
+    }
+    
+    private func loadStoresAsync(){
+        
+        self.setUpLocationPicker()
+        
+        self.spinner.center = (self.locationPickerView?.center)!
+        self.locationPickerView?.addSubview(self.spinner)
+        
+        let request = BVBulkStoreItemsRequest(20, offset: 0)
+        request.includeStatistics(.Reviews)
+        request.load({ (storesResponse) in
+            
+            // success
+            self.stores = storesResponse.results
+            self.userDefaultStore = self.getDefaultStore()
+            self.initialStoreIdOnLoad = self.userDefaultStore?.identifier
+            
+            self.spinner.removeFromSuperview()
+            
+            if self.userDefaultStore != nil {
+                // remove default store from the stores API response
+                var count = 0
+                for store in self.stores {
+                    if store.identifier == self.userDefaultStore?.identifier{
+                        self.stores.removeAtIndex(count)
+                        break
+                    }
+                    
+                    count += 1
+                }
+                
+            }
+            
+            self.initLocation()
+            
+            if (self.locationPickerView != nil){
+                self.locationPickerView?.tableView.reloadData()
+                self.locationPickerView?.tableView.hidden = false
+            }
+            
+            }) { (error) in
+            
+            // fail
+            self.spinner.removeFromSuperview()
+            SweetAlert().showAlert("Error Loading Stores!", subTitle:error.description, style: .Error)
+                
+            if (self.locationPickerView != nil){
+                self.locationPickerView?.tableView.hidden = true
+            }
+        }
+        
+    }
+    
+    private func getDefaultStore() -> BVStore? {
+        
+        if let cachedStore = LocationPreferenceUtils.getDefaultStore() {
+            var defaultStore : BVStore?
+            
+            for store in self.stores {
+                if cachedStore.identifier == store.identifier {
+                    defaultStore = store
+                    break
+                }
+            }
+            
+            return defaultStore
+        }
+        
+        return nil
+    }
+    
     private func initLocation(){
         
         deviceLocation = CLLocationCoordinate2D(latitude: 0.0, longitude: 0.0)
@@ -59,7 +124,6 @@ class LocationSettings: UIViewController, UITableViewDelegate, UITableViewDataSo
             locationManager!.delegate = self
             locationManager!.requestAlwaysAuthorization()
             locationManager?.startUpdatingLocation()
-            
         }
         
     }
@@ -95,25 +159,25 @@ class LocationSettings: UIViewController, UITableViewDelegate, UITableViewDataSo
         
     }
     
-    
     // MARK: UITableViewDelegate
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
-        var store : StoreLocation!
+        var store : BVStore!
         
         switch indexPath.section {
-        case LocationSettingsSections.DefaultLocation.rawValue:
-            store = self.defaultStore!
-        case LocationSettingsSections.OtherLocations.rawValue:
-            store = self.storeLocations[indexPath.row]
-        default:
-            print("Error setting store for selected section! You're gonna crash!")
+            case LocationSettingsSections.DefaultLocation.rawValue:
+                store = self.userDefaultStore
+            case LocationSettingsSections.OtherLocations.rawValue:
+                store = self.stores[indexPath.row]
+            default:
+                print("Error setting store for selected section! You're gonna crash!")
         }
         
         // Change map to zoom in on selected store
-        self.zoomMapTooLocation(CLLocationCoordinate2D(latitude: Double(store.latitude)!, longitude: Double(store.longitude)!))
-        
+        if (store.hasGeoLoation()){
+            self.zoomMapTooLocation(CLLocationCoordinate2D(latitude: Double(store.storeLocation!.latitude!)!, longitude: Double(store.storeLocation!.longitude!)!))
+        }
         // Reset check icons for all visible cells
         let visibleRows = self.locationPickerView?.tableView.indexPathsForVisibleRows
         for currIndexPath in visibleRows! {
@@ -124,7 +188,7 @@ class LocationSettings: UIViewController, UITableViewDelegate, UITableViewDataSo
         // Set the cell tapped to the current cell (i.e. you can't tap a cell to turn the default off
         // you have to select another cell
         let cell = self.locationPickerView?.tableView.cellForRowAtIndexPath(indexPath) as! StoreLocationTableViewCell
-        LocationPreferenceUtils.setDefaultStore(store)
+        LocationPreferenceUtils.setDefaultStore(CachableDefaultStore(store: store))
         cell.setCheckOn()
             
         return
@@ -141,9 +205,9 @@ class LocationSettings: UIViewController, UITableViewDelegate, UITableViewDataSo
         
         switch section {
         case LocationSettingsSections.DefaultLocation.rawValue:
-            return self.defaultStore == nil ? 0 : 1
+            return self.userDefaultStore == nil ? 0 : 1
         case LocationSettingsSections.OtherLocations.rawValue:
-            return storeLocations.count
+            return self.stores.count
         default:
             return 0
         }
@@ -154,7 +218,7 @@ class LocationSettings: UIViewController, UITableViewDelegate, UITableViewDataSo
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch section {
         case LocationSettingsSections.DefaultLocation.rawValue:
-            return self.defaultStore == nil ? "" : "MY CURRENT STORE"
+            return self.userDefaultStore == nil ? "" : "MY CURRENT STORE"
         case LocationSettingsSections.OtherLocations.rawValue:
             return "OTHER STORES"
         default:
@@ -189,7 +253,7 @@ class LocationSettings: UIViewController, UITableViewDelegate, UITableViewDataSo
     }
     
     func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return self.defaultStore == nil ? 0 : 11
+        return self.userDefaultStore == nil ? 0 : 11
     }
     
     func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
@@ -207,15 +271,17 @@ class LocationSettings: UIViewController, UITableViewDelegate, UITableViewDataSo
         
         switch indexPath.section {
         case LocationSettingsSections.DefaultLocation.rawValue:
-            cell.storeLocation = defaultStore
-            cell.setCheckOn()
+            cell.store = self.userDefaultStore
+            if LocationPreferenceUtils.isDefaultStoreId(cell.store.identifier) {
+                cell.setCheckOn()
+            }
             break
             
         case LocationSettingsSections.OtherLocations.rawValue:
-            let store = self.storeLocations[indexPath.row]
-            cell.storeLocation = store
+            let currStore = self.stores[indexPath.row]
+            cell.store = currStore
             
-            if LocationPreferenceUtils.isDefaultStore(store) {
+            if LocationPreferenceUtils.isDefaultStoreId(currStore.identifier) {
                 cell.setCheckOn()
             }
             
@@ -226,6 +292,17 @@ class LocationSettings: UIViewController, UITableViewDelegate, UITableViewDataSo
             
         }
         
+        // hook up the closure on the cell to check if the user taps the reviews
+        // utilize closure to get the product the user tapped the "Shop Now" button on.
+        cell.onNumReviewsLabelTapped = { (selectedStore) -> Void in
+
+            let totalReviewCount : Int = selectedStore.reviewStatistics != nil ? (selectedStore.reviewStatistics?.totalReviewCount?.integerValue)! : 0
+            
+            let storeReviewsVC = StoreReviewsViewController(nibName: "StoreReviewsViewController", bundle: nil, store: selectedStore, totalReviewCount: totalReviewCount)
+            self.navigationController?.pushViewController(storeReviewsVC, animated: true)
+        
+        }
+
         return cell
     }
     
@@ -238,7 +315,10 @@ class LocationSettings: UIViewController, UITableViewDelegate, UITableViewDataSo
         
         let nibConversationsCell = UINib(nibName: "StoreLocationTableViewCell", bundle: nil)
         self.locationPickerView?.tableView.registerNib(nibConversationsCell, forCellReuseIdentifier: "StoreLocationTableViewCell")
+        self.locationPickerView!.tableView.rowHeight = UITableViewAutomaticDimension
+        self.locationPickerView!.tableView.estimatedRowHeight = 215
         
+        tableView.hidden = true
     }
     
     
@@ -247,28 +327,29 @@ class LocationSettings: UIViewController, UITableViewDelegate, UITableViewDataSo
         mapView.showsUserLocation = true;
         locationPickerView!.mapView.showsUserLocation = true
         
-        for store in self.storeLocations {
+        for store in self.stores {
             
             // Drop a pin
-            
-            mapView.addAnnotation(makePinForStore(store))
+            if store.hasGeoLoation() {
+                mapView.addAnnotation(makePinForStore(store))
+            }
             
         }
         
-        if (self.defaultStore != nil) {
-            mapView.addAnnotation(makePinForStore(self.defaultStore!))
-            self.zoomMapTooLocation(CLLocationCoordinate2DMake(Double(defaultStore!.latitude)!, Double(defaultStore!.longitude)!))
+        if (self.userDefaultStore != nil && self.userDefaultStore!.hasGeoLoation()) {
+            mapView.addAnnotation(makePinForStore(self.userDefaultStore!))
+            self.zoomMapTooLocation(CLLocationCoordinate2DMake(Double(self.userDefaultStore!.storeLocation!.latitude!)!, Double(self.userDefaultStore!.storeLocation!.longitude!)!))
         }
         
     }
     
-    func makePinForStore(store : StoreLocation) -> MKPointAnnotation{
+    func makePinForStore(store : BVStore) -> MKPointAnnotation{
         
-        let location = CLLocationCoordinate2DMake(Double(store.latitude)!, Double(store.longitude)!)
+        let location = CLLocationCoordinate2DMake(Double(store.storeLocation!.latitude!)!, Double(store.storeLocation!.longitude!)!)
         let dropPin = MKPointAnnotation()
         dropPin.coordinate = location
-        dropPin.title = store.storeName
-        dropPin.subtitle = store.storeAddress
+        dropPin.title = store.productDescription
+        dropPin.subtitle = store.storeLocation?.address
         return dropPin
     }
     
@@ -305,28 +386,30 @@ class LocationSettings: UIViewController, UITableViewDelegate, UITableViewDataSo
         if didRefreshUIOnLocationUpdate { return }
         didRefreshUIOnLocationUpdate = true
         
-        if (self.defaultStore != nil) {
+        if (self.userDefaultStore != nil) {
             // calculate store distance for the default store
             let deviceCLLocation = CLLocation(latitude: deviceLocation.latitude, longitude: deviceLocation.longitude)
-            let storeCLLocation = defaultStore!.getLocation()
-            let storeDistance = LocationPreferenceUtils.distanceInMilesFromLocation(deviceCLLocation, locationB: storeCLLocation)
-            self.defaultStore?.distainceInMilesFromCurrentLocation = storeDistance
+            self.userDefaultStore?.deviceLocation = deviceCLLocation
         }
         
         var i = 0
-        for store in self.storeLocations {
+        for _ in self.stores {
             // calculate the store distances for the other stores
             let deviceCLLocation = CLLocation(latitude: deviceLocation.latitude, longitude: deviceLocation.longitude)
-            let storeCLLocation = store.getLocation()
-            let storeDistance = LocationPreferenceUtils.distanceInMilesFromLocation(deviceCLLocation, locationB: storeCLLocation)
-            self.storeLocations[i].distainceInMilesFromCurrentLocation = storeDistance
+            
+            // TODO: What happens if the store doesn't have location?
+            self.stores[i].deviceLocation = deviceCLLocation
+            
             i += 1
             
         }
         
         // sort the cells based on distance, ASC, then refresh the data
-        self.storeLocations.sortInPlace({$0.distainceInMilesFromCurrentLocation < $1.distainceInMilesFromCurrentLocation})
-        self.locationPickerView?.tableView.reloadData()
+        self.stores.sortInPlace({$0.distanceInMetersFromCurrentLocation() < $1.distanceInMetersFromCurrentLocation()})
+        
+        if (self.stores.count > 0){
+            self.locationPickerView?.tableView.reloadData()
+        }
         
     }
 }

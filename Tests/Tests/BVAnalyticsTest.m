@@ -11,6 +11,7 @@
 #import <BVSDK/BVCore.h>
 #import <BVSDK/BVConversations.h>
 #import <BVSDK/BVRecommendations.h>
+#import <BVSDK/BVNotificationsAnalyticsHelper.h>
 
 #import "BVBaseStubTestCase.h"
 
@@ -425,6 +426,46 @@
     
     return testProduct;
 }
+
+#pragma mark BVNotifications Tests
+
+
+- (void)testNotificationInView{
+    
+#if ANALYTICS_TEST_USING_MOCK_DATA == 1
+    [self addStubWith200ResponseForJSONFileNamed:@"emptyJSON.json"];
+#endif
+    
+    numberOfExpectedImpressionAnalyticsEvents = 1;
+    numberOfExpectedPageviewAnalyticsEvents = 0;
+    
+    [[BVNotificationsAnalyticsHelper instance] queueAnalyticEventForStoreReviewNotificationInView:@"StorePushNotification" withStoreId:@"1000"];
+    
+    XCTAssert([[BVAnalyticsManager sharedManager]eventQueue].count == 1, @"There should be 1 event queued.");
+    
+    [[BVAnalyticsManager sharedManager] flushQueue];
+    
+    [self waitForAnalytics];
+}
+
+- (void)testNotificationUsedFeature{
+    
+#if ANALYTICS_TEST_USING_MOCK_DATA == 1
+    [self addStubWith200ResponseForJSONFileNamed:@"emptyJSON.json"];
+#endif
+    
+    numberOfExpectedImpressionAnalyticsEvents = 1;
+    numberOfExpectedPageviewAnalyticsEvents = 0;
+    
+    [[BVNotificationsAnalyticsHelper instance] queueAnalyticEventForStoreReviewUsedFeature:@"ok" withStoreId:@"1000"];
+    
+    XCTAssert([[BVAnalyticsManager sharedManager]eventQueue].count == 1, @"There should be 1 event queued.");
+    
+    [[BVAnalyticsManager sharedManager] flushQueue];
+    
+    [self waitForAnalytics];
+}
+
 
 #pragma mark - BVPixel Tests
 

@@ -1,0 +1,14 @@
+{
+    "visitDuration": 5,
+    "notificationDelay": 5,
+    "reviewPromptDisplayText": "Thank you for visiting Endurance Cycles.",
+    "reviewPromptSubtitleText": "How would you describe your experience?",
+    "reviewPromptYesReview": "Positive Experience",
+    "reviewPromptRemindText": "Bad Experience",
+    "reviewPromtNoReview": "I did not visit this store",
+    "reviewRemindLaterDuration": 86400,
+    "defaultStoreImageUrl": "https://upload.wikimedia.org/wikipedia/en/7/73/Kwik-e-mart.png",
+    "notificationsEnabled": true,
+    "requestReviewOnAppOpen": true,
+    "urlScheme": "bvsdkdemo"
+}

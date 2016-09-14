@@ -83,7 +83,6 @@ class RatingsAndReviewsViewController: UIViewController, UITableViewDelegate, UI
         
     }
     
-    
     func writeReviewTapped() {
         
         let vc = WriteReviewViewController(nibName:"WriteReviewViewController", bundle: nil, product: product)
@@ -105,14 +104,12 @@ class RatingsAndReviewsViewController: UIViewController, UITableViewDelegate, UI
         } else if selectedFilterOption == FilterOptions.MostHelpful.rawValue {
             request.addSort(.Helpfulness, order: .Descending)
         } else if selectedFilterOption == FilterOptions.Location.rawValue {
-            let store = LocationPreferenceUtils.getDefaultStore()
-            if store == nil {
-                SweetAlert().showAlert("No store set.", subTitle: "Please set a default store.", style: .Error)
+            if let defaultCachedStore = LocationPreferenceUtils.getDefaultStore(){
+                request.addFilter(.UserLocation, filterOperator: .EqualTo, value: (defaultCachedStore.city))
             } else {
-                request.addFilter(.UserLocation, filterOperator: .EqualTo, value: (store?.storeCity)!)
+                SweetAlert().showAlert("No store set.", subTitle: "Please set a default store.", style: .Error)
             }
         }
-        
         
         self.tableView.load(request, success: { (response) in
 

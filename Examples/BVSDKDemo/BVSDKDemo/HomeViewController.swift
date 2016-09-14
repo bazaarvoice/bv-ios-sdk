@@ -34,7 +34,6 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
        ProfileUtils.trackViewController(self)
         
         self.addSettingsButton()
@@ -148,19 +147,18 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
             self.checkLocationAuthorization()
             
         }
-        
     }
     
     func initAdvertisement(){
         
         if let defaultStore = LocationPreferenceUtils.getDefaultStore() {
             
-            if defaultStore.storeId != self.storeIdForAdTracking {
+            if defaultStore.identifier != self.storeIdForAdTracking {
                 // store changed so we'll want to reload an store-specific advertisement
                 adLoader = nil
             }
             
-            self.storeIdForAdTracking = defaultStore.storeId
+            self.storeIdForAdTracking = defaultStore.identifier
         }
         
         // only load the ad once, and when the cell is dequeued
@@ -176,9 +174,9 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
             request.customTargeting = BVSDKManager.sharedManager().getCustomTargeting() //+ whatever
             
             var targetingCity = "Undefined"
-            if let defaultStore = LocationPreferenceUtils.getDefaultStore() {
+            if let defaultCachedStore = LocationPreferenceUtils.getDefaultStore() {
                 // Ads are targeted here based on the city the user has chosen in the location
-                targetingCity = defaultStore.storeCity
+                targetingCity = defaultCachedStore.city
             }
             
             request.customTargeting!["cities"] = targetingCity
@@ -400,8 +398,8 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
             cell.backgroundColor = UIColor.whiteColor()
             let label = UILabel(frame: CGRectMake(locationIconHW+16, 0, self.view.bounds.width-locationIconHW, locationIconHW))
             
-            if let defaultStore = LocationPreferenceUtils.getDefaultStore() {
-                label.text = "My Store: " + defaultStore.storeCity + ", " + defaultStore.storeState
+            if let defaultCachedStore = LocationPreferenceUtils.getDefaultStore() {
+                label.text = "My Store: " + defaultCachedStore.city + ", " + defaultCachedStore.state
             } else {
                 label.text = "Set your default store location!"
             }

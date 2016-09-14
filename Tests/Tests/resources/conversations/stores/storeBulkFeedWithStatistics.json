@@ -1,0 +1,606 @@
+{
+    "Limit": 20,
+    "Offset": 0,
+    "TotalResults": 4,
+    "Locale": "en_US",
+    "Results": [{
+                "AttributesOrder": [
+                                    "Address",
+                                    "PostalCode",
+                                    "Latitude",
+                                    "City",
+                                    "Longitude",
+                                    "State",
+                                    "Phone",
+                                    "Country"
+                                    ],
+                "Attributes": {
+                "Address": {
+                "Id": "Address",
+                "Values": [{
+                           "Value": "300 North LaSalle Street, Suite 2250",
+                           "Locale": null
+                           }]
+                },
+                "PostalCode": {
+                "Id": "PostalCode",
+                "Values": [{
+                           "Value": "60654",
+                           "Locale": null
+                           }]
+                },
+                "Latitude": {
+                "Id": "Latitude",
+                "Values": [{
+                           "Value": "41.8882179",
+                           "Locale": null
+                           }]
+                },
+                "City": {
+                "Id": "City",
+                "Values": [{
+                           "Value": "Chicago",
+                           "Locale": null
+                           }]
+                },
+                "Longitude": {
+                "Id": "Longitude",
+                "Values": [{
+                           "Value": "-87.6353247",
+                           "Locale": null
+                           }]
+                },
+                "State": {
+                "Id": "State",
+                "Values": [{
+                           "Value": "IL",
+                           "Locale": null
+                           }]
+                },
+                "Phone": {
+                "Id": "Phone",
+                "Values": [{
+                           "Value": "(866) 522-9227",
+                           "Locale": null
+                           }]
+                },
+                "Country": {
+                "Id": "Country",
+                "Values": [{
+                           "Value": "USA",
+                           "Locale": null
+                           }]
+                }
+                },
+                "Name": "Endurance Cycles Chicago",
+                "Description": "300 North LaSalle Street Suite 2250. Chicago, IL 60654",
+                "ImageUrl": "http://www.publicdomainpictures.net/pictures/10000/velka/296-1254691801CV9n.jpg",
+                "Id": "4",
+                "CategoryId": "bv-category-1",
+                "BrandExternalId": "4",
+                "Brand": {
+                "Id": "4"
+                },
+                "Active": true,
+                "ProductPageUrl": "http://www.endurancecycles.com/",
+                "Disabled": false,
+                "QuestionIds": [],
+                "ReviewIds": [],
+                "UPCs": [],
+                "StoryIds": [],
+                "ISBNs": [],
+                "FamilyIds": [],
+                "ManufacturerPartNumbers": [],
+                "EANs": [],
+                "ModelNumbers": [],
+                "ReviewStatistics": {
+                "RecommendedCount": 9,
+                "NotHelpfulVoteCount": 33,
+                "FeaturedReviewCount": 0,
+                "ContextDataDistributionOrder": [
+                                                 "Age",
+                                                 "Gender"
+                                                 ],
+                "ContextDataDistribution": {
+                "Age": {
+                "Id": "Age",
+                "Values": [{
+                           "Count": 1,
+                           "Value": "55to64"
+                           }]
+                },
+                "Gender": {
+                "Id": "Gender",
+                "Values": [{
+                           "Count": 1,
+                           "Value": "Male"
+                           }]
+                }
+                },
+                "RatingDistribution": [{
+                                       "RatingValue": 4,
+                                       "Count": 6
+                                       }, {
+                                       "RatingValue": 5,
+                                       "Count": 6
+                                       }],
+                "AverageOverallRating": 4.5,
+                "SecondaryRatingsAveragesOrder": [
+                                                  "Quality",
+                                                  "Value"
+                                                  ],
+                "SecondaryRatingsAverages": {
+                "Value": {
+                "Id": "Value",
+                "AverageRating": 4,
+                "DisplayType": "NORMAL",
+                "ValueRange": 5,
+                "MaxLabel": null,
+                "MinLabel": null
+                },
+                "Quality": {
+                "Id": "Quality",
+                "AverageRating": 4.5,
+                "DisplayType": "NORMAL",
+                "ValueRange": 5,
+                "MaxLabel": null,
+                "MinLabel": null
+                }
+                },
+                "NotRecommendedCount": 1,
+                "FirstSubmissionTime": "2015-09-17T15:12:00.000+00:00",
+                "LastSubmissionTime": "2016-07-09T20:36:00.000+00:00",
+                "TotalReviewCount": 12,
+                "RatingsOnlyReviewCount": 3,
+                "HelpfulVoteCount": 25,
+                "OverallRatingRange": 5,
+                "TagDistribution": {},
+                "TagDistributionOrder": []
+                },
+                "TotalReviewCount": 12
+                }, {
+                "AttributesOrder": [
+                                    "Address",
+                                    "PostalCode",
+                                    "Latitude",
+                                    "City",
+                                    "Longitude",
+                                    "State",
+                                    "Phone",
+                                    "Country"
+                                    ],
+                "Attributes": {
+                "Address": {
+                "Id": "Address",
+                "Values": [{
+                           "Value": "19 Union Square West, 6th Floor",
+                           "Locale": null
+                           }]
+                },
+                "PostalCode": {
+                "Id": "PostalCode",
+                "Values": [{
+                           "Value": "10003",
+                           "Locale": null
+                           }]
+                },
+                "Latitude": {
+                "Id": "Latitude",
+                "Values": [{
+                           "Value": "40.7361079",
+                           "Locale": null
+                           }]
+                },
+                "City": {
+                "Id": "City",
+                "Values": [{
+                           "Value": "New York",
+                           "Locale": null
+                           }]
+                },
+                "Longitude": {
+                "Id": "Longitude",
+                "Values": [{
+                           "Value": "-73.9934307",
+                           "Locale": null
+                           }]
+                },
+                "State": {
+                "Id": "State",
+                "Values": [{
+                           "Value": "NY",
+                           "Locale": null
+                           }]
+                },
+                "Phone": {
+                "Id": "Phone",
+                "Values": [{
+                           "Value": "(866) 522-9227",
+                           "Locale": null
+                           }]
+                },
+                "Country": {
+                "Id": "Country",
+                "Values": [{
+                           "Value": "USA",
+                           "Locale": null
+                           }]
+                }
+                },
+                "Name": "Endurance Cycles New York",
+                "Description": "19 Union Square W, New York, NY 10003",
+                "ImageUrl": "http://www.pureludington.com/member_photos/trailhead%20Bike%20Shop.jpg",
+                "Id": "3",
+                "CategoryId": "bv-category-1",
+                "BrandExternalId": "3",
+                "Brand": {
+                "Id": "3"
+                },
+                "Active": true,
+                "ProductPageUrl": "http://www.endurancecycles.com/",
+                "Disabled": false,
+                "QuestionIds": [],
+                "ReviewIds": [],
+                "UPCs": [],
+                "StoryIds": [],
+                "ISBNs": [],
+                "FamilyIds": [],
+                "ManufacturerPartNumbers": [],
+                "EANs": [],
+                "ModelNumbers": [],
+                "ReviewStatistics": {
+                "ContextDataDistributionOrder": [
+                                                 "Gender"
+                                                 ],
+                "ContextDataDistribution": {
+                "Gender": {
+                "Id": "Gender",
+                "Values": [{
+                           "Count": 1,
+                           "Value": "Male"
+                           }]
+                }
+                },
+                "NotHelpfulVoteCount": 24,
+                "RatingDistribution": [{
+                                       "RatingValue": 5,
+                                       "Count": 8
+                                       }, {
+                                       "RatingValue": 4,
+                                       "Count": 4
+                                       }],
+                "NotRecommendedCount": 0,
+                "FirstSubmissionTime": "2015-09-06T16:13:00.000+00:00",
+                "LastSubmissionTime": "2016-07-16T00:02:00.000+00:00",
+                "SecondaryRatingsAveragesOrder": [
+                                                  "Quality",
+                                                  "Value"
+                                                  ],
+                "SecondaryRatingsAverages": {
+                "Value": {
+                "Id": "Value",
+                "AverageRating": 4.4,
+                "DisplayType": "NORMAL",
+                "ValueRange": 5,
+                "MaxLabel": null,
+                "MinLabel": null
+                },
+                "Quality": {
+                "Id": "Quality",
+                "AverageRating": 4.8,
+                "DisplayType": "NORMAL",
+                "ValueRange": 5,
+                "MaxLabel": null,
+                "MinLabel": null
+                }
+                },
+                "AverageOverallRating": 4.666666666666667,
+                "FeaturedReviewCount": 0,
+                "TotalReviewCount": 12,
+                "RatingsOnlyReviewCount": 3,
+                "RecommendedCount": 9,
+                "HelpfulVoteCount": 21,
+                "OverallRatingRange": 5,
+                "TagDistribution": {},
+                "TagDistributionOrder": []
+                },
+                "TotalReviewCount": 12
+                }, {
+                "AttributesOrder": [
+                                    "Address",
+                                    "PostalCode",
+                                    "Latitude",
+                                    "City",
+                                    "Longitude",
+                                    "State",
+                                    "Phone",
+                                    "Country"
+                                    ],
+                "Attributes": {
+                "Address": {
+                "Id": "Address",
+                "Values": [{
+                           "Value": "642 Harrison Street, 2nd Floor",
+                           "Locale": null
+                           }]
+                },
+                "PostalCode": {
+                "Id": "PostalCode",
+                "Values": [{
+                           "Value": "94107",
+                           "Locale": null
+                           }]
+                },
+                "Latitude": {
+                "Id": "Latitude",
+                "Values": [{
+                           "Value": "37.783826",
+                           "Locale": null
+                           }]
+                },
+                "City": {
+                "Id": "City",
+                "Values": [{
+                           "Value": "San Francisco",
+                           "Locale": null
+                           }]
+                },
+                "Longitude": {
+                "Id": "Longitude",
+                "Values": [{
+                           "Value": "-122.398632",
+                           "Locale": null
+                           }]
+                },
+                "State": {
+                "Id": "State",
+                "Values": [{
+                           "Value": "CA",
+                           "Locale": null
+                           }]
+                },
+                "Phone": {
+                "Id": "Phone",
+                "Values": [{
+                           "Value": "(866) 522-9227",
+                           "Locale": null
+                           }]
+                },
+                "Country": {
+                "Id": "Country",
+                "Values": [{
+                           "Value": "USA",
+                           "Locale": null
+                           }]
+                }
+                },
+                "Name": "Endurance Cycles San Francisco",
+                "Description": "Pacific Placement Group, 642 Harrison St, San Francisco, CA 94107",
+                "ImageUrl": "http://www.officelovin.com/wp-content/uploads/2015/02/bazaar-voice-office-4-740x491.jpg",
+                "Id": "2",
+                "CategoryId": "bv-category-1",
+                "BrandExternalId": "2",
+                "Brand": {
+                "Id": "2"
+                },
+                "Active": true,
+                "ProductPageUrl": "http://www.endurancecycles.com/",
+                "Disabled": false,
+                "QuestionIds": [],
+                "ReviewIds": [],
+                "UPCs": [],
+                "StoryIds": [],
+                "ISBNs": [],
+                "FamilyIds": [],
+                "ManufacturerPartNumbers": [],
+                "EANs": [],
+                "ModelNumbers": [],
+                "ReviewStatistics": {
+                "AverageOverallRating": 4.583333333333333,
+                "RecommendedCount": 11,
+                "NotHelpfulVoteCount": 28,
+                "ContextDataDistributionOrder": [
+                                                 "Age"
+                                                 ],
+                "ContextDataDistribution": {
+                "Age": {
+                "Id": "Age",
+                "Values": [{
+                           "Count": 1,
+                           "Value": "35to44"
+                           }]
+                }
+                },
+                "TotalReviewCount": 12,
+                "RatingsOnlyReviewCount": 3,
+                "SecondaryRatingsAveragesOrder": [
+                                                  "Quality",
+                                                  "Value"
+                                                  ],
+                "SecondaryRatingsAverages": {
+                "Quality": {
+                "Id": "Quality",
+                "AverageRating": 4.2,
+                "DisplayType": "NORMAL",
+                "ValueRange": 5,
+                "MaxLabel": null,
+                "MinLabel": null
+                },
+                "Value": {
+                "Id": "Value",
+                "AverageRating": 4.75,
+                "DisplayType": "NORMAL",
+                "ValueRange": 5,
+                "MaxLabel": null,
+                "MinLabel": null
+                }
+                },
+                "FeaturedReviewCount": 0,
+                "RatingDistribution": [{
+                                       "RatingValue": 5,
+                                       "Count": 7
+                                       }, {
+                                       "RatingValue": 4,
+                                       "Count": 5
+                                       }],
+                "FirstSubmissionTime": "2015-09-18T07:55:00.000+00:00",
+                "LastSubmissionTime": "2016-08-03T19:39:00.000+00:00",
+                "NotRecommendedCount": 0,
+                "HelpfulVoteCount": 34,
+                "OverallRatingRange": 5,
+                "TagDistribution": {},
+                "TagDistributionOrder": []
+                },
+                "TotalReviewCount": 12
+                }, {
+                "AttributesOrder": [
+                                    "Address",
+                                    "PostalCode",
+                                    "Latitude",
+                                    "City",
+                                    "Longitude",
+                                    "Phone",
+                                    "State",
+                                    "Country"
+                                    ],
+                "Attributes": {
+                "Address": {
+                "Id": "Address",
+                "Values": [{
+                           "Value": "South, 10901 Stonelake Blvd",
+                           "Locale": null
+                           }]
+                },
+                "PostalCode": {
+                "Id": "PostalCode",
+                "Values": [{
+                           "Value": "78735",
+                           "Locale": null
+                           }]
+                },
+                "Latitude": {
+                "Id": "Latitude",
+                "Values": [{
+                           "Value": "30.3994293",
+                           "Locale": null
+                           }]
+                },
+                "City": {
+                "Id": "City",
+                "Values": [{
+                           "Value": "Austin",
+                           "Locale": null
+                           }]
+                },
+                "Longitude": {
+                "Id": "Longitude",
+                "Values": [{
+                           "Value": "-97.7380764",
+                           "Locale": null
+                           }]
+                },
+                "Phone": {
+                "Id": "Phone",
+                "Values": [{
+                           "Value": "(512) 551-6000",
+                           "Locale": null
+                           }]
+                },
+                "State": {
+                "Id": "State",
+                "Values": [{
+                           "Value": "TX",
+                           "Locale": null
+                           }]
+                },
+                "Country": {
+                "Id": "Country",
+                "Values": [{
+                           "Value": "USA",
+                           "Locale": null
+                           }]
+                }
+                },
+                "Name": "Endurance Cycles Austin",
+                "Description": "10901 Stonelake Blvd, Austin, TX 78759",
+                "ImageUrl": "http://media.bizj.us/view/img/8513272/bazaarvoice-1-exterior*750xx900-506-0-1.jpg",
+                "Id": "1",
+                "CategoryId": "bv-category-1",
+                "BrandExternalId": "1",
+                "Brand": {
+                "Id": "1"
+                },
+                "Active": true,
+                "ProductPageUrl": "http://www.endurancecycles.com/",
+                "Disabled": false,
+                "QuestionIds": [],
+                "ReviewIds": [],
+                "UPCs": [],
+                "StoryIds": [],
+                "ISBNs": [],
+                "FamilyIds": [],
+                "ManufacturerPartNumbers": [],
+                "EANs": [],
+                "ModelNumbers": [],
+                "ReviewStatistics": {
+                "RecommendedCount": 9,
+                "RatingDistribution": [{
+                                       "RatingValue": 5,
+                                       "Count": 9
+                                       }, {
+                                       "RatingValue": 4,
+                                       "Count": 3
+                                       }],
+                "TotalReviewCount": 12,
+                "SecondaryRatingsAveragesOrder": [
+                                                  "Quality",
+                                                  "Value"
+                                                  ],
+                "SecondaryRatingsAverages": {
+                "Quality": {
+                "Id": "Quality",
+                "AverageRating": 5,
+                "DisplayType": "NORMAL",
+                "ValueRange": 5,
+                "MaxLabel": null,
+                "MinLabel": null
+                },
+                "Value": {
+                "Id": "Value",
+                "AverageRating": 4.5,
+                "DisplayType": "NORMAL",
+                "ValueRange": 5,
+                "MaxLabel": null,
+                "MinLabel": null
+                }
+                },
+                "RatingsOnlyReviewCount": 3,
+                "NotHelpfulVoteCount": 18,
+                "HelpfulVoteCount": 28,
+                "ContextDataDistributionOrder": [
+                                                 "Age"
+                                                 ],
+                "ContextDataDistribution": {
+                "Age": {
+                "Id": "Age",
+                "Values": [{
+                           "Count": 1,
+                           "Value": "55to64"
+                           }]
+                }
+                },
+                "NotRecommendedCount": 2,
+                "AverageOverallRating": 4.75,
+                "FirstSubmissionTime": "2015-09-30T00:47:00.000+00:00",
+                "LastSubmissionTime": "2016-07-29T01:33:00.000+00:00",
+                "FeaturedReviewCount": 0,
+                "OverallRatingRange": 5,
+                "TagDistribution": {},
+                "TagDistributionOrder": []
+                },
+                "TotalReviewCount": 12
+                }],
+    "Includes": {},
+    "HasErrors": false,
+    "Errors": []
+}

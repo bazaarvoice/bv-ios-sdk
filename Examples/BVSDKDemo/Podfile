@@ -6,7 +6,7 @@ use_frameworks!
 def common_pods
 	
 	pod 'OHHTTPStubs'
-	pod 'SwiftyJSON'
+	pod 'SwiftyJSON', "2.3.2"
 	pod 'BVSDK', :path => "../../"
 	pod 'BVSDK/BVCurations', :path => "../../"
 
@@ -21,9 +21,9 @@ target 'BVSDKDemo' do
 	pod 'SDWebImage'
 	pod 'Google-Mobile-Ads-SDK'
 	pod 'HCSStarRatingView'
-	pod 'NVActivityIndicatorView'
+	pod 'NVActivityIndicatorView', "2.9"
 	pod 'FontAwesomeKit/FontAwesome'
-    pod 'XLActionController'
+    pod 'XLActionController', :git => 'https://github.com/austimkelly/XLActionController.git', :branch => '2.1.1_Swift23'
     pod "youtube-ios-player-helper", "~> 0.1.6"
     pod 'SDForms', :git => 'https://github.com/austimkelly/SDForms.git', :branch => 'master'
     
@@ -31,7 +31,7 @@ target 'BVSDKDemo' do
 	pod 'BVSDK/BVAdvertising', :path => "../../"
 	pod 'BVSDK/BVConversations', :path => "../../"
 	pod 'BVSDK/BVLocation', :path => "../../"
-    
+
     pod 'FBSDKCoreKit'
     pod 'FBSDKLoginKit'
     pod 'FBSDKShareKit'
@@ -44,23 +44,23 @@ target 'Curations Custom Post Extension' do
 
 end
 
+target 'BVReviewContentExtension' do
+    pod 'BVSDK/BVNotifications', :path => "../../"
+end
+
 target 'BVSDKDemoTests' do
 
 end
 
-target 'BVSDKDemoUITests' do
 
-end
-
-
- post_install do |installer|
+post_install do |installer|
     installer.pods_project.targets.each do |target|
 
         target.build_configurations.each do |config|
             config.build_settings['SWIFT_VERSION'] = '2.3'
             config.build_settings['APPLICATION_EXTENSION_API_ONLY'] = 'NO'
         end
-
     end
-  end
+end
+
 
