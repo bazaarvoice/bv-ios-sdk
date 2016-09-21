@@ -91,7 +91,8 @@
     sentRequest = request;
     
     BOOL hasErrors = [[response objectForKey:@"HasErrors"] boolValue] || ([response objectForKey:@"HasErrors"] == nil);
-    if (hasErrors) {
+    BOOL missingErrorArray = [response objectForKey:@"Errors"] == nil;  // We always expect an errors array, but will be empty on success
+    if (hasErrors || missingErrorArray) {
         NSLog(@"\n\n==========================\n\n");
         XCTFail(@"Error in Class: %@ \n Failure: %@", [request class], [response objectForKey:@"Errors"]);
         NSLog(@"\n\n==========================\n\n");
@@ -539,6 +540,36 @@
                        @"ProductId:eq:test1,test2,test3", @"Filter", @"Reviews,NativeReviews", @"Stats", nil]];
     
 }
+
+// Bug: MOB-416 - Space in value of Content-Type response header
+- (void)testShowStatisticsSpaceInContentType {
+    
+    [OHHTTPStubs stubRequestsPassingTest:^BOOL(NSURLRequest *request) {
+        return [request.URL.host containsString:@"bazaarvoice.com"];
+    } withStubResponse:^OHHTTPStubsResponse*(NSURLRequest *request) {
+        // return normal user profile from /users API
+        return [[OHHTTPStubsResponse responseWithFileAtPath:OHPathForFile(@"testShowStatistics.json", self.class)
+                                                 statusCode:200
+                                                    headers:@{@"Content-Type":@"application/json; charset=utf-8"}]
+                responseTime:OHHTTPStubsDownloadSpeedWifi];
+    }];
+    
+    BVGet *showDisplayRequest = [[BVGet alloc] initWithType:BVGetTypeStatistics];
+    [showDisplayRequest setFilterForAttribute:@"ProductId" equality:BVEqualityEqualTo values:[NSArray arrayWithObjects:@"test1", @"test2", @"test3", nil]];
+    [showDisplayRequest addStatsOn:BVIncludeStatsTypeReviews];
+    [showDisplayRequest addStatsOn:BVIncludeStatsTypeNativeReviews];
+    
+    [showDisplayRequest sendRequestWithDelegate:self];
+    NSRunLoop *theRL = [NSRunLoop currentRunLoop];
+    // Begin a run loop terminated when the requestComplete it set to true
+    while (!requestComplete && [theRL runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]]);
+    
+    [self checkParams:[NSMutableDictionary dictionaryWithObjectsAndKeys:
+                       @"ProductId:eq:test1,test2,test3", @"Filter", @"Reviews,NativeReviews", @"Stats", nil]];
+    
+}
+
+
 
 #pragma mark BVPost tests
 
