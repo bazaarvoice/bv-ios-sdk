@@ -197,10 +197,10 @@
 		6003F5B5195388D20070C39A /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				8792AB991D932A100055B519 /* DeprecatedAPITests */,
 				738C5E6E1D472D6700A0D58E /* ConversationsTests */,
 				734411731A9AD48A007C90ED /* BVAnalyticsTest.m */,
 				8757CFEE1BD176C600C0DE7C /* BVUserProfileTests.m */,
-				6003F5BB195388D20070C39A /* BVConversationsTests.m */,
 				87185F031CAAE5E300FE27F1 /* BVCurationsTests.m */,
 				87577E9C1BD55DD500E1F39C /* BVRecommendationsTests.m */,
 				8787E4B81CDCC623004F65C2 /* BVBaseStubTestCase.h */,
@@ -347,6 +347,14 @@
 				8787E4F91CE0FFB9004F65C2 /* testShowStatistics.json */,
 			);
 			name = conversations;
+			sourceTree = "<group>";
+		};
+		8792AB991D932A100055B519 /* DeprecatedAPITests */ = {
+			isa = PBXGroup;
+			children = (
+				6003F5BB195388D20070C39A /* BVConversationsTests.m */,
+			);
+			name = DeprecatedAPITests;
 			sourceTree = "<group>";
 		};
 		87B3513A1CAC5E880030470B /* testData */ = {
