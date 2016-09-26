@@ -8,6 +8,13 @@
 
 #import "BVCurationsFeedRequest.h"
 
+@interface BVCurationsFeedRequest()
+
+@property NSNumber* latitude;
+@property NSNumber* longitude;
+
+@end
+
 @implementation BVCurationsFeedRequest
 
 - (id)initWithGroups:(NSArray<NSString *>*)groups {
@@ -22,6 +29,13 @@
     }
     
     return self;
+}
+
+- (void)setLatitude:(double)latitude longitude:(double)longitude {
+    
+    self.latitude = [NSNumber numberWithDouble:latitude];
+    self.longitude = [NSNumber numberWithDouble:longitude];
+    
 }
 
 
@@ -56,6 +70,13 @@
     }
     
     // Add the optional query params...
+    
+    // geolocation, if available
+    if (self.latitude != nil && self.longitude != nil) {
+        NSString* paramString = [NSString stringWithFormat:@"%@,%@", self.latitude, self.longitude];
+        NSURLQueryItem *geolocation = [NSURLQueryItem queryItemWithName:@"geolocation"  value:paramString];
+        [queryItems addObject:geolocation];
+    }
     
     // tags array
     for (NSString* tagString in self.tags) {

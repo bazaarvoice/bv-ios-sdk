@@ -7,16 +7,16 @@
 
 #import "ViewController.h"
 #import <BVSDK/BVCurations.h>
-
 #import "ViewController.h"
 #import "DemoCollectionViewCell.h"
-#import <BVSDK/BVCurations.h>
+#import <CoreLocation/CoreLocation.h>
 
-@interface ViewController () <UICollectionViewDataSource, UICollectionViewDelegate>
+@interface ViewController () <UICollectionViewDataSource, UICollectionViewDelegate, CLLocationManagerDelegate>
 
 @property (weak, nonatomic) IBOutlet BVCurationsCollectionView *curationsCollectionView;
-
 @property (strong, nonatomic) NSArray<BVCurationsFeedItem *> *curationsFeedItems;
+@property (strong, nonatomic) CLLocationManager* locationManager;
+@property bool hasRequestedCurations;
 
 @end
 
@@ -33,23 +33,17 @@
     self.curationsCollectionView.delegate = self;
     self.curationsCollectionView.dataSource = self;
     
-    // Create the request parameters
-    NSArray *groups = @[@"__all__"];
-    BVCurationsFeedRequest *feedRequest = [[BVCurationsFeedRequest alloc] initWithGroups:groups];
-    feedRequest.limit = 40;
-    feedRequest.hasPhoto = YES;
-    feedRequest.withProductData = YES;
+    // create a location manager to get the user's current location, to personalize their curations content based on location
+    self.locationManager = [[CLLocationManager alloc] init];
+    [self.locationManager setDelegate:self];
+    [self.locationManager setDesiredAccuracy:kCLLocationAccuracyBest];
     
-    [self.curationsCollectionView loadFeedWithRequest:feedRequest withWidgetId:nil completionHandler:^(NSArray<BVCurationsFeedItem *> * _Nonnull feedItemsResult) {
-        // completion on main thread
-        NSLog(@"Success loading Curations Display!");
-        self.curationsFeedItems = feedItemsResult;
-        [self.curationsCollectionView reloadData];
-        
-    } withFailure:^(NSError * _Nonnull error) {
-        // error on main thread
-        NSLog(@"ERROR: Curations feed could not be retrieved. Error: %@", error.localizedDescription);
-    }];
+    if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusNotDetermined) {
+        [self.locationManager requestWhenInUseAuthorization];
+    }
+    else {
+        [self.locationManager startUpdatingLocation];
+    }
     
 }
 
@@ -63,6 +57,41 @@
     
     layout.minimumInteritemSpacing = 0;
     layout.minimumLineSpacing = 0;
+}
+
+- (void)fetchCurationsWithLocation:(CLLocation*)location {
+    
+    // only request curations content once for this demo view controller.
+    if (self.hasRequestedCurations == false) {
+        self.hasRequestedCurations = true;
+    }
+    else {
+        return;
+    }
+    
+    // Create the request parameters
+    NSArray *groups = @[@"__all__"];
+    BVCurationsFeedRequest *feedRequest = [[BVCurationsFeedRequest alloc] initWithGroups:groups];
+    feedRequest.limit = 40;
+    feedRequest.hasPhoto = YES;
+    feedRequest.withProductData = YES;
+    
+    // request curations data, taking the user's location into account
+    if (location != nil) {
+        [feedRequest setLatitude:location.coordinate.latitude longitude:location.coordinate.longitude];
+    }
+    
+    [self.curationsCollectionView loadFeedWithRequest:feedRequest withWidgetId:nil completionHandler:^(NSArray<BVCurationsFeedItem *> * _Nonnull feedItemsResult) {
+        // completion on main thread
+        NSLog(@"Success loading Curations Display!");
+        self.curationsFeedItems = feedItemsResult;
+        [self.curationsCollectionView reloadData];
+        
+    } withFailure:^(NSError * _Nonnull error) {
+        // error on main thread
+        NSLog(@"ERROR: Curations feed could not be retrieved. Error: %@", error.localizedDescription);
+    }];
+    
 }
 
 #pragma mark - UICollectionViewDataSource
@@ -92,6 +121,40 @@
     BVCurationsFeedItem *selectedFeedItem = [self.curationsFeedItems objectAtIndex:indexPath.row];
     
     NSLog(@"Selected: %@", selectedFeedItem.description);
+    
+}
+
+#pragma mark CLLocationManagerDelegate
+
+-(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations {
+    
+    if ([locations count] > 0) {
+
+        CLLocation* location = [locations objectAtIndex:[locations count] - 1];
+        
+        // Fetching curations data, using user's location
+        [self fetchCurationsWithLocation:location];
+    }
+    
+}
+
+-(void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
+    
+    NSLog(@"error: %@", error);
+    
+    // Fetching curations data without user's location
+    [self fetchCurationsWithLocation:nil];
+}
+
+-(void) locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status {
+    
+    if (status == kCLAuthorizationStatusAuthorizedAlways || status == kCLAuthorizationStatusAuthorizedWhenInUse) {
+        [self.locationManager startUpdatingLocation];
+    }
+    else if (status == kCLAuthorizationStatusDenied || status == kCLAuthorizationStatusRestricted) {
+        // Fetching curations data without user's location, because we don't have location permission
+        [self fetchCurationsWithLocation:nil];
+    }
     
 }
 

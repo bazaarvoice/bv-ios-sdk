@@ -36,6 +36,10 @@
 @property NSArray< NSString* >* groups;
 
 
+/// Set the user's current location, to tailor the content to their location.
+- (void)setLatitude:(double)latitude longitude:(double)longitude;
+
+
 /// Sending a UNIX timestamp for after returns content posted only on or after that time.
 @property NSNumber* after;
 

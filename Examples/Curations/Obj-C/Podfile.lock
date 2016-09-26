@@ -1,7 +1,7 @@
 PODS:
-  - BVSDK/BVCurations (4.1.0):
+  - BVSDK/BVCurations (4.2.2):
     - BVSDK/Core
-  - BVSDK/Core (4.1.0)
+  - BVSDK/Core (4.2.2)
   - SDWebImage (3.7.6):
     - SDWebImage/Core (= 3.7.6)
   - SDWebImage/Core (3.7.6)
@@ -15,7 +15,7 @@ EXTERNAL SOURCES:
     :path: ../../../
 
 SPEC CHECKSUMS:
-  BVSDK: 5619fd07fac1705c309529783bde5f349d662449
+  BVSDK: 78e5a89a469cd87ffab6e63da5ed7358796a00f2
   SDWebImage: c325cf02c30337336b95beff20a13df489ec0ec9
 
 PODFILE CHECKSUM: 861490fad65c8c2b6f41ebe6e5e30e85b782a193
