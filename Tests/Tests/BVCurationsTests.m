@@ -109,6 +109,49 @@
     [self waitForExpectations];
 }
 
+// Test fetching curations with user's geolocation
+- (void)testFetchCurationsWithLocation {
+    
+    [self addStubWith200ResponseForJSONFileNamed:@"curationsLocationTest.json"];
+    
+    __weak XCTestExpectation *expectation = [self expectationWithDescription:@"testFetchCurationsWithLocation"];
+    
+    BVCurationsFeedRequest *feedRequest = [[BVCurationsFeedRequest alloc] initWithGroups:@[ @"__all__" ]];
+    [feedRequest setLatitude:30.2 longitude:-97.7];
+    
+    BVCurationsFeedLoader *urlRequest = [[BVCurationsFeedLoader alloc] init];
+    
+    [urlRequest loadFeedWithRequest:feedRequest completionHandler:^(NSArray *feedItems) {
+        // success!
+        
+        XCTAssertNotNil(feedItems, @"ERROR: feeItems should not be nil in curations api response.");
+        
+        int locationCount = 0;
+        for (BVCurationsFeedItem *feedItem in feedItems){
+            
+            if (feedItem.coordinates != nil && feedItem.coordinates.latitude != nil && feedItem.coordinates.longitude != nil) {
+                locationCount += 1;
+            }
+            
+        }
+        
+        XCTAssertEqual(11, locationCount, @"There should be 11 feed items with coordinates attached to them");
+        XCTAssertEqual(20, [feedItems count], @"There should be 20 total feed items");
+        
+        [expectation fulfill];
+        
+    } withFailure:^(NSError *error) {
+        // failure : (
+        
+        NSString *errorString = [NSString stringWithFormat:@"ERROR: Curations API feed failure: %@", error.localizedDescription];
+        XCTAssert(errorString == nil, @"%@", errorString);
+        
+        [expectation fulfill];
+    }];
+    
+    [self waitForExpectations];
+}
+
 // Test proper failure of malformed JSON
 - (void)testFetchCurationsMalformedJSON {
     
