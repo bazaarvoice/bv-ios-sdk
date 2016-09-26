@@ -63,6 +63,8 @@
 	</dict>
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string>We use location in the demo app to send you notifications about the store you are entering.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Allow access to your photo library for sharing photos to social media outlets.</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>ForalPro-Regular.otf</string>

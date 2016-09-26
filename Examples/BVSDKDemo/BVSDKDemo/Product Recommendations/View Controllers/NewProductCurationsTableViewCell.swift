@@ -24,6 +24,17 @@ class NewProductCurationsTableViewCell: UITableViewCell, UICollectionViewDelegat
             requestParams.withProductData = true
             requestParams.externalId = product?.productId
             
+            // Check and see if we can get Lat/Long from a default store set
+            // If so, we can make the feed results send the results closest to 
+            // the provided coordinates first.
+            if let defaultStore = LocationPreferenceUtils.getDefaultStore(){
+                if defaultStore.latitude != nil && defaultStore.longitude != nil {
+                    let lat = Double(defaultStore.latitude)
+                    let long = Double(defaultStore.longitude)
+                    requestParams.setLatitude(lat!, longitude: long!)
+                }
+            }
+            
             self.curationsCarousel.delegate = self
             self.curationsCarousel.dataSource = self
             

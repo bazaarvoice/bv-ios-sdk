@@ -501,10 +501,14 @@ class NewProductPageViewController: BVProductDisplayPageViewController, UITableV
 
     func curationsViewPhotoMapPressed() {
         
-        let curationsPhotoMapVC = CurationsPhotoMapViewController(nibName: "CurationsPhotoMapViewController", bundle: nil)
-        curationsPhotoMapVC.curationsFeed = curationsCell!.curationsFeed!
+        if curationsCell.curationsFeed != nil && curationsCell.curationsFeed!.count > 0 {
+            let curationsPhotoMapVC = CurationsPhotoMapViewController(nibName: "CurationsPhotoMapViewController", bundle: nil)
+            curationsPhotoMapVC.curationsFeed = curationsCell!.curationsFeed!
         
-        self.navigationController?.pushViewController(curationsPhotoMapVC, animated: true)
+            self.navigationController?.pushViewController(curationsPhotoMapVC, animated: true)
+        } else {
+            SweetAlert().showAlert("Empty Curations Feed!", subTitle: "There are no items to display at this time.", style: .Warning)
+        }
         
     }
 
