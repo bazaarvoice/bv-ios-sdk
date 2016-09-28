@@ -316,6 +316,7 @@
     }
     
     parameters[@"fp"] = self.fingerPrint;
+    parameters[@"isrecommended"] = [self.isRecommended boolValue] ? @"true" : @"false";
     
     parameters[@"user"] = self.user;
     parameters[@"usernickname"] = self.userNickname;
