@@ -317,6 +317,10 @@
     
     parameters[@"fp"] = self.fingerPrint;
     
+    if (self.isRecommended != nil){
+        parameters[@"isrecommended"] = [self.isRecommended boolValue] == YES ? @"true" : @"false";
+    }
+    
     parameters[@"user"] = self.user;
     parameters[@"usernickname"] = self.userNickname;
     parameters[@"useremail"] = self.userEmail;
