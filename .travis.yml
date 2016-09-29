@@ -17,7 +17,7 @@ script:
 
 # Run the unit tests on the available simulator
    - cd ./Tests
-   - pod install
+   - pod update
    - cd ..
    - xcodebuild test -workspace ./Tests/BVSDK.xcworkspace -scheme "BVSDK-Tests" -configuration Debug -sdk iphonesimulator | xcpretty -c
 

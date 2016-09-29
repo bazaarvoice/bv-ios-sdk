@@ -23,9 +23,10 @@ class AnswerSubmissionTests: XCTestCase {
     func testSubmitAnswerWithPhoto() {
         let expectation = expectationWithDescription("")
         
-        let answer = self.fillOutAnswer()
-        answer.submit({ (questionSubmission) in
+        let answer = self.fillOutAnswer(.Submit)
+        answer.submit({ (answerSubmission) in
             expectation.fulfill()
+             XCTAssertTrue(answerSubmission.formFields?.keys.count == 0)
         }, failure: { (errors) in
             expectation.fulfill()
             XCTFail()
@@ -34,7 +35,22 @@ class AnswerSubmissionTests: XCTestCase {
         waitForExpectationsWithTimeout(10, handler: nil)
     }
     
-    func fillOutAnswer() -> BVAnswerSubmission {
+    func testPreviewAnswerWithPhoto() {
+        let expectation = expectationWithDescription("")
+        let answer = self.fillOutAnswer(.Preview)
+        answer.submit({ (answerSubmission) in
+            expectation.fulfill()
+            // When run in Preview mode, we get the formFields that can be used for submission.
+            XCTAssertTrue(answerSubmission.formFields?.keys.count == 22)
+        }, failure: { (errors) in
+            expectation.fulfill()
+            XCTFail()
+        })
+        
+        waitForExpectationsWithTimeout(10, handler: nil)
+    }
+    
+    func fillOutAnswer(action : BVSubmissionAction) -> BVAnswerSubmission {
         let answerText = "Answer text Answer text Answer text Answer text Answer text Answer text Answer text Answer text"
         let answer = BVAnswerSubmission(questionId: "6104", answerText: answerText)
         
@@ -47,7 +63,7 @@ class AnswerSubmissionTests: XCTestCase {
         answer.userId = "UserId" + randomId
         answer.userEmail = "developer@bazaarvoice.com"
         answer.agreedToTermsAndConditions = true
-        answer.action = .Submit
+        answer.action = action
         
         answer.addPhoto(PhotoUploadTests.createImage(), withPhotoCaption: "Yo dawg")
         
