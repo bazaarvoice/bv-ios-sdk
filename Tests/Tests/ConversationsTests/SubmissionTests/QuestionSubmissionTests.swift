@@ -22,9 +22,10 @@ class QuestionSubmissionTests: XCTestCase {
     func testSubmitQuestionWithPhoto() {
         let expectation = expectationWithDescription("")
         
-        let question = self.fillOutQuestion()
+        let question = self.fillOutQuestion(.Submit)
         question.submit({ (questionSubmission) in
             expectation.fulfill()
+            XCTAssertTrue(questionSubmission.formFields?.keys.count == 0)
         }, failure: { (errors) in
             XCTFail()
         })
@@ -32,7 +33,23 @@ class QuestionSubmissionTests: XCTestCase {
         waitForExpectationsWithTimeout(10, handler: nil)
     }
     
-    func fillOutQuestion() -> BVQuestionSubmission {
+    func testPreviewQuestionWithPhoto() {
+        let expectation = expectationWithDescription("")
+        
+        let question = self.fillOutQuestion(.Preview)
+        question.submit({ (questionSubmission) in
+            expectation.fulfill()
+            // When run in Preview mode, we get the formFields that can be used for submission.
+            XCTAssertTrue(questionSubmission.formFields?.keys.count == 33)
+            }, failure: { (errors) in
+                XCTFail()
+        })
+        
+        waitForExpectationsWithTimeout(10, handler: nil)
+    }
+    
+    
+    func fillOutQuestion(action : BVSubmissionAction) -> BVQuestionSubmission {
         let question = BVQuestionSubmission(productId: "test1")
         let randomId = String(arc4random())
 
@@ -46,7 +63,7 @@ class QuestionSubmissionTests: XCTestCase {
         question.userId = "UserId" + randomId
         question.userEmail = "developer@bazaarvoice.com"
         question.agreedToTermsAndConditions = true
-        question.action = .Submit
+        question.action = action
         
         question.addPhoto(PhotoUploadTests.createImage(), withPhotoCaption: "Yo dawg")
         

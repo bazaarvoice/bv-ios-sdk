@@ -1,6 +1,6 @@
 //
-//  FieldError.h
-//  
+//  BVFieldError.h
+//  Conversations
 //
 //  Copyright © 2016 Bazaarvoice. All rights reserved.
 //
