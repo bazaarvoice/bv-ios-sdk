@@ -17,11 +17,12 @@
 #include "BVErrorCodeConstants.h"
 
 /// Provides the master version of the SDK.
-#define BV_SDK_VERSION @"4.2.3"
+
+#define BV_SDK_VERSION @"4.2.4"
 
 /// Conversation SDK Version
 #define SDK_HEADER_NAME @"X-UA-BV-SDK"
-#define SDK_HEADER_VALUE @"IOS_SDK_V423"
+#define SDK_HEADER_VALUE @"IOS_SDK_V424 "
 
 /// Error domain for NSError results, when present.
 #define BVErrDomain @"com.bvsdk.bazaarvoice"

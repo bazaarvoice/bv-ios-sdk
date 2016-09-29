@@ -1,17 +1,17 @@
 PODS:
-  - BVSDK (4.2.1):
-    - BVSDK/Core (= 4.2.1)
-  - BVSDK/BVAdvertising (4.2.1):
+  - BVSDK (4.2.4):
+    - BVSDK/Core (= 4.2.4)
+  - BVSDK/BVAdvertising (4.2.4):
     - BVSDK/Core
-  - BVSDK/BVConversations (4.2.1):
+  - BVSDK/BVConversations (4.2.4):
     - BVSDK/Core
-  - BVSDK/BVCurations (4.2.1):
+  - BVSDK/BVCurations (4.2.4):
     - BVSDK/Core
-  - BVSDK/BVLocation (4.2.1):
+  - BVSDK/BVLocation (4.2.4):
     - BVSDK/Core
-  - BVSDK/BVRecommendations (4.2.1):
+  - BVSDK/BVRecommendations (4.2.4):
     - BVSDK/Core
-  - BVSDK/Core (4.2.1)
+  - BVSDK/Core (4.2.4)
   - OHHTTPStubs (5.1.0):
     - OHHTTPStubs/Default (= 5.1.0)
   - OHHTTPStubs/Core (5.1.0)
@@ -40,8 +40,8 @@ EXTERNAL SOURCES:
     :path: ../
 
 SPEC CHECKSUMS:
-  BVSDK: fb8d0e2ed1646f3a1c14a09f8a00eb553ebc88fb
-  OHHTTPStubs: 592f74439d2d72615115cf99a954237a3fbe26e5
+  BVSDK: 5721de01794bd2ebe7f03ddaee028f4b7c134af4
+  OHHTTPStubs: 3a42f25c00563b71355ac73112ba2324e9e6cef4
 
 PODFILE CHECKSUM: 4a0dde118c062018ddcd485961583c2205de1274
 

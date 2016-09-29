@@ -23,9 +23,10 @@ class ReviewSubmissionTests: XCTestCase {
         
         let expectation = expectationWithDescription("")
         
-        let review = self.fillOutReview()
+        let review = self.fillOutReview(.Submit)
         review.submit({ (reviewSubmission) in
             expectation.fulfill()
+            XCTAssertTrue(reviewSubmission.formFields?.keys.count == 0)
         }, failure: { (errors) in
             XCTFail()
             expectation.fulfill()
@@ -34,7 +35,25 @@ class ReviewSubmissionTests: XCTestCase {
         waitForExpectationsWithTimeout(10, handler: nil)
     }
     
-    func fillOutReview() -> BVReviewSubmission {
+    func testPreviewReviewWithPhoto() {
+        
+        let expectation = expectationWithDescription("")
+        
+        let review = self.fillOutReview(.Preview)
+        review.submit({ (reviewSubmission) in
+            expectation.fulfill()
+            // When run in Preview mode, we get the formFields that can be used for submission.
+            XCTAssertTrue(reviewSubmission.formFields?.keys.count == 50)
+            }, failure: { (errors) in
+                XCTFail()
+                expectation.fulfill()
+        })
+        
+        waitForExpectationsWithTimeout(10, handler: nil)
+    }
+
+    
+    func fillOutReview(action : BVSubmissionAction) -> BVReviewSubmission {
         let review = BVReviewSubmission(reviewTitle: "review title",
                                       reviewText: "more than 50 more than 50 more than 50 more than 50 more than 50",
                                       rating: 4,
@@ -52,7 +71,7 @@ class ReviewSubmissionTests: XCTestCase {
         review.userId = "UserId" + randomId
         review.userEmail = "developer@bazaarvoice.com"
         review.agreedToTermsAndConditions = true
-        review.action = .Submit
+        review.action = action
         
         review.addContextDataValueBool("VerifiedPurchaser", value: false)
         review.addContextDataValueString("Age", value: "18to24")

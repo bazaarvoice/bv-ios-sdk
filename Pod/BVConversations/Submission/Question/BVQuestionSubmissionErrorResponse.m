@@ -1,5 +1,5 @@
 //
-//  QuestionSubmissionErrorResponse.m
+//  BVQuestionSubmissionErrorResponse.m
 //  Conversations
 //
 //  Copyright © 2016 Bazaarvoice. All rights reserved.

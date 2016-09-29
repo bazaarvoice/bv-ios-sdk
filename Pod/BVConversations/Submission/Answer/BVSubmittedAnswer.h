@@ -1,5 +1,5 @@
 //
-//  SubmittedAnswer.h
+//  BVSubmittedAnswer.h
 //  Conversations
 //
 //  Copyright © 2016 Bazaarvoice. All rights reserved.
