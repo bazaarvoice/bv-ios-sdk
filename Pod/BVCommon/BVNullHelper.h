@@ -10,4 +10,13 @@
 
 #define SET_IF_NOT_NULL(target, value) if(value != [NSNull null]) { target = value; }
 
+static inline bool isObjectNilOrNull(NSObject *object){
+    
+    if (object == nil || object == [NSNull null]){
+        return true;
+    } else {
+        return false;
+    }
+}
+
 #endif /* BVNullHelper_h */

@@ -17,6 +17,8 @@
 @property NSNumber* _Nullable typicalHoursToPost;
 @property NSString* _Nullable authorSubmissionToken;
 
+@property NSDictionary * _Nullable formFields;
+
 -(nonnull instancetype)initWithApiResponse:(nonnull NSDictionary*)apiResponse;
 
 @end
