@@ -28,7 +28,7 @@ class ConversationsTests: XCTestCase {
         
         XCTAssertEqual(getParamValue(params, keyToSearchFor: "passkey"), "testApiKey")
         XCTAssertEqual(getParamValue(params, keyToSearchFor: "apiversion"), "5.4")
-        XCTAssertEqual(getParamValue(params, keyToSearchFor: "_bvIosSdkVersion"), "4.1.0")
+        XCTAssertEqual(getParamValue(params, keyToSearchFor: "_bvIosSdkVersion"), BV_SDK_VERSION)
         
     }
     

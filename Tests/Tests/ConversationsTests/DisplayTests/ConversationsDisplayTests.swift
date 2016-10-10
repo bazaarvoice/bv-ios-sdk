@@ -171,7 +171,32 @@ class ConversationsDisplayTests: XCTestCase {
     }
     
     
-    func testInlineRatingsDisplay() {
+    func testInlineRatingsDisplayOneProduct() {
+        
+        let expectation = expectationWithDescription("")
+        
+        let request = BVBulkRatingsRequest(productIds: ["test3"], statistics: .All)
+        request.addFilter(.ContentLocale, filterOperator: .EqualTo, values: ["en_US"])
+        
+        request.load({ (response) in
+            XCTAssertEqual(response.results.count, 1)
+            XCTAssertEqual(response.results[0].productId, "test3")
+            XCTAssertEqual(response.results[0].reviewStatistics?.totalReviewCount, 29)
+            XCTAssertNotNil(response.results[0].reviewStatistics?.averageOverallRating)
+            XCTAssertEqual(response.results[0].reviewStatistics?.overallRatingRange, 5)
+            XCTAssertEqual(response.results[0].nativeReviewStatistics?.totalReviewCount, 29)
+            XCTAssertEqual(response.results[0].nativeReviewStatistics?.overallRatingRange, 5)
+            expectation.fulfill()
+        }) { (error) in
+            XCTFail("inline ratings request error: \(error)")
+            expectation.fulfill()
+        }
+        
+        self.waitForExpectationsWithTimeout(10) { (error) in print("request took way too long") }
+        
+    }
+    
+    func testInlineRatingsDisplayMultipleProducts() {
         
         let expectation = expectationWithDescription("")
         
@@ -180,12 +205,6 @@ class ConversationsDisplayTests: XCTestCase {
         
         request.load({ (response) in
             XCTAssertEqual(response.results.count, 3)
-            XCTAssertEqual(response.results[0].productId, "test3")
-            XCTAssertEqual(response.results[0].reviewStatistics?.totalReviewCount, 29)
-            XCTAssertNotNil(response.results[0].reviewStatistics?.averageOverallRating)
-            XCTAssertEqual(response.results[0].reviewStatistics?.overallRatingRange, 5)
-            XCTAssertEqual(response.results[0].nativeReviewStatistics?.totalReviewCount, 29)
-            XCTAssertEqual(response.results[0].nativeReviewStatistics?.overallRatingRange, 5)
             expectation.fulfill()
         }) { (error) in
             XCTFail("inline ratings request error: \(error)")

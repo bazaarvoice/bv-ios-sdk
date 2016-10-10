@@ -17,6 +17,7 @@ class AnswerSubmissionTests: XCTestCase {
         BVSDKManager.sharedManager().clientId = "apitestcustomer"
         BVSDKManager.sharedManager().apiKeyConversations = "2cpdrhohmgmwfz8vqyo48f52g"
         BVSDKManager.sharedManager().staging = true
+        BVSDKManager.sharedManager().setLogLevel(.Error)
         
     }
     
@@ -65,7 +66,9 @@ class AnswerSubmissionTests: XCTestCase {
         answer.agreedToTermsAndConditions = true
         answer.action = action
         
-        answer.addPhoto(PhotoUploadTests.createImage(), withPhotoCaption: "Yo dawg")
+        if let image = PhotoUploadTests.createImage() {
+            answer.addPhoto(image, withPhotoCaption: "Yo dawg")
+        }
         
         return answer
     }
@@ -83,6 +86,13 @@ class AnswerSubmissionTests: XCTestCase {
             
             XCTAssertEqual(errors.count, 2)
             for error in errors {
+                
+                if error.userInfo[BVFieldErrorName] == nil {
+                    // Would happen if we get internal server error and/or XML is returned
+                    XCTFail("Malformed error response")
+                    break
+                }
+                
                 let fieldName = error.userInfo[BVFieldErrorName] as! String
                 let errorCode = error.userInfo[BVFieldErrorCode] as! String
                 let errorMessage = error.userInfo[BVFieldErrorMessage] as! String

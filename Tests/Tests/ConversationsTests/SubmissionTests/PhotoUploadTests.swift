@@ -22,16 +22,21 @@ class PhotoUploadTests: XCTestCase {
 
     
     func testUploadablePhoto() {
-        let photo = BVUploadablePhoto(photo: PhotoUploadTests.createImage(), photoCaption: "Yo dawhhhh")
         
-        // upload photo, make sure it returns a non-empty URL
-        let expectation = expectationWithDescription("")
-        photo.uploadForContentType(.Review, success: { (photoUrl) in
-            XCTAssertTrue(photoUrl.characters.count > 0)
-            expectation.fulfill()
-        }) { (errors) in
+        if let image = PhotoUploadTests.createImage() {
+            let photo = BVUploadablePhoto(photo: image, photoCaption: "Yo dawhhhh")
+            // upload photo, make sure it returns a non-empty URL
+            let expectation = expectationWithDescription("")
+            photo.uploadForContentType(.Review, success: { (photoUrl) in
+                XCTAssertTrue(photoUrl.characters.count > 0)
+                expectation.fulfill()
+            }) { (errors) in
+                XCTFail()
+                expectation.fulfill()
+            }
+
+        } else {
             XCTFail()
-            expectation.fulfill()
         }
         
         waitForExpectationsWithTimeout(10, handler: nil)
@@ -59,10 +64,14 @@ class PhotoUploadTests: XCTestCase {
     }
     
     
-    class func createImage() -> UIImage {
+    class func createImage() -> UIImage? {
         let url = NSURL(string: "http://d1yacy4j66eg2g.cloudfront.net/img/conversations-api/thumbsup.jpg")
-        let data = NSData(contentsOfURL: url!)
-        return UIImage(data: data!)!
+        if let data = NSData(contentsOfURL: url!){
+            return UIImage(data: data)!
+        }
+        
+        return nil
+        
     }
     
 }
