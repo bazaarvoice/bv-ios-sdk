@@ -17,6 +17,7 @@ class ReviewSubmissionTests: XCTestCase {
         BVSDKManager.sharedManager().clientId = "apitestcustomer"
         BVSDKManager.sharedManager().apiKeyConversations = "KEY_REMOVED"
         BVSDKManager.sharedManager().staging = true
+        BVSDKManager.sharedManager().setLogLevel(.Error)
     }
     
     func testSubmitReviewWithPhoto() {
@@ -81,8 +82,9 @@ class ReviewSubmissionTests: XCTestCase {
         review.addRatingQuestion("HowDoes", value: 4)
         review.addRatingQuestion("Fit", value: 3)
         
-        review.addPhoto(PhotoUploadTests.createImage(), withPhotoCaption: "Yo dawg")
-        
+        if let image = PhotoUploadTests.createImage() {
+            review.addPhoto(image, withPhotoCaption: "Yo dawg")
+        }
         return review
     }
     

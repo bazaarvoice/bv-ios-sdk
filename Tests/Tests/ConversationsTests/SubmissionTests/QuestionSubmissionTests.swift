@@ -64,9 +64,9 @@ class QuestionSubmissionTests: XCTestCase {
         question.userEmail = "developer@bazaarvoice.com"
         question.agreedToTermsAndConditions = true
         question.action = action
-        
-        question.addPhoto(PhotoUploadTests.createImage(), withPhotoCaption: "Yo dawg")
-        
+        if let image = PhotoUploadTests.createImage() {
+            question.addPhoto(image, withPhotoCaption: "Yo dawg")
+        }
         return question
     }
     

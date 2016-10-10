@@ -19,7 +19,7 @@ script:
    - cd ./Tests
    - pod update
    - cd ..
-   - xcodebuild test -workspace ./Tests/BVSDK.xcworkspace -scheme "BVSDK-Tests" -configuration Debug -sdk iphonesimulator | xcpretty -c
+   - xcodebuild test -workspace ./Tests/BVSDK.xcworkspace -scheme "BVSDK-Tests" -configuration Debug -sdk iphonesimulator -destination "platform=iOS Simulator,id=$SIMULATOR_ID,OS=10.0" | xcpretty -c
 
 # Sanity test to make sure BVSDKDemo installs dependencies and builds OK
    - cd ./Examples/BVSDKDemo
