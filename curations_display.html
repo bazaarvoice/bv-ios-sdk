@@ -274,8 +274,7 @@ The completed project for this code walkthrough for Swift and Objective-C is in 
 <div class="tab-content code-switcher">
 	<!-- swift -->
 	<div role="tabpanel" class="tab-pane active" id="swift">
-<pre><code class="swift">
-import UIKit
+<pre><code class="swift">import UIKit
 import BVSDK
 import SDWebImage
 
@@ -298,8 +297,7 @@ class DemoCollectionViewCell: BVCurationsCollectionViewCell {
 	</div>
 	<!-- objective-c -->
 	<div role="tabpanel" class="tab-pane" id="objc">
-<pre><code class="objective-c">
-#import "DemoCollectionViewCell.h"
+<pre><code class="objective-c">#import "DemoCollectionViewCell.h"
 #import &ltSDWebImage/UIImageView+WebCache.h&gt
 
 @interface DemoCollectionViewCell()
@@ -311,14 +309,14 @@ class DemoCollectionViewCell: BVCurationsCollectionViewCell {
 @implementation DemoCollectionViewCell
 
 - (void)setFeedItem:(BVCurationsFeedItem *)feedItem {
-    
+
     super.feedItem = feedItem;
-    
+
     BVCurationsPhoto *curationsPhoto = self.feedItem.photos.firstObject;
     NSURL *imageURL = [NSURL URLWithString:curationsPhoto.url];
-    
+
     [self.feedImageView sd_setImageWithURL:imageURL];
-        
+
 }
 
 @end
@@ -332,7 +330,7 @@ class DemoCollectionViewCell: BVCurationsCollectionViewCell {
 	</li>
 	<li>Create the view: <strong>File > New > File</strong> and select:<br><br>
 		<img src="ios-img/curations_display/source_view.png" style="height:180px;" class="center-block img-fluid" /><br><br>
-	
+
 	Name the view <code>DemoCollectionViewCell</code>.</li>
 	<li>
 	After you create <code>DemoCollectionViewCell.xib</code>, complete the following steps:<br><br>
@@ -342,7 +340,7 @@ class DemoCollectionViewCell: BVCurationsCollectionViewCell {
 			<li>Delete the existing <code>UIView</code>, located on the left in the following screenshot.<br><br>
 				<img src="ios-img/curations_display/add_cell_nib.png" style="height:420px;" class="center-block img-fluid" />
 			</li>
-			
+
 		</ul>
 	</li>
 	<li>Add a <code>UIImageView</code> to the <code>.xib</code>. Using the pin tool, pin it to all sides of the cell:<br><br>
@@ -414,10 +412,12 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         self.curationsCollectionView.dataSource = self
 
         let groups = ["__all__"]
+
         let feedRequest = BVCurationsFeedRequest(groups: groups)
-        feedRequest.limit = 40
+        feedRequest.limit = 20
         feedRequest.hasPhoto = true
         feedRequest.withProductData = true
+        feedRequest.setLatitude(userLocation.latitude, longitude: userLocation.longitude) // get curations content based on user's current location
 
         self.curationsCollectionView.loadFeedWithRequest(feedRequest, withWidgetId: nil, completionHandler: { (feedItems) -> Void in
             // success
@@ -478,16 +478,13 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
 	</div>
 	<!-- objective-c -->
 	<div role="tabpanel" class="tab-pane" id="objc">
-<pre><code class="objective-c">
-
-#import "ViewController.h"
+<pre><code class="objective-c">#import "ViewController.h"
 #import "DemoCollectionViewCell.h"
 #import &lt;BVSDK/BVCurations.h&gt;
 
 @interface ViewController () &lt;UICollectionViewDataSource, UICollectionViewDelegate&gt;
 
 @property (weak, nonatomic) IBOutlet BVCurationsCollectionView *curationsCollectionView;
-
 @property (strong, nonatomic) NSArray&lt;BVCurationsFeedItem *&gt; *curationsFeedItems;
 
 @end
@@ -497,27 +494,29 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.curationsFeedItems = [NSArray array];
-    
+
     // Set up the UI
     [self.curationsCollectionView registerNib:[UINib nibWithNibName:@"DemoCollectionViewCell" bundle:nil]
                    forCellWithReuseIdentifier:@"DemoCell"];
- 
+
     self.curationsCollectionView.delegate = self;
     self.curationsCollectionView.dataSource = self;
-    
+
     // Create the request parameters
     NSArray *groups = @[@"__all__"];
+
     BVCurationsFeedRequest *feedRequest = [[BVCurationsFeedRequest alloc] initWithGroups:groups];
     feedRequest.limit = 40;
     feedRequest.hasPhoto = YES;
     feedRequest.withProductData = YES;
-    
+    [feedRequest setLatitude:userLocation.latitude longitude: userLocation.longitude]; // get curations content based on user's current location
+
     [self.curationsCollectionView loadFeedWithRequest:feedRequest withWidgetId:nil completionHandler:^(NSArray&lt;BVCurationsFeedItem *&gt; * _Nonnull feedItemsResult) {
         // completion on main thread
         NSLog(@"Success loading Curations Display!");
         self.curationsFeedItems = feedItemsResult;
         [self.curationsCollectionView reloadData];
-        
+
     } withFailure:^(NSError * _Nonnull error) {
         // error on main thread
         NSLog(@"ERROR: Curations feed could not be retrieved. Error: %@", error.localizedDescription);
@@ -527,13 +526,13 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
 
 - (void)viewWillLayoutSubviews{
     [super viewWillLayoutSubviews];
-    
+
     UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout *)self.curationsCollectionView.collectionViewLayout;
     layout.itemSize = CGSizeMake(self.curationsCollectionView.bounds.size.height, self.curationsCollectionView.bounds.size.height);
-   
+
     layout.scrollDirection = UICollectionViewScrollDirectionVertical;
     layout.itemSize = CGSizeMake(self.curationsCollectionView.bounds.size.width / 2, self.curationsCollectionView.bounds.size.width / 2);
-    
+
     layout.minimumInteritemSpacing = 0;
     layout.minimumLineSpacing = 0;
 }
@@ -549,23 +548,23 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
-    
+
     DemoCollectionViewCell *cell = [self.curationsCollectionView dequeueReusableCellWithReuseIdentifier:@"DemoCell" forIndexPath:indexPath];
-    
+
     cell.feedItem = [self.curationsFeedItems objectAtIndex:indexPath.row];
-    
+
     return cell;
-    
+
 }
 
 #pragma mark UICollectionViewDelegate
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-    
+
     BVCurationsFeedItem *selectedFeedItem = [self.curationsFeedItems objectAtIndex:indexPath.row];
-    
+
     NSLog(@"Selected: %@", selectedFeedItem.description);
-    
+
 }
 
 @end
@@ -578,6 +577,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
 <p>The app should populate the collection view with the Curations display. Although the app should run correctly, it will still need styling to look professional. </p>
 <img src="ios-img/curations_display/final_project.png" style="height:460px;" class="center-block img-fluid" />
 <br>
+
 
 
 <div class="well well-sm">
