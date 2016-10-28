@@ -58,15 +58,23 @@
 		
 		<option value="//api/name/apiKeyConversations">apiKeyConversations</option>
 		
+		<option value="//api/name/apiKeyConversationsStores">apiKeyConversationsStores</option>
+		
 		<option value="//api/name/apiKeyCurations">apiKeyCurations</option>
 		
+		<option value="//api/name/apiKeyLocation">apiKeyLocation</option>
+		
 		<option value="//api/name/apiKeyShopperAdvertising">apiKeyShopperAdvertising</option>
+		
+		<option value="//api/name/bvStoreReviewNotificationProperties">bvStoreReviewNotificationProperties</option>
 		
 		<option value="//api/name/bvUser">bvUser</option>
 		
 		<option value="//api/name/clientId">clientId</option>
 		
 		<option value="//api/name/staging">staging</option>
+		
+		<option value="//api/name/storeReviewContentExtensionCategory">storeReviewContentExtensionCategory</option>
 		
 		<option value="//api/name/timeout">timeout</option>
 		
@@ -414,6 +422,88 @@ mgr.staging = false  //  true for production
 		</div>
 	</div>
 </div><div class="section-method">
+	<a name="//api/name/apiKeyConversationsStores" title="apiKeyConversationsStores"></a>
+	<h3 class="method-title"><code><a href="#//api/name/apiKeyConversationsStores">&nbsp;&nbsp;apiKeyConversationsStores</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Your private API key for the BVConversations, Store Reviews product</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSString *apiKeyConversationsStores</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BVSDKManager.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/storeReviewContentExtensionCategory" title="storeReviewContentExtensionCategory"></a>
+	<h3 class="method-title"><code><a href="#//api/name/storeReviewContentExtensionCategory">&nbsp;&nbsp;storeReviewContentExtensionCategory</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>The category of the Notification Content Extension you will use for store review notifications</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSString *storeReviewContentExtensionCategory</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BVSDKManager.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
 	<a name="//api/name/apiKeyShopperAdvertising" title="apiKeyShopperAdvertising"></a>
 	<h3 class="method-title"><code><a href="#//api/name/apiKeyShopperAdvertising">&nbsp;&nbsp;apiKeyShopperAdvertising</a></code>
 </h3>
@@ -472,6 +562,47 @@ mgr.staging = false  //  true for production
 		    
 
 			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSString *apiKeyCurations</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BVSDKManager.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/apiKeyLocation" title="apiKeyLocation"></a>
+	<h3 class="method-title"><code><a href="#//api/name/apiKeyLocation">&nbsp;&nbsp;apiKeyLocation</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Your private API key for the BVLocations API</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSString *apiKeyLocation</code></div>
 
 		    
 			
@@ -568,6 +699,47 @@ Use of this method requires that a valid key has been set for apiKeyShopperMarke
 		    
 
 			<div class="method-subsection method-declaration"><code>@property (strong, readonly) BVAuthenticatedUser *bvUser</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BVSDKManager.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/bvStoreReviewNotificationProperties" title="bvStoreReviewNotificationProperties"></a>
+	<h3 class="method-title"><code><a href="#//api/name/bvStoreReviewNotificationProperties">&nbsp;&nbsp;bvStoreReviewNotificationProperties</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>These properties are available after setting the BVSDKManager#apiKeyLConversationsStores. Clients typically do not need to access these properties except for help in debugging.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (strong, readonly) BVStoreReviewNotificationProperties *bvStoreReviewNotificationProperties</code></div>
 
 		    
 			
@@ -694,7 +866,7 @@ request.customerTargeting = [[BVSDKManager sharedManager] getTargetingKeywords];
 				<footer>
 					<div class="footer-copyright">
 						
-						<p class="copyright">Copyright &copy; 2016 Bazaarvoice. All rights reserved. Updated: 2016-08-10</p>
+						<p class="copyright">Copyright &copy; 2016 Bazaarvoice. All rights reserved. Updated: 2016-10-28</p>
 						
 						
 						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>

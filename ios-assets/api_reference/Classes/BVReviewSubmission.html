@@ -54,6 +54,46 @@
 
 	
 	
+	<optgroup label="Properties">
+		
+		<option value="//api/name/action">action</option>
+		
+		<option value="//api/name/agreedToTermsAndConditions">agreedToTermsAndConditions</option>
+		
+		<option value="//api/name/campaignId">campaignId</option>
+		
+		<option value="//api/name/fingerPrint">fingerPrint</option>
+		
+		<option value="//api/name/hostedAuthenticationCallback">hostedAuthenticationCallback</option>
+		
+		<option value="//api/name/hostedAuthenticationEmail">hostedAuthenticationEmail</option>
+		
+		<option value="//api/name/isRecommended">isRecommended</option>
+		
+		<option value="//api/name/locale">locale</option>
+		
+		<option value="//api/name/netPromoterComment">netPromoterComment</option>
+		
+		<option value="//api/name/netPromoterScore">netPromoterScore</option>
+		
+		<option value="//api/name/photos">photos</option>
+		
+		<option value="//api/name/productId">productId</option>
+		
+		<option value="//api/name/sendEmailAlertWhenPublished">sendEmailAlertWhenPublished</option>
+		
+		<option value="//api/name/user">user</option>
+		
+		<option value="//api/name/userEmail">userEmail</option>
+		
+		<option value="//api/name/userId">userId</option>
+		
+		<option value="//api/name/userLocation">userLocation</option>
+		
+		<option value="//api/name/userNickname">userNickname</option>
+		
+	</optgroup>
+	
 
 	
 
@@ -310,6 +350,750 @@
 				<h4 class="method-subtitle">Discussion</h4>
 				<p>A submission can fail for many reasons, and is dependent on your submission configuration.</p>
 			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BVReviewSubmission.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/action" title="action"></a>
+	<h3 class="method-title"><code><a href="#//api/name/action">&nbsp;&nbsp;action</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Set whether or not to to perform a preview on the submission or submit for real. Default is BVSubmissionActionPreview.
+A preview is like a dry run, but validation of the fields will occur through the API call over the network but no data will be submitted.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property BVSubmissionAction action</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BVReviewSubmission.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/user" title="user"></a>
+	<h3 class="method-title"><code><a href="#//api/name/user">&nbsp;&nbsp;user</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Value of the encrypted user. This parameter demonstrates that a user has been authenticated. Note that the UserId parameter does not contain authentication information and should not be used for hosted authentication. See the Authenticate User method for more information.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property NSString *user</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BVReviewSubmission.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/userEmail" title="userEmail"></a>
+	<h3 class="method-title"><code><a href="#//api/name/userEmail">&nbsp;&nbsp;userEmail</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>User&rsquo;s email address</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property NSString *userEmail</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BVReviewSubmission.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/userId" title="userId"></a>
+	<h3 class="method-title"><code><a href="#//api/name/userId">&nbsp;&nbsp;userId</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>User&rsquo;s external ID. Do not use email addresses for this value.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property NSString *userId</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BVReviewSubmission.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/userLocation" title="userLocation"></a>
+	<h3 class="method-title"><code><a href="#//api/name/userLocation">&nbsp;&nbsp;userLocation</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>User location text</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property NSString *userLocation</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BVReviewSubmission.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/userNickname" title="userNickname"></a>
+	<h3 class="method-title"><code><a href="#//api/name/userNickname">&nbsp;&nbsp;userNickname</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>User nickname display text</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property NSString *userNickname</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BVReviewSubmission.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/agreedToTermsAndConditions" title="agreedToTermsAndConditions"></a>
+	<h3 class="method-title"><code><a href="#//api/name/agreedToTermsAndConditions">&nbsp;&nbsp;agreedToTermsAndConditions</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Boolean indicating whether or not the <a href="#//api/name/user">user</a> agreed to the terms and conditions. Required depending on the client&rsquo;s settings.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property NSNumber *agreedToTermsAndConditions</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BVReviewSubmission.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/sendEmailAlertWhenPublished" title="sendEmailAlertWhenPublished"></a>
+	<h3 class="method-title"><code><a href="#//api/name/sendEmailAlertWhenPublished">&nbsp;&nbsp;sendEmailAlertWhenPublished</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Boolean indicating whether or not the <a href="#//api/name/user">user</a> wants to be notified when his/her content is published.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property NSNumber *sendEmailAlertWhenPublished</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BVReviewSubmission.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/locale" title="locale"></a>
+	<h3 class="method-title"><code><a href="#//api/name/locale">&nbsp;&nbsp;locale</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Locale to display Labels, Configuration, Product Attributes and Category Attributes in. The default value is the locale defined in the display associated with the API key.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property NSString *locale</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BVReviewSubmission.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/campaignId" title="campaignId"></a>
+	<h3 class="method-title"><code><a href="#//api/name/campaignId">&nbsp;&nbsp;campaignId</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Arbitrary text that may be saved alongside content to indicate vehicle by which content was captured, e.g. “post-purchase email”.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property NSString *campaignId</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BVReviewSubmission.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/hostedAuthenticationEmail" title="hostedAuthenticationEmail"></a>
+	<h3 class="method-title"><code><a href="#//api/name/hostedAuthenticationEmail">&nbsp;&nbsp;hostedAuthenticationEmail</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Email address where the submitter will receive the confirmation email. If you are configured to use hosted email authentication, this parameter is required. See the Authenticate User method for more information on hosted authentication.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property NSString *hostedAuthenticationEmail</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BVReviewSubmission.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/hostedAuthenticationCallback" title="hostedAuthenticationCallback"></a>
+	<h3 class="method-title"><code><a href="#//api/name/hostedAuthenticationCallback">&nbsp;&nbsp;hostedAuthenticationCallback</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>URL of the link contained in the <a href="#//api/name/user">user</a> authentication email. This should point to a landing page where a web application exists to complete the <a href="#//api/name/user">user</a> authentication process. The host for the URL must be one of the domains configured for the client. The link in the email will contain a <a href="#//api/name/user">user</a> authentication token (authtoken) that is used to verify the submitter. If you are configured to use hosted email authentication, this parameter is required. See the hosted authentication tutorial for more information.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property NSString *hostedAuthenticationCallback</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BVReviewSubmission.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/netPromoterComment" title="netPromoterComment"></a>
+	<h3 class="method-title"><code><a href="#//api/name/netPromoterComment">&nbsp;&nbsp;netPromoterComment</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Value is text representing a <a href="#//api/name/user">user</a> comment to explain numerical Net Promoter score.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property NSString *netPromoterComment</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BVReviewSubmission.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/netPromoterScore" title="netPromoterScore"></a>
+	<h3 class="method-title"><code><a href="#//api/name/netPromoterScore">&nbsp;&nbsp;netPromoterScore</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Value is positive integer between 1 and 10 representing a numerical <a href="#//api/name/rating">rating</a> in response to “How would you rate this company?”</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property NSNumber *netPromoterScore</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BVReviewSubmission.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/isRecommended" title="isRecommended"></a>
+	<h3 class="method-title"><code><a href="#//api/name/isRecommended">&nbsp;&nbsp;isRecommended</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Value is true or false; default is null – &ldquo;true&rdquo; or &ldquo;false&rdquo; answer to &ldquo;I would recommend this to a friend&rdquo;. Required dependent on client settings.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property NSNumber *isRecommended</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BVReviewSubmission.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/fingerPrint" title="fingerPrint"></a>
+	<h3 class="method-title"><code><a href="#//api/name/fingerPrint">&nbsp;&nbsp;fingerPrint</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Fingerprint of content author&rsquo;s device. See the Authenticity Tutorial for more information.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property NSString *fingerPrint</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Per the Bazaarvoice Authenticity Policy, you must send a device fingerprint attached to each submission. If you fail to send a device fingerprint with your submission, Bazaarvoice may take any <a href="#//api/name/action">action</a> deemed necessary in Bazaarvoice’s sole discretion to protect the integrity of the network. Such actions may include but are not limited to: rejection of your content, halting syndication of your content on the Bazaarvoice network, revocation of your API key, or revocation of your API license.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BVReviewSubmission.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/photos" title="photos"></a>
+	<h3 class="method-title"><code><a href="#//api/name/photos">&nbsp;&nbsp;photos</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>An array of BVUploadablePhoto objects to attach to a review submission.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property NSMutableArray&lt;BVUploadablePhoto*&gt; *photos</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BVReviewSubmission.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/productId" title="productId"></a>
+	<h3 class="method-title"><code><a href="#//api/name/productId">&nbsp;&nbsp;productId</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>The product id used to filter the review on.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (readonly) NSString *productId</code></div>
+
+		    
+			
+
+			
+
+			
+
 			
 
 			
@@ -627,7 +1411,7 @@
 				<footer>
 					<div class="footer-copyright">
 						
-						<p class="copyright">Copyright &copy; 2016 Bazaarvoice. All rights reserved. Updated: 2016-08-10</p>
+						<p class="copyright">Copyright &copy; 2016 Bazaarvoice. All rights reserved. Updated: 2016-10-28</p>
 						
 						
 						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>
