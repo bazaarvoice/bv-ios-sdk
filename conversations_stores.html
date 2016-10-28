@@ -19,7 +19,7 @@ $(function(){
 
 	// select the tab in the sidebar to reflect current page position
 
-	var tabName = "BV Pixel";
+	var tabName = "Conversations for Stores";
 
 	$('.nav-link.active').removeClass('active');
 	console.log('active tab: ', tabName);
@@ -67,7 +67,7 @@ $(function(){
 
     ga('create', 'UA-56370630-4', 'auto');
     ga('set', {
-      title: 'BV Pixel'
+      title: 'Conversations for Stores'
     });
     ga('send', 'pageview');
   </script>
@@ -176,7 +176,7 @@ $(function(){
                                         id="conversationsStoresDropdownArrow"
                                         class="fa fa-sort-desc fa-rotate-270"></i></span></span>
                         </a>
-                        <div class="collapse "
+                        <div class="collapse in"
                              id="conversationsStoresDropdown">
                             <ul>
                                 <li class="nav-item">
@@ -244,24 +244,40 @@ $(function(){
               <div class="page-container">
 
                 <div class="flex flex-row" id="content_title">
-	BV Pixel
+	Conversations Stores - Display and Submission API
 </div>
+
+<p>Use the Bazaarvoice Mobile SDKs to enable Conversations for Stores functionality, such as displaying store reviews and submitting a review and photo of a store. The API is very similar to the Conversations API for product reviews, with the addition that the BVSDK provides additional meta-info for stores, such as geo-location. Contact Bazaarvoice to set up Conversations for Stores.</p>
+
+<p class="bg-info well-lg" style="padding:4px;"><i class="fa fa-hand-o-right"></i>  Important: You will need your <strong>apiKeyConversationsStores</strong> to implement and use Conversations for Stores with Mobile SDKs.</p>
+
+</p>
+Check out the code samples below to get an overview of what functionality you can use with the BVSDK.
+
+
 <hr>
-
-<p>The BV Pixel (formerly known as the ROI beacon) tells Bazaarvoice when a customer converts in your iOS app. There are two types of BV Pixel tags:</p>
-<ul>
-	<li>Generic (non-commerce) conversion tags capture events such as newsletter signups, product registration, downloads of a PDF, and requests for more information about a product or service. You can generate ROI (return on investment) reports related to key performance indicators.</li>
-	<li>Transaction conversion tags capture purchase data&#8212;when a customer buys a product. The data captured might include SKUs, email addresses, and postal addresses. You can generate ROI reports tied to revenue.</li>
-</ul>
-
-<br>
-<p>After you implement the BV Pixel in your iOS app, you can use this measurement dashboard to generate reports that show how users are interacting in your Android app, and to understand the value of your implementation. You can also enable other useful features. The maintenance-free post-interaction email (PIE) feature is key to increasing the volume of your consumer-generated content. In addition, you can run A/B tests to evaluate best practices in your iOS app, live, before you implement them for all customers. You must install the BV Pixel before you can use these indispensable features.</p>
 
 <p class="bg-warning well-lg" style="padding:4px;"> <i class="fa fa-hand-o-right"></i>  Important: Before you start implementing this Mobile SDK module, verify your installation by checking the steps on the <a href="./installation.html">Installation and Configuration</a> page.</p>
 
 
+<br>
 
-<h3>Configuration</h3>
+<ul class="nav nav-tabs" role="tablist">
+  <li role="presentation" class="active"><a href="#reviews" aria-controls="reviews" role="tab" data-toggle="tab">Display Store Reviews</a></li>
+  <li role="presentation"><a href="#storebulkratings" aria-controls="storebulkratings" role="tab" data-toggle="tab">Display Store Ratings</a></li>
+  <li role="presentation"><a href="#submitstorereview" aria-controls="submitstorereview" role="tab" data-toggle="tab">Submit Store Review</a></li>
+  
+</ul>
+<div class="tab-content code-switcher">
+	
+	<div role="tabpanel" class="tab-pane active" id="reviews">
+
+	<!-- Store Reviews -->
+		<br>
+<h4>Display Store Reviews</h4>
+<p>Use the <code>BVStoreReviewsRequest</code> object to construct parameters and make the API request. Display the results in the <code>response.results</code> value, which contain an array of <code>BVReview</code> objects.</p>
+
+<img src="ios-img/conversations_stores/store_reviews_display.png" style="height:410px; box-shadow: 0px 0px 8px #444;" class="center-block img-fluid" />
 
 <ul class="nav nav-tabs" role="tablist">
   <li role="presentation" class="active"><a href="#swift" aria-controls="swift" role="tab" data-toggle="tab">Swift</a></li>
@@ -272,179 +288,209 @@ $(function(){
 <div class="tab-content code-switcher">
 	<!-- swift -->
 	<div role="tabpanel" class="tab-pane active" id="swift">
-		<p>Import the SDK by adding this line to each file that uses the SDK:</p>
 <pre><code class="swift">import BVSDK
-</code></pre>
-		<p>Then add the following to your AppDelegate's <code>didFinishLaunchingWithOptions</code> function:</p>
-<pre><code class="swift">BVSDKManager.sharedManager().clientId = "YOUR_CLIENT_ID"
-BVSDKManager.sharedManager().staging = true // Set to false for production!
+...
+
+let request = BVStoreReviewsRequest(storeId: store.identifier, limit: 20, offset: Int32(self.reviews.count))
+
+// Sorting and filter FilterOptions
+request.addSort(.Rating, order: .Descending)
+
+request.load({ (response) in
+	// success - show your reviews!
+	// response.results contains an array of BVReview objects
+}) { (error) in
+	// failure - tell the user something went wrong : (
+}
+
 </code></pre>
 	</div>
 	<!-- objective-c -->
 	<div role="tabpanel" class="tab-pane" id="objc">
-		<p>Import the SDK by including these headers:</p>
-<pre><code class="objective-c">#include &lt;BVSDK/BVSDK.h&gt;
-</code></pre>
-		<p>Then add the following to your AppDelegate's <code>didFinishLaunchingWithOptions</code> function:</p>
-<pre><code class="objective-c">[BVSDKManager sharedManager].clientId = @"YOUR_CLIENT_ID";
-[BVSDKManager sharedManager].staging = YES; // set to NO for production!
-</code></pre>
-	</div>
+<pre><code class="objectivec">BVStoreReviewsRequest *request = [[BVStoreReviewsRequest alloc] initWithStoreId:@"1" limit:20 offset:0];
+[request addSort:BVSortOptionProductsRating order:BVSortOrderDescending];
 
+[request load:^(BVStoreReviewsResponse * _Nonnull response) {
+	// success
+	// response.results contains an array of BVReview objects
+} failure:^(NSArray<NSError *> * _Nonnull errors) {
+	// error
+	// failure - tell the user something went wrong : (
+}];</code></pre>
+	</div>
 </div>
 <br>
+
 <br>
 
-<h3>Tracking transaction conversions</h3>
-<p>Implement the following code to use the BV Pixel to track transaction conversions.</p>
+	</div>
+	
+	<div role="tabpanel" class="tab-pane" id="storebulkratings">
+
+		<!-- Store Bulk Ratings -->
+		<br>
+<h4>Display Store Ratings</h4>
+
+<p>Use the <code>BVBulkStoreItemsRequest</code> object to construct parameters and make the API request. Display the results in the <code>response.results</code> value, which contain an array of <code>BVStore</code> objects.</p>
+
+The <code>BVBulkStoreItemsRequest</code> contains two constructors you can use depending whether you want to fetch all the stores with limit and offset, or you just want to fetch one or more stores if you already have the store id.
+
+<img src="ios-img/conversations_stores/stores_bulk_ratings_display.png" style="height:410px; box-shadow: 0px 0px 8px #444;" class="center-block img-fluid" />
+
+<h4>Display Stores with Limit and Offset</h4>
+
+
 <ul class="nav nav-tabs" role="tablist">
   <li role="presentation" class="active"><a href="#swift" aria-controls="swift" role="tab" data-toggle="tab">Swift</a></li>
   <li role="presentation"><a href="#objc" aria-controls="objc" role="tab" data-toggle="tab">Objective-C</a></li>
 </ul>
-
+<!-- Tab panes -->
 <div class="tab-content code-switcher">
 	<!-- swift -->
 	<div role="tabpanel" class="tab-pane active" id="swift">
-<pre><code class="swift">/*
-  Construct an array of BVTransactionItem based on the transaction. 
-  Sku is required but the more parameters provided the better.
-*/
+<pre><code class="swift">import BVSDK
+...
 
-let firstItem = BVTransactionItem(sku:"123", 
-                                  name: "cat food", 
-                                  category: "pets", 
-                                  price: 10.99, 
-                                  quantity: 1, 
-                                  imageUrl: "http://example.com/catfood.jpg")
-let secondItem = BVTransactionItem("321", 
-                                  name: "dog food", 
-                                  category: "pets", 
-                                  price: 14.99, 
-                                  quantity: 1, 
-                                  imageUrl: "http://example.com/dogfood.jpg")
-
-let transactionItems = [firstItem, secondItem]
-
-/*
-  Construct a BVTransaction 
-  OrderId, orderTotal, and orderItems are required.
-  You may include any other key value params you'd like.
-  BVTransaction also has convenience setters for commonly used params.
-*/
-
-let transaction = BVTransaction(orderId:"order id", 
-                          orderTotal: 33.11, 
-                          orderItems: transactionItems, 
-                          andOtherParams: ["state":"TX","email":"some.one@domain.com"])
-
-transaction.shipping = 4.99
-transaction.tax = 2.14
-
-/*
-  Use the BVPixel to track the Conversion Transaction Event.
-*/
-
-BVPixel.trackConversionTransaction(transaction)
+let request = BVBulkStoreItemsRequest(20, offset: 0)
+    request.includeStatistics(.Reviews)
+request.load({ (response) in
+    // success
+    // Find the array for BVStore objects in response.results
+}) { (error) in
+    // error - tell the user something went wrong : (
+}
 </code></pre>
 	</div>
 	<!-- objective-c -->
 	<div role="tabpanel" class="tab-pane" id="objc">
-<pre><code class="objectivec">/*
-Construct an array of BVTransactionItem based on the transaction. 
-Sku is required but the more parameters provided the better.
-*/
-
-BVTransactionItem *firstItem = [[BVTransactionItem alloc]init:@"123"
-                         name:@"cat food"
-                     category:@"pets"
-                        price:10.99
-                     quantity:1
-                     imageUrl:@"http://example.com/catfood.jpg"];
-BVTransactionItem *secondItem = [[BVTransactionItem alloc]init:@"321"
-                          name:@"dog food"
-                      category:@"pets"
-                         price:14.99
-                      quantity:1
-                      imageUrl:@"http://example.com/dogfood.jpg"];
-
-NSArray *transactionItems = @[firstItem, secondItem];
-
-/*
-Construct a BVTransaction 
-OrderId, orderTotal, and orderItems are required.
-You may include any other key value params you'd like.
-BVTransaction also has convenience setters for commonly used params.
-*/
-
-BVTransaction *transaction = [[BVTransaction alloc]init:@"order id"
-             orderTotal:33.11
-             orderItems:transactionItems
-         andOtherParams:@{@"state": @"TX", @"email": @"some.one@domain.com"}];
-
-transaction.shipping = 4.99;
-transaction.tax = 2.14;
-
-/*
-Use the BVPixel to track the Conversion Transaction Event.
-*/
-
-[BVPixel trackConversionTransaction:transaction];
-</code></pre>							
+<pre><code class="objectivec">BVBulkStoreItemsRequest *request = [[BVBulkStoreItemsRequest alloc] init:20 offset:0];
+[request load:^(BVBulkStoresResponse * _Nonnull response) {
+    
+    // Get the BVStore(s) in the response.results array
+    BVStore* store = response.results.firstObject;
+    
+} failure:^(NSArray * _Nonnull errors) {
+    // handle failure appropriately
+}];</code></pre>
 	</div>
 </div>
 <br>
-<br>
 
-<h3>Tracking generic non-commerce conversions</h3>
-<p>Implement the following code to use the BV Pixel to track generic non-commerce conversions.</p>
+<h4>Display Stores By Id</h4>
+
+
 <ul class="nav nav-tabs" role="tablist">
-	<li role="presentation" class="active"><a href="#swift" aria-controls="swift" role="tab" data-toggle="tab">Swift</a></li>
-	<li role="presentation"><a href="#objc" aria-controls="objc" role="tab" data-toggle="tab">Objective-C</a></li>
+  <li role="presentation" class="active"><a href="#swift" aria-controls="swift" role="tab" data-toggle="tab">Swift</a></li>
+  <li role="presentation"><a href="#objc" aria-controls="objc" role="tab" data-toggle="tab">Objective-C</a></li>
 </ul>
-
+<!-- Tab panes -->
 <div class="tab-content code-switcher">
 	<!-- swift -->
 	<div role="tabpanel" class="tab-pane active" id="swift">
-<pre><code class="swift">/*
-Construct a BVConversion 
-Type and value are required. Label is recommended. 
-Include any other key value params you want.
-*/
+<pre><code class="swift">import BVSDK
+...
 
-let conversion = BVConversion("BrochureDownload", 
-value: "YourDefinedValue", 
-label: "Model xyz brochure", 
-otherParams: ["state":"TX","email":"some.one@domain.com"])
-
-/*
-Use the BVPixel to track the Non-commerce Conversion Event.
-*/
-
-BVPixel.trackNonCommerceConversion(conversion)
+ let req = BVBulkStoreItemsRequest(storeIds: ["1", "2"])
+req.load({(response) in
+    // success
+    // get the BVStore object(s) in response.results
+}){(error) in
+    // error - tell the user something went wrong : (
+}
 </code></pre>
 	</div>
 	<!-- objective-c -->
 	<div role="tabpanel" class="tab-pane" id="objc">
-<pre><code class="objectivec">/*
-Construct a BVConversion 
-Type and value are required. Label is recommended.
-Include any other key value params you want.
-*/
-
-BVConversion *conversion = [[BVConversion alloc]init:@"BrochureDownload"
-               value:@"YourDefinedValue"
-               label:@"Model xyz brochure"
-         otherParams:@{@"state":@"TX", @"email":@"some.one@domain.com"}];
-
-/*
-Use the BVPixel to track the Non-commerce Conversion Event.
-*/
-
-[BVPixel trackNonCommerceConversion:conversion];
-</code></pre>							
+<pre><code class="objectivec">BVBulkStoreItemsRequest *request = [[BVBulkStoreItemsRequest alloc] initWithStoreIds:@[@"1", @"2"]];
+[request load:^(BVBulkStoresResponse * _Nonnull response) {
+    
+    // Get the BVStore(s) in the response.results array
+    BVStore* store = response.results.firstObject;
+    
+} failure:^(NSArray * _Nonnull errors) {
+    // handle failure appropriately
+}];
+</code></pre>
 	</div>
 </div>
 <br>
+
+<br>
+
+	</div>
+
+	<div role="tabpanel" class="tab-pane" id="submitstorereview">
+
+		<!-- Store Bulk Ratings -->
+		<br>
+<h4>Submitting a Review on a Store</h4>
+
+<p>Use the <code>BVStoreReviewSubmission</code> class to set up your submission form values and submit a review on a single store.</p> 
+
+
+<img src="ios-img/conversations_stores/stores_submit_review.png" style="height:410px; box-shadow: 0px 0px 8px #444;" class="center-block img-fluid" />
+
+<ul class="nav nav-tabs" role="tablist">
+  <li role="presentation" class="active"><a href="#swift" aria-controls="swift" role="tab" data-toggle="tab">Swift</a></li>
+  <li role="presentation"><a href="#objc" aria-controls="objc" role="tab" data-toggle="tab">Objective-C</a></li>
+</ul>
+<!-- Tab panes -->
+<div class="tab-content code-switcher">
+    <!-- swift -->
+    <div role="tabpanel" class="tab-pane active" id="swift">
+<pre><code class="swift">let reviewSubmission = BVStoreReviewSubmission(reviewTitle: "Title",
+                                                       reviewText: "review text goes here....",
+                                                       rating: 5,
+                                                       productId: storeId
+        
+reviewSubmission.action = BVSubmissionAction.Preview // Change to .Submit to write for real
+
+let userId = "123abc"
+let userNickName = "userNick"
+let userEmail = "foo@bar.com"
+
+reviewSubmission.user = userId
+reviewSubmission.userNickname = userNickName
+reviewSubmission.userEmail = userEmail
+reviewSubmission.isRecommended = true
+reviewSubmission.agreedToTermsAndConditions = true
+
+reviewSubmission.addPhoto(photo, withPhotoCaption: nil)
+
+reviewSubmission.submit({ (response) in
+    
+    // Successful submission!
+    
+}) { (errors) in
+    
+    // Error alert your user something went wrong and try again.
+}
+
+</code></pre>
+    </div>
+    <!-- objective-c -->
+    <div role="tabpanel" class="tab-pane" id="objc">
+<pre><code class="objectivec">BVStoreReviewSubmission *reviewSubmit = [[BVStoreReviewSubmission alloc] initWithReviewTitle:@"Review Title" reviewText:@"review text...." rating:5 storeId:@"yourStoreId"];
+reviewSubmit.action = BVActionPreview; // change to submit for live submissions!
+
+// Add your other required parameters here...
+
+[reviewSubmit submit:^(BVReviewSubmissionResponse * _Nonnull response) {
+    // Success!
+} failure:^(NSArray<NSError *> * _Nonnull errors) {
+    // Failure :(
+}];</code></pre>
+    </div>
+</div>
+<br>
+
+<br>
+
+	</div>
+	
+</div>
+<br>
+
 
 
 <div class="well well-sm">

@@ -167,6 +167,29 @@ $(function(){
                         </div>
 
                     </li>
+
+
+                     <li class="nav-item">
+                        <a class="nav-link" role="button" data-toggle="collapse" href="#conversationsStoresDropdown"
+                           aria-expanded="false" aria-controls="conversationsStoresDropdown">
+                                <span><span>Conversations for Stores</span><span style="float:right;"><i
+                                        id="conversationsStoresDropdownArrow"
+                                        class="fa fa-sort-desc fa-rotate-270"></i></span></span>
+                        </a>
+                        <div class="collapse "
+                             id="conversationsStoresDropdown">
+                            <ul>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="conversations_stores.html"><span>Conversations for Stores</span></a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="conversations_stores_push.html"><span>Stores Push Notifications</span></a>
+                                </li>
+                            </ul>
+                        </div>
+
+                    </li>
+
                     <li class="nav-item">
                         <a class="nav-link" href="location.html"><span>Location (Beta)</span></a>
                     </li>
@@ -230,12 +253,14 @@ $(function(){
 <ul>
   <li>Signed Data Usage Amendment, if not already in place</li>
   <li>Minimum iOS deployment target of iOS 8.0</li>
-  <li>Xcode version 7.0 or higher</li>
+  <li>Xcode version 8.0 or higher</li>
   <li>Your Client ID</li>
-  <li>API key(s) for the Bazaarvoice product you have enabled</li>
+  <li>API key(s) for the Bazaarvoice product(s) you have enabled</li>
 </ul>
 <br>
 
+<p class="bg-info well-lg" style="padding:4px;"><i class="fa fa-hand-o-right"></i>  If you need to use XCode 7.3, the last supported SDK version is 4.2.4.</p>
+<br>
 <div class="panel-group flex" id="accordion" role="tablist" aria-multiselectable="true" style="box-shadow: 1px 2px 4px #999;">
     
 
@@ -292,6 +317,14 @@ $(function(){
                     <input type="text" class="key_BVConversations" placeholder="Conversations API Key here" style="width:100%"/>
                 </td>
             <tr>
+            <tr>
+                <td>
+                    <input type="checkbox" class="cb_BVConversationsStores"/> <b>Conversations for Stores</b>
+                </td>
+                <td>
+                    <input type="text" class="key_BVConversationsStores" placeholder="Conversations for Stores API Key here" style="width:100%"/>
+                </td>
+            <tr>
                 <td>
                     <input type="checkbox" class="cb_BVAdvertising"/> <b>Advertising</b>
                     <br/>
@@ -338,6 +371,12 @@ $(function(){
         $('.key_BVConversations').css('border-color', '');
       }
 
+       if ($('.cb_BVConversationsStores:checked').length > 0 && !$('.key_BVConversationsStores').val()){
+        $('.key_BVConversationsStores').css('border-color', 'red');
+      } else {
+        $('.key_BVConversationsStores').css('border-color', '');
+      }
+
       if ( ($('.cb_BVAdvertising:checked').length > 0 || $('.cb_BVRecommendations:checked').length > 0)
                   && !$('.key_ShoppeAdvertising').val()){
           $('.key_ShoppeAdvertising').css('border-color', 'red');
@@ -362,7 +401,7 @@ $(function(){
               $('code.ruby#podfile').append("pod 'BVSDK/BVCurations'<br/>");
             }
 
-            if ($('.cb_BVConversations:checked').length > 0){
+            if ($('.cb_BVConversations:checked').length > 0 || $('.cb_BVConversationsStores:checked').length > 0){
               $('code.ruby#podfile').append("pod 'BVSDK/BVConversations'<br/>");
             }
 
@@ -395,7 +434,7 @@ $(function(){
               $('code.objectivec#objc-headers').append("#import &lt;BVSDK/BVCurations.h&gt;<br/>");
             }
 
-            if ($('.cb_BVConversations:checked').length > 0){
+            if ($('.cb_BVConversations:checked').length > 0 || $('.cb_BVConversationsStores:checked').length > 0){
               $('code.objectivec#objc-headers').append("#import &lt;BVSDK/BVConversations.h&gt;<br/>");
             }
 
@@ -434,6 +473,11 @@ $(function(){
               $('code.objectivec#objc-bvsdkmanager').append('[[BVSDKManager sharedManager] setApiKeyConversations:@"' + conversationsKey + '"];<br/>');
             }
 
+            if ($('.cb_BVConversationsStores:checked').length > 0){
+              var conversationsStoresKey = $('.key_BVConversationsStores').val()
+              $('code.objectivec#objc-bvsdkmanager').append('[[BVSDKManager sharedManager] setApiKeyConversationsStores:@"' + conversationsStoresKey + '"];<br/>');
+            }
+
             if ($('.cb_BVAdvertising:checked').length > 0 || $('.cb_BVRecommendations:checked').length > 0){
               var advertisingKey = $('.key_ShoppeAdvertising').val()
               $('code.objectivec#objc-bvsdkmanager').append('[[BVSDKManager sharedManager] setApiKeyShopperAdvertising:@"' + advertisingKey + '"];<br/>');
@@ -467,6 +511,11 @@ $(function(){
             if ($('.cb_BVConversations:checked').length > 0){
               var conversationsKey = $('.key_BVConversations').val()
               $('code.swift#swift-bvsdkmanager').append('BVSDKManager.sharedManager().apiKeyConversations = "' + conversationsKey + '"<br/>');
+            }
+
+            if ($('.cb_BVConversationsStores:checked').length > 0){
+              var conversationsStoresKey = $('.key_BVConversationsStores').val()
+              $('code.swift#swift-bvsdkmanager').append('BVSDKManager.sharedManager().apiKeyConversationsStores = "' + conversationsStoresKey + '"<br/>');
             }
 
             if ($('.cb_BVLocation:checked').length > 0 || $('.cb_BVLocation:checked').length > 0){

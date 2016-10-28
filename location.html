@@ -167,6 +167,29 @@ $(function(){
                         </div>
 
                     </li>
+
+
+                     <li class="nav-item">
+                        <a class="nav-link" role="button" data-toggle="collapse" href="#conversationsStoresDropdown"
+                           aria-expanded="false" aria-controls="conversationsStoresDropdown">
+                                <span><span>Conversations for Stores</span><span style="float:right;"><i
+                                        id="conversationsStoresDropdownArrow"
+                                        class="fa fa-sort-desc fa-rotate-270"></i></span></span>
+                        </a>
+                        <div class="collapse "
+                             id="conversationsStoresDropdown">
+                            <ul>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="conversations_stores.html"><span>Conversations for Stores</span></a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="conversations_stores_push.html"><span>Stores Push Notifications</span></a>
+                                </li>
+                            </ul>
+                        </div>
+
+                    </li>
+
                     <li class="nav-item">
                         <a class="nav-link" href="location.html"><span>Location (Beta)</span></a>
                     </li>
@@ -242,12 +265,12 @@ $(function(){
 <h2>Using the Location Module</h2>
 <br>
 <h4>Requesting User Location Permission</h4>
-<p>You will always need to obtain on permission for user location.: the Location module cannot function without this. Please follow best practices when requesting permission. Request to use location at a time when it is contexually relavent, such as when trying to use a "Store Finder." Ask your users from your own dialog first, then present the actual system prompt if the user opts in. This way you can provide the detailed benefits they would receive if they grant permission. Consult the Apple Developer documentation <a href="https://developer.apple.com/library/ios/documentation/UserExperience/Conceptual/LocationAwarenessPG/CoreLocation/CoreLocation.html">Location and Maps Programming guide for details on requesting user location in your app</a> for more information on requesting your end user's location.
+<p>You will always need to obtain on permission for user location. The Location module cannot function without this. Please follow best practices when requesting permission. Request to use location at a time when it is contextually relevant, such as when trying to use a "Store Finder." Ask your users from your own dialog first, then present the actual system prompt if the user opts in. This way you can provide the detailed benefits they would receive if they grant permission. Consult the Apple Developer documentation <a href="https://developer.apple.com/library/ios/documentation/UserExperience/Conceptual/LocationAwarenessPG/CoreLocation/CoreLocation.html">Location and Maps Programming guide for details on requesting user location in your app</a> for more information on requesting your end user's location.
 </p>
 
 <br>
 <h4>Listening When Users Enter/Exit your Locations</h4>
-<p>After location perissions have been granted you can use the Location module as follows.</p>
+<p>After location permissions have been granted you can use the Location module as follows.</p>
 <ul class="nav nav-tabs" role="tablist">
   <li role="presentation" class="active"><a href="#swift" aria-controls="swift" role="tab" data-toggle="tab">Swift</a></li>
   <li role="presentation"><a href="#objc" aria-controls="objc" role="tab" data-toggle="tab">Objective-C</a></li>
@@ -261,7 +284,7 @@ import BVSDK
 class MyViewController: UIViewController, BVLocationManagerDelegate {
 
 	//Any class that you would like to listen to when a user enters and exits your retail locations should
-	//Conform to BVLocationManagerDelegate and call the following method to let the SDK know to send notifications
+	//Conform to BVLocationManagerDelegate and call the following method to let the SDK know where to send callbacks
 	BVLocationManager.registerForLocationUpdates(self)
 
 	//You must call the following to start locations updates
@@ -286,7 +309,7 @@ class MyViewController: UIViewController, BVLocationManagerDelegate {
 @implementation MyViewController
 
 	//Any class that you would like to listen to when a user enters and exits your retail locations should
-	//Conform to BVLocationManagerDelegate and call the following method to let the SDK know to send notifications
+	//Conform to BVLocationManagerDelegate and call the following method to let the SDK know where to send callbacks
 	[BVLocationManager registerForLocationUpdates:self];
 
 	//You must call the following to start locations updates
@@ -304,67 +327,6 @@ class MyViewController: UIViewController, BVLocationManagerDelegate {
 </code></pre>
 	</div>
 
-</div>
-<br>
-
-<h4>Notifcations when User Enters Location</h4>
-<p class="bg-info well-lg" style="padding:4px;"><i class="fa fa-hand-o-right"></i>  Contact Bazaarvoice to set up notifications</p>
-<p>The Location module also supports notifications. Notifications may be dynamically configured by contacting Bazaarvoice. You will also have an opportunity in code to decide where a notification is displayed or not and modify the notification to be displayed. Note, notifications delegate methods will only be invoked when app is in the background.</p>
-<ul class="nav nav-tabs" role="tablist">
-  <li role="presentation" class="active"><a href="#swift" aria-controls="swift" role="tab" data-toggle="tab">Swift</a></li>
-  <li role="presentation"><a href="#objc" aria-controls="objc" role="tab" data-toggle="tab">Objective-C</a></li>
-</ul>
-<div class="tab-content code-switcher">
-	<!-- swift -->
-	<div role="tabpanel" class="tab-pane active" id="swift">
-<pre><code class="swift">import UIKit
-import BVSDK
-
-class MyViewContoller: UIViewController, BVLocationNotificationDelegate {
-
-	//Set the single BVLocationNotificationDelegate to handle notifications. Be default notifications will not be shown.
-	//You must explcility implement shouldShowNotificationForVisit() to show them.
-	BVLocationManager.setNotificationDelegate(self)
-
-	//Decide whether the notificaiton should be shown for particular visit
-	func shouldShowNotificationForVisit(visit: BVVisit) -> Bool {
-	        return true
-	}
-	 
-	//If shouldShowNotificationForVisit returned true then this method will be called  with your preconfigured
-	//notification. Here you may edit any property of the notification. If null is returned, the preconfigured notification
-	//will be shown.
-	func notificationWillBePresented( notification : UILocalNotification) -> UILocalNotification {
-	    return notification
-	}
-}
-</code></pre>
-</div>
-	<div role="tabpanel" class="tab-pane" id="objc">
-<pre><code class="objective-c">@interface MyViewController : UIViewController &lt;BVLocationNotificationDelegate&gt;
-
-@end
-
-@implementation MyViewController
-
-	//Set the single BVLocationNotificationDelegate to handle notifications. Be default notifications will not be shown.
-	//You must explcility implement shouldShowNotificationForVisit() to show them.
-	[BVLocationManager setNotificationDelegate:self];
-
-	//Decide whether the notificaiton should be shown for particular visit
-	-(BOOL)shouldShowNotificationForVisit:(BVVisit* _Nonnull)visit {
-	    return YES;
-	}
-	 
-	//If shouldShowNotificationForVisit returned true then this method will be called  with your preconfigured
-	//notification. Here you may edit any property of the notification. If null is returned, the preconfigured notification
-	//will be shown.
-	-( UILocalNotification* _Nonnull )notificationWillBePresented:(UILocalNotification* _Nonnull)notification {
-	    return notification;
-	}
-@end
-</code></pre>
-</div>
 </div>
 <br>
 

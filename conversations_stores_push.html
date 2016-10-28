@@ -19,7 +19,7 @@ $(function(){
 
 	// select the tab in the sidebar to reflect current page position
 
-	var tabName = "BV Pixel";
+	var tabName = "Stores Push Notifications";
 
 	$('.nav-link.active').removeClass('active');
 	console.log('active tab: ', tabName);
@@ -67,7 +67,7 @@ $(function(){
 
     ga('create', 'UA-56370630-4', 'auto');
     ga('set', {
-      title: 'BV Pixel'
+      title: 'Stores Push Notifications'
     });
     ga('send', 'pageview');
   </script>
@@ -176,7 +176,7 @@ $(function(){
                                         id="conversationsStoresDropdownArrow"
                                         class="fa fa-sort-desc fa-rotate-270"></i></span></span>
                         </a>
-                        <div class="collapse "
+                        <div class="collapse in"
                              id="conversationsStoresDropdown">
                             <ul>
                                 <li class="nav-item">
@@ -244,207 +244,18 @@ $(function(){
               <div class="page-container">
 
                 <div class="flex flex-row" id="content_title">
-	BV Pixel
+	Store Push Notifications: Conversations for Stores
 </div>
-<hr>
 
-<p>The BV Pixel (formerly known as the ROI beacon) tells Bazaarvoice when a customer converts in your iOS app. There are two types of BV Pixel tags:</p>
-<ul>
-	<li>Generic (non-commerce) conversion tags capture events such as newsletter signups, product registration, downloads of a PDF, and requests for more information about a product or service. You can generate ROI (return on investment) reports related to key performance indicators.</li>
-	<li>Transaction conversion tags capture purchase data&#8212;when a customer buys a product. The data captured might include SKUs, email addresses, and postal addresses. You can generate ROI reports tied to revenue.</li>
-</ul>
+You can increase review rates of your stores by implementing Push Notifications for Store Reviews. When Conversations for Stores is paired with the Bazaarvoice SDK BVLocation module, the Bazaarvoice Mobile SDK can queue a timed push notification requesting the user to leave a review on the store they just visited.
+<br><br>
+<img src="ios-img/conversations_stores/stores_review_push_notification.png" style="height:410px; box-shadow: 0px 0px 8px #444;" class="center-block img-fluid" />
 
-<br>
-<p>After you implement the BV Pixel in your iOS app, you can use this measurement dashboard to generate reports that show how users are interacting in your Android app, and to understand the value of your implementation. You can also enable other useful features. The maintenance-free post-interaction email (PIE) feature is key to increasing the volume of your consumer-generated content. In addition, you can run A/B tests to evaluate best practices in your iOS app, live, before you implement them for all customers. You must install the BV Pixel before you can use these indispensable features.</p>
-
-<p class="bg-warning well-lg" style="padding:4px;"> <i class="fa fa-hand-o-right"></i>  Important: Before you start implementing this Mobile SDK module, verify your installation by checking the steps on the <a href="./installation.html">Installation and Configuration</a> page.</p>
-
-
-
-<h3>Configuration</h3>
-
-<ul class="nav nav-tabs" role="tablist">
-  <li role="presentation" class="active"><a href="#swift" aria-controls="swift" role="tab" data-toggle="tab">Swift</a></li>
-  <li role="presentation"><a href="#objc" aria-controls="objc" role="tab" data-toggle="tab">Objective-C</a></li>
-</ul>
-
-<!-- Tab panes -->
-<div class="tab-content code-switcher">
-	<!-- swift -->
-	<div role="tabpanel" class="tab-pane active" id="swift">
-		<p>Import the SDK by adding this line to each file that uses the SDK:</p>
-<pre><code class="swift">import BVSDK
-</code></pre>
-		<p>Then add the following to your AppDelegate's <code>didFinishLaunchingWithOptions</code> function:</p>
-<pre><code class="swift">BVSDKManager.sharedManager().clientId = "YOUR_CLIENT_ID"
-BVSDKManager.sharedManager().staging = true // Set to false for production!
-</code></pre>
-	</div>
-	<!-- objective-c -->
-	<div role="tabpanel" class="tab-pane" id="objc">
-		<p>Import the SDK by including these headers:</p>
-<pre><code class="objective-c">#include &lt;BVSDK/BVSDK.h&gt;
-</code></pre>
-		<p>Then add the following to your AppDelegate's <code>didFinishLaunchingWithOptions</code> function:</p>
-<pre><code class="objective-c">[BVSDKManager sharedManager].clientId = @"YOUR_CLIENT_ID";
-[BVSDKManager sharedManager].staging = YES; // set to NO for production!
-</code></pre>
-	</div>
-
-</div>
+<br><br>
+Ask your Bazaarvoice sales representative for a demonstration and how we can help increase your review rates on stores.
 <br>
 <br>
 
-<h3>Tracking transaction conversions</h3>
-<p>Implement the following code to use the BV Pixel to track transaction conversions.</p>
-<ul class="nav nav-tabs" role="tablist">
-  <li role="presentation" class="active"><a href="#swift" aria-controls="swift" role="tab" data-toggle="tab">Swift</a></li>
-  <li role="presentation"><a href="#objc" aria-controls="objc" role="tab" data-toggle="tab">Objective-C</a></li>
-</ul>
-
-<div class="tab-content code-switcher">
-	<!-- swift -->
-	<div role="tabpanel" class="tab-pane active" id="swift">
-<pre><code class="swift">/*
-  Construct an array of BVTransactionItem based on the transaction. 
-  Sku is required but the more parameters provided the better.
-*/
-
-let firstItem = BVTransactionItem(sku:"123", 
-                                  name: "cat food", 
-                                  category: "pets", 
-                                  price: 10.99, 
-                                  quantity: 1, 
-                                  imageUrl: "http://example.com/catfood.jpg")
-let secondItem = BVTransactionItem("321", 
-                                  name: "dog food", 
-                                  category: "pets", 
-                                  price: 14.99, 
-                                  quantity: 1, 
-                                  imageUrl: "http://example.com/dogfood.jpg")
-
-let transactionItems = [firstItem, secondItem]
-
-/*
-  Construct a BVTransaction 
-  OrderId, orderTotal, and orderItems are required.
-  You may include any other key value params you'd like.
-  BVTransaction also has convenience setters for commonly used params.
-*/
-
-let transaction = BVTransaction(orderId:"order id", 
-                          orderTotal: 33.11, 
-                          orderItems: transactionItems, 
-                          andOtherParams: ["state":"TX","email":"some.one@domain.com"])
-
-transaction.shipping = 4.99
-transaction.tax = 2.14
-
-/*
-  Use the BVPixel to track the Conversion Transaction Event.
-*/
-
-BVPixel.trackConversionTransaction(transaction)
-</code></pre>
-	</div>
-	<!-- objective-c -->
-	<div role="tabpanel" class="tab-pane" id="objc">
-<pre><code class="objectivec">/*
-Construct an array of BVTransactionItem based on the transaction. 
-Sku is required but the more parameters provided the better.
-*/
-
-BVTransactionItem *firstItem = [[BVTransactionItem alloc]init:@"123"
-                         name:@"cat food"
-                     category:@"pets"
-                        price:10.99
-                     quantity:1
-                     imageUrl:@"http://example.com/catfood.jpg"];
-BVTransactionItem *secondItem = [[BVTransactionItem alloc]init:@"321"
-                          name:@"dog food"
-                      category:@"pets"
-                         price:14.99
-                      quantity:1
-                      imageUrl:@"http://example.com/dogfood.jpg"];
-
-NSArray *transactionItems = @[firstItem, secondItem];
-
-/*
-Construct a BVTransaction 
-OrderId, orderTotal, and orderItems are required.
-You may include any other key value params you'd like.
-BVTransaction also has convenience setters for commonly used params.
-*/
-
-BVTransaction *transaction = [[BVTransaction alloc]init:@"order id"
-             orderTotal:33.11
-             orderItems:transactionItems
-         andOtherParams:@{@"state": @"TX", @"email": @"some.one@domain.com"}];
-
-transaction.shipping = 4.99;
-transaction.tax = 2.14;
-
-/*
-Use the BVPixel to track the Conversion Transaction Event.
-*/
-
-[BVPixel trackConversionTransaction:transaction];
-</code></pre>							
-	</div>
-</div>
-<br>
-<br>
-
-<h3>Tracking generic non-commerce conversions</h3>
-<p>Implement the following code to use the BV Pixel to track generic non-commerce conversions.</p>
-<ul class="nav nav-tabs" role="tablist">
-	<li role="presentation" class="active"><a href="#swift" aria-controls="swift" role="tab" data-toggle="tab">Swift</a></li>
-	<li role="presentation"><a href="#objc" aria-controls="objc" role="tab" data-toggle="tab">Objective-C</a></li>
-</ul>
-
-<div class="tab-content code-switcher">
-	<!-- swift -->
-	<div role="tabpanel" class="tab-pane active" id="swift">
-<pre><code class="swift">/*
-Construct a BVConversion 
-Type and value are required. Label is recommended. 
-Include any other key value params you want.
-*/
-
-let conversion = BVConversion("BrochureDownload", 
-value: "YourDefinedValue", 
-label: "Model xyz brochure", 
-otherParams: ["state":"TX","email":"some.one@domain.com"])
-
-/*
-Use the BVPixel to track the Non-commerce Conversion Event.
-*/
-
-BVPixel.trackNonCommerceConversion(conversion)
-</code></pre>
-	</div>
-	<!-- objective-c -->
-	<div role="tabpanel" class="tab-pane" id="objc">
-<pre><code class="objectivec">/*
-Construct a BVConversion 
-Type and value are required. Label is recommended.
-Include any other key value params you want.
-*/
-
-BVConversion *conversion = [[BVConversion alloc]init:@"BrochureDownload"
-               value:@"YourDefinedValue"
-               label:@"Model xyz brochure"
-         otherParams:@{@"state":@"TX", @"email":@"some.one@domain.com"}];
-
-/*
-Use the BVPixel to track the Non-commerce Conversion Event.
-*/
-
-[BVPixel trackNonCommerceConversion:conversion];
-</code></pre>							
-	</div>
-</div>
-<br>
 
 
 <div class="well well-sm">
