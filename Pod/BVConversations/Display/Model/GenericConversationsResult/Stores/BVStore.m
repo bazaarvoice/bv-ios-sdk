@@ -5,6 +5,8 @@
 //  Copyright © 2016 Bazaarvoice. All rights reserved.
 //
 
+#import <CoreGraphics/CoreGraphics.h>
+
 #import "BVStore.h"
 #import "BVConversationsInclude.h"
 #import "BVNullHelper.h"
