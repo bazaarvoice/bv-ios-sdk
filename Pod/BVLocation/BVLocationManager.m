@@ -48,7 +48,12 @@
 - (id)init {
     if (self = [super init]) {
         _registeredDelegates = [NSMutableArray new];
-        [[BVSDKManager sharedManager] addObserver:self forKeyPath:@"apiKeyLocation" options:NSKeyValueObservingOptionNew context:nil];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(receiveLocationAPIKey:)
+                                                     name:LOCATION_API_KEY_SET_NOTIFICATION
+                                                   object:nil];
+
     }
     
     return self;
@@ -68,6 +73,22 @@
     }
 }
 
+- (void) receiveLocationAPIKey:(NSNotification *) notification
+{
+    // [notification name] should always be @"TestNotification"
+    // unless you use this method for observation of other notifications
+    // as well.
+    
+    if ([[notification name] isEqualToString:LOCATION_API_KEY_SET_NOTIFICATION]){
+        
+        [[BVLogger sharedLogger] verbose:@"Recieved notifcation for location configuration"];
+        
+        _apiKey = [notification.userInfo valueForKeyPath:LOCATION_API_KEY_SET_NOTIFICATION];
+        [self initGimbal];
+        
+    }
+}
+
 + (BOOL)isValidUUID:(NSString *)UUIDString
 {
     NSUUID* UUID = [[NSUUID alloc] initWithUUIDString:UUIDString];
@@ -77,14 +98,7 @@
         return false;
 }
 
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context {
-    if ([keyPath isEqualToString:@"apiKeyLocation"]){
-        _apiKey = [object valueForKeyPath:keyPath];
-        [self initGimbal];
-    }else {
-        [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
-    }
-}
+
 
 + (void)startLocationUpdates{
     if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorizedAlways){
@@ -132,7 +146,7 @@
 }
 
 -(BOOL)gimbalPlaceIsValid:(GMBLPlace*)place {
-    return [place.attributes stringForKey:@"id"];
+    return [place.attributes stringForKey:@"id"] != nil;
 }
 
 -(NSDictionary*)gimbalAttributesToDictionary:(GMBLAttributes*)attributes {
@@ -169,18 +183,17 @@
             
         } else {
             
-            [[BVLogger sharedLogger] verbose:[NSString stringWithFormat:@"Vist time of %d, not long enough to post notification. Need %d seconds.", visitDuration, noteProps.visitDuration]];
+            [[BVLogger sharedLogger] verbose:[NSString stringWithFormat:@"Vist time of %f, not long enough to post notification. Need %f seconds.", visitDuration, noteProps.visitDuration]];
         }
     }
 }
 
 -(BOOL)isClientConfiguredForPush:(BVSDKManager *)sdkMgr {
-    UIRemoteNotificationType types = [[UIApplication sharedApplication] currentUserNotificationSettings];
-    return (types != UIRemoteNotificationTypeNone &&
-            sdkMgr.apiKeyConversationsStores &&
-            sdkMgr.storeReviewContentExtensionCategory &&
-            sdkMgr.bvStoreReviewNotificationProperties &&
-            sdkMgr.bvStoreReviewNotificationProperties.notificationsEnabled);
+    return [[UIApplication sharedApplication] isRegisteredForRemoteNotifications] &&
+                            sdkMgr.apiKeyConversationsStores &&
+                            sdkMgr.storeReviewContentExtensionCategory &&
+                            sdkMgr.bvStoreReviewNotificationProperties &&
+                            sdkMgr.bvStoreReviewNotificationProperties.notificationsEnabled;
 }
 
 - (void)callbackToDelegates:(SEL)selector withAttributes:(NSDictionary *)attributes{

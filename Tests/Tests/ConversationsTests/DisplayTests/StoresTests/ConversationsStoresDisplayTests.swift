@@ -14,10 +14,10 @@ class ConversationsStoresDisplayTests: XCTestCase {
     override func setUp() {
         super.setUp()
         
-        BVSDKManager.sharedManager().clientId = "acmestores"
-        BVSDKManager.sharedManager().apiKeyConversationsStores = "mocktestingnokeyrequired"
-        BVSDKManager.sharedManager().staging = false
-        BVSDKManager.sharedManager().setLogLevel(.Error)
+        BVSDKManager.shared().clientId = "acmestores"
+        BVSDKManager.shared().apiKeyConversationsStores = "mocktestingnokeyrequired"
+        BVSDKManager.shared().staging = false
+        BVSDKManager.shared().setLogLevel(.error)
     }
     
     override func tearDown() {
@@ -27,17 +27,17 @@ class ConversationsStoresDisplayTests: XCTestCase {
     // This tests fetching reviews from a single store, but store id, given a limit and offset.
     func testStoreFeedDisplayWithReviewsAndStats() {
         
-        stub(isHost("api.bazaarvoice.com")) { _ in
+        stub(condition: isHost("api.bazaarvoice.com")) { _ in
             // Stub it with our "storeItemWithStatsAndReviews.json" stub file (which is in same bundle as self)
-            let stubPath = OHPathForFile("storeItemWithStatsAndReviews.json", self.dynamicType)
-            return fixture(stubPath!, headers: ["Content-Type":"application/json"])
+            let stubPath = OHPathForFile("storeItemWithStatsAndReviews.json", type(of: self))
+            return fixture(filePath: stubPath!, headers: ["Content-Type" as NSObject:"application/json" as AnyObject])
         }
         
-        let expectation = expectationWithDescription("testStoreFeedDisplayWithReviews")
+        let expectation = self.expectation(description: "testStoreFeedDisplayWithReviews")
         
         let request = BVStoreReviewsRequest(storeId: "1", limit: 20, offset: 0)
-        request.includeStatistics(.Reviews) // Include statistics on the store object
-        request.addSort(.Rating, order: .Descending)      // sort the reviews by rating, from top rated to lowest rated
+        request.includeStatistics(.reviews) // Include statistics on the store object
+        request.addSort(.rating, order: .descending)      // sort the reviews by rating, from top rated to lowest rated
         request.load({ (response) in
             // Success
             // Check the store attributes
@@ -73,7 +73,7 @@ class ConversationsStoresDisplayTests: XCTestCase {
             expectation.fulfill()
         }
         
-        self.waitForExpectationsWithTimeout(10) { (error) in
+        self.waitForExpectations(timeout: 10) { (error) in
             XCTAssertNil(error, "Something went horribly wrong, request took too long.")
         }
         
@@ -82,19 +82,19 @@ class ConversationsStoresDisplayTests: XCTestCase {
     // Testing reading of multiple stores, paged by limit and offsest
     func testBulkStoresFetching() {
         
-        let expectation = expectationWithDescription("testBulkStoresFetching")
+        let expectation = self.expectation(description: "testBulkStoresFetching")
         
-        stub(isHost("api.bazaarvoice.com")) { _ in
+        stub(condition: isHost("api.bazaarvoice.com")) { _ in
             // Stub it with our "storeBulkFeedWithStatistics.json" stub file (which is in same bundle as self)
-            let stubPath = OHPathForFile("storeBulkFeedWithStatistics.json", self.dynamicType)
-            return fixture(stubPath!, headers: ["Content-Type":"application/json"])
+            let stubPath = OHPathForFile("storeBulkFeedWithStatistics.json", type(of: self))
+            return fixture(filePath: stubPath!, headers: ["Content-Type" as NSObject:"application/json" as AnyObject])
         }
         
         let request = BVBulkStoreItemsRequest(20, offset: 0)
-        request.includeStatistics(.Reviews)
+        request.includeStatistics(.reviews)
         request.load({ (response) in
             // Success
-            XCTAssertEqual(response.results.count, response.totalResults)
+            XCTAssertEqual(Int(response.results.count), Int(response.totalResults!))
 
             for store : BVStore in response.results {
 
@@ -120,7 +120,7 @@ class ConversationsStoresDisplayTests: XCTestCase {
             expectation.fulfill()
         }
         
-        self.waitForExpectationsWithTimeout(10) { (error) in
+        self.waitForExpectations(timeout: 10) { (error) in
             XCTAssertNil(error, "Something went horribly wrong, request took too long.")
         }
         
@@ -130,20 +130,20 @@ class ConversationsStoresDisplayTests: XCTestCase {
     // Testing reading of multiple stores, paged
     func testFetchStoresByIds() {
         
-        let expectation = expectationWithDescription("testFetchStoresByIds")
+        let expectation = self.expectation(description: "testFetchStoresByIds")
         
-        stub(isHost("api.bazaarvoice.com")) { _ in
+        stub(condition: isHost("api.bazaarvoice.com")) { _ in
             // Stub it with our "storeFeedOneStore.json" stub file (which is in same bundle as self)
-            let stubPath = OHPathForFile("storeFetchByIds.json", self.dynamicType)
-            return fixture(stubPath!, headers: ["Content-Type":"application/json"])
+            let stubPath = OHPathForFile("storeFetchByIds.json", type(of: self))
+            return fixture(filePath: stubPath!, headers: ["Content-Type" as NSObject:"application/json" as AnyObject])
         }
         
         // Fetch two stores, by ID
         let request = BVBulkStoreItemsRequest(storeIds:["1", "3"])
-        request.includeStatistics(.Reviews)
+        request.includeStatistics(.reviews)
         request.load({ (response) in
             // Success
-            XCTAssertEqual(response.results.count, response.totalResults)
+            XCTAssertEqual(Int(response.results.count), Int(response.totalResults!))
             
             for store : BVStore in response.results {
                 
@@ -168,7 +168,7 @@ class ConversationsStoresDisplayTests: XCTestCase {
             expectation.fulfill()
         }
         
-        self.waitForExpectationsWithTimeout(10) { (error) in
+        self.waitForExpectations(timeout: 10) { (error) in
             XCTAssertNil(error, "Something went horribly wrong, request took too long.")
         }
         
@@ -177,20 +177,20 @@ class ConversationsStoresDisplayTests: XCTestCase {
     // Test an empty response, e.g. when we provide a store id that does not exist
     func testNoStoreFoundResult() {
         
-        let expectation = expectationWithDescription("testNoStoreFoundResult")
+        let expectation = self.expectation(description: "testNoStoreFoundResult")
         
-        stub(isHost("api.bazaarvoice.com")) { _ in
+        stub(condition: isHost("api.bazaarvoice.com")) { _ in
             // Stub it with our "storeFeedOneStore.json" stub file (which is in same bundle as self)
-            let stubPath = OHPathForFile("storeNoStoresFoundResult.json", self.dynamicType)
-            return fixture(stubPath!, headers: ["Content-Type":"application/json"])
+            let stubPath = OHPathForFile("storeNoStoresFoundResult.json", type(of: self))
+            return fixture(filePath: stubPath!, headers: ["Content-Type" as NSObject:"application/json" as AnyObject])
         }
         
         // Fetch two stores, by ID
         let request = BVBulkStoreItemsRequest(storeIds:["badid"])
-        request.includeStatistics(.Reviews)
+        request.includeStatistics(.reviews)
         request.load({ (response) in
             // Success
-            XCTAssertEqual(response.results.count, response.totalResults)
+            XCTAssertEqual(Int(response.results.count), Int(response.totalResults!))
         
             expectation.fulfill()
         }) { (error) in
@@ -199,7 +199,7 @@ class ConversationsStoresDisplayTests: XCTestCase {
             expectation.fulfill()
         }
         
-        self.waitForExpectationsWithTimeout(10) { (error) in
+        self.waitForExpectations(timeout: 10) { (error) in
             XCTAssertNil(error, "Something went horribly wrong, request took too long.")
         }
         

@@ -26,9 +26,9 @@ class SubmitAnswerViewController: UIViewController, SDFormDelegate, SDFormDataSo
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var header : ProductDetailHeaderView!
-    var spinner = Util.createSpinner(UIColor.bazaarvoiceNavy(), size: CGSizeMake(44,44), padding: 0)
+    var spinner = Util.createSpinner(UIColor.bazaarvoiceNavy(), size: CGSize(width: 44,height: 44), padding: 0)
     
-    init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?, product: BVRecommendedProduct, question: BVQuestion) {
+    init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?, product: BVRecommendedProduct, question: BVQuestion) {
         
         selectedQuestion = question
         self.product = product
@@ -51,13 +51,13 @@ class SubmitAnswerViewController: UIViewController, SDFormDelegate, SDFormDataSo
         
         self.view.backgroundColor = UIColor.appBackground()
         
-        self.tableView.backgroundColor = UIColor.whiteColor()
+        self.tableView.backgroundColor = UIColor.white
         
         // form scrolling above keyboard
         self.tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 300, right: 0)
         
         // add a SUBMIT button...
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Submit", style: .Plain, target: self, action: "submitTapped")
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Submit", style: .plain, target: self, action: #selector(SubmitAnswerViewController.submitTapped))
         
         self.initFormFields()
     }
@@ -72,7 +72,7 @@ class SubmitAnswerViewController: UIViewController, SDFormDelegate, SDFormDataSo
         self.tableView.resignFirstResponder()
         
         let submission = BVAnswerSubmission(questionId: selectedQuestion.identifier ?? "", answerText: answerSubmissionParameters.answerText as? String ?? "")
-        submission.action = .Preview // Don't actually post, just run in preview mode!
+        submission.action = .preview // Don't actually post, just run in preview mode!
         submission.userNickname = answerSubmissionParameters.userNickname as? String
         submission.userEmail = answerSubmissionParameters.userEmail as? String
         submission.sendEmailAlertWhenPublished = answerSubmissionParameters.sendEmailAlertWhenPublished
@@ -81,20 +81,20 @@ class SubmitAnswerViewController: UIViewController, SDFormDelegate, SDFormDataSo
         
         submission.submit({ (response) in
             
-            dispatch_async(dispatch_get_main_queue(), {
-                SweetAlert().showAlert("Success!", subTitle: "Your answer was submitted. It may take up to 72 hours for us to respond.", style: .Success)
-                self.navigationController?.popViewControllerAnimated(true)
+            DispatchQueue.main.async(execute: {
+                _ = SweetAlert().showAlert("Success!", subTitle: "Your answer was submitted. It may take up to 72 hours for us to respond.", style: .success)
+                _ = self.navigationController?.popViewController(animated: true)
             })
 
         }) { (errors) in
                 
-            dispatch_async(dispatch_get_main_queue(), {
+            DispatchQueue.main.async(execute: {
                 var errorMessage = ""
                 for error in errors {
                     errorMessage += "\(error)."
                 }
                 
-                SweetAlert().showAlert("Error Sumbitting Question", subTitle: errorMessage, style: .Error)
+                _ = SweetAlert().showAlert("Error Sumbitting Question", subTitle: errorMessage, style: .error)
                 
                 self.spinner.removeFromSuperview()
             })
@@ -107,7 +107,7 @@ class SubmitAnswerViewController: UIViewController, SDFormDelegate, SDFormDataSo
     func initFormFields(){
         
         let answerField = SDMultilineTextField(object: answerSubmissionParameters, relatedPropertyKey: "answerText")
-        answerField.placeholder = "Answer"
+        answerField?.placeholder = "Answer"
         
         let nickNameField : SDTextFormField = SDTextFormField(object: answerSubmissionParameters, relatedPropertyKey: "userNickname")
         nickNameField.placeholder = "Nickname"
@@ -116,10 +116,10 @@ class SubmitAnswerViewController: UIViewController, SDFormDelegate, SDFormDataSo
         emailAddressField.placeholder = "Enter a valid email address"
         
         let emailOKSwitchField = SDSwitchField(object: answerSubmissionParameters, relatedPropertyKey: "sendEmailAlertWhenPublished")
-        emailOKSwitchField.title = "Send me status by email?"
+        emailOKSwitchField?.title = "Send me status by email?"
         
         // Keep the formFields and sectionTitles in the same order if you switch them around.
-        self.formFields = [answerField, nickNameField, emailAddressField, emailOKSwitchField]
+        self.formFields = [answerField!, nickNameField, emailAddressField, emailOKSwitchField!]
         self.sectionTitles = ["Your Answer", "Your Nickname", "Email Address", "Please send me an email to keep me informed on the status of my answer."]
         
         // set up delegate/datasource last!
@@ -131,40 +131,40 @@ class SubmitAnswerViewController: UIViewController, SDFormDelegate, SDFormDataSo
     
     // MARK: SDKFormDelegate, SDFormDataSource
     
-    func form(form: SDForm!, willDisplayHeaderView view: UIView!, forSection section: Int) {
+    func form(_ form: SDForm!, willDisplayHeaderView view: UIView!, forSection section: Int) {
         
         let hv = view as! UITableViewHeaderFooterView
-        hv.tintColor = UIColor.whiteColor()
-        hv.contentView.backgroundColor = UIColor.whiteColor()
+        hv.tintColor = UIColor.white
+        hv.contentView.backgroundColor = UIColor.white
         hv.textLabel?.textColor = UIColor.bazaarvoiceNavy()
         
     }
     
-    func tableView(tableView: UITableView, willDisplayFooterView view: UIView, forSection section: Int) {
+    private func tableView(_ tableView: UITableView, willDisplayFooterView view: UIView, forSection section: Int) {
         let fv = view as! UITableViewHeaderFooterView
-        fv.tintColor = UIColor.whiteColor()
+        fv.tintColor = UIColor.white
         fv.frame.size.height = 0
     }
     
-    func numberOfSectionsForForm(form: SDForm!) -> Int {
+    func numberOfSections(for form: SDForm!) -> Int {
         return (self.formFields.count)
     }
     
-    func form(form: SDForm!, numberOfFieldsInSection section: Int) -> Int {
+    func form(_ form: SDForm!, numberOfFieldsInSection section: Int) -> Int {
         return 1
     }
     
-    func form(form: SDForm!, titleForHeaderInSection section: Int) -> String! {
+    func form(_ form: SDForm!, titleForHeaderInSection section: Int) -> String! {
         return self.sectionTitles[section]
     }
     
-    func form(form: SDForm!, fieldForRow row: Int, inSection section: Int) -> SDFormField! {
+    func form(_ form: SDForm!, fieldForRow row: Int, inSection section: Int) -> SDFormField! {
         
         return self.formFields[section]
         
     }
     
-    func viewControllerForForm(form: SDForm!) -> UIViewController! {
+    func viewController(for form: SDForm!) -> UIViewController! {
         return self;
     }
     

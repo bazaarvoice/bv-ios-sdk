@@ -23,10 +23,10 @@ class AskAQuestionViewController: UIViewController, SDFormDelegate, SDFormDataSo
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var header : ProductDetailHeaderView!
-    var spinner = Util.createSpinner(UIColor.bazaarvoiceNavy(), size: CGSizeMake(44,44), padding: 0)
+    var spinner = Util.createSpinner(UIColor.bazaarvoiceNavy(), size: CGSize(width: 44,height: 44), padding: 0)
     let product: BVRecommendedProduct
     
-    init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?, product: BVRecommendedProduct?) {
+    init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?, product: BVRecommendedProduct?) {
         self.product = product!
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     }
@@ -44,10 +44,10 @@ class AskAQuestionViewController: UIViewController, SDFormDelegate, SDFormDataSo
         header.product = product
         
         self.view.backgroundColor = UIColor.appBackground()
-        self.tableView.backgroundColor = UIColor.whiteColor()
+        self.tableView.backgroundColor = UIColor.white
         
         // add a submit button
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Submit", style: .Done, target: self, action: "submitTapped")
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Submit", style: .done, target: self, action: #selector(AskAQuestionViewController.submitTapped))
         
         // form scrolling above keyboard
         self.tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 300, right: 0)
@@ -59,10 +59,10 @@ class AskAQuestionViewController: UIViewController, SDFormDelegate, SDFormDataSo
     func initFormFields(){
         
         let questionField = SDMultilineTextField(object: self.questionSubmissionParameters, relatedPropertyKey: "questionSummary")
-        questionField.placeholder = "Example: How do I get replacement bolts?"
+        questionField?.placeholder = "Example: How do I get replacement bolts?"
         
         let moreDetailsField = SDMultilineTextField(object: self.questionSubmissionParameters, relatedPropertyKey: "questionDetails")
-        moreDetailsField.placeholder = "Example: I have looked at the manual and can't figure out what I'm doing wrong."
+        moreDetailsField?.placeholder = "Example: I have looked at the manual and can't figure out what I'm doing wrong."
         
         let nickNameField : SDTextFormField = SDTextFormField(object: self.questionSubmissionParameters, relatedPropertyKey: "userNickname")
         nickNameField.placeholder = "Display name for the question"
@@ -71,13 +71,13 @@ class AskAQuestionViewController: UIViewController, SDFormDelegate, SDFormDataSo
         emailAddressField.placeholder = "Enter a valid email address."
         
         let emailOKSwitchField = SDSwitchField(object: self.questionSubmissionParameters, relatedPropertyKey: "sendEmailAlertWhenPublished")
-        emailOKSwitchField.title = "Send me status by email?"
+        emailOKSwitchField?.title = "Send me status by email?"
         
         let agreeTermsAndConditions = SDSwitchField(object: self.questionSubmissionParameters, relatedPropertyKey: "agreedToTermsAndConditions")
-        agreeTermsAndConditions.title = "Agree?"
+        agreeTermsAndConditions?.title = "Agree?"
         
         // Keep the formFields and sectionTitles in the same order if you switch them around.
-        self.formFields = [questionField, moreDetailsField, nickNameField, emailAddressField, emailOKSwitchField, agreeTermsAndConditions]
+        self.formFields = [questionField!, moreDetailsField!, nickNameField, emailAddressField, emailOKSwitchField!, agreeTermsAndConditions!]
         self.sectionTitles = ["Question", "More Details (optional)", "Nickname", "Email address", "May we contact you at this email address?", "Do you agree to the Terms & Conditions?"]
         
         // set up delegate/datasource last!
@@ -100,7 +100,7 @@ class AskAQuestionViewController: UIViewController, SDFormDelegate, SDFormDataSo
         // Submit the question
         
         let submission = BVQuestionSubmission(productId: product.productId)
-        submission.action = .Preview // don't actually just submit for real, this is just for demo
+        submission.action = .preview // don't actually just submit for real, this is just for demo
         submission.questionSummary = self.questionSubmissionParameters.questionSummary as? String
         submission.questionDetails = self.questionSubmissionParameters.questionDetails as? String
         submission.userNickname = self.questionSubmissionParameters.userNickname as? String
@@ -110,20 +110,20 @@ class AskAQuestionViewController: UIViewController, SDFormDelegate, SDFormDataSo
         
         submission.submit({ (response) in
             
-            dispatch_async(dispatch_get_main_queue(), { 
-                SweetAlert().showAlert("Success!", subTitle: "Your question was submitted. It may take up to 72 hours for us to respond.", style: .Success)
-                self.navigationController?.popViewControllerAnimated(true)
+            DispatchQueue.main.async(execute: { 
+                _ = SweetAlert().showAlert("Success!", subTitle: "Your question was submitted. It may take up to 72 hours for us to respond.", style: .success)
+                _ = self.navigationController?.popViewController(animated: true)
             })
             
         }) { (errors) in
             
-            dispatch_async(dispatch_get_main_queue(), {
+            DispatchQueue.main.async(execute: {
                 var errorMessage = ""
                 for error in errors {
                     errorMessage += "\(error)."
                 }
                 
-                SweetAlert().showAlert("Error Sumbitting Question", subTitle: errorMessage, style: .Error)
+                _ = SweetAlert().showAlert("Error Sumbitting Question", subTitle: errorMessage, style: .error)
                 
                 self.spinner.removeFromSuperview()
             })
@@ -134,35 +134,35 @@ class AskAQuestionViewController: UIViewController, SDFormDelegate, SDFormDataSo
 
     // MARK: SDKFormDelegate, SDFormDataSource
     
-    func form(form: SDForm!, willDisplayHeaderView view: UIView!, forSection section: Int) {
+    func form(_ form: SDForm!, willDisplayHeaderView view: UIView!, forSection section: Int) {
         
         let hv = view as! UITableViewHeaderFooterView
-        let color = UIColor.whiteColor()
+        let color = UIColor.white
         hv.tintColor = color
         hv.contentView.backgroundColor = color
         hv.textLabel?.textColor = UIColor.bazaarvoiceNavy()
         
     }
     
-    func numberOfSectionsForForm(form: SDForm!) -> Int {
+    func numberOfSections(for form: SDForm!) -> Int {
         return (self.formFields.count)
     }
     
-    func form(form: SDForm!, numberOfFieldsInSection section: Int) -> Int {
+    func form(_ form: SDForm!, numberOfFieldsInSection section: Int) -> Int {
         return 1
     }
     
-    func form(form: SDForm!, titleForHeaderInSection section: Int) -> String! {
+    func form(_ form: SDForm!, titleForHeaderInSection section: Int) -> String! {
         return self.sectionTitles[section]
     }
 
-    func form(form: SDForm!, fieldForRow row: Int, inSection section: Int) -> SDFormField! {
+    func form(_ form: SDForm!, fieldForRow row: Int, inSection section: Int) -> SDFormField! {
         
         return self.formFields[section]
         
     }
     
-    func viewControllerForForm(form: SDForm!) -> UIViewController! {
+    func viewController(for form: SDForm!) -> UIViewController! {
         return self;
     }
     

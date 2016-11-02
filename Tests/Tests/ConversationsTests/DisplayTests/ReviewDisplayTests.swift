@@ -13,20 +13,20 @@ class ReviewDisplayTests: XCTestCase {
     override func setUp() {
         super.setUp()
         
-        BVSDKManager.sharedManager().clientId = "apitestcustomer"
-        BVSDKManager.sharedManager().apiKeyConversations = "kuy3zj9pr3n7i0wxajrzj04xo"
-        BVSDKManager.sharedManager().staging = true
+        BVSDKManager.shared().clientId = "apitestcustomer"
+        BVSDKManager.shared().apiKeyConversations = "kuy3zj9pr3n7i0wxajrzj04xo"
+        BVSDKManager.shared().staging = true
     }
     
     
     func testReviewDisplay() {
         
-        let expectation = expectationWithDescription("")
+        let expectation = self.expectation(description: "")
         
         let request = BVReviewsRequest(productId: "test1", limit: 10, offset: 0)
-            .addSort(.Rating, order: .Ascending)
-            .addFilter(.HasPhotos, filterOperator: .EqualTo, value: "true")
-            .addFilter(.HasComments, filterOperator: .EqualTo, value: "false")
+            .addSort(.rating, order: .ascending)
+            .add(.hasPhotos, filterOperator: .equalTo, value: "true")
+            .add(.hasComments, filterOperator: .equalTo, value: "false")
         
         request.load({ (response) in
             
@@ -45,9 +45,9 @@ class ReviewDisplayTests: XCTestCase {
             XCTAssertEqual(review.userNickname, "endersgame")
             XCTAssertEqual(review.userLocation, "San Fransisco, California")
             
-            XCTAssertEqual(review.tagDimensions!["Pro"]!.label, "Pros")
-            XCTAssertEqual(review.tagDimensions!["Pro"]!.identifier, "Pro")
-            XCTAssertEqual(review.tagDimensions!["Pro"]!.values!, ["Organic Fabric", "Quality"])
+            XCTAssertEqual((review.tagDimensions!["Pro"]! as AnyObject).label, "Pros")
+            XCTAssertEqual((review.tagDimensions!["Pro"]! as AnyObject).identifier, "Pro")
+            XCTAssertEqual((review.tagDimensions!["Pro"]! as AnyObject).values!!, ["Organic Fabric", "Quality"])
             
             XCTAssertEqual(review.photos.count, 1)
             XCTAssertEqual(review.photos.first?.caption, "Etiam malesuada ultricies urna in scelerisque. Sed viverra blandit nibh non egestas. Sed rhoncus, ipsum in vehicula imperdiet, purus lectus sodales erat, eget ornare lacus lectus ac leo. Suspendisse tristique sollicitudin ultricies. Aliquam erat volutpat.")
@@ -62,7 +62,7 @@ class ReviewDisplayTests: XCTestCase {
             XCTAssertEqual(cdv.dimensionLabel, "Gender")
             XCTAssertEqual(cdv.identifier, "Gender")
             
-            XCTAssertEqual(review.badges.first?.badgeType, BVBadgeType.Merit)
+            XCTAssertEqual(review.badges.first?.badgeType, BVBadgeType.merit)
             XCTAssertEqual(review.badges.first?.identifier, "top10Contributor")
             XCTAssertEqual(review.badges.first?.contentType, "REVIEW")
             
@@ -78,7 +78,7 @@ class ReviewDisplayTests: XCTestCase {
             
         }
         
-        self.waitForExpectationsWithTimeout(10) { (error) in
+        self.waitForExpectations(timeout: 10) { (error) in
             XCTAssertNil(error, "Something went horribly wrong, request took too long.")
         }
         

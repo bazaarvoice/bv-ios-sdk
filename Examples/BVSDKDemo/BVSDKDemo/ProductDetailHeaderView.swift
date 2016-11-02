@@ -22,7 +22,7 @@ class ProductDetailHeaderView: UIView {
     var product : BVRecommendedProduct! {
         didSet {
             
-            productImage.sd_setImageWithURL(NSURL(string: product.imageURL))
+            productImage.sd_setImage(with: URL(string: product.imageURL))
             productName.text = product.productName
             if (productStars != nil){
                 productStars.value = CGFloat(product.averageRating)
@@ -35,7 +35,7 @@ class ProductDetailHeaderView: UIView {
         didSet {
             
             if store.imageUrl != nil {
-                productImage.sd_setImageWithURL(NSURL(string: store.imageUrl!))
+                productImage.sd_setImage(with: URL(string: store.imageUrl!))
             }
             
             if (store.name != nil){

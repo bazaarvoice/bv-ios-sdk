@@ -56,7 +56,7 @@
 // helper
 
 +(NSString*)formatIndex:(NSIndexPath*)indexPath {
-    return [NSString stringWithFormat:@"%li:%li", indexPath.section, indexPath.row];
+    return [NSString stringWithFormat:@"%li:%li", (long)indexPath.section, (long)indexPath.row];
 }
 
 @end

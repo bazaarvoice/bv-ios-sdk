@@ -5,27 +5,22 @@ podfile: ./Tests/Podfile
 git:
   depth: 1
 
+env:
+  matrix:
+    - TEST_TYPE=build_framework
+    - TEST_TYPE=unit_tests
+    - TEST_TYPE=build_bvsdkdemo
+    - TEST_TYPE=installation_carthage
+
 before_install:
-#  - gem update cocoapods --no-ri --no-rdoc
-  - gem install cocoapods -v '1.0.1'
   - gem install xcpretty --no-ri --no-rdoc --no-document --quiet
   - SIMULATOR_ID=$(xcrun instruments -s | grep -o "iPhone 6 (10.0) \[.*\]" | grep -o "\[.*\]" | sed "s/^\[\(.*\)\]$/\1/")
-
+  - set -o pipefail
+  - pod --version
 
 script:
-   - set -o pipefail
-   - open -a "simulator" --args -CurrentDeviceUDID $SIMULATOR_ID
-
-# Sanity test to make sure BVSDKDemo installs dependencies and builds OK
-   - cd ./Examples/BVSDKDemo
-   - pod update
-   - cd ../..
-   - xcodebuild -workspace ./Examples/BVSDKDemo/BVSDKDemo.xcworkspace -scheme "BVSDKDemo" -configuration Debug -sdk iphonesimulator | xcpretty -c
-
-
-# Run the unit tests on the available simulator
-   - cd ./Tests
-   - pod install
-   - cd ..
-   - xcodebuild test -workspace ./Tests/BVSDK.xcworkspace -scheme "BVSDK-Tests" -configuration Debug -sdk iphonesimulator -destination "platform=iOS Simulator,id=$SIMULATOR_ID,OS=10.0" | xcpretty -c
-
+  - open -a "simulator" --args -CurrentDeviceUDID $SIMULATOR_ID
+  - '[ "$TEST_TYPE" != unit_tests ] || ./ci_scripts/run_tests.sh'
+  - '[ "$TEST_TYPE" != build_framework ] || ./ci_scripts/build_framework.sh'
+  - '[ "$TEST_TYPE" != build_bvsdkdemo ] || ./ci_scripts/build_bvsdkdemo.sh'
+  - '[ "$TEST_TYPE" != installation_carthage ] || ./Tests/installation_tests/carthage/test.sh'

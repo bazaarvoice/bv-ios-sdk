@@ -16,9 +16,11 @@
 #import "BVStoreReviewNotificationProperties.h"
 #import "BVStore.h"
 #import <UserNotifications/UserNotifications.h>
+#import <UIKit/UIKit.h>
 
 @protocol BVNotificationCenterObject <NSObject>
 
+@optional
 - (void)addNotificationCategories:(BVStoreReviewNotificationProperties * _Nonnull)notificationProperties;
 
 - (void)userNotificationCenter:(UNUserNotificationCenter* _Nonnull)center didReceiveNotificationResponse:(UNNotificationResponse * _Nonnull)response;

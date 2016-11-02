@@ -36,11 +36,11 @@ class LocationSettings: UIViewController, UITableViewDelegate, UITableViewDataSo
         
     }
 
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         // If the default store changed, queue up a notification for the newly set store.
         let cachedStore = LocationPreferenceUtils.getDefaultStore()
         if userDefaultStore != nil && initialStoreIdOnLoad != nil && initialStoreIdOnLoad != cachedStore?.identifier {
-            BVReviewNotificationCenter.sharedCenter().queueStoreReview(initialStoreIdOnLoad!)
+            BVReviewNotificationCenter.shared().queueStoreReview(initialStoreIdOnLoad!)
         }
     }
     
@@ -52,7 +52,7 @@ class LocationSettings: UIViewController, UITableViewDelegate, UITableViewDataSo
         self.locationPickerView?.addSubview(self.spinner)
         
         let request = BVBulkStoreItemsRequest(20, offset: 0)
-        request.includeStatistics(.Reviews)
+        request.includeStatistics(.reviews)
         request.load({ (storesResponse) in
             
             // success
@@ -67,7 +67,7 @@ class LocationSettings: UIViewController, UITableViewDelegate, UITableViewDataSo
                 var count = 0
                 for store in self.stores {
                     if store.identifier == self.userDefaultStore?.identifier{
-                        self.stores.removeAtIndex(count)
+                        self.stores.remove(at: count)
                         break
                     }
                     
@@ -80,17 +80,17 @@ class LocationSettings: UIViewController, UITableViewDelegate, UITableViewDataSo
             
             if (self.locationPickerView != nil){
                 self.locationPickerView?.tableView.reloadData()
-                self.locationPickerView?.tableView.hidden = false
+                self.locationPickerView?.tableView.isHidden = false
             }
             
             }) { (error) in
             
             // fail
             self.spinner.removeFromSuperview()
-            SweetAlert().showAlert("Error Loading Stores!", subTitle:error.description, style: .Error)
+            _ = SweetAlert().showAlert("Error Loading Stores!", subTitle:error.description, style: .error)
                 
             if (self.locationPickerView != nil){
-                self.locationPickerView?.tableView.hidden = true
+                self.locationPickerView?.tableView.isHidden = true
             }
         }
         
@@ -118,8 +118,8 @@ class LocationSettings: UIViewController, UITableViewDelegate, UITableViewDataSo
         
         deviceLocation = CLLocationCoordinate2D(latitude: 0.0, longitude: 0.0)
         
-        if CLLocationManager.authorizationStatus() == .AuthorizedAlways ||
-            CLLocationManager.authorizationStatus() == .AuthorizedWhenInUse {
+        if CLLocationManager.authorizationStatus() == .authorizedAlways ||
+            CLLocationManager.authorizationStatus() == .authorizedWhenInUse {
             locationManager = CLLocationManager()
             locationManager!.delegate = self
             locationManager!.requestAlwaysAuthorization()
@@ -128,7 +128,7 @@ class LocationSettings: UIViewController, UITableViewDelegate, UITableViewDataSo
         
     }
     
-    private func zoomMapTooLocation(location : CLLocationCoordinate2D){
+    private func zoomMapTooLocation(_ location : CLLocationCoordinate2D){
         
         // Change map to zoom in on selected store
         let latDelta: CLLocationDegrees = 0.05
@@ -161,15 +161,15 @@ class LocationSettings: UIViewController, UITableViewDelegate, UITableViewDataSo
     
     // MARK: UITableViewDelegate
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         var store : BVStore!
         
-        switch indexPath.section {
-            case LocationSettingsSections.DefaultLocation.rawValue:
+        switch (indexPath as NSIndexPath).section {
+            case LocationSettingsSections.defaultLocation.rawValue:
                 store = self.userDefaultStore
-            case LocationSettingsSections.OtherLocations.rawValue:
-                store = self.stores[indexPath.row]
+            case LocationSettingsSections.otherLocations.rawValue:
+                store = self.stores[(indexPath as NSIndexPath).row]
             default:
                 print("Error setting store for selected section! You're gonna crash!")
         }
@@ -181,13 +181,13 @@ class LocationSettings: UIViewController, UITableViewDelegate, UITableViewDataSo
         // Reset check icons for all visible cells
         let visibleRows = self.locationPickerView?.tableView.indexPathsForVisibleRows
         for currIndexPath in visibleRows! {
-            let cell = self.locationPickerView?.tableView.cellForRowAtIndexPath(currIndexPath) as! StoreLocationTableViewCell
+            let cell = self.locationPickerView?.tableView.cellForRow(at: currIndexPath) as! StoreLocationTableViewCell
             cell.setCheckOff()
         }
         
         // Set the cell tapped to the current cell (i.e. you can't tap a cell to turn the default off
         // you have to select another cell
-        let cell = self.locationPickerView?.tableView.cellForRowAtIndexPath(indexPath) as! StoreLocationTableViewCell
+        let cell = self.locationPickerView?.tableView.cellForRow(at: indexPath) as! StoreLocationTableViewCell
         LocationPreferenceUtils.setDefaultStore(CachableDefaultStore(store: store))
         cell.setCheckOn()
             
@@ -196,17 +196,17 @@ class LocationSettings: UIViewController, UITableViewDelegate, UITableViewDataSo
     
     // MARK: UITableViewDataSource
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
     
         return 2
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         switch section {
-        case LocationSettingsSections.DefaultLocation.rawValue:
+        case LocationSettingsSections.defaultLocation.rawValue:
             return self.userDefaultStore == nil ? 0 : 1
-        case LocationSettingsSections.OtherLocations.rawValue:
+        case LocationSettingsSections.otherLocations.rawValue:
             return self.stores.count
         default:
             return 0
@@ -215,70 +215,70 @@ class LocationSettings: UIViewController, UITableViewDelegate, UITableViewDataSo
         
     }
     
-    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch section {
-        case LocationSettingsSections.DefaultLocation.rawValue:
+        case LocationSettingsSections.defaultLocation.rawValue:
             return self.userDefaultStore == nil ? "" : "MY CURRENT STORE"
-        case LocationSettingsSections.OtherLocations.rawValue:
+        case LocationSettingsSections.otherLocations.rawValue:
             return "OTHER STORES"
         default:
             return ""
         }
     }
 
-    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
         var title = ""
         
         switch section {
-        case LocationSettingsSections.DefaultLocation.rawValue:
+        case LocationSettingsSections.defaultLocation.rawValue:
             title = "MY CURRENT STORE"
-        case LocationSettingsSections.OtherLocations.rawValue:
+        case LocationSettingsSections.otherLocations.rawValue:
             title = "OTHER STORES"
         default:
             title = ""
         }
 
-        let frame = CGRectMake(0, 0, tableView.bounds.width, 22)
+        let frame = CGRect(x: 0, y: 0, width: tableView.bounds.width, height: 22)
         let view = UIView(frame: frame)
-        view.backgroundColor = UIColor.whiteColor()
+        view.backgroundColor = UIColor.white
         
-        let labelFrame = CGRectMake(8, 8, tableView.bounds.width, 22)
+        let labelFrame = CGRect(x: 8, y: 8, width: tableView.bounds.width, height: 22)
         let titleLabel = UILabel(frame: labelFrame)
         titleLabel.text = title
-        titleLabel.textColor = UIColor.lightGrayColor()
+        titleLabel.textColor = UIColor.lightGray
         view.addSubview(titleLabel)
         
         return view
     }
     
-    func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return self.userDefaultStore == nil ? 0 : 11
     }
     
-    func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        let frame = CGRectMake(0, 0, tableView.bounds.width, 11)
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        let frame = CGRect(x: 0, y: 0, width: tableView.bounds.width, height: 11)
         let view = UIView(frame: frame)
-        view.backgroundColor = UIColor.groupTableViewBackgroundColor()
+        view.backgroundColor = UIColor.groupTableViewBackground
         return view
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCellWithIdentifier("StoreLocationTableViewCell") as! StoreLocationTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "StoreLocationTableViewCell") as! StoreLocationTableViewCell
         
-        cell.selectionStyle = UITableViewCellSelectionStyle.None;
+        cell.selectionStyle = UITableViewCellSelectionStyle.none;
         
-        switch indexPath.section {
-        case LocationSettingsSections.DefaultLocation.rawValue:
+        switch (indexPath as NSIndexPath).section {
+        case LocationSettingsSections.defaultLocation.rawValue:
             cell.store = self.userDefaultStore
             if LocationPreferenceUtils.isDefaultStoreId(cell.store.identifier) {
                 cell.setCheckOn()
             }
             break
             
-        case LocationSettingsSections.OtherLocations.rawValue:
-            let currStore = self.stores[indexPath.row]
+        case LocationSettingsSections.otherLocations.rawValue:
+            let currStore = self.stores[(indexPath as NSIndexPath).row]
             cell.store = currStore
             
             if LocationPreferenceUtils.isDefaultStoreId(currStore.identifier) {
@@ -296,7 +296,7 @@ class LocationSettings: UIViewController, UITableViewDelegate, UITableViewDataSo
         // utilize closure to get the product the user tapped the "Shop Now" button on.
         cell.onNumReviewsLabelTapped = { (selectedStore) -> Void in
 
-            let totalReviewCount : Int = selectedStore.reviewStatistics != nil ? (selectedStore.reviewStatistics?.totalReviewCount?.integerValue)! : 0
+            let totalReviewCount : Int = selectedStore.reviewStatistics != nil ? (selectedStore.reviewStatistics?.totalReviewCount?.intValue)! : 0
             
             let storeReviewsVC = StoreReviewsViewController(nibName: "StoreReviewsViewController", bundle: nil, store: selectedStore, totalReviewCount: totalReviewCount)
             self.navigationController?.pushViewController(storeReviewsVC, animated: true)
@@ -308,21 +308,21 @@ class LocationSettings: UIViewController, UITableViewDelegate, UITableViewDataSo
     
     // MARK: LocationPickerViewDelegate
     
-    func locationPicker(locationPicker: LocationPickerView!, tableViewDidLoad tableView: UITableView!) {
+    func locationPicker(_ locationPicker: LocationPickerView!, tableViewDidLoad tableView: UITableView!) {
         
         tableView.estimatedRowHeight = 40
         tableView.rowHeight = UITableViewAutomaticDimension
         
         let nibConversationsCell = UINib(nibName: "StoreLocationTableViewCell", bundle: nil)
-        self.locationPickerView?.tableView.registerNib(nibConversationsCell, forCellReuseIdentifier: "StoreLocationTableViewCell")
+        self.locationPickerView?.tableView.register(nibConversationsCell, forCellReuseIdentifier: "StoreLocationTableViewCell")
         self.locationPickerView!.tableView.rowHeight = UITableViewAutomaticDimension
         self.locationPickerView!.tableView.estimatedRowHeight = 215
         
-        tableView.hidden = true
+        tableView.isHidden = true
     }
     
     
-    func locationPicker(locationPicker: LocationPickerView!, mapViewDidLoad mapView: MKMapView!) {
+    func locationPicker(_ locationPicker: LocationPickerView!, mapViewDidLoad mapView: MKMapView!) {
         
         mapView.showsUserLocation = true;
         locationPickerView!.mapView.showsUserLocation = true
@@ -343,7 +343,7 @@ class LocationSettings: UIViewController, UITableViewDelegate, UITableViewDataSo
         
     }
     
-    func makePinForStore(store : BVStore) -> MKPointAnnotation{
+    func makePinForStore(_ store : BVStore) -> MKPointAnnotation{
         
         let location = CLLocationCoordinate2DMake(Double(store.storeLocation!.latitude!)!, Double(store.storeLocation!.longitude!)!)
         let dropPin = MKPointAnnotation()
@@ -355,15 +355,15 @@ class LocationSettings: UIViewController, UITableViewDelegate, UITableViewDataSo
     
     // MARK: MKMapViewDelegate
     
-    func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         
-        if (annotation.isKindOfClass(MKUserLocation)){
+        if (annotation.isKind(of: MKUserLocation.self)){
             return nil
         }
         
         // Add a bike/pin to the map
         let annotationReuseId = "Place"
-        var anView = mapView.dequeueReusableAnnotationViewWithIdentifier(annotationReuseId)
+        var anView = mapView.dequeueReusableAnnotationView(withIdentifier: annotationReuseId)
         if anView == nil {
             anView = MKAnnotationView(annotation: annotation, reuseIdentifier: annotationReuseId)
         } else {
@@ -371,14 +371,14 @@ class LocationSettings: UIViewController, UITableViewDelegate, UITableViewDataSo
         }
         
         anView!.image = UIImage(named: "bike_map_pin")
-        anView!.backgroundColor = UIColor.clearColor()
+        anView!.backgroundColor = UIColor.clear
         anView!.canShowCallout = true
         return anView
     }
     
     // MARK: CLLocationManagerDelegate
     
-    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
         deviceLocation = CLLocationCoordinate2D(latitude: (locationManager!.location?.coordinate.latitude)!, longitude: (locationManager!.location?.coordinate.longitude)!)
         
@@ -405,7 +405,7 @@ class LocationSettings: UIViewController, UITableViewDelegate, UITableViewDataSo
         }
         
         // sort the cells based on distance, ASC, then refresh the data
-        self.stores.sortInPlace({$0.distanceInMetersFromCurrentLocation() < $1.distanceInMetersFromCurrentLocation()})
+        self.stores.sort(by: {$0.distanceInMetersFromCurrentLocation() < $1.distanceInMetersFromCurrentLocation()})
         
         if (self.stores.count > 0){
             self.locationPickerView?.tableView.reloadData()
@@ -416,6 +416,6 @@ class LocationSettings: UIViewController, UITableViewDelegate, UITableViewDataSo
 
 enum LocationSettingsSections : Int {
     
-    case DefaultLocation = 0, OtherLocations
+    case defaultLocation = 0, otherLocations
     
 }

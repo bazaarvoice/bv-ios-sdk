@@ -42,7 +42,7 @@
     self = [super init];
     if(self){
         
-        self.limit = [storeIds count];
+        self.limit = (int)[storeIds count];
         self.offset = 0;
         [self initDefaultProps];
         _filterStoreIds = storeIds;

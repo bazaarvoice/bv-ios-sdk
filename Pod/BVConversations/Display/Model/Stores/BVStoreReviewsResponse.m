@@ -48,7 +48,7 @@
         // We limit the initial request to only one store, so we just pick out the first store.
         NSDictionary *storeDict = [productsDict objectForKey:key];
 
-        return [[BVStore alloc] initWithApiResponse:storeDict includes:productsDict];
+        return [[BVStore alloc] initWithApiResponse:storeDict];
     }
     
     // If there are no reviews in the response, the Products dictionary holding the stores will be empty.

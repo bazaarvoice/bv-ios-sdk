@@ -19,8 +19,14 @@
             return nil;
         }
         
-        SET_IF_NOT_NULL(self.thumbnailUrl, apiObject[@"thumbnail"][@"Url"])
-        SET_IF_NOT_NULL(self.normalUrl, apiObject[@"normal"][@"Url"])
+        if (!isObjectNilOrNull(apiObject[@"thumbnail"][@"Url"])){
+            self.thumbnailUrl = apiObject[@"thumbnail"][@"Url"];
+        }
+        
+        if (!isObjectNilOrNull(apiObject[@"normal"][@"Url"])){
+            self.normalUrl = apiObject[@"normal"][@"Url"];
+        }
+        
     }
     return self;
 }

@@ -100,15 +100,6 @@
 @property NSDictionary* media;
 
 
-
-/**
-If provided, this limits the total number of updates from each group within your feed to the given limit. For example, if your feed comprises three groups, and you set per_group_limit to 3, you will get no more than three updates from each group for a possible maximum total of nine updates. If your feed comprises a single group, this parameter is functionally identical to limit, and the lower value of the two parameters will be used.
- 
- @deprecated perGroupLimit is deprecated and will be removed in a future release.
-*/
-@property NSUInteger perGroupLimit DEPRECATED_ATTRIBUTE;
-
-
 /// String Array where each element is a string representing a tag. Setting this causes the system to return only updates with at least one of the tags in the tag array.
 /// If you want to include only one tag in your feed, you can send this as a string instead of an array with a single value, but either will work.
 @property NSArray* tags;
@@ -118,14 +109,6 @@ If provided, this limits the total number of updates from each group within your
 ///    The external product id used for syndication.
 ///    Setting externalId returns both client content and syndicated content. If externalId is not valid, only client content will be returned.
 @property NSString* externalId;
-
-
-/**
-Setting to true returns only content that is Rights Management approved.
- 
- @deprecated explicitPermission is deprecated and will be removed in a future release.
- */
-@property BOOL explicitPermission DEPRECATED_ATTRIBUTE;
 
 
 /// Setting to true to include product data tagged in the Curations feed. May not be availale for all feeds.

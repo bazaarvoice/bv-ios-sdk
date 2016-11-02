@@ -14,18 +14,18 @@ class InlineRatingsDisplayTests: XCTestCase {
     override func setUp() {
         super.setUp()
         
-        BVSDKManager.sharedManager().clientId = "apitestcustomer"
-        BVSDKManager.sharedManager().apiKeyConversations = "kuy3zj9pr3n7i0wxajrzj04xo"
-        BVSDKManager.sharedManager().staging = true
+        BVSDKManager.shared().clientId = "apitestcustomer"
+        BVSDKManager.shared().apiKeyConversations = "kuy3zj9pr3n7i0wxajrzj04xo"
+        BVSDKManager.shared().staging = true
     }
     
     
     func testInlineRatingsDisplayMultipleProducts() {
         
-        let expectation = expectationWithDescription("")
+        let expectation = self.expectation(description: "")
         
-        let request = BVBulkRatingsRequest(productIds: ["test1", "test2", "test3"], statistics: .All)
-        request.addFilter(.ContentLocale, filterOperator: .EqualTo, values: ["en_US"])
+        let request = BVBulkRatingsRequest(productIds: ["test1", "test2", "test3"], statistics: .all)
+        request.add(.contentLocale, filterOperator: .equalTo, values: ["en_US"])
         
         request.load({ (response) in
             XCTAssertEqual(response.results.count, 3)
@@ -34,16 +34,16 @@ class InlineRatingsDisplayTests: XCTestCase {
             XCTFail("inline ratings request error: \(error)")
         }
         
-        self.waitForExpectationsWithTimeout(10) { (error) in print("request took way too long") }
+        self.waitForExpectations(timeout: 10) { (error) in print("request took way too long") }
         
     }
     
     func testInlineRatingsDisplayOneProduct() {
         
-        let expectation = expectationWithDescription("")
+        let expectation = self.expectation(description: "")
         
-        let request = BVBulkRatingsRequest(productIds: ["test3"], statistics: .All)
-        request.addFilter(.ContentLocale, filterOperator: .EqualTo, values: ["en_US"])
+        let request = BVBulkRatingsRequest(productIds: ["test3"], statistics: .all)
+        request.add(.contentLocale, filterOperator: .equalTo, values: ["en_US"])
         
         request.load({ (response) in
             XCTAssertEqual(response.results.count, 1)
@@ -58,7 +58,7 @@ class InlineRatingsDisplayTests: XCTestCase {
             XCTFail("inline ratings request error: \(error)")
         }
         
-        self.waitForExpectationsWithTimeout(10) { (error) in
+        self.waitForExpectations(timeout: 10) { (error) in
             XCTAssertNil(error, "Something went horribly wrong, request took too long.")
         }
         
@@ -66,7 +66,7 @@ class InlineRatingsDisplayTests: XCTestCase {
     
     func testInlineRatingsTooManyProductsError() {
         
-        let expectation = expectationWithDescription("inline ratings display should complete")
+        let expectation = self.expectation(description: "inline ratings display should complete")
         
         var tooManyProductIds: [String] = []
         
@@ -74,7 +74,7 @@ class InlineRatingsDisplayTests: XCTestCase {
             tooManyProductIds += [String(i)]
         }
         
-        let request = BVBulkRatingsRequest(productIds: tooManyProductIds, statistics: .All)
+        let request = BVBulkRatingsRequest(productIds: tooManyProductIds, statistics: .all)
         
         request.load({ (response) in
             XCTFail("Should not succeed")
@@ -82,7 +82,7 @@ class InlineRatingsDisplayTests: XCTestCase {
             expectation.fulfill()
         }
         
-        self.waitForExpectationsWithTimeout(10) { (error) in
+        self.waitForExpectations(timeout: 10) { (error) in
             XCTAssertNil(error, "Something went horribly wrong, request took too long.")
         }
         

@@ -13,11 +13,11 @@ class QuestionAnswerViewController: UIViewController, UITableViewDelegate, UITab
     
     @IBOutlet weak var tableView: BVQuestionsTableView!
     @IBOutlet weak var header : ProductDetailHeaderView!
-    var spinner = Util.createSpinner(UIColor.bazaarvoiceNavy(), size: CGSizeMake(44,44), padding: 0)
+    var spinner = Util.createSpinner(UIColor.bazaarvoiceNavy(), size: CGSize(width: 44,height: 44), padding: 0)
     let product: BVRecommendedProduct
     var questions : [BVQuestion] = []
     
-    init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?, product:BVRecommendedProduct?) {
+    init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?, product:BVRecommendedProduct?) {
         self.product = product!
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     }
@@ -43,13 +43,13 @@ class QuestionAnswerViewController: UIViewController, UITableViewDelegate, UITab
         tableView.rowHeight = UITableViewAutomaticDimension
         
         let nib1 = UINib(nibName: "CallToActionCell", bundle: nil)
-        tableView.registerNib(nib1, forCellReuseIdentifier: "CallToActionCell")
+        tableView.register(nib1, forCellReuseIdentifier: "CallToActionCell")
         
         let nib2 = UINib(nibName: "QuestionAnswerTableViewCell", bundle: nil)
-        tableView.registerNib(nib2, forCellReuseIdentifier: "QuestionAnswerTableViewCell")
+        tableView.register(nib2, forCellReuseIdentifier: "QuestionAnswerTableViewCell")
         
         // add a Ask a question button...
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Ask a question", style: .Plain, target: self, action: "askQuestionTapped")
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Ask a question", style: .plain, target: self, action: #selector(QuestionAnswerViewController.askQuestionTapped))
         
         self.loadQuestions()
         
@@ -82,7 +82,7 @@ class QuestionAnswerViewController: UIViewController, UITableViewDelegate, UITab
         
     }
     
-    func submitAnswerPressed(sender: UIButton) {
+    func submitAnswerPressed(_ sender: UIButton) {
         
         let indexPathSection = sender.tag
         let question = questions[indexPathSection]
@@ -92,7 +92,7 @@ class QuestionAnswerViewController: UIViewController, UITableViewDelegate, UITab
         
     }
     
-    func readAnswersTapped(sender: UIButton) {
+    func readAnswersTapped(_ sender: UIButton) {
         
         let indexPathSection = sender.tag
         let question = questions[indexPathSection]
@@ -104,48 +104,48 @@ class QuestionAnswerViewController: UIViewController, UITableViewDelegate, UITab
     
     // MARK: UITableViewDatasource
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
      
         return questions.count
         
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         return 2
    
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let question = questions[indexPath.section]
+        let question = questions[(indexPath as NSIndexPath).section]
         
-        if indexPath.row == 0 {
+        if (indexPath as NSIndexPath).row == 0 {
             
-            let cell = tableView.dequeueReusableCellWithIdentifier("QuestionAnswerTableViewCell") as! QuestionAnswerTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "QuestionAnswerTableViewCell") as! QuestionAnswerTableViewCell
             cell.question = question
             return cell
             
         }
         else {
             
-            let callToActionCell = tableView.dequeueReusableCellWithIdentifier("CallToActionCell") as! CallToActionCell
-            callToActionCell.setCustomRightIcon(FAKFontAwesome.chevronRightIconWithSize)
+            let callToActionCell = tableView.dequeueReusableCell(withIdentifier: "CallToActionCell") as! CallToActionCell
+            callToActionCell.setCustomRightIcon(FAKFontAwesome.chevronRightIcon(withSize:))
             
             let numAnswers = question.answers.count
             if numAnswers == 0 {
-                callToActionCell.button.setTitle("Be the first to answer!", forState: .Normal)
-                callToActionCell.setCustomLeftIcon(FAKFontAwesome.plusIconWithSize)
-                callToActionCell.button.removeTarget(nil, action: nil, forControlEvents: .AllEvents)
-                callToActionCell.button.tag = indexPath.section
-                callToActionCell.button.addTarget(self, action: "submitAnswerPressed:", forControlEvents: .TouchUpInside)
+                callToActionCell.button.setTitle("Be the first to answer!", for: UIControlState())
+                callToActionCell.setCustomLeftIcon(FAKFontAwesome.plusIcon(withSize:))
+                callToActionCell.button.removeTarget(nil, action: nil, for: .allEvents)
+                callToActionCell.button.tag = (indexPath as NSIndexPath).section
+                callToActionCell.button.addTarget(self, action: #selector(QuestionAnswerViewController.submitAnswerPressed(_:)), for: .touchUpInside)
             }
             else {
-                callToActionCell.button.setTitle("Read \(numAnswers) answers", forState: .Normal)
-                callToActionCell.setCustomLeftIcon(FAKFontAwesome.commentsIconWithSize)
-                callToActionCell.button.removeTarget(nil, action: nil, forControlEvents: .AllEvents)
-                callToActionCell.button.tag = indexPath.section
-                callToActionCell.button.addTarget(self, action: "readAnswersTapped:", forControlEvents: .TouchUpInside)
+                callToActionCell.button.setTitle("Read \(numAnswers) answers", for: UIControlState())
+                callToActionCell.setCustomLeftIcon(FAKFontAwesome.commentsIcon(withSize:))
+                callToActionCell.button.removeTarget(nil, action: nil, for: .allEvents)
+                callToActionCell.button.tag = (indexPath as NSIndexPath).section
+                callToActionCell.button.addTarget(self, action: #selector(QuestionAnswerViewController.readAnswersTapped(_:)), for: .touchUpInside)
             }
             
             return callToActionCell
@@ -156,9 +156,9 @@ class QuestionAnswerViewController: UIViewController, UITableViewDelegate, UITab
     
     // MARK: UITableViewDelegate
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        tableView.deselectRow(at: indexPath, animated: true)
         
     }
     

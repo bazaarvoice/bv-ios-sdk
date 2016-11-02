@@ -58,7 +58,7 @@ Pod::Spec.new do |s|
   end
 
   s.subspec 'BVNotifications' do |notifications|
-notifications.source_files = 'Pod/BVNotifications/**/*.{h,m}', 'Pod/BVAnalytics/**/*.{h,m}', 'Pod/BVConversations/**/*.{h,m}', 'Pod/BVCommon/*.{h,m}','Pod/BVCommon/Private/*.{h,m}','Pod/BVCommon/Notifications/BVNotificationCenterObject.h','Pod/BVCommon/Notifications/BVReviewRichNotificationCenter.{h,m}','Pod/BVCommon/Notifications/BVNotificationConstants.h'
+    notifications.source_files = 'Pod/BVNotifications/**/*.{h,m}', 'Pod/BVAnalytics/**/*.{h,m}', 'Pod/BVConversations/**/*.{h,m}', 'Pod/BVCommon/*.{h,m}','Pod/BVCommon/Private/*.{h,m}','Pod/BVCommon/Notifications/BVNotificationCenterObject.h','Pod/BVCommon/Notifications/BVReviewRichNotificationCenter.{h,m}','Pod/BVCommon/Notifications/BVNotificationConstants.h'
     notifications.resources = ['Pod/BVNotifications/BVStoreReviewNotificationViewController.xib']
   end
 

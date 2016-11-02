@@ -21,7 +21,7 @@
     
     for(NSString* key in apiObject){
         NSDictionary* value = apiObject[key];
-        NSString* avgRating = value[@"AverageRating"];
+        id avgRating = value[@"AverageRating"];
         
         if(avgRating != [NSNull null]){
             result[key] = avgRating;

@@ -13,7 +13,7 @@
     
     self = [super init];
     if(self){
-        if (apiRepsonse == nil || [apiRepsonse isKindOfClass:[NSArray class]]) {
+        if (apiRepsonse == nil || ![apiRepsonse isKindOfClass:[NSArray class]]) {
             return nil;
         }
         

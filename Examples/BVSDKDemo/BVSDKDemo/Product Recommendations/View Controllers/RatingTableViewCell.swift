@@ -7,6 +7,26 @@
 import UIKit
 import HCSStarRatingView
 import BVSDK
+private func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l < r
+  case (nil, _?):
+    return true
+  default:
+    return false
+  }
+}
+
+private func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l > r
+  default:
+    return rhs < lhs
+  }
+}
+
 
 class RatingTableViewCell: BVReviewTableViewCell {
     
@@ -43,7 +63,7 @@ class RatingTableViewCell: BVReviewTableViewCell {
             reviewTitle.text = review!.title
             reviewStars.value = CGFloat(review!.rating)
             if let photoUrl = review?.photos.first?.sizes?.normalUrl {
-                reviewPhoto.sd_setImageWithURL(NSURL(string: photoUrl))
+                reviewPhoto.sd_setImage(with: URL(string: photoUrl))
             }
             else {
                 reviewPhoto.image = nil
@@ -69,25 +89,25 @@ class RatingTableViewCell: BVReviewTableViewCell {
                 reviewAuthorLocation.text = ""
             }
             
-            if review?.totalFeedbackCount?.intValue > 0 {
+            if review?.totalFeedbackCount?.int32Value > 0 {
                                 
                 let totalFeedbackCountString = review?.totalFeedbackCount?.stringValue ?? ""
                 let totalPositiveFeedbackCountString = review?.totalPositiveFeedbackCount?.stringValue ?? ""
                 
                  let helpfulText = totalPositiveFeedbackCountString + " of " + totalFeedbackCountString +  " users found this review helpful"
                 
-                let attributedString = NSMutableAttributedString(string: helpfulText as String, attributes: [NSFontAttributeName:UIFont.systemFontOfSize(12.0)])
+                let attributedString = NSMutableAttributedString(string: helpfulText as String, attributes: [NSFontAttributeName:UIFont.systemFont(ofSize: 12.0)])
 
-                let boldFontAttribute = [NSFontAttributeName: UIFont.boldSystemFontOfSize(12.0)]
-                let colorFontAttribute = [NSForegroundColorAttributeName: UIColor.darkGrayColor()]
+                let boldFontAttribute = [NSFontAttributeName: UIFont.boldSystemFont(ofSize: 12.0)]
+                let colorFontAttribute = [NSForegroundColorAttributeName: UIColor.darkGray]
                 
                 // Part of string to be bold
-                attributedString.addAttributes(boldFontAttribute, range: (helpfulText as NSString).rangeOfString(totalFeedbackCountString))
-                attributedString.addAttributes(boldFontAttribute, range: (helpfulText as NSString).rangeOfString(totalPositiveFeedbackCountString))
+                attributedString.addAttributes(boldFontAttribute, range: (helpfulText as NSString).range(of: totalFeedbackCountString))
+                attributedString.addAttributes(boldFontAttribute, range: (helpfulText as NSString).range(of: totalPositiveFeedbackCountString))
 
                 // Make text black
-                attributedString.addAttributes(colorFontAttribute , range: (helpfulText as NSString).rangeOfString(totalFeedbackCountString, options: .BackwardsSearch))
-                 attributedString.addAttributes(colorFontAttribute , range: (helpfulText as NSString).rangeOfString(totalPositiveFeedbackCountString))
+                attributedString.addAttributes(colorFontAttribute , range: (helpfulText as NSString).range(of: totalFeedbackCountString, options: .backwards))
+                 attributedString.addAttributes(colorFontAttribute , range: (helpfulText as NSString).range(of: totalPositiveFeedbackCountString))
                
                 usersFoundHelpfulLabel.attributedText = attributedString
                 

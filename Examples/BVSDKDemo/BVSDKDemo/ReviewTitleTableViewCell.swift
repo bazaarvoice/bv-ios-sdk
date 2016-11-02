@@ -12,15 +12,15 @@ class ReviewTitleTableViewCell: EditablePropertyTableViewCell, UITextFieldDelega
     @IBOutlet var reviewTextField: UITextField?
     
     override func awakeFromNib() {
-        selectionStyle = .None
+        selectionStyle = .none
     }
     
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return false
     }
     
-    func textFieldDidEndEditing(textField: UITextField) {
+    func textFieldDidEndEditing(_ textField: UITextField) {
         object.setValue(textField.text, forKeyPath: keyPath!)
     }
 }

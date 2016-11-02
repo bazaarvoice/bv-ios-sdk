@@ -9,12 +9,12 @@ import UIKit
 import BVSDK
 
 enum SocialOutlet {
-    case Pinterest
-    case Twitter
-    case Email
-    case ReplyComment
-    case Retweet
-    case UserProfile
+    case pinterest
+    case twitter
+    case email
+    case replyComment
+    case retweet
+    case userProfile
 }
 
 
@@ -39,11 +39,11 @@ class CurationsFeedItemDetailCell: UITableViewCell {
             // author image
             let author : BVCurationsPostAuthor = (self.feedItem?.author)!
             if (author.avatar != nil){
-                let avatarURL : NSURL = NSURL(string:author.avatar)!
+                let avatarURL : URL = URL(string:author.avatar)!
                 self.authorImage?.sd_setImageWithURLWithFade(avatarURL, placeholderImage: UIImage(named: ""))
             }
             
-            let postDate = NSDate(timeIntervalSince1970: (feedItem?.timestamp.doubleValue)!)
+            let postDate = Date(timeIntervalSince1970: (feedItem?.timestamp.doubleValue)!)
             self.postTimeLabel.text = dateTimeAgo(postDate)
             
             if (author.profile != nil && author.username != nil){
@@ -57,71 +57,71 @@ class CurationsFeedItemDetailCell: UITableViewCell {
         
     }
     
-    func linkAuthorNameLabel(url : String, author : String) {
+    func linkAuthorNameLabel(_ url : String, author : String) {
         
-        let attributes = [ NSForegroundColorAttributeName: UIColor.blueColor() ]
+        let attributes = [ NSForegroundColorAttributeName: UIColor.blue ]
         let attrText = NSAttributedString(string: author, attributes: attributes)
         
         self.authorNameLabel.attributedText = attrText
-        self.authorNameLabel.userInteractionEnabled = true
+        self.authorNameLabel.isUserInteractionEnabled = true
         
-        let tapAuthorGesture = UITapGestureRecognizer(target: self, action: "tappedAuthor:")
+        let tapAuthorGesture = UITapGestureRecognizer(target: self, action: #selector(CurationsFeedItemDetailCell.tappedAuthor(_:)))
         self.authorNameLabel.addGestureRecognizer(tapAuthorGesture)
     }
     
-    func tappedAuthor(sender:UITapGestureRecognizer){
+    func tappedAuthor(_ sender:UITapGestureRecognizer){
         if let onSocialButtonTapped = self.onSocialButtonTapped {
-            onSocialButtonTapped(socialOutlet : SocialOutlet.UserProfile, product: self.feedItem!)
+            onSocialButtonTapped(SocialOutlet.userProfile, self.feedItem!)
         }
     }
     
-    @IBAction func didTapPinterestButton(sender: AnyObject) {
+    @IBAction func didTapPinterestButton(_ sender: AnyObject) {
         if let onSocialButtonTapped = self.onSocialButtonTapped {
-            onSocialButtonTapped(socialOutlet : SocialOutlet.Pinterest, product: self.feedItem!)
+            onSocialButtonTapped(SocialOutlet.pinterest, self.feedItem!)
         }
         
     }
     
     
-    @IBAction func didTapTwitterButton(sender: AnyObject) {
+    @IBAction func didTapTwitterButton(_ sender: AnyObject) {
         if let onSocialButtonTapped = self.onSocialButtonTapped {
-            onSocialButtonTapped(socialOutlet : SocialOutlet.Twitter, product: self.feedItem!)
+            onSocialButtonTapped(SocialOutlet.twitter, self.feedItem!)
         }
     }
     
     
-    @IBAction func didTapEmailButton(sender: AnyObject) {
+    @IBAction func didTapEmailButton(_ sender: AnyObject) {
         if let onSocialButtonTapped = self.onSocialButtonTapped {
-            onSocialButtonTapped(socialOutlet : SocialOutlet.Email, product: self.feedItem!)
+            onSocialButtonTapped(SocialOutlet.email, self.feedItem!)
         }
     }
     
     
-    @IBAction func didTapReplyButton(sender: AnyObject) {
+    @IBAction func didTapReplyButton(_ sender: AnyObject) {
         if let onSocialButtonTapped = self.onSocialButtonTapped {
-            onSocialButtonTapped(socialOutlet : SocialOutlet.ReplyComment, product: self.feedItem!)
+            onSocialButtonTapped(SocialOutlet.replyComment, self.feedItem!)
         }
     }
     
     
-    @IBAction func didTapRetweetButton(sender: AnyObject) {
+    @IBAction func didTapRetweetButton(_ sender: AnyObject) {
         if let onSocialButtonTapped = self.onSocialButtonTapped {
-            onSocialButtonTapped(socialOutlet : SocialOutlet.Retweet, product: self.feedItem!)
+            onSocialButtonTapped(SocialOutlet.retweet, self.feedItem!)
         }
     }
     
-    @IBAction func toggleStarTapped(sender: AnyObject) {
+    @IBAction func toggleStarTapped(_ sender: AnyObject) {
         
         isFavorite = !isFavorite
         
         let imageName = isFavorite ? "star_filled" : "star_unfilled"
         
-        self.starButton.setImage(UIImage(named: imageName), forState: UIControlState.Normal)
+        self.starButton.setImage(UIImage(named: imageName), for: UIControlState())
         
     }
     
     
-    var onSocialButtonTapped : ((socialOutlet : SocialOutlet, product : BVCurationsFeedItem) -> Void)? = nil
+    var onSocialButtonTapped : ((_ socialOutlet : SocialOutlet, _ product : BVCurationsFeedItem) -> Void)? = nil
     
 }
 

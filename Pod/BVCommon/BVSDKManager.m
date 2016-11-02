@@ -91,6 +91,14 @@
     [self loadNotificationConfiguration];
 }
 
+- (void)setApiKeyLocation:(NSString *)apiKeyLocation{
+    
+    _apiKeyLocation = apiKeyLocation;
+    NSDictionary *userInfo = @{LOCATION_API_KEY_SET_NOTIFICATION:apiKeyLocation};
+    [[NSNotificationCenter defaultCenter] postNotificationName:LOCATION_API_KEY_SET_NOTIFICATION object:nil userInfo:userInfo];
+    
+}
+
 -(void)loadNotificationConfiguration {
     
         NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@/incubator-mobile-apps/conversations-stores/%@/ios/geofenceConfig.json", NOTIFICATION_CONFIG_ROOT, [[BVSDKManager sharedManager] clientId]]];

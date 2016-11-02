@@ -8,10 +8,13 @@
 #import <AdSupport/ASIdentifierManager.h>
 #import <UIKit/UIKit.h>
 #import <XCTest/XCTest.h>
-#import <BVSDK/BVCore.h>
-#import <BVSDK/BVConversations.h>
-#import <BVSDK/BVRecommendations.h>
-#import <BVSDK/BVNotificationsAnalyticsHelper.h>
+#import "BVCore.h"
+#import "BVRecommendations.h"
+#import "BVNotificationsAnalyticsHelper.h"
+#import "BVReviewsRequest.h"
+#import "BVProductDisplayPageRequest.h"
+#import "BVQuestionsAndAnswersRequest.h"
+#import "BVBulkRatingsRequest.h"
 
 #import "BVBaseStubTestCase.h"
 
@@ -21,7 +24,7 @@
 @property (strong) NSMutableArray* eventQueue;
 @end
 
-@interface BVAnalyticsTests : BVBaseStubTestCase<BVDelegate> {
+@interface BVAnalyticsTests : BVBaseStubTestCase {
     XCTestExpectation *impressionExpectation;
     XCTestExpectation *pageviewExpectation;
     int numberOfExpectedImpressionAnalyticsEvents;
@@ -32,6 +35,8 @@
 #define TEST_CLIENT_ID @"IOS_UNIT_TEST"
 #define IS_STAGING YES
 #define TEST_KEY_SHOPPER_ADVERTISING @"fakeshopperadskey"
+#define TEST_KEY_CONVERSATIONS @"faketestkeyconversations"
+
 
 @implementation BVAnalyticsTests
 
@@ -48,7 +53,7 @@
     [BVSDKManager sharedManager].apiKeyShopperAdvertising = TEST_KEY_SHOPPER_ADVERTISING;
     
     // Global logging level
-    [[BVSDKManager sharedManager] setLogLevel:BVLogLevelError];
+    [[BVSDKManager sharedManager] setLogLevel:BVLogLevelAnalyticsOnly];
     
     NSLog(@"BVSDK Info: %@", [BVSDKManager sharedManager].description);
     
@@ -134,6 +139,7 @@
 
 #pragma mark BVConversations analytics
 
+/*
 -(void)testAnalyticsCompletesSmall {
     
 #if ANALYTICS_TEST_USING_MOCK_DATA == 1
@@ -161,6 +167,7 @@
     
     [[BVAnalyticsManager sharedManager] flushQueue];
 }
+*/
 
 -(void)testBigAnalyticsEvent {
     
@@ -174,40 +181,36 @@
     numberOfExpectedPageviewAnalyticsEvents = 1;
     numberOfExpectedImpressionAnalyticsEvents = 1;
     
-    BVGet *showDisplayRequest = [[ BVGet alloc ] initWithType:BVGetTypeReviews];
-    [showDisplayRequest setLimit:100];
-    [showDisplayRequest setSearch: @"Great sound"];
-    [showDisplayRequest addSortForAttribute:@"Id" ascending:YES];
-    [showDisplayRequest sendRequestWithDelegate:self];
+    BVReviewsRequest* request = [[BVReviewsRequest alloc] initWithProductId:@"test1" limit:10 offset:20];
+    [request load:^(BVReviewsResponse * _Nonnull response) {
+        // pass
+    } failure:^(NSArray<NSError *> * _Nonnull errors) {
+        // fail
+        XCTFail("Failure block should not get hit.");
+    }];
     
-    BVGet *showDisplayRequest2 = [[ BVGet alloc ] initWithType:BVGetTypeReviews];
-    [showDisplayRequest2 setLimit:100];
-    [showDisplayRequest2 setSearch: @"Great sound"];
-    [showDisplayRequest2 addSortForAttribute:@"Id" ascending:YES];
-    [showDisplayRequest2 sendRequestWithDelegate:self];
+    BVReviewsRequest* request2 = [[BVReviewsRequest alloc] initWithProductId:@"test2" limit:10 offset:20];
+    [request2 load:^(BVReviewsResponse * _Nonnull response) {
+        // pass
+    } failure:^(NSArray<NSError *> * _Nonnull errors) {
+        // fail
+        XCTFail("Failure block should not get hit.");
+    }];
     
-    BVGet *showDisplayRequest3 = [[ BVGet alloc ] initWithType:BVGetTypeReviews];
-    [showDisplayRequest3 setLimit:100];
-    [showDisplayRequest3 setSearch: @"Great sound"];
-    [showDisplayRequest3 addSortForAttribute:@"Id" ascending:YES];
-    [showDisplayRequest3 sendRequestWithDelegate:self];
     
-    [[BVAnalyticsManager sharedManager] flushQueue];
+    BVProductDisplayPageRequest* pdpRequest = [[BVProductDisplayPageRequest alloc] initWithProductId:@"test4"];
+    [pdpRequest includeStatistics:PDPContentTypeReviews];
+    [pdpRequest includeStatistics:PDPContentTypeQuestions];
+    [pdpRequest load:^(BVProductsResponse * _Nonnull response) {
+       [[BVAnalyticsManager sharedManager] flushQueue];
+    }
+    failure:^(NSArray * _Nonnull errors) {
+        XCTFail("Failure block should not get hit.");
+    }];
     
     [self waitForAnalytics];
-    
 }
 
--(void)fireReviewAnalyticsCompletesWithLimit:(int)limit {
-    
-    BVGet *showDisplayRequest = [[ BVGet alloc ] initWithType:BVGetTypeReviews];
-    [showDisplayRequest setLimit:limit];
-    [showDisplayRequest setSearch: @"Great sound"];
-    [showDisplayRequest addSortForAttribute:@"Id" ascending:YES];
-    [showDisplayRequest sendRequestWithDelegate:self];
-    
-    [self waitForAnalytics];
-}
 
 -(void)testAnalyticsQuestion {
     
@@ -218,30 +221,19 @@
     numberOfExpectedPageviewAnalyticsEvents = 1;
     
     
-    BVGet *showDisplayRequest = [[BVGet alloc] initWithType:BVGetTypeQuestions];
-    [showDisplayRequest setFilterForAttribute:@"Id" equality:BVEqualityEqualTo value:@"6055"];
-    [showDisplayRequest setLimit:1];
-    [showDisplayRequest sendRequestWithDelegate:self];
+    BVQuestionsAndAnswersRequest *request = [[BVQuestionsAndAnswersRequest alloc] initWithProductId:@"test1" limit:20 offset:0];
+    [request load:^(BVQuestionsAndAnswersResponse * _Nonnull response) {
+        // success
+        [[BVAnalyticsManager sharedManager] flushQueue];
+    } failure:^(NSArray<NSError *> * _Nonnull errors) {
+        //error
+        XCTFail("Accidental failure!");
+    }];
+    
     
     [self waitForAnalytics];
 }
 
--(void)testAnalyticsStories {
-    
-#if ANALYTICS_TEST_USING_MOCK_DATA == 1
-    [self addStubWith200ResponseForJSONFileNamed:@"testShowStory.json"];
-#endif
-    
-    numberOfExpectedImpressionAnalyticsEvents = 1;
-    numberOfExpectedPageviewAnalyticsEvents = 0;
-    
-    BVGet *showDisplayRequest = [[BVGet alloc] initWithType:BVGetTypeStories];
-    [showDisplayRequest setFilterForAttribute:@"Id" equality:BVEqualityEqualTo value:@"14181"];
-    [showDisplayRequest setLimit:1];
-    [showDisplayRequest sendRequestWithDelegate:self];
-    
-    [self waitForAnalytics];
-}
 
 
 -(void)testAnalyticsProducts {
@@ -253,51 +245,42 @@
     numberOfExpectedImpressionAnalyticsEvents = 1;
     numberOfExpectedPageviewAnalyticsEvents = 1;
     
-    BVGet *showDisplayRequest = [[BVGet alloc] initWithType:BVGetTypeProducts];
-    [showDisplayRequest setFilterForAttribute:@"CategoryId" equality:BVEqualityEqualTo value:@"testcategory1011"];
-    [showDisplayRequest setFilterOnIncludedType:BVIncludeTypeReviews forAttribute:@"Id" equality:BVEqualityEqualTo value:@"83501"];
-    [showDisplayRequest setLimit:1];
-    [showDisplayRequest sendRequestWithDelegate:self];
+    // Should send one product page view and one or impression for a review
+    BVProductDisplayPageRequest* pdpRequest = [[BVProductDisplayPageRequest alloc] initWithProductId:@"test4"];
+    [pdpRequest includeStatistics:PDPContentTypeReviews];
+    [pdpRequest includeStatistics:PDPContentTypeQuestions];
+    [pdpRequest load:^(BVProductsResponse * _Nonnull response) {
+        [[BVAnalyticsManager sharedManager] flushQueue];
+    }
+    failure:^(NSArray * _Nonnull errors) {
+        XCTFail("Failure block should not get hit.");
+    }];
     
     [self waitForAnalytics];
 }
 
--(void)testAnalyticsCategories {
-    
-#if ANALYTICS_TEST_USING_MOCK_DATA == 1
-    [self addStubWith200ResponseForJSONFileNamed:@"testShowCategory.json"];
-#endif
-    
-    numberOfExpectedImpressionAnalyticsEvents = 1;
-    numberOfExpectedPageviewAnalyticsEvents = 0;
-    
-    BVGet *showDisplayRequest = [[BVGet alloc] initWithType:BVGetTypeCategories];
-    [showDisplayRequest setFilterForAttribute:@"Id" equality:BVEqualityEqualTo value:@"testCategory1011"];
-    [showDisplayRequest setFilterOnIncludedType:BVIncludeTypeProducts forAttribute:@"Id" equality:BVEqualityEqualTo value:@"test2"];
-    [showDisplayRequest setLimit:1];
-    [showDisplayRequest sendRequestWithDelegate:self];
-    
-    [self waitForAnalytics];
-}
-
+/*
 -(void)testAnalyticsStatistics {
     
 #if ANALYTICS_TEST_USING_MOCK_DATA == 1
     [self addStubWith200ResponseForJSONFileNamed:@"testShowStatistics.json"];
 #endif
     
-    numberOfExpectedImpressionAnalyticsEvents = 1;
-    numberOfExpectedPageviewAnalyticsEvents = 1;
+    numberOfExpectedImpressionAnalyticsEvents = 0;
+    numberOfExpectedPageviewAnalyticsEvents = 0;
     
-    BVGet *showDisplayRequest = [[BVGet alloc] initWithType:BVGetTypeStatistics];
-    [showDisplayRequest setFilterForAttribute:@"ProductId" equality:BVEqualityEqualTo values:[NSArray arrayWithObjects:@"test1", @"test2", @"test3", nil]];
-    [showDisplayRequest addStatsOn:BVIncludeStatsTypeReviews];
-    [showDisplayRequest addStatsOn:BVIncludeStatsTypeNativeReviews];
-    [showDisplayRequest sendRequestWithDelegate:self];
-    
+    NSArray* productIds = @[@"test1", @"test2", @"test3", @"test4"];
+    BVBulkRatingsRequest* request = [[BVBulkRatingsRequest alloc] initWithProductIds:productIds statistics:BulkRatingsStatsTypeAll];
+    [request load:^(BVBulkRatingsResponse * _Nonnull response) {
+        [[BVAnalyticsManager sharedManager] flushQueue];
+    } failure:^(NSArray * _Nonnull errors) {
+        XCTFail("Failure block should not get hit.");
+
+    }];
+   
     [self waitForAnalytics];
 }
-
+*/
 
 #pragma mark BVRecommendations - Feature Used Tests
 
@@ -550,15 +533,6 @@
     [self waitForAnalytics];
 }
 
-#pragma mark - BVDelegate callbacks
-
-- (void)didReceiveResponse:(NSDictionary *)response forRequest:(id)request{
-    NSLog(@"Got bv response in analytics test");
-}
-
-- (void)didFailToReceiveResponse:(NSError *)err forRequest:(id)request {
-    XCTFail(@"Failed to receive response");
-}
 
 @end
 

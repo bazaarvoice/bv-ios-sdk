@@ -13,16 +13,16 @@ class Util: NSObject {
     
     static func createSpinner() -> NVActivityIndicatorView {
         
-        let spinner = NVActivityIndicatorView(frame: CGRectMake(0,0,40,40), type: .BallScaleMultiple, color: .lightGrayColor(), padding: 40)
-        spinner.startAnimation()
+        let spinner = NVActivityIndicatorView(frame: CGRect(x: 0,y: 0,width: 40,height: 40), type: .ballScaleMultiple, color: .lightGray, padding: 40)
+        spinner.startAnimating()
         return spinner
         
     }
     
-    static func createSpinner(color : UIColor, size: CGSize, padding: CGFloat) -> NVActivityIndicatorView {
+    static func createSpinner(_ color : UIColor, size: CGSize, padding: CGFloat) -> NVActivityIndicatorView {
         
-        let spinner = NVActivityIndicatorView(frame: CGRectMake(0,0,size.width,size.height), type: .BallScaleMultiple, color: color, padding: padding)
-        spinner.startAnimation()
+        let spinner = NVActivityIndicatorView(frame: CGRect(x: 0,y: 0,width: size.width,height: size.height), type: .ballScaleMultiple, color: color, padding: padding)
+        spinner.startAnimating()
         return spinner
         
     }
@@ -31,33 +31,33 @@ class Util: NSObject {
         
         let errorLabel = UILabel()
         errorLabel.text = "An Error Occurred"
-        errorLabel.textAlignment = .Center
-        errorLabel.textColor = UIColor.lightGrayColor()
+        errorLabel.textAlignment = .center
+        errorLabel.textColor = UIColor.lightGray
         errorLabel.numberOfLines = 1
         return errorLabel
         
     }
     
     /// Get a default light grey icon
-    static func getFontAwesomeIconImage(icon : ((size: CGFloat) -> FAKFontAwesome!)) -> UIImage {
+    static func getFontAwesomeIconImage(_ icon : ((_ size: CGFloat) -> FAKFontAwesome!)) -> UIImage {
         
-        return self.getFontAwesomeIconImage(icon, color: UIColor.lightGrayColor(), alpha: 0.5, size: 20)
+        return self.getFontAwesomeIconImage(icon, color: UIColor.lightGray, alpha: 0.5, size: 20)
     
     }
     
     /// Get an icon with specified size, color, and alpha
-    static func getFontAwesomeIconImage(icon : ((size: CGFloat) -> FAKFontAwesome!),
+    static func getFontAwesomeIconImage(_ icon : ((_ size: CGFloat) -> FAKFontAwesome!),
                                         color : UIColor,
                                         alpha : CGFloat,
                                         size : CGFloat) -> UIImage {
         
-        let newIcon = icon(size: size)
-        newIcon.addAttribute(
+        let newIcon = icon(size)
+        newIcon?.addAttribute(
             NSForegroundColorAttributeName,
-            value: color.colorWithAlphaComponent(alpha)
+            value: color.withAlphaComponent(alpha)
         )
         
-        return newIcon.imageWithSize(CGSize(width: size, height: size))
+        return newIcon!.image(with: CGSize(width: size, height: size))
         
     }
     
@@ -89,37 +89,37 @@ extension UIImageView {
     /*!
     Fade in an imageView with a placeholder image, if the image is not cached.
     */
-    public func sd_setImageWithURLWithFade(url: NSURL!, placeholderImage placeholder: UIImage!)
+    public func sd_setImageWithURLWithFade(_ url: URL!, placeholderImage placeholder: UIImage!)
     {
         
-        self.sd_setImageWithURL(url, placeholderImage: placeholder) { (image, error, cacheType, url) -> Void in
-        
-            if cacheType == .None
+        self.sd_setImage(with: url, placeholderImage: placeholder, options: []) { (image, error, cacheType, url) in
+            if cacheType == .none
             {
                 self.alpha = 0
-                UIView.transitionWithView(self, duration: 0.6, options: UIViewAnimationOptions.TransitionCrossDissolve, animations: { () -> Void in
+                UIView.transition(with: self, duration: 0.6, options: UIViewAnimationOptions.transitionCrossDissolve, animations: { () -> Void in
                     self.image = image
                     self.alpha = 1
                     }, completion: nil)
                 
             }
         }
+        
     }
 }
 
 // Utility to check if a partcilar ViewController wants to support different orientations than the default build.
 extension UINavigationController {
-    public override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
+    open override var supportedInterfaceOrientations : UIInterfaceOrientationMask {
         if let visible = visibleViewController {
-            return visible.supportedInterfaceOrientations()
+            return visible.supportedInterfaceOrientations
         }
         
-        return .Portrait
+        return .portrait
     }
     
-    public override func shouldAutorotate() -> Bool {
+    open override var shouldAutorotate : Bool {
         if ((visibleViewController) != nil){
-            return self.visibleViewController!.shouldAutorotate()
+            return self.visibleViewController!.shouldAutorotate
         } else {
             return false
         }
@@ -128,11 +128,11 @@ extension UINavigationController {
 
 // Workaround for bug: http://www.openradar.me/22385765
 extension UIAlertController {
-    public override func shouldAutorotate() -> Bool {
+    open override var shouldAutorotate : Bool {
         return true
     }
-    public override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
-        return UIInterfaceOrientationMask.All
+    open override var supportedInterfaceOrientations : UIInterfaceOrientationMask {
+        return UIInterfaceOrientationMask.all
     }
 }
 
@@ -150,16 +150,16 @@ struct Platform {
     
     static func createSpinner() -> NVActivityIndicatorView {
         
-        let spinner = NVActivityIndicatorView(frame: CGRectMake(0,0,40,40), type: .BallScaleMultiple, color: .lightGrayColor(), padding: 40)
-        spinner.startAnimation()
+        let spinner = NVActivityIndicatorView(frame: CGRect(x: 0,y: 0,width: 40,height: 40), type: .ballScaleMultiple, color: .lightGray, padding: 40)
+        spinner.startAnimating()
         return spinner
         
     }
     
-    static func createSpinner(color : UIColor, size: CGSize, padding: CGFloat) -> NVActivityIndicatorView {
+    static func createSpinner(_ color : UIColor, size: CGSize, padding: CGFloat) -> NVActivityIndicatorView {
         
-        let spinner = NVActivityIndicatorView(frame: CGRectMake(0,0,size.width,size.height), type: .BallScaleMultiple, color: color, padding: padding)
-        spinner.startAnimation()
+        let spinner = NVActivityIndicatorView(frame: CGRect(x: 0,y: 0,width: size.width,height: size.height), type: .ballScaleMultiple, color: color, padding: padding)
+        spinner.startAnimating()
         return spinner
         
     }
@@ -168,8 +168,8 @@ struct Platform {
         
         let errorLabel = UILabel()
         errorLabel.text = "An Error Occurred"
-        errorLabel.textAlignment = .Center
-        errorLabel.textColor = UIColor.lightGrayColor()
+        errorLabel.textAlignment = .center
+        errorLabel.textColor = UIColor.lightGray
         errorLabel.numberOfLines = 1
         return errorLabel
         

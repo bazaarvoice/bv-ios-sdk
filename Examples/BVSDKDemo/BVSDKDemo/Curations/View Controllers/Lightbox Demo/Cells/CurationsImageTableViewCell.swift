@@ -19,14 +19,14 @@ class CurationsImageTableViewCell: UITableViewCell {
     var hasNext : Bool! {
         
         didSet {
-            self.rightChevronImageView.hidden = !self.hasNext!
+            self.rightChevronImageView.isHidden = !self.hasNext!
         }
         
     }
     var hasPrev : Bool! {
         
         didSet {
-            self.leftChevronImageView.hidden = !self.hasPrev!
+            self.leftChevronImageView.isHidden = !self.hasPrev!
         }
         
     }
@@ -34,7 +34,7 @@ class CurationsImageTableViewCell: UITableViewCell {
     var feedItem : BVCurationsFeedItem? {
         
         didSet {
-            print(self.feedItem)
+            print(self.feedItem!)
             // remove previos play button is there was one.
             for view in self.subviews {
                 
@@ -47,7 +47,7 @@ class CurationsImageTableViewCell: UITableViewCell {
             if self.feedItem!.videos.count > 0 {
                 // video post
                 let video : BVCurationsVideo = self.feedItem!.videos.first!;
-                let imageUrl : NSURL = NSURL(string:video.imageServiceUrl)!
+                let imageUrl : URL = URL(string:video.imageServiceUrl)!
                 
                 self.postImageView.sd_setImageWithURLWithFade(imageUrl, placeholderImage: UIImage(named: "loading"))
                 
@@ -56,10 +56,10 @@ class CurationsImageTableViewCell: UITableViewCell {
                 let imageView = UIImageView();
                 let image = UIImage(named:"play")
                 imageView.image = image
-                imageView.frame.size = CGSizeMake(playIconSizeWidth, playIconSizeWidth)
+                imageView.frame.size = CGSize(width: playIconSizeWidth, height: playIconSizeWidth)
                 imageView.tag = 99
-                imageView.center = CGPointMake(self.frame.size.width  / 2 + playIconSizeWidth/2,
-                    self.frame.size.height / 2);
+                imageView.center = CGPoint(x: self.frame.size.width  / 2 + playIconSizeWidth/2,
+                    y: self.frame.size.height / 2);
                 
                 self.addSubview(imageView)
                 
@@ -68,17 +68,17 @@ class CurationsImageTableViewCell: UITableViewCell {
                 // social post image
                 if self.feedItem!.photos.count > 0 {
                     let photo : BVCurationsPhoto = self.feedItem!.photos.first!;
-                    let imageUrl : NSURL = NSURL(string:photo.imageServiceUrl)!
+                    let imageUrl : URL = URL(string:photo.imageServiceUrl)!
                     self.postImageView?.sd_setImageWithURLWithFade(imageUrl, placeholderImage: UIImage(named: ""))
                 }
                 
                 // Add tap gesture on image
-                let tapImageGesture = UITapGestureRecognizer(target: self, action: "tappedImage:")
-                self.postImageView.userInteractionEnabled = true
+                let tapImageGesture = UITapGestureRecognizer(target: self, action: #selector(CurationsImageTableViewCell.tappedImage(_:)))
+                self.postImageView.isUserInteractionEnabled = true
                 self.postImageView.addGestureRecognizer(tapImageGesture)
                 
-                self.rightChevronImageView.userInteractionEnabled = true
-                self.leftChevronImageView.userInteractionEnabled = true
+                self.rightChevronImageView.isUserInteractionEnabled = true
+                self.leftChevronImageView.isUserInteractionEnabled = true
                 
             }
 
@@ -87,11 +87,11 @@ class CurationsImageTableViewCell: UITableViewCell {
         
     }
         
-    func tappedImage(sender:UITapGestureRecognizer){
+    func tappedImage(_ sender:UITapGestureRecognizer){
        
         // open safari - go to author's page
-        let url = NSURL(string: self.feedItem!.permalink)
-        UIApplication.sharedApplication().openURL(url!)
+        let url = URL(string: self.feedItem!.permalink)
+        UIApplication.shared.openURL(url!)
         
     }
     

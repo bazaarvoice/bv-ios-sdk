@@ -36,7 +36,7 @@ class DemoCurationsCollectionViewCell: BVCurationsCollectionViewCell {
             if (self.feedItem!.videos.count > 0){
                 
                 let video : BVCurationsVideo = self.feedItem!.videos.first!;
-                let imageUrl : NSURL = NSURL(string:video.imageServiceUrl)!
+                let imageUrl : URL = URL(string:video.imageServiceUrl)!
                 
                 self.feedImageView.sd_setImageWithURLWithFade(imageUrl, placeholderImage: UIImage(named: "loading"))
                 
@@ -46,7 +46,7 @@ class DemoCurationsCollectionViewCell: BVCurationsCollectionViewCell {
             else if (self.feedItem!.photos.count > 0){
                 
                 let photo : BVCurationsPhoto = self.feedItem!.photos.first!;
-                let imageUrl : NSURL = NSURL(string:photo.imageServiceUrl)!
+                let imageUrl : URL = URL(string:photo.imageServiceUrl)!
                 self.feedImageView.sd_setImageWithURLWithFade(imageUrl, placeholderImage: UIImage(named: "loading"))
                 
             }
@@ -64,14 +64,14 @@ class DemoCurationsCollectionViewCell: BVCurationsCollectionViewCell {
         
             // Grow image view
             let frame : CGRect = self.feedImageView.bounds;
-            let offsetFrame : CGRect = CGRectOffset(frame, imageOffset.x, imageOffset.y)
+            let offsetFrame : CGRect = frame.offsetBy(dx: imageOffset.x, dy: imageOffset.y)
             self.feedImageView.frame = offsetFrame
     
         }
         
     }
     
-    func addPlayMovieIconForCell(cell : DemoCurationsCollectionViewCell, feedItem : BVCurationsFeedItem){
+    func addPlayMovieIconForCell(_ cell : DemoCurationsCollectionViewCell, feedItem : BVCurationsFeedItem){
         
         let imageView = UIImageView();
         let image = UIImage(named:"play")
@@ -83,15 +83,15 @@ class DemoCurationsCollectionViewCell: BVCurationsCollectionViewCell {
         // Pin to upper left
         imageView.translatesAutoresizingMaskIntoConstraints = false
         
-        let verticalSpacing1 = NSLayoutConstraint(item: cell, attribute: NSLayoutAttribute.CenterX, relatedBy: NSLayoutRelation.Equal, toItem: imageView, attribute: NSLayoutAttribute.CenterX, multiplier: 1, constant: 0)
+        let verticalSpacing1 = NSLayoutConstraint(item: cell, attribute: NSLayoutAttribute.centerX, relatedBy: NSLayoutRelation.equal, toItem: imageView, attribute: NSLayoutAttribute.centerX, multiplier: 1, constant: 0)
         
-        let verticalSpacing2 = NSLayoutConstraint(item: cell, attribute: NSLayoutAttribute.CenterY, relatedBy: NSLayoutRelation.Equal, toItem: imageView, attribute: NSLayoutAttribute.CenterY, multiplier: 1, constant: 0)
+        let verticalSpacing2 = NSLayoutConstraint(item: cell, attribute: NSLayoutAttribute.centerY, relatedBy: NSLayoutRelation.equal, toItem: imageView, attribute: NSLayoutAttribute.centerY, multiplier: 1, constant: 0)
         
-        NSLayoutConstraint.activateConstraints([verticalSpacing1, verticalSpacing2])
+        NSLayoutConstraint.activate([verticalSpacing1, verticalSpacing2])
         
     }
     
-    func addSociaIconForCell(cell : DemoCurationsCollectionViewCell, feedItem : BVCurationsFeedItem){
+    func addSociaIconForCell(_ cell : DemoCurationsCollectionViewCell, feedItem : BVCurationsFeedItem){
         
         var iconName : String?
         
@@ -131,11 +131,11 @@ class DemoCurationsCollectionViewCell: BVCurationsCollectionViewCell {
             // Pin to lower right
             imageView.translatesAutoresizingMaskIntoConstraints = false
             
-            let verticalSpacing1 = NSLayoutConstraint(item: cell, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: imageView, attribute: NSLayoutAttribute.Bottom, multiplier: 1, constant: 12)
+            let verticalSpacing1 = NSLayoutConstraint(item: cell, attribute: NSLayoutAttribute.bottom, relatedBy: NSLayoutRelation.equal, toItem: imageView, attribute: NSLayoutAttribute.bottom, multiplier: 1, constant: 12)
             
-            let verticalSpacing2 = NSLayoutConstraint(item: cell, attribute: NSLayoutAttribute.Right, relatedBy: NSLayoutRelation.Equal, toItem: imageView, attribute: NSLayoutAttribute.Right, multiplier: 1, constant: 12)
+            let verticalSpacing2 = NSLayoutConstraint(item: cell, attribute: NSLayoutAttribute.right, relatedBy: NSLayoutRelation.equal, toItem: imageView, attribute: NSLayoutAttribute.right, multiplier: 1, constant: 12)
             
-            NSLayoutConstraint.activateConstraints([verticalSpacing1, verticalSpacing2])
+            NSLayoutConstraint.activate([verticalSpacing1, verticalSpacing2])
             
         }
         

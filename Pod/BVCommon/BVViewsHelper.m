@@ -42,7 +42,7 @@
 
 
 +(NSString*)formatIndex:(NSIndexPath*)indexPath {
-    return [NSString stringWithFormat:@"%li:%li", indexPath.section, indexPath.row];
+    return [NSString stringWithFormat:@"%lu:%lu", (unsigned long)indexPath.section, (unsigned long)indexPath.row];
 }
 
 @end

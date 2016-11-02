@@ -22,9 +22,11 @@
           completionHandler:(feedRequestCompletionHandler)completionHandler withFailure:(feedRequestErrorHandler)failureHandler;{
    
     // check if apiKey is valid before loading any data. Will fail in debug only.
+#pragma clang diagnostic push 
+#pragma clang diagnostic ignored "-Wunused-variable"
     NSString* apiKey = [[BVSDKManager sharedManager] apiKeyCurations];
     NSAssert(apiKey != nil && ![apiKey isEqualToString:@""], @"apiKeyCurations must be set on BVSDKManager before using the Curations SDK.");
-           
+#pragma clang diagnostic pop
     NSString *endPoint = [NSString stringWithFormat:@"%@/curations/content/get", [self urlRootCurations]];
     
     NSURLComponents *components = [NSURLComponents componentsWithString:endPoint];

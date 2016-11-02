@@ -14,15 +14,15 @@ class StoreReviewSubmissionTests: XCTestCase {
     override func setUp() {
         super.setUp()
         
-        BVSDKManager.sharedManager().clientId = "apiunittests"
-        BVSDKManager.sharedManager().apiKeyConversationsStores = "2cpdrhohmgmwfz8vqyo48f52g"
-        BVSDKManager.sharedManager().staging = true
-        BVSDKManager.sharedManager().setLogLevel(.Error)
+        BVSDKManager.shared().clientId = "apiunittests"
+        BVSDKManager.shared().apiKeyConversationsStores = "2cpdrhohmgmwfz8vqyo48f52g"
+        BVSDKManager.shared().staging = true
+        BVSDKManager.shared().setLogLevel(.error)
     }
     
     func testSubmitStoreReviewWithPhoto() {
         
-        let expectation = expectationWithDescription("")
+        let expectation = self.expectation(description: "")
         
         let review = self.fillOutReview()
         review.submit({ (reviewSubmission) in
@@ -32,7 +32,7 @@ class StoreReviewSubmissionTests: XCTestCase {
             expectation.fulfill()
         })
         
-        waitForExpectationsWithTimeout(10, handler: nil)
+        waitForExpectations(timeout: 10, handler: nil)
     }
     
     func fillOutReview() -> BVStoreReviewSubmission {
@@ -52,7 +52,7 @@ class StoreReviewSubmissionTests: XCTestCase {
         review.netPromoterScore = 5
         review.userEmail = "developer@bazaarvoice.com"
         review.agreedToTermsAndConditions = true
-        review.action = .Submit
+        review.action = .submit
         
         review.addContextDataValueBool("VerifiedPurchaser", value: false)
         review.addContextDataValueString("Age", value: "18to24")
@@ -68,12 +68,12 @@ class StoreReviewSubmissionTests: XCTestCase {
     
     
     func testSubmitReviewFailure() {
-        let expectation = expectationWithDescription("")
+        let expectation = self.expectation(description: "")
         
         let review = BVStoreReviewSubmission(reviewTitle: "", reviewText: "", rating: 123, storeId: "1000001")
         review.userNickname = "cgil"
         review.userId = "craiggiddl"
-        review.action = .Preview
+        review.action = .preview
         
         review.submit({ (reviewSubmission) in
             XCTFail()
@@ -82,7 +82,7 @@ class StoreReviewSubmissionTests: XCTestCase {
             XCTAssertEqual(errors.count, 5)
             expectation.fulfill()
         })
-        waitForExpectationsWithTimeout(10, handler: nil)
+        waitForExpectations(timeout: 10, handler: nil)
     }
     
 }

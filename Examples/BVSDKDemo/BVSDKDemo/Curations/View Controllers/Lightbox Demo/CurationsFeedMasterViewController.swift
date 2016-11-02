@@ -18,27 +18,27 @@ class CurationsFeedMasterViewController: UIViewController, UIPageViewControllerD
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let titleLabel = UILabel(frame: CGRectMake(0,0,200,44))
+        let titleLabel = UILabel(frame: CGRect(x: 0,y: 0,width: 200,height: 44))
         titleLabel.text = "Social Feed";
-        titleLabel.textColor = UIColor.whiteColor()
-        titleLabel.textAlignment = .Center
+        titleLabel.textColor = UIColor.white
+        titleLabel.textAlignment = .center
         self.navigationItem.titleView = titleLabel
         
         createPageViewController()
     }
 
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        let value = UIInterfaceOrientation.Portrait.rawValue;
-        UIDevice.currentDevice().setValue(value, forKey: "orientation")
+        let value = UIInterfaceOrientation.portrait.rawValue;
+        UIDevice.current.setValue(value, forKey: "orientation")
     }
     
-    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
-        return UIInterfaceOrientationMask.Portrait
+    override var supportedInterfaceOrientations : UIInterfaceOrientationMask {
+        return UIInterfaceOrientationMask.portrait
     }
     
-    override func shouldAutorotate() -> Bool {
+    override var shouldAutorotate : Bool {
         
         return true
     }
@@ -52,13 +52,13 @@ class CurationsFeedMasterViewController: UIViewController, UIPageViewControllerD
         if socialFeedItems!.count > 0 {
             let firstController = getItemController(self.startIndex)!
             let startingViewControllers: NSArray = [firstController]
-            pageController.setViewControllers(startingViewControllers as? [UIViewController], direction: UIPageViewControllerNavigationDirection.Forward, animated: false, completion: nil)
+            pageController.setViewControllers(startingViewControllers as? [UIViewController], direction: UIPageViewControllerNavigationDirection.forward, animated: false, completion: nil)
         }
         
         pageViewController = pageController
         addChildViewController(pageViewController!)
         self.view.addSubview(pageViewController!.view)
-        pageViewController!.didMoveToParentViewController(self)
+        pageViewController!.didMove(toParentViewController: self)
         
         
     }
@@ -66,7 +66,7 @@ class CurationsFeedMasterViewController: UIViewController, UIPageViewControllerD
     // MARK: - UIPageViewControllerDataSource
     
     // navigate to previous controller
-    func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {
+    func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
         
         let itemController = viewController as! CurationsFeedItemDetailTableViewController
         
@@ -83,7 +83,7 @@ class CurationsFeedMasterViewController: UIViewController, UIPageViewControllerD
     }
     
     // navigate to next controller
-    func pageViewController(pageViewController: UIPageViewController, viewControllerAfterViewController viewController: UIViewController) -> UIViewController? {
+    func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
         
         let itemController = viewController as! CurationsFeedItemDetailTableViewController
         
@@ -95,7 +95,7 @@ class CurationsFeedMasterViewController: UIViewController, UIPageViewControllerD
         return nil
     }
     
-    private func getItemController(itemIndex: Int) -> CurationsFeedItemDetailTableViewController? {
+    private func getItemController(_ itemIndex: Int) -> CurationsFeedItemDetailTableViewController? {
         
         if itemIndex < self.socialFeedItems!.count {
             
@@ -117,11 +117,11 @@ class CurationsFeedMasterViewController: UIViewController, UIPageViewControllerD
     
     // MARK: - Page Indicator
     
-    func presentationCountForPageViewController(pageViewController: UIPageViewController) -> Int {
+    func presentationCount(for pageViewController: UIPageViewController) -> Int {
         return socialFeedItems!.count
     }
     
-    func presentationIndexForPageViewController(pageViewController: UIPageViewController) -> Int {
+    func presentationIndex(for pageViewController: UIPageViewController) -> Int {
         return 0
     }
 

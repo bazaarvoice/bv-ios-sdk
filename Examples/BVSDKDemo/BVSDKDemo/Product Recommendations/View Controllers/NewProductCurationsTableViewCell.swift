@@ -21,8 +21,8 @@ class NewProductCurationsTableViewCell: UITableViewCell, UICollectionViewDelegat
         didSet {
             
             let requestParams = BVCurationsFeedRequest(groups: ["__all__"]);
-            requestParams.withProductData = true
-            requestParams.externalId = product?.productId
+            requestParams?.withProductData = true
+            requestParams?.externalId = product?.productId
             
             // Check and see if we can get Lat/Long from a default store set
             // If so, we can make the feed results send the results closest to 
@@ -40,24 +40,24 @@ class NewProductCurationsTableViewCell: UITableViewCell, UICollectionViewDelegat
             self.curationsCarousel.delegate = self
             self.curationsCarousel.dataSource = self
             
-            self.curationsCarousel.loadFeedWithRequest(requestParams, withWidgetId: nil, completionHandler: { (feedItemsResult) -> Void in
+            self.curationsCarousel.loadFeed(with: requestParams!, withWidgetId: nil, completionHandler: { (feedItemsResult) -> Void in
                 
                 self.curationsFeed = feedItemsResult
                 self.curationsCarousel.reloadData()
                 
                 if self.curationsFeed == nil || self.curationsFeed!.count == 0  {
-                    self.errorLabel.hidden = false
+                    self.errorLabel.isHidden = false
                     self.errorLabel.text = "No social content to show - upload your own!"
                 }
                 else {
-                    self.errorLabel.hidden = true
+                    self.errorLabel.isHidden = true
                 }
                 
                 
             }) { (error) -> Void in
                 
                 self.errorLabel.text = "An error occurred"
-                self.errorLabel.hidden = false
+                self.errorLabel.isHidden = false
                 
             }
             
@@ -65,13 +65,13 @@ class NewProductCurationsTableViewCell: UITableViewCell, UICollectionViewDelegat
         
     }
     
-    var onFeedItemTapped : ((selectedIndex : NSInteger, fullFeed: [BVCurationsFeedItem]) -> Void)? = nil
+    var onFeedItemTapped : ((_ selectedIndex : NSInteger, _ fullFeed: [BVCurationsFeedItem]) -> Void)? = nil
 
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
         
-         self.curationsCarousel.registerNib(UINib(nibName: "DemoCurationsCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "DemoCurationsCollectionViewCell")
+         self.curationsCarousel.register(UINib(nibName: "DemoCurationsCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "DemoCurationsCollectionViewCell")
         
     }
 
@@ -79,13 +79,13 @@ class NewProductCurationsTableViewCell: UITableViewCell, UICollectionViewDelegat
         super.layoutSubviews()
         
         let layout = (curationsCarousel?.collectionViewLayout) as! UICollectionViewFlowLayout
-        layout.itemSize = CGSizeMake((curationsCarousel?.bounds.height)!, (curationsCarousel?.bounds.height)!)
+        layout.itemSize = CGSize(width: (curationsCarousel?.bounds.height)!, height: (curationsCarousel?.bounds.height)!)
         
     }
     
     //MARK: UICollectionViewDelegate & UICollectionViewDatasource
     
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
         guard let curationFeed = self.curationsFeed else {
             return 0
@@ -95,20 +95,20 @@ class NewProductCurationsTableViewCell: UITableViewCell, UICollectionViewDelegat
         
     }
     
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("DemoCurationsCollectionViewCell", forIndexPath: indexPath) as! DemoCurationsCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DemoCurationsCollectionViewCell", for: indexPath) as! DemoCurationsCollectionViewCell
         
-        cell.feedItem = self.curationsFeed![indexPath.row]
+        cell.feedItem = self.curationsFeed![(indexPath as NSIndexPath).row]
         
         return cell
         
     }
     
-    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         if let onFeedItemCellTapped = self.onFeedItemTapped {
-            onFeedItemCellTapped(selectedIndex: indexPath.row, fullFeed: self.curationsFeed!)
+            onFeedItemCellTapped((indexPath as NSIndexPath).row, self.curationsFeed!)
         }
 
     }

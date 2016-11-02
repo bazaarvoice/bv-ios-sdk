@@ -81,7 +81,7 @@
             // Generate bazaarvoice-specific error response, if applicable.
             BVSubmissionErrorResponse* errorResponse = [[BVSubmissionErrorResponse alloc] initWithApiResponse:json]; //fail gracefully
             
-            [[BVLogger sharedLogger] verbose:[NSString stringWithFormat:@"RESPONSE: %@ (%d)", json, statusCode]];
+            [[BVLogger sharedLogger] verbose:[NSString stringWithFormat:@"RESPONSE: %@ (%ld)", json, (long)statusCode]];
             
             if (photoUrl) {
                 // successful response!
