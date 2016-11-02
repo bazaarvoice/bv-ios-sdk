@@ -19,50 +19,50 @@
 
 /*!
     Record the device entering a beacon/geofence region.
-    @param locationManager The CLLocationManager object used in determining location.
+    @param manager The CLLocationManager object used in determining location.
     @param region The geofence or beacon region entered.
-    @param contextualTier1 the BV-specified tier 1 interest associated with this region. See BVContextualInterests.h
-    @param contextualTier2 the BV-specified tier 2 interest associated with this region. See BVContextualInterests.h
+    @param tier1 the BV-specified tier 1 interest associated with this region. See BVContextualInterests.h
+    @param tier2 the BV-specified tier 2 interest associated with this region. See BVContextualInterests.h
  */
 +(void)locationManager:(CLLocationManager*)manager didEnterRegion:(CLCircularRegion *)region contextualTier1:(BVContextualInterest*)tier1 contextualTier2:(BVContextualInterest*)tier2;
 
 
 /*!
     Record the device exiting a beacon/geofence region.
-    @param locationManager The CLLocationManager object used in determining location.
+    @param manager The CLLocationManager object used in determining location.
     @param region The geofence or beacon region entered.
-    @param contextualTier1 the BV-specified tier 1 interest associated with this region. See BVContextualInterests.h
-    @param contextualTier2 the BV-specified tier 2 interest associated with this region. See BVContextualInterests.h
+    @param tier1 the BV-specified tier 1 interest associated with this region. See BVContextualInterests.h
+    @param tier2 the BV-specified tier 2 interest associated with this region. See BVContextualInterests.h
  */
 +(void)locationManager:(CLLocationManager*)manager didExitRegion:(CLCircularRegion *)region contextualTier1:(BVContextualInterest*)tier1 contextualTier2:(BVContextualInterest*)tier2;
 
 
 /*!
     Record the device visiting a location.
-    @param locationManager The CLLocationManager object used in determining location.
+    @param manager The CLLocationManager object used in determining location.
     @param visit The visit object that the device entered.
-    @param contextualTier1 the BV-specified tier 1 interest associated with this visit. See BVContextualInterests.h
-    @param contextualTier2 the BV-specified tier 2 interest associated with this visit. See BVContextualInterests.h
+    @param tier1 the BV-specified tier 1 interest associated with this visit. See BVContextualInterests.h
+    @param tier2 the BV-specified tier 2 interest associated with this visit. See BVContextualInterests.h
  */
 +(void)locationManager:(CLLocationManager*)manager didVisit:(CLVisit *)visit contextualTier1:(BVContextualInterest*)tier1 contextualTier2:(BVContextualInterest*)tier2;
 
 
 /*!
     Record the ranging a beacon. This should be called for every beacon ranged in locationDidRangeBeacon:inRegion in CLLocationManagerDelegate.
-    @param locationManager The CLLocationManager object used in determining location.
+    @param manager The CLLocationManager object used in determining location.
     @param beacon The CLBeacon object that was ranged
     @param region The CLBeaconRegion object that was ranged
-    @param contextualTier1 the BV-specified tier 1 interest associated with this location. See BVContextualInterests.h
-    @param contextualTier2 the BV-specified tier 2 interest associated with this location. See BVContextualInterests.h
+    @param tier1 the BV-specified tier 1 interest associated with this location. See BVContextualInterests.h
+    @param tier2 the BV-specified tier 2 interest associated with this location. See BVContextualInterests.h
  */
 +(void)locationManager:(CLLocationManager*)manager didRangeBeacon:(CLBeacon*)beacon inRegion:(CLBeaconRegion*)region contextualTier1:(BVContextualInterest*)tier1 contextualTier2:(BVContextualInterest*)tier2;
 
 /*!
     Record the user location. This should be called for ever location update in locationDidUpdateLocations: in CLLocationManagerDelegate.
-    @param locationManager The CLLocationManager object used in determining location.
+    @param manager The CLLocationManager object used in determining location.
     @param location The CLLocation object that was updated.
-    @param contextualTier1 the BV-specified tier 1 interest associated with this location. See BVContextualInterests.h
-    @param contextualTier2 the BV-specified tier 2 interest associated with this location. See BVContextualInterests.h
+    @param tier1 the BV-specified tier 1 interest associated with this location. See BVContextualInterests.h
+    @param tier2 the BV-specified tier 2 interest associated with this location. See BVContextualInterests.h
  */
 +(void)locationManager:(CLLocationManager*)manager didUpdateLocation:(CLLocation*)location contextualTier1:(BVContextualInterest*)tier1 contextualTier2:(BVContextualInterest*)tier2;
 
@@ -73,8 +73,8 @@
     @param date The NSDate that the sighting occured
     @param identifier The GMBLBeacon's factory ID.
     @param name The GMBLBeacon's name, assigned via the Gimbal Manager
-    @param contextualTier1 the BV-specified tier 1 interest associated with this sighting. See BVContextualInterests.h
-    @param contextualTier2 the BV-specified tier 2 interest associated with this sighting. See BVContextualInterests.h
+    @param tier1 the BV-specified tier 1 interest associated with this sighting. See BVContextualInterests.h
+    @param tier2 the BV-specified tier 2 interest associated with this sighting. See BVContextualInterests.h
  */
 +(void)gimbalBeaconSighting:(NSInteger)RSSI date:(NSDate*)date identifier:(NSString*)identifier name:(NSString*)name contextualTier1:(BVContextualInterest*)tier1 contextualTier2:(BVContextualInterest*)tier2;
 
@@ -86,8 +86,8 @@
     @param departureDate Taken from the GMBLVisit object.
     @param identifier Taken from GMBLPlace object.
     @param name Taken from GMBLPlace object.
-    @param contextualTier1 the BV-specified tier 1 interest associated with this visit. See BVContextualInterests.h
-    @param contextualTier2 the BV-specified tier 2 interest associated with this visit. See BVContextualInterests.h
+    @param tier1 the BV-specified tier 1 interest associated with this visit. See BVContextualInterests.h
+    @param tier2 the BV-specified tier 2 interest associated with this visit. See BVContextualInterests.h
  */
 +(void)gimbalPlaceBeginVisit:(NSDate*)arrivalDate dwellTime:(NSTimeInterval)dwellTime departureDate:(NSDate*)departureDate identifier:(NSString*)identifier name:(NSString*)name contextualTier1:(BVContextualInterest*)tier1 contextualTier2:(BVContextualInterest*)tier2;
 

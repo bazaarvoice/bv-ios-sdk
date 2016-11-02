@@ -19,7 +19,7 @@ class HomeHeaderCollectionViewCell: UICollectionViewCell, UIScrollViewDelegate {
         }
     }
     
-    var timer : NSTimer?
+    var timer : Timer?
     
     let images : [UIImageView] = [
         UIImageView(image: UIImage(named: "slide_1.jpg")),
@@ -28,7 +28,7 @@ class HomeHeaderCollectionViewCell: UICollectionViewCell, UIScrollViewDelegate {
     ]
     
     static let heightCalculator = UIImage(named: "slide_1.jpg")!
-    class func preferredHeightForWidth (preferredWidth: CGFloat) -> CGFloat {
+    class func preferredHeightForWidth (_ preferredWidth: CGFloat) -> CGFloat {
         
         return (preferredWidth / heightCalculator.size.width) * heightCalculator.size.height
         
@@ -48,13 +48,13 @@ class HomeHeaderCollectionViewCell: UICollectionViewCell, UIScrollViewDelegate {
     func configureImages() {
         
         for image in images {
-            image.contentMode = .ScaleAspectFit
+            image.contentMode = .scaleAspectFit
         }
         
     }
     
     func configureScrollView() {
-        scrollView.pagingEnabled = true
+        scrollView.isPagingEnabled = true
         scrollView.showsHorizontalScrollIndicator = false
         scrollView.showsVerticalScrollIndicator = false
         scrollView.scrollsToTop = false
@@ -79,11 +79,11 @@ class HomeHeaderCollectionViewCell: UICollectionViewCell, UIScrollViewDelegate {
         
         for i in 0 ..< images.count {
             
-            images[i].frame = CGRectMake(
-                CGFloat(i) * self.bounds.width,
-                scrollView.frame.origin.y,
-                self.bounds.width,
-                self.bounds.height
+            images[i].frame = CGRect(
+                x: CGFloat(i) * self.bounds.width,
+                y: scrollView.frame.origin.y,
+                width: self.bounds.width,
+                height: self.bounds.height
             )
             
         }
@@ -96,20 +96,20 @@ class HomeHeaderCollectionViewCell: UICollectionViewCell, UIScrollViewDelegate {
     }
 
     
-    func scrollViewDidScroll(scrollView: UIScrollView) {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
         currentPageIndex = Int(floor(scrollView.contentOffset.x / self.bounds.width))
         setAutoScrollTimer(4.0)
         
     }
     
-    func setAutoScrollTimer(time:Double) {
+    func setAutoScrollTimer(_ time:Double) {
         timer?.invalidate()
         timer = nil
-        timer = NSTimer.scheduledTimerWithTimeInterval(
-            time,
+        timer = Timer.scheduledTimer(
+            timeInterval: time,
             target: self,
-            selector: "autoScroll",
+            selector: #selector(HomeHeaderCollectionViewCell.autoScroll),
             userInfo: nil,
             repeats: false
         )
@@ -124,9 +124,9 @@ class HomeHeaderCollectionViewCell: UICollectionViewCell, UIScrollViewDelegate {
         
         var newFrame = scrollView.frame
         newFrame.origin.x = newFrame.size.width * CGFloat(currentPageIndex)
-        UIView.animateWithDuration(0.6) {
+        UIView.animate(withDuration: 0.6, animations: {
             self.scrollView.scrollRectToVisible(newFrame, animated: false)
-        }
+        }) 
         
     }
 

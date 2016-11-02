@@ -220,7 +220,7 @@
             NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&jsonParsingError];
             BVReviewSubmissionErrorResponse* errorResponse = [[BVReviewSubmissionErrorResponse alloc] initWithApiResponse:json]; // fails gracefully
             
-            [[BVLogger sharedLogger] verbose:[NSString stringWithFormat:@"RESPONSE: %@ (%d)", json, statusCode]];
+            [[BVLogger sharedLogger] verbose:[NSString stringWithFormat:@"RESPONSE: %@ (%ld)", json, (long)statusCode]];
             
             if (httpError) {
                 // network error was generated
@@ -282,7 +282,7 @@
                                            @"apiversion": @"5.4",
                                            @"reviewtext": self.reviewText,
                                            @"title": self.reviewTitle,
-                                           @"rating": [NSString stringWithFormat:@"%lu", self.rating],
+                                           @"rating": [NSString stringWithFormat:@"%lu", (unsigned long)self.rating],
                                            @"productId": self.productId
                                        }];
     

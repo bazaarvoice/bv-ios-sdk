@@ -19,7 +19,7 @@ class ReviewInputTableViewCell: EditablePropertyTableViewCell, UITextViewDelegat
     
     // MARK: UITextViewDelegate
     
-    func textViewDidBeginEditing(textView: UITextView) {
+    func textViewDidBeginEditing(_ textView: UITextView) {
         guard let view = viewToMoveUp else {
             return
         }
@@ -27,12 +27,12 @@ class ReviewInputTableViewCell: EditablePropertyTableViewCell, UITextViewDelegat
         var frame = view.frame
         frame.origin.y = -180
         
-        UIView.animateWithDuration(0.25) { () in
+        UIView.animate(withDuration: 0.25, animations: { () in
             view.frame = frame
-        }
+        }) 
     }
     
-    func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         
         if text == "\n" {
             textView.resignFirstResponder()
@@ -42,7 +42,7 @@ class ReviewInputTableViewCell: EditablePropertyTableViewCell, UITextViewDelegat
         return true
     }
     
-    func textViewDidEndEditing(textView: UITextView) {
+    func textViewDidEndEditing(_ textView: UITextView) {
         object.setValue(textView.text, forKeyPath: keyPath)
         resetFrame()
     }
@@ -53,8 +53,8 @@ class ReviewInputTableViewCell: EditablePropertyTableViewCell, UITextViewDelegat
         }
         var frame = view.frame
         frame.origin.y = 0
-        UIView.animateWithDuration(0.25) { () in
+        UIView.animate(withDuration: 0.25, animations: { () in
             view.frame = frame
-        }
+        }) 
     }
 }

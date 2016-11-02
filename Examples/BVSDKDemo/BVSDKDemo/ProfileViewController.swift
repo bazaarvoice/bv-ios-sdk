@@ -12,8 +12,8 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
 
     @IBOutlet weak var tableView: UITableView!
     
-    var facebookProfile : NSDictionary = [String : String]()
-    var customTargeting : NSDictionary = [String : String]()
+    var facebookProfile : NSDictionary = [String : String]() as NSDictionary
+    var customTargeting : NSDictionary = [String : String]() as NSDictionary
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,11 +21,11 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         // Do any additional setup after loading the view.
         self.title = "Profile"
         
-        facebookProfile = ProfileUtils.sharedInstance.loginProfile
+        facebookProfile = ProfileUtils.sharedInstance.loginProfile as NSDictionary
         
-        customTargeting = BVSDKManager.sharedManager().getCustomTargeting()
+        customTargeting = BVSDKManager.shared().getCustomTargeting() as NSDictionary
         
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "LOG OUT", style: .Done, target: self, action: "logoutTapped")
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "LOG OUT", style: .done, target: self, action: #selector(ProfileViewController.logoutTapped))
         
     }
 
@@ -33,14 +33,14 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         ProfileUtils.sharedInstance.logOut()
         
-        self.navigationController?.popToRootViewControllerAnimated(true)
+        _ = self.navigationController?.popToRootViewController(animated: true)
         
     }
     
     internal func getInterests() -> [String]{
         if let interests = self.customTargeting["interests"] {
             let s = interests as! String
-            return s.componentsSeparatedByString(" ")
+            return s.components(separatedBy: " ")
         } else {
             return []
         }
@@ -49,7 +49,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     internal func getBrands() -> [String]{
         if let brands = self.customTargeting["brands"] {
             let s = brands as! String
-            return s.componentsSeparatedByString(" ")
+            return s.components(separatedBy: " ")
         } else {
             return []
         }
@@ -59,7 +59,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     // MARK: UITableViewDatasource
     
-    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         
         if section == 0 {
             return "Profile Info"
@@ -73,26 +73,26 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         
     }
     
-    func tableView(tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
-        if (view.isKindOfClass(UITableViewHeaderFooterView)) {
+    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        if (view.isKind(of: UITableViewHeaderFooterView.self)) {
             let headerView = view as! UITableViewHeaderFooterView
             
             // Label
-            headerView.textLabel!.textColor = UIColor.whiteColor()
+            headerView.textLabel!.textColor = UIColor.white
             headerView.contentView.backgroundColor = UIColor.bazaarvoiceNavy()
             
         }
     }
     
-    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 44
     }
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 3
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
             
         case 0:
@@ -111,27 +111,27 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell") ??
-            UITableViewCell(style: .Subtitle, reuseIdentifier: "Cell")
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") ??
+            UITableViewCell(style: .subtitle, reuseIdentifier: "Cell")
         
-        if indexPath.section == 0 {
-            let sortedKeys = (facebookProfile.allKeys as! [String]).sort(<)
-            let key = sortedKeys[indexPath.row]
+        if (indexPath as NSIndexPath).section == 0 {
+            let sortedKeys = (facebookProfile.allKeys as! [String]).sorted(by: <)
+            let key = sortedKeys[(indexPath as NSIndexPath).row]
             
-            cell.textLabel?.text = sortedKeys[indexPath.row]
+            cell.textLabel?.text = sortedKeys[(indexPath as NSIndexPath).row]
             cell.detailTextLabel?.text = facebookProfile[key] as? String
         }
-        else if indexPath.section == 1 {
+        else if (indexPath as NSIndexPath).section == 1 {
             
-            let interest = getInterests()[indexPath.row]
+            let interest = getInterests()[(indexPath as NSIndexPath).row]
             cell.textLabel!.text = interest
             
         }
-        else if indexPath.section == 2 {
+        else if (indexPath as NSIndexPath).section == 2 {
             
-            let brand = getBrands()[indexPath.row]
+            let brand = getBrands()[(indexPath as NSIndexPath).row]
             cell.textLabel!.text = brand
             
         }

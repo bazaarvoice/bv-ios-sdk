@@ -13,9 +13,9 @@ class ConversationsTests: XCTestCase {
     override func setUp() {
         super.setUp()
         
-        BVSDKManager.sharedManager().clientId = "apitestcustomer"
-        BVSDKManager.sharedManager().apiKeyConversations = "testApiKey"
-        BVSDKManager.sharedManager().staging = true
+        BVSDKManager.shared().clientId = "apitestcustomer"
+        BVSDKManager.shared().apiKeyConversations = "testApiKey"
+        BVSDKManager.shared().staging = true
     }
     
     override func tearDown() {
@@ -172,8 +172,8 @@ extension String {
             
             do {
                 
-                let data = self.dataUsingEncoding(NSUTF8StringEncoding)
-                return try NSJSONSerialization.JSONObjectWithData(data!, options: []) as? [String:AnyObject]
+                let data = self.data(using: String.Encoding.utf8)
+                return try JSONSerialization.jsonObject(with: data!, options: []) as? [String:AnyObject]
                 
             } catch {
                 
@@ -187,7 +187,7 @@ extension String {
     }
 }
 
-func getParamValue(parameters: NSMutableArray, keyToSearchFor:String) -> String? {
+func getParamValue(_ parameters: NSMutableArray, keyToSearchFor:String) -> String? {
     for param in parameters {
         if let pair = param as? BVStringKeyValuePair {
             if keyToSearchFor == pair.key {

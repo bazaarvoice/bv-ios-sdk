@@ -5,67 +5,50 @@ PODS:
   - Bolts/AppLinks (1.8.4):
     - Bolts/Tasks
   - Bolts/Tasks (1.8.4)
-  - BVSDK (5.0.0):
-    - BVSDK/Core (= 5.0.0)
-  - BVSDK/BVAdvertising (5.0.0):
+  - BVSDK/BVCurations (5.1.0):
     - BVSDK/Core
-  - BVSDK/BVConversations (5.0.0):
-    - BVSDK/Core
-  - BVSDK/BVCurations (5.0.0):
-    - BVSDK/Core
-  - BVSDK/BVLocation (5.0.0):
-    - BVSDK/Core
-  - BVSDK/BVNotifications (5.0.0)
-  - BVSDK/BVRecommendations (5.0.0):
-    - BVSDK/Core
-  - BVSDK/Core (5.0.0)
+  - BVSDK/Core (5.1.0)
   - Crashlytics (3.8.3):
     - Fabric (~> 1.6.3)
-  - Fabric (1.6.10)
-  - FBSDKCoreKit (4.16.1):
+  - Fabric (1.6.11)
+  - FBSDKCoreKit (4.17.0):
     - Bolts (~> 1.7)
-  - FBSDKLoginKit (4.16.1):
+  - FBSDKLoginKit (4.17.0):
     - FBSDKCoreKit
-  - FBSDKShareKit (4.16.1):
+  - FBSDKShareKit (4.17.0):
     - FBSDKCoreKit
   - FontAwesomeKit/Core (2.2.0)
   - FontAwesomeKit/FontAwesome (2.2.0):
     - FontAwesomeKit/Core
-  - Google-Mobile-Ads-SDK (7.13.1)
+  - Google-Mobile-Ads-SDK (7.14.0)
   - HCSStarRatingView (1.4.5)
-  - NVActivityIndicatorView (2.9)
-  - OHHTTPStubs (5.2.2):
-    - OHHTTPStubs/Default (= 5.2.2)
-  - OHHTTPStubs/Core (5.2.2)
-  - OHHTTPStubs/Default (5.2.2):
+  - NVActivityIndicatorView (3.0)
+  - OHHTTPStubs (5.1.0):
+    - OHHTTPStubs/Default (= 5.1.0)
+  - OHHTTPStubs/Core (5.1.0)
+  - OHHTTPStubs/Default (5.1.0):
     - OHHTTPStubs/Core
     - OHHTTPStubs/JSON
     - OHHTTPStubs/NSURLSession
     - OHHTTPStubs/OHPathHelpers
-  - OHHTTPStubs/JSON (5.2.2):
+  - OHHTTPStubs/JSON (5.1.0):
     - OHHTTPStubs/Core
-  - OHHTTPStubs/NSURLSession (5.2.2):
+  - OHHTTPStubs/NSURLSession (5.1.0):
     - OHHTTPStubs/Core
-  - OHHTTPStubs/OHPathHelpers (5.2.2)
+  - OHHTTPStubs/OHPathHelpers (5.1.0)
   - SDForms (0.9.3):
     - HCSStarRatingView
   - SDWebImage (3.8.2):
     - SDWebImage/Core (= 3.8.2)
   - SDWebImage/Core (3.8.2)
-  - SwiftyJSON (2.3.2)
-  - XLActionController (2.1.0):
-    - XLActionController/Core (= 2.1.0)
-  - XLActionController/Core (2.1.0)
+  - SwiftyJSON (3.1.1)
+  - XLActionController (3.0.1):
+    - XLActionController/Core (= 3.0.1)
+  - XLActionController/Core (3.0.1)
   - youtube-ios-player-helper (0.1.6)
 
 DEPENDENCIES:
-  - BVSDK (from `../../`)
-  - BVSDK/BVAdvertising (from `../../`)
-  - BVSDK/BVConversations (from `../../`)
   - BVSDK/BVCurations (from `../../`)
-  - BVSDK/BVLocation (from `../../`)
-  - BVSDK/BVNotifications (from `../../`)
-  - BVSDK/BVRecommendations (from `../../`)
   - Crashlytics
   - Fabric
   - FBSDKCoreKit
@@ -74,12 +57,12 @@ DEPENDENCIES:
   - FontAwesomeKit/FontAwesome
   - Google-Mobile-Ads-SDK
   - HCSStarRatingView
-  - NVActivityIndicatorView (= 2.9)
-  - OHHTTPStubs
+  - NVActivityIndicatorView
+  - OHHTTPStubs (= 5.1.0)
   - SDForms (from `https://github.com/austimkelly/SDForms.git`, branch `master`)
   - SDWebImage
-  - SwiftyJSON (= 2.3.2)
-  - XLActionController (from `https://github.com/austimkelly/XLActionController.git`, branch `2.1.1_Swift23`)
+  - SwiftyJSON
+  - XLActionController (~> 3.0)
   - youtube-ios-player-helper (~> 0.1.6)
 
 EXTERNAL SOURCES:
@@ -88,37 +71,31 @@ EXTERNAL SOURCES:
   SDForms:
     :branch: master
     :git: https://github.com/austimkelly/SDForms.git
-  XLActionController:
-    :branch: 2.1.1_Swift23
-    :git: https://github.com/austimkelly/XLActionController.git
 
 CHECKOUT OPTIONS:
   SDForms:
     :commit: e0723faeb8e53c7ca080ad381791862f60bfff9f
     :git: https://github.com/austimkelly/SDForms.git
-  XLActionController:
-    :commit: d27fd8a8caa09b87f67b8040f8aa92fec6330593
-    :git: https://github.com/austimkelly/XLActionController.git
 
 SPEC CHECKSUMS:
   Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
-  BVSDK: 15ddc22683937c806e1e1505c26d8f64c0673b29
-  Crashlytics: 7c13b71674b145d3d3face5c56e91d62f54825ad
-  Fabric: 4de5b8407c333a711c51b5b19e1ecb6927eea199
-  FBSDKCoreKit: daf40e97bb8458d73a2e1a05abc66150b0e3d3c4
-  FBSDKLoginKit: 777231dc55c312eb925364d69fccec09a8467ee4
-  FBSDKShareKit: 06b2130258b942d87c36841fffd83ebf95f9775b
+  BVSDK: deb3f6dfd6842d57e2f2fe78365feaea5b69acaf
+  Crashlytics: 2b6dbe138a42395577cfa73dfa1aa7248cadf39e
+  Fabric: 5911403591946b8228ab1c51d98f1d7137e863c6
+  FBSDKCoreKit: 30a21d2d7b92984b3d80497113433c00824c35e9
+  FBSDKLoginKit: 42b7129ac0373ca99eaf4cbebf4d07bd42371f59
+  FBSDKShareKit: 9b573d03fbee36cbaf42d5bb1f2bc019e0d72347
   FontAwesomeKit: 025fd4dd1017fe4e3f8d47b03e024deedbb33cd4
-  Google-Mobile-Ads-SDK: 8ae10b267d5861bd6b8c58615f350443654f9124
+  Google-Mobile-Ads-SDK: dbb0211c52ca02f72331b831ce4ccd218cf08748
   HCSStarRatingView: bff3f89314d3b5013ce826ea11897d3129ff6b8c
-  NVActivityIndicatorView: 0084f6be71bdf4735b5424ebfb530b1e3db3276c
-  OHHTTPStubs: 82f869e05233839e75099b5336b0718a261b0a5d
+  NVActivityIndicatorView: 81953b5e65093ba79edf4fe7268e002039ca5268
+  OHHTTPStubs: 592f74439d2d72615115cf99a954237a3fbe26e5
   SDForms: 67ace4be00b3a97bec7164a817eb085e3148c523
   SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
-  SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
-  XLActionController: 085f4baf9246c6e54c6e337f88d045e2e7b3c0bb
+  SwiftyJSON: f0be2e604f83e8405a624e9f891898bf6ed4e019
+  XLActionController: 57fe0ce1642e2eed971b188b490762345fdbf963
   youtube-ios-player-helper: 21ab92db027c7ff86cb17a3843a3f6eafc8158d2
 
-PODFILE CHECKSUM: 11d9067f13c4f87fb5ca05452eee0fa838ee5414
+PODFILE CHECKSUM: 737afec37eac57567858bb56492e0448ae905e16
 
-COCOAPODS: 1.0.1
+COCOAPODS: 1.1.0

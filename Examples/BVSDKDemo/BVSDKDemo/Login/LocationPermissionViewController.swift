@@ -25,21 +25,21 @@ class LocationPermissionViewController: PermissionViewController, CLLocationMana
         // Dispose of any resources that can be recreated.
     }
     
-    override func enablePressed(sender: UIButton) {
+    override func enablePressed(_ sender: UIButton) {
 
-        if CLLocationManager.authorizationStatus() != .AuthorizedAlways{
+        if CLLocationManager.authorizationStatus() != .authorizedAlways{
             self.mngr = CLLocationManager()
             self.mngr.delegate = self
             self.mngr.requestAlwaysAuthorization()
         }
     }
     
-    override func notNowPressed(sender: UIButton) {
+    override func notNowPressed(_ sender: UIButton) {
         self.pushNotificationPermissionVC()
     }
     
-    func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
-        if status != .NotDetermined {
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        if status != .notDetermined {
             self.pushNotificationPermissionVC()
         }
         
@@ -49,14 +49,14 @@ class LocationPermissionViewController: PermissionViewController, CLLocationMana
         
         // Check that the user didn't already authorize notifications
         
-        if UIApplication.sharedApplication().currentUserNotificationSettings()!.types == .None {
+        if UIApplication.shared.currentUserNotificationSettings!.types == UIUserNotificationType() {
             
             let lvc = NotificationPermissionViewController(nibName: "PermissionViewController", bundle:  nil)
             self.navigationController?.pushViewController(lvc, animated: true)
             
         } else {
             
-            self.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
+            self.presentingViewController?.dismiss(animated: true, completion: nil)
             
         }
         

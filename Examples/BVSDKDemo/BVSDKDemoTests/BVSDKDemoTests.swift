@@ -23,8 +23,8 @@ class BVSDKDemoTests: XCTestCase {
     func testExample() {
         
         do {
-            let data = exampleResponse.dataUsingEncoding(NSUTF8StringEncoding)
-            let responseObject = try NSJSONSerialization.JSONObjectWithData(data!, options: []) as! [String:AnyObject]
+            let data = exampleResponse.data(using: String.Encoding.utf8)
+            let responseObject = try JSONSerialization.jsonObject(with: data!, options: []) as! [String:AnyObject]
             let response = ConversationsResponse<Review>(apiResponse: responseObject)
             
             print("response: \(response)")

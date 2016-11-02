@@ -9,7 +9,7 @@
 #ifndef BVCurations_h
 #define BVCurations_h
 
-#import "BVSDK.h"
+#import "BVCore.h"
 #import "BVCurationsFeedLoader.h"
 #import "BVCurationsFeedRequest.h"
 #import "BVCurationsFeedLoader.h"

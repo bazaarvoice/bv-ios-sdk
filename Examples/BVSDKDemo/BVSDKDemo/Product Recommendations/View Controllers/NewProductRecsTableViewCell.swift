@@ -29,7 +29,7 @@ class NewProductRecsTableViewCell: UITableViewCell, UICollectionViewDataSource, 
             recommendationsCarousel.delegate = self
             recommendationsCarousel.dataSource = self
             
-            recommendationsCarousel.loadRequest(request, completionHandler: { (products) -> Void in
+            recommendationsCarousel.load(request, completionHandler: { (products) -> Void in
                 print("Loaded recommendations: " + products.description)
                 self.products = products
                 self.recommendationsCarousel.reloadData()
@@ -43,14 +43,14 @@ class NewProductRecsTableViewCell: UITableViewCell, UICollectionViewDataSource, 
         
     }
     
-    var onProductRecTapped : ((selectedProduct : BVRecommendedProduct) -> Void)? = nil
+    var onProductRecTapped : ((_ selectedProduct : BVRecommendedProduct) -> Void)? = nil
     
     override func awakeFromNib() {
         super.awakeFromNib()
     
         // Initialization code
-        self.recommendationsCarousel.registerNib(UINib(nibName: "DemoCarouselCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "DemoCarouselCollectionViewCell")
-        self.recommendationsCarousel.registerNib(UINib(nibName: "NewNativeAdCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "NewNativeAdCollectionViewCell")
+        self.recommendationsCarousel.register(UINib(nibName: "DemoCarouselCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "DemoCarouselCollectionViewCell")
+        self.recommendationsCarousel.register(UINib(nibName: "NewNativeAdCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "NewNativeAdCollectionViewCell")
     
     }
     
@@ -58,7 +58,7 @@ class NewProductRecsTableViewCell: UITableViewCell, UICollectionViewDataSource, 
         super.layoutSubviews()
         
         let layout = (recommendationsCarousel?.collectionViewLayout) as! UICollectionViewFlowLayout
-        layout.itemSize = CGSizeMake((recommendationsCarousel?.bounds.height)!, (recommendationsCarousel?.bounds.height)!)
+        layout.itemSize = CGSize(width: (recommendationsCarousel?.bounds.height)!, height: (recommendationsCarousel?.bounds.height)!)
         
     }
     
@@ -68,7 +68,7 @@ class NewProductRecsTableViewCell: UITableViewCell, UICollectionViewDataSource, 
         }
     }
     
-    func loadAd(parentViewController: UIViewController) {
+    func loadAd(_ parentViewController: UIViewController) {
         
         adLoader = GADAdLoader(
             adUnitID: "/5705/bv-incubator/EnduranceCyclesSale",
@@ -79,14 +79,14 @@ class NewProductRecsTableViewCell: UITableViewCell, UICollectionViewDataSource, 
         adLoader!.delegate = self
         
         let request = DFPRequest()
-        request.customTargeting = BVSDKManager.sharedManager().getCustomTargeting()
-        adLoader!.loadRequest(request)
+        request.customTargeting = BVSDKManager.shared().getCustomTargeting()
+        adLoader!.load(request)
         
     }
         
     //MARK: UICollectionViewDelegate & UICollectionViewDatasource
     
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
         if let products = self.products {
             if nativeContentAd == nil {
@@ -102,13 +102,13 @@ class NewProductRecsTableViewCell: UITableViewCell, UICollectionViewDataSource, 
         
     }
     
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         
-        var index = indexPath.row
+        var index = (indexPath as NSIndexPath).row
         
         if nativeContentAd != nil && index == specialAdIndex {
-            let cell = collectionView.dequeueReusableCellWithReuseIdentifier("NewNativeAdCollectionViewCell", forIndexPath: indexPath) as! NewNativeAdCollectionViewCell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "NewNativeAdCollectionViewCell", for: indexPath) as! NewNativeAdCollectionViewCell
             
             cell.nativeContentAd = nativeContentAd
             
@@ -121,29 +121,29 @@ class NewProductRecsTableViewCell: UITableViewCell, UICollectionViewDataSource, 
         
         let product = self.products![index]
         
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("DemoCarouselCollectionViewCell", forIndexPath: indexPath) as! DemoCarouselCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DemoCarouselCollectionViewCell", for: indexPath) as! DemoCarouselCollectionViewCell
         
         // TODO: This shold be set in the cell itself...not here...
         cell.bvRecommendedProduct = product
         cell.productName.text = product.productName
-        cell.price.text = product.price ?? ""
+        cell.price.text = product.price 
         cell.starRating.value = CGFloat(product.averageRating.floatValue)
         
-        let imageUrl = NSURL(string: product.imageURL)
-        cell.productImageView.sd_setImageWithURL(imageUrl)
+        let imageUrl = URL(string: product.imageURL)
+        cell.productImageView.sd_setImage(with: imageUrl)
         
         return cell
         
     }
     
-    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        if nativeContentAd != nil && indexPath.row == specialAdIndex {
+        if nativeContentAd != nil && (indexPath as NSIndexPath).row == specialAdIndex {
             return;
         }
         else {
             
-            var index = indexPath.row
+            var index = (indexPath as NSIndexPath).row
             
             if nativeContentAd != nil && index >= specialAdIndex {
                 index -= 1
@@ -152,7 +152,7 @@ class NewProductRecsTableViewCell: UITableViewCell, UICollectionViewDataSource, 
             let product = self.products![index]
             
             if let onProductRecTapped = self.onProductRecTapped {
-                onProductRecTapped(selectedProduct: product)
+                onProductRecTapped(product)
             }
         }
         
@@ -160,14 +160,14 @@ class NewProductRecsTableViewCell: UITableViewCell, UICollectionViewDataSource, 
     
     //MARK: GADNativeContentAdLoaderDelegate
     
-    func adLoader(adLoader: GADAdLoader!, didReceiveNativeContentAd nativeContentAd: GADNativeContentAd!) {
+    func adLoader(_ adLoader: GADAdLoader, didReceive nativeContentAd: GADNativeContentAd) {
         
         self.nativeContentAd = nativeContentAd
         self.recommendationsCarousel.reloadData()
         
     }
     
-    func adLoader(adLoader: GADAdLoader, didFailToReceiveAdWithError error: GADRequestError) {
+    func adLoader(_ adLoader: GADAdLoader, didFailToReceiveAdWithError error: GADRequestError) {
 
         print("failed to load ad: \(error)")
         

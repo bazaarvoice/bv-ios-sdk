@@ -16,21 +16,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
     
-    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
-        MockDataManager.sharedInstance // start data mocking service
+        _ = MockDataManager.sharedInstance // start data mocking service
         
-        BVSDKManager.sharedManager().setLogLevel(.Error)
-        BVSDKManager.sharedManager().clientId = "REPLACE_ME"
-        BVSDKManager.sharedManager().apiKeyCurations = "REPLACE_ME"
-        BVSDKManager.sharedManager().apiKeyConversations = "REPLACE_ME"
-        BVSDKManager.sharedManager().apiKeyShopperAdvertising = "REPLACE_ME"
-        //BVSDKManager.sharedManager().apiKeyLocation = "00000000-0000-0000-0000-000000000000" // Setting the location key will initialize the location manager
-        BVSDKManager.sharedManager().apiKeyConversationsStores = "REPLACE_ME"
-        BVSDKManager.sharedManager().storeReviewContentExtensionCategory = "bvReviewCustomContent"
-        BVSDKManager.sharedManager().staging = false
+        BVSDKManager.shared().setLogLevel(.error)
+        BVSDKManager.shared().clientId = "REPLACE_ME"
+        BVSDKManager.shared().apiKeyCurations = "REPLACE_ME"
+        BVSDKManager.shared().apiKeyConversations = "REPLACE_ME"
+        BVSDKManager.shared().apiKeyShopperAdvertising = "REPLACE_ME"
+        //BVSDKManager.shared().apiKeyLocation = "00000000-0000-0000-0000-000000000000" // Setting the location key will initialize the location manager
+        BVSDKManager.shared().apiKeyConversationsStores = "REPLACE_ME"
+        //"The value for UNNotificationExtensionCategory as defined by your Extension's info.plist that will be used to notify a user to review a store"
+        BVSDKManager.shared().storeReviewContentExtensionCategory = "bvReviewCustomContent"
+        BVSDKManager.shared().staging = false
         
-        window = UIWindow(frame: UIScreen.mainScreen().bounds)
+        window = UIWindow(frame: UIScreen.main.bounds)
         window?.rootViewController = navController
         window?.makeKeyAndVisible()
         
@@ -41,38 +42,38 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         if (ProfileUtils.isFacebookInstalled()) {
-            FBSDKProfile.enableUpdatesOnAccessTokenChange(true)
+            FBSDKProfile.enableUpdates(onAccessTokenChange: true)
             FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         }
         
         //Must be set before this method returns
         if #available(iOS 10.0, *) {
-            let notificationCenter = UNUserNotificationCenter.currentNotificationCenter()
+            let notificationCenter = UNUserNotificationCenter.current()
             notificationCenter.delegate = self;
         }
             
             
         if (ProfileUtils.isFacebookInstalled()) {
-            FBSDKProfile.enableUpdatesOnAccessTokenChange(true)
+            FBSDKProfile.enableUpdates(onAccessTokenChange: true)
             FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         }
         
         //Must be set before this method returns
         if #available(iOS 10.0, *) {
-            let notificationCenter = UNUserNotificationCenter.currentNotificationCenter()
+            let notificationCenter = UNUserNotificationCenter.current()
             notificationCenter.delegate = self;
         }
         
         return true
     }
     
-    func applicationDidBecomeActive(application: UIApplication) {
+    func applicationDidBecomeActive(_ application: UIApplication) {
         if (ProfileUtils.isFacebookInstalled()) {
             FBSDKAppEvents.activateApp()
         }
     }
     
-    func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
+    func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
         
         if (url.scheme == "bvsdkdemo") {
             
@@ -80,31 +81,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
              bvsdkdemo://bvsdk.com?type=reivew&subtype=store&id=1
              */
             let urlStr = url.absoluteString
-            let keyRange = urlStr?.rangeOfString("id=")
-            let storeId = urlStr?.substringFromIndex(keyRange!.endIndex)
+            let keyRange = urlStr.range(of: "id=")
+            let storeId = urlStr.substring(from: keyRange!.upperBound)
             
             delay(0.5, closure: {
                 let vc = StoreWriteReviewViewController(nibName:"StoreWriteReviewViewController", bundle: nil)
                 vc.storeId = storeId
                 let nc = UINavigationController(rootViewController: vc)
-                self.window?.rootViewController?.presentViewController(nc, animated: true, completion:nil)
+                self.window?.rootViewController?.present(nc, animated: true, completion:nil)
             })
             
             return true
             
         } else {
-            return FBSDKApplicationDelegate.sharedInstance().application(application, openURL: url, sourceApplication: sourceApplication, annotation: annotation)
+            return FBSDKApplicationDelegate.sharedInstance().application(application, open: url, sourceApplication: sourceApplication, annotation: annotation)
         }
     }
     
     
-    func delay(delay:Double, closure:()->()) {
-        dispatch_after(
-            dispatch_time(
-                DISPATCH_TIME_NOW,
-                Int64(delay * Double(NSEC_PER_SEC))
-            ),
-            dispatch_get_main_queue(), closure)
+    func delay(_ delay:Double, closure:@escaping ()->()) {
+        DispatchQueue.main.asyncAfter(
+            deadline: DispatchTime.now() + Double(Int64(delay * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC), execute: closure)
     }
     
     func setupAuthenticatedUser() -> Void {
@@ -120,7 +117,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
          Pre-populated with a small profile interested in men's and women's apparel -- for testing and demonstration purposes.
          */
         if SITE_AUTH != 1 {
-            BVSDKManager.sharedManager().setUserWithAuthString("TOKEN_REMOVED")
+            BVSDKManager.shared().setUserWithAuthString("TOKEN_REMOVED")
         }
         
     }
@@ -138,15 +135,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
     }()
     
-    func application(application: UIApplication, handleActionWithIdentifier identifier: String?, forLocalNotification notification: UILocalNotification, completionHandler: () -> Void) {
-        BVReviewNotificationCenter.sharedCenter().handleActionWithIdentifier(identifier, forLocalNotification: notification)
+    func application(_ application: UIApplication, handleActionWithIdentifier identifier: String?, for notification: UILocalNotification, completionHandler: @escaping () -> Void) {
+        BVReviewNotificationCenter.shared().handleAction(withIdentifier: identifier, for: notification)
         
         if identifier == ID_REPLY {
             delay(0.5, closure: {
                 let vc = StoreWriteReviewViewController(nibName:"StoreWriteReviewViewController", bundle: nil)
                 vc.storeId = notification.userInfo![USER_INFO_PROD_ID] as? String;
                 let nc = UINavigationController(rootViewController: vc)
-                self.window?.rootViewController?.presentViewController(nc, animated: true, completion:nil)
+                self.window?.rootViewController?.present(nc, animated: true, completion:nil)
             })
         }
         completionHandler()
@@ -158,15 +155,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 extension AppDelegate: UNUserNotificationCenterDelegate {
     
     // The method will be called on the delegate only if the application is in the foreground. If the method is not implemented or the handler is not called in a timely manner then the notification will not be presented. The application can choose to have the notification presented as a sound, badge, alert and/or in the notification list. This decision should be based on whether the information in the notification is otherwise visible to the user.
-    internal func userNotificationCenter(center: UNUserNotificationCenter, willPresentNotification notification: UNNotification, withCompletionHandler completionHandler: (UNNotificationPresentationOptions) -> Void) {
-        completionHandler(.Alert)
+    internal func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        completionHandler(.alert)
     }
     
     // The method will be called on the delegate when the user responded to the notification by opening the application, dismissing the notification or choosing a UNNotificationAction. The delegate must be set before the application returns from applicationDidFinishLaunching:.
-    internal func userNotificationCenter(center: UNUserNotificationCenter, didReceiveNotificationResponse response: UNNotificationResponse, withCompletionHandler completionHandler: () -> Void) {
+    internal func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
         
         //Must forward to BVSDK
-        BVReviewNotificationCenter.sharedCenter().userNotificationCenter(center, didReceiveNotificationResponse: response)
+        BVReviewNotificationCenter.shared().userNotificationCenter(center, didReceive: response)
         
         if response.actionIdentifier == UNNotificationDefaultActionIdentifier {
             // User tapped on the notification itself, but not a specific action.
@@ -178,7 +175,7 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
             let userInfoDict = response.notification.request.content.userInfo
             vc.storeId = userInfoDict[USER_INFO_PROD_ID] as? String
             let nc = UINavigationController(rootViewController: vc)
-            self.window?.rootViewController?.presentViewController(nc, animated: true, completion:nil)
+            self.window?.rootViewController?.present(nc, animated: true, completion:nil)
             
         } else if response.actionIdentifier == UNNotificationDismissActionIdentifier {
             // User decided to dismiss the view controller

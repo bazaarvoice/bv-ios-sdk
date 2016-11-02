@@ -17,13 +17,14 @@ class DisplayParametersTests: XCTestCase {
         let request = BVProductDisplayPageRequest(productId: "test1")
         
         
-        XCTAssertEqual(request.statisticsToParams([PDPContentType.Reviews.rawValue]), "Reviews")
-        XCTAssertEqual(request.statisticsToParams([PDPContentType.Questions.rawValue]), "Questions")
-        XCTAssertEqual(request.statisticsToParams([PDPContentType.Answers.rawValue]), "Answers")
-        XCTAssertEqual(request.statisticsToParams([PDPContentType.Reviews.rawValue, PDPContentType.Answers.rawValue]), "Answers,Reviews")
-        XCTAssertEqual(request.statisticsToParams([PDPContentType.Answers.rawValue, PDPContentType.Reviews.rawValue]), "Answers,Reviews")
-        XCTAssertEqual(request.statisticsToParams([PDPContentType.Reviews.rawValue, PDPContentType.Answers.rawValue, PDPContentType.Questions.rawValue]), "Answers,Questions,Reviews")
-        XCTAssertEqual(request.statisticsToParams([PDPContentType.Reviews.rawValue, PDPContentType.Questions.rawValue, PDPContentType.Answers.rawValue]), "Answers,Questions,Reviews")
+    
+        XCTAssertEqual(request.statistics(toParams: [NSNumber(value:PDPContentType.reviews.rawValue)]), "Reviews")
+        XCTAssertEqual(request.statistics(toParams: [NSNumber(value: PDPContentType.questions.rawValue)]), "Questions")
+        XCTAssertEqual(request.statistics(toParams: [NSNumber(value: PDPContentType.answers.rawValue)]), "Answers")
+        XCTAssertEqual(request.statistics(toParams: [NSNumber(value: PDPContentType.reviews.rawValue), NSNumber(value: PDPContentType.answers.rawValue)]), "Answers,Reviews")
+        XCTAssertEqual(request.statistics(toParams: [NSNumber(value: PDPContentType.answers.rawValue), NSNumber(value: PDPContentType.reviews.rawValue)]), "Answers,Reviews")
+        XCTAssertEqual(request.statistics(toParams: [NSNumber(value: PDPContentType.reviews.rawValue), NSNumber(value: PDPContentType.answers.rawValue), NSNumber(value: PDPContentType.questions.rawValue)]), "Answers,Questions,Reviews")
+        XCTAssertEqual(request.statistics(toParams: [NSNumber(value: PDPContentType.reviews.rawValue), NSNumber(value: PDPContentType.questions.rawValue), NSNumber(value: PDPContentType.answers.rawValue)]), "Answers,Questions,Reviews")
         
     }
     

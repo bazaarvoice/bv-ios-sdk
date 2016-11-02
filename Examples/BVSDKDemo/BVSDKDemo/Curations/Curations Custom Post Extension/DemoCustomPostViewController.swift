@@ -26,10 +26,10 @@ class DemoCustomPostViewController: UIViewController, UIImagePickerControllerDel
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        if (self.isBeingPresented()){
+        if (self.isBeingPresented){
             self.uploadPhoto()
         }
     }
@@ -42,11 +42,11 @@ class DemoCustomPostViewController: UIViewController, UIImagePickerControllerDel
             
         } else {
             
-            let optionsMenu = UIAlertController(title: nil, message: "Choose a photo source...", preferredStyle: .ActionSheet)
+            let optionsMenu = UIAlertController(title: nil, message: "Choose a photo source...", preferredStyle: .actionSheet)
             
             let closure = { (action: UIAlertAction!) -> Void in
                 
-                let index : Int = optionsMenu.actions.indexOf(action)!
+                let index : Int = optionsMenu.actions.index(of: action)!
                 
                 switch index {
                     
@@ -57,7 +57,7 @@ class DemoCustomPostViewController: UIViewController, UIImagePickerControllerDel
                     self.selectPhotoFromGallery()
                     
                 case 2:
-                    self.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
+                    self.presentingViewController?.dismiss(animated: true, completion: nil)
 
                 default:
                     // ignored
@@ -67,11 +67,11 @@ class DemoCustomPostViewController: UIViewController, UIImagePickerControllerDel
                 
             }
             
-            optionsMenu.addAction(UIAlertAction(title: "Camera", style: .Default, handler: closure))
-            optionsMenu.addAction(UIAlertAction(title: "Photo Library", style: .Default, handler: closure))
-            optionsMenu.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: closure))
+            optionsMenu.addAction(UIAlertAction(title: "Camera", style: .default, handler: closure))
+            optionsMenu.addAction(UIAlertAction(title: "Photo Library", style: .default, handler: closure))
+            optionsMenu.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: closure))
             
-            self.presentViewController(optionsMenu, animated: true, completion: nil)
+            self.present(optionsMenu, animated: true, completion: nil)
             
         }
         
@@ -79,54 +79,54 @@ class DemoCustomPostViewController: UIViewController, UIImagePickerControllerDel
     
     func selectPhotoFromCamera() {
         
-        if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera){
+        if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.camera){
             imagePicker.delegate = self
-            imagePicker.sourceType = UIImagePickerControllerSourceType.Camera;
+            imagePicker.sourceType = UIImagePickerControllerSourceType.camera;
             imagePicker.allowsEditing = true
-            self.presentViewController(imagePicker, animated: true, completion: nil)
+            self.present(imagePicker, animated: true, completion: nil)
         }
         
     }
     
     func selectPhotoFromGallery() {
         
-        if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.SavedPhotosAlbum){
+        if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.savedPhotosAlbum){
             
             imagePicker.delegate = self
-            imagePicker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary;
+            imagePicker.sourceType = UIImagePickerControllerSourceType.photoLibrary;
             imagePicker.allowsEditing = true
-            self.presentViewController(imagePicker, animated: true, completion: nil)
+            self.present(imagePicker, animated: true, completion: nil)
         }
         
     }
     
     // MARK: UIImagePickerControllerDelegate
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         
         // image selected...
         shareRequest?.image = info[UIImagePickerControllerEditedImage] as! UIImage
         
         // Post an image with a SLComposeServiceViewController
         let shareVC = ShareViewController.init(shareRequest: self.shareRequest!)
-        shareVC.placeholder = self.placeholderText;
-        shareVC.modalPresentationStyle = UIModalPresentationStyle.OverCurrentContext;
+        shareVC?.placeholder = self.placeholderText;
+        shareVC?.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext;
         
-        shareVC.onDismissComplete = {
+        shareVC?.onDismissComplete = {
             () -> Void in
-           self.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
+           self.presentingViewController?.dismiss(animated: true, completion: nil)
         }
         
-        imagePicker.dismissViewControllerAnimated(true) { () -> Void in
+        imagePicker.dismiss(animated: true) { () -> Void in
             
-            self.presentViewController(shareVC, animated: true) { () -> Void in
+            self.present(shareVC!, animated: true) { () -> Void in
                 // completion
             }
 
         }
     }
     
-    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
-        self.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        self.presentingViewController?.dismiss(animated: true, completion: nil)
     }
 
     

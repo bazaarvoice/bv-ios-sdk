@@ -23,21 +23,21 @@ class NotificationPermissionViewController: PermissionViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    override func enablePressed(sender: UIButton) {
+    override func enablePressed(_ sender: UIButton) {
         
         if #available(iOS 10.0, *) {
-            let center = UNUserNotificationCenter.currentNotificationCenter()
-            center.requestAuthorizationWithOptions([.Sound, .Alert, .Badge]){ (success, error) in
+            let center = UNUserNotificationCenter.current()
+            center.requestAuthorization(options: [.sound, .alert, .badge]){ (success, error) in
             };
         }else {
-            let settings = UIUserNotificationSettings(forTypes: [.Alert, .Badge, .Sound], categories: nil)
-            UIApplication.sharedApplication().registerUserNotificationSettings(settings)
+            let settings = UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
+            UIApplication.shared.registerUserNotificationSettings(settings)
         }
-        self.navigationController?.dismissViewControllerAnimated(true, completion: nil)
+        self.navigationController?.dismiss(animated: true, completion: nil)
     }
     
-    override func notNowPressed(sender: UIButton) {
-        self.navigationController?.dismissViewControllerAnimated(true, completion: nil)
+    override func notNowPressed(_ sender: UIButton) {
+        self.navigationController?.dismiss(animated: true, completion: nil)
     }
 }
 

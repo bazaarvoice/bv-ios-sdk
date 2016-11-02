@@ -17,7 +17,7 @@ class QualitySliderTableViewCell: EditablePropertyTableViewCell {
     override var object: AnyObject! {
         didSet {
             if let _ = self.keyPath {
-                let idx = object.valueForKeyPath(keyPath)!.integerValue - 1
+                let idx = (object.value(forKeyPath: keyPath)! as AnyObject).intValue - 1
                 slider?.value = Float(Double(idx) * 0.25)
                 sliderChanged(slider!)
                 object.setValue(idx + 1, forKeyPath: keyPath)
@@ -27,10 +27,10 @@ class QualitySliderTableViewCell: EditablePropertyTableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        selectionStyle = .None
+        selectionStyle = .none
     }
 
-    @IBAction func sliderChanged(sender: UISlider) {
+    @IBAction func sliderChanged(_ sender: UISlider) {
         
         var newIdx: Int
         if sender.value < 0.2 {
@@ -50,7 +50,7 @@ class QualitySliderTableViewCell: EditablePropertyTableViewCell {
         if selectIdx != newIdx {
             selectIdx = newIdx
             expressionLbl?.text = QualitySliderTableViewCell.expressions[selectIdx]
-            if let _ = object, _ = keyPath {
+            if let _ = object, let _ = keyPath {
                 object.setValue(selectIdx + 1, forKeyPath: keyPath)
             }
         }

@@ -37,9 +37,9 @@ class CachableDefaultStore : NSObject, NSCoding {
     }
     
     required convenience init(coder aDecoder: NSCoder) {
-        let identifier = aDecoder.decodeObjectForKey("storeId") as! String
-        var city = aDecoder.decodeObjectForKey("city") as? String
-        var state = aDecoder.decodeObjectForKey("state") as? String
+        let identifier = aDecoder.decodeObject(forKey: "storeId") as! String
+        var city = aDecoder.decodeObject(forKey: "city") as? String
+        var state = aDecoder.decodeObject(forKey: "state") as? String
         
         if city == nil {
             city = ""
@@ -52,17 +52,17 @@ class CachableDefaultStore : NSObject, NSCoding {
         self.init(storeId: identifier, city: city!, state: state!)
     }
     
-    func encodeWithCoder(aCoder: NSCoder) {
-        aCoder.encodeObject(identifier, forKey: "storeId")
-        aCoder.encodeObject(city, forKey: "city")
-        aCoder.encodeObject(state, forKey: "state")
+    func encode(with aCoder: NSCoder) {
+        aCoder.encode(identifier, forKey: "storeId")
+        aCoder.encode(city, forKey: "city")
+        aCoder.encode(state, forKey: "state")
     }
     
 }
 
 class LocationPreferenceUtils {
     
-    static func isDefaultStoreId(storeId : String!) -> Bool {
+    static func isDefaultStoreId(_ storeId : String!) -> Bool {
         
         let defaultCachedStore = self.getDefaultStore()
         if (defaultCachedStore?.identifier == storeId){
@@ -72,27 +72,27 @@ class LocationPreferenceUtils {
         return false
     }
     
-    static func setDefaultStore(store: CachableDefaultStore){
+    static func setDefaultStore(_ store: CachableDefaultStore){
         
-        let archivedStore = NSKeyedArchiver.archivedDataWithRootObject(store)
+        let archivedStore = NSKeyedArchiver.archivedData(withRootObject: store)
         
-        let defaults = NSUserDefaults(suiteName: "group.bazaarvoice.bvsdkdemo")
-        defaults!.setObject(archivedStore, forKey: "DefaultBVStore")
+        let defaults = UserDefaults(suiteName: "group.bazaarvoice.bvsdkdemo.app")
+        defaults!.set(archivedStore, forKey: "DefaultBVStore")
         defaults!.synchronize()
 
     }
     
     static func getDefaultStore() -> CachableDefaultStore? {
         
-        if let savedStoreData = NSUserDefaults(suiteName: "group.bazaarvoice.bvsdkdemo")?.objectForKey("DefaultBVStore") as? NSData {
-            return NSKeyedUnarchiver.unarchiveObjectWithData(savedStoreData) as? CachableDefaultStore
+        if let savedStoreData = UserDefaults(suiteName: "group.bazaarvoice.bvsdkdemo.app")?.object(forKey: "DefaultBVStore") as? Data {
+            return NSKeyedUnarchiver.unarchiveObject(with: savedStoreData) as? CachableDefaultStore
         }
         
         return nil
         
     }
     
-    static func isDefaultStore(store: BVStore) -> Bool {
+    static func isDefaultStore(_ store: BVStore) -> Bool {
     
         var isDefault = false
         

@@ -14,15 +14,15 @@ class QuestionSubmissionTests: XCTestCase {
     override func setUp() {
         super.setUp()
         
-        BVSDKManager.sharedManager().clientId = "apitestcustomer"
-        BVSDKManager.sharedManager().apiKeyConversations = "KEY_REMOVED"
-        BVSDKManager.sharedManager().staging = true
+        BVSDKManager.shared().clientId = "apitestcustomer"
+        BVSDKManager.shared().apiKeyConversations = "KEY_REMOVED"
+        BVSDKManager.shared().staging = true
     }
     
     func testSubmitQuestionWithPhoto() {
-        let expectation = expectationWithDescription("")
+        let expectation = self.expectation(description: "")
         
-        let question = self.fillOutQuestion(.Submit)
+        let question = self.fillOutQuestion(.submit)
         question.submit({ (questionSubmission) in
             expectation.fulfill()
             XCTAssertTrue(questionSubmission.formFields?.keys.count == 0)
@@ -30,13 +30,13 @@ class QuestionSubmissionTests: XCTestCase {
             XCTFail()
         })
         
-        waitForExpectationsWithTimeout(10, handler: nil)
+        waitForExpectations(timeout: 10, handler: nil)
     }
     
     func testPreviewQuestionWithPhoto() {
-        let expectation = expectationWithDescription("")
+        let expectation = self.expectation(description: "")
         
-        let question = self.fillOutQuestion(.Preview)
+        let question = self.fillOutQuestion(.preview)
         question.submit({ (questionSubmission) in
             expectation.fulfill()
             // When run in Preview mode, we get the formFields that can be used for submission.
@@ -45,11 +45,11 @@ class QuestionSubmissionTests: XCTestCase {
                 XCTFail()
         })
         
-        waitForExpectationsWithTimeout(10, handler: nil)
+        waitForExpectations(timeout: 10, handler: nil)
     }
     
     
-    func fillOutQuestion(action : BVSubmissionAction) -> BVQuestionSubmission {
+    func fillOutQuestion(_ action : BVSubmissionAction) -> BVQuestionSubmission {
         let question = BVQuestionSubmission(productId: "test1")
         let randomId = String(arc4random())
 
@@ -71,19 +71,19 @@ class QuestionSubmissionTests: XCTestCase {
     }
     
     func testSubmitQuestionFailure() {
-        let expectation = expectationWithDescription("")
+        let expectation = self.expectation(description: "")
         
         let question = BVQuestionSubmission(productId: "1000001")
         question.userNickname = "cgil"
         question.userId = "craiggiddl"
-        question.action = .Preview
+        question.action = .preview
         
         question.submit({ (questionSubmission) in
             XCTFail()
         }, failure: { (errors) in
             
             XCTAssertEqual(errors.count, 2)
-            for error in errors {
+            for error in errors as [NSError] {
                 let fieldName = error.userInfo[BVFieldErrorName] as! String
                 let errorCode = error.userInfo[BVFieldErrorCode] as! String
                 let errorMessage = error.userInfo[BVFieldErrorMessage] as! String
@@ -101,7 +101,7 @@ class QuestionSubmissionTests: XCTestCase {
             
             expectation.fulfill()
         })
-        waitForExpectationsWithTimeout(10, handler: nil)
+        waitForExpectations(timeout: 10, handler: nil)
     }
     
 }

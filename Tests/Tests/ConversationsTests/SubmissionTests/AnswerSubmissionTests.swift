@@ -14,17 +14,17 @@ class AnswerSubmissionTests: XCTestCase {
     override func setUp() {
         super.setUp()
         
-        BVSDKManager.sharedManager().clientId = "apitestcustomer"
-        BVSDKManager.sharedManager().apiKeyConversations = "KEY_REMOVED"
-        BVSDKManager.sharedManager().staging = true
-        BVSDKManager.sharedManager().setLogLevel(.Error)
+        BVSDKManager.shared().clientId = "apitestcustomer"
+        BVSDKManager.shared().apiKeyConversations = "KEY_REMOVED"
+        BVSDKManager.shared().staging = true
+        BVSDKManager.shared().setLogLevel(.error)
         
     }
     
     func testSubmitAnswerWithPhoto() {
-        let expectation = expectationWithDescription("")
+        let expectation = self.expectation(description: "")
         
-        let answer = self.fillOutAnswer(.Submit)
+        let answer = self.fillOutAnswer(.submit)
         answer.submit({ (answerSubmission) in
             expectation.fulfill()
              XCTAssertTrue(answerSubmission.formFields?.keys.count == 0)
@@ -33,12 +33,12 @@ class AnswerSubmissionTests: XCTestCase {
             XCTFail()
         })
         
-        waitForExpectationsWithTimeout(10, handler: nil)
+        waitForExpectations(timeout: 10, handler: nil)
     }
     
     func testPreviewAnswerWithPhoto() {
-        let expectation = expectationWithDescription("")
-        let answer = self.fillOutAnswer(.Preview)
+        let expectation = self.expectation(description: "")
+        let answer = self.fillOutAnswer(.preview)
         answer.submit({ (answerSubmission) in
             expectation.fulfill()
             // When run in Preview mode, we get the formFields that can be used for submission.
@@ -48,10 +48,10 @@ class AnswerSubmissionTests: XCTestCase {
             XCTFail()
         })
         
-        waitForExpectationsWithTimeout(10, handler: nil)
+        waitForExpectations(timeout: 10, handler: nil)
     }
     
-    func fillOutAnswer(action : BVSubmissionAction) -> BVAnswerSubmission {
+    func fillOutAnswer(_ action : BVSubmissionAction) -> BVAnswerSubmission {
         let answerText = "Answer text Answer text Answer text Answer text Answer text Answer text Answer text Answer text"
         let answer = BVAnswerSubmission(questionId: "6104", answerText: answerText)
         
@@ -74,18 +74,18 @@ class AnswerSubmissionTests: XCTestCase {
     }
     
     func testSubmitAnswerFailure() {
-        let expectation = expectationWithDescription("")
+        let expectation = self.expectation(description: "")
         
         let answer = BVAnswerSubmission(questionId: "6104", answerText: "")
         answer.userId = "craiggil"
-        answer.action = .Preview
+        answer.action = .preview
         
         answer.submit({ (questionSubmission) in
             XCTFail()
         }, failure: { (errors) in
             
             XCTAssertEqual(errors.count, 2)
-            for error in errors {
+            for error in errors as [NSError] {
                 
                 if error.userInfo[BVFieldErrorName] == nil {
                     // Would happen if we get internal server error and/or XML is returned
@@ -110,7 +110,7 @@ class AnswerSubmissionTests: XCTestCase {
             
             expectation.fulfill()
         })
-        waitForExpectationsWithTimeout(10, handler: nil)
+        waitForExpectations(timeout: 10, handler: nil)
     }
     
 }

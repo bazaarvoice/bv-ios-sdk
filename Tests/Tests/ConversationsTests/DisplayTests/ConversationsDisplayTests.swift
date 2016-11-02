@@ -13,9 +13,9 @@ class ConversationsDisplayTests: XCTestCase {
     override func setUp() {
         super.setUp()
         
-        BVSDKManager.sharedManager().clientId = "apitestcustomer"
-        BVSDKManager.sharedManager().apiKeyConversations = "KEY_REMOVED"
-        BVSDKManager.sharedManager().staging = true
+        BVSDKManager.shared().clientId = "apitestcustomer"
+        BVSDKManager.shared().apiKeyConversations = "KEY_REMOVED"
+        BVSDKManager.shared().staging = true
     }
     
     override func tearDown() {
@@ -24,13 +24,13 @@ class ConversationsDisplayTests: XCTestCase {
     
     func testProductDisplay() {
         
-        let expectation = expectationWithDescription("")
+        let expectation = self.expectation(description: "")
         
         let request = BVProductDisplayPageRequest(productId: "test1")
-            .includeContent(PDPContentType.Reviews, limit: 10)
-            .includeContent(.Reviews, limit: 10)
-            .includeContent(.Questions, limit: 5)
-            .includeStatistics(.Reviews)
+            .include(PDPContentType.reviews, limit: 10)
+            .include(.reviews, limit: 10)
+            .include(.questions, limit: 5)
+            .includeStatistics(.reviews)
         
         request.load({ (response) in
             
@@ -57,7 +57,7 @@ class ConversationsDisplayTests: XCTestCase {
             
         }
         
-        self.waitForExpectationsWithTimeout(10) { (error) in
+        self.waitForExpectations(timeout: 10) { (error) in
             XCTAssertNil(error, "Something went horribly wrong, request took too long.")
         }
         
@@ -65,12 +65,12 @@ class ConversationsDisplayTests: XCTestCase {
     
     func testReviewDisplay() {
         
-        let expectation = expectationWithDescription("")
+        let expectation = self.expectation(description: "")
         
         let request = BVReviewsRequest(productId: "test1", limit: 10, offset: 0)
-            .addSort(.Rating, order: .Ascending)
-            .addFilter(.HasPhotos, filterOperator: .EqualTo, value: "true")
-            .addFilter(.HasComments, filterOperator: .EqualTo, value: "false")
+            .addSort(.rating, order: .ascending)
+            .add(.hasPhotos, filterOperator: .equalTo, value: "true")
+            .add(.hasComments, filterOperator: .equalTo, value: "false")
         
         request.load({ (response) in
             
@@ -89,9 +89,9 @@ class ConversationsDisplayTests: XCTestCase {
             XCTAssertEqual(review.userNickname, "endersgame")
             XCTAssertEqual(review.userLocation, "San Fransisco, California")
             
-            XCTAssertEqual(review.tagDimensions!["Pro"]!.label, "Pros")
-            XCTAssertEqual(review.tagDimensions!["Pro"]!.identifier, "Pro")
-            XCTAssertEqual(review.tagDimensions!["Pro"]!.values!, ["Organic Fabric", "Quality"])
+            XCTAssertEqual((review.tagDimensions!["Pro"]! as AnyObject).label, "Pros")
+            XCTAssertEqual((review.tagDimensions!["Pro"]! as AnyObject).identifier, "Pro")
+            XCTAssertEqual((review.tagDimensions!["Pro"]! as AnyObject).values!!, ["Organic Fabric", "Quality"])
             
             XCTAssertEqual(review.photos.count, 1)
             XCTAssertEqual(review.photos.first?.caption, "Etiam malesuada ultricies urna in scelerisque. Sed viverra blandit nibh non egestas. Sed rhoncus, ipsum in vehicula imperdiet, purus lectus sodales erat, eget ornare lacus lectus ac leo. Suspendisse tristique sollicitudin ultricies. Aliquam erat volutpat.")
@@ -106,7 +106,7 @@ class ConversationsDisplayTests: XCTestCase {
             XCTAssertEqual(cdv.dimensionLabel, "Gender")
             XCTAssertEqual(cdv.identifier, "Gender")
             
-            XCTAssertEqual(review.badges.first?.badgeType, BVBadgeType.Merit)
+            XCTAssertEqual(review.badges.first?.badgeType, BVBadgeType.merit)
             XCTAssertEqual(review.badges.first?.identifier, "top10Contributor")
             XCTAssertEqual(review.badges.first?.contentType, "REVIEW")
             
@@ -122,7 +122,7 @@ class ConversationsDisplayTests: XCTestCase {
             
         }
         
-        self.waitForExpectationsWithTimeout(10) { (error) in
+        self.waitForExpectations(timeout: 10) { (error) in
             XCTAssertNil(error, "Something went horribly wrong, request took too long.")
         }
         
@@ -130,10 +130,10 @@ class ConversationsDisplayTests: XCTestCase {
     
     func testQuestionDisplay() {
         
-        let expectation = expectationWithDescription("")
+        let expectation = self.expectation(description: "")
         
         let request = BVQuestionsAndAnswersRequest(productId: "test1", limit: 10, offset: 0)
-            .addFilter(.HasAnswers, filterOperator: .EqualTo, value: "true")
+            .add(.hasAnswers, filterOperator: .equalTo, value: "true")
         
         request.load({ (response) in
         
@@ -170,7 +170,7 @@ class ConversationsDisplayTests: XCTestCase {
         
         }
         
-        self.waitForExpectationsWithTimeout(10) { (error) in
+        self.waitForExpectations(timeout: 10) { (error) in
             XCTAssertNil(error, "Something went horribly wrong, request took too long.")
         }
         
@@ -179,10 +179,10 @@ class ConversationsDisplayTests: XCTestCase {
     
     func testInlineRatingsDisplayOneProduct() {
         
-        let expectation = expectationWithDescription("")
+        let expectation = self.expectation(description: "")
         
-        let request = BVBulkRatingsRequest(productIds: ["test3"], statistics: .All)
-        request.addFilter(.ContentLocale, filterOperator: .EqualTo, values: ["en_US"])
+        let request = BVBulkRatingsRequest(productIds: ["test3"], statistics: .all)
+        request.add(.contentLocale, filterOperator: .equalTo, values: ["en_US"])
         
         request.load({ (response) in
             XCTAssertEqual(response.results.count, 1)
@@ -198,7 +198,7 @@ class ConversationsDisplayTests: XCTestCase {
             expectation.fulfill()
         }
         
-        self.waitForExpectationsWithTimeout(10) { (error) in
+        self.waitForExpectations(timeout: 10) { (error) in
             XCTAssertNil(error, "Something went horribly wrong, request took too long.")
         }
         
@@ -206,10 +206,10 @@ class ConversationsDisplayTests: XCTestCase {
     
     func testInlineRatingsDisplayMultipleProducts() {
         
-        let expectation = expectationWithDescription("")
+        let expectation = self.expectation(description: "")
         
-        let request = BVBulkRatingsRequest(productIds: ["test1", "test2", "test3"], statistics: .All)
-        request.addFilter(.ContentLocale, filterOperator: .EqualTo, values: ["en_US"])
+        let request = BVBulkRatingsRequest(productIds: ["test1", "test2", "test3"], statistics: .all)
+        request.add(.contentLocale, filterOperator: .equalTo, values: ["en_US"])
         
         request.load({ (response) in
             XCTAssertEqual(response.results.count, 3)
@@ -219,12 +219,12 @@ class ConversationsDisplayTests: XCTestCase {
             expectation.fulfill()
         }
         
-        self.waitForExpectationsWithTimeout(10) { (error) in print("request took way too long") }
+        self.waitForExpectations(timeout: 10) { (error) in print("request took way too long") }
     }
     
     func testInlineRatingsTooManyProductsError() {
         
-        let expectation = expectationWithDescription("inline ratings display should complete")
+        let expectation = self.expectation(description: "inline ratings display should complete")
         
         var tooManyProductIds: [String] = []
         
@@ -233,7 +233,7 @@ class ConversationsDisplayTests: XCTestCase {
         }
 
         
-        let request = BVBulkRatingsRequest(productIds: tooManyProductIds, statistics: .All)
+        let request = BVBulkRatingsRequest(productIds: tooManyProductIds, statistics: .all)
         
         request.load({ (response) in
             XCTFail("Should not succeed")
@@ -241,7 +241,7 @@ class ConversationsDisplayTests: XCTestCase {
             expectation.fulfill()
         }
         
-        self.waitForExpectationsWithTimeout(10) { (error) in
+        self.waitForExpectations(timeout: 10) { (error) in
             XCTAssertNil(error, "Something went horribly wrong, request took too long.")
         }
         

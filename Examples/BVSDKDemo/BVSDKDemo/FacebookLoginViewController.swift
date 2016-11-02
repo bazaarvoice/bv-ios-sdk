@@ -14,16 +14,16 @@ class FacebookLoginViewController: UIViewController {
     
     let descriptionLabel = UILabel()
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         
         super.viewWillAppear(animated)
         
-        self.navigationController?.navigationBarHidden = true
+        self.navigationController?.isNavigationBarHidden = true
         
         // check that user is logged in to facebook
-        if(FBSDKAccessToken.currentAccessToken() != nil) {
+        if(FBSDKAccessToken.current() != nil) {
             fbLoginButton.removeFromSuperview()
-            self.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
+            self.presentingViewController?.dismiss(animated: true, completion: nil)
         }
        
     }

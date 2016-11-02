@@ -34,7 +34,7 @@ typedef void (^recommendationsErrorHandler)(NSError*);
  */
 - (void)loadRequest:(BVRecommendationsRequest*)request
   completionHandler:(recommendationsCompletionHandler)completionHandler
-       errorHandler:(recommendationsErrorHandler)errorhandler;
+       errorHandler:(recommendationsErrorHandler)errorHandler;
 
 @end
 

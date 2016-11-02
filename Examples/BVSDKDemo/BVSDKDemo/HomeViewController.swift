@@ -10,6 +10,26 @@ import FontAwesomeKit
 import BVSDK
 import GoogleMobileAds
 import FBSDKLoginKit
+private func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l < r
+  case (nil, _?):
+    return true
+  default:
+    return false
+  }
+}
+
+private func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l > r
+  default:
+    return rhs < lhs
+  }
+}
+
 
 let ADVERT_INDEX_PATH = 7
 
@@ -38,66 +58,66 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         
         self.addSettingsButton()
         
-        self.view.backgroundColor = UIColor.whiteColor()
-        self.recommendationsCollectionView.backgroundColor = UIColor.clearColor()
+        self.view.backgroundColor = UIColor.white
+        self.recommendationsCollectionView.backgroundColor = UIColor.clear
         
-        recommendationsCollectionView.layer.borderColor = UIColor.lightGrayColor().CGColor
-        recommendationsCollectionView.backgroundColor = UIColor.clearColor()
+        recommendationsCollectionView.layer.borderColor = UIColor.lightGray.cgColor
+        recommendationsCollectionView.backgroundColor = UIColor.clear
         recommendationsCollectionView.dataSource = self
         recommendationsCollectionView.delegate = self
         
-        recommendationsCollectionView.registerNib(UINib(nibName: "HomeHeaderCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "HomeHeaderCollectionViewCell")
+        recommendationsCollectionView.register(UINib(nibName: "HomeHeaderCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "HomeHeaderCollectionViewCell")
         
-        recommendationsCollectionView.registerNib(UINib(nibName: "HomeAdvertisementCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "HomeAdvertisementCollectionViewCell")
+        recommendationsCollectionView.register(UINib(nibName: "HomeAdvertisementCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "HomeAdvertisementCollectionViewCell")
         
-        recommendationsCollectionView.registerNib(UINib(nibName: "DemoCarouselCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "DemoCarouselCollectionViewCell")
+        recommendationsCollectionView.register(UINib(nibName: "DemoCarouselCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "DemoCarouselCollectionViewCell")
         
-        recommendationsCollectionView.registerClass(UICollectionViewCell.self, forCellWithReuseIdentifier: "recommendationHeaderCell")
-        recommendationsCollectionView.registerClass(UICollectionViewCell.self, forCellWithReuseIdentifier: "locationCell")
+        recommendationsCollectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "recommendationHeaderCell")
+        recommendationsCollectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "locationCell")
         
         self.loadRecommendations()
         
-        let versionString = NSBundle.mainBundle().infoDictionary?["CFBundleShortVersionString"] as? String
-        let buildNum = NSBundle.mainBundle().infoDictionary?["CFBundleVersion"] as? String
+        let versionString = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
+        let buildNum = Bundle.main.infoDictionary?["CFBundleVersion"] as? String
         self.versionLabel.text = "v" + versionString! + "(" + buildNum! + ")"
         
         // Add in pull-to-refresh
         refreshControl.tintColor = UIColor.bazaarvoiceTeal()
-        refreshControl.addTarget(self, action: Selector("refresh:"), forControlEvents: .ValueChanged)
+        refreshControl.addTarget(self, action: #selector(HomeViewController.refresh(_:)), for: .valueChanged)
         recommendationsCollectionView.addSubview(refreshControl)
        
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if currClientId != nil {
-            if currClientId != BVSDKManager.sharedManager().clientId {
+            if currClientId != BVSDKManager.shared().clientId {
                 self.recommendations?.removeAll() // client id changed, reload data
                 self.loadRecommendations()
             }
         }
         
-        currClientId = BVSDKManager.sharedManager().clientId
+        currClientId = BVSDKManager.shared().clientId
         
     }
     
-    func refresh(refreshControl: UIRefreshControl) {
+    func refresh(_ refreshControl: UIRefreshControl) {
         // clear any cached recommendations, and reload latest recommendations from API
-        BVShopperProfileRequestCache.sharedCache().removeAllCachedResponses()
+        BVShopperProfileRequestCache.shared().removeAllCachedResponses()
         self.loadRecommendations()
     }
     
     func checkLocationAuthorization(){
         
         let status = CLLocationManager.authorizationStatus()
-        if status == .NotDetermined {
+        if status == .notDetermined {
             
             if (!hasSeenNotificationsPrompt){
                 
                 // Only ask permission if we have not yet determined or asked the user
                 let lvc = LocationPermissionViewController(nibName: "PermissionViewController", bundle:  nil)
                 let nav = UINavigationController(rootViewController: lvc)
-                self.navigationController?.presentViewController(nav, animated: true, completion: {
+                self.navigationController?.present(nav, animated: true, completion: {
                     // completion, nothing to do
                     self.hasSeenNotificationsPrompt = true
                 })
@@ -113,7 +133,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         }
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         if (self.recommendations?.count > 0){
@@ -123,13 +143,13 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         // check that user is logged in to facebook
         if (ProfileUtils.isFacebookInstalled()) {
             // The app ID was set so we can authenticate the user
-            if(FBSDKAccessToken.currentAccessToken() == nil) {
+            if(FBSDKAccessToken.current() == nil) {
                 let loginViewController = FacebookLoginViewController(nibName: "FacebookLoginViewController", bundle: nil)
                 let nav = UINavigationController(rootViewController: loginViewController)
-                self.presentViewController(nav, animated: true, completion: nil)
+                self.present(nav, animated: true, completion: nil)
             }
             else {
-                if let profile = FBSDKProfile.currentProfile() {
+                if let profile = FBSDKProfile.current() {
                     
                     ProfileUtils.trackFBLogin(profile.name)
                     if SITE_AUTH == 1 {
@@ -171,7 +191,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
             let request = DFPRequest()
             //request.testDevices = [kDFPSimulatorID]
 
-            request.customTargeting = BVSDKManager.sharedManager().getCustomTargeting() //+ whatever
+            request.customTargeting = BVSDKManager.shared().getCustomTargeting() //+ whatever
             
             var targetingCity = "Undefined"
             if let defaultCachedStore = LocationPreferenceUtils.getDefaultStore() {
@@ -181,7 +201,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
             
             request.customTargeting!["cities"] = targetingCity
             
-            adLoader?.loadRequest(request)
+            adLoader?.load(request)
         }
     }
     
@@ -192,19 +212,19 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         self.spinner.center = self.recommendationsCollectionView.center
     }
     
-    func styleAndPushViewController(viewController: UIViewController) {
+    func styleAndPushViewController(_ viewController: UIViewController) {
         
-        viewController.navigationItem.titleView = self.dynamicType.createTitleLabel()
+        viewController.navigationItem.titleView = type(of: self).createTitleLabel()
         self.navigationController?.pushViewController(viewController, animated: true)
         
     }
     
     class func createTitleLabel() -> UILabel {
      
-        let titleLabel = UILabel(frame: CGRectMake(0,0,200,44))
+        let titleLabel = UILabel(frame: CGRect(x: 0,y: 0,width: 200,height: 44))
         titleLabel.text = "bazaarvoice:";
-        titleLabel.textColor = UIColor.whiteColor()
-        titleLabel.textAlignment = .Center
+        titleLabel.textColor = UIColor.white
+        titleLabel.textAlignment = .center
         titleLabel.font = UIFont(name: "ForalPro-Regular", size: 36)
         return titleLabel
         
@@ -212,21 +232,21 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     
     func getGearIconImage() -> UIImage {
 
-        let menuIcon = FAKFontAwesome.gearIconWithSize(20)
-        menuIcon.addAttribute(NSForegroundColorAttributeName, value: UIColor.whiteColor())
-        return menuIcon.imageWithSize(CGSize(width: 20, height: 20))
+        let menuIcon = FAKFontAwesome.gearIcon(withSize: 20)
+        menuIcon?.addAttribute(NSForegroundColorAttributeName, value: UIColor.white)
+        return menuIcon!.image(with: CGSize(width: 20, height: 20))
 
     }
     
     func addSettingsButton() {
         
-        if let path = NSBundle.mainBundle().pathForResource("config/DemoAppConfigs", ofType: "plist") {
-            if NSFileManager.defaultManager().fileExistsAtPath(path, isDirectory: nil) {
+        if let path = Bundle.main.path(forResource: "config/DemoAppConfigs", ofType: "plist") {
+            if FileManager.default.fileExists(atPath: path, isDirectory: nil) {
                 self.navigationItem.rightBarButtonItem = UIBarButtonItem(
                     image: self.getGearIconImage(),
-                    style: UIBarButtonItemStyle.Plain,
+                    style: UIBarButtonItemStyle.plain,
                     target: self,
-                    action: "settingsIconPressed"
+                    action: #selector(HomeViewController.settingsIconPressed)
                 )
             }
         }
@@ -241,15 +261,15 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     
     func initLocationManager(){
         
-        if (CLLocationManager.authorizationStatus() == .AuthorizedAlways){
-            BVLocationManager.registerForLocationUpdates(self)
-            if !BVSDKManager.sharedManager().apiKeyLocation.isEmpty {
+        if (CLLocationManager.authorizationStatus() == .authorizedAlways){
+            BVLocationManager.register(forLocationUpdates: self)
+            if !BVSDKManager.shared().apiKeyLocation.isEmpty {
                 BVLocationManager.startLocationUpdates()
             } else {
                 print("Not starting location manager due to missing BVSDKManager#apiKeyLocation. App will not recieve location events.")
             }
         } else {
-            BVLocationManager.unregisterForLocationUpdates(self)
+            BVLocationManager.unregister(forLocationUpdates: self)
         }
         
     }
@@ -262,7 +282,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         self.errorLabel.removeFromSuperview()
         
         let request = BVRecommendationsRequest(limit: 20)
-        self.recommendationsCollectionView.loadRequest(request, completionHandler: { (recommendations:[BVRecommendedProduct]) in
+        self.recommendationsCollectionView.load(request, completionHandler: { (recommendations:[BVRecommendedProduct]) in
             
             
             // remove loading icon
@@ -272,7 +292,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
             self.recommendationsCollectionView?.reloadData()
             self.refreshControl.endRefreshing()
             
-        }) { (error:NSError) in
+        }) { (error) in
             
             // remove loading icon
             self.spinner.removeFromSuperview()
@@ -286,23 +306,23 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         
     }
     
-    func addBorderToBottomOfCell(cell : UIView){
+    func addBorderToBottomOfCell(_ cell : UIView){
         
         let bottomBorder: CALayer = CALayer()
-        bottomBorder.borderColor = UIColor.groupTableViewBackgroundColor().CGColor
+        bottomBorder.borderColor = UIColor.groupTableViewBackground.cgColor
         bottomBorder.borderWidth = 1
-        bottomBorder.frame = CGRectMake(0, CGRectGetHeight(cell.frame), CGRectGetWidth(cell.frame), 1)
+        bottomBorder.frame = CGRect(x: 0, y: cell.frame.height, width: cell.frame.width, height: 1)
         cell.layer.addSublayer(bottomBorder)
         
     }
     
     func refreshLocationSelectionIfVisible(){
         
-        let visibleRows = self.recommendationsCollectionView.indexPathsForVisibleItems()
+        let visibleRows = self.recommendationsCollectionView.indexPathsForVisibleItems
         for currIndexPath in visibleRows {
             
-            if currIndexPath.cellType == .Location {
-                self.recommendationsCollectionView.reloadItemsAtIndexPaths([currIndexPath])
+            if currIndexPath.cellType == .location {
+                self.recommendationsCollectionView.reloadItems(at: [currIndexPath])
                 break
             }
         }
@@ -312,7 +332,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     
     // MARK: UICollectionViewDelegate / UICollectionViewDatasource
     
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
         if self.recommendations != nil && self.recommendations!.count > 0 {
             if (self.recommendations!.count > ADVERT_INDEX_PATH-2){
@@ -328,42 +348,42 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         
     }
     
-    func getRecommendationForIndexPath(indexPath: NSIndexPath) -> BVRecommendedProduct {
+    func getRecommendationForIndexPath(_ indexPath: IndexPath) -> BVRecommendedProduct {
         
-        let indexOffset = (indexPath.row > ADVERT_INDEX_PATH) ? 4 : 1
+        let indexOffset = ((indexPath as NSIndexPath).row > ADVERT_INDEX_PATH) ? 4 : 1
 
-        return self.recommendations![indexPath.row - indexOffset]
+        return self.recommendations![(indexPath as NSIndexPath).row - indexOffset]
         
     }
     
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: IndexPath) -> CGSize {
         
         switch indexPath.cellType {
-        case .Header:
+        case .header:
             return CGSize(
                 width: self.view.bounds.width,
                 height: HomeHeaderCollectionViewCell.preferredHeightForWidth(self.view.bounds.width)
             )
             
-        case .Location:
+        case .location:
             return CGSize(
                 width: self.view.bounds.width,
                 height: 44
             )
             
-        case .RecommendationHeader:
+        case .recommendationHeader:
             return CGSize(
                 width: self.view.bounds.width,
                 height: 22
             )
             
-        case .Advertisement:
+        case .advertisement:
             return CGSize(
                 width: self.view.bounds.width,
                 height: 200
             )
             
-        case .ProductRecommendation:
+        case .productRecommendation:
             let padding = CGFloat(8)
             let extraHeightPadding = CGFloat(24)
             return CGSize(
@@ -374,29 +394,29 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         
     }
     
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         switch indexPath.cellType {
         
-        case .Header:
+        case .header:
             
-            return collectionView.dequeueReusableCellWithReuseIdentifier("HomeHeaderCollectionViewCell", forIndexPath: indexPath) as! HomeHeaderCollectionViewCell
+            return collectionView.dequeueReusableCell(withReuseIdentifier: "HomeHeaderCollectionViewCell", for: indexPath) as! HomeHeaderCollectionViewCell
         
-        case .Location:
+        case .location:
             
-            let cell = collectionView.dequeueReusableCellWithReuseIdentifier("locationCell", forIndexPath: indexPath)
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "locationCell", for: indexPath)
             
             for view in cell.subviews {
                 view.removeFromSuperview() // clean out the previous cells
             }
             
             let locationIconHW : CGFloat = 33.0
-            let locationIcon = UIImageView(frame: CGRectMake(8, 0, locationIconHW, locationIconHW))
-            locationIcon.image = Util.getFontAwesomeIconImage(FAKFontAwesome.mapMarkerIconWithSize)
+            let locationIcon = UIImageView(frame: CGRect(x: 8, y: 0, width: locationIconHW, height: locationIconHW))
+            locationIcon.image = Util.getFontAwesomeIconImage(FAKFontAwesome.mapMarkerIcon(withSize:))
             cell.addSubview(locationIcon)
             
-            cell.backgroundColor = UIColor.whiteColor()
-            let label = UILabel(frame: CGRectMake(locationIconHW+16, 0, self.view.bounds.width-locationIconHW, locationIconHW))
+            cell.backgroundColor = UIColor.white
+            let label = UILabel(frame: CGRect(x: locationIconHW+16, y: 0, width: self.view.bounds.width-locationIconHW, height: locationIconHW))
             
             if let defaultCachedStore = LocationPreferenceUtils.getDefaultStore() {
                 label.text = "My Store: " + defaultCachedStore.city + ", " + defaultCachedStore.state
@@ -404,7 +424,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
                 label.text = "Set your default store location!"
             }
             
-            label.baselineAdjustment = .AlignCenters
+            label.baselineAdjustment = .alignCenters
             label.textColor = UIColor.bazaarvoiceNavy()
             cell.addSubview(label)
             
@@ -412,27 +432,27 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
             
             return cell
           
-        case .RecommendationHeader:
+        case .recommendationHeader:
             
-            let cell = collectionView.dequeueReusableCellWithReuseIdentifier("recommendationHeaderCell", forIndexPath: indexPath)
-            cell.backgroundColor = UIColor.whiteColor()
-            let label = UILabel(frame: CGRectMake(8, 0, self.view.bounds.width, 30))
-            label.baselineAdjustment = .AlignCenters
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "recommendationHeaderCell", for: indexPath)
+            cell.backgroundColor = UIColor.white
+            let label = UILabel(frame: CGRect(x: 8, y: 0, width: self.view.bounds.width, height: 30))
+            label.baselineAdjustment = .alignCenters
             label.text = "RECOMMENDED FOR YOU"
             label.textColor = UIColor.bazaarvoiceNavy()
             cell.addSubview(label)
             
             return cell
             
-        case .Advertisement:
+        case .advertisement:
             
             self.initAdvertisement()
             
-            return collectionView.dequeueReusableCellWithReuseIdentifier("HomeAdvertisementCollectionViewCell", forIndexPath: indexPath) as! HomeAdvertisementCollectionViewCell
+            return collectionView.dequeueReusableCell(withReuseIdentifier: "HomeAdvertisementCollectionViewCell", for: indexPath) as! HomeAdvertisementCollectionViewCell
         
         default:
             
-            let cell = collectionView.dequeueReusableCellWithReuseIdentifier("DemoCarouselCollectionViewCell", forIndexPath: indexPath) as! DemoCarouselCollectionViewCell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DemoCarouselCollectionViewCell", for: indexPath) as! DemoCarouselCollectionViewCell
             
             cell.bvRecommendedProduct = getRecommendationForIndexPath(indexPath)
             
@@ -443,12 +463,12 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     }
     
 
-    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        collectionView.deselectItemAtIndexPath(indexPath, animated: true)
+        collectionView.deselectItem(at: indexPath, animated: true)
         
         switch indexPath.cellType {
-        case .ProductRecommendation:
+        case .productRecommendation:
             
             let productView = NewProductPageViewController(
                 nibName:"NewProductPageViewController",
@@ -458,10 +478,10 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
             
             self.navigationController?.pushViewController(productView, animated: true)
         
-        case .Advertisement:
+        case .advertisement:
             print("Advertisement clicked")
 
-        case .Location:
+        case .location:
             
             let locationSettingsVC = LocationSettings(nibName:"LocationSettings", bundle: nil)
             
@@ -469,10 +489,10 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
             
             return
             
-        case .RecommendationHeader:
+        case .recommendationHeader:
             return
             
-        case .Header:
+        case .header:
             return
         }
         
@@ -480,19 +500,19 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     
     // MARK: GADNativeContentAdLoaderDelegate
     
-    func adLoader(adLoader: GADAdLoader!, didReceiveNativeContentAd nativeContentAd: GADNativeContentAd!) {
+    func adLoader(_ adLoader: GADAdLoader, didReceive nativeContentAd: GADNativeContentAd) {
         
         print("Received HomePage native ad")
         
-        if recommendationsCollectionView.cellForItemAtIndexPath(NSIndexPath(forRow: ADVERT_INDEX_PATH, inSection: 0)) != nil {
+        if recommendationsCollectionView.cellForItem(at: IndexPath(row: ADVERT_INDEX_PATH, section: 0)) != nil {
         
-            let nativeAdCell = recommendationsCollectionView.cellForItemAtIndexPath(NSIndexPath(forRow: ADVERT_INDEX_PATH, inSection: 0)) as! HomeAdvertisementCollectionViewCell
+            let nativeAdCell = recommendationsCollectionView.cellForItem(at: IndexPath(row: ADVERT_INDEX_PATH, section: 0)) as! HomeAdvertisementCollectionViewCell
             
             nativeAdCell.nativeContentAd = nativeContentAd
         }
     }
     
-    func adLoader(adLoader: GADAdLoader, didFailToReceiveAdWithError error: GADRequestError) {
+    func adLoader(_ adLoader: GADAdLoader, didFailToReceiveAdWithError error: GADRequestError) {
         print("Failed to receive advertisement: " + error.localizedDescription)
         self.adLoader = nil
 
@@ -501,11 +521,11 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     
     // MARK: BVLocationManagerDelegate
     
-    func didBeginVisit(visit: BVVisit) {
+    func didBegin(_ visit: BVVisit) {
         print("didBeginVisit ---> ", visit.description)
     }
     
-    func didEndVisit(visit: BVVisit) {
+    func didEnd(_ visit: BVVisit) {
         print("didEndVisit <---", visit.description)
     }
     
@@ -514,18 +534,18 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
 
 
 private enum CellType {
-    case Header, Location, Advertisement, RecommendationHeader, ProductRecommendation
+    case header, location, advertisement, recommendationHeader, productRecommendation
 }
 
-private extension NSIndexPath {
+private extension IndexPath {
     var cellType : CellType {
         get {
             switch row {
-                case 0: return .Header
-                case 1: return .Location
-                case 2: return .RecommendationHeader
-                case ADVERT_INDEX_PATH: return .Advertisement
-                default: return .ProductRecommendation
+                case 0: return .header
+                case 1: return .location
+                case 2: return .recommendationHeader
+                case ADVERT_INDEX_PATH: return .advertisement
+                default: return .productRecommendation
             }
         }
     }

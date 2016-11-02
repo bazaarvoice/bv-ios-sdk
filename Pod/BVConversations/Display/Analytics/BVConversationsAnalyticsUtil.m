@@ -133,9 +133,9 @@
     NSMutableDictionary* event = [self productPageViewEvent];
     event[@"productId"] = product.identifier;
     event[@"categoryId"] = product.categoryId;
-    event[@"numReview"] = [NSString stringWithFormat:@"%li", [product.includedReviews count]];
-    event[@"numQuestions"] = [NSString stringWithFormat:@"%li", [product.includedQuestions count]];
-    [[BVAnalyticsManager sharedManager] queueEvent:event];
+    event[@"numReview"] = [NSString stringWithFormat:@"%lu", (unsigned long)[product.includedReviews count]];
+    event[@"numQuestions"] = [NSString stringWithFormat:@"%lu", (unsigned long)[product.includedQuestions count]];
+    [[BVAnalyticsManager sharedManager] queuePageViewEventDict:event];
 
 }
     
@@ -167,7 +167,7 @@
     if (numQuestions != nil) {
         event[@"numQuestions"] = [NSString stringWithFormat:@"%li", [numQuestions longValue]];
     }
-    [[BVAnalyticsManager sharedManager] queueEvent:event];
+    [[BVAnalyticsManager sharedManager] queuePageViewEventDict:event];
     
 }
 

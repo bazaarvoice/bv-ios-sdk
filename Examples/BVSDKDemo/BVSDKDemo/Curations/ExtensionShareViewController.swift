@@ -18,14 +18,14 @@ class ExtensionShareViewController: BaseDemoComposeServiceViewController {
         
         self.configureSDK()
         
-        MockDataManager.sharedInstance
+        _ = MockDataManager.sharedInstance
     }
     
     // In the event this class is loaded from an extension, the BVSDKManager will be initiazed.
     func configureSDK(){
         
-        let mgr = BVSDKManager.sharedManager()
-        mgr.setLogLevel(BVLogLevel.Error)
+        let mgr = BVSDKManager.shared()
+        mgr.setLogLevel(BVLogLevel.error)
         mgr.staging = CurationsDemoConstants.BVSDK_IS_STAGING;
         mgr.apiKeyCurations = CurationsDemoConstants.API_KEY_CURATIONS
         mgr.clientId = CurationsDemoConstants.CLIENT_ID
@@ -48,16 +48,16 @@ class ExtensionShareViewController: BaseDemoComposeServiceViewController {
             for attachment in item.attachments as! [NSItemProvider] {
                 if attachment.hasItemConformingToTypeIdentifier(contentType) {
                     
-                    attachment.loadItemForTypeIdentifier(contentType, options: nil, completionHandler: { (data, error) -> Void in
+                    attachment.loadItem(forTypeIdentifier: contentType, options: nil, completionHandler: { (data, error) -> Void in
                         // completion
                         if error == nil {
                             
-                            let url = data as! NSURL
-                            if let imageData = NSData(contentsOfURL: url) {
+                            let url = data as! URL
+                            if let imageData = try? Data(contentsOf: url) {
                                 let selectedImage = UIImage(data: imageData)
                                 
                                 
-                                self.extensionContext!.completeRequestReturningItems([], completionHandler: { (expired) in
+                                self.extensionContext!.completeRequest(returningItems: [], completionHandler: { (expired) in
                                     
                                     self.postSelectedPhoto(selectedImage!)
                                 
@@ -67,15 +67,15 @@ class ExtensionShareViewController: BaseDemoComposeServiceViewController {
                             
                         } else {
 
-                            let alert = UIAlertController(title: "Error", message: "Error loading image", preferredStyle: .Alert)
+                            let alert = UIAlertController(title: "Error", message: "Error loading image", preferredStyle: .alert)
 
-                            let action = UIAlertAction(title: "Error", style: .Cancel) { _ in
+                            let action = UIAlertAction(title: "Error", style: .cancel) { _ in
                                 
-                                self.extensionContext!.completeRequestReturningItems([], completionHandler: nil)
+                                self.extensionContext!.completeRequest(returningItems: [], completionHandler: nil)
                             }
                             
                             alert.addAction(action)
-                            self.presentViewController(alert, animated: true, completion: nil)
+                            self.present(alert, animated: true, completion: nil)
                         }
                     })
                                         
@@ -87,29 +87,29 @@ class ExtensionShareViewController: BaseDemoComposeServiceViewController {
     }
 
     // post the image to curations using an anonymous account
-    private func postSelectedPhoto(image: UIImage){
+    private func postSelectedPhoto(_ image: UIImage){
         
-        self.postRequest = BVCurationsAddPostRequest(groups: CurationsDemoConstants.DEFAULT_FEED_GROUPS_CURATIONS, withAuthorAlias: "anonymous", withToken: "anon_user", withText: self.textView.text, withImage:image)
+        self.postRequest = BVCurationsAddPostRequest(groups: CurationsDemoConstants.DEFAULT_FEED_GROUPS_CURATIONS, withAuthorAlias: "anonymous", withToken: "anon_user", withText: self.textView.text, with:image)
         
         let uploadAPI = BVCurationsPhotoUploader()
         
         // Upload the photo with the request!
-        uploadAPI.submitCurationsContentWithParams(postRequest, completionHandler: { (void) -> Void in
+        uploadAPI.submitCurationsContent(withParams: postRequest, completionHandler: { (void) -> Void in
             
             // Success
             
             print("Photo upload success")
             
             // completion
-            self.extensionContext!.completeRequestReturningItems([], completionHandler: nil)
+            self.extensionContext!.completeRequest(returningItems: [], completionHandler: nil)
             
             }) { (error) -> Void in
                 
                 // Error
-                print("Photo upload error: " + error.localizedDescription)
+                print("Photo upload error: " + (error?.localizedDescription)!)
                 
                 // completion
-                self.extensionContext!.completeRequestReturningItems([], completionHandler: nil)
+                self.extensionContext!.completeRequest(returningItems: [], completionHandler: nil)
         }
         
     }

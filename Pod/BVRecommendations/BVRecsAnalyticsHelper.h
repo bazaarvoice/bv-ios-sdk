@@ -59,10 +59,7 @@ typedef NS_ENUM(NSInteger, BVProductRecommendationWidget) {
 /**
     Queue an analytic event for a recommendation widigit becoming visible on screen.
  
-    @param productId - Product Id for the product. May be null. May not be combined with the category id.
-    @param categoryId - Category Id used to fetch the recommendations. May be null, but not presented with the product id.
-    @param clientId - The client Id used with the API call to fetch the recommendations.
-    @param numRecommendations - The number of recommendations used to fill the widget
+    @param recommendationsRequest - The BVRecommendationsRequest use to construct the request parameters
     @param widgetType - One of enum of BVProductRecommendationWidget
  
     @availability 3.0.1 and later

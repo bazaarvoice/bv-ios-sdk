@@ -31,7 +31,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>34</string>
+	<string>37</string>
 	<key>Fabric</key>
 	<dict>
 		<key>APIKey</key>
@@ -65,6 +65,8 @@
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
 	</dict>
+	<key>NSBluetoothPeripheralUsageDescription</key>
+	<string>Used for location aware communications.</string>
 	<key>NSCameraUsageDescription</key>
 	<string>Provide camera access to allow the BVSDK to upload photos.</string>
 	<key>NSLocationAlwaysUsageDescription</key>

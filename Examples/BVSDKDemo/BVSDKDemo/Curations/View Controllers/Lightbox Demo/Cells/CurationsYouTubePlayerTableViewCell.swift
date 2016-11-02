@@ -23,7 +23,7 @@ class CurationsYouTubePlayerTableViewCell: UITableViewCell {
             
             let playerVars =  ["playsinline": true, "controls": false, "showinfo": true, "modestbraning": true, "autohide": true ]
             
-            self.playerView.loadWithVideoId(self.video.token, playerVars: playerVars)
+            self.playerView.load(withVideoId: self.video.token, playerVars: playerVars)
             
         }
         
@@ -32,14 +32,14 @@ class CurationsYouTubePlayerTableViewCell: UITableViewCell {
     var hasNext : Bool! {
         
         didSet {
-            self.rightChevronImageView.hidden = !self.hasNext!
+            self.rightChevronImageView.isHidden = !self.hasNext!
         }
         
     }
     var hasPrev : Bool! {
         
         didSet {
-            self.leftChevronImageView.hidden = !self.hasPrev!
+            self.leftChevronImageView.isHidden = !self.hasPrev!
         }
         
     }

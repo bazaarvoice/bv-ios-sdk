@@ -30,7 +30,7 @@ class StoreLocationTableViewCell: UITableViewCell {
     
     @IBOutlet weak var numReviewsLabel: UILabel!
     
-    var onNumReviewsLabelTapped : ((store : BVStore) -> Void)? = nil
+    var onNumReviewsLabelTapped : ((_ store : BVStore) -> Void)? = nil
     
     var store : BVStore! {
         
@@ -52,9 +52,9 @@ class StoreLocationTableViewCell: UITableViewCell {
             }
             
             self.starRating.value =  ratingValue
-            self.numReviewsLabel.text = "(\(store.reviewStatistics!.totalReviewCount!.integerValue))"
-            self.numReviewsLabel.userInteractionEnabled = true
-            let tapGesture = UITapGestureRecognizer(target: self, action: "didTapNumReviewsLabel:")
+            self.numReviewsLabel.text = "(\(store.reviewStatistics!.totalReviewCount!.intValue))"
+            self.numReviewsLabel.isUserInteractionEnabled = true
+            let tapGesture = UITapGestureRecognizer(target: self, action: #selector(StoreLocationTableViewCell.didTapNumReviewsLabel(_:)))
             self.numReviewsLabel.addGestureRecognizer(tapGesture)
             
             if store.storeLocation!.phone != nil {
@@ -74,25 +74,25 @@ class StoreLocationTableViewCell: UITableViewCell {
         
     }
     
-    @IBAction func tappedReviewsHotSpot(sender: AnyObject) {
-        onNumReviewsLabelTapped!(store: self.store)
+    @IBAction func tappedReviewsHotSpot(_ sender: AnyObject) {
+        onNumReviewsLabelTapped!(self.store)
     }
     
     
-    func didTapNumReviewsLabel(sender: UITapGestureRecognizer)
+    func didTapNumReviewsLabel(_ sender: UITapGestureRecognizer)
     {
         if self.onNumReviewsLabelTapped != nil {
-            onNumReviewsLabelTapped!(store: self.store)
+            onNumReviewsLabelTapped!(self.store)
         }
     }
     
     func setCheckOff(){
-        self.selectedIcon.image = Util.getFontAwesomeIconImage(FAKFontAwesome.circleOIconWithSize)
+        self.selectedIcon.image = Util.getFontAwesomeIconImage(FAKFontAwesome.circleOIcon(withSize:))
     }
     
     func setCheckOn(){
         
-        self.selectedIcon.image = Util.getFontAwesomeIconImage(FAKFontAwesome.checkCircleOIconWithSize, color: UIColor.bazaarvoiceTeal(), alpha: 1.0, size: 20)
+        self.selectedIcon.image = Util.getFontAwesomeIconImage(FAKFontAwesome.checkCircleOIcon(withSize:), color: UIColor.bazaarvoiceTeal(), alpha: 1.0, size: 20)
         
     }
     
@@ -101,7 +101,7 @@ class StoreLocationTableViewCell: UITableViewCell {
         // Initialization code
     }
 
-    override func setSelected(selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state

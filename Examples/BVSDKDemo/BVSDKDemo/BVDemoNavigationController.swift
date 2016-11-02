@@ -12,11 +12,11 @@ class BVDemoNavigationController: UINavigationController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationBar.setBackgroundImage(UIImage(), forBarPosition: .Any, barMetrics: .Default)
+        self.navigationBar.setBackgroundImage(UIImage(), for: .any, barMetrics: .default)
         self.navigationBar.shadowImage = UIImage()
-        self.navigationBar.translucent = false
+        self.navigationBar.isTranslucent = false
         self.navigationBar.barTintColor = UIColor.bazaarvoiceNavy()
-        self.navigationBar.tintColor = UIColor.whiteColor()
-        self.navigationBar.barStyle = .Black;
+        self.navigationBar.tintColor = UIColor.white
+        self.navigationBar.barStyle = .black;
     }    
 }

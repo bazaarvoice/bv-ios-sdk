@@ -24,13 +24,13 @@ class CurationsFeedItemDetailTableViewController: UITableViewController {
         
         ProfileUtils.trackViewController(self)
         
-        self.tableView.registerNib(UINib(nibName: "CurationsFeedItemDetailCell", bundle: nil), forCellReuseIdentifier: "CurationsFeedItemDetailCell")
+        self.tableView.register(UINib(nibName: "CurationsFeedItemDetailCell", bundle: nil), forCellReuseIdentifier: "CurationsFeedItemDetailCell")
         
-        self.tableView.registerNib(UINib(nibName: "ProductDetailTableViewCell", bundle: nil), forCellReuseIdentifier: "ProductDetailTableViewCell")
+        self.tableView.register(UINib(nibName: "ProductDetailTableViewCell", bundle: nil), forCellReuseIdentifier: "ProductDetailTableViewCell")
         
-        self.tableView.registerNib(UINib(nibName: "CurationsImageTableViewCell", bundle: nil), forCellReuseIdentifier: "CurationsImageTableViewCell")
+        self.tableView.register(UINib(nibName: "CurationsImageTableViewCell", bundle: nil), forCellReuseIdentifier: "CurationsImageTableViewCell")
         
-        self.tableView.registerNib(UINib(nibName: "CurationsYouTubePlayerTableViewCell", bundle: nil), forCellReuseIdentifier: "CurationsYouTubePlayerTableViewCell")
+        self.tableView.register(UINib(nibName: "CurationsYouTubePlayerTableViewCell", bundle: nil), forCellReuseIdentifier: "CurationsYouTubePlayerTableViewCell")
         
     }
     
@@ -41,9 +41,9 @@ class CurationsFeedItemDetailTableViewController: UITableViewController {
 
     // MARK: Table view delegate
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        if indexPath.section == 0 && indexPath.row == 0 {
+        if (indexPath as NSIndexPath).section == 0 && (indexPath as NSIndexPath).row == 0 {
             
             if feedItem!.videos.count > 0 {
     
@@ -53,11 +53,11 @@ class CurationsFeedItemDetailTableViewController: UITableViewController {
                     
                     // instagram - play video with AV player
                     
-                    let videoURL = NSURL(string: video.remoteUrl)
-                    let player = AVPlayer(URL: videoURL!)
+                    let videoURL = URL(string: video.remoteUrl)
+                    let player = AVPlayer(url: videoURL!)
                     let playerViewController = AVPlayerViewController()
                     playerViewController.player = player
-                    self.presentViewController(playerViewController, animated: true) {
+                    self.present(playerViewController, animated: true) {
                         playerViewController.player!.play()
                     }
 
@@ -65,7 +65,7 @@ class CurationsFeedItemDetailTableViewController: UITableViewController {
                     
                     // Have not yet tested out this video support.
                     
-                    SweetAlert().showAlert("\(video.origin) is not yet supported in the demo app.", subTitle: "This feature is currenlty under development.", style: AlertStyle.Warning)
+                    _ = SweetAlert().showAlert("\(video.origin) is not yet supported in the demo app.", subTitle: "This feature is currenlty under development.", style: AlertStyle.warning)
                     
                 }
                 
@@ -77,13 +77,13 @@ class CurationsFeedItemDetailTableViewController: UITableViewController {
     
     // MARK: - Table view data source
     
-    override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         if section == 1 {
-            let frame = CGRectMake(0, 0, tableView.bounds.width, 22)
+            let frame = CGRect(x: 0, y: 0, width: tableView.bounds.width, height: 22)
             let view = UIView(frame: frame)
-            view.backgroundColor = UIColor.clearColor()
+            view.backgroundColor = UIColor.clear
         
-            let labelFrame = CGRectMake(8, 0, tableView.bounds.width, 22)
+            let labelFrame = CGRect(x: 8, y: 0, width: tableView.bounds.width, height: 22)
             let titleLabel = UILabel(frame: labelFrame)
             titleLabel.text = "Shop Now"
             view.addSubview(titleLabel)
@@ -95,7 +95,7 @@ class CurationsFeedItemDetailTableViewController: UITableViewController {
     }
     
     
-    override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         
         if (section == 0) {
             return 3
@@ -109,11 +109,11 @@ class CurationsFeedItemDetailTableViewController: UITableViewController {
     }
     
     
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return (feedItem?.referencedProducts.count)! > 0 ? 2 : 1
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         if section == 0 {
             return 2
@@ -126,41 +126,41 @@ class CurationsFeedItemDetailTableViewController: UITableViewController {
         
     }
 
-    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
     {
-        if indexPath.section == 0 {
+        if (indexPath as NSIndexPath).section == 0 {
            
-            if (indexPath.row == 0){
+            if ((indexPath as NSIndexPath).row == 0){
                 
-                let imageCell = tableView.dequeueReusableCellWithIdentifier("CurationsImageTableViewCell") as! CurationsImageTableViewCell
+                let imageCell = tableView.dequeueReusableCell(withIdentifier: "CurationsImageTableViewCell") as! CurationsImageTableViewCell
             
                 return imageCell.bounds.size.height
                 
-            } else if (indexPath.row == 1){
+            } else if ((indexPath as NSIndexPath).row == 1){
             
-                let detail1Cell = tableView.dequeueReusableCellWithIdentifier("CurationsFeedItemDetailCell") as! CurationsFeedItemDetailCell
+                let detail1Cell = tableView.dequeueReusableCell(withIdentifier: "CurationsFeedItemDetailCell") as! CurationsFeedItemDetailCell
                 return detail1Cell.bounds.size.height
                 
             }
 
-        } else if indexPath.section == 1 {
+        } else if (indexPath as NSIndexPath).section == 1 {
             
-            let productCell = tableView.dequeueReusableCellWithIdentifier("ProductDetailTableViewCell") as! ProductDetailTableViewCell
+            let productCell = tableView.dequeueReusableCell(withIdentifier: "ProductDetailTableViewCell") as! ProductDetailTableViewCell
             return productCell.bounds.size.height
         }
         
         return 0
     }
 
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
 
-        if (indexPath.section == 0){
+        if ((indexPath as NSIndexPath).section == 0){
             
             // Curations post meta-info
             // detail summary of the curations item. This always appears
             
-            if (indexPath.row == 0){
+            if ((indexPath as NSIndexPath).row == 0){
                 
                 var video : BVCurationsVideo?
                 
@@ -173,7 +173,7 @@ class CurationsFeedItemDetailTableViewController: UITableViewController {
                 if (video != nil && video?.origin == "youtube"){
                     
                     // image view
-                    let youTubeCell = tableView.dequeueReusableCellWithIdentifier("CurationsYouTubePlayerTableViewCell") as! CurationsYouTubePlayerTableViewCell
+                    let youTubeCell = tableView.dequeueReusableCell(withIdentifier: "CurationsYouTubePlayerTableViewCell") as! CurationsYouTubePlayerTableViewCell
                     
                     //youTubeCell.feedItem = self.feedItem!
                     
@@ -188,7 +188,7 @@ class CurationsFeedItemDetailTableViewController: UITableViewController {
                 } else {
                     
                     // image view
-                    let imageCell = tableView.dequeueReusableCellWithIdentifier("CurationsImageTableViewCell") as! CurationsImageTableViewCell
+                    let imageCell = tableView.dequeueReusableCell(withIdentifier: "CurationsImageTableViewCell") as! CurationsImageTableViewCell
                     
                     imageCell.feedItem = self.feedItem!
                     
@@ -200,11 +200,11 @@ class CurationsFeedItemDetailTableViewController: UITableViewController {
                     return imageCell
                 }
                 
-            } else if (indexPath.row == 1){
+            } else if ((indexPath as NSIndexPath).row == 1){
                 
                 // social post details
                 
-                let detail1Cell = tableView.dequeueReusableCellWithIdentifier("CurationsFeedItemDetailCell") as! CurationsFeedItemDetailCell
+                let detail1Cell = tableView.dequeueReusableCell(withIdentifier: "CurationsFeedItemDetailCell") as! CurationsFeedItemDetailCell
                 detail1Cell.feedItem = self.feedItem!
                 
                 // Demonstration on getting user events to re-share contributions
@@ -214,31 +214,31 @@ class CurationsFeedItemDetailTableViewController: UITableViewController {
                     
                     switch socialOutlet {
                     
-                        case SocialOutlet.Pinterest:
+                        case SocialOutlet.pinterest:
                             itemType = "Pinterest"
                             break
                         
-                        case SocialOutlet.Twitter:
+                        case SocialOutlet.twitter:
                             itemType = "Twitter"
                             break
                           
-                        case SocialOutlet.Email:
+                        case SocialOutlet.email:
                             itemType = "Email"
                             break
                          
-                        case SocialOutlet.Retweet:
+                        case SocialOutlet.retweet:
                             itemType = "Retweet"
                             break
                            
-                        case SocialOutlet.ReplyComment:
+                        case SocialOutlet.replyComment:
                             itemType = "ReplyComment"
                             break
                         
-                        case .UserProfile:
+                        case .userProfile:
                             itemType = "UserProfile"
                             if (feedItemSelected.author.profile != nil){
-                                let url = NSURL(string: feedItemSelected.author.profile)
-                                UIApplication.sharedApplication().openURL(url!)
+                                let url = URL(string: feedItemSelected.author.profile)
+                                UIApplication.shared.openURL(url!)
                             } else {
                                 print("ERROR: Nil author profile.")
                             }
@@ -262,12 +262,12 @@ class CurationsFeedItemDetailTableViewController: UITableViewController {
             // Refernced Product details
             // Product info tagged in this feed. This will not be present in all feeds
             
-            let productDetailCell = tableView.dequeueReusableCellWithIdentifier("ProductDetailTableViewCell") as! ProductDetailTableViewCell!
-            let product = feedItem!.referencedProducts[indexPath.row]
-            productDetailCell.product = product
+            let productDetailCell = tableView.dequeueReusableCell(withIdentifier: "ProductDetailTableViewCell") as! ProductDetailTableViewCell!
+            let product = feedItem!.referencedProducts[(indexPath as NSIndexPath).row]
+            productDetailCell?.product = product
             
             // utilize closure to get the product the user tapped the "Shop Now" button on.
-            productDetailCell.onShopNowButtonTapped = { (selectedProduct) -> Void in
+            productDetailCell?.onShopNowButtonTapped = { (selectedProduct) -> Void in
                 
                 print("Shop Now Selected: " + selectedProduct.description)
                 

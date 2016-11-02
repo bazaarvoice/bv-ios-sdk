@@ -13,12 +13,12 @@ private var feedItemAssociationKey: UInt8 = 0
 
 extension JPSThumbnailAnnotation {
 
-    convenience init(curationsFeedItem: BVCurationsFeedItem, action: () -> Void ) {
+    convenience init(curationsFeedItem: BVCurationsFeedItem, action: @escaping () -> Void ) {
         let thumbNail = JPSThumbnail()
 
         thumbNail.title = curationsFeedItem.author.username
         thumbNail.subtitle = curationsFeedItem.channel
-        thumbNail.imageURL = NSURL(string: curationsFeedItem.photos[0].imageServiceUrl)
+        thumbNail.imageURL = URL(string: curationsFeedItem.photos[0].imageServiceUrl)
         thumbNail.coordinate = CLLocationCoordinate2DMake(curationsFeedItem.coordinates.latitude.doubleValue, curationsFeedItem.coordinates.longitude.doubleValue)
         
         thumbNail.disclosureBlock = {

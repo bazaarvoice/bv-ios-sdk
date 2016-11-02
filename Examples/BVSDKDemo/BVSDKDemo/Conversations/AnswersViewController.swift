@@ -13,12 +13,12 @@ class AnswersViewController: UIViewController, UITableViewDataSource, UITableVie
     
     @IBOutlet weak var tableView: BVAnswersTableView!
     @IBOutlet weak var header : ProductDetailHeaderView!
-    var spinner = Util.createSpinner(UIColor.bazaarvoiceNavy(), size: CGSizeMake(44,44), padding: 0)
+    var spinner = Util.createSpinner(UIColor.bazaarvoiceNavy(), size: CGSize(width: 44,height: 44), padding: 0)
     
     let product : BVRecommendedProduct
     let question : BVQuestion
     
-    init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?, product: BVRecommendedProduct, question: BVQuestion) {
+    init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?, product: BVRecommendedProduct, question: BVQuestion) {
         self.question = question
         self.product = product
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
@@ -46,25 +46,25 @@ class AnswersViewController: UIViewController, UITableViewDataSource, UITableVie
         tableView.rowHeight = UITableViewAutomaticDimension
         
         let nib1 = UINib(nibName: "AnswerListHeaderCell", bundle: nil)
-        tableView.registerNib(nib1, forCellReuseIdentifier: "AnswerListHeaderCell")
+        tableView.register(nib1, forCellReuseIdentifier: "AnswerListHeaderCell")
         
         let nib2 = UINib(nibName: "ProductPageButtonCell", bundle: nil)
-        tableView.registerNib(nib2, forCellReuseIdentifier: "ProductPageButtonCell")
+        tableView.register(nib2, forCellReuseIdentifier: "ProductPageButtonCell")
 
         let nib3 = UINib(nibName: "AnswerTableViewCell", bundle: nil)
-        tableView.registerNib(nib3, forCellReuseIdentifier: "AnswerTableViewCell")
+        tableView.register(nib3, forCellReuseIdentifier: "AnswerTableViewCell")
         
     }
 
     // MARK: - Table view data source
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
      
         return 2
         
     }
 
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     
         if section == 0 {
             return 2
@@ -75,12 +75,12 @@ class AnswersViewController: UIViewController, UITableViewDataSource, UITableVie
         
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if indexPath.section == 0 {
             
             if indexPath.row == 0 {
-                let cell = tableView.dequeueReusableCellWithIdentifier("AnswerListHeaderCell") as! AnswerListHeaderCell
+                let cell = tableView.dequeueReusableCell(withIdentifier: "AnswerListHeaderCell") as! AnswerListHeaderCell
                 
                 
                 cell.question = question
@@ -88,13 +88,13 @@ class AnswersViewController: UIViewController, UITableViewDataSource, UITableVie
                 return cell
             }
             else {
-                let cell = tableView.dequeueReusableCellWithIdentifier("ProductPageButtonCell") as! ProductPageButtonCell
+                let cell = tableView.dequeueReusableCell(withIdentifier: "ProductPageButtonCell") as! ProductPageButtonCell
                 
-                cell.button.setTitle("Give your answer!", forState: .Normal)
-                cell.setCustomLeftIcon(FAKFontAwesome.plusIconWithSize)
-                cell.setCustomRightIcon(FAKFontAwesome.chevronRightIconWithSize)
-                cell.button.removeTarget(nil, action: nil, forControlEvents: .AllEvents)
-                cell.button.addTarget(self, action: "writeAnAnswerTapped", forControlEvents: .TouchUpInside)
+                cell.button.setTitle("Give your answer!", for: UIControlState())
+                cell.setCustomLeftIcon(FAKFontAwesome.plusIcon(withSize:))
+                cell.setCustomRightIcon(FAKFontAwesome.chevronRightIcon(withSize:))
+                cell.button.removeTarget(nil, action: nil, for: .allEvents)
+                cell.button.addTarget(self, action: #selector(AnswersViewController.writeAnAnswerTapped), for: .touchUpInside)
                 
                 return cell
             }
@@ -102,7 +102,7 @@ class AnswersViewController: UIViewController, UITableViewDataSource, UITableVie
         }
         
         else {
-            let cell = tableView.dequeueReusableCellWithIdentifier("AnswerTableViewCell") as! AnswerTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "AnswerTableViewCell") as! AnswerTableViewCell
             
             cell.answer = question.answers[indexPath.row]
             
