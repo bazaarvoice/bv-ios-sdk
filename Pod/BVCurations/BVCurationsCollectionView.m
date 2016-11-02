@@ -5,13 +5,13 @@
 //  Copyright © 2016 Bazaarvoice. All rights reserved.
 //
 
+#import "BVCurations.h"
 #import "BVCurationsCollectionView.h"
 #import "BVMessageInterceptor.h"
 #import "BVCurationsCollectionViewCell.h"
 #import "BVCurationsFeedItem.h"
 #import "BVCurationsAnalyticsHelper.h"
 #import "BVCurationsFeedLoader.h"
-#import "BVSDK.h"
 
 @interface BVCurationsCollectionView()<UICollectionViewDelegate, UICollectionViewDataSource>{
     BVMessageInterceptor* delegate_interceptor;
@@ -163,7 +163,7 @@
 
 
 +(NSString*)formatIndex:(NSIndexPath*)indexPath {
-    return [NSString stringWithFormat:@"%li:%li", indexPath.section, indexPath.row];
+    return [NSString stringWithFormat:@"%li:%li", (long)indexPath.section, (long)indexPath.row];
 }
 
 #pragma mark UICollectionViewDelegate

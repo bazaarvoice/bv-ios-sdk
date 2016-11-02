@@ -29,14 +29,14 @@ class CurationsPhotoMapViewController: UIViewController, MKMapViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Curations Photo Map"
-        btnImage.image = btnImage.image?.imageWithRenderingMode(.AlwaysTemplate)
-        btnImage.tintColor = UIColor.redColor()
-        btnImage.backgroundColor = UIColor.whiteColor()
+        btnImage.image = btnImage.image?.withRenderingMode(.alwaysTemplate)
+        btnImage.tintColor = UIColor.red
+        btnImage.backgroundColor = UIColor.white
         btnImage.layer.cornerRadius = btnImage.frame.width / 2
         mapView.addAnnotations(self.annotations)
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         if !hasShownDefault {
             hasShownDefault = true
             /*
@@ -65,7 +65,7 @@ class CurationsPhotoMapViewController: UIViewController, MKMapViewDelegate {
         for feedItem in self.curationsFeed {
             let location = feedItem.coordinates
             
-            if let _ = location.longitude, _ = location.latitude, _ = feedItem.photos{
+            if let _ = location?.longitude, let _ = location?.latitude, let _ = feedItem.photos{
                 if feedItem.photos.count == 0 {
                     continue; // skip anything that doesn't have any image
                 }
@@ -89,14 +89,14 @@ class CurationsPhotoMapViewController: UIViewController, MKMapViewDelegate {
         return annotationThumbs
     }()
     
-    private func groupFeedItem(feedItem: BVCurationsFeedItem){
+    private func groupFeedItem(_ feedItem: BVCurationsFeedItem){
         var itemGroup : [BVCurationsFeedItem]?
         for group in groupedFeedItems {
             for item in group {
                 if getDistanceBetween(feedItem, feedItem2: item) < distanceThreshold {
                     itemGroup = group
-                    let idx = groupedFeedItems.indexOf({$0 == itemGroup!})
-                    groupedFeedItems.removeAtIndex(idx!)
+                    let idx = groupedFeedItems.index(where: {$0 == itemGroup!})
+                    groupedFeedItems.remove(at: idx!)
                     break
                 }
             }
@@ -113,29 +113,29 @@ class CurationsPhotoMapViewController: UIViewController, MKMapViewDelegate {
         groupedFeedItems.append(itemGroup!)
     }
     
-    private func getDistanceBetween(feedItem1: BVCurationsFeedItem, feedItem2: BVCurationsFeedItem) -> Double {
+    private func getDistanceBetween(_ feedItem1: BVCurationsFeedItem, feedItem2: BVCurationsFeedItem) -> Double {
         let loc1 = CLLocation(latitude: feedItem1.coordinates.latitude.doubleValue, longitude: feedItem1.coordinates.longitude.doubleValue)
         let loc2 = CLLocation(latitude: feedItem2.coordinates.latitude.doubleValue, longitude: feedItem2.coordinates.longitude.doubleValue)
         
-        return loc1.distanceFromLocation(loc2)
+        return loc1.distance(from: loc2)
     }
     
     // MARK: MKMapViewDelegate
-    func mapView(mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
+    func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
         if !animated {
             shouldHideZoomout(false)
         }
     }
     
-    func mapView(mapView: MKMapView, didSelectAnnotationView view: MKAnnotationView) {
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         shouldHideZoomout(false)
-        if let jpsView = view as? JPSThumbnailAnnotationView, annotation = view.annotation as? JPSThumbnailAnnotation {
+        if let jpsView = view as? JPSThumbnailAnnotationView, let annotation = view.annotation as? JPSThumbnailAnnotation {
             let feedItem = annotation.curationsFeedItem
             
             if mapView.region.span.latitudeDelta < 2.0 {
-                jpsView.didSelectAnnotationViewInMap(mapView)
-                let loc = feedItem.coordinates;
-                let region = MKCoordinateRegionMake(CLLocationCoordinate2D(latitude: loc.latitude!.doubleValue, longitude: loc.longitude!.doubleValue), MKCoordinateSpanMake(storeZoom, storeZoom))
+                jpsView.didSelectAnnotationView(inMap: mapView)
+                let loc = feedItem?.coordinates;
+                let region = MKCoordinateRegionMake(CLLocationCoordinate2D(latitude: (loc?.latitude!.doubleValue)!, longitude: (loc?.longitude!.doubleValue)!), MKCoordinateSpanMake(storeZoom, storeZoom))
                 mapView.setRegion(region, animated: true)
             }else {
                 mapView.deselectAnnotation(annotation, animated: false)
@@ -190,26 +190,26 @@ class CurationsPhotoMapViewController: UIViewController, MKMapViewDelegate {
         }
     }
     
-    func mapView(mapView: MKMapView, didDeselectAnnotationView view: MKAnnotationView) {
+    func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
         if let jpsView = view as? JPSThumbnailAnnotationView {
-                jpsView.didDeselectAnnotationViewInMap(mapView)
+                jpsView.didDeselectAnnotationView(inMap: mapView)
         }
     }
     
-    func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         
         if let jpsAnnotation = annotation as? JPSThumbnailAnnotation {
-            return jpsAnnotation.annotationViewInMap(mapView)
+            return jpsAnnotation.annotationView(inMap: mapView)
         }
         return nil
         
     }
     
-    @IBAction internal func resetZoomAnimated(sender: UIButton?) {
+    @IBAction internal func resetZoomAnimated(_ sender: UIButton?) {
         resetZoom(true)
     }
     
-    private func resetZoom(animated: Bool) {
+    private func resetZoom(_ animated: Bool) {
         
         if previousRegion != nil && mapView.region.span.latitudeDelta < minGroupZoom  {
             mapView.setRegion(previousRegion!, animated: animated)
@@ -222,8 +222,8 @@ class CurationsPhotoMapViewController: UIViewController, MKMapViewDelegate {
         }
     }
     
-    private func shouldHideZoomout(shouldHide:Bool) {
-        zoomOutBtn.hidden = shouldHide
-        btnImage.hidden = shouldHide
+    private func shouldHideZoomout(_ shouldHide:Bool) {
+        zoomOutBtn.isHidden = shouldHide
+        btnImage.isHidden = shouldHide
     }
 }

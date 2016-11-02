@@ -15,17 +15,24 @@ class StoreRatingTableViewCell: EditablePropertyTableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        selectionStyle = .None
-        starView?.addObserver(self, forKeyPath: "value", options: [.New], context: nil)
+        selectionStyle = .none
+        starView?.addObserver(self, forKeyPath: "value", options: [.new], context: nil)
     }
     
-    override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
-        if object === starView {
-            let val = Int(starView!.value)
-            self.object.setValue(val, forKeyPath: self.keyPath)
-            starLbl?.text = String(format: "I Rate This Store %d %@", val, val > 1 ? "Stars" : "Star")
-        }else {
-            super.observeValueForKeyPath(keyPath, ofObject: object, change: change, context: context)
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        
+        guard object is HCSStarRatingView else {
+            if (context != nil) {
+                super.observeValue(forKeyPath: keyPath, of: object, change: change, context: context)
+                return
+            }
+            
+            return
         }
+        
+        let val = Int(starView!.value)
+        self.object.setValue(val, forKeyPath: self.keyPath)
+        starLbl?.text = String(format: "I Rate This Store %d %@", val, val > 1 ? "Stars" : "Star")
+        
     }
 }

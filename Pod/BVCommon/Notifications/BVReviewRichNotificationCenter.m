@@ -36,9 +36,9 @@
 - (void)addNotificationCategories:(BVStoreReviewNotificationProperties *)notificationProperties {
     
     UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
-    UNNotificationAction *replyAction = [UNNotificationAction actionWithIdentifier:ID_REPLY title:notificationProperties.reviewPromptYesReview options:@[]];
-    UNNotificationAction *remindAction = [UNNotificationAction actionWithIdentifier:ID_REMIND title:notificationProperties.reviewPromptRemindText options:@[]];
-    UNNotificationAction *dismissAction = [UNNotificationAction actionWithIdentifier:ID_DISMISS title:notificationProperties.reviewPromtNoReview options:@[]];
+    UNNotificationAction *replyAction = [UNNotificationAction actionWithIdentifier:ID_REPLY title:notificationProperties.reviewPromptYesReview options:0];
+    UNNotificationAction *remindAction = [UNNotificationAction actionWithIdentifier:ID_REMIND title:notificationProperties.reviewPromptRemindText options:0];
+    UNNotificationAction *dismissAction = [UNNotificationAction actionWithIdentifier:ID_DISMISS title:notificationProperties.reviewPromtNoReview options:0];
     
     NSArray *notificationActions = @[ replyAction, remindAction, dismissAction ];
     
@@ -75,7 +75,7 @@
     NSError *error;
     NSData *data = UIImagePNGRepresentation(image);
     NSURL *fileUrl = [NSURL fileURLWithPath:ATTACHMENT_FILE_PATH];
-    [data writeToURL:fileUrl options:nil error:nil];
+    [data writeToURL:fileUrl options:0 error:nil];
     UNNotificationAttachment *imgAttachment = [UNNotificationAttachment attachmentWithIdentifier:ATTACHMENT_THUMB_ID URL:fileUrl options:nil error: &error];
     
     return imgAttachment;

@@ -13,21 +13,21 @@ class ProductDisplayTests: XCTestCase {
     override func setUp() {
         super.setUp()
         
-        BVSDKManager.sharedManager().clientId = "apitestcustomer"
-        BVSDKManager.sharedManager().apiKeyConversations = "KEY_REMOVED"
-        BVSDKManager.sharedManager().staging = true
+        BVSDKManager.shared().clientId = "apitestcustomer"
+        BVSDKManager.shared().apiKeyConversations = "KEY_REMOVED"
+        BVSDKManager.shared().staging = true
     }
     
     
     func testProductDisplay() {
         
-        let expectation = expectationWithDescription("")
+        let expectation = self.expectation(description: "")
 
         let request = BVProductDisplayPageRequest(productId: "test1")
-            .includeContent(PDPContentType.Reviews, limit: 10)
-            .includeContent(.Reviews, limit: 10)
-            .includeContent(.Questions, limit: 5)
-            .includeStatistics(.Reviews)
+            .include(PDPContentType.reviews, limit: 10)
+            .include(.reviews, limit: 10)
+            .include(.questions, limit: 5)
+            .includeStatistics(.reviews)
         
         request.load({ (response) in
             
@@ -53,7 +53,7 @@ class ProductDisplayTests: XCTestCase {
             
         }
         
-        self.waitForExpectationsWithTimeout(10) { (error) in
+        self.waitForExpectations(timeout: 10) { (error) in
             XCTAssertNil(error, "Something went horribly wrong, request took too long.")
         }
         

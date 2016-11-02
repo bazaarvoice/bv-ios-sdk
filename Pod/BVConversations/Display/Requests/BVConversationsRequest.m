@@ -105,7 +105,7 @@
             completion(reviewResponse);
         });
         
-        [self sendReviewsAnalytics:reviewResponse];
+        [self sendStoreReviewsAnalytics:reviewResponse];
         
     } failure:failure];
     
@@ -173,7 +173,7 @@
 
                 BVConversationsErrorResponse* errorResponse = [[BVConversationsErrorResponse alloc] initWithApiResponse:json];
                 
-                [[BVLogger sharedLogger] verbose:[NSString stringWithFormat:@"RESPONSE: %@ (%d)", json, statusCode]];
+                [[BVLogger sharedLogger] verbose:[NSString stringWithFormat:@"RESPONSE: %@ (%ld)", json, (long)statusCode]];
                 
                 if (errorResponse != nil) {
                     [self sendErrors:[errorResponse toNSErrors] failureCallback:failure];
@@ -200,7 +200,7 @@
         }
     }
     else {
-        NSString* message = [NSString stringWithFormat:@"HTTP response status code: %li with error: %@", statusCode, error.localizedDescription];
+        NSString* message = [NSString stringWithFormat:@"HTTP response status code: %li with error: %@", (long)statusCode, error.localizedDescription];
         NSError* enhancedError = [NSError errorWithDomain:BVErrDomain code:BV_ERROR_NETWORK_FAILED userInfo:@{NSLocalizedDescriptionKey: message}];
         [self sendError:enhancedError failureCallback:failure];
     }
@@ -209,14 +209,14 @@
 
 - (NSError * _Nonnull)limitError:(NSInteger)limit {
     
-    NSString* message = [NSString stringWithFormat:@"Invalid `limit` value: Parameter 'limit' has invalid value: %li - must be between 1 and 100.", limit];
+    NSString* message = [NSString stringWithFormat:@"Invalid `limit` value: Parameter 'limit' has invalid value: %li - must be between 1 and 100.", (long)limit];
     return [NSError errorWithDomain:BVErrDomain code:BV_ERROR_INVALID_LIMIT userInfo:@{NSLocalizedDescriptionKey: message}];
     
 }
 
 - (NSError * _Nonnull)tooManyProductsError:(NSArray<NSString *> * _Nonnull)productIds {
     
-    NSString* message = [NSString stringWithFormat:@"Too many productIds requested: %li. Must be between 1 and 100.", [productIds count]];
+    NSString* message = [NSString stringWithFormat:@"Too many productIds requested: %lu. Must be between 1 and 100.", (unsigned long)[productIds count]];
     return [NSError errorWithDomain:BVErrDomain code:BV_ERROR_TOO_MANY_PRODUCTS userInfo:@{NSLocalizedDescriptionKey: message}];
     
 }
@@ -239,17 +239,26 @@
 
 - (void)sendReviewsAnalytics:(BVReviewsResponse*)reviewsResponse {
     
-    for (BVReview* review in reviewsResponse.results) {
+    [self sendReviewResultsAnalytics:reviewsResponse.results];
+}
+
+- (void)sendStoreReviewsAnalytics:(BVStoreReviewsResponse*)reviewsResponse {
+    
+    [self sendReviewResultsAnalytics:reviewsResponse.results];
+}
+
+- (void)sendReviewResultsAnalytics:(NSArray<BVReview *>*)reviews{
+    
+    for (BVReview* review in reviews) {
         NSDictionary* event = [BVConversationsAnalyticsUtil reviewAnalyticsEvents:review];
         [[BVAnalyticsManager sharedManager] queueEvent:event];
     }
     // send pageview for product
-    BVReview* review = reviewsResponse.results.firstObject;
+    BVReview* review = reviews.firstObject;
     if (review != nil) {
-        NSNumber* count = @([reviewsResponse.results count]);
+        NSNumber* count = @([reviews count]);
         [BVConversationsAnalyticsUtil queueAnalyticsEventForProductPageView:review.productId numReviews:count numQuestions:nil];
     }
-
 }
 
 - (void)sendQuestionsAnalytics:(BVQuestionsAndAnswersResponse*)questionsResponse {

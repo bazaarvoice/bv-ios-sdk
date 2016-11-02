@@ -21,11 +21,11 @@ class DemoCarouselCollectionViewCell: BVRecommendationCollectionViewCell {
         didSet {
             
             self.productName.text = bvRecommendedProduct!.productName
-            self.price.text = bvRecommendedProduct!.price ?? ""
+            self.price.text = bvRecommendedProduct!.price 
             self.starRating.value = CGFloat(bvRecommendedProduct!.averageRating.floatValue)
             
-            let imageUrl = NSURL(string: bvRecommendedProduct!.imageURL)
-            self.productImageView.sd_setImageWithURL(imageUrl)
+            let imageUrl = URL(string: bvRecommendedProduct!.imageURL)
+            self.productImageView.sd_setImage(with: imageUrl)
             
         }
         

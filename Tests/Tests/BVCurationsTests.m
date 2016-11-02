@@ -112,7 +112,7 @@
 // Test fetching curations with user's geolocation
 - (void)testFetchCurationsWithLocation {
     
-    [self addStubWith200ResponseForJSONFileNamed:@"curationsLocationTest.json"];
+    [self addStubWith200ResponseForJSONFileNamed:@"curationsFeedTest1.json"];
     
     __weak XCTestExpectation *expectation = [self expectationWithDescription:@"testFetchCurationsWithLocation"];
     
@@ -135,8 +135,8 @@
             
         }
         
-        XCTAssertEqual(11, locationCount, @"There should be 11 feed items with coordinates attached to them");
-        XCTAssertEqual(20, [feedItems count], @"There should be 20 total feed items");
+        XCTAssertEqual(21, locationCount, @"There should be 11 feed items with coordinates attached to them");
+        XCTAssertEqual(40, [feedItems count], @"There should be 20 total feed items");
         
         [expectation fulfill];
         
@@ -299,9 +299,7 @@
                                       @"has_video" : @"true",
                                       @"withProductData" : @"true",
                                       @"include_comments" : @"true",
-                                      @"per_group_limit" : @"5",
                                       @"externalId" : @"123abdDEF",
-                                      @"explicit_permission" : @"true",
                                       @"media" : @"{\"video\":{\"width\":\"480\",\"height\":\"360\"}}"
                                       };
     
@@ -323,14 +321,12 @@
     feedRequest.externalId = @"123abdDEF";
     
     feedRequest.featured =  3;
-    feedRequest.perGroupLimit = 5;
     
     feedRequest.hasGeotag = YES;
     feedRequest.hasLink = YES;
     feedRequest.hasVideo = YES;
     feedRequest.hasPhoto = YES;
     feedRequest.includeComments = YES;
-    feedRequest.explicitPermission = YES;
     feedRequest.withProductData = YES;
     
     feedRequest.before = [NSNumber numberWithLong:1451606400]; // Fri, 01 Jan 2016 00:00:00 GMT

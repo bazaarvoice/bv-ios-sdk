@@ -17,25 +17,25 @@ class ProductPageButtonCell: UITableViewCell {
     @IBOutlet weak var leftIcon : UIImageView!
     
     
-    func setCustomLeftIcon(icon : ((size: CGFloat) -> FAKFontAwesome!)) {
+    func setCustomLeftIcon(_ icon : ((_ size: CGFloat) -> FAKFontAwesome!)) {
         leftIcon.image = getIconImage(icon)
     }
     
-    func setCustomRightIcon(icon : ((size: CGFloat) -> FAKFontAwesome!)) {
+    func setCustomRightIcon(_ icon : ((_ size: CGFloat) -> FAKFontAwesome!)) {
         rightIcon.image = getIconImage(icon)
     }
     
-    func getIconImage(icon : ((size: CGFloat) -> FAKFontAwesome!)) -> UIImage {
+    func getIconImage(_ icon : ((_ size: CGFloat) -> FAKFontAwesome!)) -> UIImage {
         
         let size = CGFloat(20)
         
-        let newIcon = icon(size: size)
-        newIcon.addAttribute(
+        let newIcon = icon(size)
+        newIcon?.addAttribute(
             NSForegroundColorAttributeName,
-            value: UIColor.lightGrayColor().colorWithAlphaComponent(0.5)
+            value: UIColor.lightGray.withAlphaComponent(0.5)
         )
         
-        return newIcon.imageWithSize(CGSize(width: size, height: size))
+        return newIcon!.image(with: CGSize(width: size, height: size))
         
     }
     

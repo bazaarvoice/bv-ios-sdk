@@ -10,7 +10,7 @@ import Crashlytics
 import FBSDKLoginKit
 import BVSDK
 
-public class ProfileUtils: NSObject {
+open class ProfileUtils: NSObject {
 
     var loginProfile = [String : String]()
     
@@ -22,17 +22,17 @@ public class ProfileUtils: NSObject {
     }
     
     
-    public class func trackFBLogin(identifier : String) {
+    open class func trackFBLogin(_ identifier : String) {
         
-        Answers.logLoginWithMethod("Facebook",
+        Answers.logLogin(withMethod: "Facebook",
                                    success: true,
                                    customAttributes: ["name":identifier])
         
     }
     
-    public class func trackViewController(theObject : AnyObject) {
+    open class func trackViewController(_ theObject : AnyObject) {
         
-        Answers.logContentViewWithName(String(theObject.dynamicType),
+        Answers.logContentView(withName: String(describing: type(of: theObject)),
                                        contentType: "View Controller",
                                        contentId: "",
                                        customAttributes: [:])
@@ -40,19 +40,20 @@ public class ProfileUtils: NSObject {
     }
     
     
-    public class func isFabricInstalled() -> Bool {
+    open class func isFabricInstalled() -> Bool {
         
-        let fabricAPIKey = NSBundle.mainBundle().infoDictionary?["Fabric"]!["APIKey"] as? String
-        if ((fabricAPIKey?.isEmpty) == false) {
-            return true
+        if let fabricKey = Bundle.main.infoDictionary?["Fabric"] as? [String:Any] {
+            if (fabricKey["APIKey"] as? String) != nil {
+                return true
+            }
         }
 
         return false
     }
     
-    public class func isFacebookInstalled() -> Bool {
+    open class func isFacebookInstalled() -> Bool {
         
-        let fbAppID = NSBundle.mainBundle().infoDictionary?["FacebookAppID"] as? String
+        let fbAppID = Bundle.main.infoDictionary?["FacebookAppID"] as? String
         if ((fbAppID?.isEmpty) == false) {
             return true;
         }
@@ -69,39 +70,43 @@ public class ProfileUtils: NSObject {
     
     func setUserAuthString() {
     
-        if(FBSDKAccessToken.currentAccessToken() == nil) {
+        if(FBSDKAccessToken.current() == nil) {
             return;
         }
         
-        let req = FBSDKGraphRequest(graphPath: "me", parameters: ["fields":"email,name,gender,hometown,age_range"], tokenString: FBSDKAccessToken.currentAccessToken().tokenString, version: nil, HTTPMethod: "GET")
+        let req = FBSDKGraphRequest(graphPath: "me", parameters: ["fields":"email,name,gender,hometown,age_range"], tokenString: FBSDKAccessToken.current().tokenString, version: nil, httpMethod: "GET")
         
-        req.startWithCompletionHandler({ (connection, result, error : NSError!) -> Void in
+        
+        _ = req?.start(completionHandler: { (connection, result, error) -> Void in
             
             if(error == nil)
             {
                 
-                let formatter: NSDateFormatter = NSDateFormatter()
+                let formatter: DateFormatter = DateFormatter()
                 formatter.dateFormat = "yyyyMMdd"
-                let dateTimePrefix: String = formatter.stringFromDate(NSDate())
+                let dateTimePrefix: String = formatter.string(from: Date())
                 
                 var userProfileDict: [String : String] = [
                     "date" : dateTimePrefix,
                 ]
                 
-                if let fbID = result.valueForKey("id") {
-                    userProfileDict["facebookId"] = fbID as? String
+                
+                let tResult = result as? [String:String]
+                
+                if let fbID = tResult?["id"] {
+                    userProfileDict["facebookId"] = fbID
                 }
                 
-                if let gender = result.valueForKey("gender") {
-                    userProfileDict["gender"] = gender as? String
+                if let gender = tResult?["gender"] {
+                    userProfileDict["gender"] = gender
                 }
                 
-                if let emailAddr = result.valueForKey("email") {
-                    userProfileDict["email"] = emailAddr as? String
+                if let emailAddr = tResult?["email"] {
+                    userProfileDict["email"] = emailAddr
                 } 
                 
-                if let name = result.valueForKey("name") {
-                    userProfileDict["name"] = name as? String
+                if let name = tResult?["name"] {
+                    userProfileDict["name"] = name
                 }
                 
                 self.loginProfile.removeAll()
@@ -112,7 +117,7 @@ public class ProfileUtils: NSObject {
                 if SITE_AUTH == 1 {
                     BVUserAuthStringGenerator.generateUAS(userProfileDict, withCompletion: { (uas, error) in
                         if (error == nil){
-                            BVSDKManager.sharedManager().setUserWithAuthString(uas)
+                            BVSDKManager.shared().setUserWithAuthString(uas!)
                         } else {
                             print("An error occurred generating the UAS.");
                         }

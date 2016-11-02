@@ -23,10 +23,10 @@ class WriteReviewViewController: UIViewController, SDFormDelegate, SDFormDataSou
     var form : SDForm?
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var header : ProductDetailHeaderView!
-    var spinner = Util.createSpinner(UIColor.bazaarvoiceNavy(), size: CGSizeMake(44,44), padding: 0)
+    var spinner = Util.createSpinner(UIColor.bazaarvoiceNavy(), size: CGSize(width: 44,height: 44), padding: 0)
     let product: BVRecommendedProduct
     
-    init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?, product: BVRecommendedProduct?) {
+    init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?, product: BVRecommendedProduct?) {
         self.product = product!
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     }
@@ -46,13 +46,13 @@ class WriteReviewViewController: UIViewController, SDFormDelegate, SDFormDataSou
         
         self.view.backgroundColor = UIColor.appBackground()
         
-        self.tableView.backgroundColor = UIColor.whiteColor()
+        self.tableView.backgroundColor = UIColor.white
         
         // form scrolling above keyboard
         self.tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 300, right: 0)
         
         // add a SUBMIT button...
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Submit", style: .Plain, target: self, action: "submitTapped")
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Submit", style: .plain, target: self, action: #selector(WriteReviewViewController.submitTapped))
         
         self.initFormFields()
     }
@@ -68,11 +68,11 @@ class WriteReviewViewController: UIViewController, SDFormDelegate, SDFormDataSou
         // create a fill out the reviewSubmission object
         let reviewSubmission = BVReviewSubmission(reviewTitle: self.reviewSubmissionParameters.title as? String ?? "",
                                                 reviewText: self.reviewSubmissionParameters.reviewText as? String ?? "",
-                                                rating: UInt(self.reviewSubmissionParameters.rating?.integerValue ?? 0),
+                                                rating: UInt(self.reviewSubmissionParameters.rating?.intValue ?? 0),
                                                 productId: self.product.productId)
         
         // a working example of posting a review.
-        reviewSubmission.action = BVSubmissionAction.Preview // Don't actually post, just run in preview mode!
+        reviewSubmission.action = BVSubmissionAction.preview // Don't actually post, just run in preview mode!
         
         // We need to use the same userId for both the photo post and review content
         let userId = "123abc\(arc4random())"
@@ -89,15 +89,15 @@ class WriteReviewViewController: UIViewController, SDFormDelegate, SDFormDataSou
         
         reviewSubmission.submit({ (response) in
             
-            dispatch_async(dispatch_get_main_queue(), { 
-                SweetAlert().showAlert("Success!", subTitle: "Your review was submitted. It may take up to 72 hours before your post is live.", style: .Success)
-                self.navigationController?.popViewControllerAnimated(true)
+            DispatchQueue.main.async(execute: { 
+                _ = SweetAlert().showAlert("Success!", subTitle: "Your review was submitted. It may take up to 72 hours before your post is live.", style: .success)
+                _ = self.navigationController?.popViewController(animated: true)
             })
             
         }) { (errors) in
             
-            dispatch_async(dispatch_get_main_queue(), {
-                SweetAlert().showAlert("Error!", subTitle: errors.first?.localizedDescription, style: .Error)
+            DispatchQueue.main.async(execute: {
+                _ = SweetAlert().showAlert("Error!", subTitle: errors.first?.localizedDescription, style: .error)
                 self.spinner.removeFromSuperview()
             })
             
@@ -109,18 +109,18 @@ class WriteReviewViewController: UIViewController, SDFormDelegate, SDFormDataSou
     func initFormFields(){
         
         let recommendProductSwitch = SDSwitchField(object: reviewSubmissionParameters, relatedPropertyKey: "isRecommended")
-        recommendProductSwitch.title = "I recommend this product."
+        recommendProductSwitch?.title = "I recommend this product."
         
         let ratingStars = SDRatingStarsField(object: reviewSubmissionParameters, relatedPropertyKey: "rating")
-        ratingStars.maximumValue = 5
-        ratingStars.minimumValue = 0
-        ratingStars.starsColor = UIColor.bazaarvoiceGold()
+        ratingStars?.maximumValue = 5
+        ratingStars?.minimumValue = 0
+        ratingStars?.starsColor = UIColor.bazaarvoiceGold()
         
         let reviewTitleField = SDTextFormField(object: reviewSubmissionParameters, relatedPropertyKey: "title")
-        reviewTitleField.placeholder = "Add your review title"
+        reviewTitleField?.placeholder = "Add your review title"
         
         let reviewField = SDMultilineTextField(object: reviewSubmissionParameters, relatedPropertyKey: "reviewText")
-        reviewField.placeholder = "Add your thoughts and experinces with this product."
+        reviewField?.placeholder = "Add your thoughts and experinces with this product."
         
         let nickNameField : SDTextFormField = SDTextFormField(object: reviewSubmissionParameters, relatedPropertyKey: "userNickname")
         nickNameField.placeholder = "Display name for the question"
@@ -129,17 +129,17 @@ class WriteReviewViewController: UIViewController, SDFormDelegate, SDFormDataSou
         emailAddressField.placeholder = "Enter a valid email address."
         
         let emailOKSwitchField = SDSwitchField(object: reviewSubmissionParameters, relatedPropertyKey: "sendEmailAlertWhenPublished")
-        emailOKSwitchField.title = "Send me status by email?"
+        emailOKSwitchField?.title = "Send me status by email?"
         
         let photoField = SDPhotoField(object: reviewSubmissionParameters, relatedPropertyKey: "photo")
-        photoField.presentingMode = SDFormFieldPresentingModeModal;
-        photoField.title = "photo"
-        let cameraIcon = FAKFontAwesome.cameraIconWithSize(22)
-        cameraIcon.addAttribute(NSForegroundColorAttributeName, value: UIColor.lightGrayColor().colorWithAlphaComponent(0.5))
-        photoField.callToActionImage = cameraIcon.imageWithSize(CGSizeMake(22, 22))
+        photoField?.presentingMode = SDFormFieldPresentingModeModal;
+        photoField?.title = "photo"
+        let cameraIcon = FAKFontAwesome.cameraIcon(withSize: 22)
+        cameraIcon?.addAttribute(NSForegroundColorAttributeName, value: UIColor.lightGray.withAlphaComponent(0.5))
+        photoField?.callToActionImage = cameraIcon?.image(with: CGSize(width: 22, height: 22))
 
         // Keep the formFields and sectionTitles in the same order if you switch them around.
-        self.formFields = [recommendProductSwitch, ratingStars, reviewTitleField, reviewField, nickNameField, emailAddressField, photoField, emailOKSwitchField]
+        self.formFields = [recommendProductSwitch!, ratingStars!, reviewTitleField!, reviewField!, nickNameField, emailAddressField, photoField!, emailOKSwitchField!]
         self.sectionTitles = ["", "Rate this product", "Review Title", "Your Review", "Nickname", "Email Address", "Add a photo (optional)", "Please send me an email to keep me informed on the status of my review."]
         
         // set up delegate/datasource last!
@@ -153,44 +153,44 @@ class WriteReviewViewController: UIViewController, SDFormDelegate, SDFormDataSou
     // MARK: SDKFormDelegate, SDFormDataSource
     
 
-    func form(form: SDForm!, willDisplayHeaderView view: UIView!, forSection section: Int) {
+    func form(_ form: SDForm!, willDisplayHeaderView view: UIView!, forSection section: Int) {
         
         let hv = view as! UITableViewHeaderFooterView
-        let color = UIColor.whiteColor()
+        let color = UIColor.white
         hv.tintColor = color
         hv.contentView.backgroundColor = color
         hv.textLabel?.textColor = UIColor.bazaarvoiceNavy()
         
     }
     
-    func form(form: SDForm!, willDisplayFooterView view: UIView!, forSection section: Int) {
+    func form(_ form: SDForm!, willDisplayFooterView view: UIView!, forSection section: Int) {
         let fv = view as! UITableViewHeaderFooterView
-        fv.contentView.backgroundColor = UIColor.whiteColor()
+        fv.contentView.backgroundColor = UIColor.white
     }
     
-    func numberOfSectionsForForm(form: SDForm!) -> Int {
+    func numberOfSections(for form: SDForm!) -> Int {
         return (self.formFields.count)
     }
     
-    func form(form: SDForm!, numberOfFieldsInSection section: Int) -> Int {
+    func form(_ form: SDForm!, numberOfFieldsInSection section: Int) -> Int {
         return 1
     }
     
-    func form(form: SDForm!, titleForFooterInSection section: Int) -> String! {
+    func form(_ form: SDForm!, titleForFooterInSection section: Int) -> String! {
         return ""
     }
     
-    func form(form: SDForm!, titleForHeaderInSection section: Int) -> String! {
+    func form(_ form: SDForm!, titleForHeaderInSection section: Int) -> String! {
         return self.sectionTitles[section]
     }
     
-    func form(form: SDForm!, fieldForRow row: Int, inSection section: Int) -> SDFormField! {
+    func form(_ form: SDForm!, fieldForRow row: Int, inSection section: Int) -> SDFormField! {
         
         return self.formFields[section]
         
     }
     
-    func viewControllerForForm(form: SDForm!) -> UIViewController! {
+    func viewController(for form: SDForm!) -> UIViewController! {
         return self;
     }
 

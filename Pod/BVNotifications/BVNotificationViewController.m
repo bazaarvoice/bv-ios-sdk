@@ -54,4 +54,8 @@
 }
 
 
+- (void)didReceiveNotification:(UNNotification *)notification{
+    // ignored
+}
+
 @end

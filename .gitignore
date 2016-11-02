@@ -19,6 +19,8 @@ DerivedData
 *.hmap
 *.ipa
 
+BVSDK.framework.zip
+
 # Bundler
 .bundle
 
@@ -30,3 +32,11 @@ _site/
 
 # ignore internal testing files
 demoAppConfigs.plist
+
+#ignore framework build content
+Output/
+
+# Test output
+Tests/installation_tests/carthage/Cartfile
+Tests/installation_tests/carthage/Cartfile.resolved
+Tests/installation_tests/carthage/Carthage/*

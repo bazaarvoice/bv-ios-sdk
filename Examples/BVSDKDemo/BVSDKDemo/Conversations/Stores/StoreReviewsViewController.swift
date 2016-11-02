@@ -14,18 +14,18 @@ class StoreReviewsViewController: UIViewController, UITableViewDelegate, UITable
     
     @IBOutlet weak var tableView: BVStoreReviewsTableView!
     @IBOutlet weak var header : ProductDetailHeaderView!
-    var spinner = Util.createSpinner(UIColor.bazaarvoiceNavy(), size: CGSizeMake(44,44), padding: 0)
+    var spinner = Util.createSpinner(UIColor.bazaarvoiceNavy(), size: CGSize(width: 44,height: 44), padding: 0)
     
     private var reviews : [BVReview] = []
-    let store : BVStore
+    private let store : BVStore
     
     private let numReviewToFetch : Int32 = 20
     private var reviewFetchPending : Bool = false // Is an API call in progress
-    var totalReviewCount = 0
+    private var totalReviewCount = 0
     
     enum RatingsAndReviewsSections : Int {
-        case Filter = 0
-        case Reviews
+        case filter = 0
+        case reviews
         
         static func count() -> Int {
             return 2
@@ -34,17 +34,17 @@ class StoreReviewsViewController: UIViewController, UITableViewDelegate, UITable
     
     enum FilterOptions : Int {
         
-        case MostRecent = 0
-        case HighestRating
-        case LowestRating
-        case MostHelpful
+        case mostRecent = 0
+        case highestRating
+        case lowestRating
+        case mostHelpful
     }
     
     private let filterActionTitles = ["Most Recent", "Highest Rating", "Lowest Rating", "Most Helpful"]
     
-    private var selectedFilterOption : Int = FilterOptions.MostRecent.rawValue
+    private var selectedFilterOption : Int = FilterOptions.mostRecent.rawValue
     
-    init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?, store:BVStore, totalReviewCount: Int) {
+    init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?, store:BVStore, totalReviewCount: Int) {
         
         self.totalReviewCount = totalReviewCount
         self.store = store
@@ -64,17 +64,17 @@ class StoreReviewsViewController: UIViewController, UITableViewDelegate, UITable
         header.store = store
         
         let nib = UINib(nibName: "RatingTableViewCell", bundle: nil)
-        tableView.registerNib(nib, forCellReuseIdentifier: "RatingTableViewCell")
+        tableView.register(nib, forCellReuseIdentifier: "RatingTableViewCell")
         tableView.estimatedRowHeight = 40
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.allowsSelection = false
         
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Write a review", style: .Plain, target: self, action: "writeReviewTapped")
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Write a review", style: .plain, target: self, action: #selector(StoreReviewsViewController.writeReviewTapped))
         
         self.title = "Store Reviews"
         
         let nibConversationsCell = UINib(nibName: "ProductPageButtonCell", bundle: nil)
-        tableView.registerNib(nibConversationsCell, forCellReuseIdentifier: "ProductPageButtonCell")
+        tableView.register(nibConversationsCell, forCellReuseIdentifier: "ProductPageButtonCell")
         
         self.loadStoreReviews()
         
@@ -96,12 +96,12 @@ class StoreReviewsViewController: UIViewController, UITableViewDelegate, UITable
         let request = BVStoreReviewsRequest(storeId: store.identifier!, limit: 20, offset: Int32(self.reviews.count))
 
         // Check sorting and filter FilterOptions
-        if selectedFilterOption == FilterOptions.HighestRating.rawValue {
-            request.addSort(.Rating, order: .Descending)
-        } else if selectedFilterOption == FilterOptions.LowestRating.rawValue {
-            request.addSort(.Rating, order: .Ascending)
-        } else if selectedFilterOption == FilterOptions.MostHelpful.rawValue {
-            request.addSort(.Helpfulness, order: .Descending)
+        if selectedFilterOption == FilterOptions.highestRating.rawValue {
+            request.addSort(.rating, order: .descending)
+        } else if selectedFilterOption == FilterOptions.lowestRating.rawValue {
+            request.addSort(.rating, order: .ascending)
+        } else if selectedFilterOption == FilterOptions.mostHelpful.rawValue {
+            request.addSort(.helpfulness, order: .descending)
         }
         
         self.tableView.load(request, success: { (response) in
@@ -111,7 +111,7 @@ class StoreReviewsViewController: UIViewController, UITableViewDelegate, UITable
             if (self.reviews.count == 0){
                 self.reviews = response.results
             } else {
-                self.reviews.appendContentsOf(response.results)
+                self.reviews.append(contentsOf: response.results)
             }
             
             self.reviewFetchPending = false
@@ -129,15 +129,15 @@ class StoreReviewsViewController: UIViewController, UITableViewDelegate, UITable
     
     // MARK: UITableViewDatasource
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         var count = 0
         
         switch section {
-        case RatingsAndReviewsSections.Reviews.rawValue:
+        case RatingsAndReviewsSections.reviews.rawValue:
             count = reviews.count
             break
-        case RatingsAndReviewsSections.Filter.rawValue:
+        case RatingsAndReviewsSections.filter.rawValue:
             count = 1
             break
         default:
@@ -148,17 +148,17 @@ class StoreReviewsViewController: UIViewController, UITableViewDelegate, UITable
         
     }
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return RatingsAndReviewsSections.count()
     }
     
-    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 0
     }
     
-    func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         
-        if section == RatingsAndReviewsSections.Reviews.rawValue {
+        if section == RatingsAndReviewsSections.reviews.rawValue {
             return 22
         }
         
@@ -166,34 +166,34 @@ class StoreReviewsViewController: UIViewController, UITableViewDelegate, UITable
         return 0
     }
     
-    func tableView(tableView: UITableView, titleForFooterInSection section: Int) -> String? {
+    func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
         return ""
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = UITableViewCell()
         
-        switch indexPath.section {
-        case RatingsAndReviewsSections.Filter.rawValue:
+        switch (indexPath as NSIndexPath).section {
+        case RatingsAndReviewsSections.filter.rawValue:
             
-            let cell = tableView.dequeueReusableCellWithIdentifier("ProductPageButtonCell") as! ProductPageButtonCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "ProductPageButtonCell") as! ProductPageButtonCell
             
-            cell.button.removeTarget(nil, action: nil, forControlEvents: .AllEvents)
-            cell.button.addTarget(self, action: "filterReviewsButtonPressed", forControlEvents: .TouchUpInside)
-            cell.setCustomLeftIcon(FAKFontAwesome.sortIconWithSize)
-            cell.setCustomRightIcon(FAKFontAwesome.chevronRightIconWithSize)
+            cell.button.removeTarget(nil, action: nil, for: .allEvents)
+            cell.button.addTarget(self, action: #selector(StoreReviewsViewController.filterReviewsButtonPressed), for: .touchUpInside)
+            cell.setCustomLeftIcon(FAKFontAwesome.sortIcon(withSize:))
+            cell.setCustomRightIcon(FAKFontAwesome.chevronRightIcon(withSize:))
             
             
             let titlePrefix = "Sort:"
-            cell.button.setTitle("\(titlePrefix) \(filterActionTitles[selectedFilterOption])", forState: .Normal)
+            cell.button.setTitle("\(titlePrefix) \(filterActionTitles[selectedFilterOption])", for: UIControlState())
             
             return cell
             
-        case RatingsAndReviewsSections.Reviews.rawValue:
+        case RatingsAndReviewsSections.reviews.rawValue:
             
-            let cell = tableView.dequeueReusableCellWithIdentifier("RatingTableViewCell") as! RatingTableViewCell
-            cell.review = reviews[indexPath.row]
+            let cell = tableView.dequeueReusableCell(withIdentifier: "RatingTableViewCell") as! RatingTableViewCell
+            cell.review = reviews[(indexPath as NSIndexPath).row]
             return cell
             
         default:
@@ -204,12 +204,12 @@ class StoreReviewsViewController: UIViewController, UITableViewDelegate, UITable
         
     }
     
-    func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         
-        if indexPath.row == 0 { return }
+        if (indexPath as NSIndexPath).row == 0 { return }
         
         let lastElement = reviews.count - 5
-        if lastElement > 0 && indexPath.row == lastElement {
+        if lastElement > 0 && (indexPath as NSIndexPath).row == lastElement {
             
             if totalReviewCount > reviews.count && !reviewFetchPending {
                 self.loadStoreReviews()
@@ -222,31 +222,31 @@ class StoreReviewsViewController: UIViewController, UITableViewDelegate, UITable
         
         let actionController = BVSDKDemoActionController()
         
-        actionController.addAction(Action(filterActionTitles[FilterOptions.MostRecent.rawValue], style: .Default, handler: { action in
-            self.didChangeFilterOption(FilterOptions.MostRecent)
+        actionController.addAction(Action(filterActionTitles[FilterOptions.mostRecent.rawValue], style: .default, handler: { action in
+            self.didChangeFilterOption(FilterOptions.mostRecent)
         }))
-        actionController.addAction(Action(filterActionTitles[FilterOptions.HighestRating.rawValue], style: .Default, handler: { action in
-            self.didChangeFilterOption(FilterOptions.HighestRating)
+        actionController.addAction(Action(filterActionTitles[FilterOptions.highestRating.rawValue], style: .default, handler: { action in
+            self.didChangeFilterOption(FilterOptions.highestRating)
         }))
-        actionController.addAction(Action(filterActionTitles[FilterOptions.LowestRating.rawValue], style: .Default, handler: { action in
-            self.didChangeFilterOption(FilterOptions.LowestRating)
+        actionController.addAction(Action(filterActionTitles[FilterOptions.lowestRating.rawValue], style: .default, handler: { action in
+            self.didChangeFilterOption(FilterOptions.lowestRating)
         }))
-        actionController.addAction(Action(filterActionTitles[FilterOptions.MostHelpful.rawValue], style: .Default, handler: { action in
-            self.didChangeFilterOption(FilterOptions.MostHelpful)
+        actionController.addAction(Action(filterActionTitles[FilterOptions.mostHelpful.rawValue], style: .default, handler: { action in
+            self.didChangeFilterOption(FilterOptions.mostHelpful)
         }))
-        actionController.addAction(Action("Cancel", style: .Cancel, handler: nil))
+        actionController.addAction(Action("Cancel", style: .cancel, handler: nil))
         
-        presentViewController(actionController, animated: true, completion: nil)
+        present(actionController, animated: true, completion: nil)
         
     }
     
-    func didChangeFilterOption(option : FilterOptions){
+    func didChangeFilterOption(_ option : FilterOptions){
         
         if selectedFilterOption == option.rawValue {
             return // ignore, didn't change anything
         }
         
-        self.tableView.reloadSections(NSIndexSet(index: RatingsAndReviewsSections.Filter.rawValue), withRowAnimation: .None)
+        self.tableView.reloadSections(IndexSet(integer: RatingsAndReviewsSections.filter.rawValue), with: .none)
         selectedFilterOption = option.rawValue
         print("Selected filter option: \(filterActionTitles[selectedFilterOption])")
         
@@ -257,7 +257,7 @@ class StoreReviewsViewController: UIViewController, UITableViewDelegate, UITable
     
     // MARK: UITableViewDelegate
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         // Currently nothing to do when selecting a review
         // But we could add further review author details (e.g. profile view)

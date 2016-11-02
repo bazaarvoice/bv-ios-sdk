@@ -13,6 +13,9 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+// For internal use of notifying the BVLocation module when the SDK has been intialized.
+#define LOCATION_API_KEY_SET_NOTIFICATION @"locationAPIKeyReady"
+
 /*!
    The singleton instance for registering your API key and server to use. Any use of the BVRecommendations API must start here!
  

@@ -14,17 +14,17 @@ class ReviewSubmissionTests: XCTestCase {
     override func setUp() {
         super.setUp()
         
-        BVSDKManager.sharedManager().clientId = "apitestcustomer"
-        BVSDKManager.sharedManager().apiKeyConversations = "KEY_REMOVED"
-        BVSDKManager.sharedManager().staging = true
-        BVSDKManager.sharedManager().setLogLevel(.Error)
+        BVSDKManager.shared().clientId = "apitestcustomer"
+        BVSDKManager.shared().apiKeyConversations = "KEY_REMOVED"
+        BVSDKManager.shared().staging = true
+        BVSDKManager.shared().setLogLevel(.error)
     }
     
     func testSubmitReviewWithPhoto() {
         
-        let expectation = expectationWithDescription("")
+        let expectation = self.expectation(description: "")
         
-        let review = self.fillOutReview(.Submit)
+        let review = self.fillOutReview(.submit)
         review.submit({ (reviewSubmission) in
             expectation.fulfill()
             XCTAssertTrue(reviewSubmission.formFields?.keys.count == 0)
@@ -33,14 +33,14 @@ class ReviewSubmissionTests: XCTestCase {
             expectation.fulfill()
         })
         
-        waitForExpectationsWithTimeout(10, handler: nil)
+        waitForExpectations(timeout: 10, handler: nil)
     }
     
     func testPreviewReviewWithPhoto() {
         
-        let expectation = expectationWithDescription("")
+        let expectation = self.expectation(description: "")
         
-        let review = self.fillOutReview(.Preview)
+        let review = self.fillOutReview(.preview)
         review.submit({ (reviewSubmission) in
             expectation.fulfill()
             // When run in Preview mode, we get the formFields that can be used for submission.
@@ -50,11 +50,11 @@ class ReviewSubmissionTests: XCTestCase {
                 expectation.fulfill()
         })
         
-        waitForExpectationsWithTimeout(10, handler: nil)
+        waitForExpectations(timeout: 10, handler: nil)
     }
 
     
-    func fillOutReview(action : BVSubmissionAction) -> BVReviewSubmission {
+    func fillOutReview(_ action : BVSubmissionAction) -> BVReviewSubmission {
         let review = BVReviewSubmission(reviewTitle: "review title",
                                       reviewText: "more than 50 more than 50 more than 50 more than 50 more than 50",
                                       rating: 4,
@@ -90,12 +90,12 @@ class ReviewSubmissionTests: XCTestCase {
     
     
     func testSubmitReviewFailure() {
-        let expectation = expectationWithDescription("")
+        let expectation = self.expectation(description: "")
         
         let review = BVReviewSubmission(reviewTitle: "", reviewText: "", rating: 123, productId: "1000001")
         review.userNickname = "cgil"
         review.userId = "craiggiddl"
-        review.action = .Preview
+        review.action = .preview
         
         review.submit({ (reviewSubmission) in
             XCTFail()
@@ -104,7 +104,7 @@ class ReviewSubmissionTests: XCTestCase {
             XCTAssertEqual(errors.count, 5)
             expectation.fulfill()
         })
-        waitForExpectationsWithTimeout(10, handler: nil)
+        waitForExpectations(timeout: 10, handler: nil)
     }
     
 }

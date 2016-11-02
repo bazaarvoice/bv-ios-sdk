@@ -135,19 +135,9 @@
         [queryItems addObject:includeCommentsQI];
     }
     
-    if (self.perGroupLimit > 0){
-        NSURLQueryItem *perGroupLimitQI = [NSURLQueryItem queryItemWithName:@"per_group_limit" value:[NSString stringWithFormat:@"%lu", (unsigned long)self.perGroupLimit]];
-        [queryItems addObject:perGroupLimitQI];
-    }
-    
     if (self.externalId){
         NSURLQueryItem *externalIdQI = [NSURLQueryItem queryItemWithName:@"externalId" value:self.externalId];
         [queryItems addObject:externalIdQI];
-    }
-    
-    if (self.explicitPermission){
-        NSURLQueryItem *explicitPermissionQI = [NSURLQueryItem queryItemWithName:@"explicit_permission" value:@"true"];
-        [queryItems addObject:explicitPermissionQI];
     }
     
     if (self.media) {

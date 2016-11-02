@@ -15,23 +15,23 @@ class PermissionViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-         self.navigationController?.navigationBarHidden = true
+         self.navigationController?.isNavigationBarHidden = true
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         // set the icon color mask
-        self.icon!.image? = (self.icon!.image?.imageWithRenderingMode(.AlwaysTemplate))!
+        self.icon!.image? = (self.icon!.image?.withRenderingMode(.alwaysTemplate))!
         self.icon!.tintColor = UIColor.bazaarvoiceNavy()
     }
 
     
-    @IBAction func enablePressed(sender: UIButton){
+    @IBAction func enablePressed(_ sender: UIButton){
         
     }
     
     
-    @IBAction func notNowPressed(sender: UIButton){
+    @IBAction func notNowPressed(_ sender: UIButton){
 
     }
 }

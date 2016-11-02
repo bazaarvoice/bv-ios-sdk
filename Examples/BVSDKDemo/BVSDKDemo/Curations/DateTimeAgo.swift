@@ -8,7 +8,7 @@
 import Foundation
 import Darwin
 
-func dateTimeAgo(date: NSDate) -> String {
+func dateTimeAgo(_ date: Date) -> String {
     
     let deltaSeconds = secondsFrom(date)
     let deltaMinutes:Double = Double(deltaSeconds / 60)
@@ -61,10 +61,10 @@ func dateTimeAgo(date: NSDate) -> String {
     return years + " years ago"
 }
 
-private func secondsFrom(date:NSDate) -> Int {
-    return NSCalendar.currentCalendar().components(.Second, fromDate: date, toDate: NSDate(), options: []).second
+private func secondsFrom(_ date:Date) -> Int {
+    return (Calendar.current as NSCalendar).components(.second, from: date, to: Date(), options: []).second!
 }
 
-private func flooredString(delta: Double, dividedBy: Double) -> String {
+private func flooredString(_ delta: Double, dividedBy: Double) -> String {
     return String(Int(floor(delta/dividedBy)))
 }

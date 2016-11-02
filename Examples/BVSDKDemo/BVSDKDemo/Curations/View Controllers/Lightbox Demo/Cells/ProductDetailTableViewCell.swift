@@ -24,15 +24,15 @@ class ProductDetailTableViewCell: UITableViewCell {
         didSet {
             
             self.productNameLabel.text = product!.productName
-            let productImageUrl : NSURL = NSURL(string:self.product!.productImageUrl)!
+            let productImageUrl : URL = URL(string:self.product!.productImageUrl)!
             self.productImageView?.sd_setImageWithURLWithFade(productImageUrl, placeholderImage: UIImage(named: ""))
             
-            self.shopNowButton.layer.borderColor = UIColor.darkGrayColor().CGColor
+            self.shopNowButton.layer.borderColor = UIColor.darkGray.cgColor
             self.shopNowButton.layer.borderWidth = 1
             
-            let nf = NSNumberFormatter()
-            nf.numberStyle = .DecimalStyle
-            let ratingAvg = nf.stringFromNumber((product?.avgRating)!)
+            let nf = NumberFormatter()
+            nf.numberStyle = .decimal
+            let ratingAvg = nf.string(from: (product?.avgRating)!)
             
             self.ratingStars.value = CGFloat((product?.avgRating)!)
             
@@ -46,14 +46,14 @@ class ProductDetailTableViewCell: UITableViewCell {
     }
     
     
-    @IBAction func shopNowTapped(sender: AnyObject) {
+    @IBAction func shopNowTapped(_ sender: AnyObject) {
         
         if let onShopNowButtonTapped = self.onShopNowButtonTapped {
-            onShopNowButtonTapped(product: product!)
+            onShopNowButtonTapped(product!)
         }
     }
     
     
-    var onShopNowButtonTapped : ((product : BVCurationsProductDetail) -> Void)? = nil
+    var onShopNowButtonTapped : ((_ product : BVCurationsProductDetail) -> Void)? = nil
     
 }

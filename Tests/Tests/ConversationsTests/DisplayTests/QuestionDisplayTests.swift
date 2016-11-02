@@ -14,18 +14,18 @@ class QuestionDisplayTests: XCTestCase {
     override func setUp() {
         super.setUp()
         
-        BVSDKManager.sharedManager().clientId = "apitestcustomer"
-        BVSDKManager.sharedManager().apiKeyConversations = "KEY_REMOVED"
-        BVSDKManager.sharedManager().staging = true
+        BVSDKManager.shared().clientId = "apitestcustomer"
+        BVSDKManager.shared().apiKeyConversations = "KEY_REMOVED"
+        BVSDKManager.shared().staging = true
     }
     
     
     func testQuestionDisplay() {
         
-        let expectation = expectationWithDescription("")
+        let expectation = self.expectation(description: "")
         
         let request = BVQuestionsAndAnswersRequest(productId: "test1", limit: 10, offset: 0)
-            .addFilter(.HasAnswers, filterOperator: .EqualTo, value: "true")
+            .add(.hasAnswers, filterOperator: .equalTo, value: "true")
         
         request.load({ (response) in
             
@@ -61,7 +61,7 @@ class QuestionDisplayTests: XCTestCase {
             
         }
         
-        self.waitForExpectationsWithTimeout(10) { (error) in
+        self.waitForExpectations(timeout: 10) { (error) in
             XCTAssertNil(error, "Something went horribly wrong, request took too long.")
         }
         

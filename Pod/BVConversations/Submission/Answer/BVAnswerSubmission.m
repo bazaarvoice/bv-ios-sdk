@@ -151,7 +151,7 @@
             NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&jsonParsingError];
             BVAnswerSubmissionErrorResponse* errorResponse = [[BVAnswerSubmissionErrorResponse alloc] initWithApiResponse:json]; // fails gracefully
         
-            [[BVLogger sharedLogger] verbose:[NSString stringWithFormat:@"RESPONSE: %@ (%d)", json, statusCode]];
+            [[BVLogger sharedLogger] verbose:[NSString stringWithFormat:@"RESPONSE: %@ (%ld)", json, (long)statusCode]];
             
             if (httpError) {
                 // network error was generated

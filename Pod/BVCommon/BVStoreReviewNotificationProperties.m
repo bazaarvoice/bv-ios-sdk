@@ -25,8 +25,8 @@
     
     self = [self init];
     
-    SET_IF_NOT_NULL(_requestReviewOnAppOpen, [[configDict objectForKey:@"requestReviewOnAppOpen"] boolValue]);
-    SET_IF_NOT_NULL(_notificationsEnabled, [[configDict objectForKey:@"notificationsEnabled"] boolValue]);
+    _requestReviewOnAppOpen = [[configDict objectForKey:@"requestReviewOnAppOpen"] boolValue];
+    _notificationsEnabled = [[configDict objectForKey:@"notificationsEnabled"] boolValue];
     
     if ([configDict objectForKey:@"visitDuration"] != nil) {
         _visitDuration = [[configDict objectForKey:@"visitDuration"] integerValue];

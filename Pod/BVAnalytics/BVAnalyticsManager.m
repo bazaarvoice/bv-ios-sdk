@@ -120,12 +120,14 @@ static BVAnalyticsManager *analyticsInstance = nil;
 -(void)applicationDidFinishLaunching {
     
     BVSDKManager *sdkMgr = [BVSDKManager sharedManager];
+    
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wunused-variable"
     NSString *clientId = sdkMgr.clientId;
     
     // check that `clientId` is valid
     NSAssert(clientId != nil && ![clientId isEqualToString:@""], @"You must supply client id in the BVSDKManager before using the Bazaarvoice SDK.");
-    
-//    NSAssert(![clientId isEqualToString:@"apitestcustomer"], @"You cannot use apitestcustomer as a client ID");
+ #pragma clang diagnostic pop
     
     [self sendAppLaunchedEvent];
 }
