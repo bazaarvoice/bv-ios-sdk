@@ -19,8 +19,8 @@
         _token = token;
         _text = text;
         _unixTimeStamp = 0;
-//        _latitude = 0;
-//        _longitude = 0;
+        _latitude = 0;
+        _longitude = 0;
         
         _photos = [NSArray array];
         _links = [NSArray array];
@@ -79,15 +79,15 @@
         [params setObject:[NSNumber numberWithDouble:self.unixTimeStamp]forKey:@"timestamp"];
     }
     
-//    if (self.longitude != 0 && self.latitude != 0){
-//        
-//        NSNumber *longNum = [NSNumber numberWithDouble:self.longitude];
-//        NSNumber *latNum = [NSNumber numberWithDouble:self.latitude];
-//        
-//        NSDictionary *coordinatesDict = [NSDictionary dictionaryWithObjectsAndKeys:latNum, @"x", longNum, @"y", nil];
-//        
-//        [params setObject:coordinatesDict forKey:@"coordinates"];
-//    }
+    if (self.longitude != 0 && self.latitude != 0){
+        
+        NSNumber *longNum = [NSNumber numberWithDouble:self.longitude];
+        NSNumber *latNum = [NSNumber numberWithDouble:self.latitude];
+        
+        NSDictionary *coordinatesDict = [NSDictionary dictionaryWithObjectsAndKeys:latNum, @"x", longNum, @"y", nil];
+        
+        [params setObject:coordinatesDict forKey:@"coordinates"];
+    }
 
     if (self.links.count > 0){
         NSMutableArray *linksArray = [NSMutableArray array];
