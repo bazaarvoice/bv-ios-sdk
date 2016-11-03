@@ -98,10 +98,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property  double unixTimeStamp;
 
 /*! The longitude attributed to the post. */
-//@property double longitude;
+@property double longitude;
 
 /*! The latitude attributed to the post. */
-//@property double latitude;
+@property double latitude;
 
 /*! The UIImage asset to be uploaded to Curations */
 @property UIImage *image;

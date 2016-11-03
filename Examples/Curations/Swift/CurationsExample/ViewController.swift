@@ -44,10 +44,9 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         super.viewWillLayoutSubviews()
         
         let layout = (curationsCollectionView.collectionViewLayout) as! UICollectionViewFlowLayout
-        layout.itemSize = CGSizeMake(curationsCollectionView.bounds.height, curationsCollectionView.bounds.height)
         
         layout.scrollDirection = UICollectionViewScrollDirection.Vertical
-        layout.itemSize = CGSizeMake(curationsCollectionView.bounds.width / 2, curationsCollectionView.bounds.width / 2)
+        layout.itemSize = CGSizeMake(curationsCollectionView.bounds.size.width / 2, curationsCollectionView.bounds.size.width / 2)
         
         layout.minimumInteritemSpacing = 0
         layout.minimumLineSpacing = 0
