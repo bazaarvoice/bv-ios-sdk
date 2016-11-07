@@ -95,7 +95,7 @@ $(function(){
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav side-nav nav-stacked nav-pills">
             <div class="bv_logo">
-                <a href="/">
+                <a href="/bv-ios-sdk/index.html">
                     <span class="bv_teal">bazaar</span><span class="bv_white">voice</span><span class="bv_teal">:</span>
                 </a>
             </div>
@@ -298,6 +298,11 @@ func uploadImageToCurations(image:UIImage) {
     // alternatively, you can upload a photo(s) via HTTPS instead of a UIImage
     // params.photos = ["https://upload.wikimedia.org/wikipedia/commons/6/6f/Einstein-formal_portrait-35.jpg"]
 
+    // You can also geo-tag photo uploads, which can also in turn be used to 
+    // find photos by location and/or create photo maps
+    params.latitude = 35.997825
+    params.longitude = -113.766150
+
     let uploadAPI = BVCurationsPhotoUploader()
 
     uploadAPI .submitCurationsContentWithParams(params, completionHandler: { () -> Void in
@@ -334,6 +339,11 @@ func uploadImageToCurations(image:UIImage) {
     params.tags = @[@"tag1", @"some-other-tag"];
     // alternatively, you can upload a photo(s) via HTTPS instead of a UIImage
     // params.photos = @[@"https://upload.wikimedia.org/wikipedia/commons/6/6f/Einstein-formal_portrait-35.jpg"];
+
+    // You can also geo-tag photo uploads, which can also in turn be used to
+    // find photos by location and/or create photo maps
+    params.latitude = 35.997825;
+    params.longitude = -113.766150;
 
     BVCurationsPhotoUploader *uploadAPI = [[BVCurationsPhotoUploader alloc] init];
 
