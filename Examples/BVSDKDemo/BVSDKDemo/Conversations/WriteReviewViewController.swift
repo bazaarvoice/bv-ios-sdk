@@ -23,11 +23,20 @@ class WriteReviewViewController: UIViewController, SDFormDelegate, SDFormDataSou
     var form : SDForm?
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var header : ProductDetailHeaderView!
+
     var spinner = Util.createSpinner(UIColor.bazaarvoiceNavy(), size: CGSize(width: 44,height: 44), padding: 0)
-    let product: BVRecommendedProduct
+
+    private var product: BVProduct?
+    private var productId: String?
     
-    init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?, product: BVRecommendedProduct?) {
-        self.product = product!
+    init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?, product: BVProduct) {
+        self.product = product
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+    }
+    
+    init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?, productId: String) {
+        self.productId = productId
+
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     }
     
@@ -38,11 +47,15 @@ class WriteReviewViewController: UIViewController, SDFormDelegate, SDFormDataSou
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        if self.presentingViewController != nil {
+            self.navigationController?.navigationBar.isTranslucent = false
+            edgesForExtendedLayout = []
+            self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(WriteReviewViewController.dismissSelf))
+        }
+        
         ProfileUtils.trackViewController(self)
         
         self.title = "Write a Review"
-        
-        header.product = product
         
         self.view.backgroundColor = UIColor.appBackground()
         
@@ -54,7 +67,32 @@ class WriteReviewViewController: UIViewController, SDFormDelegate, SDFormDataSou
         // add a SUBMIT button...
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Submit", style: .plain, target: self, action: #selector(WriteReviewViewController.submitTapped))
         
+        if let prod = product {
+            updateProductUI(product: prod)
+        }else {
+            loadProduct(productId: productId!)
+        }
+    }
+    
+    private func loadProduct(productId: String) {
+        DispatchQueue.main.async {
+            self.spinner.center = self.view.center
+            self.view.addSubview(self.spinner)
+        }
+        let request = BVProductDisplayPageRequest(productId: productId)
+            .includeStatistics(.reviews)
+            .includeStatistics(.questions)
+        request.load({ (response) in
+            self.product = response.result
+            self.updateProductUI(product: response.result!)
+            self.spinner.removeFromSuperview()
+        }){(errors) in
+        }
+    }
+    
+    private func updateProductUI(product: BVProduct) {
         self.initFormFields()
+        header.product = product
     }
     
     func submitTapped() {
@@ -69,8 +107,9 @@ class WriteReviewViewController: UIViewController, SDFormDelegate, SDFormDataSou
         let reviewSubmission = BVReviewSubmission(reviewTitle: self.reviewSubmissionParameters.title as? String ?? "",
                                                 reviewText: self.reviewSubmissionParameters.reviewText as? String ?? "",
                                                 rating: UInt(self.reviewSubmissionParameters.rating?.intValue ?? 0),
-                                                productId: self.product.productId)
-        
+                                                productId: self.product!.identifier!)
+
+
         // a working example of posting a review.
         reviewSubmission.action = BVSubmissionAction.preview // Don't actually post, just run in preview mode!
         
@@ -149,6 +188,12 @@ class WriteReviewViewController: UIViewController, SDFormDelegate, SDFormDataSou
         
     }
     
+    func dismissSelf(){
+        
+        if self.presentingViewController != nil {
+            self.presentingViewController?.dismiss(animated: true, completion: nil)
+        }
+    }
 
     // MARK: SDKFormDelegate, SDFormDataSource
     

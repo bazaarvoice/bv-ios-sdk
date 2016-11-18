@@ -3,7 +3,7 @@ set -euf -o pipefail
 
 echo Installing cocoapods dependencies for the BVSDKDemo...
 cd ./Examples/BVSDKDemo
-pod install
+pod update
 cd ../..
 
 echo Staring build...

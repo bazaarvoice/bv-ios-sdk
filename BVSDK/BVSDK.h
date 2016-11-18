@@ -18,16 +18,23 @@ FOUNDATION_EXPORT const unsigned char BVSDKVersionString[];
 // Core
 #import <BVSDK/BVCommaUtil.h>
 #import <BVSDK/BVViewsHelper.h>
-#import <BVSDK/NSBundle+DiagnosticInformation.h>
-#import <BVSDK/BVMessageInterceptor.h>
+#import <BVSDK/BVDiagnosticHelpers.h>
 
 // Notifications
+#import <BVSDK/BVNotificationProperties.h>
 #import <BVSDK/BVNotificationCenterObject.h>
 #import <BVSDK/BVNotificationConfiguration.h>
 #import <BVSDK/BVNotificationConstants.h>
-#import <BVSDK/BVNotificationViewController.h>
-#import <BVSDK/BVReviewNotificationCenter.h>
-#import <BVSDK/BVStoreReviewNotificationViewController.h>
+#import <BVSDK/BVProductReviewNotificationCenter.h>
+#import <BVSDK/BVStoreReviewNotificationCenter.h>
+#import <BVSDK/BVStoreReviewRichNotificationCenter.h>
+#import <BVSDK/BVNotificationsAnalyticsHelper.h>
+#import <BVSDK/BVOpenUrlMetaData.h>
+#import <BVSDK/BVProductReviewNotificationCenter.h>
+#import <BVSDK/BVStoreReviewNotificationCenter.h>
+#import <BVSDK/BVStoreReviewNotificationProperties.h>
+#import <BVSDK/BVStoreNotificationConfigurationLoader.h>
+#import <BVSDK/BVProductReviewNotificationConfigurationLoader.h>
 
 // Analytics
 #import <BVSDK/BVAnalyticsManager.h>
@@ -41,6 +48,18 @@ FOUNDATION_EXPORT const unsigned char BVSDKVersionString[];
 #import <BVSDK/BVFormField.h>
 #import <BVSDK/BVFormFieldOptions.h>
 #import <BVSDK/BVProduct.h>
+
+// Analytics
+#import <BVSDK/BVAnalyticsManager.h>
+
+// Conversations
+#import "BVConversationsAnalyticsUtil.h"
+#import "BVConversationsErrorResponse.h"
+#import "BVConversationsInclude.h"
+#import "BVFilter.h"
+#import "BVFormField.h"
+#import "BVFormFieldOptions.h"
+#import "BVProduct.h"
 #import <BVSDK/BVModelUtil.h>
 
 #import <BVSDK/BVUploadableStorePhoto.h>
@@ -98,9 +117,15 @@ FOUNDATION_EXPORT const unsigned char BVSDKVersionString[];
 #import <BVSDK/BVCurationsCollectionViewCell.h>
 #import <BVSDK/BVCurationsAnalyticsHelper.h>
 
+// Curations
+#import <BVSDK/BVCurationsFeedRequest.h>
+#import <BVSDK/BVCurationsFeedItem.h>
+#import <BVSDK/BVCurationsAddPostRequest.h>
+#import <BVSDK/BVCurationsAnalyticsHelper.h>
+#import <BVSDK/BVCurationsCollectionViewCell.h>
+
 #import <BVSDK/BVCurationsFeedLoader.h>
 #import <BVSDK/BVCurationsPhotoUploader.h>
-
 
 // Location
 #import <BVSDK/BVPlaceAttributes.h>
@@ -117,7 +142,6 @@ FOUNDATION_EXPORT const unsigned char BVSDKVersionString[];
 #import <BVSDK/BVShopperProfileRequestCache.h>
 #import <BVSDK/BVProductReview.h>
 
-// Notifications
-#import <BVSDK/BVNotificationsAnalyticsHelper.h>
-#import <BVSDK/BVReviewSimpleNotificationCenter.h>
-#import <BVSDK/BVReviewRichNotificationCenter.h>
+// Post Interaction Notifications
+#import <BVSDK/BVPIN.h>
+#import <BVSDK/BVPINRequest.h>

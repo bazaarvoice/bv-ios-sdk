@@ -15,22 +15,27 @@ import FBSDKCoreKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
+    let myAppCustomUrlScheme = "bvsdkdemo"
+    let myStoreReviewCategory = "bvReviewCustomContent"
+    let myProductReviewCategory = "productReviewNotificationCategory"
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
         _ = MockDataManager.sharedInstance // start data mocking service
         
         BVSDKManager.shared().setLogLevel(.error)
+
         BVSDKManager.shared().clientId = "REPLACE_ME"
         BVSDKManager.shared().apiKeyCurations = "REPLACE_ME"
         BVSDKManager.shared().apiKeyConversations = "REPLACE_ME"
         BVSDKManager.shared().apiKeyShopperAdvertising = "REPLACE_ME"
         //BVSDKManager.shared().apiKeyLocation = "00000000-0000-0000-0000-000000000000" // Setting the location key will initialize the location manager
         BVSDKManager.shared().apiKeyConversationsStores = "REPLACE_ME"
-        //"The value for UNNotificationExtensionCategory as defined by your Extension's info.plist that will be used to notify a user to review a store"
-        BVSDKManager.shared().storeReviewContentExtensionCategory = "bvReviewCustomContent"
+        BVSDKManager.shared().storeReviewContentExtensionCategory = myStoreReviewCategory
+        BVSDKManager.shared().pinContentExtensionCategory = myProductReviewCategory
+        BVSDKManager.shared().apiKeyPIN = "REPLACE_ME"
         BVSDKManager.shared().staging = false
-        
+    
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.rootViewController = navController
         window?.makeKeyAndVisible()
@@ -51,8 +56,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let notificationCenter = UNUserNotificationCenter.current()
             notificationCenter.delegate = self;
         }
-            
-            
+        
+        
         if (ProfileUtils.isFacebookInstalled()) {
             FBSDKProfile.enableUpdates(onAccessTokenChange: true)
             FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
@@ -75,22 +80,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
         
-        if (url.scheme == "bvsdkdemo") {
+        if let metaData = BVOpenURLMetaData(url: url) {
             
-            /*
-             bvsdkdemo://bvsdk.com?type=reivew&subtype=store&id=1
-             */
-            let urlStr = url.absoluteString
-            let keyRange = urlStr.range(of: "id=")
-            let storeId = urlStr.substring(from: keyRange!.upperBound)
-            
-            delay(0.5, closure: {
-                let vc = StoreWriteReviewViewController(nibName:"StoreWriteReviewViewController", bundle: nil)
-                vc.storeId = storeId
-                let nc = UINavigationController(rootViewController: vc)
-                self.window?.rootViewController?.present(nc, animated: true, completion:nil)
-            })
-            
+            if metaData.sender == BVSenderTypeNotification &&
+                metaData.type == BVContentTypeReview {
+                if metaData.subtype == BVContentSubtypeStore {
+                    
+                    let storeId = metaData.id
+                    
+                    delay(0.5, closure: {
+                        let vc = StoreWriteReviewViewController(nibName:"StoreWriteReviewViewController", bundle: nil)
+                        vc.storeId = storeId
+                        let nc = UINavigationController(rootViewController: vc)
+                        self.window?.rootViewController?.present(nc, animated: true, completion:nil)
+                    })
+                }else {
+
+                    let vc = WriteReviewViewController(nibName:"WriteReviewViewController", bundle: nil, productId: metaData.id)
+                    let nc = UINavigationController(rootViewController: vc)
+                    self.window?.rootViewController?.present(nc, animated: true, completion:nil)
+
+                }
+            }
             return true
             
         } else {
@@ -135,17 +146,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
     }()
     
-    func application(_ application: UIApplication, handleActionWithIdentifier identifier: String?, for notification: UILocalNotification, completionHandler: @escaping () -> Void) {
-        BVReviewNotificationCenter.shared().handleAction(withIdentifier: identifier, for: notification)
+    private func application(application: UIApplication, handleActionWithIdentifier identifier: String?, forLocalNotification notification: UILocalNotification, completionHandler: () -> Void) {
         
-        if identifier == ID_REPLY {
-            delay(0.5, closure: {
-                let vc = StoreWriteReviewViewController(nibName:"StoreWriteReviewViewController", bundle: nil)
-                vc.storeId = notification.userInfo![USER_INFO_PROD_ID] as? String;
+        BVStoreReviewNotificationCenter.shared().handleAction(withIdentifier: identifier, for: notification)
+        
+        if notification.category == myStoreReviewCategory {
+            
+            if identifier == ID_REPLY {
+                delay(0.5, closure: {
+                    let vc = StoreWriteReviewViewController(nibName:"StoreWriteReviewViewController", bundle: nil)
+                    vc.storeId = notification.userInfo![USER_INFO_PROD_ID] as? String;
+                    let nc = UINavigationController(rootViewController: vc)
+                    self.window?.rootViewController?.present(nc, animated: true, completion:nil)
+                })
+            }
+        }else if notification.category == myProductReviewCategory {
+            if identifier == ID_REPLY {
+
+                let productId = notification.userInfo![USER_INFO_PROD_ID] as! String;
+                let vc = WriteReviewViewController(nibName:"WriteReviewViewController", bundle: nil, productId: productId)
                 let nc = UINavigationController(rootViewController: vc)
                 self.window?.rootViewController?.present(nc, animated: true, completion:nil)
-            })
+            }
+            
         }
+        
         completionHandler()
     }
     
@@ -162,24 +187,38 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
     // The method will be called on the delegate when the user responded to the notification by opening the application, dismissing the notification or choosing a UNNotificationAction. The delegate must be set before the application returns from applicationDidFinishLaunching:.
     internal func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
         
-        //Must forward to BVSDK
-        BVReviewNotificationCenter.shared().userNotificationCenter(center, didReceive: response)
+        let userInfoDict = response.notification.request.content.userInfo
         
-        if response.actionIdentifier == UNNotificationDefaultActionIdentifier {
-            // User tapped on the notification itself, but not a specific action.
-            // Here you can determine to just let the app open, or respond to the response
-            // by pushing a desired view controller.
-            print("Default action selected on notification: " + response.description)
+        if response.notification.request.content.categoryIdentifier == myStoreReviewCategory {
+            //Must forward to BVSDK
+            BVStoreReviewNotificationCenter.shared().userNotificationCenter(center, didReceive: response)
             
-            let vc = StoreWriteReviewViewController(nibName:"StoreWriteReviewViewController", bundle: nil)
-            let userInfoDict = response.notification.request.content.userInfo
-            vc.storeId = userInfoDict[USER_INFO_PROD_ID] as? String
-            let nc = UINavigationController(rootViewController: vc)
-            self.window?.rootViewController?.present(nc, animated: true, completion:nil)
+            if response.actionIdentifier == UNNotificationDefaultActionIdentifier {
+                // User tapped on the notification itself, but not a specific action.
+                // Here you can determine to just let the app open, or respond to the response
+                // by pushing a desired view controller.
+                print("Default action selected on notification: " + response.description)
+                
+                let vc = StoreWriteReviewViewController(nibName:"StoreWriteReviewViewController", bundle: nil)
+                vc.storeId = userInfoDict[USER_INFO_PROD_ID] as? String
+                let nc = UINavigationController(rootViewController: vc)
+                nc.navigationBar.isTranslucent = false
+                nc.navigationBar.tintColor = UIColor.white
+                self.window?.rootViewController?.present(nc, animated: true, completion:nil)
+                
+            } else if response.actionIdentifier == UNNotificationDismissActionIdentifier {
+                // User decided to dismiss the view controller
+                // Handle any app logic, if desired.
+            }
             
-        } else if response.actionIdentifier == UNNotificationDismissActionIdentifier {
-            // User decided to dismiss the view controller
-            // Handle any app logic, if desired.
+        }else if response.notification.request.content.categoryIdentifier == myProductReviewCategory {
+            BVProductReviewNotificationCenter.shared().userNotificationCenter(center, didReceive: response)
+            if response.actionIdentifier == UNNotificationDefaultActionIdentifier {
+                let vc = WriteReviewViewController(nibName:"WriteReviewViewController", bundle: nil, productId: userInfoDict[USER_INFO_PROD_ID] as! String)
+                let nc = UINavigationController(rootViewController: vc)
+                self.window?.rootViewController?.present(nc, animated: true, completion:nil)
+
+            }
         }
         
         completionHandler()

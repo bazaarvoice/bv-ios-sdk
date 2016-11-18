@@ -21,18 +21,46 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		15D4F83B1DF5D5F800E6B30D /* testNotificationProductConfig.json in Resources */ = {isa = PBXBuildFile; fileRef = 15D4F83A1DF5D5F800E6B30D /* testNotificationProductConfig.json */; };
+		15D4F83F1DF5EC3C00E6B30D /* ph.png in Resources */ = {isa = PBXBuildFile; fileRef = 15D4F83E1DF5EC3C00E6B30D /* ph.png */; };
+		15D4F8441DF5EE5C00E6B30D /* UIImage+Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 15D4F8431DF5EE5C00E6B30D /* UIImage+Tests.m */; };
+		875410AF1E1F10DF006C5C6E /* BVNotifications.h in Headers */ = {isa = PBXBuildFile; fileRef = 875410A81E1F10DF006C5C6E /* BVNotifications.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		875410B01E1F10DF006C5C6E /* BVNotificationViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 875410A91E1F10DF006C5C6E /* BVNotificationViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		875410B11E1F10DF006C5C6E /* BVNotificationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 875410AA1E1F10DF006C5C6E /* BVNotificationViewController.m */; };
+		875410B21E1F10DF006C5C6E /* BVProductReviewNotificationViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 875410AB1E1F10DF006C5C6E /* BVProductReviewNotificationViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		875410B31E1F10DF006C5C6E /* BVProductReviewNotificationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 875410AC1E1F10DF006C5C6E /* BVProductReviewNotificationViewController.m */; };
+		875410B41E1F10DF006C5C6E /* BVStoreReviewNotificationViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 875410AD1E1F10DF006C5C6E /* BVStoreReviewNotificationViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		875410B51E1F10DF006C5C6E /* BVStoreReviewNotificationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 875410AE1E1F10DF006C5C6E /* BVStoreReviewNotificationViewController.m */; };
+		8754116F1E1F201E006C5C6E /* BVNotificationCenterObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 875411541E1F201E006C5C6E /* BVNotificationCenterObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		875411701E1F201E006C5C6E /* BVNotificationConfiguration.h in Headers */ = {isa = PBXBuildFile; fileRef = 875411551E1F201E006C5C6E /* BVNotificationConfiguration.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		875411711E1F201E006C5C6E /* BVNotificationConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 875411561E1F201E006C5C6E /* BVNotificationConfiguration.m */; };
+		875411721E1F201E006C5C6E /* BVNotificationConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = 875411571E1F201E006C5C6E /* BVNotificationConstants.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		875411731E1F201E006C5C6E /* BVNotificationProperties.h in Headers */ = {isa = PBXBuildFile; fileRef = 875411581E1F201E006C5C6E /* BVNotificationProperties.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		875411741E1F201E006C5C6E /* BVNotificationProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 875411591E1F201E006C5C6E /* BVNotificationProperties.m */; };
+		875411751E1F201E006C5C6E /* BVNotificationsAnalyticsHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 8754115A1E1F201E006C5C6E /* BVNotificationsAnalyticsHelper.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		875411761E1F201E006C5C6E /* BVNotificationsAnalyticsHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 8754115B1E1F201E006C5C6E /* BVNotificationsAnalyticsHelper.m */; };
+		875411771E1F201E006C5C6E /* BVOpenURLMetaData.h in Headers */ = {isa = PBXBuildFile; fileRef = 8754115C1E1F201E006C5C6E /* BVOpenURLMetaData.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		875411781E1F201E006C5C6E /* BVOpenURLMetaData.m in Sources */ = {isa = PBXBuildFile; fileRef = 8754115D1E1F201E006C5C6E /* BVOpenURLMetaData.m */; };
+		875411791E1F201E006C5C6E /* BVProductReviewNotificationCenter.h in Headers */ = {isa = PBXBuildFile; fileRef = 8754115E1E1F201E006C5C6E /* BVProductReviewNotificationCenter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8754117A1E1F201E006C5C6E /* BVProductReviewNotificationCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 8754115F1E1F201E006C5C6E /* BVProductReviewNotificationCenter.m */; };
+		8754117B1E1F201E006C5C6E /* BVProductReviewNotificationProperties.h in Headers */ = {isa = PBXBuildFile; fileRef = 875411601E1F201E006C5C6E /* BVProductReviewNotificationProperties.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8754117C1E1F201E006C5C6E /* BVProductReviewNotificationProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 875411611E1F201E006C5C6E /* BVProductReviewNotificationProperties.m */; };
+		8754117D1E1F201E006C5C6E /* BVProductReviewRichNotificationCenter.h in Headers */ = {isa = PBXBuildFile; fileRef = 875411621E1F201E006C5C6E /* BVProductReviewRichNotificationCenter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8754117E1E1F201E006C5C6E /* BVProductReviewRichNotificationCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 875411631E1F201E006C5C6E /* BVProductReviewRichNotificationCenter.m */; };
+		8754117F1E1F201E006C5C6E /* BVProductReviewSimpleNotificationCenter.h in Headers */ = {isa = PBXBuildFile; fileRef = 875411641E1F201E006C5C6E /* BVProductReviewSimpleNotificationCenter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		875411801E1F201E006C5C6E /* BVProductReviewSimpleNotificationCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 875411651E1F201E006C5C6E /* BVProductReviewSimpleNotificationCenter.m */; };
+		875411811E1F201E006C5C6E /* BVStoreReviewNotificationCenter.h in Headers */ = {isa = PBXBuildFile; fileRef = 875411661E1F201E006C5C6E /* BVStoreReviewNotificationCenter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		875411821E1F201E006C5C6E /* BVStoreReviewNotificationCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 875411671E1F201E006C5C6E /* BVStoreReviewNotificationCenter.m */; };
+		875411831E1F201E006C5C6E /* BVStoreReviewNotificationProperties.h in Headers */ = {isa = PBXBuildFile; fileRef = 875411681E1F201E006C5C6E /* BVStoreReviewNotificationProperties.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		875411841E1F201E006C5C6E /* BVStoreReviewNotificationProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 875411691E1F201E006C5C6E /* BVStoreReviewNotificationProperties.m */; };
+		875411851E1F201E006C5C6E /* BVStoreReviewRichNotificationCenter.h in Headers */ = {isa = PBXBuildFile; fileRef = 8754116A1E1F201E006C5C6E /* BVStoreReviewRichNotificationCenter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		875411861E1F201E006C5C6E /* BVStoreReviewRichNotificationCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 8754116B1E1F201E006C5C6E /* BVStoreReviewRichNotificationCenter.m */; };
+		875411871E1F201E006C5C6E /* BVStoreReviewSimpleNotificationCenter.h in Headers */ = {isa = PBXBuildFile; fileRef = 8754116C1E1F201E006C5C6E /* BVStoreReviewSimpleNotificationCenter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		875411881E1F201E006C5C6E /* BVStoreReviewSimpleNotificationCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 8754116D1E1F201E006C5C6E /* BVStoreReviewSimpleNotificationCenter.m */; };
+		875411891E1F201E006C5C6E /* mapThumbnail.png in Resources */ = {isa = PBXBuildFile; fileRef = 8754116E1E1F201E006C5C6E /* mapThumbnail.png */; };
 		8779DB251DD20D5D00E6CAF5 /* BVStoreReviewsTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8779DB241DD20D5D00E6CAF5 /* BVStoreReviewsTableView.m */; };
 		8779DB271DD20D8D00E6CAF5 /* BVStoreReviewsTableView.h in Headers */ = {isa = PBXBuildFile; fileRef = 8779DB261DD20D8D00E6CAF5 /* BVStoreReviewsTableView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8779DB6D1DD3AAE800E6CAF5 /* BVAnalyticsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8779DB6C1DD3AAE800E6CAF5 /* BVAnalyticsTest.m */; };
-		879D08FE1DCA6D34006B51D3 /* BVNotificationCenterObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 879D08FD1DCA6D34006B51D3 /* BVNotificationCenterObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		879D09011DCA6DC4006B51D3 /* BVNotificationsAnalyticsHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 879D08FF1DCA6DC4006B51D3 /* BVNotificationsAnalyticsHelper.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		879D09021DCA6DC4006B51D3 /* BVNotificationsAnalyticsHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 879D09001DCA6DC4006B51D3 /* BVNotificationsAnalyticsHelper.m */; };
-		879D09051DCA6DD8006B51D3 /* BVReviewRichNotificationCenter.h in Headers */ = {isa = PBXBuildFile; fileRef = 879D09031DCA6DD8006B51D3 /* BVReviewRichNotificationCenter.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		879D09061DCA6DD8006B51D3 /* BVReviewRichNotificationCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 879D09041DCA6DD8006B51D3 /* BVReviewRichNotificationCenter.m */; };
-		879D09091DCA6E20006B51D3 /* BVBaseAnalyticsHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 879D09071DCA6E20006B51D3 /* BVBaseAnalyticsHelper.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		879D090A1DCA6E20006B51D3 /* BVBaseAnalyticsHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 879D09081DCA6E20006B51D3 /* BVBaseAnalyticsHelper.m */; };
-		879D090D1DCA6E47006B51D3 /* BVReviewSimpleNotificationCenter.h in Headers */ = {isa = PBXBuildFile; fileRef = 879D090B1DCA6E47006B51D3 /* BVReviewSimpleNotificationCenter.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		879D090E1DCA6E47006B51D3 /* BVReviewSimpleNotificationCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 879D090C1DCA6E47006B51D3 /* BVReviewSimpleNotificationCenter.m */; };
 		879D09111DCA8014006B51D3 /* testNotificationConfig.json in Resources */ = {isa = PBXBuildFile; fileRef = 879D09101DCA8014006B51D3 /* testNotificationConfig.json */; };
 		87A02B5F1E0963710002701B /* FeedbackSubmissionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A02B5E1E0963710002701B /* FeedbackSubmissionTests.swift */; };
 		87A02B621E0967EE0002701B /* BVFeedbackSubmission.h in Headers */ = {isa = PBXBuildFile; fileRef = 87A02B601E0967EE0002701B /* BVFeedbackSubmission.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -41,6 +69,36 @@
 		87A02B671E096B300002701B /* BVFeedbackSubmissionResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 87A02B651E096B300002701B /* BVFeedbackSubmissionResponse.m */; };
 		87A02B6A1E0971AC0002701B /* BVSubmittedFeedback.h in Headers */ = {isa = PBXBuildFile; fileRef = 87A02B681E0971AC0002701B /* BVSubmittedFeedback.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		87A02B6B1E0971AC0002701B /* BVSubmittedFeedback.m in Sources */ = {isa = PBXBuildFile; fileRef = 87A02B691E0971AC0002701B /* BVSubmittedFeedback.m */; };
+		87A9ECB81E1DA87E00666636 /* productsToReviewResult.json in Resources */ = {isa = PBXBuildFile; fileRef = 87A9ECB71E1DA87E00666636 /* productsToReviewResult.json */; };
+		87A9ECBA1E1DA93A00666636 /* BVPINTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 87A9ECB91E1DA93A00666636 /* BVPINTests.m */; };
+		87A9ECC01E1DB9B300666636 /* BVPIN.h in Headers */ = {isa = PBXBuildFile; fileRef = 87A9ECBC1E1DB9B300666636 /* BVPIN.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		87A9ECC11E1DB9B300666636 /* BVPIN.m in Sources */ = {isa = PBXBuildFile; fileRef = 87A9ECBD1E1DB9B300666636 /* BVPIN.m */; };
+		87A9ECC21E1DB9B300666636 /* BVPINRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 87A9ECBE1E1DB9B300666636 /* BVPINRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		87A9ECC31E1DB9B300666636 /* BVPINRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 87A9ECBF1E1DB9B300666636 /* BVPINRequest.m */; };
+		87C5FE991E22914C004EE6E8 /* BVStoreNotificationConfigurationLoader.h in Headers */ = {isa = PBXBuildFile; fileRef = 87C5FE971E22914C004EE6E8 /* BVStoreNotificationConfigurationLoader.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		87C5FE9A1E22914C004EE6E8 /* BVStoreNotificationConfigurationLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 87C5FE981E22914C004EE6E8 /* BVStoreNotificationConfigurationLoader.m */; };
+		87C5FE9D1E229168004EE6E8 /* BVProductReviewNotificationConfigurationLoader.h in Headers */ = {isa = PBXBuildFile; fileRef = 87C5FE9B1E229168004EE6E8 /* BVProductReviewNotificationConfigurationLoader.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		87C5FE9E1E229168004EE6E8 /* BVProductReviewNotificationConfigurationLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 87C5FE9C1E229168004EE6E8 /* BVProductReviewNotificationConfigurationLoader.m */; };
+		87C5FEB61E22A05D004EE6E8 /* BVAuthenticatedUser.h in Headers */ = {isa = PBXBuildFile; fileRef = 87C5FEA01E22A05D004EE6E8 /* BVAuthenticatedUser.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		87C5FEB71E22A05D004EE6E8 /* BVAuthenticatedUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 87C5FEA11E22A05D004EE6E8 /* BVAuthenticatedUser.m */; };
+		87C5FEB81E22A05D004EE6E8 /* BVBaseAnalyticsHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 87C5FEA21E22A05D004EE6E8 /* BVBaseAnalyticsHelper.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		87C5FEB91E22A05D004EE6E8 /* BVBaseAnalyticsHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 87C5FEA31E22A05D004EE6E8 /* BVBaseAnalyticsHelper.m */; };
+		87C5FEBA1E22A05D004EE6E8 /* BVCore.h in Headers */ = {isa = PBXBuildFile; fileRef = 87C5FEA41E22A05D004EE6E8 /* BVCore.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		87C5FEBB1E22A05D004EE6E8 /* BVDiagnosticHelpers.h in Headers */ = {isa = PBXBuildFile; fileRef = 87C5FEA51E22A05D004EE6E8 /* BVDiagnosticHelpers.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		87C5FEBC1E22A05D004EE6E8 /* BVDiagnosticHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 87C5FEA61E22A05D004EE6E8 /* BVDiagnosticHelpers.m */; };
+		87C5FEBD1E22A05D004EE6E8 /* BVErrorCodeConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = 87C5FEA71E22A05D004EE6E8 /* BVErrorCodeConstants.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		87C5FEBE1E22A05D004EE6E8 /* BVLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = 87C5FEA81E22A05D004EE6E8 /* BVLogger.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		87C5FEBF1E22A05D004EE6E8 /* BVLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 87C5FEA91E22A05D004EE6E8 /* BVLogger.m */; };
+		87C5FEC01E22A05D004EE6E8 /* BVMessageInterceptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 87C5FEAA1E22A05D004EE6E8 /* BVMessageInterceptor.m */; };
+		87C5FEC11E22A05D004EE6E8 /* BVNullHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 87C5FEAB1E22A05D004EE6E8 /* BVNullHelper.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		87C5FEC21E22A05D004EE6E8 /* BVSDKConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = 87C5FEAC1E22A05D004EE6E8 /* BVSDKConstants.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		87C5FEC31E22A05D004EE6E8 /* BVSDKManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 87C5FEAD1E22A05D004EE6E8 /* BVSDKManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		87C5FEC41E22A05D004EE6E8 /* BVSDKManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 87C5FEAE1E22A05D004EE6E8 /* BVSDKManager.m */; };
+		87C5FEC51E22A05D004EE6E8 /* BVStringKeyValuePair.h in Headers */ = {isa = PBXBuildFile; fileRef = 87C5FEAF1E22A05D004EE6E8 /* BVStringKeyValuePair.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		87C5FEC61E22A05D004EE6E8 /* BVStringKeyValuePair.m in Sources */ = {isa = PBXBuildFile; fileRef = 87C5FEB01E22A05D004EE6E8 /* BVStringKeyValuePair.m */; };
+		87C5FEC71E22A05D004EE6E8 /* BVViewsHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 87C5FEB11E22A05D004EE6E8 /* BVViewsHelper.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		87C5FEC81E22A05D004EE6E8 /* BVViewsHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 87C5FEB21E22A05D004EE6E8 /* BVViewsHelper.m */; };
+		87C5FEC91E22A05D004EE6E8 /* BVMessageInterceptor.h in Headers */ = {isa = PBXBuildFile; fileRef = 87C5FEB41E22A05D004EE6E8 /* BVMessageInterceptor.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		87F2DAB11DAD579D00FB43F3 /* BVSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87F2DAA71DAD579D00FB43F3 /* BVSDK.framework */; };
 		87F2DAB81DAD579D00FB43F3 /* BVSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = 87F2DAAA1DAD579D00FB43F3 /* BVSDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		87F2DC171DAD585E00FB43F3 /* BVAdsMessageInterceptor.h in Headers */ = {isa = PBXBuildFile; fileRef = 87F2DAC31DAD585E00FB43F3 /* BVAdsMessageInterceptor.h */; settings = {ATTRIBUTES = (Private, ); }; };
@@ -63,32 +121,6 @@
 		87F2DC281DAD585E00FB43F3 /* BVGMBLVisit.m in Sources */ = {isa = PBXBuildFile; fileRef = 87F2DAD61DAD585E00FB43F3 /* BVGMBLVisit.m */; };
 		87F2DC291DAD585E00FB43F3 /* BVLocationWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = 87F2DAD71DAD585E00FB43F3 /* BVLocationWrapper.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		87F2DC2A1DAD585E00FB43F3 /* BVLocationWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 87F2DAD81DAD585E00FB43F3 /* BVLocationWrapper.m */; };
-		87F2DC2B1DAD585E00FB43F3 /* BVAuthenticatedUser.h in Headers */ = {isa = PBXBuildFile; fileRef = 87F2DADA1DAD585E00FB43F3 /* BVAuthenticatedUser.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		87F2DC2C1DAD585E00FB43F3 /* BVAuthenticatedUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 87F2DADB1DAD585E00FB43F3 /* BVAuthenticatedUser.m */; };
-		87F2DC2D1DAD585E00FB43F3 /* BVCore.h in Headers */ = {isa = PBXBuildFile; fileRef = 87F2DADC1DAD585E00FB43F3 /* BVCore.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		87F2DC2E1DAD585E00FB43F3 /* BVErrorCodeConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = 87F2DADD1DAD585E00FB43F3 /* BVErrorCodeConstants.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		87F2DC2F1DAD585E00FB43F3 /* BVLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = 87F2DADE1DAD585E00FB43F3 /* BVLogger.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		87F2DC301DAD585E00FB43F3 /* BVLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 87F2DADF1DAD585E00FB43F3 /* BVLogger.m */; };
-		87F2DC311DAD585E00FB43F3 /* BVMessageInterceptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 87F2DAE01DAD585E00FB43F3 /* BVMessageInterceptor.m */; };
-		87F2DC321DAD585E00FB43F3 /* BVNotificationConfiguration.h in Headers */ = {isa = PBXBuildFile; fileRef = 87F2DAE11DAD585E00FB43F3 /* BVNotificationConfiguration.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		87F2DC331DAD585E00FB43F3 /* BVNotificationConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 87F2DAE21DAD585E00FB43F3 /* BVNotificationConfiguration.m */; };
-		87F2DC341DAD585E00FB43F3 /* BVNullHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 87F2DAE31DAD585E00FB43F3 /* BVNullHelper.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		87F2DC351DAD585E00FB43F3 /* BVSDKManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 87F2DAE41DAD585E00FB43F3 /* BVSDKManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		87F2DC361DAD585E00FB43F3 /* BVSDKManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 87F2DAE51DAD585E00FB43F3 /* BVSDKManager.m */; };
-		87F2DC371DAD585E00FB43F3 /* BVStoreReviewNotificationProperties.h in Headers */ = {isa = PBXBuildFile; fileRef = 87F2DAE61DAD585E00FB43F3 /* BVStoreReviewNotificationProperties.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		87F2DC381DAD585E00FB43F3 /* BVStoreReviewNotificationProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 87F2DAE71DAD585E00FB43F3 /* BVStoreReviewNotificationProperties.m */; };
-		87F2DC391DAD585E00FB43F3 /* BVStringKeyValuePair.h in Headers */ = {isa = PBXBuildFile; fileRef = 87F2DAE81DAD585E00FB43F3 /* BVStringKeyValuePair.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		87F2DC3A1DAD585E00FB43F3 /* BVStringKeyValuePair.m in Sources */ = {isa = PBXBuildFile; fileRef = 87F2DAE91DAD585E00FB43F3 /* BVStringKeyValuePair.m */; };
-		87F2DC3B1DAD585E00FB43F3 /* BVViewsHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 87F2DAEA1DAD585E00FB43F3 /* BVViewsHelper.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		87F2DC3C1DAD585E00FB43F3 /* BVViewsHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 87F2DAEB1DAD585E00FB43F3 /* BVViewsHelper.m */; };
-		87F2DC3D1DAD585E00FB43F3 /* BVNotificationConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = 87F2DAED1DAD585E00FB43F3 /* BVNotificationConstants.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		87F2DC3E1DAD585E00FB43F3 /* BVReviewNotificationCenter.h in Headers */ = {isa = PBXBuildFile; fileRef = 87F2DAEE1DAD585E00FB43F3 /* BVReviewNotificationCenter.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		87F2DC3F1DAD585E00FB43F3 /* BVReviewNotificationCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 87F2DAEF1DAD585E00FB43F3 /* BVReviewNotificationCenter.m */; };
-		87F2DC401DAD585E00FB43F3 /* mapThumbnail.png in Resources */ = {isa = PBXBuildFile; fileRef = 87F2DAF01DAD585E00FB43F3 /* mapThumbnail.png */; };
-		87F2DC411DAD585E00FB43F3 /* NSBundle+DiagnosticInformation.h in Headers */ = {isa = PBXBuildFile; fileRef = 87F2DAF11DAD585E00FB43F3 /* NSBundle+DiagnosticInformation.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		87F2DC421DAD585E00FB43F3 /* NSBundle+DiagnosticInformation.m in Sources */ = {isa = PBXBuildFile; fileRef = 87F2DAF21DAD585E00FB43F3 /* NSBundle+DiagnosticInformation.m */; };
-		87F2DC431DAD585E00FB43F3 /* BVMessageInterceptor.h in Headers */ = {isa = PBXBuildFile; fileRef = 87F2DAF41DAD585E00FB43F3 /* BVMessageInterceptor.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		87F2DC451DAD585E00FB43F3 /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = 87F2DAF71DAD585E00FB43F3 /* .gitkeep */; };
 		87F2DC561DAD585E00FB43F3 /* BVConversationsAnalyticsUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = 87F2DB0C1DAD585E00FB43F3 /* BVConversationsAnalyticsUtil.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		87F2DC571DAD585E00FB43F3 /* BVConversationsAnalyticsUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 87F2DB0D1DAD585E00FB43F3 /* BVConversationsAnalyticsUtil.m */; };
 		87F2DC581DAD585E00FB43F3 /* BVCommaUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = 87F2DB0E1DAD585E00FB43F3 /* BVCommaUtil.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -308,11 +340,6 @@
 		87F2DD2E1DAD585E00FB43F3 /* BVPlaceAttributes.m in Sources */ = {isa = PBXBuildFile; fileRef = 87F2DBF91DAD585E00FB43F3 /* BVPlaceAttributes.m */; };
 		87F2DD2F1DAD585E00FB43F3 /* BVVisit.h in Headers */ = {isa = PBXBuildFile; fileRef = 87F2DBFA1DAD585E00FB43F3 /* BVVisit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		87F2DD301DAD585E00FB43F3 /* BVVisit.m in Sources */ = {isa = PBXBuildFile; fileRef = 87F2DBFB1DAD585E00FB43F3 /* BVVisit.m */; };
-		87F2DD311DAD585E00FB43F3 /* BVNotificationViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 87F2DBFD1DAD585E00FB43F3 /* BVNotificationViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		87F2DD321DAD585E00FB43F3 /* BVNotificationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87F2DBFE1DAD585E00FB43F3 /* BVNotificationViewController.m */; };
-		87F2DD331DAD585E00FB43F3 /* BVStoreReviewNotificationViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 87F2DBFF1DAD585E00FB43F3 /* BVStoreReviewNotificationViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		87F2DD341DAD585E00FB43F3 /* BVStoreReviewNotificationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87F2DC001DAD585E00FB43F3 /* BVStoreReviewNotificationViewController.m */; };
-		87F2DD351DAD585E00FB43F3 /* BVStoreReviewNotificationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 87F2DC011DAD585E00FB43F3 /* BVStoreReviewNotificationViewController.xib */; };
 		87F2DD361DAD585E00FB43F3 /* BVProductRecommendationsContainer.h in Headers */ = {isa = PBXBuildFile; fileRef = 87F2DC031DAD585E00FB43F3 /* BVProductRecommendationsContainer.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		87F2DD371DAD585E00FB43F3 /* BVProductRecommendationsContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 87F2DC041DAD585E00FB43F3 /* BVProductRecommendationsContainer.m */; };
 		87F2DD381DAD585E00FB43F3 /* BVProductRecommendationView.h in Headers */ = {isa = PBXBuildFile; fileRef = 87F2DC051DAD585E00FB43F3 /* BVProductRecommendationView.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -419,24 +446,54 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		15D4F83A1DF5D5F800E6B30D /* testNotificationProductConfig.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = testNotificationProductConfig.json; path = Tests/Tests/resources/notification_config/testNotificationProductConfig.json; sourceTree = SOURCE_ROOT; };
+		15D4F83E1DF5EC3C00E6B30D /* ph.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ph.png; sourceTree = "<group>"; };
+		15D4F8421DF5EE5C00E6B30D /* UIImage+Tests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Tests.h"; sourceTree = "<group>"; };
+		15D4F8431DF5EE5C00E6B30D /* UIImage+Tests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Tests.m"; sourceTree = "<group>"; };
+		15D4F8451DF5EFFF00E6B30D /* BVSDKTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BVSDKTests-Bridging-Header.h"; sourceTree = "<group>"; };
 		3462CE8D50CC0B93A458E62C /* Pods-BVSDKTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BVSDKTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BVSDKTests/Pods-BVSDKTests.debug.xcconfig"; sourceTree = "<group>"; };
 		387BAAAEE154D9B41D414692 /* Pods-BVSDK-BVSDKTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BVSDK-BVSDKTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-BVSDK-BVSDKTests/Pods-BVSDK-BVSDKTests.release.xcconfig"; sourceTree = "<group>"; };
 		7892A8713545E74147C58ECB /* Pods_BVSDKTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BVSDKTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D31881627EFC6F28C7B88B2 /* Pods-BVSDK-BVSDKTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BVSDK-BVSDKTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BVSDK-BVSDKTests/Pods-BVSDK-BVSDKTests.debug.xcconfig"; sourceTree = "<group>"; };
+		875410A81E1F10DF006C5C6E /* BVNotifications.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVNotifications.h; sourceTree = "<group>"; };
+		875410A91E1F10DF006C5C6E /* BVNotificationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVNotificationViewController.h; sourceTree = "<group>"; };
+		875410AA1E1F10DF006C5C6E /* BVNotificationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVNotificationViewController.m; sourceTree = "<group>"; };
+		875410AB1E1F10DF006C5C6E /* BVProductReviewNotificationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVProductReviewNotificationViewController.h; sourceTree = "<group>"; };
+		875410AC1E1F10DF006C5C6E /* BVProductReviewNotificationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVProductReviewNotificationViewController.m; sourceTree = "<group>"; };
+		875410AD1E1F10DF006C5C6E /* BVStoreReviewNotificationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVStoreReviewNotificationViewController.h; sourceTree = "<group>"; };
+		875410AE1E1F10DF006C5C6E /* BVStoreReviewNotificationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVStoreReviewNotificationViewController.m; sourceTree = "<group>"; };
+		875411541E1F201E006C5C6E /* BVNotificationCenterObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVNotificationCenterObject.h; sourceTree = "<group>"; };
+		875411551E1F201E006C5C6E /* BVNotificationConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVNotificationConfiguration.h; sourceTree = "<group>"; };
+		875411561E1F201E006C5C6E /* BVNotificationConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVNotificationConfiguration.m; sourceTree = "<group>"; };
+		875411571E1F201E006C5C6E /* BVNotificationConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVNotificationConstants.h; sourceTree = "<group>"; };
+		875411581E1F201E006C5C6E /* BVNotificationProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVNotificationProperties.h; sourceTree = "<group>"; };
+		875411591E1F201E006C5C6E /* BVNotificationProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVNotificationProperties.m; sourceTree = "<group>"; };
+		8754115A1E1F201E006C5C6E /* BVNotificationsAnalyticsHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVNotificationsAnalyticsHelper.h; sourceTree = "<group>"; };
+		8754115B1E1F201E006C5C6E /* BVNotificationsAnalyticsHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVNotificationsAnalyticsHelper.m; sourceTree = "<group>"; };
+		8754115C1E1F201E006C5C6E /* BVOpenURLMetaData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVOpenURLMetaData.h; sourceTree = "<group>"; };
+		8754115D1E1F201E006C5C6E /* BVOpenURLMetaData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVOpenURLMetaData.m; sourceTree = "<group>"; };
+		8754115E1E1F201E006C5C6E /* BVProductReviewNotificationCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVProductReviewNotificationCenter.h; sourceTree = "<group>"; };
+		8754115F1E1F201E006C5C6E /* BVProductReviewNotificationCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVProductReviewNotificationCenter.m; sourceTree = "<group>"; };
+		875411601E1F201E006C5C6E /* BVProductReviewNotificationProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVProductReviewNotificationProperties.h; sourceTree = "<group>"; };
+		875411611E1F201E006C5C6E /* BVProductReviewNotificationProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVProductReviewNotificationProperties.m; sourceTree = "<group>"; };
+		875411621E1F201E006C5C6E /* BVProductReviewRichNotificationCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVProductReviewRichNotificationCenter.h; sourceTree = "<group>"; };
+		875411631E1F201E006C5C6E /* BVProductReviewRichNotificationCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVProductReviewRichNotificationCenter.m; sourceTree = "<group>"; };
+		875411641E1F201E006C5C6E /* BVProductReviewSimpleNotificationCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVProductReviewSimpleNotificationCenter.h; sourceTree = "<group>"; };
+		875411651E1F201E006C5C6E /* BVProductReviewSimpleNotificationCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVProductReviewSimpleNotificationCenter.m; sourceTree = "<group>"; };
+		875411661E1F201E006C5C6E /* BVStoreReviewNotificationCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVStoreReviewNotificationCenter.h; sourceTree = "<group>"; };
+		875411671E1F201E006C5C6E /* BVStoreReviewNotificationCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVStoreReviewNotificationCenter.m; sourceTree = "<group>"; };
+		875411681E1F201E006C5C6E /* BVStoreReviewNotificationProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVStoreReviewNotificationProperties.h; sourceTree = "<group>"; };
+		875411691E1F201E006C5C6E /* BVStoreReviewNotificationProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVStoreReviewNotificationProperties.m; sourceTree = "<group>"; };
+		8754116A1E1F201E006C5C6E /* BVStoreReviewRichNotificationCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVStoreReviewRichNotificationCenter.h; sourceTree = "<group>"; };
+		8754116B1E1F201E006C5C6E /* BVStoreReviewRichNotificationCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVStoreReviewRichNotificationCenter.m; sourceTree = "<group>"; };
+		8754116C1E1F201E006C5C6E /* BVStoreReviewSimpleNotificationCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVStoreReviewSimpleNotificationCenter.h; sourceTree = "<group>"; };
+		8754116D1E1F201E006C5C6E /* BVStoreReviewSimpleNotificationCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVStoreReviewSimpleNotificationCenter.m; sourceTree = "<group>"; };
+		8754116E1E1F201E006C5C6E /* mapThumbnail.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mapThumbnail.png; sourceTree = "<group>"; };
 		8779DB241DD20D5D00E6CAF5 /* BVStoreReviewsTableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = BVStoreReviewsTableView.m; path = Stores/BVStoreReviewsTableView.m; sourceTree = "<group>"; };
 		8779DB261DD20D8D00E6CAF5 /* BVStoreReviewsTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BVStoreReviewsTableView.h; path = Stores/BVStoreReviewsTableView.h; sourceTree = "<group>"; };
 		8779DB6C1DD3AAE800E6CAF5 /* BVAnalyticsTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BVAnalyticsTest.m; path = Tests/Tests/BVAnalyticsTest.m; sourceTree = SOURCE_ROOT; };
 		879D08FB1DCA6CAE006B51D3 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
-		879D08FD1DCA6D34006B51D3 /* BVNotificationCenterObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVNotificationCenterObject.h; sourceTree = "<group>"; };
-		879D08FF1DCA6DC4006B51D3 /* BVNotificationsAnalyticsHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVNotificationsAnalyticsHelper.h; sourceTree = "<group>"; };
-		879D09001DCA6DC4006B51D3 /* BVNotificationsAnalyticsHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVNotificationsAnalyticsHelper.m; sourceTree = "<group>"; };
-		879D09031DCA6DD8006B51D3 /* BVReviewRichNotificationCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVReviewRichNotificationCenter.h; sourceTree = "<group>"; };
-		879D09041DCA6DD8006B51D3 /* BVReviewRichNotificationCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVReviewRichNotificationCenter.m; sourceTree = "<group>"; };
-		879D09071DCA6E20006B51D3 /* BVBaseAnalyticsHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVBaseAnalyticsHelper.h; sourceTree = "<group>"; };
-		879D09081DCA6E20006B51D3 /* BVBaseAnalyticsHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVBaseAnalyticsHelper.m; sourceTree = "<group>"; };
-		879D090B1DCA6E47006B51D3 /* BVReviewSimpleNotificationCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVReviewSimpleNotificationCenter.h; sourceTree = "<group>"; };
-		879D090C1DCA6E47006B51D3 /* BVReviewSimpleNotificationCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVReviewSimpleNotificationCenter.m; sourceTree = "<group>"; };
-		879D090F1DCA7DDE006B51D3 /* BVSDKManager+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "BVSDKManager+Private.h"; path = "Tests/Tests/BVSDKManager+Private.h"; sourceTree = SOURCE_ROOT; };
+		879D090F1DCA7DDE006B51D3 /* BVStoreNotificationConfigurationLoader+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "BVStoreNotificationConfigurationLoader+Private.h"; path = "Tests/Tests/BVStoreNotificationConfigurationLoader+Private.h"; sourceTree = SOURCE_ROOT; };
 		879D09101DCA8014006B51D3 /* testNotificationConfig.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = testNotificationConfig.json; path = Tests/Tests/resources/notification_config/testNotificationConfig.json; sourceTree = SOURCE_ROOT; };
 		87A02B5E1E0963710002701B /* FeedbackSubmissionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedbackSubmissionTests.swift; sourceTree = "<group>"; };
 		87A02B601E0967EE0002701B /* BVFeedbackSubmission.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BVFeedbackSubmission.h; path = Feedback/BVFeedbackSubmission.h; sourceTree = "<group>"; };
@@ -445,7 +502,39 @@
 		87A02B651E096B300002701B /* BVFeedbackSubmissionResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BVFeedbackSubmissionResponse.m; path = Feedback/BVFeedbackSubmissionResponse.m; sourceTree = "<group>"; };
 		87A02B681E0971AC0002701B /* BVSubmittedFeedback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BVSubmittedFeedback.h; path = Feedback/BVSubmittedFeedback.h; sourceTree = "<group>"; };
 		87A02B691E0971AC0002701B /* BVSubmittedFeedback.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BVSubmittedFeedback.m; path = Feedback/BVSubmittedFeedback.m; sourceTree = "<group>"; };
+		87A9ECB71E1DA87E00666636 /* productsToReviewResult.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = productsToReviewResult.json; path = Tests/Tests/resources/pin/productsToReviewResult.json; sourceTree = SOURCE_ROOT; };
+		87A9ECB91E1DA93A00666636 /* BVPINTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BVPINTests.m; path = Tests/Tests/BVPINTests.m; sourceTree = SOURCE_ROOT; };
+		87A9ECBC1E1DB9B300666636 /* BVPIN.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVPIN.h; sourceTree = "<group>"; };
+		87A9ECBD1E1DB9B300666636 /* BVPIN.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVPIN.m; sourceTree = "<group>"; };
+		87A9ECBE1E1DB9B300666636 /* BVPINRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVPINRequest.h; sourceTree = "<group>"; };
+		87A9ECBF1E1DB9B300666636 /* BVPINRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVPINRequest.m; sourceTree = "<group>"; };
 		87B8A7D7272FA8AE6BF8BFBA /* Pods_BVSDK_BVSDKTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BVSDK_BVSDKTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		87C5FE971E22914C004EE6E8 /* BVStoreNotificationConfigurationLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVStoreNotificationConfigurationLoader.h; sourceTree = "<group>"; };
+		87C5FE981E22914C004EE6E8 /* BVStoreNotificationConfigurationLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVStoreNotificationConfigurationLoader.m; sourceTree = "<group>"; };
+		87C5FE9B1E229168004EE6E8 /* BVProductReviewNotificationConfigurationLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVProductReviewNotificationConfigurationLoader.h; sourceTree = "<group>"; };
+		87C5FE9C1E229168004EE6E8 /* BVProductReviewNotificationConfigurationLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVProductReviewNotificationConfigurationLoader.m; sourceTree = "<group>"; };
+		87C5FEA01E22A05D004EE6E8 /* BVAuthenticatedUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVAuthenticatedUser.h; sourceTree = "<group>"; };
+		87C5FEA11E22A05D004EE6E8 /* BVAuthenticatedUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVAuthenticatedUser.m; sourceTree = "<group>"; };
+		87C5FEA21E22A05D004EE6E8 /* BVBaseAnalyticsHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVBaseAnalyticsHelper.h; sourceTree = "<group>"; };
+		87C5FEA31E22A05D004EE6E8 /* BVBaseAnalyticsHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVBaseAnalyticsHelper.m; sourceTree = "<group>"; };
+		87C5FEA41E22A05D004EE6E8 /* BVCore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVCore.h; sourceTree = "<group>"; };
+		87C5FEA51E22A05D004EE6E8 /* BVDiagnosticHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVDiagnosticHelpers.h; sourceTree = "<group>"; };
+		87C5FEA61E22A05D004EE6E8 /* BVDiagnosticHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVDiagnosticHelpers.m; sourceTree = "<group>"; };
+		87C5FEA71E22A05D004EE6E8 /* BVErrorCodeConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVErrorCodeConstants.h; sourceTree = "<group>"; };
+		87C5FEA81E22A05D004EE6E8 /* BVLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVLogger.h; sourceTree = "<group>"; };
+		87C5FEA91E22A05D004EE6E8 /* BVLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVLogger.m; sourceTree = "<group>"; };
+		87C5FEAA1E22A05D004EE6E8 /* BVMessageInterceptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVMessageInterceptor.m; sourceTree = "<group>"; };
+		87C5FEAB1E22A05D004EE6E8 /* BVNullHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVNullHelper.h; sourceTree = "<group>"; };
+		87C5FEAC1E22A05D004EE6E8 /* BVSDKConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVSDKConstants.h; sourceTree = "<group>"; };
+		87C5FEAD1E22A05D004EE6E8 /* BVSDKManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVSDKManager.h; sourceTree = "<group>"; };
+		87C5FEAE1E22A05D004EE6E8 /* BVSDKManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVSDKManager.m; sourceTree = "<group>"; };
+		87C5FEAF1E22A05D004EE6E8 /* BVStringKeyValuePair.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVStringKeyValuePair.h; sourceTree = "<group>"; };
+		87C5FEB01E22A05D004EE6E8 /* BVStringKeyValuePair.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVStringKeyValuePair.m; sourceTree = "<group>"; };
+		87C5FEB11E22A05D004EE6E8 /* BVViewsHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVViewsHelper.h; sourceTree = "<group>"; };
+		87C5FEB21E22A05D004EE6E8 /* BVViewsHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVViewsHelper.m; sourceTree = "<group>"; };
+		87C5FEB41E22A05D004EE6E8 /* BVMessageInterceptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVMessageInterceptor.h; sourceTree = "<group>"; };
+		87C5FEB51E22A05D004EE6E8 /* BVProductReviewRichNotificationCenter+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "BVProductReviewRichNotificationCenter+Private.h"; sourceTree = "<group>"; };
+		87C5FECC1E22A5BE004EE6E8 /* BVProductReviewNotificationConfigurationLoader+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "BVProductReviewNotificationConfigurationLoader+Private.h"; path = "Tests/Tests/BVProductReviewNotificationConfigurationLoader+Private.h"; sourceTree = SOURCE_ROOT; };
 		87F2DAA71DAD579D00FB43F3 /* BVSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BVSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		87F2DAAA1DAD579D00FB43F3 /* BVSDK.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BVSDK.h; sourceTree = "<group>"; };
 		87F2DAAB1DAD579D00FB43F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -471,32 +560,6 @@
 		87F2DAD61DAD585E00FB43F3 /* BVGMBLVisit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVGMBLVisit.m; sourceTree = "<group>"; };
 		87F2DAD71DAD585E00FB43F3 /* BVLocationWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVLocationWrapper.h; sourceTree = "<group>"; };
 		87F2DAD81DAD585E00FB43F3 /* BVLocationWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVLocationWrapper.m; sourceTree = "<group>"; };
-		87F2DADA1DAD585E00FB43F3 /* BVAuthenticatedUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVAuthenticatedUser.h; sourceTree = "<group>"; };
-		87F2DADB1DAD585E00FB43F3 /* BVAuthenticatedUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVAuthenticatedUser.m; sourceTree = "<group>"; };
-		87F2DADC1DAD585E00FB43F3 /* BVCore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVCore.h; sourceTree = "<group>"; };
-		87F2DADD1DAD585E00FB43F3 /* BVErrorCodeConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVErrorCodeConstants.h; sourceTree = "<group>"; };
-		87F2DADE1DAD585E00FB43F3 /* BVLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVLogger.h; sourceTree = "<group>"; };
-		87F2DADF1DAD585E00FB43F3 /* BVLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVLogger.m; sourceTree = "<group>"; };
-		87F2DAE01DAD585E00FB43F3 /* BVMessageInterceptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVMessageInterceptor.m; sourceTree = "<group>"; };
-		87F2DAE11DAD585E00FB43F3 /* BVNotificationConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVNotificationConfiguration.h; sourceTree = "<group>"; };
-		87F2DAE21DAD585E00FB43F3 /* BVNotificationConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVNotificationConfiguration.m; sourceTree = "<group>"; };
-		87F2DAE31DAD585E00FB43F3 /* BVNullHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVNullHelper.h; sourceTree = "<group>"; };
-		87F2DAE41DAD585E00FB43F3 /* BVSDKManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVSDKManager.h; sourceTree = "<group>"; };
-		87F2DAE51DAD585E00FB43F3 /* BVSDKManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVSDKManager.m; sourceTree = "<group>"; };
-		87F2DAE61DAD585E00FB43F3 /* BVStoreReviewNotificationProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVStoreReviewNotificationProperties.h; sourceTree = "<group>"; };
-		87F2DAE71DAD585E00FB43F3 /* BVStoreReviewNotificationProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVStoreReviewNotificationProperties.m; sourceTree = "<group>"; };
-		87F2DAE81DAD585E00FB43F3 /* BVStringKeyValuePair.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVStringKeyValuePair.h; sourceTree = "<group>"; };
-		87F2DAE91DAD585E00FB43F3 /* BVStringKeyValuePair.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVStringKeyValuePair.m; sourceTree = "<group>"; };
-		87F2DAEA1DAD585E00FB43F3 /* BVViewsHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVViewsHelper.h; sourceTree = "<group>"; };
-		87F2DAEB1DAD585E00FB43F3 /* BVViewsHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVViewsHelper.m; sourceTree = "<group>"; };
-		87F2DAED1DAD585E00FB43F3 /* BVNotificationConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVNotificationConstants.h; sourceTree = "<group>"; };
-		87F2DAEE1DAD585E00FB43F3 /* BVReviewNotificationCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVReviewNotificationCenter.h; sourceTree = "<group>"; };
-		87F2DAEF1DAD585E00FB43F3 /* BVReviewNotificationCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVReviewNotificationCenter.m; sourceTree = "<group>"; };
-		87F2DAF01DAD585E00FB43F3 /* mapThumbnail.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mapThumbnail.png; sourceTree = "<group>"; };
-		87F2DAF11DAD585E00FB43F3 /* NSBundle+DiagnosticInformation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSBundle+DiagnosticInformation.h"; sourceTree = "<group>"; };
-		87F2DAF21DAD585E00FB43F3 /* NSBundle+DiagnosticInformation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSBundle+DiagnosticInformation.m"; sourceTree = "<group>"; };
-		87F2DAF41DAD585E00FB43F3 /* BVMessageInterceptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVMessageInterceptor.h; sourceTree = "<group>"; };
-		87F2DAF71DAD585E00FB43F3 /* .gitkeep */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
 		87F2DB0C1DAD585E00FB43F3 /* BVConversationsAnalyticsUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVConversationsAnalyticsUtil.h; sourceTree = "<group>"; };
 		87F2DB0D1DAD585E00FB43F3 /* BVConversationsAnalyticsUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVConversationsAnalyticsUtil.m; sourceTree = "<group>"; };
 		87F2DB0E1DAD585E00FB43F3 /* BVCommaUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVCommaUtil.h; sourceTree = "<group>"; };
@@ -716,11 +779,6 @@
 		87F2DBF91DAD585E00FB43F3 /* BVPlaceAttributes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVPlaceAttributes.m; sourceTree = "<group>"; };
 		87F2DBFA1DAD585E00FB43F3 /* BVVisit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVVisit.h; sourceTree = "<group>"; };
 		87F2DBFB1DAD585E00FB43F3 /* BVVisit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVVisit.m; sourceTree = "<group>"; };
-		87F2DBFD1DAD585E00FB43F3 /* BVNotificationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVNotificationViewController.h; sourceTree = "<group>"; };
-		87F2DBFE1DAD585E00FB43F3 /* BVNotificationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVNotificationViewController.m; sourceTree = "<group>"; };
-		87F2DBFF1DAD585E00FB43F3 /* BVStoreReviewNotificationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVStoreReviewNotificationViewController.h; sourceTree = "<group>"; };
-		87F2DC001DAD585E00FB43F3 /* BVStoreReviewNotificationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVStoreReviewNotificationViewController.m; sourceTree = "<group>"; };
-		87F2DC011DAD585E00FB43F3 /* BVStoreReviewNotificationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BVStoreReviewNotificationViewController.xib; sourceTree = "<group>"; };
 		87F2DC031DAD585E00FB43F3 /* BVProductRecommendationsContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVProductRecommendationsContainer.h; sourceTree = "<group>"; };
 		87F2DC041DAD585E00FB43F3 /* BVProductRecommendationsContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVProductRecommendationsContainer.m; sourceTree = "<group>"; };
 		87F2DC051DAD585E00FB43F3 /* BVProductRecommendationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVProductRecommendationView.h; sourceTree = "<group>"; };
@@ -843,6 +901,60 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		875410A71E1F10DF006C5C6E /* BVExtensionNotifications */ = {
+			isa = PBXGroup;
+			children = (
+				875410A81E1F10DF006C5C6E /* BVNotifications.h */,
+				875410A91E1F10DF006C5C6E /* BVNotificationViewController.h */,
+				875410AA1E1F10DF006C5C6E /* BVNotificationViewController.m */,
+				875410AB1E1F10DF006C5C6E /* BVProductReviewNotificationViewController.h */,
+				875410AC1E1F10DF006C5C6E /* BVProductReviewNotificationViewController.m */,
+				875410AD1E1F10DF006C5C6E /* BVStoreReviewNotificationViewController.h */,
+				875410AE1E1F10DF006C5C6E /* BVStoreReviewNotificationViewController.m */,
+			);
+			name = BVExtensionNotifications;
+			path = Pod/BVExtensionNotifications;
+			sourceTree = SOURCE_ROOT;
+		};
+		875411531E1F201E006C5C6E /* BVNotifications */ = {
+			isa = PBXGroup;
+			children = (
+				875411541E1F201E006C5C6E /* BVNotificationCenterObject.h */,
+				875411571E1F201E006C5C6E /* BVNotificationConstants.h */,
+				875411581E1F201E006C5C6E /* BVNotificationProperties.h */,
+				875411591E1F201E006C5C6E /* BVNotificationProperties.m */,
+				8754115A1E1F201E006C5C6E /* BVNotificationsAnalyticsHelper.h */,
+				8754115B1E1F201E006C5C6E /* BVNotificationsAnalyticsHelper.m */,
+				8754115C1E1F201E006C5C6E /* BVOpenURLMetaData.h */,
+				8754115D1E1F201E006C5C6E /* BVOpenURLMetaData.m */,
+				8754115E1E1F201E006C5C6E /* BVProductReviewNotificationCenter.h */,
+				8754115F1E1F201E006C5C6E /* BVProductReviewNotificationCenter.m */,
+				875411601E1F201E006C5C6E /* BVProductReviewNotificationProperties.h */,
+				875411611E1F201E006C5C6E /* BVProductReviewNotificationProperties.m */,
+				875411621E1F201E006C5C6E /* BVProductReviewRichNotificationCenter.h */,
+				875411631E1F201E006C5C6E /* BVProductReviewRichNotificationCenter.m */,
+				875411641E1F201E006C5C6E /* BVProductReviewSimpleNotificationCenter.h */,
+				875411651E1F201E006C5C6E /* BVProductReviewSimpleNotificationCenter.m */,
+				875411661E1F201E006C5C6E /* BVStoreReviewNotificationCenter.h */,
+				875411671E1F201E006C5C6E /* BVStoreReviewNotificationCenter.m */,
+				875411681E1F201E006C5C6E /* BVStoreReviewNotificationProperties.h */,
+				875411691E1F201E006C5C6E /* BVStoreReviewNotificationProperties.m */,
+				8754116A1E1F201E006C5C6E /* BVStoreReviewRichNotificationCenter.h */,
+				8754116B1E1F201E006C5C6E /* BVStoreReviewRichNotificationCenter.m */,
+				8754116C1E1F201E006C5C6E /* BVStoreReviewSimpleNotificationCenter.h */,
+				8754116D1E1F201E006C5C6E /* BVStoreReviewSimpleNotificationCenter.m */,
+				8754116E1E1F201E006C5C6E /* mapThumbnail.png */,
+				875411551E1F201E006C5C6E /* BVNotificationConfiguration.h */,
+				875411561E1F201E006C5C6E /* BVNotificationConfiguration.m */,
+				87C5FE971E22914C004EE6E8 /* BVStoreNotificationConfigurationLoader.h */,
+				87C5FE981E22914C004EE6E8 /* BVStoreNotificationConfigurationLoader.m */,
+				87C5FE9B1E229168004EE6E8 /* BVProductReviewNotificationConfigurationLoader.h */,
+				87C5FE9C1E229168004EE6E8 /* BVProductReviewNotificationConfigurationLoader.m */,
+			);
+			name = BVNotifications;
+			path = Pod/BVNotifications;
+			sourceTree = SOURCE_ROOT;
+		};
 		87A02B5D1E0963020002701B /* Feedback */ = {
 			isa = PBXGroup;
 			children = (
@@ -854,6 +966,55 @@
 				87A02B691E0971AC0002701B /* BVSubmittedFeedback.m */,
 			);
 			name = Feedback;
+			sourceTree = "<group>";
+		};
+		87A9ECBB1E1DB9B300666636 /* BVPIN */ = {
+			isa = PBXGroup;
+			children = (
+				87A9ECBC1E1DB9B300666636 /* BVPIN.h */,
+				87A9ECBD1E1DB9B300666636 /* BVPIN.m */,
+				87A9ECBE1E1DB9B300666636 /* BVPINRequest.h */,
+				87A9ECBF1E1DB9B300666636 /* BVPINRequest.m */,
+			);
+			name = BVPIN;
+			path = Pod/BVPIN;
+			sourceTree = SOURCE_ROOT;
+		};
+		87C5FE9F1E22A05D004EE6E8 /* BVCommon */ = {
+			isa = PBXGroup;
+			children = (
+				87C5FEA01E22A05D004EE6E8 /* BVAuthenticatedUser.h */,
+				87C5FEA11E22A05D004EE6E8 /* BVAuthenticatedUser.m */,
+				87C5FEA21E22A05D004EE6E8 /* BVBaseAnalyticsHelper.h */,
+				87C5FEA31E22A05D004EE6E8 /* BVBaseAnalyticsHelper.m */,
+				87C5FEA41E22A05D004EE6E8 /* BVCore.h */,
+				87C5FEA51E22A05D004EE6E8 /* BVDiagnosticHelpers.h */,
+				87C5FEA61E22A05D004EE6E8 /* BVDiagnosticHelpers.m */,
+				87C5FEA71E22A05D004EE6E8 /* BVErrorCodeConstants.h */,
+				87C5FEA81E22A05D004EE6E8 /* BVLogger.h */,
+				87C5FEA91E22A05D004EE6E8 /* BVLogger.m */,
+				87C5FEAA1E22A05D004EE6E8 /* BVMessageInterceptor.m */,
+				87C5FEAB1E22A05D004EE6E8 /* BVNullHelper.h */,
+				87C5FEAC1E22A05D004EE6E8 /* BVSDKConstants.h */,
+				87C5FEAD1E22A05D004EE6E8 /* BVSDKManager.h */,
+				87C5FEAE1E22A05D004EE6E8 /* BVSDKManager.m */,
+				87C5FEAF1E22A05D004EE6E8 /* BVStringKeyValuePair.h */,
+				87C5FEB01E22A05D004EE6E8 /* BVStringKeyValuePair.m */,
+				87C5FEB11E22A05D004EE6E8 /* BVViewsHelper.h */,
+				87C5FEB21E22A05D004EE6E8 /* BVViewsHelper.m */,
+				87C5FEB31E22A05D004EE6E8 /* Private */,
+			);
+			name = BVCommon;
+			path = Pod/BVCommon;
+			sourceTree = SOURCE_ROOT;
+		};
+		87C5FEB31E22A05D004EE6E8 /* Private */ = {
+			isa = PBXGroup;
+			children = (
+				87C5FEB41E22A05D004EE6E8 /* BVMessageInterceptor.h */,
+				87C5FEB51E22A05D004EE6E8 /* BVProductReviewRichNotificationCenter+Private.h */,
+			);
+			path = Private;
 			sourceTree = "<group>";
 		};
 		87F2DA9D1DAD579D00FB43F3 = {
@@ -882,13 +1043,15 @@
 			children = (
 				87FEC8C81DB11448007DD44E /* Support Files */,
 				87F2DAC11DAD585E00FB43F3 /* BVAdvertising */,
+				87C5FE9F1E22A05D004EE6E8 /* BVCommon */,
 				87F2DAC41DAD585E00FB43F3 /* BVAnalytics */,
-				87F2DAD91DAD585E00FB43F3 /* BVCommon */,
 				87F2DAF61DAD585E00FB43F3 /* BVConversations */,
 				87F2DBE01DAD585E00FB43F3 /* BVCurations */,
 				87F2DBF21DAD585E00FB43F3 /* BVLocation */,
-				87F2DBFC1DAD585E00FB43F3 /* BVNotifications */,
+				875411531E1F201E006C5C6E /* BVNotifications */,
+				875410A71E1F10DF006C5C6E /* BVExtensionNotifications */,
 				87F2DC021DAD585E00FB43F3 /* BVRecommendations */,
+				87A9ECBB1E1DB9B300666636 /* BVPIN */,
 			);
 			path = BVSDK;
 			sourceTree = "<group>";
@@ -907,8 +1070,13 @@
 				87F2DD5A1DAD5E9400FB43F3 /* BVNotificationConfigTests.m */,
 				87F2DD5B1DAD5E9400FB43F3 /* BVRecommendationsTests.m */,
 				87F2DD5C1DAD5E9400FB43F3 /* BVUserProfileTests.m */,
-				879D090F1DCA7DDE006B51D3 /* BVSDKManager+Private.h */,
+				87A9ECB91E1DA93A00666636 /* BVPINTests.m */,
+				87C5FECC1E22A5BE004EE6E8 /* BVProductReviewNotificationConfigurationLoader+Private.h */,
+				879D090F1DCA7DDE006B51D3 /* BVStoreNotificationConfigurationLoader+Private.h */,
 				87F2DAB71DAD579D00FB43F3 /* Info.plist */,
+				15D4F8421DF5EE5C00E6B30D /* UIImage+Tests.h */,
+				15D4F8431DF5EE5C00E6B30D /* UIImage+Tests.m */,
+				15D4F8451DF5EFFF00E6B30D /* BVSDKTests-Bridging-Header.h */,
 			);
 			path = BVSDKTests;
 			sourceTree = "<group>";
@@ -965,68 +1133,9 @@
 			path = Private;
 			sourceTree = "<group>";
 		};
-		87F2DAD91DAD585E00FB43F3 /* BVCommon */ = {
-			isa = PBXGroup;
-			children = (
-				87F2DADA1DAD585E00FB43F3 /* BVAuthenticatedUser.h */,
-				87F2DADB1DAD585E00FB43F3 /* BVAuthenticatedUser.m */,
-				87F2DADC1DAD585E00FB43F3 /* BVCore.h */,
-				87F2DADD1DAD585E00FB43F3 /* BVErrorCodeConstants.h */,
-				87F2DADE1DAD585E00FB43F3 /* BVLogger.h */,
-				87F2DADF1DAD585E00FB43F3 /* BVLogger.m */,
-				87F2DAE01DAD585E00FB43F3 /* BVMessageInterceptor.m */,
-				87F2DAE11DAD585E00FB43F3 /* BVNotificationConfiguration.h */,
-				87F2DAE21DAD585E00FB43F3 /* BVNotificationConfiguration.m */,
-				87F2DAE31DAD585E00FB43F3 /* BVNullHelper.h */,
-				87F2DAE41DAD585E00FB43F3 /* BVSDKManager.h */,
-				87F2DAE51DAD585E00FB43F3 /* BVSDKManager.m */,
-				87F2DAE61DAD585E00FB43F3 /* BVStoreReviewNotificationProperties.h */,
-				87F2DAE71DAD585E00FB43F3 /* BVStoreReviewNotificationProperties.m */,
-				87F2DAE81DAD585E00FB43F3 /* BVStringKeyValuePair.h */,
-				87F2DAE91DAD585E00FB43F3 /* BVStringKeyValuePair.m */,
-				87F2DAEA1DAD585E00FB43F3 /* BVViewsHelper.h */,
-				87F2DAEB1DAD585E00FB43F3 /* BVViewsHelper.m */,
-				879D08FF1DCA6DC4006B51D3 /* BVNotificationsAnalyticsHelper.h */,
-				879D09001DCA6DC4006B51D3 /* BVNotificationsAnalyticsHelper.m */,
-				879D09071DCA6E20006B51D3 /* BVBaseAnalyticsHelper.h */,
-				879D09081DCA6E20006B51D3 /* BVBaseAnalyticsHelper.m */,
-				87F2DAEC1DAD585E00FB43F3 /* Notifications */,
-				87F2DAF11DAD585E00FB43F3 /* NSBundle+DiagnosticInformation.h */,
-				87F2DAF21DAD585E00FB43F3 /* NSBundle+DiagnosticInformation.m */,
-				87F2DAF31DAD585E00FB43F3 /* Private */,
-			);
-			name = BVCommon;
-			path = Pod/BVCommon;
-			sourceTree = SOURCE_ROOT;
-		};
-		87F2DAEC1DAD585E00FB43F3 /* Notifications */ = {
-			isa = PBXGroup;
-			children = (
-				879D08FD1DCA6D34006B51D3 /* BVNotificationCenterObject.h */,
-				87F2DAED1DAD585E00FB43F3 /* BVNotificationConstants.h */,
-				87F2DAEE1DAD585E00FB43F3 /* BVReviewNotificationCenter.h */,
-				87F2DAEF1DAD585E00FB43F3 /* BVReviewNotificationCenter.m */,
-				879D09031DCA6DD8006B51D3 /* BVReviewRichNotificationCenter.h */,
-				879D09041DCA6DD8006B51D3 /* BVReviewRichNotificationCenter.m */,
-				879D090B1DCA6E47006B51D3 /* BVReviewSimpleNotificationCenter.h */,
-				879D090C1DCA6E47006B51D3 /* BVReviewSimpleNotificationCenter.m */,
-				87F2DAF01DAD585E00FB43F3 /* mapThumbnail.png */,
-			);
-			path = Notifications;
-			sourceTree = "<group>";
-		};
-		87F2DAF31DAD585E00FB43F3 /* Private */ = {
-			isa = PBXGroup;
-			children = (
-				87F2DAF41DAD585E00FB43F3 /* BVMessageInterceptor.h */,
-			);
-			path = Private;
-			sourceTree = "<group>";
-		};
 		87F2DAF61DAD585E00FB43F3 /* BVConversations */ = {
 			isa = PBXGroup;
 			children = (
-				87F2DAF71DAD585E00FB43F3 /* .gitkeep */,
 				87F2DB0A1DAD585E00FB43F3 /* Display */,
 				87F2DB881DAD585E00FB43F3 /* Submission */,
 				87F2DBBB1DAD585E00FB43F3 /* Views */,
@@ -1438,19 +1547,6 @@
 			path = Pod/BVLocation;
 			sourceTree = SOURCE_ROOT;
 		};
-		87F2DBFC1DAD585E00FB43F3 /* BVNotifications */ = {
-			isa = PBXGroup;
-			children = (
-				87F2DBFD1DAD585E00FB43F3 /* BVNotificationViewController.h */,
-				87F2DBFE1DAD585E00FB43F3 /* BVNotificationViewController.m */,
-				87F2DBFF1DAD585E00FB43F3 /* BVStoreReviewNotificationViewController.h */,
-				87F2DC001DAD585E00FB43F3 /* BVStoreReviewNotificationViewController.m */,
-				87F2DC011DAD585E00FB43F3 /* BVStoreReviewNotificationViewController.xib */,
-			);
-			name = BVNotifications;
-			path = Pod/BVNotifications;
-			sourceTree = SOURCE_ROOT;
-		};
 		87F2DC021DAD585E00FB43F3 /* BVRecommendations */ = {
 			isa = PBXGroup;
 			children = (
@@ -1512,6 +1608,7 @@
 		87F2DD651DAD698400FB43F3 /* conversations */ = {
 			isa = PBXGroup;
 			children = (
+				15D4F83A1DF5D5F800E6B30D /* testNotificationProductConfig.json */,
 				879D09101DCA8014006B51D3 /* testNotificationConfig.json */,
 				87F2DD661DAD698400FB43F3 /* conversationsGenericPostResponse.json */,
 				87F2DD671DAD698400FB43F3 /* conversationsQuestionsIncludeAnswers.json */,
@@ -1600,6 +1697,7 @@
 				87F2DD651DAD698400FB43F3 /* conversations */,
 				87F2DD871DAD698500FB43F3 /* curations */,
 				87F2DD901DAD698500FB43F3 /* emptyJSON.json */,
+				87A9ECB71E1DA87E00666636 /* productsToReviewResult.json */,
 				87F2DD911DAD698500FB43F3 /* malformedJSON.json */,
 				87F2DD921DAD698500FB43F3 /* recommendations */,
 			);
@@ -1663,6 +1761,7 @@
 			children = (
 				87F2DE031DAD945D00FB43F3 /* AnswerSubmissionTests.swift */,
 				87F2DE041DAD945D00FB43F3 /* PhotoUploadTests.swift */,
+				15D4F83E1DF5EC3C00E6B30D /* ph.png */,
 				87F2DE051DAD945D00FB43F3 /* QuestionSubmissionTests.swift */,
 				87F2DE061DAD945D00FB43F3 /* ReviewSubmissionTests.swift */,
 				87F2DE071DAD945D00FB43F3 /* StoreReviewSubmissionTests.swift */,
@@ -1699,15 +1798,9 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				879D09051DCA6DD8006B51D3 /* BVReviewRichNotificationCenter.h in Headers */,
-				879D090D1DCA6E47006B51D3 /* BVReviewSimpleNotificationCenter.h in Headers */,
-				879D09011DCA6DC4006B51D3 /* BVNotificationsAnalyticsHelper.h in Headers */,
-				879D09091DCA6E20006B51D3 /* BVBaseAnalyticsHelper.h in Headers */,
-				87F2DC2D1DAD585E00FB43F3 /* BVCore.h in Headers */,
-				879D08FE1DCA6D34006B51D3 /* BVNotificationCenterObject.h in Headers */,
-				87F2DD331DAD585E00FB43F3 /* BVStoreReviewNotificationViewController.h in Headers */,
+				87A9ECC01E1DB9B300666636 /* BVPIN.h in Headers */,
+				87A9ECC21E1DB9B300666636 /* BVPINRequest.h in Headers */,
 				87F2DD431DAD585E00FB43F3 /* BVRecsAnalyticsHelper.h in Headers */,
-				87F2DC321DAD585E00FB43F3 /* BVNotificationConfiguration.h in Headers */,
 				87F2DCC31DAD585E00FB43F3 /* BVSortOptionAnswers.h in Headers */,
 				87F2DC641DAD585E00FB43F3 /* BVContextDataValue.h in Headers */,
 				87F2DC1C1DAD585E00FB43F3 /* BVLocationEventsHelper.h in Headers */,
@@ -1740,11 +1833,9 @@
 				87F2DC241DAD585E00FB43F3 /* BVContextualInterests.h in Headers */,
 				87F2DC291DAD585E00FB43F3 /* BVLocationWrapper.h in Headers */,
 				87F2DC6A1DAD585E00FB43F3 /* BVConversationsInclude.h in Headers */,
-				87F2DC351DAD585E00FB43F3 /* BVSDKManager.h in Headers */,
 				87F2DCC71DAD585E00FB43F3 /* BVSortOptionQuestions.h in Headers */,
 				87F2DC581DAD585E00FB43F3 /* BVCommaUtil.h in Headers */,
 				87F2DD151DAD585E00FB43F3 /* BVReviewView.h in Headers */,
-				87F2DC3D1DAD585E00FB43F3 /* BVNotificationConstants.h in Headers */,
 				87F2DD171DAD585E00FB43F3 /* BVCurations.h in Headers */,
 				87F2DD261DAD585E00FB43F3 /* BVCurationsPhotoUploader.h in Headers */,
 				87F2DC621DAD585E00FB43F3 /* BVBulkRatingsResponse.h in Headers */,
@@ -1752,7 +1843,6 @@
 				87F2DCAF1DAD585E00FB43F3 /* BVReviewsRequest.h in Headers */,
 				87F2DC731DAD585E00FB43F3 /* BVDistributionValue.h in Headers */,
 				87F2DC681DAD585E00FB43F3 /* BVConversationsErrorResponse.h in Headers */,
-				87F2DC2E1DAD585E00FB43F3 /* BVErrorCodeConstants.h in Headers */,
 				87F2DD3F1DAD585E00FB43F3 /* BVRecommendationsRequest.h in Headers */,
 				87F2DD3A1DAD585E00FB43F3 /* BVProductReview.h in Headers */,
 				87F2DC271DAD585E00FB43F3 /* BVGMBLVisit.h in Headers */,
@@ -1772,14 +1862,11 @@
 				87F2DCF51DAD585E00FB43F3 /* BVStoreReviewSubmission.h in Headers */,
 				87F2DC5A1DAD585E00FB43F3 /* BVStoreIncludeContentType.h in Headers */,
 				87F2DCE71DAD585E00FB43F3 /* BVQuestionSubmissionErrorResponse.h in Headers */,
-				87F2DC2F1DAD585E00FB43F3 /* BVLogger.h in Headers */,
 				87F2DD131DAD585E00FB43F3 /* BVReviewTableViewCell.h in Headers */,
 				87F2DCB51DAD585E00FB43F3 /* BVBulkRatingsFilterType.h in Headers */,
 				87F2DC931DAD585E00FB43F3 /* BVAnswer.h in Headers */,
 				87F2DCFD1DAD585E00FB43F3 /* BVAnswerTableViewCell.h in Headers */,
-				87F2DC3E1DAD585E00FB43F3 /* BVReviewNotificationCenter.h in Headers */,
 				87F2DCAD1DAD585E00FB43F3 /* BVQuestionsAndAnswersRequest.h in Headers */,
-				87F2DC341DAD585E00FB43F3 /* BVNullHelper.h in Headers */,
 				87F2DCBD1DAD585E00FB43F3 /* BVQuestionFilterType.h in Headers */,
 				87F2DCE11DAD585E00FB43F3 /* BVUploadablePhoto.h in Headers */,
 				87F2DD451DAD585E00FB43F3 /* BVShopperProfile.h in Headers */,
@@ -1803,7 +1890,6 @@
 				87F2DCF31DAD585E00FB43F3 /* BVSubmittedReview.h in Headers */,
 				87F2DCC91DAD585E00FB43F3 /* BVSortOptionReviews.h in Headers */,
 				87F2DC5C1DAD585E00FB43F3 /* BVBadge.h in Headers */,
-				87F2DC391DAD585E00FB43F3 /* BVStringKeyValuePair.h in Headers */,
 				87F2DCAB1DAD585E00FB43F3 /* BVProductDisplayPageRequest.h in Headers */,
 				87F2DC821DAD585E00FB43F3 /* BVQuestionsAndAnswersResponse.h in Headers */,
 				87F2DC6C1DAD585E00FB43F3 /* BVDimensionAndDistributionUtil.h in Headers */,
@@ -1816,7 +1902,6 @@
 				87F2DCA71DAD585E00FB43F3 /* BVBulkRatingsRequest.h in Headers */,
 				87F2DD0B1DAD585E00FB43F3 /* BVQuestionView.h in Headers */,
 				87F2DC781DAD585E00FB43F3 /* BVPhoto.h in Headers */,
-				87F2DC411DAD585E00FB43F3 /* NSBundle+DiagnosticInformation.h in Headers */,
 				87F2DD031DAD585E00FB43F3 /* BVQuestionCollectionViewCell.h in Headers */,
 				87F2DCA91DAD585E00FB43F3 /* BVConversationsRequest.h in Headers */,
 				87F2DCF71DAD585E00FB43F3 /* BVAnswerCollectionViewCell.h in Headers */,
@@ -1836,25 +1921,52 @@
 				87F2DC9B1DAD585E00FB43F3 /* BVStore.h in Headers */,
 				87F2DC9D1DAD585E00FB43F3 /* BVStoreLocation.h in Headers */,
 				87F2DCEF1DAD585E00FB43F3 /* BVReviewSubmissionErrorResponse.h in Headers */,
-				87F2DC431DAD585E00FB43F3 /* BVMessageInterceptor.h in Headers */,
 				87F2DCDB1DAD585E00FB43F3 /* BVSubmissionAction.h in Headers */,
 				87F2DD481DAD585E00FB43F3 /* BVShopperProfileRequestCache.h in Headers */,
 				87F2DC951DAD585E00FB43F3 /* BVProduct.h in Headers */,
+				8754117D1E1F201E006C5C6E /* BVProductReviewRichNotificationCenter.h in Headers */,
+				875411791E1F201E006C5C6E /* BVProductReviewNotificationCenter.h in Headers */,
+				875410B41E1F10DF006C5C6E /* BVStoreReviewNotificationViewController.h in Headers */,
+				875410B01E1F10DF006C5C6E /* BVNotificationViewController.h in Headers */,
+				875411851E1F201E006C5C6E /* BVStoreReviewRichNotificationCenter.h in Headers */,
+				875411731E1F201E006C5C6E /* BVNotificationProperties.h in Headers */,
+				875410B21E1F10DF006C5C6E /* BVProductReviewNotificationViewController.h in Headers */,
+				875410AF1E1F10DF006C5C6E /* BVNotifications.h in Headers */,
+				8754117B1E1F201E006C5C6E /* BVProductReviewNotificationProperties.h in Headers */,
+				8754117F1E1F201E006C5C6E /* BVProductReviewSimpleNotificationCenter.h in Headers */,
+				875411871E1F201E006C5C6E /* BVStoreReviewSimpleNotificationCenter.h in Headers */,
+				875411811E1F201E006C5C6E /* BVStoreReviewNotificationCenter.h in Headers */,
+				875411831E1F201E006C5C6E /* BVStoreReviewNotificationProperties.h in Headers */,
+				8754116F1E1F201E006C5C6E /* BVNotificationCenterObject.h in Headers */,
+				875411751E1F201E006C5C6E /* BVNotificationsAnalyticsHelper.h in Headers */,
+				875411721E1F201E006C5C6E /* BVNotificationConstants.h in Headers */,
+				875411771E1F201E006C5C6E /* BVOpenURLMetaData.h in Headers */,
+				875411701E1F201E006C5C6E /* BVNotificationConfiguration.h in Headers */,
 				87F2DD1E1DAD585E00FB43F3 /* BVCurationsCollectionViewCell.h in Headers */,
+				87C5FEBE1E22A05D004EE6E8 /* BVLogger.h in Headers */,
+				87C5FEC51E22A05D004EE6E8 /* BVStringKeyValuePair.h in Headers */,
+				87C5FEBD1E22A05D004EE6E8 /* BVErrorCodeConstants.h in Headers */,
+				87C5FEC71E22A05D004EE6E8 /* BVViewsHelper.h in Headers */,
+				87C5FE991E22914C004EE6E8 /* BVStoreNotificationConfigurationLoader.h in Headers */,
+				87C5FE9D1E229168004EE6E8 /* BVProductReviewNotificationConfigurationLoader.h in Headers */,
+				87C5FEB81E22A05D004EE6E8 /* BVBaseAnalyticsHelper.h in Headers */,
+				87C5FEC31E22A05D004EE6E8 /* BVSDKManager.h in Headers */,
+				87C5FEBA1E22A05D004EE6E8 /* BVCore.h in Headers */,
+				87C5FEC21E22A05D004EE6E8 /* BVSDKConstants.h in Headers */,
+				87C5FEB61E22A05D004EE6E8 /* BVAuthenticatedUser.h in Headers */,
+				87C5FEC11E22A05D004EE6E8 /* BVNullHelper.h in Headers */,
+				87C5FEBB1E22A05D004EE6E8 /* BVDiagnosticHelpers.h in Headers */,
+				87C5FEC91E22A05D004EE6E8 /* BVMessageInterceptor.h in Headers */,
 				87F2DCB11DAD585E00FB43F3 /* BVBulkStoreItemsRequest.h in Headers */,
 				87F2DCA51DAD585E00FB43F3 /* PDPInclude.h in Headers */,
 				87F2DCFF1DAD585E00FB43F3 /* BVAnswerView.h in Headers */,
-				87F2DC3B1DAD585E00FB43F3 /* BVViewsHelper.h in Headers */,
 				87F2DC601DAD585E00FB43F3 /* BVBrand.h in Headers */,
-				87F2DC371DAD585E00FB43F3 /* BVStoreReviewNotificationProperties.h in Headers */,
-				87F2DC2B1DAD585E00FB43F3 /* BVAuthenticatedUser.h in Headers */,
 				87F2DD2F1DAD585E00FB43F3 /* BVVisit.h in Headers */,
 				87F2DC841DAD585E00FB43F3 /* BVRatingDistribution.h in Headers */,
 				87F2DC171DAD585E00FB43F3 /* BVAdsMessageInterceptor.h in Headers */,
 				87F2DC5E1DAD585E00FB43F3 /* BVBadgeType.h in Headers */,
 				87A02B621E0967EE0002701B /* BVFeedbackSubmission.h in Headers */,
 				87A02B6A1E0971AC0002701B /* BVSubmittedFeedback.h in Headers */,
-				87F2DD311DAD585E00FB43F3 /* BVNotificationViewController.h in Headers */,
 				87A02B661E096B300002701B /* BVFeedbackSubmissionResponse.h in Headers */,
 				87F2DCC51DAD585E00FB43F3 /* BVSortOptionProducts.h in Headers */,
 				87F2DD201DAD585E00FB43F3 /* BVCurationsFeedItem.h in Headers */,
@@ -1951,10 +2063,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				87F2DC401DAD585E00FB43F3 /* mapThumbnail.png in Resources */,
-				87F2DD351DAD585E00FB43F3 /* BVStoreReviewNotificationViewController.xib in Resources */,
-				87F2DC451DAD585E00FB43F3 /* .gitkeep in Resources */,
 				87FEC8CA1DB1145D007DD44E /* integrate-dynamic-framework.sh in Resources */,
+				875411891E1F201E006C5C6E /* mapThumbnail.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2002,8 +2112,11 @@
 				87F2DD9C1DAD698500FB43F3 /* conversationsReviewsEnduranceCycles_SortHighestRated.json in Resources */,
 				87F2DDB21DAD698500FB43F3 /* testShowReviewIncludesSearch.json in Resources */,
 				87F2DDA41DAD698500FB43F3 /* testShowCategorySparse.json in Resources */,
+				15D4F83B1DF5D5F800E6B30D /* testNotificationProductConfig.json in Resources */,
 				87F2DDC31DAD698500FB43F3 /* recommendationsNullJSON.json in Resources */,
 				87F2DDA91DAD698500FB43F3 /* testShowProducts.json in Resources */,
+				15D4F83F1DF5EC3C00E6B30D /* ph.png in Resources */,
+				87A9ECB81E1DA87E00666636 /* productsToReviewResult.json in Resources */,
 				87F2DDBD1DAD698500FB43F3 /* puppy.jpg in Resources */,
 				87F2DDA01DAD698500FB43F3 /* storeFetchByIds.json in Resources */,
 				87F2DDA11DAD698500FB43F3 /* storeItemWithStatsAndReviews.json in Resources */,
@@ -2094,49 +2207,54 @@
 				87F2DCAC1DAD585E00FB43F3 /* BVProductDisplayPageRequest.m in Sources */,
 				87F2DC961DAD585E00FB43F3 /* BVProduct.m in Sources */,
 				87F2DC881DAD585E00FB43F3 /* BVReviewsResponse.m in Sources */,
-				87F2DC3F1DAD585E00FB43F3 /* BVReviewNotificationCenter.m in Sources */,
 				87F2DCCE1DAD585E00FB43F3 /* BVAnswerSubmissionErrorResponse.m in Sources */,
 				87F2DD0C1DAD585E00FB43F3 /* BVQuestionView.m in Sources */,
 				87F2DC281DAD585E00FB43F3 /* BVGMBLVisit.m in Sources */,
 				87A02B631E0967EE0002701B /* BVFeedbackSubmission.m in Sources */,
 				87F2DCE61DAD585E00FB43F3 /* BVQuestionSubmission.m in Sources */,
-				87F2DC3A1DAD585E00FB43F3 /* BVStringKeyValuePair.m in Sources */,
+				875411861E1F201E006C5C6E /* BVStoreReviewRichNotificationCenter.m in Sources */,
 				87F2DD371DAD585E00FB43F3 /* BVProductRecommendationsContainer.m in Sources */,
 				87F2DC981DAD585E00FB43F3 /* BVQuestion.m in Sources */,
-				87F2DC2C1DAD585E00FB43F3 /* BVAuthenticatedUser.m in Sources */,
-				879D090E1DCA6E47006B51D3 /* BVReviewSimpleNotificationCenter.m in Sources */,
 				87F2DD0A1DAD585E00FB43F3 /* BVQuestionTableViewCell.m in Sources */,
+				875411801E1F201E006C5C6E /* BVProductReviewSimpleNotificationCenter.m in Sources */,
 				87F2DD231DAD585E00FB43F3 /* BVCurationsFeedLoader.m in Sources */,
 				87F2DCD61DAD585E00FB43F3 /* BVFormField.m in Sources */,
+				87C5FEC41E22A05D004EE6E8 /* BVSDKManager.m in Sources */,
 				87F2DD211DAD585E00FB43F3 /* BVCurationsFeedItem.m in Sources */,
 				87F2DCF21DAD585E00FB43F3 /* BVReviewSubmissionResponse.m in Sources */,
 				87F2DCDA1DAD585E00FB43F3 /* BVSubmission.m in Sources */,
 				87F2DCFC1DAD585E00FB43F3 /* BVAnswersTableView.m in Sources */,
 				87F2DCCC1DAD585E00FB43F3 /* BVAnswerSubmission.m in Sources */,
+				875411741E1F201E006C5C6E /* BVNotificationProperties.m in Sources */,
+				875411711E1F201E006C5C6E /* BVNotificationConfiguration.m in Sources */,
 				87F2DD0E1DAD585E00FB43F3 /* BVReviewCollectionViewCell.m in Sources */,
 				87F2DC591DAD585E00FB43F3 /* BVCommaUtil.m in Sources */,
 				87F2DCA61DAD585E00FB43F3 /* PDPInclude.m in Sources */,
 				87F2DC811DAD585E00FB43F3 /* BVQAStatistics.m in Sources */,
+				87C5FEBF1E22A05D004EE6E8 /* BVLogger.m in Sources */,
+				87C5FEC01E22A05D004EE6E8 /* BVMessageInterceptor.m in Sources */,
 				87F2DC211DAD585E00FB43F3 /* BVTransaction.m in Sources */,
 				87F2DD101DAD585E00FB43F3 /* BVReviewsCollectionView.m in Sources */,
+				8754117C1E1F201E006C5C6E /* BVProductReviewNotificationProperties.m in Sources */,
 				87F2DC9C1DAD585E00FB43F3 /* BVStore.m in Sources */,
+				875411881E1F201E006C5C6E /* BVStoreReviewSimpleNotificationCenter.m in Sources */,
 				87F2DC651DAD585E00FB43F3 /* BVContextDataValue.m in Sources */,
 				87F2DD391DAD585E00FB43F3 /* BVProductRecommendationView.m in Sources */,
-				87F2DD341DAD585E00FB43F3 /* BVStoreReviewNotificationViewController.m in Sources */,
 				87F2DCD01DAD585E00FB43F3 /* BVAnswerSubmissionResponse.m in Sources */,
 				87F2DCC21DAD585E00FB43F3 /* BVSort.m in Sources */,
-				879D09021DCA6DC4006B51D3 /* BVNotificationsAnalyticsHelper.m in Sources */,
 				87F2DCE01DAD585E00FB43F3 /* BVSubmissionResponse.m in Sources */,
 				87F2DCD81DAD585E00FB43F3 /* BVFormFieldOptions.m in Sources */,
 				87F2DD301DAD585E00FB43F3 /* BVVisit.m in Sources */,
 				87F2DCAA1DAD585E00FB43F3 /* BVConversationsRequest.m in Sources */,
 				87F2DCC81DAD585E00FB43F3 /* BVSortOptionQuestions.m in Sources */,
+				87C5FEBC1E22A05D004EE6E8 /* BVDiagnosticHelpers.m in Sources */,
 				87F2DD3B1DAD585E00FB43F3 /* BVProductReview.m in Sources */,
 				87F2DCF01DAD585E00FB43F3 /* BVReviewSubmissionErrorResponse.m in Sources */,
 				87F2DCA21DAD585E00FB43F3 /* BVStoreReviewsResponse.m in Sources */,
 				87F2DD251DAD585E00FB43F3 /* BVCurationsFeedRequest.m in Sources */,
 				87F2DCB41DAD585E00FB43F3 /* BVStoreReviewsRequest.m in Sources */,
 				87F2DD121DAD585E00FB43F3 /* BVReviewsTableView.m in Sources */,
+				87C5FEB91E22A05D004EE6E8 /* BVBaseAnalyticsHelper.m in Sources */,
 				87F2DD421DAD585E00FB43F3 /* BVRecommendedProduct.m in Sources */,
 				87F2DC8A1DAD585E00FB43F3 /* BVReviewStatistic.m in Sources */,
 				87F2DD141DAD585E00FB43F3 /* BVReviewTableViewCell.m in Sources */,
@@ -2153,71 +2271,77 @@
 				87F2DC791DAD585E00FB43F3 /* BVPhoto.m in Sources */,
 				87F2DCD21DAD585E00FB43F3 /* BVSubmittedAnswer.m in Sources */,
 				87F2DCBC1DAD585E00FB43F3 /* BVProductFilterType.m in Sources */,
+				875411781E1F201E006C5C6E /* BVOpenURLMetaData.m in Sources */,
 				87F2DCB01DAD585E00FB43F3 /* BVReviewsRequest.m in Sources */,
 				87F2DC9A1DAD585E00FB43F3 /* BVReview.m in Sources */,
+				875410B11E1F10DF006C5C6E /* BVNotificationViewController.m in Sources */,
+				875411821E1F201E006C5C6E /* BVStoreReviewNotificationCenter.m in Sources */,
 				87F2DCB61DAD585E00FB43F3 /* BVBulkRatingsFilterType.m in Sources */,
 				87F2DD2C1DAD585E00FB43F3 /* BVLocationManager.m in Sources */,
-				87F2DC311DAD585E00FB43F3 /* BVMessageInterceptor.m in Sources */,
 				87F2DC6F1DAD585E00FB43F3 /* BVDimensionElement.m in Sources */,
-				879D090A1DCA6E20006B51D3 /* BVBaseAnalyticsHelper.m in Sources */,
 				87F2DCDE1DAD585E00FB43F3 /* BVSubmissionErrorResponse.m in Sources */,
 				87F2DC921DAD585E00FB43F3 /* BVVideo.m in Sources */,
 				87F2DCB21DAD585E00FB43F3 /* BVBulkStoreItemsRequest.m in Sources */,
 				87F2DCE41DAD585E00FB43F3 /* BVUploadableStorePhoto.m in Sources */,
+				875411761E1F201E006C5C6E /* BVNotificationsAnalyticsHelper.m in Sources */,
 				87F2DD061DAD585E00FB43F3 /* BVQuestionsCollectionView.m in Sources */,
+				87A9ECC11E1DB9B300666636 /* BVPIN.m in Sources */,
 				87F2DCE21DAD585E00FB43F3 /* BVUploadablePhoto.m in Sources */,
 				87F2DD271DAD585E00FB43F3 /* BVCurationsPhotoUploader.m in Sources */,
 				87F2DD041DAD585E00FB43F3 /* BVQuestionCollectionViewCell.m in Sources */,
 				87F2DC191DAD585E00FB43F3 /* BVAnalyticsManager.m in Sources */,
 				87F2DC721DAD585E00FB43F3 /* BVDistributionElement.m in Sources */,
+				87C5FEC61E22A05D004EE6E8 /* BVStringKeyValuePair.m in Sources */,
 				87F2DD2E1DAD585E00FB43F3 /* BVPlaceAttributes.m in Sources */,
 				87F2DC7D1DAD585E00FB43F3 /* BVProductsResponse.m in Sources */,
-				87F2DC331DAD585E00FB43F3 /* BVNotificationConfiguration.m in Sources */,
+				875411841E1F201E006C5C6E /* BVStoreReviewNotificationProperties.m in Sources */,
 				87F2DCBE1DAD585E00FB43F3 /* BVQuestionFilterType.m in Sources */,
 				87A02B6B1E0971AC0002701B /* BVSubmittedFeedback.m in Sources */,
 				87F2DC901DAD585E00FB43F3 /* BVSecondaryRatingsAverages.m in Sources */,
 				87F2DCDC1DAD585E00FB43F3 /* BVSubmissionAction.m in Sources */,
 				87F2DCF61DAD585E00FB43F3 /* BVStoreReviewSubmission.m in Sources */,
+				8754117E1E1F201E006C5C6E /* BVProductReviewRichNotificationCenter.m in Sources */,
+				875410B51E1F10DF006C5C6E /* BVStoreReviewNotificationViewController.m in Sources */,
 				8779DB251DD20D5D00E6CAF5 /* BVStoreReviewsTableView.m in Sources */,
-				87F2DC381DAD585E00FB43F3 /* BVStoreReviewNotificationProperties.m in Sources */,
+				87A9ECC31E1DB9B300666636 /* BVPINRequest.m in Sources */,
 				87F2DC9E1DAD585E00FB43F3 /* BVStoreLocation.m in Sources */,
 				87F2DC5B1DAD585E00FB43F3 /* BVStoreIncludeContentType.m in Sources */,
-				879D09061DCA6DD8006B51D3 /* BVReviewRichNotificationCenter.m in Sources */,
 				87F2DCE81DAD585E00FB43F3 /* BVQuestionSubmissionErrorResponse.m in Sources */,
 				87F2DD401DAD585E00FB43F3 /* BVRecommendationsRequest.m in Sources */,
+				87C5FE9A1E22914C004EE6E8 /* BVStoreNotificationConfigurationLoader.m in Sources */,
 				87F2DC6B1DAD585E00FB43F3 /* BVConversationsInclude.m in Sources */,
 				87F2DCAE1DAD585E00FB43F3 /* BVQuestionsAndAnswersRequest.m in Sources */,
 				87F2DD1B1DAD585E00FB43F3 /* BVCurationsAnalyticsHelper.m in Sources */,
 				87F2DC231DAD585E00FB43F3 /* BVTransactionItem.m in Sources */,
 				87F2DCD41DAD585E00FB43F3 /* BVFieldError.m in Sources */,
 				87F2DC941DAD585E00FB43F3 /* BVAnswer.m in Sources */,
+				875410B31E1F10DF006C5C6E /* BVProductReviewNotificationViewController.m in Sources */,
 				87F2DC851DAD585E00FB43F3 /* BVRatingDistribution.m in Sources */,
 				87F2DC6D1DAD585E00FB43F3 /* BVDimensionAndDistributionUtil.m in Sources */,
 				87F2DD441DAD585E00FB43F3 /* BVRecsAnalyticsHelper.m in Sources */,
+				8754117A1E1F201E006C5C6E /* BVProductReviewNotificationCenter.m in Sources */,
 				87F2DCF41DAD585E00FB43F3 /* BVSubmittedReview.m in Sources */,
 				87F2DC1F1DAD585E00FB43F3 /* BVPixel.m in Sources */,
 				87F2DC261DAD585E00FB43F3 /* BVGMBLSighting.m in Sources */,
 				87F2DC741DAD585E00FB43F3 /* BVDistributionValue.m in Sources */,
 				87F2DCC01DAD585E00FB43F3 /* BVReviewFilterType.m in Sources */,
+				87C5FEC81E22A05D004EE6E8 /* BVViewsHelper.m in Sources */,
 				87F2DC1B1DAD585E00FB43F3 /* BVConversion.m in Sources */,
 				87F2DCB81DAD585E00FB43F3 /* BVFilter.m in Sources */,
 				87F2DD1D1DAD585E00FB43F3 /* BVCurationsCollectionView.m in Sources */,
-				87F2DC361DAD585E00FB43F3 /* BVSDKManager.m in Sources */,
 				87F2DC7F1DAD585E00FB43F3 /* BVProductStatistics.m in Sources */,
 				87F2DC771DAD585E00FB43F3 /* BVModelUtil.m in Sources */,
 				87F2DCBA1DAD585E00FB43F3 /* BVFilterOperator.m in Sources */,
 				87F2DD1F1DAD585E00FB43F3 /* BVCurationsCollectionViewCell.m in Sources */,
 				87F2DC5D1DAD585E00FB43F3 /* BVBadge.m in Sources */,
-				87F2DD321DAD585E00FB43F3 /* BVNotificationViewController.m in Sources */,
-				87F2DC421DAD585E00FB43F3 /* NSBundle+DiagnosticInformation.m in Sources */,
+				87C5FEB71E22A05D004EE6E8 /* BVAuthenticatedUser.m in Sources */,
 				87F2DD081DAD585E00FB43F3 /* BVQuestionsTableView.m in Sources */,
 				87F2DCCA1DAD585E00FB43F3 /* BVSortOptionReviews.m in Sources */,
 				87F2DCA41DAD585E00FB43F3 /* PDPContentType.m in Sources */,
-				87F2DC301DAD585E00FB43F3 /* BVLogger.m in Sources */,
 				87F2DC671DAD585E00FB43F3 /* BVConversationsError.m in Sources */,
-				87F2DC3C1DAD585E00FB43F3 /* BVViewsHelper.m in Sources */,
 				87F2DCA81DAD585E00FB43F3 /* BVBulkRatingsRequest.m in Sources */,
 				87F2DCF81DAD585E00FB43F3 /* BVAnswerCollectionViewCell.m in Sources */,
+				87C5FE9E1E229168004EE6E8 /* BVProductReviewNotificationConfigurationLoader.m in Sources */,
 				87F2DC691DAD585E00FB43F3 /* BVConversationsErrorResponse.m in Sources */,
 				87F2DCC41DAD585E00FB43F3 /* BVSortOptionAnswers.m in Sources */,
 				87F2DC631DAD585E00FB43F3 /* BVBulkRatingsResponse.m in Sources */,
@@ -2233,9 +2357,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				87F2DD641DAD5E9400FB43F3 /* BVUserProfileTests.m in Sources */,
+				15D4F8441DF5EE5C00E6B30D /* UIImage+Tests.m in Sources */,
 				87F2DE171DAD945D00FB43F3 /* StoreReviewSubmissionTests.swift in Sources */,
 				87F2DE0C1DAD945D00FB43F3 /* ReviewDisplayTests.swift in Sources */,
 				87F2DE141DAD945D00FB43F3 /* PhotoUploadTests.swift in Sources */,
+				87A9ECBA1E1DA93A00666636 /* BVPINTests.m in Sources */,
 				87F2DE0F1DAD945D00FB43F3 /* DisplayParametersTests.swift in Sources */,
 				87F2DE081DAD945D00FB43F3 /* ConversationsDisplayTests.swift in Sources */,
 				87F2DD621DAD5E9400FB43F3 /* BVNotificationConfigTests.m in Sources */,
@@ -2422,6 +2548,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.bazaarvoice.bvsdk.BVSDKTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "./BVSDKTests/BVSDKTests-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -2435,6 +2562,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.bazaarvoice.bvsdk.BVSDKTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "./BVSDKTests/BVSDKTests-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;

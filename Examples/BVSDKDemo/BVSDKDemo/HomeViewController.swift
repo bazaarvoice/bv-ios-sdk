@@ -10,35 +10,18 @@ import FontAwesomeKit
 import BVSDK
 import GoogleMobileAds
 import FBSDKLoginKit
-private func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
-  switch (lhs, rhs) {
-  case let (l?, r?):
-    return l < r
-  case (nil, _?):
-    return true
-  default:
-    return false
-  }
-}
-
-private func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
-  switch (lhs, rhs) {
-  case let (l?, r?):
-    return l > r
-  default:
-    return rhs < lhs
-  }
-}
 
 
-let ADVERT_INDEX_PATH = 7
+//multiple of 2
+private let numProductsAboveAd = 4
 
 class HomeViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, GADNativeContentAdLoaderDelegate, BVLocationManagerDelegate {
-
+    
     @IBOutlet weak var versionLabel: UILabel!
     
     @IBOutlet weak var recommendationsCollectionView: BVProductRecommendationsCollectionView!
     
+    private var productsToReview: [BVPIN]?
     private var recommendations:[BVRecommendedProduct]?
     private let spinner = Util.createSpinner()
     private let errorLabel = Util.createErrorLabel()
@@ -52,11 +35,23 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     
     private var storeIdForAdTracking = "0" // track the deafult store id, in case we need to refresh and ad
     
+    private lazy var gearIconImage : UIImage = {
+        let menuIcon = FAKFontAwesome.gearIcon(withSize: 20)
+        menuIcon?.addAttribute(NSForegroundColorAttributeName, value: UIColor.white)
+        return menuIcon!.image(with: CGSize(width: 20, height: 20))
+    }()
+    
+    private lazy var cartIconImage : UIImage = {
+        let menuIcon = FAKFontAwesome.shoppingCartIcon(withSize: 20)
+        menuIcon?.addAttribute(NSForegroundColorAttributeName, value: UIColor.white)
+        return menuIcon!.image(with: CGSize(width: 20, height: 20))
+    }()
+
     override func viewDidLoad() {
         super.viewDidLoad()
-       ProfileUtils.trackViewController(self)
+        ProfileUtils.trackViewController(self)
         
-        self.addSettingsButton()
+        self.addBarButtonItems()
         
         self.view.backgroundColor = UIColor.white
         self.recommendationsCollectionView.backgroundColor = UIColor.clear
@@ -68,12 +63,15 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         
         recommendationsCollectionView.register(UINib(nibName: "HomeHeaderCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "HomeHeaderCollectionViewCell")
         
+        recommendationsCollectionView.register(UINib(nibName: "LocationCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "LocationCollectionViewCell")
+        
         recommendationsCollectionView.register(UINib(nibName: "HomeAdvertisementCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "HomeAdvertisementCollectionViewCell")
         
         recommendationsCollectionView.register(UINib(nibName: "DemoCarouselCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "DemoCarouselCollectionViewCell")
         
-        recommendationsCollectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "recommendationHeaderCell")
-        recommendationsCollectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "locationCell")
+        recommendationsCollectionView.register(UINib(nibName: "PINCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "PINCollectionViewCell")
+        
+        recommendationsCollectionView.register(UINib(nibName: "HeaderCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "HeaderCollectionViewCell")
         
         self.loadRecommendations()
         
@@ -85,7 +83,6 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         refreshControl.tintColor = UIColor.bazaarvoiceTeal()
         refreshControl.addTarget(self, action: #selector(HomeViewController.refresh(_:)), for: .valueChanged)
         recommendationsCollectionView.addSubview(refreshControl)
-       
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -95,6 +92,8 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
                 self.recommendations?.removeAll() // client id changed, reload data
                 self.loadRecommendations()
             }
+        }else {
+            recommendationsCollectionView.reloadSections(IndexSet(integer: CellType.location.rawValue))
         }
         
         currClientId = BVSDKManager.shared().clientId
@@ -105,6 +104,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         // clear any cached recommendations, and reload latest recommendations from API
         BVShopperProfileRequestCache.shared().removeAllCachedResponses()
         self.loadRecommendations()
+        self.loadProductsToReview()
     }
     
     func checkLocationAuthorization(){
@@ -124,19 +124,22 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
                 
             }
             
-            
         } else {
             
             // Initialize the location manager since the user has given preference to the CLLocationManager
             self.initLocationManager()
-
+            
         }
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        if (self.recommendations?.count > 0){
+        let cartButton = self.navigationItem.rightBarButtonItems?[0]
+        cartButton?.addBadge(number: CartManager.sharedInstance.numberOfItemsInCart(), withOffset: CGPoint.zero, andColor: UIColor.red, andFilled: true)
+        
+        if (self.recommendations != nil && (self.recommendations?.count)! > 0){
+
             self.refreshLocationSelectionIfVisible() // In case user changed location
         }
         
@@ -155,7 +158,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
                     if SITE_AUTH == 1 {
                         ProfileUtils.sharedInstance.setUserAuthString()
                     }
-
+                    
                 }
                 
                 self.checkLocationAuthorization()
@@ -190,7 +193,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
             
             let request = DFPRequest()
             //request.testDevices = [kDFPSimulatorID]
-
+            
             request.customTargeting = BVSDKManager.shared().getCustomTargeting() //+ whatever
             
             var targetingCity = "Undefined"
@@ -220,8 +223,9 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     }
     
     class func createTitleLabel() -> UILabel {
-     
+        
         let titleLabel = UILabel(frame: CGRect(x: 0,y: 0,width: 200,height: 44))
+        
         titleLabel.text = "bazaarvoice:";
         titleLabel.textColor = UIColor.white
         titleLabel.textAlignment = .center
@@ -230,33 +234,44 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         
     }
     
-    func getGearIconImage() -> UIImage {
-
-        let menuIcon = FAKFontAwesome.gearIcon(withSize: 20)
-        menuIcon?.addAttribute(NSForegroundColorAttributeName, value: UIColor.white)
-        return menuIcon!.image(with: CGSize(width: 20, height: 20))
-
-    }
-    
-    func addSettingsButton() {
+    func addBarButtonItems(){
+        
+        var buttonItems : [UIBarButtonItem] = []
+        
+        // Always add the cart button to index 0
+        let cartButton = UIBarButtonItem(
+            image: self.cartIconImage,
+            style: UIBarButtonItemStyle.plain,
+            target: self,
+            action: #selector(HomeViewController.cartIconPressed)
+        )
+        
+        buttonItems.append(cartButton)
         
         if let path = Bundle.main.path(forResource: "config/DemoAppConfigs", ofType: "plist") {
             if FileManager.default.fileExists(atPath: path, isDirectory: nil) {
-                self.navigationItem.rightBarButtonItem = UIBarButtonItem(
-                    image: self.getGearIconImage(),
+                let settingsButton = UIBarButtonItem(
+                    image: self.gearIconImage,
                     style: UIBarButtonItemStyle.plain,
                     target: self,
                     action: #selector(HomeViewController.settingsIconPressed)
                 )
+                settingsButton.imageInsets = UIEdgeInsetsMake(0, 0, 0, -30)
+                buttonItems.append(settingsButton)
             }
         }
         
+        self.navigationItem.setRightBarButtonItems(buttonItems, animated: true)
+        
     }
     
+    
     func settingsIconPressed() {
-
         self.navigationController?.pushViewController(SettingsViewController(), animated: true)
-        
+    }
+    
+    func cartIconPressed(){
+        self.navigationController?.pushViewController(CartViewController(), animated: true)
     }
     
     func initLocationManager(){
@@ -278,7 +293,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         
         // add loading icon
         self.recommendationsCollectionView.addSubview(self.spinner)
-            
+        
         self.errorLabel.removeFromSuperview()
         
         let request = BVRecommendationsRequest(limit: 20)
@@ -292,6 +307,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
             self.recommendationsCollectionView?.reloadData()
             self.refreshControl.endRefreshing()
             
+            self.loadProductsToReview()
         }) { (error) in
             
             // remove loading icon
@@ -301,13 +317,50 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
             print("Error: \(error.localizedDescription)")
             self.recommendationsCollectionView?.reloadData()
             self.refreshControl.endRefreshing()
-            
+            self.loadProductsToReview()
         }
         
     }
     
-    func addBorderToBottomOfCell(_ cell : UIView){
+    private func loadProductsToReview() {
+        BVPINRequest.getPendingPINs({(pins) in
+            self.updatePinSections(pins: pins)
+        }){ (error) in
+            print("ERROR: Unable to load products to reivew: " + error.localizedDescription)
+            self.updatePinSections(pins: [])
+        }
+    }
+    
+    private func updatePinSections(pins: [BVPIN]) {
+        let oCount = self.productsToReview?.count ?? 0
         
+        let nCount = pins.count//self.productsToReview?.count ?? 0
+        
+        self.recommendationsCollectionView.performBatchUpdates({
+            
+            if (oCount == 0 && nCount == 0) || (oCount > 0 && nCount > 0) {
+                self.recommendationsCollectionView.reloadSections(IndexSet(integer: CellType.pin.rawValue))
+            }else if oCount == 0 && nCount > 0 {
+                self.recommendationsCollectionView.insertItems(at: [IndexPath(item: 0, section: CellType.pinHeader.rawValue),
+                                                                    IndexPath(item: 0, section: CellType.pin.rawValue)])
+            }else if oCount > 0 && nCount == 0 {
+                self.recommendationsCollectionView.deleteItems(at: [IndexPath(item: 0, section: CellType.pinHeader.rawValue),
+                                                                    IndexPath(item: 0, section: CellType.pin.rawValue)])
+            }
+            self.productsToReview = pins
+            
+        }) {(done) in
+            if nCount > 0 {
+                self.queueFirstPINNotification(productID: self.productsToReview!.first!.id)
+            }
+        }
+    }
+    
+    private func queueFirstPINNotification(productID: String) {
+        BVProductReviewNotificationCenter.shared().queueReview(withProductId: productID)
+    }
+    
+    func addBorderToBottomOfCell(cell : UIView){
         let bottomBorder: CALayer = CALayer()
         bottomBorder.borderColor = UIColor.groupTableViewBackground.cgColor
         bottomBorder.borderWidth = 1
@@ -321,12 +374,12 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         let visibleRows = self.recommendationsCollectionView.indexPathsForVisibleItems
         for currIndexPath in visibleRows {
             
-            if currIndexPath.cellType == .location {
+            if currIndexPath.section == CellType.location.rawValue {
                 self.recommendationsCollectionView.reloadItems(at: [currIndexPath])
                 break
             }
         }
-
+        
         
     }
     
@@ -334,31 +387,56 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        if self.recommendations != nil && self.recommendations!.count > 0 {
-            if (self.recommendations!.count > ADVERT_INDEX_PATH-2){
-                return self.recommendations!.count + 4 // one for top banner, one for advertisement, one for location
-            } else {
-                return self.recommendations!.count
+        let type = CellType(rawValue: section)
+        if type == .pinHeader {
+            
+            return (productsToReview?.count ?? 0 > 0) ? 1: 0
+            
+        } else if type == .pin {
+            
+            return productsToReview?.count ?? 0 > 0 ? 1: 0
+            
+        }else if type == .productRecommendationTop {
+            
+            if self.recommendations != nil {
+                if (self.recommendations!.count >= numProductsAboveAd){
+                    return numProductsAboveAd // one for top banner, one for advertisement, one for location
+                } else {
+                    return self.recommendations!.count
+                }
+            }
+            return 0
+            
+        }else if type == .productRecommendationBottom {
+            
+            if self.recommendations != nil {
+                if (self.recommendations!.count >= numProductsAboveAd){
+                    return self.recommendations!.count - numProductsAboveAd // one for top banner, one for advertisement, one for location
+                } else {
+                    return 0
+                }
             }
             
-        }
-        else {
             return 0
         }
         
+        return 1
+    }
+    
+    public func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 8
     }
     
     func getRecommendationForIndexPath(_ indexPath: IndexPath) -> BVRecommendedProduct {
         
-        let indexOffset = ((indexPath as NSIndexPath).row > ADVERT_INDEX_PATH) ? 4 : 1
-
-        return self.recommendations![(indexPath as NSIndexPath).row - indexOffset]
+        let indexOffset = (indexPath.section == 7) ? 4 : 0
         
+        return self.recommendations![indexPath.row + indexOffset]
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: IndexPath) -> CGSize {
         
-        switch indexPath.cellType {
+        switch CellType(rawValue: indexPath.section)! {
         case .header:
             return CGSize(
                 width: self.view.bounds.width,
@@ -371,7 +449,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
                 height: 44
             )
             
-        case .recommendationHeader:
+        case .recommendationHeader, .pinHeader:
             return CGSize(
                 width: self.view.bounds.width,
                 height: 22
@@ -383,12 +461,17 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
                 height: 200
             )
             
-        case .productRecommendation:
+        case .productRecommendationTop, .productRecommendationBottom:
             let padding = CGFloat(8)
             let extraHeightPadding = CGFloat(24)
             return CGSize(
                 width: self.view.bounds.width/2 - padding*2,
                 height: self.view.bounds.width/2 - padding*2 + extraHeightPadding
+            )
+        case .pin:
+            return CGSize(
+                width: self.view.bounds.width,
+                height: self.view.bounds.width/2
             )
         }
         
@@ -396,95 +479,68 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        switch indexPath.cellType {
-        
+        let type = CellType(rawValue: indexPath.section)!
+        switch type {
         case .header:
-            
             return collectionView.dequeueReusableCell(withReuseIdentifier: "HomeHeaderCollectionViewCell", for: indexPath) as! HomeHeaderCollectionViewCell
-        
+            
         case .location:
-            
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "locationCell", for: indexPath)
-            
-            for view in cell.subviews {
-                view.removeFromSuperview() // clean out the previous cells
-            }
-            
-            let locationIconHW : CGFloat = 33.0
-            let locationIcon = UIImageView(frame: CGRect(x: 8, y: 0, width: locationIconHW, height: locationIconHW))
-            locationIcon.image = Util.getFontAwesomeIconImage(FAKFontAwesome.mapMarkerIcon(withSize:))
-            cell.addSubview(locationIcon)
-            
-            cell.backgroundColor = UIColor.white
-            let label = UILabel(frame: CGRect(x: locationIconHW+16, y: 0, width: self.view.bounds.width-locationIconHW, height: locationIconHW))
-            
-            if let defaultCachedStore = LocationPreferenceUtils.getDefaultStore() {
-                label.text = "My Store: " + defaultCachedStore.city + ", " + defaultCachedStore.state
-            } else {
-                label.text = "Set your default store location!"
-            }
-            
-            label.baselineAdjustment = .alignCenters
-            label.textColor = UIColor.bazaarvoiceNavy()
-            cell.addSubview(label)
-            
-            self.addBorderToBottomOfCell(cell)
-            
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "LocationCollectionViewCell", for: indexPath) as! LocationCollectionViewCell
             return cell
-          
-        case .recommendationHeader:
             
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "recommendationHeaderCell", for: indexPath)
-            cell.backgroundColor = UIColor.white
-            let label = UILabel(frame: CGRect(x: 8, y: 0, width: self.view.bounds.width, height: 30))
-            label.baselineAdjustment = .alignCenters
-            label.text = "RECOMMENDED FOR YOU"
-            label.textColor = UIColor.bazaarvoiceNavy()
-            cell.addSubview(label)
-            
+        case .recommendationHeader, .pinHeader:
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HeaderCollectionViewCell", for: indexPath) as! HeaderCollectionViewCell
+            if type == .pinHeader {
+                cell.textLbl?.text = "Rate Your Recent Purchases"
+            }else {
+                cell.textLbl?.text = "RECOMMENDED FOR YOU"
+            }
             return cell
             
         case .advertisement:
-            
             self.initAdvertisement()
-            
             return collectionView.dequeueReusableCell(withReuseIdentifier: "HomeAdvertisementCollectionViewCell", for: indexPath) as! HomeAdvertisementCollectionViewCell
-        
+            
+        case .pin:
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PINCollectionViewCell", for: indexPath) as! PINCollectionViewCell
+            cell.productsToReview = productsToReview
+            cell.productSelected = {(pin) in
+                let vc = WriteReviewViewController(nibName: "WriteReviewViewController", bundle: nil, productId: pin.id)
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
+            
+            return cell
+            
         default:
-            
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DemoCarouselCollectionViewCell", for: indexPath) as! DemoCarouselCollectionViewCell
-            
             cell.bvRecommendedProduct = getRecommendationForIndexPath(indexPath)
-            
             return cell
             
         }
         
     }
     
-
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         collectionView.deselectItem(at: indexPath, animated: true)
         
-        switch indexPath.cellType {
-        case .productRecommendation:
+        switch CellType(rawValue: indexPath.section)! {
+        case .productRecommendationTop, .productRecommendationBottom:
             
             let productView = NewProductPageViewController(
                 nibName:"NewProductPageViewController",
                 bundle: nil,
-                product: self.getRecommendationForIndexPath(indexPath)
+                productId: self.getRecommendationForIndexPath(indexPath).productId
             )
             
             self.navigationController?.pushViewController(productView, animated: true)
-        
+            
         case .advertisement:
             print("Advertisement clicked")
-
+            
         case .location:
             
             let locationSettingsVC = LocationSettings(nibName:"LocationSettings", bundle: nil)
-            
             self.navigationController?.pushViewController(locationSettingsVC, animated: true)
             
             return
@@ -493,6 +549,10 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
             return
             
         case .header:
+            return
+        case .pin:
+            return
+        default:
             return
         }
         
@@ -504,9 +564,9 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         
         print("Received HomePage native ad")
         
-        if recommendationsCollectionView.cellForItem(at: IndexPath(row: ADVERT_INDEX_PATH, section: 0)) != nil {
-        
-            let nativeAdCell = recommendationsCollectionView.cellForItem(at: IndexPath(row: ADVERT_INDEX_PATH, section: 0)) as! HomeAdvertisementCollectionViewCell
+        if recommendationsCollectionView.cellForItem(at: IndexPath(row: 0, section: CellType.advertisement.rawValue)) != nil {
+            
+            let nativeAdCell = recommendationsCollectionView.cellForItem(at: IndexPath(row: 0, section: CellType.advertisement.rawValue)) as! HomeAdvertisementCollectionViewCell
             
             nativeAdCell.nativeContentAd = nativeContentAd
         }
@@ -515,9 +575,8 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     func adLoader(_ adLoader: GADAdLoader, didFailToReceiveAdWithError error: GADRequestError) {
         print("Failed to receive advertisement: " + error.localizedDescription)
         self.adLoader = nil
-
+        
     }
-    
     
     // MARK: BVLocationManagerDelegate
     
@@ -531,22 +590,6 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     
 }
 
-
-
-private enum CellType {
-    case header, location, advertisement, recommendationHeader, productRecommendation
-}
-
-private extension IndexPath {
-    var cellType : CellType {
-        get {
-            switch row {
-                case 0: return .header
-                case 1: return .location
-                case 2: return .recommendationHeader
-                case ADVERT_INDEX_PATH: return .advertisement
-                default: return .productRecommendation
-            }
-        }
-    }
+private enum CellType: Int {
+    case header, location, pinHeader, pin, recommendationHeader, productRecommendationTop, advertisement,productRecommendationBottom
 }

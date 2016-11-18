@@ -12,7 +12,7 @@
 @implementation BVFeedbackSubmission
 
 -(nonnull instancetype)initWithContentId:(nonnull NSString*)contentId
-                          withConentType:(BVFeedbackContentType)contentType
+                          withContentType:(BVFeedbackContentType)contentType
                         withFeedbackType:(BVFeedbackType)feedbackType{
     
     self = [super init];
@@ -100,21 +100,6 @@
     
     // start uploading answer
     [postDataTask resume];
-    
-}
-
--(NSData*)transformToPostBody:(NSDictionary*)dict {
-    
-    NSMutableArray *queryItems = [NSMutableArray array];
-    
-    for (NSString *key in dict) {
-        [queryItems addObject:[NSURLQueryItem queryItemWithName:key value:dict[key]]];
-    }
-    
-    NSURLComponents *components = [NSURLComponents componentsWithString:@"http://bazaarvoice.com"];
-    components.queryItems = queryItems;
-    NSString* query = components.query;
-    return [query dataUsingEncoding:NSUTF8StringEncoding];
     
 }
 

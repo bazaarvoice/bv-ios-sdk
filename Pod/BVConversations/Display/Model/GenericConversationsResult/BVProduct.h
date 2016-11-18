@@ -12,7 +12,7 @@
 #import "BVQAStatistics.h"
 #import "BVReview.h"
 #import "BVQuestion.h"
-
+@class BVConversationsInclude;
 /*
  The main information contained within a `BVProductResponse` which is a response to `BVProductDisplayPageRequest`.
  Some commonly used data in a product:
@@ -45,5 +45,8 @@
 
 @property NSArray<BVReview*>* _Nonnull includedReviews;
 @property NSArray<BVQuestion*>* _Nonnull includedQuestions;
+
+@property (nonatomic, strong, readonly) BVConversationsInclude * _Nullable includes;
+@property (nonatomic, strong, readonly) NSDictionary * _Nonnull apiResponse;
 
 @end

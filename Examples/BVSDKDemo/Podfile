@@ -1,6 +1,7 @@
-# Uncomment this line to define a global platform for your project
+# Minimum iOS version
 platform :ios, '8.0'
-# Uncomment this line if you're using Swift
+
+# Using swift, so Dynamic Frameworks required!
 use_frameworks!
 
 def common_pods
@@ -22,7 +23,7 @@ target 'BVSDKDemo' do
 	pod 'NVActivityIndicatorView'
 	pod 'FontAwesomeKit/FontAwesome'
     pod 'XLActionController', '~> 3.0'
-    pod "youtube-ios-player-helper", "~> 0.1.6"
+    pod 'youtube-ios-player-helper', '~> 0.1.6'
     pod 'SDForms', :git => 'https://github.com/austimkelly/SDForms.git', :branch => 'master'
     
     pod 'FBSDKCoreKit'
@@ -36,8 +37,12 @@ target 'Curations Custom Post Extension' do
 	common_pods
 	pod 'BVSDK/BVCurations', :path => "../../"
 
-end
+	## FIXME !!!!!!! ##
+    # temporarily add in BVPIN since it's required when you bring in core stuff
+    pod 'BVSDK/BVPIN', :path => "../../"
+    pod 'BVSDK/BVNotifications', :path => "../../"
 
+end
 
 post_install do |installer|
     installer.pods_project.targets.each do |target|

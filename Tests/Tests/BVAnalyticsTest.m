@@ -8,13 +8,14 @@
 #import <AdSupport/ASIdentifierManager.h>
 #import <UIKit/UIKit.h>
 #import <XCTest/XCTest.h>
-#import "BVCore.h"
-#import "BVRecommendations.h"
-#import "BVNotificationsAnalyticsHelper.h"
-#import "BVReviewsRequest.h"
-#import "BVProductDisplayPageRequest.h"
-#import "BVQuestionsAndAnswersRequest.h"
-#import "BVBulkRatingsRequest.h"
+
+#import <BVSDK/BVCore.h>
+#import <BVSDK/BVRecommendations.h>
+#import <BVSDK/BVNotificationsAnalyticsHelper.h>
+#import <BVSDK/BVReviewsRequest.h>
+#import <BVSDK/BVProductDisplayPageRequest.h>
+#import <BVSDK/BVQuestionsAndAnswersRequest.h>
+#import <BVSDK/BVBulkRatingsRequest.h>
 
 #import "BVBaseStubTestCase.h"
 
@@ -422,7 +423,7 @@
     numberOfExpectedImpressionAnalyticsEvents = 1;
     numberOfExpectedPageviewAnalyticsEvents = 0;
     
-    [[BVNotificationsAnalyticsHelper instance] queueAnalyticEventForStoreReviewNotificationInView:@"StorePushNotification" withStoreId:@"1000"];
+    [BVNotificationsAnalyticsHelper queueAnalyticEventForReviewNotificationInView:@"StorePushNotification" withId:@"1000" andProductType:ProductTypeStore];
     
     XCTAssert([[BVAnalyticsManager sharedManager]eventQueue].count == 1, @"There should be 1 event queued.");
     
@@ -440,7 +441,7 @@
     numberOfExpectedImpressionAnalyticsEvents = 1;
     numberOfExpectedPageviewAnalyticsEvents = 0;
     
-    [[BVNotificationsAnalyticsHelper instance] queueAnalyticEventForStoreReviewUsedFeature:@"ok" withStoreId:@"1000"];
+    [BVNotificationsAnalyticsHelper queueAnalyticEventForReviewUsedFeature:@"ok" withId:@"1000" andProductType:ProductTypeStore];
     
     XCTAssert([[BVAnalyticsManager sharedManager]eventQueue].count == 1, @"There should be 1 event queued.");
     
