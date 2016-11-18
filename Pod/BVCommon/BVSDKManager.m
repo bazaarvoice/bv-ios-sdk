@@ -7,9 +7,7 @@
 
 #import "BVSDKManager.h"
 #import "BVCore.h"
-#import "BVNotificationConfiguration.h"
-
-#define NOTIFICATION_CONFIG_ROOT @"https://s3.amazonaws.com"
+#import <UIKit/UIKit.h>
 
 @interface BVSDKManager ()
 
@@ -39,7 +37,6 @@
     if(self){
         
         _bvUser = [[BVAuthenticatedUser alloc] init];
-        _bvStoreReviewNotificationProperties = nil;
         
         // make sure analytics has been started
         [BVAnalyticsManager sharedManager];
@@ -55,8 +52,33 @@
     return self;
 }
 
-- (NSString *)description{
+-(void)registerForAppStateChanges {
+    
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(applicationDidFinishLaunching)
+                                                     name:UIApplicationDidFinishLaunchingNotification
+                                                   object:nil];
+    });
+}
 
+
+-(void)applicationDidFinishLaunching {
+    
+    BVSDKManager *sdkMgr = [BVSDKManager sharedManager];
+    
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wunused-variable"
+    NSString *clientId = sdkMgr.clientId;
+    
+    // check that `clientId` is valid
+    NSAssert(clientId != nil && ![clientId isEqualToString:@""], @"You must supply client id in the BVSDKManager before using the Bazaarvoice SDK.");
+#pragma clang diagnostic pop
+}
+
+- (NSString *)description{
+    
     NSString *returnValue = [NSString stringWithFormat:@"Setting Values:\n conversations API key = %@ \n shopper marketing API key = %@ \n conversations for stores API key = %@ \n BVSDK Version = %@ \n clientId = %@ \n staging = %i \n" , self.apiKeyConversations, self.apiKeyShopperAdvertising, self.apiKeyConversationsStores, BV_SDK_VERSION, self.clientId, self.staging];
     
     return returnValue;
@@ -87,29 +109,27 @@
 }
 
 - (void)setApiKeyConversationsStores:(NSString *)apiKeyConversationsStores{
+    
     _apiKeyConversationsStores = apiKeyConversationsStores;
-    [self loadNotificationConfiguration];
+    NSDictionary *userInfo = @{CONVERSATIONS_STORES_API_KEY_SET_NOTIFICATION:_apiKeyConversationsStores};
+    [[NSNotificationCenter defaultCenter] postNotificationName:CONVERSATIONS_STORES_API_KEY_SET_NOTIFICATION object:nil userInfo:userInfo];
+
 }
 
 - (void)setApiKeyLocation:(NSString *)apiKeyLocation{
     
     _apiKeyLocation = apiKeyLocation;
-    NSDictionary *userInfo = @{LOCATION_API_KEY_SET_NOTIFICATION:apiKeyLocation};
+    NSDictionary *userInfo = @{LOCATION_API_KEY_SET_NOTIFICATION:_apiKeyLocation};
     [[NSNotificationCenter defaultCenter] postNotificationName:LOCATION_API_KEY_SET_NOTIFICATION object:nil userInfo:userInfo];
     
 }
 
--(void)loadNotificationConfiguration {
+-(void)setApiKeyPIN:(NSString *)apiKeyPIN {
     
-        NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@/incubator-mobile-apps/conversations-stores/%@/ios/geofenceConfig.json", NOTIFICATION_CONFIG_ROOT, [[BVSDKManager sharedManager] clientId]]];
-        [BVNotificationConfiguration loadConfiguration:url completion:^(BVStoreReviewNotificationProperties * _Nonnull response) {
-            [[BVLogger sharedLogger] verbose:@"Successfully loaded BVStoreReviewNotificationProperties"];
-            _bvStoreReviewNotificationProperties = response;
+    _apiKeyPIN = apiKeyPIN;
+    NSDictionary *userInfo = @{PIN_API_KEY_SET_NOTIFICATION:_apiKeyPIN};
+    [[NSNotificationCenter defaultCenter] postNotificationName:PIN_API_KEY_SET_NOTIFICATION object:nil userInfo:userInfo];
     
-        } failure:^(NSError * _Nonnull errors) {
-            [[BVLogger sharedLogger] error:@"ERROR: Failed to load BVStoreReviewNotificationProperties"];
-        }];
-
 }
 
 -(void)setLogLevel:(BVLogLevel)logLevel {
@@ -119,7 +139,7 @@
 #pragma mark - user
 
 -(void)setUserWithAuthString:(NSString*)userAuthString {
-        
+    
     if(userAuthString == nil || [userAuthString length] == 0){
         [[BVLogger sharedLogger] error:@"No userAuthString was supplied for the recommendations manager!"];
         return;
@@ -143,7 +163,7 @@
     
     self.bvUser.userAuthString = userAuthString;
     
-    [[BVAnalyticsManager sharedManager] sendPersonalizationEvent:self.bvUser];
+    [[BVAnalyticsManager sharedManager] sendPersonalizationEvent:userAuthString];
     
     [NSObject cancelPreviousPerformRequestsWithTarget:self];
     

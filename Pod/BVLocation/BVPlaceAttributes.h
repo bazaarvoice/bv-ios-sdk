@@ -17,6 +17,8 @@
 #define PLACE_ZIP           @"zip"
 #define PLACE_STORE_ID      @"storeId"
 #define PLACE_ADDRESS       @"address"
+#define ARRIVAL_DATE        @"arrivalDate"
+#define DEPARTURE_DATE      @"departureDate"
 
 typedef enum{
     PlaceTypeGeofence,

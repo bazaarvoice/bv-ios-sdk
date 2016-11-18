@@ -88,7 +88,7 @@
 
 - (IBAction)submitFeedbackTapped:(id)sender {
     
-    BVFeedbackSubmission *feedback = [[BVFeedbackSubmission alloc] initWithContentId:@"192454" withConentType:BVFeedbackContentTypeReview withFeedbackType:BVFeedbackTypeHelpfulness];
+    BVFeedbackSubmission *feedback = [[BVFeedbackSubmission alloc] initWithContentId:@"192454" withContentType:BVFeedbackContentTypeReview withFeedbackType:BVFeedbackTypeHelpfulness];
     
     feedback.userId = [NSString stringWithFormat:@"userId%d", arc4random()]; // add in a random user id for testing, avoids duplicate errors
     feedback.vote = BVFeedbackVotePositive;

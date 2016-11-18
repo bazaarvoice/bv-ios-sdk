@@ -7,29 +7,8 @@
 
 #import <XCTest/XCTest.h>
 #import <BVSDK/BVCurations.h>
-
+#import "UIImage+Tests.h"
 #import "BVBaseStubTestCase.h"
-
-// Utility buldle locator for location image resources by name
-@interface BundleLocator : NSObject
-@end
-
-@interface UIImage (Test)
-+(UIImage*)testImageNamed:(NSString*) imageName;
-@end
-
-@implementation BundleLocator
-@end
-
-@implementation UIImage (Test)
-+(UIImage*)testImageNamed:(NSString*) imageName
-{
-    NSBundle *bundle = [NSBundle bundleForClass:[BundleLocator class]];
-    NSString *imagePath = [bundle pathForResource:imageName.stringByDeletingPathExtension ofType:imageName.pathExtension];
-    return [UIImage imageWithContentsOfFile:imagePath];
-}
-@end
-
 
 @interface BVCurationsTests : BVBaseStubTestCase
 

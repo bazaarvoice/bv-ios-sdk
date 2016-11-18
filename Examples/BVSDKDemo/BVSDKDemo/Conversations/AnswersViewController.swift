@@ -4,7 +4,6 @@
 //
 //  Copyright © 2016 Bazaarvoice. All rights reserved.
 //
-
 import UIKit
 import BVSDK
 import FontAwesomeKit
@@ -15,10 +14,10 @@ class AnswersViewController: UIViewController, UITableViewDataSource, UITableVie
     @IBOutlet weak var header : ProductDetailHeaderView!
     var spinner = Util.createSpinner(UIColor.bazaarvoiceNavy(), size: CGSize(width: 44,height: 44), padding: 0)
     
-    let product : BVRecommendedProduct
+    let product : BVProduct
     let question : BVQuestion
     
-    init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?, product: BVRecommendedProduct, question: BVQuestion) {
+    init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?, product: BVProduct, question: BVQuestion) {
         self.question = question
         self.product = product
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
@@ -27,14 +26,14 @@ class AnswersViewController: UIViewController, UITableViewDataSource, UITableVie
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-        
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.title = "Answers"
         
         ProfileUtils.trackViewController(self)
-
+        
         header.product = product
         
         self.view.backgroundColor = UIColor.appBackground()
@@ -50,22 +49,22 @@ class AnswersViewController: UIViewController, UITableViewDataSource, UITableVie
         
         let nib2 = UINib(nibName: "ProductPageButtonCell", bundle: nil)
         tableView.register(nib2, forCellReuseIdentifier: "ProductPageButtonCell")
-
+        
         let nib3 = UINib(nibName: "AnswerTableViewCell", bundle: nil)
         tableView.register(nib3, forCellReuseIdentifier: "AnswerTableViewCell")
         
     }
-
+    
     // MARK: - Table view data source
     
     func numberOfSections(in tableView: UITableView) -> Int {
-     
+        
         return 2
         
     }
-
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
         if section == 0 {
             return 2
         }
@@ -100,7 +99,7 @@ class AnswersViewController: UIViewController, UITableViewDataSource, UITableVie
             }
             
         }
-        
+            
         else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "AnswerTableViewCell") as! AnswerTableViewCell
             

@@ -108,6 +108,9 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         if config.conversationsStoresKey != "REPLACE_ME" {
             strings.append("Conversations Stores")
         }
+        if config.pinKey != "REPLACE_ME" {
+            strings.append("PIN")
+        }
         if (config.locationKey != "00000000-0000-0000-0000-000000000000"){
             strings.append("Location")
         }
@@ -123,6 +126,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         BVSDKManager.shared().apiKeyConversations = "REPLACE_ME"
         BVSDKManager.shared().apiKeyConversationsStores = "REPLACE_ME"
         BVSDKManager.shared().apiKeyCurations = "REPLACE_ME"
+        BVSDKManager.shared().apiKeyPIN = "REPLACE_ME"
         BVSDKManager.shared().apiKeyLocation = "00000000-0000-0000-0000-000000000000"
         
     }
@@ -136,8 +140,9 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         let conversations = sdk.apiKeyConversations == "" || sdk.apiKeyConversations == "REPLACE_ME"
         let conversationsStores = sdk.apiKeyConversationsStores == "" || sdk.apiKeyConversationsStores == "REPLACE_ME"
         let recommendations = sdk.apiKeyShopperAdvertising == "" || sdk.apiKeyShopperAdvertising == "REPLACE_ME"
+        let pinKey = sdk.apiKeyPIN == "" || sdk.apiKeyPIN == "REPLACE_ME"
         
-        return  curations && conversations && conversationsStores && recommendations
+        return  curations && conversations && conversationsStores && recommendations && pinKey
         
     }
     
@@ -148,7 +153,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
             && BVSDKManager.shared().apiKeyConversations == config.conversationsKey
             && BVSDKManager.shared().apiKeyConversationsStores == config.conversationsStoresKey
             && BVSDKManager.shared().apiKeyCurations == config.curationsKey
-        
+            && BVSDKManager.shared().apiKeyPIN == config.pinKey
     }
     
     // MARK: UITableViewDataSource
@@ -196,7 +201,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
             if (indexPath as NSIndexPath).row == 0 {
                 
                 cell.textLabel?.text = "(Mock) Endurance Cycles"
-                cell.detailTextLabel?.text = "Recommendations, Advertising, Curations, Conversations, Stores"
+                cell.detailTextLabel?.text = "Recommendations, Advertising, Curations, Conversations, Stores, Location, PIN"
                 
                 if shouldMock() {
                     cell.accessoryType = .checkmark
@@ -269,6 +274,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
                 BVSDKManager.shared().apiKeyConversationsStores = config!.conversationsStoresKey
                 BVSDKManager.shared().apiKeyCurations = config!.curationsKey
                 BVSDKManager.shared().apiKeyLocation = config!.locationKey
+                BVSDKManager.shared().apiKeyPIN = config!.pinKey
                 
                 selectedConfigDisplayName = config!.displayName
                 

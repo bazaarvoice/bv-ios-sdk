@@ -13,6 +13,7 @@ import BVSDK
 class MockDataManager {
     
     static let sharedInstance = MockDataManager()
+    var pinReponse: Data?
     
     init() {
         self.setupPreSelectedKeysIfPresent()
@@ -37,6 +38,7 @@ class MockDataManager {
             BVSDKManager.shared().apiKeyConversationsStores = matchingConfig!.conversationsStoresKey
             BVSDKManager.shared().apiKeyShopperAdvertising = matchingConfig!.shopperAdvertisingKey
             BVSDKManager.shared().apiKeyLocation = matchingConfig!.locationKey
+            BVSDKManager.shared().apiKeyPIN = matchingConfig!.pinKey
         }
         
     }
@@ -67,8 +69,10 @@ class MockDataManager {
     let submitReviewPhotoMatch = "bazaarvoice.com/data/uploadphoto"
     let submitQuestionMatch = "bazaarvoice.com/data/submitquestion"
     let submitAnswerMatch = "bazaarvoice.com/data/submitanswer"
-    let notificationConfigMatch = "s3.amazonaws.com/incubator-mobile-apps/conversations-stores"
-    
+    var convoStoresConfigMatch = String(format:"s3.amazonaws.com/incubator-mobile-apps/sdk/%@/ios/%@/conversations-stores", S3_API_VERSION, BVSDKManager.shared().clientId)
+    var pinConfigMatch = String(format:"s3.amazonaws.com/incubator-mobile-apps/sdk/%@/ios/%@/pin", S3_API_VERSION, BVSDKManager.shared().clientId)
+    let pinRequestMatch = "bazaarvoice.com/pin/toreview"
+
     func shouldMockResponseForRequest(_ request: URLRequest) -> Bool {
         
         guard let url = request.url?.absoluteString else {
@@ -86,6 +90,8 @@ class MockDataManager {
     }
     
     func isSdkRequest(_ url: String) -> Bool {
+        convoStoresConfigMatch = String(format:"s3.amazonaws.com/incubator-mobile-apps/sdk/%@/ios/%@/conversations-stores", S3_API_VERSION, BVSDKManager.shared().clientId)
+        pinConfigMatch = String(format:"s3.amazonaws.com/incubator-mobile-apps/sdk/%@/ios/%@/pin", S3_API_VERSION, BVSDKManager.shared().clientId)
         
         let containsCurations = url.contains(curationsUrlMatch)
         let containsCurationsPhotoPost = url.contains(curationsPhotoPostUrlMatch)
@@ -98,9 +104,11 @@ class MockDataManager {
         let containsSubmitPhotoReviews = url.contains(submitReviewPhotoMatch)
         let containsSubmitQuestion = url.contains(submitQuestionMatch)
         let containsSubmitAnswers = url.contains(submitAnswerMatch)
-        let notificationConfig = url.contains(notificationConfigMatch)
+        let containsConvoStoresConfig = url.contains(convoStoresConfigMatch)
+        let containsPINConfig = url.contains(pinConfigMatch)
+        let containsPINRequest = url.contains(pinRequestMatch)
         
-        return containsCurations || containsCurationsPhotoPost || containsRecommendations || containsProfile || containsConversations || containsConversationsQuestions || containsConversationsProducts || containsSubmitReviews || containsSubmitPhotoReviews || containsSubmitQuestion || containsSubmitAnswers || notificationConfig
+        return containsCurations || containsCurationsPhotoPost || containsRecommendations || containsProfile || containsConversations || containsConversationsQuestions || containsConversationsProducts || containsSubmitReviews || containsSubmitPhotoReviews || containsSubmitQuestion || containsSubmitAnswers || containsConvoStoresConfig || containsPINConfig || containsPINRequest
         
     }
     
@@ -112,6 +120,7 @@ class MockDataManager {
             && manager.apiKeyConversations == "REPLACE_ME"
             && manager.apiKeyConversationsStores == "REPLACE_ME"
             && manager.apiKeyShopperAdvertising == "REPLACE_ME"
+            && manager.apiKeyPIN == "REPLACE_ME"
     }
     
     let headers = ["Content-Type": "application/json"]
@@ -288,7 +297,7 @@ class MockDataManager {
             
         }
         
-        if url.contains(notificationConfigMatch) {
+        if url.contains(convoStoresConfigMatch) {
             
             return OHHTTPStubsResponse(
                 fileAtPath: OHPathForFile("testNotificationConfig.json", type(of: self))!,
@@ -298,6 +307,21 @@ class MockDataManager {
             
         }
 
+        if url.contains(pinConfigMatch) {
+            
+            return OHHTTPStubsResponse(
+                fileAtPath: OHPathForFile("testNotificationProductConfig.json", type(of: self))!,
+                statusCode: 200,
+                headers: ["Content-Type": "application/json;charset=utf-8"]
+            )
+        }
+        
+        if url.contains(pinRequestMatch) {
+            return OHHTTPStubsResponse(data: pinReponse ?? "[]".data(using: .utf8)!,
+                                       statusCode: 200,
+                                       headers: ["Content-Type": "application/json;charset=utf-8"])
+        }
+        
         
         return OHHTTPStubsResponse()
         
@@ -330,6 +354,25 @@ class MockDataManager {
         
     }
     
+    func generateMockPinReponse(fromProducts: [BVProduct]) {
+        var pins = [Dictionary<String, Any>]()
+        for product in fromProducts {
+            var pinDict = [String: Any]()
+            pinDict["avg_rating"] = product.reviewStatistics?.averageOverallRating
+            pinDict["image_url"] = product.imageUrl
+            pinDict["product_page_url"] = product.productPageUrl
+            pinDict["name"] = product.name
+            pinDict["id"] = product.identifier
+            pins.append(pinDict)
+        }
+        
+        do {
+            pinReponse = try JSONSerialization.data(withJSONObject: pins, options: .prettyPrinted)
+        }catch {
+            
+        }
+
+    }
 }
 
 class DemoConfigManager {
@@ -348,7 +391,7 @@ class DemoConfigManager {
 
 class DemoConfig {
     
-    let clientId, displayName, curationsKey, conversationsKey, conversationsStoresKey, shopperAdvertisingKey, locationKey : String
+    let clientId, displayName, curationsKey, conversationsKey, conversationsStoresKey, shopperAdvertisingKey, locationKey, pinKey : String
     
     init(dictionary:NSDictionary) {
         
@@ -359,6 +402,6 @@ class DemoConfig {
         conversationsStoresKey = dictionary["apiKeyConversationsStores"] as! String
         shopperAdvertisingKey = dictionary["apiKeyShopperAdvertising"] as! String
         locationKey = dictionary["apiKeyLocation"] as! String
-        
+        pinKey = dictionary["apiKeyPIN"] as! String
     }
 }

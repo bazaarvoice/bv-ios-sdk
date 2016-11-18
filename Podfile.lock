@@ -1,18 +1,18 @@
 PODS:
-  - OHHTTPStubs (5.2.2):
-    - OHHTTPStubs/Default (= 5.2.2)
-  - OHHTTPStubs/Core (5.2.2)
-  - OHHTTPStubs/Default (5.2.2):
+  - OHHTTPStubs (5.2.3):
+    - OHHTTPStubs/Default (= 5.2.3)
+  - OHHTTPStubs/Core (5.2.3)
+  - OHHTTPStubs/Default (5.2.3):
     - OHHTTPStubs/Core
     - OHHTTPStubs/JSON
     - OHHTTPStubs/NSURLSession
     - OHHTTPStubs/OHPathHelpers
-  - OHHTTPStubs/JSON (5.2.2):
+  - OHHTTPStubs/JSON (5.2.3):
     - OHHTTPStubs/Core
-  - OHHTTPStubs/NSURLSession (5.2.2):
+  - OHHTTPStubs/NSURLSession (5.2.3):
     - OHHTTPStubs/Core
-  - OHHTTPStubs/OHPathHelpers (5.2.2)
-  - OHHTTPStubs/Swift (5.2.2):
+  - OHHTTPStubs/OHPathHelpers (5.2.3)
+  - OHHTTPStubs/Swift (5.2.3):
     - OHHTTPStubs/Core
 
 DEPENDENCIES:
@@ -20,8 +20,8 @@ DEPENDENCIES:
   - OHHTTPStubs/Swift
 
 SPEC CHECKSUMS:
-  OHHTTPStubs: 34d9d0994e64fcf8552dbfade5ce82ada913ee31
+  OHHTTPStubs: e238cd5b66d8efa51c861db45895de8fe079f4a7
 
-PODFILE CHECKSUM: 237e684db1630a63f6f329324f4127838c089785
+PODFILE CHECKSUM: 5fbe459578ff9a227794d5444bc75824410c0a86
 
 COCOAPODS: 1.1.0

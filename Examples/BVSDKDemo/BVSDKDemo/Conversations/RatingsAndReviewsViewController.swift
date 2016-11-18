@@ -17,7 +17,7 @@ class RatingsAndReviewsViewController: UIViewController, UITableViewDelegate, UI
     var spinner = Util.createSpinner(UIColor.bazaarvoiceNavy(), size: CGSize(width: 44,height: 44), padding: 0)
     
     private var reviews : [BVReview] = []
-    let product : BVRecommendedProduct
+    let product : BVProduct
     
     private let numReviewToFetch : Int32 = 20
     private var reviewFetchPending : Bool = false // Is an API call in progress
@@ -46,7 +46,7 @@ class RatingsAndReviewsViewController: UIViewController, UITableViewDelegate, UI
     
     private var selectedFilterOption : Int = FilterOptions.mostRecent.rawValue
     
-    init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?, product:BVRecommendedProduct, totalReviewCount: Int) {
+    init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?, product:BVProduct, totalReviewCount: Int) {
         
         self.totalReviewCount = totalReviewCount
         self.product = product
@@ -94,7 +94,7 @@ class RatingsAndReviewsViewController: UIViewController, UITableViewDelegate, UI
 
         reviewFetchPending = true
         
-        let request = BVReviewsRequest(productId: product.productId, limit: 20, offset: Int32(self.reviews.count))
+        let request = BVReviewsRequest(productId: product.identifier!, limit: 20, offset: Int32(self.reviews.count))
 
         // Check sorting and filter FilterOptions
         if selectedFilterOption == FilterOptions.highestRating.rawValue {

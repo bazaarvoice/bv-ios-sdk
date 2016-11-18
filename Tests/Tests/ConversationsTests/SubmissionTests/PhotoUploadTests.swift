@@ -66,13 +66,7 @@ class PhotoUploadTests: XCTestCase {
     
     
     class func createImage() -> UIImage? {
-        let url = URL(string: "https://curations-imaging.nexus.bazaarvoice.com/?url=https%3A%2F%2Fscontent.cdninstagram.com%2Ft51.2885-15%2Fe35%2F11386449_1613048222276225_595963246_n.jpg&checksum=517c1f17&width=600&height=600&exact=true")
-        if let data = try? Data(contentsOf: url!){
-            return UIImage(data: data)!
-        }
-        
-        return nil
-        
+        return UIImage.testNamed("ph.png")
     }
     
 }

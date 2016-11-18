@@ -10,7 +10,7 @@
 
 @implementation BVBaseAnalyticsHelper
 
--(NSDictionary*)getImpressionParams {
++(NSDictionary*)getImpressionParams {
     return @{
              @"cl": @"Impression",
              @"type": @"UGC",
@@ -18,7 +18,7 @@
              };
 }
 
--(NSDictionary*)getPageViewParams {
++(NSDictionary*)getPageViewParams {
     return @{
              @"cl": @"PageView",
              @"type": @"Product",
@@ -26,8 +26,7 @@
              };
 }
 
-
--(NSDictionary*)getFeatureUsedParams {
++(NSDictionary*)getFeatureUsedParams {
     return @{
              @"cl": @"Feature",
              @"type": @"Used",
@@ -35,7 +34,7 @@
              };
 }
 
--(NSDictionary*)getFeatureUsedInViewParams {
++(NSDictionary*)getFeatureUsedInViewParams {
     return @{
              @"cl": @"Feature",
              @"type": @"Used",

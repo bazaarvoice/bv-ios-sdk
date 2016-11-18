@@ -13,11 +13,12 @@ class QuestionAnswerViewController: UIViewController, UITableViewDelegate, UITab
     
     @IBOutlet weak var tableView: BVQuestionsTableView!
     @IBOutlet weak var header : ProductDetailHeaderView!
+
     var spinner = Util.createSpinner(UIColor.bazaarvoiceNavy(), size: CGSize(width: 44,height: 44), padding: 0)
-    let product: BVRecommendedProduct
+    let product: BVProduct
     var questions : [BVQuestion] = []
     
-    init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?, product:BVRecommendedProduct?) {
+    init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?, product:BVProduct?) {
         self.product = product!
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     }
@@ -57,7 +58,7 @@ class QuestionAnswerViewController: UIViewController, UITableViewDelegate, UITab
     
     func loadQuestions() {
         
-        let request = BVQuestionsAndAnswersRequest(productId: product.productId, limit: 20, offset: 0)
+        let request = BVQuestionsAndAnswersRequest(productId: product.identifier!, limit: 20, offset: 0)
         
         self.tableView.load(request, success: { (response) in
             

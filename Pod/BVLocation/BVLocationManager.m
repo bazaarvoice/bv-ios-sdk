@@ -12,7 +12,6 @@
 #import "BVVisit.h"
 #import "BVPlaceAttributes.h"
 #import "BVLocationAnalyticsHelper.h"
-#import "BVReviewNotificationCenter.h"
 
 @interface DelegateContainer : NSObject
 @property (nonatomic, weak) id<BVLocationManagerDelegate> delegate;
@@ -75,7 +74,7 @@
 
 - (void) receiveLocationAPIKey:(NSNotification *) notification
 {
-    // [notification name] should always be @"TestNotification"
+    // [notification name] should always be LOCATION_API_KEY_SET_NOTIFICATION
     // unless you use this method for observation of other notifications
     // as well.
     
@@ -122,8 +121,7 @@
 
 - (void)placeManager:(GMBLPlaceManager *)manager didBeginVisit:(GMBLVisit *)visit {
     
-    GMBLAttributes *attributes = visit.place.attributes;
-    NSDictionary *attributeDictionary = [self gimbalAttributesToDictionary:attributes];
+    NSDictionary *attributeDictionary = [self gimbalVisitToDictionary:visit];
     
     if ([self gimbalPlaceIsValid:visit.place]) {
         [BVLocationAnalyticsHelper queueAnalyticsEventForGimbalVisit:visit];
@@ -133,14 +131,12 @@
 }
 
 - (void)placeManager:(GMBLPlaceManager *)manager didEndVisit:(GMBLVisit *)visit {
-    GMBLAttributes *attributes = visit.place.attributes;
-    NSDictionary *attributeDictionary = [self gimbalAttributesToDictionary:attributes];
+    
+    NSDictionary *attributeDictionary = [self gimbalVisitToDictionary:visit];
     
     if ([self gimbalPlaceIsValid:visit.place]) {
         [BVLocationAnalyticsHelper queueAnalyticsEventForGimbalVisit:visit];
     }
-    
-    [self registerStoreVisitNotification:visit withAttributes:attributeDictionary];
     
     [self callbackToDelegates:@selector(didEndVisit:) withAttributes:attributeDictionary];
 }
@@ -149,51 +145,25 @@
     return [place.attributes stringForKey:@"id"] != nil;
 }
 
--(NSDictionary*)gimbalAttributesToDictionary:(GMBLAttributes*)attributes {
+-(NSDictionary*)gimbalVisitToDictionary:(GMBLVisit *)visit {
+    
+    GMBLAttributes *attributes = visit.place.attributes;
     
     NSMutableDictionary *attributeDictionary = [NSMutableDictionary new];
     
     for (NSString *key in attributes.allKeys) {
         [attributeDictionary setObject:[attributes stringForKey:key] forKey:key];
     }
+    
+    if (visit.arrivalDate){
+        [attributeDictionary setObject:visit.arrivalDate forKey:ARRIVAL_DATE];
+    }
+    
+    if (visit.departureDate){
+        [attributeDictionary setObject:visit.departureDate forKey:DEPARTURE_DATE];
+    }
+    
     return [NSDictionary dictionaryWithDictionary:attributeDictionary];
-}
-
-- (void)registerStoreVisitNotification:(GMBLVisit *)visit withAttributes:(NSDictionary *)attributes{
-    
-    NSString *clientId = [attributes objectForKey:PLACE_CLIENT_ID];
-    
-    if (![clientId isEqualToString:[BVSDKManager sharedManager].clientId]) {
-        return;
-    }
-    
-    BVSDKManager *sdkMgr = [BVSDKManager sharedManager];
-    if ([self isClientConfiguredForPush:sdkMgr])
-    {
-        // Check and make sure the visit time has been met before trying to queue a notification
-        BVStoreReviewNotificationProperties *noteProps = [BVSDKManager sharedManager].bvStoreReviewNotificationProperties;
-        
-        NSTimeInterval visitDuration = [visit.departureDate timeIntervalSinceDate:visit.arrivalDate];
-        
-        if (visitDuration >= noteProps.visitDuration){
-            
-            // queue up the notification....
-            NSString *storeId = [attributes objectForKey:PLACE_STORE_ID];
-            [[BVReviewNotificationCenter sharedCenter] queueStoreReview:storeId];
-            
-        } else {
-            
-            [[BVLogger sharedLogger] verbose:[NSString stringWithFormat:@"Vist time of %f, not long enough to post notification. Need %f seconds.", visitDuration, noteProps.visitDuration]];
-        }
-    }
-}
-
--(BOOL)isClientConfiguredForPush:(BVSDKManager *)sdkMgr {
-    return [[UIApplication sharedApplication] isRegisteredForRemoteNotifications] &&
-                            sdkMgr.apiKeyConversationsStores &&
-                            sdkMgr.storeReviewContentExtensionCategory &&
-                            sdkMgr.bvStoreReviewNotificationProperties &&
-                            sdkMgr.bvStoreReviewNotificationProperties.notificationsEnabled;
 }
 
 - (void)callbackToDelegates:(SEL)selector withAttributes:(NSDictionary *)attributes{
@@ -221,7 +191,7 @@
         if (container.delegate) {
             
             BVVisit *visit = [self attibutesToBVVisit:attributes];
-            
+    
             [[BVLogger sharedLogger] verbose:[NSString stringWithFormat:@"Visit Recorded: %@", visit.description]];
             
             if ([container.delegate respondsToSelector:selector]) {
@@ -243,7 +213,18 @@
     NSString *state = [attributes objectForKey:PLACE_STATE];
     NSString *zipCode = [attributes objectForKey:PLACE_ZIP];
     NSString *storeId = [attributes objectForKey:PLACE_STORE_ID];
-    return [[BVVisit alloc]initWithName:name address:address city:city state:state zipCode:zipCode storeId:storeId];
+    NSDate *arrivalDate = [attributes objectForKey:ARRIVAL_DATE];
+    NSDate *departureDate = [attributes objectForKey:DEPARTURE_DATE];
+    
+    return [[BVVisit alloc] initWithName:name
+                                 address:address
+                                    city:city
+                                   state:state
+                                 zipCode:zipCode
+                                 storeId:storeId
+                             arrivalDate:arrivalDate
+                           departureDate:departureDate];
+    
 }
 
 + (void)registerForLocationUpdates:(id<BVLocationManagerDelegate>)delegate {

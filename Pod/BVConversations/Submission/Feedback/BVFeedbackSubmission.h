@@ -62,7 +62,7 @@ typedef void (^FeedbackSubmissionCompletion)(BVFeedbackSubmissionResponse* _Nonn
 @property NSString * _Nullable reasonText;
 
 -(nonnull instancetype)initWithContentId:(nonnull NSString*)contentId
-                          withConentType:(BVFeedbackContentType)contentType
+                          withContentType:(BVFeedbackContentType)contentType
                         withFeedbackType:(BVFeedbackType)feedbackType;
 
 -(nonnull instancetype) __unavailable init;

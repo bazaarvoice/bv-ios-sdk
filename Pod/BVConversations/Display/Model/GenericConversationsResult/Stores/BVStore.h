@@ -38,6 +38,7 @@
 @property NSString* _Nullable identifier;
 @property BVReviewStatistics* _Nullable reviewStatistics;
 @property CLLocation * _Nullable deviceLocation;
+@property NSDictionary * _Nonnull apiResponse;
 
 -(id _Nonnull)initWithApiResponse:(NSDictionary* _Nonnull)apiResponse;
 

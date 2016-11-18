@@ -6,19 +6,25 @@
 //
 
 #import "BVNotificationConfigTests.h"
-#import "BVSDKManager.h"
-#import "BVSDKManager+Private.h"
+#import <BVSDK/BVSDKManager.h>
+#import <BVSDK/BVStoreNotificationConfigurationLoader.h>
+#import <BVSDK/BVProductReviewNotificationConfigurationLoader.h>
+
+#import "BVStoreNotificationConfigurationLoader+Private.h"
+#import "BVProductReviewNotificationConfigurationLoader+Private.h"
+
 
 @implementation BVNotificationConfigTests : BVBaseStubTestCase
 
 - (void)setUp {
+
+    [super setUp];
     
     [[BVSDKManager sharedManager] setClientId:@"testingtesting"];
     [[BVSDKManager sharedManager] setApiKeyConversationsStores:@"fakeymcfakersonfakekey"];
     [[BVSDKManager sharedManager] setStaging:YES];
     [[BVSDKManager sharedManager] setLogLevel:BVLogLevelError];
-    
-    [super setUp];
+
 }
 
 - (void)tearDown {
@@ -27,27 +33,31 @@
 }
 
 
-- (void)testLoadNotificationConfigAPI {
-    
-    __weak XCTestExpectation *expectation = [self expectationWithDescription:@"testLoadNotificationConfigAPI"];
+- (void)addStubForS3ResponseForConfigPath:(NSString *)path JSONFileNamed:(NSString *)resultFile{
     
     [OHHTTPStubs stubRequestsPassingTest:^BOOL(NSURLRequest *request) {
-        return [request.URL.host containsString:@"s3.amazonaws.com"];
+        return [request.URL.absoluteString isEqualToString: path];
     } withStubResponse:^OHHTTPStubsResponse*(NSURLRequest *request) {
         // return normal user profile from /users API
-        return [[OHHTTPStubsResponse responseWithFileAtPath:OHPathForFile(@"testNotificationConfig.json", self.class)
+        return [[OHHTTPStubsResponse responseWithFileAtPath:OHPathForFile(resultFile, self.class)
                                                  statusCode:200
                                                     headers:@{@"Content-Type":@"application/json;charset=utf-8"}]
                 responseTime:OHHTTPStubsDownloadSpeedWifi];
     }];
     
-    // Testing private API
-    [[BVSDKManager sharedManager] loadNotificationConfiguration];
+}
 
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        // Check and see if we have all the notification configuration options
-        
-        BVStoreReviewNotificationProperties *noteProps = [BVSDKManager sharedManager].bvStoreReviewNotificationProperties;
+    
+- (void)testLoadStoreNotificationConfigAPI {
+    
+    __weak XCTestExpectation *expectation = [self expectationWithDescription:@"testLoadNotificationConfigAPI"];
+    
+    [self addStubForS3ResponseForConfigPath:[NSString stringWithFormat:@"%@/incubator-mobile-apps/sdk/%@/ios/%@/conversations-stores/geofenceConfig.json", @"https://s3.amazonaws.com", @"v1", [[BVSDKManager sharedManager] clientId]] JSONFileNamed:@"testNotificationConfig.json"];
+    
+    // Testing private API
+    [[BVStoreNotificationConfigurationLoader sharedManager] loadStoreNotificationConfiguration:^(BVStoreReviewNotificationProperties * _Nonnull response) {
+        // success
+        BVStoreReviewNotificationProperties *noteProps = [[BVStoreNotificationConfigurationLoader sharedManager] bvStoreReviewNotificationProperties];
         
         XCTAssertNotNil(noteProps, @"Config note properties should not be nil");
         XCTAssertEqual(noteProps.visitDuration, 5, @"Unexpected visitDuration");
@@ -66,12 +76,51 @@
         XCTAssertTrue(noteProps.notificationsEnabled, @"fail notificationsEnabled flag");
         
         [expectation fulfill];
-        
-    });
-    
-    
+
+    } failure:^(NSError * _Nonnull errors) {
+        // fail
+        XCTFail("testLoadNotificationConfigAPI should not have called failure block");
+    }];
+
     [self waitForExpectations];
     
+}
+
+
+- (void)testLoadPINNotificationConfigAPI {
+    
+    __weak XCTestExpectation *expectation = [self expectationWithDescription:@"testLoadNotificationConfigAPI"];
+    
+    [self addStubForS3ResponseForConfigPath:[NSString stringWithFormat:@"%@/incubator-mobile-apps/sdk/%@/ios/%@/pin/pinConfig.json", @"https://s3.amazonaws.com", @"v1", [[BVSDKManager sharedManager] clientId]] JSONFileNamed:@"testNotificationProductConfig.json"];
+    // Testing private API
+    [[BVProductReviewNotificationConfigurationLoader sharedManager] loadPINConfiguration:^(BVProductReviewNotificationProperties * _Nonnull response) {
+        // success
+        BVProductReviewNotificationProperties *noteProps = [[BVProductReviewNotificationConfigurationLoader sharedManager] bvProductReviewNotificationProperties];
+        
+        XCTAssertNotNil(noteProps, @"Config note properties should not be nil");
+        XCTAssertEqual(noteProps.visitDuration, 5, @"Unexpected visitDuration");
+        XCTAssertEqual(noteProps.notificationDelay, 5, @"Unexpected notificationDelay");
+        XCTAssertEqual(noteProps.remindMeLaterDuration, 86400, @"Unexpected remindMeLaterDuration");
+        
+        XCTAssertTrue([noteProps.customUrlScheme isEqualToString:@"bvsdkdemo"], @"customUrlScheme failure");
+        
+        XCTAssertTrue([noteProps.reviewPromtDispayText isEqualToString:@"Thank you for your Recent Purchase."], @"fail reviewPromtDispayText");
+        XCTAssertTrue([noteProps.reviewPromptSubtitleText isEqualToString:@"Would you like to leave a Review?"], @"fail reviewPromptSubtitleText");
+        XCTAssertTrue([noteProps.reviewPromtNoReview isEqualToString:@"No"], @"fail reviewPromtNoReview");
+        XCTAssertTrue([noteProps.reviewPromptYesReview isEqualToString:@"Yes"], @"fail reviewPromptYesReview");
+        XCTAssertTrue([noteProps.reviewPromptRemindText isEqualToString:@"Later"], @"fail reviewPromptRemindText");
+        
+        XCTAssertTrue(noteProps.requestReviewOnAppOpen, @"fail requestReviewOnAppOpen flag");
+        XCTAssertTrue(noteProps.notificationsEnabled, @"fail notificationsEnabled flag");
+        
+        [expectation fulfill];
+        
+    } failure:^(NSError * _Nonnull errors) {
+        // fail
+        XCTFail("testLoadNotificationConfigAPI should not have called failure block");
+    }];
+    
+    [self waitForExpectations];
     
 }
 

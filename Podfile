@@ -1,8 +1,10 @@
-# Uncomment this line to define a global platform for your project
+# Minimum support iOS version
 platform :ios, '8.0'
 
 target 'BVSDKTests' do
   
+   # cocoapods are only used for unit tests
+
     use_frameworks!
     #inherit! :search_paths
 
