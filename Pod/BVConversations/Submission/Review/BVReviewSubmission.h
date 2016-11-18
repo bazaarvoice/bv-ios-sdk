@@ -10,6 +10,7 @@
 #import "BVSubmissionAction.h"
 #import "BVConversationsRequest.h"
 #import "BVUploadablePhoto.h"
+#import "BVSubmission.h"
 
 typedef void (^ReviewSubmissionCompletion)(BVReviewSubmissionResponse* _Nonnull response);
 
@@ -24,7 +25,7 @@ typedef void (^ReviewSubmissionCompletion)(BVReviewSubmissionResponse* _Nonnull 
  
  @availability 4.1.0 and later
  */
-@interface BVReviewSubmission : NSObject
+@interface BVReviewSubmission : BVSubmission
 
 /**
  Create a new BVReviewSubmission.

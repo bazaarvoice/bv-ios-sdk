@@ -178,25 +178,11 @@
     
 }
 
--(NSData*)transformToPostBody:(NSDictionary*)dict {
-    
-    NSMutableArray *queryItems = [NSMutableArray array];
-    
-    for (NSString *key in dict) {
-        [queryItems addObject:[NSURLQueryItem queryItemWithName:key value:dict[key]]];
-    }
-    
-    NSURLComponents *components = [NSURLComponents componentsWithString:@"http://bazaarvoice.com"];
-    components.queryItems = queryItems;
-    NSString* query = components.query;
-    return [query dataUsingEncoding:NSUTF8StringEncoding];
-    
-}
 
--(void)submitReviewWithPhotoUrls:(BVSubmissionAction)BVSubmissionAction photoUrls:(nonnull NSArray<NSString*>*)photoUrls photoCaptions:(nonnull NSArray<NSString*>*)photoCaptions success:(nonnull ReviewSubmissionCompletion)success failure:(nonnull ConversationsFailureHandler)failure {
+-(void)submitReviewWithPhotoUrls:(BVSubmissionAction)action photoUrls:(nonnull NSArray<NSString*>*)photoUrls photoCaptions:(nonnull NSArray<NSString*>*)photoCaptions success:(nonnull ReviewSubmissionCompletion)success failure:(nonnull ConversationsFailureHandler)failure {
     
     
-    NSDictionary* parameters = [self createSubmissionParameters:BVSubmissionAction photoUrls:photoUrls photoCaptions:photoCaptions];
+    NSDictionary* parameters = [self createSubmissionParameters:action photoUrls:photoUrls photoCaptions:photoCaptions];
     NSData* postBody = [self transformToPostBody:parameters];
     
     NSString* urlString = [NSString stringWithFormat:@"%@submitreview.json", [BVConversationsRequest commonEndpoint]];
@@ -276,7 +262,7 @@
     
 }
 
--(nonnull NSDictionary*)createSubmissionParameters:(BVSubmissionAction)BVSubmissionAction photoUrls:(nonnull NSArray<NSString*>*)photoUrls photoCaptions:(nonnull NSArray<NSString*>*)photoCaptions {
+-(nonnull NSDictionary*)createSubmissionParameters:(BVSubmissionAction)action photoUrls:(nonnull NSArray<NSString*>*)photoUrls photoCaptions:(nonnull NSArray<NSString*>*)photoCaptions {
     
     NSMutableDictionary* parameters = [NSMutableDictionary dictionaryWithDictionary:@{
                                            @"apiversion": @"5.4",
@@ -287,7 +273,7 @@
                                        }];
     
     parameters[@"passkey"] = [self getPasskey];
-    parameters[@"action"] = [BVSubmissionActionUtil toString:BVSubmissionAction];
+    parameters[@"action"] = [BVSubmissionActionUtil toString:action];
     
     parameters[@"campaignid"] = self.campaignId;
     parameters[@"locale"] = self.locale;

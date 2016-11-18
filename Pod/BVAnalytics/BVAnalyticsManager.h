@@ -7,11 +7,6 @@
 
 #import <Foundation/Foundation.h>
 
-#import "BVCore.h"
-#import "BVAuthenticatedUser.h"
-#import "BVLocationEventsHelper.h"
-
-
 /// Singleton class that manages all analytic event queueing and dispatching of events to Bazaarvoice.
 @interface BVAnalyticsManager : NSObject
 
@@ -69,8 +64,8 @@
 /**
     Provided an authentication token has been set for a BVAuthenticatedUser, send an event that the user has registered with the app.
  
-    @param user A fully initiliazed BVAuthenticatedUser object
+    @param userAuthString The user auth string found in the BVAuthenticatedUser object.
  */
--(void)sendPersonalizationEvent:(BVAuthenticatedUser *)user;
+-(void)sendPersonalizationEvent:(NSString *)userAuthString;
 
 @end

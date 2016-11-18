@@ -9,7 +9,14 @@
 
 @implementation BVVisit
 
--(id)initWithName:(NSString*)name address:(NSString*)address city:(NSString*)city state:(NSString*)state zipCode:(NSString*)zipCode storeId:(NSString*)storeId {
+-(id)initWithName:(NSString*)name
+          address:(NSString*)address
+             city:(NSString*)city
+            state:(NSString*)state
+          zipCode:(NSString*)zipCode
+          storeId:(NSString*)storeId
+            arrivalDate:(NSDate *)arrivalDate
+    departureDate:(NSDate *)departureDate{
     self = [super init];
     
     if(self) {
@@ -19,6 +26,8 @@
         _state = state;
         _zipCode = zipCode;
         _storeId = storeId;
+        _arrivalDate = arrivalDate;
+        _departureDate = departureDate;
     }
     
     return self;

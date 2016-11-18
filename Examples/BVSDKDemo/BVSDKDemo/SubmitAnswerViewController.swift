@@ -22,13 +22,13 @@ class SubmitAnswerViewController: UIViewController, SDFormDelegate, SDFormDataSo
     var form : SDForm?
     
     let selectedQuestion : BVQuestion!
-    let product : BVRecommendedProduct
+    let product : BVProduct
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var header : ProductDetailHeaderView!
     var spinner = Util.createSpinner(UIColor.bazaarvoiceNavy(), size: CGSize(width: 44,height: 44), padding: 0)
     
-    init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?, product: BVRecommendedProduct, question: BVQuestion) {
+    init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?, product: BVProduct, question: BVQuestion) {
         
         selectedQuestion = question
         self.product = product

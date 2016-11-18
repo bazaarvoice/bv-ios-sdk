@@ -113,7 +113,7 @@ class RootViewController: UIViewController {
     
     @IBAction func submitFeedbackTapped(sender: AnyObject) {
         
-        let feedback = BVFeedbackSubmission(contentId: "192454", withConentType: BVFeedbackContentType.Review, withFeedbackType: BVFeedbackType.Helpfulness)
+        let feedback = BVFeedbackSubmission(contentId: "192454", withContentType: BVFeedbackContentType.Review, withFeedbackType: BVFeedbackType.Helpfulness)
         
         let randomId = String(arc4random())
         

@@ -5,9 +5,9 @@
 //  Copyright 2016 Bazaarvoice Inc. All rights reserved.
 //
 
-#import "BVAnalyticsManager.h"
 #import "BVAuthenticatedUser.h"
 #import <AdSupport/AdSupport.h>
+#import "BVCore.h"
 
 @interface BVAuthenticatedUser()
 

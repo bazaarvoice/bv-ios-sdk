@@ -20,34 +20,33 @@ class NewProductRecsTableViewCell: UITableViewCell, UICollectionViewDataSource, 
     
     let specialAdIndex = 4
     
-    var referenceProduct : BVRecommendedProduct? {
+    var referenceProduct : BVProduct? {
         
         didSet {
             
-            let request = BVRecommendationsRequest.init(limit: 20, withProductId: self.referenceProduct!.productId)
-            
-            recommendationsCarousel.delegate = self
-            recommendationsCarousel.dataSource = self
-            
-            recommendationsCarousel.load(request, completionHandler: { (products) -> Void in
-                print("Loaded recommendations: " + products.description)
-                self.products = products
-                self.recommendationsCarousel.reloadData()
+            if let _ = referenceProduct {
+                let request = BVRecommendationsRequest.init(limit: 20, withProductId: self.referenceProduct!.identifier)
                 
+                recommendationsCarousel.delegate = self
+                recommendationsCarousel.dataSource = self
+                
+                recommendationsCarousel.load(request, completionHandler: { (products) -> Void in
+                    print("Loaded recommendations: " + products.description)
+                    self.products = products
+                    self.recommendationsCarousel.reloadData()
+                    
                 }) { (ErrorType) -> Void in
                     print("Error loading recs.")
+                }
             }
-
-            
         }
-        
     }
     
     var onProductRecTapped : ((_ selectedProduct : BVRecommendedProduct) -> Void)? = nil
     
     override func awakeFromNib() {
         super.awakeFromNib()
-    
+        
         // Initialization code
         self.recommendationsCarousel.register(UINib(nibName: "DemoCarouselCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "DemoCarouselCollectionViewCell")
         self.recommendationsCarousel.register(UINib(nibName: "NewNativeAdCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "NewNativeAdCollectionViewCell")
@@ -83,7 +82,7 @@ class NewProductRecsTableViewCell: UITableViewCell, UICollectionViewDataSource, 
         adLoader!.load(request)
         
     }
-        
+    
     //MARK: UICollectionViewDelegate & UICollectionViewDatasource
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -168,8 +167,6 @@ class NewProductRecsTableViewCell: UITableViewCell, UICollectionViewDataSource, 
     }
     
     func adLoader(_ adLoader: GADAdLoader, didFailToReceiveAdWithError error: GADRequestError) {
-
-        print("failed to load ad: \(error)")
         
     }
     

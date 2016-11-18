@@ -1,8 +1,8 @@
 //
 //  BVNotificationConfigTests.h
-//  BVSDK
+//  Bazaarvoice SDK
 //
-//  Copyright © 2016 Bazaarvoice. All rights reserved.
+//  Copyright 2016 Bazaarvoice Inc. All rights reserved.
 //
 
 #import "BVBaseStubTestCase.h"

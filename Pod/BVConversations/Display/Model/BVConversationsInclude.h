@@ -21,4 +21,6 @@
 -(BVReview* _Nullable)getReviewById:(NSString* _Nonnull)reviewId;
 -(BVQuestion* _Nullable)getQuestionById:(NSString* _Nonnull)questionId;
 
+@property (nonatomic, strong, readonly) NSDictionary  * _Nonnull apiResponse;
+
 @end

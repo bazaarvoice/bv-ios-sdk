@@ -9,12 +9,20 @@
 #import "BVCore.h"
 #import "BVLogger.h"
 #import "BVAuthenticatedUser.h"
-#import "BVStoreReviewNotificationProperties.h"
+
+//#import "BVStoreReviewNotificationProperties.h"
+//#import "BVProductReviewNotificationProperties.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 // For internal use of notifying the BVLocation module when the SDK has been intialized.
 #define LOCATION_API_KEY_SET_NOTIFICATION @"locationAPIKeyReady"
+
+// For intenal use of notifying with the Conversations Store api key has been initialized.
+#define CONVERSATIONS_STORES_API_KEY_SET_NOTIFICATION @"conversationsStoreAPIKeyReady"
+
+// For intenal use of notifying with the BVPIN (Post Interaction Notification) module has been initialized.
+#define PIN_API_KEY_SET_NOTIFICATION @"pinAPIKeyReady"
 
 /*!
    The singleton instance for registering your API key and server to use. Any use of the BVRecommendations API must start here!
@@ -48,13 +56,10 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @interface BVSDKManager : NSObject
 
-
 /// Singleton pattern. Use this `sharedManager` whenever interacting with BVSDK.
 +(instancetype)sharedManager;
 
-
 - (id) init __attribute__((unavailable("Must use sharedManager for the BVSDKManager")));
-
 
 /// Set the log level for getting log and event info. Default is BVLogLevel.kBVLogLevelError
 -(void)setLogLevel:(BVLogLevel)logLevel;
@@ -71,12 +76,17 @@ NS_ASSUME_NONNULL_BEGIN
 /// Your private API key for the BVConversations product
 @property (nonatomic, strong) NSString *apiKeyConversations;
 
-
 /// Your private API key for the BVConversations, Store Reviews product
 @property (nonatomic, strong) NSString *apiKeyConversationsStores;
 
+/// Your private API key for Post Interaction Notifications
+@property (nonatomic, strong) NSString *apiKeyPIN;
+
 /// The category of the Notification Content Extension you will use for store review notifications
 @property (nonatomic, strong) NSString *storeReviewContentExtensionCategory;
+
+/// The category of the Notification Content Extension you will use for PIN
+@property (nonatomic, strong) NSString *PINContentExtensionCategory;
 
 /// Your private API key for the BVRecommendations and BVAdvertising products (Shopper Advertising)
 @property (nonatomic, strong) NSString *apiKeyShopperAdvertising;
@@ -86,7 +96,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// Your private API key for the BVLocations API
 @property (nonatomic, strong) NSString *apiKeyLocation;
-
 
 /**
     Set user information. Associates a user profile with device for taylored advertising and recommendations.
@@ -100,10 +109,6 @@ NS_ASSUME_NONNULL_BEGIN
 /// The authenticed user retrieved after calling setUserWithAuthString. The model may be empty until the BV user profile has been reconcilled.
 @property (strong, readonly) BVAuthenticatedUser *bvUser;
 
-/**
-These properties are available after setting the BVSDKManager#apiKeyLConversationsStores. Clients typically do not need to access these properties except for help in debugging. 
- */
-@property (strong, readonly) BVStoreReviewNotificationProperties *bvStoreReviewNotificationProperties;
 
 /**
     Generate DFP (Doubleclick For Publsher's) compatible custom targeting.

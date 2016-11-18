@@ -8,7 +8,8 @@
 #import <AdSupport/AdSupport.h>
 #import <UIKit/UIKit.h>
 
-#import "BVCore.h"
+#import "BVSDKConstants.h"
+#import "BVLogger.h"
 #import "BVAnalyticsManager.h"
 #include <sys/sysctl.h>
 #include <sys/utsname.h>
@@ -26,7 +27,6 @@
 
 @property (nonatomic, strong) dispatch_queue_t concurrentEventQueue;
 
-@property BVAuthenticatedUser *bvAuthenticatedUser;
 @property NSString* BVID;
 
 @end
@@ -117,18 +117,7 @@ static BVAnalyticsManager *analyticsInstance = nil;
     });
 }
 
--(void)applicationDidFinishLaunching {
-    
-    BVSDKManager *sdkMgr = [BVSDKManager sharedManager];
-    
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wunused-variable"
-    NSString *clientId = sdkMgr.clientId;
-    
-    // check that `clientId` is valid
-    NSAssert(clientId != nil && ![clientId isEqualToString:@""], @"You must supply client id in the BVSDKManager before using the Bazaarvoice SDK.");
- #pragma clang diagnostic pop
-    
+-(void)applicationDidFinishLaunching {    
     [self sendAppLaunchedEvent];
 }
 
@@ -181,17 +170,15 @@ static BVAnalyticsManager *analyticsInstance = nil;
 }
 
 
--(void)sendPersonalizationEvent:(BVAuthenticatedUser *)user {
+-(void)sendPersonalizationEvent:(NSString *)userAuthString {
     
-    if (!user){
+    if (!userAuthString){
         return;
     }
     
-    self.bvAuthenticatedUser = user;
-    
     NSMutableDictionary* eventData = [NSMutableDictionary dictionaryWithDictionary:[self getCommonAnalyticsDictAnonymous:NO]];
     [eventData addEntriesFromDictionary:[self getPersonalizationEventParams]];
-    [eventData setValue:self.bvAuthenticatedUser.userAuthString forKey:@"profileId"]; // may be null
+    [eventData setValue:userAuthString forKey:@"profileId"]; // may be null
     
     [self queueEvent:eventData];
     

@@ -1,7 +1,7 @@
 PODS:
-  - BVSDK/BVRecommendations (4.2.1):
+  - BVSDK/BVRecommendations (6.1.1):
     - BVSDK/Core
-  - BVSDK/Core (4.2.1)
+  - BVSDK/Core (6.1.1)
   - HCSStarRatingView (1.4.5)
   - SDWebImage (3.7.6):
     - SDWebImage/Core (= 3.7.6)
@@ -14,13 +14,13 @@ DEPENDENCIES:
 
 EXTERNAL SOURCES:
   BVSDK:
-    :path: ../../../
+    :path: "../../../"
 
 SPEC CHECKSUMS:
-  BVSDK: fb8d0e2ed1646f3a1c14a09f8a00eb553ebc88fb
+  BVSDK: d3469344b264af22303083fccb2d47c92e50b41f
   HCSStarRatingView: bff3f89314d3b5013ce826ea11897d3129ff6b8c
   SDWebImage: c325cf02c30337336b95beff20a13df489ec0ec9
 
 PODFILE CHECKSUM: 23b5c529088c467c15f5d6c9e70330e11393ccd0
 
-COCOAPODS: 1.0.1
+COCOAPODS: 1.1.0

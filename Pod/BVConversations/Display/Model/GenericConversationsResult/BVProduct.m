@@ -15,7 +15,8 @@
     
     self = [super init];
     if(self) {
-        
+        _includes = includes;
+        _apiResponse = apiResponse;
         self.brand = [[BVBrand alloc] initWithApiResponse:apiResponse[@"Brand"]];
             
         SET_IF_NOT_NULL(self.productDescription, apiResponse[@"Description"])

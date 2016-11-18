@@ -37,6 +37,7 @@
 -(id _Nonnull)initWithApiResponse:(NSDictionary* _Nonnull)apiResponse {
     self = [super init];
     if(self){
+        _apiResponse = apiResponse;
         
         NSDictionary* reviewsDict = apiResponse[@"Reviews"];
         NSMutableDictionary<NSString*, BVReview*>* tempReviews = [NSMutableDictionary dictionary];

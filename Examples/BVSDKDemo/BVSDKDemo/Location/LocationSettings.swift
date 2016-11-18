@@ -40,7 +40,7 @@ class LocationSettings: UIViewController, UITableViewDelegate, UITableViewDataSo
         // If the default store changed, queue up a notification for the newly set store.
         let cachedStore = LocationPreferenceUtils.getDefaultStore()
         if userDefaultStore != nil && initialStoreIdOnLoad != nil && initialStoreIdOnLoad != cachedStore?.identifier {
-            BVReviewNotificationCenter.shared().queueStoreReview(initialStoreIdOnLoad!)
+            BVStoreReviewNotificationCenter.shared().queueReview(withStoreId: initialStoreIdOnLoad!)
         }
     }
     

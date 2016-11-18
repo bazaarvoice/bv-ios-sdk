@@ -12,5 +12,6 @@
 
 -(void)sendError:(nonnull NSError*)error failureCallback:(nonnull ConversationsFailureHandler)failure;
 -(void)sendErrors:(nonnull NSArray<NSError*>*)errors failureCallback:(nonnull ConversationsFailureHandler)failure;
+-(nonnull NSData *)transformToPostBody:(nonnull NSDictionary *)parameters;
 
 @end

@@ -4,13 +4,12 @@
 //
 //  Copyright © 2016 Bazaarvoice. All rights reserved.
 //
-
 import UIKit
 import BVSDK
 import SDForms
 
 class AskAQuestionViewController: UIViewController, SDFormDelegate, SDFormDataSource {
-
+    
     var form : SDForm?
     
     // For using SDFormField, this demo presumes one field item per section.
@@ -24,9 +23,9 @@ class AskAQuestionViewController: UIViewController, SDFormDelegate, SDFormDataSo
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var header : ProductDetailHeaderView!
     var spinner = Util.createSpinner(UIColor.bazaarvoiceNavy(), size: CGSize(width: 44,height: 44), padding: 0)
-    let product: BVRecommendedProduct
+    let product: BVProduct
     
-    init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?, product: BVRecommendedProduct?) {
+    init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?, product: BVProduct?) {
         self.product = product!
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     }
@@ -53,7 +52,7 @@ class AskAQuestionViewController: UIViewController, SDFormDelegate, SDFormDataSo
         self.tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 300, right: 0)
         
         self.initFormFields()
-    
+        
     }
     
     func initFormFields(){
@@ -86,7 +85,7 @@ class AskAQuestionViewController: UIViewController, SDFormDelegate, SDFormDataSo
         self.form?.dataSource = self
         
     }
-
+    
     func submitTapped() {
         
         // TODO: Add in field validator here....
@@ -99,7 +98,7 @@ class AskAQuestionViewController: UIViewController, SDFormDelegate, SDFormDataSo
         
         // Submit the question
         
-        let submission = BVQuestionSubmission(productId: product.productId)
+        let submission = BVQuestionSubmission(productId: product.identifier!)
         submission.action = .preview // don't actually just submit for real, this is just for demo
         submission.questionSummary = self.questionSubmissionParameters.questionSummary as? String
         submission.questionDetails = self.questionSubmissionParameters.questionDetails as? String
@@ -110,7 +109,7 @@ class AskAQuestionViewController: UIViewController, SDFormDelegate, SDFormDataSo
         
         submission.submit({ (response) in
             
-            DispatchQueue.main.async(execute: { 
+            DispatchQueue.main.async(execute: {
                 _ = SweetAlert().showAlert("Success!", subTitle: "Your question was submitted. It may take up to 72 hours for us to respond.", style: .success)
                 _ = self.navigationController?.popViewController(animated: true)
             })
@@ -131,7 +130,7 @@ class AskAQuestionViewController: UIViewController, SDFormDelegate, SDFormDataSo
         }
         
     }
-
+    
     // MARK: SDKFormDelegate, SDFormDataSource
     
     func form(_ form: SDForm!, willDisplayHeaderView view: UIView!, forSection section: Int) {
@@ -155,7 +154,7 @@ class AskAQuestionViewController: UIViewController, SDFormDelegate, SDFormDataSo
     func form(_ form: SDForm!, titleForHeaderInSection section: Int) -> String! {
         return self.sectionTitles[section]
     }
-
+    
     func form(_ form: SDForm!, fieldForRow row: Int, inSection section: Int) -> SDFormField! {
         
         return self.formFields[section]

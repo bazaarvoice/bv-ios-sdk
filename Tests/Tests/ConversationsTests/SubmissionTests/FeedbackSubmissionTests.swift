@@ -24,7 +24,7 @@ class FeedbackSubmissionTests: XCTestCase {
         
         let expectation = self.expectation(description: "testSubmitFeedbackHelpfulness")
         
-        let feedback = BVFeedbackSubmission(contentId: "83725", withConentType: .review, with: .helpfulness)
+        let feedback = BVFeedbackSubmission(contentId: "83725", with: .review, with: .helpfulness)
         
         let randomId = String(arc4random())
         
@@ -54,7 +54,7 @@ class FeedbackSubmissionTests: XCTestCase {
         
         let expectation = self.expectation(description: "testSubmitFeedbackFlag")
         
-        let feedback = BVFeedbackSubmission(contentId: "83725", withConentType: .review, with: .inappropriate)
+        let feedback = BVFeedbackSubmission(contentId: "83725", with: .review, with: .inappropriate)
         
         let randomId = String(arc4random())
         
@@ -84,7 +84,7 @@ class FeedbackSubmissionTests: XCTestCase {
         
         let expectation = self.expectation(description: "testSubmitFeedbackFlag")
         
-        let feedback = BVFeedbackSubmission(contentId: "badidshouldmakeerror", withConentType: .review, with: .inappropriate)
+        let feedback = BVFeedbackSubmission(contentId: "badidshouldmakeerror", with: .review, with: .inappropriate)
         
         let randomId = String(arc4random())
         

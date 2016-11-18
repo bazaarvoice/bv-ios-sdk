@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CartViewController" customModule="BVSDKDemo" customModuleProvider="target">
+            <connections>
+                <outlet property="checkoutButton" destination="T4k-RR-0xL" id="IiU-uC-Pzf"/>
+                <outlet property="emptyView" destination="ZFh-Yu-56t" id="hRG-Dg-fPS"/>
+                <outlet property="tableView" destination="cVI-9P-ZQM" id="916-bb-2w5"/>
+                <outlet property="view" destination="iN0-l3-epB" id="t4K-c1-Nr1"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZFh-Yu-56t">
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="YOUR SHOPPING CART IS EMPTY!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QGJ-X5-Mww">
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="empty_cart.png" translatesAutoresizingMaskIntoConstraints="NO" id="S2J-Xk-S3v"/>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="QGJ-X5-Mww" firstAttribute="top" secondItem="S2J-Xk-S3v" secondAttribute="bottom" constant="35" id="4JD-TT-121"/>
+                        <constraint firstItem="QGJ-X5-Mww" firstAttribute="centerX" secondItem="ZFh-Yu-56t" secondAttribute="centerX" id="DTl-AB-Pys"/>
+                        <constraint firstItem="QGJ-X5-Mww" firstAttribute="centerY" secondItem="ZFh-Yu-56t" secondAttribute="centerY" id="Hsk-hC-69C"/>
+                        <constraint firstAttribute="trailing" secondItem="S2J-Xk-S3v" secondAttribute="trailing" constant="63" id="UPd-AC-sxD"/>
+                        <constraint firstItem="S2J-Xk-S3v" firstAttribute="centerX" secondItem="ZFh-Yu-56t" secondAttribute="centerX" id="V9Z-6n-efu"/>
+                        <constraint firstItem="S2J-Xk-S3v" firstAttribute="top" secondItem="ZFh-Yu-56t" secondAttribute="top" constant="38" id="rn8-tt-NDs"/>
+                        <constraint firstItem="S2J-Xk-S3v" firstAttribute="leading" secondItem="ZFh-Yu-56t" secondAttribute="leading" constant="62" id="tNs-TZ-p9W"/>
+                    </constraints>
+                </view>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="cVI-9P-ZQM">
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="prw-S9-gO1"/>
+                        <outlet property="delegate" destination="-1" id="6G1-m1-hV9"/>
+                    </connections>
+                </tableView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T4k-RR-0xL">
+                    <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                    <state key="normal" title="CHECKOUT">
+                        <color key="titleShadowColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="checkoutButtonPressed:" destination="-1" eventType="touchUpInside" id="tX4-Z4-VIn"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="ZFh-Yu-56t" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="0FX-iy-2Yc"/>
+                <constraint firstAttribute="trailing" secondItem="cVI-9P-ZQM" secondAttribute="trailing" id="5ex-Ar-mRr"/>
+                <constraint firstAttribute="bottom" secondItem="ZFh-Yu-56t" secondAttribute="bottom" id="Fyw-r2-pwg"/>
+                <constraint firstItem="T4k-RR-0xL" firstAttribute="top" secondItem="ZFh-Yu-56t" secondAttribute="bottom" constant="-48" id="RqW-eo-x2L"/>
+                <constraint firstItem="cVI-9P-ZQM" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="VUX-nm-6e5"/>
+                <constraint firstAttribute="trailing" secondItem="ZFh-Yu-56t" secondAttribute="trailing" id="d2o-55-VTm"/>
+                <constraint firstItem="T4k-RR-0xL" firstAttribute="top" secondItem="cVI-9P-ZQM" secondAttribute="bottom" constant="21" id="dRw-DY-ZLi"/>
+                <constraint firstItem="T4k-RR-0xL" firstAttribute="leading" secondItem="ZFh-Yu-56t" secondAttribute="trailing" constant="-367" id="gh3-h3-3wv"/>
+                <constraint firstItem="ZFh-Yu-56t" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="p3X-xZ-3A5"/>
+                <constraint firstItem="cVI-9P-ZQM" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="sZr-3E-mQr"/>
+                <constraint firstItem="ZFh-Yu-56t" firstAttribute="top" secondItem="cVI-9P-ZQM" secondAttribute="bottom" constant="-598" id="vXa-sv-fFi"/>
+                <constraint firstItem="ZFh-Yu-56t" firstAttribute="leading" secondItem="T4k-RR-0xL" secondAttribute="trailing" constant="-359" id="zpF-XO-tct"/>
+            </constraints>
+            <point key="canvasLocation" x="32.5" y="104.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="empty_cart.png" width="512" height="512"/>
+    </resources>
+</document>

@@ -4,7 +4,6 @@
 //
 //  Copyright © 2016 Bazaarvoice. All rights reserved.
 //
-
 import UIKit
 import BVSDK
 import SDWebImage
@@ -38,7 +37,7 @@ class CurationsFeedItemDetailTableViewController: UITableViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
     // MARK: Table view delegate
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -46,9 +45,9 @@ class CurationsFeedItemDetailTableViewController: UITableViewController {
         if (indexPath as NSIndexPath).section == 0 && (indexPath as NSIndexPath).row == 0 {
             
             if feedItem!.videos.count > 0 {
-    
-               let video : BVCurationsVideo = feedItem!.videos.first!;
-               
+                
+                let video : BVCurationsVideo = feedItem!.videos.first!;
+                
                 if (video.origin == "instagram") {
                     
                     // instagram - play video with AV player
@@ -60,7 +59,7 @@ class CurationsFeedItemDetailTableViewController: UITableViewController {
                     self.present(playerViewController, animated: true) {
                         playerViewController.player!.play()
                     }
-
+                    
                 } else {
                     
                     // Have not yet tested out this video support.
@@ -82,7 +81,7 @@ class CurationsFeedItemDetailTableViewController: UITableViewController {
             let frame = CGRect(x: 0, y: 0, width: tableView.bounds.width, height: 22)
             let view = UIView(frame: frame)
             view.backgroundColor = UIColor.clear
-        
+            
             let labelFrame = CGRect(x: 8, y: 0, width: tableView.bounds.width, height: 22)
             let titleLabel = UILabel(frame: labelFrame)
             titleLabel.text = "Shop Now"
@@ -112,7 +111,7 @@ class CurationsFeedItemDetailTableViewController: UITableViewController {
     override func numberOfSections(in tableView: UITableView) -> Int {
         return (feedItem?.referencedProducts.count)! > 0 ? 2 : 1
     }
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         if section == 0 {
@@ -125,24 +124,24 @@ class CurationsFeedItemDetailTableViewController: UITableViewController {
         return 0;
         
     }
-
+    
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
     {
         if (indexPath as NSIndexPath).section == 0 {
-           
+            
             if ((indexPath as NSIndexPath).row == 0){
                 
                 let imageCell = tableView.dequeueReusableCell(withIdentifier: "CurationsImageTableViewCell") as! CurationsImageTableViewCell
-            
+                
                 return imageCell.bounds.size.height
                 
             } else if ((indexPath as NSIndexPath).row == 1){
-            
+                
                 let detail1Cell = tableView.dequeueReusableCell(withIdentifier: "CurationsFeedItemDetailCell") as! CurationsFeedItemDetailCell
                 return detail1Cell.bounds.size.height
                 
             }
-
+            
         } else if (indexPath as NSIndexPath).section == 1 {
             
             let productCell = tableView.dequeueReusableCell(withIdentifier: "ProductDetailTableViewCell") as! ProductDetailTableViewCell
@@ -151,10 +150,10 @@ class CurationsFeedItemDetailTableViewController: UITableViewController {
         
         return 0
     }
-
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-
+        
         if ((indexPath as NSIndexPath).section == 0){
             
             // Curations post meta-info
@@ -167,7 +166,7 @@ class CurationsFeedItemDetailTableViewController: UITableViewController {
                 // Check if this is a youtube video
                 if (feedItem!.videos.count > 0){
                     video = feedItem!.videos.first!;
-                
+                    
                 }
                 
                 if (video != nil && video?.origin == "youtube"){
@@ -213,52 +212,52 @@ class CurationsFeedItemDetailTableViewController: UITableViewController {
                     var itemType : String?
                     
                     switch socialOutlet {
-                    
-                        case SocialOutlet.pinterest:
-                            itemType = "Pinterest"
-                            break
                         
-                        case SocialOutlet.twitter:
-                            itemType = "Twitter"
-                            break
-                          
-                        case SocialOutlet.email:
-                            itemType = "Email"
-                            break
-                         
-                        case SocialOutlet.retweet:
-                            itemType = "Retweet"
-                            break
-                           
-                        case SocialOutlet.replyComment:
-                            itemType = "ReplyComment"
-                            break
+                    case SocialOutlet.pinterest:
+                        itemType = "Pinterest"
+                        break
                         
-                        case .userProfile:
-                            itemType = "UserProfile"
-                            if (feedItemSelected.author.profile != nil){
-                                let url = URL(string: feedItemSelected.author.profile)
-                                UIApplication.shared.openURL(url!)
-                            } else {
-                                print("ERROR: Nil author profile.")
-                            }
-                            
+                    case SocialOutlet.twitter:
+                        itemType = "Twitter"
+                        break
+                        
+                    case SocialOutlet.email:
+                        itemType = "Email"
+                        break
+                        
+                    case SocialOutlet.retweet:
+                        itemType = "Retweet"
+                        break
+                        
+                    case SocialOutlet.replyComment:
+                        itemType = "ReplyComment"
+                        break
+                        
+                    case .userProfile:
+                        itemType = "UserProfile"
+                        if (feedItemSelected.author.profile != nil){
+                            let url = URL(string: feedItemSelected.author.profile)
+                            UIApplication.shared.openURL(url!)
+                        } else {
+                            print("ERROR: Nil author profile.")
+                        }
+                        
                         break
                         
                     }
-
-                   print("Selected " + itemType! +  " on item: " + feedItemSelected.description)
+                    
+                    print("Selected " + itemType! +  " on item: " + feedItemSelected.description)
                     
                 }
                 
                 return detail1Cell
                 
             }
-           
+            
         }
-        
+            
         else {
-
+            
             // Refernced Product details
             // Product info tagged in this feed. This will not be present in all feeds
             
@@ -278,10 +277,10 @@ class CurationsFeedItemDetailTableViewController: UITableViewController {
                 bvProduct.productName = product.productName
                 bvProduct.imageURL = product.productImageUrl
                 
-                let productView = NewProductPageViewController(nibName:"NewProductPageViewController", bundle: nil, product: bvProduct)
+                let productView = NewProductPageViewController(nibName:"NewProductPageViewController", bundle: nil, productId: bvProduct.productId)
                 
                 self.navigationController?.pushViewController(productView, animated: true)
-                                
+                
             }
             return productDetailCell!
         }

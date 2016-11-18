@@ -7,7 +7,7 @@
 
 #import "BVConversationsRequest.h"
 #import "BVSDKManager.h"
-#import "NSBundle+DiagnosticInformation.h"
+#import "BVDiagnosticHelpers.h"
 #import "BVConversationsErrorResponse.h"
 #import "BVConversationsAnalyticsUtil.h"
 #import "BVStoreReviewsResponse.h"
@@ -21,8 +21,8 @@
     [params addObject:[BVStringKeyValuePair pairWithKey:@"apiversion" value:@"5.4"]];
     [params addObject:[BVStringKeyValuePair pairWithKey:@"passkey" value:[self getPassKey]]];
     [params addObject:[BVStringKeyValuePair pairWithKey:@"_appId" value:[NSBundle mainBundle].bundleIdentifier]];
-    [params addObject:[BVStringKeyValuePair pairWithKey:@"_appVersion" value:[NSBundle_DiagnosticInformation releaseVersionNumber]]];
-    [params addObject:[BVStringKeyValuePair pairWithKey:@"_buildNumber" value:[NSBundle_DiagnosticInformation buildVersionNumber]]];
+    [params addObject:[BVStringKeyValuePair pairWithKey:@"_appVersion" value:[BVDiagnosticHelpers releaseVersionNumber]]];
+    [params addObject:[BVStringKeyValuePair pairWithKey:@"_buildNumber" value:[BVDiagnosticHelpers buildVersionNumber]]];
     [params addObject:[BVStringKeyValuePair pairWithKey:@"_bvIosSdkVersion" value:BV_SDK_VERSION]];
     
     return params;
