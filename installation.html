@@ -254,13 +254,101 @@ $(function(){
   <li>Signed Data Usage Amendment, if not already in place</li>
   <li>Minimum iOS deployment target of iOS 8.0</li>
   <li>Xcode version 8.0 or higher</li>
+  <li>CocoaPods 1.1.0 or higher (only if using CocoaPods)</li>
   <li>Your Client ID</li>
   <li>API key(s) for the Bazaarvoice product(s) you have enabled</li>
 </ul>
 <br>
 
 <p class="bg-info well-lg" style="padding:4px;"><i class="fa fa-hand-o-right"></i>  If you need to use XCode 7.3, the last supported SDK version is 4.2.4.</p>
+
+    <h3>Installing the BVSDK</h3>
+
+We support installation of the Bazaarvoice SDK for iOS with CocoaPods, Carthage, Dynamic Framework, or straight up source code. Choose the solution that best fits your development environment.
+
+<hr>
+<ul class="nav nav-tabs" role="tablist">
+      <li role="presentation" class="active"><a href="#cocoapods" aria-controls="swift" role="tab" data-toggle="tab">CocoaPods</a></li>
+      <li role="presentation"><a href="#carthage" aria-controls="objc" role="tab" data-toggle="tab">Carthage</a></li>
+      <li role="presentation"><a href="#dynamicframework" aria-controls="objc" role="tab" data-toggle="tab">Dynamic Framework</a></li>
+      <li role="presentation"><a href="#sourcecode" aria-controls="objc" role="tab" data-toggle="tab">Source Code</a></li>
+    </ul>
+
+    <!-- Tab panes for including headers/imports -->
+    <div class="tab-content code-switcher">
+
+      <!-- cocoapods -->
+      <div role="tabpanel" class="tab-pane active" id="cocoapods">
+        1. Install the latest version of <a href="https://guides.cocoapods.org/using/getting-started.html">CocoaPods</a>.
+        <br><br>
+        2. Add the lines for the BVSDK components you have an API key for to your <code>Podfile</code>:
+        <br><br>
+        <pre><code>pod 'BVSDK/BVCurations'
+pod 'BVSDK/BVConversations'
+pod 'BVSDK/BVAdvertising'
+pod 'BVSDK/BVRecommendations'
+pod 'BVSDK/BVLocation'</code></pre>
+       
+        3. Run the following command from a terminal:
+        <br><br>
+        <pre><code>$ pod install</code></pre>
+        <br>
+        4. Open the managed <code>.xcworkspace</code> file to open your project in Xcode.</br><br>
+        5. In the future, to update to the latest version of the SDK, just run:<br><br>
+
+         <pre><code>$ pod update</code></pre>
+
+      </div>
+
+      <!-- carthage -->
+      <div role="tabpanel" class="tab-pane" id="carthage">
+         1. Install the latest version of <a href="https://github.com/Carthage/Carthage#installing-carthage">Carthage</a>.
+         <br><br>
+         2. Add the following line to your <code>Cartfile</code>:
+         <br><br>
+         <pre><code>github "bazaarvoice/bv-ios-sdk"</code></pre>
+         <br>
+         3. Follow the <a href="https://github.com/Carthage/Carthage#if-youre-building-for-ios-tvos-or-watchos">Carthage installation instructions</a>.
+         <br><br>
+         4. In the future, to update to the latest version of the SDK, run the following command:
+         <br><br>
+         <pre><code>$ carthage update</code></pre>
+
+      </div>
+   
+      <!-- dynamicframework -->
+      <div role="tabpanel" class="tab-pane" id="dynamicframework">
+        1. Download the latest <code>BVSDK.framework.zip</code> from our <a href="https://github.com/bazaarvoice/bv-ios-sdk/releases">GitHub releases page</a>.<br><br>
+        2. Drag <cdde>BVSDK.framework</code> to the "Embedded Binaries" section of your Xcode project's "General" settings. Make sure to select "Copy items if needed".<br><br>
+        3. Head to the "Build Phases" section of your Xcode project settings, and create a new "Run Script Build Phase". Paste the following snippet into the text field:<br><br>
+        <pre><code>bash "${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/BVSDK.framework/integrate-dynamic-framework.sh"</code></pre>
+        
+      </div>
+     
+      <!-- sourcecode -->
+      <div role="tabpanel" class="tab-pane" id="sourcecode">
+        
+        <p>Clone this repo, or download the <a href="https://github.com/bazaarvoice/bv-ios-sdk/releases">latest release from GitHub</a>:</p>
+        <img src="ios-img/manual_installation/download.png" style="height:200px;" class="center-block img-fluid" />
+
+        <p>Copy all the source folders (under <code>/Pod</code>) into your project. Make sure to select <strong>Copy items if needed</strong>.</p>
+        <video id="manualInstallVid" width="540" height="300" autoplay loop class="center-block img-fluid">
+          <source src="ios-img/manual_installation/manual_installation.mp4" type="video/mp4" title="No video playback capabilities">
+          <source src="ios-img/manual_installation/manual_installation.ogg" type="video/ogg" title="No video playback capabilities">
+
+        </video>
+        <script>
+            document.getElementById('manualInstallVid').play();
+        </script>
+
+      </div>
+
+    </div>
 <br>
+<h3>Configuring the BVSDK</h3>
+<hr>
+Once you have install the source code for the SDK, you are now ready to add your imports and initialize the <code>BVSDKManager</code> with your API key(s) and envrionment (staging versus production).
+<br><br>
 <div class="panel-group flex" id="accordion" role="tablist" aria-multiselectable="true" style="box-shadow: 1px 2px 4px #999;">
     
 
@@ -393,30 +481,7 @@ $(function(){
     }
 
     function updateCodeSnippets(){
-            // Podfile ----
-             $('code.ruby#podfile').text('# Uncomment this line if you\'re using Swift')
-                .append('<br/># use_frameworks!<br/><br/>')
-
-            if ($('.cb_BVCurations:checked').length > 0){
-              $('code.ruby#podfile').append("pod 'BVSDK/BVCurations'<br/>");
-            }
-
-            if ($('.cb_BVConversations:checked').length > 0 || $('.cb_BVConversationsStores:checked').length > 0){
-              $('code.ruby#podfile').append("pod 'BVSDK/BVConversations'<br/>");
-            }
-
-            if ($('.cb_BVAdvertising:checked').length > 0){
-              $('code.ruby#podfile').append("pod 'BVSDK/BVAdvertising'<br/>");
-            }
-
-            if ($('.cb_BVRecommendations:checked').length > 0){
-              $('code.ruby#podfile').append("pod 'BVSDK/BVRecommendations'<br/>");
-            }
-
-            if ($('.cb_BVLocation:checked').length > 0){
-              $('code.ruby#podfile').append("pod 'BVSDK/BVLocation'<br/>");
-            }
-
+            
             //////////////////////
             // Swift Headers
             //////////////////////
@@ -500,27 +565,27 @@ $(function(){
              clientId = REPLACE_ME
             }
 
-            $('code.swift#swift-bvsdkmanager').text('BVSDKManager.sharedManager().clientId = "' + clientId + '"')
-            $('code.swift#swift-bvsdkmanager').append('<br/>BVSDKManager.sharedManager().staging = true; <br/>')
+            $('code.swift#swift-bvsdkmanager').text('BVSDKManager.shared().clientId = "' + clientId + '"')
+            $('code.swift#swift-bvsdkmanager').append('<br/>BVSDKManager.shared().staging = true; <br/>')
 
             if ($('.cb_BVCurations:checked').length > 0){
                var curationsKey = $('.key_BVCurations').val()
-               $('code.swift#swift-bvsdkmanager').append('BVSDKManager.sharedManager().apiKeyCurations = "' + curationsKey + '"<br/>');
+               $('code.swift#swift-bvsdkmanager').append('BVSDKManager.shared().apiKeyCurations = "' + curationsKey + '"<br/>');
             }
 
             if ($('.cb_BVConversations:checked').length > 0){
               var conversationsKey = $('.key_BVConversations').val()
-              $('code.swift#swift-bvsdkmanager').append('BVSDKManager.sharedManager().apiKeyConversations = "' + conversationsKey + '"<br/>');
+              $('code.swift#swift-bvsdkmanager').append('BVSDKManager.shared().apiKeyConversations = "' + conversationsKey + '"<br/>');
             }
 
             if ($('.cb_BVConversationsStores:checked').length > 0){
               var conversationsStoresKey = $('.key_BVConversationsStores').val()
-              $('code.swift#swift-bvsdkmanager').append('BVSDKManager.sharedManager().apiKeyConversationsStores = "' + conversationsStoresKey + '"<br/>');
+              $('code.swift#swift-bvsdkmanager').append('BVSDKManager.shared().apiKeyConversationsStores = "' + conversationsStoresKey + '"<br/>');
             }
 
             if ($('.cb_BVLocation:checked').length > 0 || $('.cb_BVLocation:checked').length > 0){
               var locationKey = $('.key_BVCLocation').val()
-              $('code.swift#swift-bvsdkmanager').append('BVSDKManager.sharedManager().apiKeyLocation = "' + locationKey + '"<br/>');
+              $('code.swift#swift-bvsdkmanager').append('BVSDKManager.shared().apiKeyLocation = "' + locationKey + '"<br/>');
             }
 
 
@@ -563,45 +628,11 @@ $(function(){
 
 
 <div class="panel panel-default">
-  <div class="panel-heading" role="tab" id="heading-installationCocoaPods">
-    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#installationCocoaPods" aria-expanded="false" aria-controls="installationCocoaPods" style="text-decoration: none">
-      <div class="flex flex-row" style="align-items: center; padding-bottom: 10px;">
-          <i id="installationCocoaPodsArrow" class="fa fa-chevron-right" style="color:#777; padding-right: 10px;"></i>
-          <h5 style="margin-bottom: 0;"><step>2</step> Install the SDK With CocoaPods</h5>
-      </div>
-      <div class="flex flex-row">
-          <p style="color:#444; margin-bottom: 6px;">Configure your Podfile for CocoaPods installation.</p>
-      </div>
-      <div style="clear:both;"></div>
-    </a>
-  </div>
-  <div id="installationCocoaPods" class="panel-collapse collapse " role="tabpanel" aria-labelledby="headingOne">
-    <div class="panel-body">
-
-    <p>Bazaarvoice recommends installation with <a>Cocoapods</a> to include the Mobile SDK in your project. If Cocoapods is not installed on your computer, refer to the <a href="https://guides.cocoapods.org/using/getting-started.html">Cocoapods installation guide</a> for installation instructions.</p>
-
-    <p>Edit your <code>Podfile</code> to include the following:</p>
-
-    <pre><code class="ruby" id="podfile"># Default install: Installs Conversations and core modules.
-pod 'BVSDK'
-    </code></pre>
-
-    <p>After you configure your Podfile, run <code>pod install</code> from your project directory to install the SDK modules. Then open the corresponding <code>.xcworkspace</code> file CocoaPods has created.</p>
-    <p>The Mobile SDK is now included in your project. Add the required imports to your project in the next step.</p>
-
-    		</div>
-    </div>
-  </div>
-
-    
-
-
-<div class="panel panel-default">
   <div class="panel-heading" role="tab" id="heading-installationHeaderFiles">
     <a role="button" data-toggle="collapse" data-parent="#accordion" href="#installationHeaderFiles" aria-expanded="false" aria-controls="installationHeaderFiles" style="text-decoration: none">
       <div class="flex flex-row" style="align-items: center; padding-bottom: 10px;">
           <i id="installationHeaderFilesArrow" class="fa fa-chevron-right" style="color:#777; padding-right: 10px;"></i>
-          <h5 style="margin-bottom: 0;"><step>3</step> Configure Headers/Imports</h5>
+          <h5 style="margin-bottom: 0;"><step>2</step> Configure Headers/Imports</h5>
       </div>
       <div class="flex flex-row">
           <p style="color:#444; margin-bottom: 6px;">Add the correct header file imports.</p>
@@ -647,7 +678,7 @@ import BVSDK
     <a role="button" data-toggle="collapse" data-parent="#accordion" href="#installationBVSDKManager" aria-expanded="false" aria-controls="installationBVSDKManager" style="text-decoration: none">
       <div class="flex flex-row" style="align-items: center; padding-bottom: 10px;">
           <i id="installationBVSDKManagerArrow" class="fa fa-chevron-right" style="color:#777; padding-right: 10px;"></i>
-          <h5 style="margin-bottom: 0;"><step>4</step> Initialize the BVSDKManager</h5>
+          <h5 style="margin-bottom: 0;"><step>3</step> Initialize the BVSDKManager</h5>
       </div>
       <div class="flex flex-row">
           <p style="color:#444; margin-bottom: 6px;">Initialize the <code>BVSDKManager</code> in your XCode project.</p>
@@ -680,49 +711,7 @@ import BVSDK
     		</div>
     </div>
   </div>
-
-    <br>
-    <hr>
-    <h3>Manual Installation</h3>
-    <p>Manual installation is <strong>not recommended</strong>, due to difficulty of dependencies and upgrading SDK versions.</p>
-    <p>If necessary, however, you can install the Mobile SDK manually by cloning or downloding this library and adding the source files to your project:</p>
-
-    
-
-
-<div class="panel panel-default">
-  <div class="panel-heading" role="tab" id="heading-manualInstallation">
-    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#manualInstallation" aria-expanded="false" aria-controls="manualInstallation" style="text-decoration: none">
-      <div class="flex flex-row" style="align-items: center; padding-bottom: 10px;">
-          <i id="manualInstallationArrow" class="fa fa-chevron-right" style="color:#777; padding-right: 10px;"></i>
-          <h5 style="margin-bottom: 0;">Manual installation</h5>
-      </div>
-      <div class="flex flex-row">
-          <p style="color:#444; margin-bottom: 6px;">Click to read manual instructions.</p>
-      </div>
-      <div style="clear:both;"></div>
-    </a>
-  </div>
-  <div id="manualInstallation" class="panel-collapse collapse " role="tabpanel" aria-labelledby="headingOne">
-    <div class="panel-body">
-
-
-    <p>Clone this repo, or download the <a href="https://github.com/bazaarvoice/bv-ios-sdk/releases">latest release from GitHub</a>:</p>
-    <img src="ios-img/manual_installation/download.png" style="height:200px;" class="center-block img-fluid" />
-
-    <p>Copy all the source folders (under <code>/Pod</code>) into your project. Make sure to select <strong>Copy items if needed</strong>.</p>
-    <video id="manualInstallVid" width="540" height="300" autoplay loop class="center-block img-fluid">
-      <source src="ios-img/manual_installation/manual_installation.mp4" type="video/mp4" title="No video playback capabilities">
-      <source src="ios-img/manual_installation/manual_installation.ogg" type="video/ogg" title="No video playback capabilities">
-
-    </video>
-    <script>
-        document.getElementById('manualInstallVid').play();
-    </script>
-
-    		</div>
-    </div>
-  </div>
+   
 </div>
 
 <br>
