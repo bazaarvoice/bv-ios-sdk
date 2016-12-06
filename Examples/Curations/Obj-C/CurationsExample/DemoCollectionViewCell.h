@@ -6,8 +6,7 @@
 //
 //
 
-#import <BVSDK/BVSDK.h>
-#import <BVSDK/BVCurations.h>
+@import BVSDK;
 
 @interface DemoCollectionViewCell : BVCurationsCollectionViewCell
 

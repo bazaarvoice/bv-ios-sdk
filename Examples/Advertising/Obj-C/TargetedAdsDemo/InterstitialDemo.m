@@ -6,7 +6,7 @@
 //
 
 #import "InterstitialDemo.h"
-#import <BVSDK/BVSDK.h>
+@import BVSDK;
 
 @import GoogleMobileAds;
 

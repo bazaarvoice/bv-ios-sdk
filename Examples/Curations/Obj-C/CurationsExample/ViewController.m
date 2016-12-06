@@ -6,10 +6,10 @@
 //
 
 #import "ViewController.h"
-#import <BVSDK/BVCurations.h>
 #import "ViewController.h"
 #import "DemoCollectionViewCell.h"
 #import <CoreLocation/CoreLocation.h>
+@import BVSDK;
 
 @interface ViewController () <UICollectionViewDataSource, UICollectionViewDelegate, CLLocationManagerDelegate>
 

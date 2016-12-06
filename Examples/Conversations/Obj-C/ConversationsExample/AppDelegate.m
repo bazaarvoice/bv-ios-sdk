@@ -6,7 +6,7 @@
 //
 
 #import "AppDelegate.h"
-#import <BVSDK/BVConversations.h>
+@import BVSDK;
 
 @implementation AppDelegate
 
