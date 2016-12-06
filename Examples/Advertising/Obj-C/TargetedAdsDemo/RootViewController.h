@@ -6,7 +6,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <BVSDK/BVSDK.h>
+@import BVSDK;
 
 @interface RootViewController : UIViewController
 

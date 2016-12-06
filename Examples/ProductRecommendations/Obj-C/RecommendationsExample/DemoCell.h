@@ -6,7 +6,7 @@
 //
 
 
-#import <BVSDK/BVRecommendations.h>
+@import BVSDK;
 #import <HCSStarRatingView/HCSStarRatingView.h>
 
 @interface DemoCell : BVRecommendationCollectionViewCell

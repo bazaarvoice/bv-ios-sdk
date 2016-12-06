@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0DEBA5C98ACFAB07BF3B61D7 /* libPods-CurationsExample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 360494ACBC74411634036637 /* libPods-CurationsExample.a */; };
+		7AFB3894B3A3D5C44CA7B21E /* Pods_CurationsExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F23C0739764BA70B669AF760 /* Pods_CurationsExample.framework */; };
 		879144111CF4F67D00976220 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 879144101CF4F67D00976220 /* main.m */; };
 		879144141CF4F67D00976220 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 879144131CF4F67D00976220 /* AppDelegate.m */; };
 		879144171CF4F67D00976220 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 879144161CF4F67D00976220 /* ViewController.m */; };
@@ -19,7 +19,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		360494ACBC74411634036637 /* libPods-CurationsExample.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CurationsExample.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E50914E388402EC78891262 /* Pods-CurationsExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CurationsExample.release.xcconfig"; path = "Pods/Target Support Files/Pods-CurationsExample/Pods-CurationsExample.release.xcconfig"; sourceTree = "<group>"; };
 		8791440C1CF4F67D00976220 /* CurationsExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CurationsExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		879144101CF4F67D00976220 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -35,6 +34,7 @@
 		879144291CF5D49D00976220 /* DemoCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DemoCollectionViewCell.m; sourceTree = "<group>"; };
 		8791442B1CF5D5C800976220 /* DemoCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DemoCollectionViewCell.xib; sourceTree = "<group>"; };
 		BC63C785BC9F1FBAB5CEB515 /* Pods-CurationsExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CurationsExample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CurationsExample/Pods-CurationsExample.debug.xcconfig"; sourceTree = "<group>"; };
+		F23C0739764BA70B669AF760 /* Pods_CurationsExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CurationsExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -42,7 +42,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0DEBA5C98ACFAB07BF3B61D7 /* libPods-CurationsExample.a in Frameworks */,
+				7AFB3894B3A3D5C44CA7B21E /* Pods_CurationsExample.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -52,7 +52,7 @@
 		134B9818AAE7512EF6FF72D3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				360494ACBC74411634036637 /* libPods-CurationsExample.a */,
+				F23C0739764BA70B669AF760 /* Pods_CurationsExample.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -193,7 +193,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		7A7AA38C572BF506740B4B20 /* [CP] Embed Pods Frameworks */ = {

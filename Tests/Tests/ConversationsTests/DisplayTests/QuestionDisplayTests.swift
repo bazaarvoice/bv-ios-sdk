@@ -47,6 +47,7 @@ class QuestionDisplayTests: XCTestCase {
             XCTAssertEqual(answer.authorId, "c6ryqeb2bq0")
             XCTAssertEqual(answer.moderationStatus, "APPROVED")
             XCTAssertEqual(answer.identifier, "16292")
+            XCTAssertEqual(answer.brandImageLogoURL, nil)
             XCTAssertEqual(answer.answerText, "zxnc,vznxc osaidmf oaismdfo ims adoifmaosidmfoiamsdfimasdf")
             
             response.results.forEach { (question) in

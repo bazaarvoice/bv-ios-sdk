@@ -7,7 +7,7 @@
 
 #import "AppDelegate.h"
 #import "RootViewController.h"
-#import <BVSDK/BVSDK.h>
+@import BVSDK;
 
 
 @implementation AppDelegate

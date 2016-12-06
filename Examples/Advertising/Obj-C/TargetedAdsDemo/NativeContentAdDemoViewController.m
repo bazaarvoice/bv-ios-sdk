@@ -7,7 +7,7 @@
 
 #import "NativeContentAdDemoViewController.h"
 #import <QuartzCore/QuartzCore.h>
-#import <BVSDK/BVSDK.h>
+@import BVSDK;
 
 @import GoogleMobileAds;
 

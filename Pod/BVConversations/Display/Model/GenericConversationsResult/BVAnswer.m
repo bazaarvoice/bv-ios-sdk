@@ -26,6 +26,7 @@
         SET_IF_NOT_NULL(self.productRecommendationIds, apiResponse[@"ProductRecommendationIds"])
         SET_IF_NOT_NULL(self.additionalFields, apiResponse[@"AdditionalFields"])
         SET_IF_NOT_NULL(self.campaignId, apiResponse[@"CampaignId"])
+        SET_IF_NOT_NULL(self.brandImageLogoURL, apiResponse[@"BrandImageLogoURL"])
         SET_IF_NOT_NULL(self.totalNegativeFeedbackCount, apiResponse[@"TotalNegativeFeedbackCount"])
         SET_IF_NOT_NULL(self.contentLocale, apiResponse[@"ContentLocale"])
         SET_IF_NOT_NULL(self.moderationStatus, apiResponse[@"ModerationStatus"])

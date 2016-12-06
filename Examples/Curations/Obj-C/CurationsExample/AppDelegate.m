@@ -6,7 +6,7 @@
 //
 
 #import "AppDelegate.h"
-#import <BVSDK/BVCurations.h>
+@import BVSDK;
 
 @interface AppDelegate ()
 
