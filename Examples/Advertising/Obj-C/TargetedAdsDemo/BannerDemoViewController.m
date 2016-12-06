@@ -6,7 +6,7 @@
 //
 
 #import "BannerDemoViewController.h"
-#import <BVSDK/BVSDK.h>
+@import BVSDK;
 
 @implementation BannerDemoViewController
 

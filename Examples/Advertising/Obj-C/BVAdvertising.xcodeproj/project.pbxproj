@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		170537C659D42EB965AEAFC9 /* Pods_TargetedAdsDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E591C1AED975349640528028 /* Pods_TargetedAdsDemo.framework */; };
 		7316FD6C1C52705100ECD983 /* bv_native.png in Resources */ = {isa = PBXBuildFile; fileRef = 7316FD6B1C52705100ECD983 /* bv_native.png */; };
 		7338A7011B76ED1B00903D96 /* UILabelWithInset.m in Sources */ = {isa = PBXBuildFile; fileRef = 7338A7001B76ED1B00903D96 /* UILabelWithInset.m */; };
 		7338A7041B76ED4000903D96 /* UIColor+BVColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 7338A7031B76ED4000903D96 /* UIColor+BVColor.m */; };
@@ -35,12 +36,10 @@
 		879144CF1CFE070D00976220 /* NativeContentAdView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 879144CE1CFE070D00976220 /* NativeContentAdView.xib */; };
 		879144D31CFE093B00976220 /* BannerDemoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 879144D21CFE093B00976220 /* BannerDemoViewController.xib */; };
 		879144DF1CFE12DD00976220 /* NativeContentAdDemoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 879144DE1CFE12DD00976220 /* NativeContentAdDemoViewController.xib */; };
-		B16F178EFE8EB3DC573FA5A3 /* libPods-TargetedAdsDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 059EDD030E6D252EBA18D78B /* libPods-TargetedAdsDemo.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		04A00EE500E9A609C2CD05D5 /* Pods-TargetedAdsDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TargetedAdsDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-TargetedAdsDemo/Pods-TargetedAdsDemo.release.xcconfig"; sourceTree = "<group>"; };
-		059EDD030E6D252EBA18D78B /* libPods-TargetedAdsDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TargetedAdsDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3AD5645BE6A5A2E5AD9AF776 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		6003F58D195388D20070C39A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		6003F58F195388D20070C39A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -92,6 +91,7 @@
 		8FDED8B3BB22013075BAB7EA /* Pods-TargetedAdsDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TargetedAdsDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TargetedAdsDemo/Pods-TargetedAdsDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		9C4B68C4415227436AA0E10A /* BVAdsSDK.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = BVAdsSDK.podspec; path = ../BVAdsSDK.podspec; sourceTree = "<group>"; };
 		DA961434CED5EDB4FCCE8BB8 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		E591C1AED975349640528028 /* Pods_TargetedAdsDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TargetedAdsDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,7 +100,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				734369781B6400220093721B /* libz.dylib in Frameworks */,
-				B16F178EFE8EB3DC573FA5A3 /* libPods-TargetedAdsDemo.a in Frameworks */,
+				170537C659D42EB965AEAFC9 /* Pods_TargetedAdsDemo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -147,7 +147,7 @@
 				6003F58F195388D20070C39A /* CoreGraphics.framework */,
 				6003F591195388D20070C39A /* UIKit.framework */,
 				6003F5AF195388D20070C39A /* XCTest.framework */,
-				059EDD030E6D252EBA18D78B /* libPods-TargetedAdsDemo.a */,
+				E591C1AED975349640528028 /* Pods_TargetedAdsDemo.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -382,7 +382,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		EED3E982C4DE45E5D09C36D6 /* [CP] Copy Pods Resources */ = {

@@ -41,6 +41,7 @@
 @property NSString* _Nullable contentLocale;
 @property NSString* _Nullable moderationStatus;
 @property NSString* _Nullable campaignId;
+@property NSString* _Nullable brandImageLogoURL;
 @property NSString* _Nullable identifier;
 @property NSDate* _Nullable submissionTime;
 @property NSDate* _Nullable lastModificationTime;

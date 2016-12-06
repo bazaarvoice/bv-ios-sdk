@@ -6,7 +6,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <BVSDK/BVRecommendations.h>
+@import BVSDK;
 
 @interface ViewController : UIViewController <UICollectionViewDelegate, UICollectionViewDataSource>
 
