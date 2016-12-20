@@ -14,6 +14,7 @@
 #import "BVReviewSubmission.h"
 #import "BVQuestionSubmission.h"
 #import "BVAnswerSubmission.h"
+#import "BVFeedbackSubmission.h"
 
 @implementation BVConversationsAnalyticsUtil
 
@@ -226,6 +227,35 @@
     
 }
 
++(void)queueAnalyticsEventForFeedbackSubmission:(nonnull BVFeedbackSubmission *)feedbackSubmission{
+    
+    bool isFingerprinting = false; // no fingerprinting for Feedback
+    
+    NSMutableDictionary* event = [self usedFeatureEvent];
+    
+    event[@"bvProduct"] = [self reviewsProductName];
+    event[@"name"] = @"Feedback";
+    event[@"contentId"] = feedbackSubmission.contentId;
+    event[@"fingerprinting"] = isFingerprinting ? @"true" : @"false";
+    
+    if (feedbackSubmission.contentType == BVFeedbackContentTypeReview){
+        event[@"contenttype"] = @"review";
+    } else if (feedbackSubmission.contentType == BVFeedbackContentTypeQuestion){
+        event[@"contenttype"] = @"question";
+    } else if (feedbackSubmission.contentType == BVFeedbackContentTypeAnswer){
+        event[@"contenttype"] = @"answer";
+    }
+    
+    if (feedbackSubmission.feedbackType == BVFeedbackTypeHelpfulness){
+        event[@"detail1"] = @"helpfulness";
+    } else if (feedbackSubmission.feedbackType == BVFeedbackTypeInappropriate){
+        event[@"detail1"] = @"inappropriate";
+    }
+    
+    [[BVAnalyticsManager sharedManager] queueEvent:event];
+    
+}
+
 +(void)processAndSendSubmissionEvent:(nonnull NSString*)name productId:(nullable NSString*)productId fingerPrinting:(bool)isFingerprinting {
     
     NSMutableDictionary* event = [self usedFeatureEvent];
@@ -241,6 +271,7 @@
 +(void)queueAnalyticsEventForPhotoSubmission {
     
     NSMutableDictionary* event = [self usedFeatureEvent];
+    event[@"bvProduct"] = [self questionsAnswersProductName];
     event[@"name"] = @"Photo";
     [[BVAnalyticsManager sharedManager] queueEvent:event];
     

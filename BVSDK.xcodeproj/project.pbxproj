@@ -34,6 +34,13 @@
 		879D090D1DCA6E47006B51D3 /* BVReviewSimpleNotificationCenter.h in Headers */ = {isa = PBXBuildFile; fileRef = 879D090B1DCA6E47006B51D3 /* BVReviewSimpleNotificationCenter.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		879D090E1DCA6E47006B51D3 /* BVReviewSimpleNotificationCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 879D090C1DCA6E47006B51D3 /* BVReviewSimpleNotificationCenter.m */; };
 		879D09111DCA8014006B51D3 /* testNotificationConfig.json in Resources */ = {isa = PBXBuildFile; fileRef = 879D09101DCA8014006B51D3 /* testNotificationConfig.json */; };
+		87A02B5F1E0963710002701B /* FeedbackSubmissionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A02B5E1E0963710002701B /* FeedbackSubmissionTests.swift */; };
+		87A02B621E0967EE0002701B /* BVFeedbackSubmission.h in Headers */ = {isa = PBXBuildFile; fileRef = 87A02B601E0967EE0002701B /* BVFeedbackSubmission.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		87A02B631E0967EE0002701B /* BVFeedbackSubmission.m in Sources */ = {isa = PBXBuildFile; fileRef = 87A02B611E0967EE0002701B /* BVFeedbackSubmission.m */; };
+		87A02B661E096B300002701B /* BVFeedbackSubmissionResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = 87A02B641E096B300002701B /* BVFeedbackSubmissionResponse.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		87A02B671E096B300002701B /* BVFeedbackSubmissionResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 87A02B651E096B300002701B /* BVFeedbackSubmissionResponse.m */; };
+		87A02B6A1E0971AC0002701B /* BVSubmittedFeedback.h in Headers */ = {isa = PBXBuildFile; fileRef = 87A02B681E0971AC0002701B /* BVSubmittedFeedback.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		87A02B6B1E0971AC0002701B /* BVSubmittedFeedback.m in Sources */ = {isa = PBXBuildFile; fileRef = 87A02B691E0971AC0002701B /* BVSubmittedFeedback.m */; };
 		87F2DAB11DAD579D00FB43F3 /* BVSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87F2DAA71DAD579D00FB43F3 /* BVSDK.framework */; };
 		87F2DAB81DAD579D00FB43F3 /* BVSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = 87F2DAAA1DAD579D00FB43F3 /* BVSDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		87F2DC171DAD585E00FB43F3 /* BVAdsMessageInterceptor.h in Headers */ = {isa = PBXBuildFile; fileRef = 87F2DAC31DAD585E00FB43F3 /* BVAdsMessageInterceptor.h */; settings = {ATTRIBUTES = (Private, ); }; };
@@ -431,6 +438,13 @@
 		879D090C1DCA6E47006B51D3 /* BVReviewSimpleNotificationCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVReviewSimpleNotificationCenter.m; sourceTree = "<group>"; };
 		879D090F1DCA7DDE006B51D3 /* BVSDKManager+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "BVSDKManager+Private.h"; path = "Tests/Tests/BVSDKManager+Private.h"; sourceTree = SOURCE_ROOT; };
 		879D09101DCA8014006B51D3 /* testNotificationConfig.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = testNotificationConfig.json; path = Tests/Tests/resources/notification_config/testNotificationConfig.json; sourceTree = SOURCE_ROOT; };
+		87A02B5E1E0963710002701B /* FeedbackSubmissionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedbackSubmissionTests.swift; sourceTree = "<group>"; };
+		87A02B601E0967EE0002701B /* BVFeedbackSubmission.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BVFeedbackSubmission.h; path = Feedback/BVFeedbackSubmission.h; sourceTree = "<group>"; };
+		87A02B611E0967EE0002701B /* BVFeedbackSubmission.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BVFeedbackSubmission.m; path = Feedback/BVFeedbackSubmission.m; sourceTree = "<group>"; };
+		87A02B641E096B300002701B /* BVFeedbackSubmissionResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BVFeedbackSubmissionResponse.h; path = Feedback/BVFeedbackSubmissionResponse.h; sourceTree = "<group>"; };
+		87A02B651E096B300002701B /* BVFeedbackSubmissionResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BVFeedbackSubmissionResponse.m; path = Feedback/BVFeedbackSubmissionResponse.m; sourceTree = "<group>"; };
+		87A02B681E0971AC0002701B /* BVSubmittedFeedback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BVSubmittedFeedback.h; path = Feedback/BVSubmittedFeedback.h; sourceTree = "<group>"; };
+		87A02B691E0971AC0002701B /* BVSubmittedFeedback.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BVSubmittedFeedback.m; path = Feedback/BVSubmittedFeedback.m; sourceTree = "<group>"; };
 		87B8A7D7272FA8AE6BF8BFBA /* Pods_BVSDK_BVSDKTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BVSDK_BVSDKTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		87F2DAA71DAD579D00FB43F3 /* BVSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BVSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		87F2DAAA1DAD579D00FB43F3 /* BVSDK.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BVSDK.h; sourceTree = "<group>"; };
@@ -829,6 +843,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		87A02B5D1E0963020002701B /* Feedback */ = {
+			isa = PBXGroup;
+			children = (
+				87A02B601E0967EE0002701B /* BVFeedbackSubmission.h */,
+				87A02B611E0967EE0002701B /* BVFeedbackSubmission.m */,
+				87A02B641E096B300002701B /* BVFeedbackSubmissionResponse.h */,
+				87A02B651E096B300002701B /* BVFeedbackSubmissionResponse.m */,
+				87A02B681E0971AC0002701B /* BVSubmittedFeedback.h */,
+				87A02B691E0971AC0002701B /* BVSubmittedFeedback.m */,
+			);
+			name = Feedback;
+			sourceTree = "<group>";
+		};
 		87F2DA9D1DAD579D00FB43F3 = {
 			isa = PBXGroup;
 			children = (
@@ -1199,7 +1226,6 @@
 		87F2DB881DAD585E00FB43F3 /* Submission */ = {
 			isa = PBXGroup;
 			children = (
-				87F2DB891DAD585E00FB43F3 /* Answer */,
 				87F2DB921DAD585E00FB43F3 /* BVFieldError.h */,
 				87F2DB931DAD585E00FB43F3 /* BVFieldError.m */,
 				87F2DB941DAD585E00FB43F3 /* BVFormField.h */,
@@ -1214,7 +1240,9 @@
 				87F2DB9D1DAD585E00FB43F3 /* BVSubmissionErrorResponse.m */,
 				87F2DB9E1DAD585E00FB43F3 /* BVSubmissionResponse.h */,
 				87F2DB9F1DAD585E00FB43F3 /* BVSubmissionResponse.m */,
+				87F2DB891DAD585E00FB43F3 /* Answer */,
 				87F2DBA01DAD585E00FB43F3 /* Photo */,
+				87A02B5D1E0963020002701B /* Feedback */,
 				87F2DBA61DAD585E00FB43F3 /* Question */,
 				87F2DBAF1DAD585E00FB43F3 /* Review */,
 			);
@@ -1638,6 +1666,7 @@
 				87F2DE051DAD945D00FB43F3 /* QuestionSubmissionTests.swift */,
 				87F2DE061DAD945D00FB43F3 /* ReviewSubmissionTests.swift */,
 				87F2DE071DAD945D00FB43F3 /* StoreReviewSubmissionTests.swift */,
+				87A02B5E1E0963710002701B /* FeedbackSubmissionTests.swift */,
 			);
 			path = SubmissionTests;
 			sourceTree = "<group>";
@@ -1823,7 +1852,10 @@
 				87F2DC841DAD585E00FB43F3 /* BVRatingDistribution.h in Headers */,
 				87F2DC171DAD585E00FB43F3 /* BVAdsMessageInterceptor.h in Headers */,
 				87F2DC5E1DAD585E00FB43F3 /* BVBadgeType.h in Headers */,
+				87A02B621E0967EE0002701B /* BVFeedbackSubmission.h in Headers */,
+				87A02B6A1E0971AC0002701B /* BVSubmittedFeedback.h in Headers */,
 				87F2DD311DAD585E00FB43F3 /* BVNotificationViewController.h in Headers */,
+				87A02B661E096B300002701B /* BVFeedbackSubmissionResponse.h in Headers */,
 				87F2DCC51DAD585E00FB43F3 /* BVSortOptionProducts.h in Headers */,
 				87F2DD201DAD585E00FB43F3 /* BVCurationsFeedItem.h in Headers */,
 			);
@@ -2066,6 +2098,7 @@
 				87F2DCCE1DAD585E00FB43F3 /* BVAnswerSubmissionErrorResponse.m in Sources */,
 				87F2DD0C1DAD585E00FB43F3 /* BVQuestionView.m in Sources */,
 				87F2DC281DAD585E00FB43F3 /* BVGMBLVisit.m in Sources */,
+				87A02B631E0967EE0002701B /* BVFeedbackSubmission.m in Sources */,
 				87F2DCE61DAD585E00FB43F3 /* BVQuestionSubmission.m in Sources */,
 				87F2DC3A1DAD585E00FB43F3 /* BVStringKeyValuePair.m in Sources */,
 				87F2DD371DAD585E00FB43F3 /* BVProductRecommendationsContainer.m in Sources */,
@@ -2112,6 +2145,7 @@
 				87F2DCEC1DAD585E00FB43F3 /* BVSubmittedQuestion.m in Sources */,
 				87F2DCA01DAD585E00FB43F3 /* BVBulkStoresResponse.m in Sources */,
 				87F2DD001DAD585E00FB43F3 /* BVAnswerView.m in Sources */,
+				87A02B671E096B300002701B /* BVFeedbackSubmissionResponse.m in Sources */,
 				87F2DC5F1DAD585E00FB43F3 /* BVBadgeType.m in Sources */,
 				87F2DD461DAD585E00FB43F3 /* BVShopperProfile.m in Sources */,
 				87F2DC7B1DAD585E00FB43F3 /* BVPhotoSizes.m in Sources */,
@@ -2140,6 +2174,7 @@
 				87F2DC7D1DAD585E00FB43F3 /* BVProductsResponse.m in Sources */,
 				87F2DC331DAD585E00FB43F3 /* BVNotificationConfiguration.m in Sources */,
 				87F2DCBE1DAD585E00FB43F3 /* BVQuestionFilterType.m in Sources */,
+				87A02B6B1E0971AC0002701B /* BVSubmittedFeedback.m in Sources */,
 				87F2DC901DAD585E00FB43F3 /* BVSecondaryRatingsAverages.m in Sources */,
 				87F2DCDC1DAD585E00FB43F3 /* BVSubmissionAction.m in Sources */,
 				87F2DCF61DAD585E00FB43F3 /* BVStoreReviewSubmission.m in Sources */,
@@ -2217,6 +2252,7 @@
 				87F2DE151DAD945D00FB43F3 /* QuestionSubmissionTests.swift in Sources */,
 				87F2DD631DAD5E9400FB43F3 /* BVRecommendationsTests.m in Sources */,
 				87F2DE091DAD945D00FB43F3 /* InlineRatingsDisplayTests.swift in Sources */,
+				87A02B5F1E0963710002701B /* FeedbackSubmissionTests.swift in Sources */,
 				87F2DD601DAD5E9400FB43F3 /* BVCurationsTests.m in Sources */,
 				87F2DE121DAD945D00FB43F3 /* PhotoSizesParsingTests.swift in Sources */,
 				87F2DE161DAD945D00FB43F3 /* ReviewSubmissionTests.swift in Sources */,

@@ -39,8 +39,6 @@
 
 -(void)uploadForContentType:(BVPhotoContentType)type success:(nonnull PhotoUploadCompletion)success failure:(nonnull PhotoUploadFailure)failure {
     
-    [BVConversationsAnalyticsUtil queueAnalyticsEventForPhotoSubmission];
-    
     NSString* urlString = [NSString stringWithFormat:@"%@uploadphoto.json", [BVConversationsRequest commonEndpoint]];
     NSURL* url = [NSURL URLWithString:urlString];
     
@@ -85,6 +83,9 @@
             
             if (photoUrl) {
                 // successful response!
+                
+                [BVConversationsAnalyticsUtil queueAnalyticsEventForPhotoSubmission];
+                
                 success(photoUrl);
             }
             else if (httpError) {
