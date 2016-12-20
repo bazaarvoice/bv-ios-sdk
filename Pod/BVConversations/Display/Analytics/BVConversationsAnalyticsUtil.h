@@ -13,6 +13,7 @@
 @class BVReviewSubmission;
 @class BVQuestionSubmission;
 @class BVAnswerSubmission;
+@class BVFeedbackSubmission;
 @class BVStore;
 
 /// Internal enum - used only within BVSDK
@@ -45,6 +46,7 @@ typedef enum {
 +(void)queueAnalyticsEventForReviewSubmission:(nonnull BVReviewSubmission *)reviewSubmission;
 +(void)queueAnalyticsEventForQuestionSubmission:(nonnull BVQuestionSubmission *)questionSubmission;
 +(void)queueAnalyticsEventForAnswerSubmission:(nonnull BVAnswerSubmission *)answerSubmission;
++(void)queueAnalyticsEventForFeedbackSubmission:(nonnull BVFeedbackSubmission *)feedbackSubmission;
 +(void)queueAnalyticsEventForPhotoSubmission;
     
 +(void)queueAnalyticsEventForStorePageView:(BVStore* _Nullable)store;
