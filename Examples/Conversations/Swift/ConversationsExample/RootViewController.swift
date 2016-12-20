@@ -110,7 +110,33 @@ class RootViewController: UIViewController {
         }
         
     }
+    
+    @IBAction func submitFeedbackTapped(sender: AnyObject) {
         
+        let feedback = BVFeedbackSubmission(contentId: "192454", withConentType: BVFeedbackContentType.Review, withFeedbackType: BVFeedbackType.Helpfulness)
+        
+        let randomId = String(arc4random())
+        
+        feedback.userId = "userId" + randomId
+        feedback.vote = BVFeedbackVote.Positive
+        feedback.action = .Preview // don't submit for real
+        
+        feedback.submit({ (response) in
+            // success
+            dispatch_async(dispatch_get_main_queue(),{
+                self.showAlertSuccess("Success Submitting Feedback!")
+            })
+        }) { (errors) in
+            // error
+            dispatch_async(dispatch_get_main_queue(),{
+                self.showAlertError(errors.description)
+            })
+        }
+
+        
+    }
+    
+    
     func showAlertSuccess(message : String){
         
         let alert = UIAlertController(title: "Success!", message: message, preferredStyle: UIAlertControllerStyle.Alert)

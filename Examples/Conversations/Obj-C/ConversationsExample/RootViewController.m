@@ -84,9 +84,26 @@
         [self showError:errors.description];
     }];
     
+}
 
+- (IBAction)submitFeedbackTapped:(id)sender {
+    
+    BVFeedbackSubmission *feedback = [[BVFeedbackSubmission alloc] initWithContentId:@"192454" withConentType:BVFeedbackContentTypeReview withFeedbackType:BVFeedbackTypeHelpfulness];
+    
+    feedback.userId = [NSString stringWithFormat:@"userId%d", arc4random()]; // add in a random user id for testing, avoids duplicate errors
+    feedback.vote = BVFeedbackVotePositive;
+    feedback.action = BVSubmissionActionPreview;
+    
+    [feedback submit:^(BVFeedbackSubmissionResponse * _Nonnull response) {
+        // success
+        [self showSuccess:@"Success Submitting Feedback!"];
+    } failure:^(NSArray<NSError *> * _Nonnull errors) {
+        // error
+         [self showError:errors.description];
+    }];
     
 }
+
 
 - (void)showSuccess:(NSString *)message {
     

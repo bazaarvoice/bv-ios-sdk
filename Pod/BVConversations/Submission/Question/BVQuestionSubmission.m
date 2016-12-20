@@ -37,8 +37,6 @@
 
 -(void)submit:(nonnull QuestionSubmissionCompletion)success failure:(nonnull ConversationsFailureHandler)failure {
     
-    [BVConversationsAnalyticsUtil queueAnalyticsEventForQuestionSubmission:self];
-    
     if (self.action == BVSubmissionActionPreview) {
         [[BVLogger sharedLogger] warning:@"Submitting a 'BVQuestionSubmission' with action set to `BVSubmissionActionPreview` will not actially submit the question! Set to `BVSubmissionActionSubmit` for real submission."];
         [self submitPreview:success failure:failure];
@@ -169,6 +167,9 @@
             }
             else {
                 // success!
+                
+                [BVConversationsAnalyticsUtil queueAnalyticsEventForQuestionSubmission:self];
+                
                 BVQuestionSubmissionResponse* response = [[BVQuestionSubmissionResponse alloc] initWithApiResponse:json];
                 dispatch_async(dispatch_get_main_queue(), ^{
                     success(response);
