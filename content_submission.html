@@ -257,12 +257,21 @@ The completed project for this code walkthrough for Swift and Objective-C is in 
 
 <hr>
 
+
 <p><span class="bg-warning well-lg" style="padding:4px;"> <i class="fa fa-hand-o-right"></i>Important: Before you start implementing this Mobile SDK module, verify your installation by checking the steps on the <a href="./installation.html">Installation and Configuration</a> page.</span></p>
 
 <br>
-<h4>Review Submission</h4>
-<p>To start, let's upload a simple Review. Create a <code>ReviewSubmission</code> object and fill out appropriate fields.</p>
-<p>Note that a <code>ReviewSubmission</code> object requires a <code>reviewTitle</code>, <code>reviewText</code>, <code>rating</code>, and <code>productId</code> (for which this review corresponds to).</p>
+<h3>Content Submission Types</h3>
+<ol>
+  <li><a href="#reviews">Reviews</a></li>
+  <li><a href="#questions">Questions</li>
+  <li><a href="#answers">Answers</a></li>
+  <li><a href="#feedback">Feedback</a></li>
+</ol>
+<hr>
+<h4 id="reviews">Review Submission</h4>
+<p>To start, let's upload a simple Review. Create a <code>BVeviewSubmission</code> object and fill out appropriate fields.</p>
+<p>Note that a <code>BVReviewSubmission</code> object requires a <code>reviewTitle</code>, <code>reviewText</code>, <code>rating</code>, and <code>productId</code> (for which this review corresponds to).</p>
 
 <ul class="nav nav-tabs" role="tablist">
   <li role="presentation" class="active"><a href="#swift" aria-controls="swift" role="tab" data-toggle="tab">Swift</a></li>
@@ -302,7 +311,7 @@ review.agreedToTermsAndConditions  = [NSNumber numberWithBool:YES];
 	</div>
 </div>
 <br>
-<p>All available fields are detailed in <code>ReviewSubmission.h</code> and further in <a href="https://developer.bazaarvoice.com/apis/conversations/">Bazaarvoice's API Documentation</a>. Required fields, and specific rules per field (<font color="#666"><i>"reviewText must be longer than X characters"</i></font>) is dependent on your specific deployment setup.</p>
+<p>All available fields are detailed in <code>BVReviewSubmission.h</code> and further in <a href="https://developer.bazaarvoice.com/apis/conversations/">Bazaarvoice's API Documentation</a>. Required fields, and specific rules per field (<font color="#666"><i>"reviewText must be longer than X characters"</i></font>) is dependent on your specific deployment setup.</p>
 
 <br>
 <p>Submitting this review is as easy as calling <code>submit</code>:</p>
@@ -389,10 +398,8 @@ review.agreedToTermsAndConditions  = [NSNumber numberWithBool:YES];
 <br>
 
 
-
-
-<h4>Question Submission</h4>
-<p>Submitting a question is nearly identical to submitting a review, detailed above. Create an instance of <code>QuestionSubmission</code>, and submit it!</p>
+<h4 id="questions">Question Submission</h4>
+<p>Submitting a question is nearly identical to submitting a review, detailed above. Create an instance of <code>BVQuestionSubmission</code>, fill in some parameters, and submit it!</p>
 <p>Note that an <code>QuestionSubmission</code> object requires a <code>productId</code> for which this question corresponds to.</p>
 <ul class="nav nav-tabs" role="tablist">
   <li role="presentation" class="active"><a href="#swift" aria-controls="swift" role="tab" data-toggle="tab">Swift</a></li>
@@ -440,10 +447,8 @@ question.agreedToTermsAndConditions;  [NSNumber numberWithBool:YES];
 <br>
 <br>
 
-
-
-<h4>Answer Submission</h4>
-<p>Likewise, submitting an answer is nearly identical to submitting a review or question. Create an instance of <code>AnswerSubmission</code>, and submit it!</p>
+<h4 id="answers">Answer Submission</h4>
+<p>Submitting an answer is nearly identical to submitting a review or question. Create an instance of <code>BVAnswerSubmission</code>, fill in some parameters, and submit it!</p>
 <p>Note that an <code>AnswerSubmission</code> object requires a <code>questionId</code> for which this answer responds to, and <code>answerText</code>, which is the body of the answer.</p>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -487,6 +492,59 @@ answer.agreedToTermsAndConditions = [NSNumber numberWithBool:YES];
 </div>
 <br>
 <br>
+
+<h4 id="feedback">Feedback Submission</h4>
+<p>Submitting a feedback is the simplest of content submissions. Create an instance of <code>BVFeedbackSubmission</code>, fill out the required parameters, and submit it! You can use the Feedback submission for either Helpfulness votes or for flagging inappropriate content, just set the type with the <code>BVFeedbackType</code> enumerator. </p>
+<p>Note that a <code>BVFeedbackSubmission</code> object requires a <code>contentId</code> which will correspond to the identifer of the Review, Question, or Answer your client is providing feedback on.</p>
+
+<ul class="nav nav-tabs" role="tablist">
+  <li role="presentation" class="active"><a href="#swift" aria-controls="swift" role="tab" data-toggle="tab">Swift</a></li>
+  <li role="presentation"><a href="#objc" aria-controls="objc" role="tab" data-toggle="tab">Objective-C</a></li>
+</ul>
+<!-- Tab panes -->
+<div class="tab-content code-switcher">
+    <!-- swift -->
+    <div role="tabpanel" class="tab-pane active" id="swift">
+<pre><code class="swift">let feedback = BVFeedbackSubmission(contentId: contentId,
+                                            withConentType: BVFeedbackContentType.Review,
+                                            withFeedbackType: BVFeedbackType.Helpfulness)
+        
+feedback.userId = userId
+feedback.vote = BVFeedbackVote.Positive // or .Negative for down vote
+feedback.action = .Preview // don't submit for real when testing. Use .Submit for production!
+
+feedback.submit({ (response) in
+    // success
+    // Make sure to disable the submission UI so the user can't submit again.
+}) { (errors) in
+    // error
+    // Ooops, some error. Rollback if needed.
+}
+</code></pre>
+    </div>
+    <!-- objective-c -->
+    <div role="tabpanel" class="tab-pane" id="objc">
+<pre><code class="objectivec">BVFeedbackSubmission *feedback = [[BVFeedbackSubmission alloc] initWithContentId:contentId 
+    withConentType:BVFeedbackContentTypeReview 
+    withFeedbackType:BVFeedbackTypeHelpfulness];
+    
+feedback.userId = userId
+feedback.vote = BVFeedbackVotePositive;
+feedback.action = BVSubmissionActionPreview;
+
+[feedback submit:^(BVFeedbackSubmissionResponse * _Nonnull response) {
+    // success
+    // Make sure to disable the submission UI so the user can't submit again.
+} failure:^(NSArray<NSError *> * _Nonnull errors) {
+    // error
+    // Ooops, some error. Rollback if needed.
+}];
+</code></pre>
+    </div>
+</div>
+<br>
+<br>
+
 
 
 <div class="well well-sm">
