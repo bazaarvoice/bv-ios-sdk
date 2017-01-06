@@ -511,7 +511,6 @@ answer.agreedToTermsAndConditions = [NSNumber numberWithBool:YES];
         
 feedback.userId = userId
 feedback.vote = BVFeedbackVote.Positive // or .Negative for down vote
-feedback.action = .Preview // don't submit for real when testing. Use .Submit for production!
 
 feedback.submit({ (response) in
     // success
