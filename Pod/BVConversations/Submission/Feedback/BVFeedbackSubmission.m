@@ -27,7 +27,7 @@
 
 -(void)submit:(nonnull FeedbackSubmissionCompletion)success failure:(nonnull ConversationsFailureHandler)failure{
     
-    [self submitFeedback:self.action success:^(BVFeedbackSubmissionResponse * _Nonnull response) {
+    [self submitFeedbackWithCompletion:^(BVFeedbackSubmissionResponse * _Nonnull response) {
         success(response);
     } failure:^(NSArray<NSError *> * _Nonnull errors) {
         failure(errors);
@@ -35,9 +35,9 @@
     
 }
 
--(void)submitFeedback:(BVSubmissionAction)BVSubmissionAction success:(nonnull FeedbackSubmissionCompletion)success failure:(nonnull ConversationsFailureHandler)failure {
+-(void)submitFeedbackWithCompletion:(nonnull FeedbackSubmissionCompletion)success failure:(nonnull ConversationsFailureHandler)failure {
     
-    NSDictionary* parameters = [self createSubmissionParameters:BVSubmissionAction];
+    NSDictionary* parameters = [self createSubmissionParameters];
     NSData* postBody = [self transformToPostBody:parameters];
     
     NSString* urlString = [NSString stringWithFormat:@"%@submitfeedback.json", [BVConversationsRequest commonEndpoint]];
@@ -118,12 +118,11 @@
     
 }
 
--(nonnull NSDictionary*)createSubmissionParameters:(BVSubmissionAction)BVSubmissionAction {
+-(nonnull NSDictionary*)createSubmissionParameters {
     
     NSMutableDictionary* parameters = [NSMutableDictionary dictionaryWithDictionary:@{ @"apiversion": @"5.4" }];
     
     parameters[@"passkey"] = [BVSDKManager sharedManager].apiKeyConversations;
-    parameters[@"action"] = [BVSubmissionActionUtil toString:self.action];
     parameters[@"userid"] = self.userId;
     parameters[@"contentId"] = self.contentId;
     
