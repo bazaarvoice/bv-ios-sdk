@@ -92,7 +92,6 @@
     
     feedback.userId = [NSString stringWithFormat:@"userId%d", arc4random()]; // add in a random user id for testing, avoids duplicate errors
     feedback.vote = BVFeedbackVotePositive;
-    feedback.action = BVSubmissionActionPreview;
     
     [feedback submit:^(BVFeedbackSubmissionResponse * _Nonnull response) {
         // success

@@ -119,7 +119,6 @@ class RootViewController: UIViewController {
         
         feedback.userId = "userId" + randomId
         feedback.vote = BVFeedbackVote.Positive
-        feedback.action = .Preview // don't submit for real
         
         feedback.submit({ (response) in
             // success

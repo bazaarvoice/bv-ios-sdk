@@ -53,7 +53,6 @@ typedef void (^FeedbackSubmissionCompletion)(BVFeedbackSubmissionResponse* _Nonn
 
 @interface BVFeedbackSubmission : BVSubmission
 
-@property BVSubmissionAction action;
 @property NSString* _Nonnull contentId;
 @property BVFeedbackContentType contentType;
 @property BVFeedbackType feedbackType;
@@ -69,7 +68,7 @@ typedef void (^FeedbackSubmissionCompletion)(BVFeedbackSubmissionResponse* _Nonn
 -(nonnull instancetype) __unavailable init;
 
 /**
- Submit feedback to the Bazaarvoice platform. If the `action` of this object is set to `BVSubmissionActionPreview` then the submission will NOT actually take place.
+ Submit feedback to the Bazaarvoice platform.
  
  A submission can fail for many reasons, and is dependent on your submission configuration.
  

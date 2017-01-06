@@ -30,8 +30,7 @@ class FeedbackSubmissionTests: XCTestCase {
         
         feedback.userId = "userId" + randomId
         feedback.vote = .positive
-        feedback.action = .preview // don't submit for real
-
+        
         feedback.submit({ (response) in
                 // success
                 // verify response object....
@@ -60,7 +59,6 @@ class FeedbackSubmissionTests: XCTestCase {
         let randomId = String(arc4random())
         
         feedback.userId = "userId" + randomId
-        feedback.action = .preview
         feedback.reasonText = "Optional reason text in this field."
         
         feedback.submit({ (response) in
@@ -91,7 +89,6 @@ class FeedbackSubmissionTests: XCTestCase {
         let randomId = String(arc4random())
         
         feedback.userId = "userId" + randomId
-        feedback.action = .preview
         
         feedback.submit({ (response) in
             // success
