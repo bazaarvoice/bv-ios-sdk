@@ -27,8 +27,6 @@ Pod::Spec.new do |s|
 
   s.subspec 'Core' do |core|
      core.source_files = 'Pod/BVCommon/**/*.{h,m}', 'Pod/BVConversations/**/*.{h,m}', 'Pod/BVAnalytics/**/*.{h,m}'
-    core.resources = ['Pod/BVCommon/Notifications/mapThumbnail.png']
-
   end
 
   s.subspec 'BVConversations' do |conversations|
@@ -65,8 +63,10 @@ Pod::Spec.new do |s|
   s.subspec 'BVNotifications' do |notifications|
 
     notifications.source_files = 'Pod/BVNotifications/**/*.{h,m}', 'Pod/BVAnalytics/**/*.{h,m}', 'Pod/BVConversations/**/*.{h,m}', 'Pod/BVCommon/*.{h,m}','Pod/BVCommon/Private/*.{h,m}','Pod/BVCommon/Notifications/BVNotificationCenterObject.h','Pod/BVCommon/Notifications/BVStoreReviewRichNotificationCenter.{h,m}','Pod/BVCommon/Notifications/BVNotificationConstants.h','Pod/BVCommon/Notifications/BVPIN.{h,m}'
+    notifications.resources = ['Pod/BVNotifications/mapThumbnail.png']
 
     notifications.dependency 'BVSDK/BVLocation'
+    notifications.dependency 'BVSDK/BVPIN'
   end
 
 end
