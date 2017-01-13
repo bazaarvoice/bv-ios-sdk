@@ -189,7 +189,9 @@ $(function(){
                         </div>
 
                     </li>
-
+                    <li class="nav-item">
+                        <a class="nav-link" href="pin.html"><span>Post Interaction Notifications (Beta)</span></a>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link" href="location.html"><span>Location (Beta)</span></a>
                     </li>
@@ -255,8 +257,8 @@ $(function(){
   <li>Minimum iOS deployment target of iOS 8.0</li>
   <li>Xcode version 8.0 or higher</li>
   <li>CocoaPods 1.1.0 or higher (only if using CocoaPods)</li>
-  <li>Your Client ID</li>
-  <li>API key(s) for the Bazaarvoice product(s) you have enabled</li>
+  <li>Your Client ID: This is the Company name you use to sign into the Workbench.</li>
+  <li>API key(s) for the Bazaarvoice product(s) you have enabled. For Conversatiosn API, you will need one API key for staging environment and one API key for production.</li>
 </ul>
 <br>
 
@@ -281,13 +283,16 @@ We support installation of the Bazaarvoice SDK for iOS with CocoaPods, Carthage,
       <div role="tabpanel" class="tab-pane active" id="cocoapods">
         1. Install the latest version of <a href="https://guides.cocoapods.org/using/getting-started.html">CocoaPods</a>.
         <br><br>
-        2. Add the lines for the BVSDK components you have an API key for to your <code>Podfile</code>:
+        2. Add the pods for which you have an API key into your <code>Podfile</code>:
         <br><br>
         <pre><code>pod 'BVSDK/BVCurations'
 pod 'BVSDK/BVConversations'
 pod 'BVSDK/BVAdvertising'
 pod 'BVSDK/BVRecommendations'
-pod 'BVSDK/BVLocation'</code></pre>
+pod 'BVSDK/BVLocation'
+pod 'BVSDK/BVPIN'
+pod 'BVSDK/BVNotifications'
+</code></pre>
        
         3. Run the following command from a terminal:
         <br><br>
@@ -319,7 +324,7 @@ pod 'BVSDK/BVLocation'</code></pre>
       <!-- dynamicframework -->
       <div role="tabpanel" class="tab-pane" id="dynamicframework">
         1. Download the latest <code>BVSDK.framework.zip</code> from our <a href="https://github.com/bazaarvoice/bv-ios-sdk/releases">GitHub releases page</a>.<br><br>
-        2. Drag <cdde>BVSDK.framework</code> to the "Embedded Binaries" section of your Xcode project's "General" settings. Make sure to select "Copy items if needed".<br><br>
+        2. Drag <code>BVSDK.framework</code> to the "Embedded Binaries" section of your Xcode project's "General" settings. Make sure to select "Copy items if needed".<br><br>
         3. Head to the "Build Phases" section of your Xcode project settings, and create a new "Run Script Build Phase". Paste the following snippet into the text field:<br><br>
         <pre><code>bash "${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/BVSDK.framework/integrate-dynamic-framework.sh"</code></pre>
         
@@ -390,6 +395,7 @@ Once you have install the source code for the SDK, you are now ready to add your
                 <th>
                     Enter API key:
                 </th>
+            </tr>
             <tr>
                 <td>
                     <input type="checkbox" class="cb_BVCurations"/> <b>Curations</b>
@@ -397,6 +403,7 @@ Once you have install the source code for the SDK, you are now ready to add your
                 <td>
                     <input type="text" class="key_BVCurations" placeholder="Curations API Key here" style="width:100%"/>
                 </td>
+            </tr>
             <tr>
                 <td>
                     <input type="checkbox" class="cb_BVConversations"/> <b>Conversations</b>
@@ -404,7 +411,7 @@ Once you have install the source code for the SDK, you are now ready to add your
                 <td>
                     <input type="text" class="key_BVConversations" placeholder="Conversations API Key here" style="width:100%"/>
                 </td>
-            <tr>
+            </tr>
             <tr>
                 <td>
                     <input type="checkbox" class="cb_BVConversationsStores"/> <b>Conversations for Stores</b>
@@ -412,6 +419,7 @@ Once you have install the source code for the SDK, you are now ready to add your
                 <td>
                     <input type="text" class="key_BVConversationsStores" placeholder="Conversations for Stores API Key here" style="width:100%"/>
                 </td>
+            </tr>
             <tr>
                 <td>
                     <input type="checkbox" class="cb_BVAdvertising"/> <b>Advertising</b>
@@ -421,136 +429,129 @@ Once you have install the source code for the SDK, you are now ready to add your
                 <td>
                     <input type="text" class="key_ShoppeAdvertising" placeholder="Shopper Advertising API Key here" style="width:100%"/>
                 </td>
+            </tr>
             <tr>
-              <tr>
                 <td>
                     <input type="checkbox" class="cb_BVLocation"/> <b>Location</b>
                 </td>
                 <td>
                     <input type="text" class="key_BVCLocation" placeholder="Location API Key here" style="width:100%"/>
                 </td>
+            </tr>
             <tr>
+                <td>
+                    <input type="checkbox" class="cb_BVPIN"/> <b>Post Interaction Notifications</b>
+                </td>
+                <td>
+                    <input type="text" class="key_BVPIN" placeholder="PIN API Key here" style="width:100%"/>
+                </td>
+            </tr>
         </table>
     </div>
 
     <script type="text/javascript">
 
-    // Determine whether or not to put red border on invalid text entry
-    function validateTextInputs(){
+        // Determine whether or not to put red border on invalid text entry
+        function validateTextInputs(){
 
-      // client id text box
-        if ($('.edit_ClientID').val() == '') {
-        $('.edit_ClientID').css('border-color', 'red');
+            // client id text box
+            if ($('.edit_ClientID').val() == '') {
+                $('.edit_ClientID').css('border-color', 'red');
+            }
+            else {
+                $('.edit_ClientID').css('border-color', '');
+            }
+
+            // API key checkboxes
+            if ($('.cb_BVCurations:checked').length > 0 && !$('.key_BVCurations').val()){
+                $('.key_BVCurations').css('border-color', 'red');
+            } else {
+                $('.key_BVCurations').css('border-color', '');
+            }
+
+            if ($('.cb_BVConversations:checked').length > 0 && !$('.key_BVConversations').val()){
+                $('.key_BVConversations').css('border-color', 'red');
+            } else {
+                $('.key_BVConversations').css('border-color', '');
+            }
+
+            if ($('.cb_BVConversationsStores:checked').length > 0 && !$('.key_BVConversationsStores').val()){
+                $('.key_BVConversationsStores').css('border-color', 'red');
+            } else {
+                $('.key_BVConversationsStores').css('border-color', '');
+            }
+
+            if ( ($('.cb_BVAdvertising:checked').length > 0 || $('.cb_BVRecommendations:checked').length > 0)
+                    && !$('.key_ShoppeAdvertising').val()){
+                $('.key_ShoppeAdvertising').css('border-color', 'red');
+            } else {
+                $('.key_ShoppeAdvertising').css('border-color', '');
+            }
+
+            if ($('.cb_BVLocation:checked').length > 0 && !$('.key_BVCLocation').val()){
+                $('.key_BVCLocation').css('border-color', 'red');
+            } else {
+                $('.key_BVCLocation').css('border-color', '');
+            }
+
+
+            if ($('.cb_BVLocation:checked').length > 0 && !$('.key_BVCLocation').val()){
+                $('.key_BVCLocation').css('border-color', 'red');
+            } else {
+                $('.key_BVCLocation').css('border-color', '');
+            }
+
+            if ($('.cb_BVPIN:checked').length > 0 && !$('.key_BVPIN').val()){
+                $('.key_BVPIN').css('border-color', 'red');
+            } else {
+                $('.key_BVPIN').css('border-color', '');
+            }
         }
-        else {
-        $('.edit_ClientID').css('border-color', '');
-        }
 
-      // API key checkboxes
-      if ($('.cb_BVCurations:checked').length > 0 && !$('.key_BVCurations').val()){
-          $('.key_BVCurations').css('border-color', 'red');
-      } else {
-          $('.key_BVCurations').css('border-color', '');
-      }
+        function updateCodeSnippets(){
 
-      if ($('.cb_BVConversations:checked').length > 0 && !$('.key_BVConversations').val()){
-        $('.key_BVConversations').css('border-color', 'red');
-      } else {
-        $('.key_BVConversations').css('border-color', '');
-      }
-
-       if ($('.cb_BVConversationsStores:checked').length > 0 && !$('.key_BVConversationsStores').val()){
-        $('.key_BVConversationsStores').css('border-color', 'red');
-      } else {
-        $('.key_BVConversationsStores').css('border-color', '');
-      }
-
-      if ( ($('.cb_BVAdvertising:checked').length > 0 || $('.cb_BVRecommendations:checked').length > 0)
-                  && !$('.key_ShoppeAdvertising').val()){
-          $('.key_ShoppeAdvertising').css('border-color', 'red');
-      } else {
-          $('.key_ShoppeAdvertising').css('border-color', '');
-      }
-
-      if ($('.cb_BVLocation:checked').length > 0 && !$('.key_BVCLocation').val()){
-          $('.key_BVCLocation').css('border-color', 'red');
-      } else {
-          $('.key_BVCLocation').css('border-color', '');
-      }
-
-    }
-
-    function updateCodeSnippets(){
             
-            //////////////////////
-            // Swift Headers
-            //////////////////////
-            $('code.swift#swift-headers').text('// When using Dynamic Frameworks with Swift (not using Objective-C Bridging header),<br/>')
-                .append('// use the folling import in each of your .swift files<br/>')
-                .append('import BVSDK')
-
-            ///////////////////////////
-            // Objective-C Headers ---
-            ///////////////////////////
-            $('code.objectivec#objc-headers').text('// Import BVSDK.h for all modules')
-                .append('<br/>#import &lt;BVSDK/BVSDK.h&gt;</br>')
-
-            if ($('.cb_BVCurations:checked').length > 0){
-              $('code.objectivec#objc-headers').append("#import &lt;BVSDK/BVCurations.h&gt;<br/>");
-            }
-
-            if ($('.cb_BVConversations:checked').length > 0 || $('.cb_BVConversationsStores:checked').length > 0){
-              $('code.objectivec#objc-headers').append("#import &lt;BVSDK/BVConversations.h&gt;<br/>");
-            }
-
-            if ($('.cb_BVAdvertising:checked').length > 0){
-              $('code.objectivec#objc-headers').append("#import &lt;BVSDK/BVAdvertising.h&gt;<br/>");
-            }
-
-            if ($('.cb_BVRecommendations:checked').length > 0){
-              $('code.objectivec#objc-headers').append("#import &lt;BVSDK/BVRecommendations.h&gt;<br/>");
-            }
-
-            if ($('.cb_BVLocation:checked').length > 0){
-              $('code.objectivec#objc-headers').append("#import &lt;BVSDK/BVLocation.h&gt;<br/>");
-            }
-
             ////////////////////////////////
             // Objective-C BVSDKManager ---
             ////////////////////////////////
             var REPLACE_ME  = "ERROR"
             if ($('.edit_ClientID#clientId').val().length > 0){
-             clientId = $('.edit_ClientID#clientId').val()
+                clientId = $('.edit_ClientID#clientId').val()
             } else {
-             clientId = REPLACE_ME
+                clientId = REPLACE_ME
             }
 
             $('code.objectivec#objc-bvsdkmanager').text('[[BVSDKManager sharedManager] setClientId:@"' + clientId +  '"];')
-                .append('<br/>')
+                    .append('<br/>')
 
             if ($('.cb_BVCurations:checked').length > 0){
-               var curationsKey = $('.key_BVCurations').val()
-               $('code.objectivec#objc-bvsdkmanager').append('[[BVSDKManager sharedManager] setApiKeyCurations:@"' + curationsKey + '"];<br/>');
+                var curationsKey = $('.key_BVCurations').val()
+                $('code.objectivec#objc-bvsdkmanager').append('[[BVSDKManager sharedManager] setApiKeyCurations:@"' + curationsKey + '"];<br/>');
             }
 
             if ($('.cb_BVConversations:checked').length > 0){
-              var conversationsKey = $('.key_BVConversations').val()
-              $('code.objectivec#objc-bvsdkmanager').append('[[BVSDKManager sharedManager] setApiKeyConversations:@"' + conversationsKey + '"];<br/>');
+                var conversationsKey = $('.key_BVConversations').val()
+                $('code.objectivec#objc-bvsdkmanager').append('[[BVSDKManager sharedManager] setApiKeyConversations:@"' + conversationsKey + '"];<br/>');
             }
 
             if ($('.cb_BVConversationsStores:checked').length > 0){
-              var conversationsStoresKey = $('.key_BVConversationsStores').val()
-              $('code.objectivec#objc-bvsdkmanager').append('[[BVSDKManager sharedManager] setApiKeyConversationsStores:@"' + conversationsStoresKey + '"];<br/>');
+                var conversationsStoresKey = $('.key_BVConversationsStores').val()
+                $('code.objectivec#objc-bvsdkmanager').append('[[BVSDKManager sharedManager] setApiKeyConversationsStores:@"' + conversationsStoresKey + '"];<br/>');
             }
 
             if ($('.cb_BVAdvertising:checked').length > 0 || $('.cb_BVRecommendations:checked').length > 0){
-              var advertisingKey = $('.key_ShoppeAdvertising').val()
-              $('code.objectivec#objc-bvsdkmanager').append('[[BVSDKManager sharedManager] setApiKeyShopperAdvertising:@"' + advertisingKey + '"];<br/>');
+                var advertisingKey = $('.key_ShoppeAdvertising').val()
+                $('code.objectivec#objc-bvsdkmanager').append('[[BVSDKManager sharedManager] setApiKeyShopperAdvertising:@"' + advertisingKey + '"];<br/>');
             }
 
-            if ($('.cb_BVLocation:checked').length > 0 || $('.cb_BVLocation:checked').length > 0){
-              var locationKey = $('.key_BVCLocation').val()
-              $('code.objectivec#objc-bvsdkmanager').append('[[BVSDKManager sharedManager] setApiKeyLocation:@"' + locationKey + '"];<br/>');
+            if ($('.cb_BVLocation:checked').length > 0){
+                var locationKey = $('.key_BVCLocation').val()
+                $('code.objectivec#objc-bvsdkmanager').append('[[BVSDKManager sharedManager] setApiKeyLocation:@"' + locationKey + '"];<br/>');
+            }
+
+            if ($('.cb_BVPIN:checked').length > 0 ){
+                var pinKey = $('.key_BVPIN').val()
+                $('code.objectivec#objc-bvsdkmanager').append('[[BVSDKManager sharedManager] setApiKeyPIN:@"' + pinKey + '"];<br/>');
             }
 
             $('code.objectivec#objc-bvsdkmanager').append('[[BVSDKManager sharedManager] setStaging:YES];  // Set to NO for production!')
@@ -560,64 +561,68 @@ Once you have install the source code for the SDK, you are now ready to add your
             ////////////////////////////////
             var REPLACE_ME  = "ERROR"
             if ($('.edit_ClientID#clientId').val().length > 0){
-             clientId = $('.edit_ClientID#clientId').val()
+                clientId = $('.edit_ClientID#clientId').val()
             } else {
-             clientId = REPLACE_ME
+                clientId = REPLACE_ME
             }
 
             $('code.swift#swift-bvsdkmanager').text('BVSDKManager.shared().clientId = "' + clientId + '"')
             $('code.swift#swift-bvsdkmanager').append('<br/>BVSDKManager.shared().staging = true; <br/>')
 
             if ($('.cb_BVCurations:checked').length > 0){
-               var curationsKey = $('.key_BVCurations').val()
-               $('code.swift#swift-bvsdkmanager').append('BVSDKManager.shared().apiKeyCurations = "' + curationsKey + '"<br/>');
+                var curationsKey = $('.key_BVCurations').val()
+                $('code.swift#swift-bvsdkmanager').append('BVSDKManager.shared().apiKeyCurations = "' + curationsKey + '"<br/>');
             }
 
             if ($('.cb_BVConversations:checked').length > 0){
-              var conversationsKey = $('.key_BVConversations').val()
-              $('code.swift#swift-bvsdkmanager').append('BVSDKManager.shared().apiKeyConversations = "' + conversationsKey + '"<br/>');
+                var conversationsKey = $('.key_BVConversations').val()
+                $('code.swift#swift-bvsdkmanager').append('BVSDKManager.shared().apiKeyConversations = "' + conversationsKey + '"<br/>');
             }
 
             if ($('.cb_BVConversationsStores:checked').length > 0){
-              var conversationsStoresKey = $('.key_BVConversationsStores').val()
-              $('code.swift#swift-bvsdkmanager').append('BVSDKManager.shared().apiKeyConversationsStores = "' + conversationsStoresKey + '"<br/>');
+                var conversationsStoresKey = $('.key_BVConversationsStores').val()
+                $('code.swift#swift-bvsdkmanager').append('BVSDKManager.shared().apiKeyConversationsStores = "' + conversationsStoresKey + '"<br/>');
             }
 
-            if ($('.cb_BVLocation:checked').length > 0 || $('.cb_BVLocation:checked').length > 0){
-              var locationKey = $('.key_BVCLocation').val()
-              $('code.swift#swift-bvsdkmanager').append('BVSDKManager.shared().apiKeyLocation = "' + locationKey + '"<br/>');
+            if ($('.cb_BVLocation:checked').length > 0){
+                var locationKey = $('.key_BVCLocation').val()
+                $('code.swift#swift-bvsdkmanager').append('BVSDKManager.shared().apiKeyLocation = "' + locationKey + '"<br/>');
             }
 
+            if ($('.cb_BVPIN:checked').length > 0){
+                var pinKey = $('.key_BVPIN').val()
+                $('code.swift#swift-bvsdkmanager').append('BVSDKManager.shared().apiKeyPIN = "' + pinKey + '"<br/>');
+            }
 
-    }
+        }
 
-    function formatCode() {
+        function formatCode() {
 
-      // You can use highlightBlock to highlight blocks dynamically inserted into the page. Just make sure you don't do it twice for already highlighted blocks.
+            // You can use highlightBlock to highlight blocks dynamically inserted into the page. Just make sure you don't do it twice for already highlighted blocks.
 
-      //If your code container relies on <br> tags instead of line breaks (i.e. if it's not <pre>) set the useBR option to true:
-      hljs.configure({useBR: true});
-      $('pre code').each(function(i, block) {
-          hljs.highlightBlock(block);
+            //If your code container relies on <br> tags instead of line breaks (i.e. if it's not <pre>) set the useBR option to true:
+            hljs.configure({useBR: true});
+            $('pre code').each(function(i, block) {
+                hljs.highlightBlock(block);
+            });
+
+        }
+
+        // Handle text box input changes
+        $(':text').on('input',function(e){
+            validateTextInputs()
+            updateCodeSnippets()
+            formatCode()
         });
 
-    }
 
-    // Handle text box input changes
-    $(':text').on('input',function(e){
-        validateTextInputs()
-      updateCodeSnippets()
-      formatCode()
-    });
+        // Handle checkbox toggles
+        $(':checkbox').on('click', function() {
+            validateTextInputs()
+            updateCodeSnippets()
+            formatCode()
 
-
-    // Handle checkbox toggles
-    $(':checkbox').on('click', function() {
-      validateTextInputs()
-      updateCodeSnippets()
-      formatCode()
-
-    });
+        });
     </script>
 
     		</div>
@@ -647,21 +652,18 @@ Once you have install the source code for the SDK, you are now ready to add your
     <br>
 
     <ul class="nav nav-tabs" role="tablist">
-      <li role="presentation" class="active"><a href="#swift" aria-controls="swift" role="tab" data-toggle="tab">Swift</a></li>
-      <li role="presentation"><a href="#objc" aria-controls="objc" role="tab" data-toggle="tab">Objective-C / Swift with bridging header</a></li>
+        <li role="presentation" class="active"><a href="#swift" aria-controls="swift" role="tab" data-toggle="tab">Swift</a></li>
+        <li role="presentation"><a href="#objc" aria-controls="objc" role="tab" data-toggle="tab">Objective-C</a></li>
     </ul>
 
     <!-- Tab panes for including headers/imports -->
     <div class="tab-content code-switcher">
-      <div role="tabpanel" class="tab-pane active" id="swift">
-    <pre><code class="swift" id="swift-headers">// When using Dynamic Frameworks with Swift (not using Objective-C Bridging header),
-// use the folling import in each of your .swift files
-import BVSDK
+        <div role="tabpanel" class="tab-pane active" id="swift">
+    <pre><code class="swift" id="swift-headers">import BVSDK
     </code></pre>
-      </div>
-      <div role="tabpanel" class="tab-pane" id="objc">
-    <pre><code class="objectivec" id="objc-headers">// Import BVSDK.h for all modules, including Conversations
-#import &lt;BVSDK/BVSDK.h&gt;
+        </div>
+        <div role="tabpanel" class="tab-pane" id="objc">
+    <pre><code class="objectivec" id="objc-headers">@import BVSDK;
     </code></pre>
         </div>
     </div>
@@ -689,20 +691,20 @@ import BVSDK
   <div id="installationBVSDKManager" class="panel-collapse collapse " role="tabpanel" aria-labelledby="headingOne">
     <div class="panel-body">
 
-    <p>Insert the following code in your <code>AppDelegate#applicationDidFinishLaunching</code></p>
+    <p>Insert the following code in <code>AppDelegate#applicationDidFinishLaunching</code>:</p>
 
     <ul class="nav nav-tabs" role="tablist">
-      <li role="presentation" class="active"><a href="#swift" aria-controls="swift" role="tab" data-toggle="tab">Swift</a></li>
-      <li role="presentation"><a href="#objc" aria-controls="objc" role="tab" data-toggle="tab">Objective-C / Swift with bridging header</a></li>
+        <li role="presentation" class="active"><a href="#swift" aria-controls="swift" role="tab" data-toggle="tab">Swift</a></li>
+        <li role="presentation"><a href="#objc" aria-controls="objc" role="tab" data-toggle="tab">Objective-C</a></li>
     </ul>
 
     <!-- Tab panes for including headers/imports -->
     <div class="tab-content code-switcher">
-      <div role="tabpanel" class="tab-pane active" id="swift">
+        <div role="tabpanel" class="tab-pane active" id="swift">
     <pre><code class="swift" id="swift-bvsdkmanager">// You haven't selected a configuration option yet in Step 1!
     </code></pre>
-      </div>
-      <div role="tabpanel" class="tab-pane" id="objc">
+        </div>
+        <div role="tabpanel" class="tab-pane" id="objc">
     <pre><code class="objectivec" id="objc-bvsdkmanager">// You haven't selected a configuration option yet in Step 1!
     </code></pre>
         </div>
@@ -711,7 +713,7 @@ import BVSDK
     		</div>
     </div>
   </div>
-   
+
 </div>
 
 <br>

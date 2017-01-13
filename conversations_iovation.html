@@ -189,7 +189,9 @@ $(function(){
                         </div>
 
                     </li>
-
+                    <li class="nav-item">
+                        <a class="nav-link" href="pin.html"><span>Post Interaction Notifications (Beta)</span></a>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link" href="location.html"><span>Location (Beta)</span></a>
                     </li>
@@ -287,17 +289,14 @@ $(function(){
 <h3>iOS Integration</h3>
 <hr/>
 
-<p><span class="bg-warning well-lg" style="padding:4px;"> <i class="fa fa-hand-o-right"></i>Important: Before you start implementing this Mobile SDK module, verify your installation by checking the steps on the <a href="./installation.html">Installation and Configuration</a> page.</span></p>
-
+<p><span class="bg-warning well-lg" style="padding:4px;"> <i class="fa fa-hand-o-right"></i>  Important: Before you start implementing this Mobile SDK module, verify your installation by checking the steps on the <a href="./installation.html">Installation and Configuration</a> page.  </span></p>
 
 
 <p>
   After you integrate the <code>iovation.framework</code> and the
   <code>DevicePrint</code> starts, the rest of the integration process is
-  simple. For any <code>BVPost</code> request object created, add the
-  following:
+  simple. For any <code>BVReviewSubmission</code>, <code>BVQuestionSubmission</code>, or <code>BVAnswerSubmission</code> request object created, add the <code>fingerprint</code> value like the sample below:
 </p>
-
 
 <ul class="nav nav-tabs" role="tablist">
   <li role="presentation" class="active"><a href="#swift" aria-controls="swift" role="tab" data-toggle="tab">Swift</a></li>
@@ -309,7 +308,7 @@ $(function(){
 <div class="tab-content code-switcher">
 	<!-- swift -->
 	<div role="tabpanel" class="tab-pane active" id="swift">
-<pre><code class="swift">let review = ReviewSubmission( ... )
+<pre><code class="swift">let review = BVReviewSubmission( ... )
 
 review.fingerPrint = DevicePrint.blackbox()
 
@@ -330,11 +329,7 @@ review.fingerPrint = [DevicePrint blackbox];
 <hr/>
 
 <p>
-  After you install the iovation SDK with the Bazaarvoice Mobile SDK in your
-  application, you can begin to POST Conversations content. After you have sent
-  events, such as the one outlined in the SampleApplication, contact your
-  Bazaarvoice implementation team or authenticity team to verify your
-  integration is set up and working correctly in your production environment.
+  After you install the iovation SDK with the Bazaarvoice Mobile SDK in your application, you can begin to POST Conversations content. Before your submit you application to the App Store, please submit one Review, Answer, or Question to Bazaarvoice on production. You can send the transaction ID for the successful submission and Bazaarvoice can verify the Authenticity service is properly set up.
 </p>
 
 <br>
