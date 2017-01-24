@@ -9,7 +9,7 @@ import UIKit
 import BVSDK
 
 
-class ViewController: UIViewController, UITableViewDataSource {
+class ReviewsViewController: UIViewController, UITableViewDataSource {
     
     @IBOutlet weak var reviewsTableView : BVReviewsTableView!
     var reviews : [BVReview] = []

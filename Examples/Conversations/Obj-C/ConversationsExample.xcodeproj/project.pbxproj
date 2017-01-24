@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		873C795B1D4BF0C90048AD55 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 873C795A1D4BF0C90048AD55 /* ViewController.m */; };
+		873C795B1D4BF0C90048AD55 /* ReviewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 873C795A1D4BF0C90048AD55 /* ReviewsViewController.m */; };
 		874863881D4BDA8F00B43F00 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 874863841D4BDA8F00B43F00 /* LaunchScreen.storyboard */; };
 		874863891D4BDA8F00B43F00 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 874863861D4BDA8F00B43F00 /* Main.storyboard */; };
 		8748638C1D4BDDCF00B43F00 /* MyReviewTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8748638B1D4BDDCF00B43F00 /* MyReviewTableViewCell.m */; };
@@ -18,6 +18,7 @@
 		8748639A1D4BE5FB00B43F00 /* StatisticTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 874863961D4BE5FB00B43F00 /* StatisticTableViewCell.xib */; };
 		876DF5591CF4E87B005D841F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 876DF5581CF4E87B005D841F /* main.m */; };
 		876DF55C1CF4E87B005D841F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 876DF55B1CF4E87B005D841F /* AppDelegate.m */; };
+		87C5FF701E3A64B2004EE6E8 /* AuthorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87C5FF6F1E3A64B2004EE6E8 /* AuthorViewController.m */; };
 		87C768431D4BB0AB0091E5A1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 87C768391D4BB0AB0091E5A1 /* Assets.xcassets */; };
 		87C7684C1D4BB1660091E5A1 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87C7684B1D4BB1660091E5A1 /* RootViewController.m */; };
 		87EB7D7D1D4BF2140014D5F9 /* QuestionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87EB7D7C1D4BF2140014D5F9 /* QuestionsViewController.m */; };
@@ -33,8 +34,8 @@
 		00DA1C5CD00EE68690FD143A /* Pods_ConversationsExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ConversationsExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0805DFF68F2200FDCA49BE4A /* Pods-ConversationsExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ConversationsExample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ConversationsExample/Pods-ConversationsExample.debug.xcconfig"; sourceTree = "<group>"; };
 		51881DC8EBF9E9D2AB6B810B /* Pods-ConversationsExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ConversationsExample.release.xcconfig"; path = "Pods/Target Support Files/Pods-ConversationsExample/Pods-ConversationsExample.release.xcconfig"; sourceTree = "<group>"; };
-		873C79591D4BF0C90048AD55 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		873C795A1D4BF0C90048AD55 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		873C79591D4BF0C90048AD55 /* ReviewsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReviewsViewController.h; sourceTree = "<group>"; };
+		873C795A1D4BF0C90048AD55 /* ReviewsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReviewsViewController.m; sourceTree = "<group>"; };
 		874863851D4BDA8F00B43F00 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		874863871D4BDA8F00B43F00 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Main.storyboard; sourceTree = "<group>"; };
 		8748638A1D4BDDCF00B43F00 /* MyReviewTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyReviewTableViewCell.h; path = ConversationsExample/MyReviewTableViewCell.h; sourceTree = SOURCE_ROOT; };
@@ -50,6 +51,8 @@
 		876DF55A1CF4E87B005D841F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		876DF55B1CF4E87B005D841F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		876DF5681CF4E87B005D841F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		87C5FF6E1E3A64B2004EE6E8 /* AuthorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthorViewController.h; sourceTree = "<group>"; };
+		87C5FF6F1E3A64B2004EE6E8 /* AuthorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthorViewController.m; sourceTree = "<group>"; };
 		87C768391D4BB0AB0091E5A1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../../shared/Assets.xcassets; sourceTree = "<group>"; };
 		87C7684A1D4BB1660091E5A1 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RootViewController.h; path = ConversationsExample/RootViewController.h; sourceTree = SOURCE_ROOT; };
 		87C7684B1D4BB1660091E5A1 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RootViewController.m; path = ConversationsExample/RootViewController.m; sourceTree = SOURCE_ROOT; };
@@ -109,10 +112,10 @@
 		876DF5561CF4E87A005D841F /* ConversationsExample */ = {
 			isa = PBXGroup;
 			children = (
-				87FF7F321D4F91BA00019D54 /* ViewControllers */,
-				87FF7F331D4F91C200019D54 /* TableViewCells */,
 				876DF55A1CF4E87B005D841F /* AppDelegate.h */,
 				876DF55B1CF4E87B005D841F /* AppDelegate.m */,
+				87FF7F321D4F91BA00019D54 /* ViewControllers */,
+				87FF7F331D4F91C200019D54 /* TableViewCells */,
 				876DF5681CF4E87B005D841F /* Info.plist */,
 				874863831D4BDA8F00B43F00 /* Base.lproj */,
 				87C768391D4BB0AB0091E5A1 /* Assets.xcassets */,
@@ -134,8 +137,10 @@
 			children = (
 				87C7684A1D4BB1660091E5A1 /* RootViewController.h */,
 				87C7684B1D4BB1660091E5A1 /* RootViewController.m */,
-				873C79591D4BF0C90048AD55 /* ViewController.h */,
-				873C795A1D4BF0C90048AD55 /* ViewController.m */,
+				873C79591D4BF0C90048AD55 /* ReviewsViewController.h */,
+				873C795A1D4BF0C90048AD55 /* ReviewsViewController.m */,
+				87C5FF6E1E3A64B2004EE6E8 /* AuthorViewController.h */,
+				87C5FF6F1E3A64B2004EE6E8 /* AuthorViewController.m */,
 				87EB7D7B1D4BF2140014D5F9 /* QuestionsViewController.h */,
 				87EB7D7C1D4BF2140014D5F9 /* QuestionsViewController.m */,
 				87FF7F291D4F90B300019D54 /* AnswersViewController.h */,
@@ -312,13 +317,14 @@
 				87FF7F2B1D4F90B300019D54 /* AnswersViewController.m in Sources */,
 				87EB7D861D4CCF0D0014D5F9 /* InlineRatingsViewController.m in Sources */,
 				87EB7D831D4BFB890014D5F9 /* StatisticTableViewCell.m in Sources */,
-				873C795B1D4BF0C90048AD55 /* ViewController.m in Sources */,
+				873C795B1D4BF0C90048AD55 /* ReviewsViewController.m in Sources */,
 				87EB7D801D4BF5040014D5F9 /* PDPViewController.m in Sources */,
 				8748638C1D4BDDCF00B43F00 /* MyReviewTableViewCell.m in Sources */,
 				87EB7D7D1D4BF2140014D5F9 /* QuestionsViewController.m in Sources */,
 				87FF7F311D4F91B100019D54 /* MyAnswerTableViewCell.m in Sources */,
 				876DF55C1CF4E87B005D841F /* AppDelegate.m in Sources */,
 				874863921D4BE47300B43F00 /* MyQuestionTableViewCell.m in Sources */,
+				87C5FF701E3A64B2004EE6E8 /* AuthorViewController.m in Sources */,
 				876DF5591CF4E87B005D841F /* main.m in Sources */,
 				87C7684C1D4BB1660091E5A1 /* RootViewController.m in Sources */,
 			);

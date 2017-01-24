@@ -9,7 +9,7 @@
 
 Pod::Spec.new do |s|
   s.name = "BVSDK"
-  s.version = '6.2.1'
+  s.version = '6.3.0'
   s.homepage = 'https://developer.bazaarvoice.com'
   s.license = { :type => 'Commercial', :text => 'See https://developer.bazaarvoice.com/API_Terms_of_Use' }
   s.author = { 'Bazaarvoice' => 'support@bazaarvoice.com' }

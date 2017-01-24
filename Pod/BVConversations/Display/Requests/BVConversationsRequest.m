@@ -10,7 +10,6 @@
 #import "BVDiagnosticHelpers.h"
 #import "BVConversationsErrorResponse.h"
 #import "BVConversationsAnalyticsUtil.h"
-#import "BVStoreReviewsResponse.h"
 
 @implementation BVConversationsRequest
 
@@ -78,7 +77,24 @@
     } failure:failure];
     
 }
+
+- (void)loadProfile:(BVConversationsRequest * _Nonnull)request completion:(void (^ _Nonnull)(BVAuthorResponse * _Nonnull response))completion failure:(void (^ _Nonnull)(NSArray<NSError *> * _Nonnull errors))failure {
     
+    [self loadContent:request completion:^(NSDictionary * _Nonnull response) {
+        BVAuthorResponse* authorResponse = [[BVAuthorResponse alloc] initWithApiResponse:response];
+        // invoke success callback on main thread
+        dispatch_async(dispatch_get_main_queue(), ^{
+            completion(authorResponse);
+        });
+
+        if (authorResponse && authorResponse.results){
+       [    self sendAuthorAnalytics:authorResponse.results.firstObject];
+        }
+        
+    } failure:failure];
+    
+}
+
 - (void)loadStores:(BVConversationsRequest * _Nonnull)request completion:(void (^ _Nonnull)(BVBulkStoresResponse * _Nonnull response))completion failure:(void (^ _Nonnull)(NSArray<NSError *> * _Nonnull errors))failure {
     
     [self loadContent:request completion:^(NSDictionary * _Nonnull response) {
@@ -288,6 +304,15 @@
         }
         // send pageview for product
         [BVConversationsAnalyticsUtil queueAnalyticsEventForProductPageView:product];
+    }
+    
+}
+
+- (void)sendAuthorAnalytics:(BVAuthor*)author {
+    
+    if (author) {
+        // send usedfeature for the author display
+        [BVConversationsAnalyticsUtil queueAnalyticsEventForAuthorDisplay:author];
     }
     
 }

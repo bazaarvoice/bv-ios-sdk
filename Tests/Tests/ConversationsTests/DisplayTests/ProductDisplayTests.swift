@@ -50,6 +50,7 @@ class ProductDisplayTests: XCTestCase {
         }) { (error) in
             
             XCTFail("product display request error: \(error)")
+            expectation.fulfill()
             
         }
         
