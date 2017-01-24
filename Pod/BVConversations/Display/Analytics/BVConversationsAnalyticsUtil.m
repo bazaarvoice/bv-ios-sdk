@@ -139,7 +139,21 @@
     [[BVAnalyticsManager sharedManager] queuePageViewEventDict:event];
 
 }
+
++(void)queueAnalyticsEventForAuthorDisplay:(nonnull BVAuthor *)author {
     
+    if(author == nil) {
+        return;
+    }
+    
+    NSMutableDictionary* event = [self authorDisplayEvent];
+    event[@"interaction"] = @"false";
+    event[@"page"] = author.authorId;
+    event[@"name"] = @"Default";
+    [[BVAnalyticsManager sharedManager] queueEvent:event];
+    
+}
+
 +(void)queueAnalyticsEventForStorePageView:(BVStore* _Nullable)store {
     
     if(store == nil) {
@@ -277,9 +291,14 @@
     
 }
 
++(NSString*)profileProductName {
+    return @"Profiles";
+}
+
 +(NSString*)reviewsProductName {
     return @"RatingsAndReviews";
 }
+
 +(NSString*)questionsAnswersProductName {
     return @"AskAndAnswer";
 }
@@ -299,6 +318,15 @@
            @"source": @"native-mobile-sdk",
            @"bvProduct": [self reviewsProductName]
            }];
+}
+
++(NSMutableDictionary*)authorDisplayEvent {
+    return [NSMutableDictionary dictionaryWithDictionary:@{
+                                                           @"type": @"Used",
+                                                           @"cl": @"Feature",
+                                                           @"source": @"native-mobile-sdk",
+                                                           @"bvProduct": [self profileProductName]
+                                                           }];
 }
 
 

@@ -1,16 +1,16 @@
 //
-//  ViewController.m
+//  ReviewsViewController.m
 //  ConversationsExample
 //
 //  Copyright © 2016 Bazaarvoice. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "ReviewsViewController.h"
 #import "MyReviewTableViewCell.h"
 
 @import BVSDK;
 
-@interface ViewController () <UITableViewDataSource>
+@interface ReviewsViewController () <UITableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet BVReviewsTableView *reviewsTableView;
 
@@ -19,7 +19,7 @@
 @end
 
 
-@implementation ViewController
+@implementation ReviewsViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];

@@ -15,6 +15,7 @@
 @class BVAnswerSubmission;
 @class BVFeedbackSubmission;
 @class BVStore;
+@class BVAuthor;
 
 /// Internal enum - used only within BVSDK
 typedef enum {
@@ -51,5 +52,6 @@ typedef enum {
     
 +(void)queueAnalyticsEventForStorePageView:(BVStore* _Nullable)store;
 
++(void)queueAnalyticsEventForAuthorDisplay:(nonnull BVAuthor *)author;
 
 @end

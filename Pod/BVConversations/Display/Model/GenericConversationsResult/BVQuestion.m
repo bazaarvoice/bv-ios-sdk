@@ -19,10 +19,14 @@
         
         NSArray<NSString*>* answerIds = apiResponse[@"AnswerIds"];
         NSMutableArray<BVAnswer*>* tempAnswers = [NSMutableArray array];
-        for(NSString* answerId in answerIds) {
-            BVAnswer* answer = [includes getAnswerById:answerId];
-            [tempAnswers addObject:answer];
+        
+        if (includes){
+            for(NSString* answerId in answerIds) {
+                BVAnswer* answer = [includes getAnswerById:answerId];
+                [tempAnswers addObject:answer];
+            }
         }
+        
         self.answers = tempAnswers;
         
         SET_IF_NOT_NULL(self.questionSummary, apiResponse[@"QuestionSummary"])
