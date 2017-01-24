@@ -14,6 +14,7 @@
 #import "BVBulkRatingsResponse.h"
 #import "BVBulkStoresResponse.h"
 #import "BVStoreReviewsResponse.h"
+#import "BVAuthorResponse.h"
 
 typedef void (^ReviewRequestCompletionHandler)(BVReviewsResponse* _Nonnull response);
 typedef void (^ProductRequestCompletionHandler)(BVProductsResponse* _Nonnull response);
@@ -30,6 +31,7 @@ typedef void (^StoreReviewRequestCompletionHandler)(BVStoreReviewsResponse* _Non
 -(NSString* _Nonnull)endpoint;
 +(NSString* _Nonnull)commonEndpoint;
 
+- (void)loadProfile:(BVConversationsRequest * _Nonnull)request completion:(void (^ _Nonnull)(BVAuthorResponse * _Nonnull response))completion failure:(void (^ _Nonnull)(NSArray<NSError *> * _Nonnull errors))failure;
 - (void)loadReviews:(BVConversationsRequest * _Nonnull)request completion:(void (^ _Nonnull)(BVReviewsResponse * _Nonnull response))completion failure:(void (^ _Nonnull)(NSArray<NSError *> * _Nonnull errors))failure;
 - (void)loadProducts:(BVConversationsRequest * _Nonnull)request completion:(void (^ _Nonnull)(BVProductsResponse * _Nonnull response))completion failure:(void (^ _Nonnull)(NSArray<NSError *> * _Nonnull errors))failure;
 - (void)loadQuestions:(BVConversationsRequest * _Nonnull)request completion:(void (^ _Nonnull)(BVQuestionsAndAnswersResponse * _Nonnull response))completion failure:(void (^ _Nonnull)(NSArray<NSError *> * _Nonnull errors))failure;

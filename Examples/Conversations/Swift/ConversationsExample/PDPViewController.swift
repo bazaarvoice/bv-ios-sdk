@@ -70,7 +70,6 @@ class PDPViewController: BVProductDisplayPageViewController, UITableViewDataSour
         
     }
     
-    
     // MARK: UITableViewDatasource
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {

@@ -48,18 +48,14 @@ FOUNDATION_EXPORT const unsigned char BVSDKVersionString[];
 #import <BVSDK/BVFormField.h>
 #import <BVSDK/BVFormFieldOptions.h>
 #import <BVSDK/BVProduct.h>
+#import <BVSDK/BVAuthor.h>
 
-// Analytics
-#import <BVSDK/BVAnalyticsManager.h>
-
-// Conversations
 #import "BVConversationsAnalyticsUtil.h"
 #import "BVConversationsErrorResponse.h"
 #import "BVConversationsInclude.h"
 #import "BVFilter.h"
 #import "BVFormField.h"
 #import "BVFormFieldOptions.h"
-#import "BVProduct.h"
 #import <BVSDK/BVModelUtil.h>
 
 #import <BVSDK/BVUploadableStorePhoto.h>
@@ -93,6 +89,7 @@ FOUNDATION_EXPORT const unsigned char BVSDKVersionString[];
 #import <BVSDK/BVStoreReviewsRequest.h>
 #import <BVSDK/BVQuestionSubmission.h>
 
+#import <BVSDK/BVAuthorRequest.h>
 #import <BVSDK/BVReviewsRequest.h>
 #import <BVSDK/BVReviewTableViewCell.h>
 #import <BVSDK/BVReviewView.h>
@@ -117,13 +114,11 @@ FOUNDATION_EXPORT const unsigned char BVSDKVersionString[];
 #import <BVSDK/BVCurationsCollectionViewCell.h>
 #import <BVSDK/BVCurationsAnalyticsHelper.h>
 
-// Curations
 #import <BVSDK/BVCurationsFeedRequest.h>
 #import <BVSDK/BVCurationsFeedItem.h>
 #import <BVSDK/BVCurationsAddPostRequest.h>
 #import <BVSDK/BVCurationsAnalyticsHelper.h>
 #import <BVSDK/BVCurationsCollectionViewCell.h>
-
 #import <BVSDK/BVCurationsFeedLoader.h>
 #import <BVSDK/BVCurationsPhotoUploader.h>
 

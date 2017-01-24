@@ -15,7 +15,7 @@
     // Override point for customization after application launch.
     
 #warning Add your Conversations API key and client id below!
-    [BVSDKManager sharedManager].clientId = @"apitestcustomer";
+    [BVSDKManager sharedManager].clientId = @"apireadonlysandbox";
     [BVSDKManager sharedManager].apiKeyConversations = @"KEY_REMOVED";
     [[BVSDKManager sharedManager] setLogLevel:BVLogLevelVerbose];
     [BVSDKManager sharedManager].staging = true;

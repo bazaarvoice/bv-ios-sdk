@@ -99,6 +99,17 @@
 		87C5FEC71E22A05D004EE6E8 /* BVViewsHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 87C5FEB11E22A05D004EE6E8 /* BVViewsHelper.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		87C5FEC81E22A05D004EE6E8 /* BVViewsHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 87C5FEB21E22A05D004EE6E8 /* BVViewsHelper.m */; };
 		87C5FEC91E22A05D004EE6E8 /* BVMessageInterceptor.h in Headers */ = {isa = PBXBuildFile; fileRef = 87C5FEB41E22A05D004EE6E8 /* BVMessageInterceptor.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		87C5FF581E368DF2004EE6E8 /* BVAuthorRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 87C5FF561E368DF2004EE6E8 /* BVAuthorRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		87C5FF591E368DF2004EE6E8 /* BVAuthorRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 87C5FF571E368DF2004EE6E8 /* BVAuthorRequest.m */; };
+		87C5FF5C1E36A8B7004EE6E8 /* BVAuthorResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = 87C5FF5A1E36A8B7004EE6E8 /* BVAuthorResponse.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		87C5FF5D1E36A8B7004EE6E8 /* BVAuthorResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 87C5FF5B1E36A8B7004EE6E8 /* BVAuthorResponse.m */; };
+		87C5FF5F1E36AB70004EE6E8 /* ProfileDisplayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87C5FF5E1E36AB70004EE6E8 /* ProfileDisplayTests.swift */; };
+		87C5FF621E36B416004EE6E8 /* BVAuthor.h in Headers */ = {isa = PBXBuildFile; fileRef = 87C5FF601E36B416004EE6E8 /* BVAuthor.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		87C5FF631E36B416004EE6E8 /* BVAuthor.m in Sources */ = {isa = PBXBuildFile; fileRef = 87C5FF611E36B416004EE6E8 /* BVAuthor.m */; };
+		87C5FF661E393ED3004EE6E8 /* BVAuthorContentType.h in Headers */ = {isa = PBXBuildFile; fileRef = 87C5FF641E393ED3004EE6E8 /* BVAuthorContentType.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		87C5FF671E393ED3004EE6E8 /* BVAuthorContentType.m in Sources */ = {isa = PBXBuildFile; fileRef = 87C5FF651E393ED3004EE6E8 /* BVAuthorContentType.m */; };
+		87C5FF6A1E394C73004EE6E8 /* BVAuthorInclude.h in Headers */ = {isa = PBXBuildFile; fileRef = 87C5FF681E394C73004EE6E8 /* BVAuthorInclude.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		87C5FF6B1E394C73004EE6E8 /* BVAuthorInclude.m in Sources */ = {isa = PBXBuildFile; fileRef = 87C5FF691E394C73004EE6E8 /* BVAuthorInclude.m */; };
 		87F2DAB11DAD579D00FB43F3 /* BVSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87F2DAA71DAD579D00FB43F3 /* BVSDK.framework */; };
 		87F2DAB81DAD579D00FB43F3 /* BVSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = 87F2DAAA1DAD579D00FB43F3 /* BVSDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		87F2DC171DAD585E00FB43F3 /* BVAdsMessageInterceptor.h in Headers */ = {isa = PBXBuildFile; fileRef = 87F2DAC31DAD585E00FB43F3 /* BVAdsMessageInterceptor.h */; settings = {ATTRIBUTES = (Private, ); }; };
@@ -535,6 +546,17 @@
 		87C5FEB41E22A05D004EE6E8 /* BVMessageInterceptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVMessageInterceptor.h; sourceTree = "<group>"; };
 		87C5FEB51E22A05D004EE6E8 /* BVProductReviewRichNotificationCenter+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "BVProductReviewRichNotificationCenter+Private.h"; sourceTree = "<group>"; };
 		87C5FECC1E22A5BE004EE6E8 /* BVProductReviewNotificationConfigurationLoader+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "BVProductReviewNotificationConfigurationLoader+Private.h"; path = "Tests/Tests/BVProductReviewNotificationConfigurationLoader+Private.h"; sourceTree = SOURCE_ROOT; };
+		87C5FF561E368DF2004EE6E8 /* BVAuthorRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVAuthorRequest.h; sourceTree = "<group>"; };
+		87C5FF571E368DF2004EE6E8 /* BVAuthorRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVAuthorRequest.m; sourceTree = "<group>"; };
+		87C5FF5A1E36A8B7004EE6E8 /* BVAuthorResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVAuthorResponse.h; sourceTree = "<group>"; };
+		87C5FF5B1E36A8B7004EE6E8 /* BVAuthorResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVAuthorResponse.m; sourceTree = "<group>"; };
+		87C5FF5E1E36AB70004EE6E8 /* ProfileDisplayTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileDisplayTests.swift; sourceTree = "<group>"; };
+		87C5FF601E36B416004EE6E8 /* BVAuthor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVAuthor.h; sourceTree = "<group>"; };
+		87C5FF611E36B416004EE6E8 /* BVAuthor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVAuthor.m; sourceTree = "<group>"; };
+		87C5FF641E393ED3004EE6E8 /* BVAuthorContentType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVAuthorContentType.h; sourceTree = "<group>"; };
+		87C5FF651E393ED3004EE6E8 /* BVAuthorContentType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVAuthorContentType.m; sourceTree = "<group>"; };
+		87C5FF681E394C73004EE6E8 /* BVAuthorInclude.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVAuthorInclude.h; sourceTree = "<group>"; };
+		87C5FF691E394C73004EE6E8 /* BVAuthorInclude.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVAuthorInclude.m; sourceTree = "<group>"; };
 		87F2DAA71DAD579D00FB43F3 /* BVSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BVSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		87F2DAAA1DAD579D00FB43F3 /* BVSDK.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BVSDK.h; sourceTree = "<group>"; };
 		87F2DAAB1DAD579D00FB43F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -1153,6 +1175,10 @@
 				87F2DB101DAD585E00FB43F3 /* BVStoreIncludeContentType.h */,
 				87F2DB111DAD585E00FB43F3 /* BVStoreIncludeContentType.m */,
 				87F2DB121DAD585E00FB43F3 /* Model */,
+				87C5FF641E393ED3004EE6E8 /* BVAuthorContentType.h */,
+				87C5FF651E393ED3004EE6E8 /* BVAuthorContentType.m */,
+				87C5FF681E394C73004EE6E8 /* BVAuthorInclude.h */,
+				87C5FF691E394C73004EE6E8 /* BVAuthorInclude.m */,
 				87F2DB5D1DAD585E00FB43F3 /* PDPContentType.h */,
 				87F2DB5E1DAD585E00FB43F3 /* PDPContentType.m */,
 				87F2DB5F1DAD585E00FB43F3 /* PDPInclude.h */,
@@ -1211,6 +1237,8 @@
 				87F2DB341DAD585E00FB43F3 /* BVProductsResponse.m */,
 				87F2DB351DAD585E00FB43F3 /* BVProductStatistics.h */,
 				87F2DB361DAD585E00FB43F3 /* BVProductStatistics.m */,
+				87C5FF5A1E36A8B7004EE6E8 /* BVAuthorResponse.h */,
+				87C5FF5B1E36A8B7004EE6E8 /* BVAuthorResponse.m */,
 				87F2DB371DAD585E00FB43F3 /* BVQAStatistics.h */,
 				87F2DB381DAD585E00FB43F3 /* BVQAStatistics.m */,
 				87F2DB391DAD585E00FB43F3 /* BVQuestionsAndAnswersResponse.h */,
@@ -1247,6 +1275,8 @@
 				87F2DB501DAD585E00FB43F3 /* BVQuestion.m */,
 				87F2DB511DAD585E00FB43F3 /* BVReview.h */,
 				87F2DB521DAD585E00FB43F3 /* BVReview.m */,
+				87C5FF601E36B416004EE6E8 /* BVAuthor.h */,
+				87C5FF611E36B416004EE6E8 /* BVAuthor.m */,
 				87F2DB531DAD585E00FB43F3 /* Stores */,
 			);
 			path = GenericConversationsResult;
@@ -1287,6 +1317,8 @@
 				87F2DB691DAD585E00FB43F3 /* BVQuestionsAndAnswersRequest.m */,
 				87F2DB6A1DAD585E00FB43F3 /* BVReviewsRequest.h */,
 				87F2DB6B1DAD585E00FB43F3 /* BVReviewsRequest.m */,
+				87C5FF561E368DF2004EE6E8 /* BVAuthorRequest.h */,
+				87C5FF571E368DF2004EE6E8 /* BVAuthorRequest.m */,
 				87F2DB6C1DAD585E00FB43F3 /* Stores */,
 			);
 			path = Requests;
@@ -1722,6 +1754,7 @@
 				87F2DDF41DAD945D00FB43F3 /* ConversationsDisplayTests.swift */,
 				87F2DDF51DAD945D00FB43F3 /* InlineRatingsDisplayTests.swift */,
 				87F2DDF61DAD945D00FB43F3 /* ProductDisplayTests.swift */,
+				87C5FF5E1E36AB70004EE6E8 /* ProfileDisplayTests.swift */,
 				87F2DDF71DAD945D00FB43F3 /* QuestionDisplayTests.swift */,
 				87F2DDF81DAD945D00FB43F3 /* ReviewDisplayTests.swift */,
 				87F2DDF91DAD945D00FB43F3 /* StoresTests */,
@@ -1968,7 +2001,12 @@
 				87A02B621E0967EE0002701B /* BVFeedbackSubmission.h in Headers */,
 				87A02B6A1E0971AC0002701B /* BVSubmittedFeedback.h in Headers */,
 				87A02B661E096B300002701B /* BVFeedbackSubmissionResponse.h in Headers */,
+				87C5FF581E368DF2004EE6E8 /* BVAuthorRequest.h in Headers */,
+				87C5FF5C1E36A8B7004EE6E8 /* BVAuthorResponse.h in Headers */,
 				87F2DCC51DAD585E00FB43F3 /* BVSortOptionProducts.h in Headers */,
+				87C5FF661E393ED3004EE6E8 /* BVAuthorContentType.h in Headers */,
+				87C5FF6A1E394C73004EE6E8 /* BVAuthorInclude.h in Headers */,
+				87C5FF621E36B416004EE6E8 /* BVAuthor.h in Headers */,
 				87F2DD201DAD585E00FB43F3 /* BVCurationsFeedItem.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2196,6 +2234,7 @@
 				87F2DCEE1DAD585E00FB43F3 /* BVReviewSubmission.m in Sources */,
 				87F2DC611DAD585E00FB43F3 /* BVBrand.m in Sources */,
 				87F2DC8C1DAD585E00FB43F3 /* BVReviewStatistics.m in Sources */,
+				87C5FF6B1E394C73004EE6E8 /* BVAuthorInclude.m in Sources */,
 				87F2DC571DAD585E00FB43F3 /* BVConversationsAnalyticsUtil.m in Sources */,
 				87F2DC1D1DAD585E00FB43F3 /* BVLocationEventsHelper.m in Sources */,
 				87F2DCEA1DAD585E00FB43F3 /* BVQuestionSubmissionResponse.m in Sources */,
@@ -2221,6 +2260,7 @@
 				87F2DCD61DAD585E00FB43F3 /* BVFormField.m in Sources */,
 				87C5FEC41E22A05D004EE6E8 /* BVSDKManager.m in Sources */,
 				87F2DD211DAD585E00FB43F3 /* BVCurationsFeedItem.m in Sources */,
+				87C5FF631E36B416004EE6E8 /* BVAuthor.m in Sources */,
 				87F2DCF21DAD585E00FB43F3 /* BVReviewSubmissionResponse.m in Sources */,
 				87F2DCDA1DAD585E00FB43F3 /* BVSubmission.m in Sources */,
 				87F2DCFC1DAD585E00FB43F3 /* BVAnswersTableView.m in Sources */,
@@ -2249,6 +2289,7 @@
 				87F2DCC81DAD585E00FB43F3 /* BVSortOptionQuestions.m in Sources */,
 				87C5FEBC1E22A05D004EE6E8 /* BVDiagnosticHelpers.m in Sources */,
 				87F2DD3B1DAD585E00FB43F3 /* BVProductReview.m in Sources */,
+				87C5FF591E368DF2004EE6E8 /* BVAuthorRequest.m in Sources */,
 				87F2DCF01DAD585E00FB43F3 /* BVReviewSubmissionErrorResponse.m in Sources */,
 				87F2DCA21DAD585E00FB43F3 /* BVStoreReviewsResponse.m in Sources */,
 				87F2DD251DAD585E00FB43F3 /* BVCurationsFeedRequest.m in Sources */,
@@ -2262,6 +2303,7 @@
 				87F2DC2A1DAD585E00FB43F3 /* BVLocationWrapper.m in Sources */,
 				87F2DCEC1DAD585E00FB43F3 /* BVSubmittedQuestion.m in Sources */,
 				87F2DCA01DAD585E00FB43F3 /* BVBulkStoresResponse.m in Sources */,
+				87C5FF5D1E36A8B7004EE6E8 /* BVAuthorResponse.m in Sources */,
 				87F2DD001DAD585E00FB43F3 /* BVAnswerView.m in Sources */,
 				87A02B671E096B300002701B /* BVFeedbackSubmissionResponse.m in Sources */,
 				87F2DC5F1DAD585E00FB43F3 /* BVBadgeType.m in Sources */,
@@ -2342,6 +2384,7 @@
 				87F2DCA81DAD585E00FB43F3 /* BVBulkRatingsRequest.m in Sources */,
 				87F2DCF81DAD585E00FB43F3 /* BVAnswerCollectionViewCell.m in Sources */,
 				87C5FE9E1E229168004EE6E8 /* BVProductReviewNotificationConfigurationLoader.m in Sources */,
+				87C5FF671E393ED3004EE6E8 /* BVAuthorContentType.m in Sources */,
 				87F2DC691DAD585E00FB43F3 /* BVConversationsErrorResponse.m in Sources */,
 				87F2DCC41DAD585E00FB43F3 /* BVSortOptionAnswers.m in Sources */,
 				87F2DC631DAD585E00FB43F3 /* BVBulkRatingsResponse.m in Sources */,
@@ -2379,6 +2422,7 @@
 				87F2DD631DAD5E9400FB43F3 /* BVRecommendationsTests.m in Sources */,
 				87F2DE091DAD945D00FB43F3 /* InlineRatingsDisplayTests.swift in Sources */,
 				87A02B5F1E0963710002701B /* FeedbackSubmissionTests.swift in Sources */,
+				87C5FF5F1E36AB70004EE6E8 /* ProfileDisplayTests.swift in Sources */,
 				87F2DD601DAD5E9400FB43F3 /* BVCurationsTests.m in Sources */,
 				87F2DE121DAD945D00FB43F3 /* PhotoSizesParsingTests.swift in Sources */,
 				87F2DE161DAD945D00FB43F3 /* ReviewSubmissionTests.swift in Sources */,
