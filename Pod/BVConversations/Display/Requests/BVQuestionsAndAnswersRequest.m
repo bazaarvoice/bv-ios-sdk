@@ -8,7 +8,7 @@
 #import "BVQuestionsAndAnswersRequest.h"
 #import "BVFilter.h"
 #import "BVCommaUtil.h"
-#import "BVLogger.h"
+#import "BVCore.h"
 
 @interface BVQuestionsAndAnswersRequest()
 
@@ -40,7 +40,14 @@
 }
 
 - (nonnull instancetype)addSort:(BVSortOptionProducts)option order:(BVSortOrder)order {
+    LOG_DEPRECATED_MESSAGE(@"addSort")
     BVSort* sort = [[BVSort alloc] initWithOption:option order:order];
+    [self.sorts addObject:sort];
+    return self;
+}
+
+- (nonnull instancetype)addQuestionSort:(BVSortOptionQuestions)option order:(BVSortOrder)order{
+    BVSort* sort = [[BVSort alloc] initWithOptionString:[BVSortOptionQuestionsUtil toString:option] order:order];
     [self.sorts addObject:sort];
     return self;
 }

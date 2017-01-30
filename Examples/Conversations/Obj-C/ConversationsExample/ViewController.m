@@ -32,6 +32,8 @@
     [self.reviewsTableView registerNib:[UINib nibWithNibName:@"MyReviewTableViewCell" bundle:nil] forCellReuseIdentifier:@"MyReviewTableViewCell"];
     
     BVReviewsRequest* request = [[BVReviewsRequest alloc] initWithProductId:@"test1" limit:20 offset:0];
+    [request addReviewSort:BVSortOptionReviewsSubmissionTime order:BVSortOrderDescending];
+    
     [self.reviewsTableView load:request success:^(BVReviewsResponse * _Nonnull response) {
         self.reviews = response.results;
         [self.reviewsTableView reloadData];

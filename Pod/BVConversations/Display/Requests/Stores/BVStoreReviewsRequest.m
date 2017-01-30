@@ -56,7 +56,14 @@
 }
     
 - (nonnull instancetype)addSort:(BVSortOptionProducts)option order:(BVSortOrder)order {
+    LOG_DEPRECATED_MESSAGE(@"addSort")
     BVSort* sort = [[BVSort alloc] initWithOption:option order:order];
+    [self.sorts addObject:sort];
+    return self;
+}
+
+- (nonnull instancetype)addReviewSort:(BVSortOptionReviews)option order:(BVSortOrder)order {
+    BVSort* sort = [[BVSort alloc] initWithOptionString:[BVSortOptionReviewUtil toString:option] order:order];
     [self.sorts addObject:sort];
     return self;
 }

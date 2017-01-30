@@ -7,7 +7,7 @@
 
 #import "BVSortOptionReviews.h"
 
-@implementation SortOptionReviewUtil
+@implementation BVSortOptionReviewUtil
 
 +(NSString* _Nonnull)toString:(BVSortOptionReviews)BVSortOptionReviews {
     

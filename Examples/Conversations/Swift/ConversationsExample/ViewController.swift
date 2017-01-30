@@ -23,6 +23,8 @@ class ViewController: UIViewController, UITableViewDataSource {
         reviewsTableView.registerNib(UINib(nibName: "MyReviewTableViewCell", bundle: nil), forCellReuseIdentifier: "MyReviewTableViewCell")
         
         let reviewsRequest = BVReviewsRequest(productId: "test1", limit: 20, offset: 0)
+        reviewsRequest.addReviewSort(.SubmissionTime, order: .Descending)
+        
         reviewsTableView.load(reviewsRequest, success: { (response) in
             
             self.reviews = response.results
