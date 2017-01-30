@@ -10,6 +10,8 @@
 #import "BVQuestionFilterType.h"
 #import "BVFilterOperator.h"
 #import "BVSort.h"
+#import "BVSortOptionQuestions.h"
+#import "BVSortOptionAnswers.h"
 #import "BVQuestionsAndAnswersResponse.h"
 
 /*
@@ -23,7 +25,10 @@
 - (nonnull instancetype)initWithProductId:(NSString * _Nonnull)productId limit:(int)limit offset:(int)offset;
 - (nonnull instancetype) __unavailable init;
 
-- (nonnull instancetype)addSort:(BVSortOptionProducts)option order:(BVSortOrder)order;
+- (nonnull instancetype)addSort:(BVSortOptionProducts)option order:(BVSortOrder)order; __deprecated_msg("use sortQuestions and sortAnswers instead");
+
+- (nonnull instancetype)addQuestionSort:(BVSortOptionQuestions)option order:(BVSortOrder)order;
+
 - (nonnull instancetype)addFilter:(BVQuestionFilterType)type filterOperator:(BVFilterOperator)filterOperator value:(NSString * _Nonnull)value;
 - (nonnull instancetype)addFilter:(BVQuestionFilterType)type filterOperator:(BVFilterOperator)filterOperator values:(NSArray<NSString *> * _Nonnull)values;
 - (nonnull instancetype)search:(NSString * _Nonnull)search;

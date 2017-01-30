@@ -68,7 +68,7 @@ class ConversationsDisplayTests: XCTestCase {
         let expectation = self.expectation(description: "")
         
         let request = BVReviewsRequest(productId: "test1", limit: 10, offset: 0)
-            .addSort(.rating, order: .ascending)
+            .addReviewSort(.rating, order: .ascending)
             .add(.hasPhotos, filterOperator: .equalTo, value: "true")
             .add(.hasComments, filterOperator: .equalTo, value: "false")
         

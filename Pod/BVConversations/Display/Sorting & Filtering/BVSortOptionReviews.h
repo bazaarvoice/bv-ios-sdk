@@ -38,7 +38,7 @@ typedef NS_ENUM(NSInteger, BVSortOptionReviews) {
     BVSortOptionReviewsUserLocation
 };
 
-@interface SortOptionReviewUtil : NSObject
+@interface BVSortOptionReviewUtil : NSObject
 
 +(NSString* _Nonnull)toString:(BVSortOptionReviews)BVSortOptionReviews;
 

@@ -19,10 +19,10 @@ typedef NS_ENUM(NSInteger, BVSortOptionQuestions) {
     BVSortOptionQuestionsHasBestAnswer,
     BVSortOptionQuestionsHasPhotos,
     BVSortOptionQuestionsHasStaffAnswers,
-    BVSortOptionQuestionsHasVideos,
     BVSortOptionQuestionsIsFeatured,
     BVSortOptionQuestionsIsSubjectActive,
     BVSortOptionQuestionsLastApprovedAnswerSubmissionTime,
+    BVSortOptionQuestionsLastModeratorCode,
     BVSortOptionQuestionsLastModeratedTime,
     BVSortOptionQuestionsLastModificationTime,
     BVSortOptionQuestionsProductId,
@@ -33,7 +33,8 @@ typedef NS_ENUM(NSInteger, BVSortOptionQuestions) {
     BVSortOptionQuestionsTotalFeedbackCount,
     BVSortOptionQuestionsTotalNegativeFeedbackCount,
     BVSortOptionQuestionsTotalPositiveFeedbackCount,
-    BVSortOptionQuestionsUserLocation
+    BVSortOptionQuestionsUserLocation,
+    BVSortOptionQuestionsHasVideos, // PRR Only
 };
 
 @interface BVSortOptionQuestionsUtil : NSObject

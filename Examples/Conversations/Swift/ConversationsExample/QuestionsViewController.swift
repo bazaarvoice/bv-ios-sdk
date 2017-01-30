@@ -24,6 +24,11 @@ class QuestionsViewController: UIViewController, UITableViewDataSource, UITableV
         
         let questionsRequest = BVQuestionsAndAnswersRequest(productId: "test1", limit: 20, offset: 0)
         
+        // optionally add in a sort option
+        questionsRequest.addQuestionSort(.SubmissionTime, order: .Ascending)
+        // optionally add in a filter
+        questionsRequest.addFilter(.HasAnswers, filterOperator: .EqualTo, value: "true")
+        
         self.questionsTableView.load(questionsRequest, success: { (response) in
             
             self.questions = response.results

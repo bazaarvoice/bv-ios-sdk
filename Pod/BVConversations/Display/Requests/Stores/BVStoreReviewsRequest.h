@@ -29,7 +29,10 @@
 
 - (nonnull instancetype)includeStatistics:(BVStoreIncludeContentType)contentType;
 
-- (nonnull instancetype)addSort:(BVSortOptionProducts)option order:(BVSortOrder)order;
+- (nonnull instancetype)addSort:(BVSortOptionProducts)option order:(BVSortOrder)order; __deprecated_msg("use sortReviews instead");
+
+- (nonnull instancetype)addReviewSort:(BVSortOptionReviews)option order:(BVSortOrder)order;
+
 - (nonnull instancetype)addFilter:(BVReviewFilterType)type filterOperator:(BVFilterOperator)filterOperator value:(NSString * _Nonnull)value;
 - (nonnull instancetype)addFilter:(BVReviewFilterType)type filterOperator:(BVFilterOperator)filterOperator values:(NSArray<NSString *> * _Nonnull)values;
 - (nonnull instancetype)search:(NSString * _Nonnull)search;
