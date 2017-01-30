@@ -16,15 +16,16 @@ class ReviewDisplayTests: XCTestCase {
         BVSDKManager.shared().clientId = "apitestcustomer"
         BVSDKManager.shared().apiKeyConversations = "KEY_REMOVED"
         BVSDKManager.shared().staging = true
+        BVSDKManager.shared().setLogLevel(BVLogLevel.verbose)
     }
     
     
     func testReviewDisplay() {
         
-        let expectation = self.expectation(description: "")
+        let expectation = self.expectation(description: "testReviewDisplay")
         
         let request = BVReviewsRequest(productId: "test1", limit: 10, offset: 0)
-            .addSort(.rating, order: .ascending)
+            .addReviewSort(.rating, order: .ascending)
             .add(.hasPhotos, filterOperator: .equalTo, value: "true")
             .add(.hasComments, filterOperator: .equalTo, value: "false")
         

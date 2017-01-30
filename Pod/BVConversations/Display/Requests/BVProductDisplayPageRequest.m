@@ -49,7 +49,7 @@
 }
 
 - (nonnull instancetype)sortIncludedReviews:(BVSortOptionReviews)option order:(BVSortOrder)order {
-    BVSort* sort = [[BVSort alloc] initWithOptionString:[SortOptionReviewUtil toString:option] order:order];
+    BVSort* sort = [[BVSort alloc] initWithOptionString:[BVSortOptionReviewUtil toString:option] order:order];
     [self.reviewSorts addObject:sort];
     return self;
 }

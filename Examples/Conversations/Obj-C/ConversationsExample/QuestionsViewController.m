@@ -33,6 +33,10 @@
     [self.questionsTableView registerNib:[UINib nibWithNibName:@"MyQuestionTableViewCell" bundle:nil] forCellReuseIdentifier:@"MyQuestionTableViewCell"];
     
     BVQuestionsAndAnswersRequest* request = [[BVQuestionsAndAnswersRequest alloc] initWithProductId:@"test1" limit:20 offset:0];
+    // optionally add in a sort option
+    [request addQuestionSort:BVSortOptionQuestionsLastModeratedTime order:BVSortOrderDescending];
+    // optionally add in a filter
+    [request addFilter:BVQuestionFilterTypeHasAnswers filterOperator:BVFilterOperatorEqualTo value:@"true"];
     
     [self.questionsTableView load:request success:^(BVQuestionsAndAnswersResponse * _Nonnull response) {
         self.questions = response.results;

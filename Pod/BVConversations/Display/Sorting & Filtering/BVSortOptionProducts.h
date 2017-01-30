@@ -10,6 +10,7 @@
 /*
  The allowable sort types for `BVReviewsRequest` and `BVQuestionsAndAnswersRequests` requests.
  */
+__deprecated
 typedef NS_ENUM(NSInteger, BVSortOptionProducts) {
     BVSortOptionProductsId,
     BVSortOptionProductsAverageOverallRating,

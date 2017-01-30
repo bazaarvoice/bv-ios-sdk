@@ -21,12 +21,12 @@
         case BVSortOptionQuestionsHasBestAnswer: return @"HasBestAnswer";
         case BVSortOptionQuestionsHasPhotos: return @"HasPhotos";
         case BVSortOptionQuestionsHasStaffAnswers: return @"HasStaffAnswers";
-        case BVSortOptionQuestionsHasVideos: return @"HasVideos";
         case BVSortOptionQuestionsIsFeatured: return @"IsFeatured";
         case BVSortOptionQuestionsIsSubjectActive: return @"IsSubjectActive";
         case BVSortOptionQuestionsLastApprovedAnswerSubmissionTime: return @"LastApprovedAnswerSubmissionTime";
         case BVSortOptionQuestionsLastModeratedTime: return @"LastModeratedTime";
         case BVSortOptionQuestionsLastModificationTime: return @"LastModificationTime";
+        case BVSortOptionQuestionsLastModeratorCode: return @"ModeratorCode";
         case BVSortOptionQuestionsProductId: return @"ProductId";
         case BVSortOptionQuestionsSubmissionId: return @"SubmissionId";
         case BVSortOptionQuestionsSubmissionTime: return @"SubmissionTime";
@@ -36,6 +36,7 @@
         case BVSortOptionQuestionsTotalNegativeFeedbackCount: return @"TotalNegativeFeedbackCount";
         case BVSortOptionQuestionsTotalPositiveFeedbackCount: return @"TotalPositiveFeedbackCount";
         case BVSortOptionQuestionsUserLocation: return @"UserLocation";
+            case BVSortOptionQuestionsHasVideos: return @"HasVideos";
             
     }
     
