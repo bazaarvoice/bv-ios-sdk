@@ -117,15 +117,15 @@
                                 <exclude reference="Vbo-uB-CfX"/>
                                 <exclude reference="iWB-Nf-JfT"/>
                                 <exclude reference="wCL-CS-Hi2"/>
+                                <exclude reference="DnL-JE-EDw"/>
+                                <exclude reference="osS-SP-bcz"/>
+                                <exclude reference="TA4-eS-ZoD"/>
+                                <exclude reference="lp7-pP-8hY"/>
                                 <exclude reference="H5k-Gj-jbo"/>
                                 <exclude reference="Vse-7X-yaA"/>
                                 <exclude reference="lyY-c7-LN7"/>
                                 <exclude reference="re9-xE-0uU"/>
                                 <exclude reference="vj4-nd-Nu5"/>
-                                <exclude reference="TA4-eS-ZoD"/>
-                                <exclude reference="lp7-pP-8hY"/>
-                                <exclude reference="DnL-JE-EDw"/>
-                                <exclude reference="osS-SP-bcz"/>
                             </mask>
                         </variation>
                     </view>
@@ -147,7 +147,7 @@
                 <outlet property="reviewTitle" destination="3kK-ud-Eyg" id="uWa-iQ-Lio"/>
                 <outlet property="usersFoundHelpfulLabel" destination="stT-Vv-4rD" id="5ww-5n-aBe"/>
             </connections>
-            <point key="canvasLocation" x="461.5" y="90.5"/>
+            <point key="canvasLocation" x="286" y="10"/>
         </tableViewCell>
     </objects>
 </document>

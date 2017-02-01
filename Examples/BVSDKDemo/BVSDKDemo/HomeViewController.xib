@@ -18,8 +18,7 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="vZk-Tm-mUE" customClass="BVProductRecommendationsCollectionView">
-                    <frame key="frameInset" width="600" height="580"/>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="vZk-Tm-mUE" customClass="BVProductRecommendationsCollectionView">
                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="AB5-pp-Vwx">
                         <size key="itemSize" width="50" height="50"/>
                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -27,8 +26,7 @@
                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                     </collectionViewFlowLayout>
                 </collectionView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Version" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mRB-NQ-zHA">
-                    <frame key="frameInset" minX="276" minY="583" width="48.5" height="17"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Version" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mRB-NQ-zHA">
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <color key="textColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
@@ -36,13 +34,14 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="mRB-NQ-zHA" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="5te-gk-6Wq"/>
-                <constraint firstAttribute="bottom" secondItem="mRB-NQ-zHA" secondAttribute="bottom" id="iBL-7d-hVF"/>
+                <constraint firstItem="mRB-NQ-zHA" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" constant="-0.25" id="5te-gk-6Wq"/>
+                <constraint firstAttribute="bottom" secondItem="mRB-NQ-zHA" secondAttribute="bottom" constant="9" id="iBL-7d-hVF"/>
                 <constraint firstAttribute="trailing" secondItem="vZk-Tm-mUE" secondAttribute="trailing" id="kwS-Tq-snk"/>
                 <constraint firstItem="vZk-Tm-mUE" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="psj-TL-3lb"/>
                 <constraint firstItem="vZk-Tm-mUE" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="tNC-5I-sLb"/>
-                <constraint firstAttribute="bottom" secondItem="vZk-Tm-mUE" secondAttribute="bottom" constant="20" id="th6-c9-yPK"/>
+                <constraint firstAttribute="bottom" secondItem="vZk-Tm-mUE" secondAttribute="bottom" constant="36" id="th6-c9-yPK"/>
             </constraints>
+            <point key="canvasLocation" x="32.5" y="73.5"/>
         </view>
     </objects>
 </document>

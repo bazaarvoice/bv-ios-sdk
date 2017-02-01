@@ -81,7 +81,6 @@ class AnswersViewController: UIViewController, UITableViewDataSource, UITableVie
             if indexPath.row == 0 {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "AnswerListHeaderCell") as! AnswerListHeaderCell
                 
-                
                 cell.question = question
                 
                 return cell
@@ -104,6 +103,10 @@ class AnswersViewController: UIViewController, UITableViewDataSource, UITableVie
             let cell = tableView.dequeueReusableCell(withIdentifier: "AnswerTableViewCell") as! AnswerTableViewCell
             
             cell.answer = question.answers[indexPath.row]
+            cell.onAuthorNickNameTapped = { (authorId) -> Void in
+                let authorVC = AuthorProfileViewController(nibName: "AuthorProfileViewController", bundle: nil, authorId: authorId)
+                self.navigationController?.pushViewController(authorVC, animated: true)
+            }
             
             return cell
         }
