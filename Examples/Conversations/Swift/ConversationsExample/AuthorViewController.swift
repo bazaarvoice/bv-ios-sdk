@@ -12,7 +12,7 @@ class AuthorViewController: UIViewController {
 
     @IBOutlet weak var authorProfileTableView: UITableView!
     
-    var authorResponse : BVAuthorResponse?
+    var authorResponse : BVAuthorResponse?  
     
     enum AuthorSections : Int {
         case ProfileStats

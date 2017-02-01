@@ -207,6 +207,7 @@ class CurationsFeedItemDetailTableViewController: UITableViewController {
                 detail1Cell.feedItem = self.feedItem!
                 
                 // Demonstration on getting user events to re-share contributions
+                
                 detail1Cell.onSocialButtonTapped = { (socialOutlet, feedItemSelected) -> Void in
                     
                     var itemType : String?

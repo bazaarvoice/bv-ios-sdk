@@ -35,9 +35,15 @@ class AnswerTableViewCell: BVAnswerTableViewCell {
     @IBOutlet weak var answerText : UILabel!
     @IBOutlet weak var usersFoundHelpfulLabel: UILabel!
     
+    var onAuthorNickNameTapped : ((_ authorId : String) -> Void)? = nil
+    
     override var answer : BVAnswer? {
         didSet {
-            authorNickname.text = answer!.userNickname
+            if (answer?.userNickname != nil){
+                self.linkAuthorNameLabel(fullText: answer!.userNickname!, author: answer!.userNickname!)
+            } else {
+                self.authorNickname.text = ""
+            }
             answerText.text = answer!.answerText
             if let submissionTime = answer!.submissionTime{
                 writtenAtLabel.text = dateTimeAgo(submissionTime)
@@ -74,5 +80,30 @@ class AnswerTableViewCell: BVAnswerTableViewCell {
             
         }
     }
+    
+    func linkAuthorNameLabel(fullText : String, author : String) {
+        
+        let attributedString = NSMutableAttributedString(string: fullText)
+        attributedString.setAttributes([:], range: NSRange(0..<attributedString.length)) // remove all the default attributes
+        
+        let colorFontAttribute = [NSForegroundColorAttributeName: UIColor.blue]
+        
+        attributedString.addAttributes(colorFontAttribute , range: (fullText as NSString).range(of: author, options: .backwards))
+        
+        self.authorNickname.attributedText = attributedString
+        self.authorNickname.isUserInteractionEnabled = true
+        
+        // Here the full label will be tappable. If you wanted to make just a part of the label
+        // tappable you'd need to check the frame when tapped, or use a different label.
+        let tapAuthorGesture = UITapGestureRecognizer(target: self, action: #selector(RatingTableViewCell.tappedAuthor(_:)))
+        self.authorNickname.addGestureRecognizer(tapAuthorGesture)
+    }
+    
+    func tappedAuthor(_ sender:UITapGestureRecognizer){
+        if let onAuthorNameTapped = self.onAuthorNickNameTapped {
+            onAuthorNameTapped((answer?.authorId)!)
+        }
+    }
+
     
 }

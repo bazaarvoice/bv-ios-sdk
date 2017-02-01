@@ -47,7 +47,7 @@ class CurationsFeedItemDetailCell: UITableViewCell {
             self.postTimeLabel.text = dateTimeAgo(postDate)
             
             if (author.profile != nil && author.username != nil){
-                self.linkAuthorNameLabel(author.profile, author: author.username)
+                self.linkAuthorNameLabel(author: author.username)
             } else {
                 self.authorNameLabel.text = author.username
             }
@@ -57,7 +57,7 @@ class CurationsFeedItemDetailCell: UITableViewCell {
         
     }
     
-    func linkAuthorNameLabel(_ url : String, author : String) {
+    func linkAuthorNameLabel(author : String) {
         
         let attributes = [ NSForegroundColorAttributeName: UIColor.blue ]
         let attrText = NSAttributedString(string: author, attributes: attributes)
@@ -81,7 +81,6 @@ class CurationsFeedItemDetailCell: UITableViewCell {
         }
         
     }
-    
     
     @IBAction func didTapTwitterButton(_ sender: AnyObject) {
         if let onSocialButtonTapped = self.onSocialButtonTapped {

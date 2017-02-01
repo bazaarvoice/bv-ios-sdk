@@ -35,13 +35,21 @@ class QuestionAnswerTableViewCell: BVQuestionTableViewCell {
     @IBOutlet weak var questionBody : UILabel!
     @IBOutlet weak var usersFoundHelpfulLabel: UILabel!
     
+    var onAuthorNickNameTapped : ((_ authorId : String) -> Void)? = nil
+    
     override var question : BVQuestion? {
         
         didSet {
             
             questionTitle.text = question?.questionSummary
             questionBody.text  = question?.questionDetails
-            questionMetaData.text = question?.userNickname
+            
+            if (question?.userNickname != nil){
+                self.linkAuthorNameLabel(fullText: "Asked by " + (question?.userNickname)!, author: (question?.userNickname)!)
+            } else {
+                questionMetaData.text = ""
+            }
+            
             
             if question?.totalFeedbackCount?.int32Value > 0 {
                 
@@ -71,6 +79,30 @@ class QuestionAnswerTableViewCell: BVQuestionTableViewCell {
             
         }
         
+    }
+    
+    func linkAuthorNameLabel(fullText : String, author : String) {
+        
+        let attributedString = NSMutableAttributedString(string: fullText)
+        attributedString.setAttributes([:], range: NSRange(0..<attributedString.length)) // remove all the default attributes
+        
+        let colorFontAttribute = [NSForegroundColorAttributeName: UIColor.blue]
+        
+        attributedString.addAttributes(colorFontAttribute , range: (fullText as NSString).range(of: author, options: .backwards))
+        
+        self.questionMetaData.attributedText = attributedString
+        self.questionMetaData.isUserInteractionEnabled = true
+        
+        // Here the full label will be tappable. If you wanted to make just a part of the label
+        // tappable you'd need to check the frame when tapped, or use a different label.
+        let tapAuthorGesture = UITapGestureRecognizer(target: self, action: #selector(RatingTableViewCell.tappedAuthor(_:)))
+        self.questionMetaData.addGestureRecognizer(tapAuthorGesture)
+    }
+    
+    func tappedAuthor(_ sender:UITapGestureRecognizer){
+        if let onAuthorNameTapped = self.onAuthorNickNameTapped {
+            onAuthorNameTapped((question?.authorId)!)
+        }
     }
 
 }
