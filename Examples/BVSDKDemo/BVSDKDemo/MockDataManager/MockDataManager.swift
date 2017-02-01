@@ -65,6 +65,7 @@ class MockDataManager {
     let conversationsMatch = "bazaarvoice.com/data/reviews"
     let conversationsQuestionsMatch = "bazaarvoice.com/data/question"
     let conversationsProductMatch = "bazaarvoice.com/data/products"
+    let conversationsAuthorsMatch = "bazaarvoice.com/data/authors"
     let submitReviewMatch = "bazaarvoice.com/data/submitreview"
     let submitReviewPhotoMatch = "bazaarvoice.com/data/uploadphoto"
     let submitQuestionMatch = "bazaarvoice.com/data/submitquestion"
@@ -100,6 +101,7 @@ class MockDataManager {
         let containsConversations = url.contains(conversationsMatch)
         let containsConversationsQuestions = url.contains(conversationsQuestionsMatch)
         let containsConversationsProducts = url.contains(conversationsProductMatch)
+        let containsConversationsAuthors = url.contains(conversationsAuthorsMatch)
         let containsSubmitReviews = url.contains(submitReviewMatch)
         let containsSubmitPhotoReviews = url.contains(submitReviewPhotoMatch)
         let containsSubmitQuestion = url.contains(submitQuestionMatch)
@@ -108,7 +110,7 @@ class MockDataManager {
         let containsPINConfig = url.contains(pinConfigMatch)
         let containsPINRequest = url.contains(pinRequestMatch)
         
-        return containsCurations || containsCurationsPhotoPost || containsRecommendations || containsProfile || containsConversations || containsConversationsQuestions || containsConversationsProducts || containsSubmitReviews || containsSubmitPhotoReviews || containsSubmitQuestion || containsSubmitAnswers || containsConvoStoresConfig || containsPINConfig || containsPINRequest
+        return containsCurations || containsCurationsPhotoPost || containsRecommendations || containsProfile || containsConversations || containsConversationsQuestions || containsConversationsProducts || containsConversationsAuthors || containsSubmitReviews || containsSubmitPhotoReviews || containsSubmitQuestion || containsSubmitAnswers || containsConvoStoresConfig || containsPINConfig || containsPINRequest
         
     }
     
@@ -254,6 +256,16 @@ class MockDataManager {
                 )
             
             }
+            
+        }
+        
+        if url.contains(conversationsAuthorsMatch) {
+            
+            return OHHTTPStubsResponse(
+                fileAtPath: OHPathForFile("conversationsAuthorWithIncludes.json", type(of: self))!,
+                statusCode: 200,
+                headers: ["Content-Type": "application/json;charset=utf-8"]
+            )
             
         }
         

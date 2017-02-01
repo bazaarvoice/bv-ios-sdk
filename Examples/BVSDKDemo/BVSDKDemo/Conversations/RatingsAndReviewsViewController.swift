@@ -134,6 +134,13 @@ class RatingsAndReviewsViewController: UIViewController, UITableViewDelegate, UI
         
     }
     
+    private func loadAuthorViewController(authorId: String) {
+        
+        let authorVC = AuthorProfileViewController(nibName: "AuthorProfileViewController", bundle: nil, authorId: authorId)
+        self.navigationController?.pushViewController(authorVC, animated: true)
+        
+    }
+    
     // MARK: UITableViewDatasource
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -197,7 +204,6 @@ class RatingsAndReviewsViewController: UIViewController, UITableViewDelegate, UI
             cell.setCustomLeftIcon(FAKFontAwesome.sortIcon(withSize:))
             cell.setCustomRightIcon(FAKFontAwesome.chevronRightIcon(withSize:))
             
-            
             let titlePrefix = selectedFilterOption == FilterOptions.location.rawValue ? "Filter:" : "Sort:"
             cell.button.setTitle("\(titlePrefix) \(filterActionTitles[selectedFilterOption])", for: UIControlState())
             
@@ -207,6 +213,10 @@ class RatingsAndReviewsViewController: UIViewController, UITableViewDelegate, UI
             
             let cell = tableView.dequeueReusableCell(withIdentifier: "RatingTableViewCell") as! RatingTableViewCell
             cell.review = reviews[(indexPath as NSIndexPath).row]
+            
+            cell.onAuthorNickNameTapped = { (authorId) -> Void in
+                self.loadAuthorViewController(authorId: authorId)
+            }
             return cell
             
         default:

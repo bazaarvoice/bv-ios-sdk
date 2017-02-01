@@ -38,6 +38,8 @@ class RatingTableViewCell: BVReviewTableViewCell {
     @IBOutlet weak var reviewPhoto : UIImageView!
     @IBOutlet weak var usersFoundHelpfulLabel: UILabel!
     
+    var onAuthorNickNameTapped : ((_ authorId : String) -> Void)? = nil
+    
     override func awakeFromNib() {
         super.awakeFromNib()
     }
@@ -70,10 +72,11 @@ class RatingTableViewCell: BVReviewTableViewCell {
             }
             
             if let submissionTime = review?.submissionTime, let nickname = review?.userNickname {
-                reviewAuthor.text = dateTimeAgo(submissionTime) + " by " + nickname
+                let fullString = dateTimeAgo(submissionTime) + " by " + nickname
+                self.linkAuthorNameLabel(fullText: fullString, author: nickname)
             }
             else if let nickname = review?.userNickname {
-                reviewAuthor.text = nickname
+                self.linkAuthorNameLabel(fullText: nickname, author: nickname)
             }
             else if let submissionTime = review?.submissionTime {
                 reviewAuthor.text = dateTimeAgo(submissionTime) + " by Anonymous"
@@ -120,5 +123,30 @@ class RatingTableViewCell: BVReviewTableViewCell {
         }
         
     }
+    
+    func linkAuthorNameLabel(fullText : String, author : String) {
+        
+        let attributedString = NSMutableAttributedString(string: fullText)
+        attributedString.setAttributes([:], range: NSRange(0..<attributedString.length)) // remove all the default attributes
+        
+        let colorFontAttribute = [NSForegroundColorAttributeName: UIColor.blue]
+        
+        attributedString.addAttributes(colorFontAttribute , range: (fullText as NSString).range(of: author, options: .backwards))
+        
+        self.reviewAuthor.attributedText = attributedString
+        self.reviewAuthor.isUserInteractionEnabled = true
+        
+        // Here the full label will be tappable. If you wanted to make just a part of the label
+        // tappable you'd need to check the frame when tapped, or use a different label.
+        let tapAuthorGesture = UITapGestureRecognizer(target: self, action: #selector(RatingTableViewCell.tappedAuthor(_:)))
+        self.reviewAuthor.addGestureRecognizer(tapAuthorGesture)
+    }
+    
+    func tappedAuthor(_ sender:UITapGestureRecognizer){
+        if let onAuthorNameTapped = self.onAuthorNickNameTapped {
+            onAuthorNameTapped((review?.authorId)!)
+        }
+    }
+    
     
 }

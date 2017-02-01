@@ -73,7 +73,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         
         recommendationsCollectionView.register(UINib(nibName: "HeaderCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "HeaderCollectionViewCell")
         
-        self.loadRecommendations()
+        self.fetchProductsForHomeScreen()
         
         let versionString = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
         let buildNum = Bundle.main.infoDictionary?["CFBundleVersion"] as? String
@@ -90,7 +90,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         if currClientId != nil {
             if currClientId != BVSDKManager.shared().clientId {
                 self.recommendations?.removeAll() // client id changed, reload data
-                self.loadRecommendations()
+                self.fetchProductsForHomeScreen()
             }
         }else {
             recommendationsCollectionView.reloadSections(IndexSet(integer: CellType.location.rawValue))
@@ -103,7 +103,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     func refresh(_ refreshControl: UIRefreshControl) {
         // clear any cached recommendations, and reload latest recommendations from API
         BVShopperProfileRequestCache.shared().removeAllCachedResponses()
-        self.loadRecommendations()
+        self.fetchProductsForHomeScreen()
         self.loadProductsToReview()
     }
     
@@ -286,6 +286,23 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         } else {
             BVLocationManager.unregister(forLocationUpdates: self)
         }
+        
+    }
+    
+    func fetchProductsForHomeScreen(){
+        
+        if MockDataManager.sharedInstance.shouldMockData() == false && BVSDKManager.shared().apiKeyShopperAdvertising == "REPLACE_ME" {
+            // If we have a conversations key set, but not shopper advertising, we'll need to load some selected produts from Conversations.
+            self.loadConversationsProducts()
+        } else {
+            self.loadRecommendations()
+        }
+        
+    }
+    
+    func loadConversationsProducts(){
+        
+        _ = SweetAlert().showAlert("Error", subTitle: "Unable to load products for this API key setup.", style: .error)
         
     }
     
