@@ -249,7 +249,15 @@ $(function(){
 	Conversations - Content Display
 </div>
 
-<p>Use the Bazaarvoice Mobile SDKs to enable Conversations functionality, such as Ratings and Reviews. The Conversations module provides an easy-to-use wrapper around the <a href="https://developer.bazaarvoice.com/apis/conversations/">Conversations API</a>. Contact Bazaarvoice to set up Conversations.</p>
+<p>Use the Bazaarvoice Mobile SDKs to enable Conversations functionality, such as Ratings and Reviews. The Conversations module provides an easy-to-use wrapper around the <a href="https://developer.bazaarvoice.com/apis/conversations/">Conversations API</a>. The mobile SDK support the following Conversations display features:</p>
+
+<ol>
+  <li><a href="#pdp" onclick="navigateTab(this);">Product Display Page Statistics</a></li>
+  <li><a href="#reviews" onclick="navigateTab(this);">Reviews</li>
+  <li><a href="#questionsanswers" onclick="navigateTab(this);">Questions and Answers</li>
+  <li><a href="#bulkratings" onclick="navigateTab(this);">Bulk Ratings</a></li>
+  <li><a href="#authordisplay" onclick="navigateTab(this);">Profile (Author) Display</a></li>
+</ol>
 
 <p class="bg-info well-lg" style="padding:4px;"><i class="fa fa-hand-o-right"></i>  Important: You will need your <strong>apiKeyConversations</strong> to implement and use Conversations with Mobile SDKs.</p>
 
@@ -272,15 +280,15 @@ The completed project for this code walkthrough for Swift and Objective-C is in 
 <br>
 <hr>
 
-
 <ul class="nav nav-tabs" role="tablist">
   <li role="presentation" class="active"><a href="#pdp" aria-controls="pdp" role="tab" data-toggle="tab">Product Display Page</a></li>
   <li role="presentation"><a href="#reviews" aria-controls="reviews" role="tab" data-toggle="tab">Reviews</a></li>
   <li role="presentation"><a href="#questionsanswers" aria-controls="questionsanswers" role="tab" data-toggle="tab">Questions & Answers</a></li>
   <li role="presentation"><a href="#bulkratings" aria-controls="bulkratings" role="tab" data-toggle="tab">Bulk Ratings</a></li>
+  <li role="presentation"><a href="#authordisplay" aria-controls="authordisplay" role="tab" data-toggle="tab">Author Profile Display</a></li>
 </ul>
 <div class="tab-content code-switcher">
-	
+
 	<div role="tabpanel" class="tab-pane active" id="pdp">
 
 	<!-- Product display page -->
@@ -475,9 +483,9 @@ class ProductPageViewController: BVProductDisplayPageViewController {
 </ul>
 
 	</div>
-	
+
 	<div role="tabpanel" class="tab-pane" id="reviews">
-	
+
 		<!-- reviews -->
 		<br>
 <h4>Loading more Reviews</h4>
@@ -550,7 +558,7 @@ BVReviewsRequest* request = [[BVReviewsRequest alloc] initWithProductId:@"test1"
 <pre><code class="swift">// request 10 reviews that have photos, starting at index 0, sorted by overall rating.
 let request = BVReviewsRequest(productId: "test1", limit: 10, offset: 0)
             	.addFilter(.HasPhotos, filterOperator: .EqualTo, value: "true")
-            	.addSort(.Rating, order: .Descending)</code></pre>
+            	.addReviewSort(.Rating, order: .Ascending)</code></pre>
 	</div>
 	<!-- objective-c -->
 	<div role="tabpanel" class="tab-pane" id="objc">
@@ -558,7 +566,7 @@ let request = BVReviewsRequest(productId: "test1", limit: 10, offset: 0)
 BVReviewsRequest* request = [[BVReviewsRequest alloc] initWithProductId:@"test1" limit:10 offset:20];
 
 [request addFilter:BVReviewFilterTypeHasPhotos filterOperator:BVFilterOperatorEqualTo value:@"true"]
-[request addSort:BVSortOptionReviewsRating order:BVSortOrderDescending];</code></pre>
+[request addReviewSort:BVSortOptionReviewsSubmissionTime order:BVSortOrderDescending];</code></pre>
 	</div>
 </div>
 
@@ -821,7 +829,7 @@ class DemoReviewsViewController: UIViewController, UITableViewDelegate, UITableV
 
 
 	</div>
-	
+
 	<div role="tabpanel" class="tab-pane" id="questionsanswers">
 
 		<!-- Q&A -->
@@ -904,7 +912,7 @@ BVQuestionsRequest* request = [[BVQuestionsRequest alloc] initWithProductId:@"te
 <pre><code class="swift">// request 10 questions that have answers, starting at index 0, sorted by the number of answers each question has.
 let request = BVQuestionsAndAnswersRequest(productId: "test1", limit: 10, offset: 20)
                     .addFilter(.HasAnswers, filterOperator: .EqualTo, value: "true")
-                    .addSort(.TotalAnswerCount, order: .Descending)
+                    .addQuestionSort(.SubmissionTime, order: .Ascending)
 </code></pre>
 	</div>
 	<!-- objective-c -->
@@ -912,7 +920,7 @@ let request = BVQuestionsAndAnswersRequest(productId: "test1", limit: 10, offset
 <pre><code class="objectivec">// request 10 questions that have answers, starting at index 0, sorted by the number of answers each question has.
 BVQuestionsAndAnswersRequest* request = [[BVQuestionsAndAnswersRequest alloc] initWithProductId:@"test1" limit:10 offset:0];
 [request addFilter:BVQuestionFilterTypeHasAnswers filterOperator:BVFilterOperatorEqualTo value:@"true"];
-[request addSort:BVSortOptionQuestionsTotalAnswerCount order:BVSortOrderDescending];</code></pre>
+[request addQuestionSort:BVSortOptionQuestionsLastModeratedTime order:BVSortOrderDescending];</code></pre>
 	</div>
 </div>
 <br>
@@ -1176,7 +1184,7 @@ class DemoQuestionViewController: UIViewController, UITableViewDelegate, UITable
 </ul>
 
 	</div>
-	
+
 	<div role="tabpanel" class="tab-pane" id="bulkratings">
 
 		<!-- Bulk ratings -->
@@ -1253,6 +1261,81 @@ BVBulkRatingsRequest* request = [[BVBulkRatingsRequest alloc] initWithProductIds
 <br>
 
 	</div>
+
+	<div role="tabpanel" class="tab-pane" id="authordisplay">
+
+		<!-- Author Profile Display -->
+		<br>
+<h4>Loading an Author's Profile</h4>
+<p>An author's profile for Conversations begins with a <code>BVAuthorRequest</code> object. This request object is all you need to create parameters and obtain an author's profile. The response for an author is found in the response object <code>BVAuthorResponse</code>. Author profile responses can include Reviews, Questions, and Answers written by the author and approved for publishing.</p>
+
+<h5>Badge Display</h5><p/>
+
+Please note that image links are not returned from the Conversations API. The display for Conversation API clients is left up to the client's creative interpretation. For more information please see the Conversations Developer <a href="https://developer.bazaarvoice.com/docs/read/conversations_api/tutorials/display/badges">documentation on Badges</a>.
+<p/>
+
+<ul class="nav nav-tabs" role="tablist">
+  <li role="presentation" class="pull-right"><a style="padding-top:4px; padding-bottom:4px;" href="#objc" aria-controls="objc" role="tab" data-toggle="tab">Objective-C</a></li>
+  <li role="presentation" class="active pull-right"><a style="padding-top:4px; padding-bottom:4px;" href="#swift" aria-controls="swift" role="tab" data-toggle="tab">Swift</a></li>
+</ul>
+
+<!-- Tab panes -->
+<div class="tab-content code-switcher">
+	<!-- swift -->
+	<div role="tabpanel" class="tab-pane active" id="swift">
+<pre><code class="swift">let request = BVAuthorRequest(authorId: "theAuthorsId")
+    // stats includes, optional
+    .includeStatistics(.answers)
+    .includeStatistics(.questions)
+    .includeStatistics(.reviews)
+    // other includes, optional
+    .include(.reviews, limit: 10)
+    .include(.questions, limit: 10)
+    .include(.answers, limit: 10)
+    // sorts, optional
+    .sortIncludedAnswers(.submissionTime, order: .descending)
+    .sortIncludedReviews(.submissionTime, order: .descending)
+    .sortIncludedQuestions(.submissionTime, order: .descending)
+        
+request.load({ (response) in
+    // success -- load data into your UI
+}) { (error) in
+    // error - handle error
+}
+</code></pre>
+	</div>
+	<!-- objective-c -->
+	<div role="tabpanel" class="tab-pane" id="objc">
+<pre><code class="objectivec">BVAuthorRequest *request = [[BVAuthorRequest alloc] initWithAuthorId:authorId];
+[request includeStatistics:BVAuthorContentTypeReviews];
+[request includeStatistics:BVAuthorContentTypeQuestions];
+[request includeStatistics:BVAuthorContentTypeAnswers];
+[request includeContent:BVAuthorContentTypeReviews limit:5];
+[request includeContent:BVAuthorContentTypeQuestions limit:5];
+[request includeContent:BVAuthorContentTypeAnswers limit:5];
+
+[request load:^(BVAuthorResponse * _Nonnull response) {
+    
+    // Success!
+    NSLog(@"Succesfully loaded profile: %@", response);
+    
+} failure:^(NSArray<NSError *> * _Nonnull errors) {
+    
+    // Error : (
+    NSLog(@"ERROR loading author: %@", errors.description);
+    
+}];
+</code></pre>
+	</div>
+</div>
+<br>
+    
+<br>
+	</li>
+</ul>
+
+	</div>
+
 </div>
 <br>
 
