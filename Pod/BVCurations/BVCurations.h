@@ -14,8 +14,6 @@
 #import "BVCurationsFeedRequest.h"
 #import "BVCurationsFeedLoader.h"
 #import "BVCurationsAnalyticsHelper.h"
-#import "BVCurationsCollectionView.h"
-#import "BVCurationsCollectionViewCell.h"
 #import "BVCurationsFeedItem.h"
 #import "BVCurationsAddPostRequest.h"
 #import "BVCurationsPhotoUploader.h"

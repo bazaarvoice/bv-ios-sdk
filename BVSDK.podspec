@@ -9,7 +9,7 @@
 
 Pod::Spec.new do |s|
   s.name = "BVSDK"
-  s.version = '6.3.0'
+  s.version = '6.4.0'
   s.homepage = 'https://developer.bazaarvoice.com'
   s.license = { :type => 'Commercial', :text => 'See https://developer.bazaarvoice.com/API_Terms_of_Use' }
   s.author = { 'Bazaarvoice' => 'support@bazaarvoice.com' }
@@ -46,6 +46,12 @@ Pod::Spec.new do |s|
   s.subspec 'BVCurations' do |curations|
     curations.source_files = 'Pod/BVCurations/**/*.{h,m}'
     curations.dependency 'BVSDK/Core'
+  end
+
+  s.subspec 'BVCurationsUI' do |curationsui|
+    curationsui.source_files = 'Pod/BVCurationsUI/**/*.{h,m}'
+    curationsui.dependency 'BVSDK/BVCurations'
+    curationsui.resources = ["Pod/BVCurationsUI/Assets/*.xcassets"]
   end
 
   s.subspec 'BVLocation' do |location|

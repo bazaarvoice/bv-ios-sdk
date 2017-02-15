@@ -97,11 +97,11 @@ class StoreReviewsViewController: UIViewController, UITableViewDelegate, UITable
 
         // Check sorting and filter FilterOptions
         if selectedFilterOption == FilterOptions.highestRating.rawValue {
-            request.addSort(.rating, order: .descending)
+            request.addReviewSort(.rating, order: .descending)
         } else if selectedFilterOption == FilterOptions.lowestRating.rawValue {
-            request.addSort(.rating, order: .ascending)
+            request.addReviewSort(.rating, order: .ascending)
         } else if selectedFilterOption == FilterOptions.mostHelpful.rawValue {
-            request.addSort(.helpfulness, order: .descending)
+            request.addReviewSort(.helpfulness, order: .descending)
         }
         
         self.tableView.load(request, success: { (response) in

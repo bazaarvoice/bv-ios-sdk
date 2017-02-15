@@ -8,27 +8,27 @@
 
 /* Begin PBXBuildFile section */
 		49D6B1E53C54B5928F3B74E8 /* Pods_CurationsExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCED90DA0E60CBC61093E60F /* Pods_CurationsExample.framework */; };
+		870F13721E4A281200D46BE6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870F13711E4A281200D46BE6 /* ViewController.swift */; };
 		8791443A1CF5DE6700976220 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879144391CF5DE6700976220 /* AppDelegate.swift */; };
-		8791443C1CF5DE6700976220 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8791443B1CF5DE6700976220 /* ViewController.swift */; };
 		8791443F1CF5DE6700976220 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8791443D1CF5DE6700976220 /* Main.storyboard */; };
 		879144411CF5DE6700976220 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 879144401CF5DE6700976220 /* Assets.xcassets */; };
 		879144441CF5DE6700976220 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 879144421CF5DE6700976220 /* LaunchScreen.storyboard */; };
-		8791444C1CF5E0B000976220 /* DemoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8791444B1CF5E0B000976220 /* DemoCollectionViewCell.swift */; };
-		8791444E1CF5E12500976220 /* DemoCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8791444D1CF5E12500976220 /* DemoCollectionViewCell.xib */; };
+		87C96D6F1E4A3684004B295B /* happy_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 87C96D6E1E4A3684004B295B /* happy_icon.png */; };
+		87C96D711E4A3951004B295B /* curations_test_image.png in Resources */ = {isa = PBXBuildFile; fileRef = 87C96D701E4A3951004B295B /* curations_test_image.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		4952D55AC8ABC0E1193CF8E2 /* Pods-CurationsExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CurationsExample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CurationsExample/Pods-CurationsExample.debug.xcconfig"; sourceTree = "<group>"; };
 		63FEFA5054A65107EBE429DF /* Pods-CurationsExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CurationsExample.release.xcconfig"; path = "Pods/Target Support Files/Pods-CurationsExample/Pods-CurationsExample.release.xcconfig"; sourceTree = "<group>"; };
+		870F13711E4A281200D46BE6 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		879144361CF5DE6700976220 /* CurationsExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CurationsExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		879144391CF5DE6700976220 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		8791443B1CF5DE6700976220 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		8791443E1CF5DE6700976220 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		879144401CF5DE6700976220 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		879144431CF5DE6700976220 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		879144451CF5DE6700976220 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8791444B1CF5E0B000976220 /* DemoCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoCollectionViewCell.swift; sourceTree = "<group>"; };
-		8791444D1CF5E12500976220 /* DemoCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DemoCollectionViewCell.xib; sourceTree = "<group>"; };
+		87C96D6E1E4A3684004B295B /* happy_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = happy_icon.png; path = ../../shared/happy_icon.png; sourceTree = "<group>"; };
+		87C96D701E4A3951004B295B /* curations_test_image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = curations_test_image.png; path = ../../shared/curations_test_image.png; sourceTree = "<group>"; };
 		FCED90DA0E60CBC61093E60F /* Pods_CurationsExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CurationsExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -83,9 +83,9 @@
 			isa = PBXGroup;
 			children = (
 				879144391CF5DE6700976220 /* AppDelegate.swift */,
-				8791443B1CF5DE6700976220 /* ViewController.swift */,
-				8791444B1CF5E0B000976220 /* DemoCollectionViewCell.swift */,
-				8791444D1CF5E12500976220 /* DemoCollectionViewCell.xib */,
+				870F13711E4A281200D46BE6 /* ViewController.swift */,
+				87C96D6E1E4A3684004B295B /* happy_icon.png */,
+				87C96D701E4A3951004B295B /* curations_test_image.png */,
 				8791443D1CF5DE6700976220 /* Main.storyboard */,
 				879144401CF5DE6700976220 /* Assets.xcassets */,
 				879144421CF5DE6700976220 /* LaunchScreen.storyboard */,
@@ -129,6 +129,7 @@
 				TargetAttributes = {
 					879144351CF5DE6700976220 = {
 						CreatedOnToolsVersion = 7.3.1;
+						LastSwiftMigration = 0820;
 					};
 				};
 			};
@@ -158,7 +159,8 @@
 				879144441CF5DE6700976220 /* LaunchScreen.storyboard in Resources */,
 				879144411CF5DE6700976220 /* Assets.xcassets in Resources */,
 				8791443F1CF5DE6700976220 /* Main.storyboard in Resources */,
-				8791444E1CF5E12500976220 /* DemoCollectionViewCell.xib in Resources */,
+				87C96D711E4A3951004B295B /* curations_test_image.png in Resources */,
+				87C96D6F1E4A3684004B295B /* happy_icon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -217,8 +219,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8791443C1CF5DE6700976220 /* ViewController.swift in Sources */,
-				8791444C1CF5E0B000976220 /* DemoCollectionViewCell.swift in Sources */,
+				870F13721E4A281200D46BE6 /* ViewController.swift in Sources */,
 				8791443A1CF5DE6700976220 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -340,7 +341,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.bazaarvoice.CurationsExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 2.3;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -354,7 +355,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.bazaarvoice.CurationsExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 2.3;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};

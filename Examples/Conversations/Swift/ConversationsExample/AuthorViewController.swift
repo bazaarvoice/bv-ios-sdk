@@ -8,7 +8,7 @@
 import UIKit
 import BVSDK
 
-class AuthorViewController: UIViewController {
+class AuthorViewController: UIViewController, UITableViewDataSource {
 
     @IBOutlet weak var authorProfileTableView: UITableView!
     
@@ -28,26 +28,26 @@ class AuthorViewController: UIViewController {
 
         authorProfileTableView.estimatedRowHeight = 80
         authorProfileTableView.rowHeight = UITableViewAutomaticDimension
-        authorProfileTableView.registerNib(UINib(nibName: "StatisticTableViewCell", bundle: nil), forCellReuseIdentifier: "StatisticTableViewCell")
-        authorProfileTableView.registerNib(UINib(nibName: "MyReviewTableViewCell", bundle: nil), forCellReuseIdentifier: "MyReviewTableViewCell")
-        authorProfileTableView.registerNib(UINib(nibName: "MyQuestionTableViewCell", bundle: nil), forCellReuseIdentifier: "MyQuestionTableViewCell")
-        authorProfileTableView.registerNib(UINib(nibName: "MyAnswerTableViewCell", bundle: nil), forCellReuseIdentifier: "MyAnswerTableViewCell")
+        authorProfileTableView.register(UINib(nibName: "StatisticTableViewCell", bundle: nil), forCellReuseIdentifier: "StatisticTableViewCell")
+        authorProfileTableView.register(UINib(nibName: "MyReviewTableViewCell", bundle: nil), forCellReuseIdentifier: "MyReviewTableViewCell")
+        authorProfileTableView.register(UINib(nibName: "MyQuestionTableViewCell", bundle: nil), forCellReuseIdentifier: "MyQuestionTableViewCell")
+        authorProfileTableView.register(UINib(nibName: "MyAnswerTableViewCell", bundle: nil), forCellReuseIdentifier: "MyAnswerTableViewCell")
 
         let authorId = "data-gen-user-c3k8hjvtpn03dupvxcui1rj3"
         
         let request = BVAuthorRequest(authorId: authorId)
         // stats includes
-        request.includeStatistics(.Answers)
-        request.includeStatistics(.Questions)
-        .includeStatistics(.Reviews)
+        request.includeStatistics(.answers)
+        request.includeStatistics(.questions)
+        .includeStatistics(.reviews)
         // other includes
-        request.includeContent(.Reviews, limit: 10)
-        request.includeContent(.Questions, limit: 10)
-        request.includeContent(.Answers, limit: 10)
+        request.include(.reviews, limit: 10)
+        request.include(.questions, limit: 10)
+        request.include(.answers, limit: 10)
         // sorts
-        request.sortIncludedAnswers(.SubmissionTime, order: .Descending)
-        request.sortIncludedReviews(.SubmissionTime, order: .Descending)
-        request.sortIncludedQuestions(.SubmissionTime, order: .Descending)
+        request.sortIncludedAnswers(.submissionTime, order: .descending)
+        request.sortIncludedReviews(.submissionTime, order: .descending)
+        request.sortIncludedQuestions(.submissionTime, order: .descending)
         
         request.load({ (response) in
             
@@ -67,11 +67,11 @@ class AuthorViewController: UIViewController {
     
     // MARK: UITableViewDatasource
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return AuthorSections.count;
     }
     
-    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         
         switch section {
         case AuthorSections.ProfileStats.rawValue:
@@ -88,7 +88,7 @@ class AuthorViewController: UIViewController {
 
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         if self.authorResponse == nil {
             return 0;
@@ -149,34 +149,32 @@ class AuthorViewController: UIViewController {
         return result
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
         let author = self.authorResponse?.results.first!
         
         switch indexPath.section {
         case AuthorSections.ProfileStats.rawValue:
-            let cell = tableView.dequeueReusableCellWithIdentifier("StatisticTableViewCell")! as! StatisticTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "StatisticTableViewCell")! as! StatisticTableViewCell
             cell.statTypeLabel.text = "Author Statistics";
-            cell.statValueLabel.text = self.createAutorStats(author!)
+            cell.statValueLabel.text = self.createAutorStats(author: author!)
             return cell
         case AuthorSections.IncludedReviews.rawValue:
-            let cell = tableView.dequeueReusableCellWithIdentifier("MyReviewTableViewCell")! as! MyReviewTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "MyReviewTableViewCell")! as! MyReviewTableViewCell
             cell.review = author!.includedReviews[indexPath.row]
             return cell
         case AuthorSections.IncludedQuestions.rawValue:
-            let cell = tableView.dequeueReusableCellWithIdentifier("MyQuestionTableViewCell")! as! MyQuestionTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "MyQuestionTableViewCell")! as! MyQuestionTableViewCell
             cell.question = author!.includedQuestions[indexPath.row]
-            cell.accessoryType = .None
+            cell.accessoryType = .none
             return cell
         case AuthorSections.IncludedAnswers.rawValue:
-            let cell = tableView.dequeueReusableCellWithIdentifier("MyAnswerTableViewCell")! as! MyAnswerTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "MyAnswerTableViewCell")! as! MyAnswerTableViewCell
             cell.answer = author!.includedAnswers[indexPath.row]
             return cell
         default:
             return UITableViewCell()
         }
     }
-
-    
-    
+ 
 }

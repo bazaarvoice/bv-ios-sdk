@@ -566,9 +566,9 @@ class NewProductPageViewController: BVProductDisplayPageViewController, UITableV
     
     func curationsViewPhotoMapPressed() {
         
-        if curationsCell.curationsFeed != nil && curationsCell.curationsFeed!.count > 0 {
+        if curationsCell.curationsCarousel.feedItems.count > 0 {
             let curationsPhotoMapVC = CurationsPhotoMapViewController(nibName: "CurationsPhotoMapViewController", bundle: nil)
-            curationsPhotoMapVC.curationsFeed = curationsCell!.curationsFeed!
+            curationsPhotoMapVC.curationsFeed = curationsCell!.curationsCarousel.feedItems
             
             self.navigationController?.pushViewController(curationsPhotoMapVC, animated: true)
         } else {

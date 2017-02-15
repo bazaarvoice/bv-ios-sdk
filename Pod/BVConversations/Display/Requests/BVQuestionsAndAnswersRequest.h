@@ -25,7 +25,7 @@
 - (nonnull instancetype)initWithProductId:(NSString * _Nonnull)productId limit:(int)limit offset:(int)offset;
 - (nonnull instancetype) __unavailable init;
 
-- (nonnull instancetype)addSort:(BVSortOptionProducts)option order:(BVSortOrder)order; __deprecated_msg("use sortQuestions and sortAnswers instead");
+- (nonnull instancetype)addSort:(BVSortOptionProducts)option order:(BVSortOrder)order __deprecated_msg("use sortQuestions and sortAnswers instead");
 
 - (nonnull instancetype)addQuestionSort:(BVSortOptionQuestions)option order:(BVSortOrder)order;
 

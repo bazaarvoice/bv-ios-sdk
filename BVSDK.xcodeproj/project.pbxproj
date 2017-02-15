@@ -21,9 +21,16 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		155261E91E413A22008887A8 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 155261E81E413A22008887A8 /* Social.framework */; };
 		15D4F83B1DF5D5F800E6B30D /* testNotificationProductConfig.json in Resources */ = {isa = PBXBuildFile; fileRef = 15D4F83A1DF5D5F800E6B30D /* testNotificationProductConfig.json */; };
 		15D4F83F1DF5EC3C00E6B30D /* ph.png in Resources */ = {isa = PBXBuildFile; fileRef = 15D4F83E1DF5EC3C00E6B30D /* ph.png */; };
-		15D4F8441DF5EE5C00E6B30D /* UIImage+Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 15D4F8431DF5EE5C00E6B30D /* UIImage+Tests.m */; };
+		870F13411E490B5200D46BE6 /* BVCurationsPostViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 870F133B1E490B5200D46BE6 /* BVCurationsPostViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		870F13421E490B5200D46BE6 /* BVCurationsPostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 870F133C1E490B5200D46BE6 /* BVCurationsPostViewController.m */; };
+		870F13431E490B5200D46BE6 /* BVCurationsUICollectionView.h in Headers */ = {isa = PBXBuildFile; fileRef = 870F133D1E490B5200D46BE6 /* BVCurationsUICollectionView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		870F13441E490B5200D46BE6 /* BVCurationsUICollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 870F133E1E490B5200D46BE6 /* BVCurationsUICollectionView.m */; };
+		870F13451E490B5200D46BE6 /* BVCurationsUICollectionViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 870F133F1E490B5200D46BE6 /* BVCurationsUICollectionViewCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		870F13461E490B5200D46BE6 /* BVCurationsUICollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 870F13401E490B5200D46BE6 /* BVCurationsUICollectionViewCell.m */; };
+		870F13641E490B7B00D46BE6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 870F13631E490B7B00D46BE6 /* Assets.xcassets */; };
 		875410AF1E1F10DF006C5C6E /* BVNotifications.h in Headers */ = {isa = PBXBuildFile; fileRef = 875410A81E1F10DF006C5C6E /* BVNotifications.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		875410B01E1F10DF006C5C6E /* BVNotificationViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 875410A91E1F10DF006C5C6E /* BVNotificationViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		875410B11E1F10DF006C5C6E /* BVNotificationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 875410AA1E1F10DF006C5C6E /* BVNotificationViewController.m */; };
@@ -75,6 +82,7 @@
 		87A9ECC11E1DB9B300666636 /* BVPIN.m in Sources */ = {isa = PBXBuildFile; fileRef = 87A9ECBD1E1DB9B300666636 /* BVPIN.m */; };
 		87A9ECC21E1DB9B300666636 /* BVPINRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 87A9ECBE1E1DB9B300666636 /* BVPINRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		87A9ECC31E1DB9B300666636 /* BVPINRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 87A9ECBF1E1DB9B300666636 /* BVPINRequest.m */; };
+		87B3DADE1E522D2C00DE7843 /* UIImage+BundleLocator.h in Headers */ = {isa = PBXBuildFile; fileRef = 87B3DADD1E522D2C00DE7843 /* UIImage+BundleLocator.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		87C5FE991E22914C004EE6E8 /* BVStoreNotificationConfigurationLoader.h in Headers */ = {isa = PBXBuildFile; fileRef = 87C5FE971E22914C004EE6E8 /* BVStoreNotificationConfigurationLoader.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		87C5FE9A1E22914C004EE6E8 /* BVStoreNotificationConfigurationLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 87C5FE981E22914C004EE6E8 /* BVStoreNotificationConfigurationLoader.m */; };
 		87C5FE9D1E229168004EE6E8 /* BVProductReviewNotificationConfigurationLoader.h in Headers */ = {isa = PBXBuildFile; fileRef = 87C5FE9B1E229168004EE6E8 /* BVProductReviewNotificationConfigurationLoader.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -110,6 +118,7 @@
 		87C5FF671E393ED3004EE6E8 /* BVAuthorContentType.m in Sources */ = {isa = PBXBuildFile; fileRef = 87C5FF651E393ED3004EE6E8 /* BVAuthorContentType.m */; };
 		87C5FF6A1E394C73004EE6E8 /* BVAuthorInclude.h in Headers */ = {isa = PBXBuildFile; fileRef = 87C5FF681E394C73004EE6E8 /* BVAuthorInclude.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		87C5FF6B1E394C73004EE6E8 /* BVAuthorInclude.m in Sources */ = {isa = PBXBuildFile; fileRef = 87C5FF691E394C73004EE6E8 /* BVAuthorInclude.m */; };
+		87DA86DD1E5229C5002E7860 /* UIImage+BundleLocator.m in Sources */ = {isa = PBXBuildFile; fileRef = 87DA86DB1E5229C5002E7860 /* UIImage+BundleLocator.m */; };
 		87F2DAB11DAD579D00FB43F3 /* BVSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87F2DAA71DAD579D00FB43F3 /* BVSDK.framework */; };
 		87F2DAB81DAD579D00FB43F3 /* BVSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = 87F2DAAA1DAD579D00FB43F3 /* BVSDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		87F2DC171DAD585E00FB43F3 /* BVAdsMessageInterceptor.h in Headers */ = {isa = PBXBuildFile; fileRef = 87F2DAC31DAD585E00FB43F3 /* BVAdsMessageInterceptor.h */; settings = {ATTRIBUTES = (Private, ); }; };
@@ -330,10 +339,6 @@
 		87F2DD191DAD585E00FB43F3 /* BVCurationsAddPostRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 87F2DBE31DAD585E00FB43F3 /* BVCurationsAddPostRequest.m */; };
 		87F2DD1A1DAD585E00FB43F3 /* BVCurationsAnalyticsHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 87F2DBE41DAD585E00FB43F3 /* BVCurationsAnalyticsHelper.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		87F2DD1B1DAD585E00FB43F3 /* BVCurationsAnalyticsHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 87F2DBE51DAD585E00FB43F3 /* BVCurationsAnalyticsHelper.m */; };
-		87F2DD1C1DAD585E00FB43F3 /* BVCurationsCollectionView.h in Headers */ = {isa = PBXBuildFile; fileRef = 87F2DBE61DAD585E00FB43F3 /* BVCurationsCollectionView.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		87F2DD1D1DAD585E00FB43F3 /* BVCurationsCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 87F2DBE71DAD585E00FB43F3 /* BVCurationsCollectionView.m */; };
-		87F2DD1E1DAD585E00FB43F3 /* BVCurationsCollectionViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 87F2DBE81DAD585E00FB43F3 /* BVCurationsCollectionViewCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		87F2DD1F1DAD585E00FB43F3 /* BVCurationsCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 87F2DBE91DAD585E00FB43F3 /* BVCurationsCollectionViewCell.m */; };
 		87F2DD201DAD585E00FB43F3 /* BVCurationsFeedItem.h in Headers */ = {isa = PBXBuildFile; fileRef = 87F2DBEA1DAD585E00FB43F3 /* BVCurationsFeedItem.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		87F2DD211DAD585E00FB43F3 /* BVCurationsFeedItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 87F2DBEB1DAD585E00FB43F3 /* BVCurationsFeedItem.m */; };
 		87F2DD221DAD585E00FB43F3 /* BVCurationsFeedLoader.h in Headers */ = {isa = PBXBuildFile; fileRef = 87F2DBEC1DAD585E00FB43F3 /* BVCurationsFeedLoader.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -457,15 +462,21 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		155261E81E413A22008887A8 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		15D4F83A1DF5D5F800E6B30D /* testNotificationProductConfig.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = testNotificationProductConfig.json; path = Tests/Tests/resources/notification_config/testNotificationProductConfig.json; sourceTree = SOURCE_ROOT; };
 		15D4F83E1DF5EC3C00E6B30D /* ph.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ph.png; sourceTree = "<group>"; };
-		15D4F8421DF5EE5C00E6B30D /* UIImage+Tests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Tests.h"; sourceTree = "<group>"; };
-		15D4F8431DF5EE5C00E6B30D /* UIImage+Tests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Tests.m"; sourceTree = "<group>"; };
 		15D4F8451DF5EFFF00E6B30D /* BVSDKTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BVSDKTests-Bridging-Header.h"; sourceTree = "<group>"; };
 		3462CE8D50CC0B93A458E62C /* Pods-BVSDKTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BVSDKTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BVSDKTests/Pods-BVSDKTests.debug.xcconfig"; sourceTree = "<group>"; };
 		387BAAAEE154D9B41D414692 /* Pods-BVSDK-BVSDKTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BVSDK-BVSDKTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-BVSDK-BVSDKTests/Pods-BVSDK-BVSDKTests.release.xcconfig"; sourceTree = "<group>"; };
 		7892A8713545E74147C58ECB /* Pods_BVSDKTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BVSDKTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D31881627EFC6F28C7B88B2 /* Pods-BVSDK-BVSDKTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BVSDK-BVSDKTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BVSDK-BVSDKTests/Pods-BVSDK-BVSDKTests.debug.xcconfig"; sourceTree = "<group>"; };
+		870F133B1E490B5200D46BE6 /* BVCurationsPostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BVCurationsPostViewController.h; path = Pod/BVCurationsUI/BVCurationsPostViewController.h; sourceTree = SOURCE_ROOT; };
+		870F133C1E490B5200D46BE6 /* BVCurationsPostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BVCurationsPostViewController.m; path = Pod/BVCurationsUI/BVCurationsPostViewController.m; sourceTree = SOURCE_ROOT; };
+		870F133D1E490B5200D46BE6 /* BVCurationsUICollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BVCurationsUICollectionView.h; path = Pod/BVCurationsUI/BVCurationsUICollectionView.h; sourceTree = SOURCE_ROOT; };
+		870F133E1E490B5200D46BE6 /* BVCurationsUICollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BVCurationsUICollectionView.m; path = Pod/BVCurationsUI/BVCurationsUICollectionView.m; sourceTree = SOURCE_ROOT; };
+		870F133F1E490B5200D46BE6 /* BVCurationsUICollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BVCurationsUICollectionViewCell.h; path = Pod/BVCurationsUI/BVCurationsUICollectionViewCell.h; sourceTree = SOURCE_ROOT; };
+		870F13401E490B5200D46BE6 /* BVCurationsUICollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BVCurationsUICollectionViewCell.m; path = Pod/BVCurationsUI/BVCurationsUICollectionViewCell.m; sourceTree = SOURCE_ROOT; };
+		870F13631E490B7B00D46BE6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Pod/BVCurationsUI/Assets/Assets.xcassets; sourceTree = SOURCE_ROOT; };
 		875410A81E1F10DF006C5C6E /* BVNotifications.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVNotifications.h; sourceTree = "<group>"; };
 		875410A91E1F10DF006C5C6E /* BVNotificationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVNotificationViewController.h; sourceTree = "<group>"; };
 		875410AA1E1F10DF006C5C6E /* BVNotificationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVNotificationViewController.m; sourceTree = "<group>"; };
@@ -519,6 +530,7 @@
 		87A9ECBD1E1DB9B300666636 /* BVPIN.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVPIN.m; sourceTree = "<group>"; };
 		87A9ECBE1E1DB9B300666636 /* BVPINRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVPINRequest.h; sourceTree = "<group>"; };
 		87A9ECBF1E1DB9B300666636 /* BVPINRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVPINRequest.m; sourceTree = "<group>"; };
+		87B3DADD1E522D2C00DE7843 /* UIImage+BundleLocator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+BundleLocator.h"; sourceTree = "<group>"; };
 		87B8A7D7272FA8AE6BF8BFBA /* Pods_BVSDK_BVSDKTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BVSDK_BVSDKTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		87C5FE971E22914C004EE6E8 /* BVStoreNotificationConfigurationLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVStoreNotificationConfigurationLoader.h; sourceTree = "<group>"; };
 		87C5FE981E22914C004EE6E8 /* BVStoreNotificationConfigurationLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVStoreNotificationConfigurationLoader.m; sourceTree = "<group>"; };
@@ -544,7 +556,6 @@
 		87C5FEB11E22A05D004EE6E8 /* BVViewsHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVViewsHelper.h; sourceTree = "<group>"; };
 		87C5FEB21E22A05D004EE6E8 /* BVViewsHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVViewsHelper.m; sourceTree = "<group>"; };
 		87C5FEB41E22A05D004EE6E8 /* BVMessageInterceptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVMessageInterceptor.h; sourceTree = "<group>"; };
-		87C5FEB51E22A05D004EE6E8 /* BVProductReviewRichNotificationCenter+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "BVProductReviewRichNotificationCenter+Private.h"; sourceTree = "<group>"; };
 		87C5FECC1E22A5BE004EE6E8 /* BVProductReviewNotificationConfigurationLoader+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "BVProductReviewNotificationConfigurationLoader+Private.h"; path = "Tests/Tests/BVProductReviewNotificationConfigurationLoader+Private.h"; sourceTree = SOURCE_ROOT; };
 		87C5FF561E368DF2004EE6E8 /* BVAuthorRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVAuthorRequest.h; sourceTree = "<group>"; };
 		87C5FF571E368DF2004EE6E8 /* BVAuthorRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVAuthorRequest.m; sourceTree = "<group>"; };
@@ -557,6 +568,7 @@
 		87C5FF651E393ED3004EE6E8 /* BVAuthorContentType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVAuthorContentType.m; sourceTree = "<group>"; };
 		87C5FF681E394C73004EE6E8 /* BVAuthorInclude.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVAuthorInclude.h; sourceTree = "<group>"; };
 		87C5FF691E394C73004EE6E8 /* BVAuthorInclude.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVAuthorInclude.m; sourceTree = "<group>"; };
+		87DA86DB1E5229C5002E7860 /* UIImage+BundleLocator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+BundleLocator.m"; sourceTree = "<group>"; };
 		87F2DAA71DAD579D00FB43F3 /* BVSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BVSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		87F2DAAA1DAD579D00FB43F3 /* BVSDK.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BVSDK.h; sourceTree = "<group>"; };
 		87F2DAAB1DAD579D00FB43F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -780,10 +792,6 @@
 		87F2DBE31DAD585E00FB43F3 /* BVCurationsAddPostRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVCurationsAddPostRequest.m; sourceTree = "<group>"; };
 		87F2DBE41DAD585E00FB43F3 /* BVCurationsAnalyticsHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVCurationsAnalyticsHelper.h; sourceTree = "<group>"; };
 		87F2DBE51DAD585E00FB43F3 /* BVCurationsAnalyticsHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVCurationsAnalyticsHelper.m; sourceTree = "<group>"; };
-		87F2DBE61DAD585E00FB43F3 /* BVCurationsCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVCurationsCollectionView.h; sourceTree = "<group>"; };
-		87F2DBE71DAD585E00FB43F3 /* BVCurationsCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVCurationsCollectionView.m; sourceTree = "<group>"; };
-		87F2DBE81DAD585E00FB43F3 /* BVCurationsCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVCurationsCollectionViewCell.h; sourceTree = "<group>"; };
-		87F2DBE91DAD585E00FB43F3 /* BVCurationsCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVCurationsCollectionViewCell.m; sourceTree = "<group>"; };
 		87F2DBEA1DAD585E00FB43F3 /* BVCurationsFeedItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVCurationsFeedItem.h; sourceTree = "<group>"; };
 		87F2DBEB1DAD585E00FB43F3 /* BVCurationsFeedItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVCurationsFeedItem.m; sourceTree = "<group>"; };
 		87F2DBEC1DAD585E00FB43F3 /* BVCurationsFeedLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVCurationsFeedLoader.h; sourceTree = "<group>"; };
@@ -904,6 +912,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				155261E91E413A22008887A8 /* Social.framework in Frameworks */,
 				87F2DD521DAD597C00FB43F3 /* libz.tbd in Frameworks */,
 				87F2DD4D1DAD589E00FB43F3 /* Foundation.framework in Frameworks */,
 				87F2DD4B1DAD589800FB43F3 /* UIKit.framework in Frameworks */,
@@ -923,6 +932,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1544B36C1E37D4F7000B0427 /* SocialMediaIcons */ = {
+			isa = PBXGroup;
+			children = (
+				870F13631E490B7B00D46BE6 /* Assets.xcassets */,
+			);
+			name = SocialMediaIcons;
+			sourceTree = "<group>";
+		};
+		15970ECE1E366BB500807032 /* BVCurationsUI */ = {
+			isa = PBXGroup;
+			children = (
+				870F133B1E490B5200D46BE6 /* BVCurationsPostViewController.h */,
+				870F133C1E490B5200D46BE6 /* BVCurationsPostViewController.m */,
+				870F133D1E490B5200D46BE6 /* BVCurationsUICollectionView.h */,
+				870F133E1E490B5200D46BE6 /* BVCurationsUICollectionView.m */,
+				870F133F1E490B5200D46BE6 /* BVCurationsUICollectionViewCell.h */,
+				870F13401E490B5200D46BE6 /* BVCurationsUICollectionViewCell.m */,
+				1544B36C1E37D4F7000B0427 /* SocialMediaIcons */,
+			);
+			path = BVCurationsUI;
+			sourceTree = "<group>";
+		};
 		875410A71E1F10DF006C5C6E /* BVExtensionNotifications */ = {
 			isa = PBXGroup;
 			children = (
@@ -1024,6 +1055,7 @@
 				87C5FEB01E22A05D004EE6E8 /* BVStringKeyValuePair.m */,
 				87C5FEB11E22A05D004EE6E8 /* BVViewsHelper.h */,
 				87C5FEB21E22A05D004EE6E8 /* BVViewsHelper.m */,
+				87DA86DB1E5229C5002E7860 /* UIImage+BundleLocator.m */,
 				87C5FEB31E22A05D004EE6E8 /* Private */,
 			);
 			name = BVCommon;
@@ -1034,7 +1066,7 @@
 			isa = PBXGroup;
 			children = (
 				87C5FEB41E22A05D004EE6E8 /* BVMessageInterceptor.h */,
-				87C5FEB51E22A05D004EE6E8 /* BVProductReviewRichNotificationCenter+Private.h */,
+				87B3DADD1E522D2C00DE7843 /* UIImage+BundleLocator.h */,
 			);
 			path = Private;
 			sourceTree = "<group>";
@@ -1069,6 +1101,7 @@
 				87F2DAC41DAD585E00FB43F3 /* BVAnalytics */,
 				87F2DAF61DAD585E00FB43F3 /* BVConversations */,
 				87F2DBE01DAD585E00FB43F3 /* BVCurations */,
+				15970ECE1E366BB500807032 /* BVCurationsUI */,
 				87F2DBF21DAD585E00FB43F3 /* BVLocation */,
 				875411531E1F201E006C5C6E /* BVNotifications */,
 				875410A71E1F10DF006C5C6E /* BVExtensionNotifications */,
@@ -1096,8 +1129,6 @@
 				87C5FECC1E22A5BE004EE6E8 /* BVProductReviewNotificationConfigurationLoader+Private.h */,
 				879D090F1DCA7DDE006B51D3 /* BVStoreNotificationConfigurationLoader+Private.h */,
 				87F2DAB71DAD579D00FB43F3 /* Info.plist */,
-				15D4F8421DF5EE5C00E6B30D /* UIImage+Tests.h */,
-				15D4F8431DF5EE5C00E6B30D /* UIImage+Tests.m */,
 				15D4F8451DF5EFFF00E6B30D /* BVSDKTests-Bridging-Header.h */,
 			);
 			path = BVSDKTests;
@@ -1545,10 +1576,6 @@
 				87F2DBE31DAD585E00FB43F3 /* BVCurationsAddPostRequest.m */,
 				87F2DBE41DAD585E00FB43F3 /* BVCurationsAnalyticsHelper.h */,
 				87F2DBE51DAD585E00FB43F3 /* BVCurationsAnalyticsHelper.m */,
-				87F2DBE61DAD585E00FB43F3 /* BVCurationsCollectionView.h */,
-				87F2DBE71DAD585E00FB43F3 /* BVCurationsCollectionView.m */,
-				87F2DBE81DAD585E00FB43F3 /* BVCurationsCollectionViewCell.h */,
-				87F2DBE91DAD585E00FB43F3 /* BVCurationsCollectionViewCell.m */,
 				87F2DBEA1DAD585E00FB43F3 /* BVCurationsFeedItem.h */,
 				87F2DBEB1DAD585E00FB43F3 /* BVCurationsFeedItem.m */,
 				87F2DBEC1DAD585E00FB43F3 /* BVCurationsFeedLoader.h */,
@@ -1617,6 +1644,7 @@
 		87F2DD491DAD589800FB43F3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				155261E81E413A22008887A8 /* Social.framework */,
 				879D08FB1DCA6CAE006B51D3 /* NotificationCenter.framework */,
 				87F2DD4C1DAD589E00FB43F3 /* Foundation.framework */,
 				87F2DD4A1DAD589800FB43F3 /* UIKit.framework */,
@@ -1942,7 +1970,6 @@
 				87F2DCB31DAD585E00FB43F3 /* BVStoreReviewsRequest.h in Headers */,
 				87F2DC8B1DAD585E00FB43F3 /* BVReviewStatistics.h in Headers */,
 				87F2DC801DAD585E00FB43F3 /* BVQAStatistics.h in Headers */,
-				87F2DD1C1DAD585E00FB43F3 /* BVCurationsCollectionView.h in Headers */,
 				87F2DC221DAD585E00FB43F3 /* BVTransactionItem.h in Headers */,
 				87F2DC6E1DAD585E00FB43F3 /* BVDimensionElement.h in Headers */,
 				87F2DC201DAD585E00FB43F3 /* BVTransaction.h in Headers */,
@@ -1975,7 +2002,6 @@
 				875411721E1F201E006C5C6E /* BVNotificationConstants.h in Headers */,
 				875411771E1F201E006C5C6E /* BVOpenURLMetaData.h in Headers */,
 				875411701E1F201E006C5C6E /* BVNotificationConfiguration.h in Headers */,
-				87F2DD1E1DAD585E00FB43F3 /* BVCurationsCollectionViewCell.h in Headers */,
 				87C5FEBE1E22A05D004EE6E8 /* BVLogger.h in Headers */,
 				87C5FEC51E22A05D004EE6E8 /* BVStringKeyValuePair.h in Headers */,
 				87C5FEBD1E22A05D004EE6E8 /* BVErrorCodeConstants.h in Headers */,
@@ -2000,6 +2026,9 @@
 				87F2DC5E1DAD585E00FB43F3 /* BVBadgeType.h in Headers */,
 				87A02B621E0967EE0002701B /* BVFeedbackSubmission.h in Headers */,
 				87A02B6A1E0971AC0002701B /* BVSubmittedFeedback.h in Headers */,
+				870F13411E490B5200D46BE6 /* BVCurationsPostViewController.h in Headers */,
+				870F13431E490B5200D46BE6 /* BVCurationsUICollectionView.h in Headers */,
+				870F13451E490B5200D46BE6 /* BVCurationsUICollectionViewCell.h in Headers */,
 				87A02B661E096B300002701B /* BVFeedbackSubmissionResponse.h in Headers */,
 				87C5FF581E368DF2004EE6E8 /* BVAuthorRequest.h in Headers */,
 				87C5FF5C1E36A8B7004EE6E8 /* BVAuthorResponse.h in Headers */,
@@ -2008,6 +2037,7 @@
 				87C5FF6A1E394C73004EE6E8 /* BVAuthorInclude.h in Headers */,
 				87C5FF621E36B416004EE6E8 /* BVAuthor.h in Headers */,
 				87F2DD201DAD585E00FB43F3 /* BVCurationsFeedItem.h in Headers */,
+				87B3DADE1E522D2C00DE7843 /* UIImage+BundleLocator.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2102,6 +2132,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				87FEC8CA1DB1145D007DD44E /* integrate-dynamic-framework.sh in Resources */,
+				870F13641E490B7B00D46BE6 /* Assets.xcassets in Resources */,
 				875411891E1F201E006C5C6E /* mapThumbnail.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2251,6 +2282,7 @@
 				87F2DC281DAD585E00FB43F3 /* BVGMBLVisit.m in Sources */,
 				87A02B631E0967EE0002701B /* BVFeedbackSubmission.m in Sources */,
 				87F2DCE61DAD585E00FB43F3 /* BVQuestionSubmission.m in Sources */,
+				870F13441E490B5200D46BE6 /* BVCurationsUICollectionView.m in Sources */,
 				875411861E1F201E006C5C6E /* BVStoreReviewRichNotificationCenter.m in Sources */,
 				87F2DD371DAD585E00FB43F3 /* BVProductRecommendationsContainer.m in Sources */,
 				87F2DC981DAD585E00FB43F3 /* BVQuestion.m in Sources */,
@@ -2276,6 +2308,7 @@
 				87F2DC211DAD585E00FB43F3 /* BVTransaction.m in Sources */,
 				87F2DD101DAD585E00FB43F3 /* BVReviewsCollectionView.m in Sources */,
 				8754117C1E1F201E006C5C6E /* BVProductReviewNotificationProperties.m in Sources */,
+				87DA86DD1E5229C5002E7860 /* UIImage+BundleLocator.m in Sources */,
 				87F2DC9C1DAD585E00FB43F3 /* BVStore.m in Sources */,
 				875411881E1F201E006C5C6E /* BVStoreReviewSimpleNotificationCenter.m in Sources */,
 				87F2DC651DAD585E00FB43F3 /* BVContextDataValue.m in Sources */,
@@ -2319,6 +2352,7 @@
 				875410B11E1F10DF006C5C6E /* BVNotificationViewController.m in Sources */,
 				875411821E1F201E006C5C6E /* BVStoreReviewNotificationCenter.m in Sources */,
 				87F2DCB61DAD585E00FB43F3 /* BVBulkRatingsFilterType.m in Sources */,
+				870F13421E490B5200D46BE6 /* BVCurationsPostViewController.m in Sources */,
 				87F2DD2C1DAD585E00FB43F3 /* BVLocationManager.m in Sources */,
 				87F2DC6F1DAD585E00FB43F3 /* BVDimensionElement.m in Sources */,
 				87F2DCDE1DAD585E00FB43F3 /* BVSubmissionErrorResponse.m in Sources */,
@@ -2365,16 +2399,15 @@
 				87F2DCF41DAD585E00FB43F3 /* BVSubmittedReview.m in Sources */,
 				87F2DC1F1DAD585E00FB43F3 /* BVPixel.m in Sources */,
 				87F2DC261DAD585E00FB43F3 /* BVGMBLSighting.m in Sources */,
+				870F13461E490B5200D46BE6 /* BVCurationsUICollectionViewCell.m in Sources */,
 				87F2DC741DAD585E00FB43F3 /* BVDistributionValue.m in Sources */,
 				87F2DCC01DAD585E00FB43F3 /* BVReviewFilterType.m in Sources */,
 				87C5FEC81E22A05D004EE6E8 /* BVViewsHelper.m in Sources */,
 				87F2DC1B1DAD585E00FB43F3 /* BVConversion.m in Sources */,
 				87F2DCB81DAD585E00FB43F3 /* BVFilter.m in Sources */,
-				87F2DD1D1DAD585E00FB43F3 /* BVCurationsCollectionView.m in Sources */,
 				87F2DC7F1DAD585E00FB43F3 /* BVProductStatistics.m in Sources */,
 				87F2DC771DAD585E00FB43F3 /* BVModelUtil.m in Sources */,
 				87F2DCBA1DAD585E00FB43F3 /* BVFilterOperator.m in Sources */,
-				87F2DD1F1DAD585E00FB43F3 /* BVCurationsCollectionViewCell.m in Sources */,
 				87F2DC5D1DAD585E00FB43F3 /* BVBadge.m in Sources */,
 				87C5FEB71E22A05D004EE6E8 /* BVAuthenticatedUser.m in Sources */,
 				87F2DD081DAD585E00FB43F3 /* BVQuestionsTableView.m in Sources */,
@@ -2400,7 +2433,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				87F2DD641DAD5E9400FB43F3 /* BVUserProfileTests.m in Sources */,
-				15D4F8441DF5EE5C00E6B30D /* UIImage+Tests.m in Sources */,
 				87F2DE171DAD945D00FB43F3 /* StoreReviewSubmissionTests.swift in Sources */,
 				87F2DE0C1DAD945D00FB43F3 /* ReviewDisplayTests.swift in Sources */,
 				87F2DE141DAD945D00FB43F3 /* PhotoUploadTests.swift in Sources */,
@@ -2551,6 +2583,8 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Pod/Frameworks",
 				);
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				GCC_PREFIX_HEADER = "";
 				INFOPLIST_FILE = BVSDK/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
@@ -2573,6 +2607,8 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Pod/Frameworks",
 				);
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				GCC_PREFIX_HEADER = "";
 				INFOPLIST_FILE = BVSDK/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.4;

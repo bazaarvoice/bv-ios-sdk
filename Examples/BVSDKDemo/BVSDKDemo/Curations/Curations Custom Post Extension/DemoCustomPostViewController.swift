@@ -9,19 +9,24 @@ import UIKit
 import BVSDK
 
 /** This subclassed UIViewController provides a wrapper around a UIImagePickerController and ShareViewController (subclassed from SLComposeServiceViewController).
-*/
-class DemoCustomPostViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+ */
+let SPINNER_DIMENSION : CGFloat = 200.0
 
+
+class DemoCustomPostViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
     let shareRequest : BVCurationsAddPostRequest?
     var imagePicker = UIImagePickerController()
     var placeholderText : String = ""
+    
+    let spinner = Util.createSpinner(UIColor.bazaarvoiceTeal(), size: CGSize(width: SPINNER_HEIGHT_WIDTH, height: SPINNER_HEIGHT_WIDTH), padding: 50)
     
     init(shareRequest: BVCurationsAddPostRequest, placeholderText : String) {
         self.shareRequest = shareRequest
         self.placeholderText = placeholderText
         super.init(nibName: nil, bundle: nil)
     }
-
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -58,7 +63,7 @@ class DemoCustomPostViewController: UIViewController, UIImagePickerControllerDel
                     
                 case 2:
                     self.presentingViewController?.dismiss(animated: true, completion: nil)
-
+                    
                 default:
                     // ignored
                     break
@@ -105,29 +110,39 @@ class DemoCustomPostViewController: UIViewController, UIImagePickerControllerDel
         
         // image selected...
         shareRequest?.image = info[UIImagePickerControllerEditedImage] as! UIImage
-        
         // Post an image with a SLComposeServiceViewController
-        let shareVC = ShareViewController.init(shareRequest: self.shareRequest!)
-        shareVC?.placeholder = self.placeholderText;
-        shareVC?.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext;
+
+        let shareVC = BVCurationsPostViewController.init(postRequest: self.shareRequest!, logoImage: UIImage(named: "icon_bvlogo")!, bavBarColor: UIColor.bazaarvoiceNavy(), navBarTintColor: UIColor.white)
+
+        shareVC.placeholder = "Enter text"
+        shareVC.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext;
         
-        shareVC?.onDismissComplete = {
-            () -> Void in
-           self.presentingViewController?.dismiss(animated: true, completion: nil)
+        shareVC.didPressCancel = {
+            self.presentingViewController?.dismiss(animated: true, completion: nil)
+        }
+        
+        shareVC.didBeginPost = {
+            self.spinner.frame.origin = CGPoint(x: self.view.frame.width/2 - SPINNER_HEIGHT_WIDTH/2, y: self.view.frame.height/4)
+            self.view.addSubview(self.spinner)
+        }
+        
+        shareVC.didCompletePost = {(error) in
+            self.presentingViewController?.dismiss(animated: true, completion: nil)
+            self.spinner.removeFromSuperview()
         }
         
         imagePicker.dismiss(animated: true) { () -> Void in
             
-            self.present(shareVC!, animated: true) { () -> Void in
+            self.present(shareVC, animated: true) { () -> Void in
                 // completion
             }
-
+            
         }
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         self.presentingViewController?.dismiss(animated: true, completion: nil)
     }
-
+    
     
 }

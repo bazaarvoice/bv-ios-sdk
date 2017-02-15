@@ -22,7 +22,7 @@ static const NSString *bvProductName = @"Curations";
         return;
     }
     
-    NSMutableDictionary* event = [NSMutableDictionary dictionaryWithDictionary:[self getUGCImpressionParams]];
+    NSMutableDictionary* event = [self getUGCImpressionParams];
     
     if (feedItem.sourceClient){
         [event setObject:feedItem.sourceClient forKey:@"syndicationSource"];
@@ -39,9 +39,9 @@ static const NSString *bvProductName = @"Curations";
 
 + (void)queueUsedFeatureEventForContainerInView:(BVCurationsFeedWidget)widgetType withExternalId:(NSString *  _Nullable)externalId withWidgetId:(NSString * _Nullable)widgetId{
     
-    NSMutableDictionary* event = [NSMutableDictionary dictionaryWithDictionary:[self getUsedFeatureParams]];
+    NSMutableDictionary* event = [self getUsedFeatureParams];
     [event setObject:@"InView" forKey:@"name"];
-     [event setObject:[self getWidgetTypeText:widgetType] forKey:@"component"];
+     [event setObject:[self getFeedWidgetTypeText:widgetType] forKey:@"component"];
     if (externalId){
         [event setObject:externalId forKey:@"productId"];
     }
@@ -54,8 +54,8 @@ static const NSString *bvProductName = @"Curations";
 
 + (void)queueUsedFeatureEventForWidgetScroll:(BVCurationsFeedWidget)widgetType withExternalId:(NSString *  _Nullable)externalId{
     
-    NSMutableDictionary *event = [NSMutableDictionary dictionaryWithDictionary:[self getUsedFeatureParams]];
-    [event setObject:[self getWidgetTypeText:widgetType] forKey:@"component"];
+    NSMutableDictionary *event = [self getUsedFeatureParams];
+    [event setObject:[self getFeedWidgetTypeText:widgetType] forKey:@"component"];
     [event setObject:@"Scrolled" forKey:@"name"];
     if (externalId){
         [event setObject:externalId forKey:@"productId"];
@@ -70,7 +70,7 @@ static const NSString *bvProductName = @"Curations";
         return;
     }
     
-    NSMutableDictionary *event = [NSMutableDictionary dictionaryWithDictionary:[self getUsedFeatureParams]];
+    NSMutableDictionary *event = [self getUsedFeatureParams];
     [event setObject:@"ContentClick" forKey:@"name"];
     
     if (feedItem.channel){
@@ -90,60 +90,74 @@ static const NSString *bvProductName = @"Curations";
 
 + (void)queueEmbeddedPageViewEventCurationsFeed:(BVCurationsFeedWidget)widgetType withExternalId:(NSString *  _Nullable)externalId{
     
-    NSMutableDictionary *event = [NSMutableDictionary dictionaryWithDictionary:[self getPageViewEmbeddedEventParams]];
-    [event setObject:[self getWidgetTypeText:widgetType] forKey:@"reportingGroup"];
+    NSMutableDictionary *event = [self getPageViewEmbeddedEventParams];
+    [event setObject:[self getFeedWidgetTypeText:widgetType] forKey:@"reportingGroup"];
     if (externalId){
         [event setObject:externalId forKey:@"productId"];
     }
     [[BVAnalyticsManager sharedManager] queueEvent:event];    
 }
 
++ (void)queueSubmissionPageView:(BVCurationsSubmissionWidget)widgetType {
+    NSMutableDictionary *event = [self getBasicParamsForCL:@"PageView" type:@"Submission"];
+    [event setObject:[self getSubmissionWidgetTypeText:widgetType] forKey:@"component"];
+    [[BVAnalyticsManager sharedManager] queueEvent:event];
+}
 
-+ (NSString *)getWidgetTypeText:(BVCurationsFeedWidget)widgetType{
++ (void)queueUsedFeatureUploadPhoto:(BVCurationsSubmissionWidget)widgetType {
+    NSMutableDictionary *event = [self getBasicParamsForCL:@"Feature" type:@"Used"];
+    [event setObject:@"UploadPhoto" forKey:@"name"];
+    [event setObject:[self getSubmissionWidgetTypeText:widgetType] forKey:@"component"];
+    [[BVAnalyticsManager sharedManager] queueEvent:event];
+}
+
++ (NSString *)getFeedWidgetTypeText:(BVCurationsFeedWidget)widgetType{
     
     switch (widgetType) {
-        case CurationsFeedCarousel:
+        case BVCurationsFeedWidgetCarousel:
             return @"Carousel";
-        case CurationsFeedTableView:
+        case BVCurationsFeedWidgetTableView:
             return @"Tableview";
-        case CurationsFeedCustom:
+        case BVCurationsFeedWidgetCustom:
+            return @"Custom";
+        case BVCurationsFeedWidgetGrid:
+            return @"Grid";
+    }
+}
+
+
++(NSString*)getSubmissionWidgetTypeText:(BVCurationsSubmissionWidget)widgetType {
+    switch (widgetType) {
+        case BVCurationsSubmissionWidgetCompose:
+            return @"Compose";
+        case BVCurationsSubmissionWidgetCustom:
             return @"Custom";
     }
+}
+
++ (NSMutableDictionary*)getPageViewEmbeddedEventParams {
+    return [self getBasicParamsForCL:@"PageView" type:@"Embedded"];
+}
+
++ (NSMutableDictionary*)getUGCImpressionParams {
+    NSMutableDictionary *dict = [self getBasicParamsForCL:@"Impression" type:@"UGC"];
+    [dict setObject:@"socialPost" forKey:@"contentType"];
+    return dict;
+}
+
++ (NSMutableDictionary*)getUsedFeatureParams {
+    return [self getBasicParamsForCL:@"Feature" type:@"Used"];
+
+}
+
++ (NSMutableDictionary *)getBasicParamsForCL:(NSString*)cl type:(NSString*)type {
+    NSMutableDictionary *dict = [NSMutableDictionary new];
+    [dict setObject:cl forKey:@"cl"];
+    [dict setObject:type forKey:@"type"];
+    [dict setObject:bvProductName forKey:@"bvProduct"];
+    [dict setObject:[[BVSDKManager sharedManager] clientId] forKey:@"client"];
+    [dict setObject:@"native-mobile-sdk" forKey:@"source"];
     
+    return dict;
 }
-
-
-+ (NSDictionary*)getPageViewEmbeddedEventParams {
-    
-    return @{
-             @"cl": @"PageView",
-             @"type": @"Embedded",
-             @"source": @"native-mobile-sdk",
-             @"client": [[BVSDKManager sharedManager] clientId],
-             @"bvProduct": bvProductName
-             };
-}
-
-+ (NSDictionary*)getUGCImpressionParams {
-    return @{
-             @"cl": @"Impression",
-             @"type": @"UGC",
-             @"source": @"native-mobile-sdk",
-             @"contentType" : @"socialPost",
-             @"client": [[BVSDKManager sharedManager] clientId],
-             @"bvProduct": bvProductName
-             };
-}
-
-+ (NSDictionary*)getUsedFeatureParams {
-    return @{
-             @"cl": @"Feature",
-             @"type": @"Used",
-             @"source": @"native-mobile-sdk",
-             @"client": [[BVSDKManager sharedManager] clientId],
-             @"bvProduct": bvProductName
-             };
-}
-
-
 @end

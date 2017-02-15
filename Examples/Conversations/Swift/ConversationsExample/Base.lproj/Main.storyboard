@@ -47,19 +47,19 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5zN-hz-DfD">
                                 <state key="normal" title="Submit Review with Photo"/>
                                 <connections>
-                                    <action selector="submitReviewTapped:" destination="dKM-nR-alk" eventType="touchUpInside" id="LvI-VY-YvB"/>
+                                    <action selector="submitReviewTappedWithSender:" destination="dKM-nR-alk" eventType="touchUpInside" id="b8Z-vx-9af"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cmo-ai-CH5">
                                 <state key="normal" title="Submit Question"/>
                                 <connections>
-                                    <action selector="submitQuestionTapped:" destination="dKM-nR-alk" eventType="touchUpInside" id="iRc-9l-7J5"/>
+                                    <action selector="submitQuestionTappedWithSender:" destination="dKM-nR-alk" eventType="touchUpInside" id="XXS-dN-ly6"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bee-Nm-2RZ">
                                 <state key="normal" title="Submit Answer"/>
                                 <connections>
-                                    <action selector="submitAnswerTapped:" destination="dKM-nR-alk" eventType="touchUpInside" id="RCf-CX-u4D"/>
+                                    <action selector="submitAnswerTappedWithSender:" destination="dKM-nR-alk" eventType="touchUpInside" id="R8e-EP-Mx1"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gP4-Nm-lKG">
@@ -71,7 +71,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R1K-Q1-7uV">
                                 <state key="normal" title="Submit Feedback"/>
                                 <connections>
-                                    <action selector="submitFeedbackTapped:" destination="dKM-nR-alk" eventType="touchUpInside" id="DZf-Nd-TiL"/>
+                                    <action selector="submitFeedbackTappedWithSender:" destination="dKM-nR-alk" eventType="touchUpInside" id="pny-U8-IHY"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U5y-IY-NjF">

@@ -98,8 +98,6 @@
 		736D4CEF1CDED0C40095EE6B /* ExtensionShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736D4CCD1CDED0C40095EE6B /* ExtensionShareViewController.swift */; };
 		736D4CF11CDED0C40095EE6B /* icon_bvlogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 736D4CD01CDED0C40095EE6B /* icon_bvlogo.png */; };
 		736D4CF21CDED0C40095EE6B /* loading@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 736D4CD11CDED0C40095EE6B /* loading@2x.png */; };
-		736D4CF51CDED0C40095EE6B /* DemoCurationsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736D4CD61CDED0C40095EE6B /* DemoCurationsCollectionViewCell.swift */; };
-		736D4CF61CDED0C40095EE6B /* DemoCurationsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 736D4CD71CDED0C40095EE6B /* DemoCurationsCollectionViewCell.xib */; };
 		736D4CFC1CDED0C40095EE6B /* CurationsFeedItemDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736D4CE01CDED0C40095EE6B /* CurationsFeedItemDetailCell.swift */; };
 		736D4CFD1CDED0C40095EE6B /* CurationsFeedItemDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 736D4CE11CDED0C40095EE6B /* CurationsFeedItemDetailCell.xib */; };
 		736D4CFE1CDED0C40095EE6B /* CurationsImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736D4CE21CDED0C40095EE6B /* CurationsImageTableViewCell.swift */; };
@@ -112,8 +110,6 @@
 		736D4D051CDED0C40095EE6B /* CurationsFeedItemDetailTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 736D4CE91CDED0C40095EE6B /* CurationsFeedItemDetailTableViewController.xib */; };
 		736D4D061CDED0C40095EE6B /* CurationsFeedMasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736D4CEA1CDED0C40095EE6B /* CurationsFeedMasterViewController.swift */; };
 		736D4D071CDED0C40095EE6B /* CurationsFeedPageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 736D4CEB1CDED0C40095EE6B /* CurationsFeedPageViewController.xib */; };
-		736D4D0A1CDED2870095EE6B /* DemoCurationsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736D4D081CDED2870095EE6B /* DemoCurationsController.swift */; };
-		736D4D0B1CDED2870095EE6B /* DemoCurationsController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 736D4D091CDED2870095EE6B /* DemoCurationsController.xib */; };
 		737FA0B81CF8AD2700864B1B /* submitReview.json in Resources */ = {isa = PBXBuildFile; fileRef = 737FA0B71CF8AD2700864B1B /* submitReview.json */; };
 		737FA0BA1CF8AD8200864B1B /* submitQuestion.json in Resources */ = {isa = PBXBuildFile; fileRef = 737FA0B91CF8AD8200864B1B /* submitQuestion.json */; };
 		737FA0BC1CF8ADB100864B1B /* submitAnswer.json in Resources */ = {isa = PBXBuildFile; fileRef = 737FA0BB1CF8ADB100864B1B /* submitAnswer.json */; };
@@ -411,7 +407,7 @@
 		733BCF041CF81F2800045FC2 /* SubmitAnswerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubmitAnswerViewController.swift; sourceTree = "<group>"; };
 		733BCF051CF81F2800045FC2 /* SubmitAnswerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SubmitAnswerViewController.xib; sourceTree = "<group>"; };
 		7348C3711CE05A30000B6F3C /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
-		734CF3521CE0414400132462 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		734CF3521CE0414400132462 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; tabWidth = 3; };
 		7356B23A1CF89FCA004B0121 /* AnswerListHeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnswerListHeaderCell.swift; sourceTree = "<group>"; };
 		7356B23B1CF89FCA004B0121 /* AnswerListHeaderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AnswerListHeaderCell.xib; sourceTree = "<group>"; };
 		73571C961CEE4DB700FF3220 /* BVSDKDemo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = BVSDKDemo.entitlements; sourceTree = "<group>"; };
@@ -431,8 +427,6 @@
 		736D4CCD1CDED0C40095EE6B /* ExtensionShareViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ExtensionShareViewController.swift; path = ../BVSDKDemo/Curations/ExtensionShareViewController.swift; sourceTree = "<group>"; };
 		736D4CD01CDED0C40095EE6B /* icon_bvlogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_bvlogo.png; sourceTree = "<group>"; };
 		736D4CD11CDED0C40095EE6B /* loading@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "loading@2x.png"; sourceTree = "<group>"; };
-		736D4CD61CDED0C40095EE6B /* DemoCurationsCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoCurationsCollectionViewCell.swift; sourceTree = "<group>"; };
-		736D4CD71CDED0C40095EE6B /* DemoCurationsCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DemoCurationsCollectionViewCell.xib; sourceTree = "<group>"; };
 		736D4CE01CDED0C40095EE6B /* CurationsFeedItemDetailCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurationsFeedItemDetailCell.swift; sourceTree = "<group>"; };
 		736D4CE11CDED0C40095EE6B /* CurationsFeedItemDetailCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CurationsFeedItemDetailCell.xib; sourceTree = "<group>"; };
 		736D4CE21CDED0C40095EE6B /* CurationsImageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurationsImageTableViewCell.swift; sourceTree = "<group>"; };
@@ -445,8 +439,6 @@
 		736D4CE91CDED0C40095EE6B /* CurationsFeedItemDetailTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CurationsFeedItemDetailTableViewController.xib; sourceTree = "<group>"; };
 		736D4CEA1CDED0C40095EE6B /* CurationsFeedMasterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurationsFeedMasterViewController.swift; sourceTree = "<group>"; };
 		736D4CEB1CDED0C40095EE6B /* CurationsFeedPageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CurationsFeedPageViewController.xib; sourceTree = "<group>"; };
-		736D4D081CDED2870095EE6B /* DemoCurationsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoCurationsController.swift; sourceTree = "<group>"; };
-		736D4D091CDED2870095EE6B /* DemoCurationsController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DemoCurationsController.xib; sourceTree = "<group>"; };
 		737FA0B71CF8AD2700864B1B /* submitReview.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = submitReview.json; sourceTree = "<group>"; };
 		737FA0B91CF8AD8200864B1B /* submitQuestion.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = submitQuestion.json; sourceTree = "<group>"; };
 		737FA0BB1CF8ADB100864B1B /* submitAnswer.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = submitAnswer.json; sourceTree = "<group>"; };
@@ -964,10 +956,6 @@
 		736D4CD51CDED0C40095EE6B /* Curations Feed */ = {
 			isa = PBXGroup;
 			children = (
-				736D4CD61CDED0C40095EE6B /* DemoCurationsCollectionViewCell.swift */,
-				736D4CD71CDED0C40095EE6B /* DemoCurationsCollectionViewCell.xib */,
-				736D4D081CDED2870095EE6B /* DemoCurationsController.swift */,
-				736D4D091CDED2870095EE6B /* DemoCurationsController.xib */,
 			);
 			path = "Curations Feed";
 			sourceTree = "<group>";
@@ -1562,7 +1550,6 @@
 				87A02B561E018AC30002701B /* testNotificationProductConfig.json in Resources */,
 				733BCEF81CF7428200045FC2 /* ForalPro-Regular.otf in Resources */,
 				878309911CECF4140097FC48 /* RatingsAndReviewsViewController.xib in Resources */,
-				736D4CF61CDED0C40095EE6B /* DemoCurationsCollectionViewCell.xib in Resources */,
 				15AE819C1E01A906009C1478 /* PINCollectionViewCell.xib in Resources */,
 				87CD52421CE610A500FC2726 /* NewProductCurationsTableViewCell.xib in Resources */,
 				15BA73981DA6852100EAA1E9 /* StoreRatingTableViewCell.xib in Resources */,
@@ -1601,7 +1588,6 @@
 				1577DE441DA7E64D00A12B8F /* ReviewTitleTableViewCell.xib in Resources */,
 				8772167E1D3FDAD4007E5C6C /* conversationsReviewsEnduranceCycles_FilterLocation.json in Resources */,
 				8791449A1CF8BAAE00976220 /* revolution_cycles.png in Resources */,
-				736D4D0B1CDED2870095EE6B /* DemoCurationsController.xib in Resources */,
 				73199AF81CDD84E4006CC59D /* LaunchScreen.storyboard in Resources */,
 				730A64721CE56A1700580E9C /* RatingTableViewCell.xib in Resources */,
 				876FF1B61D21DDFF000ED410 /* FacebookLoginViewController.xib in Resources */,
@@ -1861,7 +1847,6 @@
 				15D5BEC81D79D10200D34EA0 /* JPSThumbnailAnnotation+Curations.swift in Sources */,
 				8747F1E21D11C2A000DC8E42 /* PermissionViewController.swift in Sources */,
 				87BA80821D342E3200AFA54D /* LocationSettings.swift in Sources */,
-				736D4D0A1CDED2870095EE6B /* DemoCurationsController.swift in Sources */,
 				871AD4111D08A5B8006583E5 /* ProfileViewController.swift in Sources */,
 				733843911CED58C800928760 /* WriteReviewViewController.swift in Sources */,
 				15AE819B1E01A906009C1478 /* PINCollectionViewCell.swift in Sources */,
@@ -1876,7 +1861,6 @@
 				15EA71A21DABF3CB00D9A706 /* MPTextView.m in Sources */,
 				739BDAC91CED47DE007D52CC /* ConversationsModel.swift in Sources */,
 				87F2D64B1D9ADFF400FB43F3 /* (null) in Sources */,
-				736D4CF51CDED0C40095EE6B /* DemoCurationsCollectionViewCell.swift in Sources */,
 				87BA80901D344D9800AFA54D /* StoreLocationTableViewCell.swift in Sources */,
 				87CF9A651DEE32CD0069D2B9 /* CartManager.swift in Sources */,
 				736D4CEE1CDED0C40095EE6B /* DateTimeAgo.swift in Sources */,

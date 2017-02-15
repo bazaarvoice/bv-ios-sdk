@@ -110,17 +110,19 @@ FOUNDATION_EXPORT const unsigned char BVSDKVersionString[];
 #import <BVSDK/BVCurationsFeedLoader.h>
 #import <BVSDK/BVCurationsAddPostRequest.h>
 #import <BVSDK/BVCurationsAnalyticsHelper.h>
-#import <BVSDK/BVCurationsCollectionView.h>
-#import <BVSDK/BVCurationsCollectionViewCell.h>
 #import <BVSDK/BVCurationsAnalyticsHelper.h>
 
 #import <BVSDK/BVCurationsFeedRequest.h>
 #import <BVSDK/BVCurationsFeedItem.h>
 #import <BVSDK/BVCurationsAddPostRequest.h>
 #import <BVSDK/BVCurationsAnalyticsHelper.h>
-#import <BVSDK/BVCurationsCollectionViewCell.h>
+
 #import <BVSDK/BVCurationsFeedLoader.h>
 #import <BVSDK/BVCurationsPhotoUploader.h>
+
+// CurationsUI
+#import <BVSDK/BVCurationsUICollectionView.h>
+#import <BVSDK/BVCurationsPostViewController.h>
 
 // Location
 #import <BVSDK/BVPlaceAttributes.h>

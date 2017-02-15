@@ -29,7 +29,7 @@
 
 - (nonnull instancetype)includeStatistics:(BVStoreIncludeContentType)contentType;
 
-- (nonnull instancetype)addSort:(BVSortOptionProducts)option order:(BVSortOrder)order; __deprecated_msg("use sortReviews instead");
+- (nonnull instancetype)addSort:(BVSortOptionProducts)option order:(BVSortOrder)order __deprecated_msg("use sortReviews instead");
 
 - (nonnull instancetype)addReviewSort:(BVSortOptionReviews)option order:(BVSortOrder)order;
 
