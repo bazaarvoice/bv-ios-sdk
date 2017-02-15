@@ -2,152 +2,142 @@
 //  ViewController.swift
 //  CurationsExample
 //
-//  Copyright © 2016 Bazaarvoice. All rights reserved.
+//  Copyright © 2017 Bazaarvoice. All rights reserved.
 //
-
 import UIKit
 import BVSDK
-import CoreLocation
+import SDWebImage
 
-class ViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, CLLocationManagerDelegate {
+class ViewController: UIViewController, BVCurationsUICollectionViewDelegate {
     
-    @IBOutlet weak var curationsCollectionView: BVCurationsCollectionView!
+    @IBOutlet weak var curationsCollectionView: BVCurationsUICollectionView?
+    @IBOutlet weak var stepper: UIStepper?
     
-    var curationsFeedItems:[BVCurationsFeedItem]?
+    @IBOutlet var heightConstraintGrid: NSLayoutConstraint!
+    @IBOutlet var heightConstraintCarousel: NSLayoutConstraint!
     
-    var locationManager: CLLocationManager!
-    var hasRequestedCurations = false
+    let sdMngr = SDWebImageManager.shared()
+    let numRowsStart: UInt = 2
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.curationsCollectionView.registerNib(UINib(nibName: "DemoCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "DemoCell")
+        // Set up the Curations UI display properties
+        curationsCollectionView?.curationsDelegate = self
+        curationsCollectionView?.groups = ["__all__"]
+        curationsCollectionView?.fetchSize = 60
+        curationsCollectionView?.infiniteScrollEnabled = true
+        curationsCollectionView?.itemsPerRow = numRowsStart
+        curationsCollectionView?.bvCurationsUILayout = .grid
+        curationsCollectionView?.loadFeed()
         
-        self.curationsCollectionView.delegate = self
-        self.curationsCollectionView.dataSource = self
-        
-        // create a location manager to get the user's current location, to personalize their curations content based on location
-        locationManager = CLLocationManager();
-        locationManager.delegate = self;
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        
-        if CLLocationManager.authorizationStatus() == .NotDetermined {
-            locationManager.requestWhenInUseAuthorization()
-        }
-        else {
-            locationManager.startUpdatingLocation()
-        }
+        curationsCollectionView?.backgroundColor = UIColor.lightGray
+        stepper?.value = Double(numRowsStart)
+        // Add a bar button item so we can demo curations submission
+        let submitButton  = UIBarButtonItem(title: "Add Photo",  style: .plain, target: self, action: #selector(didTapAddPhotoButton))
+        self.navigationItem.rightBarButtonItem = submitButton
         
     }
     
-    override func viewWillLayoutSubviews() {
-        super.viewWillLayoutSubviews()
+    // This demo shows how to create a customized Share View Controller and upload an image and text to Curations.
+    func didTapAddPhotoButton(_ sender: AnyObject) {
         
-        let layout = (curationsCollectionView.collectionViewLayout) as! UICollectionViewFlowLayout
+        // Here we load our request with the groups we want to subit to and additional info.
+        let shareRequest = BVCurationsAddPostRequest(groups: [],
+                                                     withAuthorAlias: "authorAlias",
+                                                     withToken: "token",
+                                                     withText: "Hello.")
         
-        layout.scrollDirection = UICollectionViewScrollDirection.Vertical
-        layout.itemSize = CGSizeMake(curationsCollectionView.bounds.size.width / 2, curationsCollectionView.bounds.size.width / 2)
+        // We've hard-coded an image here for testing, where you would normally have the user select from a gallery or camera.
+        shareRequest.image = UIImage(named: "curations_test_image")!
         
-        layout.minimumInteritemSpacing = 0
-        layout.minimumLineSpacing = 0
-    }
-    
-    func fetchCurationsWithLocation(location: CLLocation?) {
+        // Now we just post the share view controller with a couple of styling options.
+        let shareVC = BVCurationsPostViewController.init(postRequest: shareRequest,
+                                                          logoImage: UIImage(named: "happy_icon")!,
+                                                          bavBarColor: UIColor.orange,
+                                                          navBarTintColor: UIColor.white)
         
-        // only request curations content once for this demo view controller.
-        if hasRequestedCurations == false {
-            hasRequestedCurations = true
-        }
-        else {
-            return;
-        }
+        shareVC.placeholder = "Say something awesome\nabout your photo!"
+        shareVC.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext;
         
-        let groups = ["__all__"]
-        let feedRequest = BVCurationsFeedRequest(groups: groups)
-        feedRequest.limit = 40
-        feedRequest.hasPhoto = true
-        feedRequest.withProductData = true
-        
-        // request curations data, taking the user's location into account
-        if let locationObject = location {
-            feedRequest.setLatitude(locationObject.coordinate.latitude, longitude: locationObject.coordinate.longitude)
+        shareVC.didPressCancel = {
+            self.navigationController?.presentingViewController?.dismiss(animated: true, completion: nil)
+            print("User cancelled")
         }
         
-        self.curationsCollectionView.loadFeedWithRequest(feedRequest, withWidgetId: nil, completionHandler: { (feedItems) -> Void in
-            // success
-            // closure from request returned on main thread
-            
-            self.curationsFeedItems = feedItems as [BVCurationsFeedItem]
-            self.curationsCollectionView.reloadData()
-            
-        }) { (error) -> Void in
-            // error
-            
-            print("ERROR: Curations feed could not be retrieved. Error: " + error.localizedDescription)
+        shareVC.didBeginPost = {
+            // Here you could add your own spinner
+            print("Beginning Post Submission...")
         }
         
-    }
-    
-    // MARK: UICollectionViewDatasource
-    
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        shareVC.didCompletePost = {(error) in
+            // Here you could remove your spinner if added to the view
+             self.navigationController?.presentingViewController?.dismiss(animated: true, completion: nil)
+            if error != nil {
+                print("Ooops, the submissions failed: " + (error?.localizedDescription)!)
+            } else {
+                print("Successful submission!")
+            }
+        }
         
-        return self.curationsFeedItems?.count ?? 0
+        self.navigationController?.present(shareVC, animated: true, completion: { 
+            // completion
+        })
         
     }
     
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("DemoCell", forIndexPath: indexPath) as! DemoCollectionViewCell
-        
-        let feedItem : BVCurationsFeedItem = self.curationsFeedItems![indexPath.row]
-        
-        cell.feedItem = feedItem
-        
-        return cell
-    }
-    
-    // MARK: UICollectionViewDelegate
-    
-    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        
-        let feedItem : BVCurationsFeedItem = curationsFeedItems![indexPath.row]
-        
-        print("Selected: " + feedItem.description)
-        
-    }
-    
-    // MARK: CLLocationManagerDelegate
-    
-    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-     
-        if locations.count > 0 {
-            let location:CLLocation = locations[locations.count-1] as CLLocation
-            
-            // Fetching curations data, using user's location
-            self.fetchCurationsWithLocation(location)
+    @IBAction func updateRowCount(_ sender: UIStepper) {
+        if (sender.value > 0) {
+            if (curationsCollectionView?.bvCurationsUILayout == .carousel) {
+                curationsCollectionView?.bvCurationsUILayout = .grid
+                self.heightConstraintGrid.isActive = true
+                heightConstraintCarousel.isActive = false
+            }
+            curationsCollectionView?.itemsPerRow = UInt(sender.value)
+        }else {
+            curationsCollectionView?.bvCurationsUILayout = .carousel
+            heightConstraintGrid.isActive = false
+            heightConstraintCarousel.isActive = true
+            view.layoutIfNeeded()
         }
         
+        view.layoutIfNeeded()
     }
     
-    func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
-        
-        print("error: \(error)")
+    // MARK: BVCurationsUICollectionViewDelegate
     
-        // Fetching curations data without user's location
-        self.fetchCurationsWithLocation(nil)
-        
+    
+    func curationsLoadImage(_ imageUrl: String, completion:@escaping BVSDK.BVCurationsLoadImageCompletion) {
+        self.loadImage(imageUrl, completion: completion)
     }
     
-    func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
+    func curationsImageIsCached(_ imageUrl: String, completion:@escaping BVCurationsIsImageCachedCompletion) {
         
-        if status == .AuthorizedAlways || status == .AuthorizedWhenInUse {
-            locationManager.startUpdatingLocation()
+        self.sdMngr.cachedImageExists(for: URL(string: imageUrl)) { (cached) in
+            completion(cached, imageUrl)
         }
-        else if status == .Denied || status == .Restricted {
-            // Fetching curations data without user's location, because we don't have location permission
-            self.fetchCurationsWithLocation(nil)
-        }
+    
+    }
+    
+    func curationsDidSelect(_ feedItem: BVCurationsFeedItem) {
+        print("Tapped: " + feedItem.debugDescription)
+    }
+    
+    func curationsFailed(toLoadFeed error: Error) {
+        print("An error occurred: " + error.localizedDescription)
+    }
+    
+    fileprivate func loadImage(_ imageUrl: String, completion:@escaping ((UIImage, String) -> Void)) {
+        
+        _ = self.sdMngr.loadImage(with: URL(string: imageUrl)!,
+                                  options: [],
+                                  progress: { (_, _, _) in
+                                    
+        }, completed: { (image, _, _, _, _, url) in
+            if let img = image {
+                completion(img, imageUrl)
+            }
+        })
         
     }
 }

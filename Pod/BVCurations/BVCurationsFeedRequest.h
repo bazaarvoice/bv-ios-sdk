@@ -66,7 +66,7 @@
  
     Note that setting one or more has_geotag, has_link, has_photo, or has_video parameters yields the intersection (not the union) of the selected filters.
  */
-@property BOOL hasGeotag;
+@property NSNumber* hasGeotag;
 
 
 /*!
@@ -74,22 +74,28 @@
  
     Note that setting one or more has_geotag, has_link, has_photo, or has_video parameters yields the intersection (not the union) of the selected filters.
  */
-@property BOOL hasLink;
+@property NSNumber* hasLink;
 
 
 /// Setting has_photo causes the feed to be filtered based on the presence or absence of a photo on the update. Set this to true to require a photo or false to require the absence of one.
 ///
 /// Note that setting one or more has_geotag, has_link, has_photo, or has_video parameters yields the intersection (not the union) of the selected filters.
-@property BOOL hasPhoto;
+@property NSNumber* hasPhoto;
 
 
 /// Setting has_video causes the feed to be filtered based on the presence or absence of a video on the update. Set this to true to require a video or false to require the absence of one.
 ///
 ///    Note that setting one or more has_geotag, has_link, has_photo, or has_video parameters yields the intersection (not the union) of the selected filters.
-@property BOOL hasVideo;
+@property NSNumber* hasVideo;
+
+/// Setting hasPhotoOrVideo causes the feed to be filtered based on the presence or absence of a photo or video on the update. Set this to true to require a video or false to require the absence of one.
+///
+///    Note that setting one or more hasPhotoOrVideo, has_geotag, has_link, has_photo, or has_video parameters yields the intersection (not the union) of the selected filters.
+@property NSNumber* hasPhotoOrVideo;
+
 
 /// On some channels, Bazaarvoice sends comments about an update along with the update. This option controls whether comments are included in your feed. Be aware that including comments, especially in feeds where they are common, can drastically increase output size and reduce performance. Also, Bazaarvoice does not poll for comments indefinitely. When an update reaches a certain age, its comments are no longer updated.
-@property BOOL includeComments;
+@property NSNumber* includeComments;
 
 
 /// This is the number of updates Bazaarvoice sends. You can request any number between 0 and 100. If you ask for more updates than exist in the feed, Bazaarvoice sends what is available. Asking for a large number of updates does not guarantee you will get that many updates.
@@ -112,6 +118,6 @@
 
 
 /// Setting to true to include product data tagged in the Curations feed. May not be availale for all feeds.
-@property BOOL withProductData;
+@property NSNumber* withProductData;
 
 @end

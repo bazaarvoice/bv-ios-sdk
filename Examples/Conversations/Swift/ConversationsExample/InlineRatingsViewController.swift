@@ -20,11 +20,11 @@ class InlineRatingsViewController: UIViewController, UITableViewDataSource {
         inlineReviewsTableView.dataSource = self
         inlineReviewsTableView.estimatedRowHeight = 68
         inlineReviewsTableView.rowHeight = UITableViewAutomaticDimension
-        inlineReviewsTableView.registerNib(UINib(nibName: "StatisticTableViewCell", bundle: nil), forCellReuseIdentifier: "StatisticTableViewCell")
+        inlineReviewsTableView.register(UINib(nibName: "StatisticTableViewCell", bundle: nil), forCellReuseIdentifier: "StatisticTableViewCell")
         
         let productIds = ["test1", "test2","test3", "test4", "test5", "test6"]
         
-        let reviews = BVBulkRatingsRequest(productIds: productIds, statistics: BulkRatingsStatsType.All)
+        let reviews = BVBulkRatingsRequest(productIds: productIds, statistics: BulkRatingsStatsType.all)
         
         reviews.load({ (response) in
                 self.productStatistics = response.results
@@ -37,24 +37,21 @@ class InlineRatingsViewController: UIViewController, UITableViewDataSource {
 
     // MARK: UITableViewDatasource
     
-    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "Inline Review Responses"
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+         return "Inline Review Responses"
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return productStatistics.count
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "StatisticTableViewCell")! as! StatisticTableViewCell
         
-        let cell = tableView.dequeueReusableCellWithIdentifier("StatisticTableViewCell")! as! StatisticTableViewCell
-                
         cell.statTypeLabel.text = "Product Id: " + productStatistics[indexPath.row].productId!
         cell.statValueLabel.text = "Total Review Count(\(productStatistics[indexPath.row].reviewStatistics!.totalReviewCount!.stringValue)), \nAverage Overall Rating(\(productStatistics[indexPath.row].reviewStatistics!.averageOverallRating!.stringValue)), \nOverall Rating Range(\(productStatistics[indexPath.row].reviewStatistics!.overallRatingRange!.stringValue)) "
         
         return cell
     }
-
     
-   
 }

@@ -86,8 +86,7 @@ class BaseDemoComposeServiceViewController: SLComposeServiceViewController {
         color.setFill()
         UIRectFill(rect)
         if let img = UIImage(named: "icon_bvlogo") {
-            // sizing here is a little vodoo...cough...hacky
-            img.draw(in: CGRect(x: (size.width-size.height)/2, y: 0, width: size.height+20, height: size.height))
+            img.draw(in: CGRect(x: (size.width/2) - (size.height / 2) - 16, y: 1, width: size.height - 2, height: size.height - 2))
         }
         let image: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()

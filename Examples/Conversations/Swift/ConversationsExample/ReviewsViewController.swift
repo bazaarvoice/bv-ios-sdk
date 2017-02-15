@@ -20,10 +20,10 @@ class ReviewsViewController: UIViewController, UITableViewDataSource {
         reviewsTableView.dataSource = self
         reviewsTableView.estimatedRowHeight = 44
         reviewsTableView.rowHeight = UITableViewAutomaticDimension
-        reviewsTableView.registerNib(UINib(nibName: "MyReviewTableViewCell", bundle: nil), forCellReuseIdentifier: "MyReviewTableViewCell")
+        reviewsTableView.register(UINib(nibName: "MyReviewTableViewCell", bundle: nil), forCellReuseIdentifier: "MyReviewTableViewCell")
         
         let reviewsRequest = BVReviewsRequest(productId: "test1", limit: 20, offset: 0)
-        reviewsRequest.addReviewSort(.SubmissionTime, order: .Descending)
+        reviewsRequest.addReviewSort(.submissionTime, order: .descending)
         
         reviewsTableView.load(reviewsRequest, success: { (response) in
             
@@ -40,20 +40,20 @@ class ReviewsViewController: UIViewController, UITableViewDataSource {
     
     // MARK: UITableViewDatasource
     
-    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return "Review Responses"
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return reviews.count
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let tableCell = tableView.dequeueReusableCellWithIdentifier("MyReviewTableViewCell") as! MyReviewTableViewCell
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let tableCell = tableView.dequeueReusableCell(withIdentifier: "MyReviewTableViewCell") as! MyReviewTableViewCell
         
         tableCell.review = reviews[indexPath.row]
         
         return tableCell
     }
-
+    
 }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="p55-fH-gwO">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
@@ -7,44 +7,82 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="tne-QT-ifu">
+        <!--Curations Demo-->
+        <scene sceneID="lfH-Tk-KS7">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="CurationsExample" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="lUz-j5-8Li" customClass="ViewController" customModule="CurationsExample" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
-                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                        <viewControllerLayoutGuide type="top" id="dzj-3s-psF"/>
+                        <viewControllerLayoutGuide type="bottom" id="c2D-4j-gjj"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                    <view key="view" contentMode="scaleToFill" id="Csp-br-WYQ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="DN6-Jh-TXr" customClass="BVCurationsCollectionView">
-                                <color key="backgroundColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="hfk-ih-xun">
+                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="2" maximumValue="25" translatesAutoresizingMaskIntoConstraints="NO" id="NsT-1v-Z6A" userLabel="Row Count">
+                                <connections>
+                                    <action selector="updateRowCount:" destination="lUz-j5-8Li" eventType="valueChanged" id="iJJ-a6-Ips"/>
+                                </connections>
+                            </stepper>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="QMd-7z-RVQ" customClass="BVCurationsUICollectionView">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="dNS-no-24m"/>
+                                </constraints>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="eKR-EG-0ri">
                                     <size key="itemSize" width="50" height="50"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="dNS-no-24m"/>
+                                    </mask>
+                                </variation>
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="DN6-Jh-TXr" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" id="1Sc-bc-EPX"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="DN6-Jh-TXr" secondAttribute="bottom" id="6ne-6D-1Rl"/>
-                            <constraint firstItem="DN6-Jh-TXr" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="K7A-ev-1fO"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="DN6-Jh-TXr" secondAttribute="trailing" constant="-20" id="zKH-0m-QQn"/>
+                            <constraint firstItem="QMd-7z-RVQ" firstAttribute="height" secondItem="Csp-br-WYQ" secondAttribute="height" constant="-109" id="20T-Pr-I6c"/>
+                            <constraint firstItem="NsT-1v-Z6A" firstAttribute="centerX" secondItem="Csp-br-WYQ" secondAttribute="centerX" id="JFa-GW-mKO"/>
+                            <constraint firstItem="QMd-7z-RVQ" firstAttribute="leading" secondItem="Csp-br-WYQ" secondAttribute="leadingMargin" constant="-16" id="Q1a-JX-mo2"/>
+                            <constraint firstItem="c2D-4j-gjj" firstAttribute="top" secondItem="NsT-1v-Z6A" secondAttribute="bottom" constant="8" id="Vf9-Aa-lYt"/>
+                            <constraint firstItem="QMd-7z-RVQ" firstAttribute="centerX" secondItem="Csp-br-WYQ" secondAttribute="centerX" id="ZeV-85-mTo"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="QMd-7z-RVQ" secondAttribute="trailing" constant="-16" id="foX-eO-Vrm"/>
+                            <constraint firstItem="QMd-7z-RVQ" firstAttribute="centerY" secondItem="Csp-br-WYQ" secondAttribute="centerY" constant="9.5" id="utb-Ly-g7D"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Curations Demo" id="6tP-VD-Ocv"/>
                     <connections>
-                        <outlet property="curationsCollectionView" destination="DN6-Jh-TXr" id="uEB-ZB-BOi"/>
+                        <outlet property="curationsCollectionView" destination="QMd-7z-RVQ" id="vsf-bh-j4H"/>
+                        <outlet property="heightConstraintCarousel" destination="dNS-no-24m" id="rtf-8X-AQx"/>
+                        <outlet property="heightConstraintGrid" destination="20T-Pr-I6c" id="JYn-OJ-iDy"/>
+                        <outlet property="stepper" destination="NsT-1v-Z6A" id="Q6O-M5-EvE"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mbo-kp-tv3" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="271" y="533"/>
+            <point key="canvasLocation" x="1209" y="1230"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="AyN-mF-TuX">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="p55-fH-gwO" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="W3d-YO-s8c">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="lUz-j5-8Li" kind="relationship" relationship="rootViewController" id="7KS-Je-4WP"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7KT-bW-5SP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="270" y="1230"/>
         </scene>
     </scenes>
 </document>

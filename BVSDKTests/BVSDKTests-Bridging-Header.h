@@ -8,5 +8,5 @@
 #ifndef BVSDKTests_Bridging_Header_h
 #define BVSDKTests_Bridging_Header_h
 
-#import "UIImage+Tests.h"
+#import "UIImage+BundleLocator.h"
 #endif /* BVSDKTests_Bridging_Header_h */
