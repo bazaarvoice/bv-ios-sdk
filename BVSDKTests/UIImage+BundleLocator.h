@@ -8,8 +8,8 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-@interface UIImage (Tests)
-+(UIImage*)testImageNamed:(NSString*) imageName;
+@interface UIImage (BundleLocator)
++(UIImage*)bundledImageNamed:(NSString*) imageName;
 @end
 
 @interface BundleLocator : NSObject

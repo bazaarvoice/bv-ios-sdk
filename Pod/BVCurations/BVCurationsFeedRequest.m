@@ -106,32 +106,44 @@
     }
     
     if (self.hasGeotag){
-        NSURLQueryItem *hasGeoTagQI = [NSURLQueryItem queryItemWithName:@"has_geotag" value:@"true"];
+        NSString *val = (_hasGeotag.boolValue)?@"true":@"false";
+        NSURLQueryItem *hasGeoTagQI = [NSURLQueryItem queryItemWithName:@"has_geotag" value:val];
         [queryItems addObject:hasGeoTagQI];
     }
     
     if (self.hasLink){
-        NSURLQueryItem *hasLinkQI = [NSURLQueryItem queryItemWithName:@"has_link" value:@"true"];
+        NSString *val = (_hasLink.boolValue)?@"true":@"false";
+        NSURLQueryItem *hasLinkQI = [NSURLQueryItem queryItemWithName:@"has_link" value:val];
         [queryItems addObject:hasLinkQI];
     }
     
     if (self.hasPhoto){
-        NSURLQueryItem *hasPhotoQI = [NSURLQueryItem queryItemWithName:@"has_photo" value:@"true"];
+        NSString *val = (_hasPhoto.boolValue)?@"true":@"false";
+        NSURLQueryItem *hasPhotoQI = [NSURLQueryItem queryItemWithName:@"has_photo" value:val];
         [queryItems addObject:hasPhotoQI];
     }
     
     if (self.hasVideo){
-        NSURLQueryItem *hasVideoQI = [NSURLQueryItem queryItemWithName:@"has_video" value:@"true"];
+        NSString *val = (_hasVideo.boolValue)?@"true":@"false";
+        NSURLQueryItem *hasVideoQI = [NSURLQueryItem queryItemWithName:@"has_video" value:val];
         [queryItems addObject:hasVideoQI];
     }
     
+    if (_hasPhotoOrVideo) {
+        NSString *val = (_hasPhotoOrVideo.boolValue)?@"true":@"false";
+        NSURLQueryItem *hasPhotoOrVideoQI = [NSURLQueryItem queryItemWithName:@"has_photo_or_video" value:val];
+        [queryItems addObject:hasPhotoOrVideoQI];
+    }
+    
     if (self.withProductData){
-        NSURLQueryItem *withProductDataQI = [NSURLQueryItem queryItemWithName:@"withProductData" value:@"true"];
+        NSString *val = (_withProductData.boolValue )?@"true":@"false";
+        NSURLQueryItem *withProductDataQI = [NSURLQueryItem queryItemWithName:@"withProductData" value:val];
         [queryItems addObject:withProductDataQI];
     }
     
     if (self.includeComments){
-        NSURLQueryItem *includeCommentsQI = [NSURLQueryItem queryItemWithName:@"include_comments" value:@"true"];
+        NSString *val = (_includeComments.boolValue)?@"true":@"false";
+        NSURLQueryItem *includeCommentsQI = [NSURLQueryItem queryItemWithName:@"include_comments" value:val];
         [queryItems addObject:includeCommentsQI];
     }
     

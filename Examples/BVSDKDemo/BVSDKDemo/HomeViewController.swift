@@ -551,7 +551,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
             )
             
             self.navigationController?.pushViewController(productView, animated: true)
-            
+                
         case .advertisement:
             print("Advertisement clicked")
             

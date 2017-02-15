@@ -13,18 +13,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]? = nil) -> Bool {
         // Override point for customization after application launch.
         
-        // TODO: DO NOT USE THIS CLIENTID FOR YOUR OWN APP. USE THE CLIENT ID PROVIDED BY BAZAARVOICE (used to log into the Workbench).
-        BVSDKManager.sharedManager().clientId = "apireadonlysandbox"
-        BVSDKManager.sharedManager().apiKeyConversations = "kuy3zj9pr3n7i0wxajrzj04xo"
-        BVSDKManager.sharedManager().staging = true
-        BVSDKManager.sharedManager().setLogLevel(.Verbose)
+        // TODO: DO NOT USE THIS CLIENTID FOR YOUR OWN APP. USE THE CLIENT ID PROVIDED BY BAZAARVOICE!!!
+        BVSDKManager.shared().apiKeyConversations = "kuy3zj9pr3n7i0wxajrzj04xo"
+        BVSDKManager.shared().clientId = "apireadonlysandbox"
+        BVSDKManager.shared().staging = true
+        BVSDKManager.shared().setLogLevel(.verbose)
         
         return true
     }
-
+    
 
 }
 

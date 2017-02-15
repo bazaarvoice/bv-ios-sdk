@@ -23,10 +23,11 @@ class PhotoUploadTests: XCTestCase {
     
     func testUploadablePhoto() {
         
+        let expectation = self.expectation(description: "")
+        
         if let image = PhotoUploadTests.createImage() {
             let photo = BVUploadablePhoto(photo: image, photoCaption: "Yo dawhhhh")
             // upload photo, make sure it returns a non-empty URL
-            let expectation = self.expectation(description: "")
             photo.upload(for: .review, success: { (photoUrl) in
                 XCTAssertTrue(photoUrl.characters.count > 0)
                 expectation.fulfill()
@@ -36,6 +37,7 @@ class PhotoUploadTests: XCTestCase {
             }
 
         } else {
+            expectation.fulfill()
             XCTFail()
         }
         
@@ -66,7 +68,9 @@ class PhotoUploadTests: XCTestCase {
     
     
     class func createImage() -> UIImage? {
-        return UIImage.testNamed("ph.png")
+        
+        return UIImage(named: "ph.png", in: Bundle(for: PhotoUploadTests.self), compatibleWith: nil)
+        
     }
     
 }

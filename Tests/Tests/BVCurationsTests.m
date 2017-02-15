@@ -7,7 +7,6 @@
 
 #import <XCTest/XCTest.h>
 #import <BVSDK/BVCurations.h>
-#import "UIImage+Tests.h"
 #import "BVBaseStubTestCase.h"
 
 @interface BVCurationsTests : BVBaseStubTestCase
@@ -32,6 +31,12 @@
     // Put teardown code here. This method is called after the invocation of each test method in the class.
     [super tearDown];
     
+}
+
+// Load image by name for the test bundle
+- (UIImage *)loadTestImageNamed:(NSString *)imageName {
+    return [UIImage imageNamed:imageName
+                      inBundle:[NSBundle bundleForClass:[BVCurationsTests class]]compatibleWithTraitCollection:nil];
 }
 
 // Test normal parse result from a feed
@@ -301,12 +306,12 @@
     
     feedRequest.featured =  3;
     
-    feedRequest.hasGeotag = YES;
-    feedRequest.hasLink = YES;
-    feedRequest.hasVideo = YES;
-    feedRequest.hasPhoto = YES;
-    feedRequest.includeComments = YES;
-    feedRequest.withProductData = YES;
+    feedRequest.hasGeotag = @YES;
+    feedRequest.hasLink = @YES;
+    feedRequest.hasVideo = @YES;
+    feedRequest.hasPhoto = @YES;
+    feedRequest.includeComments = @YES;
+    feedRequest.withProductData = @YES;
     
     feedRequest.before = [NSNumber numberWithLong:1451606400]; // Fri, 01 Jan 2016 00:00:00 GMT
     feedRequest.after = [NSNumber numberWithLong:1325376000];  // Sun, 01 Jan 2012 00:00:00 GMT
@@ -341,8 +346,8 @@
     
     NSString *proifleURLInput = @"http://profileurltest";
     NSString *avatarURLInput = @"http://avatarurl";
-//    double longInput = 21.98765;
-//    double latInput = 0.12345;
+    double longInput = 21.98765;
+    double latInput = 0.12345;
     
     NSArray *tagsInput = @[@"tag1", @"tag2"];
     NSString *permalinkInput = @"http://permalinktest";
@@ -354,10 +359,12 @@
     NSArray *linksInput = @[@"http://www.bazaarvoice.com/", @"http://acl-live.com/"];
     NSArray *photosInput = @[@"http://homeopathyplus.com/wp-content/uploads/2013/01/MotherTeresa-223x300.png", @"https://upload.wikimedia.org/wikipedia/commons/6/6f/Einstein-formal_portrait-35.jpg"];
 
-    BVCurationsAddPostRequest *params = [[BVCurationsAddPostRequest alloc] initWithGroups:groupsInput withAuthorAlias:aliasInput withToken:tokenInput withText:textInput withImage:[UIImage testImageNamed:@"test_pattern.jpg"]];
+    UIImage *testImage = [self loadTestImageNamed:@"test_pattern.jpg"];
     
-//    params.latitude = latInput;
-//    params.longitude = longInput;
+    BVCurationsAddPostRequest *params = [[BVCurationsAddPostRequest alloc] initWithGroups:groupsInput withAuthorAlias:aliasInput withToken:tokenInput withText:textInput withImage:testImage];
+    
+    params.latitude = latInput;
+    params.longitude = longInput;
     
     params.authorProfileURL = proifleURLInput;
     params.authorAvatarURL = avatarURLInput;
@@ -400,8 +407,8 @@
     NSArray *linksTest = [jsonDict objectForKey:@"links"];
     NSArray *photosTest = [jsonDict objectForKey:@"photos"];
     
-//    double latitudeTest = [[[jsonDict objectForKey:@"coordinates"] objectForKey:@"latitude"] doubleValue];
-//    double longitudeTest = [[[jsonDict objectForKey:@"coordinates"] objectForKey:@"longitude"] doubleValue];
+    double latitudeTest = [[[jsonDict objectForKey:@"coordinates"] objectForKey:@"x"] doubleValue];
+    double longitudeTest = [[[jsonDict objectForKey:@"coordinates"] objectForKey:@"y"] doubleValue];
 
     
     // Test validation
@@ -424,8 +431,8 @@
     double testCaseRounded = floorf(timeStampTest);
     
     XCTAssertEqual(inputRounded, testCaseRounded, @"Equivalency test failed.");
-//    XCTAssertEqual(latInput, latitudeTest, @"Latitude test failed.");
-//    XCTAssertEqual(longInput, longitudeTest, @"Longitude test failed.");
+    XCTAssertEqual(latInput, latitudeTest, @"Latitude test failed.");
+    XCTAssertEqual(longInput, longitudeTest, @"Longitude test failed.");
 
     XCTAssertNotNil(params.image, @"Image should not have been nil");
     
@@ -444,7 +451,7 @@
     NSArray *groupsInput = @[@"pie-test"];
     NSArray *tags = @[@"submission-app", @"product1", @"sampleCategory"];
     
-    UIImage *testImage = [UIImage testImageNamed:@"test_pattern.jpg"];
+    UIImage *testImage = [self loadTestImageNamed:@"test_pattern.jpg"];
     
     BVCurationsAddPostRequest *params = [[BVCurationsAddPostRequest alloc] initWithGroups:groupsInput withAuthorAlias:aliasInput withToken:tokenInput withText:textInput];
     
@@ -483,7 +490,7 @@
     NSArray *groupsInput = @[@"pie-test"];
     NSArray *tags = @[@"submission-app", @"product1", @"sampleCategory"];
     
-    UIImage *testImage = [UIImage testImageNamed:@"test_pattern.jpg"];
+    UIImage *testImage = [self loadTestImageNamed:@"test_pattern.jpg"];
     
     BVCurationsAddPostRequest *params = [[BVCurationsAddPostRequest alloc] initWithGroups:groupsInput withAuthorAlias:aliasInput withToken:tokenInput withText:textInput];
     

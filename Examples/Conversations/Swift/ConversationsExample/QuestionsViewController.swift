@@ -20,14 +20,14 @@ class QuestionsViewController: UIViewController, UITableViewDataSource, UITableV
         questionsTableView.delegate = self
         questionsTableView.estimatedRowHeight = 80
         questionsTableView.rowHeight = UITableViewAutomaticDimension
-        questionsTableView.registerNib(UINib(nibName: "MyQuestionTableViewCell", bundle: nil), forCellReuseIdentifier: "MyQuestionTableViewCell")
+        questionsTableView.register(UINib(nibName: "MyQuestionTableViewCell", bundle: nil), forCellReuseIdentifier: "MyQuestionTableViewCell")
         
         let questionsRequest = BVQuestionsAndAnswersRequest(productId: "test1", limit: 20, offset: 0)
         
         // optionally add in a sort option
-        questionsRequest.addQuestionSort(.SubmissionTime, order: .Ascending)
+        questionsRequest.addQuestionSort(.submissionTime, order: .ascending)
         // optionally add in a filter
-        questionsRequest.addFilter(.HasAnswers, filterOperator: .EqualTo, value: "true")
+        questionsRequest.add(.hasAnswers, filterOperator: .equalTo, value: "true")
         
         self.questionsTableView.load(questionsRequest, success: { (response) in
             
@@ -44,35 +44,34 @@ class QuestionsViewController: UIViewController, UITableViewDataSource, UITableV
 
     // MARK: UITableViewDatasource
     
-    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return "Question Responses"
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return questions.count
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        
-        let cell = tableView.dequeueReusableCellWithIdentifier("MyQuestionTableViewCell")! as! MyQuestionTableViewCell
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MyQuestionTableViewCell")! as! MyQuestionTableViewCell
         
         cell.question = questions[indexPath.row];
         
         return cell
     }
     
+
     // MARK: UITableViewDelegate
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // Get the answers for this question
         let question = questions[indexPath.row]
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let answersVC = storyboard.instantiateViewControllerWithIdentifier("AnswersViewController") as! AnswersViewController
+        let answersVC = storyboard.instantiateViewController(withIdentifier: "AnswersViewController") as! AnswersViewController
         answersVC.question = question
         self.navigationController?.pushViewController(answersVC, animated: true)
-        
     }
-
+    
 }

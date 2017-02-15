@@ -7,73 +7,28 @@
 import UIKit
 import BVSDK
 import FontAwesomeKit
-
-class NewProductCurationsTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollectionViewDataSource {
+import SDWebImage
+class NewProductCurationsTableViewCell: UITableViewCell, BVCurationsUICollectionViewDelegate {
     
-    @IBOutlet weak var curationsCarousel : BVCurationsCollectionView!
+    @IBOutlet weak var curationsCarousel : BVCurationsUICollectionView!
     @IBOutlet weak var errorLabel : UILabel! // initially hidden
     
-    var curationsFeed : [BVCurationsFeedItem]?
-    
+    let sdMngr = SDWebImageManager.shared()
+
     var product : BVProduct? {
         
         didSet {
-            if let _ = product {
-                
-                let requestParams = BVCurationsFeedRequest(groups: ["__all__"]);
-                requestParams?.withProductData = true
-                requestParams?.externalId = product!.identifier
-                
-                // Check and see if we can get Lat/Long from a default store set
-                // If so, we can make the feed results send the results closest to
-                // the provided coordinates first.
-                /*
-                 if let defaultStore = LocationPreferenceUtils.getDefaultStore(){
-                 if defaultStore.latitude != nil && defaultStore.longitude != nil {
-                 let lat = Double(defaultStore.latitude)
-                 let long = Double(defaultStore.longitude)
-                 requestParams.setLatitude(lat!, longitude: long!)
-                 }
-                 }
-                 */
-                
-                self.curationsCarousel.delegate = self
-                self.curationsCarousel.dataSource = self
-                
-                self.curationsCarousel.loadFeed(with: requestParams!, withWidgetId: nil, completionHandler: { (feedItemsResult) -> Void in
-                    
-                    self.curationsFeed = feedItemsResult
-                    self.curationsCarousel.reloadData()
-                    
-                    if self.curationsFeed == nil || self.curationsFeed!.count == 0  {
-                        self.errorLabel.isHidden = false
-                        self.errorLabel.text = "No social content to show - upload your own!"
-                    }
-                    else {
-                        self.errorLabel.isHidden = true
-                    }
-                    
-                    
-                }) { (error) -> Void in
-                    
-                    self.errorLabel.text = "An error occurred"
-                    self.errorLabel.isHidden = false
-                    
-                }
-                
+            if let product = product {
+                self.curationsCarousel.curationsDelegate = self
+                self.curationsCarousel.groups = ["__all__"]
+                self.curationsCarousel.productId = product.identifier!
+                self.curationsCarousel.bvCurationsUILayout = .carousel
+                self.curationsCarousel.loadFeed()
             }
         }
     }
     
     var onFeedItemTapped : ((_ selectedIndex : NSInteger, _ fullFeed: [BVCurationsFeedItem]) -> Void)? = nil
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-        
-        self.curationsCarousel.register(UINib(nibName: "DemoCurationsCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "DemoCurationsCollectionViewCell")
-        
-    }
     
     override func layoutSubviews() {
         super.layoutSubviews()
@@ -83,35 +38,35 @@ class NewProductCurationsTableViewCell: UITableViewCell, UICollectionViewDelegat
         
     }
     
-    //MARK: UICollectionViewDelegate & UICollectionViewDatasource
+    public func curationsLoadImage(_ imageUrl: String, completion: @escaping BVSDK.BVCurationsLoadImageCompletion) {
+        self.loadImage(imageUrl: imageUrl, completion: completion)
+
+    }
     
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        
-        guard let curationFeed = self.curationsFeed else {
-            return 0
+    public func curationsImageIsCached(_ imageUrl: String, completion: @escaping BVSDK.BVCurationsIsImageCachedCompletion) {
+        self.sdMngr.cachedImageExists(for: URL(string: imageUrl)) { (cached) in
+            completion(cached, imageUrl)
         }
-        
-        return curationFeed.count
-        
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DemoCurationsCollectionViewCell", for: indexPath) as! DemoCurationsCollectionViewCell
-        
-        cell.feedItem = self.curationsFeed![(indexPath as NSIndexPath).row]
-        
-        return cell
-        
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
-        if let onFeedItemCellTapped = self.onFeedItemTapped {
-            onFeedItemCellTapped((indexPath as NSIndexPath).row, self.curationsFeed!)
+    public func curationsDidSelect(_ feedItem: BVCurationsFeedItem) {
+        if let tapped = onFeedItemTapped {
+            let idx = curationsCarousel.feedItems.index(of: feedItem)!
+            tapped(idx, curationsCarousel.feedItems)
         }
-        
     }
     
-    
+    private func loadImage(imageUrl: String, completion:@escaping ((UIImage, String) -> Void)) {
+        
+        _ = self.sdMngr.loadImage(with: URL(string: imageUrl)!,
+                                         options: [],
+                                         progress: { (_, _, _) in
+                                            
+        }, completed: { (image, _, _, _, _, url) in
+            if let img = image {
+                completion(img, imageUrl)
+            }
+        })
+        
+    }
 }

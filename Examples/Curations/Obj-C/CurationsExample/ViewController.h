@@ -2,7 +2,7 @@
 //  ViewController.h
 //  CurationsExample
 //
-//  Copyright © 2016 Bazaarvoice. All rights reserved.
+//  Copyright © 2017 Bazaarvoice. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

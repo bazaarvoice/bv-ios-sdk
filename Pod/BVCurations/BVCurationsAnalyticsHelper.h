@@ -18,16 +18,23 @@ NS_ASSUME_NONNULL_BEGIN
 typedef NS_ENUM(NSInteger, BVCurationsFeedWidget) {
    
     /// Curations displayed in scrolling carousel
-    CurationsFeedCarousel,
+    BVCurationsFeedWidgetCarousel,
     
     /// Curations displayed in a UITableViewController
-    CurationsFeedTableView,
+    BVCurationsFeedWidgetTableView,
     
     /// Custom widget created.
-    CurationsFeedCustom
+    BVCurationsFeedWidgetCustom,
     
+    /// Curations displayed in scrolling grid
+    BVCurationsFeedWidgetGrid
 };
 
+
+typedef NS_ENUM(NSInteger, BVCurationsSubmissionWidget) {
+    BVCurationsSubmissionWidgetCompose,
+    BVCurationsSubmissionWidgetCustom
+};
 
 /**
     Event used for when a particular Curations feed view is displayed on screen. Should only be called once after the container is created.
@@ -71,6 +78,21 @@ typedef NS_ENUM(NSInteger, BVCurationsFeedWidget) {
     @param externalId This is the external Id used to make the API request for the Curations feed.
  */
 + (void)queueEmbeddedPageViewEventCurationsFeed:(BVCurationsFeedWidget)widgetType withExternalId:(NSString * _Nullable)externalId;
+
+
+/**
+    Event used when a Curations submission view is displayed.
+    
+    @param widgetType The type of view used to submit curations content.
+ */
++ (void)queueSubmissionPageView:(BVCurationsSubmissionWidget)widgetType;
+
+/**
+    Event used when a Curations content has been successfully posted.
+ 
+    @param widgetType The type of view used to submit curations content.
+ */
++ (void)queueUsedFeatureUploadPhoto:(BVCurationsSubmissionWidget)widgetType;
 
 @end
 
