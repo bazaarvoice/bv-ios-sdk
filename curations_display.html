@@ -109,6 +109,11 @@ $(function(){
                             <span>Installation and Configuration</span>
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="example_projects.html">
+                            <span><i class="m-r-1 fa fa-file-code-o"></i>Example Projects</span>
+                        </a>
+                    </li>
                 </ul>
             </li>
             <li class="nav-item">
@@ -249,268 +254,143 @@ $(function(){
 	Curations Display
 </div>
 
-<p>Use the Curations module of the Bazaarvoice Mobile SDKs to harness a wealth of social media content tailored for your marketing needs, and display it where it can deliver engagement, trust, and conversion: your iOS app.</p>
-<p>You can build and display your custom Curations content in a Bazaarvoice-subclassed UICollectionView (<code>BVCurationsCollectionView</code>). The UICollectionView and UICollectionView cell wrap the Curations Display API and Bazaarvoice analytics, the latter providing you with rich user-interaction and ROI (return on investment) data. If you are familiar with UICollectionView, creating a <code>BVCurationsCollectionView</code> will be fairly straightforward. However, even if you aren't, you should be able to complete the following steps to create a basic Curations display with your data.</p>
-
-</p>
-The completed project for this code walkthrough for Swift and Objective-C is in the SDK path <code>/Examples/Curations</code>.  For a more comprehensive demonstration of the Conversations API, please also see the BVSDKDemo project under <code>/Examples/BVSDKDemo</code>.
-</p>
-
-<p class="bg-info well-lg" style="padding:4px;"><i class="fa fa-hand-o-right"></i>  You must have Bazaarvoice Curations enabled to use the Curations module. Contact Bazaarvoice to set up Curations and to get your <strong>apiKeyCurations</strong>.</p>
-
-<hr/>
-<br>
-
 <p><span class="bg-warning well-lg" style="padding:4px;"> <i class="fa fa-hand-o-right"></i>  Important: Before you start implementing this Mobile SDK module, verify your installation by checking the steps on the <a href="./installation.html">Installation and Configuration</a> page.  </span></p>
 
 
+<p>Curations support from the Bazaarvoice Mobile SDK allows you to rapidly implement your custom social feeds with only a few lines of code. Display social media feeds on your home page or product page with social content tagged to your product catalog.
+
+<br/><br/>
+Depending on your application requirements, there are two ways to fetch your Curations data for display:
+<br/>
+
+<ul>
+  <li><a href="#curationsui">BVCurationsUICollectionView </a>(recommended) - Use our custom, sub-classed UICollectionView controller to handle the entire display, scrolling, and paging.</li>
+  <li><a href="#curationsapi">API Direct</a> - If you have UI customization that don't fit a UICollectionView, you can call the API directly to fetch the Curations feed items you need for display.</li>
+</ul>
+
+
+</p>
+The completed project for this code walk-through for Swift and Objective-C is in the SDK path <code>/Examples/Curations</code>.  For a more comprehensive demonstration of the Conversations API, please also see the BVSDKDemo project under <code>/Examples/BVSDKDemo</code>.
+</p>
+
+<p class="bg-info well-lg" style="padding:4px;"><i class="fa fa-hand-o-right"></i>  You must have Bazaarvoice Curations enabled to use the Curations module. Contact Bazaarvoice to set up Curations and to get your <strong>Curations API Key</strong>.</p>
+
+<hr>
+<a name="curationsui"></a>
+<h3>BVCurationsUICollectionView</h3>
+
+The BVSDK comes with a ready-to-roll display in <code>BVCurationsUICollectionView</code> class. This subclass of a <code>UICollectionView</code> handles all the flow layout, scrolling, API fetch requests, infinite scroll and adds proper badges for the social channel of each cell. If you have familiar with the fundamentals of a <code>UICollectionView</code>, this integration will be a snap!
+<br><br>
+Once you have the basic display set-up, you will be required to:
 <br>
-<h3>Adding a Curations User Interface</h3>
-<p>The Curations module provides a <code>BVCurationsCollectionView</code>, which hosts the display data from the Curations API. All you need to do is subclass a <code>BVCurationsCollectionViewCell</code> with your own implementation and .xib file, then add the content to the <code>BVCurationsCollectionView</code> with the <code>UICollectionViewDataSource</code> protocol messages as you would any <code>UICollectionView</code> object.</p>
+<ul>
+    <li>Implement the <code>BVCurationsUICollectionViewDelegate</code> required methods.</li>
+    <ul><li>Provide your own image loading and caching (e.g. SDWebImage).</li></ul>
+    <li>Handle any redrawing or layout adjustments for screen rotations</li>
+</ul>
+<br>
+You may optionally, but are encouraged to, handle the following:
+<br>
+<ul>
+    <li>Handle user interaction events for when a user taps a <code>BVCurationFeedItem</code>.</li>
+    <li>Handle errors that may occur while loading Curations content</li>
+</ul>
 
-<p>Using the UI views provided by the Mobile SDK provides you with all the analytics events necessary for calculating end-user interactions and ROI reporting. Also, because of the flexibility that <code>UICollectionView</code> provides, you can build and display your feed in any grid and flow style you like.</p>
+
+Rather than provide a full tutorial of how to use the widget, we have a small code snipped below of the minimal requirements. Please also see a completed example in the GitHub repository for <a href="https://github.com/bazaarvoice/bv-ios-sdk/blob/master/Examples/Curations/Swift/CurationsExample/ViewController.swift#L12">Swift</a> and <a href="https://github.com/bazaarvoice/bv-ios-sdk/blob/master/Examples/Curations/Obj-C/CurationsExample/ViewController.m#L14">Objective-C</a>.
+
+<br><br>
+<img src="ios-img/curations_display/curations_carousel.png" style="float: center; width: 400px; margin-left: 10%;">
+<img src="ios-img/curations_display/curations_grid.png" style="float: center; height: 400px; margin-right: 1%;">
+<br>
 
 <br>
-<h3>Example</h3>
-<p>The following example produces a scrollable grid with a Curations feed, similar to the following screenshot:</p>
-<img src="ios-img/curations_display/curations_tutorial_complete.png" style="height:240px;" class="center-block img-fluid" />
+<h5>Code Example: Using the BVCurationsUICollectionView</h5>
 <br>
-
-<h5>Create a subclass of BVCurationsCollectionViewCell.</h5>
-<ol>
-	<li>Create a <code>BVCurationsCollectionViewCell</code> from <strong> File > New > File</strong>, as shown in the following screenshot.<br><br>
-		<img src="ios-img/curations_display/curations_cocoa_touch.png" style="height:150px;" class="center-block img-fluid" />
-		<br>
-</li>
-		<li>Name the class <code>DemoCollectionViewCell</code> and subclass from <code>
-		BVCurationsCollectionViewCell</code>, as shown in the following screenshot.<br><br>
-		<img src="ios-img/curations_display/curations_demo_cell.png" style="height:320px;" class="center-block img-fluid" />
-	</li>
-	<li>Add a <code>UIImageView</code> outlet called <strong>feedImageView</strong>. Use the <code>didSet</code> override to configure the UI when <code>feedItem</code> is set. Your <code>DemoCollectionViewCell</code> should look like the following example:<br><br>
-
-
+The code demo shows a minimal implementation to display a <code>BVCurationsUICollectionView</code> in a View Controller. The demo uses SDWebImage to perform asynchronous loading and caching of the images displayed in the Collection View Cells.
+<br><br>
 <ul class="nav nav-tabs" role="tablist">
   <li role="presentation" class="active"><a href="#swift" aria-controls="swift" role="tab" data-toggle="tab">Swift</a></li>
   <li role="presentation"><a href="#objc" aria-controls="objc" role="tab" data-toggle="tab">Objective-C</a></li>
 </ul>
 
-
 <!-- Tab panes -->
 <div class="tab-content code-switcher">
-	<!-- swift -->
-	<div role="tabpanel" class="tab-pane active" id="swift">
+    <!-- swift -->
+    <div role="tabpanel" class="tab-pane active" id="swift">
 <pre><code class="swift">import UIKit
 import BVSDK
 import SDWebImage
 
-class DemoCollectionViewCell: BVCurationsCollectionViewCell {
-
-    @IBOutlet weak var feedImageView: UIImageView!
-
-    override var feedItem : BVCurationsFeedItem? {
-
-        didSet {
-
-            let photo : BVCurationsPhoto = self.feedItem!.photos.first!
-            let imageUrl : NSURL = NSURL(string:photo.imageServiceUrl)!
-            self.feedImageView.sd_setImageWithURL(imageUrl)
-
-        }
-    }
- }
-</code></pre>
-	</div>
-	<!-- objective-c -->
-	<div role="tabpanel" class="tab-pane" id="objc">
-<pre><code class="objective-c">#import "DemoCollectionViewCell.h"
-#import &ltSDWebImage/UIImageView+WebCache.h&gt
-
-@interface DemoCollectionViewCell()
-
-@property IBOutlet UIImageView *feedImageView;
-
-@end
-
-@implementation DemoCollectionViewCell
-
-- (void)setFeedItem:(BVCurationsFeedItem *)feedItem {
-
-    super.feedItem = feedItem;
-
-    BVCurationsPhoto *curationsPhoto = self.feedItem.photos.firstObject;
-    NSURL *imageURL = [NSURL URLWithString:curationsPhoto.url];
-
-    [self.feedImageView sd_setImageWithURL:imageURL];
-
-}
-
-@end
-</code></pre>
-	</div>
-</div>
-
-        <br>
-        <p class="bg-info well-lg" style="padding:4px;"><i class="fa fa-hand-o-right"></i>  Tip: This implementation is a minimal UI for a <strong>BVCurationsFeedItem</strong> object. You can add more elements and customize the UI extensively.</p>
-
-	</li>
-	<li>Create the view: <strong>File > New > File</strong> and select:<br><br>
-		<img src="ios-img/curations_display/source_view.png" style="height:180px;" class="center-block img-fluid" /><br><br>
-
-	Name the view <code>DemoCollectionViewCell</code>.</li>
-	<li>
-	After you create <code>DemoCollectionViewCell.xib</code>, complete the following steps:<br><br>
-		<ul>
-			<li>Add a <code>UICollectionViewCell</code> and set its height and width to 250.
-			</li>
-			<li>Delete the existing <code>UIView</code>, located on the left in the following screenshot.<br><br>
-				<img src="ios-img/curations_display/add_cell_nib.png" style="height:420px;" class="center-block img-fluid" />
-			</li>
-
-		</ul>
-	</li>
-	<li>Add a <code>UIImageView</code> to the <code>.xib</code>. Using the pin tool, pin it to all sides of the cell:<br><br>
-		<img src="ios-img/curations_display/cell_add_imageview.png" style="height:340px;" class="center-block img-fluid" />
-	</li>
-	<li>Set the <strong>Custom Class</strong> of the <code>.xib</code> to be <code>DemoCollectionViewCell</code>:<br><br>
-		<img src="ios-img/curations_display/custom_class.png" style="height:280px;" class="center-block img-fluid" />
-	</li>
-    <li>
-        <p>Set the <strong>Collection Reusable View Identifier</strong> of the <code>.xib</code> to be <code>DemoCell</code>:</p>
-        <img src="ios-img/curations_display/reuse_identifier.png" style="height:300px;" class="center-block img-fluid" />
-    </li>
-	<li>
-		<p>Connect the <code>UIImageView</code> to the <code>feedImageView</code> outlet in the source file. Select the <strong>Assistant Editor</strong> and connect the outlet:</p>
-		<img src="ios-img/curations_display/connect_cell_outlet.png" style="height:380px;" class="center-block img-fluid" />
-	</li>
-</ol>
-
-<h5>Add the UICollectionView to your ViewController.</h5>
-<ol>
-	<li>Open your view controller in your <code>Main.storyboard</code> file. Drag and drop a <code>UICollectionView</code> object onto the View Controller:<br><br>
-		<img src="ios-img/curations_display/add_collection_view.png" style="height:340px;" class="center-block img-fluid" />
-	</li>
-	<li>Make the <code>UICollectionView</code> you just added full-screen by pinning the edges to the parent container on all four sides:<br><br>
-		<img src="ios-img/curations_display/collection_view_full_screen.png" style="height:340px;" class="center-block img-fluid" />
-	</li>
-	<li>Set the <strong>Custom Class</strong> to <code>BVCurationsCollectionView</code>:<br><br>
-		<img src="ios-img/curations_display/collection_view_custom_class.png" style="height:200px;" class="center-block img-fluid" />
-	</li>
-	<li>With the <strong>Assistant Editor</strong> displaying the ViewController source, connect the <code>BVCurationsCollectionView</code> to the source code:<br><br>
-		<img src="ios-img/curations_display/collection_view_outlet.png" style="height:360px;" class="center-block img-fluid" />
-		<br><br>
-		<p>Name the outlet <code>curationsCollectionView</code>:<br><br>
-		<img src="ios-img/curations_display/collection_view_outlet_name.png" style="height:180px;" class="center-block img-fluid" />
-	</li>
-
-</ol>
-
-<h5>Assemble everything in the ViewController.</h5>
-<p>After you set up <code>BVCurationsCollectionView</code> and have the <code>BVCurationsCollectionViewCell</code> source and .xib file ready, all you need to do is connect them in your ViewController. The following ViewController exemplifies what a very minimal configuration would look like to draw a feed from the Curations API and handle a tap event on an item. Since <code>BVCurationsCollectionView</code> is configurable as a UICollectionView, you can embed them anywhere it makes sense in your application's user interface.</p>
-<p>The following example shows the completed <code>ViewController</code> in full detail.</p>
-
-
-<ul class="nav nav-tabs" role="tablist">
-  <li role="presentation" class="active"><a href="#swift" aria-controls="swift" role="tab" data-toggle="tab">Swift</a></li>
-  <li role="presentation"><a href="#objc" aria-controls="objc" role="tab" data-toggle="tab">Objective-C</a></li>
-</ul>
-
-
-<!-- Tab panes -->
-<div class="tab-content code-switcher">
-	<!-- swift -->
-	<div role="tabpanel" class="tab-pane active" id="swift">
-<pre><code class="swift">import UIKit
-import BVSDK
-
-class ViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
-
-    @IBOutlet weak var curationsCollectionView: BVCurationsCollectionView!
-
-    var curationsFeedItems:[BVCurationsFeedItem]?
-
+class ViewController: UIViewController, BVCurationsUICollectionViewDelegate {
+    
+    @IBOutlet weak var curationsCollectionView: BVCurationsUICollectionView!
+    
+    let sdMngr = SDWebImageManager.shared()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        self.curationsCollectionView.registerNib(UINib(nibName: "DemoCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "DemoCell")
-
-        self.curationsCollectionView.delegate = self
-        self.curationsCollectionView.dataSource = self
-
-        let groups = ["__all__"]
-
-        let feedRequest = BVCurationsFeedRequest(groups: groups)
-        feedRequest.limit = 20
-        feedRequest.hasPhoto = true
-        feedRequest.withProductData = true
-        feedRequest.setLatitude(userLocation.latitude, longitude: userLocation.longitude) // get curations content based on user's current location
-
-        self.curationsCollectionView.loadFeedWithRequest(feedRequest, withWidgetId: nil, completionHandler: { (feedItems) -> Void in
-            // success
-            // closure from request returned on main thread
-
-            self.curationsFeedItems = feedItems as? [BVCurationsFeedItem]
-            self.curationsCollectionView.reloadData()
-
-        }) { (error) -> Void in
-            // error
-
-            print("ERROR: Curations feed could not be retrieved. Error: " + error.localizedDescription)
+        
+        // Set up the Curations UI display properties
+        curationsCollectionView?.curationsDelegate = self
+        curationsCollectionView?.groups = ["__all__"]
+        // Other optional properties
+        curationsCollectionView?.fetchSize = 40
+        curationsCollectionView?.infiniteScrollEnabled = true
+        curationsCollectionView?.itemsPerRow = 2
+        curationsCollectionView?.bvCurationsUILayout = .grid
+        // Makes the asynchronous API call to load the Curations feed
+        curationsCollectionView?.loadFeed()
+    }
+    
+    private func loadImage(imageUrl: String, completion:@escaping ((UIImage, String) -> Void)) {
+        
+        _ = self.sdMngr.loadImage(with: NSURL(string: imageUrl)! as URL,
+                                         options: [],
+                                         progress: { (_, _, _) in
+                                            
+            }, completed: { (image, _, _, _, _, url) in
+                if let img = image {
+                    completion(img, imageUrl)
+                }
+        })
+        
+    }
+    
+    // MARK: BVCurationsUICollectionViewDelegate
+    
+    func curationsLoadImage(_ imageUrl: String, completion: @escaping BVSDK.BVCurationsLoadImageCompletion) {
+        self.loadImage(imageUrl: imageUrl, completion: completion)
+    }
+    
+    func curationsImageIsCached(_ imageUrl: String, completion: @escaping BVCurationsIsImageCachedCompletion) {
+        
+        self.sdMngr.cachedImageExists(for: NSURL(string: imageUrl) as URL?) { (cached) in
+            completion(cached, imageUrl)
         }
     }
-
-    override func viewWillLayoutSubviews() {
-        super.viewWillLayoutSubviews()
-
-        let layout = (curationsCollectionView.collectionViewLayout) as! UICollectionViewFlowLayout
-        layout.itemSize = CGSizeMake(curationsCollectionView.bounds.height, curationsCollectionView.bounds.height)
-
-        layout.scrollDirection = UICollectionViewScrollDirection.Vertical
-        layout.itemSize = CGSizeMake(curationsCollectionView.bounds.width / 2, curationsCollectionView.bounds.width / 2)
-
-        layout.minimumInteritemSpacing = 0
-        layout.minimumLineSpacing = 0
+    
+    func curationsDidSelect(_ feedItem: BVCurationsFeedItem) {
+        print("Tapped: " + feedItem.debugDescription)
     }
 
-    // MARK: UICollectionViewDatasource
-
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-
-        return self.curationsFeedItems?.count ?? 0
-
+    func curationsFailed(toLoadFeed error: Error) {
+        //Unable to get next batch of content. Handle error.
+        print("An error occurred: " + error.debugDescription)
     }
-
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("DemoCell", forIndexPath: indexPath) as! DemoCollectionViewCell
-
-        let feedItem : BVCurationsFeedItem = self.curationsFeedItems![indexPath.row]
-
-        cell.feedItem = feedItem
-
-        return cell
-    }
-
-    // MARK: UICollectionViewDelegate
-
-    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-
-        let feedItem : BVCurationsFeedItem = curationsFeedItems![indexPath.row]
-
-        print("Selected: " + feedItem.description)
-
-    }
-}</code></pre>
-	</div>
-	<!-- objective-c -->
-	<div role="tabpanel" class="tab-pane" id="objc">
+    
+}
+</code></pre>
+    </div>
+    <!-- objective-c -->
+    <div role="tabpanel" class="tab-pane" id="objc">
 <pre><code class="objective-c">#import "ViewController.h"
-#import "DemoCollectionViewCell.h"
-#import &lt;BVSDK/BVCurations.h&gt;
+#import "ViewController.h"
+#import &lt;SDWebImage/SDWebImageManager.h&gt;
 
-@interface ViewController () &lt;UICollectionViewDataSource, UICollectionViewDelegate&gt;
+@import BVSDK;
 
-@property (weak, nonatomic) IBOutlet BVCurationsCollectionView *curationsCollectionView;
-@property (strong, nonatomic) NSArray&lt;BVCurationsFeedItem *&gt; *curationsFeedItems;
+@interface ViewController () <BVCurationsUICollectionViewDelegate>
 
 @end
 
@@ -518,91 +398,128 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.curationsFeedItems = [NSArray array];
+    
+    // Set up the Curations UI display properties
+    self.curationsCollectionView.curationsDelegate = self;
+    self.curationsCollectionView.groups = @[@"__all__"];
+    // Other optional properties
+    self.curationsCollectionView.fetchSize = 40;
+    self.curationsCollectionView.infiniteScrollEnabled = YES;
+    self.curationsCollectionView.itemsPerRow = 1;
+    self.curationsCollectionView.backgroundColor = [UIColor lightGrayColor];
+    self.curationsCollectionView.bvCurationsUILayout = BVCurationsUILayoutGrid;
+    // Makes the asynchronous API call to load the Curations feed
+    [self.curationsCollectionView loadFeed];
+    
+}
 
-    // Set up the UI
-    [self.curationsCollectionView registerNib:[UINib nibWithNibName:@"DemoCollectionViewCell" bundle:nil]
-                   forCellWithReuseIdentifier:@"DemoCell"];
 
-    self.curationsCollectionView.delegate = self;
-    self.curationsCollectionView.dataSource = self;
+// MARK: BVCurationsUICollectionViewDelegate
 
-    // Create the request parameters
-    NSArray *groups = @[@"__all__"];
 
-    BVCurationsFeedRequest *feedRequest = [[BVCurationsFeedRequest alloc] initWithGroups:groups];
-    feedRequest.limit = 40;
-    feedRequest.hasPhoto = YES;
-    feedRequest.withProductData = YES;
-    [feedRequest setLatitude:userLocation.latitude longitude: userLocation.longitude]; // get curations content based on user's current location
-
-    [self.curationsCollectionView loadFeedWithRequest:feedRequest withWidgetId:nil completionHandler:^(NSArray&lt;BVCurationsFeedItem *&gt; * _Nonnull feedItemsResult) {
-        // completion on main thread
-        NSLog(@"Success loading Curations Display!");
-        self.curationsFeedItems = feedItemsResult;
-        [self.curationsCollectionView reloadData];
-
-    } withFailure:^(NSError * _Nonnull error) {
-        // error on main thread
-        NSLog(@"ERROR: Curations feed could not be retrieved. Error: %@", error.localizedDescription);
+- (void)curationsLoadImage:(NSString *)imageUrl completion:(BVCurationsLoadImageCompletion)completion {
+    
+    [[SDWebImageManager sharedManager] loadImageWithURL:[NSURL URLWithString:imageUrl] options:kNilOptions progress:^(NSInteger receivedSize, NSInteger expectedSize, NSURL * _Nullable targetURL) {
+        // progress
+    } completed:^(UIImage * _Nullable image, NSData * _Nullable data, NSError * _Nullable error, SDImageCacheType cacheType, BOOL finished, NSURL * _Nullable imageURL) {
+        completion(image, imageUrl);
     }];
-
+    
 }
 
-- (void)viewWillLayoutSubviews{
-    [super viewWillLayoutSubviews];
-
-    UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout *)self.curationsCollectionView.collectionViewLayout;
-    layout.itemSize = CGSizeMake(self.curationsCollectionView.bounds.size.height, self.curationsCollectionView.bounds.size.height);
-
-    layout.scrollDirection = UICollectionViewScrollDirectionVertical;
-    layout.itemSize = CGSizeMake(self.curationsCollectionView.bounds.size.width / 2, self.curationsCollectionView.bounds.size.width / 2);
-
-    layout.minimumInteritemSpacing = 0;
-    layout.minimumLineSpacing = 0;
+- (void)curationsImageIsCached:(NSString *)imageUrl completion:(BVCurationsIsImageCachedCompletion)completion {
+    
+    [[SDWebImageManager sharedManager] cachedImageExistsForURL:[NSURL URLWithString:imageUrl] completion:^(BOOL isInCache) {
+        completion(isInCache, imageUrl);
+    }];
+    
 }
 
-#pragma mark - UICollectionViewDataSource
-
--(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
-    return 1;
+- (void)curationsDidSelectFeedItem:(BVCurationsFeedItem *)feedItem {
+    // Handle your click logic here...
+    NSLog(@"Selected item: %@", feedItem.description);
 }
 
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-    return [self.curationsFeedItems count];
+-(void)curationsFailedToLoadFeed:(NSError *)error {
+    // Unable to get next batch of content. Handle error
+    NSLog(@"An error occurred: %@", error);
 }
 
-- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
 
-    DemoCollectionViewCell *cell = [self.curationsCollectionView dequeueReusableCellWithReuseIdentifier:@"DemoCell" forIndexPath:indexPath];
+@end</code></pre>
+    </div>
 
-    cell.feedItem = [self.curationsFeedItems objectAtIndex:indexPath.row];
-
-    return cell;
-
-}
-
-#pragma mark UICollectionViewDelegate
-
-- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-
-    BVCurationsFeedItem *selectedFeedItem = [self.curationsFeedItems objectAtIndex:indexPath.row];
-
-    NSLog(@"Selected: %@", selectedFeedItem.description);
-
-}
-
-@end
-</code></pre>
-	</div>
 </div>
 
 <br>
-<h5>Run the application</h5>
-<p>The app should populate the collection view with the Curations display. Although the app should run correctly, it will still need styling to look professional. </p>
-<img src="ios-img/curations_display/final_project.png" style="height:460px;" class="center-block img-fluid" />
-<br>
 
+<hr>
+<a name="curationsapi"></a>
+<h3>Curations API Direct</h3>
+<br>
+Calling the Curations API with the BVSDK requires the use of two class instances and one response object:
+<br><br>
+<ul>
+  <li><b>BVCurationsFeedRequest</b> - Set the required parameters in the default initializer, and optional parameters in the class properties.</li>
+  <li><b>BVCurationsFeedLoader</b> - Makes the asynchronous request with success and failure blocks. If there are any network or API failures, they will be in an <code>NSError</code> object.</li>
+  <li><b>BVCurationsFeedItem</b> - On a successful result, you will have an array of social feed items you can display in your UI.</li>
+</ul>
+
+<br>
+<h5>Code Example: Using the Curations Display API</h5>
+You can copy/paste the code below for a starter.
+<br><br>
+<ul class="nav nav-tabs" role="tablist">
+  <li role="presentation" class="active"><a href="#swift" aria-controls="swift" role="tab" data-toggle="tab">Swift</a></li>
+  <li role="presentation"><a href="#objc" aria-controls="objc" role="tab" data-toggle="tab">Objective-C</a></li>
+</ul>
+
+<!-- Tab panes -->
+<div class="tab-content code-switcher">
+    <!-- swift -->
+    <div role="tabpanel" class="tab-pane active" id="swift">
+<pre><code class="swift">let feedRequest = BVCurationsFeedRequest(groups: ["__all__"])
+// Set any other optional parameter, like geo-coordinates. See the BVCurationsFeedRequest header for fields.
+feedRequest?.externalId = "productId"
+feedRequest?.withProductData = true
+
+let loader = BVCurationsFeedLoader()
+loader.loadFeed(with: feedRequest, completionHandler: { (feedItems) in
+    // success
+    for item : BVCurationsFeedItem in feedItems! {
+        print(item)
+    }
+    }) { (error) in
+    // error
+    print(error)
+}</code></pre>
+    </div>
+    <!-- objective-c -->
+    <div role="tabpanel" class="tab-pane" id="objc">
+<pre><code class="objective-c">BVCurationsFeedRequest *feedRequest = [[BVCurationsFeedRequest alloc] initWithGroups:@[ @"__all__" ]];
+
+// Set any other optional parameter, like geo-coordinates. See the BVCurationsFeedRequest header for fields.
+[feedRequest setLatitude:30.2 longitude:-97.7];
+[feedRequest setExternalId:@"productId"];
+[feedRequest setWithProductData:YES];
+
+BVCurationsFeedLoader *urlRequest = [[BVCurationsFeedLoader alloc] init];
+
+[urlRequest loadFeedWithRequest:feedRequest completionHandler:^(NSArray *feedItems) {
+    // success!
+    for (BVCurationsFeedItem *item in feedItems){
+        NSLog(@"%@", item.debugDescription);
+    }
+} withFailure:^(NSError *error) {
+    // failure : (
+    NSLog(@"Error loading feed: %@", error.localizedDescription);
+}];</code></pre>
+    </div>
+
+</div>
+
+
+<br>
 
 
 <div class="well well-sm">
