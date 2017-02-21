@@ -20,6 +20,9 @@
 @property NSMutableArray<BVSort*>* _Nonnull questionSorts;
 @property NSMutableArray<BVSort*>* _Nonnull answerSorts;
 
+@property NSMutableArray<BVFilter*>* _Nonnull reviewFilters;
+@property NSMutableArray<BVFilter*>* _Nonnull questionFilters;
+
 @end
 
 @implementation BVProductDisplayPageRequest
@@ -32,6 +35,8 @@
         self.reviewSorts = [NSMutableArray array];
         self.questionSorts = [NSMutableArray array];
         self.answerSorts = [NSMutableArray array];
+        self.reviewFilters = [NSMutableArray array];
+        self.questionFilters = [NSMutableArray array];
         self.PDPContentTypeStatistics = [NSMutableArray array];
     }
     return self;
@@ -66,6 +71,27 @@
     return self;
 }
 
+- (nonnull instancetype)addIncludedReviewsFilter:(BVReviewFilterType)type filterOperator:(BVFilterOperator)filterOperator value:(NSString * _Nonnull)value{
+    
+    BVFilter* filter = [[BVFilter alloc]
+                        initWithString:[BVReviewFilterTypeUtil toString:type]
+                        filterOperator:filterOperator values:@[value]];
+    
+    [self.reviewFilters addObject:filter];
+    return self;
+}
+
+- (nonnull instancetype)addIncludedQuestionsFilter:(BVQuestionFilterType)type filterOperator:(BVFilterOperator)filterOperator value:(NSString * _Nonnull)value{
+    
+    BVFilter* filter = [[BVFilter alloc]
+                        initWithString:[BVQuestionFilterTypeUtil toString:type]
+                        filterOperator:filterOperator values:@[value]];
+    
+    [self.questionFilters addObject:filter];
+    return self;
+    
+}
+
 - (void)load:(ProductRequestCompletionHandler _Nonnull)success failure:(ConversationsFailureHandler _Nonnull)failure {
     [super loadProducts:self completion:success failure:failure];
 }
@@ -91,6 +117,14 @@
     
     if (self.answerSorts.count > 0){
         [params addObject:[self sortParams:self.answerSorts withKey:@"Sort_Answers"]];
+    }
+    
+    for(BVFilter* filter in self.reviewFilters) {
+        [params addObject:[BVStringKeyValuePair pairWithKey:@"Filter_Reviews" value:[filter toParameterString]]];
+    }
+    
+    for(BVFilter* filter in self.questionFilters) {
+        [params addObject:[BVStringKeyValuePair pairWithKey:@"Filter_Questions" value:[filter toParameterString]]];
     }
     
     if (self.includes.count > 0){

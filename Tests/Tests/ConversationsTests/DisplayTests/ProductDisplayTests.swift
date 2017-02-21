@@ -16,6 +16,7 @@ class ProductDisplayTests: XCTestCase {
         BVSDKManager.shared().clientId = "apitestcustomer"
         BVSDKManager.shared().apiKeyConversations = "KEY_REMOVED"
         BVSDKManager.shared().staging = true
+        BVSDKManager.shared().setLogLevel(.error)
     }
     
     
@@ -59,5 +60,54 @@ class ProductDisplayTests: XCTestCase {
         }
         
     }
+    
+    
+    func testProductDisplayWithFilter() {
+        
+        let expectation = self.expectation(description: "")
+        
+        let request = BVProductDisplayPageRequest(productId: "test1")
+            .include(.reviews, limit: 10)
+            .include(.questions, limit: 5)
+            // only include reviews where isRatingsOnly is false
+            .addIncludedReviewsFilter(.isRatingsOnly, filterOperator: .equalTo, value: "false")
+            // only include questions where isFeatured is not equal to true
+            .addIncludedQuestionsFilter(.isFeatured, filterOperator: .notEqualTo, value: "true")
+            .includeStatistics(.reviews)
+        
+        request.load({ (response) in
+            
+            XCTAssertNotNil(response.result)
+            
+            let product = response.result!
+            
+            XCTAssertEqual(product.includedReviews.count, 10)
+            XCTAssertEqual(product.includedQuestions.count, 5)
+            
+            // Iterate all the included reviews and verify that all the reviews have isRatingsOnly = false
+            for review in product.includedReviews {
+                XCTAssertFalse(review.isRatingsOnly)
+            }
+            
+            // Iterate all the included questions and verify that all the questions have isFeatured = false
+            for question in product.includedQuestions {
+                XCTAssertFalse(question.isFeatured)
+            }
+            
+            expectation.fulfill()
+            
+        }) { (error) in
+            
+            XCTFail("product display request error: \(error)")
+            expectation.fulfill()
+            
+        }
+        
+        self.waitForExpectations(timeout: 10) { (error) in
+            XCTAssertNil(error, "Something went horribly wrong, request took too long.")
+        }
+        
+    }
+
     
 }
