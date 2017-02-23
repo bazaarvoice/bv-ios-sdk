@@ -7,9 +7,9 @@
 
 #import "BVConversationsRequest.h"
 #import "BVSDKManager.h"
+#import "BVAnalyticsManager.h"
 #import "BVDiagnosticHelpers.h"
 #import "BVConversationsErrorResponse.h"
-#import "BVConversationsAnalyticsUtil.h"
 
 @implementation BVConversationsRequest
 
@@ -266,30 +266,69 @@
 - (void)sendReviewResultsAnalytics:(NSArray<BVReview *>*)reviews{
     
     for (BVReview* review in reviews) {
-        NSDictionary* event = [BVConversationsAnalyticsUtil reviewAnalyticsEvents:review];
-        [[BVAnalyticsManager sharedManager] queueEvent:event];
+        
+        // Record Review Impression
+        NSString *brandName = review.product.brand ? review.product.brand.name : nil;
+        BVImpressionEvent *reviewImpression = [[BVImpressionEvent alloc] initWithProductId:review.productId
+                                     withContentId:review.identifier
+                                    withCategoryId:review.product.categoryId
+                            withProductType:BVPixelProductTypeConversationsReviews
+                                withContentType:BVPixelImpressionContentTypeReview
+                                       withBrand:brandName withAdditionalParams:nil];
+        
+        [BVPixel trackEvent:reviewImpression];
+        
     }
     // send pageview for product
     BVReview* review = reviews.firstObject;
     if (review != nil) {
         NSNumber* count = @([reviews count]);
-        [BVConversationsAnalyticsUtil queueAnalyticsEventForProductPageView:review.productId numReviews:count numQuestions:nil];
+        
+        NSDictionary *addParams = @{@"numReviews":count};
+        NSString *brandName = review.product.brand ? review.product.brand.name : nil;
+        BVPageViewEvent *pageView = [[BVPageViewEvent alloc] initWithProductId:review.productId
+                                                    withBVPixelProductType:BVPixelProductTypeConversationsReviews
+                                                                 withBrand:brandName
+                                                            withCategoryId:review.product.categoryId
+                                                        withRootCategoryId:nil
+                                                      withAdditionalParams:addParams];
+        
+        [BVPixel trackEvent:pageView];
     }
 }
 
 - (void)sendQuestionsAnalytics:(BVQuestionsAndAnswersResponse*)questionsResponse {
     
     for (BVQuestion* question in questionsResponse.results) {
-        NSArray<NSDictionary*>* events = [BVConversationsAnalyticsUtil questionAnalyticsEvents:question];
-        for(NSDictionary* event in events) {
-            [[BVAnalyticsManager sharedManager] queueEvent:event];
-        }
+        
+        // Record Question Impression
+        BVImpressionEvent *questionImpression = [[BVImpressionEvent alloc] initWithProductId:question.productId
+                                                             withContentId:question.identifier
+                                                            withCategoryId:question.categoryId
+                                                    withProductType:BVPixelProductTypeConversationsQuestionAnswer
+                                                           withContentType:BVPixelImpressionContentTypeQuestion
+                                                                 withBrand:nil
+                                                      withAdditionalParams:nil];
+        
+        [BVPixel trackEvent:questionImpression];
+        
     }
+    
     // send pageview for product
     BVQuestion* question = questionsResponse.results.firstObject;
     if (question != nil) {
+        
         NSNumber* count = @([questionsResponse.results count]);
-        [BVConversationsAnalyticsUtil queueAnalyticsEventForProductPageView:question.productId numReviews:nil numQuestions:count];
+        NSDictionary *addParams = @{@"numQuestions":count};
+        
+        BVPageViewEvent *pageView = [[BVPageViewEvent alloc] initWithProductId:question.productId
+                                                withBVPixelProductType:BVPixelProductTypeConversationsQuestionAnswer
+                                                             withBrand:nil
+                                                        withCategoryId:question.categoryId
+                                                    withRootCategoryId:nil
+                                                  withAdditionalParams:addParams];
+        
+        [BVPixel trackEvent:pageView];
     }
     
 }
@@ -298,12 +337,47 @@
     
     BVProduct* product = productsResponse.result;
     if (product) {
-        // send impressions for included content
-        for(NSDictionary* event in [BVConversationsAnalyticsUtil productAnalyticsEvents:product]) {
-            [[BVAnalyticsManager sharedManager] queueEvent:event];
+        
+        // send impressions for included content, reviews and questions
+
+
+        for(BVReview* review in product.includedReviews) {
+            NSString *brandName = review.product.brand ? review.product.brand.name : nil;
+            BVImpressionEvent *reviewImpression = [[BVImpressionEvent alloc] initWithProductId:review.productId
+                                                         withContentId:review.identifier
+                                                        withCategoryId:review.product.categoryId
+                                                withProductType:BVPixelProductTypeConversationsReviews
+                                                       withContentType:BVPixelImpressionContentTypeReview
+                                                             withBrand:brandName withAdditionalParams:nil];
+            
+            [BVPixel trackEvent:reviewImpression];
+
         }
+        
+        for(BVQuestion* question in product.includedQuestions) {
+            // Record Question Impression
+            BVImpressionEvent *questionImpression = [[BVImpressionEvent alloc] initWithProductId:question.productId
+                                                       withContentId:question.identifier
+                                                      withCategoryId:question.categoryId
+                                              withProductType:BVPixelProductTypeConversationsQuestionAnswer
+                                                     withContentType:BVPixelImpressionContentTypeQuestion
+                                                           withBrand:nil
+                                                withAdditionalParams:nil];
+            
+            [BVPixel trackEvent:questionImpression];
+        }
+        
+        
         // send pageview for product
-        [BVConversationsAnalyticsUtil queueAnalyticsEventForProductPageView:product];
+        NSString *brandName = product.brand != nil ? product.brand.name : nil;
+        BVPageViewEvent *pageView = [[BVPageViewEvent alloc] initWithProductId:product.identifier
+                                                withBVPixelProductType:BVPixelProductTypeConversationsReviews
+                                                             withBrand:brandName
+                                                        withCategoryId:product.categoryId
+                                                    withRootCategoryId:nil
+                                                  withAdditionalParams:nil];
+        
+        [BVPixel trackEvent:pageView];
     }
     
 }
@@ -312,7 +386,16 @@
     
     if (author) {
         // send usedfeature for the author display
-        [BVConversationsAnalyticsUtil queueAnalyticsEventForAuthorDisplay:author];
+        
+        BVFeatureUsedEvent *event = [[BVFeatureUsedEvent alloc] initWithProductId:@"none"
+                                                        withBrand:nil
+                                           withProductType:BVPixelProductTypeConversationsProfile
+                                              withEventName:BVPixelFeatureUsedNameProfile
+                                                             withAdditionalParams:@{@"interaction":@"false",
+                                                                                    @"page":author.authorId}];
+        
+        [BVPixel trackEvent:event];
+        
     }
     
 }
@@ -321,7 +404,16 @@
     
     if (store) {
         // send pageview for product
-        [BVConversationsAnalyticsUtil queueAnalyticsEventForStorePageView:store];
+        
+        BVPageViewEvent *pageView = [[BVPageViewEvent alloc] initWithProductId:store.identifier
+                                                        withBVPixelProductType:BVPixelProductTypeConversationsReviews
+                                                                     withBrand:nil
+                                                                withCategoryId:store.categoryId
+                                                            withRootCategoryId:nil
+                                                          withAdditionalParams:nil];
+        
+        [BVPixel trackEvent:pageView];
+
     }
     
 }

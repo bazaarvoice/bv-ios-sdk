@@ -7,7 +7,6 @@
 
 #import "BVAnswersTableView.h"
 #import "BVMessageInterceptor.h"
-#import "BVConversationsAnalyticsUtil.h"
 #import "BVAnswerTableViewCell.h"
 #import "BVCore.h"
 #import "BVViewsHelper.h"
@@ -56,7 +55,13 @@
     [super setDelegate:(id)delegate_interceptor];
     [super setDataSource:(id)datasource_interceptor];
     
-    [BVConversationsAnalyticsUtil queueAnalyticsEventForAnswerContainerInView:nil];
+    BVInViewEvent *inView = [[BVInViewEvent alloc] initWithProductId:@"none" withBrand:nil
+                                              withProductType:BVPixelProductTypeConversationsQuestionAnswer
+                                                     withContainerId:@"AnswersTableView"
+                                                withAdditionalParams:nil];
+    
+    [BVPixel trackEvent:inView];
+    
 }
 
 
@@ -134,7 +139,13 @@
     if(!hasSentScrollEvent) {
         hasSentScrollEvent = true;
         
-        [BVConversationsAnalyticsUtil queueAnalyticsEventForUGCScrollEvent:ScrollTypeAnswersTable productId:nil];
+        BVFeatureUsedEvent *scrollEvent = [[BVFeatureUsedEvent alloc] initWithProductId:@"none" withBrand:nil
+                                                     withProductType:BVPixelProductTypeConversationsQuestionAnswer
+                                                              withEventName:BVPixelFeatureUsedEventNameScrolled
+                                                       withAdditionalParams:nil];
+        
+        [BVPixel trackEvent:scrollEvent];
+        
     }
     
 }
@@ -145,7 +156,13 @@
         [delegate_interceptor.receiver scrollViewDidEndDecelerating:scrollView];
     }
     
-    [BVConversationsAnalyticsUtil queueAnalyticsEventForUGCScrollEvent:ScrollTypeAnswersTable productId:nil];
+    BVFeatureUsedEvent *scrollEvent = [[BVFeatureUsedEvent alloc] initWithProductId:@"none"
+                                                                          withBrand:nil
+                                                             withProductType:BVPixelProductTypeConversationsQuestionAnswer
+                                                                withEventName:BVPixelFeatureUsedEventNameScrolled
+                                                               withAdditionalParams:nil];
+    
+    [BVPixel trackEvent:scrollEvent];
     
 }
 

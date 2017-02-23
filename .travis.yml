@@ -11,6 +11,7 @@ env:
     - TEST_TYPE=unit_tests
     - TEST_TYPE=build_bvsdkdemo
     - TEST_TYPE=installation_carthage
+    - TEST_TYPE=build_bvpixel
 
 before_install:
   - gem install xcpretty --no-ri --no-rdoc --no-document --quiet
@@ -24,3 +25,4 @@ script:
   - '[ "$TEST_TYPE" != build_framework ] || ./ci_scripts/build_framework.sh'
   - '[ "$TEST_TYPE" != build_bvsdkdemo ] || ./ci_scripts/build_bvsdkdemo.sh'
   - '[ "$TEST_TYPE" != installation_carthage ] || ./Tests/installation_tests/carthage/test.sh'
+  - '[ "$TEST_TYPE" != build_bvpixel ] || ./Tests/installation_tests/bvpixel/swift/test.sh'

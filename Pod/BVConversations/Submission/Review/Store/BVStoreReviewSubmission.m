@@ -8,7 +8,6 @@
 #import "BVStoreReviewSubmission.h"
 #import "BVReviewSubmissionErrorResponse.h"
 #import "BVSDKManager.h"
-#import "BVConversationsAnalyticsUtil.h"
 #import "BVUploadableStorePhoto.h"
 
 @interface BVStoreReviewSubmission()

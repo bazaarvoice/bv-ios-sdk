@@ -9,7 +9,6 @@
 #import "BVUploadablePhoto.h"
 #import "BVAnswerSubmissionErrorResponse.h"
 #import "BVSDKManager.h"
-#import "BVConversationsAnalyticsUtil.h"
 #import "BVCore.h"
 
 @interface BVAnswerSubmission()
@@ -82,6 +81,15 @@
     for (BVUploadablePhoto* photo in self.photos) {
         
         [photo uploadForContentType:BVPhotoContentTypeAnswer success:^(NSString * _Nonnull photoUrl) {
+            
+            // Queue one event for each photo uploaded.
+            BVFeatureUsedEvent *photoUploadEvent = [[BVFeatureUsedEvent alloc] initWithProductId:self.questionId
+                                                                                       withBrand:nil
+                                                                                 withProductType:BVPixelProductTypeConversationsQuestionAnswer
+                                                                                   withEventName:BVPixelFeatureUsedEventNamePhoto
+                                                                            withAdditionalParams:@{@"detail1":@"Answer"}];
+            [BVPixel trackEvent:photoUploadEvent];
+
             
             [photoUrls addObject:photoUrl];
             [photoCaptions addObject:photo.photoCaption];
@@ -156,8 +164,15 @@
             else {
                 // success!
                 
-                [BVConversationsAnalyticsUtil queueAnalyticsEventForAnswerSubmission:self];
+                // Fire event now that we've confirmed the answer was successfully uploaded.
+                BVFeatureUsedEvent *answerQuestionEvent = [[BVFeatureUsedEvent alloc] initWithProductId:_questionId
+                                                                             withBrand:nil
+                                                                withProductType:BVPixelProductTypeConversationsReviews
+                                                                   withEventName:BVPixelFeatureUsedEventNameAnswerQuestion
+                                                                  withAdditionalParams:nil];
                 
+                [BVPixel trackEvent:answerQuestionEvent];
+
                 BVAnswerSubmissionResponse* response = [[BVAnswerSubmissionResponse alloc] initWithApiResponse:json];
                 dispatch_async(dispatch_get_main_queue(), ^{
                     success(response);

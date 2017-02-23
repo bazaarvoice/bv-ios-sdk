@@ -91,7 +91,7 @@ class CartViewController: UIViewController, UITableViewDataSource {
          BVTransaction also has convenience setters for commonly used params.
          */
         
-        let transaction = BVTransaction(orderId:"123456",
+        let transaction = BVTransactionEvent(orderId:"123456",
                                         orderTotal: 0.00,
                                         orderItems: transactionItems,
                                         andOtherParams: ["state":"TX","email":"some.one@domain.com"])
@@ -100,8 +100,9 @@ class CartViewController: UIViewController, UITableViewDataSource {
         transaction.tax = 0.00
         
         // Use the BVPixel to track the Conversion Transaction Event.
-        BVPixel.trackConversionTransaction(transaction)
-        BVAnalyticsManager.shared().flushQueue() // Send the event immediately (just for demo purposes)
+        BVPixel.trackEvent(transaction)
+        
+        //BVAnalyticsManager.shared().flushQueue() // Send the event immediately (just for demo purposes)
         
         // Clear out the cart and let user know the demo transaction was complete.
         

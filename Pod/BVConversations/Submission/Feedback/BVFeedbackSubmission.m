@@ -7,7 +7,6 @@
 
 #import "BVFeedbackSubmission.h"
 #import "BVSDKManager.h"
-#import "BVConversationsAnalyticsUtil.h"
 
 @implementation BVFeedbackSubmission
 
@@ -82,8 +81,8 @@
             else {
                 // success!
                 
-                 [BVConversationsAnalyticsUtil queueAnalyticsEventForFeedbackSubmission:self];
-                
+                [self trackFeedbackEvent];
+
                 BVFeedbackSubmissionResponse* response = [[BVFeedbackSubmissionResponse alloc] initWithApiResponse:json];
                 dispatch_async(dispatch_get_main_queue(), ^{
                     success(response);
@@ -100,6 +99,52 @@
     
     // start uploading answer
     [postDataTask resume];
+    
+}
+
+- (void)trackFeedbackEvent {
+
+    // Fire event now that we've confirmed the answer was successfully uploaded.
+    BVPixelImpressionContentType contentType = BVPixelImpressionContentTypeReview;
+    BVPixelProductType productTypeForEvent = BVPixelProductTypeConversationsReviews;
+    if (self.contentType == BVFeedbackContentTypeReview){
+        contentType = BVPixelImpressionContentTypeReview;
+        productTypeForEvent = BVPixelProductTypeConversationsReviews;
+    } else if (self.contentType == BVFeedbackContentTypeQuestion){
+        contentType = BVPixelImpressionContentTypeQuestion;
+        productTypeForEvent = BVPixelProductTypeConversationsQuestionAnswer;
+    } else if (self.contentType == BVFeedbackContentTypeAnswer){
+        contentType = BVPixelImpressionContentTypeAnswer;
+        productTypeForEvent = BVPixelProductTypeConversationsQuestionAnswer;
+    }
+    
+    BVPixelFeatureUsedEventName featureUsed = BVPixelFeatureUsedEventNameFeedback;
+    NSString *detail1 = @"";
+    if (self.feedbackType == BVFeedbackTypeHelpfulness){
+        featureUsed = BVPixelFeatureUsedEventNameFeedback;
+        if (self.vote == BVFeedbackVotePositive){
+            detail1 = @"Positive";
+        } else if (self.vote == BVFeedbackVoteNegative){
+            detail1 = @"Negative";
+        }
+
+    } else if (self.feedbackType == BVFeedbackTypeInappropriate){
+        featureUsed = BVPixelFeatureUsedEventNameInappropriate;
+        detail1 = @"Inappropriate";
+    }
+    
+    NSDictionary *additionalParams = @{@"contentType":[BVPixelImpressionContentTypeUtil toString:contentType],
+                                       @"contentId":self.contentId,
+                                       @"detail1":detail1};
+    
+    BVFeatureUsedEvent *feedbackEvent = [[BVFeatureUsedEvent alloc] initWithProductId:self.contentId
+                                                                            withBrand:nil
+                                                               withProductType:productTypeForEvent
+                                                                  withEventName:featureUsed
+                                                                 withAdditionalParams:additionalParams];
+    
+    [BVPixel trackEvent:feedbackEvent];
+    
     
 }
 

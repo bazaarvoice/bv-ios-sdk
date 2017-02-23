@@ -11,13 +11,15 @@
 #import "BVSDKConstants.h"
 #import "BVLogger.h"
 #import "BVAnalyticsManager.h"
+#import "BVAnalyticEventManager.h"
+#import "BVPersonalizationEvent.h"
+
 #include <sys/sysctl.h>
 #include <sys/utsname.h>
 
 #define BV_MAGPIE_ENDPOINT @"https://network.bazaarvoice.com/event"
 #define BV_MAGPIE_STAGING_ENDPOINT @"https://network-stg.bazaarvoice.com/event"
 #define BV_QUEUE_FLUSH_INTERVAL 10.0
-#define BVID_STORAGE_KEY @"BVID_STORAGE_KEY"
 
 @interface BVAnalyticsManager ()
 
@@ -26,8 +28,6 @@
 @property NSTimer* queueFlushTimer;
 
 @property (nonatomic, strong) dispatch_queue_t concurrentEventQueue;
-
-@property NSString* BVID;
 
 @end
 
@@ -51,13 +51,6 @@ static BVAnalyticsManager *analyticsInstance = nil;
     self = [super init];
     if (self != nil) {
         
-        self.BVID = [[NSUserDefaults standardUserDefaults] stringForKey:BVID_STORAGE_KEY];
-        if(self.BVID == nil || [self.BVID length] == 0) {
-            self.BVID = [[NSUUID UUID] UUIDString];
-            [[NSUserDefaults standardUserDefaults] setValue:self.BVID forKey:BVID_STORAGE_KEY];
-            [[NSUserDefaults standardUserDefaults] synchronize];
-        }
-
         self.eventQueue = [NSMutableArray array];
         self.pageviewQueue = [NSMutableArray array];
         
@@ -131,62 +124,6 @@ static BVAnalyticsManager *analyticsInstance = nil;
     [self sendAppInBackgroundEvent];
 }
 
-#pragma mark User Profile Event
-
-#pragma mark - Personalization event
-
--(NSDictionary*)getPersonalizationEventParams {
-    return @{
-             @"type": @"ProfileMobile",
-             @"cl": @"Personalization",
-             @"source": @"ProfileMobile",
-             @"bvProduct": @"ShopperMarketing"
-             };
-}
-
-
-- (NSDictionary *)getCommonAnalyticsDictAnonymous:(BOOL)anonymous{
-    
-    NSMutableDictionary* params = [NSMutableDictionary dictionaryWithDictionary:@{
-                                                                                  @"mobileSource": @"bv-ios-sdk",
-                                                                                  @"HashedIP" : @"default",
-                                                                                  @"UA" : self.BVID
-                                                                                }];
-    
-    [params setValue:self.clientId forKey:@"client"];
-    
-    // idfa
-    //check it limit ad tracking is enabled
-    NSString *idfa = [[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString];
-    if([[ASIdentifierManager sharedManager] isAdvertisingTrackingEnabled] && !anonymous){
-        idfa = [[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString];
-    } else {
-        idfa = @"nontracking";
-    }
-    
-    [params setValue:idfa forKey:@"advertisingId"];
-    
-    return params;
-}
-
-
--(void)sendPersonalizationEvent:(NSString *)userAuthString {
-    
-    if (!userAuthString){
-        return;
-    }
-    
-    NSMutableDictionary* eventData = [NSMutableDictionary dictionaryWithDictionary:[self getCommonAnalyticsDictAnonymous:NO]];
-    [eventData addEntriesFromDictionary:[self getPersonalizationEventParams]];
-    [eventData setValue:userAuthString forKey:@"profileId"]; // may be null
-    
-    [self queueEvent:eventData];
-    
-    // for personalization events, want to flush queue immediately.
-
-    [self flushQueue];
-}
-
 #pragma mark - App lifecycle events
 
 -(NSDictionary*)getAppStateEventParams {
@@ -212,7 +149,7 @@ static BVAnalyticsManager *analyticsInstance = nil;
 -(void)sendAppStateEvent:(NSString*)appState {
     // build param dictionary
 
-    NSMutableDictionary* eventData = [NSMutableDictionary dictionaryWithDictionary:[self getCommonAnalyticsDictAnonymous:NO]];
+    NSMutableDictionary* eventData = [NSMutableDictionary dictionaryWithDictionary:[[BVAnalyticEventManager sharedManager] getCommonAnalyticsDictAnonymous:NO]];
     [eventData addEntriesFromDictionary:[self getMobileDiagnosticParams]];
     [eventData addEntriesFromDictionary:[self getAppStateEventParams]];
     [eventData setObject:appState forKey:@"appState"];
@@ -236,7 +173,7 @@ static BVAnalyticsManager *analyticsInstance = nil;
 -(void)processEvent:(NSDictionary*)eventData isAnonymous:(BOOL)anonymous{
     
     NSMutableDictionary *eventForQueue = [NSMutableDictionary dictionaryWithDictionary:eventData];
-    [eventForQueue addEntriesFromDictionary:[self getCommonAnalyticsDictAnonymous:anonymous]];
+    [eventForQueue addEntriesFromDictionary:[[BVAnalyticEventManager sharedManager] getCommonAnalyticsDictAnonymous:anonymous]];
     
     dispatch_barrier_sync(self.concurrentEventQueue, ^{
         // Update event queue
@@ -270,11 +207,14 @@ static BVAnalyticsManager *analyticsInstance = nil;
 - (void)queuePageViewEventDict:(NSDictionary *)pageViewEvent{
     
     NSMutableDictionary *eventForQueue = [NSMutableDictionary dictionaryWithDictionary:pageViewEvent];
-    [eventForQueue addEntriesFromDictionary:[self getCommonAnalyticsDictAnonymous:NO]];
+    [eventForQueue addEntriesFromDictionary:[[BVAnalyticEventManager sharedManager] getCommonAnalyticsDictAnonymous:NO]];
     
     dispatch_barrier_sync(self.concurrentEventQueue, ^{
         // Update PageView queue events
         [self.pageviewQueue addObject:eventForQueue];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self flushQueue];
+        });
     });
     
     
@@ -412,14 +352,5 @@ static BVAnalyticsManager *analyticsInstance = nil;
     }
 }
 
-- (void)setClientId:(NSString *)clientId{
-    
-    _clientId = clientId;
-    
-    if ([_clientId isEqualToString:@"apitestcustomer"]){
-        [[BVLogger sharedLogger] error:@"WARNING: Client apitestcustomer should not be used for production!!!"];
-    }
-    
-}
 
 @end
