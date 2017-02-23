@@ -16,6 +16,7 @@
 #import <BVSDK/BVProductDisplayPageRequest.h>
 #import <BVSDK/BVQuestionsAndAnswersRequest.h>
 #import <BVSDK/BVBulkRatingsRequest.h>
+#import <BVSDK/BVAnalyticsManager.h>
 
 #import "BVBaseStubTestCase.h"
 
@@ -25,7 +26,7 @@
 @property (strong) NSMutableArray* eventQueue;
 @end
 
-@interface BVAnalyticsTests : BVBaseStubTestCase {
+@interface BVInternalAnalyticsTests : BVBaseStubTestCase {
     XCTestExpectation *impressionExpectation;
     XCTestExpectation *pageviewExpectation;
     int numberOfExpectedImpressionAnalyticsEvents;
@@ -39,7 +40,7 @@
 #define TEST_KEY_CONVERSATIONS @"faketestkeyconversations"
 
 
-@implementation BVAnalyticsTests
+@implementation BVInternalAnalyticsTests
 
 - (void)setUp
 {
@@ -55,8 +56,6 @@
     
     // Global logging level
     [[BVSDKManager sharedManager] setLogLevel:BVLogLevelAnalyticsOnly];
-    
-    NSLog(@"BVSDK Info: %@", [BVSDKManager sharedManager].description);
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(analyticsPageviewEventCompleted:)
@@ -444,90 +443,6 @@
     [BVNotificationsAnalyticsHelper queueAnalyticEventForReviewUsedFeature:@"ok" withId:@"1000" andProductType:ProductTypeStore];
     
     XCTAssert([[BVAnalyticsManager sharedManager]eventQueue].count == 1, @"There should be 1 event queued.");
-    
-    [[BVAnalyticsManager sharedManager] flushQueue];
-    
-    [self waitForAnalytics];
-}
-
-
-#pragma mark - BVPixel Tests
-
-- (void)testTransactionConversionNoPII{
-
-#if ANALYTICS_TEST_USING_MOCK_DATA == 1
-    [self addStubWith200ResponseForJSONFileNamed:@"emptyJSON.json"];
-#endif
-    
-    numberOfExpectedImpressionAnalyticsEvents = 1;
-    numberOfExpectedPageviewAnalyticsEvents = 0;
-    
-    NSArray* orderItems = @[[[BVTransactionItem alloc]initWithSku:@"123" name:@"test product" category:@"home and garden" price:99.99 quantity:1 imageUrl:nil]];
-    BVTransaction* transaction = [[BVTransaction alloc]initWithOrderId:@"testorderid" orderTotal:99.99 orderItems:orderItems andOtherParams:@{@"state":@"TX", @"city": @"Austin"}];
-    [BVPixel trackConversionTransaction:transaction];
-    
-    XCTAssert([[BVAnalyticsManager sharedManager]eventQueue].count == 1, @"Conversions without PII should only produce one event");
-    
-    [[BVAnalyticsManager sharedManager] flushQueue];
-    
-    [self waitForAnalytics];
-}
-
-- (void)testTransactionConversionPII{
-    
-#if ANALYTICS_TEST_USING_MOCK_DATA == 1
-    [self addStubWith200ResponseForJSONFileNamed:@"emptyJSON.json"];
-#endif
-    
-    numberOfExpectedImpressionAnalyticsEvents = 1;
-    numberOfExpectedPageviewAnalyticsEvents = 0;
-    
-    NSArray* orderItems = @[[[BVTransactionItem alloc]initWithSku:@"123" name:@"test product" category:@"home and garden" price:99.99 quantity:1 imageUrl:nil]];
-    BVTransaction* transaction = [[BVTransaction alloc]initWithOrderId:@"testorderid" orderTotal:99.99 orderItems:orderItems andOtherParams:@{@"state":@"TX", @"city": @"Austin",
-                                                                                                                               /*PII*/   @"email":@"some.one@domain.com"}];
-    [BVPixel trackConversionTransaction:transaction];
-    
-    XCTAssert([[BVAnalyticsManager sharedManager]eventQueue].count == 2, @"Conversions with PII should produce two events");
-    
-    [[BVAnalyticsManager sharedManager] flushQueue];
-    
-    [self waitForAnalytics];
-
-}
-
-- (void)testNonTransactionConversionNoPII{
-    
-#if ANALYTICS_TEST_USING_MOCK_DATA == 1
-    [self addStubWith200ResponseForJSONFileNamed:@"emptyJSON.json"];
-#endif
-    
-    numberOfExpectedImpressionAnalyticsEvents = 1;
-    numberOfExpectedPageviewAnalyticsEvents = 0;
-    
-    BVConversion *conversion = [[BVConversion alloc]initWithType:@"Broucher Download" value:@"HotSpringsSpas" label:@"TestLabel" otherParams:@{@"state":@"TX", @"city": @"Austin"}];
-    [BVPixel trackNonCommerceConversion:conversion];
-    
-    XCTAssert([[BVAnalyticsManager sharedManager]eventQueue].count == 1, @"Non-transactional Conversions without PII should only produce one event");
-    
-    [[BVAnalyticsManager sharedManager] flushQueue];
-    
-    [self waitForAnalytics];
-}
-
-- (void)testNonTransactionConversionPII{
-    
-#if ANALYTICS_TEST_USING_MOCK_DATA == 1
-    [self addStubWith200ResponseForJSONFileNamed:@"emptyJSON.json"];
-#endif
-    
-    numberOfExpectedImpressionAnalyticsEvents = 1;
-    numberOfExpectedPageviewAnalyticsEvents = 0;
-    
-    BVConversion *conversion = [[BVConversion alloc]initWithType:@"Broucher Download" value:@"HotSpringsSpas" label:@"TestLabel" otherParams:@{@"state":@"TX", @"city": @"Austin",
-                                                                                                                        /*PII*/      @"email":@"some.one@domain.com"}];
-    [BVPixel trackNonCommerceConversion:conversion];
-    
-    XCTAssert([[BVAnalyticsManager sharedManager]eventQueue].count == 2, @"Non-transactional Conversions with PII should produce two events");
     
     [[BVAnalyticsManager sharedManager] flushQueue];
     

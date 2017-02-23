@@ -6,8 +6,6 @@
 //
 
 #import <Foundation/Foundation.h>
-
-#import "BVAnalyticsManager.h"
 #import "BVShopperProfile.h"
 #import "BVRecommendationsLoader.h"
 

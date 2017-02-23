@@ -67,7 +67,7 @@ class ConversationsDisplayTests: XCTestCase {
         
         let expectation = self.expectation(description: "")
         
-        let request = BVReviewsRequest(productId: "test1", limit: 10, offset: 0)
+        let request = BVReviewsRequest(productId: "test1", limit: 10, offset: 4)
             .addReviewSort(.rating, order: .ascending)
             .add(.hasPhotos, filterOperator: .equalTo, value: "true")
             .add(.hasComments, filterOperator: .equalTo, value: "false")
@@ -96,8 +96,8 @@ class ConversationsDisplayTests: XCTestCase {
             XCTAssertEqual(review.photos.count, 1)
             XCTAssertEqual(review.photos.first?.caption, "Etiam malesuada ultricies urna in scelerisque. Sed viverra blandit nibh non egestas. Sed rhoncus, ipsum in vehicula imperdiet, purus lectus sodales erat, eget ornare lacus lectus ac leo. Suspendisse tristique sollicitudin ultricies. Aliquam erat volutpat.")
             XCTAssertEqual(review.photos.first?.identifier, "72586")
-            XCTAssertEqual(review.photos.first?.sizes?.thumbnailUrl, "https://reviews.apitestcustomer.bazaarvoice.com/bvstaging/5556/72586/photoThumb.jpg")
-            XCTAssertEqual(review.photos.first?.sizes?.normalUrl, "https://reviews.apitestcustomer.bazaarvoice.com/bvstaging/5556/72586/photo.jpg")
+            XCTAssertEqual(review.photos.first?.sizes?.thumbnailUrl, "https://reviews.apitestcustomer.bazaarvoice.com/bvstaging/5556/72586/photoThumb.jpg?client=APIReadOnlySandbox")
+            XCTAssertEqual(review.photos.first?.sizes?.normalUrl, "https://reviews.apitestcustomer.bazaarvoice.com/bvstaging/5556/72586/photo.jpg?client=APIReadOnlySandbox")
             
             XCTAssertEqual(review.contextDataValues.count, 1)
             let cdv = review.contextDataValues.first!

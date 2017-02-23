@@ -9,7 +9,6 @@
 #import "BVConversationsRequest.h"
 #import "BVSDKManager.h"
 #import "BVSubmissionErrorResponse.h"
-#import "BVConversationsAnalyticsUtil.h"
 
 @interface BVUploadablePhoto()
 
@@ -83,9 +82,6 @@
             
             if (photoUrl) {
                 // successful response!
-                
-                [BVConversationsAnalyticsUtil queueAnalyticsEventForPhotoSubmission];
-                
                 success(photoUrl);
             }
             else if (httpError) {

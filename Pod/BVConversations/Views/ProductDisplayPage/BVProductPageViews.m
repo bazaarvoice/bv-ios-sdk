@@ -6,7 +6,7 @@
 //
 
 #import "BVProductPageViews.h"
-#import "BVConversationsAnalyticsUtil.h"
+#import "BVPixel.h"
 
 
 @interface BVProductDisplayPageViewController() {
@@ -21,7 +21,17 @@
     
     if (!hasSentPageviewEvent && self.product != nil) {
         hasSentPageviewEvent = true;
-        [BVConversationsAnalyticsUtil queueAnalyticsEventForProductPageView:self.product];
+        
+        NSString *brandName = self.product.brand != nil ? self.product.brand.name : nil;
+        BVPageViewEvent *pageView = [[BVPageViewEvent alloc] initWithProductId:self.product.identifier
+                                                        withBVPixelProductType:BVPixelProductTypeConversationsReviews
+                                                                     withBrand:brandName
+                                                                withCategoryId:self.product.categoryId
+                                                            withRootCategoryId:nil
+                                                          withAdditionalParams:nil];
+        
+        [BVPixel trackEvent:pageView];
+
     }
 }
 
@@ -41,7 +51,17 @@
     
     if (!hasSentPageviewEvent && self.product != nil) {
         hasSentPageviewEvent = true;
-        [BVConversationsAnalyticsUtil queueAnalyticsEventForProductPageView:self.product];
+        
+        NSString *brandName = self.product.brand != nil ? self.product.brand.name : nil;
+        BVPageViewEvent *pageView = [[BVPageViewEvent alloc] initWithProductId:self.product.identifier
+                                                        withBVPixelProductType:BVPixelProductTypeConversationsReviews
+                                                                     withBrand:brandName
+                                                                withCategoryId:self.product.categoryId
+                                                            withRootCategoryId:nil
+                                                          withAdditionalParams:nil];
+        
+        [BVPixel trackEvent:pageView];
+        
     }
 }
 
@@ -61,7 +81,17 @@
     
     if (!hasSentPageviewEvent && self.product != nil) {
         hasSentPageviewEvent = true;
-        [BVConversationsAnalyticsUtil queueAnalyticsEventForProductPageView:self.product];
+        
+        NSString *brandName = self.product.brand != nil ? self.product.brand.name : nil;
+        BVPageViewEvent *pageView = [[BVPageViewEvent alloc] initWithProductId:self.product.identifier
+                                                        withBVPixelProductType:BVPixelProductTypeConversationsReviews
+                                                                     withBrand:brandName
+                                                                withCategoryId:self.product.categoryId
+                                                            withRootCategoryId:nil
+                                                          withAdditionalParams:nil];
+        
+        [BVPixel trackEvent:pageView];
+
     }
 }
 

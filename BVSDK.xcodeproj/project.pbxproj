@@ -31,6 +31,27 @@
 		870F13451E490B5200D46BE6 /* BVCurationsUICollectionViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 870F133F1E490B5200D46BE6 /* BVCurationsUICollectionViewCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		870F13461E490B5200D46BE6 /* BVCurationsUICollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 870F13401E490B5200D46BE6 /* BVCurationsUICollectionViewCell.m */; };
 		870F13641E490B7B00D46BE6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 870F13631E490B7B00D46BE6 /* Assets.xcassets */; };
+		873DC48E1E7482840080FA03 /* BVAnalyticEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 873DC4791E7482840080FA03 /* BVAnalyticEvent.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		873DC48F1E7482840080FA03 /* BVAnalyticEventManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 873DC47A1E7482840080FA03 /* BVAnalyticEventManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		873DC4901E7482840080FA03 /* BVAnalyticEventManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 873DC47B1E7482840080FA03 /* BVAnalyticEventManager.m */; };
+		873DC4911E7482840080FA03 /* BVConversionEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 873DC47C1E7482840080FA03 /* BVConversionEvent.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		873DC4921E7482840080FA03 /* BVConversionEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 873DC47D1E7482840080FA03 /* BVConversionEvent.m */; };
+		873DC4931E7482840080FA03 /* BVFeatureUsedEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 873DC47E1E7482840080FA03 /* BVFeatureUsedEvent.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		873DC4941E7482840080FA03 /* BVFeatureUsedEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 873DC47F1E7482840080FA03 /* BVFeatureUsedEvent.m */; };
+		873DC4951E7482840080FA03 /* BVImpressionEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 873DC4801E7482840080FA03 /* BVImpressionEvent.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		873DC4961E7482840080FA03 /* BVImpressionEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 873DC4811E7482840080FA03 /* BVImpressionEvent.m */; };
+		873DC4971E7482840080FA03 /* BVInViewEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 873DC4821E7482840080FA03 /* BVInViewEvent.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		873DC4981E7482840080FA03 /* BVInViewEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 873DC4831E7482840080FA03 /* BVInViewEvent.m */; };
+		873DC4991E7482840080FA03 /* BVPageViewEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 873DC4841E7482840080FA03 /* BVPageViewEvent.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		873DC49A1E7482840080FA03 /* BVPageViewEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 873DC4851E7482840080FA03 /* BVPageViewEvent.m */; };
+		873DC49B1E7482840080FA03 /* BVPersonalizationEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 873DC4861E7482840080FA03 /* BVPersonalizationEvent.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		873DC49C1E7482840080FA03 /* BVPersonalizationEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 873DC4871E7482840080FA03 /* BVPersonalizationEvent.m */; };
+		873DC49D1E7482840080FA03 /* BVPixelTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = 873DC4881E7482840080FA03 /* BVPixelTypes.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		873DC49E1E7482840080FA03 /* BVPixelTypes.m in Sources */ = {isa = PBXBuildFile; fileRef = 873DC4891E7482840080FA03 /* BVPixelTypes.m */; };
+		873DC49F1E7482840080FA03 /* BVTransactionEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 873DC48A1E7482840080FA03 /* BVTransactionEvent.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		873DC4A01E7482840080FA03 /* BVTransactionEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 873DC48B1E7482840080FA03 /* BVTransactionEvent.m */; };
+		873DC4A11E7482840080FA03 /* BVTransactionItem.h in Headers */ = {isa = PBXBuildFile; fileRef = 873DC48C1E7482840080FA03 /* BVTransactionItem.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		873DC4A21E7482840080FA03 /* BVTransactionItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 873DC48D1E7482840080FA03 /* BVTransactionItem.m */; };
 		875410AF1E1F10DF006C5C6E /* BVNotifications.h in Headers */ = {isa = PBXBuildFile; fileRef = 875410A81E1F10DF006C5C6E /* BVNotifications.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		875410B01E1F10DF006C5C6E /* BVNotificationViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 875410A91E1F10DF006C5C6E /* BVNotificationViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		875410B11E1F10DF006C5C6E /* BVNotificationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 875410AA1E1F10DF006C5C6E /* BVNotificationViewController.m */; };
@@ -67,7 +88,9 @@
 		875411891E1F201E006C5C6E /* mapThumbnail.png in Resources */ = {isa = PBXBuildFile; fileRef = 8754116E1E1F201E006C5C6E /* mapThumbnail.png */; };
 		8779DB251DD20D5D00E6CAF5 /* BVStoreReviewsTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8779DB241DD20D5D00E6CAF5 /* BVStoreReviewsTableView.m */; };
 		8779DB271DD20D8D00E6CAF5 /* BVStoreReviewsTableView.h in Headers */ = {isa = PBXBuildFile; fileRef = 8779DB261DD20D8D00E6CAF5 /* BVStoreReviewsTableView.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		8779DB6D1DD3AAE800E6CAF5 /* BVAnalyticsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8779DB6C1DD3AAE800E6CAF5 /* BVAnalyticsTest.m */; };
+		8779DB6D1DD3AAE800E6CAF5 /* BVInternalAnalyticsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8779DB6C1DD3AAE800E6CAF5 /* BVInternalAnalyticsTest.m */; };
+		879A628B1E80502100F46ECA /* BVBasePIIEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 879A62891E80502100F46ECA /* BVBasePIIEvent.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		879A628C1E80502100F46ECA /* BVBasePIIEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 879A628A1E80502100F46ECA /* BVBasePIIEvent.m */; };
 		879D09111DCA8014006B51D3 /* testNotificationConfig.json in Resources */ = {isa = PBXBuildFile; fileRef = 879D09101DCA8014006B51D3 /* testNotificationConfig.json */; };
 		87A02B5F1E0963710002701B /* FeedbackSubmissionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A02B5E1E0963710002701B /* FeedbackSubmissionTests.swift */; };
 		87A02B621E0967EE0002701B /* BVFeedbackSubmission.h in Headers */ = {isa = PBXBuildFile; fileRef = 87A02B601E0967EE0002701B /* BVFeedbackSubmission.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -119,21 +142,16 @@
 		87C5FF6A1E394C73004EE6E8 /* BVAuthorInclude.h in Headers */ = {isa = PBXBuildFile; fileRef = 87C5FF681E394C73004EE6E8 /* BVAuthorInclude.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		87C5FF6B1E394C73004EE6E8 /* BVAuthorInclude.m in Sources */ = {isa = PBXBuildFile; fileRef = 87C5FF691E394C73004EE6E8 /* BVAuthorInclude.m */; };
 		87DA86DD1E5229C5002E7860 /* UIImage+BundleLocator.m in Sources */ = {isa = PBXBuildFile; fileRef = 87DA86DB1E5229C5002E7860 /* UIImage+BundleLocator.m */; };
+		87E28C831E5F88FE00915FDB /* BVPixelTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 87E28C821E5F88FE00915FDB /* BVPixelTests.m */; };
 		87F2DAB11DAD579D00FB43F3 /* BVSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87F2DAA71DAD579D00FB43F3 /* BVSDK.framework */; };
 		87F2DAB81DAD579D00FB43F3 /* BVSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = 87F2DAAA1DAD579D00FB43F3 /* BVSDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		87F2DC171DAD585E00FB43F3 /* BVAdsMessageInterceptor.h in Headers */ = {isa = PBXBuildFile; fileRef = 87F2DAC31DAD585E00FB43F3 /* BVAdsMessageInterceptor.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		87F2DC181DAD585E00FB43F3 /* BVAnalyticsManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 87F2DAC51DAD585E00FB43F3 /* BVAnalyticsManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		87F2DC181DAD585E00FB43F3 /* BVAnalyticsManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 87F2DAC51DAD585E00FB43F3 /* BVAnalyticsManager.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		87F2DC191DAD585E00FB43F3 /* BVAnalyticsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 87F2DAC61DAD585E00FB43F3 /* BVAnalyticsManager.m */; };
-		87F2DC1A1DAD585E00FB43F3 /* BVConversion.h in Headers */ = {isa = PBXBuildFile; fileRef = 87F2DAC71DAD585E00FB43F3 /* BVConversion.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		87F2DC1B1DAD585E00FB43F3 /* BVConversion.m in Sources */ = {isa = PBXBuildFile; fileRef = 87F2DAC81DAD585E00FB43F3 /* BVConversion.m */; };
-		87F2DC1C1DAD585E00FB43F3 /* BVLocationEventsHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 87F2DAC91DAD585E00FB43F3 /* BVLocationEventsHelper.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		87F2DC1C1DAD585E00FB43F3 /* BVLocationEventsHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 87F2DAC91DAD585E00FB43F3 /* BVLocationEventsHelper.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		87F2DC1D1DAD585E00FB43F3 /* BVLocationEventsHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 87F2DACA1DAD585E00FB43F3 /* BVLocationEventsHelper.m */; };
 		87F2DC1E1DAD585E00FB43F3 /* BVPixel.h in Headers */ = {isa = PBXBuildFile; fileRef = 87F2DACB1DAD585E00FB43F3 /* BVPixel.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		87F2DC1F1DAD585E00FB43F3 /* BVPixel.m in Sources */ = {isa = PBXBuildFile; fileRef = 87F2DACC1DAD585E00FB43F3 /* BVPixel.m */; };
-		87F2DC201DAD585E00FB43F3 /* BVTransaction.h in Headers */ = {isa = PBXBuildFile; fileRef = 87F2DACD1DAD585E00FB43F3 /* BVTransaction.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		87F2DC211DAD585E00FB43F3 /* BVTransaction.m in Sources */ = {isa = PBXBuildFile; fileRef = 87F2DACE1DAD585E00FB43F3 /* BVTransaction.m */; };
-		87F2DC221DAD585E00FB43F3 /* BVTransactionItem.h in Headers */ = {isa = PBXBuildFile; fileRef = 87F2DACF1DAD585E00FB43F3 /* BVTransactionItem.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		87F2DC231DAD585E00FB43F3 /* BVTransactionItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 87F2DAD01DAD585E00FB43F3 /* BVTransactionItem.m */; };
 		87F2DC241DAD585E00FB43F3 /* BVContextualInterests.h in Headers */ = {isa = PBXBuildFile; fileRef = 87F2DAD21DAD585E00FB43F3 /* BVContextualInterests.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		87F2DC251DAD585E00FB43F3 /* BVGMBLSighting.h in Headers */ = {isa = PBXBuildFile; fileRef = 87F2DAD31DAD585E00FB43F3 /* BVGMBLSighting.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		87F2DC261DAD585E00FB43F3 /* BVGMBLSighting.m in Sources */ = {isa = PBXBuildFile; fileRef = 87F2DAD41DAD585E00FB43F3 /* BVGMBLSighting.m */; };
@@ -141,8 +159,6 @@
 		87F2DC281DAD585E00FB43F3 /* BVGMBLVisit.m in Sources */ = {isa = PBXBuildFile; fileRef = 87F2DAD61DAD585E00FB43F3 /* BVGMBLVisit.m */; };
 		87F2DC291DAD585E00FB43F3 /* BVLocationWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = 87F2DAD71DAD585E00FB43F3 /* BVLocationWrapper.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		87F2DC2A1DAD585E00FB43F3 /* BVLocationWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 87F2DAD81DAD585E00FB43F3 /* BVLocationWrapper.m */; };
-		87F2DC561DAD585E00FB43F3 /* BVConversationsAnalyticsUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = 87F2DB0C1DAD585E00FB43F3 /* BVConversationsAnalyticsUtil.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		87F2DC571DAD585E00FB43F3 /* BVConversationsAnalyticsUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 87F2DB0D1DAD585E00FB43F3 /* BVConversationsAnalyticsUtil.m */; };
 		87F2DC581DAD585E00FB43F3 /* BVCommaUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = 87F2DB0E1DAD585E00FB43F3 /* BVCommaUtil.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		87F2DC591DAD585E00FB43F3 /* BVCommaUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 87F2DB0F1DAD585E00FB43F3 /* BVCommaUtil.m */; };
 		87F2DC5A1DAD585E00FB43F3 /* BVStoreIncludeContentType.h in Headers */ = {isa = PBXBuildFile; fileRef = 87F2DB101DAD585E00FB43F3 /* BVStoreIncludeContentType.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -337,8 +353,6 @@
 		87F2DD171DAD585E00FB43F3 /* BVCurations.h in Headers */ = {isa = PBXBuildFile; fileRef = 87F2DBE11DAD585E00FB43F3 /* BVCurations.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		87F2DD181DAD585E00FB43F3 /* BVCurationsAddPostRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 87F2DBE21DAD585E00FB43F3 /* BVCurationsAddPostRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		87F2DD191DAD585E00FB43F3 /* BVCurationsAddPostRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 87F2DBE31DAD585E00FB43F3 /* BVCurationsAddPostRequest.m */; };
-		87F2DD1A1DAD585E00FB43F3 /* BVCurationsAnalyticsHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 87F2DBE41DAD585E00FB43F3 /* BVCurationsAnalyticsHelper.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		87F2DD1B1DAD585E00FB43F3 /* BVCurationsAnalyticsHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 87F2DBE51DAD585E00FB43F3 /* BVCurationsAnalyticsHelper.m */; };
 		87F2DD201DAD585E00FB43F3 /* BVCurationsFeedItem.h in Headers */ = {isa = PBXBuildFile; fileRef = 87F2DBEA1DAD585E00FB43F3 /* BVCurationsFeedItem.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		87F2DD211DAD585E00FB43F3 /* BVCurationsFeedItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 87F2DBEB1DAD585E00FB43F3 /* BVCurationsFeedItem.m */; };
 		87F2DD221DAD585E00FB43F3 /* BVCurationsFeedLoader.h in Headers */ = {isa = PBXBuildFile; fileRef = 87F2DBEC1DAD585E00FB43F3 /* BVCurationsFeedLoader.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -477,6 +491,27 @@
 		870F133F1E490B5200D46BE6 /* BVCurationsUICollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BVCurationsUICollectionViewCell.h; path = Pod/BVCurationsUI/BVCurationsUICollectionViewCell.h; sourceTree = SOURCE_ROOT; };
 		870F13401E490B5200D46BE6 /* BVCurationsUICollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BVCurationsUICollectionViewCell.m; path = Pod/BVCurationsUI/BVCurationsUICollectionViewCell.m; sourceTree = SOURCE_ROOT; };
 		870F13631E490B7B00D46BE6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Pod/BVCurationsUI/Assets/Assets.xcassets; sourceTree = SOURCE_ROOT; };
+		873DC4791E7482840080FA03 /* BVAnalyticEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BVAnalyticEvent.h; path = BVPixelEvents/BVAnalyticEvent.h; sourceTree = "<group>"; };
+		873DC47A1E7482840080FA03 /* BVAnalyticEventManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BVAnalyticEventManager.h; path = BVPixelEvents/BVAnalyticEventManager.h; sourceTree = "<group>"; };
+		873DC47B1E7482840080FA03 /* BVAnalyticEventManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BVAnalyticEventManager.m; path = BVPixelEvents/BVAnalyticEventManager.m; sourceTree = "<group>"; };
+		873DC47C1E7482840080FA03 /* BVConversionEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BVConversionEvent.h; path = BVPixelEvents/BVConversionEvent.h; sourceTree = "<group>"; };
+		873DC47D1E7482840080FA03 /* BVConversionEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BVConversionEvent.m; path = BVPixelEvents/BVConversionEvent.m; sourceTree = "<group>"; };
+		873DC47E1E7482840080FA03 /* BVFeatureUsedEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BVFeatureUsedEvent.h; path = BVPixelEvents/BVFeatureUsedEvent.h; sourceTree = "<group>"; };
+		873DC47F1E7482840080FA03 /* BVFeatureUsedEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BVFeatureUsedEvent.m; path = BVPixelEvents/BVFeatureUsedEvent.m; sourceTree = "<group>"; };
+		873DC4801E7482840080FA03 /* BVImpressionEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BVImpressionEvent.h; path = BVPixelEvents/BVImpressionEvent.h; sourceTree = "<group>"; };
+		873DC4811E7482840080FA03 /* BVImpressionEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BVImpressionEvent.m; path = BVPixelEvents/BVImpressionEvent.m; sourceTree = "<group>"; };
+		873DC4821E7482840080FA03 /* BVInViewEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BVInViewEvent.h; path = BVPixelEvents/BVInViewEvent.h; sourceTree = "<group>"; };
+		873DC4831E7482840080FA03 /* BVInViewEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BVInViewEvent.m; path = BVPixelEvents/BVInViewEvent.m; sourceTree = "<group>"; };
+		873DC4841E7482840080FA03 /* BVPageViewEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BVPageViewEvent.h; path = BVPixelEvents/BVPageViewEvent.h; sourceTree = "<group>"; };
+		873DC4851E7482840080FA03 /* BVPageViewEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BVPageViewEvent.m; path = BVPixelEvents/BVPageViewEvent.m; sourceTree = "<group>"; };
+		873DC4861E7482840080FA03 /* BVPersonalizationEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BVPersonalizationEvent.h; path = BVPixelEvents/BVPersonalizationEvent.h; sourceTree = "<group>"; };
+		873DC4871E7482840080FA03 /* BVPersonalizationEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BVPersonalizationEvent.m; path = BVPixelEvents/BVPersonalizationEvent.m; sourceTree = "<group>"; };
+		873DC4881E7482840080FA03 /* BVPixelTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BVPixelTypes.h; path = BVPixelEvents/BVPixelTypes.h; sourceTree = "<group>"; };
+		873DC4891E7482840080FA03 /* BVPixelTypes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BVPixelTypes.m; path = BVPixelEvents/BVPixelTypes.m; sourceTree = "<group>"; };
+		873DC48A1E7482840080FA03 /* BVTransactionEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BVTransactionEvent.h; path = BVPixelEvents/BVTransactionEvent.h; sourceTree = "<group>"; };
+		873DC48B1E7482840080FA03 /* BVTransactionEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BVTransactionEvent.m; path = BVPixelEvents/BVTransactionEvent.m; sourceTree = "<group>"; };
+		873DC48C1E7482840080FA03 /* BVTransactionItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BVTransactionItem.h; path = BVPixelEvents/BVTransactionItem.h; sourceTree = "<group>"; };
+		873DC48D1E7482840080FA03 /* BVTransactionItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BVTransactionItem.m; path = BVPixelEvents/BVTransactionItem.m; sourceTree = "<group>"; };
 		875410A81E1F10DF006C5C6E /* BVNotifications.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVNotifications.h; sourceTree = "<group>"; };
 		875410A91E1F10DF006C5C6E /* BVNotificationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVNotificationViewController.h; sourceTree = "<group>"; };
 		875410AA1E1F10DF006C5C6E /* BVNotificationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVNotificationViewController.m; sourceTree = "<group>"; };
@@ -513,7 +548,10 @@
 		8754116E1E1F201E006C5C6E /* mapThumbnail.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mapThumbnail.png; sourceTree = "<group>"; };
 		8779DB241DD20D5D00E6CAF5 /* BVStoreReviewsTableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = BVStoreReviewsTableView.m; path = Stores/BVStoreReviewsTableView.m; sourceTree = "<group>"; };
 		8779DB261DD20D8D00E6CAF5 /* BVStoreReviewsTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BVStoreReviewsTableView.h; path = Stores/BVStoreReviewsTableView.h; sourceTree = "<group>"; };
-		8779DB6C1DD3AAE800E6CAF5 /* BVAnalyticsTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BVAnalyticsTest.m; path = Tests/Tests/BVAnalyticsTest.m; sourceTree = SOURCE_ROOT; };
+		8779DB6C1DD3AAE800E6CAF5 /* BVInternalAnalyticsTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BVInternalAnalyticsTest.m; path = Tests/Tests/BVInternalAnalyticsTest.m; sourceTree = SOURCE_ROOT; };
+		879A62891E80502100F46ECA /* BVBasePIIEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BVBasePIIEvent.h; path = BVPixelEvents/BVBasePIIEvent.h; sourceTree = "<group>"; };
+		879A628A1E80502100F46ECA /* BVBasePIIEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BVBasePIIEvent.m; path = BVPixelEvents/BVBasePIIEvent.m; sourceTree = "<group>"; };
+		879A62DD1E80621900F46ECA /* BVPixelEvents.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = BVPixelEvents.h; path = BVPixelEvents/BVPixelEvents.h; sourceTree = "<group>"; };
 		879D08FB1DCA6CAE006B51D3 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
 		879D090F1DCA7DDE006B51D3 /* BVStoreNotificationConfigurationLoader+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "BVStoreNotificationConfigurationLoader+Private.h"; path = "Tests/Tests/BVStoreNotificationConfigurationLoader+Private.h"; sourceTree = SOURCE_ROOT; };
 		879D09101DCA8014006B51D3 /* testNotificationConfig.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = testNotificationConfig.json; path = Tests/Tests/resources/notification_config/testNotificationConfig.json; sourceTree = SOURCE_ROOT; };
@@ -569,24 +607,19 @@
 		87C5FF681E394C73004EE6E8 /* BVAuthorInclude.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVAuthorInclude.h; sourceTree = "<group>"; };
 		87C5FF691E394C73004EE6E8 /* BVAuthorInclude.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVAuthorInclude.m; sourceTree = "<group>"; };
 		87DA86DB1E5229C5002E7860 /* UIImage+BundleLocator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+BundleLocator.m"; sourceTree = "<group>"; };
+		87E28C821E5F88FE00915FDB /* BVPixelTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BVPixelTests.m; path = Tests/BVPixelTests.m; sourceTree = SOURCE_ROOT; };
 		87F2DAA71DAD579D00FB43F3 /* BVSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BVSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		87F2DAAA1DAD579D00FB43F3 /* BVSDK.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BVSDK.h; sourceTree = "<group>"; };
 		87F2DAAB1DAD579D00FB43F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		87F2DAB01DAD579D00FB43F3 /* BVSDKTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BVSDKTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		87F2DAB71DAD579D00FB43F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		87F2DAC31DAD585E00FB43F3 /* BVAdsMessageInterceptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVAdsMessageInterceptor.h; sourceTree = "<group>"; };
-		87F2DAC51DAD585E00FB43F3 /* BVAnalyticsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVAnalyticsManager.h; sourceTree = "<group>"; };
-		87F2DAC61DAD585E00FB43F3 /* BVAnalyticsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVAnalyticsManager.m; sourceTree = "<group>"; };
-		87F2DAC71DAD585E00FB43F3 /* BVConversion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVConversion.h; sourceTree = "<group>"; };
-		87F2DAC81DAD585E00FB43F3 /* BVConversion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVConversion.m; sourceTree = "<group>"; };
-		87F2DAC91DAD585E00FB43F3 /* BVLocationEventsHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVLocationEventsHelper.h; sourceTree = "<group>"; };
-		87F2DACA1DAD585E00FB43F3 /* BVLocationEventsHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVLocationEventsHelper.m; sourceTree = "<group>"; };
+		87F2DAC51DAD585E00FB43F3 /* BVAnalyticsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BVAnalyticsManager.h; path = ../BVAnalyticsManager.h; sourceTree = "<group>"; };
+		87F2DAC61DAD585E00FB43F3 /* BVAnalyticsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BVAnalyticsManager.m; path = ../BVAnalyticsManager.m; sourceTree = "<group>"; };
+		87F2DAC91DAD585E00FB43F3 /* BVLocationEventsHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BVLocationEventsHelper.h; path = ../BVLocationEventsHelper.h; sourceTree = "<group>"; };
+		87F2DACA1DAD585E00FB43F3 /* BVLocationEventsHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BVLocationEventsHelper.m; path = ../BVLocationEventsHelper.m; sourceTree = "<group>"; };
 		87F2DACB1DAD585E00FB43F3 /* BVPixel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVPixel.h; sourceTree = "<group>"; };
 		87F2DACC1DAD585E00FB43F3 /* BVPixel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVPixel.m; sourceTree = "<group>"; };
-		87F2DACD1DAD585E00FB43F3 /* BVTransaction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVTransaction.h; sourceTree = "<group>"; };
-		87F2DACE1DAD585E00FB43F3 /* BVTransaction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVTransaction.m; sourceTree = "<group>"; };
-		87F2DACF1DAD585E00FB43F3 /* BVTransactionItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVTransactionItem.h; sourceTree = "<group>"; };
-		87F2DAD01DAD585E00FB43F3 /* BVTransactionItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVTransactionItem.m; sourceTree = "<group>"; };
 		87F2DAD21DAD585E00FB43F3 /* BVContextualInterests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVContextualInterests.h; sourceTree = "<group>"; };
 		87F2DAD31DAD585E00FB43F3 /* BVGMBLSighting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVGMBLSighting.h; sourceTree = "<group>"; };
 		87F2DAD41DAD585E00FB43F3 /* BVGMBLSighting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVGMBLSighting.m; sourceTree = "<group>"; };
@@ -594,8 +627,6 @@
 		87F2DAD61DAD585E00FB43F3 /* BVGMBLVisit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVGMBLVisit.m; sourceTree = "<group>"; };
 		87F2DAD71DAD585E00FB43F3 /* BVLocationWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVLocationWrapper.h; sourceTree = "<group>"; };
 		87F2DAD81DAD585E00FB43F3 /* BVLocationWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVLocationWrapper.m; sourceTree = "<group>"; };
-		87F2DB0C1DAD585E00FB43F3 /* BVConversationsAnalyticsUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVConversationsAnalyticsUtil.h; sourceTree = "<group>"; };
-		87F2DB0D1DAD585E00FB43F3 /* BVConversationsAnalyticsUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVConversationsAnalyticsUtil.m; sourceTree = "<group>"; };
 		87F2DB0E1DAD585E00FB43F3 /* BVCommaUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVCommaUtil.h; sourceTree = "<group>"; };
 		87F2DB0F1DAD585E00FB43F3 /* BVCommaUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVCommaUtil.m; sourceTree = "<group>"; };
 		87F2DB101DAD585E00FB43F3 /* BVStoreIncludeContentType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVStoreIncludeContentType.h; sourceTree = "<group>"; };
@@ -790,8 +821,6 @@
 		87F2DBE11DAD585E00FB43F3 /* BVCurations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVCurations.h; sourceTree = "<group>"; };
 		87F2DBE21DAD585E00FB43F3 /* BVCurationsAddPostRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVCurationsAddPostRequest.h; sourceTree = "<group>"; };
 		87F2DBE31DAD585E00FB43F3 /* BVCurationsAddPostRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVCurationsAddPostRequest.m; sourceTree = "<group>"; };
-		87F2DBE41DAD585E00FB43F3 /* BVCurationsAnalyticsHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVCurationsAnalyticsHelper.h; sourceTree = "<group>"; };
-		87F2DBE51DAD585E00FB43F3 /* BVCurationsAnalyticsHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVCurationsAnalyticsHelper.m; sourceTree = "<group>"; };
 		87F2DBEA1DAD585E00FB43F3 /* BVCurationsFeedItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVCurationsFeedItem.h; sourceTree = "<group>"; };
 		87F2DBEB1DAD585E00FB43F3 /* BVCurationsFeedItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVCurationsFeedItem.m; sourceTree = "<group>"; };
 		87F2DBEC1DAD585E00FB43F3 /* BVCurationsFeedLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVCurationsFeedLoader.h; sourceTree = "<group>"; };
@@ -1071,6 +1100,37 @@
 			path = Private;
 			sourceTree = "<group>";
 		};
+		87E28C6B1E5E35FF00915FDB /* BVPixelEvents */ = {
+			isa = PBXGroup;
+			children = (
+				879A62DD1E80621900F46ECA /* BVPixelEvents.h */,
+				873DC4791E7482840080FA03 /* BVAnalyticEvent.h */,
+				873DC47A1E7482840080FA03 /* BVAnalyticEventManager.h */,
+				873DC47B1E7482840080FA03 /* BVAnalyticEventManager.m */,
+				879A62891E80502100F46ECA /* BVBasePIIEvent.h */,
+				879A628A1E80502100F46ECA /* BVBasePIIEvent.m */,
+				873DC47C1E7482840080FA03 /* BVConversionEvent.h */,
+				873DC47D1E7482840080FA03 /* BVConversionEvent.m */,
+				873DC47E1E7482840080FA03 /* BVFeatureUsedEvent.h */,
+				873DC47F1E7482840080FA03 /* BVFeatureUsedEvent.m */,
+				873DC4801E7482840080FA03 /* BVImpressionEvent.h */,
+				873DC4811E7482840080FA03 /* BVImpressionEvent.m */,
+				873DC4821E7482840080FA03 /* BVInViewEvent.h */,
+				873DC4831E7482840080FA03 /* BVInViewEvent.m */,
+				873DC4841E7482840080FA03 /* BVPageViewEvent.h */,
+				873DC4851E7482840080FA03 /* BVPageViewEvent.m */,
+				873DC4861E7482840080FA03 /* BVPersonalizationEvent.h */,
+				873DC4871E7482840080FA03 /* BVPersonalizationEvent.m */,
+				873DC4881E7482840080FA03 /* BVPixelTypes.h */,
+				873DC4891E7482840080FA03 /* BVPixelTypes.m */,
+				873DC48A1E7482840080FA03 /* BVTransactionEvent.h */,
+				873DC48B1E7482840080FA03 /* BVTransactionEvent.m */,
+				873DC48C1E7482840080FA03 /* BVTransactionItem.h */,
+				873DC48D1E7482840080FA03 /* BVTransactionItem.m */,
+			);
+			name = BVPixelEvents;
+			sourceTree = "<group>";
+		};
 		87F2DA9D1DAD579D00FB43F3 = {
 			isa = PBXGroup;
 			children = (
@@ -1117,7 +1177,8 @@
 				87F2DDF21DAD945D00FB43F3 /* ConversationsTests */,
 				87F2DDC61DAD698900FB43F3 /* MockData */,
 				87F2DD541DAD5E9400FB43F3 /* BVBaseStubTestCase.h */,
-				8779DB6C1DD3AAE800E6CAF5 /* BVAnalyticsTest.m */,
+				8779DB6C1DD3AAE800E6CAF5 /* BVInternalAnalyticsTest.m */,
+				87E28C821E5F88FE00915FDB /* BVPixelTests.m */,
 				87F2DD551DAD5E9400FB43F3 /* BVBaseStubTestCase.m */,
 				87F2DD571DAD5E9400FB43F3 /* BVCurationsTests.m */,
 				87F2DD581DAD5E9400FB43F3 /* BVLocationTests.m */,
@@ -1154,18 +1215,9 @@
 		87F2DAC41DAD585E00FB43F3 /* BVAnalytics */ = {
 			isa = PBXGroup;
 			children = (
-				87F2DAC51DAD585E00FB43F3 /* BVAnalyticsManager.h */,
-				87F2DAC61DAD585E00FB43F3 /* BVAnalyticsManager.m */,
-				87F2DAC71DAD585E00FB43F3 /* BVConversion.h */,
-				87F2DAC81DAD585E00FB43F3 /* BVConversion.m */,
-				87F2DAC91DAD585E00FB43F3 /* BVLocationEventsHelper.h */,
-				87F2DACA1DAD585E00FB43F3 /* BVLocationEventsHelper.m */,
+				87E28C6B1E5E35FF00915FDB /* BVPixelEvents */,
 				87F2DACB1DAD585E00FB43F3 /* BVPixel.h */,
 				87F2DACC1DAD585E00FB43F3 /* BVPixel.m */,
-				87F2DACD1DAD585E00FB43F3 /* BVTransaction.h */,
-				87F2DACE1DAD585E00FB43F3 /* BVTransaction.m */,
-				87F2DACF1DAD585E00FB43F3 /* BVTransactionItem.h */,
-				87F2DAD01DAD585E00FB43F3 /* BVTransactionItem.m */,
 				87F2DAD11DAD585E00FB43F3 /* Private */,
 			);
 			name = BVAnalytics;
@@ -1175,6 +1227,10 @@
 		87F2DAD11DAD585E00FB43F3 /* Private */ = {
 			isa = PBXGroup;
 			children = (
+				87F2DAC51DAD585E00FB43F3 /* BVAnalyticsManager.h */,
+				87F2DAC61DAD585E00FB43F3 /* BVAnalyticsManager.m */,
+				87F2DAC91DAD585E00FB43F3 /* BVLocationEventsHelper.h */,
+				87F2DACA1DAD585E00FB43F3 /* BVLocationEventsHelper.m */,
 				87F2DAD21DAD585E00FB43F3 /* BVContextualInterests.h */,
 				87F2DAD31DAD585E00FB43F3 /* BVGMBLSighting.h */,
 				87F2DAD41DAD585E00FB43F3 /* BVGMBLSighting.m */,
@@ -1200,7 +1256,6 @@
 		87F2DB0A1DAD585E00FB43F3 /* Display */ = {
 			isa = PBXGroup;
 			children = (
-				87F2DB0B1DAD585E00FB43F3 /* Analytics */,
 				87F2DB0E1DAD585E00FB43F3 /* BVCommaUtil.h */,
 				87F2DB0F1DAD585E00FB43F3 /* BVCommaUtil.m */,
 				87F2DB101DAD585E00FB43F3 /* BVStoreIncludeContentType.h */,
@@ -1218,15 +1273,6 @@
 				87F2DB711DAD585E00FB43F3 /* Sorting & Filtering */,
 			);
 			path = Display;
-			sourceTree = "<group>";
-		};
-		87F2DB0B1DAD585E00FB43F3 /* Analytics */ = {
-			isa = PBXGroup;
-			children = (
-				87F2DB0C1DAD585E00FB43F3 /* BVConversationsAnalyticsUtil.h */,
-				87F2DB0D1DAD585E00FB43F3 /* BVConversationsAnalyticsUtil.m */,
-			);
-			path = Analytics;
 			sourceTree = "<group>";
 		};
 		87F2DB121DAD585E00FB43F3 /* Model */ = {
@@ -1574,8 +1620,6 @@
 				87F2DBE11DAD585E00FB43F3 /* BVCurations.h */,
 				87F2DBE21DAD585E00FB43F3 /* BVCurationsAddPostRequest.h */,
 				87F2DBE31DAD585E00FB43F3 /* BVCurationsAddPostRequest.m */,
-				87F2DBE41DAD585E00FB43F3 /* BVCurationsAnalyticsHelper.h */,
-				87F2DBE51DAD585E00FB43F3 /* BVCurationsAnalyticsHelper.m */,
 				87F2DBEA1DAD585E00FB43F3 /* BVCurationsFeedItem.h */,
 				87F2DBEB1DAD585E00FB43F3 /* BVCurationsFeedItem.m */,
 				87F2DBEC1DAD585E00FB43F3 /* BVCurationsFeedLoader.h */,
@@ -1864,7 +1908,6 @@
 				87F2DD431DAD585E00FB43F3 /* BVRecsAnalyticsHelper.h in Headers */,
 				87F2DCC31DAD585E00FB43F3 /* BVSortOptionAnswers.h in Headers */,
 				87F2DC641DAD585E00FB43F3 /* BVContextDataValue.h in Headers */,
-				87F2DC1C1DAD585E00FB43F3 /* BVLocationEventsHelper.h in Headers */,
 				87F2DD291DAD585E00FB43F3 /* BVLocationAnalyticsHelper.h in Headers */,
 				87F2DD221DAD585E00FB43F3 /* BVCurationsFeedLoader.h in Headers */,
 				87F2DC251DAD585E00FB43F3 /* BVGMBLSighting.h in Headers */,
@@ -1910,7 +1953,6 @@
 				87F2DC661DAD585E00FB43F3 /* BVConversationsError.h in Headers */,
 				87F2DD411DAD585E00FB43F3 /* BVRecommendedProduct.h in Headers */,
 				87F2DD051DAD585E00FB43F3 /* BVQuestionsCollectionView.h in Headers */,
-				87F2DD1A1DAD585E00FB43F3 /* BVCurationsAnalyticsHelper.h in Headers */,
 				87F2DC1E1DAD585E00FB43F3 /* BVPixel.h in Headers */,
 				87F2DC991DAD585E00FB43F3 /* BVReview.h in Headers */,
 				87F2DC701DAD585E00FB43F3 /* BVDisplayableContent.h in Headers */,
@@ -1939,15 +1981,12 @@
 				87F2DD241DAD585E00FB43F3 /* BVCurationsFeedRequest.h in Headers */,
 				87F2DCD51DAD585E00FB43F3 /* BVFormField.h in Headers */,
 				87F2DD091DAD585E00FB43F3 /* BVQuestionTableViewCell.h in Headers */,
-				87F2DC1A1DAD585E00FB43F3 /* BVConversion.h in Headers */,
 				87F2DD2B1DAD585E00FB43F3 /* BVLocationManager.h in Headers */,
-				87F2DC561DAD585E00FB43F3 /* BVConversationsAnalyticsUtil.h in Headers */,
 				87F2DC711DAD585E00FB43F3 /* BVDistributionElement.h in Headers */,
 				87F2DCDD1DAD585E00FB43F3 /* BVSubmissionErrorResponse.h in Headers */,
 				87F2DCFB1DAD585E00FB43F3 /* BVAnswersTableView.h in Headers */,
 				87F2DD2D1DAD585E00FB43F3 /* BVPlaceAttributes.h in Headers */,
 				87F2DC8D1DAD585E00FB43F3 /* BVSecondaryRating.h in Headers */,
-				87F2DC181DAD585E00FB43F3 /* BVAnalyticsManager.h in Headers */,
 				87F2DCF31DAD585E00FB43F3 /* BVSubmittedReview.h in Headers */,
 				87F2DCC91DAD585E00FB43F3 /* BVSortOptionReviews.h in Headers */,
 				87F2DC5C1DAD585E00FB43F3 /* BVBadge.h in Headers */,
@@ -1970,9 +2009,7 @@
 				87F2DCB31DAD585E00FB43F3 /* BVStoreReviewsRequest.h in Headers */,
 				87F2DC8B1DAD585E00FB43F3 /* BVReviewStatistics.h in Headers */,
 				87F2DC801DAD585E00FB43F3 /* BVQAStatistics.h in Headers */,
-				87F2DC221DAD585E00FB43F3 /* BVTransactionItem.h in Headers */,
 				87F2DC6E1DAD585E00FB43F3 /* BVDimensionElement.h in Headers */,
-				87F2DC201DAD585E00FB43F3 /* BVTransaction.h in Headers */,
 				87F2DC871DAD585E00FB43F3 /* BVReviewsResponse.h in Headers */,
 				87F2DC7C1DAD585E00FB43F3 /* BVProductsResponse.h in Headers */,
 				87F2DC891DAD585E00FB43F3 /* BVReviewStatistic.h in Headers */,
@@ -2026,6 +2063,17 @@
 				87F2DC5E1DAD585E00FB43F3 /* BVBadgeType.h in Headers */,
 				87A02B621E0967EE0002701B /* BVFeedbackSubmission.h in Headers */,
 				87A02B6A1E0971AC0002701B /* BVSubmittedFeedback.h in Headers */,
+				873DC4951E7482840080FA03 /* BVImpressionEvent.h in Headers */,
+				873DC4991E7482840080FA03 /* BVPageViewEvent.h in Headers */,
+				873DC48E1E7482840080FA03 /* BVAnalyticEvent.h in Headers */,
+				873DC48F1E7482840080FA03 /* BVAnalyticEventManager.h in Headers */,
+				873DC4A11E7482840080FA03 /* BVTransactionItem.h in Headers */,
+				873DC4911E7482840080FA03 /* BVConversionEvent.h in Headers */,
+				873DC4971E7482840080FA03 /* BVInViewEvent.h in Headers */,
+				873DC49B1E7482840080FA03 /* BVPersonalizationEvent.h in Headers */,
+				873DC4931E7482840080FA03 /* BVFeatureUsedEvent.h in Headers */,
+				873DC49F1E7482840080FA03 /* BVTransactionEvent.h in Headers */,
+				873DC49D1E7482840080FA03 /* BVPixelTypes.h in Headers */,
 				870F13411E490B5200D46BE6 /* BVCurationsPostViewController.h in Headers */,
 				870F13431E490B5200D46BE6 /* BVCurationsUICollectionView.h in Headers */,
 				870F13451E490B5200D46BE6 /* BVCurationsUICollectionViewCell.h in Headers */,
@@ -2036,6 +2084,9 @@
 				87C5FF661E393ED3004EE6E8 /* BVAuthorContentType.h in Headers */,
 				87C5FF6A1E394C73004EE6E8 /* BVAuthorInclude.h in Headers */,
 				87C5FF621E36B416004EE6E8 /* BVAuthor.h in Headers */,
+				879A628B1E80502100F46ECA /* BVBasePIIEvent.h in Headers */,
+				87F2DC1C1DAD585E00FB43F3 /* BVLocationEventsHelper.h in Headers */,
+				87F2DC181DAD585E00FB43F3 /* BVAnalyticsManager.h in Headers */,
 				87F2DD201DAD585E00FB43F3 /* BVCurationsFeedItem.h in Headers */,
 				87B3DADE1E522D2C00DE7843 /* UIImage+BundleLocator.h in Headers */,
 			);
@@ -2266,7 +2317,6 @@
 				87F2DC611DAD585E00FB43F3 /* BVBrand.m in Sources */,
 				87F2DC8C1DAD585E00FB43F3 /* BVReviewStatistics.m in Sources */,
 				87C5FF6B1E394C73004EE6E8 /* BVAuthorInclude.m in Sources */,
-				87F2DC571DAD585E00FB43F3 /* BVConversationsAnalyticsUtil.m in Sources */,
 				87F2DC1D1DAD585E00FB43F3 /* BVLocationEventsHelper.m in Sources */,
 				87F2DCEA1DAD585E00FB43F3 /* BVQuestionSubmissionResponse.m in Sources */,
 				87F2DCFA1DAD585E00FB43F3 /* BVAnswersCollectionView.m in Sources */,
@@ -2277,6 +2327,7 @@
 				87F2DCAC1DAD585E00FB43F3 /* BVProductDisplayPageRequest.m in Sources */,
 				87F2DC961DAD585E00FB43F3 /* BVProduct.m in Sources */,
 				87F2DC881DAD585E00FB43F3 /* BVReviewsResponse.m in Sources */,
+				873DC4921E7482840080FA03 /* BVConversionEvent.m in Sources */,
 				87F2DCCE1DAD585E00FB43F3 /* BVAnswerSubmissionErrorResponse.m in Sources */,
 				87F2DD0C1DAD585E00FB43F3 /* BVQuestionView.m in Sources */,
 				87F2DC281DAD585E00FB43F3 /* BVGMBLVisit.m in Sources */,
@@ -2289,10 +2340,12 @@
 				87F2DD0A1DAD585E00FB43F3 /* BVQuestionTableViewCell.m in Sources */,
 				875411801E1F201E006C5C6E /* BVProductReviewSimpleNotificationCenter.m in Sources */,
 				87F2DD231DAD585E00FB43F3 /* BVCurationsFeedLoader.m in Sources */,
+				873DC4A21E7482840080FA03 /* BVTransactionItem.m in Sources */,
 				87F2DCD61DAD585E00FB43F3 /* BVFormField.m in Sources */,
 				87C5FEC41E22A05D004EE6E8 /* BVSDKManager.m in Sources */,
 				87F2DD211DAD585E00FB43F3 /* BVCurationsFeedItem.m in Sources */,
 				87C5FF631E36B416004EE6E8 /* BVAuthor.m in Sources */,
+				873DC4961E7482840080FA03 /* BVImpressionEvent.m in Sources */,
 				87F2DCF21DAD585E00FB43F3 /* BVReviewSubmissionResponse.m in Sources */,
 				87F2DCDA1DAD585E00FB43F3 /* BVSubmission.m in Sources */,
 				87F2DCFC1DAD585E00FB43F3 /* BVAnswersTableView.m in Sources */,
@@ -2304,8 +2357,8 @@
 				87F2DCA61DAD585E00FB43F3 /* PDPInclude.m in Sources */,
 				87F2DC811DAD585E00FB43F3 /* BVQAStatistics.m in Sources */,
 				87C5FEBF1E22A05D004EE6E8 /* BVLogger.m in Sources */,
+				873DC4981E7482840080FA03 /* BVInViewEvent.m in Sources */,
 				87C5FEC01E22A05D004EE6E8 /* BVMessageInterceptor.m in Sources */,
-				87F2DC211DAD585E00FB43F3 /* BVTransaction.m in Sources */,
 				87F2DD101DAD585E00FB43F3 /* BVReviewsCollectionView.m in Sources */,
 				8754117C1E1F201E006C5C6E /* BVProductReviewNotificationProperties.m in Sources */,
 				87DA86DD1E5229C5002E7860 /* UIImage+BundleLocator.m in Sources */,
@@ -2347,14 +2400,17 @@
 				87F2DCD21DAD585E00FB43F3 /* BVSubmittedAnswer.m in Sources */,
 				87F2DCBC1DAD585E00FB43F3 /* BVProductFilterType.m in Sources */,
 				875411781E1F201E006C5C6E /* BVOpenURLMetaData.m in Sources */,
+				873DC4941E7482840080FA03 /* BVFeatureUsedEvent.m in Sources */,
 				87F2DCB01DAD585E00FB43F3 /* BVReviewsRequest.m in Sources */,
 				87F2DC9A1DAD585E00FB43F3 /* BVReview.m in Sources */,
 				875410B11E1F10DF006C5C6E /* BVNotificationViewController.m in Sources */,
+				873DC49E1E7482840080FA03 /* BVPixelTypes.m in Sources */,
 				875411821E1F201E006C5C6E /* BVStoreReviewNotificationCenter.m in Sources */,
 				87F2DCB61DAD585E00FB43F3 /* BVBulkRatingsFilterType.m in Sources */,
 				870F13421E490B5200D46BE6 /* BVCurationsPostViewController.m in Sources */,
 				87F2DD2C1DAD585E00FB43F3 /* BVLocationManager.m in Sources */,
 				87F2DC6F1DAD585E00FB43F3 /* BVDimensionElement.m in Sources */,
+				879A628C1E80502100F46ECA /* BVBasePIIEvent.m in Sources */,
 				87F2DCDE1DAD585E00FB43F3 /* BVSubmissionErrorResponse.m in Sources */,
 				87F2DC921DAD585E00FB43F3 /* BVVideo.m in Sources */,
 				87F2DCB21DAD585E00FB43F3 /* BVBulkStoreItemsRequest.m in Sources */,
@@ -2382,13 +2438,12 @@
 				87A9ECC31E1DB9B300666636 /* BVPINRequest.m in Sources */,
 				87F2DC9E1DAD585E00FB43F3 /* BVStoreLocation.m in Sources */,
 				87F2DC5B1DAD585E00FB43F3 /* BVStoreIncludeContentType.m in Sources */,
+				873DC49A1E7482840080FA03 /* BVPageViewEvent.m in Sources */,
 				87F2DCE81DAD585E00FB43F3 /* BVQuestionSubmissionErrorResponse.m in Sources */,
 				87F2DD401DAD585E00FB43F3 /* BVRecommendationsRequest.m in Sources */,
 				87C5FE9A1E22914C004EE6E8 /* BVStoreNotificationConfigurationLoader.m in Sources */,
 				87F2DC6B1DAD585E00FB43F3 /* BVConversationsInclude.m in Sources */,
 				87F2DCAE1DAD585E00FB43F3 /* BVQuestionsAndAnswersRequest.m in Sources */,
-				87F2DD1B1DAD585E00FB43F3 /* BVCurationsAnalyticsHelper.m in Sources */,
-				87F2DC231DAD585E00FB43F3 /* BVTransactionItem.m in Sources */,
 				87F2DCD41DAD585E00FB43F3 /* BVFieldError.m in Sources */,
 				87F2DC941DAD585E00FB43F3 /* BVAnswer.m in Sources */,
 				875410B31E1F10DF006C5C6E /* BVProductReviewNotificationViewController.m in Sources */,
@@ -2398,12 +2453,13 @@
 				8754117A1E1F201E006C5C6E /* BVProductReviewNotificationCenter.m in Sources */,
 				87F2DCF41DAD585E00FB43F3 /* BVSubmittedReview.m in Sources */,
 				87F2DC1F1DAD585E00FB43F3 /* BVPixel.m in Sources */,
+				873DC4901E7482840080FA03 /* BVAnalyticEventManager.m in Sources */,
 				87F2DC261DAD585E00FB43F3 /* BVGMBLSighting.m in Sources */,
 				870F13461E490B5200D46BE6 /* BVCurationsUICollectionViewCell.m in Sources */,
+				873DC4A01E7482840080FA03 /* BVTransactionEvent.m in Sources */,
 				87F2DC741DAD585E00FB43F3 /* BVDistributionValue.m in Sources */,
 				87F2DCC01DAD585E00FB43F3 /* BVReviewFilterType.m in Sources */,
 				87C5FEC81E22A05D004EE6E8 /* BVViewsHelper.m in Sources */,
-				87F2DC1B1DAD585E00FB43F3 /* BVConversion.m in Sources */,
 				87F2DCB81DAD585E00FB43F3 /* BVFilter.m in Sources */,
 				87F2DC7F1DAD585E00FB43F3 /* BVProductStatistics.m in Sources */,
 				87F2DC771DAD585E00FB43F3 /* BVModelUtil.m in Sources */,
@@ -2416,6 +2472,7 @@
 				87F2DC671DAD585E00FB43F3 /* BVConversationsError.m in Sources */,
 				87F2DCA81DAD585E00FB43F3 /* BVBulkRatingsRequest.m in Sources */,
 				87F2DCF81DAD585E00FB43F3 /* BVAnswerCollectionViewCell.m in Sources */,
+				873DC49C1E7482840080FA03 /* BVPersonalizationEvent.m in Sources */,
 				87C5FE9E1E229168004EE6E8 /* BVProductReviewNotificationConfigurationLoader.m in Sources */,
 				87C5FF671E393ED3004EE6E8 /* BVAuthorContentType.m in Sources */,
 				87F2DC691DAD585E00FB43F3 /* BVConversationsErrorResponse.m in Sources */,
@@ -2444,11 +2501,12 @@
 				87F2DD5E1DAD5E9400FB43F3 /* BVBaseStubTestCase.m in Sources */,
 				87F2DE0D1DAD945D00FB43F3 /* ConversationsStoresDisplayTests.swift in Sources */,
 				87F2DE0B1DAD945D00FB43F3 /* QuestionDisplayTests.swift in Sources */,
-				8779DB6D1DD3AAE800E6CAF5 /* BVAnalyticsTest.m in Sources */,
+				8779DB6D1DD3AAE800E6CAF5 /* BVInternalAnalyticsTest.m in Sources */,
 				87F2DE101DAD945D00FB43F3 /* FilterTests.swift in Sources */,
 				87F2DE0A1DAD945D00FB43F3 /* ProductDisplayTests.swift in Sources */,
 				87F2DE131DAD945D00FB43F3 /* AnswerSubmissionTests.swift in Sources */,
 				87F2DE0E1DAD945D00FB43F3 /* ConversationsTests.swift in Sources */,
+				87E28C831E5F88FE00915FDB /* BVPixelTests.m in Sources */,
 				87F2DD611DAD5E9400FB43F3 /* BVLocationTests.m in Sources */,
 				87F2DE151DAD945D00FB43F3 /* QuestionSubmissionTests.swift in Sources */,
 				87F2DD631DAD5E9400FB43F3 /* BVRecommendationsTests.m in Sources */,

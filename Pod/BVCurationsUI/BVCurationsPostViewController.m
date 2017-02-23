@@ -9,8 +9,8 @@
 #import "BVCurationsPostViewController.h"
 #import "BVCurationsAddPostRequest.h"
 #import "BVCurationsPhotoUploader.h"
-#import "BVCurationsAnalyticsHelper.h"
 #import "UIImage+BundleLocator.h"
+#import "BVPixel.h"
 
 @interface BVCurationsPostViewController ()
 
@@ -39,7 +39,9 @@
     self.textView.text = _postRequest.text;
     [self validateContent];
     
-    [BVCurationsAnalyticsHelper queueSubmissionPageView:BVCurationsSubmissionWidgetCompose];
+    BVInViewEvent *inViewEvent = [[BVInViewEvent alloc] initWithProductId:@"none" withBrand:nil withProductType:BVPixelProductTypeCurations withContainerId:@"CurationsSubmissionController" withAdditionalParams:nil];
+    
+    [BVPixel trackEvent:inViewEvent];
 }
  
 - (void)didReceiveMemoryWarning {
@@ -80,7 +82,15 @@
 
 -(void)completePost:(NSError *)error {
     if (!error) {
-        [BVCurationsAnalyticsHelper queueUsedFeatureUploadPhoto: BVCurationsSubmissionWidgetCompose];
+        
+        BVFeatureUsedEvent *submittedPostEvent = [[BVFeatureUsedEvent alloc] initWithProductId:@"none"
+                                                                     withBrand:nil
+                                                        withProductType:BVPixelProductTypeCurations
+                                                           withEventName:BVPixelFeatureUsedEventNameWriteReview
+                                                          withAdditionalParams:nil];
+        
+        [BVPixel trackEvent:submittedPostEvent];
+        
     }
     
     [self dismissViewControllerAnimated:NO completion:^{

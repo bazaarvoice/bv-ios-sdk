@@ -9,7 +9,6 @@
 #import "BVConversationsRequest.h"
 #import "BVSDKManager.h"
 #import "BVSubmissionErrorResponse.h"
-#import "BVConversationsAnalyticsUtil.h"
 
 @interface BVUploadableStorePhoto()
 

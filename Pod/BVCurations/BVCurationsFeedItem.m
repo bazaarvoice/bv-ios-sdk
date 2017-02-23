@@ -8,7 +8,6 @@
 
 #import "BVCore.h"
 #import "BVCurationsFeedItem.h"
-#import "BVCurationsAnalyticsHelper.h"
 
 @interface BVCurationsFeedItem()
 
@@ -57,7 +56,6 @@
             self.teaser = [dict objectForKey:@"teaser"];
             self.groups = [dict objectForKey:@"groups"];
             self.permalink = [dict objectForKey:@"permalink"];
-            self.productId = [dict objectForKey:@"product_id"];
             self.language = [dict objectForKey:@"language"];
             self.token = [dict objectForKey:@"token"];
             self.place = [dict objectForKey:@"place"];
@@ -119,14 +117,25 @@
     }
     self.hasSentImpressionEvent = true;
     
-    [BVCurationsAnalyticsHelper queueUGCImpressionEventForFeedItem:self];
+    BVImpressionEvent *impression = [[BVImpressionEvent alloc] initWithProductId:self.externalId
+                                                                   withContentId:self.contentId
+                                                                  withCategoryId:nil
+                                                          withProductType:BVPixelProductTypeCurations
+                                                                 withContentType:BVPixelImpressionContentCurationsFeedItem withBrand:nil
+                                                            withAdditionalParams:@{@"syndicationSource":self.sourceClient}];
+    
+    [BVPixel trackEvent:impression];
     
 }
 
 -(void)recordTap {
     
-    [BVCurationsAnalyticsHelper queueUsedFeatureEventForFeedItemTapped:self];
+    BVFeatureUsedEvent *tapEvent = [[BVFeatureUsedEvent alloc] initWithProductId:self.externalId
+                                                       withBrand:nil
+                                          withProductType:BVPixelProductTypeCurations
+                                                   withEventName:BVPixelFeatureUsedEventContentClick withAdditionalParams:nil];
     
+    [BVPixel trackEvent:tapEvent];
 }
 
 

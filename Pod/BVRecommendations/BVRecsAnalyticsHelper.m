@@ -6,6 +6,7 @@
 //
 
 #import "BVRecsAnalyticsHelper.h"
+#import "BVAnalyticsManager.h"
 #include <sys/sysctl.h>
 #include <sys/utsname.h>
 

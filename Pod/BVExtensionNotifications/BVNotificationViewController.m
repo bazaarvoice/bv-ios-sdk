@@ -6,7 +6,7 @@
 
 #import "BVNotificationViewController.h"
 #import "BVNotificationsAnalyticsHelper.h"
-#import "BVAnalyticsManager.h"
+#import "BVAnalyticEventManager.h"
 
 @interface BVNotificationViewController (Private)
 -(ProductType)getProductType;
@@ -52,7 +52,7 @@
 }
 
 - (void)didReceiveNotification:(UNNotification *)notification{
-    [[BVAnalyticsManager sharedManager] setClientId:notification.request.content.userInfo[USER_INFO_CLIENTID]];
+    [[BVAnalyticEventManager sharedManager] setClientId:notification.request.content.userInfo[USER_INFO_CLIENTID]];
 }
 
 -(void)launchAppWithType:(NSString*)type subtype:(NSString*)subtype ID:(NSString*)ID {
