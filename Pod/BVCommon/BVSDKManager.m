@@ -7,6 +7,8 @@
 
 #import "BVSDKManager.h"
 #import "BVCore.h"
+#import "BVAnalyticsManager.h"
+#import "BVAnalyticEventManager.h"
 #import <UIKit/UIKit.h>
 
 @interface BVSDKManager ()
@@ -91,7 +93,8 @@
 // SDK supports only a single client ID
 -(void)setClientId:(NSString *)clientId{
     _clientId = clientId;
-    [BVAnalyticsManager sharedManager].clientId = clientId;
+    [BVAnalyticEventManager sharedManager].clientId = clientId;
+    [BVAnalyticEventManager sharedManager].eventSource = @"native-mobile-sdk";
 }
 
 // SDK supports only a single setting for production or stage
@@ -163,7 +166,8 @@
     
     self.bvUser.userAuthString = userAuthString;
     
-    [[BVAnalyticsManager sharedManager] sendPersonalizationEvent:userAuthString];
+    BVPersonalizationEvent *personEvent = [[BVPersonalizationEvent alloc] initWithUserAuthenticationString:userAuthString];
+    [BVPixel trackEvent:personEvent];
     
     [NSObject cancelPreviousPerformRequestsWithTarget:self];
     

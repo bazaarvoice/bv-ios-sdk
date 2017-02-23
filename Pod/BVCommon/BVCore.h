@@ -10,7 +10,6 @@
 
 #include "BVSDKManager.h"
 #include "BVLogger.h"
-#include "BVAnalyticsManager.h"
 #include "BVPixel.h"
 #include "BVAuthenticatedUser.h"
 #include "BVNullHelper.h"

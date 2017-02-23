@@ -7,7 +7,6 @@
 
 #import "BVAnswer.h"
 #import "BVModelUtil.h"
-#import "BVConversationsAnalyticsUtil.h"
 #import "BVNullHelper.h"
 
 @implementation BVAnswer

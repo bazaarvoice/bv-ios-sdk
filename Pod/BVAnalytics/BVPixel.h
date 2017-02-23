@@ -7,19 +7,28 @@
 
 #import <Foundation/Foundation.h>
 
-#import "BVTransaction.h"
-#import "BVConversion.h"
+#import "BVAnalyticEvent.h"  // All events implement for of BVAnalyticEvent
 
+// Event types that can be tracked.
+#import "BVTransactionEvent.h"
+#import "BVConversionEvent.h"
+#import "BVFeatureUsedEvent.h"
+#import "BVPageViewEvent.h"
+#import "BVImpressionEvent.h"
+#import "BVInViewEvent.h"
+#import "BVImpressionEvent.h"
+#import "BVPersonalizationEvent.h"
 
 /// Static class used to queue Conversion events
 @interface BVPixel : NSObject
 
 
-/// @param transaction Queues Conversion Transaction event for ROI reporting on customer purchases.
-+(void)trackConversionTransaction:(BVTransaction* _Nonnull)transaction;
+/**
+ Adds the event to be queued for upload.
 
+ @param event The type of <BVAnalyticEvent> to be tracked (e.g. BVPageViewEvent, BVImpressionEvent)
+ */
++(void)trackEvent:(_Nonnull id<BVAnalyticEvent>)event;
 
-/// @param conversion Queues Conversion non-transaction event for ROI reporting on a custom metric.
-+(void)trackNonCommerceConversion:(BVConversion* _Nonnull)conversion;
 
 @end

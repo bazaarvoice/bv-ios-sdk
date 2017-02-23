@@ -7,16 +7,13 @@
 
 #import <Foundation/Foundation.h>
 
+
 /// Singleton class that manages all analytic event queueing and dispatching of events to Bazaarvoice.
 @interface BVAnalyticsManager : NSObject
 
 
 /// Set to true when sending events to the staging server. Default is NO (production)
 @property BOOL isStagingServer;
-
-
-/// Sets the client ID for the API being used. App will assert if client ID is not set!
-@property (strong, nonatomic) NSString *clientId;
 
 
 /// Create and get the singleton instance of the analytics manager.
@@ -60,12 +57,5 @@
  */
 -(NSMutableDictionary*)getMobileDiagnosticParams;
 
-
-/**
-    Provided an authentication token has been set for a BVAuthenticatedUser, send an event that the user has registered with the app.
- 
-    @param userAuthString The user auth string found in the BVAuthenticatedUser object.
- */
--(void)sendPersonalizationEvent:(NSString *)userAuthString;
 
 @end

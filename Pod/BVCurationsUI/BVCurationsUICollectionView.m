@@ -140,7 +140,14 @@
     
     __weak typeof(self) weakSelf = self;
     [_curationsFeedLoader loadFeedWithRequest:req completionHandler:^(NSArray<BVCurationsFeedItem*> *items){
-        [self embeddedPageViews:items];
+        
+        BVInViewEvent *inViewEvent = [[BVInViewEvent alloc] initWithProductId:req.externalId
+                                                    withBrand:nil
+                                              withProductType:BVPixelProductTypeCurations
+                                              withContainerId:@"CurationsUICollectionView"
+                                         withAdditionalParams:nil];
+        
+        [BVPixel trackEvent:inViewEvent];
         
         weakSelf.allItemsFetched = !items.count;
         weakSelf.pendingUpdate = NO;
@@ -168,13 +175,6 @@
     }];
 }
 
-- (void)embeddedPageViews:(NSArray <BVCurationsFeedItem *> *)items {
-    for (BVCurationsFeedItem *item in items) {
-        BVCurationsFeedWidget widget = (_bvCurationsUILayout == BVCurationsUILayoutGrid)? BVCurationsFeedWidgetGrid: BVCurationsFeedWidgetCarousel;
-        [BVCurationsAnalyticsHelper queueEmbeddedPageViewEventCurationsFeed:widget
-                                                             withExternalId:item.externalId];
-    }
-}
 
 -(void)setItemsPerRow:(NSUInteger)itemsPerRow{
     _itemsPerRow = itemsPerRow;
@@ -235,7 +235,17 @@
     
     if (![_impressedItems containsObject:cell.curationsFeedItem]) {
         [_impressedItems addObject:cell.curationsFeedItem];
-        [BVCurationsAnalyticsHelper queueUGCImpressionEventForFeedItem:cell.curationsFeedItem];
+        
+        BVCurationsFeedItem *item = cell.curationsFeedItem;
+        
+        BVImpressionEvent *impression = [[BVImpressionEvent alloc] initWithProductId:item.externalId
+                                                           withContentId:item.contentId
+                                                          withCategoryId:nil
+                                                  withProductType:BVPixelProductTypeCurations
+                                                         withContentType:BVPixelImpressionContentCurationsFeedItem withBrand:nil
+                                                    withAdditionalParams:@{@"syndicationSource":item.sourceClient}];
+        
+        [BVPixel trackEvent:impression];
     }
     return cell;
 }
@@ -255,7 +265,15 @@
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     [collectionView deselectItemAtIndexPath:indexPath animated:YES];
     BVCurationsFeedItem *item = _curationsFeedItems[indexPath.item];
-    [BVCurationsAnalyticsHelper queueUsedFeatureEventForFeedItemTapped:item];
+    
+    BVFeatureUsedEvent *tapEvent = [[BVFeatureUsedEvent alloc] initWithProductId:item.externalId
+                                                       withBrand:nil
+                                          withProductType:BVPixelProductTypeCurations
+                                             withEventName:BVPixelFeatureUsedEventContentClick
+                                    withAdditionalParams:nil];
+    
+    [BVPixel trackEvent:tapEvent];
+    
     if ([_curationsDelegate respondsToSelector:@selector(curationsDidSelectFeedItem:)]) {
         [_curationsDelegate curationsDidSelectFeedItem:item];
     }
@@ -297,6 +315,15 @@
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
     [self attemptToTransitionToLoadImages];
+    
+    BVFeatureUsedEvent *scrollEvent = [[BVFeatureUsedEvent alloc] initWithProductId:_productId
+                                                          withBrand:nil
+                                             withProductType:BVPixelProductTypeCurations
+                                                withEventName:BVPixelFeatureUsedEventNameScrolled
+                                            withAdditionalParams:nil];
+    
+    [BVPixel trackEvent:scrollEvent];
+    
 }
 
 -(void)scrollViewDidScrollToTop:(UIScrollView *)scrollView {

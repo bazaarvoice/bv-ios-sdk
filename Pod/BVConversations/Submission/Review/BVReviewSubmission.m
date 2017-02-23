@@ -8,7 +8,6 @@
 #import "BVReviewSubmission.h"
 #import "BVReviewSubmissionErrorResponse.h"
 #import "BVSDKManager.h"
-#import "BVConversationsAnalyticsUtil.h"
 
 @interface BVReviewSubmission()
 
@@ -113,7 +112,7 @@
     }
     else {
         [self submitPreview:^(BVReviewSubmissionResponse * _Nonnull response) {
-            [BVConversationsAnalyticsUtil queueAnalyticsEventForReviewSubmission:self];
+            //[BVConversationsAnalyticsUtil queueAnalyticsEventForReviewSubmission:self];
             [self submitForReal:success failure:failure];
         } failure:^(NSArray<NSError *> * _Nonnull errors) {
             [[BVLogger sharedLogger] printErrors:errors];
@@ -150,6 +149,15 @@
     for (BVUploadablePhoto* photo in self.photos) {
         
         [photo uploadForContentType:BVPhotoContentTypeReview success:^(NSString * _Nonnull photoUrl) {
+            
+            // Queue one event for each photo uploaded.
+            BVFeatureUsedEvent *photoUploadEvent = [[BVFeatureUsedEvent alloc] initWithProductId:self.productId
+                                                                       withBrand:nil
+                                                          withProductType:BVPixelProductTypeConversationsReviews
+                                                             withEventName:BVPixelFeatureUsedEventNamePhoto
+                                                            withAdditionalParams:nil];
+            
+            [BVPixel trackEvent:photoUploadEvent];
             
             [photoUrls addObject:photoUrl];
             [photoCaptions addObject:photo.photoCaption];
@@ -239,6 +247,15 @@
             }
             else {
                 // success!
+                
+                // Fire event now that we've confirmed the event was successfully uploaded.
+                BVFeatureUsedEvent *writeReviewEvent = [[BVFeatureUsedEvent alloc] initWithProductId:self.productId
+                                                                   withBrand:nil
+                                                      withProductType:BVPixelProductTypeConversationsReviews
+                                                         withEventName:BVPixelFeatureUsedEventNameWriteReview
+                                                        withAdditionalParams:nil];
+                
+                [BVPixel trackEvent:writeReviewEvent];
                 
                 BVReviewSubmissionResponse* response = [[BVReviewSubmissionResponse alloc] initWithApiResponse:json];
                 dispatch_async(dispatch_get_main_queue(), ^{
