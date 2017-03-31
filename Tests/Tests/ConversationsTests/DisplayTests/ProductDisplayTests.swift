@@ -12,11 +12,9 @@ class ProductDisplayTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        
-        BVSDKManager.shared().clientId = "apitestcustomer"
-        BVSDKManager.shared().apiKeyConversations = "kuy3zj9pr3n7i0wxajrzj04xo"
-        BVSDKManager.shared().staging = true
-        BVSDKManager.shared().setLogLevel(.error)
+        let configDict = ["clientId": "apitestcustomer",
+                          "apiKeyConversations": "kuy3zj9pr3n7i0wxajrzj04xo"];
+        BVSDKManager.configure(withConfiguration: configDict, configType: .staging)
     }
     
     

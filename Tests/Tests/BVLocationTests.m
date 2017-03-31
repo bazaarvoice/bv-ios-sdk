@@ -50,8 +50,8 @@
     
     _clientIdKey = @"clientId";
     _clientId = @"test-classic";
-    [[BVSDKManager sharedManager] setClientId:_clientId];
-    [[BVSDKManager sharedManager] setStaging:YES];
+    NSDictionary *configDict = @{_clientIdKey: _clientId};
+    [BVSDKManager configureWithConfiguration:configDict configType:BVConfigurationTypeStaging];
     [[BVSDKManager sharedManager] setLogLevel:BVLogLevelVerbose];
 }
 

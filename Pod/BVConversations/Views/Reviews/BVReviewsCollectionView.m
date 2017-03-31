@@ -167,12 +167,6 @@
     if([delegate_interceptor.receiver respondsToSelector:@selector(collectionView:didSelectItemAtIndexPath:)]) {
         [delegate_interceptor.receiver collectionView:collectionView didSelectItemAtIndexPath:indexPath];
     }
-    
-    BVReview *review = [cellToProductMap objectForKey:[BVViewsHelper formatIndex:indexPath]];
-    if (review != nil){
-        [review recordTap];
-    }
-    
 }
 
 #pragma mark - UICollectionViewDataSource

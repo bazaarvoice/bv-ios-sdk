@@ -13,10 +13,9 @@ class StoreReviewSubmissionTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        
-        BVSDKManager.shared().clientId = "apiunittests"
-        BVSDKManager.shared().apiKeyConversationsStores = "2cpdrhohmgmwfz8vqyo48f52g"
-        BVSDKManager.shared().staging = true
+        let configDict = ["clientId": "apiunittests",
+                          "apiKeyConversationsStores": "2cpdrhohmgmwfz8vqyo48f52g"];
+        BVSDKManager.configure(withConfiguration: configDict, configType: .staging)
         BVSDKManager.shared().setLogLevel(.error)
     }
     

@@ -278,6 +278,12 @@ static BVAnalyticsManager *analyticsInstance = nil;
 -(void)sendBatchedPOSTEvent:(NSDictionary*)eventData withCompletionHandler:(void (^)(NSError * __nullable error))completionHandler{
     
     NSURL *url = [NSURL URLWithString:[self baseUrl]];
+    [[BVLogger sharedLogger] analyticsMessage:[NSString stringWithFormat:@"POST Event: %@\nWith Data:%@", url, eventData]];
+    
+    if (_isDryRunAnalytics) {
+        [[BVLogger sharedLogger]info:@"Analytic events are not being sent to server"];
+        return;
+    }
     
     NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
     NSURLSession *session = [NSURLSession sessionWithConfiguration:config];
@@ -288,8 +294,6 @@ static BVAnalyticsManager *analyticsInstance = nil;
         
     NSError *error = nil;
     NSData *data = [NSJSONSerialization dataWithJSONObject:eventData options:kNilOptions error:&error];
-    
-    [[BVLogger sharedLogger] analyticsMessage:[NSString stringWithFormat:@"POST Event: %@\nWith Data:%@", url, eventData]];
     
     if (!error){
         NSURLSessionUploadTask *postTask = [session uploadTaskWithRequest:request

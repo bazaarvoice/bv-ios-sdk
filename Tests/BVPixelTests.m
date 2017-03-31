@@ -10,6 +10,7 @@
 #import "BVBaseStubTestCase.h"
 #import "BVSDKManager.h"
 #import "BVAnalyticsManager.h"
+#import "BVSDKConfiguration.h"
 
 #define ANALYTICS_TEST_USING_MOCK_DATA 1 // Setting to 1 uses mock result. Set to 0 to make network request.
 
@@ -62,8 +63,8 @@
 - (void)setUp {
     [super setUp];
     
-    [BVSDKManager sharedManager].staging = false;
-    [BVSDKManager sharedManager].clientId = @"mobileBVPixelTestsiOS";
+    NSDictionary *configDict = @{@"clientId": @"mobileBVPixelTestsiOS"};
+    [BVSDKManager configureWithConfiguration:configDict configType:BVConfigurationTypeStaging];    
     [[BVSDKManager sharedManager] setLogLevel:BVLogLevelAnalyticsOnly];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -158,7 +159,7 @@
     
     XCTAssertTrue([source isEqualToString:@"native-mobile-sdk"]);
     XCTAssertTrue([mobileSource isEqualToString:@"bv-ios-sdk"]);
-    XCTAssertTrue([clientId isEqualToString:[BVSDKManager sharedManager].clientId]);
+    XCTAssertTrue([clientId isEqualToString:[BVSDKManager sharedManager].configuration.clientId]);
     XCTAssertTrue([hashedIP isEqualToString:@"default"]);
     
     XCTAssertNotNil(idfa);

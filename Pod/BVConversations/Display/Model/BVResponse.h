@@ -8,6 +8,6 @@
 /// Internal protocol - used only within BVSDK
 @protocol BVResponse
 
--(id _Nonnull)initWithApiResponse:(NSDictionary* _Nonnull)apiResponse;
+-(instancetype _Nonnull)initWithApiResponse:(NSDictionary* _Nonnull)apiResponse;
 
 @end

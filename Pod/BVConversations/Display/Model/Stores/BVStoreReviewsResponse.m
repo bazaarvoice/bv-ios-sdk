@@ -15,27 +15,10 @@
 
 -(id)initWithApiResponse:(NSDictionary *)apiResponse {
     
-    self = [super init];
+    self = [super initWithApiResponse:apiResponse];
     if(self){
-        
-        SET_IF_NOT_NULL(self.limit, apiResponse[@"Limit"])
-        SET_IF_NOT_NULL(self.totalResults, apiResponse[@"TotalResults"])
-        SET_IF_NOT_NULL(self.locale, apiResponse[@"Locale"])
-        SET_IF_NOT_NULL(self.offset, apiResponse[@"Offset"])
-        
-        // BVStore object retrieved from "Includes"
         NSDictionary* rawIncludes = apiResponse[@"Includes"];
-        BVConversationsInclude* includes = [[BVConversationsInclude alloc] initWithApiResponse:rawIncludes];
-        
         self.store = [self extractStoreFromIncludes:rawIncludes];
-        
-        NSMutableArray<BVReview*>* tempResults = [NSMutableArray array];
-        for(NSDictionary* rawResult in apiResponse[@"Results"]) {
-            [tempResults addObject:[[BVReview alloc] initWithApiResponse:rawResult includes:includes]];
-        }
-        
-        self.results = tempResults;
-        
     }
     return self;
     
@@ -54,6 +37,10 @@
     // If there are no reviews in the response, the Products dictionary holding the stores will be empty.
     return nil;
     
+}
+
+-(id)createResult:(NSDictionary *)raw includes:(BVConversationsInclude *)includes {
+    return [[BVReview alloc] initWithApiResponse:raw includes:includes];
 }
 
 @end

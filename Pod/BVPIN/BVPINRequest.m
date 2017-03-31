@@ -10,6 +10,7 @@
 #import "BVLogger.h"
 #import "BVSDKManager.h"
 #import <AdSupport/AdSupport.h>
+#import "BVSDKConfiguration.h"
 
 @implementation BVPINRequest
 
@@ -17,7 +18,7 @@
 
     NSString *idfa = [[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString];
 
-    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"https://api.bazaarvoice.com/pin/toreview?passkey=%@&bvid=magpie_idfa_%@&client=%@", [[BVSDKManager sharedManager] apiKeyPIN], idfa,[[BVSDKManager sharedManager] clientId]]];
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"https://api.bazaarvoice.com/pin/toreview?passkey=%@&bvid=magpie_idfa_%@&client=%@", [BVSDKManager sharedManager].configuration.apiKeyPIN, idfa,[BVSDKManager sharedManager].configuration.clientId]];
     NSURLRequest* urlRequest = [NSURLRequest requestWithURL:url];
     
     [[BVLogger sharedLogger] verbose:[NSString stringWithFormat:@"GET: %@", url]];

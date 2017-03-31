@@ -16,11 +16,9 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
     
-    [[BVSDKManager sharedManager] setClientId:@"REPLACE_ME"];
-    [[BVSDKManager sharedManager] setApiKeyShopperAdvertising:@"REPLACE_ME"];
-    [[BVSDKManager sharedManager] setStaging:NO];
+#warning See bvsdk_config_staging.json and bvsdk_config_product.json in the project for API key and client ID settings.
+    [BVSDKManager configure:BVConfigurationTypeProd];
     [[BVSDKManager sharedManager] setLogLevel:BVLogLevelVerbose];
     
     // Example of hard-coded UAS token to set a user's profile

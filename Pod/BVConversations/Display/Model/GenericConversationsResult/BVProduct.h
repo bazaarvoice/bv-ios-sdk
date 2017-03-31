@@ -12,6 +12,7 @@
 #import "BVQAStatistics.h"
 #import "BVReview.h"
 #import "BVQuestion.h"
+#import "BVDisplayableProductContent.h"
 @class BVConversationsInclude;
 /*
  The main information contained within a `BVProductResponse` which is a response to `BVProductDisplayPageRequest`.
@@ -23,7 +24,7 @@
     Reviews attached to this product are included in the `includedReviews` property, if requested in the `BVReviewsRequest` object.
     Questions attached to this product are included in the `includedQuestion` property, if requested in the `BVReviewsRequest` object.
  */
-@interface BVProduct : NSObject<BVGenericConversationsResult>
+@interface BVProduct : NSObject<BVGenericConversationsResult, BVDisplayableProductContent>
 
 @property BVBrand* _Nullable brand;
 @property NSArray<NSString*>* _Nonnull ISBNs;
@@ -38,7 +39,6 @@
 @property NSArray<NSString*>* _Nonnull EANs;
 @property NSString* _Nullable name;
 @property NSString* _Nullable categoryId;
-@property NSString* _Nullable identifier;
 @property NSArray<NSString*>* _Nonnull modelNumbers;
 @property BVReviewStatistics* _Nullable reviewStatistics;
 @property BVQAStatistics* _Nullable qaStatistics;

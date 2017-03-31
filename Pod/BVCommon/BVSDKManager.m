@@ -10,12 +10,24 @@
 #import "BVAnalyticsManager.h"
 #import "BVAnalyticEventManager.h"
 #import <UIKit/UIKit.h>
+#import "BVSDKConfiguration.h"
 
 @interface BVSDKManager ()
-
+@property (nonatomic, strong) BVSDKConfiguration* configuration;
 @end
 
 @implementation BVSDKManager
+static NSString* const BVSDKConfigFileNameProd = @"bvsdk_config_prod";
+static NSString* const BVSDKConfigFileNameStaging = @"bvsdk_config_staging";
+static NSString* const BVSDKConfigFileExt = @"json";
+
++(void)configure:(BVConfigurationType)configurationType {
+    [[self sharedManager] attemptToLoadConfiguration: configurationType];
+}
+
++(void)configureWithConfiguration:(NSDictionary *)configDict configType:(BVConfigurationType)configType {
+    [[self sharedManager] configureWithDictionary:configDict configType:configType];
+}
 
 +(instancetype)sharedManager
 {
@@ -50,44 +62,64 @@
         _apiKeyShopperAdvertising = nil;
         _apiKeyConversationsStores = nil;
         _apiKeyLocation = nil;
+        _configuration = [[BVSDKConfiguration alloc] init];
     }
     return self;
 }
 
--(void)registerForAppStateChanges {
+-(void)attemptToLoadConfiguration:(BVConfigurationType)configType {
     
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        [[NSNotificationCenter defaultCenter] addObserver:self
-                                                 selector:@selector(applicationDidFinishLaunching)
-                                                     name:UIApplicationDidFinishLaunchingNotification
-                                                   object:nil];
-    });
+    NSString *fileName;
+    if (configType == BVConfigurationTypeProd) {
+        fileName = BVSDKConfigFileNameProd;
+    }else {
+        fileName = BVSDKConfigFileNameStaging;
+    }
+    
+    NSString *filePath = [[NSBundle mainBundle] pathForResource:fileName ofType:BVSDKConfigFileExt];
+    NSAssert(filePath, @"File %@.%@ could not be found in bundle. Unable to configure bundle", fileName, BVSDKConfigFileExt);
+    
+    if (filePath) {
+        NSData *data = [NSData dataWithContentsOfFile:filePath];
+        NSError *error;
+        NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data
+                                                             options:kNilOptions
+                                                               error:&error];
+        [self configureWithDictionary:json configType:configType];
+    }
+    
+    [self assertConfiguration];
 }
 
+-(void)configureWithDictionary:(NSDictionary *)dict configType:(BVConfigurationType)configType{
+    NSMutableDictionary *config = dict.mutableCopy;
+    [config setObject:@(configType == BVConfigurationTypeStaging) forKey:@"staging"];
+    _configuration = [[BVSDKConfiguration alloc] initWithDictionary:dict configType: configType];
+    [BVAnalyticsManager sharedManager].isDryRunAnalytics = _configuration.dryRunAnalytics;
+    [self copyJson:config toObj:self];
+}
 
--(void)applicationDidFinishLaunching {
-    
-    BVSDKManager *sdkMgr = [BVSDKManager sharedManager];
-    
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wunused-variable"
-    NSString *clientId = sdkMgr.clientId;
-    
-    // check that `clientId` is valid
-    NSAssert(clientId != nil && ![clientId isEqualToString:@""], @"You must supply client id in the BVSDKManager before using the Bazaarvoice SDK.");
-#pragma clang diagnostic pop
+-(void)setConfiguration:(BVSDKConfiguration * _Nonnull)configuration {
+    _configuration = configuration;
+}
+
+-(void)copyJson:(NSDictionary*)json toObj:(NSObject*)obj {
+    for(NSString *key in json.allKeys) {
+        if ([obj respondsToSelector:NSSelectorFromString(key)]) {
+            [obj setValue:json[key] forKeyPath:key];
+        }
+    }
 }
 
 - (NSString *)description{
     
-    NSString *returnValue = [NSString stringWithFormat:@"Setting Values:\n conversations API key = %@ \n shopper marketing API key = %@ \n conversations for stores API key = %@ \n BVSDK Version = %@ \n clientId = %@ \n staging = %i \n" , self.apiKeyConversations, self.apiKeyShopperAdvertising, self.apiKeyConversationsStores, BV_SDK_VERSION, self.clientId, self.staging];
+    NSString *returnValue = [NSString stringWithFormat:@"Setting Values:\n conversations API key = %@ \n shopper marketing API key = %@ \n conversations for stores API key = %@ \n BVSDK Version = %@ \n clientId = %@ \n staging = %i \n" , self.configuration.apiKeyConversations, self.configuration.apiKeyShopperAdvertising, self.configuration.apiKeyConversationsStores, BV_SDK_VERSION, self.configuration.clientId, self.configuration.staging];
     
     return returnValue;
     
 }
 - (NSString *)urlRootShopperAdvertising{
-    return self.staging ? @"https://my.network-stg.bazaarvoice.com" : @"https://my.network.bazaarvoice.com";
+    return self.configuration.staging ? @"https://my.network-stg.bazaarvoice.com" : @"https://my.network.bazaarvoice.com";
 }
 
 // SDK supports only a single client ID
@@ -95,20 +127,29 @@
     _clientId = clientId;
     [BVAnalyticEventManager sharedManager].clientId = clientId;
     [BVAnalyticEventManager sharedManager].eventSource = @"native-mobile-sdk";
+    [self assertConfiguration];
+    [_configuration setValue:clientId forKeyPath:@"clientId"];
+}
+
+-(void)assertConfiguration {
+    NSAssert(_clientId.length, @"You must supply valid client id in the BVSDKManager before using the Bazaarvoice SDK.");
 }
 
 // SDK supports only a single setting for production or stage
 - (void)setStaging:(BOOL)staging{
     _staging = staging;
     [BVAnalyticsManager sharedManager].isStagingServer = staging;
+    [_configuration setValue:@(staging) forKeyPath:@"staging"];
 }
 
--(void)setApiKeyShopperAdvertising:(NSString *)apiKeyShopperMarketing{
-    _apiKeyShopperAdvertising = apiKeyShopperMarketing;
+-(void)setApiKeyShopperAdvertising:(NSString *)apiKeyShopperAdvertising{
+    _apiKeyShopperAdvertising = apiKeyShopperAdvertising;
+    [_configuration setValue:apiKeyShopperAdvertising forKeyPath:@"apiKeyShopperAdvertising"];
 }
 
 -(void)setApiKeyConversations:(NSString *)apiKeyConversations{
     _apiKeyConversations = apiKeyConversations;
+    [_configuration setValue:apiKeyConversations forKeyPath:@"apiKeyConversations"];
 }
 
 - (void)setApiKeyConversationsStores:(NSString *)apiKeyConversationsStores{
@@ -116,7 +157,7 @@
     _apiKeyConversationsStores = apiKeyConversationsStores;
     NSDictionary *userInfo = @{CONVERSATIONS_STORES_API_KEY_SET_NOTIFICATION:_apiKeyConversationsStores};
     [[NSNotificationCenter defaultCenter] postNotificationName:CONVERSATIONS_STORES_API_KEY_SET_NOTIFICATION object:nil userInfo:userInfo];
-
+    [_configuration setValue:apiKeyConversationsStores forKeyPath:@"apiKeyConversationsStores"];
 }
 
 - (void)setApiKeyLocation:(NSString *)apiKeyLocation{
@@ -124,7 +165,7 @@
     _apiKeyLocation = apiKeyLocation;
     NSDictionary *userInfo = @{LOCATION_API_KEY_SET_NOTIFICATION:_apiKeyLocation};
     [[NSNotificationCenter defaultCenter] postNotificationName:LOCATION_API_KEY_SET_NOTIFICATION object:nil userInfo:userInfo];
-    
+    [_configuration setValue:apiKeyLocation forKeyPath:@"apiKeyLocation"];
 }
 
 -(void)setApiKeyPIN:(NSString *)apiKeyPIN {
@@ -132,7 +173,22 @@
     _apiKeyPIN = apiKeyPIN;
     NSDictionary *userInfo = @{PIN_API_KEY_SET_NOTIFICATION:_apiKeyPIN};
     [[NSNotificationCenter defaultCenter] postNotificationName:PIN_API_KEY_SET_NOTIFICATION object:nil userInfo:userInfo];
-    
+    [_configuration setValue:apiKeyPIN forKeyPath:@"apiKeyPIN"];
+}
+
+-(void)setStoreReviewContentExtensionCategory:(NSString *)storeReviewContentExtensionCategory {
+    _storeReviewContentExtensionCategory = storeReviewContentExtensionCategory;
+    [_configuration setValue:storeReviewContentExtensionCategory forKeyPath:@"storeReviewContentExtensionCategory"];
+}
+
+-(void)setPINContentExtensionCategory:(NSString *)PINContentExtensionCategory {
+    _PINContentExtensionCategory = PINContentExtensionCategory;
+    [_configuration setValue:PINContentExtensionCategory forKeyPath:@"PINContentExtensionCategory"];
+}
+
+-(void)setApiKeyCurations:(NSString *)apiKeyCurations {
+    _apiKeyCurations = apiKeyCurations;
+    [_configuration setValue:apiKeyCurations forKeyPath:@"apiKeyCurations"];
 }
 
 -(void)setLogLevel:(BVLogLevel)logLevel {
@@ -143,7 +199,7 @@
 
 -(void)setUserWithAuthString:(NSString*)userAuthString {
     
-    if(userAuthString == nil || [userAuthString length] == 0){
+    if(!userAuthString.length){
         [[BVLogger sharedLogger] error:@"No userAuthString was supplied for the recommendations manager!"];
         return;
     }
@@ -153,13 +209,12 @@
 
 // Update the user profile by calling the /users/ endpoint if the targeting params are empty.
 -(void)updateUserProfileIfEmpty {
-    [self.bvUser updateProfile:false withAPIKey:self.apiKeyShopperAdvertising isStaging:self.staging];
+    [self.bvUser updateProfile:false withAPIKey:self.configuration.apiKeyShopperAdvertising isStaging:self.configuration.staging];
 }
-
 
 // Udpate the user profile by calling the /users/ endpoint, regardless of the current state of the targeting params
 -(void)updateUserProfileForce {
-    [self.bvUser updateProfile:true withAPIKey:self.apiKeyShopperAdvertising isStaging:self.staging];
+    [self.bvUser updateProfile:true withAPIKey:self.configuration.apiKeyShopperAdvertising isStaging:self.configuration.staging];
 }
 
 -(void)setUserId:(NSString*)userAuthString{
@@ -184,9 +239,7 @@
 }
 
 -(NSDictionary*)getCustomTargeting {
-    
-    // check that `apiKeyShopperAdvertising` is valid. Will fail only in debug mode.
-    NSAssert(self.apiKeyShopperAdvertising != nil && ![self.apiKeyShopperAdvertising isEqualToString:@""], @"You must supply apiKeyShopperAdvertising in the BVSDKManager before using BVAdvertising.");
+    NSAssert(_apiKeyShopperAdvertising.length, @"You must supply apiKeyShopperAdvertising in the BVSDKManager before using BVAdvertising.");
     
     return [self.bvUser getTargetingKeywords];
 }

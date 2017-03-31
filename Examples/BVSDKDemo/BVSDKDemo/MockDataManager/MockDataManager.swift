@@ -14,6 +14,10 @@ class MockDataManager {
     
     static let sharedInstance = MockDataManager()
     var pinReponse: Data?
+    var currentConfig: DemoConfig!
+    var prodConfig: DemoConfig?
+    var stagingConfig: DemoConfig?
+    
     
     init() {
         self.setupPreSelectedKeysIfPresent()
@@ -22,25 +26,31 @@ class MockDataManager {
     
     static let PRESELECTED_CONFIG_DISPLAY_NAME_KEY = "BV_PRE_SELECTED_CONFIG_DISPLAY_NAME"
     
+    func configure(_ configType: BVConfigurationType) {
+        
+        var config: DemoConfig?
+        if configType == .prod, prodConfig != nil{
+            config = prodConfig!
+        }else if configType == .staging, stagingConfig != nil {
+            config = stagingConfig!
+        }
+        
+        if let _ = config {
+            switchToConfig(config: config!)
+        }
+    }
+    
     func setupPreSelectedKeysIfPresent() {
         
         let defaults = UserDefaults(suiteName: "group.bazaarvoice.bvsdkdemo.app")
+        let preselectedDisplayName = defaults!.string(forKey: MockDataManager.PRESELECTED_CONFIG_DISPLAY_NAME_KEY) ?? mockConfig.displayName
         
-        guard let demoConfigs = DemoConfigManager.configs else { return }
-        guard let preselectedDisplayName = defaults!.string(forKey: MockDataManager.PRESELECTED_CONFIG_DISPLAY_NAME_KEY) else { return }
-        
-        let matchingConfig = demoConfigs.filter{ $0.displayName == preselectedDisplayName }.first
-        
-        if matchingConfig != nil {
-            BVSDKManager.shared().clientId = matchingConfig!.clientId
-            BVSDKManager.shared().apiKeyCurations = matchingConfig!.curationsKey
-            BVSDKManager.shared().apiKeyConversations = matchingConfig!.conversationsKey
-            BVSDKManager.shared().apiKeyConversationsStores = matchingConfig!.conversationsStoresKey
-            BVSDKManager.shared().apiKeyShopperAdvertising = matchingConfig!.shopperAdvertisingKey
-            BVSDKManager.shared().apiKeyLocation = matchingConfig!.locationKey
-            BVSDKManager.shared().apiKeyPIN = matchingConfig!.pinKey
+        let matchingConfig = configs.filter{ $0.displayName == preselectedDisplayName }.first
+        if let config = matchingConfig {
+            switchToConfig(config: config)
+        }else {
+            switchToConfig(config: mockConfig)
         }
-        
     }
     
     func setupMocking() {
@@ -70,10 +80,10 @@ class MockDataManager {
     let submitReviewPhotoMatch = "bazaarvoice.com/data/uploadphoto"
     let submitQuestionMatch = "bazaarvoice.com/data/submitquestion"
     let submitAnswerMatch = "bazaarvoice.com/data/submitanswer"
-    var convoStoresConfigMatch = String(format:"s3.amazonaws.com/incubator-mobile-apps/sdk/%@/ios/%@/conversations-stores", S3_API_VERSION, BVSDKManager.shared().clientId)
-    var pinConfigMatch = String(format:"s3.amazonaws.com/incubator-mobile-apps/sdk/%@/ios/%@/pin", S3_API_VERSION, BVSDKManager.shared().clientId)
+    var convoStoresConfigMatch = String(format:"s3.amazonaws.com/incubator-mobile-apps/sdk/%@/ios/%@/conversations-stores", S3_API_VERSION, "REPLACE_ME")
+    var pinConfigMatch = String(format:"s3.amazonaws.com/incubator-mobile-apps/sdk/%@/ios/%@/pin", S3_API_VERSION, "REPLACE_ME")
     let pinRequestMatch = "bazaarvoice.com/pin/toreview"
-
+    
     func shouldMockResponseForRequest(_ request: URLRequest) -> Bool {
         
         guard let url = request.url?.absoluteString else {
@@ -85,14 +95,12 @@ class MockDataManager {
     }
     
     func isAnalyticsRequest(_ url: String) -> Bool {
-        
         return url.contains(analyticsMatch)
-        
     }
     
     func isSdkRequest(_ url: String) -> Bool {
-        convoStoresConfigMatch = String(format:"s3.amazonaws.com/incubator-mobile-apps/sdk/%@/ios/%@/conversations-stores", S3_API_VERSION, BVSDKManager.shared().clientId)
-        pinConfigMatch = String(format:"s3.amazonaws.com/incubator-mobile-apps/sdk/%@/ios/%@/pin", S3_API_VERSION, BVSDKManager.shared().clientId)
+        convoStoresConfigMatch = String(format:"s3.amazonaws.com/incubator-mobile-apps/sdk/%@/ios/%@/conversations-stores", S3_API_VERSION, currentConfig?.clientId ?? "REPLACE_ME")
+        pinConfigMatch = String(format:"s3.amazonaws.com/incubator-mobile-apps/sdk/%@/ios/%@/pin", S3_API_VERSION,  currentConfig?.clientId ?? "REPLACE_ME")
         
         let containsCurations = url.contains(curationsUrlMatch)
         let containsCurationsPhotoPost = url.contains(curationsPhotoPostUrlMatch)
@@ -115,14 +123,7 @@ class MockDataManager {
     }
     
     func shouldMockData() -> Bool {
-        
-        let manager = BVSDKManager.shared()
-        
-        return manager.apiKeyCurations == "REPLACE_ME"
-            && manager.apiKeyConversations == "REPLACE_ME"
-            && manager.apiKeyConversationsStores == "REPLACE_ME"
-            && manager.apiKeyShopperAdvertising == "REPLACE_ME"
-            && manager.apiKeyPIN == "REPLACE_ME"
+        return currentConfig?.isMock ?? true
     }
     
     let headers = ["Content-Type": "application/json"]
@@ -177,7 +178,7 @@ class MockDataManager {
             )
             
         }
-
+        
         
         if url.contains(recommendationsUrlMatch) {
             
@@ -237,10 +238,10 @@ class MockDataManager {
         if url.contains(conversationsProductMatch) {
             
             // In the demp app, when requesting product status we just use the Filter=Id:eq:<id> param
-            // When we request a store list, we use the Offset parameter. 
+            // When we request a store list, we use the Offset parameter.
             // So we'll use that info
             if url.contains("Offset=0"){
-            
+                
                 return OHHTTPStubsResponse(
                     fileAtPath: OHPathForFile("storeBulkFeedWithStatistics.json", type(of: self))!,
                     statusCode: 200,
@@ -248,13 +249,13 @@ class MockDataManager {
                 )
                 
             } else {
-            
+                
                 return OHHTTPStubsResponse(
                     fileAtPath: OHPathForFile("conversationsProductsIncludeStats.json", type(of: self))!,
                     statusCode: 200,
                     headers: ["Content-Type": "application/json;charset=utf-8"]
                 )
-            
+                
             }
             
         }
@@ -318,7 +319,7 @@ class MockDataManager {
             )
             
         }
-
+        
         if url.contains(pinConfigMatch) {
             
             return OHHTTPStubsResponse(
@@ -383,20 +384,93 @@ class MockDataManager {
         }catch {
             
         }
-
+        
     }
-}
+    
+    private lazy var mockConfig: DemoConfig =  {
+        let configDict = MockDataManager.getDefaultConfigDict()
+        let config = DemoConfig(dictionary: configDict as NSDictionary)
+        config.isMock = true
+        return config
+    }()
+    
+    private class func getDefaultConfigDict() -> Dictionary<String, AnyObject> {
+        return ["clientId": "REPLACE_ME" as AnyObject,
+                "displayName": "(Mock) Endurance Cycles" as AnyObject,
+                "apiKeyShopperAdvertising": "REPLACE_ME" as AnyObject,
+                "apiKeyConversations": "REPLACE_ME" as AnyObject,
+                "apiKeyConversationsStores": "REPLACE_ME" as AnyObject,
+                "apiKeyCurations": "REPLACE_ME" as AnyObject,
+                "apiKeyPIN": "REPLACE_ME" as AnyObject,
+                "apiKeyLocation": "00000000-0000-0000-0000-000000000000" as AnyObject]
+    }
+    
+    private lazy var fromFileConfigs: [DemoConfig] =  {
+        
+        var stagingFilePath = Bundle.main.path(forResource: "bvsdk_config_staging", ofType: "json")
+        var prodFilePath = Bundle.main.path(forResource: "bvsdk_config_prod", ofType: "json")
+        
+        var configs = [DemoConfig]()
+        
+        var stagingConfigDict = MockDataManager.getDefaultConfigDict()
+        if let staging = stagingFilePath, var configDict = MockDataManager.getJSON(from: staging) {
+            configDict["displayName"] = "Staging Config" as AnyObject?
+            
+            for key in configDict.keys {
+                stagingConfigDict[key] = configDict[key]
+            }
+            
+            self.stagingConfig = DemoConfig(dictionary: stagingConfigDict as NSDictionary)
+            self.stagingConfig?.configType = .staging
+            configs.append(self.stagingConfig!)
+        }
 
-class DemoConfigManager {
+        var prodConfigDict = MockDataManager.getDefaultConfigDict()
+        if let prod = prodFilePath, var configDict = MockDataManager.getJSON(from: prod) {
+            configDict["displayName"] = "Prod Config" as AnyObject?
+            
+            for key in configDict.keys {
+                prodConfigDict[key] = configDict[key]
+            }
+            
+            self.prodConfig = DemoConfig(dictionary: prodConfigDict as NSDictionary)
+            configs.append(self.prodConfig!)
+        }
+        
+        return configs
+    }()
     
+    private class func getJSON(from filepath: String) -> Dictionary<String, AnyObject>? {
+        if let data = try? Data(contentsOf: URL(fileURLWithPath: filepath)) {
+            if let json = try? JSONSerialization.jsonObject(with: data, options:.init(rawValue: 0)) {
+                return json as? Dictionary<String, AnyObject>;
+            }
+        }
+        return nil
+    }
     
-    static let configs : [DemoConfig]? = {
+    func switchToConfig(config: DemoConfig) {
+        if currentConfig != nil {
+            currentConfig.isSelected = false
+        }
         
-        guard let path = Bundle.main.path(forResource: "config/DemoAppConfigs", ofType: "plist") else { return nil }
-        guard let contents = NSArray(contentsOfFile: path) else { return nil }
+        currentConfig = config
+        currentConfig.isSelected = true
+        let defaults = UserDefaults(suiteName: "group.bazaarvoice.bvsdkdemo.app")
+        defaults!.set(currentConfig.displayName, forKey: MockDataManager.PRESELECTED_CONFIG_DISPLAY_NAME_KEY)
+        BVSDKManager.configure(withConfiguration: currentConfig?.raw as! [AnyHashable : Any], configType: currentConfig.configType)
+    }
+    
+    lazy var configs : [DemoConfig] = {
+        var configs = [DemoConfig]()
+        configs.append(contentsOf: self.fromFileConfigs)
+        configs.append(self.mockConfig)
         
-        return contents.map{ DemoConfig(dictionary: $0 as! NSDictionary) }
-        
+        guard let path = Bundle.main.path(forResource: "config/DemoAppConfigs", ofType: "plist") else { return configs }
+        guard let contents = NSArray(contentsOfFile: path) else { return configs }
+        print(contents)
+        configs += contents.map{ DemoConfig(dictionary: $0 as! NSDictionary) }
+        return configs
     }()
     
 }
@@ -404,16 +478,22 @@ class DemoConfigManager {
 class DemoConfig {
     
     let clientId, displayName, curationsKey, conversationsKey, conversationsStoresKey, shopperAdvertisingKey, locationKey, pinKey : String
+    let raw: NSDictionary
+    var isMock: Bool
+    var isSelected: Bool!
+    var configType = BVConfigurationType.prod
     
     init(dictionary:NSDictionary) {
-        
-        clientId = dictionary["clientId"] as! String
-        displayName = dictionary["displayName"] as! String
-        curationsKey = dictionary["apiKeyCurations"] as! String
-        conversationsKey = dictionary["apiKeyConversations"] as! String
-        conversationsStoresKey = dictionary["apiKeyConversationsStores"] as! String
-        shopperAdvertisingKey = dictionary["apiKeyShopperAdvertising"] as! String
-        locationKey = dictionary["apiKeyLocation"] as! String
-        pinKey = dictionary["apiKeyPIN"] as! String
+        raw = dictionary;
+        clientId = dictionary["clientId"] as? String ?? "REPLACE_ME"
+        displayName = dictionary["displayName"] as? String ?? "REPLACE_ME"
+        curationsKey = dictionary["apiKeyCurations"] as? String ?? "REPLACE_ME"
+        conversationsKey = dictionary["apiKeyConversations"] as? String ?? "REPLACE_ME"
+        conversationsStoresKey = dictionary["apiKeyConversationsStores"] as? String ?? "REPLACE_ME"
+        shopperAdvertisingKey = dictionary["apiKeyShopperAdvertising"] as? String ?? "REPLACE_ME"
+        locationKey = dictionary["apiKeyLocation"] as? String ?? "00000000-0000-0000-0000-000000000000"
+        pinKey = dictionary["apiKeyPIN"] as? String ?? "REPLACE_ME"
+        isMock = false
+        isSelected = false
     }
 }

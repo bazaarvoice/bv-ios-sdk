@@ -13,6 +13,7 @@
 #import "BVVisit.h"
 #import "BVSDKManager.h"
 #import "BVStoreReviewNotificationCenter.h"
+#import "BVSDKConfiguration.h"
 
 @interface BVStoreNotificationConfigurationLoader()<BVLocationManagerDelegate>
 
@@ -50,9 +51,7 @@
 
 
 - (void) receiveConversationsStoreAPIKey:(NSNotification *) notification
-{
-    NSAssert([[[BVSDKManager sharedManager] clientId] length], @"You must supply client id in the BVSDKManager first, before using the the conversations stores with notifications.");
-    
+{    
     // [notification name] should always be CONVERSATIONS_STORES_API_KEY_SET_NOTIFICATION
     // unless you use this method for observation of other notifications
     // as well.
@@ -75,8 +74,8 @@
     BVStoreReviewNotificationProperties *storeNotificationProps = self.bvStoreReviewNotificationProperties;
     
     return [[UIApplication sharedApplication] isRegisteredForRemoteNotifications] &&
-    sdkMgr.apiKeyConversationsStores &&
-    sdkMgr.storeReviewContentExtensionCategory &&
+    sdkMgr.configuration.apiKeyConversationsStores &&
+    sdkMgr.configuration.storeReviewContentExtensionCategory &&
     storeNotificationProps &&
     storeNotificationProps.notificationsEnabled;
 }
@@ -85,7 +84,7 @@
 
 -(void)loadStoreNotificationConfiguration:(void (^ _Nonnull)(BVStoreReviewNotificationProperties * _Nonnull response))completion failure:(void (^ _Nonnull)(NSError * _Nonnull error))failure {
     
-    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@/incubator-mobile-apps/sdk/%@/ios/%@/conversations-stores/geofenceConfig.json", NOTIFICATION_CONFIG_ROOT, S3_API_VERSION, [[BVSDKManager sharedManager] clientId]]];
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@/incubator-mobile-apps/sdk/%@/ios/%@/conversations-stores/geofenceConfig.json", NOTIFICATION_CONFIG_ROOT, S3_API_VERSION, [BVSDKManager sharedManager].configuration.clientId]];
     [BVNotificationConfiguration loadGeofenceConfiguration:url completion:^(BVStoreReviewNotificationProperties * _Nonnull response) {
         [[BVLogger sharedLogger] verbose:@"Successfully loaded BVStoreReviewNotificationProperties"];
         _bvStoreReviewNotificationProperties = response;

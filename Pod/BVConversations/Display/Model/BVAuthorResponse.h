@@ -8,13 +8,7 @@
 #import <UIKit/UIKit.h>
 #import "BVResponse.h"
 #import "BVAuthor.h"
-
-@interface BVAuthorResponse : NSObject<BVResponse>
-
-@property NSNumber* _Nullable offset;
-@property NSString* _Nullable locale;
-@property NSArray<BVAuthor*>* _Nonnull results;
-@property NSNumber* _Nullable totalResults;
-@property NSNumber* _Nullable limit;
+#import "BVBaseConversationsResponse.h"
+@interface BVAuthorResponse : BVBaseConversationsResultsResponse<BVAuthor*>
 
 @end

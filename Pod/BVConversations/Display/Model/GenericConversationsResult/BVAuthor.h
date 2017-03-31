@@ -7,7 +7,6 @@
 
 #import <UIKit/UIKit.h>
 #import "BVGenericConversationsResult.h"
-#import "BVDisplayableContent.h"
 #import "BVPhoto.h"
 #import "BVVideo.h"
 #import "BVBadge.h"
@@ -20,7 +19,7 @@
 #import "BVReviewStatistics.h"
 #import "BVQAStatistics.h"
 
-@interface BVAuthor : NSObject<BVGenericConversationsResult, BVDisplayableContent>
+@interface BVAuthor : NSObject<BVGenericConversationsResult>
 
 @property NSString* _Nullable userNickname;
 @property NSString* _Nullable authorId;

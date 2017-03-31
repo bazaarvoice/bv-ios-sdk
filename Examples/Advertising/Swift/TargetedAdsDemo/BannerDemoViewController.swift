@@ -24,9 +24,9 @@ class BannerDemoViewController: UIViewController {
         
         let request = DFPRequest()
         request.testDevices = [ kGADSimulatorID ]
-        request.customTargeting = BVSDKManager.sharedManager().getCustomTargeting()
+        request.customTargeting = BVSDKManager.shared().getCustomTargeting()
         
-        bannerView.loadRequest(request)
+        bannerView.load(request)
         self.view.addSubview(self.bannerView)
         
     }
@@ -34,7 +34,7 @@ class BannerDemoViewController: UIViewController {
     
     @IBAction func closeButtonPressed() {
         
-        self.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
+        self.presentingViewController?.dismiss(animated: true, completion: nil)
         
     }
 

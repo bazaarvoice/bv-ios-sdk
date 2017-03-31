@@ -13,9 +13,9 @@ class ConversationsDisplayTests: XCTestCase {
     override func setUp() {
         super.setUp()
         
-        BVSDKManager.shared().clientId = "apitestcustomer"
-        BVSDKManager.shared().apiKeyConversations = "kuy3zj9pr3n7i0wxajrzj04xo"
-        BVSDKManager.shared().staging = true
+        let configDict = ["clientId": "apitestcustomer",
+                          "apiKeyConversations": "kuy3zj9pr3n7i0wxajrzj04xo"];
+        BVSDKManager.configure(withConfiguration: configDict, configType: .staging)
     }
     
     override func tearDown() {
@@ -69,8 +69,8 @@ class ConversationsDisplayTests: XCTestCase {
         
         let request = BVReviewsRequest(productId: "test1", limit: 10, offset: 4)
             .addReviewSort(.rating, order: .ascending)
-            .add(.hasPhotos, filterOperator: .equalTo, value: "true")
-            .add(.hasComments, filterOperator: .equalTo, value: "false")
+            .addFilter(.hasPhotos, filterOperator: .equalTo, value: "true")
+            .addFilter(.hasComments, filterOperator: .equalTo, value: "false")
         
         request.load({ (response) in
             

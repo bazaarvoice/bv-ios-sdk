@@ -7,6 +7,7 @@
 
 #import "BVFeedbackSubmission.h"
 #import "BVSDKManager.h"
+#import "BVSDKConfiguration.h"
 
 @implementation BVFeedbackSubmission
 
@@ -152,7 +153,7 @@
     
     NSMutableDictionary* parameters = [NSMutableDictionary dictionaryWithDictionary:@{ @"apiversion": @"5.4" }];
     
-    parameters[@"passkey"] = [BVSDKManager sharedManager].apiKeyConversations;
+    parameters[@"passkey"] = [BVSDKManager sharedManager].configuration.apiKeyConversations;
     parameters[@"userid"] = self.userId;
     parameters[@"contentId"] = self.contentId;
     

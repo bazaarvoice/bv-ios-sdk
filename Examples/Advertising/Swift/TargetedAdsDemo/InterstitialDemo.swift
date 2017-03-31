@@ -27,18 +27,18 @@ class InterstitialDemo: NSObject, GADInterstitialDelegate{
         
         let request = DFPRequest()
         request.testDevices = [kGADSimulatorID]
-        request.customTargeting = BVSDKManager.sharedManager().getCustomTargeting()
-        interstitial?.loadRequest(request)
+        request.customTargeting = BVSDKManager.shared().getCustomTargeting()
+        interstitial?.load(request)
         
     }
     
     // MARK: GADInterstitialDelegate
     
-    func interstitialDidReceiveAd(ad: GADInterstitial!) {
-        interstitial?.presentFromRootViewController(rootViewController!)
+    func interstitialDidReceiveAd(_ ad: GADInterstitial!) {
+        interstitial?.present(fromRootViewController: rootViewController!)
     }
     
-    func interstitial(ad: GADInterstitial!, didFailToReceiveAdWithError error: GADRequestError!) {
+    func interstitial(_ ad: GADInterstitial!, didFailToReceiveAdWithError error: GADRequestError!) {
         UIAlertView(title: "Error", message: "Failed to get interstitial ad: " + error.localizedDescription, delegate: nil, cancelButtonTitle: "OK").show()
     }
     

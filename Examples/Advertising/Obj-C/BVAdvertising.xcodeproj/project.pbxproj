@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		15E077E11E57796D001C89D0 /* bvsdk_config_prod.json in Resources */ = {isa = PBXBuildFile; fileRef = 15E077DF1E57796D001C89D0 /* bvsdk_config_prod.json */; };
+		15E077E21E57796D001C89D0 /* bvsdk_config_staging.json in Resources */ = {isa = PBXBuildFile; fileRef = 15E077E01E57796D001C89D0 /* bvsdk_config_staging.json */; };
 		170537C659D42EB965AEAFC9 /* Pods_TargetedAdsDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E591C1AED975349640528028 /* Pods_TargetedAdsDemo.framework */; };
 		7316FD6C1C52705100ECD983 /* bv_native.png in Resources */ = {isa = PBXBuildFile; fileRef = 7316FD6B1C52705100ECD983 /* bv_native.png */; };
 		7338A7011B76ED1B00903D96 /* UILabelWithInset.m in Sources */ = {isa = PBXBuildFile; fileRef = 7338A7001B76ED1B00903D96 /* UILabelWithInset.m */; };
@@ -40,6 +42,8 @@
 
 /* Begin PBXFileReference section */
 		04A00EE500E9A609C2CD05D5 /* Pods-TargetedAdsDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TargetedAdsDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-TargetedAdsDemo/Pods-TargetedAdsDemo.release.xcconfig"; sourceTree = "<group>"; };
+		15E077DF1E57796D001C89D0 /* bvsdk_config_prod.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = bvsdk_config_prod.json; sourceTree = "<group>"; };
+		15E077E01E57796D001C89D0 /* bvsdk_config_staging.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = bvsdk_config_staging.json; sourceTree = "<group>"; };
 		3AD5645BE6A5A2E5AD9AF776 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		6003F58D195388D20070C39A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		6003F58F195388D20070C39A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -205,6 +209,8 @@
 		7347FE531B556DA2001BD361 /* TargetedAdsDemo */ = {
 			isa = PBXGroup;
 			children = (
+				15E077DF1E57796D001C89D0 /* bvsdk_config_prod.json */,
+				15E077E01E57796D001C89D0 /* bvsdk_config_staging.json */,
 				7347FE581B556DA2001BD361 /* AppDelegate.h */,
 				7347FE591B556DA2001BD361 /* AppDelegate.m */,
 				73F8AF751B569FCE00522183 /* RootViewController.h */,
@@ -332,6 +338,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				15E077E21E57796D001C89D0 /* bvsdk_config_staging.json in Resources */,
 				879144C61CFDF8D300976220 /* closeButton@2x.png in Resources */,
 				73747C461C3EF99D009E561C /* BVAdTypesCell.xib in Resources */,
 				879144CF1CFE070D00976220 /* NativeContentAdView.xib in Resources */,
@@ -341,6 +348,7 @@
 				735F58C61BBC28260098EABD /* gear@3x.png in Resources */,
 				73A8AAA41B727C1E0015DD7F /* TargetedAdsDemoImages.xcassets in Resources */,
 				7338A7291B76EEE200903D96 /* interstitial@2x.jpg in Resources */,
+				15E077E11E57796D001C89D0 /* bvsdk_config_prod.json in Resources */,
 				7316FD6C1C52705100ECD983 /* bv_native.png in Resources */,
 				7338A72A1B76EEE200903D96 /* native@2x.jpg in Resources */,
 				73747C2F1C3EF97A009E561C /* RootViewController.xib in Resources */,

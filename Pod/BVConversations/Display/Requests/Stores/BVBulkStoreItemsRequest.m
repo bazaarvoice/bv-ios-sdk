@@ -10,6 +10,7 @@
 #import "BVSDKManager.h"
 #import "BVFilter.h"
 #import "PDPInclude.h"
+#import "BVSDKConfiguration.h"
 
 @interface BVBulkStoreItemsRequest()
     
@@ -58,10 +59,43 @@
 
 
 - (void)load:(void (^ _Nonnull)(BVBulkStoresResponse * _Nonnull response))success failure:(ConversationsFailureHandler _Nonnull)failure{
-    [super loadStores:self completion:success failure:failure];
+    [self loadStores:self completion:success failure:failure];
 }
     
+- (void)loadStores:(BVConversationsRequest * _Nonnull)request completion:(void (^ _Nonnull)(BVBulkStoresResponse * _Nonnull response))completion failure:(void (^ _Nonnull)(NSArray<NSError *> * _Nonnull errors))failure {
     
+    [self loadContent:request completion:^(NSDictionary * _Nonnull response) {
+        BVBulkStoresResponse* storesResponse = [[BVBulkStoresResponse alloc] initWithApiResponse:response];
+        // invoke success callback on main thread
+        dispatch_async(dispatch_get_main_queue(), ^{
+            completion(storesResponse);
+        });
+        
+        if ([storesResponse.results count] == 1){
+            [self sendStoreAnalytics:storesResponse.results[0]];
+        }
+        
+    } failure:failure];
+    
+}
+
+- (void)sendStoreAnalytics:(BVStore*)store {
+    
+    if (store) {
+        // send pageview for product
+        
+        BVPageViewEvent *pageView = [[BVPageViewEvent alloc] initWithProductId:store.identifier
+                                                        withBVPixelProductType:BVPixelProductTypeConversationsReviews
+                                                                     withBrand:nil
+                                                                withCategoryId:store.categoryId
+                                                            withRootCategoryId:nil
+                                                          withAdditionalParams:nil];
+        
+        [BVPixel trackEvent:pageView];
+        
+    }
+}
+
 - (NSString * _Nonnull)endpoint{
     return @"products.json";
 }
@@ -110,6 +144,6 @@
 
 
 - (NSString *)getPassKey{
-    return [BVSDKManager sharedManager].apiKeyConversationsStores;
+    return [BVSDKManager sharedManager].configuration.apiKeyConversationsStores;
 }
 @end

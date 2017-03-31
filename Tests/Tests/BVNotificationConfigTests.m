@@ -13,16 +13,16 @@
 #import "BVStoreNotificationConfigurationLoader+Private.h"
 #import "BVProductReviewNotificationConfigurationLoader+Private.h"
 
-
+static const NSString *clientId = @"testingtesting";
 @implementation BVNotificationConfigTests : BVBaseStubTestCase
 
 - (void)setUp {
 
     [super setUp];
     
-    [[BVSDKManager sharedManager] setClientId:@"testingtesting"];
-    [[BVSDKManager sharedManager] setApiKeyConversationsStores:@"fakeymcfakersonfakekey"];
-    [[BVSDKManager sharedManager] setStaging:YES];
+    NSDictionary *configDict = @{@"apiKeyConversationsStores": @"fakeymcfakersonfakekey",
+                                 @"clientId": clientId};
+    [BVSDKManager configureWithConfiguration:configDict configType:BVConfigurationTypeStaging];
     [[BVSDKManager sharedManager] setLogLevel:BVLogLevelError];
 
 }
@@ -52,7 +52,7 @@
     
     __weak XCTestExpectation *expectation = [self expectationWithDescription:@"testLoadNotificationConfigAPI"];
     
-    [self addStubForS3ResponseForConfigPath:[NSString stringWithFormat:@"%@/incubator-mobile-apps/sdk/%@/ios/%@/conversations-stores/geofenceConfig.json", @"https://s3.amazonaws.com", @"v1", [[BVSDKManager sharedManager] clientId]] JSONFileNamed:@"testNotificationConfig.json"];
+    [self addStubForS3ResponseForConfigPath:[NSString stringWithFormat:@"%@/incubator-mobile-apps/sdk/%@/ios/%@/conversations-stores/geofenceConfig.json", @"https://s3.amazonaws.com", @"v1", clientId] JSONFileNamed:@"testNotificationConfig.json"];
     
     // Testing private API
     [[BVStoreNotificationConfigurationLoader sharedManager] loadStoreNotificationConfiguration:^(BVStoreReviewNotificationProperties * _Nonnull response) {
@@ -91,7 +91,7 @@
     
     __weak XCTestExpectation *expectation = [self expectationWithDescription:@"testLoadNotificationConfigAPI"];
     
-    [self addStubForS3ResponseForConfigPath:[NSString stringWithFormat:@"%@/incubator-mobile-apps/sdk/%@/ios/%@/pin/pinConfig.json", @"https://s3.amazonaws.com", @"v1", [[BVSDKManager sharedManager] clientId]] JSONFileNamed:@"testNotificationProductConfig.json"];
+    [self addStubForS3ResponseForConfigPath:[NSString stringWithFormat:@"%@/incubator-mobile-apps/sdk/%@/ios/%@/pin/pinConfig.json", @"https://s3.amazonaws.com", @"v1", clientId] JSONFileNamed:@"testNotificationProductConfig.json"];
     // Testing private API
     [[BVProductReviewNotificationConfigurationLoader sharedManager] loadPINConfiguration:^(BVProductReviewNotificationProperties * _Nonnull response) {
         // success

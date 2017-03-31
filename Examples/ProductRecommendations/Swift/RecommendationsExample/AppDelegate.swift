@@ -14,10 +14,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]? = nil) -> Bool {
-        // Override point for customization after application launch.
-        BVSDKManager.shared().clientId = "REPLACE_ME"
-        BVSDKManager.shared().apiKeyShopperAdvertising = "REPLACE_ME"
-        BVSDKManager.shared().staging = false;
+        // #warning See bvsdk_config_staging.json and bvsdk_config_product.json in the project for API key and client ID settings.
+        BVSDKManager.configure(.prod)
         BVSDKManager.shared().setLogLevel(.verbose)
         
         // Example of hard-coded UAS token to set a user's profile

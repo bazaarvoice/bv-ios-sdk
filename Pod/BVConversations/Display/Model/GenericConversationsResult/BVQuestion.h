@@ -7,7 +7,6 @@
 
 #import <Foundation/Foundation.h>
 #import "BVGenericConversationsResult.h"
-#import "BVDisplayableContent.h"
 #import "BVAnswer.h"
 #import "BVDimensionAndDistributionUtil.h"
 #import "BVPhoto.h"
@@ -23,7 +22,7 @@
     Question summary is included in the `questionSummary` property.
     Question details are included in the `questionDetails` property.
  */
-@interface BVQuestion : NSObject <BVGenericConversationsResult, BVDisplayableContent>
+@interface BVQuestion : NSObject <BVGenericConversationsResult>
 
 @property (nonatomic, copy) NSArray<BVAnswer *> * _Nonnull answers;
 @property (nonatomic, copy) NSString * _Nullable questionSummary;
@@ -54,7 +53,5 @@
 @property (nonatomic, copy) NSNumber* _Nullable totalInappropriateFeedbackCount;
 @property (nonatomic, copy) NSNumber* _Nullable totalNegativeFeedbackCount;
 @property bool isFeatured;
-
-- (void)recordTap;
 
 @end

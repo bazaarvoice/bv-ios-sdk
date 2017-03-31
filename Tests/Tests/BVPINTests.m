@@ -20,9 +20,9 @@
 - (void)setUp {
     [super setUp];
     
-    [[BVSDKManager sharedManager] setApiKeyPIN:@"fakekey"]; // fake PIN passkey
-    [[BVSDKManager sharedManager] setClientId:@"iosunittest"];
-    [[BVSDKManager sharedManager] setStaging:YES];
+    NSDictionary *configDict = @{@"apiKeyPIN": @"fakekey",
+                                 @"clientId": @"iosunittest"};
+    [BVSDKManager configureWithConfiguration:configDict configType:BVConfigurationTypeStaging];
     [[BVSDKManager sharedManager] setLogLevel:BVLogLevelError];
     
 }
@@ -49,7 +49,7 @@
         XCTAssertTrue([pin.productPageURL isEqualToString:@"http://www.endurancecycles.com/products/granola-bar-with-honey"]);
         XCTAssertEqual([pin.averageRating integerValue], 5);
         XCTAssertTrue([pin.name isEqualToString:@"Granola Bar with Honey"]);
-        XCTAssertTrue([pin.ID isEqualToString:@"12-bv"]);
+        XCTAssertTrue([pin.identifier isEqualToString:@"12-bv"]);
         XCTAssertTrue([pin.imageUrl isEqualToString:@"http://cdn.shopify.com/s/files/1/0796/3917/files/Energy_bar_1.jpg?13414361435441223830"]);
         
         [expectation fulfill];

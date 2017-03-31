@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		15E077D51E57679C001C89D0 /* bvsdk_config_prod.json in Resources */ = {isa = PBXBuildFile; fileRef = 15E077D31E57679C001C89D0 /* bvsdk_config_prod.json */; };
+		15E077D61E57679C001C89D0 /* bvsdk_config_staging.json in Resources */ = {isa = PBXBuildFile; fileRef = 15E077D41E57679C001C89D0 /* bvsdk_config_staging.json */; };
 		879144841CF6060A00976220 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879144831CF6060A00976220 /* AppDelegate.swift */; };
 		879144861CF6060A00976220 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879144851CF6060A00976220 /* ViewController.swift */; };
 		879144891CF6060A00976220 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 879144871CF6060A00976220 /* Main.storyboard */; };
@@ -18,6 +20,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		15E077D31E57679C001C89D0 /* bvsdk_config_prod.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = bvsdk_config_prod.json; sourceTree = "<group>"; };
+		15E077D41E57679C001C89D0 /* bvsdk_config_staging.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = bvsdk_config_staging.json; sourceTree = "<group>"; };
 		21DD092463394B43AEADA5AA /* Pods_RecommendationsExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RecommendationsExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		879144801CF6060900976220 /* RecommendationsExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RecommendationsExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		879144831CF6060A00976220 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -73,6 +77,8 @@
 		879144821CF6060900976220 /* RecommendationsExample */ = {
 			isa = PBXGroup;
 			children = (
+				15E077D31E57679C001C89D0 /* bvsdk_config_prod.json */,
+				15E077D41E57679C001C89D0 /* bvsdk_config_staging.json */,
 				879144831CF6060A00976220 /* AppDelegate.swift */,
 				879144851CF6060A00976220 /* ViewController.swift */,
 				879144871CF6060A00976220 /* Main.storyboard */,
@@ -157,8 +163,10 @@
 			files = (
 				8791448E1CF6060A00976220 /* LaunchScreen.storyboard in Resources */,
 				8791448B1CF6060A00976220 /* Assets.xcassets in Resources */,
+				15E077D61E57679C001C89D0 /* bvsdk_config_staging.json in Resources */,
 				879144981CF6099000976220 /* DemoCell.xib in Resources */,
 				879144891CF6060A00976220 /* Main.storyboard in Resources */,
+				15E077D51E57679C001C89D0 /* bvsdk_config_prod.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

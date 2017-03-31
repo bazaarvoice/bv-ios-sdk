@@ -22,7 +22,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     @IBOutlet weak var recommendationsCollectionView: BVProductRecommendationsCollectionView!
     
     private var productsToReview: [BVPIN]?
-    private var recommendations:[BVRecommendedProduct]?
+    private var products:[BVDisplayableProductContent]?
     private let spinner = Util.createSpinner()
     private let errorLabel = Util.createErrorLabel()
     private let refreshControl = UIRefreshControl()
@@ -50,7 +50,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     override func viewDidLoad() {
         super.viewDidLoad()
         ProfileUtils.trackViewController(self)
-        
+
         self.addBarButtonItems()
         
         self.view.backgroundColor = UIColor.white
@@ -73,7 +73,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         
         recommendationsCollectionView.register(UINib(nibName: "HeaderCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "HeaderCollectionViewCell")
         
-        self.fetchProductsForHomeScreen()
+        self.loadProducts()
         
         let versionString = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
         let buildNum = Bundle.main.infoDictionary?["CFBundleVersion"] as? String
@@ -88,22 +88,22 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if currClientId != nil {
-            if currClientId != BVSDKManager.shared().clientId {
-                self.recommendations?.removeAll() // client id changed, reload data
-                self.fetchProductsForHomeScreen()
+            if currClientId != MockDataManager.sharedInstance.currentConfig.clientId {
+                self.products?.removeAll() // client id changed, reload data
+                self.loadProducts()
             }
         }else {
             recommendationsCollectionView.reloadSections(IndexSet(integer: CellType.location.rawValue))
         }
         
-        currClientId = BVSDKManager.shared().clientId
+        currClientId = MockDataManager.sharedInstance.currentConfig.clientId
         
     }
     
     func refresh(_ refreshControl: UIRefreshControl) {
         // clear any cached recommendations, and reload latest recommendations from API
         BVShopperProfileRequestCache.shared().removeAllCachedResponses()
-        self.fetchProductsForHomeScreen()
+        self.loadProducts()
         self.loadProductsToReview()
     }
     
@@ -138,7 +138,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         let cartButton = self.navigationItem.rightBarButtonItems?[0]
         cartButton?.addBadge(number: CartManager.sharedInstance.numberOfItemsInCart(), withOffset: CGPoint.zero, andColor: UIColor.red, andFilled: true)
         
-        if (self.recommendations != nil && (self.recommendations?.count)! > 0){
+        if (self.products != nil && (self.products?.count)! > 0){
 
             self.refreshLocationSelectionIfVisible() // In case user changed location
         }
@@ -278,7 +278,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         
         if (CLLocationManager.authorizationStatus() == .authorizedAlways){
             BVLocationManager.register(forLocationUpdates: self)
-            if !BVSDKManager.shared().apiKeyLocation.isEmpty {
+            if !MockDataManager.sharedInstance.currentConfig.locationKey.isEmpty {
                 BVLocationManager.startLocationUpdates()
             } else {
                 print("Not starting location manager due to missing BVSDKManager#apiKeyLocation. App will not recieve location events.")
@@ -289,54 +289,71 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         
     }
     
-    func fetchProductsForHomeScreen(){
-        
-        if MockDataManager.sharedInstance.shouldMockData() == false && BVSDKManager.shared().apiKeyShopperAdvertising == "REPLACE_ME" {
-            // If we have a conversations key set, but not shopper advertising, we'll need to load some selected produts from Conversations.
-            self.loadConversationsProducts()
-        } else {
-            self.loadRecommendations()
-        }
-        
-    }
-    
     func loadConversationsProducts(){
         
         _ = SweetAlert().showAlert("Error", subTitle: "Unable to load products for this API key setup.", style: .error)
         
     }
     
+    
+    func loadProducts() {
+        self.recommendationsCollectionView.addSubview(self.spinner)
+        self.errorLabel.removeFromSuperview()
+        
+        let shopperAdKey = MockDataManager.sharedInstance.currentConfig.shopperAdvertisingKey
+        let canLoadRecommendations = MockDataManager.sharedInstance.currentConfig.isMock || (!shopperAdKey.isEmpty && shopperAdKey != "REPLACE_ME")
+        if canLoadRecommendations {
+            loadRecommendations()
+        }else {
+            loadConversations()
+        }
+    }
+    
+    func loadConversations() {
+        let req = BVBulkProductRequest().addProductSort(.averageOverallRating, order: .descending)
+            .add(.totalReviewCount, filterOperator: .greaterThanOrEqualTo, value: "35")
+            .add(.isActive, filterOperator: .equalTo, value: "true")
+            .add(.isDisabled, filterOperator: .equalTo, value: "false")
+            .includeStatistics(.reviews)
+        req.sortIncludedReviews(.rating, order: .descending)
+        req.load({(response) in
+            self.doneLoading(response.results)
+        }){(errs) in
+            self.doneLoading(with: errs.first!)
+        }
+    }
+    
     func loadRecommendations() {
         
         // add loading icon
-        self.recommendationsCollectionView.addSubview(self.spinner)
-        
-        self.errorLabel.removeFromSuperview()
         
         let request = BVRecommendationsRequest(limit: 20)
         self.recommendationsCollectionView.load(request, completionHandler: { (recommendations:[BVRecommendedProduct]) in
-            
-            
-            // remove loading icon
-            self.spinner.removeFromSuperview()
-            self.recommendations = recommendations
-            
-            self.recommendationsCollectionView?.reloadData()
-            self.refreshControl.endRefreshing()
-            
-            self.loadProductsToReview()
+            self.doneLoading(recommendations)
+
         }) { (error) in
-            
-            // remove loading icon
-            self.spinner.removeFromSuperview()
-            self.errorLabel.frame = self.recommendationsCollectionView.bounds
-            self.recommendationsCollectionView.addSubview(self.errorLabel)
-            print("Error: \(error.localizedDescription)")
-            self.recommendationsCollectionView?.reloadData()
-            self.refreshControl.endRefreshing()
-            self.loadProductsToReview()
+            self.doneLoading(with: error)
         }
         
+    }
+    
+    private func doneLoading(_ results: [BVDisplayableProductContent]) {
+        self.products = results
+        self.spinner.removeFromSuperview()
+        self.recommendationsCollectionView?.reloadData()
+        self.refreshControl.endRefreshing()
+        
+        self.loadProductsToReview()
+    }
+    
+    private func doneLoading(with error: Error) {
+        self.spinner.removeFromSuperview()
+        self.errorLabel.frame = self.recommendationsCollectionView.bounds
+        self.recommendationsCollectionView.addSubview(self.errorLabel)
+        print("Error: \(error.localizedDescription)")
+        self.recommendationsCollectionView?.reloadData()
+        self.refreshControl.endRefreshing()
+        self.loadProductsToReview()
     }
     
     private func loadProductsToReview() {
@@ -368,7 +385,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
             
         }) {(done) in
             if nCount > 0 {
-                self.queueFirstPINNotification(productID: self.productsToReview!.first!.id)
+                self.queueFirstPINNotification(productID: self.productsToReview!.first!.identifier)
             }
         }
     }
@@ -415,20 +432,20 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
             
         }else if type == .productRecommendationTop {
             
-            if self.recommendations != nil {
-                if (self.recommendations!.count >= numProductsAboveAd){
+            if self.products != nil {
+                if (self.products!.count >= numProductsAboveAd){
                     return numProductsAboveAd // one for top banner, one for advertisement, one for location
                 } else {
-                    return self.recommendations!.count
+                    return self.products!.count
                 }
             }
             return 0
             
         }else if type == .productRecommendationBottom {
             
-            if self.recommendations != nil {
-                if (self.recommendations!.count >= numProductsAboveAd){
-                    return self.recommendations!.count - numProductsAboveAd // one for top banner, one for advertisement, one for location
+            if self.products != nil {
+                if (self.products!.count >= numProductsAboveAd){
+                    return self.products!.count - numProductsAboveAd // one for top banner, one for advertisement, one for location
                 } else {
                     return 0
                 }
@@ -444,11 +461,11 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         return 8
     }
     
-    func getRecommendationForIndexPath(_ indexPath: IndexPath) -> BVRecommendedProduct {
+    func getRecommendationForIndexPath(_ indexPath: IndexPath) -> BVDisplayableProductContent {
         
         let indexOffset = (indexPath.section == 7) ? 4 : 0
         
-        return self.recommendations![indexPath.row + indexOffset]
+        return self.products![indexPath.row + indexOffset]
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: IndexPath) -> CGSize {
@@ -522,7 +539,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PINCollectionViewCell", for: indexPath) as! PINCollectionViewCell
             cell.productsToReview = productsToReview
             cell.productSelected = {(pin) in
-                let vc = WriteReviewViewController(nibName: "WriteReviewViewController", bundle: nil, productId: pin.id)
+                let vc = WriteReviewViewController(nibName: "WriteReviewViewController", bundle: nil, productId: pin.identifier)
                 self.navigationController?.pushViewController(vc, animated: true)
             }
             
@@ -530,7 +547,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
             
         default:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DemoCarouselCollectionViewCell", for: indexPath) as! DemoCarouselCollectionViewCell
-            cell.bvRecommendedProduct = getRecommendationForIndexPath(indexPath)
+            cell.product = getRecommendationForIndexPath(indexPath)
             return cell
             
         }
@@ -547,7 +564,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
             let productView = NewProductPageViewController(
                 nibName:"NewProductPageViewController",
                 bundle: nil,
-                productId: self.getRecommendationForIndexPath(indexPath).productId
+                productId: self.getRecommendationForIndexPath(indexPath).identifier
             )
             
             self.navigationController?.pushViewController(productView, animated: true)

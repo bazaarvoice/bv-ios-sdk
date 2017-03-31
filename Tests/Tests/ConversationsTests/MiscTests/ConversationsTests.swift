@@ -13,9 +13,9 @@ class ConversationsTests: XCTestCase {
     override func setUp() {
         super.setUp()
         
-        BVSDKManager.shared().clientId = "apitestcustomer"
-        BVSDKManager.shared().apiKeyConversations = "testApiKey"
-        BVSDKManager.shared().staging = true
+        let configDict = ["clientId": "apitestcustomer",
+                          "apiKeyConversations": "testApiKey"];
+        BVSDKManager.configure(withConfiguration: configDict, configType: .staging)
     }
     
     override func tearDown() {

@@ -42,9 +42,9 @@ static BVAuthenticatedUser *user = nil;
     
     // set up the BVAdsSDK with your clientId, and AdsPassKey
     BVSDKManager *sdkManager = [BVSDKManager sharedManager];
-    [sdkManager setClientId:@"iosunittest"]; // test customer
-    [sdkManager setApiKeyShopperAdvertising:@"fakekey"]; // test ads passkey
-    [sdkManager setStaging:YES];
+    NSDictionary *configDict = @{@"apiKeyShopperAdvertising": @"fakekey",
+                                 @"clientId": @"iosunittest"};
+    [BVSDKManager configureWithConfiguration:configDict configType:BVConfigurationTypeStaging];
     [sdkManager setLogLevel:BVLogLevelError];
 
 }

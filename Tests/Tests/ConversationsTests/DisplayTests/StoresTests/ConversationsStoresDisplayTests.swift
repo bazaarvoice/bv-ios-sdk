@@ -13,10 +13,9 @@ class ConversationsStoresDisplayTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        
-        BVSDKManager.shared().clientId = "acmestores"
-        BVSDKManager.shared().apiKeyConversationsStores = "mocktestingnokeyrequired"
-        BVSDKManager.shared().staging = false
+        let configDict = ["clientId": "acmestores",
+                          "apiKeyConversationsStores": "mocktestingnokeyrequired"];
+        BVSDKManager.configure(withConfiguration: configDict, configType: .prod)
         BVSDKManager.shared().setLogLevel(.error)
     }
     
@@ -37,7 +36,8 @@ class ConversationsStoresDisplayTests: XCTestCase {
         
         let request = BVStoreReviewsRequest(storeId: "1", limit: 20, offset: 0)
         request.includeStatistics(.reviews) // Include statistics on the store object
-        request.addSort(.rating, order: .descending)      // sort the reviews by rating, from top rated to lowest rated
+        request.addInclude(BVReviewIncludeType.products)
+        request.addReviewSort(.rating, order: .descending) // sort the reviews by rating, from top rated to lowest rated
         request.load({ (response) in
             // Success
             // Check the store attributes

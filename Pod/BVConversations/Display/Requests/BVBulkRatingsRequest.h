@@ -18,6 +18,8 @@ typedef NS_ENUM(NSInteger, BulkRatingsStatsType) {
     BulkRatingsStatsTypeAll
 };
 
+typedef void (^BulkRatingsSuccessHandler)(BVBulkRatingsResponse* _Nonnull response);
+
 /*
  You can request many products ratings (average rating, number of reviews) with this request.
  You can request up to 50 product ratings with a single request.

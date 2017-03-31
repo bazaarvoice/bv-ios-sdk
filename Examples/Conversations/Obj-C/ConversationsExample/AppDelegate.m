@@ -14,11 +14,8 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
-#warning Add your Conversations API key and client id below!
-    [BVSDKManager sharedManager].clientId = @"apireadonlysandbox";
-    [BVSDKManager sharedManager].apiKeyConversations = @"kuy3zj9pr3n7i0wxajrzj04xo";
-    [[BVSDKManager sharedManager] setLogLevel:BVLogLevelVerbose];
-    [BVSDKManager sharedManager].staging = true;
+#warning See bvsdk_config_staging.json and bvsdk_config_product.json in the project for API key and client ID settings.
+    [BVSDKManager configure:BVConfigurationTypeStaging];
     
     return YES;
 }

@@ -17,11 +17,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    
-#warning Add your own Client ID and Curations API Keys!
-    [[BVSDKManager sharedManager] setClientId:@"bazaarvoice"];
-    [[BVSDKManager sharedManager] setApiKeyCurations:@"r538c65d7d3rsx2265tvzfje"];
-    [[BVSDKManager sharedManager] setStaging:YES];  // Set to NO for production!
+#warning See bvsdk_config_staging.json and bvsdk_config_product.json in the project for API key and client ID settings.
+    [BVSDKManager configure:BVConfigurationTypeStaging];
     [[BVSDKManager sharedManager] setLogLevel:BVLogLevelVerbose];
     
     return YES;

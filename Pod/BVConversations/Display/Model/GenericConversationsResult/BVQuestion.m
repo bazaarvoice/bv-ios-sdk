@@ -68,9 +68,4 @@
     return self;
 }
 
--(void)recordTap {
-    // TODO
-}
-
-
 @end

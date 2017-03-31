@@ -12,6 +12,7 @@
 #import "BVVisit.h"
 #import "BVPlaceAttributes.h"
 #import "BVLocationAnalyticsHelper.h"
+#import "BVSDKConfiguration.h"
 
 @interface DelegateContainer : NSObject
 @property (nonatomic, weak) id<BVLocationManagerDelegate> delegate;
@@ -59,9 +60,7 @@
 }
 
 - (void)initGimbal {
-    
-    NSAssert([[[BVSDKManager sharedManager] clientId] length], @"You must supply client id in the BVSDKManager before using the Bazaarvoice SDK.");
-    if ([self.class isValidUUID:_apiKey]) {
+        if ([self.class isValidUUID:_apiKey]) {
         [[BVLogger sharedLogger] verbose:@"Initializing Location Manager"];
         
         [Gimbal setAPIKey:_apiKey options:nil];
@@ -180,7 +179,7 @@
     
     NSString *clientId = [attributes objectForKey:PLACE_CLIENT_ID];
     
-    if (![clientId isEqualToString:[BVSDKManager sharedManager].clientId]) {
+    if (![clientId isEqualToString:[BVSDKManager sharedManager].configuration.clientId]) {
         return;
     }
     

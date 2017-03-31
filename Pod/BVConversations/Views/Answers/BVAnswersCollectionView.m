@@ -136,13 +136,7 @@
     
     if([delegate_interceptor.receiver respondsToSelector:@selector(collectionView:didSelectItemAtIndexPath:)]) {
         [delegate_interceptor.receiver collectionView:collectionView didSelectItemAtIndexPath:indexPath];
-    }
-    
-    BVAnswer *answer = [cellToProductMap objectForKey:[BVViewsHelper formatIndex:indexPath]];
-    if (answer){
-        [answer recordTap];
-    }
-    
+    }    
 }
 
 #pragma mark - UICollectionViewDataSource

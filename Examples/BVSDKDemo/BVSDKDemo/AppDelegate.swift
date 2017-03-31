@@ -15,27 +15,22 @@ import FBSDKCoreKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
-    let myAppCustomUrlScheme = "bvsdkdemo"
     let myStoreReviewCategory = "bvReviewCustomContent"
     let myProductReviewCategory = "productReviewNotificationCategory"
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
-        _ = MockDataManager.sharedInstance // start data mocking service
+        // start data mocking service
         
-        BVSDKManager.shared().setLogLevel(.error)
-
-        BVSDKManager.shared().clientId = "REPLACE_ME"
-        BVSDKManager.shared().apiKeyCurations = "REPLACE_ME"
-        BVSDKManager.shared().apiKeyConversations = "REPLACE_ME"
-        BVSDKManager.shared().apiKeyShopperAdvertising = "REPLACE_ME"
-        //BVSDKManager.shared().apiKeyLocation = "00000000-0000-0000-0000-000000000000" // Setting the location key will initialize the location manager
-        BVSDKManager.shared().apiKeyConversationsStores = "REPLACE_ME"
-        BVSDKManager.shared().storeReviewContentExtensionCategory = myStoreReviewCategory
-        BVSDKManager.shared().pinContentExtensionCategory = myProductReviewCategory
-        BVSDKManager.shared().apiKeyPIN = "REPLACE_ME"
-        BVSDKManager.shared().staging = false
+        //after adding your configuration files you may configure the BVSDK as follows;
+        //.prod to use your production configuration and .staging for staging configuration
+        
+        let configType = BVConfigurationType.staging
+        
+        BVSDKManager.shared().setLogLevel(.verbose)
     
+        MockDataManager.sharedInstance.configure(configType)
+        
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.rootViewController = navController
         window?.makeKeyAndVisible()

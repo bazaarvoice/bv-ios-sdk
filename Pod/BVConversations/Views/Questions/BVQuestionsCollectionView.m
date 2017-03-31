@@ -166,12 +166,6 @@
     if([delegate_interceptor.receiver respondsToSelector:@selector(collectionView:didSelectItemAtIndexPath:)]) {
         [delegate_interceptor.receiver collectionView:collectionView didSelectItemAtIndexPath:indexPath];
     }
-    
-    BVQuestion *questiontem = [cellToProductMap objectForKey:[BVViewsHelper formatIndex:indexPath]];
-    if (questiontem != nil){
-        [questiontem recordTap];
-    }
-    
 }
 
 #pragma mark - UICollectionViewDataSource

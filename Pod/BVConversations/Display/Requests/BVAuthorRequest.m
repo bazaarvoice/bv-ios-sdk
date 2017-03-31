@@ -11,6 +11,7 @@
 #import "BVCommaUtil.h"
 #import "BVLogger.h"
 #import "BVAuthorInclude.h"
+#import "BVPixel.h"
 
 @interface BVAuthorRequest ()
 
@@ -95,7 +96,41 @@
         [self sendError:[super limitError:self.limit] failureCallback:failure];
     }
     else {
-        [super loadProfile:self completion:success failure:failure];
+        [self loadProfile:self completion:success failure:failure];
+    }
+    
+}
+
+- (void)loadProfile:(BVConversationsRequest * _Nonnull)request completion:(void (^ _Nonnull)(BVAuthorResponse * _Nonnull response))completion failure:(void (^ _Nonnull)(NSArray<NSError *> * _Nonnull errors))failure {
+    
+    [self loadContent:request completion:^(NSDictionary * _Nonnull response) {
+        BVAuthorResponse* authorResponse = [[BVAuthorResponse alloc] initWithApiResponse:response];
+        // invoke success callback on main thread
+        dispatch_async(dispatch_get_main_queue(), ^{
+            completion(authorResponse);
+        });
+        
+        if (authorResponse && authorResponse.results){
+            [    self sendAuthorAnalytics:authorResponse.results.firstObject];
+        }
+        
+    } failure:failure];
+}
+
+- (void)sendAuthorAnalytics:(BVAuthor*)author {
+    
+    if (author) {
+        // send usedfeature for the author display
+        
+        BVFeatureUsedEvent *event = [[BVFeatureUsedEvent alloc] initWithProductId:@"none"
+                                                                        withBrand:nil
+                                                                  withProductType:BVPixelProductTypeConversationsProfile
+                                                                    withEventName:BVPixelFeatureUsedNameProfile
+                                                             withAdditionalParams:@{@"interaction":@"false",
+                                                                                    @"page":author.authorId}];
+        
+        [BVPixel trackEvent:event];
+        
     }
     
 }

@@ -51,6 +51,20 @@
     
 }
 
+- (void)loadBulkRatings:(BVConversationsRequest * _Nonnull)request completion:(void (^ _Nonnull)(BVBulkRatingsResponse * _Nonnull response))completion failure:(void (^ _Nonnull)(NSArray<NSError *> * _Nonnull errors))failure {
+    
+    [self loadContent:request completion:^(NSDictionary * _Nonnull response) {
+        
+        BVBulkRatingsResponse* bulkRatingsResponse = [[BVBulkRatingsResponse alloc] initWithApiResponse:response];
+        // invoke success callback on main thread
+        dispatch_async(dispatch_get_main_queue(), ^{
+            completion(bulkRatingsResponse);
+        });
+        
+    } failure:failure];
+    
+}
+
 - (nonnull instancetype)addFilter:(BVBulkRatingsFilterType)type filterOperator:(BVFilterOperator)filterOperator values:(NSArray<NSString *> * _Nonnull)values {
     BVFilter* filter = [[BVFilter alloc] initWithString:[BVBulkRatingsFilterTypeUtil toString:type] filterOperator:filterOperator values:values];
     [self.filters addObject:filter];

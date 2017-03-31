@@ -8,6 +8,7 @@
 #import "BVProductReviewNotificationConfigurationLoader.h"
 #import "BVNotificationConfiguration.h"
 #import "BVSDKManager.h"
+#import "BVSDKConfiguration.h"
 
 @implementation BVProductReviewNotificationConfigurationLoader
 
@@ -40,9 +41,7 @@
 
 
 - (void) receivePINAPIKey:(NSNotification *) notification
-{
-    NSAssert([[[BVSDKManager sharedManager] clientId] length], @"You must supply client id in the BVSDKManager first, before using the PIN with notifications.");
-    
+{    
     // [notification name] should always be PIN_API_KEY_SET_NOTIFICATION
     // unless you use this method for observation of other notifications
     // as well.
@@ -63,7 +62,7 @@
 
 -(void)loadPINConfiguration:(void (^ _Nonnull)(BVProductReviewNotificationProperties * _Nonnull response))completion failure:(void (^ _Nonnull)(NSError * _Nonnull error))failure {
     
-    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@/incubator-mobile-apps/sdk/%@/ios/%@/pin/pinConfig.json", NOTIFICATION_CONFIG_ROOT, S3_API_VERSION, [[BVSDKManager sharedManager] clientId]]];
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@/incubator-mobile-apps/sdk/%@/ios/%@/pin/pinConfig.json", NOTIFICATION_CONFIG_ROOT, S3_API_VERSION, [[[BVSDKManager sharedManager] configuration] clientId]]];
     [BVNotificationConfiguration loadPINConfiguration:url completion:^(BVProductReviewNotificationProperties * _Nonnull response) {
         [[BVLogger sharedLogger] verbose:@"Successfully loaded BVProductReviewNotificationProperties"];
         _bvProductReviewNotificationProperties = response;
