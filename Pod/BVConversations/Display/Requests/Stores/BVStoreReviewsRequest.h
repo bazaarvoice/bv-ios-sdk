@@ -6,7 +6,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "BVConversationsRequest.h"
+#import "BVBaseReviewsRequest.h"
 #import "BVReviewFilterType.h"
 #import "BVFilterOperator.h"
 #import "BVSort.h"
@@ -15,11 +15,13 @@
 #import "BVStoreIncludeContentType.h"
 #import "BVSortOptionReviews.h"
 
+typedef void (^StoreReviewRequestCompletionHandler)(BVStoreReviewsResponse* _Nonnull response);
+
 /*
  You can get multiple reviews and with this request object.
  Optionally, you can filter, sort, or search reviews using the `addSort*` and `addFilter*` and `search` methods.
  */
-@interface BVStoreReviewsRequest : BVConversationsRequest
+@interface BVStoreReviewsRequest : BVBaseReviewsRequest<BVStoreReviewsResponse *>
 
 @property (readonly) NSString* _Nonnull storeId;
 
@@ -28,17 +30,5 @@
 - (nonnull instancetype) __unavailable init;
 
 - (nonnull instancetype)includeStatistics:(BVStoreIncludeContentType)contentType;
-
-- (nonnull instancetype)addSort:(BVSortOptionProducts)option order:(BVSortOrder)order __deprecated_msg("use sortReviews instead");
-
-- (nonnull instancetype)addReviewSort:(BVSortOptionReviews)option order:(BVSortOrder)order;
-
-- (nonnull instancetype)addFilter:(BVReviewFilterType)type filterOperator:(BVFilterOperator)filterOperator value:(NSString * _Nonnull)value;
-- (nonnull instancetype)addFilter:(BVReviewFilterType)type filterOperator:(BVFilterOperator)filterOperator values:(NSArray<NSString *> * _Nonnull)values;
-- (nonnull instancetype)search:(NSString * _Nonnull)search;
-
-- (void)load:(void (^ _Nonnull)(BVStoreReviewsResponse * _Nonnull response))success failure:(ConversationsFailureHandler _Nonnull)failure;
-- (NSString * _Nonnull)endpoint;
-- (NSMutableArray * _Nonnull)createParams;
 
 @end

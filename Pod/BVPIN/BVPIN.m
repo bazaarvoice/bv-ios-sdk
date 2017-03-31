@@ -9,6 +9,9 @@
 #import "BVPIN.h"
 
 @implementation BVPIN
+@synthesize displayName;
+@synthesize displayImageUrl;
+@synthesize identifier = _identifier;
 
 -(instancetype)initWithDictionary:(NSDictionary *)dictionary {
     if (self = [super init]) {
@@ -16,10 +19,18 @@
         _imageUrl = dictionary[@"image_url"];
         _productPageURL = dictionary[@"product_page_url"];
         _name = dictionary[@"name"];
-        _ID = dictionary[@"id"];
+        _identifier = dictionary[@"id"];
     }
     
     return self;
+}
+
+-(NSString*)displayName {
+    return _name;
+}
+
+-(NSString*)displayImageUrl {
+    return _imageUrl;
 }
 
 @end

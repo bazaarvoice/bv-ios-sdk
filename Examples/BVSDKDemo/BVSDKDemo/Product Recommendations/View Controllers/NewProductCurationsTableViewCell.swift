@@ -21,7 +21,7 @@ class NewProductCurationsTableViewCell: UITableViewCell, BVCurationsUICollection
             if let product = product {
                 self.curationsCarousel.curationsDelegate = self
                 self.curationsCarousel.groups = ["__all__"]
-                self.curationsCarousel.productId = product.identifier!
+                self.curationsCarousel.productId = product.identifier
                 self.curationsCarousel.bvCurationsUILayout = .carousel
                 self.curationsCarousel.loadFeed()
             }

@@ -98,7 +98,7 @@ class AskAQuestionViewController: UIViewController, SDFormDelegate, SDFormDataSo
         
         // Submit the question
         
-        let submission = BVQuestionSubmission(productId: product.identifier!)
+        let submission = BVQuestionSubmission(productId: product.identifier)
         submission.action = .preview // don't actually just submit for real, this is just for demo
         submission.questionSummary = self.questionSubmissionParameters.questionSummary as? String
         submission.questionDetails = self.questionSubmissionParameters.questionDetails as? String

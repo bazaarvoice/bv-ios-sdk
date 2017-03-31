@@ -121,18 +121,8 @@ class NewProductRecsTableViewCell: UITableViewCell, UICollectionViewDataSource, 
         let product = self.products![index]
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DemoCarouselCollectionViewCell", for: indexPath) as! DemoCarouselCollectionViewCell
-        
-        // TODO: This shold be set in the cell itself...not here...
-        cell.bvRecommendedProduct = product
-        cell.productName.text = product.productName
-        cell.price.text = product.price 
-        cell.starRating.value = CGFloat(product.averageRating.floatValue)
-        
-        let imageUrl = URL(string: product.imageURL)
-        cell.productImageView.sd_setImage(with: imageUrl)
-        
+        cell.product = product
         return cell
-        
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

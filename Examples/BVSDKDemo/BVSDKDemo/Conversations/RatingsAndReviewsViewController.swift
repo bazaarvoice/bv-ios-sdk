@@ -94,7 +94,7 @@ class RatingsAndReviewsViewController: UIViewController, UITableViewDelegate, UI
 
         reviewFetchPending = true
         
-        let request = BVReviewsRequest(productId: product.identifier!, limit: 20, offset: Int32(self.reviews.count))
+        let request = BVReviewsRequest(productId: product.identifier, limit: 20, offset: Int32(self.reviews.count))
 
         // Check sorting and filter FilterOptions
         if selectedFilterOption == FilterOptions.highestRating.rawValue {
@@ -105,7 +105,7 @@ class RatingsAndReviewsViewController: UIViewController, UITableViewDelegate, UI
             request.addReviewSort(.helpfulness, order: .descending)
         } else if selectedFilterOption == FilterOptions.location.rawValue {
             if let defaultCachedStore = LocationPreferenceUtils.getDefaultStore(){
-                request.add(.userLocation, filterOperator: .equalTo, value: (defaultCachedStore.city))
+                request.addFilter(.userLocation, filterOperator: .equalTo, value: (defaultCachedStore.city))
             } else {
                 _ = SweetAlert().showAlert("No store set.", subTitle: "Please set a default store.", style: .error)
             }

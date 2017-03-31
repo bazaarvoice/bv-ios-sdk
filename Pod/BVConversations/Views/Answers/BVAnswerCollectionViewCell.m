@@ -16,18 +16,9 @@
     
 }
 
-- (void)clicked {
-    
-    if (_answer){
-        [_answer recordTap];
-    }
-    
-}
-
 - (void)didMoveToSuperview {
     
     [super didMoveToSuperview];
-    [BVViewsHelper checkButtonsInSubviews:self.subviews withTarget:self withSelector:@selector(clicked)];
     [BVViewsHelper checkGestureRecognizers:self.gestureRecognizers];
     
 }

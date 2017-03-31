@@ -150,12 +150,6 @@
     if([delegate_interceptor.receiver respondsToSelector:@selector(tableView:didSelectRowAtIndexPath:)]) {
         [delegate_interceptor.receiver tableView:tableView didSelectRowAtIndexPath:indexPath];
     }
-    
-    BVReview *review = [cellToProductMap objectForKey:[BVViewsHelper formatIndex:indexPath]];
-    if (review != nil){
-        [review recordTap];
-    }
-
 }
 
 #pragma mark UIScrollViewDelegate

@@ -17,14 +17,14 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
     }
 
-    @IBAction func nativeAdTapped(sender: AnyObject) {
+    @IBAction func nativeAdTapped(_ sender: AnyObject) {
         
         let vc = NativeContentAdDemoViewController()
-        self.navigationController?.presentViewController(vc, animated: true, completion: nil)
+        self.navigationController?.present(vc, animated: true, completion: nil)
     }
     
     
-    @IBAction func interstitialAdTapped(sender: AnyObject) {
+    @IBAction func interstitialAdTapped(_ sender: AnyObject) {
 
         interstitialDemo = InterstitialDemo(rootViewController: self)
         interstitialDemo?.requestInterstitial()
@@ -33,10 +33,10 @@ class ViewController: UIViewController {
     
     
     
-    @IBAction func bannerAdTapped(sender: AnyObject) {
+    @IBAction func bannerAdTapped(_ sender: AnyObject) {
         
         let vc = BannerDemoViewController()
-        self.navigationController?.presentViewController(vc, animated: true, completion: nil)
+        self.navigationController?.present(vc, animated: true, completion: nil)
         
     }
     

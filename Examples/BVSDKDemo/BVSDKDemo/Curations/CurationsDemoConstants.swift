@@ -21,12 +21,9 @@ struct CurationsDemoConstants {
     ////////////////////////////////////////////////////////////
     
     static func isSDKConfigured() -> Bool {
-        if (BVSDKManager.shared().apiKeyCurations == "REPLACE_ME" ||
-            BVSDKManager.shared().clientId        == "REPLACE_ME"){
-            return false
-        }
         
-        return true
+        return (MockDataManager.sharedInstance.currentConfig.curationsKey != "REPLACE_ME" &&
+            MockDataManager.sharedInstance.currentConfig.clientId != "REPLACE_ME")
     }
     
 }

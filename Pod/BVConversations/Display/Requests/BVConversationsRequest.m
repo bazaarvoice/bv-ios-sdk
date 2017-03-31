@@ -10,8 +10,15 @@
 #import "BVAnalyticsManager.h"
 #import "BVDiagnosticHelpers.h"
 #import "BVConversationsErrorResponse.h"
+#import "BVStoreReviewsResponse.h"
+#import "BVSDKConfiguration.h"
+
+@interface BVConversationsRequest()
+@property (strong, nonatomic) NSMutableArray<BVStringKeyValuePair*>* additionalParams;
+@end
 
 @implementation BVConversationsRequest
+
 
 -(NSMutableArray<BVStringKeyValuePair*>* _Nonnull)createParams {
     
@@ -24,16 +31,39 @@
     [params addObject:[BVStringKeyValuePair pairWithKey:@"_buildNumber" value:[BVDiagnosticHelpers buildVersionNumber]]];
     [params addObject:[BVStringKeyValuePair pairWithKey:@"_bvIosSdkVersion" value:BV_SDK_VERSION]];
     
+    if (_additionalParams){
+        [params addObjectsFromArray:_additionalParams];
+    }
+
     return params;
     
 }
+
+-(nonnull instancetype)addAdditionalField:(nonnull NSString*)fieldName value:(nonnull NSString*)value{
+    
+    if (fieldName && value){
+        
+        if (!self.additionalParams){
+            self.additionalParams = [NSMutableArray array];
+        }
+        
+        [_additionalParams addObject:[BVStringKeyValuePair pairWithKey:fieldName value:value]];
+        
+    } else {
+        NSAssert(NO, @"illegal use of non-null parameters");
+    }
+    
+    return self;
+}
+
+
 
 -(NSString* _Nonnull)endpoint {
     return @"must be overriden";
 }
 
 +(NSString* _Nonnull)commonEndpoint {
-    return [BVSDKManager sharedManager].staging ? @"https://stg.api.bazaarvoice.com/data/" : @"https://api.bazaarvoice.com/data/";
+    return [BVSDKManager sharedManager].configuration.staging ? @"https://stg.api.bazaarvoice.com/data/" : @"https://api.bazaarvoice.com/data/";
 }
 
 -(NSArray<NSURLQueryItem*>* _Nonnull)getQueryItems:(NSArray<BVStringKeyValuePair*>*)params {
@@ -48,109 +78,6 @@
     }
     
     return queryItems;
-    
-}
-
-- (void)loadReviews:(BVConversationsRequest * _Nonnull)request completion:(void (^ _Nonnull)(BVReviewsResponse * _Nonnull response))completion failure:(void (^ _Nonnull)(NSArray<NSError *> * _Nonnull errors))failure {
-
-    [self loadContent:request completion:^(NSDictionary * _Nonnull response) {
-        BVReviewsResponse* reviewResponse = [[BVReviewsResponse alloc] initWithApiResponse:response];
-        // invoke success callback on main thread
-        dispatch_async(dispatch_get_main_queue(), ^{
-            completion(reviewResponse);
-        });
-        [self sendReviewsAnalytics:reviewResponse];
-    } failure:failure];
-    
-}
-
-- (void)loadProducts:(BVConversationsRequest * _Nonnull)request completion:(void (^ _Nonnull)(BVProductsResponse * _Nonnull response))completion failure:(void (^ _Nonnull)(NSArray<NSError *> * _Nonnull errors))failure {
-    
-    [self loadContent:request completion:^(NSDictionary * _Nonnull response) {
-        BVProductsResponse* productsResponse = [[BVProductsResponse alloc] initWithApiResponse:response];
-        // invoke success callback on main thread
-        dispatch_async(dispatch_get_main_queue(), ^{
-            completion(productsResponse);
-        });
-        [self sendProductsAnalytics:productsResponse];
-        
-    } failure:failure];
-    
-}
-
-- (void)loadProfile:(BVConversationsRequest * _Nonnull)request completion:(void (^ _Nonnull)(BVAuthorResponse * _Nonnull response))completion failure:(void (^ _Nonnull)(NSArray<NSError *> * _Nonnull errors))failure {
-    
-    [self loadContent:request completion:^(NSDictionary * _Nonnull response) {
-        BVAuthorResponse* authorResponse = [[BVAuthorResponse alloc] initWithApiResponse:response];
-        // invoke success callback on main thread
-        dispatch_async(dispatch_get_main_queue(), ^{
-            completion(authorResponse);
-        });
-
-        if (authorResponse && authorResponse.results){
-       [    self sendAuthorAnalytics:authorResponse.results.firstObject];
-        }
-        
-    } failure:failure];
-    
-}
-
-- (void)loadStores:(BVConversationsRequest * _Nonnull)request completion:(void (^ _Nonnull)(BVBulkStoresResponse * _Nonnull response))completion failure:(void (^ _Nonnull)(NSArray<NSError *> * _Nonnull errors))failure {
-    
-    [self loadContent:request completion:^(NSDictionary * _Nonnull response) {
-        BVBulkStoresResponse* storesResponse = [[BVBulkStoresResponse alloc] initWithApiResponse:response];
-        // invoke success callback on main thread
-        dispatch_async(dispatch_get_main_queue(), ^{
-            completion(storesResponse);
-        });
-        
-        if ([storesResponse.results count] == 1){
-             [self sendStoreAnalytics:storesResponse.results[0]];
-        }
-        
-    } failure:failure];
-    
-}
-
-- (void)loadStoreReviews:(BVConversationsRequest * _Nonnull)request completion:(void (^ _Nonnull)(BVStoreReviewsResponse * _Nonnull response))completion failure:(void (^ _Nonnull)(NSArray<NSError *> * _Nonnull errors))failure {
-    
-    [self loadContent:request completion:^(NSDictionary * _Nonnull response) {
-        BVStoreReviewsResponse* reviewResponse = [[BVStoreReviewsResponse alloc] initWithApiResponse:response];
-        // invoke success callback on main thread
-        dispatch_async(dispatch_get_main_queue(), ^{
-            completion(reviewResponse);
-        });
-        
-        [self sendStoreReviewsAnalytics:reviewResponse];
-        
-    } failure:failure];
-    
-}
-
-- (void)loadQuestions:(BVConversationsRequest * _Nonnull)request completion:(void (^ _Nonnull)(BVQuestionsAndAnswersResponse * _Nonnull response))completion failure:(void (^ _Nonnull)(NSArray<NSError *> * _Nonnull errors))failure {
-    
-    [self loadContent:request completion:^(NSDictionary * _Nonnull response) {
-        BVQuestionsAndAnswersResponse* questionsAndAnswersResponse = [[BVQuestionsAndAnswersResponse alloc] initWithApiResponse:response];
-        // invoke success callback on main thread
-        dispatch_async(dispatch_get_main_queue(), ^{
-            completion(questionsAndAnswersResponse);
-        });
-        [self sendQuestionsAnalytics:questionsAndAnswersResponse];
-    } failure:failure];
-    
-}
-
-- (void)loadBulkRatings:(BVConversationsRequest * _Nonnull)request completion:(void (^ _Nonnull)(BVBulkRatingsResponse * _Nonnull response))completion failure:(void (^ _Nonnull)(NSArray<NSError *> * _Nonnull errors))failure {
-    
-    [self loadContent:request completion:^(NSDictionary * _Nonnull response) {
-
-        BVBulkRatingsResponse* bulkRatingsResponse = [[BVBulkRatingsResponse alloc] initWithApiResponse:response];
-        // invoke success callback on main thread
-        dispatch_async(dispatch_get_main_queue(), ^{
-            completion(bulkRatingsResponse);
-        });
-
-    } failure:failure];
     
 }
 
@@ -238,10 +165,7 @@
 }
 
 -(void)sendError:(nonnull NSError*)error failureCallback:(ConversationsFailureHandler) failure {
-    [[BVLogger sharedLogger] printError:error];
-    dispatch_async(dispatch_get_main_queue(), ^{
-        failure(@[error]);
-    });
+    [self sendErrors:@[error] failureCallback:failure];
 }
 
 -(void)sendErrors:(nonnull NSArray<NSError*>*)errors failureCallback:(ConversationsFailureHandler) failure {
@@ -253,173 +177,8 @@
     });
 }
 
-- (void)sendReviewsAnalytics:(BVReviewsResponse*)reviewsResponse {
-    
-    [self sendReviewResultsAnalytics:reviewsResponse.results];
-}
-
-- (void)sendStoreReviewsAnalytics:(BVStoreReviewsResponse*)reviewsResponse {
-    
-    [self sendReviewResultsAnalytics:reviewsResponse.results];
-}
-
-- (void)sendReviewResultsAnalytics:(NSArray<BVReview *>*)reviews{
-    
-    for (BVReview* review in reviews) {
-        
-        // Record Review Impression
-        NSString *brandName = review.product.brand ? review.product.brand.name : nil;
-        BVImpressionEvent *reviewImpression = [[BVImpressionEvent alloc] initWithProductId:review.productId
-                                     withContentId:review.identifier
-                                    withCategoryId:review.product.categoryId
-                            withProductType:BVPixelProductTypeConversationsReviews
-                                withContentType:BVPixelImpressionContentTypeReview
-                                       withBrand:brandName withAdditionalParams:nil];
-        
-        [BVPixel trackEvent:reviewImpression];
-        
-    }
-    // send pageview for product
-    BVReview* review = reviews.firstObject;
-    if (review != nil) {
-        NSNumber* count = @([reviews count]);
-        
-        NSDictionary *addParams = @{@"numReviews":count};
-        NSString *brandName = review.product.brand ? review.product.brand.name : nil;
-        BVPageViewEvent *pageView = [[BVPageViewEvent alloc] initWithProductId:review.productId
-                                                    withBVPixelProductType:BVPixelProductTypeConversationsReviews
-                                                                 withBrand:brandName
-                                                            withCategoryId:review.product.categoryId
-                                                        withRootCategoryId:nil
-                                                      withAdditionalParams:addParams];
-        
-        [BVPixel trackEvent:pageView];
-    }
-}
-
-- (void)sendQuestionsAnalytics:(BVQuestionsAndAnswersResponse*)questionsResponse {
-    
-    for (BVQuestion* question in questionsResponse.results) {
-        
-        // Record Question Impression
-        BVImpressionEvent *questionImpression = [[BVImpressionEvent alloc] initWithProductId:question.productId
-                                                             withContentId:question.identifier
-                                                            withCategoryId:question.categoryId
-                                                    withProductType:BVPixelProductTypeConversationsQuestionAnswer
-                                                           withContentType:BVPixelImpressionContentTypeQuestion
-                                                                 withBrand:nil
-                                                      withAdditionalParams:nil];
-        
-        [BVPixel trackEvent:questionImpression];
-        
-    }
-    
-    // send pageview for product
-    BVQuestion* question = questionsResponse.results.firstObject;
-    if (question != nil) {
-        
-        NSNumber* count = @([questionsResponse.results count]);
-        NSDictionary *addParams = @{@"numQuestions":count};
-        
-        BVPageViewEvent *pageView = [[BVPageViewEvent alloc] initWithProductId:question.productId
-                                                withBVPixelProductType:BVPixelProductTypeConversationsQuestionAnswer
-                                                             withBrand:nil
-                                                        withCategoryId:question.categoryId
-                                                    withRootCategoryId:nil
-                                                  withAdditionalParams:addParams];
-        
-        [BVPixel trackEvent:pageView];
-    }
-    
-}
-
-- (void)sendProductsAnalytics:(BVProductsResponse*)productsResponse {
-    
-    BVProduct* product = productsResponse.result;
-    if (product) {
-        
-        // send impressions for included content, reviews and questions
-
-
-        for(BVReview* review in product.includedReviews) {
-            NSString *brandName = review.product.brand ? review.product.brand.name : nil;
-            BVImpressionEvent *reviewImpression = [[BVImpressionEvent alloc] initWithProductId:review.productId
-                                                         withContentId:review.identifier
-                                                        withCategoryId:review.product.categoryId
-                                                withProductType:BVPixelProductTypeConversationsReviews
-                                                       withContentType:BVPixelImpressionContentTypeReview
-                                                             withBrand:brandName withAdditionalParams:nil];
-            
-            [BVPixel trackEvent:reviewImpression];
-
-        }
-        
-        for(BVQuestion* question in product.includedQuestions) {
-            // Record Question Impression
-            BVImpressionEvent *questionImpression = [[BVImpressionEvent alloc] initWithProductId:question.productId
-                                                       withContentId:question.identifier
-                                                      withCategoryId:question.categoryId
-                                              withProductType:BVPixelProductTypeConversationsQuestionAnswer
-                                                     withContentType:BVPixelImpressionContentTypeQuestion
-                                                           withBrand:nil
-                                                withAdditionalParams:nil];
-            
-            [BVPixel trackEvent:questionImpression];
-        }
-        
-        
-        // send pageview for product
-        NSString *brandName = product.brand != nil ? product.brand.name : nil;
-        BVPageViewEvent *pageView = [[BVPageViewEvent alloc] initWithProductId:product.identifier
-                                                withBVPixelProductType:BVPixelProductTypeConversationsReviews
-                                                             withBrand:brandName
-                                                        withCategoryId:product.categoryId
-                                                    withRootCategoryId:nil
-                                                  withAdditionalParams:nil];
-        
-        [BVPixel trackEvent:pageView];
-    }
-    
-}
-
-- (void)sendAuthorAnalytics:(BVAuthor*)author {
-    
-    if (author) {
-        // send usedfeature for the author display
-        
-        BVFeatureUsedEvent *event = [[BVFeatureUsedEvent alloc] initWithProductId:@"none"
-                                                        withBrand:nil
-                                           withProductType:BVPixelProductTypeConversationsProfile
-                                              withEventName:BVPixelFeatureUsedNameProfile
-                                                             withAdditionalParams:@{@"interaction":@"false",
-                                                                                    @"page":author.authorId}];
-        
-        [BVPixel trackEvent:event];
-        
-    }
-    
-}
-    
-- (void)sendStoreAnalytics:(BVStore*)store {
-    
-    if (store) {
-        // send pageview for product
-        
-        BVPageViewEvent *pageView = [[BVPageViewEvent alloc] initWithProductId:store.identifier
-                                                        withBVPixelProductType:BVPixelProductTypeConversationsReviews
-                                                                     withBrand:nil
-                                                                withCategoryId:store.categoryId
-                                                            withRootCategoryId:nil
-                                                          withAdditionalParams:nil];
-        
-        [BVPixel trackEvent:pageView];
-
-    }
-    
-}
-
 - (NSString * _Nonnull)getPassKey{
-   return [BVSDKManager sharedManager].apiKeyConversations;
+   return [BVSDKManager sharedManager].configuration.apiKeyConversations;
 }
 
 

@@ -10,8 +10,10 @@
 #import "BVLogger.h"
 #import "BVAuthenticatedUser.h"
 
-//#import "BVStoreReviewNotificationProperties.h"
-//#import "BVProductReviewNotificationProperties.h"
+typedef NS_ENUM(NSUInteger, BVConfigurationType) {
+    BVConfigurationTypeProd,
+    BVConfigurationTypeStaging
+};
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -32,29 +34,25 @@ NS_ASSUME_NONNULL_BEGIN
  ### Objective-C
     
     @code
-    [BVSDKManager sharedManager].staging = YES;  //  NO for production
-    [BVSDKManager sharedManager].clientId = @"YOUR_CLIENT_ID";
-    // If using Converstations API, add this line:
-    [BVSDKManager sharedManager].apiKeyConversations = @"YOUR_CONVERSATIONS_API_KEY";
-    // If using Recommendations or Advertising, add this line:
-    [BVSDKManager sharedManager].apiKeyShopperAdvertising = @"YOUR_SHOPPER_MARKETING_KEY";
+    // Will search app bundle for file bvsdk_config_staging.json for BVConfigurationTypeStaging or
+    // bvsdk_config_prod.json for BVConfigurationTypeProd. BVSDK will be configured using this file
+    [BVSDKManager configure:BVConfigurationTypeStaging];
     @endcode
  
  ### Swift
  
     @code
-    let mgr = BVSDKManager.sharedManager()
-    mgr.setLogLevel(BVLogLevel.Verbose)
-    // If using Converstations API, add this line:
-    apiKeyConversations = "YOUR_CONVERSATIONS_API_KEY"
-    // If using Recommendations or Advertising, add this line:
-    mgr.apiKeyShopperAdvertising = "YOUR_SHOPPER_MARKETING_KEY"
-    mgr.clientId = "YOUR_CLIENT_ID"
-    mgr.staging = false  //  true for production
+    // Will search app bundle for file bvsdk_config_staging.json for BVConfigurationTypeStaging or
+    // bvsdk_config_prod.json for BVConfigurationTypeProd. BVSDK will be configured using this file
+    BVSDKManager.configure(.staging)
     @endcode
  
  */
 @interface BVSDKManager : NSObject
+
++(void)configure:(BVConfigurationType)configurationType;
+
++(void)configureWithConfiguration:(NSDictionary * _Nonnull)configDict configType:(BVConfigurationType)configType;
 
 /// Singleton pattern. Use this `sharedManager` whenever interacting with BVSDK.
 +(instancetype)sharedManager;
@@ -64,38 +62,38 @@ NS_ASSUME_NONNULL_BEGIN
 /// Set the log level for getting log and event info. Default is BVLogLevel.kBVLogLevelError
 -(void)setLogLevel:(BVLogLevel)logLevel;
 
-/// Client ID associated with the API key
-@property (nonatomic, strong) NSString *clientId;
-
-/// Boolean indicating whether this request should go to staging (true) or production (false).  Default is production (false).
-@property (nonatomic, assign) BOOL staging;
-
 /// Read-only value of urlRoot for Shopper Advertising APIs. Varies depending on value of staging.
 @property (nonatomic, readonly) NSString *urlRootShopperAdvertising;
 
+/// Client ID associated with the API key
+@property (nonatomic, strong) NSString *clientId __attribute__((deprecated("Use BVSDKManager#configure:(BVConfigurationType)configurationType instead.")));
+
+/// Boolean indicating whether this request should go to staging (true) or production (false).  Default is production (false).
+@property (nonatomic, assign) BOOL staging __attribute__((deprecated("Use BVSDKManager#configure:(BVConfigurationType)configurationType instead.")));
+
 /// Your private API key for the BVConversations product
-@property (nonatomic, strong) NSString *apiKeyConversations;
+@property (nonatomic, strong) NSString *apiKeyConversations __attribute__((deprecated("Use BVSDKManager#configure:(BVConfigurationType)configurationType instead.")));
 
 /// Your private API key for the BVConversations, Store Reviews product
-@property (nonatomic, strong) NSString *apiKeyConversationsStores;
+@property (nonatomic, strong) NSString *apiKeyConversationsStores __attribute__((deprecated("Use BVSDKManager#configure:(BVConfigurationType)configurationType instead.")));
 
 /// Your private API key for Post Interaction Notifications
-@property (nonatomic, strong) NSString *apiKeyPIN;
+@property (nonatomic, strong) NSString *apiKeyPIN __attribute__((deprecated("Use BVSDKManager#configure:(BVConfigurationType)configurationType instead.")));
 
 /// The category of the Notification Content Extension you will use for store review notifications
-@property (nonatomic, strong) NSString *storeReviewContentExtensionCategory;
+@property (nonatomic, strong) NSString *storeReviewContentExtensionCategory __attribute__((deprecated("Use BVSDKManager#configure:(BVConfigurationType)configurationType instead.")));
 
 /// The category of the Notification Content Extension you will use for PIN
-@property (nonatomic, strong) NSString *PINContentExtensionCategory;
+@property (nonatomic, strong) NSString *PINContentExtensionCategory __attribute__((deprecated("Use BVSDKManager#configure:(BVConfigurationType)configurationType instead.")));
 
 /// Your private API key for the BVRecommendations and BVAdvertising products (Shopper Advertising)
-@property (nonatomic, strong) NSString *apiKeyShopperAdvertising;
+@property (nonatomic, strong) NSString *apiKeyShopperAdvertising __attribute__((deprecated("Use BVSDKManager#configure:(BVConfigurationType)configurationType instead.")));
 
 /// Your private API key for the BVCurations API
-@property (nonatomic, strong) NSString *apiKeyCurations;
+@property (nonatomic, strong) NSString *apiKeyCurations __attribute__((deprecated("Use BVSDKManager#configure:(BVConfigurationType)configurationType instead.")));
 
 /// Your private API key for the BVLocations API
-@property (nonatomic, strong) NSString *apiKeyLocation;
+@property (nonatomic, strong) NSString *apiKeyLocation __attribute__((deprecated("Use BVSDKManager#configure:(BVConfigurationType)configurationType instead.")));
 
 /**
     Set user information. Associates a user profile with device for taylored advertising and recommendations.

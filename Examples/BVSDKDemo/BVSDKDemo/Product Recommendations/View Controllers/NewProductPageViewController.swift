@@ -188,17 +188,13 @@ class NewProductPageViewController: BVProductDisplayPageViewController, UITableV
             
             self.product = product
             
-            guard let totalReviewCount = product?.reviewStatistics?.totalReviewCount as? Int,
-                let totalQuestionCount = product?.qaStatistics?.totalQuestionCount as? Int,
-                let totalAnswerCount = product?.qaStatistics?.totalAnswerCount as? Int else {
-                    return
-            }
-            
             self.productName.text = product?.name
-            self.totalReviewCount = totalReviewCount
-            self.totalQuestionCount = totalQuestionCount
-            self.totalAnswerCount = totalAnswerCount
-            self.productImage.sd_setImage(with: URL(string: product!.imageUrl!))
+            self.totalReviewCount = product?.reviewStatistics?.totalReviewCount as? Int ?? 0
+            self.totalQuestionCount = product?.qaStatistics?.totalQuestionCount as? Int ?? 0
+            self.totalAnswerCount = product?.qaStatistics?.totalAnswerCount as? Int ?? 0
+            if let url  = product?.imageUrl {
+                self.productImage.sd_setImage(with: URL(string: url))
+            }
             self.tableView.reloadData()
             
         }) { (errors) in
@@ -290,24 +286,23 @@ class NewProductPageViewController: BVProductDisplayPageViewController, UITableV
     }
     
     func sdkIsConfiguredFor(_ product: ProductDetailSection) -> Bool {
-        
-        let sdk = BVSDKManager.shared()
-        
         // if we're in demo mode, we are configured for everything
-        if (sdk.apiKeyCurations == "REPLACE_ME"
-            && sdk.apiKeyConversations == "REPLACE_ME"
-            && sdk.apiKeyShopperAdvertising == "REPLACE_ME") {
+        let config = MockDataManager.sharedInstance.currentConfig!
+        
+        if (config.curationsKey == "REPLACE_ME"
+            && config.conversationsKey == "REPLACE_ME"
+            && config.shopperAdvertisingKey == "REPLACE_ME") {
             return true
         }
         
         // check which product we're configured to use
         switch product {
         case .ratings, .questions:
-            return BVSDKManager.shared().apiKeyConversations != "REPLACE_ME"
+            return config.conversationsKey != "REPLACE_ME"
         case .curations, .curationsAddPhoto, .curationsPhotoMap:
-            return BVSDKManager.shared().apiKeyCurations != "REPLACE_ME"
+            return config.curationsKey != "REPLACE_ME"
         case .recommendations:
-            return BVSDKManager.shared().apiKeyShopperAdvertising != "REPLACE_ME"
+            return config.shopperAdvertisingKey != "REPLACE_ME"
         case .location:
             return true
         }

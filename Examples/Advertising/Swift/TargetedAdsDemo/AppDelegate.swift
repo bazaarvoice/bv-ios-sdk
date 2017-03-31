@@ -14,14 +14,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
 
-    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
-        // FIXME: Add your own client id and Shopper Advertising API key here!
-        BVSDKManager.sharedManager().clientId = "REPLACE_ME"
-        BVSDKManager.sharedManager().apiKeyShopperAdvertising = "REPLACE_ME"
-        BVSDKManager.sharedManager().staging = false
-        BVSDKManager.sharedManager().setLogLevel(.Verbose)
+        // #warning See bvsdk_config_staging.json and bvsdk_config_product.json in the project for API key and client ID settings.
+        BVSDKManager.configure(.staging)
+        BVSDKManager.shared().setLogLevel(.verbose)
         
         self.setupAuthenticatedUser()
         
@@ -40,7 +38,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
          Example auth string given below.
          Pre-populated with a small profile interested in men's and women's apparel -- for testing and demonstration purposes.
          */
-        BVSDKManager.sharedManager().setUserWithAuthString("TOKEN_REMOVED")
+        BVSDKManager.shared().setUserWithAuthString("TOKEN_REMOVED")
         
     }
     

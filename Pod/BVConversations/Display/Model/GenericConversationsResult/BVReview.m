@@ -13,11 +13,6 @@
 
 @implementation BVReview
 
-
--(void)recordTap {
-    //TODO
-}
-
 -(id)initWithApiResponse:(NSDictionary *)apiResponse includes:(BVConversationsInclude *)includes {
     self = [super init];
     if(self){

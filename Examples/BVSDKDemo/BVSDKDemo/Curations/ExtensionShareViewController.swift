@@ -26,10 +26,6 @@ class ExtensionShareViewController: BaseDemoComposeServiceViewController {
         
         let mgr = BVSDKManager.shared()
         mgr.setLogLevel(BVLogLevel.error)
-        mgr.staging = CurationsDemoConstants.BVSDK_IS_STAGING;
-        mgr.apiKeyCurations = CurationsDemoConstants.API_KEY_CURATIONS
-        mgr.clientId = CurationsDemoConstants.CLIENT_ID
-        
     }
     
     // User selected to post a photo with a comment

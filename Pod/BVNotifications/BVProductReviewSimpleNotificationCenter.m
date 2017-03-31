@@ -14,6 +14,7 @@
 #import "BVConversationsInclude.h"
 #import "BVSDKManager.h"
 #import "BVProductReviewNotificationConfigurationLoader.h"
+#import "BVSDKConfiguration.h"
 
 @implementation BVProductReviewSimpleNotificationCenter
 
@@ -22,7 +23,7 @@
 }
 
 - (void)queuePIN:(nonnull BVPIN *)pin {
-    [self queueReviewWithProductId:pin.ID];
+    [self queueReviewWithProductId:pin.identifier];
 }
 
 - (void)queueReviewWithProductId:(nonnull NSString *)productId {

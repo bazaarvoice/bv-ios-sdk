@@ -13,10 +13,9 @@ class InlineRatingsDisplayTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        
-        BVSDKManager.shared().clientId = "apitestcustomer"
-        BVSDKManager.shared().apiKeyConversations = "KEY_REMOVED"
-        BVSDKManager.shared().staging = true
+        let configDict = ["clientId": "apitestcustomer",
+                          "apiKeyConversations": "KEY_REMOVED"];
+        BVSDKManager.configure(withConfiguration: configDict, configType: .staging)
     }
     
     

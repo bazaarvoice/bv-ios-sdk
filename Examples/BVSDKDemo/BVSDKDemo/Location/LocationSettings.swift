@@ -54,7 +54,6 @@ class LocationSettings: UIViewController, UITableViewDelegate, UITableViewDataSo
         let request = BVBulkStoreItemsRequest(20, offset: 0)
         request.includeStatistics(.reviews)
         request.load({ (storesResponse) in
-            
             // success
             self.stores = storesResponse.results
             self.userDefaultStore = self.getDefaultStore()

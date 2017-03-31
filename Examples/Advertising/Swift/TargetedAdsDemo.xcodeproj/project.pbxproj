@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		15E077E51E577B45001C89D0 /* bvsdk_config_prod.json in Resources */ = {isa = PBXBuildFile; fileRef = 15E077E31E577B45001C89D0 /* bvsdk_config_prod.json */; };
+		15E077E61E577B45001C89D0 /* bvsdk_config_staging.json in Resources */ = {isa = PBXBuildFile; fileRef = 15E077E41E577B45001C89D0 /* bvsdk_config_staging.json */; };
 		879144AA1CFDE99C00976220 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879144A91CFDE99C00976220 /* AppDelegate.swift */; };
 		879144AC1CFDE99C00976220 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879144AB1CFDE99C00976220 /* ViewController.swift */; };
 		879144AF1CFDE99C00976220 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 879144AD1CFDE99C00976220 /* Main.storyboard */; };
@@ -24,6 +26,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		15E077E31E577B45001C89D0 /* bvsdk_config_prod.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = bvsdk_config_prod.json; sourceTree = "<group>"; };
+		15E077E41E577B45001C89D0 /* bvsdk_config_staging.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = bvsdk_config_staging.json; sourceTree = "<group>"; };
 		614AD8AFEF121F58B2ED835D /* Pods-TargetedAdsDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TargetedAdsDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TargetedAdsDemo/Pods-TargetedAdsDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		879144A61CFDE99C00976220 /* TargetedAdsDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TargetedAdsDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		879144A91CFDE99C00976220 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -86,6 +90,8 @@
 		879144A81CFDE99C00976220 /* TargetedAdsDemo */ = {
 			isa = PBXGroup;
 			children = (
+				15E077E31E577B45001C89D0 /* bvsdk_config_prod.json */,
+				15E077E41E577B45001C89D0 /* bvsdk_config_staging.json */,
 				879144A91CFDE99C00976220 /* AppDelegate.swift */,
 				879144AB1CFDE99C00976220 /* ViewController.swift */,
 				879144AD1CFDE99C00976220 /* Main.storyboard */,
@@ -155,6 +161,7 @@
 				TargetAttributes = {
 					879144A51CFDE99C00976220 = {
 						CreatedOnToolsVersion = 7.3.1;
+						LastSwiftMigration = 0820;
 					};
 				};
 			};
@@ -181,7 +188,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				15E077E51E577B45001C89D0 /* bvsdk_config_prod.json in Resources */,
 				879144B41CFDE99C00976220 /* LaunchScreen.storyboard in Resources */,
+				15E077E61E577B45001C89D0 /* bvsdk_config_staging.json in Resources */,
 				879144DD1CFE11DE00976220 /* NativeContentAdDemoViewController.xib in Resources */,
 				879144CD1CFE047500976220 /* NativeContentAdView.xib in Resources */,
 				879144B11CFDE99C00976220 /* Assets.xcassets in Resources */,
@@ -207,7 +216,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		D87A9D5D8CBE73618598318E /* [CP] Embed Pods Frameworks */ = {
@@ -371,7 +380,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.bazaarvoice.TargetedAdsDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 2.3;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -385,7 +394,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.bazaarvoice.TargetedAdsDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 2.3;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

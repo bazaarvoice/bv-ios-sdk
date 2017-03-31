@@ -15,6 +15,12 @@
 /// Set to true when sending events to the staging server. Default is NO (production)
 @property BOOL isStagingServer;
 
+/// Sets the client ID for the API being used. App will assert if client ID is not set!
+@property (strong, nonatomic) NSString *clientId;
+
+
+/// Set to YES to only log analytic events and not send to server. Defaults to NO
+@property (nonatomic, assign) BOOL isDryRunAnalytics;
 
 /// Create and get the singleton instance of the analytics manager.
 + (BVAnalyticsManager *)sharedManager;

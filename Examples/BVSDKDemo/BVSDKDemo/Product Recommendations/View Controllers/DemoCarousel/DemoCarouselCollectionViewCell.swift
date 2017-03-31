@@ -9,26 +9,26 @@ import UIKit
 import BVSDK
 import HCSStarRatingView
 
-class DemoCarouselCollectionViewCell: BVRecommendationCollectionViewCell {
-
+class DemoCarouselCollectionViewCell: UICollectionViewCell {
+    
     @IBOutlet weak var productName : UILabel!
     @IBOutlet weak var price : UILabel!
     @IBOutlet weak var productImageView : UIImageView!
     @IBOutlet weak var starRating : HCSStarRatingView!
     
-    override var bvRecommendedProduct: BVRecommendedProduct! {
+    var product: BVDisplayableProductContent? {
         
         didSet {
+            self.productName.text = self.product?.displayName
+            self.price.text = ""
+            self.starRating.value = CGFloat(self.product?.averageRating ?? 0.0)
             
-            self.productName.text = bvRecommendedProduct!.productName
-            self.price.text = bvRecommendedProduct!.price 
-            self.starRating.value = CGFloat(bvRecommendedProduct!.averageRating.floatValue)
-            
-            let imageUrl = URL(string: bvRecommendedProduct!.imageURL)
-            self.productImageView.sd_setImage(with: imageUrl)
-            
+            if let url = self.product?.displayImageUrl {
+                let imageUrl = URL(string: url)
+                self.productImageView.sd_setImage(with: imageUrl)
+            }else {
+                self.productImageView.image = nil
+            }
         }
-        
     }
-
 }

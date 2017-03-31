@@ -12,6 +12,7 @@
 #import "BVAnalyticsManager.h"
 #import "BVRecsAnalyticsHelper.h"
 #import "BVShopperProfileRequestCache.h"
+#import "BVSDKConfiguration.h"
 
 @implementation BVRecommendationsLoader
 
@@ -29,12 +30,12 @@
     }
     
     BVSDKManager *sdkMgr = [BVSDKManager sharedManager];
-    NSString *client = sdkMgr.clientId;
+    NSString *client = sdkMgr.configuration.clientId;
     NSString *apiRoot = sdkMgr.urlRootShopperAdvertising;
-    NSString *apiKey = sdkMgr.apiKeyShopperAdvertising;
+    NSString *apiKey = sdkMgr.configuration.apiKeyShopperAdvertising;
     
     // check that `apiKeyShopperAdvertising` is valid. Will fail only in debug mode.
-    NSAssert(apiKey != nil && ![apiKey isEqualToString:@""], @"You must supply apiKeyShopperAdvertising in the BVSDKManager before using the Bazaarvoice SDK.");
+    NSAssert(apiKey.length, @"You must supply apiKeyShopperAdvertising in the BVSDKManager before using the Bazaarvoice SDK.");
     
     // Cool, clientId and passKey are valid.
     
@@ -167,8 +168,8 @@
 
 -(BOOL)isSDKValid {
     
-    NSString* clientId = [[BVSDKManager sharedManager] clientId];
-    NSString* passKey  = [[BVSDKManager sharedManager] apiKeyShopperAdvertising];
+    NSString* clientId = [BVSDKManager sharedManager].configuration.clientId;
+    NSString* passKey  = [BVSDKManager sharedManager].configuration.apiKeyShopperAdvertising;
     
     if (clientId == nil || passKey == nil || [clientId isEqualToString:@""] || [passKey isEqualToString:@""]) {
         return false;
@@ -182,8 +183,8 @@
     
     NSMutableDictionary* userInfo = [NSMutableDictionary dictionary];
 
-    NSString* clientId = [[BVSDKManager sharedManager] clientId];
-    NSString* passKey  = [[BVSDKManager sharedManager] apiKeyShopperAdvertising];
+    NSString* clientId = [BVSDKManager sharedManager].configuration.clientId;
+    NSString* passKey  = [BVSDKManager sharedManager].configuration.apiKeyShopperAdvertising;
     
     if([clientId isEqualToString:@""]) {
         [userInfo setValue:@"Client Id is not set." forKey:NSLocalizedDescriptionKey];

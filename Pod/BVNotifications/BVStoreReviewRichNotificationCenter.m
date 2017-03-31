@@ -17,6 +17,7 @@
 #import "BVNotificationsAnalyticsHelper.h"
 #import "BVNotificationConstants.h"
 #import "BVStoreNotificationConfigurationLoader.h"
+#import "BVSDKConfiguration.h"
 
 @implementation BVStoreReviewRichNotificationCenter
 
@@ -109,8 +110,8 @@
                          USER_INFO_PROD_NAME: store.name,
                          USER_INFO_PROD_IMAGE_URL: store.imageUrl,
                          USER_INFO_URL_SCHEME: noteProps.customUrlScheme,
-                         USER_INFO_API_KEY_CONVERSATIONS: [[BVSDKManager sharedManager] apiKeyConversationsStores],
-                                                  USER_INFO_CLIENTID: [[BVSDKManager sharedManager] clientId],
+                         USER_INFO_API_KEY_CONVERSATIONS: [BVSDKManager sharedManager].configuration.apiKeyConversationsStores,
+                                                  USER_INFO_CLIENTID: [BVSDKManager sharedManager].configuration.clientId,
                          USER_INFO_CONFIG_PROPS: [[BVStoreNotificationConfigurationLoader sharedManager] bvStoreReviewNotificationProperties].configDict};
     
     UNTimeIntervalNotificationTrigger *trigger = [UNTimeIntervalNotificationTrigger triggerWithTimeInterval:delay repeats:NO];

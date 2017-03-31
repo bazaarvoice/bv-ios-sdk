@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		15E077D91E576854001C89D0 /* bvsdk_config_staging.json in Resources */ = {isa = PBXBuildFile; fileRef = 15E077D71E576854001C89D0 /* bvsdk_config_staging.json */; };
+		15E077DA1E576854001C89D0 /* bvsdk_config_prod.json in Resources */ = {isa = PBXBuildFile; fileRef = 15E077D81E576854001C89D0 /* bvsdk_config_prod.json */; };
 		873C795B1D4BF0C90048AD55 /* ReviewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 873C795A1D4BF0C90048AD55 /* ReviewsViewController.m */; };
 		874863881D4BDA8F00B43F00 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 874863841D4BDA8F00B43F00 /* LaunchScreen.storyboard */; };
 		874863891D4BDA8F00B43F00 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 874863861D4BDA8F00B43F00 /* Main.storyboard */; };
@@ -33,6 +35,8 @@
 /* Begin PBXFileReference section */
 		00DA1C5CD00EE68690FD143A /* Pods_ConversationsExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ConversationsExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0805DFF68F2200FDCA49BE4A /* Pods-ConversationsExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ConversationsExample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ConversationsExample/Pods-ConversationsExample.debug.xcconfig"; sourceTree = "<group>"; };
+		15E077D71E576854001C89D0 /* bvsdk_config_staging.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = bvsdk_config_staging.json; sourceTree = "<group>"; };
+		15E077D81E576854001C89D0 /* bvsdk_config_prod.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = bvsdk_config_prod.json; sourceTree = "<group>"; };
 		51881DC8EBF9E9D2AB6B810B /* Pods-ConversationsExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ConversationsExample.release.xcconfig"; path = "Pods/Target Support Files/Pods-ConversationsExample/Pods-ConversationsExample.release.xcconfig"; sourceTree = "<group>"; };
 		873C79591D4BF0C90048AD55 /* ReviewsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReviewsViewController.h; sourceTree = "<group>"; };
 		873C795A1D4BF0C90048AD55 /* ReviewsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReviewsViewController.m; sourceTree = "<group>"; };
@@ -112,6 +116,8 @@
 		876DF5561CF4E87A005D841F /* ConversationsExample */ = {
 			isa = PBXGroup;
 			children = (
+				15E077D71E576854001C89D0 /* bvsdk_config_staging.json */,
+				15E077D81E576854001C89D0 /* bvsdk_config_prod.json */,
 				876DF55A1CF4E87B005D841F /* AppDelegate.h */,
 				876DF55B1CF4E87B005D841F /* AppDelegate.m */,
 				87FF7F321D4F91BA00019D54 /* ViewControllers */,
@@ -249,10 +255,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				15E077DA1E576854001C89D0 /* bvsdk_config_prod.json in Resources */,
 				874863891D4BDA8F00B43F00 /* Main.storyboard in Resources */,
 				8748639A1D4BE5FB00B43F00 /* StatisticTableViewCell.xib in Resources */,
 				874863991D4BE5FB00B43F00 /* MyReviewTableViewCell.xib in Resources */,
 				87C768431D4BB0AB0091E5A1 /* Assets.xcassets in Resources */,
+				15E077D91E576854001C89D0 /* bvsdk_config_staging.json in Resources */,
 				874863881D4BDA8F00B43F00 /* LaunchScreen.storyboard in Resources */,
 				874863971D4BE5FB00B43F00 /* MyAnswerTableViewCell.xib in Resources */,
 				874863981D4BE5FB00B43F00 /* MyQuestionTableViewCell.xib in Resources */,

@@ -73,7 +73,7 @@ class CartViewController: UIViewController, UITableViewDataSource {
             let product = CartManager.sharedInstance.productAtIndex(index)
             products.append(product)
             
-            let currTransaction = BVTransactionItem(sku:product.identifier!,
+            let currTransaction = BVTransactionItem(sku:product.identifier,
                                               name: product.name,
                                               category: product.categoryId,
                                               price: 0.01,

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		152037CE1E56546100160E3F /* bvsdk_config_staging.json in Resources */ = {isa = PBXBuildFile; fileRef = 152037CD1E56546100160E3F /* bvsdk_config_staging.json */; };
+		1541A4AC1E64CDF7002715D5 /* bvsdk_config_prod.json in Resources */ = {isa = PBXBuildFile; fileRef = 1541A4AB1E64CDF7002715D5 /* bvsdk_config_prod.json */; };
 		7AFB3894B3A3D5C44CA7B21E /* Pods_CurationsExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F23C0739764BA70B669AF760 /* Pods_CurationsExample.framework */; };
 		879144111CF4F67D00976220 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 879144101CF4F67D00976220 /* main.m */; };
 		879144141CF4F67D00976220 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 879144131CF4F67D00976220 /* AppDelegate.m */; };
@@ -19,6 +21,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		152037CD1E56546100160E3F /* bvsdk_config_staging.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = bvsdk_config_staging.json; sourceTree = "<group>"; };
+		1541A4AB1E64CDF7002715D5 /* bvsdk_config_prod.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = bvsdk_config_prod.json; sourceTree = "<group>"; };
 		3E50914E388402EC78891262 /* Pods-CurationsExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CurationsExample.release.xcconfig"; path = "Pods/Target Support Files/Pods-CurationsExample/Pods-CurationsExample.release.xcconfig"; sourceTree = "<group>"; };
 		8791440C1CF4F67D00976220 /* CurationsExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CurationsExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		879144101CF4F67D00976220 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -86,6 +90,8 @@
 		8791440E1CF4F67D00976220 /* CurationsExample */ = {
 			isa = PBXGroup;
 			children = (
+				1541A4AB1E64CDF7002715D5 /* bvsdk_config_prod.json */,
+				152037CD1E56546100160E3F /* bvsdk_config_staging.json */,
 				879144121CF4F67D00976220 /* AppDelegate.h */,
 				879144131CF4F67D00976220 /* AppDelegate.m */,
 				879144151CF4F67D00976220 /* ViewController.h */,
@@ -169,8 +175,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1541A4AC1E64CDF7002715D5 /* bvsdk_config_prod.json in Resources */,
 				87C96D751E4A3C59004B295B /* happy_icon.png in Resources */,
 				87C96D741E4A3C59004B295B /* curations_test_image.png in Resources */,
+				152037CE1E56546100160E3F /* bvsdk_config_staging.json in Resources */,
 				8791441F1CF4F67D00976220 /* LaunchScreen.storyboard in Resources */,
 				8791441C1CF4F67D00976220 /* Assets.xcassets in Resources */,
 				8791441A1CF4F67D00976220 /* Main.storyboard in Resources */,

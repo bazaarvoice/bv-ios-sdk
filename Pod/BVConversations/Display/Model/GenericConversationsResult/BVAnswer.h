@@ -9,7 +9,6 @@
 #import "BVContextDataValue.h"
 #import "BVBadge.h"
 #import "BVGenericConversationsResult.h"
-#import "BVDisplayableContent.h"
 #import "BVPhoto.h"
 #import "BVVideo.h"
 
@@ -20,7 +19,7 @@
     Answer text is included in the `answerText` property.
     User nickname is included in the `userNickname` property.
  */
-@interface BVAnswer : NSObject<BVGenericConversationsResult, BVDisplayableContent>
+@interface BVAnswer : NSObject<BVGenericConversationsResult>
 
 @property NSString* _Nullable answerText;
 @property NSString* _Nullable userNickname;

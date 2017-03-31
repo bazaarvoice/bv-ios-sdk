@@ -7,8 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "BVDisplayableProductContent.h"
 
-@interface BVPIN : NSObject
+@interface BVPIN : NSObject<BVDisplayableProductContent>
 
 - (instancetype)init NS_UNAVAILABLE;
 
@@ -21,7 +22,5 @@
 @property(nonatomic, strong, readonly) NSString *productPageURL;
 
 @property(nonatomic, strong, readonly) NSString *name;
-
-@property(nonatomic, strong, readonly) NSString *ID;
 
 @end

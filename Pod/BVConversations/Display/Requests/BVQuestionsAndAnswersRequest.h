@@ -14,6 +14,8 @@
 #import "BVSortOptionAnswers.h"
 #import "BVQuestionsAndAnswersResponse.h"
 
+typedef void (^QuestionsAndAnswersSuccessHandler)(BVQuestionsAndAnswersResponse* _Nonnull response);
+
 /*
  You can get multiple questions and their associated answers with this request object.
  Optionally, you can filter, sort, or search reviews using the `addSort*` and `addFilter*` and `search` methods.

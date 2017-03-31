@@ -10,12 +10,12 @@
 
 #import <Foundation/Foundation.h>
 #import "BVProductReview.h"
-
+#import "BVDisplayableProductContent.h"
 NS_ASSUME_NONNULL_BEGIN
 
 
 /// Model contents for a single product recommendation display item
-@interface BVRecommendedProduct : NSObject
+@interface BVRecommendedProduct : NSObject<BVDisplayableProductContent>
 
 
 /**

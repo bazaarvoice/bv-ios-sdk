@@ -21,6 +21,7 @@ FOUNDATION_EXPORT const unsigned char BVSDKVersionString[];
 #import <BVSDK/BVDiagnosticHelpers.h>
 
 // Notifications
+#import <BVSDK/BVNotifications.h>
 #import <BVSDK/BVNotificationProperties.h>
 #import <BVSDK/BVNotificationCenterObject.h>
 #import <BVSDK/BVNotificationConfiguration.h>
@@ -35,9 +36,14 @@ FOUNDATION_EXPORT const unsigned char BVSDKVersionString[];
 #import <BVSDK/BVStoreReviewNotificationProperties.h>
 #import <BVSDK/BVStoreNotificationConfigurationLoader.h>
 #import <BVSDK/BVProductReviewNotificationConfigurationLoader.h>
+#import <BVSDK/BVNotificationViewController.h>
+#import <BVSDK/BVStoreReviewSimpleNotificationCenter.h>
+#import <BVSDK/BVProductReviewRichNotificationCenter.h>
+#import <BVSDK/BVProductReviewSimpleNotificationCenter.h>
 
 // Analytics
 #import <BVSDK/BVBaseAnalyticsHelper.h>
+#import <BVSDK/BVAnalyticEventManager.h>
 
 // Conversations
 #import <BVSDK/BVConversationsErrorResponse.h>
@@ -87,7 +93,12 @@ FOUNDATION_EXPORT const unsigned char BVSDKVersionString[];
 #import <BVSDK/BVQuestionSubmission.h>
 
 #import <BVSDK/BVAuthorRequest.h>
+#import <BVSDK/BVAuthorInclude.h>
 #import <BVSDK/BVReviewsRequest.h>
+#import <BVSDK/BVBaseReviewsRequest.h>
+#import <BVSDK/BVBaseProductRequest.h>
+#import <BVSDK/BVProductTextSearchRequest.h>
+#import <BVSDK/BVBulkProductRequest.h>
 #import <BVSDK/BVReviewTableViewCell.h>
 #import <BVSDK/BVReviewView.h>
 #import <BVSDK/BVReviewsCollectionView.h>
@@ -117,6 +128,7 @@ FOUNDATION_EXPORT const unsigned char BVSDKVersionString[];
 // CurationsUI
 #import <BVSDK/BVCurationsUICollectionView.h>
 #import <BVSDK/BVCurationsPostViewController.h>
+#import <BVSDK/BVCurationsUICollectionViewCell.h>
 
 // Location
 #import <BVSDK/BVPlaceAttributes.h>
