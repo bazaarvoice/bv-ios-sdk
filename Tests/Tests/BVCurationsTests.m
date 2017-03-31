@@ -19,10 +19,9 @@
     [super setUp];
     
     // Put setup code here. This method is called before the invocation of each test method in the class.
-    
-    [[BVSDKManager sharedManager] setApiKeyCurations:@"fakeymcfakersonfakekey"];
-    [[BVSDKManager sharedManager] setClientId:@"test-classic"];
-    [[BVSDKManager sharedManager] setStaging:YES];
+    NSDictionary *configDict = @{@"apiKeyCurations": @"fakeymcfakersonfakekey",
+                                 @"clientId": @"test-classic"};
+    [BVSDKManager configureWithConfiguration:configDict configType:BVConfigurationTypeStaging];
     [[BVSDKManager sharedManager] setLogLevel:BVLogLevelError];
     
 }

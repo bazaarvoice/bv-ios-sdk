@@ -45,14 +45,10 @@
 - (void)setUp
 {
     [super setUp];
-        
-    [BVSDKManager sharedManager].staging = IS_STAGING;
-    [BVSDKManager sharedManager].clientId = TEST_CLIENT_ID;
-    // BVConverstaions SDK API Key
-    [BVSDKManager sharedManager].apiKeyConversations = TEST_KEY_CONVERSATIONS;
-    
-    // BVRecommendations & BVAdvertising SDK key.
-    [BVSDKManager sharedManager].apiKeyShopperAdvertising = TEST_KEY_SHOPPER_ADVERTISING;
+    NSDictionary *configDict = @{@"apiKeyConversations": TEST_KEY_CONVERSATIONS,
+                                 @"apiKeyShopperAdvertising": TEST_KEY_SHOPPER_ADVERTISING,
+                                 @"clientId": TEST_CLIENT_ID};
+    [BVSDKManager configureWithConfiguration:configDict configType:BVConfigurationTypeStaging];
     
     // Global logging level
     [[BVSDKManager sharedManager] setLogLevel:BVLogLevelAnalyticsOnly];

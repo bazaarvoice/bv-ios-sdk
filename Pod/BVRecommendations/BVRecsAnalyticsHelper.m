@@ -9,7 +9,7 @@
 #import "BVAnalyticsManager.h"
 #include <sys/sysctl.h>
 #include <sys/utsname.h>
-
+#import "BVSDKConfiguration.h"
 
 @implementation BVRecsAnalyticsHelper
 
@@ -39,7 +39,7 @@ static const NSString *bvProductName = @"Recommendations";
              @"cl": @"Impression",
              @"type": @"Recommendation",
              @"source": @"recommendation-mob",
-             @"client": [[BVSDKManager sharedManager] clientId],
+             @"client": [[[BVSDKManager sharedManager] configuration] clientId],
              @"bvProduct": bvProductName
              };
 }
@@ -49,7 +49,7 @@ static const NSString *bvProductName = @"Recommendations";
              @"cl": @"Feature",
              @"type": @"Used",
              @"source": @"recommendation-mob",
-             @"client": [[BVSDKManager sharedManager] clientId],
+             @"client": [[[BVSDKManager sharedManager]configuration] clientId],
              @"bvProduct": bvProductName
              };
 }
@@ -59,7 +59,7 @@ static const NSString *bvProductName = @"Recommendations";
              @"cl": @"PageView",
              @"type": @"Embedded",
              @"source": @"recommendation-mob",
-             @"client": [[BVSDKManager sharedManager] clientId],
+             @"client": [[[BVSDKManager sharedManager] configuration] clientId],
              @"bvProduct": bvProductName
              };
 }

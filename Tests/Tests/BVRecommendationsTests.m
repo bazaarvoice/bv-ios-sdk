@@ -23,9 +23,9 @@
     [super setUp];
     // Put setup code here. This method is called before the invocation of each test method in the class.
     
-    [[BVSDKManager sharedManager] setApiKeyShopperAdvertising:@"fakekey"]; // test recs passkey
-    [[BVSDKManager sharedManager] setClientId:@"iosunittest"];
-    [[BVSDKManager sharedManager] setStaging:YES];
+    NSDictionary *configDict = @{@"apiKeyShopperAdvertising": @"fakekey",
+                             @"clientId": @"iosunittest"};
+    [BVSDKManager configureWithConfiguration:configDict configType:BVConfigurationTypeStaging];
     [[BVSDKManager sharedManager] setLogLevel:BVLogLevelError];
 }
 

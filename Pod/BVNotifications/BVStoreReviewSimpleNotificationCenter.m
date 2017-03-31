@@ -15,6 +15,7 @@
 #import "BVNotificationConstants.h"
 #import "BVConversationsInclude.h"
 #import "BVStoreNotificationConfigurationLoader.h"
+#import "BVSDKConfiguration.h"
 
 @implementation BVStoreReviewSimpleNotificationCenter
 

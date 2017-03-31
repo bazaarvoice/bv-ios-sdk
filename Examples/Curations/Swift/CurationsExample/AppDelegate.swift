@@ -15,11 +15,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        
-        // FIXME: Add your own Curations client id and API key here!
-        BVSDKManager.shared().clientId = "bazaarvoice"
-        BVSDKManager.shared().apiKeyCurations = "r538c65d7d3rsx2265tvzfje"
-        BVSDKManager.shared().staging = true;
+    
+        // #warning See bvsdk_config_staging.json and bvsdk_config_product.json in the project for API key and client ID settings.
+        BVSDKManager.configure(.staging)
         BVSDKManager.shared().setLogLevel(.verbose)
         
         return true

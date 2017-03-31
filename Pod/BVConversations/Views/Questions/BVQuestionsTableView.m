@@ -146,12 +146,6 @@
     if([delegate_interceptor.receiver respondsToSelector:@selector(tableView:didSelectRowAtIndexPath:)]) {
         [delegate_interceptor.receiver tableView:tableView didSelectRowAtIndexPath:indexPath];
     }
-    
-    BVQuestion *question = [cellToProductMap objectForKey:[BVViewsHelper formatIndex:indexPath]];
-    if (question != nil){
-        [question recordTap];
-    }
-    
 }
 
 #pragma mark UIScrollViewDelegate

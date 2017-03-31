@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1560ED8C1E51F2760062BB69 /* bvsdk_config.json in Resources */ = {isa = PBXBuildFile; fileRef = 1560ED8B1E51F2760062BB69 /* bvsdk_config.json */; };
 		1577DE431DA7E64D00A12B8F /* ReviewTitleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1577DE411DA7E64D00A12B8F /* ReviewTitleTableViewCell.swift */; };
 		1577DE441DA7E64D00A12B8F /* ReviewTitleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1577DE421DA7E64D00A12B8F /* ReviewTitleTableViewCell.xib */; };
 		1577DE471DA7EB7800A12B8F /* RecommendStoreTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1577DE451DA7EB7800A12B8F /* RecommendStoreTableViewCell.swift */; };
@@ -243,8 +244,6 @@
 		87F24D851DAE8147002231D6 /* enduranceCyclesNY.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 87F24D831DAE8147002231D6 /* enduranceCyclesNY.gpx */; };
 		87F24D881DAE886E002231D6 /* StoreReviewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F24D861DAE886E002231D6 /* StoreReviewsViewController.swift */; };
 		87F24D891DAE886E002231D6 /* StoreReviewsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 87F24D871DAE886E002231D6 /* StoreReviewsViewController.xib */; };
-		87F2D64B1D9ADFF400FB43F3 /* (null) in Sources */ = {isa = PBXBuildFile; };
-		87F2D64C1D9ADFF400FB43F3 /* (null) in Resources */ = {isa = PBXBuildFile; };
 		87F5B9361DC38F37004D2297 /* testNotificationConfig.json in Resources */ = {isa = PBXBuildFile; fileRef = 87F5B9351DC38F37004D2297 /* testNotificationConfig.json */; };
 /* End PBXBuildFile section */
 
@@ -349,6 +348,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1560ED8B1E51F2760062BB69 /* bvsdk_config.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = bvsdk_config.json; sourceTree = "<group>"; };
 		1577DE411DA7E64D00A12B8F /* ReviewTitleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewTitleTableViewCell.swift; sourceTree = "<group>"; };
 		1577DE421DA7E64D00A12B8F /* ReviewTitleTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReviewTitleTableViewCell.xib; sourceTree = "<group>"; };
 		1577DE451DA7EB7800A12B8F /* RecommendStoreTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecommendStoreTableViewCell.swift; sourceTree = "<group>"; };
@@ -1064,6 +1064,7 @@
 		7385D8501CE3ACD800CA5F5E /* Curations Custom Post Extension */ = {
 			isa = PBXGroup;
 			children = (
+				1560ED8B1E51F2760062BB69 /* bvsdk_config.json */,
 				73571C971CEE4DC300FF3220 /* Curations Custom Post Extension.entitlements */,
 				7385D86A1CE3AE9900CA5F5E /* DemoCustomPostViewController.swift */,
 				736D4CCD1CDED0C40095EE6B /* ExtensionShareViewController.swift */,
@@ -1705,7 +1706,6 @@
 				15EA71AA1DAC1E5000D9A706 /* cameraIcon@2x.png in Resources */,
 				737FA0BC1CF8ADB100864B1B /* submitAnswer.json in Resources */,
 				87F24D851DAE8147002231D6 /* enduranceCyclesNY.gpx in Resources */,
-				87F2D64C1D9ADFF400FB43F3 /* (null) in Resources */,
 				8763B3191D1DC65B00C71F54 /* enduranceCyclesSanFrancisco.gpx in Resources */,
 				7356B23D1CF89FCA004B0121 /* AnswerListHeaderCell.xib in Resources */,
 				730A646E1CE5548400580E9C /* NewProductPageViewController.xib in Resources */,
@@ -1791,6 +1791,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1560ED8C1E51F2760062BB69 /* bvsdk_config.json in Resources */,
 				73571C991CEE4F2900FF3220 /* config in Resources */,
 				7385D8551CE3ACD800CA5F5E /* MainInterface.storyboard in Resources */,
 				87CD52241CE3F94F00FC2726 /* icon_bvlogo.png in Resources */,
@@ -2025,7 +2026,6 @@
 				7348C3721CE05A30000B6F3C /* SettingsViewController.swift in Sources */,
 				15EA71A21DABF3CB00D9A706 /* MPTextView.m in Sources */,
 				739BDAC91CED47DE007D52CC /* ConversationsModel.swift in Sources */,
-				87F2D64B1D9ADFF400FB43F3 /* (null) in Sources */,
 				87BA80901D344D9800AFA54D /* StoreLocationTableViewCell.swift in Sources */,
 				87CF9A651DEE32CD0069D2B9 /* CartManager.swift in Sources */,
 				736D4CEE1CDED0C40095EE6B /* DateTimeAgo.swift in Sources */,

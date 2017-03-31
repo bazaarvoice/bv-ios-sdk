@@ -45,9 +45,4 @@
     return self;
 }
 
-
--(void)recordTap {
-    // no 'user tapped' action for answers yet
-}
-
 @end

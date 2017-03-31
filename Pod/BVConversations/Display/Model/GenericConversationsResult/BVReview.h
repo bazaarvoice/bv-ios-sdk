@@ -7,7 +7,6 @@
 
 #import <Foundation/Foundation.h>
 #import "BVGenericConversationsResult.h"
-#import "BVDisplayableContent.h"
 #import "BVDimensionAndDistributionUtil.h"
 #import "BVPhoto.h"
 #import "BVVideo.h"
@@ -25,7 +24,7 @@
     Review rating is availble in the `rating` property.
     User nickname is available in the `userNickname` property.
  */
-@interface BVReview : NSObject<BVGenericConversationsResult, BVDisplayableContent>
+@interface BVReview : NSObject<BVGenericConversationsResult>
 
 @property NSString* _Nullable reviewText;
 @property NSString* _Nullable userNickname;

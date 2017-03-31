@@ -10,6 +10,7 @@
 #import "BVAnswerSubmissionErrorResponse.h"
 #import "BVSDKManager.h"
 #import "BVCore.h"
+#import "BVSDKConfiguration.h"
 
 @interface BVAnswerSubmission()
 
@@ -200,7 +201,7 @@
                                           @"questionid": self.questionId,
                                       }];
     
-    parameters[@"passkey"] = [BVSDKManager sharedManager].apiKeyConversations;
+    parameters[@"passkey"] = [BVSDKManager sharedManager].configuration.apiKeyConversations;
     parameters[@"action"] = [BVSubmissionActionUtil toString:action];
     
     parameters[@"campaignid"] = self.campaignId;

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		15E077D01E5764BA001C89D0 /* bvsdk_config_staging.json in Resources */ = {isa = PBXBuildFile; fileRef = 15E077CF1E5764BA001C89D0 /* bvsdk_config_staging.json */; };
+		15E077D21E576615001C89D0 /* bvsdk_config_prod.json in Resources */ = {isa = PBXBuildFile; fileRef = 15E077D11E576615001C89D0 /* bvsdk_config_prod.json */; };
 		8791445D1CF5E4AE00976220 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8791445C1CF5E4AE00976220 /* main.m */; };
 		879144601CF5E4AE00976220 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8791445F1CF5E4AE00976220 /* AppDelegate.m */; };
 		879144631CF5E4AE00976220 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 879144621CF5E4AE00976220 /* ViewController.m */; };
@@ -19,6 +21,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		15E077CF1E5764BA001C89D0 /* bvsdk_config_staging.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = bvsdk_config_staging.json; sourceTree = "<group>"; };
+		15E077D11E576615001C89D0 /* bvsdk_config_prod.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = bvsdk_config_prod.json; sourceTree = "<group>"; };
 		1B03E40FDB24B6E758F6C468 /* Pods_RecommendationsExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RecommendationsExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1C0448B77656B04A80176DA3 /* Pods-RecommendationsExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RecommendationsExample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RecommendationsExample/Pods-RecommendationsExample.debug.xcconfig"; sourceTree = "<group>"; };
 		879144581CF5E4AE00976220 /* RecommendationsExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RecommendationsExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -70,6 +74,8 @@
 		8791445A1CF5E4AE00976220 /* RecommendationsExample */ = {
 			isa = PBXGroup;
 			children = (
+				15E077CF1E5764BA001C89D0 /* bvsdk_config_staging.json */,
+				15E077D11E576615001C89D0 /* bvsdk_config_prod.json */,
 				8791445E1CF5E4AE00976220 /* AppDelegate.h */,
 				8791445F1CF5E4AE00976220 /* AppDelegate.m */,
 				879144611CF5E4AE00976220 /* ViewController.h */,
@@ -173,6 +179,8 @@
 			files = (
 				8791446B1CF5E4AE00976220 /* LaunchScreen.storyboard in Resources */,
 				879144681CF5E4AE00976220 /* Assets.xcassets in Resources */,
+				15E077D01E5764BA001C89D0 /* bvsdk_config_staging.json in Resources */,
+				15E077D21E576615001C89D0 /* bvsdk_config_prod.json in Resources */,
 				879144761CF5E77C00976220 /* DemoCell.xib in Resources */,
 				879144661CF5E4AE00976220 /* Main.storyboard in Resources */,
 			);

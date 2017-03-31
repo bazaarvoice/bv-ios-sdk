@@ -8,13 +8,14 @@
 
 #import "BVCurationsFeedLoader.h"
 #import "BVCurationsFeedItem.h"
+#import "BVSDKConfiguration.h"
 
 @implementation BVCurationsFeedLoader
 
 
 - (NSString *)urlRootCurations {
     
-    return [BVSDKManager sharedManager].staging ? @"https://stg.api.bazaarvoice.com" : @"https://api.bazaarvoice.com";
+    return [BVSDKManager sharedManager].configuration.staging ? @"https://stg.api.bazaarvoice.com" : @"https://api.bazaarvoice.com";
     
 }
 
@@ -24,8 +25,8 @@
     // check if apiKey is valid before loading any data. Will fail in debug only.
 #pragma clang diagnostic push 
 #pragma clang diagnostic ignored "-Wunused-variable"
-    NSString* apiKey = [[BVSDKManager sharedManager] apiKeyCurations];
-    NSAssert(apiKey != nil && ![apiKey isEqualToString:@""], @"apiKeyCurations must be set on BVSDKManager before using the Curations SDK.");
+    NSString* apiKey = [BVSDKManager sharedManager].configuration.apiKeyCurations;
+    NSAssert(apiKey.length, @"apiKeyCurations must be set on BVSDKManager before using the Curations SDK.");
 #pragma clang diagnostic pop
     NSString *endPoint = [NSString stringWithFormat:@"%@/curations/content/get", [self urlRootCurations]];
     

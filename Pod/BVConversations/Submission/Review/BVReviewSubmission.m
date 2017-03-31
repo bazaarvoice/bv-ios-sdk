@@ -8,6 +8,7 @@
 #import "BVReviewSubmission.h"
 #import "BVReviewSubmissionErrorResponse.h"
 #import "BVSDKManager.h"
+#import "BVSDKConfiguration.h"
 
 @interface BVReviewSubmission()
 
@@ -365,7 +366,7 @@
 }
 
 - (NSString * _Nonnull)getPasskey{
-    return [BVSDKManager sharedManager].apiKeyConversations;
+    return [BVSDKManager sharedManager].configuration.apiKeyConversations;
 }
 
 @end

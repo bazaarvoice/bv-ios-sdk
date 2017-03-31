@@ -8,6 +8,7 @@
 #import "BVQuestionSubmission.h"
 #import "BVQuestionSubmissionErrorResponse.h"
 #import "BVSDKManager.h"
+#import "BVSDKConfiguration.h"
 
 @interface BVQuestionSubmission()
 
@@ -195,7 +196,7 @@
                                           @"productId": self.productId
                                        }];
     
-    parameters[@"passkey"] = [BVSDKManager sharedManager].apiKeyConversations;
+    parameters[@"passkey"] = [BVSDKManager sharedManager].configuration.apiKeyConversations;
     parameters[@"action"] = [BVSubmissionActionUtil toString:action];
     
     parameters[@"questionsummary"] = self.questionSummary;

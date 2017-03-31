@@ -9,6 +9,7 @@
 #import "BVReviewSubmissionErrorResponse.h"
 #import "BVSDKManager.h"
 #import "BVUploadableStorePhoto.h"
+#import "BVSDKConfiguration.h"
 
 @interface BVStoreReviewSubmission()
 
@@ -27,7 +28,7 @@
 }
 
 - (NSString * _Nonnull)getPasskey{
-    return [BVSDKManager sharedManager].apiKeyConversationsStores;
+    return [BVSDKManager sharedManager].configuration.apiKeyConversationsStores;
 }
 
 @end

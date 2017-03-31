@@ -9,6 +9,7 @@
 #import "BVConversationsRequest.h"
 #import "BVSDKManager.h"
 #import "BVSubmissionErrorResponse.h"
+#import "BVSDKConfiguration.h"
 
 @interface BVUploadableStorePhoto()
 
@@ -18,7 +19,7 @@
 
 
 - (NSString * _Nonnull)getPasskey{
-    return [BVSDKManager sharedManager].apiKeyConversationsStores;
+    return [BVSDKManager sharedManager].configuration.apiKeyConversationsStores;
 }
 
 @end

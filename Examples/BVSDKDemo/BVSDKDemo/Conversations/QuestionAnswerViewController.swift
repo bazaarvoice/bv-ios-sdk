@@ -58,7 +58,7 @@ class QuestionAnswerViewController: UIViewController, UITableViewDelegate, UITab
     
     func loadQuestions() {
         
-        let request = BVQuestionsAndAnswersRequest(productId: product.identifier!, limit: 20, offset: 0)
+        let request = BVQuestionsAndAnswersRequest(productId: product.identifier, limit: 20, offset: 0)
         
         self.tableView.load(request, success: { (response) in
             

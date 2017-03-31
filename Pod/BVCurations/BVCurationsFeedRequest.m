@@ -7,6 +7,7 @@
 //
 
 #import "BVCurationsFeedRequest.h"
+#import "BVSDKConfiguration.h"
 
 @interface BVCurationsFeedRequest()
 
@@ -45,10 +46,10 @@
     NSAssert([self.groups count] > 0, @"You must supply at least one item in the groups parameter.");
     
     BVSDKManager *sdkMgr = [BVSDKManager sharedManager];
-    NSString *clientId = sdkMgr.clientId;
-    NSString *apiKey = sdkMgr.apiKeyCurations;
+    NSString *clientId = sdkMgr.configuration.clientId;
+    NSString *apiKey = sdkMgr.configuration.apiKeyCurations;
     
-    NSAssert(apiKey != nil && ![apiKey isEqualToString:@""], @"apiKeyCurations must be set on BVSDKManager before using the Curations SDK.");
+    NSAssert(apiKey.length, @"apiKeyCurations must be set on BVSDKManager before using the Curations SDK.");
     
     
     // Build up the query parameters...

@@ -16,6 +16,7 @@
 #import "BVConversationsInclude.h"
 #import "BVProductReviewNotificationProperties.h"
 #import "BVProductReviewNotificationConfigurationLoader.h"
+#import "BVSDKConfiguration.h"
 
 @implementation BVProductReviewRichNotificationCenter
 
@@ -49,7 +50,7 @@
 }
 
 -(void)queuePIN:(BVPIN *)pin {
-    [self loadProductInfo:pin.ID completion:^(BVProduct * _Nullable product) {
+    [self loadProductInfo:pin.identifier completion:^(BVProduct * _Nullable product) {
         if (product) {
             [self queueProductReview:[[BVProductReviewNotificationConfigurationLoader sharedManager] bvProductReviewNotificationProperties] product:product];
         }
@@ -82,8 +83,8 @@
                          USER_INFO_PROD_NAME: product.name,
                          USER_INFO_PROD_IMAGE_URL: product.imageUrl,
                          USER_INFO_URL_SCHEME: noteProps.customUrlScheme,
-                         USER_INFO_API_KEY_CONVERSATIONS: [[BVSDKManager sharedManager] apiKeyConversations],
-                         USER_INFO_CLIENTID: [[BVSDKManager sharedManager] clientId],
+                         USER_INFO_API_KEY_CONVERSATIONS: [BVSDKManager sharedManager].configuration.apiKeyConversations,
+                         USER_INFO_CLIENTID: [BVSDKManager sharedManager].configuration.clientId,
                          USER_INFO_CONFIG_PROPS: noteProps.configDict};
     
     UNTimeIntervalNotificationTrigger *trigger = [UNTimeIntervalNotificationTrigger triggerWithTimeInterval:delay repeats:NO];

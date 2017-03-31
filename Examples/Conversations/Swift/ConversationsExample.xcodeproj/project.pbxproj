@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		15E077DD1E5769CA001C89D0 /* bvsdk_config_prod.json in Resources */ = {isa = PBXBuildFile; fileRef = 15E077DB1E5769CA001C89D0 /* bvsdk_config_prod.json */; };
+		15E077DE1E5769CA001C89D0 /* bvsdk_config_staging.json in Resources */ = {isa = PBXBuildFile; fileRef = 15E077DC1E5769CA001C89D0 /* bvsdk_config_staging.json */; };
 		160D67D61464D67D9C352C23 /* Pods_ConversationsExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFC56A0C9936361286873F90 /* Pods_ConversationsExample.framework */; };
 		8748637A1D4BD8E000B43F00 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 874863761D4BD8E000B43F00 /* LaunchScreen.storyboard */; };
 		8748637B1D4BD8E000B43F00 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 874863781D4BD8E000B43F00 /* Main.storyboard */; };
@@ -30,6 +32,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		15E077DB1E5769CA001C89D0 /* bvsdk_config_prod.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = bvsdk_config_prod.json; sourceTree = "<group>"; };
+		15E077DC1E5769CA001C89D0 /* bvsdk_config_staging.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = bvsdk_config_staging.json; sourceTree = "<group>"; };
 		874863771D4BD8E000B43F00 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		874863791D4BD8E000B43F00 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Main.storyboard; sourceTree = "<group>"; };
 		8748639B1D4BE64A00B43F00 /* MyAnswerTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyAnswerTableViewCell.xib; sourceTree = "<group>"; };
@@ -115,6 +119,8 @@
 		879143F01CF4F05C00976220 /* ConversationsExample */ = {
 			isa = PBXGroup;
 			children = (
+				15E077DB1E5769CA001C89D0 /* bvsdk_config_prod.json */,
+				15E077DC1E5769CA001C89D0 /* bvsdk_config_staging.json */,
 				879143F11CF4F05C00976220 /* AppDelegate.swift */,
 				87FF7F341D4FA90700019D54 /* View Controllers */,
 				87FF7F351D4FA91600019D54 /* Table View Cells */,
@@ -216,9 +222,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				8748637B1D4BD8E000B43F00 /* Main.storyboard in Resources */,
+				15E077DD1E5769CA001C89D0 /* bvsdk_config_prod.json in Resources */,
 				874863A21D4BE64A00B43F00 /* StatisticTableViewCell.xib in Resources */,
 				874863A11D4BE64A00B43F00 /* MyReviewTableViewCell.xib in Resources */,
 				8748637A1D4BD8E000B43F00 /* LaunchScreen.storyboard in Resources */,
+				15E077DE1E5769CA001C89D0 /* bvsdk_config_staging.json in Resources */,
 				87C768311D4BAEE40091E5A1 /* Assets.xcassets in Resources */,
 				8748639F1D4BE64A00B43F00 /* MyAnswerTableViewCell.xib in Resources */,
 				874863A01D4BE64A00B43F00 /* MyQuestionTableViewCell.xib in Resources */,

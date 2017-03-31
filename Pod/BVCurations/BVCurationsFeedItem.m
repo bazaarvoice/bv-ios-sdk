@@ -262,6 +262,10 @@
 
 @implementation BVCurationsProductDetail
 
+@synthesize identifier;
+@synthesize displayImageUrl;
+@synthesize displayName;
+@synthesize averageRating;
 
 -(id)initWithDict:(NSDictionary*)dict withKey:(NSString *)key {
     
@@ -297,6 +301,20 @@
     return [NSString stringWithFormat:@"Key: %@, ID: %@ Title: %@, Rating: %.02f(%ld)", self.productKey, self.productId, self.productName, [self.avgRating floatValue], (long)[self.totalReviewCount integerValue]];
 }
 
+-(NSString*)displayName {
+    return _productName;
+}
 
+-(NSString*)displayImageUrl {
+    return _productImageUrl;
+}
+
+-(NSString*)identifier {
+    return _productId;
+}
+
+-(NSNumber*)averageRating {
+    return _avgRating;
+}
 
 @end

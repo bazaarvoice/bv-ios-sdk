@@ -1,7 +1,7 @@
 PODS:
-  - BVSDK/BVRecommendations (6.4.0):
+  - BVSDK/BVRecommendations (6.4.1):
     - BVSDK/Core
-  - BVSDK/Core (6.4.0)
+  - BVSDK/Core (6.4.1)
   - HCSStarRatingView (1.4.5)
   - SDWebImage (3.7.6):
     - SDWebImage/Core (= 3.7.6)
@@ -17,7 +17,7 @@ EXTERNAL SOURCES:
     :path: "../../../"
 
 SPEC CHECKSUMS:
-  BVSDK: 2d0a9e71ab5e1cd757622b1f033e81578b304ec0
+  BVSDK: 783400577005a896591cc18044dcc827103efea2
   HCSStarRatingView: bff3f89314d3b5013ce826ea11897d3129ff6b8c
   SDWebImage: c325cf02c30337336b95beff20a13df489ec0ec9
 

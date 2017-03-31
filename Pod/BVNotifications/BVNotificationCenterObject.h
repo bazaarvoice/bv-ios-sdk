@@ -10,8 +10,8 @@
 #define ATTACHMENT_FILE_PATH      [ATTACHMENT_FILE_DIRECTORY stringByAppendingString:@"/temp.png"]
 #define ATTACHMENT_THUMB_ID    @"attachmentThumb"
 #define ATTACHMENT_LL_ID    @"attachmentLatLong"
-#define STORE_NOTIFICATION_CUSTOM_CATEGORY    [[BVSDKManager sharedManager] storeReviewContentExtensionCategory]
-#define PIN_CUSTOM_CATEGORY    [[BVSDKManager sharedManager] PINContentExtensionCategory]
+#define STORE_NOTIFICATION_CUSTOM_CATEGORY    [BVSDKManager sharedManager].configuration.storeReviewContentExtensionCategory
+#define PIN_CUSTOM_CATEGORY    [BVSDKManager sharedManager].configuration.PINContentExtensionCategory
 
 #import <UserNotifications/UserNotifications.h>
 #import <UIKit/UIKit.h>

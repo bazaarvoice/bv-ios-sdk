@@ -74,8 +74,57 @@
         [self sendError:[super limitError:self.limit] failureCallback:failure];
     }
     else {
-        [super loadQuestions:self completion:success failure:failure];
+        [self loadQuestions:self completion:success failure:failure];
     }
+}
+
+- (void)loadQuestions:(BVConversationsRequest * _Nonnull)request completion:(void (^ _Nonnull)(BVQuestionsAndAnswersResponse * _Nonnull response))completion failure:(void (^ _Nonnull)(NSArray<NSError *> * _Nonnull errors))failure {
+    
+    [self loadContent:request completion:^(NSDictionary * _Nonnull response) {
+        BVQuestionsAndAnswersResponse* questionsAndAnswersResponse = [[BVQuestionsAndAnswersResponse alloc] initWithApiResponse:response];
+        // invoke success callback on main thread
+        dispatch_async(dispatch_get_main_queue(), ^{
+            completion(questionsAndAnswersResponse);
+        });
+        [self sendQuestionsAnalytics:questionsAndAnswersResponse];
+    } failure:failure];
+    
+}
+
+- (void)sendQuestionsAnalytics:(BVQuestionsAndAnswersResponse*)questionsResponse {
+    
+    for (BVQuestion* question in questionsResponse.results) {
+        
+        // Record Question Impression
+        BVImpressionEvent *questionImpression = [[BVImpressionEvent alloc] initWithProductId:question.productId
+                                                                               withContentId:question.identifier
+                                                                              withCategoryId:question.categoryId
+                                                                             withProductType:BVPixelProductTypeConversationsQuestionAnswer
+                                                                             withContentType:BVPixelImpressionContentTypeQuestion
+                                                                                   withBrand:nil
+                                                                        withAdditionalParams:nil];
+        
+        [BVPixel trackEvent:questionImpression];
+        
+    }
+    
+    // send pageview for product
+    BVQuestion* question = questionsResponse.results.firstObject;
+    if (question != nil) {
+        
+        NSNumber* count = @([questionsResponse.results count]);
+        NSDictionary *addParams = @{@"numQuestions":count};
+        
+        BVPageViewEvent *pageView = [[BVPageViewEvent alloc] initWithProductId:question.productId
+                                                        withBVPixelProductType:BVPixelProductTypeConversationsQuestionAnswer
+                                                                     withBrand:nil
+                                                                withCategoryId:question.categoryId
+                                                            withRootCategoryId:nil
+                                                          withAdditionalParams:addParams];
+        
+        [BVPixel trackEvent:pageView];
+    }
+    
 }
 
 - (NSString * _Nonnull)endpoint {

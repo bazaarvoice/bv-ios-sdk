@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "BVDisplayableProductContent.h"
 
 // Forward declarations: classes are contained in a BVCurationsFeedItem object.
 @class BVCurationsCoordinates;
@@ -124,7 +125,7 @@
 
 
 /// Attributes for a single product reference. This object is referenced by a single BVCurationsFeedItem and can be used to show the user the related items and how to buy it.
-@interface BVCurationsProductDetail : NSObject
+@interface BVCurationsProductDetail : NSObject<BVDisplayableProductContent>
 
     @property NSString *productKey;
     @property NSString *productId;

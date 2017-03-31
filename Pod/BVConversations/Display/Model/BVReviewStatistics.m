@@ -1,5 +1,5 @@
 //
-//  ReviewStatistics.m
+//  BVReviewStatistics.m
 //  Conversations
 //
 //  Copyright © 2016 Bazaarvoice. All rights reserved.

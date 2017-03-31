@@ -15,6 +15,9 @@
 @end
 
 @implementation BVRecommendedProduct
+@synthesize identifier;
+@synthesize displayImageUrl;
+@synthesize displayName;
 
 - (id)initWithDictionary:(NSDictionary *)dict withRecommendationStats:(NSDictionary*)recommendationStats{
     
@@ -31,7 +34,7 @@
     SET_IF_NOT_NULL(self.averageRating, [dict objectForKey:@"avg_rating"]);
     SET_IF_NOT_NULL(self.numReviews, [dict objectForKey:@"num_reviews"]);
     SET_IF_NOT_NULL(self.price, [dict objectForKey:@"price"]);
-    
+
     self.review = [[BVProductReview alloc] initWithDict:[dict objectForKey:@"review"]];
     
     self.sponsored = false;
@@ -64,6 +67,18 @@
 - (NSString *)description{
     
     return [NSString stringWithFormat:@"BVProduct: %@ - id: %@", self.productName, self.productId];
+}
+
+-(NSString*)identifier {
+    return _productId;
+}
+
+-(NSString*)displayName {
+    return _productName;
+}
+
+-(NSString*)displayImageUrl {
+    return _imageURL;
 }
 
 @end

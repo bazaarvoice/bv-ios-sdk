@@ -19,14 +19,15 @@ class ProductDetailHeaderView: UIView {
     @IBOutlet weak var productName : UILabel!
     @IBOutlet weak var productStars : HCSStarRatingView!
 
-    var product : BVProduct! {
+    var product : BVProduct? {
         didSet {
-            
-            productImage.sd_setImage(with: NSURL(string: product.imageUrl!) as URL!)
-            productName.text = product.name
+            if let url = product?.imageUrl {
+                productImage.sd_setImage(with: NSURL(string: url) as URL!)
+            }
+            productName.text = product?.name
 
             if (productStars != nil){
-                if let rating = product.reviewStatistics?.averageOverallRating {
+                if let rating = product?.averageRating {
                     productStars.value = CGFloat(rating)
                 }else {
                     productStars.value = 0.0

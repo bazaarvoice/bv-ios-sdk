@@ -107,7 +107,7 @@ class WriteReviewViewController: UIViewController, SDFormDelegate, SDFormDataSou
         let reviewSubmission = BVReviewSubmission(reviewTitle: self.reviewSubmissionParameters.title as? String ?? "",
                                                 reviewText: self.reviewSubmissionParameters.reviewText as? String ?? "",
                                                 rating: UInt(self.reviewSubmissionParameters.rating?.intValue ?? 0),
-                                                productId: self.product!.identifier!)
+                                                productId: self.product!.identifier)
 
 
         // a working example of posting a review.

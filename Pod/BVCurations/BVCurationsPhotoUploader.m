@@ -8,6 +8,7 @@
 
 #import "BVCurationsPhotoUploader.h"
 #import "BVCurations.h"
+#import "BVSDKConfiguration.h"
 
 @implementation BVCurationsPhotoUploader
 
@@ -15,11 +16,10 @@
                        completionHandler:(uploadCompletionHandler)completionHandler
                              withFailure:(uploadErrorHandler)failureHandler{
     
-    NSString *clientId = [BVSDKManager sharedManager].clientId;
-    NSString *passKey = [BVSDKManager sharedManager].apiKeyCurations;
+    NSString *clientId = [BVSDKManager sharedManager].configuration.clientId;
+    NSString *passKey = [BVSDKManager sharedManager].configuration.apiKeyCurations;
     
-    NSAssert(clientId != nil, @"Client ID is required!");
-    NSAssert(passKey != nil, @"apiKeyCurations is required!");
+    NSAssert(passKey.length, @"apiKeyCurations is required!");
     
     
     if (!postParams){
@@ -210,7 +210,7 @@
 
 - (NSString *)urlRootCurations {
     
-    return [BVSDKManager sharedManager].staging ? @"https://stg.api.bazaarvoice.com" : @"https://api.bazaarvoice.com";
+    return [BVSDKManager sharedManager].configuration.staging ? @"https://stg.api.bazaarvoice.com" : @"https://api.bazaarvoice.com";
     
 }
 
