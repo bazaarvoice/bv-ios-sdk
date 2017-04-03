@@ -64,7 +64,7 @@
     [super setUp];
     
     NSDictionary *configDict = @{@"clientId": @"mobileBVPixelTestsiOS"};
-    [BVSDKManager configureWithConfiguration:configDict configType:BVConfigurationTypeStaging];    
+    [BVSDKManager configureWithConfiguration:configDict configType:BVConfigurationTypeProd];
     [[BVSDKManager sharedManager] setLogLevel:BVLogLevelAnalyticsOnly];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -318,6 +318,45 @@
     [BVPixel trackEvent:answerImpression];
     
     [self waitForAnalytics];
+}
+
+
+
+- (void)testViewedCGC {
+
+    numberOfExpectedImpressionAnalyticsEvents = 1;
+    numberOfExpectedPageviewAnalyticsEvents = 0;
+    
+        NSDictionary *testValues = @{
+                                     @"productId":@"12345",
+                                     @"categoryId":@"catId",
+                                     @"bvProduct":@"RatingsAndReviews"
+                                     };
+    
+    
+    BVViewedCGCEvent *viewedCGCEvent = [[BVViewedCGCEvent alloc] initWithProductId:[testValues objectForKey:@"productId"]
+                                                                withRootCategoryID:nil
+                                                                    withCategoryId:[testValues objectForKey:@"categoryId"]
+                                                                   withProductType:BVPixelProductTypeConversationsReviews
+                                                                         withBrand:nil
+                                                              withAdditionalParams:nil];
+    
+    NSDictionary *eventDict = [viewedCGCEvent toRaw];
+    
+    // Test the required schema is defined correctly
+    BOOL contains = [eventDict containsDictionary:VIEWED_CGC_SCHEMA];
+    XCTAssertTrue(contains, "Does the default schema exist for this product?");
+    
+    // Test parameter values are in the dictionary
+    contains = [eventDict containsDictionary:testValues];
+    XCTAssertTrue(contains, "Are the input params in the event?");
+    
+    [self checkCommonEventParams:eventDict];
+   
+    [BVPixel trackEvent:viewedCGCEvent];
+    
+    [self waitForAnalytics];
+
 }
 
 

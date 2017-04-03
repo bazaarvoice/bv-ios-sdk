@@ -22,7 +22,7 @@ typedef void (^ProductSearchRequestCompletionHandler)(BVBulkProductResponse* _No
 
 @interface BVBaseProductRequest : BVConversationsRequest
 
-/// Type of social content to inlcude with the product request.
+/// Type of social content to inlcude with the product request. NOTE: PDPContentType is only supported for statistics, no for Includes.
 - (nonnull instancetype)includeContent:(PDPContentType)contentType limit:(int)limit;
 
 // Includes statistics for the included content type.
@@ -55,6 +55,6 @@ typedef void (^ProductSearchRequestCompletionHandler)(BVBulkProductResponse* _No
 /// When adding questions to include, you can add a sort parameter on the included questions.
 - (nonnull instancetype)sortIncludedQuestions:(BVSortOptionQuestions)option order:(BVSortOrder)order;
 /// When adding answers to include, you can add a sort parameter on the included answer.
-- (nonnull instancetype)sortIncludedAnswers:(BVSortOptionAnswers)option order:(BVSortOrder)order;
+- (nonnull instancetype)sortIncludedAnswers:(BVSortOptionAnswers)option order:(BVSortOrder)order __deprecated_msg("Including answers is not supported on product calls.");
 
 @end

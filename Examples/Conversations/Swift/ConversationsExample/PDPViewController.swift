@@ -56,6 +56,8 @@ class PDPViewController: BVProductDisplayPageViewController, UITableViewDataSour
         .includeStatistics(.reviews)
         .includeStatistics(.questions)
         .includeStatistics(.answers)
+        .include(PDPContentType.questions, limit: 10) // Include 10 Questions
+        .sortIncludedQuestions(BVSortOptionQuestions.totalAnswerCount, order: BVSortOrder.descending) // For the included answers, add by most answers, descending.
         
         productPage.load({ (response) in
             

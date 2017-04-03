@@ -158,6 +158,8 @@
 		87D424EA1E89C32E00147FDB /* BVReviewIncludeType.m in Sources */ = {isa = PBXBuildFile; fileRef = 87D424E81E89C32E00147FDB /* BVReviewIncludeType.m */; };
 		87D424F31E8AD45400147FDB /* BVCurationsUICollectionView.h in Headers */ = {isa = PBXBuildFile; fileRef = 870F133D1E490B5200D46BE6 /* BVCurationsUICollectionView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		87D424F41E8AD4A500147FDB /* BVCurationsPostViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 870F133B1E490B5200D46BE6 /* BVCurationsPostViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		87D425271E8EE39700147FDB /* BVViewedCGCEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 87D425251E8EE39700147FDB /* BVViewedCGCEvent.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		87D425281E8EE39700147FDB /* BVViewedCGCEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 87D425261E8EE39700147FDB /* BVViewedCGCEvent.m */; };
 		87DA86DD1E5229C5002E7860 /* UIImage+BundleLocator.m in Sources */ = {isa = PBXBuildFile; fileRef = 87DA86DB1E5229C5002E7860 /* UIImage+BundleLocator.m */; };
 		87E28C831E5F88FE00915FDB /* BVPixelTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 87E28C821E5F88FE00915FDB /* BVPixelTests.m */; };
 		87F2DAB11DAD579D00FB43F3 /* BVSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87F2DAA71DAD579D00FB43F3 /* BVSDK.framework */; };
@@ -639,6 +641,8 @@
 		87C5FF691E394C73004EE6E8 /* BVAuthorInclude.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVAuthorInclude.m; sourceTree = "<group>"; };
 		87D424E71E89C32E00147FDB /* BVReviewIncludeType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVReviewIncludeType.h; sourceTree = "<group>"; };
 		87D424E81E89C32E00147FDB /* BVReviewIncludeType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVReviewIncludeType.m; sourceTree = "<group>"; };
+		87D425251E8EE39700147FDB /* BVViewedCGCEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BVViewedCGCEvent.h; path = BVPixelEvents/BVViewedCGCEvent.h; sourceTree = "<group>"; };
+		87D425261E8EE39700147FDB /* BVViewedCGCEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BVViewedCGCEvent.m; path = BVPixelEvents/BVViewedCGCEvent.m; sourceTree = "<group>"; };
 		87DA86DB1E5229C5002E7860 /* UIImage+BundleLocator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+BundleLocator.m"; sourceTree = "<group>"; };
 		87E28C821E5F88FE00915FDB /* BVPixelTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BVPixelTests.m; path = Tests/BVPixelTests.m; sourceTree = SOURCE_ROOT; };
 		87F2DAA71DAD579D00FB43F3 /* BVSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BVSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1162,6 +1166,8 @@
 				873DC48B1E7482840080FA03 /* BVTransactionEvent.m */,
 				873DC48C1E7482840080FA03 /* BVTransactionItem.h */,
 				873DC48D1E7482840080FA03 /* BVTransactionItem.m */,
+				87D425251E8EE39700147FDB /* BVViewedCGCEvent.h */,
+				87D425261E8EE39700147FDB /* BVViewedCGCEvent.m */,
 			);
 			name = BVPixelEvents;
 			sourceTree = "<group>";
@@ -2136,6 +2142,7 @@
 				150FC2C61E71C21700717041 /* BVBulkProductResponse.h in Headers */,
 				87C5FF621E36B416004EE6E8 /* BVAuthor.h in Headers */,
 				87D424E91E89C32E00147FDB /* BVReviewIncludeType.h in Headers */,
+				87D425271E8EE39700147FDB /* BVViewedCGCEvent.h in Headers */,
 				879A628B1E80502100F46ECA /* BVBasePIIEvent.h in Headers */,
 				87F2DC241DAD585E00FB43F3 /* BVContextualInterests.h in Headers */,
 				87F2DC251DAD585E00FB43F3 /* BVGMBLSighting.h in Headers */,
@@ -2479,6 +2486,7 @@
 				87F2DCB21DAD585E00FB43F3 /* BVBulkStoreItemsRequest.m in Sources */,
 				87F2DCE41DAD585E00FB43F3 /* BVUploadableStorePhoto.m in Sources */,
 				875411761E1F201E006C5C6E /* BVNotificationsAnalyticsHelper.m in Sources */,
+				87D425281E8EE39700147FDB /* BVViewedCGCEvent.m in Sources */,
 				87F2DD061DAD585E00FB43F3 /* BVQuestionsCollectionView.m in Sources */,
 				87A9ECC11E1DB9B300666636 /* BVPIN.m in Sources */,
 				87F2DCE21DAD585E00FB43F3 /* BVUploadablePhoto.m in Sources */,

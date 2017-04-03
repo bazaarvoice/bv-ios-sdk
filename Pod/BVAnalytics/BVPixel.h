@@ -18,6 +18,7 @@
 #import "BVInViewEvent.h"
 #import "BVImpressionEvent.h"
 #import "BVPersonalizationEvent.h"
+#import "BVViewedCGCEvent.h"
 
 /// Static class used to queue Conversion events
 @interface BVPixel : NSObject
