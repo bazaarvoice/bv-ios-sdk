@@ -8,6 +8,7 @@
 #ifndef BVPixelEvents_h
 #define BVPixelEvents_h
 
+#import "BVViewedCGCEvent.h"
 #import "BVAnalyticEvent.h"
 #import "BVAnalyticEventManager.h"
 #import "BVConversionEvent.h"

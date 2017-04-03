@@ -66,6 +66,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         print("---------------\nImpression Event\n---------------")
         impressionEvent.toRaw().forEach { print("\($0): \($1)") }
         
+        
+        // ViewedCGC --------------------------
+        let viewedCGC = BVViewedCGCEvent(productId: "productId",
+                                         withRootCategoryID: "rootCatId",
+                                         withCategoryId: "catId",
+                                         with: .conversationsQuestionAnswer,
+                                         withBrand: "brandName",
+                                         withAdditionalParams: nil)
+        
+        print("---------------\nViewedCGC Event\n---------------")
+        viewedCGC.toRaw().forEach { print("\($0): \($1)") }
+        
         // Transaction --------------------------
         let transactionItem1 = BVTransactionItem(sku: "sku",
                                                  name: "product name",
