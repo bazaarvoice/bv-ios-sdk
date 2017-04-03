@@ -23,6 +23,7 @@
 		879A62DA1E80614000F46ECA /* BVPixelTypes.m in Sources */ = {isa = PBXBuildFile; fileRef = 879A62CD1E80614000F46ECA /* BVPixelTypes.m */; };
 		879A62DB1E80614000F46ECA /* BVTransactionEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 879A62CF1E80614000F46ECA /* BVTransactionEvent.m */; };
 		879A62DC1E80614000F46ECA /* BVTransactionItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 879A62D11E80614000F46ECA /* BVTransactionItem.m */; };
+		87ACA1471E92AFD1009D74BD /* BVViewedCGCEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 87ACA1461E92AFD1009D74BD /* BVViewedCGCEvent.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +59,8 @@
 		879A62D11E80614000F46ECA /* BVTransactionItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVTransactionItem.m; sourceTree = "<group>"; };
 		879A62DE1E8062D900F46ECA /* BVPixelEvents.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BVPixelEvents.h; sourceTree = "<group>"; };
 		879A62E31E8063F900F46ECA /* bridging-header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "bridging-header.h"; path = "../bridging-header.h"; sourceTree = "<group>"; };
+		87ACA1451E92AFD1009D74BD /* BVViewedCGCEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVViewedCGCEvent.h; sourceTree = "<group>"; };
+		87ACA1461E92AFD1009D74BD /* BVViewedCGCEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVViewedCGCEvent.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +132,8 @@
 				879A62CF1E80614000F46ECA /* BVTransactionEvent.m */,
 				879A62D01E80614000F46ECA /* BVTransactionItem.h */,
 				879A62D11E80614000F46ECA /* BVTransactionItem.m */,
+				87ACA1451E92AFD1009D74BD /* BVViewedCGCEvent.h */,
+				87ACA1461E92AFD1009D74BD /* BVViewedCGCEvent.m */,
 			);
 			name = BVPixelEvents;
 			path = ../../../../Pod/BVAnalytics/BVPixelEvents;
@@ -218,6 +223,7 @@
 				879A62DA1E80614000F46ECA /* BVPixelTypes.m in Sources */,
 				879A62A91E80609200F46ECA /* AppDelegate.swift in Sources */,
 				879A62D71E80614000F46ECA /* BVInViewEvent.m in Sources */,
+				87ACA1471E92AFD1009D74BD /* BVViewedCGCEvent.m in Sources */,
 				879A62D41E80614000F46ECA /* BVConversionEvent.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

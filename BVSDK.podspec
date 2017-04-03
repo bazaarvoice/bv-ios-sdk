@@ -9,7 +9,7 @@
 
 Pod::Spec.new do |s|
   s.name = "BVSDK"
-  s.version = '6.4.2'
+  s.version = '6.5.0'
   s.homepage = 'https://developer.bazaarvoice.com'
   s.license = { :type => 'Commercial', :text => 'See https://developer.bazaarvoice.com/API_Terms_of_Use' }
   s.author = { 'Bazaarvoice' => 'support@bazaarvoice.com' }
@@ -26,7 +26,11 @@ Pod::Spec.new do |s|
   s.default_subspec = 'Core'
 
   s.subspec 'Core' do |core|
-     core.source_files = 'Pod/BVCommon/**/*.{h,m}', 'Pod/BVConversations/**/*.{h,m}', 'Pod/BVAnalytics/**/*.{h,m}'
+     core.source_files = 'Pod/BVCommon/**/*.{h,m}', 'Pod/BVAnalytics/**/*.{h,m}'
+  end
+
+  s.subspec 'BVAnalytics' do |analytics|
+      analytics.dependency 'BVSDK/Core'
   end
 
   s.subspec 'BVConversations' do |conversations|

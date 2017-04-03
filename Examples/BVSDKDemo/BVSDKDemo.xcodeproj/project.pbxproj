@@ -204,6 +204,8 @@
 		87BB4C861D372B2600C860BE /* JPSThumnail.m in Sources */ = {isa = PBXBuildFile; fileRef = 87BB4C831D372B2600C860BE /* JPSThumnail.m */; };
 		87BB4C8B1D38201F00C860BE /* BVSDKDemoActionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87BB4C8A1D38201F00C860BE /* BVSDKDemoActionController.swift */; };
 		87BB4C8D1D3821B400C860BE /* BVSDKDemoActionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 87BB4C8C1D3821B400C860BE /* BVSDKDemoActionCell.xib */; };
+		87C47C5A1E92BF3F009A4E35 /* BVViewedCGCEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 87C47C591E92BF3F009A4E35 /* BVViewedCGCEvent.m */; };
+		87C47C621E92BF4E009A4E35 /* BVViewedCGCEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 87C47C611E92BF4E009A4E35 /* BVViewedCGCEvent.m */; };
 		87CD52201CE3F88800FC2726 /* ExtensionShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736D4CCD1CDED0C40095EE6B /* ExtensionShareViewController.swift */; };
 		87CD52211CE3F88C00FC2726 /* BaseDemoComposeServiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7385D8641CE3AD7600CA5F5E /* BaseDemoComposeServiceViewController.swift */; };
 		87CD52221CE3F89000FC2726 /* CurationsDemoConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736D4CCB1CDED0C40095EE6B /* CurationsDemoConstants.swift */; };
@@ -589,6 +591,10 @@
 		87BB4C831D372B2600C860BE /* JPSThumnail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JPSThumnail.m; sourceTree = "<group>"; };
 		87BB4C8A1D38201F00C860BE /* BVSDKDemoActionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BVSDKDemoActionController.swift; sourceTree = "<group>"; };
 		87BB4C8C1D3821B400C860BE /* BVSDKDemoActionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BVSDKDemoActionCell.xib; sourceTree = "<group>"; };
+		87C47C581E92BF3F009A4E35 /* BVViewedCGCEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVViewedCGCEvent.h; sourceTree = "<group>"; };
+		87C47C591E92BF3F009A4E35 /* BVViewedCGCEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVViewedCGCEvent.m; sourceTree = "<group>"; };
+		87C47C601E92BF4E009A4E35 /* BVViewedCGCEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVViewedCGCEvent.h; sourceTree = "<group>"; };
+		87C47C611E92BF4E009A4E35 /* BVViewedCGCEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVViewedCGCEvent.m; sourceTree = "<group>"; };
 		87CD523B1CE57ABD00FC2726 /* NewProductRecsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewProductRecsTableViewCell.swift; sourceTree = "<group>"; };
 		87CD523C1CE57ABD00FC2726 /* NewProductRecsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewProductRecsTableViewCell.xib; sourceTree = "<group>"; };
 		87CD523F1CE610A500FC2726 /* NewProductCurationsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewProductCurationsTableViewCell.swift; sourceTree = "<group>"; };
@@ -1404,6 +1410,8 @@
 				87E4D9C81E7498D700403C9B /* BVTransactionEvent.m */,
 				87E4D9C91E7498D700403C9B /* BVTransactionItem.h */,
 				87E4D9CA1E7498D700403C9B /* BVTransactionItem.m */,
+				87C47C601E92BF4E009A4E35 /* BVViewedCGCEvent.h */,
+				87C47C611E92BF4E009A4E35 /* BVViewedCGCEvent.m */,
 			);
 			path = BVPixelEvents;
 			sourceTree = "<group>";
@@ -1434,6 +1442,8 @@
 				87E4D9EE1E7498E300403C9B /* BVTransactionEvent.m */,
 				87E4D9EF1E7498E300403C9B /* BVTransactionItem.h */,
 				87E4D9F01E7498E300403C9B /* BVTransactionItem.m */,
+				87C47C581E92BF3F009A4E35 /* BVViewedCGCEvent.h */,
+				87C47C591E92BF3F009A4E35 /* BVViewedCGCEvent.m */,
 			);
 			name = BVPixelEvents;
 			path = ../../../Pod/BVAnalytics/BVPixelEvents;
@@ -1956,6 +1966,7 @@
 				879A629B1E805DC600F46ECA /* BVBasePIIEvent.m in Sources */,
 				87E4D9D41E7498D700403C9B /* BVPixelTypes.m in Sources */,
 				87E4D9D31E7498D700403C9B /* BVPersonalizationEvent.m in Sources */,
+				87C47C621E92BF4E009A4E35 /* BVViewedCGCEvent.m in Sources */,
 				87E4D9D21E7498D700403C9B /* BVPageViewEvent.m in Sources */,
 				87E4D9D51E7498D700403C9B /* BVTransactionEvent.m in Sources */,
 				87E4D9CB1E7498D700403C9B /* BVAnalyticsManager.m in Sources */,
@@ -1986,6 +1997,7 @@
 				879A62931E805DB500F46ECA /* BVBasePIIEvent.m in Sources */,
 				87E4D9FA1E7498E300403C9B /* BVPixelTypes.m in Sources */,
 				87E4D9F91E7498E300403C9B /* BVPersonalizationEvent.m in Sources */,
+				87C47C5A1E92BF3F009A4E35 /* BVViewedCGCEvent.m in Sources */,
 				87E4D9F81E7498E300403C9B /* BVPageViewEvent.m in Sources */,
 				87E4D9FB1E7498E300403C9B /* BVTransactionEvent.m in Sources */,
 				87E4D9F11E7498E300403C9B /* BVAnalyticsManager.m in Sources */,
