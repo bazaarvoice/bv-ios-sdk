@@ -20,7 +20,7 @@ $(function(){
 
 	// select the tab in the sidebar to reflect current page position
 
-	var tabName = "Example Projects";
+	var tabName = "BV Pixel Overview";
 
 	$('.nav-link.active').removeClass('active');
 	console.log('active tab: ', tabName);
@@ -85,7 +85,7 @@ $(function(){
 
     ga('create', UA-56370630-4, 'auto');
     ga('set', {
-      title: 'Example Projects'
+      title: 'BV Pixel Overview'
     });
     ga('send', 'pageview');
   </script>
@@ -280,88 +280,66 @@ $(function(){
             <div class="scroll-container scrollable--scrollbar">
               <div class="page-container">
 
-                The Bazaarvoice SDK for iOS comes with Example projects in both Swift and Objective-C for each component in the SDK.
-The Examples are written in such a way that you can easily drop in your own <a
-		href="./installation.html">configurations files</a> and quickly get familiar with the APIs and data. There is
-also a full kitchen-sink style BVSDKDemo app that contains all the SDK functionality in a mock eCommerce mobile app. The
-BVSDKDemo app runs out-of-the-box with mock data so you can run it to get an idea of how Bazaarvoice solutions might
-fit into your mobile solution.
-<br><br>
-<b>Run your own data in the Example Apps</b>
-<br><br>
-Any of the example apps can be configured to display your own data. To do this you
-will need to visit the <a href="./installation.html">Installation and Configuration</a> page to create and download
-your configuration files. Once you've entered a valid configuration you will be given the option to download your configuration
-files. This will download <strong>bvsdk_config_prod.json</strong> and/or <strong>bvsdk_config_staging
-	.json</strong> depending on API keys entered. These files will need to be added to the example app target.
-
-<br><br>
-<img src="ios-img/demo_app_with_configs.png" width = "700">
-
-<br><br>
-<b>Example Project Descriptions:</b>
-<br><br>
-<ul>
-	<li><a href="#basicexamples">Basic Example Projects</a></li>
-	<li><a href="#bvsdkdemo">BVSDKDemo (Kitchen Sink)</a></li>
-</ul>
-
-<p>
-<p class="bg-info well-lg" style="padding:4px;"><i class="fa fa-hand-o-right"></i>  NOTE: The Swift and BVSDKDemo examples require XCode 8.0+ or greater. All Swift examples are written and tested against the Swift 3.0 compiler.</p>
-
-<a name="basicexamples"></a>
-<div class="flex flex-row" id="content_title">
-	Basic Example Projects
+                <div class="flex flex-row" id="content_title">
+	BV Pixel Overview
 </div>
-<hr>
-<p>Product Recommendations, Advertising, Curations, and Conversations all come with example projects, which demonstrate how to properly implement these modules. Each of the BVSDK modules below are located under the <a href="https://github.com/bazaarvoice/bv-ios-sdk/tree/master/Examples">/Examples</a> directory and have both Swift and Objective-C reference implementations:</p>
+
+The Bazaarvoice API Analytics solution, better known as BV Pixel, aims to pass events from all consumer-generated content (CGC) pages within a client's mobile application to Bazaarvoice. This includes the product display view (PDP), after succcessful UGC submission, and UGC display pages for Reviews, Questions, and Answers. Using this collected data, Bazaarvoice reports on the influence that CGC has throughout the client's mobile application. The following terms are used to describe the different analytics events within BV Pixel:
+
+<br><br>
+<h3>Transactions</h3>
+
+Product purchases.
+<br><br>
+
+<h3>Conversions</h3>
+
+Non-transactional events, such as clicks on a Store Locator or Where to Buy link, newsletter signups, product registration, or PDF downloads.
+
+<br><br>
+
+<h3>Page Views</h3>
+
+Page views are for individual product UIViews or UIViewControllers that are loaded as a result of a single product Id.
+
+<br><br>
+
+<h3>Impressions</h3>
+
+Instances of Bazaarvoice content that are served to a device and loaded on the page. For example, a consumer viewing a review is an impression. If the end-user viewed 5 reviews, there would be 5 review impressions.
+
+<br><br>
+
+<h3>Features Events</h3>
+
+Content views and interactions, including the following:
+<br><br>
 <ul>
-	<li><strong>Conversations</strong>: Demonstrates a minimal configuration for constructing a Conversations API request for display or content submission.
-	</li>
-	<li><strong>Curations</strong>: Shows how to display a social feed and sumbit photos.</li>
-	<li><strong>Product Recommendations</strong>: Shows how you can fetch and display product recommendations for a user.</li>
-	<li><strong>Advertising</strong>: Shows how you can utlize Bazaarvoice's shopper segment data to provide targeting advertising to your customers.</li>
+<li><b>InView</b> events indicate that content is visible on the screen. This event is triggered only once per UIViewController load.</li>
+<li><b>ViewedCGC</b> events are triggered if Bazaarvoice content is visible on the page for at least five seconds. This event is triggered only once per view load.</li>
+<li><b>Used</b> indicate user interactions with Bazaarvoice content and are used for tapped features, such as Filter, Sort, and Paginate. This event is triggered only once per view controller load.</li>
 </ul>
 <br>
 
-<h3>Running examples</h3>
-<p>The example project require the use of <a href="https://guides.cocoapods.org/using/getting-started.html">Cocoapods</a> to set up the XCode workspace before you can run any of the samples.</p>
-<ol>
-	<li>From a terminal, navigate to an SDK module under the <code>Examples/*</code> directory. Navigate to either the <code>Swift</code> or <code>Obj-C</code> folder.</li>
-	<li>Run <code>pod install</code> and then open the corresponding <code>.xcworkspace</code> file with Xcode.</li>
-	<li>Open the <code>AppDelegate</code> file, and set your API keys and clientId in the <code>didFinishLaunchingWithOptions:</code> method.</li>
-	<li>
-		<p>Select the build target from the project's menu bar, as shown in the following screenshot:</p>
-		<img src="ios-img/project_target_selector.png" style="height:200px;" class="center-block" />
-	</li>
+<h1>Benefits of Analytics</h1>
 
-	<li>Run it!</li>
-</ol>
+Adding BV Pixel to your mobile application helps ensure the overall success of your implementation and provides the best way to measure the value that Bazaarvoice provides to your organization. It also helps us, Bazaarvoice, measure how well our solution is performing for you and enables us to offer recommendations for how to enhance your program based on data.
 
-<a name="bvsdkdemo"></a>
-<div class="flex flex-row" id="content_title">
-	BVSDKDemo: Full SDK Integration Examples
-</div>
+BV Pixel correlates shopper activity (such as reading reviews, questions, and answers) to conversion results. From this data, you can gain insights such as:
+<br><br>
+<ui>
+	<li>Do shoppers who interact with reviews convert better than users who do not?</li>
+	<li>Is a shopper more inclined to purchase products for which they have read reviews over products for which they have not?</li>
+	<li>In an A/B test, do certain variations of features affect conversion better than others?</li>
+	<li>In addition to valuable insights, BV Pixel can power maintenance-free best practices around volume generation including PIE (post interaction email) and APO (Ask a Product Owner).</li>
+</ui>
+<br>
 
-The full BVSDK project works out-of-the box under the <code>/Examples/BVSDKDemo</code> folder. Just run <code>pod install</code> in that folder and open the <code>BVSDKDemo.xcworkspace</code> to execute the project. By default the app runs in mock mode (using <a href="https://github.com/AliSoftware/OHHTTPStubs/">OHHTTPSStubs</a>) and will display sample data from a ficticious project catalog for a ficticious company, Endurance Cycles.
-</br></br>
-The demonstration shows the major components of the SDK from Product Recommendations, Advertising, Curations REST API and Custom Photo Upload. The Conversations examples demonstrate how read Conversation statistics, fetch reviews and questions as well as demonstrations on how to construct forms for uploading UGC content such as Rating & Reviews, Questions, and Feedback.
-</br></br>
+Lastly, BV Pixel enables personalization of our products to aid us in targeting the right shoppers at the right time with the right product.
 
-<p class="bg-info well-lg" style="padding:4px;"><i class="fa fa-hand-o-right"></i>  Note: The BVSDKDemo uses App Groups capabilities and an Extension. Becuase of this you won't be able to run this app on your device unless you remove the Curations Custom Post Extension or add the proper permission to your own App ID in your own Apple Developer Account.</p>
+<br><br>
 
-</br>
-
-<video id="bvsdkDemoVid" width="320" height="480" autoplay loop class="center-block img-fluid">
-      <source src="ios-img/bvsdkdemo/bvsdkdemo_movie.mp4" type="video/mp4" title="No video playback capabilities">
-      <source src="ios-img/bvsdkdemo/bvsdkdemo_movie.og" type="video/ogg" title="No video playback capabilities">
-    </video>
-    <script>
-        document.getElementById('bvsdkDemoVid').play();
-    </script>
-
-</p></p>
-
+<p><span class="bg-warning well-lg" style="padding:4px;"> <i class="fa fa-hand-o-right"></i> Failure to implement BV Pixel may result in a degradation of service through lowered queries per second (QPS). </a></span></p>
 
 
 

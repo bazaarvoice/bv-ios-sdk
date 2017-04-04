@@ -20,7 +20,7 @@ $(function(){
 
 	// select the tab in the sidebar to reflect current page position
 
-	var tabName = "BV Pixel";
+	var tabName = "BV Pixel Implementation";
 
 	$('.nav-link.active').removeClass('active');
 	console.log('active tab: ', tabName);
@@ -85,7 +85,7 @@ $(function(){
 
     ga('create', UA-56370630-4, 'auto');
     ga('set', {
-      title: 'BV Pixel'
+      title: 'BV Pixel Implementation'
     });
     ga('send', 'pageview');
   </script>
@@ -281,59 +281,37 @@ $(function(){
               <div class="page-container">
 
                 <div class="flex flex-row" id="content_title">
-	BV Pixel
+	BV Pixel Implementation
 </div>
-<hr>
-
-<p>The BV Pixel (formerly known as the ROI beacon) tells Bazaarvoice when a customer converts in your iOS app. There are two types of BV Pixel tags:</p>
-<ul>
-	<li>Generic (non-commerce) conversion tags capture events such as newsletter signups, product registration, downloads of a PDF, and requests for more information about a product or service. You can generate ROI (return on investment) reports related to key performance indicators.</li>
-	<li>Transaction conversion tags capture purchase data&#8212;when a customer buys a product. The data captured might include SKUs, email addresses, and postal addresses. You can generate ROI reports tied to revenue.</li>
-</ul>
-
-<br>
-<p>After you implement the BV Pixel in your iOS app, you can use this measurement dashboard to generate reports that show how users are interacting in your Android app, and to understand the value of your implementation. You can also enable other useful features. The maintenance-free post-interaction email (PIE) feature is key to increasing the volume of your consumer-generated content. In addition, you can run A/B tests to evaluate best practices in your iOS app, live, before you implement them for all customers. You must install the BV Pixel before you can use these indispensable features.</p>
-
+<p>The Bazaarvoice API Analytics solution, better known as BV Pixel, aims to pass events from all views containing consumer-generated content (CGC) within a client's mobile application to Bazaarvoice. This includes viewing product statistics and CGC display views for Reviews, Questions, and Answers. Using this collected data, Bazaarvoice reports on the influence that CGC has throughout the client's mobile application. </p>
 <p><span class="bg-warning well-lg" style="padding:4px;"> <i class="fa fa-hand-o-right"></i>  Important: Before you start implementing this Mobile SDK module, verify your installation by checking the steps on the <a href="./installation.html">Installation and Configuration</a> page.  </span></p>
 
 
+<p>The sections below provide an overview of all the available BV Pixel events, as well as source examples in Swift and Objective-C on how to construct and send them. Please refer to the <a href="requirements.html">Requirements</a> page for an overview of which events are required, depending on how you are using the SDK and APIs.</p>
 
-<h3>Configuration</h3>
+<!-- Transaction -->
 
-<ul class="nav nav-tabs" role="tablist">
-  <li role="presentation" class="active"><a href="#swift" aria-controls="swift" role="tab" data-toggle="tab">Swift</a></li>
-  <li role="presentation"><a href="#objc" aria-controls="objc" role="tab" data-toggle="tab">Objective-C</a></li>
-</ul>
+<a name="bvtrasnactionevent"></a>
+<div class="panel-group flex" id="transactionAccordion" role="tablist" aria-multiselectable="true" style="box-shadow: 1px 2px 4px #999;">
+    
 
-<!-- Tab panes -->
-<div class="tab-content code-switcher">
-	<!-- swift -->
-	<div role="tabpanel" class="tab-pane active" id="swift">
-		<p>Import the SDK by adding this line to each file that uses the SDK:</p>
-<pre><code class="swift">import BVSDK
-</code></pre>
-		<p>Then add the following to your AppDelegate's <code>didFinishLaunchingWithOptions</code> function:</p>
-<pre><code class="swift">BVSDKManager.shared().clientId = "YOUR_CLIENT_ID"
-BVSDKManager.shared().staging = true // Set to false for production!
-</code></pre>
-	</div>
-	<!-- objective-c -->
-	<div role="tabpanel" class="tab-pane" id="objc">
-		<p>Import the SDK by including these headers:</p>
-<pre><code class="objective-c">#include &lt;BVSDK/BVSDK.h&gt;
-</code></pre>
-		<p>Then add the following to your AppDelegate's <code>didFinishLaunchingWithOptions</code> function:</p>
-<pre><code class="objective-c">[BVSDKManager sharedManager].clientId = @"YOUR_CLIENT_ID";
-[BVSDKManager sharedManager].staging = YES; // set to NO for production!
-</code></pre>
-	</div>
 
-</div>
-<br>
-<br>
+<div class="panel panel-default">
+  <div class="panel-heading" role="tab" id="heading-bvTransaction">
+    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#bvTransaction" aria-expanded="false" aria-controls="bvTransaction" style="text-decoration: none">
+      <div class="flex flex-row" style="align-items: center; padding-bottom: 10px;">
+          <i id="bvTransactionArrow" class="fa fa-chevron-right" style="color:#777; padding-right: 10px;"></i>
+          <h5 style="margin-bottom: 0;"><span>BVTransactionEvent</h5>
+      </div>
+      <div class="flex flex-row">
+          <p style="color:#444; margin-bottom: 6px;">The Transaction event should execute once the user has completed a purchase. This will often be after a payment has been processed or when loading of a payment confirmation page. The sample code below shows the necessary initializer for creating and sending an eCommerce transactions analytics event.</p>
+      </div>
+      <div style="clear:both;"></div>
+    </a>
+  </div>
+  <div id="bvTransaction" class="panel-collapse collapse " role="tabpanel" aria-labelledby="headingOne">
+    <div class="panel-body">
 
-<h3>Tracking transaction conversions</h3>
-<p>Implement the following code to use the BV Pixel to track transaction conversions.</p>
 <ul class="nav nav-tabs" role="tablist">
   <li role="presentation" class="active"><a href="#swift" aria-controls="swift" role="tab" data-toggle="tab">Swift</a></li>
   <li role="presentation"><a href="#objc" aria-controls="objc" role="tab" data-toggle="tab">Objective-C</a></li>
@@ -366,7 +344,7 @@ let transactionItems = [firstItem, secondItem]
   Construct a BVTransactionEvent 
   OrderId, orderTotal, and orderItems are required.
   You may include any other key value params you'd like.
-  BVTransaction also has convenience setters for commonly used params.
+  BVTransactionEvent also has convenience setters for commonly used params.
 */
 
 let transaction = BVTransactionEvent(orderId:"order id", 
@@ -381,7 +359,7 @@ transaction.tax = 2.14
   Use the BVPixel to track the Conversion Transaction Event.
 */
 
-BVPixel.trackConversionTransaction(transaction)
+BVPixel.trackEvent(transaction)
 </code></pre>
 	</div>
 	<!-- objective-c -->
@@ -407,13 +385,13 @@ BVTransactionItem *secondItem = [[BVTransactionItem alloc]init:@"321"
 NSArray *transactionItems = @[firstItem, secondItem];
 
 /*
-Construct a BVTransaction 
+Construct a BVTransactionEvent 
 OrderId, orderTotal, and orderItems are required.
 You may include any other key value params you'd like.
 BVTransaction also has convenience setters for commonly used params.
 */
 
-BVTransaction *transaction = [[BVTransaction alloc]init:@"order id"
+BVTransactionEvent *transaction = [[BVTransactionEvent alloc]init:@"order id"
              orderTotal:33.11
              orderItems:transactionItems
          andOtherParams:@{@"state": @"TX", @"email": @"some.one@domain.com"}];
@@ -425,15 +403,41 @@ transaction.tax = 2.14;
 Use the BVPixel to track the Conversion Transaction Event.
 */
 
-[BVPixel trackConversionTransaction:transaction];
+[BVPixel trackEvent:transaction];
 </code></pre>							
 	</div>
 </div>
 <br>
-<br>
 
-<h3>Tracking generic non-commerce conversions</h3>
-<p>Implement the following code to use the BV Pixel to track generic non-commerce conversions.</p>
+ 		</div>
+    </div>
+  </div>
+
+</div>
+
+<!-- Non-Commerce Conversion -->
+<a name="bvconversionevent"></a>
+
+<div class="panel-group flex" id="conversionAccordion" role="tablist" aria-multiselectable="true" style="box-shadow: 1px 2px 4px #999;">
+    
+
+
+<div class="panel panel-default">
+  <div class="panel-heading" role="tab" id="heading-bvConversion">
+    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#bvConversion" aria-expanded="false" aria-controls="bvConversion" style="text-decoration: none">
+      <div class="flex flex-row" style="align-items: center; padding-bottom: 10px;">
+          <i id="bvConversionArrow" class="fa fa-chevron-right" style="color:#777; padding-right: 10px;"></i>
+          <h5 style="margin-bottom: 0;"><span>BVConversionEvent</h5>
+      </div>
+      <div class="flex flex-row">
+          <p style="color:#444; margin-bottom: 6px;">For non-eCommerce sites, this analytics metric that should be implemented is described below. Known as a non-eCommerce conversion, this analytic event handles user-interaction not convered by other events, such as downloading a brochure, or logging into a service.</p>
+      </div>
+      <div style="clear:both;"></div>
+    </a>
+  </div>
+  <div id="bvConversion" class="panel-collapse collapse " role="tabpanel" aria-labelledby="headingOne">
+    <div class="panel-body">
+
 <ul class="nav nav-tabs" role="tablist">
 	<li role="presentation" class="active"><a href="#swift" aria-controls="swift" role="tab" data-toggle="tab">Swift</a></li>
 	<li role="presentation"><a href="#objc" aria-controls="objc" role="tab" data-toggle="tab">Objective-C</a></li>
@@ -443,12 +447,12 @@ Use the BVPixel to track the Conversion Transaction Event.
 	<!-- swift -->
 	<div role="tabpanel" class="tab-pane active" id="swift">
 <pre><code class="swift">/*
-Construct a BVConversion 
+Construct a BVConversionEvent 
 Type and value are required. Label is recommended. 
 Include any other key value params you want.
 */
 
-let conversion = BVConversion("BrochureDownload", 
+let conversion = BVConversionEvent("BrochureDownload", 
 value: "YourDefinedValue", 
 label: "Model xyz brochure", 
 otherParams: ["state":"TX","email":"some.one@domain.com"])
@@ -457,18 +461,18 @@ otherParams: ["state":"TX","email":"some.one@domain.com"])
 Use the BVPixel to track the Non-commerce Conversion Event.
 */
 
-BVPixel.trackNonCommerceConversion(conversion)
+BVPixel.trackEvent(conversion)
 </code></pre>
 	</div>
 	<!-- objective-c -->
 	<div role="tabpanel" class="tab-pane" id="objc">
 <pre><code class="objectivec">/*
-Construct a BVConversion 
+Construct a BVConversionEvent 
 Type and value are required. Label is recommended.
 Include any other key value params you want.
 */
 
-BVConversion *conversion = [[BVConversion alloc]init:@"BrochureDownload"
+BVConversionEvent *conversion = [[BVConversionEvent alloc]init:@"BrochureDownload"
                value:@"YourDefinedValue"
                label:@"Model xyz brochure"
          otherParams:@{@"state":@"TX", @"email":@"some.one@domain.com"}];
@@ -477,11 +481,325 @@ BVConversion *conversion = [[BVConversion alloc]init:@"BrochureDownload"
 Use the BVPixel to track the Non-commerce Conversion Event.
 */
 
-[BVPixel trackNonCommerceConversion:conversion];
+[BVPixel trackEvent:conversion];
 </code></pre>							
 	</div>
 </div>
-<br>
+
+ 		</div>
+    </div>
+  </div>
+
+<a name="bvpageviewevent"></a>
+</div>
+
+<div class="panel-group flex" id="pageViewAccordion" role="tablist" aria-multiselectable="true" style="box-shadow: 1px 2px 4px #999;">
+    
+
+
+<div class="panel panel-default">
+  <div class="panel-heading" role="tab" id="heading-pageView">
+    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#pageView" aria-expanded="false" aria-controls="pageView" style="text-decoration: none">
+      <div class="flex flex-row" style="align-items: center; padding-bottom: 10px;">
+          <i id="pageViewArrow" class="fa fa-chevron-right" style="color:#777; padding-right: 10px;"></i>
+          <h5 style="margin-bottom: 0;"><span>BVPageViewEvent</h5>
+      </div>
+      <div class="flex flex-row">
+          <p style="color:#444; margin-bottom: 6px;">Execute a PageView event when a product detail page is fully rendered and the page view data is available. A PageView will typically be associated with review and/or question statistics.</p>
+      </div>
+      <div style="clear:both;"></div>
+    </a>
+  </div>
+  <div id="pageView" class="panel-collapse collapse " role="tabpanel" aria-labelledby="headingOne">
+    <div class="panel-body">
+
+<ul class="nav nav-tabs" role="tablist">
+	<li role="presentation" class="active"><a href="#swift" aria-controls="swift" role="tab" data-toggle="tab">Swift</a></li>
+	<li role="presentation"><a href="#objc" aria-controls="objc" role="tab" data-toggle="tab">Objective-C</a></li>
+</ul>
+
+<div class="tab-content code-switcher">
+	<!-- swift -->
+	<div role="tabpanel" class="tab-pane active" id="swift">
+<pre><code class="swift">/**
+Construct this event when products, statistics, or UGC are requested to be displayed on screen.
+*/
+let pageViewEvent = BVPageViewEvent(productId: "productId",
+                                    with: .conversationsReviews,
+                                    withBrand: "brandName",
+                                    withCategoryId: "optionalCategoryId",
+                                    withRootCategoryId: "optionaRootCategoryid",
+                                    withAdditionalParams: nil)
+
+BVPixel.trackEvent(pageViewEvent)
+</code></pre>
+	</div>
+	<!-- objective-c -->
+	<div role="tabpanel" class="tab-pane" id="objc">
+<pre><code class="objectivec">/**
+Construct this event when products, statistics, or UGC are requested to be displayed on screen.
+*/
+BVPageViewEvent *pageViewEvent = [[BVPageViewEvent alloc]
+                        initWithProductId:@"productId"
+                        withProductType:BVPixelProductTypeConversationsReviews
+                        withBrand:@"brandName"
+                        withCategoryId:@"optionalCategoryId"
+                        withRootCategoryId:@"optionalRootCategoryId"
+                        withAdditionalParams:nil];
+
+[BVPixel trackEvent:pageViewEvent];
+</code></pre>							
+	</div>
+</div>
+
+ 		</div>
+    </div>
+  </div>
+
+<a name="bvinviewevent"></a>
+
+</div>
+
+<div class="panel-group flex" id="inViewAccordion" role="tablist" aria-multiselectable="true" style="box-shadow: 1px 2px 4px #999;">
+    
+
+
+<div class="panel panel-default">
+  <div class="panel-heading" role="tab" id="heading-inView">
+    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#inView" aria-expanded="false" aria-controls="inView" style="text-decoration: none">
+      <div class="flex flex-row" style="align-items: center; padding-bottom: 10px;">
+          <i id="inViewArrow" class="fa fa-chevron-right" style="color:#777; padding-right: 10px;"></i>
+          <h5 style="margin-bottom: 0;"><span>BVInViewEvent</h5>
+      </div>
+      <div class="flex flex-row">
+          <p style="color:#444; margin-bottom: 6px;">An InView event should be used to indicate that CGC is visible on the view. This event is triggered when consumer-generated content is made visible on the mobile screen. This should only be fired once per ViewController load. The code below shows you how to track an InView event.</p>
+      </div>
+      <div style="clear:both;"></div>
+    </a>
+  </div>
+  <div id="inView" class="panel-collapse collapse " role="tabpanel" aria-labelledby="headingOne">
+    <div class="panel-body">
+
+<ul class="nav nav-tabs" role="tablist">
+	<li role="presentation" class="active"><a href="#swift" aria-controls="swift" role="tab" data-toggle="tab">Swift</a></li>
+	<li role="presentation"><a href="#objc" aria-controls="objc" role="tab" data-toggle="tab">Objective-C</a></li>
+</ul>
+
+<div class="tab-content code-switcher">
+	<!-- swift -->
+	<div role="tabpanel" class="tab-pane active" id="swift">
+<pre><code class="swift">let inViewEvent = BVInViewEvent(productId: "productId",
+                                withBrand: "brandName",
+                                with: .conversationsReviews,
+                                withContainerId: "yourViewControllerName",
+                                withAdditionalParams: nil)
+
+BVPixel.trackEvent(inViewEvent)
+</code></pre>
+	</div>
+	<!-- objective-c -->
+	<div role="tabpanel" class="tab-pane" id="objc">
+<pre><code class="objectivec">BVInViewEvent *inViewEvent = [[BVInViewEvent alloc] initWithProductId:@"productId"
+                                                        withBrand:@"brandName"
+                                           withProductType:BVPixelProductTypeConversationsReviews
+                                                  withContainerId:@"nameOfYourViewController"
+                                             withAdditionalParams:nil];
+
+[BVPixel trackEvent:inViewEvent];
+</code></pre>							
+	</div>
+</div>
+
+ 		</div>
+    </div>
+  </div>
+
+</div>
+
+<a name="bvimpressionevent"></a>
+
+<div class="panel-group flex" id="impressionAccordion" role="tablist" aria-multiselectable="true" style="box-shadow: 1px 2px 4px #999;">
+    
+
+
+<div class="panel panel-default">
+  <div class="panel-heading" role="tab" id="heading-impression">
+    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#impression" aria-expanded="false" aria-controls="impression" style="text-decoration: none">
+      <div class="flex flex-row" style="align-items: center; padding-bottom: 10px;">
+          <i id="impressionArrow" class="fa fa-chevron-right" style="color:#777; padding-right: 10px;"></i>
+          <h5 style="margin-bottom: 0;"><span>BVImpressionEvent</h5>
+      </div>
+      <div class="flex flex-row">
+          <p style="color:#444; margin-bottom: 6px;">This event communicates the various pieces of consumer generated content on a given view back to Bazaarvoice. For each review, question or answer on a UIView, an Impression event must be sent. The code below show you how to implement an Impression Event.</p>
+      </div>
+      <div style="clear:both;"></div>
+    </a>
+  </div>
+  <div id="impression" class="panel-collapse collapse " role="tabpanel" aria-labelledby="headingOne">
+    <div class="panel-body">
+
+<ul class="nav nav-tabs" role="tablist">
+	<li role="presentation" class="active"><a href="#swift" aria-controls="swift" role="tab" data-toggle="tab">Swift</a></li>
+	<li role="presentation"><a href="#objc" aria-controls="objc" role="tab" data-toggle="tab">Objective-C</a></li>
+</ul>
+
+<div class="tab-content code-switcher">
+	<!-- swift -->
+	<div role="tabpanel" class="tab-pane active" id="swift">
+<pre><code class="swift">let reviewImpression = BVImpressionEvent(productId: "productId",
+                                           withContentId: "optionalContentId",
+                                           withCategoryId: "optinalCategoryId",
+                                           with: .conversationsReviews,
+                                           with: .typeReview, withBrand: "optionalBrand",
+                                           withAdditionalParams: nil)
+        
+BVPixel.trackEvent(reviewImpression)
+</code></pre>
+	</div>
+	<!-- objective-c -->
+	<div role="tabpanel" class="tab-pane" id="objc">
+<pre><code class="objectivec">BVImpressionEvent *reviewImpression = [[BVImpressionEvent alloc] initWithProductId:@"productId"
+                                           withContentId:@"optionalContentId"
+                                          withCategoryId:@"optionalCategoryId"
+                                  withProductType:BVPixelProductTypeConversationsReviews
+                                         withContentType:BVPixelImpressionContentTypeReview
+                                               withBrand:nil withAdditionalParams:nil];
+
+[BVPixel trackEvent:reviewImpression];
+</code></pre>							
+	</div>
+</div>
+
+ 		</div>
+    </div>
+  </div>
+
+</div>
+
+<a name="bvfeatureusedevent"></a>
+
+<div class="panel-group flex" id="usedFeatureAccordion" role="tablist" aria-multiselectable="true" style="box-shadow: 1px 2px 4px #999;">
+    
+
+
+<div class="panel panel-default">
+  <div class="panel-heading" role="tab" id="heading-usedfeature">
+    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#usedfeature" aria-expanded="false" aria-controls="usedfeature" style="text-decoration: none">
+      <div class="flex flex-row" style="align-items: center; padding-bottom: 10px;">
+          <i id="usedFeatureArrow" class="fa fa-chevron-right" style="color:#777; padding-right: 10px;"></i>
+          <h5 style="margin-bottom: 0;"><span>BVFeatureUsedEvent</h5>
+      </div>
+      <div class="flex flex-row">
+          <p style="color:#444; margin-bottom: 6px;">It is not enough to know that a user has viewed a product page. It is valuable to also know how end users interact with consumer-generated content on a mobile app view. This information can provide insights on the information users value before making a conversion, or purchase.</p>
+      </div>
+      <div style="clear:both;"></div>
+    </a>
+  </div>
+  <div id="usedfeature" class="panel-collapse collapse " role="tabpanel" aria-labelledby="headingOne">
+    <div class="panel-body">
+
+<ul class="nav nav-tabs" role="tablist">
+	<li role="presentation" class="active"><a href="#swift" aria-controls="swift" role="tab" data-toggle="tab">Swift</a></li>
+	<li role="presentation"><a href="#objc" aria-controls="objc" role="tab" data-toggle="tab">Objective-C</a></li>
+</ul>
+
+<div class="tab-content code-switcher">
+	<!-- swift -->
+	<div role="tabpanel" class="tab-pane active" id="swift">
+<pre><code class="swift">let writeReviewEvent = BVFeatureUsedEvent(productId: "productId",
+                              withBrand: "optionalBrand",
+                              with: .conversationsReviews,
+                              withEventName: .eventNameWriteReview,
+                              withAdditionalParams: nil)
+        
+BVPixel.trackEvent(writeReviewEvent)
+</code></pre>
+	</div>
+	<!-- objective-c -->
+	<div role="tabpanel" class="tab-pane" id="objc">
+<pre><code class="objectivec">BVFeatureUsedEvent *writeReviewEvent = [[BVFeatureUsedEvent alloc] initWithProductId:@"productId"
+                                               withBrand:@"brandName"
+                                  withProductType:BVPixelProductTypeConversationsReviews
+                                     withEventName:BVPixelFeatureUsedEventNameWriteReview
+                                    withAdditionalParams:nil];
+    
+[BVPixel trackEvent:writeReviewEvent];
+</code></pre>							
+	</div>
+</div>
+
+ 		</div>
+    </div>
+  </div>
+
+</div>
+
+
+<a name="bvviewedcgc"></a>
+
+<div class="panel-group flex" id="viewedCGCAccordion" role="tablist" aria-multiselectable="true" style="box-shadow: 1px 2px 4px #999;">
+    
+
+
+<div class="panel panel-default">
+  <div class="panel-heading" role="tab" id="heading-viewedCGC">
+    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#viewedCGC" aria-expanded="false" aria-controls="viewedCGC" style="text-decoration: none">
+      <div class="flex flex-row" style="align-items: center; padding-bottom: 10px;">
+          <i id="viewedCGCArrow" class="fa fa-chevron-right" style="color:#777; padding-right: 10px;"></i>
+          <h5 style="margin-bottom: 0;"><span>BVViewedCGCEvent</h5>
+      </div>
+      <div class="flex flex-row">
+          <p style="color:#444; margin-bottom: 6px;">This event is triggered when consumer-generated content is made visible for a set amount of time. Typically this means that UGC was on the mobile screen for greater than 5 seconds, giving an understanding the end-user likely read the content.</p>
+      </div>
+      <div style="clear:both;"></div>
+    </a>
+  </div>
+  <div id="viewedCGC" class="panel-collapse collapse " role="tabpanel" aria-labelledby="headingOne">
+    <div class="panel-body">
+
+<ul class="nav nav-tabs" role="tablist">
+  <li role="presentation" class="active"><a href="#swift" aria-controls="swift" role="tab" data-toggle="tab">Swift</a></li>
+  <li role="presentation"><a href="#objc" aria-controls="objc" role="tab" data-toggle="tab">Objective-C</a></li>
+</ul>
+
+<div class="tab-content code-switcher">
+  <!-- swift -->
+  <div role="tabpanel" class="tab-pane active" id="swift">
+<pre><code class="swift">let viewedCGCEvent = BVViewedCGCEvent(productId: "productId",
+                                         withRootCategoryID: "rootCatId",
+                                         withCategoryId: "catId",
+                                         with: .conversationsQuestionAnswer,
+                                         withBrand: "brandName",
+                                         withAdditionalParams: nil)
+        
+BVPixel.trackEvent(viewedCGCEvent)
+</code></pre>
+  </div>
+  <!-- objective-c -->
+  <div role="tabpanel" class="tab-pane" id="objc">
+<pre><code class="objectivec">BVViewedCGCEvent *viewedCGCEvent = [[BVViewedCGCEvent alloc] initWithProductId:@"productId"
+                                          withRootCategoryID:nil
+                                              withCategoryId:@"myCategoryId"
+                                             withProductType:BVPixelProductTypeConversationsReviews
+                                                   withBrand:nil
+                                        withAdditionalParams:nil];
+
+[BVPixel trackEvent:viewedCGCEvent];
+</code></pre>             
+  </div>
+</div>
+
+ 		</div>
+    </div>
+  </div>
+
+</div>
+
+
+
+
+
+
 
 
 <div class="well well-sm">

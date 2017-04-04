@@ -12,6 +12,7 @@
   
   <script type="text/javascript" src="./assets/js/jquery_rotate.js"></script>
   <script type="text/javascript" src="./assets/js/main.js"></script>
+  <script type="text/javascript" src="./assets/js/popover.js"></script>
   
   <script>
     
@@ -30,6 +31,23 @@ $(function(){
 });
   </script>
 
+
+  <script>
+  $(document).ready(function(){
+      $('[data-toggle="popover"]').popover(); 
+  });
+
+  /* Close all the other popovers */
+  $('html').on('mouseup', function(e) {
+      if(!$(e.target).closest('.popover').length) {
+          $('.popover').each(function(){
+              $(this.previousSibling).popover('hide');
+          });
+      }
+  });
+
+  </script>
+  
   <script>hljs.initHighlightingOnLoad();</script>
 
 
@@ -65,7 +83,7 @@ $(function(){
     m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
     })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
-    ga('create', 'UA-56370630-4', 'auto');
+    ga('create', UA-56370630-4, 'auto');
     ga('set', {
       title: 'FAQ and Support'
     });
@@ -105,13 +123,18 @@ $(function(){
                 </a>
                 <ul>
                     <li class="nav-item">
+                        <a class="nav-link" href="requirements.html">
+                            <span>Requirements</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="installation.html">
                             <span>Installation and Configuration</span>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="example_projects.html">
-                            <span><i class="m-r-1 fa fa-file-code-o"></i>Example Projects</span>
+                            <span>Example Projects</span>
                         </a>
                     </li>
                 </ul>
@@ -121,31 +144,14 @@ $(function(){
                     <span><i class="m-r-1 fa fa-cogs"></i>Modules</span>
                 </span>
                 <ul>
-                    <li class="nav-item">
-                        <a class="nav-link" href="product_recommendations.html"><span>Product Recommendations (Beta)</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="advertising.html"><span>Advertising</span></a>
-                    </li>
-                    <li class="nav-item">
 
-                        <a class="nav-link" role="button" data-toggle="collapse" href="#curationsDropdown"
-                           aria-expanded="false" aria-controls="curationsDropdown">
-                                <span><span>Curations</span><span style="float:right;"><i id="curationsDropdownArrow"
-                                                                                          class="fa fa-sort-desc  fa-rotate-270"></i></span></span>
-                        </a>
-                        <div class="collapse "
-                             id="curationsDropdown">
-                            <ul>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="curations_display.html"><span>Curations Display</span></a>
+                    
+                    <!-- BV Pixel -->
+					<li class="nav-item">
+                                    <a class="nav-link" href="bvpixel_implementation.html"><span>BV Pixel</span></a>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="curations_custom_posts.html"><span>Curations Custom Posts</span></a>
-                                </li>
-                            </ul>
-                        </div>
-                    </li>
+
+                     <!-- Conversations -->
                     <li class="nav-item">
                         <a class="nav-link" role="button" data-toggle="collapse" href="#conversationsDropdown"
                            aria-expanded="false" aria-controls="conversationsDropdown">
@@ -165,19 +171,48 @@ $(function(){
                                 <li class="nav-item">
                                     <a class="nav-link" href="conversations_iovation.html"><span>Authenticity with iovation</span></a>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="upgrading_conversations.html"><span>Upgrading Conversations</span></a>
-                                </li>
                             </ul>
                         </div>
 
                     </li>
 
+                    <!-- Curations -->
+                    <li class="nav-item">
+                        <a class="nav-link" role="button" data-toggle="collapse" href="#curationsDropdown"
+                           aria-expanded="false" aria-controls="curationsDropdown">
+                                <span><span>Curations</span><span style="float:right;">
+                                    <i id="curationsDropdownArrow" class="fa fa-sort-desc  fa-rotate-270"></i>
+                                </span></span>
+                        </a>
+                        <div class="collapse "
+                             id="curationsDropdown">
+                            <ul>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="curations_display.html"><span>Curations Display</span></a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="curations_custom_posts.html"><span>Curations Custom Posts</span></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
 
+                    <!-- Product Recommendations -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="product_recommendations.html"><span>Product Recommendations (Beta)</span></a>
+                    </li>
+                    
+                    <!-- Advertising -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="advertising.html"><span>Advertising</span></a>
+                    </li>
+
+                    
+                    <!-- Ratings Reviews Stores -->
                      <li class="nav-item">
                         <a class="nav-link" role="button" data-toggle="collapse" href="#conversationsStoresDropdown"
                            aria-expanded="false" aria-controls="conversationsStoresDropdown">
-                                <span><span>Conversations for Stores</span><span style="float:right;"><i
+                                <span><span>Ratings and Reviews Stores</span><span style="float:right;"><i
                                         id="conversationsStoresDropdownArrow"
                                         class="fa fa-sort-desc fa-rotate-270"></i></span></span>
                         </a>
@@ -185,28 +220,28 @@ $(function(){
                              id="conversationsStoresDropdown">
                             <ul>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="conversations_stores.html"><span>Conversations for Stores</span></a>
+                                    <a class="nav-link" href="conversations_stores.html"><span>Display and Submit API</span></a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="conversations_stores_push.html"><span>Stores Push Notifications</span></a>
                                 </li>
                             </ul>
                         </div>
-
                     </li>
+                    
+                    <!-- PIN -->
                     <li class="nav-item">
                         <a class="nav-link" href="pin.html"><span>Post Interaction Notifications (Beta)</span></a>
                     </li>
+
+                    <!-- Location -->
                     <li class="nav-item">
                         <a class="nav-link" href="location.html"><span>Location (Beta)</span></a>
                     </li>
+
                 </ul>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="bv_pixel.html">
-                    <span><i class="m-r-1 fa fa-dot-circle-o"></i>BV Pixel</span>
-                </a>
-            </li>
+            
             <li class="nav-item">
                 <a class="nav-link" href="user_authentication_token.html">
                     <span><i class="m-r-1 fa fa-lock"></i>User Authentication Token</span>
@@ -215,11 +250,6 @@ $(function(){
             <li class="nav-item">
                 <a class="nav-link" href="ios_9_considerations.html">
                     <span><i class="m-r-1 fa fa-mobile"></i> iOS 9 Considerations</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="example_projects.html">
-                    <span><i class="m-r-1 fa fa-file-code-o"></i>Example Projects</span>
                 </a>
             </li>
             <li class="nav-item">
@@ -251,115 +281,93 @@ $(function(){
               <div class="page-container">
 
                 <div class="flex flex-row" id="content_title">
-	FAQ and Support
+    FAQ and Support
 </div>
 <hr>
 <h3>Frequently Asked Questions</h3>
 <br>
+
+<p><b>Contents</b></p>
+
+<ol>
+    <li><a href="#idfa">Does the Bazaarvoice Mobile SDK use IDFA?</a></li>
+    <li><a href="#upgrade">Upgrading to BVSDK 7.0 (Deprecations)</a></li>
+    <li><a href="#thirdparty">Does the SDK use any 3rd pary source code?</a></li>
+    <li><a href="#support">How do I get support?</a></li>
+</ol>
+
+
+<a name="idfa"></a>
 <h5 class="question">Does the Bazaarvoice Mobile SDK use IDFA?</h5>
 <p class="answer">Yes, the SDK uses IDFA for both the Advertising and Product Recommendations modules. The SDK checks whether the user has "Limit Ad Tracking" enabled, and respects the option if enabled.</p>
 <p class="answer">If you use the Advertising module and/or the Product Recommendations module, you must submit applications via iTunes Connect, letting Apple know that the app uses IDFA for targeted advertising.</p>
 
-<br>
-<h5 class="question">How do upgrade ?</h5>
-<p>Only a few changes are necessary to upgrade to version 4 of the Mobile SDK:</p>
-	
-<br>
-<h5 class="question">How do I migrate from version 3 to version 4 of the Mobile SDK?</h5>
-<p>Only a few changes are necessary to upgrade to version 4 of the Mobile SDK:</p>
-<ul>
-	<li><strong>Product Recommendations</strong>&#8212;The BVRecommendations and BVRecommendationsUI modules are now combined into the Product Recommendations module.</p>
-		<p>Also, the Product Recommendations usage pattern has changed. Version 3 separated callbacks (success and failure) along with the removal of <code>BVGetShopperProfile</code>:</p>
 
+<br>
+<a name="upgrade"></a>
+<h5 class="question">Upgrading to BVSDK 7.0 (Deprecations)</h5>
+<p class="answer">Setting your API keys in code is now deprecated. You will need to generate your <a
+        href="./installation.html">configuration files</a> using your own API keys, include the configuration files in your app target, and initialize the BVSDK. Visit the <a>Installation and Configuration</a> for more information.</p>
 
 <ul class="nav nav-tabs" role="tablist">
   <li role="presentation" class="active"><a href="#swift" aria-controls="swift" role="tab" data-toggle="tab">Swift</a></li>
   <li role="presentation"><a href="#objc" aria-controls="objc" role="tab" data-toggle="tab">Objective-C</a></li>
 </ul>
-		
 <div class="tab-content code-switcher">
-	<!-- swift -->
-	<div role="tabpanel" class="tab-pane active" id="swift">
+
+    <!-- swift -->
+    <div role="tabpanel" class="tab-pane active" id="swift">
 
 
+        <p>Your in-code configuration. (The old way)</p>
+        <pre><code class="swift">BVSDKManager.shared().clientId = "YOUR_CLIENT_ID"
+BVSDKManager.shared().staging = true;
+BVSDKManager.shared().apiKeyCurations = "YOUR_CURATIONS_KEY"
+BVSDKManager.shared().apiKeyConversations = "YOUR_CONVERSATIONS_KEY"
+</code></pre>
+        <p>Configuration using the generator. (The new way)</p>
+        <img src="ios-img/faq/config_file_gen.png" style="height:450px;" />
+        <p>Once you've entered a valid configuration you will be given the option to download your configuration
+            files. This will download <strong>bvsdk_config_prod.json</strong> and/or <strong>bvsdk_config_staging
+                .json</strong> depending on API keys entered. These files will need to be added to your app target.</p>
+        <br>
+        <p>Finally in your AppDelegate, call the BVSDK configuration method with your desired environment:
+            (production/staging).</p>
+        <pre><code class="swift">BVSDKManager.configure(.prod) //Configure with Prod API keys
 
-<pre><code class="swift">let shopperProfileAPI : BVGetShopperProfile = BVGetShopperProfile()
+//BVSDKManager.configure(.staging) //Configure with Staging API keys
+        </code></pre>
+    </div>
 
-shopperProfileAPI.fetchProductRecommendations(25, withInterest: nil) { (profile, error) -> Void in
-    // Completion
-    if profile != nil && error == nil {
-        print("shopper profile: \(profile)")
-    } else {
-        print("error: \(error?.localizedDescription)")
-    }
-}</code></pre>
-<p>In version 4, recommendations are fetched from within the view container object:</p>
-<pre><code class="swift">@IBOutlet weak var recommendationsView : BVProductRecommendationsCollectionView! 
+    <!-- objective-c -->
+    <div role="tabpanel" class="tab-pane" id="objc">
 
-// ...
+        <p>Your in-code configuration. (The old way)</p>
+        <pre><code class="objectivec">[[BVSDKManager sharedManager] setClientId:@"YOUR_CLIENT_ID"];
+[[BVSDKManager sharedManager] setApiKeyCurations:@"YOUR_CURATIONS_KEY"];
+[[BVSDKManager sharedManager] setApiKeyConversations:@"YOUR_CONVERSATIONS_KEY"];
+[[BVSDKManager sharedManager] setStaging:YES];  // Set to NO for production!</code></pre>
+        <p>Configuration using the generator. (The new way)</p>
+        <img src="ios-img/faq/config_file_gen.png" style="height:450px;" />
+        <p>Once you've entered a valid configuration you will be given the option to download your configuration
+            files. This will download <strong>bvsdk_config_prod.json</strong> and/or <strong>bvsdk_config_staging
+                .json</strong> depending on API keys entered. These files will need to be added to your app target.</p>
+        <p>Finally in your app delegate call BVSDK configuration method with your desired environment
+            (production/staging).</p>
+        <pre><code class="objectivec">[BVSDKManager configure:BVConfigurationTypeProd]; //Configure with Prod API keys
 
-let request = BVRecommendationsRequest(limit: 20)
-self.recommendationsView.loadRequest(request, completionHandler: { (recommendations:[BVProduct]) in
-
-    self.recommendations = recommendations
-    self.recommendationsView.reloadData()
-
-}) { (error:NSError) in
-
-    // handle error case
-
-}</code></pre>
-	<p>Note that the success callback returns a list of <code>BVProduct</code> objects instead of a 'shopper profile' object.</p>
-
-</div>
-<!-- objective-c -->
-<div role="tabpanel" class="tab-pane" id="objc">
-
-
-
-<pre><code class="objectivec">BVGetShopperProfile* profile = [[BVGetShopperProfile alloc] init];
-[profile fetchProductRecommendations:20 withCompletionHandler:^(BVShopperProfile * _Nullable profile, NSError * _Nullable error) {
-   
-    if(profile != nil && error == nil) {
-        NSLog(@"profile: %@", profile);
-    }
-    else {
-        NSLog(@"error: %@", error.localizedDescription);
-    }
-    
-}];</code></pre>
-<p>In version 4, recommendations are fetched from within the view container object:</p>
-<pre><code class="objectivec">BVProductRecommendationsCollectionView* carouselView = [[BVProductRecommendationsCollectionView alloc] init];
-    
-BVRecommendationsRequest* request = [[BVRecommendationsRequest alloc] initWithLimit:20];
-[carouselView loadRequest:request completionHandler:^(NSArray<BVProduct *> * _Nonnull recommendations) {
-    
-    NSLog(@"recommendations: %@", recommendations);
-    
-} errorHandler:^(NSError * _Nonnull error) {
-    
-    NSLog(@"error: %@", error);
-    
-}];</code></pre>
-		<p>Note that the success callback returns a list of <code>BVProduct</code> objects instead of a 'shopper profile' object.</p>
-
-	</div>
+//[BVSDKManager configure:BVConfigurationTypeStaging]; //Configure with Staging API keys
+        </code></pre>
+    </div>
 </div>
 <br>
-	</li>
-	
-	<li>
-		<p><strong>Targeted Advertising</strong>&#8212;Version 4 of the Mobile SDK removes the dependency on Google's DFP SDK completely, making the SDK easier to implement. Refer to the Upgrading section of the <a href="advertising.html#Upgrading">Advertising</a> page for detailed instructions.</p>
-	</li>
-</ul>
+<a name="thirdparty"></a>
+<h5 class="question">Does the Bazaarvoice Mobile SDK use any 3rd-Party Source Code?</h5>
+<p class="answer">No, the SDK is entirely based on the Cocoa Frameworks for iOS.</p>
+
 
 <br>
-<h5 class="question">How do I migrate from version 2 to version 4 of the Mobile SDK?</h5>
-<p>Version 2 is included in the latest Mobile SDK as the <code>Conversations</code> module. Upgrading is so important, it got <a href="upgrading_conversations.html">it's own upgrade page</a>!</p>	
-
-	
-<br>
-<br>
+<a name="support"></a>
 <h3>Support</h3>
 <p>If you have problems/questions implementing the Mobile SDK, contact <a href="mailto:mobilecoreteam@bazaarvoice.com">Mobile Development at Bazaarvoice</a>.</p>
 <p>If you have questions about licensing or general configuration of the Conversations API, contact <a href="mailto:support@bazaarvoice.com">Bazaarvoice Client Care</a>.</p>

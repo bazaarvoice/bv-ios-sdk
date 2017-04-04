@@ -12,6 +12,7 @@
   
   <script type="text/javascript" src="./assets/js/jquery_rotate.js"></script>
   <script type="text/javascript" src="./assets/js/main.js"></script>
+  <script type="text/javascript" src="./assets/js/popover.js"></script>
   
   <script>
     
@@ -30,6 +31,23 @@ $(function(){
 });
   </script>
 
+
+  <script>
+  $(document).ready(function(){
+      $('[data-toggle="popover"]').popover(); 
+  });
+
+  /* Close all the other popovers */
+  $('html').on('mouseup', function(e) {
+      if(!$(e.target).closest('.popover').length) {
+          $('.popover').each(function(){
+              $(this.previousSibling).popover('hide');
+          });
+      }
+  });
+
+  </script>
+  
   <script>hljs.initHighlightingOnLoad();</script>
 
 
@@ -65,7 +83,7 @@ $(function(){
     m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
     })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
-    ga('create', 'UA-56370630-4', 'auto');
+    ga('create', UA-56370630-4, 'auto');
     ga('set', {
       title: 'Installation'
     });
@@ -105,13 +123,18 @@ $(function(){
                 </a>
                 <ul>
                     <li class="nav-item">
+                        <a class="nav-link" href="requirements.html">
+                            <span>Requirements</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="installation.html">
                             <span>Installation and Configuration</span>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="example_projects.html">
-                            <span><i class="m-r-1 fa fa-file-code-o"></i>Example Projects</span>
+                            <span>Example Projects</span>
                         </a>
                     </li>
                 </ul>
@@ -121,31 +144,14 @@ $(function(){
                     <span><i class="m-r-1 fa fa-cogs"></i>Modules</span>
                 </span>
                 <ul>
-                    <li class="nav-item">
-                        <a class="nav-link" href="product_recommendations.html"><span>Product Recommendations (Beta)</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="advertising.html"><span>Advertising</span></a>
-                    </li>
-                    <li class="nav-item">
 
-                        <a class="nav-link" role="button" data-toggle="collapse" href="#curationsDropdown"
-                           aria-expanded="false" aria-controls="curationsDropdown">
-                                <span><span>Curations</span><span style="float:right;"><i id="curationsDropdownArrow"
-                                                                                          class="fa fa-sort-desc  fa-rotate-270"></i></span></span>
-                        </a>
-                        <div class="collapse "
-                             id="curationsDropdown">
-                            <ul>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="curations_display.html"><span>Curations Display</span></a>
+                    
+                    <!-- BV Pixel -->
+					<li class="nav-item">
+                                    <a class="nav-link" href="bvpixel_implementation.html"><span>BV Pixel</span></a>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="curations_custom_posts.html"><span>Curations Custom Posts</span></a>
-                                </li>
-                            </ul>
-                        </div>
-                    </li>
+
+                     <!-- Conversations -->
                     <li class="nav-item">
                         <a class="nav-link" role="button" data-toggle="collapse" href="#conversationsDropdown"
                            aria-expanded="false" aria-controls="conversationsDropdown">
@@ -165,19 +171,48 @@ $(function(){
                                 <li class="nav-item">
                                     <a class="nav-link" href="conversations_iovation.html"><span>Authenticity with iovation</span></a>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="upgrading_conversations.html"><span>Upgrading Conversations</span></a>
-                                </li>
                             </ul>
                         </div>
 
                     </li>
 
+                    <!-- Curations -->
+                    <li class="nav-item">
+                        <a class="nav-link" role="button" data-toggle="collapse" href="#curationsDropdown"
+                           aria-expanded="false" aria-controls="curationsDropdown">
+                                <span><span>Curations</span><span style="float:right;">
+                                    <i id="curationsDropdownArrow" class="fa fa-sort-desc  fa-rotate-270"></i>
+                                </span></span>
+                        </a>
+                        <div class="collapse "
+                             id="curationsDropdown">
+                            <ul>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="curations_display.html"><span>Curations Display</span></a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="curations_custom_posts.html"><span>Curations Custom Posts</span></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
 
+                    <!-- Product Recommendations -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="product_recommendations.html"><span>Product Recommendations (Beta)</span></a>
+                    </li>
+                    
+                    <!-- Advertising -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="advertising.html"><span>Advertising</span></a>
+                    </li>
+
+                    
+                    <!-- Ratings Reviews Stores -->
                      <li class="nav-item">
                         <a class="nav-link" role="button" data-toggle="collapse" href="#conversationsStoresDropdown"
                            aria-expanded="false" aria-controls="conversationsStoresDropdown">
-                                <span><span>Conversations for Stores</span><span style="float:right;"><i
+                                <span><span>Ratings and Reviews Stores</span><span style="float:right;"><i
                                         id="conversationsStoresDropdownArrow"
                                         class="fa fa-sort-desc fa-rotate-270"></i></span></span>
                         </a>
@@ -185,28 +220,28 @@ $(function(){
                              id="conversationsStoresDropdown">
                             <ul>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="conversations_stores.html"><span>Conversations for Stores</span></a>
+                                    <a class="nav-link" href="conversations_stores.html"><span>Display and Submit API</span></a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="conversations_stores_push.html"><span>Stores Push Notifications</span></a>
                                 </li>
                             </ul>
                         </div>
-
                     </li>
+                    
+                    <!-- PIN -->
                     <li class="nav-item">
                         <a class="nav-link" href="pin.html"><span>Post Interaction Notifications (Beta)</span></a>
                     </li>
+
+                    <!-- Location -->
                     <li class="nav-item">
                         <a class="nav-link" href="location.html"><span>Location (Beta)</span></a>
                     </li>
+
                 </ul>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="bv_pixel.html">
-                    <span><i class="m-r-1 fa fa-dot-circle-o"></i>BV Pixel</span>
-                </a>
-            </li>
+            
             <li class="nav-item">
                 <a class="nav-link" href="user_authentication_token.html">
                     <span><i class="m-r-1 fa fa-lock"></i>User Authentication Token</span>
@@ -215,11 +250,6 @@ $(function(){
             <li class="nav-item">
                 <a class="nav-link" href="ios_9_considerations.html">
                     <span><i class="m-r-1 fa fa-mobile"></i> iOS 9 Considerations</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="example_projects.html">
-                    <span><i class="m-r-1 fa fa-file-code-o"></i>Example Projects</span>
                 </a>
             </li>
             <li class="nav-item">
@@ -253,19 +283,8 @@ $(function(){
                 <div class="flex flex-row" id="content_title">
   Installation
 </div>
-<p>This guide shows you how to install and configure the Bazaarvoice Mobile SDK into your iOS app.</p>
+<p>This guide shows you how to install and configure the Bazaarvoice Mobile SDK into your iOS app. Please make sure you have all the <a href="requirements.html">needed requirements</a> for your application first! Bazaarvoice supports XCode 8.0 or higher.</p>
 <hr>
-
-<h3>Prerequisites</h3>
-<ul>
-  <li>Signed Data Usage Amendment, if not already in place</li>
-  <li>Minimum iOS deployment target of iOS 8.0</li>
-  <li>Xcode version 8.0 or higher</li>
-  <li>CocoaPods 1.1.0 or higher (only if using CocoaPods)</li>
-  <li>Your Client ID: This is the Company name you use to sign into the Workbench.</li>
-  <li>API key(s) for the Bazaarvoice product(s) you have enabled. For Conversatiosn API, you will need one API key for staging environment and one API key for production.</li>
-</ul>
-<br>
 
 <p class="bg-info well-lg" style="padding:4px;"><i class="fa fa-hand-o-right"></i>  If you need to use XCode 7.3, the last supported SDK version is 4.2.4.</p>
 
@@ -286,11 +305,14 @@ We support installation of the Bazaarvoice SDK for iOS with CocoaPods, Carthage,
 
       <!-- cocoapods -->
       <div role="tabpanel" class="tab-pane active" id="cocoapods">
-        1. Install the latest version of <a href="https://guides.cocoapods.org/using/getting-started.html">CocoaPods</a>.
+        <p>By default, each BV module of the Cocoapods installs the BVCore + BVAnalytics modules. </p>
+
+        1. Install the latest version of <a href="https://guides.cocoapods.org/using/getting-started.html">CocoaPods</a>. Bazaarvoice supports Cocoapods 1.1.0 or higher.
         <br><br>
         2. Add the pods for which you have an API key into your <code>Podfile</code>:
         <br><br>
         <pre><code># each pod is a subpsec so you only need to add the lines for the component you are installing.
+pod 'BVSDK/BVAnalytics' // Automatically installed by any of the submodules below
 pod 'BVSDK/BVCurations'
 pod 'BVSDK/BVCurationsUI'
 pod 'BVSDK/BVConversations'
@@ -381,6 +403,16 @@ Once you have install the source code for the SDK, you are now ready to add your
   <div id="configurationCollapse" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
     <div class="panel-body">
 
+    <div class="flex flex-row">
+        <p>Each client application should have its own API key. If you need to generate a new key for Conversations
+              please see <a
+                    href='https://developer.bazaarvoice.com/docs/read/conversations_api/api_key_processes/requesting_api_keys'>Conversations Requesting API Keys</a>.
+            <br><br>
+            For all other API keys or if you don't know your client ID, contact <a
+                    href="https://developer.bazaarvoice.com/support">Client Care</a> or your implementation team.
+        </p>
+    </div>
+
     <div class="flex flex-row" style="align-items: center">
         <div class="cel-fl-2">
             Enter your Client ID:
@@ -389,248 +421,16 @@ Once you have install the source code for the SDK, you are now ready to add your
             <input type="text" class="edit_ClientID" id="clientId" placeholder="your client name, such as bazaarvoice" style="border-color:red" size="40"/>
         </div>
     </div>
-    <div class="flex flex-row">
-        <p>If you don't know your client ID or API key values, contact <a href="https://developer.bazaarvoice.com/support">Client Care</a> or your implementation team.</p>
-    </div>
 
+    <br>
     <div class="table-responsive">
-        <table class="table">
-            <tr>
-                <th>
-                    Select one or more module(s):
-                </th>
-                <th>
-                    Enter API key:
-                </th>
-            </tr>
-            <tr>
-                <td>
-                    <input type="checkbox" class="cb_BVCurations"/> <b>Curations</b>
-                </td>
-                <td>
-                    <input type="text" class="key_BVCurations" placeholder="Curations API Key here" style="width:100%"/>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <input type="checkbox" class="cb_BVConversations"/> <b>Conversations</b>
-                </td>
-                <td>
-                    <input type="text" class="key_BVConversations" placeholder="Conversations API Key here" style="width:100%"/>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <input type="checkbox" class="cb_BVConversationsStores"/> <b>Conversations for Stores</b>
-                </td>
-                <td>
-                    <input type="text" class="key_BVConversationsStores" placeholder="Conversations for Stores API Key here" style="width:100%"/>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <input type="checkbox" class="cb_BVAdvertising"/> <b>Advertising</b>
-                    <br/>
-                    <input type="checkbox" class="cb_BVRecommendations"/> <b>Product Recommendations</b>
-                </td>
-                <td>
-                    <input type="text" class="key_ShoppeAdvertising" placeholder="Shopper Advertising API Key here" style="width:100%"/>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <input type="checkbox" class="cb_BVLocation"/> <b>Location</b>
-                </td>
-                <td>
-                    <input type="text" class="key_BVCLocation" placeholder="Location API Key here" style="width:100%"/>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <input type="checkbox" class="cb_BVPIN"/> <b>Post Interaction Notifications</b>
-                </td>
-                <td>
-                    <input type="text" class="key_BVPIN" placeholder="PIN API Key here" style="width:100%"/>
-                </td>
-            </tr>
+        <table class="table" id="keyTable">
         </table>
     </div>
 
-    <script type="text/javascript">
-
-        // Determine whether or not to put red border on invalid text entry
-        function validateTextInputs(){
-
-            // client id text box
-            if ($('.edit_ClientID').val() == '') {
-                $('.edit_ClientID').css('border-color', 'red');
-            }
-            else {
-                $('.edit_ClientID').css('border-color', '');
-            }
-
-            // API key checkboxes
-            if ($('.cb_BVCurations:checked').length > 0 && !$('.key_BVCurations').val()){
-                $('.key_BVCurations').css('border-color', 'red');
-            } else {
-                $('.key_BVCurations').css('border-color', '');
-            }
-
-            if ($('.cb_BVConversations:checked').length > 0 && !$('.key_BVConversations').val()){
-                $('.key_BVConversations').css('border-color', 'red');
-            } else {
-                $('.key_BVConversations').css('border-color', '');
-            }
-
-            if ($('.cb_BVConversationsStores:checked').length > 0 && !$('.key_BVConversationsStores').val()){
-                $('.key_BVConversationsStores').css('border-color', 'red');
-            } else {
-                $('.key_BVConversationsStores').css('border-color', '');
-            }
-
-            if ( ($('.cb_BVAdvertising:checked').length > 0 || $('.cb_BVRecommendations:checked').length > 0)
-                    && !$('.key_ShoppeAdvertising').val()){
-                $('.key_ShoppeAdvertising').css('border-color', 'red');
-            } else {
-                $('.key_ShoppeAdvertising').css('border-color', '');
-            }
-
-            if ($('.cb_BVLocation:checked').length > 0 && !$('.key_BVCLocation').val()){
-                $('.key_BVCLocation').css('border-color', 'red');
-            } else {
-                $('.key_BVCLocation').css('border-color', '');
-            }
-
-
-            if ($('.cb_BVLocation:checked').length > 0 && !$('.key_BVCLocation').val()){
-                $('.key_BVCLocation').css('border-color', 'red');
-            } else {
-                $('.key_BVCLocation').css('border-color', '');
-            }
-
-            if ($('.cb_BVPIN:checked').length > 0 && !$('.key_BVPIN').val()){
-                $('.key_BVPIN').css('border-color', 'red');
-            } else {
-                $('.key_BVPIN').css('border-color', '');
-            }
-        }
-
-        function updateCodeSnippets(){
-
-            
-            ////////////////////////////////
-            // Objective-C BVSDKManager ---
-            ////////////////////////////////
-            var REPLACE_ME  = "ERROR"
-            if ($('.edit_ClientID#clientId').val().length > 0){
-                clientId = $('.edit_ClientID#clientId').val()
-            } else {
-                clientId = REPLACE_ME
-            }
-
-            $('code.objectivec#objc-bvsdkmanager').text('[[BVSDKManager sharedManager] setClientId:@"' + clientId +  '"];')
-                    .append('<br/>')
-
-            if ($('.cb_BVCurations:checked').length > 0){
-                var curationsKey = $('.key_BVCurations').val()
-                $('code.objectivec#objc-bvsdkmanager').append('[[BVSDKManager sharedManager] setApiKeyCurations:@"' + curationsKey + '"];<br/>');
-            }
-
-            if ($('.cb_BVConversations:checked').length > 0){
-                var conversationsKey = $('.key_BVConversations').val()
-                $('code.objectivec#objc-bvsdkmanager').append('[[BVSDKManager sharedManager] setApiKeyConversations:@"' + conversationsKey + '"];<br/>');
-            }
-
-            if ($('.cb_BVConversationsStores:checked').length > 0){
-                var conversationsStoresKey = $('.key_BVConversationsStores').val()
-                $('code.objectivec#objc-bvsdkmanager').append('[[BVSDKManager sharedManager] setApiKeyConversationsStores:@"' + conversationsStoresKey + '"];<br/>');
-            }
-
-            if ($('.cb_BVAdvertising:checked').length > 0 || $('.cb_BVRecommendations:checked').length > 0){
-                var advertisingKey = $('.key_ShoppeAdvertising').val()
-                $('code.objectivec#objc-bvsdkmanager').append('[[BVSDKManager sharedManager] setApiKeyShopperAdvertising:@"' + advertisingKey + '"];<br/>');
-            }
-
-            if ($('.cb_BVLocation:checked').length > 0){
-                var locationKey = $('.key_BVCLocation').val()
-                $('code.objectivec#objc-bvsdkmanager').append('[[BVSDKManager sharedManager] setApiKeyLocation:@"' + locationKey + '"];<br/>');
-            }
-
-            if ($('.cb_BVPIN:checked').length > 0 ){
-                var pinKey = $('.key_BVPIN').val()
-                $('code.objectivec#objc-bvsdkmanager').append('[[BVSDKManager sharedManager] setApiKeyPIN:@"' + pinKey + '"];<br/>');
-            }
-
-            $('code.objectivec#objc-bvsdkmanager').append('[[BVSDKManager sharedManager] setStaging:YES];  // Set to NO for production!')
-
-            ////////////////////////////////
-            // Swift BVSDKManager ---
-            ////////////////////////////////
-            var REPLACE_ME  = "ERROR"
-            if ($('.edit_ClientID#clientId').val().length > 0){
-                clientId = $('.edit_ClientID#clientId').val()
-            } else {
-                clientId = REPLACE_ME
-            }
-
-            $('code.swift#swift-bvsdkmanager').text('BVSDKManager.shared().clientId = "' + clientId + '"')
-            $('code.swift#swift-bvsdkmanager').append('<br/>BVSDKManager.shared().staging = true; <br/>')
-
-            if ($('.cb_BVCurations:checked').length > 0){
-                var curationsKey = $('.key_BVCurations').val()
-                $('code.swift#swift-bvsdkmanager').append('BVSDKManager.shared().apiKeyCurations = "' + curationsKey + '"<br/>');
-            }
-
-            if ($('.cb_BVConversations:checked').length > 0){
-                var conversationsKey = $('.key_BVConversations').val()
-                $('code.swift#swift-bvsdkmanager').append('BVSDKManager.shared().apiKeyConversations = "' + conversationsKey + '"<br/>');
-            }
-
-            if ($('.cb_BVConversationsStores:checked').length > 0){
-                var conversationsStoresKey = $('.key_BVConversationsStores').val()
-                $('code.swift#swift-bvsdkmanager').append('BVSDKManager.shared().apiKeyConversationsStores = "' + conversationsStoresKey + '"<br/>');
-            }
-
-            if ($('.cb_BVLocation:checked').length > 0){
-                var locationKey = $('.key_BVCLocation').val()
-                $('code.swift#swift-bvsdkmanager').append('BVSDKManager.shared().apiKeyLocation = "' + locationKey + '"<br/>');
-            }
-
-            if ($('.cb_BVPIN:checked').length > 0){
-                var pinKey = $('.key_BVPIN').val()
-                $('code.swift#swift-bvsdkmanager').append('BVSDKManager.shared().apiKeyPIN = "' + pinKey + '"<br/>');
-            }
-
-        }
-
-        function formatCode() {
-
-            // You can use highlightBlock to highlight blocks dynamically inserted into the page. Just make sure you don't do it twice for already highlighted blocks.
-
-            //If your code container relies on <br> tags instead of line breaks (i.e. if it's not <pre>) set the useBR option to true:
-            hljs.configure({useBR: true});
-            $('pre code').each(function(i, block) {
-                hljs.highlightBlock(block);
-            });
-
-        }
-
-        // Handle text box input changes
-        $(':text').on('input',function(e){
-            validateTextInputs()
-            updateCodeSnippets()
-            formatCode()
-        });
-
-
-        // Handle checkbox toggles
-        $(':checkbox').on('click', function() {
-            validateTextInputs()
-            updateCodeSnippets()
-            formatCode()
-
-        });
-    </script>
+    <div class="flex flex-row" id="download">
+        <p id = "downloadInstructions"></p>
+    </div>
 
     		</div>
     </div>
@@ -698,7 +498,7 @@ Once you have install the source code for the SDK, you are now ready to add your
   <div id="installationBVSDKManager" class="panel-collapse collapse " role="tabpanel" aria-labelledby="headingOne">
     <div class="panel-body">
 
-    <p>Insert the following code in <code>AppDelegate#applicationDidFinishLaunching</code>:</p>
+    <p id = "installInstructions"></p>
 
     <ul class="nav nav-tabs" role="tablist">
         <li role="presentation" class="active"><a href="#swift" aria-controls="swift" role="tab" data-toggle="tab">Swift</a></li>
@@ -708,11 +508,11 @@ Once you have install the source code for the SDK, you are now ready to add your
     <!-- Tab panes for including headers/imports -->
     <div class="tab-content code-switcher">
         <div role="tabpanel" class="tab-pane active" id="swift">
-    <pre><code class="swift" id="swift-bvsdkmanager">// You haven't selected a configuration option yet in Step 1!
+    <pre><code class="swift" id="swift-bvsdkmanager">
     </code></pre>
         </div>
         <div role="tabpanel" class="tab-pane" id="objc">
-    <pre><code class="objectivec" id="objc-bvsdkmanager">// You haven't selected a configuration option yet in Step 1!
+    <pre><code class="objectivec" id="objc-bvsdkmanager">
     </code></pre>
         </div>
     </div>
@@ -720,6 +520,196 @@ Once you have install the source code for the SDK, you are now ready to add your
     		</div>
     </div>
   </div>
+
+    <script type="text/javascript">
+
+        if (!String.format) {
+            String.format = function(format) {
+                var args = Array.prototype.slice.call(arguments, 1);
+                return format.replace(/{(\d+)}/g, function(match, number) {
+                    return typeof args[number] != 'undefined'
+                        ? args[number]
+                        : match
+                        ;
+                });
+            };
+        }
+
+        var prodKeyCount = 0
+        var stagingKeyCount = 0
+
+        function KeyRow(key, title, ph) {
+            this.title = title
+            this.key = key
+            this.ph = ph
+        }
+
+        var rows= [new KeyRow("apiKeyCurations", "Curations", "Curations"),
+            new KeyRow("apiKeyConversations", "Conversations", "Conversations"),
+            new KeyRow("apiKeyConversationsStores", "Conversations for Stores", "Conversations for Stores"),
+            new KeyRow("apiKeyShopperAdvertising", "Product Recommendations & Advertising","Shopper Advertising"),
+            new KeyRow("apiKeyLocation", "Location" , "Location"),
+            new KeyRow("apiKeyPIN", "Post Interaction Notifications" , "PIN")]
+
+        function getTableHTML() {
+            var html = ["<tr class=\"odd\" style=\" background-color: #F7F7F7;\"><th style=\" width:30%;\">Products</th><th>Production API Keys</th><th>Staging API Keys</th></tr>"]
+
+            for (row in rows) {
+                html.push(String.format("<tr><th>{0}</th><td><input type=\"text\" onfocus=\"this.oldValue = this.value;\" class= \"prodKeyText\" id=\"{1}Prod\" placeholder=\"{2} Production API Key\" style=\"width:100%\"/></td>" +
+                    "<td><input type=\"text\" class= \"stagingKeyText\" id=\"{1}Staging\" onfocus=\"this.oldValue = this.value;\" placeholder=\"{2} Staging API Key\" style=\"width:100%\"/></td></tr>", rows[row].title, rows[row].key, rows[row].ph))
+            }
+
+            return html.join("")
+        }
+
+        document.getElementById("keyTable").innerHTML = getTableHTML()
+
+        $('.prodKeyText').on('input', function(){
+            processChange(this, true)
+        });
+
+        $('.stagingKeyText').on('input', function(){
+            processChange(this, false)
+        });
+
+        function processChange(el, isProd) {
+            if (el.value.length > 0) {
+                if ( el.oldValue.length == 0) {
+                    isProd ? prodKeyCount++ : stagingKeyCount++
+                    el.style.borderColor = 'green'
+                }
+            }else {
+                isProd ? prodKeyCount-- : stagingKeyCount--
+                el.style.borderColor = ''
+            }
+            el.oldValue = el.value
+            updateDownloadHint()
+        }
+
+        $('.edit_ClientID#clientId').on('input', function(){
+            if (this.value.length > 0) {
+                this.style.borderColor = 'green'
+            }else {
+                this.style.borderColor = 'red'
+            }
+
+            updateDownloadHint()
+        });
+        
+        function updateDownloadHint() {
+            var instructions = document.getElementById("downloadInstructions")
+            var clientId = $('.edit_ClientID#clientId').val()
+
+            if (clientId.length == 0){
+                instructions.innerHTML = '<strong id="configCallOut" style="font-size:250%; color: red">X    </strong><strong>You must enter your Bazaarvoice client id in step 1 before proceeding.</strong>'
+                return
+            }
+
+            var hasProdConfig = prodKeyCount > 0
+            var hasStagingConfig = stagingKeyCount > 0
+
+            if (!hasProdConfig && !hasStagingConfig) {
+                instructions.innerHTML = '<strong id="configCallOut" style="font-size:250%; color: red">X    </strong><strong>You must enter your API keys in Step 1 before proceeding.</strong>'
+                return
+            }
+
+            var isPlural = (hasProdConfig && hasStagingConfig)
+            var instructionsFormat = '<strong id="configCallOut" style="font-size:250%; color: green">✓    </strong>You have successfully configured for {0}. After you <a id="exportJSON" onclick="exportJson()" style="cursor: pointer; cursor: hand;"><strong style="font-size: 120%">download your config {1}</strong></a> ' +
+                'you will need to add {2} to your Xcode project and ensure {3} included in your main app bundle. Once this is done you may proceed to steps 2 and 3.'
+            var instructionStr = String.format(instructionsFormat, ((isPlural)? '<strong style="font-size: 120%">Production and Staging</strong>' : (hasProdConfig ? '<strong style="font-size: 125%">Production</strong>' : '<strong style="font-size: 120%">Staging</strong>')),
+                (isPlural)? "files" : "file", isPlural? "them" : "it",  isPlural? "they are" : "it is")
+            instructions.innerHTML = instructionStr
+        }
+
+        updateDownloadHint()
+
+        function updateCodeSnippets(){
+
+            var instructions = document.getElementById("installInstructions")
+            var objcElem = $('code.objectivec#objc-bvsdkmanager')
+            var swiftElem = $('code.swift#swift-bvsdkmanager')
+            var clientId = $('.edit_ClientID#clientId').val()
+
+            if (clientId.length == 0){
+                instructions.innerHTML = '<strong>You must enter your Bazaarvoice client id in step 1 before proceeding.</strong>'
+                objcElem.text('')
+                swiftElem.text('')
+                return
+            }
+
+            var hasProdConfig = prodKeyCount > 0
+            var hasStagingConfig = stagingKeyCount > 0
+
+            if (!hasProdConfig && !hasStagingConfig) {
+                instructions.innerHTML = "<strong>You must enter your API keys in Step 1 before proceeding.</strong>"
+                return
+            }
+            var isPlural = (hasProdConfig && hasStagingConfig)
+            var instructionsFormat = 'If you haven\'t already <a id="exportJSON" style="cursor: pointer; cursor: hand;" onclick="exportJson()">download your config {0}</a> and included them in your main app bundle.</br>'
+            var instructionStr = String.format(instructionsFormat, ((isPlural)? 'files' : 'file'))
+            instructions.innerHTML = instructionStr
+            instructions.innerHTML += "</br>Insert the following code in <code>AppDelegate#applicationDidFinishLaunching</code>:"
+            var hasBothConfigs = (hasProdConfig && hasStagingConfig)
+            var objcConfig = (hasProdConfig)? "Prod" : "Staging"
+            var swiftConfig = (hasProdConfig)? "prod" : "staging"
+            objcElem.text('[BVSDKManager configure:BVConfigurationType'+ objcConfig + ']; //Configure with ' + objcConfig +' API keys')
+            swiftElem.text('BVSDKManager.configure(.' + swiftConfig + ') //Configure with ' + objcConfig +' API keys')
+
+            if (hasBothConfigs) {
+                objcElem.append('\n\n//[BVSDKManager configure:BVConfigurationTypeStaging]; //Configure with Staging API keys')
+                swiftElem.append('\n\n//BVSDKManager.configure(.staging) //Configure with Staging API keys')
+            }
+        }
+
+        function getJSONProd() {
+            return getJSON("Prod")
+        }
+
+        function getJSONStaging() {
+            return getJSON("Staging")
+        }
+
+        function getJSON(env) {
+            var clientId = $('.edit_ClientID#clientId').val()
+            var json = {"clientId": clientId}
+            for (row in rows) {
+                var apiKey = document.getElementById(rows[row].key + env).value
+                if (apiKey.length > 0) {
+                    json[rows[row].key] = apiKey
+                }
+            }
+
+            return json
+        }
+
+        function exportJson() {
+
+            if (prodKeyCount > 0) {
+                downloadJson(getJSONProd(), "prod")
+            }
+
+            if (stagingKeyCount > 0) {
+                downloadJson(getJSONStaging(), "staging")
+            }
+        }
+        function downloadJson(config, env) {
+            var el = document.createElement('a')
+            el.style.display = 'none';
+            document.body.appendChild(el);
+
+            var data = "text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(config));
+
+            el.setAttribute("href", "data:"+data);
+            el.setAttribute("download", "bvsdk_config_" + env + ".json");
+            el.click()
+            document.body.removeChild(el)
+        }
+
+        document.getElementById("heading-installationBVSDKManager").onclick = function () {
+            updateCodeSnippets()
+        }
+
+    </script>
 
 </div>
 
