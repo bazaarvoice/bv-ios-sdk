@@ -14,8 +14,52 @@ class MyReviewTableViewCell: BVReviewTableViewCell {
 
     override var review: BVReview? {
         didSet {
-            reviewTitle.text = review?.title
-            reviewText.text = review?.reviewText
+            
+            var titleString = review?.title
+            
+            // Get the author and date
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd hh:mm:ss"
+            let dateString = dateFormatter.string(from: (review?.submissionTime)!)
+            
+            var badgesString = "\nBadges: ["
+            
+            // let's see if this author has any badges
+            for badge : BVBadge in (review?.badges)! {
+                
+                badgesString += " \(badge.identifier!)) "
+                
+            }
+            
+            badgesString += "]"
+            
+            titleString = titleString?.appending("\nBy \(review!.authorId ?? "no author") on \(dateString)\(badgesString)")
+            
+            reviewTitle.text = titleString
+            
+            // Create a review body some example of data we can pull in.
+            var reviewString = review?.reviewText
+            
+            reviewString?.append("\n")
+            reviewString?.append("\nIs Recommended?  \(review!.isRecommended)")
+            reviewString?.append("\nIs Syndicated?  \(review!.isSyndicated)")
+            reviewString?.append("\nHelpful Count: \(review!.totalPositiveFeedbackCount!)")
+            reviewString?.append("\nNot Helpful Count: \(review!.totalNegativeFeedbackCount!)")
+            
+            // See if there are context data values
+            var secondaryRatingsText = "\nSecondary Ratings: ["
+            
+            // Check and see if this reviewer supplied any of the secondary ratings
+            for rating : BVSecondaryRating in (review?.secondaryRatings)! {
+                secondaryRatingsText += " \(rating.label!)(\(rating.value!)) "
+            }
+            
+            secondaryRatingsText += "]"
+            
+            reviewString?.append(secondaryRatingsText)
+            
+            reviewText.text = reviewString
+            
         }
     }
     

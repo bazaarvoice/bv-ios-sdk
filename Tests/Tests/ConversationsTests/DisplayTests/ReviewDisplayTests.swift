@@ -40,6 +40,7 @@ class ReviewDisplayTests: XCTestCase {
             XCTAssertEqual(review.identifier, "191975")
             XCTAssertNil(review.product)
             XCTAssertEqual(review.isRatingsOnly, false)
+            XCTAssertEqual(review.isSyndicated, false)
             XCTAssertEqual(review.isFeatured, false)
             XCTAssertEqual(review.productId, "test1")
             XCTAssertEqual(review.authorId, "endersgame")

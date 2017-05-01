@@ -23,7 +23,7 @@ class RootViewController: UIViewController {
         let reviewSubmission = BVReviewSubmission(reviewTitle: "Review Title",
                                                    reviewText: "Review text...This needs to be long enough to be accepted.",
                                                        rating: 5,
-                                                    productId: "test1")
+                                                    productId: Constants.TEST_PRODUCT_ID)
         
         // a working example of posting a review.
         reviewSubmission.action = BVSubmissionAction.submit // Don't actually post, just run in preview mode!
@@ -55,7 +55,7 @@ class RootViewController: UIViewController {
 
     @IBAction func submitQuestionTapped(sender: AnyObject) {
         
-        let submission = BVQuestionSubmission(productId: "test1")
+        let submission = BVQuestionSubmission(productId: Constants.TEST_PRODUCT_ID)
         submission.action = .preview // don't actually just submit for real, this is just for demo
         submission.questionSummary = "Question Summary"
         submission.questionDetails = "Question details..."

@@ -16,6 +16,7 @@
 		874863A01D4BE64A00B43F00 /* MyQuestionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8748639C1D4BE64A00B43F00 /* MyQuestionTableViewCell.xib */; };
 		874863A11D4BE64A00B43F00 /* MyReviewTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8748639D1D4BE64A00B43F00 /* MyReviewTableViewCell.xib */; };
 		874863A21D4BE64A00B43F00 /* StatisticTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8748639E1D4BE64A00B43F00 /* StatisticTableViewCell.xib */; };
+		8777BB3F1EB7BE18008C4715 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8777BB3E1EB7BE18008C4715 /* Constants.swift */; };
 		879143F21CF4F05C00976220 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879143F11CF4F05C00976220 /* AppDelegate.swift */; };
 		879143F41CF4F05C00976220 /* ReviewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879143F31CF4F05C00976220 /* ReviewsViewController.swift */; };
 		87A36D231D4A911D00C3B41F /* AnswersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A36D161D4A911D00C3B41F /* AnswersViewController.swift */; };
@@ -40,6 +41,7 @@
 		8748639C1D4BE64A00B43F00 /* MyQuestionTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyQuestionTableViewCell.xib; sourceTree = "<group>"; };
 		8748639D1D4BE64A00B43F00 /* MyReviewTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyReviewTableViewCell.xib; sourceTree = "<group>"; };
 		8748639E1D4BE64A00B43F00 /* StatisticTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StatisticTableViewCell.xib; sourceTree = "<group>"; };
+		8777BB3E1EB7BE18008C4715 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		879143EE1CF4F05C00976220 /* ConversationsExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ConversationsExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		879143F11CF4F05C00976220 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		879143F31CF4F05C00976220 /* ReviewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewsViewController.swift; sourceTree = "<group>"; };
@@ -122,6 +124,7 @@
 				15E077DB1E5769CA001C89D0 /* bvsdk_config_prod.json */,
 				15E077DC1E5769CA001C89D0 /* bvsdk_config_staging.json */,
 				879143F11CF4F05C00976220 /* AppDelegate.swift */,
+				8777BB3E1EB7BE18008C4715 /* Constants.swift */,
 				87FF7F341D4FA90700019D54 /* View Controllers */,
 				87FF7F351D4FA91600019D54 /* Table View Cells */,
 				874863751D4BD8E000B43F00 /* Base.lproj */,
@@ -295,6 +298,7 @@
 				87A36D2E1D4A911D00C3B41F /* StatisticTableViewCell.swift in Sources */,
 				879143F41CF4F05C00976220 /* ReviewsViewController.swift in Sources */,
 				87A36D241D4A911D00C3B41F /* InlineRatingsViewController.swift in Sources */,
+				8777BB3F1EB7BE18008C4715 /* Constants.swift in Sources */,
 				879143F21CF4F05C00976220 /* AppDelegate.swift in Sources */,
 				87A36D2C1D4A911D00C3B41F /* QuestionsViewController.swift in Sources */,
 				87A36D2B1D4A911D00C3B41F /* PDPViewController.swift in Sources */,

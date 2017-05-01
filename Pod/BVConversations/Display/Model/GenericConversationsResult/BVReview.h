@@ -36,6 +36,7 @@
 @property NSString* _Nullable cons;
 @property bool isRecommended;
 @property bool isRatingsOnly;
+@property bool isSyndicated;
 @property NSString* _Nullable pros;
 @property NSArray<BVPhoto*>* _Nonnull photos;
 @property NSArray<BVContextDataValue*>* _Nonnull contextDataValues;
