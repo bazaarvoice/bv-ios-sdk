@@ -22,7 +22,7 @@ class ReviewsViewController: UIViewController, UITableViewDataSource {
         reviewsTableView.rowHeight = UITableViewAutomaticDimension
         reviewsTableView.register(UINib(nibName: "MyReviewTableViewCell", bundle: nil), forCellReuseIdentifier: "MyReviewTableViewCell")
         
-        let reviewsRequest = BVReviewsRequest(productId: "test1", limit: 20, offset: 0)
+        let reviewsRequest = BVReviewsRequest(productId: Constants.TEST_PRODUCT_ID, limit: 20, offset: 0)
         reviewsRequest.addReviewSort(.submissionTime, order: .descending)
         
         reviewsTableView.load(reviewsRequest, success: { (response) in

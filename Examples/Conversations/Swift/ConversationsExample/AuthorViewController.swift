@@ -33,9 +33,8 @@ class AuthorViewController: UIViewController, UITableViewDataSource {
         authorProfileTableView.register(UINib(nibName: "MyQuestionTableViewCell", bundle: nil), forCellReuseIdentifier: "MyQuestionTableViewCell")
         authorProfileTableView.register(UINib(nibName: "MyAnswerTableViewCell", bundle: nil), forCellReuseIdentifier: "MyAnswerTableViewCell")
 
-        let authorId = "data-gen-user-c3k8hjvtpn03dupvxcui1rj3"
-        
-        let request = BVAuthorRequest(authorId: authorId)
+    
+        let request = BVAuthorRequest(authorId: Constants.TEST_AUTHOR_ID)
         // stats includes
         request.includeStatistics(.answers)
         request.includeStatistics(.questions)
@@ -90,24 +89,28 @@ class AuthorViewController: UIViewController, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        if self.authorResponse == nil {
+        if let author = self.authorResponse?.results.first {
+            
+            switch section {
+            case AuthorSections.ProfileStats.rawValue:
+                return 1;
+            case AuthorSections.IncludedReviews.rawValue:
+                return (author.includedReviews.count);
+            case AuthorSections.IncludedQuestions.rawValue:
+                return (author.includedQuestions.count);
+            case AuthorSections.IncludedAnswers.rawValue:
+                return (author.includedAnswers.count);
+            default:
+                return 0;
+            }
+        }
+        else {
+            print("Error: No results to display")
             return 0;
         }
         
-        let author = self.authorResponse?.results.first!
         
-        switch section {
-        case AuthorSections.ProfileStats.rawValue:
-            return 1;
-        case AuthorSections.IncludedReviews.rawValue:
-            return (author?.includedReviews.count)!;
-        case AuthorSections.IncludedQuestions.rawValue:
-            return (author?.includedQuestions.count)!;
-        case AuthorSections.IncludedAnswers.rawValue:
-            return (author?.includedAnswers.count)!;
-        default:
-            return 0;
-        }
+        
         
     }
     

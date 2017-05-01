@@ -32,6 +32,11 @@
             self.isRatingsOnly = [ratingsOnly boolValue];
         }
         
+        NSNumber* isSyndicated = apiResponse[@"IsSyndicated"];
+        if(![isSyndicated isKindOfClass:[NSNull class]]) {
+            self.isSyndicated = [isSyndicated boolValue];
+        }
+        
         NSNumber* featured = apiResponse[@"IsFeatured"];
         if(![featured isKindOfClass:[NSNull class]]) {
             self.isFeatured = [featured boolValue];
