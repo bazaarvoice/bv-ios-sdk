@@ -52,7 +52,7 @@ class PDPViewController: BVProductDisplayPageViewController, UITableViewDataSour
         demoStatsTableView.rowHeight = UITableViewAutomaticDimension
         demoStatsTableView.register(UINib(nibName: "StatisticTableViewCell", bundle: nil), forCellReuseIdentifier: "StatisticTableViewCell")
         
-        let productPage = BVProductDisplayPageRequest(productId: "test1")
+        let productPage = BVProductDisplayPageRequest(productId: Constants.TEST_PRODUCT_ID)
         .includeStatistics(.reviews)
         .includeStatistics(.questions)
         .includeStatistics(.answers)

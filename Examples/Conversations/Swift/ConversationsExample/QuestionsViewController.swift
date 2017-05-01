@@ -22,7 +22,7 @@ class QuestionsViewController: UIViewController, UITableViewDataSource, UITableV
         questionsTableView.rowHeight = UITableViewAutomaticDimension
         questionsTableView.register(UINib(nibName: "MyQuestionTableViewCell", bundle: nil), forCellReuseIdentifier: "MyQuestionTableViewCell")
         
-        let questionsRequest = BVQuestionsAndAnswersRequest(productId: "test1", limit: 20, offset: 0)
+        let questionsRequest = BVQuestionsAndAnswersRequest(productId: Constants.TEST_PRODUCT_ID, limit: 20, offset: 0)
         
         // optionally add in a sort option
         questionsRequest.addQuestionSort(.submissionTime, order: .ascending)

@@ -22,9 +22,7 @@ class InlineRatingsViewController: UIViewController, UITableViewDataSource {
         inlineReviewsTableView.rowHeight = UITableViewAutomaticDimension
         inlineReviewsTableView.register(UINib(nibName: "StatisticTableViewCell", bundle: nil), forCellReuseIdentifier: "StatisticTableViewCell")
         
-        let productIds = ["test1", "test2","test3", "test4", "test5", "test6"]
-        
-        let reviews = BVBulkRatingsRequest(productIds: productIds, statistics: BulkRatingsStatsType.all)
+        let reviews = BVBulkRatingsRequest(productIds: Constants.TEST_PRODUCT_IDS_ARRAY, statistics: BulkRatingsStatsType.all)
         
         reviews.load({ (response) in
                 self.productStatistics = response.results
