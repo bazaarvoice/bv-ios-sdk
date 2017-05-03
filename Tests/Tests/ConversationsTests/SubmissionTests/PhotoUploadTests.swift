@@ -55,7 +55,7 @@ class PhotoUploadTests: XCTestCase {
             expectation.fulfill()
         }) { (errors) in
             XCTAssertEqual(errors.count, 1)
-            let error = errors.first as! NSError
+            let error = errors.first! as NSError
             XCTAssertEqual(error.userInfo[BVFieldErrorCode] as? String, "ERROR_FORM_IMAGE_PARSE")
             XCTAssertEqual(error.userInfo[BVFieldErrorName] as? String, "photo")
             XCTAssertEqual(error.userInfo[BVFieldErrorMessage] as? String, "We were unable to parse the image you uploaded.  Please ensure that the image is a valid BMP, PNG, GIF or JPEG file.")

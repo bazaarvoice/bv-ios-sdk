@@ -13,6 +13,8 @@
 #import "BVContextDataValue.h"
 #import "BVBadge.h"
 #import "BVSecondaryRating.h"
+#import "BVSyndicationSource.h"
+
 @class BVProduct;
 
 /*
@@ -64,5 +66,6 @@
 @property NSDate* _Nullable lastModificationTime;
 @property NSDate* _Nullable submissionTime;
 @property NSDate* _Nullable lastModeratedTime;
+@property BVSyndicationSource* _Nullable syndicationSource;
 
 @end

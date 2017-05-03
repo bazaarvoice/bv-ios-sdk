@@ -43,6 +43,11 @@ class MyReviewTableViewCell: BVReviewTableViewCell {
             reviewString?.append("\n")
             reviewString?.append("\nIs Recommended?  \(review!.isRecommended)")
             reviewString?.append("\nIs Syndicated?  \(review!.isSyndicated)")
+            
+            if (review!.isSyndicated && (review!.syndicationSource != nil)){
+                reviewString?.append("\nSyndication Source: \(review!.syndicationSource!.name!)")
+            }
+            
             reviewString?.append("\nHelpful Count: \(review!.totalPositiveFeedbackCount!)")
             reviewString?.append("\nNot Helpful Count: \(review!.totalNegativeFeedbackCount!)")
             
