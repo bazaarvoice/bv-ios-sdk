@@ -17,7 +17,6 @@
     self = [super init];
     if(self){
         
-        
         NSString* productId = apiResponse[@"ProductId"];
         self.product = [includes getProductById:productId];
         self.cons = apiResponse[@"Cons"];
@@ -35,6 +34,11 @@
         NSNumber* isSyndicated = apiResponse[@"IsSyndicated"];
         if(![isSyndicated isKindOfClass:[NSNull class]]) {
             self.isSyndicated = [isSyndicated boolValue];
+            
+            if (self.isSyndicated) {
+                self.syndicationSource = [[BVSyndicationSource alloc] initWithApiResponse:apiResponse];
+            }
+            
         }
         
         NSNumber* featured = apiResponse[@"IsFeatured"];
@@ -64,7 +68,6 @@
         else {
             self.rating = 0;
         }
-        
         
         SET_IF_NOT_NULL(self.contentLocale, apiResponse[@"ContentLocale"])
         SET_IF_NOT_NULL(self.ratingRange, apiResponse[@"RatingRange"])
