@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
-#import "BVCUrationsFeedItem.h"
+#import "BVCurationsFeedItem.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

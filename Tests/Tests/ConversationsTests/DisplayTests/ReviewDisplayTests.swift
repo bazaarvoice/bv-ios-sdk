@@ -6,6 +6,7 @@
 //
 
 import XCTest
+import OHHTTPStubs
 @testable import BVSDK
 
 class ReviewDisplayTests: XCTestCase {
@@ -46,6 +47,7 @@ class ReviewDisplayTests: XCTestCase {
             XCTAssertEqual(review.authorId, "endersgame")
             XCTAssertEqual(review.userNickname, "endersgame")
             XCTAssertEqual(review.userLocation, "San Fransisco, California")
+            XCTAssertNil(review.syndicationSource)
             
             XCTAssertEqual((review.tagDimensions!["Pro"]! as AnyObject).label, "Pros")
             XCTAssertEqual((review.tagDimensions!["Pro"]! as AnyObject).identifier, "Pro")
@@ -76,7 +78,7 @@ class ReviewDisplayTests: XCTestCase {
             
         }) { (error) in
             
-            XCTFail("product display request error: \(error)")
+            XCTFail("review display request error: \(error)")
             
         }
         
@@ -87,9 +89,49 @@ class ReviewDisplayTests: XCTestCase {
     }
     
     
+    func testSyndicationSource(){
+        
+        
+        stub(condition: isHost("stg.api.bazaarvoice.com")) { _ in
+            // Stub it with our "storeItemWithStatsAndReviews.json" stub file (which is in same bundle as self)
+            let stubPath = OHPathForFile("testSyndicationSource.json", type(of: self))
+            return fixture(filePath: stubPath!, headers: ["Content-Type" as NSObject:"application/json" as AnyObject])
+        }
+
+        let expectation = self.expectation(description: "testSyndicationSource")
+        
+        
+        let request = BVReviewsRequest(productId: "test1", limit: 10, offset: 4)
+            .addReviewSort(.rating, order: .ascending)
+            .addInclude(BVReviewIncludeType.products)
+        
+        request.load({ (response) in
+            
+            let review = response.results.first
+            
+            XCTAssertNotNil(review?.syndicationSource)
+            XCTAssertEqual(review?.syndicationSource?.name, "bazaarvoice")
+            XCTAssertNil(review?.syndicationSource?.contentLink)
+            XCTAssertNotNil(review?.syndicationSource?.logoImageUrl)
+            
+            expectation.fulfill()
+            
+        }) { (error) in
+            
+            XCTFail("review display request error: \(error)")
+            
+        }
+        
+        self.waitForExpectations(timeout: 10) { (error) in
+            XCTAssertNil(error, "Something went horribly wrong, request took too long.")
+        }
+        
+    }
+    
     func testReviewDisplayProductFilteredStats() {
         
         let expectation = self.expectation(description: "testReviewDisplayProductFilteredStats")
+        
         
         let request = BVReviewsRequest(productId: "test1", limit: 10, offset: 4)
             .addReviewSort(.rating, order: .ascending)
