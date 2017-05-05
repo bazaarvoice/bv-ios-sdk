@@ -16,7 +16,7 @@ class ProfileDisplayTests: XCTestCase {
         let configDict = ["clientId": "conciergeapidocumentation",
                           "apiKeyConversations": "caB45h2jBqXFw1OE043qoMBD1gJC8EwFNCjktzgwncXY4"];
         BVSDKManager.configure(withConfiguration: configDict, configType: .staging)
-        BVSDKManager.shared().setLogLevel(.verbose)
+        BVSDKManager.shared().setLogLevel(.error)
     }
     
     override func tearDown() {

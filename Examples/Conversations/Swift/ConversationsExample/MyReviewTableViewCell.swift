@@ -27,20 +27,26 @@ class MyReviewTableViewCell: BVReviewTableViewCell {
             // let's see if this author has any badges
             for badge : BVBadge in (review?.badges)! {
                 
-                badgesString += " \(badge.identifier!)) "
+                badgesString += " \(badge.identifier!) "
                 
             }
             
             badgesString += "]"
             
-            titleString = titleString?.appending("\nBy \(review!.authorId ?? "no author") on \(dateString)\(badgesString)")
+            titleString = titleString?.appending("\nBy \(review!.userNickname ?? "no author") on \(dateString)\(badgesString)")
             
+            // Add any context data values, if present. E.g. Age, Gender, other....
+            for contextDataValue in (review?.contextDataValues)! {
+                titleString?.append("\n\(contextDataValue.dimensionLabel!): \(contextDataValue.valueLabel!)")
+            }
+
             reviewTitle.text = titleString
             
             // Create a review body some example of data we can pull in.
             var reviewString = review?.reviewText
             
             reviewString?.append("\n")
+            
             reviewString?.append("\nIs Recommended?  \(review!.isRecommended)")
             reviewString?.append("\nIs Syndicated?  \(review!.isSyndicated)")
             

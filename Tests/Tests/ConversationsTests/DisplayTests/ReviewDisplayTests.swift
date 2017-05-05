@@ -17,9 +17,14 @@ class ReviewDisplayTests: XCTestCase {
         let configDict = ["clientId": "apitestcustomer",
                           "apiKeyConversations": "kuy3zj9pr3n7i0wxajrzj04xo"];
         BVSDKManager.configure(withConfiguration: configDict, configType: .staging)
-        BVSDKManager.shared().setLogLevel(BVLogLevel.verbose)
+        BVSDKManager.shared().setLogLevel(BVLogLevel.error)
     }
     
+    override func tearDown() {
+        super.tearDown()
+        OHHTTPStubs.removeAllStubs()
+        
+    }
     
     func testReviewDisplay() {
         
@@ -93,7 +98,6 @@ class ReviewDisplayTests: XCTestCase {
         
         
         stub(condition: isHost("stg.api.bazaarvoice.com")) { _ in
-            // Stub it with our "storeItemWithStatsAndReviews.json" stub file (which is in same bundle as self)
             let stubPath = OHPathForFile("testSyndicationSource.json", type(of: self))
             return fixture(filePath: stubPath!, headers: ["Content-Type" as NSObject:"application/json" as AnyObject])
         }
@@ -119,6 +123,7 @@ class ReviewDisplayTests: XCTestCase {
         }) { (error) in
             
             XCTFail("review display request error: \(error)")
+            expectation.fulfill()
             
         }
         
