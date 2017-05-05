@@ -17,7 +17,7 @@ class ReviewSubmissionTests: XCTestCase {
         let configDict = ["clientId": "apitestcustomer",
                           "apiKeyConversations": "KEY_REMOVED"];
         BVSDKManager.configure(withConfiguration: configDict, configType: .staging)
-        BVSDKManager.shared().setLogLevel(.verbose)
+        BVSDKManager.shared().setLogLevel(.error)
     }
     
     func testSubmitReviewWithPhoto() {
@@ -26,7 +26,7 @@ class ReviewSubmissionTests: XCTestCase {
         
         let review = self.fillOutReview(.submit)
         review.submit({ (reviewSubmission) in
-            //XCTAssertTrue(reviewSubmission.formFields?.keys.count == 0)
+            XCTAssertTrue(reviewSubmission.formFields?.keys.count == 0)
             expectation.fulfill()
         }, failure: { (errors) in
             XCTFail()
@@ -43,7 +43,7 @@ class ReviewSubmissionTests: XCTestCase {
         let review = self.fillOutReview(.preview)
         review.submit({ (reviewSubmission) in
                 // When run in Preview mode, we get the formFields that can be used for submission.
-                //XCTAssertTrue(reviewSubmission.formFields?.keys.count == 50)
+                XCTAssertTrue(reviewSubmission.formFields?.keys.count == 50)
                 expectation.fulfill()
             }, failure: { (errors) in
                 XCTFail()
@@ -82,31 +82,31 @@ class ReviewSubmissionTests: XCTestCase {
         review.addRatingQuestion("HowDoes", value: 4)
         review.addRatingQuestion("Fit", value: 3)
         
-//        if let image = PhotoUploadTests.createImage() {
-//            review.addPhoto(image, withPhotoCaption: "Yo dawg")
-//        }
+        if let image = PhotoUploadTests.createImage() {
+            review.addPhoto(image, withPhotoCaption: "Yo dawg")
+        }
         
         return review
     }
     
     
-//    func testSubmitReviewFailure() {
-//        let expectation = self.expectation(description: "testSubmitReviewFailure")
-//        
-//        let review = BVReviewSubmission(reviewTitle: "", reviewText: "", rating: 123, productId: "1000001")
-//        review.userNickname = "cgil"
-//        review.userId = "craiggiddl"
-//        review.action = .submit
-//        
-//        review.submit({ (reviewSubmission) in
-//            XCTFail()
-//            expectation.fulfill()
-//        }, failure: { (errors) in
-//            errors.forEach { print("Expected Failure Item: \($0)") }
-//            XCTAssertEqual(errors.count, 5)
-//            expectation.fulfill()
-//        })
-//        waitForExpectations(timeout: 10, handler: nil)
-//    }
+    func testSubmitReviewFailure() {
+        let expectation = self.expectation(description: "testSubmitReviewFailure")
+        
+        let review = BVReviewSubmission(reviewTitle: "", reviewText: "", rating: 123, productId: "1000001")
+        review.userNickname = "cgil"
+        review.userId = "craiggiddl"
+        review.action = .submit
+        
+        review.submit({ (reviewSubmission) in
+            XCTFail()
+            expectation.fulfill()
+        }, failure: { (errors) in
+            errors.forEach { print("Expected Failure Item: \($0)") }
+            XCTAssertEqual(errors.count, 5)
+            expectation.fulfill()
+        })
+        waitForExpectations(timeout: 10, handler: nil)
+    }
     
 }

@@ -21,6 +21,7 @@ class ConversationsStoresDisplayTests: XCTestCase {
     
     override func tearDown() {
         super.tearDown()
+        OHHTTPStubs.removeAllStubs()
     }
     
     // This tests fetching reviews from a single store, but store id, given a limit and offset.
