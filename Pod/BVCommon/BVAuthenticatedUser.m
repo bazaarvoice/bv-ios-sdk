@@ -20,6 +20,9 @@
 -(void)updateProfile:(bool)force withAPIKey:(NSString *)passKey isStaging:(BOOL)isStage {
     
     // don't grab profile if user has opted for limited ad targeting
+#ifdef DISABLE_BVSDK_IDFA
+    return;
+#else
     if(![[ASIdentifierManager sharedManager] isAdvertisingTrackingEnabled]){
         return;
     }
@@ -92,6 +95,9 @@
         [profileTask resume];
 
     }
+
+#endif // DISABLE_BVSDK_IDFA
+    
 }
 
 -(bool)shouldUpdateProfile {
@@ -101,7 +107,12 @@
 }
 
 -(NSDictionary*)getTargetingKeywords {
+    
+#ifdef DISABLE_BVSDK_IDFA
+    bool trackingEnabled = false;
+#else
     bool trackingEnabled = [[ASIdentifierManager sharedManager] isAdvertisingTrackingEnabled];
+#endif
     
     if(self.personalizedPreferences == nil || !trackingEnabled)
         return nil;

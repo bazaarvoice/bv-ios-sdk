@@ -64,12 +64,12 @@ static BVAnalyticEventManager *mgrInstance = nil;
     
     // idfa
     //check it limit ad tracking is enabled
-    NSString *idfa = [[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString];
+    NSString *idfa = @"nontracking";
+#ifndef DISABLE_BVSDK_IDFA
     if([[ASIdentifierManager sharedManager] isAdvertisingTrackingEnabled] && !anonymous){
         idfa = [[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString];
-    } else {
-        idfa = @"nontracking";
     }
+#endif
     
     [params setValue:idfa forKey:@"advertisingId"];
     
