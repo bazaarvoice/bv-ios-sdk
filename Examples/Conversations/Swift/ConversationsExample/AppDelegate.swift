@@ -16,7 +16,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]? = nil) -> Bool {
         // Override point for customization after application launch.
         
-        // TODO: DO NOT USE THIS CLIENTID FOR YOUR OWN APP. USE THE CLIENT ID PROVIDED BY BAZAARVOICE!!!
         //#warning See bvsdk_config_staging.json and bvsdk_config_product.json in the project for API key and client ID settings.
         BVSDKManager.configure(.staging)
         BVSDKManager.shared().setLogLevel(.verbose)
