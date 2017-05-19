@@ -2374,7 +2374,7 @@
 				CODE_SIGN_ENTITLEMENTS = BVSDKDemo/BVSDKDemo.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 37;
+				CURRENT_PROJECT_VERSION = 44;
 				DEVELOPMENT_TEAM = TH9FFAVND4;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2407,7 +2407,7 @@
 				CODE_SIGN_ENTITLEMENTS = BVSDKDemo/BVSDKDemo.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 37;
+				CURRENT_PROJECT_VERSION = 44;
 				DEVELOPMENT_TEAM = TH9FFAVND4;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2467,7 +2467,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Curations Custom Post Extension/Curations Custom Post Extension.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 37;
+				CURRENT_PROJECT_VERSION = 44;
 				DEVELOPMENT_TEAM = TH9FFAVND4;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "Curations Custom Post Extension/Info.plist";
@@ -2499,7 +2499,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Curations Custom Post Extension/Curations Custom Post Extension.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 37;
+				CURRENT_PROJECT_VERSION = 44;
 				DEVELOPMENT_TEAM = TH9FFAVND4;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "Curations Custom Post Extension/Info.plist";

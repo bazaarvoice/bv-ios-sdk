@@ -305,21 +305,32 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         if canLoadRecommendations {
             loadRecommendations()
         }else {
-            loadConversations()
+            loadConversations(omitStats: false)
         }
     }
     
-    func loadConversations() {
+    func loadConversations(omitStats : Bool) {
         let req = BVBulkProductRequest().addProductSort(.averageOverallRating, order: .descending)
-            .add(.totalReviewCount, filterOperator: .greaterThanOrEqualTo, value: "35")
+            .add(.totalReviewCount, filterOperator: .greaterThanOrEqualTo, value: "10")
             .add(.isActive, filterOperator: .equalTo, value: "true")
             .add(.isDisabled, filterOperator: .equalTo, value: "false")
-            .includeStatistics(.reviews)
+            if (!omitStats){
+                req.includeStatistics(.reviews)
+            }
         req.sortIncludedReviews(.rating, order: .descending)
         req.load({(response) in
             self.doneLoading(response.results)
         }){(errs) in
-            self.doneLoading(with: errs.first!)
+            
+            if ((errs.first?.localizedDescription.lowercased().range(of: "must use non bulk filter value")) != nil &&
+                omitStats == false){
+                
+                    print("WARNING: The API Key being used does not support the use of bulk requests, so included review statistics will not be included.")
+                    self.loadConversations(omitStats: true)
+                
+            } else {
+                self.doneLoading(with: errs.first!)
+            }
         }
     }
     
