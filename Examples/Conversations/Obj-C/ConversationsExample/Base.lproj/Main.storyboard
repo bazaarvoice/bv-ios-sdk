@@ -1,8 +1,11 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="iQV-yi-M3U">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="iQV-yi-M3U">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -21,63 +24,80 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BSS-vs-XAO">
+                                <rect key="frame" x="132.5" y="104" width="110" height="30"/>
                                 <state key="normal" title="Display Reviews"/>
                                 <connections>
                                     <segue destination="BYZ-38-t0r" kind="show" id="YYu-5v-t09"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XBc-bm-BM7">
+                                <rect key="frame" x="95" y="154" width="185" height="30"/>
                                 <state key="normal" title="Display Question &amp; Answer"/>
                                 <connections>
                                     <segue destination="JaM-WD-YD4" kind="show" id="maz-VO-MmU"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MWm-bf-w1t">
+                                <rect key="frame" x="114" y="204" width="147" height="30"/>
                                 <state key="normal" title="Display Product Page"/>
                                 <connections>
                                     <segue destination="LQr-cV-wZj" kind="show" id="UTO-CQ-OQK"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GUy-1C-R1r">
+                                <rect key="frame" x="114.5" y="254" width="146" height="30"/>
                                 <state key="normal" title="Display Inline Ratings"/>
                                 <connections>
                                     <segue destination="xVc-6m-4Jh" kind="show" id="Y1B-ye-5Aq"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5zN-hz-DfD">
+                                <rect key="frame" x="98.5" y="413" width="178" height="30"/>
                                 <state key="normal" title="Submit Review with Photo"/>
                                 <connections>
                                     <action selector="submitReviewTapped:" destination="dKM-nR-alk" eventType="touchUpInside" id="E8L-RP-slB"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cmo-ai-CH5">
+                                <rect key="frame" x="130.5" y="463" width="114" height="30"/>
                                 <state key="normal" title="Submit Question"/>
                                 <connections>
                                     <action selector="submitQuestionTapped:" destination="dKM-nR-alk" eventType="touchUpInside" id="bqC-2K-uOb"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bee-Nm-2RZ">
+                                <rect key="frame" x="135.5" y="513" width="104" height="30"/>
                                 <state key="normal" title="Submit Answer"/>
                                 <connections>
                                     <action selector="submitAnswerTapped:" destination="dKM-nR-alk" eventType="touchUpInside" id="bQR-Dt-8ti"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gP4-Nm-lKG">
+                                <rect key="frame" x="85.5" y="393" width="204" height="1"/>
                                 <color key="backgroundColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="TRG-Vh-DJo"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I8O-gn-0sf">
+                                <rect key="frame" x="130" y="561" width="120" height="30"/>
                                 <state key="normal" title="Submit Feedback"/>
                                 <connections>
                                     <action selector="submitFeedbackTapped:" destination="dKM-nR-alk" eventType="touchUpInside" id="Bwr-Kr-eQi"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Be6-mj-XWb">
+                                <rect key="frame" x="137.5" y="301" width="100" height="30"/>
                                 <state key="normal" title="Display Author"/>
                                 <connections>
                                     <segue destination="8No-sA-vk5" kind="show" id="ooo-9J-yHS"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="em8-O6-8DF">
+                                <rect key="frame" x="123" y="345" width="129" height="30"/>
+                                <state key="normal" title="Display Comments"/>
+                                <connections>
+                                    <segue destination="ANb-2k-jfe" kind="show" id="HGT-nD-ifZ"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -87,10 +107,11 @@
                             <constraint firstItem="Cmo-ai-CH5" firstAttribute="centerX" secondItem="OIU-n6-sdF" secondAttribute="centerX" id="Ajh-7R-HL2"/>
                             <constraint firstItem="gP4-Nm-lKG" firstAttribute="width" secondItem="GUy-1C-R1r" secondAttribute="width" multiplier="1.4" id="BJi-pS-HCG"/>
                             <constraint firstItem="Be6-mj-XWb" firstAttribute="centerX" secondItem="OIU-n6-sdF" secondAttribute="centerX" id="BPp-SM-Rjv"/>
-                            <constraint firstItem="gP4-Nm-lKG" firstAttribute="top" secondItem="Be6-mj-XWb" secondAttribute="bottom" constant="26" id="DwA-Ml-oJU"/>
+                            <constraint firstItem="em8-O6-8DF" firstAttribute="centerX" secondItem="OIU-n6-sdF" secondAttribute="centerX" id="Fab-ja-EBb"/>
                             <constraint firstItem="bee-Nm-2RZ" firstAttribute="top" secondItem="Cmo-ai-CH5" secondAttribute="bottom" constant="20" id="HN6-tp-0cI"/>
                             <constraint firstItem="GUy-1C-R1r" firstAttribute="centerX" secondItem="OIU-n6-sdF" secondAttribute="centerX" id="IoW-YJ-7H2"/>
                             <constraint firstItem="BSS-vs-XAO" firstAttribute="centerX" secondItem="OIU-n6-sdF" secondAttribute="centerX" id="Nuy-yd-PRR"/>
+                            <constraint firstItem="gP4-Nm-lKG" firstAttribute="top" secondItem="em8-O6-8DF" secondAttribute="bottom" constant="18" id="O1r-Qm-Wp4"/>
                             <constraint firstItem="gP4-Nm-lKG" firstAttribute="centerX" secondItem="GUy-1C-R1r" secondAttribute="centerX" id="OTm-8z-9zH"/>
                             <constraint firstItem="XBc-bm-BM7" firstAttribute="top" secondItem="BSS-vs-XAO" secondAttribute="bottom" constant="20" id="Ov6-q5-f5r"/>
                             <constraint firstItem="5zN-hz-DfD" firstAttribute="top" secondItem="gP4-Nm-lKG" secondAttribute="bottom" constant="19" id="Rph-cx-aFy"/>
@@ -98,6 +119,7 @@
                             <constraint firstAttribute="trailingMargin" secondItem="I8O-gn-0sf" secondAttribute="trailing" constant="109" id="Z4w-cC-Fhp"/>
                             <constraint firstItem="Be6-mj-XWb" firstAttribute="top" secondItem="GUy-1C-R1r" secondAttribute="bottom" constant="17" id="bVt-q7-5jt"/>
                             <constraint firstItem="bee-Nm-2RZ" firstAttribute="centerX" secondItem="OIU-n6-sdF" secondAttribute="centerX" id="dtQ-kO-uPU"/>
+                            <constraint firstItem="em8-O6-8DF" firstAttribute="top" secondItem="Be6-mj-XWb" secondAttribute="bottom" constant="14" id="enF-Th-97T"/>
                             <constraint firstItem="XBc-bm-BM7" firstAttribute="centerX" secondItem="OIU-n6-sdF" secondAttribute="centerX" id="fi8-QZ-pSx"/>
                             <constraint firstItem="GUy-1C-R1r" firstAttribute="top" secondItem="MWm-bf-w1t" secondAttribute="bottom" constant="20" id="fs5-ty-u1h"/>
                             <constraint firstItem="MWm-bf-w1t" firstAttribute="top" secondItem="XBc-bm-BM7" secondAttribute="bottom" constant="20" id="q3Q-rd-aIS"/>
@@ -126,6 +148,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="CaG-oN-tr0" customClass="BVReviewsTableView">
+                                <rect key="frame" x="-4" y="0.0" width="383" height="667"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <outlet property="dataSource" destination="BYZ-38-t0r" id="si2-2C-xE0"/>
@@ -163,6 +186,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Tgp-zI-Cjs" customClass="BVQuestionsTableView">
+                                <rect key="frame" x="-4" y="0.0" width="383" height="667"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <outlet property="dataSource" destination="JaM-WD-YD4" id="s2i-iJ-1nn"/>
@@ -187,6 +211,40 @@
             </objects>
             <point key="canvasLocation" x="1008.8" y="484.40779610194909"/>
         </scene>
+        <!--Comments-->
+        <scene sceneID="sLI-HR-Srk">
+            <objects>
+                <viewController id="ANb-2k-jfe" customClass="CommentsViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ky3-Fb-5Bv"/>
+                        <viewControllerLayoutGuide type="bottom" id="vXI-1G-DC8"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="5WX-C4-3Oq">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="AFN-Z4-Y8b">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="vXI-1G-DC8" firstAttribute="top" secondItem="AFN-Z4-Y8b" secondAttribute="bottom" id="M1a-tS-QDE"/>
+                            <constraint firstItem="AFN-Z4-Y8b" firstAttribute="leading" secondItem="5WX-C4-3Oq" secondAttribute="leading" id="cFY-J6-aR6"/>
+                            <constraint firstItem="AFN-Z4-Y8b" firstAttribute="top" secondItem="5WX-C4-3Oq" secondAttribute="top" id="flR-g2-vVi"/>
+                            <constraint firstAttribute="trailing" secondItem="AFN-Z4-Y8b" secondAttribute="trailing" id="k8e-8z-5qa"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Comments" id="pJy-e1-0gl"/>
+                    <connections>
+                        <outlet property="commentsTableView" destination="AFN-Z4-Y8b" id="4nY-jf-rqu"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tx6-zB-0u1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1679.2" y="548.27586206896558"/>
+        </scene>
         <!--Answers View Controller-->
         <scene sceneID="CNQ-IK-znT">
             <objects>
@@ -200,6 +258,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="9zm-aQ-TIP" customClass="BVAnswersTableView">
+                                <rect key="frame" x="-4" y="0.0" width="383" height="667"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <outlet property="dataSource" destination="xic-aI-xQ3" id="6Cp-ak-1cV"/>
@@ -253,13 +312,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="KB5-lK-Stz">
+                                <rect key="frame" x="-4" y="0.0" width="383" height="667"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="StatCell" id="9ES-OS-FSe">
-                                        <rect key="frame" x="0.0" y="92" width="383" height="44"/>
+                                        <rect key="frame" x="0.0" y="28" width="383" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9ES-OS-FSe" id="Mix-E9-t34">
-                                            <frame key="frameInset" width="383" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="383" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -300,6 +360,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Zib-E6-enN">
+                                <rect key="frame" x="-4" y="0.0" width="383" height="667"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </tableView>
                         </subviews>
@@ -333,6 +394,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="KxI-35-AhF">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="dataSource" destination="8No-sA-vk5" id="K9x-CR-6Dg"/>

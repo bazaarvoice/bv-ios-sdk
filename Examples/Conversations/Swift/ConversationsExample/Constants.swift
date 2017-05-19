@@ -18,4 +18,7 @@ struct Constants {
     // Used for a BVAuthorRequest
     static let TEST_AUTHOR_ID = "data-gen-user-c3k8hjvtpn03dupvxcui1rj3"
     
+    // Review Id with Comments
+    static let TEST_REVIEW_ID_FOR_COMMENTS = "192548"
+    
 }

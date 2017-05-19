@@ -33,6 +33,7 @@
     
     BVReviewsRequest* request = [[BVReviewsRequest alloc] initWithProductId:@"test1" limit:20 offset:0];
     [request addReviewSort:BVSortOptionReviewsSubmissionTime order:BVSortOrderDescending];
+    [request addInclude:BVReviewIncludeTypeComments];
     
     [self.reviewsTableView load:request success:^(BVReviewsResponse * _Nonnull response) {
         self.reviews = response.results;

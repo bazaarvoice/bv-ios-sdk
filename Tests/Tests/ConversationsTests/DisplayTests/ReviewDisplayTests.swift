@@ -17,7 +17,7 @@ class ReviewDisplayTests: XCTestCase {
         let configDict = ["clientId": "apitestcustomer",
                           "apiKeyConversations": "KEY_REMOVED"];
         BVSDKManager.configure(withConfiguration: configDict, configType: .staging)
-        BVSDKManager.shared().setLogLevel(BVLogLevel.error)
+        BVSDKManager.shared().setLogLevel(BVLogLevel.verbose)
     }
     
     override func tearDown() {
@@ -213,5 +213,47 @@ class ReviewDisplayTests: XCTestCase {
         
     }
 
+    func testReviewIncludeComments() {
+        
+        let expectation = self.expectation(description: "testReviewIncludeComments")
+        
+        let request = BVReviewsRequest(productId: "test1", limit: 10, offset: 0)
+            .addInclude(.comments)
+            .addFilter(.id, filterOperator: .equalTo, value: "192463") // This review is know to have a comment
+        
+        request.load({ (response) in
+            
+            XCTAssertEqual(response.results.count, 1) // We filtered on a review id, so there should only be one
+            
+            let review : BVReview = response.results.first!
+            
+            XCTAssertTrue(review.comments.count >= 1)
+            
+            let firstComment = review.comments.first!
+            
+            // XCTAssertNotNil(firstComment.title) -- title may be nil
+            XCTAssertNotNil(firstComment.authorId)
+            XCTAssertNotNil(firstComment.badges)
+            XCTAssertNotNil(firstComment.submissionTime)
+            XCTAssertNotNil(firstComment.commentText)
+            XCTAssertNotNil(firstComment.contentLocale)
+            XCTAssertNotNil(firstComment.lastModeratedTime)
+            XCTAssertNotNil(firstComment.lastModificationTime)
+            
+            expectation.fulfill()
+            
+        }) { (error) in
+            
+            XCTFail("review display request error: \(error)")
+            
+        }
+        
+        self.waitForExpectations(timeout: 10) { (error) in
+            XCTAssertNil(error, "Something went horribly wrong, request took too long.")
+        }
+        
+    }
+
+    
     
 }

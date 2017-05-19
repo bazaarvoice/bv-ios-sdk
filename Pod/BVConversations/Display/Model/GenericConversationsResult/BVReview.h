@@ -14,6 +14,7 @@
 #import "BVBadge.h"
 #import "BVSecondaryRating.h"
 #import "BVSyndicationSource.h"
+#import "BVComment.h"
 
 @class BVProduct;
 
@@ -67,5 +68,6 @@
 @property NSDate* _Nullable submissionTime;
 @property NSDate* _Nullable lastModeratedTime;
 @property BVSyndicationSource* _Nullable syndicationSource;
+@property (readonly) NSArray<BVComment *> * _Nonnull comments;
 
 @end

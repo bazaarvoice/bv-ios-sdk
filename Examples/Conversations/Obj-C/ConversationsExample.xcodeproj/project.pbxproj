@@ -23,6 +23,9 @@
 		87C5FF701E3A64B2004EE6E8 /* AuthorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87C5FF6F1E3A64B2004EE6E8 /* AuthorViewController.m */; };
 		87C768431D4BB0AB0091E5A1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 87C768391D4BB0AB0091E5A1 /* Assets.xcassets */; };
 		87C7684C1D4BB1660091E5A1 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87C7684B1D4BB1660091E5A1 /* RootViewController.m */; };
+		87E810F91ECE4E710032C753 /* CommentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87E810F81ECE4E710032C753 /* CommentsViewController.m */; };
+		87E810FD1ECE50100032C753 /* MyCommentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 87E810FB1ECE50100032C753 /* MyCommentTableViewCell.m */; };
+		87E810FE1ECE50100032C753 /* MyCommentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 87E810FC1ECE50100032C753 /* MyCommentTableViewCell.xib */; };
 		87EB7D7D1D4BF2140014D5F9 /* QuestionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87EB7D7C1D4BF2140014D5F9 /* QuestionsViewController.m */; };
 		87EB7D801D4BF5040014D5F9 /* PDPViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87EB7D7F1D4BF5040014D5F9 /* PDPViewController.m */; };
 		87EB7D831D4BFB890014D5F9 /* StatisticTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 87EB7D821D4BFB890014D5F9 /* StatisticTableViewCell.m */; };
@@ -60,6 +63,11 @@
 		87C768391D4BB0AB0091E5A1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../../shared/Assets.xcassets; sourceTree = "<group>"; };
 		87C7684A1D4BB1660091E5A1 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RootViewController.h; path = ConversationsExample/RootViewController.h; sourceTree = SOURCE_ROOT; };
 		87C7684B1D4BB1660091E5A1 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RootViewController.m; path = ConversationsExample/RootViewController.m; sourceTree = SOURCE_ROOT; };
+		87E810F71ECE4E710032C753 /* CommentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentsViewController.h; sourceTree = "<group>"; };
+		87E810F81ECE4E710032C753 /* CommentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentsViewController.m; sourceTree = "<group>"; };
+		87E810FA1ECE50100032C753 /* MyCommentTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCommentTableViewCell.h; sourceTree = "<group>"; };
+		87E810FB1ECE50100032C753 /* MyCommentTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCommentTableViewCell.m; sourceTree = "<group>"; };
+		87E810FC1ECE50100032C753 /* MyCommentTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyCommentTableViewCell.xib; sourceTree = "<group>"; };
 		87EB7D7B1D4BF2140014D5F9 /* QuestionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionsViewController.h; sourceTree = "<group>"; };
 		87EB7D7C1D4BF2140014D5F9 /* QuestionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionsViewController.m; sourceTree = "<group>"; };
 		87EB7D7E1D4BF5040014D5F9 /* PDPViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDPViewController.h; sourceTree = "<group>"; };
@@ -143,18 +151,20 @@
 			children = (
 				87C7684A1D4BB1660091E5A1 /* RootViewController.h */,
 				87C7684B1D4BB1660091E5A1 /* RootViewController.m */,
-				873C79591D4BF0C90048AD55 /* ReviewsViewController.h */,
-				873C795A1D4BF0C90048AD55 /* ReviewsViewController.m */,
-				87C5FF6E1E3A64B2004EE6E8 /* AuthorViewController.h */,
-				87C5FF6F1E3A64B2004EE6E8 /* AuthorViewController.m */,
-				87EB7D7B1D4BF2140014D5F9 /* QuestionsViewController.h */,
-				87EB7D7C1D4BF2140014D5F9 /* QuestionsViewController.m */,
 				87FF7F291D4F90B300019D54 /* AnswersViewController.h */,
 				87FF7F2A1D4F90B300019D54 /* AnswersViewController.m */,
-				87EB7D7E1D4BF5040014D5F9 /* PDPViewController.h */,
-				87EB7D7F1D4BF5040014D5F9 /* PDPViewController.m */,
+				87C5FF6E1E3A64B2004EE6E8 /* AuthorViewController.h */,
+				87C5FF6F1E3A64B2004EE6E8 /* AuthorViewController.m */,
+				87E810F71ECE4E710032C753 /* CommentsViewController.h */,
+				87E810F81ECE4E710032C753 /* CommentsViewController.m */,
 				87EB7D841D4CCF0D0014D5F9 /* InlineRatingsViewController.h */,
 				87EB7D851D4CCF0D0014D5F9 /* InlineRatingsViewController.m */,
+				87EB7D7E1D4BF5040014D5F9 /* PDPViewController.h */,
+				87EB7D7F1D4BF5040014D5F9 /* PDPViewController.m */,
+				87EB7D7B1D4BF2140014D5F9 /* QuestionsViewController.h */,
+				87EB7D7C1D4BF2140014D5F9 /* QuestionsViewController.m */,
+				873C79591D4BF0C90048AD55 /* ReviewsViewController.h */,
+				873C795A1D4BF0C90048AD55 /* ReviewsViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -162,15 +172,18 @@
 		87FF7F331D4F91C200019D54 /* TableViewCells */ = {
 			isa = PBXGroup;
 			children = (
-				8748638A1D4BDDCF00B43F00 /* MyReviewTableViewCell.h */,
-				8748638B1D4BDDCF00B43F00 /* MyReviewTableViewCell.m */,
-				874863901D4BE47300B43F00 /* MyQuestionTableViewCell.h */,
-				874863911D4BE47300B43F00 /* MyQuestionTableViewCell.m */,
 				87FF7F2F1D4F91B100019D54 /* MyAnswerTableViewCell.h */,
 				87FF7F301D4F91B100019D54 /* MyAnswerTableViewCell.m */,
+				87E810FA1ECE50100032C753 /* MyCommentTableViewCell.h */,
+				87E810FB1ECE50100032C753 /* MyCommentTableViewCell.m */,
+				874863901D4BE47300B43F00 /* MyQuestionTableViewCell.h */,
+				874863911D4BE47300B43F00 /* MyQuestionTableViewCell.m */,
+				8748638A1D4BDDCF00B43F00 /* MyReviewTableViewCell.h */,
+				8748638B1D4BDDCF00B43F00 /* MyReviewTableViewCell.m */,
 				87EB7D811D4BFB890014D5F9 /* StatisticTableViewCell.h */,
 				87EB7D821D4BFB890014D5F9 /* StatisticTableViewCell.m */,
 				874863931D4BE5FB00B43F00 /* MyAnswerTableViewCell.xib */,
+				87E810FC1ECE50100032C753 /* MyCommentTableViewCell.xib */,
 				874863941D4BE5FB00B43F00 /* MyQuestionTableViewCell.xib */,
 				874863951D4BE5FB00B43F00 /* MyReviewTableViewCell.xib */,
 				874863961D4BE5FB00B43F00 /* StatisticTableViewCell.xib */,
@@ -258,6 +271,7 @@
 				15E077DA1E576854001C89D0 /* bvsdk_config_prod.json in Resources */,
 				874863891D4BDA8F00B43F00 /* Main.storyboard in Resources */,
 				8748639A1D4BE5FB00B43F00 /* StatisticTableViewCell.xib in Resources */,
+				87E810FE1ECE50100032C753 /* MyCommentTableViewCell.xib in Resources */,
 				874863991D4BE5FB00B43F00 /* MyReviewTableViewCell.xib in Resources */,
 				87C768431D4BB0AB0091E5A1 /* Assets.xcassets in Resources */,
 				15E077D91E576854001C89D0 /* bvsdk_config_staging.json in Resources */,
@@ -333,7 +347,9 @@
 				876DF55C1CF4E87B005D841F /* AppDelegate.m in Sources */,
 				874863921D4BE47300B43F00 /* MyQuestionTableViewCell.m in Sources */,
 				87C5FF701E3A64B2004EE6E8 /* AuthorViewController.m in Sources */,
+				87E810FD1ECE50100032C753 /* MyCommentTableViewCell.m in Sources */,
 				876DF5591CF4E87B005D841F /* main.m in Sources */,
+				87E810F91ECE4E710032C753 /* CommentsViewController.m in Sources */,
 				87C7684C1D4BB1660091E5A1 /* RootViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
