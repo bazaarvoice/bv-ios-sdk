@@ -157,8 +157,6 @@
     parameters[@"userid"] = self.userId;
     parameters[@"contentId"] = self.contentId;
     
-    self.contentType = 0;
-    
     // Set the content type
     if (self.contentType == BVFeedbackContentTypeReview){
         parameters[@"contentType"] = @"review";

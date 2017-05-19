@@ -37,7 +37,9 @@ class MyReviewTableViewCell: BVReviewTableViewCell {
             
             // Add any context data values, if present. E.g. Age, Gender, other....
             for contextDataValue in (review?.contextDataValues)! {
-                titleString?.append("\n\(contextDataValue.dimensionLabel!): \(contextDataValue.valueLabel!)")
+                let value = contextDataValue.valueLabel ?? "Value Not defined"
+                let label = contextDataValue.dimensionLabel ?? "Label Not defined"
+                titleString?.append("\n\(label): \(value)")
             }
 
             reviewTitle.text = titleString
@@ -62,7 +64,9 @@ class MyReviewTableViewCell: BVReviewTableViewCell {
             
             // Check and see if this reviewer supplied any of the secondary ratings
             for rating : BVSecondaryRating in (review?.secondaryRatings)! {
-                secondaryRatingsText += " \(rating.label!)(\(rating.value!)) "
+                let value = rating.value as! NSInteger 
+                let label = rating.label ?? "Label Not defined"
+                secondaryRatingsText += " \(label)(\(value)) "
             }
             
             secondaryRatingsText += "]"
