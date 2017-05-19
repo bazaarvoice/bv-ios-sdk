@@ -10,6 +10,8 @@
 #import "BVAnswer.h"
 #import "BVQuestion.h"
 #import "BVReview.h"
+#import "BVComment.h"
+#import "BVAuthor.h"
 
 /// Internal utility - used only within BVSDK
 @interface BVConversationsInclude : NSObject
@@ -20,6 +22,8 @@
 -(BVProduct* _Nullable)getProductById:(NSString* _Nonnull)productId;
 -(BVReview* _Nullable)getReviewById:(NSString* _Nonnull)reviewId;
 -(BVQuestion* _Nullable)getQuestionById:(NSString* _Nonnull)questionId;
+-(BVComment* _Nullable)getCommentById:(NSString* _Nonnull)commentId;
+-(BVAuthor* _Nullable)getAuthorById:(NSString* _Nonnull)authorId;
 
 @property (nonatomic, strong, readonly) NSDictionary  * _Nonnull apiResponse;
 

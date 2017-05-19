@@ -391,7 +391,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
                 
                     print("WARNING: The API Key being used does not support the use of bulk requests, so included review statistics will not be included.")
                     self.loadConversations(omitStats: true)
-                
+                    
             } else {
                 self.doneLoading(with: errs.first!)
             }

@@ -17,6 +17,18 @@
     self = [super init];
     if(self){
         
+        NSMutableArray *tmpComments = [NSMutableArray array];
+        NSArray *commentIds = apiResponse[@"CommentIds"];
+        if (commentIds) {
+            for (NSString *commentId in (NSArray *)commentIds){
+                BVComment *comment = [includes getCommentById:commentId];
+                if (comment){
+                    [tmpComments addObject:comment];
+                }
+            }
+        }
+        _comments = [NSArray arrayWithArray:tmpComments];
+        
         NSString* productId = apiResponse[@"ProductId"];
         self.product = [includes getProductById:productId];
         self.cons = apiResponse[@"Cons"];

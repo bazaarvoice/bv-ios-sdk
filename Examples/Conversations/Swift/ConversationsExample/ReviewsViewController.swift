@@ -24,6 +24,7 @@ class ReviewsViewController: UIViewController, UITableViewDataSource {
         
         let reviewsRequest = BVReviewsRequest(productId: Constants.TEST_PRODUCT_ID, limit: 20, offset: 0)
         reviewsRequest.addReviewSort(.submissionTime, order: .descending)
+        reviewsRequest.addInclude(.comments)
         
         reviewsTableView.load(reviewsRequest, success: { (response) in
             

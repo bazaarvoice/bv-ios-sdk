@@ -99,6 +99,7 @@ FOUNDATION_EXPORT const unsigned char BVSDKVersionString[];
 #import <BVSDK/BVBaseProductRequest.h>
 #import <BVSDK/BVProductTextSearchRequest.h>
 #import <BVSDK/BVBulkProductRequest.h>
+#import <BVSDK/BVReviewsRequest.h>
 #import <BVSDK/BVReviewTableViewCell.h>
 #import <BVSDK/BVReviewView.h>
 #import <BVSDK/BVReviewsCollectionView.h>
@@ -110,6 +111,9 @@ FOUNDATION_EXPORT const unsigned char BVSDKVersionString[];
 
 #import <BVSDK/BVStoreReviewSubmission.h>
 #import <BVSDK/BVStoreReviewsTableView.h>
+
+#import <BVSDK/BVCommentsRequest.h>
+#import <BVSDK/BVCommentsResponse.h>
 
 // Curations
 #import <BVSDK/BVCurations.h>

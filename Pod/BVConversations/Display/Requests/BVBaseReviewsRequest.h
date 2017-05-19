@@ -33,7 +33,6 @@
 - (void)sendReviewsAnalytics:(BVReviewsResponse* _Nonnull)reviewsResponse;
 - (nonnull instancetype)search:(NSString * _Nonnull)search;
 
-
 - (nonnull instancetype)addInclude:(BVReviewIncludeType)include;
 
 - (nonnull instancetype)addSort:(BVSortOptionProducts)option order:(BVSortOrder)order __deprecated_msg("use sortReviews instead");

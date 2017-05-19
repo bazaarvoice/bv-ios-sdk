@@ -7,7 +7,7 @@
 
 #import <Foundation/Foundation.h>
 
-/*
+/**
  The allowable filter types for `BVReviewsRequest` requests.
  */
 typedef NS_ENUM(NSInteger, BVReviewFilterType) {
