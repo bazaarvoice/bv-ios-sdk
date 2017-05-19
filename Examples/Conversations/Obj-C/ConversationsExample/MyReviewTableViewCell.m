@@ -22,7 +22,7 @@
     super.review = review;
     self.reviewTitle.text = review.title;
     self.reviewText.text = review.reviewText;
-    
+
 }
 
 @end

@@ -73,6 +73,11 @@ class MyReviewTableViewCell: BVReviewTableViewCell {
             
             reviewString?.append(secondaryRatingsText)
             
+            // check for comments
+            let commentsText = "\nNum Comments: [\(review!.comments.count)]"
+            
+            reviewString?.append(commentsText)
+            
             reviewText.text = reviewString
             
         }

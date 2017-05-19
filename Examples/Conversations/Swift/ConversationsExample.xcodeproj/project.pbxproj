@@ -30,6 +30,9 @@
 		87A36D2E1D4A911D00C3B41F /* StatisticTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A36D211D4A911D00C3B41F /* StatisticTableViewCell.swift */; };
 		87C5FF721E3AB826004EE6E8 /* AuthorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87C5FF711E3AB826004EE6E8 /* AuthorViewController.swift */; };
 		87C768311D4BAEE40091E5A1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 87C768301D4BAEE40091E5A1 /* Assets.xcassets */; };
+		87E810F11ECE2E810032C753 /* MyCommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87E810EF1ECE2E810032C753 /* MyCommentTableViewCell.swift */; };
+		87E810F21ECE2E810032C753 /* MyCommentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 87E810F01ECE2E810032C753 /* MyCommentTableViewCell.xib */; };
+		87E810F61ECE3B850032C753 /* CommentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87E810F51ECE3B850032C753 /* CommentsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -57,6 +60,9 @@
 		87A36D211D4A911D00C3B41F /* StatisticTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatisticTableViewCell.swift; sourceTree = "<group>"; };
 		87C5FF711E3AB826004EE6E8 /* AuthorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthorViewController.swift; sourceTree = "<group>"; };
 		87C768301D4BAEE40091E5A1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../../shared/Assets.xcassets; sourceTree = "<group>"; };
+		87E810EF1ECE2E810032C753 /* MyCommentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyCommentTableViewCell.swift; sourceTree = "<group>"; };
+		87E810F01ECE2E810032C753 /* MyCommentTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyCommentTableViewCell.xib; sourceTree = "<group>"; };
+		87E810F51ECE3B850032C753 /* CommentsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentsViewController.swift; sourceTree = "<group>"; };
 		909C5142B4FD3F9A67D7946B /* Pods-ConversationsExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ConversationsExample.release.xcconfig"; path = "Pods/Target Support Files/Pods-ConversationsExample/Pods-ConversationsExample.release.xcconfig"; sourceTree = "<group>"; };
 		CFC56A0C9936361286873F90 /* Pods_ConversationsExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ConversationsExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0BC9EC056B779FF75705C65 /* Pods-ConversationsExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ConversationsExample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ConversationsExample/Pods-ConversationsExample.debug.xcconfig"; sourceTree = "<group>"; };
@@ -138,12 +144,13 @@
 			isa = PBXGroup;
 			children = (
 				87A36D201D4A911D00C3B41F /* RootViewController.swift */,
+				87C5FF711E3AB826004EE6E8 /* AuthorViewController.swift */,
+				87A36D161D4A911D00C3B41F /* AnswersViewController.swift */,
+				87E810F51ECE3B850032C753 /* CommentsViewController.swift */,
+				87A36D171D4A911D00C3B41F /* InlineRatingsViewController.swift */,
 				879143F31CF4F05C00976220 /* ReviewsViewController.swift */,
 				87A36D1F1D4A911D00C3B41F /* QuestionsViewController.swift */,
-				87A36D161D4A911D00C3B41F /* AnswersViewController.swift */,
-				87A36D171D4A911D00C3B41F /* InlineRatingsViewController.swift */,
 				87A36D1E1D4A911D00C3B41F /* PDPViewController.swift */,
-				87C5FF711E3AB826004EE6E8 /* AuthorViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -153,9 +160,11 @@
 			children = (
 				87A36D211D4A911D00C3B41F /* StatisticTableViewCell.swift */,
 				87A36D181D4A911D00C3B41F /* MyAnswerTableViewCell.swift */,
+				87E810EF1ECE2E810032C753 /* MyCommentTableViewCell.swift */,
 				87A36D1A1D4A911D00C3B41F /* MyQuestionTableViewCell.swift */,
 				87A36D1C1D4A911D00C3B41F /* MyReviewTableViewCell.swift */,
 				8748639B1D4BE64A00B43F00 /* MyAnswerTableViewCell.xib */,
+				87E810F01ECE2E810032C753 /* MyCommentTableViewCell.xib */,
 				8748639C1D4BE64A00B43F00 /* MyQuestionTableViewCell.xib */,
 				8748639D1D4BE64A00B43F00 /* MyReviewTableViewCell.xib */,
 				8748639E1D4BE64A00B43F00 /* StatisticTableViewCell.xib */,
@@ -227,6 +236,7 @@
 				8748637B1D4BD8E000B43F00 /* Main.storyboard in Resources */,
 				15E077DD1E5769CA001C89D0 /* bvsdk_config_prod.json in Resources */,
 				874863A21D4BE64A00B43F00 /* StatisticTableViewCell.xib in Resources */,
+				87E810F21ECE2E810032C753 /* MyCommentTableViewCell.xib in Resources */,
 				874863A11D4BE64A00B43F00 /* MyReviewTableViewCell.xib in Resources */,
 				8748637A1D4BD8E000B43F00 /* LaunchScreen.storyboard in Resources */,
 				15E077DE1E5769CA001C89D0 /* bvsdk_config_staging.json in Resources */,
@@ -296,8 +306,10 @@
 				87A36D231D4A911D00C3B41F /* AnswersViewController.swift in Sources */,
 				87C5FF721E3AB826004EE6E8 /* AuthorViewController.swift in Sources */,
 				87A36D2E1D4A911D00C3B41F /* StatisticTableViewCell.swift in Sources */,
+				87E810F11ECE2E810032C753 /* MyCommentTableViewCell.swift in Sources */,
 				879143F41CF4F05C00976220 /* ReviewsViewController.swift in Sources */,
 				87A36D241D4A911D00C3B41F /* InlineRatingsViewController.swift in Sources */,
+				87E810F61ECE3B850032C753 /* CommentsViewController.swift in Sources */,
 				8777BB3F1EB7BE18008C4715 /* Constants.swift in Sources */,
 				879143F21CF4F05C00976220 /* AppDelegate.swift in Sources */,
 				87A36D2C1D4A911D00C3B41F /* QuestionsViewController.swift in Sources */,

@@ -11,8 +11,8 @@
 
 +(NSString*)toString:(BVReviewIncludeType)type {
     switch (type) {
-        case BVReviewIncludeTypeProducts:
-            return @"Products";
+        case BVReviewIncludeTypeProducts: return @"Products";
+        case BVReviewIncludeTypeComments: return @"Comments";
     }
 }
 

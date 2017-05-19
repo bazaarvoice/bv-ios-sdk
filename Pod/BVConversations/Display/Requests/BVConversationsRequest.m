@@ -59,7 +59,8 @@
 
 
 -(NSString* _Nonnull)endpoint {
-    return @"must be overriden";
+    NSAssert(NO, @"endpoint must be overridden by subclass");
+    return nil;
 }
 
 +(NSString* _Nonnull)commonEndpoint {

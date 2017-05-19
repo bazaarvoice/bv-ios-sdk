@@ -31,7 +31,7 @@
 
 
 -(id)createResult:(NSDictionary *)raw includes:(BVConversationsInclude *)includes {
-    NSAssert(YES, @"method should be overridden");
+    NSAssert(NO, @"createResult method should be overridden");
     return nil;
 }
 
