@@ -6,6 +6,8 @@
 //
 
 #import "BVCommentsRequest.h"
+#import "BVImpressionEvent.h"
+#import "BVPixel.h"
 
 @implementation BVCommentsRequest
 
@@ -62,16 +64,34 @@
             completion(commentsResponse);
         });
 
-        // TODO: Analytics
-//        if (authorResponse && authorResponse.results){
-//            [    self sendAuthorAnalytics:authorResponse.results.firstObject];
-//        }
+        if (commentsResponse && commentsResponse.results){
+            [self sendCommentImpressionAnalytics:commentsResponse.results];
+        }
         
     } failure:failure];
 }
 
 - (NSString * _Nonnull)endpoint {
     return @"reviewcomments.json";
+}
+
+- (void)sendCommentImpressionAnalytics:(NSArray<BVComment*>*)comments {
+    
+    for (BVComment* comment in comments) {
+        
+        // Record Review Impression
+        BVImpressionEvent *commentImpression = [[BVImpressionEvent alloc] initWithProductId:comment.reviewId
+                                                                             withContentId:comment.commentId
+                                                                            withCategoryId:nil
+                                                                           withProductType:BVPixelProductTypeConversationsReviews
+                                                                           withContentType:BVPixelImpressionContentTypeComment
+                                                                                 withBrand:nil
+                                                                      withAdditionalParams:nil];
+        
+        [BVPixel trackEvent:commentImpression];
+    }
+
+    
 }
 
 - (NSMutableArray * _Nonnull)createParams {

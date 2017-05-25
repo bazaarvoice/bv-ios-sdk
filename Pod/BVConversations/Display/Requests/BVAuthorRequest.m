@@ -111,7 +111,7 @@
         });
         
         if (authorResponse && authorResponse.results){
-            [    self sendAuthorAnalytics:authorResponse.results.firstObject];
+            [self sendAuthorAnalytics:authorResponse.results.firstObject];
         }
         
     } failure:failure];

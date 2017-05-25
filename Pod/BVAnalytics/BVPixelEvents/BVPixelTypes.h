@@ -38,6 +38,7 @@ typedef NS_ENUM(NSInteger, BVPixelImpressionContentType) {
     BVPixelImpressionContentTypeReview,
     BVPixelImpressionContentTypeQuestion,
     BVPixelImpressionContentTypeAnswer,
+    BVPixelImpressionContentTypeComment,
     BVPixelImpressionContentProductRecommendation,
     BVPixelImpressionContentCurationsFeedItem
 };
