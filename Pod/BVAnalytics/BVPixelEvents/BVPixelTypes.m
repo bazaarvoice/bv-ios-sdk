@@ -58,6 +58,9 @@
         case BVPixelImpressionContentTypeReview:
             return @"Review";
             break;
+        case BVPixelImpressionContentTypeComment:
+            return @"Comment";
+            break;
         case BVPixelImpressionContentCurationsFeedItem:
             return @"SocialPost";
             break;
