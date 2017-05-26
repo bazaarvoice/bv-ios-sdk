@@ -212,7 +212,7 @@ $(function(){
                      <li class="nav-item">
                         <a class="nav-link" role="button" data-toggle="collapse" href="#conversationsStoresDropdown"
                            aria-expanded="false" aria-controls="conversationsStoresDropdown">
-                                <span><span>Ratings and Reviews Stores</span><span style="float:right;"><i
+                                <span><span>Ratings and Reviews for Stores</span><span style="float:right;"><i
                                         id="conversationsStoresDropdownArrow"
                                         class="fa fa-sort-desc fa-rotate-270"></i></span></span>
                         </a>
@@ -280,7 +280,37 @@ $(function(){
             <div class="scroll-container scrollable--scrollbar">
               <div class="page-container">
 
-                <div class="flex flex-row" id="content_title">
+                <script type="text/javascript">
+
+    // when doc loads, see if we have an anchored link
+    // it might be in a tab, which we need to programatically open
+    $(document).ready(function () {
+      
+       var hash = document.URL.substring(document.URL.indexOf("#"));
+       
+      if (hash) {
+
+            console.log(document.URL)
+            var a = document.createElement('a');
+            var linkText = document.createTextNode("");
+            a.appendChild(linkText);
+            a.href = hash;
+            document.body.appendChild(a);
+
+            console.log(a)
+
+            navigateTab(a)
+    
+      } else {
+        console.log('no target')
+      }
+
+      
+    });
+
+</script>
+
+<div class="flex flex-row" id="content_title">
 	Conversations - Content Display
 </div>
 
@@ -290,6 +320,7 @@ $(function(){
   <li><a href="#pdp" onclick="navigateTab(this);">Product Display Page Statistics</a></li>
   <li><a href="#reviews" onclick="navigateTab(this);">Reviews</li>
   <li><a href="#questionsanswers" onclick="navigateTab(this);">Questions and Answers</li>
+  <li><a href="#comments" onclick="navigateTab(this);">Comments Display</a></li>
   <li><a href="#bulkratings" onclick="navigateTab(this);">Bulk Ratings</a></li>
   <li><a href="#authordisplay" onclick="navigateTab(this);">Profile (Author) Display</a></li>
 </ol>
@@ -319,6 +350,7 @@ The completed project for this code walkthrough for Swift and Objective-C is in 
   <li role="presentation" class="active"><a href="#pdp" aria-controls="pdp" role="tab" data-toggle="tab">Product Display Page</a></li>
   <li role="presentation"><a href="#reviews" aria-controls="reviews" role="tab" data-toggle="tab">Reviews</a></li>
   <li role="presentation"><a href="#questionsanswers" aria-controls="questionsanswers" role="tab" data-toggle="tab">Questions & Answers</a></li>
+  <li role="presentation"><a href="#comments" aria-controls="comments" role="tab" data-toggle="tab">Comments</a></li>
   <li role="presentation"><a href="#bulkratings" aria-controls="bulkratings" role="tab" data-toggle="tab">Bulk Ratings</a></li>
   <li role="presentation"><a href="#authordisplay" aria-controls="authordisplay" role="tab" data-toggle="tab">Author Profile Display</a></li>
 </ul>
@@ -524,7 +556,7 @@ class ProductPageViewController: BVProductDisplayPageViewController {
 		<!-- reviews -->
 		<br>
 <h4>Loading more Reviews</h4>
-<p>As shown previously, you should use a <code>ProductDisplayPageRequest</code> to load the first page of CGC that your users will see (up 20 reviews). When loading reviews, you should request and display reviews in a <code>BVReviewsCollectionView</code> or <code>BVReviewsTableView</code> container:</p>
+<p>As shown previously, you should use a <code>ProductDisplayPageRequest</code> to load the first page of CGC that your users will see (up 20 reviews). When loading reviews, you should request and display reviews in a <code>BVReviewsCollectionView</code> or <code>BVReviewsTableView</code> container. Reviews can also include Products and Comments. </p>
 
 
 <ul class="nav nav-tabs" role="tablist">
@@ -543,6 +575,9 @@ var reviews : [BVReview] = []
 // Now load the reviews from the BVReviewsTableView.
 // request 10 reviews, starting at index 20
 let reviewsRequest = BVReviewsRequest(productId: "test1", limit: 10, offset: 20)
+
+// Add in other options for includes, filters, and sorts on the reviewsRequest object
+
 reviewsTableView.load(reviewsRequest, success: { (response) in
     
     self.reviews = response.results
@@ -564,12 +599,15 @@ reviewsTableView.load(reviewsRequest, success: { (response) in
 // Now load the reviews from the BVReviewsTableView.
 // request 10 reviews, starting at index 20
 BVReviewsRequest* request = [[BVReviewsRequest alloc] initWithProductId:@"test1" limit:10 offset:20];
-    [self.reviewsTableView load:request success:^(BVReviewsResponse * _Nonnull response) {
-        self.reviews = response.results;
-        [self.reviewsTableView reloadData];
-    } failure:^(NSArray<NSError *> * _Nonnull errors) {
-        NSLog(@"Error loading reviews");
-    }];</code></pre>
+
+// Add in other options for includes, filters, and sorts on the reviewsRequest object
+
+[self.reviewsTableView load:request success:^(BVReviewsResponse * _Nonnull response) {
+    self.reviews = response.results;
+    [self.reviewsTableView reloadData];
+} failure:^(NSArray<NSError *> * _Nonnull errors) {
+    NSLog(@"Error loading reviews");
+}];</code></pre>
 	</div>
 </div>
 <br>
@@ -869,9 +907,7 @@ class DemoReviewsViewController: UIViewController, UITableViewDelegate, UITableV
 
 		<!-- Q&A -->
 		<br>
-<h4>Loading more Questions/Answers</h4>
-
-
+<h4>Loading Questions/Answers</h4>
 
 <p>Similarly to reviews, you should use a <code>ProductDisplayPageRequest</code> to load the first page of Questions/Answers (up the first 20 questions). When loading questions, you should request and display questions in a <code>BVQuestionsCollectionView</code> or <code>BVQuestionsTableView</code> container::</p>
 
@@ -1220,6 +1256,69 @@ class DemoQuestionViewController: UIViewController, UITableViewDelegate, UITable
 
 	</div>
 
+  <div role="tabpanel" class="tab-pane" id="comments">
+
+    <!-- Q&A -->
+    <br>
+<h4>Loading Review Comments</h4>
+
+<p>Comments can be loaded either by a single comment ID, or you can load comments by a review ID with limit and offset parameters. Simply construct a <code>BVCommentsRequest</code> object and choose one of the default initializers provided. The examples provided below demonstrate how to fetch a list of comments from a given review ID.</p>
+<ul class="nav nav-tabs" role="tablist">
+  <li role="presentation" class="pull-right"><a style="padding-top:4px; padding-bottom:4px;" href="#objc" aria-controls="objc" role="tab" data-toggle="tab">Objective-C</a></li>
+  <li role="presentation" class="active pull-right"><a style="padding-top:4px; padding-bottom:4px;" href="#swift" aria-controls="swift" role="tab" data-toggle="tab">Swift</a></li>
+</ul>
+<!-- Tab panes -->
+<div class="tab-content code-switcher">
+	<!-- swift -->
+	<div role="tabpanel" class="tab-pane active" id="swift">
+<pre><code class="swift">let limit : UInt16  = 99
+let offset : UInt16 = 0
+
+let request = BVCommentsRequest(reviewId: "myReviewId", limit: limit, offset: offset)
+// Optionally, comments can have includes, filters, and sorts added to the request.
+request.addInclude(.reviews)
+request.addFilter(.contentLocale, filterOperator: .equalTo, value: "en_US")
+request.addCommentSort(.commentsLastModeratedTime, order: .descending)
+
+request.load({ (response) in
+    
+    self.comments = response.results // Array of BVComment objects
+    // display comments in your UI
+    
+}) { (error) in
+    
+    print("ERROR fetching comments: \(error.first!.localizedDescription)")
+    
+}
+</code></pre>
+	</div>
+	<!-- objective-c -->
+	<div role="tabpanel" class="tab-pane" id="objc">
+<pre><code class="objectivec">BVCommentsRequest *request = [[BVCommentsRequest alloc] initWithReviewId:@"myReviewId" limit:99 offset:0];
+
+// Optionally, comments can have includes, filters, and sorts added to the request.
+[request addInclude:BVCommentIncludeTypeReviews];
+[request addCommentSort:BVSortOptionCommentsLastModeratedTime order:BVSortOrderDescending];
+[request addFilter:BVCommentFilterTypeContentLocale filterOperator:BVFilterOperatorEqualTo value:@"en_US"];
+
+[request load:^(BVCommentsResponse * _Nonnull response) {
+    // success
+    self.comments = response.results; // Array of BVComment objects
+    // display comments in your UI
+    
+} failure:^(NSArray<NSError *> * _Nonnull errors) {
+    // error
+    NSLog(@"ERROR Loading Comments: %@", errors.firstObject.localizedDescription);
+}];
+</code></pre>
+	</div>
+</div>
+<br>
+
+
+
+  </div>
+
 	<div role="tabpanel" class="tab-pane" id="bulkratings">
 
 		<!-- Bulk ratings -->
@@ -1378,9 +1477,9 @@ request.load({ (response) in
 
 <div class="well well-sm">
 	<h5>Author</h5>
-	<p>Copyright 2016 Bazaarvoice, Inc. All rights reserved.</p>
+	<p>Copyright 2017 Bazaarvoice, Inc. All rights reserved.</p>
 	<h5>License</h5>
-	<p>Use of the Bazaarvoice Mobile SDKs is contingent on your agreement and conformance with <a href="http://www.bazaarvoice.com/legal/api-terms-of-use.html">Bazaarvoice's API Terms of Use</a>. Additionally, you agree to store all data acquired by the SDK or Bazaarvoice's API only within the storage of the individual application instance using the SDK or API. You also agree to use the data acquired by the SDK or API only within the context of the same individual application instance and only for purposes consistent with that application's purpose. Except as otherwise noted, the Bazaarvoice iOS SDK is licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0.html">Apache License, Version 2.0</a>.</p>
+	<p>Use of the Bazaarvoice Mobile SDKs is contingent on your agreement and conformance with <a href="http://www.bazaarvoice.com/legal/api-terms-of-use.html">Bazaarvoice's API Terms of Use</a>. Additionally, you agree to store all data acquired by the SDK or Bazaarvoice's API only within the storage of the individual application instance using the SDK or API. You also agree to use the data acquired by the SDK or API only within the context of the same individual application instance and only for purposes consistent with that application's purpose. Except as otherwise noted, the Bazaarvoice Android and iOS SDKs are licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0.html">Apache License, Version 2.0</a>.</p>
 </div>
 <br>
 

@@ -212,7 +212,7 @@ $(function(){
                      <li class="nav-item">
                         <a class="nav-link" role="button" data-toggle="collapse" href="#conversationsStoresDropdown"
                            aria-expanded="false" aria-controls="conversationsStoresDropdown">
-                                <span><span>Ratings and Reviews Stores</span><span style="float:right;"><i
+                                <span><span>Ratings and Reviews for Stores</span><span style="float:right;"><i
                                         id="conversationsStoresDropdownArrow"
                                         class="fa fa-sort-desc fa-rotate-270"></i></span></span>
                         </a>
@@ -432,6 +432,175 @@ Once you have install the source code for the SDK, you are now ready to add your
         <p id = "downloadInstructions"></p>
     </div>
 
+ <script type="text/javascript">
+
+        if (!String.format) {
+            String.format = function(format) {
+                var args = Array.prototype.slice.call(arguments, 1);
+                return format.replace(/{(\d+)}/g, function(match, number) {
+                    return typeof args[number] != 'undefined'
+                        ? args[number]
+                        : match
+                        ;
+                });
+            };
+        }
+
+        var prodKeyCount = 0
+        var stagingKeyCount = 0
+
+        function KeyRow(key, title, ph) {
+            this.title = title
+            this.key = key
+            this.ph = ph
+        }
+
+        var rows= [new KeyRow("apiKeyCurations", "Curations", "Curations"),
+            new KeyRow("apiKeyConversations", "Conversations", "Conversations"),
+            new KeyRow("apiKeyConversationsStores", "Conversations for Stores", "Conversations for Stores"),
+            new KeyRow("apiKeyShopperAdvertising", "Product Recommendations & Advertising","Shopper Advertising"),
+            new KeyRow("apiKeyLocation", "Location" , "Location"),
+            new KeyRow("apiKeyPIN", "Post Interaction Notifications" , "PIN")]
+
+        function getTableHTML() {
+            var html = ["<tr class=\"odd\" style=\" background-color: #F7F7F7;\"><th style=\" width:30%;\">Products</th><th>Production API Keys</th><th>Staging API Keys</th></tr>"]
+
+            for (row in rows) {
+                html.push(String.format("<tr><th>{0}</th><td><input type=\"text\" onfocus=\"this.oldValue = this.value;\" class= \"prodKeyText\" id=\"{1}Prod\" placeholder=\"{2} Production API Key\" style=\"width:100%\"/></td>" +
+                    "<td><input type=\"text\" class= \"stagingKeyText\" id=\"{1}Staging\" onfocus=\"this.oldValue = this.value;\" placeholder=\"{2} Staging API Key\" style=\"width:100%\"/></td></tr>", rows[row].title, rows[row].key, rows[row].ph))
+            }
+
+            return html.join("")
+        }
+
+        document.getElementById("keyTable").innerHTML = getTableHTML()
+
+        $('.prodKeyText').on('input', function(){
+            processChange(this, true)
+        });
+
+        $('.stagingKeyText').on('input', function(){
+            processChange(this, false)
+        });
+
+        function processChange(el, isProd) {
+            if (el.value.length > 0) {
+                if ( el.oldValue.length == 0) {
+                    isProd ? prodKeyCount++ : stagingKeyCount++
+                    el.style.borderColor = 'green'
+                }
+            }else {
+                isProd ? prodKeyCount-- : stagingKeyCount--
+                el.style.borderColor = ''
+            }
+            el.oldValue = el.value
+            updateDownloadHint()
+        }
+
+        $('.edit_ClientID#clientId').on('input', function(){
+            if (this.value.length > 0) {
+                this.style.borderColor = 'green'
+            }else {
+                this.style.borderColor = 'red'
+            }
+
+            updateDownloadHint()
+        });
+
+        function getInstructionStr(isPlural, hasProdConfig) {
+          var androidSdkTitle = 'bv-android-sdk'
+          var sdkTitle = 'bv-ios-sdk'
+          var isAndroid = sdkTitle === androidSdkTitle
+          var instructionsFormat = '<strong id="configCallOut" style="font-size:250%; color: green">✓    </strong>You have successfully configured for {0}. After you <a id="exportJSON" onclick="exportJson()" style="cursor: pointer; cursor: hand;"><strong style="font-size: 120%">download your config {1}</strong></a> ' +
+                  'you will need to {2}. Once this is done you may proceed to {3}.'
+          var needTo = ''
+          var steps = ''
+          if (isAndroid) {
+            var needToFormat = 'add {0} to your assets directory'
+            needTo = String.format(needToFormat, isPlural? "them" : "it")
+            steps = 'step 2'
+          } else {
+            var needToFormat = 'add {0} to your Xcode project and ensure {1} included in your main app bundle'
+            needTo = String.format(needToFormat, isPlural? "them" : "it",  isPlural? "they are" : "it is")
+            steps = 'steps 2 and 3'
+          }
+          var instructionStr = String.format(instructionsFormat, ((isPlural)? '<strong style="font-size: 120%">Production and Staging</strong>' : (hasProdConfig ? '<strong style="font-size: 125%">Production</strong>' : '<strong style="font-size: 120%">Staging</strong>')),
+                  (isPlural)? "files" : "file", needTo, steps)
+          return instructionStr
+        }
+        
+        function updateDownloadHint() {
+            var instructions = document.getElementById("downloadInstructions")
+            var clientId = $('.edit_ClientID#clientId').val()
+
+            if (clientId.length == 0){
+                instructions.innerHTML = '<strong id="configCallOut" style="font-size:250%; color: red">X    </strong><strong>You must enter your Bazaarvoice client id in step 1 before proceeding.</strong>'
+                return
+            }
+
+            var hasProdConfig = prodKeyCount > 0
+            var hasStagingConfig = stagingKeyCount > 0
+
+            if (!hasProdConfig && !hasStagingConfig) {
+                instructions.innerHTML = '<strong id="configCallOut" style="font-size:250%; color: red">X    </strong><strong>You must enter your API keys in Step 1 before proceeding.</strong>'
+                return
+            }
+
+            var isPlural = (hasProdConfig && hasStagingConfig)
+            instructions.innerHTML = getInstructionStr(isPlural, hasProdConfig)
+        }
+
+        updateDownloadHint()
+
+        
+
+        function getJSONProd() {
+            return getJSON("Prod")
+        }
+
+        function getJSONStaging() {
+            return getJSON("Staging")
+        }
+
+        function getJSON(env) {
+            var clientId = $('.edit_ClientID#clientId').val()
+            var json = {"clientId": clientId}
+            for (row in rows) {
+                var apiKey = document.getElementById(rows[row].key + env).value
+                if (apiKey.length > 0) {
+                    json[rows[row].key] = apiKey
+                }
+            }
+
+            return json
+        }
+
+        function exportJson() {
+
+            if (prodKeyCount > 0) {
+                downloadJson(getJSONProd(), "prod")
+            }
+
+            if (stagingKeyCount > 0) {
+                downloadJson(getJSONStaging(), "staging")
+            }
+        }
+        function downloadJson(config, env) {
+            var el = document.createElement('a')
+            el.style.display = 'none';
+            document.body.appendChild(el);
+
+            var data = "text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(config));
+
+            el.setAttribute("href", "data:"+data);
+            el.setAttribute("download", "bvsdk_config_" + env + ".json");
+            el.click()
+            document.body.removeChild(el)
+        }
+
+        
+    </script>
+
     		</div>
     </div>
   </div>
@@ -521,108 +690,9 @@ Once you have install the source code for the SDK, you are now ready to add your
     </div>
   </div>
 
-    <script type="text/javascript">
+<script type="text/javascript">
 
-        if (!String.format) {
-            String.format = function(format) {
-                var args = Array.prototype.slice.call(arguments, 1);
-                return format.replace(/{(\d+)}/g, function(match, number) {
-                    return typeof args[number] != 'undefined'
-                        ? args[number]
-                        : match
-                        ;
-                });
-            };
-        }
-
-        var prodKeyCount = 0
-        var stagingKeyCount = 0
-
-        function KeyRow(key, title, ph) {
-            this.title = title
-            this.key = key
-            this.ph = ph
-        }
-
-        var rows= [new KeyRow("apiKeyCurations", "Curations", "Curations"),
-            new KeyRow("apiKeyConversations", "Conversations", "Conversations"),
-            new KeyRow("apiKeyConversationsStores", "Conversations for Stores", "Conversations for Stores"),
-            new KeyRow("apiKeyShopperAdvertising", "Product Recommendations & Advertising","Shopper Advertising"),
-            new KeyRow("apiKeyLocation", "Location" , "Location"),
-            new KeyRow("apiKeyPIN", "Post Interaction Notifications" , "PIN")]
-
-        function getTableHTML() {
-            var html = ["<tr class=\"odd\" style=\" background-color: #F7F7F7;\"><th style=\" width:30%;\">Products</th><th>Production API Keys</th><th>Staging API Keys</th></tr>"]
-
-            for (row in rows) {
-                html.push(String.format("<tr><th>{0}</th><td><input type=\"text\" onfocus=\"this.oldValue = this.value;\" class= \"prodKeyText\" id=\"{1}Prod\" placeholder=\"{2} Production API Key\" style=\"width:100%\"/></td>" +
-                    "<td><input type=\"text\" class= \"stagingKeyText\" id=\"{1}Staging\" onfocus=\"this.oldValue = this.value;\" placeholder=\"{2} Staging API Key\" style=\"width:100%\"/></td></tr>", rows[row].title, rows[row].key, rows[row].ph))
-            }
-
-            return html.join("")
-        }
-
-        document.getElementById("keyTable").innerHTML = getTableHTML()
-
-        $('.prodKeyText').on('input', function(){
-            processChange(this, true)
-        });
-
-        $('.stagingKeyText').on('input', function(){
-            processChange(this, false)
-        });
-
-        function processChange(el, isProd) {
-            if (el.value.length > 0) {
-                if ( el.oldValue.length == 0) {
-                    isProd ? prodKeyCount++ : stagingKeyCount++
-                    el.style.borderColor = 'green'
-                }
-            }else {
-                isProd ? prodKeyCount-- : stagingKeyCount--
-                el.style.borderColor = ''
-            }
-            el.oldValue = el.value
-            updateDownloadHint()
-        }
-
-        $('.edit_ClientID#clientId').on('input', function(){
-            if (this.value.length > 0) {
-                this.style.borderColor = 'green'
-            }else {
-                this.style.borderColor = 'red'
-            }
-
-            updateDownloadHint()
-        });
-        
-        function updateDownloadHint() {
-            var instructions = document.getElementById("downloadInstructions")
-            var clientId = $('.edit_ClientID#clientId').val()
-
-            if (clientId.length == 0){
-                instructions.innerHTML = '<strong id="configCallOut" style="font-size:250%; color: red">X    </strong><strong>You must enter your Bazaarvoice client id in step 1 before proceeding.</strong>'
-                return
-            }
-
-            var hasProdConfig = prodKeyCount > 0
-            var hasStagingConfig = stagingKeyCount > 0
-
-            if (!hasProdConfig && !hasStagingConfig) {
-                instructions.innerHTML = '<strong id="configCallOut" style="font-size:250%; color: red">X    </strong><strong>You must enter your API keys in Step 1 before proceeding.</strong>'
-                return
-            }
-
-            var isPlural = (hasProdConfig && hasStagingConfig)
-            var instructionsFormat = '<strong id="configCallOut" style="font-size:250%; color: green">✓    </strong>You have successfully configured for {0}. After you <a id="exportJSON" onclick="exportJson()" style="cursor: pointer; cursor: hand;"><strong style="font-size: 120%">download your config {1}</strong></a> ' +
-                'you will need to add {2} to your Xcode project and ensure {3} included in your main app bundle. Once this is done you may proceed to steps 2 and 3.'
-            var instructionStr = String.format(instructionsFormat, ((isPlural)? '<strong style="font-size: 120%">Production and Staging</strong>' : (hasProdConfig ? '<strong style="font-size: 125%">Production</strong>' : '<strong style="font-size: 120%">Staging</strong>')),
-                (isPlural)? "files" : "file", isPlural? "them" : "it",  isPlural? "they are" : "it is")
-            instructions.innerHTML = instructionStr
-        }
-
-        updateDownloadHint()
-
+        // Updates the swift and objective-c code samples depending on how the client id and api keys are added
         function updateCodeSnippets(){
 
             var instructions = document.getElementById("installInstructions")
@@ -648,7 +718,7 @@ Once you have install the source code for the SDK, you are now ready to add your
             var instructionsFormat = 'If you haven\'t already <a id="exportJSON" style="cursor: pointer; cursor: hand;" onclick="exportJson()">download your config {0}</a> and included them in your main app bundle.</br>'
             var instructionStr = String.format(instructionsFormat, ((isPlural)? 'files' : 'file'))
             instructions.innerHTML = instructionStr
-            instructions.innerHTML += "</br>Insert the following code in <code>AppDelegate#applicationDidFinishLaunching</code>:"
+            instructions.innerHTML += "</br>Insert the following code in <code>AppDelegate#applicationDidFinishLaunchingWithOptions</code>:"
             var hasBothConfigs = (hasProdConfig && hasStagingConfig)
             var objcConfig = (hasProdConfig)? "Prod" : "Staging"
             var swiftConfig = (hasProdConfig)? "prod" : "staging"
@@ -661,51 +731,7 @@ Once you have install the source code for the SDK, you are now ready to add your
             }
         }
 
-        function getJSONProd() {
-            return getJSON("Prod")
-        }
-
-        function getJSONStaging() {
-            return getJSON("Staging")
-        }
-
-        function getJSON(env) {
-            var clientId = $('.edit_ClientID#clientId').val()
-            var json = {"clientId": clientId}
-            for (row in rows) {
-                var apiKey = document.getElementById(rows[row].key + env).value
-                if (apiKey.length > 0) {
-                    json[rows[row].key] = apiKey
-                }
-            }
-
-            return json
-        }
-
-        function exportJson() {
-
-            if (prodKeyCount > 0) {
-                downloadJson(getJSONProd(), "prod")
-            }
-
-            if (stagingKeyCount > 0) {
-                downloadJson(getJSONStaging(), "staging")
-            }
-        }
-        function downloadJson(config, env) {
-            var el = document.createElement('a')
-            el.style.display = 'none';
-            document.body.appendChild(el);
-
-            var data = "text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(config));
-
-            el.setAttribute("href", "data:"+data);
-            el.setAttribute("download", "bvsdk_config_" + env + ".json");
-            el.click()
-            document.body.removeChild(el)
-        }
-
-        document.getElementById("heading-installationBVSDKManager").onclick = function () {
+       document.getElementById("heading-installationBVSDKManager").onclick = function () {
             updateCodeSnippets()
         }
 
@@ -718,9 +744,9 @@ Once you have install the source code for the SDK, you are now ready to add your
 
 <div class="well well-sm">
 	<h5>Author</h5>
-	<p>Copyright 2016 Bazaarvoice, Inc. All rights reserved.</p>
+	<p>Copyright 2017 Bazaarvoice, Inc. All rights reserved.</p>
 	<h5>License</h5>
-	<p>Use of the Bazaarvoice Mobile SDKs is contingent on your agreement and conformance with <a href="http://www.bazaarvoice.com/legal/api-terms-of-use.html">Bazaarvoice's API Terms of Use</a>. Additionally, you agree to store all data acquired by the SDK or Bazaarvoice's API only within the storage of the individual application instance using the SDK or API. You also agree to use the data acquired by the SDK or API only within the context of the same individual application instance and only for purposes consistent with that application's purpose. Except as otherwise noted, the Bazaarvoice iOS SDK is licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0.html">Apache License, Version 2.0</a>.</p>
+	<p>Use of the Bazaarvoice Mobile SDKs is contingent on your agreement and conformance with <a href="http://www.bazaarvoice.com/legal/api-terms-of-use.html">Bazaarvoice's API Terms of Use</a>. Additionally, you agree to store all data acquired by the SDK or Bazaarvoice's API only within the storage of the individual application instance using the SDK or API. You also agree to use the data acquired by the SDK or API only within the context of the same individual application instance and only for purposes consistent with that application's purpose. Except as otherwise noted, the Bazaarvoice Android and iOS SDKs are licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0.html">Apache License, Version 2.0</a>.</p>
 </div>
 <br>
 
