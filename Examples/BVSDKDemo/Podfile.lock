@@ -5,16 +5,16 @@ PODS:
   - Bolts/AppLinks (1.8.4):
     - Bolts/Tasks
   - Bolts/Tasks (1.8.4)
-  - BVSDK/BVCurations (6.5.3):
+  - BVSDK/BVCurations (6.5.4):
     - BVSDK/Core
-  - BVSDK/BVLocation (6.5.3):
+  - BVSDK/BVLocation (6.5.4):
     - BVSDK/Core
-  - BVSDK/BVNotifications (6.5.3):
+  - BVSDK/BVNotifications (6.5.4):
     - BVSDK/BVLocation
     - BVSDK/BVPIN
-  - BVSDK/BVPIN (6.5.3):
+  - BVSDK/BVPIN (6.5.4):
     - BVSDK/Core
-  - BVSDK/Core (6.5.3)
+  - BVSDK/Core (6.5.4)
   - Crashlytics (3.8.3):
     - Fabric (~> 1.6.3)
   - Fabric (1.6.11)
@@ -88,7 +88,7 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
-  BVSDK: 6ece9146d08c9d70f62db4b99c7e1916137ede22
+  BVSDK: 55be541ea3e35526f9817d38418805c9d442892d
   Crashlytics: 2b6dbe138a42395577cfa73dfa1aa7248cadf39e
   Fabric: 5911403591946b8228ab1c51d98f1d7137e863c6
   FBSDKCoreKit: 894b2b6eda6a4c8c4204e92e59cc355709ef045c

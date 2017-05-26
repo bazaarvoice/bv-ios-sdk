@@ -73,10 +73,10 @@ class NewProductPageViewController: BVProductDisplayPageViewController, UITableV
         return menuIcon!.image(with: CGSize(width: 20, height: 20))
     }()
     
-    init(nibName: String?, bundle: Bundle?, productId: String) {
+    init(productId: String) {
         
         self.productId = productId
-        super.init(nibName: nibName, bundle: bundle)
+        super.init(nibName: nil, bundle: nil)
         
     }
     
@@ -387,7 +387,7 @@ class NewProductPageViewController: BVProductDisplayPageViewController, UITableV
             recsCell.onProductRecTapped = {
                 (selectedProduct) -> Void in
                 
-                let productView = NewProductPageViewController(nibName:"NewProductPageViewController", bundle: nil, productId: selectedProduct.productId)
+                let productView = NewProductPageViewController(productId: selectedProduct.productId)
                 
                 self.navigationController?.pushViewController(productView, animated: true)
                 

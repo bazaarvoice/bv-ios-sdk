@@ -73,6 +73,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         
         recommendationsCollectionView.register(UINib(nibName: "HeaderCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "HeaderCollectionViewCell")
         
+        self.custimizeSearchUI(circleSearch)
         self.loadProducts()
         
         let versionString = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
@@ -99,6 +100,69 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         currClientId = MockDataManager.sharedInstance.currentConfig.clientId
         
     }
+    
+    lazy private var circleSearch: CircleSearchView<BVDisplayableProductContent> = {
+        let csv = CircleSearchView<BVDisplayableProductContent>(scrollView: self.recommendationsCollectionView, changeHandler: { (_, searchText, ressults, completion) in
+            self.doConversationsSearch(searchText, completion: completion)
+        }) { (_, results) in
+            let vc = NewProductPageViewController(productId: results.identifier)
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+        
+        csv.searchTableView.isHidden = true
+        return csv
+    }()
+    
+    
+    private func doTextMatchSearch(_ searchText: String, completion: CircleSearchView<BVDisplayableProductContent>.SearchCompletionHandler) {
+        
+        var results = [CircleSearchResult<BVDisplayableProductContent>]()
+        for prod in self.products! {
+            if let name = prod.displayName {
+                if name.lowercased().contains(searchText.lowercased()) {
+                    results.append(CircleSearchResult(title: name, result: prod))
+                }
+            }
+        }
+        
+        completion(results)
+    }
+    
+    private func doConversationsSearch(_ searchText: String, completion: @escaping CircleSearchView<BVDisplayableProductContent>.SearchCompletionHandler) {
+        
+        let req = BVProductTextSearchRequest(searchText: searchText)
+        req.includeStatistics(.reviews)
+        req.load({[completion](res) in
+            self.products = res.results
+            self.recommendationsCollectionView.reloadData()
+            var results = [CircleSearchResult<BVDisplayableProductContent>]()
+            for prod in res.results {
+                if let name = prod.displayName {
+                    results.append(CircleSearchResult(title: name, result: prod))
+                }
+            }
+            
+            completion(results)
+        }) { (errs) in
+            
+        }
+    }
+    
+    private func custimizeSearchUI(_ circleSearch: CircleSearchView<BVDisplayableProductContent>) {
+        
+        circleSearch.searchTextField.placeholder = "Search for a product..."
+        //UI Custimization
+        circleSearch.minimumSearchLength = 3
+        circleSearch.minKeyboardRestTimeToSearch = 1
+        
+        circleSearch.searchButton.backgroundColor = UIColor.init(red: 235 / 255.0, green: 235/255.0, blue: 235/255.0, alpha: 1)
+        circleSearch.searchButton.tintColor = UIColor.bazaarvoiceNavy()
+        circleSearch.cancelButton.backgroundColor = circleSearch.searchButton.backgroundColor
+        circleSearch.searchTextField.backgroundColor = UIColor.white
+        circleSearch.searchTextField.textColor = UIColor.darkGray
+        circleSearch.cancelButton.setTitleColor(UIColor.bazaarvoiceNavy(), for: .normal)
+    }
+
     
     func refresh(_ refreshControl: UIRefreshControl) {
         // clear any cached recommendations, and reload latest recommendations from API
@@ -433,7 +497,9 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
         let type = CellType(rawValue: section)
-        if type == .pinHeader {
+        if type == .header || type == .advertisement{
+            return MockDataManager.sharedInstance.currentConfig.isMock ? 1 : 0
+        }else if type == .pinHeader {
             
             return (productsToReview?.count ?? 0 > 0) ? 1: 0
             
@@ -572,11 +638,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         switch CellType(rawValue: indexPath.section)! {
         case .productRecommendationTop, .productRecommendationBottom:
             
-            let productView = NewProductPageViewController(
-                nibName:"NewProductPageViewController",
-                bundle: nil,
-                productId: self.getRecommendationForIndexPath(indexPath).identifier
-            )
+            let productView = NewProductPageViewController( productId: self.getRecommendationForIndexPath(indexPath).identifier)
             
             self.navigationController?.pushViewController(productView, animated: true)
                 

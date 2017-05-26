@@ -278,7 +278,7 @@ class CurationsFeedItemDetailTableViewController: UITableViewController {
                 bvProduct.productName = product.productName
                 bvProduct.imageURL = product.productImageUrl
                 
-                let productView = NewProductPageViewController(nibName:"NewProductPageViewController", bundle: nil, productId: bvProduct.productId)
+                let productView = NewProductPageViewController(productId: bvProduct.productId)
                 
                 self.navigationController?.pushViewController(productView, animated: true)
                 

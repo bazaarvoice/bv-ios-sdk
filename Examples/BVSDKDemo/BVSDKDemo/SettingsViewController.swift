@@ -148,6 +148,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
             let config = configs[(indexPath as NSIndexPath).row]
             cell.textLabel?.text = config.displayName
             cell.detailTextLabel?.text = getConfiguredProductsString(config)
+            cell.accessoryType = .none
             if let selected = config.isSelected {
                 if selected {
                     cell.accessoryType = .checkmark
