@@ -1,40 +1,46 @@
 //
-//  BVQuestionSubmission.m
-//  Conversations
+//  BVCommentSubmission.m
+//  BVSDK
 //
-//  Copyright © 2016 Bazaarvoice. All rights reserved.
+//  Copyright © 2017 Bazaarvoice. All rights reserved.
 //
 
-#import "BVQuestionSubmission.h"
-#import "BVQuestionSubmissionErrorResponse.h"
-#import "BVSDKManager.h"
+#import "BVCommentSubmission.h"
 #import "BVSDKConfiguration.h"
+#import "BVSubmissionErrorResponse.h"
+#import "BVCommentSubmissionErrorResponse.h"
+#import "BVUploadablePhoto.h"
 
-@interface BVQuestionSubmission()
+@interface BVCommentSubmission ()
 
-@property (readwrite) NSString* _Nonnull productId;
-@property bool failureCalled;
+@property BOOL failureCalled;
 
 @end
 
-@implementation BVQuestionSubmission
 
--(nonnull instancetype)initWithProductId:(nonnull NSString*)productId {
+@implementation BVCommentSubmission
+
+- (nonnull instancetype)initWithReviewId:(NSString *)reviewId withCommentText:(NSString *)commentText {
+    
     self = [super init];
-    if(self){
-        self.productId = productId;
+    
+    if (self){
+        _reviewId = reviewId;
+        _commentText = commentText;
     }
+    
     return self;
 }
 
--(void)submit:(nonnull QuestionSubmissionCompletion)success failure:(nonnull ConversationsFailureHandler)failure {
+
+-(void)submit:(nonnull CommentSubmissionCompletion)success failure:(nonnull ConversationsFailureHandler)failure {
     
     if (self.action == BVSubmissionActionPreview) {
-        [[BVLogger sharedLogger] warning:@"Submitting a 'BVQuestionSubmission' with action set to `BVSubmissionActionPreview` will not actially submit the question! Set to `BVSubmissionActionSubmit` for real submission."];
+        [[BVLogger sharedLogger] warning:@"Submitting a 'BVCommentSubmission' with action set to `BVSubmissionActionPreview` will not actially submit the comment! Set to `BVSubmissionActionSubmit` for real submission."];
         [self submitPreview:success failure:failure];
     }
     else {
-        [self submitPreview:^(BVQuestionSubmissionResponse * _Nonnull response) {
+        [self submitPreview:^(BVCommentSubmissionResponse * _Nonnull response) {
             [self submitForReal:success failure:failure];
         } failure:^(NSArray<NSError *> * _Nonnull errors) {
             [self sendErrors:errors failureCallback:failure];
@@ -42,60 +48,60 @@
     }
 }
 
--(void)submitPreview:(QuestionSubmissionCompletion)success failure:(ConversationsFailureHandler)failure {
+-(void)submitPreview:(CommentSubmissionCompletion)success failure:(ConversationsFailureHandler)failure {
     
-    [self submitQuestionWithPhotoUrls:BVSubmissionActionPreview
-                           photoUrls:@[]
-                       photoCaptions:@[]
-                             success:success
-                             failure:failure];
+    [self submitCommentWithPhotoUrls:BVSubmissionActionPreview
+                          photoUrls:@[]
+                      photoCaptions:@[]
+                            success:success
+                            failure:failure];
     
 }
 
--(void)submitForReal:(QuestionSubmissionCompletion)success failure:(ConversationsFailureHandler)failure {
+-(void)submitForReal:(CommentSubmissionCompletion)success failure:(ConversationsFailureHandler)failure {
     
     if ([self.photos count] == 0) {
-        [self submitQuestionWithPhotoUrls:BVSubmissionActionSubmit
-                               photoUrls:@[]
-                           photoCaptions:@[]
-                                 success:success
-                                 failure:failure];
+        [self submitCommentWithPhotoUrls:BVSubmissionActionSubmit
+                              photoUrls:@[]
+                          photoCaptions:@[]
+                                success:success
+                                failure:failure];
         return;
     }
     
-    // upload photos before submitting content
+    // upload photos before submitting comments (prr only)
     NSMutableArray<NSString*>* photoUrls = [NSMutableArray array];
     NSMutableArray<NSString*>* photoCaptions = [NSMutableArray array];
     
     for (BVUploadablePhoto* photo in self.photos) {
         
-        [photo uploadForContentType:BVPhotoContentTypeQuestion success:^(NSString * _Nonnull photoUrl) {
+        [photo uploadForContentType:BVPhotoContentTypeComment success:^(NSString * _Nonnull photoUrl) {
             
             // Queue one event for each photo uploaded.
-            BVFeatureUsedEvent *photoUploadEvent = [[BVFeatureUsedEvent alloc] initWithProductId:self.productId
+            BVFeatureUsedEvent *photoUploadEvent = [[BVFeatureUsedEvent alloc] initWithProductId:self.reviewId
                                                                                        withBrand:nil
-                                                                                 withProductType:BVPixelProductTypeConversationsQuestionAnswer
+                                                                                 withProductType:BVPixelProductTypeConversationsReviews
                                                                                    withEventName:BVPixelFeatureUsedEventNamePhoto
-                                                                            withAdditionalParams:nil];
+                                                                            withAdditionalParams:@{@"detail1":@"Comment"}];
             [BVPixel trackEvent:photoUploadEvent];
+            
             
             [photoUrls addObject:photoUrl];
             [photoCaptions addObject:photo.photoCaption];
             
-            // all photos uploaded! submit content
+            // all photos uploaded! submit comment
             if ([photoUrls count] == [self.photos count]) {
-                [self submitQuestionWithPhotoUrls:BVSubmissionActionSubmit
-                                       photoUrls:photoUrls
-                                   photoCaptions:photoCaptions
-                                         success:success
-                                         failure:failure];
+                [self submitCommentWithPhotoUrls:BVSubmissionActionSubmit
+                                      photoUrls:photoUrls
+                                  photoCaptions:photoCaptions
+                                        success:success
+                                        failure:failure];
             }
             
         } failure:^(NSArray<NSError *> * _Nonnull errors) {
             
             if (!self.failureCalled) {
                 self.failureCalled = true; // only call failure block once, if multiple photos failed.
-                
                 [self sendErrors:errors failureCallback:failure];
             }
             
@@ -105,13 +111,13 @@
     
 }
 
--(void)submitQuestionWithPhotoUrls:(BVSubmissionAction)action photoUrls:(nonnull NSArray<NSString*>*)photoUrls photoCaptions:(nonnull NSArray<NSString*>*)photoCaptions success:(nonnull QuestionSubmissionCompletion)success failure:(nonnull ConversationsFailureHandler)failure {
+-(void)submitCommentWithPhotoUrls:(BVSubmissionAction)action photoUrls:(nonnull NSArray<NSString*>*)photoUrls photoCaptions:(nonnull NSArray<NSString*>*)photoCaptions success:(nonnull CommentSubmissionCompletion)success failure:(nonnull ConversationsFailureHandler)failure {
     
     
     NSDictionary* parameters = [self createSubmissionParameters:action photoUrls:photoUrls photoCaptions:photoCaptions];
     NSData* postBody = [self transformToPostBody:parameters];
     
-    NSString* urlString = [NSString stringWithFormat:@"%@submitquestion.json", [BVConversationsRequest commonEndpoint]];
+    NSString* urlString = [NSString stringWithFormat:@"%@submitreviewcomment.json", [BVConversationsRequest commonEndpoint]];
     NSURL* url = [NSURL URLWithString:urlString];
     
     NSMutableURLRequest* request = [[NSMutableURLRequest alloc] initWithURL:url];
@@ -129,7 +135,7 @@
             NSInteger statusCode = httpResponse.statusCode;
             NSError* jsonParsingError;
             NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&jsonParsingError];
-            BVQuestionSubmissionErrorResponse* errorResponse = [[BVQuestionSubmissionErrorResponse alloc] initWithApiResponse:json]; // fails gracefully
+            BVCommentSubmissionErrorResponse* errorResponse = [[BVCommentSubmissionErrorResponse alloc] initWithApiResponse:json]; // fails gracefully
             
             [[BVLogger sharedLogger] verbose:[NSString stringWithFormat:@"RESPONSE: %@ (%ld)", json, (long)statusCode]];
             
@@ -139,7 +145,7 @@
             }
             else if(statusCode >= 300){
                 // HTTP status code indicates failure
-                NSError* statusError = [NSError errorWithDomain:@"com.bazaarvoice.bvsdk" code:BV_ERROR_NETWORK_FAILED userInfo:@{NSLocalizedDescriptionKey:@"Question upload failed."}];
+                NSError* statusError = [NSError errorWithDomain:@"com.bazaarvoice.bvsdk" code:BV_ERROR_NETWORK_FAILED userInfo:@{NSLocalizedDescriptionKey:@"Photo upload failed."}];
                 [self sendError:statusError failureCallback:failure];
             }
             else if (jsonParsingError) {
@@ -153,16 +159,16 @@
             else {
                 // success!
                 
-                // Fire event now that we've confirmed the question was successfully uploaded.
-                BVFeatureUsedEvent *writeQuestionEvent = [[BVFeatureUsedEvent alloc] initWithProductId:self.productId
-                                                                         withBrand:nil
-                                                            withProductType:BVPixelProductTypeConversationsReviews
-                                                               withEventName:BVPixelFeatureUsedEventNameAskQuestion
-                                                              withAdditionalParams:nil];
+                // Fire event now that we've confirmed the comment was successfully uploaded.
+                BVFeatureUsedEvent *commentQuestionEvent = [[BVFeatureUsedEvent alloc] initWithProductId:self.reviewId
+                                                                                              withBrand:nil
+                                                                                        withProductType:BVPixelProductTypeConversationsReviews
+                                                                                          withEventName:BVPixelFeatureUsedEventNameReviewComment
+                                                                                   withAdditionalParams:nil];
                 
-                [BVPixel trackEvent:writeQuestionEvent];
+                [BVPixel trackEvent:commentQuestionEvent];
                 
-                BVQuestionSubmissionResponse* response = [[BVQuestionSubmissionResponse alloc] initWithApiResponse:json];
+                BVCommentSubmissionResponse* response = [[BVCommentSubmissionResponse alloc] initWithApiResponse:json];
                 dispatch_async(dispatch_get_main_queue(), ^{
                     success(response);
                 });
@@ -170,32 +176,34 @@
             
         }
         @catch (NSException *exception) {
-            NSError* unexpectedError = [NSError errorWithDomain:BVErrDomain code:BV_ERROR_UNKNOWN userInfo:@{NSLocalizedDescriptionKey:@"An unknown parsing error occurred."}];
-            [self sendError:unexpectedError failureCallback:failure];
+            NSError* unknownError = [NSError errorWithDomain:BVErrDomain code:BV_ERROR_UNKNOWN userInfo:@{NSLocalizedDescriptionKey:@"An unknown parsing error occurred."}];
+            [self sendError:unknownError failureCallback:failure];
         }
         
     }];
     
-    // start uploading question
+    // start uploading comment
     [postDataTask resume];
     
 }
 
+
 -(nonnull NSDictionary*)createSubmissionParameters:(BVSubmissionAction)action photoUrls:(nonnull NSArray<NSString*>*)photoUrls photoCaptions:(nonnull NSArray<NSString*>*)photoCaptions {
     
     NSMutableDictionary* parameters = [NSMutableDictionary dictionaryWithDictionary:@{
-                                          @"apiversion": @"5.4",
-                                          @"productId": self.productId
-                                       }];
+                                                                                      @"apiversion": @"5.4",
+                                                                                      @"commenttext": _commentText,
+                                                                                      @"reviewid": _reviewId,
+                                                                                      }];
     
     parameters[@"passkey"] = [BVSDKManager sharedManager].configuration.apiKeyConversations;
     parameters[@"action"] = [BVSubmissionActionUtil toString:action];
     
-    parameters[@"questionsummary"] = self.questionSummary;
-    parameters[@"questiondetails"] = self.questionDetails;
-    
     parameters[@"campaignid"] = self.campaignId;
     parameters[@"locale"] = self.locale;
+    
+    parameters[@"title"] = self.commentTitle;
+    
     parameters[@"hostedauthentication_authenticationemail"] = self.hostedAuthenticationEmail;
     parameters[@"hostedauthentication_callbackurl"] = self.hostedAuthenticationCallback;
     parameters[@"fp"] = self.fingerPrint;
@@ -204,18 +212,6 @@
     parameters[@"useremail"] = self.userEmail;
     parameters[@"userid"] = self.userId;
     parameters[@"userlocation"] = self.userLocation;
-
-    if (self.isUserAnonymous) {
-        parameters[@"isuseranonymous"] = [self.isUserAnonymous boolValue] ? @"true" : @"false";
-    }
-    
-    if (self.sendEmailAlertWhenPublished) {
-        parameters[@"sendemailalertwhenpublished"] = [self.sendEmailAlertWhenPublished boolValue] ? @"true" : @"false";
-    }
-    
-    if (self.agreedToTermsAndConditions) {
-        parameters[@"agreedtotermsandconditions"] = [self.agreedToTermsAndConditions boolValue] ? @"true" : @"false";
-    }
     
     int photoIndex = 0;
     for(NSString* url in photoUrls) {
@@ -231,10 +227,17 @@
         captionIndex += 1;
     }
     
+    if (self.sendEmailAlertWhenPublished) {
+        parameters[@"sendemailalertwhenpublished"] = [self.sendEmailAlertWhenPublished boolValue] ? @"true" : @"false";
+    }
+    
+    if (self.agreedToTermsAndConditions) {
+        parameters[@"agreedtotermsandconditions"] = [self.agreedToTermsAndConditions boolValue] ? @"true" : @"false";
+    }
+    
     return parameters;
     
 }
-
 
 
 @end

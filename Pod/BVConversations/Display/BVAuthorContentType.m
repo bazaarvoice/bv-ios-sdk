@@ -17,6 +17,8 @@
             return @"Answers";
         case BVAuthorContentTypeQuestions:
             return @"Questions";
+        case BVAuthorContentTypeReviewComments:
+            return @"Comments";
     }
 }
 

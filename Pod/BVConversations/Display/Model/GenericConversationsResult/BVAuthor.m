@@ -52,6 +52,15 @@
         }
         self.includedQuestions = tempQuestions;
         
+        NSArray<NSString*>* commentIds = apiResponse[@"CommentIds"];
+        NSMutableArray<BVComment*>* tempComments = [NSMutableArray array];
+        for(NSString* commentId in commentIds) {
+            BVComment* comment = [includes getCommentById:commentId];
+            [tempComments addObject:comment];
+            
+        }
+        self.includedComments = tempComments;
+        
         NSArray<NSString*>* answerIds = apiResponse[@"AnswerIds"];
         NSMutableArray<BVAnswer*>* tempAnswers = [NSMutableArray array];
         for(NSString* answerId in answerIds) {
@@ -61,7 +70,6 @@
         }
         self.includedAnswers = tempAnswers;
 
-        
     }
     return self;
 }

@@ -10,7 +10,7 @@
 #import "BVUploadablePhoto.h"
 #import "BVQuestionSubmissionResponse.h"
 #import "BVConversationsRequest.h"
-#import "BVSubmission.h"
+#import "BVBaseUGCSubmission.h"
 
 
 typedef void (^QuestionSubmissionCompletion)(BVQuestionSubmissionResponse* _Nonnull response);
@@ -26,7 +26,7 @@ typedef void (^QuestionSubmissionCompletion)(BVQuestionSubmissionResponse* _Nonn
  
  @availability 4.1.0 and later
  */
-@interface BVQuestionSubmission : BVSubmission
+@interface BVQuestionSubmission : BVBaseUGCSubmission
 
 /**
  Create a new BVQuestionSubmission.
@@ -36,13 +36,6 @@ typedef void (^QuestionSubmissionCompletion)(BVQuestionSubmissionResponse* _Nonn
 -(nonnull instancetype)initWithProductId:(nonnull NSString*)productId;
 -(nonnull instancetype) __unavailable init;
 
-/**
- Submit a user-provided photo attached to this answer.
- 
- @param image           The user-provded image attached to this answer.
- @param photoCaption    The user-provided caption for the photo.
- */
--(void)addPhoto:(nonnull UIImage*)image withPhotoCaption:(nullable NSString*)photoCaption;
 
 /**
  Submit this answer to the Bazaarvoice platform. If the `action` of this object is set to `BVSubmissionActionPreview` then the submission will NOT actually take place.
@@ -54,26 +47,11 @@ typedef void (^QuestionSubmissionCompletion)(BVQuestionSubmissionResponse* _Nonn
  */
 -(void)submit:(nonnull QuestionSubmissionCompletion)success failure:(nonnull ConversationsFailureHandler)failure;
 
-@property BVSubmissionAction action;
 @property NSString* _Nullable questionSummary;
 @property NSString* _Nullable questionDetails;
 
-@property NSString* _Nullable user;
-@property NSString* _Nullable userEmail;
-@property NSString* _Nullable userId;
-@property NSString* _Nullable userLocation;
-@property NSString* _Nullable userNickname;
-
-@property NSString* _Nullable campaignId;
-@property NSString* _Nullable fingerPrint;
-@property NSString* _Nullable hostedAuthenticationEmail;
-@property NSString* _Nullable hostedAuthenticationCallback;
-@property NSString* _Nullable locale;
-
 @property NSNumber* _Nullable isUserAnonymous;
-@property NSNumber* _Nullable agreedToTermsAndConditions;
 
-@property NSNumber* _Nullable sendEmailAlertWhenPublished;
 @property NSNumber* _Nullable sendEmailAlertWhenAnswered;
 
 @property (readonly) NSString* _Nonnull productId;

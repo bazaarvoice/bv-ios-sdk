@@ -100,6 +100,13 @@
                                     <segue destination="5jI-Cb-PaS" kind="show" id="evF-tT-KlC"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lar-sh-Gj0">
+                                <rect key="frame" x="101" y="617" width="172" height="30"/>
+                                <state key="normal" title="Submit Review Comment"/>
+                                <connections>
+                                    <action selector="submitReviewCommentTappedWithSender:" destination="dKM-nR-alk" eventType="touchUpInside" id="GvB-Vs-pMQ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -115,6 +122,7 @@
                             <constraint firstItem="U5y-IY-NjF" firstAttribute="top" secondItem="GUy-1C-R1r" secondAttribute="bottom" constant="16" id="RYp-K9-KDd"/>
                             <constraint firstItem="BSS-vs-XAO" firstAttribute="top" secondItem="TNY-ES-hHQ" secondAttribute="bottom" constant="40" id="SzW-f2-Vf9"/>
                             <constraint firstItem="21f-tJ-eEv" firstAttribute="centerX" secondItem="OIU-n6-sdF" secondAttribute="centerX" id="Utb-lJ-0Uh"/>
+                            <constraint firstItem="lar-sh-Gj0" firstAttribute="top" secondItem="R1K-Q1-7uV" secondAttribute="bottom" constant="15" id="bnE-BG-p0w"/>
                             <constraint firstItem="bee-Nm-2RZ" firstAttribute="centerX" secondItem="OIU-n6-sdF" secondAttribute="centerX" id="dtQ-kO-uPU"/>
                             <constraint firstItem="XBc-bm-BM7" firstAttribute="centerX" secondItem="OIU-n6-sdF" secondAttribute="centerX" id="fi8-QZ-pSx"/>
                             <constraint firstItem="GUy-1C-R1r" firstAttribute="top" secondItem="MWm-bf-w1t" secondAttribute="bottom" constant="20" id="fs5-ty-u1h"/>
@@ -127,6 +135,7 @@
                             <constraint firstItem="MWm-bf-w1t" firstAttribute="top" secondItem="XBc-bm-BM7" secondAttribute="bottom" constant="20" id="q3Q-rd-aIS"/>
                             <constraint firstItem="5zN-hz-DfD" firstAttribute="centerX" secondItem="OIU-n6-sdF" secondAttribute="centerX" id="t7Z-CJ-V3S"/>
                             <constraint firstItem="Cmo-ai-CH5" firstAttribute="top" secondItem="5zN-hz-DfD" secondAttribute="bottom" constant="20" id="whl-J4-3iu"/>
+                            <constraint firstItem="lar-sh-Gj0" firstAttribute="centerX" secondItem="OIU-n6-sdF" secondAttribute="centerX" id="yYn-0g-j7Y"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Conversations API Tester" id="RgW-5Z-E15"/>

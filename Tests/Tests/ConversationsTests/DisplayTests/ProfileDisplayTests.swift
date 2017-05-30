@@ -16,7 +16,7 @@ class ProfileDisplayTests: XCTestCase {
         let configDict = ["clientId": "conciergeapidocumentation",
                           "apiKeyConversations": "caB45h2jBqXFw1OE043qoMBD1gJC8EwFNCjktzgwncXY4"];
         BVSDKManager.configure(withConfiguration: configDict, configType: .staging)
-        BVSDKManager.shared().setLogLevel(.error)
+        BVSDKManager.shared().setLogLevel(.verbose)
     }
     
     override func tearDown() {
@@ -95,10 +95,14 @@ class ProfileDisplayTests: XCTestCase {
             .includeStatistics(.answers)
             .includeStatistics(.questions)
             .includeStatistics(.reviews)
+            //.includeStatistics(.reviewComments) // This is not supported by API, so will assert.
+            
             // other includes
             .include(.reviews, limit: 10)
             .include(.questions, limit: 10)
             .include(.answers, limit: 10)
+            .include(.reviewComments, limit: 10)
+            
             // sorts
             .sortIncludedAnswers(.submissionTime, order: .descending)
             .sortIncludedReviews(.submissionTime, order: .descending)
@@ -136,6 +140,7 @@ class ProfileDisplayTests: XCTestCase {
             XCTAssertEqual(profile.includedReviews.count, 10)
             XCTAssertEqual(profile.includedQuestions.count, 10)
             XCTAssertEqual(profile.includedAnswers.count, 10)
+            XCTAssertEqual(profile.includedComments.count, 10)
             
         }) { (error) in
             

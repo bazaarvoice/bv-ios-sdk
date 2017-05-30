@@ -104,7 +104,7 @@ class AnswersViewController: UIViewController, UITableViewDataSource, UITableVie
             
             cell.answer = question.answers[indexPath.row]
             cell.onAuthorNickNameTapped = { (authorId) -> Void in
-                let authorVC = AuthorProfileViewController(nibName: "AuthorProfileViewController", bundle: nil, authorId: authorId)
+                let authorVC = AuthorProfileViewController(authorId: authorId)
                 self.navigationController?.pushViewController(authorVC, animated: true)
             }
             

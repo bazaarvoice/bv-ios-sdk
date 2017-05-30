@@ -1,63 +1,49 @@
 //
-//  AnswerTableViewCell.swift
+//  ReviewCommentTableViewCell.swift
 //  BVSDKDemo
 //
-//  Copyright © 2016 Bazaarvoice. All rights reserved.
+//  Copyright © 2017 Bazaarvoice. All rights reserved.
 //
 
 import UIKit
 import BVSDK
-private func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
-  switch (lhs, rhs) {
-  case let (l?, r?):
-    return l < r
-  case (nil, _?):
-    return true
-  default:
-    return false
-  }
-}
 
-private func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
-  switch (lhs, rhs) {
-  case let (l?, r?):
-    return l > r
-  default:
-    return rhs < lhs
-  }
-}
-
-
-class AnswerTableViewCell: BVAnswerTableViewCell {
-
+class ReviewCommentTableViewCell: UITableViewCell {
+    
     @IBOutlet weak var writtenAtLabel : UILabel!
     @IBOutlet weak var authorNickname : UILabel!
-    @IBOutlet weak var answerText : UILabel!
+    @IBOutlet weak var commentText : UILabel!
     @IBOutlet weak var usersFoundHelpfulLabel: UILabel!
     
     var onAuthorNickNameTapped : ((_ authorId : String) -> Void)? = nil
     
-    override var answer : BVAnswer? {
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        // Initialization code
+    }
+    
+    var comment : BVComment? {
         didSet {
-            if (answer?.userNickname != nil){
-                self.authorNickname.linkAuthorNameLabel(fullText: answer!.userNickname!, author: answer!.userNickname!, target: self, selector: #selector(AnswerTableViewCell.tappedAuthor(_:)))
+            
+            if let nick = comment?.userNickname {
+                self.authorNickname.linkAuthorNameLabel(fullText: nick, author: nick, target:self, selector: #selector(RatingTableViewCell.tappedAuthor(_:)))
             } else {
                 self.authorNickname.text = ""
             }
-            answerText.text = answer!.answerText
-            if let submissionTime = answer!.submissionTime{
+            commentText.text = comment!.commentText
+            if let submissionTime = comment!.submissionTime{
                 writtenAtLabel.text = dateTimeAgo(submissionTime)
             }
             else {
                 writtenAtLabel.text = ""
             }
             
-            if answer?.totalFeedbackCount?.int32Value > 0 {
+            if (comment?.totalFeedbackCount?.int32Value)! > 0 {
                 
-                let totalFeedbackCountString = answer?.totalFeedbackCount?.stringValue ?? ""
-                let totalPositiveFeedbackCountString = answer?.totalPositiveFeedbackCount?.stringValue ?? ""
+                let totalFeedbackCountString = comment?.totalFeedbackCount?.stringValue ?? ""
+                let totalPositiveFeedbackCountString = comment?.totalPositiveFeedbackCount?.stringValue ?? ""
                 
-                let helpfulText = totalPositiveFeedbackCountString + " of " + totalFeedbackCountString +  " users found this answer helpful"
+                let helpfulText = totalPositiveFeedbackCountString + " of " + totalFeedbackCountString +  " users found this comment helpful"
                 
                 let attributedString = NSMutableAttributedString(string: helpfulText as String, attributes: [NSFontAttributeName:UIFont.systemFont(ofSize: 12.0)])
                 
@@ -77,16 +63,14 @@ class AnswerTableViewCell: BVAnswerTableViewCell {
             } else {
                 usersFoundHelpfulLabel.text = ""
             }
-            
+
         }
     }
-    
     
     func tappedAuthor(_ sender:UITapGestureRecognizer){
         if let onAuthorNameTapped = self.onAuthorNickNameTapped {
-            onAuthorNameTapped((answer?.authorId)!)
+            onAuthorNameTapped((comment?.authorId)!)
         }
     }
-
     
 }

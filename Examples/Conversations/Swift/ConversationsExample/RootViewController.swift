@@ -26,7 +26,7 @@ class RootViewController: UIViewController {
                                                     productId: Constants.TEST_PRODUCT_ID)
         
         // a working example of posting a review.
-        reviewSubmission.action = BVSubmissionAction.submit // Don't actually post, just run in preview mode!
+        reviewSubmission.action = BVSubmissionAction.preview // Don't actually post, just run in preview mode!
         
         // We need to use the same userId for both the photo post and review content
         let userId = "123abc\(arc4random())"
@@ -36,7 +36,7 @@ class RootViewController: UIViewController {
         reviewSubmission.userId = userId
         reviewSubmission.isRecommended = true
         reviewSubmission.sendEmailAlertWhenPublished = true
-        
+
         if let photo = UIImage(named: "puppy"){
             reviewSubmission.addPhoto(photo, withPhotoCaption: "5 star pup!")
         }
@@ -101,7 +101,7 @@ class RootViewController: UIViewController {
     
     @IBAction func submitFeedbackTapped(sender: AnyObject) {
         
-        let feedback = BVFeedbackSubmission(contentId: "192454", with: BVFeedbackContentType.review, with: BVFeedbackType.helpfulness)
+        let feedback = BVFeedbackSubmission(contentId: "192451", with: BVFeedbackContentType.review, with: BVFeedbackType.helpfulness)
         
         let randomId = String(arc4random())
         
@@ -117,6 +117,43 @@ class RootViewController: UIViewController {
             self.showAlertError(message: errors.description)
         }
 
+    }
+    
+    @IBAction func submitReviewCommentTapped(sender: AnyObject) {
+        
+        let commentText = "I love comments! They are just the most! Seriously!"
+        let commentTitle = "Best Comment Title Ever!"
+        let commentRequest = BVCommentSubmission(reviewId: "192548", withCommentText: commentText)
+        
+        commentRequest.action = .preview
+        
+        let randomId = String(arc4random()) // create a random id for testing only
+        
+        //commentRequest.fingerPrint = // the iovation fingerprint would go here...
+        commentRequest.campaignId = "BV_COMMENT_CAMPAIGN_ID"
+        commentRequest.commentTitle = commentTitle
+        commentRequest.locale = "en_US"
+        commentRequest.sendEmailAlertWhenPublished = true
+        commentRequest.userNickname = "UserNickname" + randomId
+        commentRequest.userId = "UserId" + randomId
+        commentRequest.userEmail = "developer@bazaarvoice.com"
+        commentRequest.agreedToTermsAndConditions = true
+
+        // Some PRR clients may support adding photos, check your configuration
+//        if let photo = UIImage(named: "puppy"){
+//            commentRequest.addPhoto(photo, withPhotoCaption: "Review Comment Pupper!")
+//        }
+        
+        commentRequest.submit({ (commentSubmission) in
+            
+            // success
+            self.showAlertSuccess(message: "Success Submitting Review Comment!")
+            
+        }, failure: { (errors) in
+            // error
+            self.showAlertError(message: errors.description)
+
+        })
         
     }
     

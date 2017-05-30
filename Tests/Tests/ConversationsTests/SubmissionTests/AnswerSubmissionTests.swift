@@ -21,7 +21,7 @@ class AnswerSubmissionTests: XCTestCase {
     }
     
     func testSubmitAnswerWithPhoto() {
-        let expectation = self.expectation(description: "")
+        let expectation = self.expectation(description: "testSubmitAnswerWithPhoto")
         
         let answer = self.fillOutAnswer(.submit)
         answer.submit({ (answerSubmission) in
@@ -36,7 +36,7 @@ class AnswerSubmissionTests: XCTestCase {
     }
     
     func testPreviewAnswerWithPhoto() {
-        let expectation = self.expectation(description: "")
+        let expectation = self.expectation(description: "testPreviewAnswerWithPhoto")
         let answer = self.fillOutAnswer(.preview)
         answer.submit({ (answerSubmission) in
             expectation.fulfill()
