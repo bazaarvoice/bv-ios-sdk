@@ -15,6 +15,7 @@ typedef NS_ENUM(NSInteger, BVPixelFeatureUsedEventName) {
     BVPixelFeatureUsedEventNameWriteReview,
     BVPixelFeatureUsedEventNameAskQuestion,
     BVPixelFeatureUsedEventNameAnswerQuestion,
+    BVPixelFeatureUsedEventNameReviewComment,
     BVPixelFeatureUsedEventNameFeedback,
     BVPixelFeatureUsedEventNameInappropriate,
     BVPixelFeatureUsedEventNamePhoto,

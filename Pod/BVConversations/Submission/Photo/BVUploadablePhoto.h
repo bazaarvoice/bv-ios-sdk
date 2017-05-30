@@ -14,7 +14,8 @@ typedef void (^PhotoUploadFailure)(NSArray<NSError*>* _Nonnull errors);
 typedef NS_ENUM(NSInteger, BVPhotoContentType) {
     BVPhotoContentTypeReview,
     BVPhotoContentTypeQuestion,
-    BVPhotoContentTypeAnswer
+    BVPhotoContentTypeAnswer,
+    BVPhotoContentTypeComment // PRR only
 };
 
 @interface BVUploadablePhoto : NSObject

@@ -46,6 +46,7 @@ FOUNDATION_EXPORT const unsigned char BVSDKVersionString[];
 #import <BVSDK/BVAnalyticEventManager.h>
 
 // Conversations
+#import <BVSDK/BVSubmissionErrorResponse.h>
 #import <BVSDK/BVConversationsErrorResponse.h>
 #import <BVSDK/BVConversationsInclude.h>
 #import <BVSDK/BVFilter.h>
@@ -114,6 +115,10 @@ FOUNDATION_EXPORT const unsigned char BVSDKVersionString[];
 
 #import <BVSDK/BVCommentsRequest.h>
 #import <BVSDK/BVCommentsResponse.h>
+#import <BVSDK/BVCommentSubmission.h>
+#import <BVSDK/BVCommentSubmissionResponse.h>
+#import <BVSDK/BVSubmittedComment.h>
+#import <BVSDK/BVCommentSubmissionErrorResponse.h>
 
 // Curations
 #import <BVSDK/BVCurations.h>

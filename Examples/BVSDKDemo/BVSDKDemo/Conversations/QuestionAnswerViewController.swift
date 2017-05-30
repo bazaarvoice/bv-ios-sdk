@@ -126,7 +126,7 @@ class QuestionAnswerViewController: UIViewController, UITableViewDelegate, UITab
             let cell = tableView.dequeueReusableCell(withIdentifier: "QuestionAnswerTableViewCell") as! QuestionAnswerTableViewCell
             cell.question = question
             cell.onAuthorNickNameTapped = { (authorId) -> Void in
-                let authorVC = AuthorProfileViewController(nibName: "AuthorProfileViewController", bundle: nil, authorId: authorId)
+                let authorVC = AuthorProfileViewController(authorId: authorId)
                 self.navigationController?.pushViewController(authorVC, animated: true)
             }
             return cell

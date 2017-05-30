@@ -1,6 +1,127 @@
 {
     "HasErrors": false,
     "Includes": {
+        "Comments": {
+            "11974": {
+                "UserNickname": "ub5bjb1Z6d6xS2VCYy6xALx6Q",
+                "CommentText": "TESTERRTESTERRTESTERRTESTERRTESTERRTESTERR",
+                "Videos": [],
+                "Photos": [],
+                "TotalNegativeFeedbackCount": 0,
+                "UserLocation": null,
+                "CampaignId": null,
+                "TotalPositiveFeedbackCount": 0,
+                "LastModificationTime": "2011-06-30T21:15:53.000+00:00",
+                "ProductRecommendationIds": [],
+                "BadgesOrder": [],
+                "AuthorId": "j52sdn51d88",
+                "SubmissionTime": "2011-03-29T10:53:10.000+00:00",
+                "TotalFeedbackCount": 0,
+                "Title": "TESTERR",
+                "ModerationStatus": "APPROVED",
+                "Badges": {},
+                "IsSyndicated": false,
+                "SubmissionId": null,
+                "StoryId": null,
+                "LastModeratedTime": "2011-06-30T21:15:53.000+00:00",
+                "Id": "11974",
+                "ReviewId": "192451",
+                "IPAddress": null,
+                "ContentLocale": "fr_CA"
+            },
+            "11975": {
+                "UserNickname": "ub5bjb1Z6d6xS2VCYy6xALx6Q",
+                "CommentText": "Pellentesque suscipit sollicitudin magna, sed fermentum ante vestibulumac.\n\nMaecenas quis nibh at arcu volutpat pharetra quis nontortor. Vestibulum arcu magna, pellentesque non pellentesque sit amet, varius nonmetus. Phasellus sit amet quam lectus, ac sagittiserat. Quisque nec velit sit amet arcu mattislaoreet.",
+                "Videos": [],
+                "Photos": [
+                           {
+                           "Sizes": {
+                           "normal": {
+                           "Id": "normal",
+                           "Url": "https://reviews.apitestcustomer.bazaarvoice.com/bvstaging/5556/79937/photo.jpg?client=apireadonlysandbox"
+                           },
+                           "thumbnail": {
+                           "Id": "thumbnail",
+                           "Url": "https://reviews.apitestcustomer.bazaarvoice.com/bvstaging/5556/79937/photoThumb.jpg?client=apireadonlysandbox"
+                           }
+                           },
+                           "Id": "79937",
+                           "SizesOrder": [
+                                          "thumbnail",
+                                          "normal"
+                                          ],
+                           "Caption": null
+                           }
+                           ],
+                "TotalNegativeFeedbackCount": 0,
+                "UserLocation": null,
+                "CampaignId": null,
+                "TotalPositiveFeedbackCount": 0,
+                "LastModificationTime": "2011-06-30T21:15:56.000+00:00",
+                "ProductRecommendationIds": [],
+                "BadgesOrder": [],
+                "AuthorId": "he5onxrlou8",
+                "SubmissionTime": "2011-04-15T21:14:13.000+00:00",
+                "TotalFeedbackCount": 0,
+                "Title": null,
+                "ModerationStatus": "APPROVED",
+                "Badges": {},
+                "IsSyndicated": false,
+                "SubmissionId": null,
+                "StoryId": null,
+                "LastModeratedTime": "2011-06-30T21:15:56.000+00:00",
+                "Id": "11975",
+                "ReviewId": "192456",
+                "IPAddress": null,
+                "ContentLocale": "en_US"
+            },
+            "11976": {
+                "UserNickname": "ub5bjb1Z6d6xS2VCYy6xALx6Q",
+                "CommentText": "Vestibulum luctus facilisis massa vestibulumscelerisque.\n\nDuis fermentum purus id leo consequat eget accumsan maurishendrerit. Mauris ut lacus non arcu faucibus scelerisque volutpat rhoncusdiam. Maecenas non sodalesdui.",
+                "Videos": [],
+                "Photos": [
+                           {
+                           "Sizes": {
+                           "normal": {
+                           "Id": "normal",
+                           "Url": "https://reviews.apitestcustomer.bazaarvoice.com/bvstaging/5556/79953/photo.jpg?client=apireadonlysandbox"
+                           },
+                           "thumbnail": {
+                           "Id": "thumbnail",
+                           "Url": "https://reviews.apitestcustomer.bazaarvoice.com/bvstaging/5556/79953/photoThumb.jpg?client=apireadonlysandbox"
+                           }
+                           },
+                           "Id": "79953",
+                           "SizesOrder": [
+                                          "thumbnail",
+                                          "normal"
+                                          ],
+                           "Caption": null
+                           }
+                           ],
+                "TotalNegativeFeedbackCount": 0,
+                "UserLocation": "Vestibulum et loremest.",
+                "CampaignId": null,
+                "TotalPositiveFeedbackCount": 0,
+                "LastModificationTime": "2011-06-30T21:15:59.000+00:00",
+                "ProductRecommendationIds": [],
+                "BadgesOrder": [],
+                "AuthorId": "he5onxrlou8",
+                "SubmissionTime": "2011-04-15T21:13:28.000+00:00",
+                "TotalFeedbackCount": 0,
+                "Title": null,
+                "ModerationStatus": "APPROVED",
+                "Badges": {},
+                "IsSyndicated": false,
+                "SubmissionId": null,
+                "StoryId": null,
+                "LastModeratedTime": "2011-06-30T21:15:59.000+00:00",
+                "Id": "11976",
+                "ReviewId": "192463",
+                "IPAddress": null,
+                "ContentLocale": "en_US"
+            }
+        },
         "Questions": {
             "14790": {
                 "QuestionSummary": "Nunc lorem neque, condimentum id fermentum a, aliquam sit ametligula. Sed ullamcorper dignissim est idporttitor. Mauris ullamcorper",
@@ -1567,6 +1688,11 @@
                          "192723",
                          "192521"
                          ],
+        "CommentsOrder": [
+                          "11976",
+                          "11975",
+                          "11974"
+                          ],
         "AnswersOrder": [
                          "16259",
                          "16265",
@@ -1620,6 +1746,7 @@
                 },
                 "ContextDataValues": {},
                 "TotalReviewCount": 5,
+                "TotalCommentCount": 3,
                 "Videos": [],
                 "ContextDataValuesOrder": [],
                 "ContributorRank": "TOP_25",
@@ -1706,6 +1833,11 @@
                               "192691",
                               "192723",
                               "192521"
+                              ],
+                "CommentIds": [
+                               "11976",
+                               "11975",
+                               "11974"
                               ],
                 "Id": "data-gen-user-c3k8hjvtpn03dupvxcui1rj3",
                 "ThirdPartyIds": [],

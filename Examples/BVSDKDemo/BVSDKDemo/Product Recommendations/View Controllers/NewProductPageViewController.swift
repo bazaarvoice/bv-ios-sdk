@@ -513,13 +513,15 @@ class NewProductPageViewController: BVProductDisplayPageViewController, UITableV
             totalReviewCount = 0
         }
         
-        let ratingsVC = RatingsAndReviewsViewController(
-            nibName: "RatingsAndReviewsViewController",
-            bundle: nil,
-            product: product!,
-            totalReviewCount: totalReviewCount!)
-        
-        self.navigationController?.pushViewController(ratingsVC, animated: true)
+        if let p = product {
+            let ratingsVC = RatingsAndReviewsViewController(
+                nibName: "RatingsAndReviewsViewController",
+                bundle: nil,
+                product: p,
+                totalReviewCount: totalReviewCount!)
+            
+            self.navigationController?.pushViewController(ratingsVC, animated: true)
+        }
         
     }
     

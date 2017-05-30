@@ -1,6 +1,37 @@
 {
     "HasErrors": false,
     "Includes": {
+        "Comments": {
+            "1000149806": {
+                "Id": "1000149806",
+                "CID": "14d565e8-9f39-5080-a6bf-3cbd66d3b0c3",
+                "SourceClient": "branddemo",
+                "LastModificationTime": "2016-10-18T17:00:25.000+00:00",
+                "LastModeratedTime": "2016-10-18T17:00:25.000+00:00",
+                "ReviewId": "1014579910",
+                "CampaignId": "BV_PIE",
+                "AuthorId": "123abc",
+                "UserLocation": "Austin, TX",
+                "ContentLocale": "en_US",
+                "IsFeatured": false,
+                "TotalFeedbackCount": 6,
+                "TotalNegativeFeedbackCount": 5,
+                "TotalPositiveFeedbackCount": 1,
+                "ModerationStatus": "APPROVED",
+                "SubmissionId": "1zjgasdfasdfjmgb4ak7374haadyi",
+                "SubmissionTime": "2016-10-18T04:09:26.000+00:00",
+                "CommentText": "Sorry your setup experience wasn't ideal. We do offer build classes and the wheels could be swapped out during a free bike fit. If you don't like your bike call us, we want to make you happy!",
+                "UserNickname": "Strongbad",
+                "Badges": {},
+                "BadgesOrder": [],
+                "Title": "We can help!",
+                "ProductRecommendationIds": [],
+                "IsSyndicated": false,
+                "StoryId": null,
+                "Photos": [],
+                "Videos": []
+            }
+        },
         "Products": {
             "6-bv": {
                 "Brand": {
@@ -173,7 +204,8 @@
                 "ModelNumbers": []
             }
         },
-        "ProductsOrder": ["6-bv"]
+        "ProductsOrder": ["6-bv"],
+        "CommentsOrder": ["1000149806"]
     },
     "Offset": 0,
     "TotalResults": 40,
@@ -239,12 +271,12 @@
                 "Rating": 1,
                 "ContentLocale": "en_US",
                 "RatingRange": 5,
-                "TotalCommentCount": 0,
+                "TotalCommentCount": 1,
                 "ReviewText": "Lousy bike for the price. I have had Trek's, Giants, aluminum frames, carbon frames and this bike simply cannot compete with the bike shop brands. The Shimano 105 and BB30 crank is almost impossible to find in this price range. The assembly was lengthy and difficult and I was disappointed with the gear shift and the ride quality once I FINALLY got it set up. I swapped out the rims, which I think are the biggest downfall about the bike. Save yourself a headache and skip this bike.",
                 "ModerationStatus": "APPROVED",
                 "ClientResponses": [],
                 "Id": "98247201",
-                "CommentIds": [],
+                "CommentIds": ["1000149806"],
                 "SecondaryRatings": {
                 "Value": {
                 "Value": 1,

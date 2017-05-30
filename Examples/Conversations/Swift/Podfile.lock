@@ -1,7 +1,7 @@
 PODS:
-  - BVSDK/BVConversations (6.7.0):
+  - BVSDK/BVConversations (6.7.1):
     - BVSDK/Core
-  - BVSDK/Core (6.7.0)
+  - BVSDK/Core (6.7.1)
 
 DEPENDENCIES:
   - BVSDK/BVConversations (from `../../../`)
@@ -11,8 +11,7 @@ EXTERNAL SOURCES:
     :path: "../../../"
 
 SPEC CHECKSUMS:
-
-  BVSDK: b7282f1b646d716c65c249d8e6f5a30d93e5419d
+  BVSDK: 5e06b8e158dd2e67cf09315185b33a62dcad15b7
 
 PODFILE CHECKSUM: ff51a28f7873cf9d401e0c25277fa303397c7510
 

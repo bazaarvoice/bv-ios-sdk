@@ -61,6 +61,12 @@
 }
 
 - (nonnull instancetype)includeStatistics:(BVAuthorContentType)contentType {
+    
+    if (contentType == BVAuthorContentTypeReviewComments){
+        NSAssert(NO, @"Including Review Comment Statistics is not supported with an authors request.");
+        return self;
+    }
+    
     [self.authorContentTypeStatistics addObject:@(contentType)];
     return self;
 }
