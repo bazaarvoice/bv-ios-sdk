@@ -37,8 +37,7 @@
         self.reviewText = reviewText;
         self.rating = rating;
         self.productId = productId;
-        self.photos = [NSMutableArray array];
-        
+       
         self.additionalFields = [NSMutableDictionary dictionary];
         self.contextDataValues = [NSMutableDictionary dictionary];
         self.ratingQuestions = [NSMutableDictionary dictionary];
@@ -47,11 +46,6 @@
         self.freeformTags = [NSMutableDictionary dictionary];
     }
     return self;
-}
-
--(void)addPhoto:(nonnull UIImage*)image withPhotoCaption:(nullable NSString*)photoCaption {
-    BVUploadablePhoto* photo = [[BVUploadablePhoto alloc] initWithPhoto:image photoCaption:photoCaption];
-    [self.photos addObject:photo];
 }
 
 

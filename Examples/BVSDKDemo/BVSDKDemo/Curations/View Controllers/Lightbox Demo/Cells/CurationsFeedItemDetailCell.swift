@@ -47,7 +47,7 @@ class CurationsFeedItemDetailCell: UITableViewCell {
             self.postTimeLabel.text = dateTimeAgo(postDate)
             
             if (author.profile != nil && author.username != nil){
-                self.linkAuthorNameLabel(author: author.username)
+                self.authorNameLabel.linkAuthorNameLabel(fullText: author.username, author: author.username, target: self, selector: #selector(CurationsFeedItemDetailCell.tappedAuthor(_:)))
             } else {
                 self.authorNameLabel.text = author.username
             }
@@ -55,18 +55,6 @@ class CurationsFeedItemDetailCell: UITableViewCell {
             self.postTextLabel.text = feedItem?.text
         }
         
-    }
-    
-    func linkAuthorNameLabel(author : String) {
-        
-        let attributes = [ NSForegroundColorAttributeName: UIColor.blue ]
-        let attrText = NSAttributedString(string: author, attributes: attributes)
-        
-        self.authorNameLabel.attributedText = attrText
-        self.authorNameLabel.isUserInteractionEnabled = true
-        
-        let tapAuthorGesture = UITapGestureRecognizer(target: self, action: #selector(CurationsFeedItemDetailCell.tappedAuthor(_:)))
-        self.authorNameLabel.addGestureRecognizer(tapAuthorGesture)
     }
     
     func tappedAuthor(_ sender:UITapGestureRecognizer){

@@ -7,6 +7,8 @@
 import UIKit
 import HCSStarRatingView
 import BVSDK
+import FontAwesomeKit
+
 private func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
   switch (lhs, rhs) {
   case let (l?, r?):
@@ -28,6 +30,10 @@ private func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
 }
 
 
+enum Votes {
+    case NoVote, UpVote, DownVote
+}
+
 class RatingTableViewCell: BVReviewTableViewCell {
     
     @IBOutlet weak var reviewText : UILabel!
@@ -36,12 +42,76 @@ class RatingTableViewCell: BVReviewTableViewCell {
     @IBOutlet weak var reviewAuthorLocation : UILabel!
     @IBOutlet weak var reviewStars : HCSStarRatingView!
     @IBOutlet weak var reviewPhoto : UIImageView!
-    @IBOutlet weak var usersFoundHelpfulLabel: UILabel!
+    
+    @IBOutlet weak var thumbUpButton: UIButton!
+    @IBOutlet weak var thumbDownButton: UIButton!
+
+    @IBOutlet weak var commentsButton: UIButton!
+    
+    @IBOutlet weak var upVoteCountLabel: UILabel!
+    @IBOutlet weak var downVoteCountLabel: UILabel!
+    @IBOutlet weak var totalCommentsLabel: UILabel!
+    
+    var totalCommentCount = 0
+    var totalUpVoteCount = 0
+    var totalDownVoteCount = 0
     
     var onAuthorNickNameTapped : ((_ authorId : String) -> Void)? = nil
+    var onCommentIconTapped : ((_ reviewComments : [BVComment]) -> Void)? = nil
+    var onVoteIconTapped : ((_ voteDict: NSDictionary) -> Void)? = nil
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.updateStatisticIcons()
+    }
+    
+    private func updateStatisticIcons() {
+    
+        self.upVoteCountLabel.text = String(self.totalUpVoteCount)
+        self.downVoteCountLabel.text = String(self.totalDownVoteCount)
+        self.totalCommentsLabel.text = String(self.totalCommentCount)
+        
+        let commentsIconColor = self.totalCommentCount > 0 ? UIColor.bazaarvoiceTeal().withAlphaComponent(1) :UIColor.lightGray.withAlphaComponent(0.5)
+        
+        let thumbDownColor = self.vote == Votes.DownVote ? UIColor.bazaarvoiceTeal().withAlphaComponent(1) :UIColor.lightGray.withAlphaComponent(0.5)
+        let thumbUpColor = self.vote == Votes.UpVote ? UIColor.bazaarvoiceTeal().withAlphaComponent(1) :UIColor.lightGray.withAlphaComponent(0.5)
+        
+        self.thumbUpButton.setBackgroundImage(getIconImage(FAKFontAwesome.thumbsUpIcon(withSize:), color: thumbUpColor), for: .normal)
+        self.thumbDownButton.setBackgroundImage(getIconImage(FAKFontAwesome.thumbsDownIcon(withSize:), color: thumbDownColor), for: .normal)
+        self.commentsButton.setBackgroundImage(getIconImage(FAKFontAwesome.commentIcon(withSize:), color: commentsIconColor), for: .normal)
+    
+    }
+    
+    func getIconImage(_ icon : ((_ size: CGFloat) -> FAKFontAwesome!), color: UIColor) -> UIImage {
+        
+        let size = CGFloat(22)
+        
+        let newIcon = icon(size)
+        newIcon?.addAttribute(
+            NSForegroundColorAttributeName,
+            value: color
+        )
+        
+        return newIcon!.image(with: CGSize(width: size, height: size))
+        
+    }
+
+    var vote : Votes = Votes.NoVote {
+        
+        didSet {
+            
+            if vote == Votes.UpVote {
+                self.voteButtonTapped(self.thumbUpButton)
+                totalUpVoteCount += 1
+            } else if vote == Votes.DownVote {
+                self.voteButtonTapped(self.thumbDownButton)
+                totalDownVoteCount += 1
+            }
+            
+            updateStatisticIcons()
+            
+        }
+        
     }
     
     override var review : BVReview? {
@@ -61,7 +131,6 @@ class RatingTableViewCell: BVReviewTableViewCell {
             
             reviewText.attributedText = attrString
             
-            
             reviewTitle.text = review!.title
             reviewStars.value = CGFloat(review!.rating)
             if let photoUrl = review?.photos.first?.sizes?.normalUrl {
@@ -73,10 +142,10 @@ class RatingTableViewCell: BVReviewTableViewCell {
             
             if let submissionTime = review?.submissionTime, let nickname = review?.userNickname {
                 let fullString = dateTimeAgo(submissionTime) + " by " + nickname
-                self.linkAuthorNameLabel(fullText: fullString, author: nickname)
+                self.reviewAuthor.linkAuthorNameLabel(fullText: fullString, author: nickname, target: self, selector: #selector(RatingTableViewCell.tappedAuthor(_:)))
             }
             else if let nickname = review?.userNickname {
-                self.linkAuthorNameLabel(fullText: nickname, author: nickname)
+                self.reviewAuthor.linkAuthorNameLabel(fullText: nickname, author: nickname, target: self, selector: #selector(RatingTableViewCell.tappedAuthor(_:)))
             }
             else if let submissionTime = review?.submissionTime {
                 reviewAuthor.text = dateTimeAgo(submissionTime) + " by Anonymous"
@@ -92,56 +161,18 @@ class RatingTableViewCell: BVReviewTableViewCell {
                 reviewAuthorLocation.text = ""
             }
             
-            if review?.totalFeedbackCount?.int32Value > 0 {
-                                
-                let totalFeedbackCountString = review?.totalFeedbackCount?.stringValue ?? ""
-                let totalPositiveFeedbackCountString = review?.totalPositiveFeedbackCount?.stringValue ?? ""
-                
-                 let helpfulText = totalPositiveFeedbackCountString + " of " + totalFeedbackCountString +  " users found this review helpful"
-                
-                let attributedString = NSMutableAttributedString(string: helpfulText as String, attributes: [NSFontAttributeName:UIFont.systemFont(ofSize: 12.0)])
-
-                let boldFontAttribute = [NSFontAttributeName: UIFont.boldSystemFont(ofSize: 12.0)]
-                let colorFontAttribute = [NSForegroundColorAttributeName: UIColor.darkGray]
-                
-                // Part of string to be bold
-                attributedString.addAttributes(boldFontAttribute, range: (helpfulText as NSString).range(of: totalFeedbackCountString))
-                attributedString.addAttributes(boldFontAttribute, range: (helpfulText as NSString).range(of: totalPositiveFeedbackCountString))
-
-                // Make text black
-                attributedString.addAttributes(colorFontAttribute , range: (helpfulText as NSString).range(of: totalFeedbackCountString, options: .backwards))
-                 attributedString.addAttributes(colorFontAttribute , range: (helpfulText as NSString).range(of: totalPositiveFeedbackCountString))
-               
-                usersFoundHelpfulLabel.attributedText = attributedString
-                
-            } else {
-                usersFoundHelpfulLabel.text = ""
-            }
+            self.totalUpVoteCount = (review?.totalPositiveFeedbackCount?.intValue)!
+            self.totalDownVoteCount = (review?.totalNegativeFeedbackCount?.intValue)!
+            self.totalCommentCount = (review?.totalCommentCount?.intValue)!
+            
+            self.updateStatisticIcons()
             
             self.setNeedsLayout()
             
         }
         
     }
-    
-    func linkAuthorNameLabel(fullText : String, author : String) {
         
-        let attributedString = NSMutableAttributedString(string: fullText)
-        attributedString.setAttributes([:], range: NSRange(0..<attributedString.length)) // remove all the default attributes
-        
-        let colorFontAttribute = [NSForegroundColorAttributeName: UIColor.blue]
-        
-        attributedString.addAttributes(colorFontAttribute , range: (fullText as NSString).range(of: author, options: .backwards))
-        
-        self.reviewAuthor.attributedText = attributedString
-        self.reviewAuthor.isUserInteractionEnabled = true
-        
-        // Here the full label will be tappable. If you wanted to make just a part of the label
-        // tappable you'd need to check the frame when tapped, or use a different label.
-        let tapAuthorGesture = UITapGestureRecognizer(target: self, action: #selector(RatingTableViewCell.tappedAuthor(_:)))
-        self.reviewAuthor.addGestureRecognizer(tapAuthorGesture)
-    }
-    
     func tappedAuthor(_ sender:UITapGestureRecognizer){
         if let onAuthorNameTapped = self.onAuthorNickNameTapped {
             onAuthorNameTapped((review?.authorId)!)
@@ -149,4 +180,44 @@ class RatingTableViewCell: BVReviewTableViewCell {
     }
     
     
+    @IBAction func voteButtonTapped(_ sender: Any) {
+        
+        if vote != Votes.NoVote { return }
+        
+        let button = sender as! UIButton
+        
+        if (button === self.thumbDownButton) {
+            vote = Votes.DownVote
+        } else if (button === self.thumbUpButton) {
+            vote = Votes.UpVote
+        }
+        
+        updateStatisticIcons()
+        
+        // let any listener know what the vote was
+        tapVoteCallback(vote: vote)
+    }
+
+    
+    @IBAction func commentsButtonTapped(_ sender: Any) {
+        if let onCommentTapped = self.onCommentIconTapped, totalCommentCount > 0 {
+            onCommentTapped((review?.comments)!)
+        }
+    }
+    
+    func tapVoteCallback(vote : Votes){
+        
+        // Send callback if set
+        if let onVoteTapped = self.onVoteIconTapped {
+            if let reviewId = self.review?.identifier {
+                let result : NSDictionary = [reviewId:vote]
+                onVoteTapped(result)
+            }
+        }
+        
+        // TODO: Here we would record an API call for the feedback vote from the use
+        // However, Feedback API doesn't support a Preview functionality, so we'll skip that for now.
+    
+    }
+        
 }

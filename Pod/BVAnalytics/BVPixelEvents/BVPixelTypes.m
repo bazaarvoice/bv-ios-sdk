@@ -20,6 +20,8 @@
             return @"Question";
         case BVPixelFeatureUsedEventNameAnswerQuestion:
             return @"Answer";
+        case BVPixelFeatureUsedEventNameReviewComment:
+            return @"Comment";
         case BVPixelFeatureUsedEventNameFeedback:
             return @"Helpfulness";
         case BVPixelFeatureUsedEventNameInappropriate:

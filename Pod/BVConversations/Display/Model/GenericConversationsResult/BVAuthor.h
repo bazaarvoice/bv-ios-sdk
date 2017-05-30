@@ -37,6 +37,7 @@
 @property NSArray<BVReview*>* _Nonnull includedReviews;
 @property NSArray<BVQuestion*>* _Nonnull includedQuestions;
 @property NSArray<BVAnswer*>* _Nonnull includedAnswers;
+@property NSArray<BVComment*>* _Nonnull includedComments;
 
 @property BVReviewStatistics* _Nullable reviewStatistics;
 @property BVQAStatistics* _Nullable qaStatistics;

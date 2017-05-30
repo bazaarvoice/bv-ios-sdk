@@ -9,7 +9,7 @@ import UIKit
 import BVSDK
 
 enum TableViewTag : Int {
-    case ReviewsTableView = 0, QuestionsTableView, AnswersTableView
+    case ReviewsTableView = 0, QuestionsTableView, AnswersTableView, ReviewCommentsTableView
 }
 
 class AuthorProfileViewController: UIViewController, UITableViewDataSource {
@@ -29,11 +29,12 @@ class AuthorProfileViewController: UIViewController, UITableViewDataSource {
     @IBOutlet weak var reviewsTableView: UITableView!
     @IBOutlet weak var questionsTableView: UITableView!
     @IBOutlet weak var answersTableView: UITableView!
+    @IBOutlet weak var commentsTableView: UITableView!
     
-    init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?, authorId : String) {
+    init(authorId : String) {
         
         self.authorId = authorId
-        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+        super.init(nibName: nil, bundle: nil)
         
     }
     
@@ -63,6 +64,12 @@ class AuthorProfileViewController: UIViewController, UITableViewDataSource {
         questionsTableView.estimatedRowHeight = 40
         questionsTableView.rowHeight = UITableViewAutomaticDimension
         questionsTableView.allowsSelection = false
+        
+        let nib4 = UINib(nibName: "ReviewCommentTableViewCell", bundle: nil)
+        commentsTableView.register(nib4, forCellReuseIdentifier: "ReviewCommentTableViewCell")
+        commentsTableView.estimatedRowHeight = 40
+        commentsTableView.rowHeight = UITableViewAutomaticDimension
+        commentsTableView.allowsSelection = false
         
         self.view.layoutIfNeeded()
         self.initDefaultUI()
@@ -104,6 +111,7 @@ class AuthorProfileViewController: UIViewController, UITableViewDataSource {
         request.include(.reviews, limit: 20)
         request.include(.questions, limit: 20)
         request.include(.answers, limit: 20)
+        request.include(.reviewComments, limit: 20)
         // sorts
         request.sortIncludedAnswers(.submissionTime, order: .descending)
         request.sortIncludedReviews(.submissionTime, order: .descending)
@@ -141,18 +149,22 @@ class AuthorProfileViewController: UIViewController, UITableViewDataSource {
             let totalReviewCount  = self.author?.reviewStatistics?.totalReviewCount?.intValue
             let totalQuestionCount = self.author?.qaStatistics?.totalQuestionCount?.intValue
             let totalAnswerCount = self.author?.qaStatistics?.totalAnswerCount?.intValue
+            let totalCommentCount = self.author!.includedComments.count
             
             let reviewButtonText = "Reviews (\(totalReviewCount!))"
             let questionButtonText = "Questions (\(totalQuestionCount!))"
             let answerButtonText = "Answers (\(totalAnswerCount!))"
+            let commentButtonText = "Comments (\(totalCommentCount))"
             
             self.ugcTypeSegmentedControl.setTitle(reviewButtonText, forSegmentAt: 0)
             self.ugcTypeSegmentedControl.setTitle(questionButtonText, forSegmentAt: 1)
             self.ugcTypeSegmentedControl.setTitle(answerButtonText, forSegmentAt: 2)
+            self.ugcTypeSegmentedControl.setTitle(commentButtonText, forSegmentAt: 3)
             
             self.reviewsTableView.reloadData()
             self.questionsTableView.reloadData()
             self.answersTableView.reloadData()
+            self.commentsTableView.reloadData()
             
         }) { (error) in
             
@@ -185,6 +197,8 @@ class AuthorProfileViewController: UIViewController, UITableViewDataSource {
             return (self.author?.includedQuestions.count)!
         case TableViewTag.AnswersTableView.rawValue:
             return (self.author?.includedAnswers.count)!
+        case TableViewTag.ReviewCommentsTableView.rawValue:
+            return (self.author?.includedComments.count)!
         default:
             print("Bad TableView Tag Id in numberOfRowsInSection")
         }
@@ -208,6 +222,10 @@ class AuthorProfileViewController: UIViewController, UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: "AnswerTableViewCell") as! AnswerTableViewCell
             cell.answer = self.author?.includedAnswers[indexPath.row]
             return cell
+        case TableViewTag.ReviewCommentsTableView.rawValue:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "ReviewCommentTableViewCell") as! ReviewCommentTableViewCell
+            cell.comment = self.author?.includedComments[indexPath.row]
+            return cell
         default:
             print("Bad TableView Tag Id in cellForRowAt")
         }
@@ -226,6 +244,8 @@ class AuthorProfileViewController: UIViewController, UITableViewDataSource {
             self.view.bringSubview(toFront: self.questionsTableView)
         case TableViewTag.AnswersTableView.rawValue:
             self.view.bringSubview(toFront: self.answersTableView)
+        case TableViewTag.ReviewCommentsTableView.rawValue:
+            self.view.bringSubview(toFront: self.commentsTableView)
         default:
             print("Bad index in segmented control")
         }

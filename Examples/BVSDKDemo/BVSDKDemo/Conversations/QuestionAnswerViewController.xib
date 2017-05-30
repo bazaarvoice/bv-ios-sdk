@@ -1,8 +1,11 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -22,11 +25,14 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="8ZU-Mh-B4v" customClass="BVQuestionsTableView">
+                    <rect key="frame" x="0.0" y="80" width="375" height="587"/>
                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 </tableView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ExN-ZL-DUp" customClass="ProductDetailHeaderView" customModule="BVSDKDemo" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Pa3-0I-5iK">
+                            <rect key="frame" x="8" y="8" width="64" height="64"/>
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="Pa3-0I-5iK" secondAttribute="height" multiplier="1:1" id="0i9-GK-O8q"/>
                                 <constraint firstAttribute="height" constant="122" id="H3y-Ru-6YB"/>
@@ -39,11 +45,13 @@
                             </variation>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Product Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="7jr-hR-Ics">
+                            <rect key="frame" x="80" y="16" width="287" height="22"/>
                             <fontDescription key="fontDescription" type="system" weight="light" pointSize="18"/>
                             <color key="textColor" red="0.0" green="0.2392156869" blue="0.29803922770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qhb-Xo-sSn" customClass="HCSStarRatingView">
+                            <rect key="frame" x="80" y="41" width="100" height="20"/>
                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <color key="tintColor" red="0.99715530872344971" green="0.85457783937454224" blue="0.063469812273979187" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
@@ -62,10 +70,11 @@
                     </subviews>
                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
-                        <constraint firstItem="7jr-hR-Ics" firstAttribute="bottom" secondItem="ExN-ZL-DUp" secondAttribute="centerY" constant="-3" id="2hn-lq-wNM"/>
+                        <constraint firstItem="7jr-hR-Ics" firstAttribute="bottom" secondItem="ExN-ZL-DUp" secondAttribute="centerY" constant="-2" id="2hn-lq-wNM"/>
+                        <constraint firstAttribute="trailing" secondItem="7jr-hR-Ics" secondAttribute="trailing" constant="8" id="AaU-fY-6eI"/>
                         <constraint firstItem="qhb-Xo-sSn" firstAttribute="leading" secondItem="7jr-hR-Ics" secondAttribute="leading" id="OaQ-Tt-MkF"/>
                         <constraint firstItem="7jr-hR-Ics" firstAttribute="leading" secondItem="Pa3-0I-5iK" secondAttribute="trailing" constant="8" id="SGY-lG-H2U"/>
-                        <constraint firstItem="qhb-Xo-sSn" firstAttribute="top" secondItem="7jr-hR-Ics" secondAttribute="bottom" constant="4" id="Ygv-5Q-xPI"/>
+                        <constraint firstItem="qhb-Xo-sSn" firstAttribute="top" secondItem="7jr-hR-Ics" secondAttribute="bottom" constant="3" id="Ygv-5Q-xPI"/>
                         <constraint firstItem="Pa3-0I-5iK" firstAttribute="top" secondItem="ExN-ZL-DUp" secondAttribute="topMargin" id="fhB-LN-6Bp"/>
                         <constraint firstAttribute="height" constant="80" id="hXw-id-7np"/>
                         <constraint firstAttribute="bottomMargin" secondItem="Pa3-0I-5iK" secondAttribute="bottom" id="iEw-ch-bPl"/>
@@ -92,7 +101,7 @@
                 <constraint firstItem="8ZU-Mh-B4v" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="80" id="9mD-ag-WVi"/>
                 <constraint firstItem="ExN-ZL-DUp" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="F2q-oo-M4t"/>
                 <constraint firstItem="8ZU-Mh-B4v" firstAttribute="top" secondItem="ExN-ZL-DUp" secondAttribute="bottom" id="NoK-O9-dC6"/>
-                <constraint firstAttribute="trailing" secondItem="ExN-ZL-DUp" secondAttribute="trailing" constant="-225" id="ORs-J3-vAc"/>
+                <constraint firstAttribute="trailing" secondItem="ExN-ZL-DUp" secondAttribute="trailing" id="ORs-J3-vAc"/>
                 <constraint firstAttribute="trailing" secondItem="8ZU-Mh-B4v" secondAttribute="trailing" id="mDW-NG-qae"/>
                 <constraint firstAttribute="bottom" secondItem="8ZU-Mh-B4v" secondAttribute="bottom" id="miy-VF-fUS"/>
                 <constraint firstAttribute="trailing" secondItem="8ZU-Mh-B4v" secondAttribute="trailing" id="nZ2-ST-g9A"/>

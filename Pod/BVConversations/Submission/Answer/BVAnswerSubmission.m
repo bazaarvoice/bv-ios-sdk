@@ -16,7 +16,6 @@
 
 @property (readwrite) NSString* _Nonnull questionId;
 @property NSString* _Nonnull answerText;
-@property NSMutableArray<BVUploadablePhoto*>* _Nonnull photos;
 @property bool failureCalled;
 
 @end
@@ -28,20 +27,13 @@
     if(self){
         self.questionId = questionId;
         self.answerText = answerText;
-        self.photos = [NSMutableArray array];
     }
     return self;
-}
-
--(void)addPhoto:(nonnull UIImage*)image withPhotoCaption:(nullable NSString*)photoCaption {
-    BVUploadablePhoto* photo = [[BVUploadablePhoto alloc] initWithPhoto:image photoCaption:photoCaption];
-    [self.photos addObject:photo];
 }
 
 -(void)submit:(nonnull AnswerSubmissionCompletion)success failure:(nonnull ConversationsFailureHandler)failure {
     
     if (self.action == BVSubmissionActionPreview) {
-        //TODO send off warning that this doesn't actually submit shtuff
         [[BVLogger sharedLogger] warning:@"Submitting a 'BVAnswerSubmission' with action set to `BVSubmissionActionPreview` will not actially submit the answer! Set to `BVSubmissionActionSubmit` for real submission."];
         [self submitPreview:success failure:failure];
     }

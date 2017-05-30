@@ -11,7 +11,8 @@
 typedef NS_ENUM(NSInteger, BVAuthorContentType) {
     BVAuthorContentTypeReviews,
     BVAuthorContentTypeQuestions,
-    BVAuthorContentTypeAnswers
+    BVAuthorContentTypeAnswers,
+    BVAuthorContentTypeReviewComments
 };
 
 

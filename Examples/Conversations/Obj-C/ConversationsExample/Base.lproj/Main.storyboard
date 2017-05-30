@@ -100,9 +100,17 @@
                                     <segue destination="ANb-2k-jfe" kind="show" id="HGT-nD-ifZ"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pcc-lj-gN2">
+                                <rect key="frame" x="101" y="608" width="172" height="30"/>
+                                <state key="normal" title="Submit Review Comment"/>
+                                <connections>
+                                    <action selector="submitReviewCommentTapped:" destination="dKM-nR-alk" eventType="touchUpInside" id="grh-qj-q3g"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="pcc-lj-gN2" firstAttribute="centerX" secondItem="OIU-n6-sdF" secondAttribute="centerX" id="06o-8w-Axu"/>
                             <constraint firstItem="MWm-bf-w1t" firstAttribute="centerX" secondItem="OIU-n6-sdF" secondAttribute="centerX" id="57X-cb-hg1"/>
                             <constraint firstItem="Cmo-ai-CH5" firstAttribute="centerX" secondItem="OIU-n6-sdF" secondAttribute="centerX" id="Ajh-7R-HL2"/>
                             <constraint firstItem="gP4-Nm-lKG" firstAttribute="width" secondItem="GUy-1C-R1r" secondAttribute="width" multiplier="1.4" id="BJi-pS-HCG"/>
@@ -127,6 +135,7 @@
                             <constraint firstItem="I8O-gn-0sf" firstAttribute="top" secondItem="bee-Nm-2RZ" secondAttribute="bottom" constant="18" id="tmA-Ec-gr8"/>
                             <constraint firstItem="Cmo-ai-CH5" firstAttribute="top" secondItem="5zN-hz-DfD" secondAttribute="bottom" constant="20" id="whl-J4-3iu"/>
                             <constraint firstItem="I8O-gn-0sf" firstAttribute="leading" secondItem="OIU-n6-sdF" secondAttribute="leadingMargin" constant="114" id="wnd-I3-06C"/>
+                            <constraint firstItem="pcc-lj-gN2" firstAttribute="top" secondItem="I8O-gn-0sf" secondAttribute="bottom" constant="17" id="xzr-Xn-6eV"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="RgW-5Z-E15"/>

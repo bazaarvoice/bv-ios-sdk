@@ -50,11 +50,13 @@
     BVQuestionSubmission* question = [[BVQuestionSubmission alloc] initWithProductId:@"test1"];
     question.action = BVSubmissionActionPreview;
     
+    NSString *randomId = [NSString stringWithFormat:@"userId%u", arc4random()];
+    
     question.questionSummary = @"Question Summary";
     question.questionDetails = @"Question details...";
     question.userEmail = @"foo@bar.com";
-    question.userNickname = @"shazbat";
-    question.userId = [NSString stringWithFormat:@"userId%d", arc4random()]; // add in a random user id for testing, avoids duplicate errors
+    question.userNickname = [NSString stringWithFormat:@"UserNick%@", randomId];
+    question.userId = [NSString stringWithFormat:@"UserId%@", randomId];
     question.sendEmailAlertWhenPublished = [NSNumber numberWithBool:YES];
     question.agreedToTermsAndConditions = [NSNumber numberWithBool:YES];
 
@@ -72,9 +74,11 @@
     BVAnswerSubmission* answer = [[BVAnswerSubmission alloc] initWithQuestionId:@"14679" answerText:@"User answer text goes here...."];
     answer.action = BVSubmissionActionPreview;
     
+    NSString *randomId = [NSString stringWithFormat:@"userId%u", arc4random()];
+    
     answer.userEmail = @"foo@bar.com";
-    answer.userNickname = @"shazbat";
-    answer.userId = [NSString stringWithFormat:@"userId%d", arc4random()]; // add in a random user id for testing, avoids duplicate errors
+    answer.userNickname = [NSString stringWithFormat:@"UserNick%@", randomId];
+    answer.userId = [NSString stringWithFormat:@"UserId%@", randomId];
     answer.sendEmailAlertWhenPublished = [NSNumber numberWithBool:YES];
     answer.agreedToTermsAndConditions = [NSNumber numberWithBool:YES];
     
@@ -88,7 +92,7 @@
 
 - (IBAction)submitFeedbackTapped:(id)sender {
     
-    BVFeedbackSubmission *feedback = [[BVFeedbackSubmission alloc] initWithContentId:@"192454" withContentType:BVFeedbackContentTypeReview withFeedbackType:BVFeedbackTypeHelpfulness];
+    BVFeedbackSubmission *feedback = [[BVFeedbackSubmission alloc] initWithContentId:@"192451" withContentType:BVFeedbackContentTypeReview withFeedbackType:BVFeedbackTypeHelpfulness];
     
     feedback.userId = [NSString stringWithFormat:@"userId%d", arc4random()]; // add in a random user id for testing, avoids duplicate errors
     feedback.vote = BVFeedbackVotePositive;
@@ -99,6 +103,39 @@
     } failure:^(NSArray<NSError *> * _Nonnull errors) {
         // error
          [self showError:errors.description];
+    }];
+    
+}
+
+- (IBAction)submitReviewCommentTapped:(id)sender {
+    
+    NSString *commentText = @"I love comments almost as much as Objective-C! They are just the most! Seriously!";
+    NSString *commentTitle = @"Comments Can We Written In Objective-C";
+    
+    BVCommentSubmission *submission = [[BVCommentSubmission alloc] initWithReviewId:@"192550" withCommentText:commentText];
+
+    NSString *randomId = [NSString stringWithFormat:@"userId%u", arc4random()];
+    
+    //commentRequest.fingerPrint = // the iovation fingerprint would go here...
+    submission.action = BVSubmissionActionPreview;
+    submission.campaignId = @"BV_COMMENT_CAMPAIGN_ID";
+    submission.commentTitle = commentTitle;
+    submission.locale = @"en_US";
+    submission.sendEmailAlertWhenPublished = [NSNumber numberWithBool:YES];
+    submission.userNickname = [NSString stringWithFormat:@"UserNick%@", randomId];
+    submission.userId = [NSString stringWithFormat:@"UserId%@", randomId];
+    submission.userEmail = @"developer@bazaarvoice.com";
+    submission.agreedToTermsAndConditions = [NSNumber numberWithBool:YES];
+    
+    // user added a photo to this review
+    //[submission addPhoto:[UIImage imageNamed:@"puppy"] withPhotoCaption:@"What a cute pupper!"];
+    
+    [submission submit:^(BVCommentSubmissionResponse * _Nonnull response) {
+        // success
+        [self showSuccess:@"Success Submitting Feedback!"];
+    } failure:^(NSArray<NSError *> * _Nonnull errors) {
+        // error
+        [self showError:errors.description];
     }];
     
 }

@@ -35,6 +35,7 @@
         case BVPhotoContentTypeReview: return @"review";
         case BVPhotoContentTypeAnswer: return @"answer";
         case BVPhotoContentTypeQuestion: return @"question";
+        case BVPhotoContentTypeComment: return @"review_comment";
     }
 }
 

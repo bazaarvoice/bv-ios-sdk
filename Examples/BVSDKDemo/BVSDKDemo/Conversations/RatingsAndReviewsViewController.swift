@@ -10,6 +10,7 @@ import BVSDK
 import FontAwesomeKit
 import XLActionController
 
+
 class RatingsAndReviewsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var tableView: BVReviewsTableView!
@@ -17,6 +18,9 @@ class RatingsAndReviewsViewController: UIViewController, UITableViewDelegate, UI
     var spinner = Util.createSpinner(UIColor.bazaarvoiceNavy(), size: CGSize(width: 44,height: 44), padding: 0)
     
     private var reviews : [BVReview] = []
+    // For demo purposes we save the vote in each cell to rember as the table view cells recycle
+    // In production app, you'd want to save the votes for content id and user in a local db.
+    private var votesDictionary  = [:] as! Dictionary<String, Votes>
     let product : BVProduct
     
     private let numReviewToFetch : Int32 = 20
@@ -38,11 +42,12 @@ class RatingsAndReviewsViewController: UIViewController, UITableViewDelegate, UI
         case highestRating
         case lowestRating
         case mostHelpful
-        case location  // This is a filter, not a sort
+        case mostComments
+        case location           // This is a filter, not a sort
         
     }
     
-    private let filterActionTitles = ["Most Recent", "Highest Rating", "Lowest Rating", "Most Helpful", "Location Filter"]
+    private let filterActionTitles = ["Most Recent", "Highest Rating", "Lowest Rating", "Most Helpful", "Most Comments", "Location Filter"]
     
     private var selectedFilterOption : Int = FilterOptions.mostRecent.rawValue
     
@@ -95,7 +100,7 @@ class RatingsAndReviewsViewController: UIViewController, UITableViewDelegate, UI
         reviewFetchPending = true
         
         let request = BVReviewsRequest(productId: product.identifier, limit: 20, offset: Int32(self.reviews.count))
-
+        request.addInclude(.comments)
         // Check sorting and filter FilterOptions
         if selectedFilterOption == FilterOptions.highestRating.rawValue {
             request.addReviewSort(.rating, order: .descending)
@@ -103,6 +108,8 @@ class RatingsAndReviewsViewController: UIViewController, UITableViewDelegate, UI
             request.addReviewSort(.rating, order: .ascending)
         } else if selectedFilterOption == FilterOptions.mostHelpful.rawValue {
             request.addReviewSort(.helpfulness, order: .descending)
+        } else if selectedFilterOption == FilterOptions.mostComments.rawValue {
+            request.addReviewSort(.totalCommentCount, order: .descending)
         } else if selectedFilterOption == FilterOptions.location.rawValue {
             if let defaultCachedStore = LocationPreferenceUtils.getDefaultStore(){
                 request.addFilter(.userLocation, filterOperator: .equalTo, value: (defaultCachedStore.city))
@@ -121,6 +128,7 @@ class RatingsAndReviewsViewController: UIViewController, UITableViewDelegate, UI
                 self.reviews.append(contentsOf: response.results)
             }
             
+            
             self.reviewFetchPending = false
             self.tableView.reloadData()
 
@@ -136,8 +144,15 @@ class RatingsAndReviewsViewController: UIViewController, UITableViewDelegate, UI
     
     private func loadAuthorViewController(authorId: String) {
         
-        let authorVC = AuthorProfileViewController(nibName: "AuthorProfileViewController", bundle: nil, authorId: authorId)
+        let authorVC = AuthorProfileViewController(authorId: authorId)
         self.navigationController?.pushViewController(authorVC, animated: true)
+        
+    }
+    
+    private func loadCommentsViewController(reviewComments: [BVComment]) {
+        
+        let reviewCommentsVC = ReviewCommentsViewController(reviewComments: reviewComments)
+        self.navigationController?.pushViewController(reviewCommentsVC, animated: true)
         
     }
     
@@ -202,7 +217,6 @@ class RatingsAndReviewsViewController: UIViewController, UITableViewDelegate, UI
             cell.button.removeTarget(nil, action: nil, for: .allEvents)
             cell.button.addTarget(self, action: #selector(RatingsAndReviewsViewController.filterReviewsButtonPressed), for: .touchUpInside)
             cell.setCustomLeftIcon(FAKFontAwesome.sortIcon(withSize:))
-            cell.setCustomRightIcon(FAKFontAwesome.chevronRightIcon(withSize:))
             
             let titlePrefix = selectedFilterOption == FilterOptions.location.rawValue ? "Filter:" : "Sort:"
             cell.button.setTitle("\(titlePrefix) \(filterActionTitles[selectedFilterOption])", for: UIControlState())
@@ -212,11 +226,35 @@ class RatingsAndReviewsViewController: UIViewController, UITableViewDelegate, UI
         case RatingsAndReviewsSections.reviews.rawValue:
             
             let cell = tableView.dequeueReusableCell(withIdentifier: "RatingTableViewCell") as! RatingTableViewCell
-            cell.review = reviews[(indexPath as NSIndexPath).row]
+            let review : BVReview  = reviews[(indexPath as NSIndexPath).row]
+            cell.review = review
+            
+            // Check to see if there was a vote on this review id
+            var cellVote = Votes.NoVote
+            if let previosVote = self.votesDictionary[review.identifier!]{
+                cellVote = previosVote
+            }
+            
+            cell.vote = cellVote
+            
             
             cell.onAuthorNickNameTapped = { (authorId) -> Void in
                 self.loadAuthorViewController(authorId: authorId)
             }
+            
+            cell.onCommentIconTapped = { (reviewComments) -> Void in
+                self.loadCommentsViewController(reviewComments: reviewComments)
+            }
+            
+            cell.onVoteIconTapped = { (idVoteDict) -> Void in
+                if let key = idVoteDict.allKeys.first {
+                    //self.votesDictionary[key] = idVoteDict.value(forKey: key as! String)
+                    let value : Votes = idVoteDict[key as! String] as! Votes
+                    self.votesDictionary[key as! String] = value
+                }
+                
+            }
+            
             return cell
             
         default:
@@ -256,6 +294,9 @@ class RatingsAndReviewsViewController: UIViewController, UITableViewDelegate, UI
         }))
         actionController.addAction(Action(filterActionTitles[FilterOptions.mostHelpful.rawValue], style: .default, handler: { action in
             self.didChangeFilterOption(FilterOptions.mostHelpful)
+        }))
+        actionController.addAction(Action(filterActionTitles[FilterOptions.mostComments.rawValue], style: .default, handler: { action in
+            self.didChangeFilterOption(FilterOptions.mostComments)
         }))
         actionController.addAction(Action(filterActionTitles[FilterOptions.location.rawValue], style: .default, handler: { action in
             self.didChangeFilterOption(FilterOptions.location)

@@ -105,6 +105,8 @@
 		8779DB251DD20D5D00E6CAF5 /* BVStoreReviewsTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8779DB241DD20D5D00E6CAF5 /* BVStoreReviewsTableView.m */; };
 		8779DB271DD20D8D00E6CAF5 /* BVStoreReviewsTableView.h in Headers */ = {isa = PBXBuildFile; fileRef = 8779DB261DD20D8D00E6CAF5 /* BVStoreReviewsTableView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8779DB6D1DD3AAE800E6CAF5 /* BVInternalAnalyticsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8779DB6C1DD3AAE800E6CAF5 /* BVInternalAnalyticsTest.m */; };
+		877AD2941EE1D134006C7070 /* BVBaseUGCSubmission.h in Headers */ = {isa = PBXBuildFile; fileRef = 877AD2921EE1D134006C7070 /* BVBaseUGCSubmission.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		877AD2951EE1D134006C7070 /* BVBaseUGCSubmission.m in Sources */ = {isa = PBXBuildFile; fileRef = 877AD2931EE1D134006C7070 /* BVBaseUGCSubmission.m */; };
 		879A628B1E80502100F46ECA /* BVBasePIIEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 879A62891E80502100F46ECA /* BVBasePIIEvent.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		879A628C1E80502100F46ECA /* BVBasePIIEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 879A628A1E80502100F46ECA /* BVBasePIIEvent.m */; };
 		879D09111DCA8014006B51D3 /* testNotificationConfig.json in Resources */ = {isa = PBXBuildFile; fileRef = 879D09101DCA8014006B51D3 /* testNotificationConfig.json */; };
@@ -178,6 +180,15 @@
 		87E810EA1ECCA3CF0032C753 /* BVCommentFilterType.m in Sources */ = {isa = PBXBuildFile; fileRef = 87E810E81ECCA3CF0032C753 /* BVCommentFilterType.m */; };
 		87E810ED1ECCC4CD0032C753 /* BVCommentIncludeType.h in Headers */ = {isa = PBXBuildFile; fileRef = 87E810EB1ECCC4CD0032C753 /* BVCommentIncludeType.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		87E810EE1ECCC4CD0032C753 /* BVCommentIncludeType.m in Sources */ = {isa = PBXBuildFile; fileRef = 87E810EC1ECCC4CD0032C753 /* BVCommentIncludeType.m */; };
+		87EDAFC91EDDC6A900FA07C0 /* CommentSubmissionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87EDAFC81EDDC6A900FA07C0 /* CommentSubmissionTests.swift */; };
+		87EDAFCC1EDDC9F400FA07C0 /* BVCommentSubmission.h in Headers */ = {isa = PBXBuildFile; fileRef = 87EDAFCA1EDDC9F400FA07C0 /* BVCommentSubmission.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		87EDAFCD1EDDC9F400FA07C0 /* BVCommentSubmission.m in Sources */ = {isa = PBXBuildFile; fileRef = 87EDAFCB1EDDC9F400FA07C0 /* BVCommentSubmission.m */; };
+		87EDAFD11EDDD02F00FA07C0 /* BVCommentSubmissionResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = 87EDAFCF1EDDD02F00FA07C0 /* BVCommentSubmissionResponse.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		87EDAFD21EDDD02F00FA07C0 /* BVCommentSubmissionResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 87EDAFD01EDDD02F00FA07C0 /* BVCommentSubmissionResponse.m */; };
+		87EDAFD51EDDD1FD00FA07C0 /* BVSubmittedComment.h in Headers */ = {isa = PBXBuildFile; fileRef = 87EDAFD31EDDD1FD00FA07C0 /* BVSubmittedComment.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		87EDAFD61EDDD1FD00FA07C0 /* BVSubmittedComment.m in Sources */ = {isa = PBXBuildFile; fileRef = 87EDAFD41EDDD1FD00FA07C0 /* BVSubmittedComment.m */; };
+		87EDAFD91EDDD3E200FA07C0 /* BVCommentSubmissionErrorResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = 87EDAFD71EDDD3E200FA07C0 /* BVCommentSubmissionErrorResponse.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		87EDAFDA1EDDD3E200FA07C0 /* BVCommentSubmissionErrorResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 87EDAFD81EDDD3E200FA07C0 /* BVCommentSubmissionErrorResponse.m */; };
 		87F2DAB11DAD579D00FB43F3 /* BVSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87F2DAA71DAD579D00FB43F3 /* BVSDK.framework */; };
 		87F2DAB81DAD579D00FB43F3 /* BVSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = 87F2DAAA1DAD579D00FB43F3 /* BVSDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		87F2DC171DAD585E00FB43F3 /* BVAdsMessageInterceptor.h in Headers */ = {isa = PBXBuildFile; fileRef = 87F2DAC31DAD585E00FB43F3 /* BVAdsMessageInterceptor.h */; settings = {ATTRIBUTES = (Private, ); }; };
@@ -601,6 +612,8 @@
 		8779DB241DD20D5D00E6CAF5 /* BVStoreReviewsTableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = BVStoreReviewsTableView.m; path = Stores/BVStoreReviewsTableView.m; sourceTree = "<group>"; };
 		8779DB261DD20D8D00E6CAF5 /* BVStoreReviewsTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BVStoreReviewsTableView.h; path = Stores/BVStoreReviewsTableView.h; sourceTree = "<group>"; };
 		8779DB6C1DD3AAE800E6CAF5 /* BVInternalAnalyticsTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BVInternalAnalyticsTest.m; path = Tests/Tests/BVInternalAnalyticsTest.m; sourceTree = SOURCE_ROOT; };
+		877AD2921EE1D134006C7070 /* BVBaseUGCSubmission.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVBaseUGCSubmission.h; sourceTree = "<group>"; };
+		877AD2931EE1D134006C7070 /* BVBaseUGCSubmission.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVBaseUGCSubmission.m; sourceTree = "<group>"; };
 		879A62891E80502100F46ECA /* BVBasePIIEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BVBasePIIEvent.h; path = BVPixelEvents/BVBasePIIEvent.h; sourceTree = "<group>"; };
 		879A628A1E80502100F46ECA /* BVBasePIIEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BVBasePIIEvent.m; path = BVPixelEvents/BVBasePIIEvent.m; sourceTree = "<group>"; };
 		879A62DD1E80621900F46ECA /* BVPixelEvents.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = BVPixelEvents.h; path = BVPixelEvents/BVPixelEvents.h; sourceTree = "<group>"; };
@@ -677,6 +690,15 @@
 		87E810E81ECCA3CF0032C753 /* BVCommentFilterType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVCommentFilterType.m; sourceTree = "<group>"; };
 		87E810EB1ECCC4CD0032C753 /* BVCommentIncludeType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVCommentIncludeType.h; sourceTree = "<group>"; };
 		87E810EC1ECCC4CD0032C753 /* BVCommentIncludeType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVCommentIncludeType.m; sourceTree = "<group>"; };
+		87EDAFC81EDDC6A900FA07C0 /* CommentSubmissionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentSubmissionTests.swift; sourceTree = "<group>"; };
+		87EDAFCA1EDDC9F400FA07C0 /* BVCommentSubmission.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BVCommentSubmission.h; path = Pod/BVConversations/Submission/Comment/BVCommentSubmission.h; sourceTree = SOURCE_ROOT; };
+		87EDAFCB1EDDC9F400FA07C0 /* BVCommentSubmission.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BVCommentSubmission.m; path = Pod/BVConversations/Submission/Comment/BVCommentSubmission.m; sourceTree = SOURCE_ROOT; };
+		87EDAFCF1EDDD02F00FA07C0 /* BVCommentSubmissionResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BVCommentSubmissionResponse.h; path = Comment/BVCommentSubmissionResponse.h; sourceTree = "<group>"; };
+		87EDAFD01EDDD02F00FA07C0 /* BVCommentSubmissionResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BVCommentSubmissionResponse.m; path = Comment/BVCommentSubmissionResponse.m; sourceTree = "<group>"; };
+		87EDAFD31EDDD1FD00FA07C0 /* BVSubmittedComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BVSubmittedComment.h; path = Comment/BVSubmittedComment.h; sourceTree = "<group>"; };
+		87EDAFD41EDDD1FD00FA07C0 /* BVSubmittedComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BVSubmittedComment.m; path = Comment/BVSubmittedComment.m; sourceTree = "<group>"; };
+		87EDAFD71EDDD3E200FA07C0 /* BVCommentSubmissionErrorResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BVCommentSubmissionErrorResponse.h; path = Pod/BVConversations/Submission/Comment/BVCommentSubmissionErrorResponse.h; sourceTree = SOURCE_ROOT; };
+		87EDAFD81EDDD3E200FA07C0 /* BVCommentSubmissionErrorResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BVCommentSubmissionErrorResponse.m; path = Pod/BVConversations/Submission/Comment/BVCommentSubmissionErrorResponse.m; sourceTree = SOURCE_ROOT; };
 		87F2DAA71DAD579D00FB43F3 /* BVSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BVSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		87F2DAAA1DAD579D00FB43F3 /* BVSDK.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BVSDK.h; sourceTree = "<group>"; };
 		87F2DAAB1DAD579D00FB43F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -1204,6 +1226,21 @@
 			name = BVPixelEvents;
 			sourceTree = "<group>";
 		};
+		87EDAFCE1EDDCEAD00FA07C0 /* Comment */ = {
+			isa = PBXGroup;
+			children = (
+				87EDAFCA1EDDC9F400FA07C0 /* BVCommentSubmission.h */,
+				87EDAFCB1EDDC9F400FA07C0 /* BVCommentSubmission.m */,
+				87EDAFCF1EDDD02F00FA07C0 /* BVCommentSubmissionResponse.h */,
+				87EDAFD01EDDD02F00FA07C0 /* BVCommentSubmissionResponse.m */,
+				87EDAFD71EDDD3E200FA07C0 /* BVCommentSubmissionErrorResponse.h */,
+				87EDAFD81EDDD3E200FA07C0 /* BVCommentSubmissionErrorResponse.m */,
+				87EDAFD31EDDD1FD00FA07C0 /* BVSubmittedComment.h */,
+				87EDAFD41EDDD1FD00FA07C0 /* BVSubmittedComment.m */,
+			);
+			name = Comment;
+			sourceTree = "<group>";
+		};
 		87F2DA9D1DAD579D00FB43F3 = {
 			isa = PBXGroup;
 			children = (
@@ -1354,6 +1391,7 @@
 		87F2DB121DAD585E00FB43F3 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				87F2DB4A1DAD585E00FB43F3 /* GenericConversationsResult */,
 				87C5FF5A1E36A8B7004EE6E8 /* BVAuthorResponse.h */,
 				87C5FF5B1E36A8B7004EE6E8 /* BVAuthorResponse.m */,
 				87F2DB131DAD585E00FB43F3 /* BVBadge.h */,
@@ -1417,7 +1455,6 @@
 				87F2DB471DAD585E00FB43F3 /* BVSecondaryRatingsAverages.m */,
 				87F2DB481DAD585E00FB43F3 /* BVVideo.h */,
 				87F2DB491DAD585E00FB43F3 /* BVVideo.m */,
-				87F2DB4A1DAD585E00FB43F3 /* GenericConversationsResult */,
 				87F2DB581DAD585E00FB43F3 /* Stores */,
 			);
 			path = Model;
@@ -1551,6 +1588,8 @@
 				87F2DB961DAD585E00FB43F3 /* BVFormFieldOptions.h */,
 				87F2DB971DAD585E00FB43F3 /* BVFormFieldOptions.m */,
 				87F2DB981DAD585E00FB43F3 /* BVSubmission.h */,
+				877AD2921EE1D134006C7070 /* BVBaseUGCSubmission.h */,
+				877AD2931EE1D134006C7070 /* BVBaseUGCSubmission.m */,
 				87F2DB991DAD585E00FB43F3 /* BVSubmission.m */,
 				87F2DB9A1DAD585E00FB43F3 /* BVSubmissionAction.h */,
 				87F2DB9B1DAD585E00FB43F3 /* BVSubmissionAction.m */,
@@ -1559,6 +1598,7 @@
 				87F2DB9E1DAD585E00FB43F3 /* BVSubmissionResponse.h */,
 				87F2DB9F1DAD585E00FB43F3 /* BVSubmissionResponse.m */,
 				87F2DB891DAD585E00FB43F3 /* Answer */,
+				87EDAFCE1EDDCEAD00FA07C0 /* Comment */,
 				87F2DBA01DAD585E00FB43F3 /* Photo */,
 				87A02B5D1E0963020002701B /* Feedback */,
 				87F2DBA61DAD585E00FB43F3 /* Question */,
@@ -1967,6 +2007,7 @@
 			isa = PBXGroup;
 			children = (
 				87F2DE031DAD945D00FB43F3 /* AnswerSubmissionTests.swift */,
+				87EDAFC81EDDC6A900FA07C0 /* CommentSubmissionTests.swift */,
 				87F2DE041DAD945D00FB43F3 /* PhotoUploadTests.swift */,
 				15D4F83E1DF5EC3C00E6B30D /* ph.png */,
 				87F2DE051DAD945D00FB43F3 /* QuestionSubmissionTests.swift */,
@@ -2199,6 +2240,11 @@
 				87E810E91ECCA3CF0032C753 /* BVCommentFilterType.h in Headers */,
 				87E810ED1ECCC4CD0032C753 /* BVCommentIncludeType.h in Headers */,
 				87E810E51ECCA0190032C753 /* BVSortOptionsComments.h in Headers */,
+				87EDAFD11EDDD02F00FA07C0 /* BVCommentSubmissionResponse.h in Headers */,
+				87EDAFD51EDDD1FD00FA07C0 /* BVSubmittedComment.h in Headers */,
+				87EDAFD91EDDD3E200FA07C0 /* BVCommentSubmissionErrorResponse.h in Headers */,
+				877AD2941EE1D134006C7070 /* BVBaseUGCSubmission.h in Headers */,
+				87EDAFCC1EDDC9F400FA07C0 /* BVCommentSubmission.h in Headers */,
 				87F2DC241DAD585E00FB43F3 /* BVContextualInterests.h in Headers */,
 				87F2DC251DAD585E00FB43F3 /* BVGMBLSighting.h in Headers */,
 				87F2DC271DAD585E00FB43F3 /* BVGMBLVisit.h in Headers */,
@@ -2451,6 +2497,7 @@
 				87F2DD471DAD585E00FB43F3 /* BVShopperProfileRequestCache.m in Sources */,
 				87F2DCAC1DAD585E00FB43F3 /* BVProductDisplayPageRequest.m in Sources */,
 				87F2DC961DAD585E00FB43F3 /* BVProduct.m in Sources */,
+				87EDAFDA1EDDD3E200FA07C0 /* BVCommentSubmissionErrorResponse.m in Sources */,
 				87F2DC881DAD585E00FB43F3 /* BVReviewsResponse.m in Sources */,
 				873DC4921E7482840080FA03 /* BVConversionEvent.m in Sources */,
 				87F2DCCE1DAD585E00FB43F3 /* BVAnswerSubmissionErrorResponse.m in Sources */,
@@ -2524,6 +2571,7 @@
 				87F2DC7B1DAD585E00FB43F3 /* BVPhotoSizes.m in Sources */,
 				87F2DD021DAD585E00FB43F3 /* BVProductPageViews.m in Sources */,
 				87F2DC791DAD585E00FB43F3 /* BVPhoto.m in Sources */,
+				877AD2951EE1D134006C7070 /* BVBaseUGCSubmission.m in Sources */,
 				87D424EA1E89C32E00147FDB /* BVReviewIncludeType.m in Sources */,
 				87F2DCD21DAD585E00FB43F3 /* BVSubmittedAnswer.m in Sources */,
 				87F2DCBC1DAD585E00FB43F3 /* BVProductFilterType.m in Sources */,
@@ -2574,6 +2622,7 @@
 				873DC49A1E7482840080FA03 /* BVPageViewEvent.m in Sources */,
 				87F2DCE81DAD585E00FB43F3 /* BVQuestionSubmissionErrorResponse.m in Sources */,
 				87F2DD401DAD585E00FB43F3 /* BVRecommendationsRequest.m in Sources */,
+				87EDAFCD1EDDC9F400FA07C0 /* BVCommentSubmission.m in Sources */,
 				87C5FE9A1E22914C004EE6E8 /* BVStoreNotificationConfigurationLoader.m in Sources */,
 				87F2DC6B1DAD585E00FB43F3 /* BVConversationsInclude.m in Sources */,
 				87F2DCAE1DAD585E00FB43F3 /* BVQuestionsAndAnswersRequest.m in Sources */,
@@ -2584,6 +2633,7 @@
 				87F2DC6D1DAD585E00FB43F3 /* BVDimensionAndDistributionUtil.m in Sources */,
 				87F2DD441DAD585E00FB43F3 /* BVRecsAnalyticsHelper.m in Sources */,
 				8754117A1E1F201E006C5C6E /* BVProductReviewNotificationCenter.m in Sources */,
+				87EDAFD21EDDD02F00FA07C0 /* BVCommentSubmissionResponse.m in Sources */,
 				150FC2C71E71C21700717041 /* BVBulkProductResponse.m in Sources */,
 				87F2DCF41DAD585E00FB43F3 /* BVSubmittedReview.m in Sources */,
 				87F2DC1F1DAD585E00FB43F3 /* BVPixel.m in Sources */,
@@ -2618,6 +2668,7 @@
 				87B6DFA61ECA484400B75835 /* BVComment.m in Sources */,
 				87F2DC8E1DAD585E00FB43F3 /* BVSecondaryRating.m in Sources */,
 				87F2DD191DAD585E00FB43F3 /* BVCurationsAddPostRequest.m in Sources */,
+				87EDAFD61EDDD1FD00FA07C0 /* BVSubmittedComment.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2637,6 +2688,7 @@
 				87F2DE111DAD945D00FB43F3 /* ProductIdEscapeTests.swift in Sources */,
 				87F2DD5E1DAD5E9400FB43F3 /* BVBaseStubTestCase.m in Sources */,
 				87F2DE0D1DAD945D00FB43F3 /* ConversationsStoresDisplayTests.swift in Sources */,
+				87EDAFC91EDDC6A900FA07C0 /* CommentSubmissionTests.swift in Sources */,
 				87F2DE0B1DAD945D00FB43F3 /* QuestionDisplayTests.swift in Sources */,
 				8779DB6D1DD3AAE800E6CAF5 /* BVInternalAnalyticsTest.m in Sources */,
 				87F2DE101DAD945D00FB43F3 /* FilterTests.swift in Sources */,

@@ -1,14 +1,18 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AuthorProfileViewController" customModule="BVSDKDemo" customModuleProvider="target">
             <connections>
                 <outlet property="answersTableView" destination="P6n-LE-QqU" id="TvQ-zT-bpt"/>
+                <outlet property="commentsTableView" destination="ExE-Il-PIw" id="QQb-eK-uhd"/>
                 <outlet property="questionsTableView" destination="AMb-bD-rcK" id="6lr-eX-UXW"/>
                 <outlet property="reviewsTableView" destination="gse-UN-Xxg" id="VdG-wa-kNW"/>
                 <outlet property="ugcTypeSegmentedControl" destination="ZGo-L4-qJk" id="r2Y-UY-s2U"/>
@@ -25,8 +29,10 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9rq-Wo-NN3" userLabel="Header">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="124"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="default_profile" translatesAutoresizingMaskIntoConstraints="NO" id="58G-28-REp">
+                            <rect key="frame" x="8" y="8" width="72" height="72"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="72" id="2DQ-jI-JfM"/>
                                 <constraint firstAttribute="height" constant="72" id="QnO-g2-tje"/>
@@ -34,21 +40,25 @@
                             </constraints>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L0Y-VB-ror">
+                            <rect key="frame" x="88" y="8" width="279" height="18"/>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Wb-dj-HYL">
+                            <rect key="frame" x="88" y="32" width="279" height="16"/>
                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User Badges" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g1R-gD-BeH">
+                            <rect key="frame" x="88" y="54" width="89" height="16"/>
                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="ZGo-L4-qJk">
+                        <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" apportionsSegmentWidthsByContent="YES" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="ZGo-L4-qJk">
+                            <rect key="frame" x="8" y="88" width="359" height="29"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="28" id="gws-jP-Z11"/>
                             </constraints>
@@ -56,6 +66,7 @@
                                 <segment title="Reviews"/>
                                 <segment title="Questions"/>
                                 <segment title="Answers"/>
+                                <segment title="Comments"/>
                             </segments>
                             <connections>
                                 <action selector="ugcSegmentToggled:" destination="-1" eventType="valueChanged" id="7Iw-JA-kyc"/>
@@ -69,7 +80,7 @@
                         <constraint firstItem="L0Y-VB-ror" firstAttribute="leading" secondItem="58G-28-REp" secondAttribute="trailing" constant="8" id="ApV-Kl-SRd"/>
                         <constraint firstAttribute="trailing" secondItem="L0Y-VB-ror" secondAttribute="trailing" constant="8" id="GDd-3Y-Eyh"/>
                         <constraint firstItem="5Wb-dj-HYL" firstAttribute="top" secondItem="L0Y-VB-ror" secondAttribute="bottom" constant="6" id="NKn-aA-f0j"/>
-                        <constraint firstItem="ZGo-L4-qJk" firstAttribute="leading" secondItem="9rq-Wo-NN3" secondAttribute="leading" constant="16" id="R2S-zL-d3u"/>
+                        <constraint firstItem="ZGo-L4-qJk" firstAttribute="leading" secondItem="9rq-Wo-NN3" secondAttribute="leading" constant="8" id="R2S-zL-d3u"/>
                         <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="g1R-gD-BeH" secondAttribute="trailing" constant="198" id="Rhn-LP-SlM"/>
                         <constraint firstItem="58G-28-REp" firstAttribute="leading" secondItem="9rq-Wo-NN3" secondAttribute="leading" constant="8" id="VzM-gR-SsW"/>
                         <constraint firstItem="58G-28-REp" firstAttribute="top" secondItem="9rq-Wo-NN3" secondAttribute="top" constant="8" id="Zo6-Sh-psN"/>
@@ -84,6 +95,7 @@
                     </constraints>
                 </view>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="gse-UN-Xxg">
+                    <rect key="frame" x="0.0" y="132" width="375" height="535"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="5uY-NF-oCA"/>
@@ -91,15 +103,24 @@
                     </connections>
                 </tableView>
                 <tableView clipsSubviews="YES" tag="1" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="AMb-bD-rcK" userLabel="Questions Table View">
+                    <rect key="frame" x="0.0" y="132" width="375" height="535"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="AWV-JZ-Gp2"/>
                     </connections>
                 </tableView>
                 <tableView clipsSubviews="YES" tag="2" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="P6n-LE-QqU" userLabel="Answers Table View">
+                    <rect key="frame" x="0.0" y="132" width="375" height="535"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="740-v0-9as"/>
+                    </connections>
+                </tableView>
+                <tableView clipsSubviews="YES" tag="3" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ExE-Il-PIw" userLabel="Review Comments Table View">
+                    <rect key="frame" x="0.0" y="132" width="375" height="535"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="Dc2-Ul-Efn"/>
                     </connections>
                 </tableView>
             </subviews>
@@ -107,6 +128,7 @@
             <color key="tintColor" red="0.10980392160000001" green="0.33725490200000002" blue="0.4549019608" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="P6n-LE-QqU" secondAttribute="bottom" id="2OJ-fr-LAK"/>
+                <constraint firstAttribute="trailing" secondItem="ExE-Il-PIw" secondAttribute="trailing" id="AiM-bJ-07o"/>
                 <constraint firstAttribute="bottom" secondItem="AMb-bD-rcK" secondAttribute="bottom" id="BdA-pc-MNv"/>
                 <constraint firstItem="gse-UN-Xxg" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Coo-RN-y8W"/>
                 <constraint firstItem="9rq-Wo-NN3" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="DgA-Hs-EeU"/>
@@ -118,9 +140,12 @@
                 <constraint firstItem="P6n-LE-QqU" firstAttribute="top" secondItem="9rq-Wo-NN3" secondAttribute="bottom" constant="8" id="fAu-ld-oRE"/>
                 <constraint firstAttribute="bottom" secondItem="gse-UN-Xxg" secondAttribute="bottom" id="jHC-Ds-r06"/>
                 <constraint firstAttribute="trailing" secondItem="P6n-LE-QqU" secondAttribute="trailing" id="pMO-Rm-HVj"/>
+                <constraint firstItem="ExE-Il-PIw" firstAttribute="top" secondItem="9rq-Wo-NN3" secondAttribute="bottom" constant="8" id="u5f-YC-ZQa"/>
                 <constraint firstItem="gse-UN-Xxg" firstAttribute="top" secondItem="9rq-Wo-NN3" secondAttribute="bottom" constant="8" symbolic="YES" id="w3s-Ou-LWo"/>
                 <constraint firstItem="P6n-LE-QqU" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="wAC-V7-Uma"/>
                 <constraint firstAttribute="trailing" secondItem="gse-UN-Xxg" secondAttribute="trailing" id="xAj-ko-KCy"/>
+                <constraint firstItem="ExE-Il-PIw" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="yXM-9o-AOg"/>
+                <constraint firstAttribute="bottom" secondItem="ExE-Il-PIw" secondAttribute="bottom" id="zAl-yj-89V"/>
             </constraints>
             <point key="canvasLocation" x="12.5" y="99.5"/>
         </view>

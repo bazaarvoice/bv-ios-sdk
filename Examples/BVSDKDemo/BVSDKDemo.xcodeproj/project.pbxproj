@@ -171,6 +171,10 @@
 		8772167F1D3FDAD4007E5C6C /* conversationsReviewsEnduranceCycles_SortHighestRated.json in Resources */ = {isa = PBXBuildFile; fileRef = 8772167B1D3FDAD4007E5C6C /* conversationsReviewsEnduranceCycles_SortHighestRated.json */; };
 		877216801D3FDAD4007E5C6C /* conversationsReviewsEnduranceCycles_SortLowestRated.json in Resources */ = {isa = PBXBuildFile; fileRef = 8772167C1D3FDAD4007E5C6C /* conversationsReviewsEnduranceCycles_SortLowestRated.json */; };
 		877216811D3FDAD4007E5C6C /* conversationsReviewsEnduranceCycles_SortMostHelpful.json in Resources */ = {isa = PBXBuildFile; fileRef = 8772167D1D3FDAD4007E5C6C /* conversationsReviewsEnduranceCycles_SortMostHelpful.json */; };
+		877AD2711EDF4C1C006C7070 /* ReviewCommentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877AD26F1EDF4C1C006C7070 /* ReviewCommentsViewController.swift */; };
+		877AD2721EDF4C1C006C7070 /* ReviewCommentsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 877AD2701EDF4C1C006C7070 /* ReviewCommentsViewController.xib */; };
+		877AD27C1EDF7051006C7070 /* ReviewCommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877AD27A1EDF7051006C7070 /* ReviewCommentTableViewCell.swift */; };
+		877AD27D1EDF7051006C7070 /* ReviewCommentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 877AD27B1EDF7051006C7070 /* ReviewCommentTableViewCell.xib */; };
 		8783098C1CECF3F70097FC48 /* QuestionAnswerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8783098A1CECF3F70097FC48 /* QuestionAnswerViewController.swift */; };
 		8783098D1CECF3F70097FC48 /* QuestionAnswerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8783098B1CECF3F70097FC48 /* QuestionAnswerViewController.xib */; };
 		878309901CECF4140097FC48 /* RatingsAndReviewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8783098E1CECF4140097FC48 /* RatingsAndReviewsViewController.swift */; };
@@ -557,6 +561,10 @@
 		8772167D1D3FDAD4007E5C6C /* conversationsReviewsEnduranceCycles_SortMostHelpful.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = conversationsReviewsEnduranceCycles_SortMostHelpful.json; path = ../../../Tests/Tests/resources/conversations/sortingReviews/conversationsReviewsEnduranceCycles_SortMostHelpful.json; sourceTree = "<group>"; };
 		8779DB031DD20BAE00E6CAF5 /* BVSDK.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = BVSDK.xcodeproj; path = ../../BVSDK.xcodeproj; sourceTree = "<group>"; };
 		8779DB0E1DD20C7E00E6CAF5 /* BVSDK.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = BVSDK.xcodeproj; path = ../../BVSDK.xcodeproj; sourceTree = "<group>"; };
+		877AD26F1EDF4C1C006C7070 /* ReviewCommentsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReviewCommentsViewController.swift; path = Conversations/ReviewCommentsViewController.swift; sourceTree = "<group>"; };
+		877AD2701EDF4C1C006C7070 /* ReviewCommentsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ReviewCommentsViewController.xib; path = Conversations/ReviewCommentsViewController.xib; sourceTree = "<group>"; };
+		877AD27A1EDF7051006C7070 /* ReviewCommentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewCommentTableViewCell.swift; sourceTree = "<group>"; };
+		877AD27B1EDF7051006C7070 /* ReviewCommentTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReviewCommentTableViewCell.xib; sourceTree = "<group>"; };
 		8783098A1CECF3F70097FC48 /* QuestionAnswerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = QuestionAnswerViewController.swift; path = Conversations/QuestionAnswerViewController.swift; sourceTree = "<group>"; };
 		8783098B1CECF3F70097FC48 /* QuestionAnswerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = QuestionAnswerViewController.xib; path = Conversations/QuestionAnswerViewController.xib; sourceTree = "<group>"; };
 		8783098E1CECF4140097FC48 /* RatingsAndReviewsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RatingsAndReviewsViewController.swift; path = Conversations/RatingsAndReviewsViewController.swift; sourceTree = "<group>"; };
@@ -903,6 +911,10 @@
 				730A64701CE56A1700580E9C /* RatingTableViewCell.xib */,
 				7338438F1CED58C800928760 /* WriteReviewViewController.swift */,
 				733843901CED58C800928760 /* WriteReviewViewController.xib */,
+				877AD26F1EDF4C1C006C7070 /* ReviewCommentsViewController.swift */,
+				877AD2701EDF4C1C006C7070 /* ReviewCommentsViewController.xib */,
+				877AD27A1EDF7051006C7070 /* ReviewCommentTableViewCell.swift */,
+				877AD27B1EDF7051006C7070 /* ReviewCommentTableViewCell.xib */,
 			);
 			name = RatingsAndReviews;
 			sourceTree = "<group>";
@@ -1727,6 +1739,7 @@
 				737FA0BC1CF8ADB100864B1B /* submitAnswer.json in Resources */,
 				87F24D851DAE8147002231D6 /* enduranceCyclesNY.gpx in Resources */,
 				8763B3191D1DC65B00C71F54 /* enduranceCyclesSanFrancisco.gpx in Resources */,
+				877AD27D1EDF7051006C7070 /* ReviewCommentTableViewCell.xib in Resources */,
 				7356B23D1CF89FCA004B0121 /* AnswerListHeaderCell.xib in Resources */,
 				730A646E1CE5548400580E9C /* NewProductPageViewController.xib in Resources */,
 				73F020F51CED4E8D00FC7D7D /* QuestionAnswerTableViewCell.xib in Resources */,
@@ -1741,6 +1754,7 @@
 				15D5BECE1D7A0AB500D34EA0 /* minusBtn.png in Resources */,
 				87F5B9361DC38F37004D2297 /* testNotificationConfig.json in Resources */,
 				732E188F1CE65682000A3EC9 /* NewNativeAdCollectionViewCell.xib in Resources */,
+				877AD2721EDF4C1C006C7070 /* ReviewCommentsViewController.xib in Resources */,
 				87A3192F1CF493AF000D3D0F /* recommendationsResult.json in Resources */,
 				15EA71A91DAC1E5000D9A706 /* videoIcon@2x.png in Resources */,
 				87F24D891DAE886E002231D6 /* StoreReviewsViewController.xib in Resources */,
@@ -2045,6 +2059,7 @@
 				87B97EB91DEF8CE4005B8C85 /* UIBarButtonItem+Badge.swift in Sources */,
 				736D4D001CDED0C40095EE6B /* CurationsYouTubePlayerTableViewCell.swift in Sources */,
 				15AE81AD1E01C919009C1478 /* PinCarouselCollectionViewCell.swift in Sources */,
+				877AD27C1EDF7051006C7070 /* ReviewCommentTableViewCell.swift in Sources */,
 				738E724C1CEEE91F00D30617 /* CardView.swift in Sources */,
 				730A64711CE56A1700580E9C /* RatingTableViewCell.swift in Sources */,
 				7348C3721CE05A30000B6F3C /* SettingsViewController.swift in Sources */,
@@ -2056,6 +2071,7 @@
 				736D4CB11CDEC5730095EE6B /* SweetAlert.swift in Sources */,
 				87BB4C851D372B2600C860BE /* JPSThumbnailAnnotationView.m in Sources */,
 				73199AEE1CDD84E4006CC59D /* AppDelegate.swift in Sources */,
+				877AD2711EDF4C1C006C7070 /* ReviewCommentsViewController.swift in Sources */,
 				739C0EF11CDDA0BD00CE771B /* BVDemoNavigationController.swift in Sources */,
 				15EA71A51DAC1BC200D9A706 /* AddContentTableViewCell.swift in Sources */,
 				878309901CECF4140097FC48 /* RatingsAndReviewsViewController.swift in Sources */,
