@@ -299,13 +299,16 @@ The completed project for this code walkthrough for Swift and Objective-C is in 
 <h3>Content Submission Types</h3>
 <ol>
   <li><a href="#reviews">Reviews</a></li>
+  <li><a href="#reviewcomments">Review Comments</a></li>
   <li><a href="#questions">Questions</li>
   <li><a href="#answers">Answers</a></li>
   <li><a href="#feedback">Feedback</a></li>
 </ol>
+
 <hr>
+
 <h4 id="reviews">Review Submission</h4>
-<p>To start, let's upload a simple Review. Create a <code>BVeviewSubmission</code> object and fill out appropriate fields.</p>
+<p>To start, let's upload a simple Review. Create a <code>BVReviewSubmission</code> object and fill out appropriate fields.</p>
 <p>Note that a <code>BVReviewSubmission</code> object requires a <code>reviewTitle</code>, <code>reviewText</code>, <code>rating</code>, and <code>productId</code> (for which this review corresponds to).</p>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -432,6 +435,89 @@ review.agreedToTermsAndConditions  = [NSNumber numberWithBool:YES];
 <br>
 <br>
 
+<!-- Review Comment Submission -->
+
+<h4 id="reviewcomments">Review Comment Submission</h4>
+<p>Submitting a review comment is as easy as creating a <code>BVCommentSubmission</code> object with the default initializer and filling out appropriate properties on the <code>BVCommentSubmission</code> object. Look at the sample below for some starter code.</p>
+
+<ul class="nav nav-tabs" role="tablist">
+  <li role="presentation" class="active"><a href="#swift" aria-controls="swift" role="tab" data-toggle="tab">Swift</a></li>
+  <li role="presentation"><a href="#objc" aria-controls="objc" role="tab" data-toggle="tab">Objective-C</a></li>
+</ul>
+<!-- Tab panes -->
+<div class="tab-content code-switcher">
+    <!-- swift -->
+    <div role="tabpanel" class="tab-pane active" id="swift">
+<pre><code class="swift">let commentText = "I love comments! They are just the most! Seriously!"
+let commentTitle = "Best Comment Title Ever!"
+let commentRequest = BVCommentSubmission(reviewId: "192548", withCommentText: commentText)
+
+commentRequest.action = .preview
+
+//commentRequest.fingerPrint = // the iovation fingerprint would go here...
+commentRequest.campaignId = "BV_COMMENT_CAMPAIGN_ID"
+commentRequest.commentTitle = commentTitle
+commentRequest.locale = "en_US"
+commentRequest.sendEmailAlertWhenPublished = true
+commentRequest.userNickname = "UserNickname"
+commentRequest.userId = "UserId"
+commentRequest.userEmail = "developer@bazaarvoice.com"
+commentRequest.agreedToTermsAndConditions = true
+
+// Some PRR clients may support adding photos, check your configuration
+//        if let photo = UIImage(named: "puppy"){
+//            commentRequest.addPhoto(photo, withPhotoCaption: "Review Comment Pupper!")
+//        }
+
+commentRequest.submit({ (commentSubmission) in
+    
+    // success
+    self.showAlertSuccess(message: "Success Submitting Review Comment!")
+    
+}, failure: { (errors) in
+    // error
+    self.showAlertError(message: errors.description)
+
+})
+</code></pre>
+    </div>
+    <!-- objective-c -->
+    <div role="tabpanel" class="tab-pane" id="objc">
+<pre><code class="objectivec">NSString *commentText = @"I love comments almost as much as Objective-C! They are just the most! Seriously!";
+NSString *commentTitle = @"Comments Can We Written In Objective-C";
+
+BVCommentSubmission *submission = [[BVCommentSubmission alloc] initWithReviewId:@"192550" withCommentText:commentText];
+
+//commentRequest.fingerPrint = // the iovation fingerprint would go here...
+submission.action = BVSubmissionActionPreview;
+submission.campaignId = @"BV_COMMENT_CAMPAIGN_ID";
+submission.commentTitle = commentTitle;
+submission.locale = @"en_US";
+submission.sendEmailAlertWhenPublished = [NSNumber numberWithBool:YES];
+submission.userNickname = @"UserNickname";
+submission.userId = @"UserId";
+submission.userEmail = @"developer@bazaarvoice.com";
+submission.agreedToTermsAndConditions = [NSNumber numberWithBool:YES];
+
+// user added a photo to this review
+//[submission addPhoto:[UIImage imageNamed:@"puppy"] withPhotoCaption:@"What a cute pupper!"];
+
+[submission submit:^(BVCommentSubmissionResponse * _Nonnull response) {
+    // success
+    [self showSuccess:@"Success Submitting Feedback!"];
+} failure:^(NSArray<NSError *> * _Nonnull errors) {
+    // error
+    [self showError:errors.description];
+}];
+</code></pre>
+    </div>
+</div>
+<br>
+
+<br>
+<br>
+
+<!-- Question Submission -->
 
 <h4 id="questions">Question Submission</h4>
 <p>Submitting a question is nearly identical to submitting a review, detailed above. Create an instance of <code>BVQuestionSubmission</code>, fill in some parameters, and submit it!</p>

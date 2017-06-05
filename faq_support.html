@@ -291,6 +291,7 @@ $(function(){
 
 <ol>
     <li><a href="#idfa">Does the Bazaarvoice Mobile SDK use IDFA?</a></li>
+    <li><a href="#swift">Is Swift 2.3 supported by the SDK?</a></li>
     <li><a href="#upgrade">Upgrading to BVSDK 7.0 (Deprecations)</a></li>
     <li><a href="#thirdparty">Does the SDK use any 3rd pary source code?</a></li>
     <li><a href="#support">How do I get support?</a></li>
@@ -302,8 +303,14 @@ $(function(){
 <p class="answer">Yes, the SDK uses IDFA for both the Advertising and Product Recommendations modules. The SDK checks whether the user has "Limit Ad Tracking" enabled, and respects the option if enabled.</p>
 <p class="answer">If you use the Advertising module and/or the Product Recommendations module, you must submit applications via iTunes Connect, letting Apple know that the app uses IDFA for targeted advertising.</p>
 
+<br>
+
+<a name="swift"></a>
+<h5 class="question">Is Swift 2.3 supported by the SDK?</h5>
+<p class="answer">The SDK is written entirely in Objective-C, so there should not be any issue with any version of Swift you are writing against, or will write against. As long as you are using the minimum support version of XCode, happy Swifting!</p>
 
 <br>
+
 <a name="upgrade"></a>
 <h5 class="question">Upgrading to BVSDK 7.0 (Deprecations)</h5>
 <p class="answer">Setting your API keys in code is now deprecated. You will need to generate your <a

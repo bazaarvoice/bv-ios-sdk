@@ -1426,6 +1426,7 @@ Please note that image links are not returned from the Conversations API. The di
     .include(.reviews, limit: 10)
     .include(.questions, limit: 10)
     .include(.answers, limit: 10)
+    .include(.reviewComments, limit: 10)
     // sorts, optional
     .sortIncludedAnswers(.submissionTime, order: .descending)
     .sortIncludedReviews(.submissionTime, order: .descending)
@@ -1447,6 +1448,7 @@ request.load({ (response) in
 [request includeContent:BVAuthorContentTypeReviews limit:5];
 [request includeContent:BVAuthorContentTypeQuestions limit:5];
 [request includeContent:BVAuthorContentTypeAnswers limit:5];
+[request includeContent:BVAuthorContentTypeReviewComments limit:5];
 
 [request load:^(BVAuthorResponse * _Nonnull response) {
     
