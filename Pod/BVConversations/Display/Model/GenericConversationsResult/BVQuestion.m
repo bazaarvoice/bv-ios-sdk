@@ -45,7 +45,12 @@
         if(![featured isKindOfClass:[NSNull class]]) {
             self.isFeatured = [featured boolValue];
         }
-        
+
+        NSNumber* isSyndicated = apiResponse[@"IsSyndicated"];
+        if(![isSyndicated isKindOfClass:[NSNull class]]) {
+            _isSyndicated = [isSyndicated boolValue];
+        }
+
         SET_IF_NOT_NULL(self.productRecommendationIds, apiResponse[@"ProductRecommendationIds"])
         SET_IF_NOT_NULL(self.productId, apiResponse[@"ProductId"])
         SET_IF_NOT_NULL(self.additionalFields, apiResponse[@"AdditionalFields"])

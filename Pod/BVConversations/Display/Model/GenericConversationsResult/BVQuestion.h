@@ -53,5 +53,6 @@
 @property (nonatomic, copy) NSNumber* _Nullable totalInappropriateFeedbackCount;
 @property (nonatomic, copy) NSNumber* _Nullable totalNegativeFeedbackCount;
 @property bool isFeatured;
+@property (readonly) BOOL isSyndicated;
 
 @end

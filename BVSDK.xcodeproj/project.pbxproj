@@ -44,6 +44,8 @@
 		15D4F83F1DF5EC3C00E6B30D /* ph.png in Resources */ = {isa = PBXBuildFile; fileRef = 15D4F83E1DF5EC3C00E6B30D /* ph.png */; };
 		870F13421E490B5200D46BE6 /* BVCurationsPostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 870F133C1E490B5200D46BE6 /* BVCurationsPostViewController.m */; };
 		870F13641E490B7B00D46BE6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 870F13631E490B7B00D46BE6 /* Assets.xcassets */; };
+		87252B091EF46FA10011C845 /* BVUploadableYouTubeVideo.h in Headers */ = {isa = PBXBuildFile; fileRef = 87252B071EF46FA10011C845 /* BVUploadableYouTubeVideo.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		87252B0A1EF46FA10011C845 /* BVUploadableYouTubeVideo.m in Sources */ = {isa = PBXBuildFile; fileRef = 87252B081EF46FA10011C845 /* BVUploadableYouTubeVideo.m */; };
 		873DC48E1E7482840080FA03 /* BVAnalyticEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 873DC4791E7482840080FA03 /* BVAnalyticEvent.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		873DC48F1E7482840080FA03 /* BVAnalyticEventManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 873DC47A1E7482840080FA03 /* BVAnalyticEventManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		873DC4901E7482840080FA03 /* BVAnalyticEventManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 873DC47B1E7482840080FA03 /* BVAnalyticEventManager.m */; };
@@ -551,6 +553,8 @@
 		870F133F1E490B5200D46BE6 /* BVCurationsUICollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BVCurationsUICollectionViewCell.h; path = Pod/BVCurationsUI/BVCurationsUICollectionViewCell.h; sourceTree = SOURCE_ROOT; };
 		870F13401E490B5200D46BE6 /* BVCurationsUICollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BVCurationsUICollectionViewCell.m; path = Pod/BVCurationsUI/BVCurationsUICollectionViewCell.m; sourceTree = SOURCE_ROOT; };
 		870F13631E490B7B00D46BE6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Pod/BVCurationsUI/Assets/Assets.xcassets; sourceTree = SOURCE_ROOT; };
+		87252B071EF46FA10011C845 /* BVUploadableYouTubeVideo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BVUploadableYouTubeVideo.h; path = Video/BVUploadableYouTubeVideo.h; sourceTree = "<group>"; };
+		87252B081EF46FA10011C845 /* BVUploadableYouTubeVideo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BVUploadableYouTubeVideo.m; path = Video/BVUploadableYouTubeVideo.m; sourceTree = "<group>"; };
 		873DC4791E7482840080FA03 /* BVAnalyticEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BVAnalyticEvent.h; path = BVPixelEvents/BVAnalyticEvent.h; sourceTree = "<group>"; };
 		873DC47A1E7482840080FA03 /* BVAnalyticEventManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BVAnalyticEventManager.h; path = BVPixelEvents/BVAnalyticEventManager.h; sourceTree = "<group>"; };
 		873DC47B1E7482840080FA03 /* BVAnalyticEventManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BVAnalyticEventManager.m; path = BVPixelEvents/BVAnalyticEventManager.m; sourceTree = "<group>"; };
@@ -1071,6 +1075,15 @@
 				1544B36C1E37D4F7000B0427 /* SocialMediaIcons */,
 			);
 			path = BVCurationsUI;
+			sourceTree = "<group>";
+		};
+		87252B0B1EF46FF40011C845 /* Video */ = {
+			isa = PBXGroup;
+			children = (
+				87252B071EF46FA10011C845 /* BVUploadableYouTubeVideo.h */,
+				87252B081EF46FA10011C845 /* BVUploadableYouTubeVideo.m */,
+			);
+			name = Video;
 			sourceTree = "<group>";
 		};
 		875410A71E1F10DF006C5C6E /* BVExtensionNotifications */ = {
@@ -1599,10 +1612,11 @@
 				87F2DB9F1DAD585E00FB43F3 /* BVSubmissionResponse.m */,
 				87F2DB891DAD585E00FB43F3 /* Answer */,
 				87EDAFCE1EDDCEAD00FA07C0 /* Comment */,
-				87F2DBA01DAD585E00FB43F3 /* Photo */,
 				87A02B5D1E0963020002701B /* Feedback */,
+				87F2DBA01DAD585E00FB43F3 /* Photo */,
 				87F2DBA61DAD585E00FB43F3 /* Question */,
 				87F2DBAF1DAD585E00FB43F3 /* Review */,
+				87252B0B1EF46FF40011C845 /* Video */,
 			);
 			path = Submission;
 			sourceTree = "<group>";
@@ -2244,6 +2258,7 @@
 				87EDAFD51EDDD1FD00FA07C0 /* BVSubmittedComment.h in Headers */,
 				87EDAFD91EDDD3E200FA07C0 /* BVCommentSubmissionErrorResponse.h in Headers */,
 				877AD2941EE1D134006C7070 /* BVBaseUGCSubmission.h in Headers */,
+				87252B091EF46FA10011C845 /* BVUploadableYouTubeVideo.h in Headers */,
 				87EDAFCC1EDDC9F400FA07C0 /* BVCommentSubmission.h in Headers */,
 				87F2DC241DAD585E00FB43F3 /* BVContextualInterests.h in Headers */,
 				87F2DC251DAD585E00FB43F3 /* BVGMBLSighting.h in Headers */,
@@ -2479,6 +2494,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				87252B0A1EF46FA10011C845 /* BVUploadableYouTubeVideo.m in Sources */,
 				15BE4D231E55EFCD00C12B57 /* BVSDKConfiguration.m in Sources */,
 				870F13421E490B5200D46BE6 /* BVCurationsPostViewController.m in Sources */,
 				153550AF1E898CF000C62D90 /* BVCurationsUICollectionViewCell.m in Sources */,
