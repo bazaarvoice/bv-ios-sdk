@@ -40,6 +40,10 @@
         self.videos = [BVModelUtil parseVideos:apiResponse[@"Videos"]];
         self.badges = [BVModelUtil parseBadges:apiResponse[@"Badges"]];
         self.contextDataValues = [BVModelUtil parseContextDataValues:apiResponse[@"ContextDataValues"]];
+        NSNumber* isSyndicated = apiResponse[@"IsSyndicated"];
+        if(![isSyndicated isKindOfClass:[NSNull class]]) {
+            _isSyndicated = [isSyndicated boolValue];
+        }
 
     }
     return self;

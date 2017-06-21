@@ -36,10 +36,13 @@ class RootViewController: UIViewController {
         reviewSubmission.userId = userId
         reviewSubmission.isRecommended = true
         reviewSubmission.sendEmailAlertWhenPublished = true
-
+        
         if let photo = UIImage(named: "puppy"){
             reviewSubmission.addPhoto(photo, withPhotoCaption: "5 star pup!")
         }
+        
+        // add youtube video link, if your configuration supports it
+        reviewSubmission.addVideoURL("https://www.youtube.com/watch?v=oHg5SJYRHA0", withCaption: "All your wildest dreams will come true.")
         
         reviewSubmission.submit({ (response) in
     
