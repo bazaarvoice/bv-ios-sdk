@@ -8,6 +8,7 @@
 #import "BVSubmission.h"
 #import "BVSubmissionAction.h"
 #import "BVUploadablePhoto.h"
+#import "BVUploadableYouTubeVideo.h"
 
 /// Base class used for defining common properties for a UGC content types of the Conversations API: Reviews, Review Comments, Questions and Answers.
 @interface BVBaseUGCSubmission : BVSubmission

@@ -117,7 +117,7 @@ class ProfileDisplayTests: XCTestCase {
             
             // QA Statistics
             XCTAssertEqual(profile.qaStatistics?.totalAnswerCount, 29)
-            XCTAssertEqual(profile.qaStatistics?.totalQuestionCount, 33)
+            XCTAssertEqual(profile.qaStatistics?.totalQuestionCount, 34)
             XCTAssertEqual(profile.qaStatistics?.answerHelpfulVoteCount, 0)
             XCTAssertEqual(profile.qaStatistics?.helpfulVoteCount, 0)
             XCTAssertEqual(profile.qaStatistics?.answerHelpfulVoteCount, 0)

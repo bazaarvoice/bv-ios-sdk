@@ -45,5 +45,6 @@
 @property NSDate* _Nullable submissionTime;
 @property NSDate* _Nullable lastModificationTime;
 @property NSDate* _Nullable lastModeratedTime;
+@property (readonly) BOOL isSyndicated;
 
 @end

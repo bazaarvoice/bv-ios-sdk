@@ -52,7 +52,28 @@ class ReviewSubmissionTests: XCTestCase {
         
         waitForExpectations(timeout: 10, handler: nil)
     }
-
+    
+    let VIDEO_URL = "https://www.youtube.com/watch?v=oHg5SJYRHA0"
+    let VIDEO_CAPTION = "yo dawg"
+    
+    func testPreviewReviewWithVideo() {
+        
+        let expectation = self.expectation(description: "testPreviewReviewWithVideo")
+        
+        let review = self.fillOutReview(.preview)
+        review.addVideoURL(VIDEO_URL, withCaption: VIDEO_CAPTION)
+        review.submit({ (reviewSubmission) in
+            // When run in Preview mode, we get the formFields that can be used for submission.
+            
+            XCTAssertTrue(reviewSubmission.formFields?.keys.count == 50)
+            expectation.fulfill()
+        }, failure: { (errors) in
+            XCTFail()
+            expectation.fulfill()
+        })
+        
+        waitForExpectations(timeout: 10, handler: nil)
+    }
     
     func fillOutReview(_ action : BVSubmissionAction) -> BVReviewSubmission {
         let review = BVReviewSubmission(reviewTitle: "review title",

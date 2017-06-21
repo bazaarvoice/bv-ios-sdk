@@ -11,25 +11,26 @@
 #import "BVSDKConfiguration.h"
 
 @interface BVReviewSubmission()
+    
+    @property NSUInteger rating;
+    @property NSString* _Nonnull reviewText;
+    @property NSString* _Nonnull reviewTitle;
+    @property (readwrite) NSString* _Nonnull productId;
+    
+    @property NSMutableDictionary* _Nonnull additionalFields;
+    @property NSMutableDictionary* _Nonnull contextDataValues;
+    @property NSMutableDictionary* _Nonnull ratingQuestions;
+    @property NSMutableDictionary* _Nonnull ratingSliders;
+    @property NSMutableDictionary* _Nonnull predefinedTags;
+    @property NSMutableDictionary* _Nonnull freeformTags;
+    
+    @property NSMutableArray<BVUploadableYouTubeVideo*>* _Nonnull videos;
 
-@property NSUInteger rating;
-@property NSString* _Nonnull reviewText;
-@property NSString* _Nonnull reviewTitle;
-@property (readwrite) NSString* _Nonnull productId;
-
-@property NSMutableDictionary* _Nonnull additionalFields;
-@property NSMutableDictionary* _Nonnull contextDataValues;
-@property NSMutableDictionary* _Nonnull ratingQuestions;
-@property NSMutableDictionary* _Nonnull ratingSliders;
-@property NSMutableDictionary* _Nonnull predefinedTags;
-@property NSMutableDictionary* _Nonnull freeformTags;
-
-@property bool failureCalled;
-
-@end
+    @property BOOL failureCalled;
+    @end
 
 @implementation BVReviewSubmission
-
+    
 -(nonnull instancetype)initWithReviewTitle:(nonnull NSString*)reviewTitle reviewText:(nonnull NSString*)reviewText rating:(NSUInteger)rating productId:(nonnull NSString*)productId {
     self = [super init];
     if(self){
@@ -37,68 +38,69 @@
         self.reviewText = reviewText;
         self.rating = rating;
         self.productId = productId;
-       
+        
         self.additionalFields = [NSMutableDictionary dictionary];
         self.contextDataValues = [NSMutableDictionary dictionary];
         self.ratingQuestions = [NSMutableDictionary dictionary];
         self.ratingSliders = [NSMutableDictionary dictionary];
         self.predefinedTags = [NSMutableDictionary dictionary];
         self.freeformTags = [NSMutableDictionary dictionary];
+        self.videos = [NSMutableArray array];
     }
     return self;
 }
-
-
-/// https://developer.bazaarvoice.com/apis/conversations/tutorials/field_types#additional-field
+    
+    
+    /// https://developer.bazaarvoice.com/apis/conversations/tutorials/field_types#additional-field
 -(void)addAdditionalField:(nonnull NSString*)fieldName value:(nonnull NSString*)value {
     NSString* key = [NSString stringWithFormat:@"additionalfield_%@", fieldName];
     self.additionalFields[key] = value;
 }
-
-
-/// https://developer.bazaarvoice.com/apis/conversations/tutorials/field_types#context-data-question
+    
+    
+    /// https://developer.bazaarvoice.com/apis/conversations/tutorials/field_types#context-data-question
 -(void)addContextDataValueString:(nonnull NSString*)contextDataValueName value:(nonnull NSString*)value {
     NSString* key = [NSString stringWithFormat:@"contextdatavalue_%@", contextDataValueName];
     self.contextDataValues[key] = value;
 }
-
-
-/// https://developer.bazaarvoice.com/apis/conversations/tutorials/field_types#context-data-question
+    
+    
+    /// https://developer.bazaarvoice.com/apis/conversations/tutorials/field_types#context-data-question
 -(void)addContextDataValueBool:(nonnull NSString*)contextDataValueName value:(bool)value {
     NSString* key = [NSString stringWithFormat:@"contextdatavalue_%@", contextDataValueName];
     self.contextDataValues[key] = value ? @"true" : @"false";
 }
-
-
-/// https://developer.bazaarvoice.com/apis/conversations/tutorials/field_types#rating-question---normal
+    
+    
+    /// https://developer.bazaarvoice.com/apis/conversations/tutorials/field_types#rating-question---normal
 -(void)addRatingQuestion:(nonnull NSString*)ratingQuestionName value:(int)value {
     NSString* key = [NSString stringWithFormat:@"rating_%@", ratingQuestionName];
     NSString* valueAsString = [NSString stringWithFormat:@"%i", value];
     self.ratingQuestions[key] = valueAsString;
 }
-
-
-/// https://developer.bazaarvoice.com/apis/conversations/tutorials/field_types#rating-question---slider
+    
+    
+    /// https://developer.bazaarvoice.com/apis/conversations/tutorials/field_types#rating-question---slider
 -(void)addRatingSlider:(nonnull NSString*)ratingQuestionName value:(nonnull NSString*)value {
     NSString* key = [NSString stringWithFormat:@"rating_%@", ratingQuestionName];
     self.ratingSliders[key] = value;
 }
-
-
-/// https://developer.bazaarvoice.com/apis/conversations/tutorials/field_types#tags---tag-dimensions
+    
+    
+    /// https://developer.bazaarvoice.com/apis/conversations/tutorials/field_types#tags---tag-dimensions
 -(void)addPredefinedTagDimension:(nonnull NSString*)tagQuestionId tagId:(nonnull NSString*)tagId value:(nonnull NSString*)value {
     NSString* key = [NSString stringWithFormat:@"tagid_%@/%@", tagQuestionId, tagId];
     self.predefinedTags[key] = value;
 }
-
-
-/// https://developer.bazaarvoice.com/apis/conversations/tutorials/field_types#tags---tag-dimensions
+    
+    
+    /// https://developer.bazaarvoice.com/apis/conversations/tutorials/field_types#tags---tag-dimensions
 -(void)addFreeformTagDimension:(nonnull NSString*)tagQuestionId tagNumber:(int)tagNumber value:(nonnull NSString*)value {
     NSString* key = [NSString stringWithFormat:@"tag_%@_%i", tagQuestionId, tagNumber];
     self.freeformTags[key] = value;
 }
-
-
+    
+    
 -(void)submit:(nonnull ReviewSubmissionCompletion)success failure:(nonnull ConversationsFailureHandler)failure {
     
     if (self.action == BVSubmissionActionPreview) {
@@ -115,7 +117,7 @@
         }];
     }
 }
-
+    
 -(void)submitPreview:(ReviewSubmissionCompletion)success failure:(ConversationsFailureHandler)failure {
     
     [self submitReviewWithPhotoUrls:BVSubmissionActionPreview
@@ -125,7 +127,7 @@
                             failure:failure];
     
 }
-
+    
 -(void)submitForReal:(ReviewSubmissionCompletion)success failure:(ConversationsFailureHandler)failure {
     
     if ([self.photos count] == 0) {
@@ -147,10 +149,10 @@
             
             // Queue one event for each photo uploaded.
             BVFeatureUsedEvent *photoUploadEvent = [[BVFeatureUsedEvent alloc] initWithProductId:self.productId
-                                                                       withBrand:nil
-                                                          withProductType:BVPixelProductTypeConversationsReviews
-                                                             withEventName:BVPixelFeatureUsedEventNamePhoto
-                                                            withAdditionalParams:nil];
+                                                                                       withBrand:nil
+                                                                                 withProductType:BVPixelProductTypeConversationsReviews
+                                                                                   withEventName:BVPixelFeatureUsedEventNamePhoto
+                                                                            withAdditionalParams:nil];
             
             [BVPixel trackEvent:photoUploadEvent];
             
@@ -180,8 +182,8 @@
     }
     
 }
-
-
+    
+    
 -(void)submitReviewWithPhotoUrls:(BVSubmissionAction)action photoUrls:(nonnull NSArray<NSString*>*)photoUrls photoCaptions:(nonnull NSArray<NSString*>*)photoCaptions success:(nonnull ReviewSubmissionCompletion)success failure:(nonnull ConversationsFailureHandler)failure {
     
     
@@ -245,10 +247,10 @@
                 
                 // Fire event now that we've confirmed the event was successfully uploaded.
                 BVFeatureUsedEvent *writeReviewEvent = [[BVFeatureUsedEvent alloc] initWithProductId:self.productId
-                                                                   withBrand:nil
-                                                      withProductType:BVPixelProductTypeConversationsReviews
-                                                         withEventName:BVPixelFeatureUsedEventNameWriteReview
-                                                        withAdditionalParams:nil];
+                                                                                           withBrand:nil
+                                                                                     withProductType:BVPixelProductTypeConversationsReviews
+                                                                                       withEventName:BVPixelFeatureUsedEventNameWriteReview
+                                                                                withAdditionalParams:nil];
                 
                 [BVPixel trackEvent:writeReviewEvent];
                 
@@ -273,16 +275,16 @@
     [postDataTask resume];
     
 }
-
+    
 -(nonnull NSDictionary*)createSubmissionParameters:(BVSubmissionAction)action photoUrls:(nonnull NSArray<NSString*>*)photoUrls photoCaptions:(nonnull NSArray<NSString*>*)photoCaptions {
     
     NSMutableDictionary* parameters = [NSMutableDictionary dictionaryWithDictionary:@{
-                                           @"apiversion": @"5.4",
-                                           @"reviewtext": self.reviewText,
-                                           @"title": self.reviewTitle,
-                                           @"rating": [NSString stringWithFormat:@"%lu", (unsigned long)self.rating],
-                                           @"productId": self.productId
-                                       }];
+                                                                                      @"apiversion": @"5.4",
+                                                                                      @"reviewtext": self.reviewText,
+                                                                                      @"title": self.reviewTitle,
+                                                                                      @"rating": [NSString stringWithFormat:@"%lu", (unsigned long)self.rating],
+                                                                                      @"productId": self.productId
+                                                                                      }];
     
     parameters[@"passkey"] = [self getPasskey];
     parameters[@"action"] = [BVSubmissionActionUtil toString:action];
@@ -336,6 +338,19 @@
         captionIndex += 1;
     }
     
+    int videoIndex = 1;
+    for(BVUploadableYouTubeVideo* video in self.videos) {
+        NSString* key = [NSString stringWithFormat:@"VideoUrl_%i", videoIndex];
+        parameters[key] = video.videoURL;
+        
+        if (video.videoCaption){
+            NSString* key = [NSString stringWithFormat:@"VideoCaption_%i", videoIndex];
+            parameters[key] = video.videoCaption;
+        }
+        
+        videoIndex += 1;
+    }
+    
     for (NSString* key in self.additionalFields) {
         parameters[key] = self.additionalFields[key];
     }
@@ -358,9 +373,13 @@
     return parameters;
     
 }
-
+    
 - (NSString * _Nonnull)getPasskey{
     return [BVSDKManager sharedManager].configuration.apiKeyConversations;
 }
-
+    
+-(void)addVideoURL:(nonnull NSString*)url withCaption:(nullable NSString*)videoCaption {
+    BVUploadableYouTubeVideo* video = [[BVUploadableYouTubeVideo alloc] initWithVideoURL:url videoCaption:videoCaption];
+    [self.videos addObject:video];
+}
 @end

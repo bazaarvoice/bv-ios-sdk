@@ -70,4 +70,12 @@ typedef void (^ReviewSubmissionCompletion)(BVReviewSubmissionResponse* _Nonnull 
 -(void)addFreeformTagDimension:(nonnull NSString*)tagQuestionId tagNumber:(int)tagNumber value:(nonnull NSString*)value;
 - (NSString * _Nonnull)getPasskey;
 
+/**
+ Submit a Youtube video link with UGC
+     
+ @param url The full URL string of the Youtube video
+ @param videoCaption The use-provided caption for the video
+*/
+-(void)addVideoURL:(nonnull NSString*)url withCaption:(nullable NSString*)videoCaption;
+    
 @end
