@@ -13,6 +13,7 @@
 #import "BVVideo.h"
 #import "BVContextDataValue.h"
 #import "BVBadge.h"
+#import "BVSyndicationSource.h"
 
 /*
  A consumer generated question about a product. For example: "Is this toaster heavy?" or "How many HDMI ports does this TV have?"
@@ -54,5 +55,6 @@
 @property (nonatomic, copy) NSNumber* _Nullable totalNegativeFeedbackCount;
 @property bool isFeatured;
 @property (readonly) BOOL isSyndicated;
+@property (nonatomic, strong, readonly, nullable) BVSyndicationSource* syndicationSource;
 
 @end

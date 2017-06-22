@@ -11,6 +11,7 @@
 #import "BVGenericConversationsResult.h"
 #import "BVPhoto.h"
 #import "BVVideo.h"
+#import "BVSyndicationSource.h"
 
 /*
  The answer to a question asked by a consumer.
@@ -46,5 +47,6 @@
 @property NSDate* _Nullable lastModificationTime;
 @property NSDate* _Nullable lastModeratedTime;
 @property (readonly) BOOL isSyndicated;
+@property (nonatomic, strong, readonly, nullable) BVSyndicationSource* syndicationSource;
 
 @end

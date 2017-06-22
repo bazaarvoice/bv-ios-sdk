@@ -67,7 +67,7 @@
 @property NSDate* _Nullable lastModificationTime;
 @property NSDate* _Nullable submissionTime;
 @property NSDate* _Nullable lastModeratedTime;
-@property BVSyndicationSource* _Nullable syndicationSource;
+@property (nonatomic, strong, readonly, nullable) BVSyndicationSource* syndicationSource;
 @property (readonly) NSArray<BVComment *> * _Nonnull comments;
 
 @end

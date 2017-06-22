@@ -40,6 +40,10 @@
             NSNumber* isSyndicated = apiResponse[@"IsSyndicated"];
             if(![isSyndicated isKindOfClass:[NSNull class]]) {
                 _isSyndicated = [isSyndicated boolValue];
+                
+                if (self.isSyndicated) {
+                    _syndicationSource = [[BVSyndicationSource alloc] initWithApiResponse:apiResponse];
+                }
             }
 
             _badges = [BVModelUtil parseBadges:apiResponse[@"Badges"]];
