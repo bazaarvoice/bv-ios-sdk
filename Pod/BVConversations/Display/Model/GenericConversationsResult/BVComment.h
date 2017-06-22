@@ -9,6 +9,7 @@
 
 #import "BVGenericConversationsResult.h"
 #import "BVBadge.h"
+#import "BVSyndicationSource.h"
 
 @interface BVComment : NSObject<BVGenericConversationsResult>
 
@@ -35,6 +36,7 @@
 @property (readonly) NSArray<BVBadge*>* _Nonnull badges;
 
 @property (readonly) BOOL isSyndicated;
+@property (nonatomic, strong, readonly, nullable) BVSyndicationSource* syndicationSource;
 
 @property (nonatomic, strong, readonly) BVConversationsInclude * _Nullable includes;
 

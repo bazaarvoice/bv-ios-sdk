@@ -48,7 +48,7 @@
             self.isSyndicated = [isSyndicated boolValue];
             
             if (self.isSyndicated) {
-                self.syndicationSource = [[BVSyndicationSource alloc] initWithApiResponse:apiResponse];
+                _syndicationSource = [[BVSyndicationSource alloc] initWithApiResponse:apiResponse];
             }
             
         }

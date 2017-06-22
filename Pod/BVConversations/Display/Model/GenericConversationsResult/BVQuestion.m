@@ -49,6 +49,10 @@
         NSNumber* isSyndicated = apiResponse[@"IsSyndicated"];
         if(![isSyndicated isKindOfClass:[NSNull class]]) {
             _isSyndicated = [isSyndicated boolValue];
+            
+            if (self.isSyndicated) {
+                _syndicationSource = [[BVSyndicationSource alloc] initWithApiResponse:apiResponse];
+            }
         }
 
         SET_IF_NOT_NULL(self.productRecommendationIds, apiResponse[@"ProductRecommendationIds"])
