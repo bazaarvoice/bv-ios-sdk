@@ -286,9 +286,20 @@ $(function(){
 <p>This guide shows you how to install and configure the Bazaarvoice Mobile SDK into your iOS app. Please make sure you have all the <a href="requirements.html">needed requirements</a> for your application first! Bazaarvoice supports XCode 8.0 or higher.</p>
 <hr>
 
+<p><b>Topic in this section:</b></p>
+
+<p>
+<ol>
+  <ul><a href="#install" onclick="navigateTab(this);">Installing the BVSDK</a></ul>
+  <ul><a href="#config" onclick="navigateTab(this);">Configure the BVSDK (Config File, Recommended)</a></ul>
+  <ul><a href="#config_program" onclick="navigateTab(this);">Configure the BVSDK (Programatically, Optional)</a></ul>
+</ol>
+</p>
+
 <p class="bg-info well-lg" style="padding:4px;"><i class="fa fa-hand-o-right"></i>  If you need to use XCode 7.3, the last supported SDK version is 4.2.4.</p>
 
-    <h3>Installing the BVSDK</h3>
+<a name="install"></a>
+<h3>Installing the BVSDK</h3>
 
 We support installation of the Bazaarvoice SDK for iOS with CocoaPods, Carthage, Dynamic Framework, or straight up source code. Choose the solution that best fits your development environment.
 
@@ -379,6 +390,7 @@ pod 'BVSDK/BVNotifications'
 
     </div>
 <br>
+<a name="config"></a>
 <h3>Configuring the BVSDK</h3>
 <hr>
 Once you have install the source code for the SDK, you are now ready to add your imports and initialize the <code>BVSDKManager</code> with your API key(s) and envrionment (staging versus production).
@@ -738,6 +750,20 @@ Once you have install the source code for the SDK, you are now ready to add your
     </script>
 
 </div>
+
+<a name="config_program"></a>
+<h3>Configuring the BVSDK, Programatically</h3>
+<hr>
+
+The <code>BVSDKManager</code> can also be configured programatically. This scenario is not typically recommended, however, you can use this method if you need to modify your API keys within the same application session.
+
+Configure the <code>BVSDKManager</code> programmatically for the Conversations API like the Swift example below. Call <code>BVSDKManager.configure(...)</code> when you need to update the API key and environment in use.
+
+<br><br>
+<pre><code class="swift">let configDict = ["clientId": "YOUR_CLIENT_ID",
+                "apiKeyConversations": "YOUR_API_KEY"];
+BVSDKManager.configure(withConfiguration: configDict, configType: .staging)</code></pre>
+
 
 <br>
 
