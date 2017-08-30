@@ -9,6 +9,9 @@
 #import "BVNullHelper.h"
 #import "BVCore.h"
 
+NSString* _Nonnull const BVKeyErrorMessage = @"BVKeyErrorMessage";
+NSString* _Nonnull const BVKeyErrorCode = @"BVKeyErrorCode";
+
 @implementation BVConversationsError
 
 -(id _Nonnull)initWithApiResponse:(NSDictionary* _Nonnull)apiResponse {
@@ -25,7 +28,11 @@
     return [NSError
             errorWithDomain:BVErrDomain
             code:999
-            userInfo:@{NSLocalizedDescriptionKey: description}];
+            userInfo:@{
+                       NSLocalizedDescriptionKey: description,
+                       BVKeyErrorMessage: self.message,
+                       BVKeyErrorCode: self.code
+                       }];
 }
 
 +(NSArray<BVConversationsError*>* _Nonnull)createErrorListFromApiResponse:(id _Nullable)apiResponse {
