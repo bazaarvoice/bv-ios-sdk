@@ -41,6 +41,7 @@ class ReviewSubmissionTests: XCTestCase {
         let expectation = self.expectation(description: "testPreviewReviewWithPhoto")
         
         let review = self.fillOutReview(.preview)
+        
         review.submit({ (reviewSubmission) in
                 // When run in Preview mode, we get the formFields that can be used for submission.
                 XCTAssertTrue(reviewSubmission.formFields?.keys.count == 50)
@@ -102,6 +103,7 @@ class ReviewSubmissionTests: XCTestCase {
         review.addRatingQuestion("Value", value: 3)
         review.addRatingQuestion("HowDoes", value: 4)
         review.addRatingQuestion("Fit", value: 3)
+        review.addCustomSubmissionParameter("_foo", withValue: "bar")
         
         if let image = PhotoUploadTests.createImage() {
             review.addPhoto(image, withPhotoCaption: "Yo dawg")

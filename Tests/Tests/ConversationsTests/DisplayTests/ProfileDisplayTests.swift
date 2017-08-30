@@ -116,8 +116,8 @@ class ProfileDisplayTests: XCTestCase {
             let profile = response.results.first!
             
             // QA Statistics
-            XCTAssertEqual(profile.qaStatistics?.totalAnswerCount, 29)
-            XCTAssertEqual(profile.qaStatistics?.totalQuestionCount, 34)
+            XCTAssertEqual(profile.qaStatistics?.totalAnswerCount, 33)
+            XCTAssertEqual(profile.qaStatistics?.totalQuestionCount, 37)
             XCTAssertEqual(profile.qaStatistics?.answerHelpfulVoteCount, 0)
             XCTAssertEqual(profile.qaStatistics?.helpfulVoteCount, 0)
             XCTAssertEqual(profile.qaStatistics?.answerHelpfulVoteCount, 0)
@@ -126,15 +126,15 @@ class ProfileDisplayTests: XCTestCase {
             XCTAssertEqual(profile.qaStatistics?.questionNotHelpfulVoteCount, 0)
             
             // Review Statistics
-            XCTAssertEqual(profile.reviewStatistics?.totalReviewCount, 22)
+            XCTAssertEqual(profile.reviewStatistics?.totalReviewCount, 23)
             XCTAssertEqual(profile.reviewStatistics?.helpfulVoteCount, 66)
             XCTAssertEqual(profile.reviewStatistics?.notHelpfulVoteCount, 58)
             XCTAssertEqual(profile.reviewStatistics?.notRecommendedCount, 1)
             XCTAssertEqual(profile.reviewStatistics?.overallRatingRange, 5)
             XCTAssertEqual(profile.reviewStatistics?.ratingDistribution?.fiveStarCount, 7)
-            XCTAssertEqual(profile.reviewStatistics?.ratingDistribution?.fourStarCount, 15)
+            XCTAssertEqual(profile.reviewStatistics?.ratingDistribution?.fourStarCount, 16)
             XCTAssertEqual(profile.reviewStatistics?.recommendedCount, 16)
-            XCTAssertEqual(String(format: "%.2f", (profile.reviewStatistics?.averageOverallRating?.floatValue)!), "4.32")
+            XCTAssertEqual(String(format: "%.2f", (profile.reviewStatistics?.averageOverallRating?.floatValue)!), "4.30")
             
             // Check the includes
             XCTAssertEqual(profile.includedReviews.count, 10)

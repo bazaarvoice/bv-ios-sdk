@@ -62,6 +62,9 @@
 // An array of BVUploadablePhoto objects to attach to a review submission.
 @property NSMutableArray<BVUploadablePhoto*>* _Nonnull photos;
 
+// An array of custom Key-Value pairs
+@property NSMutableArray<BVStringKeyValuePair*>* _Nonnull customFormPairs;
+
 /**
  Submit a user-provided photo attached to this answer.
  
@@ -69,5 +72,11 @@
  @param photoCaption    The user-provided caption for the photo.
  */
 -(void)addPhoto:(nonnull UIImage*)image withPhotoCaption:(nullable NSString*)photoCaption;
+
+/**
+ This method adds extra user provided form parameters to a
+ submission request, and will be urlencoded.
+ */
+-(void)addCustomSubmissionParameter:(nonnull NSString*)parameter withValue:(nonnull NSString*)value;
 
 @end

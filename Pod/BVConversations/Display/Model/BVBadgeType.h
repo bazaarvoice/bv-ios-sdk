@@ -8,7 +8,7 @@
 #import <Foundation/Foundation.h>
 
 /*
- Type of badge. See BVBage.h for usage.
+ Type of badge. See BVBadge.h for usage.
  */
 typedef NS_ENUM(NSInteger, BVBadgeType) {
     BVBadgeTypeMerit,

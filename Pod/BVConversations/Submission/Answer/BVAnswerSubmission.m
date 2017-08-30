@@ -230,6 +230,12 @@
         parameters[@"agreedtotermsandconditions"] = [self.agreedToTermsAndConditions boolValue] ? @"true" : @"false";
     }
     
+    for (BVStringKeyValuePair* keyValuePair in self.customFormPairs) {
+        NSString* key = [keyValuePair key];
+        NSString* value = [keyValuePair value];
+        parameters[key] = value;
+    }
+    
     return parameters;
     
 }

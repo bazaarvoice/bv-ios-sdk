@@ -252,7 +252,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         if adLoader == nil
         {
             
-            adLoader = GADAdLoader(adUnitID: "/5705/bv-incubator/IncubatorEnduranceCycles", rootViewController: self, adTypes: [kGADAdLoaderAdTypeNativeContent], options: nil)
+            adLoader = GADAdLoader(adUnitID: "/5705/bv-incubator/IncubatorEnduranceCycles", rootViewController: self, adTypes: [GADAdLoaderAdType.nativeContent], options: nil)
             adLoader?.delegate = self
             
             let request = DFPRequest()
