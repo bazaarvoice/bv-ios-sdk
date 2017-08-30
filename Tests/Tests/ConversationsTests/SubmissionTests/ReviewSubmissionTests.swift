@@ -126,10 +126,86 @@ class ReviewSubmissionTests: XCTestCase {
             expectation.fulfill()
         }, failure: { (errors) in
             errors.forEach { print("Expected Failure Item: \($0)") }
+            
             XCTAssertEqual(errors.count, 5)
             expectation.fulfill()
         })
         waitForExpectations(timeout: 10, handler: nil)
     }
     
+    func testSubmitReviewFailureFormCodeParsing() {
+        let expectation = self.expectation(description: "testSubmitReviewFailure")
+        
+        let review = BVReviewSubmission(reviewTitle: "", reviewText: "", rating: 123, productId: "1000001")
+        review.userNickname = "cgil"
+        review.userId = "craiggiddl"
+        review.action = .submit
+        
+        review.submit({ (reviewSubmission) in
+            XCTFail()
+            expectation.fulfill()
+        }, failure: { (errors) in
+            var formRequiredCount = 0
+            var formDuplicateCount = 0
+            var formTooHighCount = 0
+            errors.forEach { error in
+                let nsError = error as NSError
+                let errorCodeString = nsError.userInfo[BVFieldErrorCode] as? String
+                print("Error code string: \(errorCodeString ?? "empty")")
+                let bvSubmissionErrorCode = nsError.bvSubmissionErrorCode()
+                switch (bvSubmissionErrorCode) {
+                case .formRequired:
+                    print("form required enum found")
+                    formRequiredCount = formRequiredCount + 1
+                case .formDuplicate:
+                    print("form duplicate enum found")
+                    formDuplicateCount = formDuplicateCount + 1
+                case .formTooHigh:
+                    print("form too high enum found")
+                    formTooHighCount = formTooHighCount + 1
+                default:
+                    print("unknown enum")
+                }
+            }
+            
+            XCTAssertEqual(formRequiredCount, 3)
+            XCTAssertEqual(formDuplicateCount, 1)
+            XCTAssertEqual(formTooHighCount, 1)
+            
+            expectation.fulfill()
+        })
+        waitForExpectations(timeout: 10, handler: nil)
+    }
+    
+    func testSubmitReviewFailureCodeParsing() {
+        let expectation = self.expectation(description: "testSubmitReviewFailure")
+        
+        let review = BVReviewSubmission(reviewTitle: "", reviewText: "", rating: 123, productId: "")
+        review.userNickname = "cgil"
+        review.userId = "craiggiddl"
+        review.action = .submit
+        
+        review.submit({ (reviewSubmission) in
+            XCTFail()
+            expectation.fulfill()
+        }, failure: { (errors) in
+            var badRequestCount = 0
+            errors.forEach { error in
+                let nsError = error as NSError
+                let bvErrorCode = nsError.bvErrorCode()
+                switch (bvErrorCode) {
+                case .badRequest:
+                    print("Found bad request")
+                    badRequestCount = badRequestCount + 1
+                default:
+                    print("unknown enum found")
+                }
+            }
+            
+            XCTAssertEqual(badRequestCount, 1)
+            
+            expectation.fulfill()
+        })
+        waitForExpectations(timeout: 10, handler: nil)
+    }
 }

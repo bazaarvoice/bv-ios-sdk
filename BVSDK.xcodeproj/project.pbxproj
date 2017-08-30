@@ -44,7 +44,12 @@
 		15D4F83F1DF5EC3C00E6B30D /* ph.png in Resources */ = {isa = PBXBuildFile; fileRef = 15D4F83E1DF5EC3C00E6B30D /* ph.png */; };
 		5F51EA4D1F575659002FA8FD /* BVFormInputType.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F51EA4C1F575659002FA8FD /* BVFormInputType.m */; };
 		5F51EA501F5F2BB4002FA8FD /* BVFormInputType.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F51EA4B1F575578002FA8FD /* BVFormInputType.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		5F608FF21F6AD86000E197CE /* BVSubmissionErrorCode.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F608FF11F6AD86000E197CE /* BVSubmissionErrorCode.m */; };
+		5F608FF41F6AF3E100E197CE /* BVSubmissionErrorCode.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F608FF31F6AD8F200E197CE /* BVSubmissionErrorCode.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5F6201DC1F7030FA00454D77 /* NSError+BVErrorCodeParser.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F6201DB1F7030FA00454D77 /* NSError+BVErrorCodeParser.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5F6201DF1F70385E00454D77 /* NSError+BVErrorCodeParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F6201DD1F70342C00454D77 /* NSError+BVErrorCodeParser.m */; };
+		5F6201E11F70399200454D77 /* NSError+BVSubmissionErrorCodeParser.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F6201E01F70399200454D77 /* NSError+BVSubmissionErrorCodeParser.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5F6201E31F7039EA00454D77 /* NSError+BVSubmissionErrorCodeParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F6201E21F7039EA00454D77 /* NSError+BVSubmissionErrorCodeParser.m */; };
+		5FE2C0811F6B05100090DD55 /* BVErrorCode.h in Headers */ = {isa = PBXBuildFile; fileRef = 5FE2C0801F6B05100090DD55 /* BVErrorCode.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		870F13421E490B5200D46BE6 /* BVCurationsPostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 870F133C1E490B5200D46BE6 /* BVCurationsPostViewController.m */; };
 		870F13641E490B7B00D46BE6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 870F13631E490B7B00D46BE6 /* Assets.xcassets */; };
 		87252B091EF46FA10011C845 /* BVUploadableYouTubeVideo.h in Headers */ = {isa = PBXBuildFile; fileRef = 87252B071EF46FA10011C845 /* BVUploadableYouTubeVideo.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -549,8 +554,12 @@
 		387BAAAEE154D9B41D414692 /* Pods-BVSDK-BVSDKTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BVSDK-BVSDKTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-BVSDK-BVSDKTests/Pods-BVSDK-BVSDKTests.release.xcconfig"; sourceTree = "<group>"; };
 		5F51EA4B1F575578002FA8FD /* BVFormInputType.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BVFormInputType.h; sourceTree = "<group>"; };
 		5F51EA4C1F575659002FA8FD /* BVFormInputType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVFormInputType.m; sourceTree = "<group>"; };
-		5F608FF11F6AD86000E197CE /* BVSubmissionErrorCode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVSubmissionErrorCode.m; sourceTree = "<group>"; };
 		5F608FF31F6AD8F200E197CE /* BVSubmissionErrorCode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BVSubmissionErrorCode.h; sourceTree = "<group>"; };
+		5F6201DB1F7030FA00454D77 /* NSError+BVErrorCodeParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSError+BVErrorCodeParser.h"; sourceTree = "<group>"; };
+		5F6201DD1F70342C00454D77 /* NSError+BVErrorCodeParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSError+BVErrorCodeParser.m"; sourceTree = "<group>"; };
+		5F6201E01F70399200454D77 /* NSError+BVSubmissionErrorCodeParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSError+BVSubmissionErrorCodeParser.h"; sourceTree = "<group>"; };
+		5F6201E21F7039EA00454D77 /* NSError+BVSubmissionErrorCodeParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSError+BVSubmissionErrorCodeParser.m"; sourceTree = "<group>"; };
+		5FE2C0801F6B05100090DD55 /* BVErrorCode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BVErrorCode.h; path = ../BVErrorCode.h; sourceTree = "<group>"; };
 		7892A8713545E74147C58ECB /* Pods_BVSDKTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BVSDKTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D31881627EFC6F28C7B88B2 /* Pods-BVSDK-BVSDKTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BVSDK-BVSDKTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BVSDK-BVSDKTests/Pods-BVSDK-BVSDKTests.debug.xcconfig"; sourceTree = "<group>"; };
 		870F133B1E490B5200D46BE6 /* BVCurationsPostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BVCurationsPostViewController.h; path = Pod/BVCurationsUI/BVCurationsPostViewController.h; sourceTree = SOURCE_ROOT; };
@@ -1444,6 +1453,7 @@
 				87F2DB291DAD585E00FB43F3 /* BVDistributionElement.m */,
 				87F2DB2A1DAD585E00FB43F3 /* BVDistributionValue.h */,
 				87F2DB2B1DAD585E00FB43F3 /* BVDistributionValue.m */,
+				5FE2C0801F6B05100090DD55 /* BVErrorCode.h */,
 				87F2DB2D1DAD585E00FB43F3 /* BVModelUtil.h */,
 				87F2DB2E1DAD585E00FB43F3 /* BVModelUtil.m */,
 				87F2DB2F1DAD585E00FB43F3 /* BVPhoto.h */,
@@ -1476,6 +1486,8 @@
 				87F2DB481DAD585E00FB43F3 /* BVVideo.h */,
 				87F2DB491DAD585E00FB43F3 /* BVVideo.m */,
 				87F2DB581DAD585E00FB43F3 /* Stores */,
+				5F6201DB1F7030FA00454D77 /* NSError+BVErrorCodeParser.h */,
+				5F6201DD1F70342C00454D77 /* NSError+BVErrorCodeParser.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1613,6 +1625,7 @@
 				87F2DB991DAD585E00FB43F3 /* BVSubmission.m */,
 				87F2DB9A1DAD585E00FB43F3 /* BVSubmissionAction.h */,
 				87F2DB9B1DAD585E00FB43F3 /* BVSubmissionAction.m */,
+				5F608FF31F6AD8F200E197CE /* BVSubmissionErrorCode.h */,
 				87F2DB9C1DAD585E00FB43F3 /* BVSubmissionErrorResponse.h */,
 				87F2DB9D1DAD585E00FB43F3 /* BVSubmissionErrorResponse.m */,
 				87F2DB9E1DAD585E00FB43F3 /* BVSubmissionResponse.h */,
@@ -1626,8 +1639,8 @@
 				87252B0B1EF46FF40011C845 /* Video */,
 				5F51EA4B1F575578002FA8FD /* BVFormInputType.h */,
 				5F51EA4C1F575659002FA8FD /* BVFormInputType.m */,
-				5F608FF11F6AD86000E197CE /* BVSubmissionErrorCode.m */,
-				5F608FF31F6AD8F200E197CE /* BVSubmissionErrorCode.h */,
+				5F6201E01F70399200454D77 /* NSError+BVSubmissionErrorCodeParser.h */,
+				5F6201E21F7039EA00454D77 /* NSError+BVSubmissionErrorCodeParser.m */,
 			);
 			path = Submission;
 			sourceTree = "<group>";
@@ -2088,6 +2101,7 @@
 				87F2DD0F1DAD585E00FB43F3 /* BVReviewsCollectionView.h in Headers */,
 				87F2DCCB1DAD585E00FB43F3 /* BVAnswerSubmission.h in Headers */,
 				87F2DCD91DAD585E00FB43F3 /* BVSubmission.h in Headers */,
+				5FE2C0811F6B05100090DD55 /* BVErrorCode.h in Headers */,
 				87F2DC911DAD585E00FB43F3 /* BVVideo.h in Headers */,
 				87F2DCB91DAD585E00FB43F3 /* BVFilterOperator.h in Headers */,
 				87F2DD111DAD585E00FB43F3 /* BVReviewsTableView.h in Headers */,
@@ -2271,7 +2285,10 @@
 				877AD2941EE1D134006C7070 /* BVBaseUGCSubmission.h in Headers */,
 				87252B091EF46FA10011C845 /* BVUploadableYouTubeVideo.h in Headers */,
 				87EDAFCC1EDDC9F400FA07C0 /* BVCommentSubmission.h in Headers */,
+				5F6201E11F70399200454D77 /* NSError+BVSubmissionErrorCodeParser.h in Headers */,
 				5F51EA501F5F2BB4002FA8FD /* BVFormInputType.h in Headers */,
+				5F6201DC1F7030FA00454D77 /* NSError+BVErrorCodeParser.h in Headers */,
+				5F608FF41F6AF3E100E197CE /* BVSubmissionErrorCode.h in Headers */,
 				87F2DC241DAD585E00FB43F3 /* BVContextualInterests.h in Headers */,
 				87F2DC251DAD585E00FB43F3 /* BVGMBLSighting.h in Headers */,
 				87F2DC271DAD585E00FB43F3 /* BVGMBLVisit.h in Headers */,
@@ -2512,6 +2529,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5F6201DF1F70385E00454D77 /* NSError+BVErrorCodeParser.m in Sources */,
 				87252B0A1EF46FA10011C845 /* BVUploadableYouTubeVideo.m in Sources */,
 				15BE4D231E55EFCD00C12B57 /* BVSDKConfiguration.m in Sources */,
 				870F13421E490B5200D46BE6 /* BVCurationsPostViewController.m in Sources */,
@@ -2535,7 +2553,6 @@
 				87EDAFDA1EDDD3E200FA07C0 /* BVCommentSubmissionErrorResponse.m in Sources */,
 				87F2DC881DAD585E00FB43F3 /* BVReviewsResponse.m in Sources */,
 				873DC4921E7482840080FA03 /* BVConversionEvent.m in Sources */,
-				5F608FF21F6AD86000E197CE /* BVSubmissionErrorCode.m in Sources */,
 				87F2DCCE1DAD585E00FB43F3 /* BVAnswerSubmissionErrorResponse.m in Sources */,
 				87F2DD0C1DAD585E00FB43F3 /* BVQuestionView.m in Sources */,
 				87F2DC281DAD585E00FB43F3 /* BVGMBLVisit.m in Sources */,
@@ -2673,6 +2690,7 @@
 				150FC2C71E71C21700717041 /* BVBulkProductResponse.m in Sources */,
 				87F2DCF41DAD585E00FB43F3 /* BVSubmittedReview.m in Sources */,
 				87F2DC1F1DAD585E00FB43F3 /* BVPixel.m in Sources */,
+				5F6201E31F7039EA00454D77 /* NSError+BVSubmissionErrorCodeParser.m in Sources */,
 				873DC4901E7482840080FA03 /* BVAnalyticEventManager.m in Sources */,
 				87F2DC261DAD585E00FB43F3 /* BVGMBLSighting.m in Sources */,
 				873DC4A01E7482840080FA03 /* BVTransactionEvent.m in Sources */,

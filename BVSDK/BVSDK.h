@@ -61,6 +61,10 @@ FOUNDATION_EXPORT const unsigned char BVSDKVersionString[];
 #import <BVSDK/BVFormField.h>
 #import <BVSDK/BVFormFieldOptions.h>
 #import <BVSDK/BVModelUtil.h>
+#import <BVSDK/BVErrorCode.h>
+#import <BVSDK/BVConversationsError.h>
+#import <BVSDK/NSError+BVErrorCodeParser.h>
+#import <BVSDK/NSError+BVSubmissionErrorCodeParser.h>
 
 #import <BVSDK/BVUploadableStorePhoto.h>
 #import <BVSDK/BVAnswer.h>

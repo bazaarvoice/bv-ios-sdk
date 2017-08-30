@@ -37,9 +37,3 @@ typedef NS_ENUM(NSInteger, BVSubmissionErrorCode) {
     BVSubmissionErrorCodeParamMissingSubjectId,
     BVSubmissionErrorCodeUnknown
 };
-
-@interface BVSubmissionErrorCodeUtil : NSObject
-
-+ (BVSubmissionErrorCode)fromString:(NSString* _Nullable)str;
-
-@end

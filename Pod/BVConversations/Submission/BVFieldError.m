@@ -8,6 +8,7 @@
 #import "BVFieldError.h"
 #import "BVNullHelper.h"
 #import "BVCore.h"
+#import "BVSubmissionErrorCode.h"
 
 NSString* _Nonnull const BVFieldErrorName = @"BVFieldErrorName";
 NSString* _Nonnull const BVFieldErrorMessage = @"BVFieldErrorMessage";
