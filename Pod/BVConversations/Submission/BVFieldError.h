@@ -6,7 +6,7 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import "BVSubmissionErrorCode.h"
 
 extern NSString* _Nonnull const BVFieldErrorName;
 extern NSString* _Nonnull const BVFieldErrorMessage;

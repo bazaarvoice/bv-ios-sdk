@@ -7,6 +7,9 @@
 
 #import <Foundation/Foundation.h>
 
+extern NSString* _Nonnull const BVKeyErrorMessage;
+extern NSString* _Nonnull const BVKeyErrorCode;
+
 /// Internal class - used only within BVSDK
 @interface BVConversationsError : NSObject
 
