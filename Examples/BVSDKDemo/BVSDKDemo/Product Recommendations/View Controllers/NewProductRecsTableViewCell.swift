@@ -72,7 +72,7 @@ class NewProductRecsTableViewCell: UITableViewCell, UICollectionViewDataSource, 
         adLoader = GADAdLoader(
             adUnitID: "/5705/bv-incubator/EnduranceCyclesSale",
             rootViewController: parentViewController,
-            adTypes: [ kGADAdLoaderAdTypeNativeContent ],
+            adTypes: [ GADAdLoaderAdType.nativeContent ],
             options: nil
         )
         adLoader!.delegate = self

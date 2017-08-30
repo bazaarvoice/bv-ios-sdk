@@ -19,13 +19,13 @@
 
 #define BV_MAGPIE_ENDPOINT @"https://network.bazaarvoice.com/event"
 #define BV_MAGPIE_STAGING_ENDPOINT @"https://network-stg.bazaarvoice.com/event"
-#define BV_QUEUE_FLUSH_INTERVAL 10.0
 
 @interface BVAnalyticsManager ()
 
 @property (strong) NSMutableArray* eventQueue; // Impressions, other non-pageview events
 @property (strong) NSMutableArray* pageviewQueue; // Page views
 @property NSTimer* queueFlushTimer;
+@property NSTimeInterval queueFlushInterval;
 
 @property (nonatomic, strong) dispatch_queue_t concurrentEventQueue;
 
@@ -53,7 +53,7 @@ static BVAnalyticsManager *analyticsInstance = nil;
         
         self.eventQueue = [NSMutableArray array];
         self.pageviewQueue = [NSMutableArray array];
-        
+        [self setFlushInterval:10.0];
         [self registerForAppStateChanges];
         
     }
@@ -195,7 +195,7 @@ static BVAnalyticsManager *analyticsInstance = nil;
             
             SEL flushQueueSelector = @selector(flushQueue);
             
-            self.queueFlushTimer = [NSTimer scheduledTimerWithTimeInterval:BV_QUEUE_FLUSH_INTERVAL
+            self.queueFlushTimer = [NSTimer scheduledTimerWithTimeInterval:self.queueFlushInterval
                                                                     target:self
                                                                   selector:flushQueueSelector
                                                                   userInfo:nil
@@ -354,6 +354,10 @@ static BVAnalyticsManager *analyticsInstance = nil;
     else {
         return BV_MAGPIE_ENDPOINT;
     }
+}
+
+-(void)setFlushInterval:(NSTimeInterval)newInterval {
+    self.queueFlushInterval = newInterval;
 }
 
 

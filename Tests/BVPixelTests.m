@@ -63,6 +63,8 @@
 - (void)setUp {
     [super setUp];
     
+    [[BVAnalyticsManager sharedManager] setFlushInterval:0.1];
+    
     NSDictionary *configDict = @{@"clientId": @"mobileBVPixelTestsiOS"};
     [BVSDKManager configureWithConfiguration:configDict configType:BVConfigurationTypeProd];
     [[BVSDKManager sharedManager] setLogLevel:BVLogLevelAnalyticsOnly];
@@ -327,12 +329,11 @@
     numberOfExpectedImpressionAnalyticsEvents = 1;
     numberOfExpectedPageviewAnalyticsEvents = 0;
     
-        NSDictionary *testValues = @{
-                                     @"productId":@"12345",
-                                     @"categoryId":@"catId",
-                                     @"bvProduct":@"RatingsAndReviews"
-                                     };
-    
+    NSDictionary *testValues = @{
+                                 @"productId":@"12345",
+                                 @"categoryId":@"catId",
+                                 @"bvProduct":@"RatingsAndReviews"
+                             };
     
     BVViewedCGCEvent *viewedCGCEvent = [[BVViewedCGCEvent alloc] initWithProductId:[testValues objectForKey:@"productId"]
                                                                 withRootCategoryID:nil
@@ -361,6 +362,8 @@
 
 
 - (void)testFeatureUsedProfile {
+    
+    [[BVAnalyticsManager sharedManager] setFlushInterval:0.1];
     
     numberOfExpectedImpressionAnalyticsEvents = 1;
     numberOfExpectedPageviewAnalyticsEvents = 0;

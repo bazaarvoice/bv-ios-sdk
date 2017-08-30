@@ -1,5 +1,5 @@
 language: objective-c
-osx_image: xcode8
+osx_image: xcode8.3
 podfile: ./Tests/Podfile
 
 git:
@@ -14,13 +14,12 @@ env:
     - TEST_TYPE=build_bvpixel
 
 before_install:
-  - gem install xcpretty --no-ri --no-rdoc --no-document --quiet
-  - SIMULATOR_ID=$(xcrun instruments -s | grep -o "iPhone 6 (10.0) \[.*\]" | grep -o "\[.*\]" | sed "s/^\[\(.*\)\]$/\1/")
+  - set -e
   - set -o pipefail
+  - gem install xcpretty --no-ri --no-rdoc --no-document --quiet
   - pod --version
 
 script:
-  - open -a "simulator" --args -CurrentDeviceUDID $SIMULATOR_ID
   - '[ "$TEST_TYPE" != unit_tests ] || ./ci_scripts/run_tests.sh'
   - '[ "$TEST_TYPE" != build_framework ] || ./ci_scripts/build_framework.sh'
   - '[ "$TEST_TYPE" != build_bvsdkdemo ] || ./ci_scripts/build_bvsdkdemo.sh'

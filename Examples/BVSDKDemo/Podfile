@@ -6,7 +6,7 @@ use_frameworks!
 
 def common_pods
 	
-	pod 'OHHTTPStubs', '5.1.0'
+	pod 'OHHTTPStubs'
 	pod 'SwiftyJSON'
 
 end
@@ -23,7 +23,7 @@ target 'BVSDKDemo' do
 	pod 'NVActivityIndicatorView'
 	pod 'FontAwesomeKit/FontAwesome'
     pod 'XLActionController', '~> 3.0'
-    pod 'youtube-ios-player-helper', '~> 0.1.6'
+    pod 'youtube-ios-player-helper'
     pod 'SDForms', :git => 'https://github.com/austimkelly/SDForms.git', :branch => 'master'
     
     pod 'FBSDKCoreKit'

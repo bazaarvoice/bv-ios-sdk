@@ -182,7 +182,7 @@ class CommentsDisplayTests: XCTestCase {
         let expectation = self.expectation(description: "testCommentWithErrors")
         
         let request = BVCommentsRequest(commentId: "snoochieboochies")
-        request.addAdditionalField("bad", value: "food")
+        request.addCustomDisplayParameter("bar", withValue: "food")
         
         request.load({ (response) in
             

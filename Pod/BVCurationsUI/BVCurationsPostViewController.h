@@ -25,13 +25,13 @@
 /**
  Block used to respond to user pressing cancel button
  */
-@property (nonatomic, copy, nullable) void(^didPressCancel)();
+@property (nonatomic, copy, nullable) void(^didPressCancel)(void);
 /**
  Block used to respond to user pressing post
  Will be called before network request is made
  Useful to display loading indicator
  */
-@property (nonatomic, copy, nullable) void(^didBeginPost)();
+@property (nonatomic, copy, nullable) void(^didBeginPost)(void);
 
 /**
  Block used to respond to a network response

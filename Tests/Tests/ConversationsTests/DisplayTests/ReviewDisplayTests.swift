@@ -143,7 +143,7 @@ class ReviewDisplayTests: XCTestCase {
             .addInclude(BVReviewIncludeType.products)
             .addFilter(.hasPhotos, filterOperator: .equalTo, value: "true")
             .addFilter(.hasComments, filterOperator: .equalTo, value: "false")
-            .addAdditionalField("filteredstats", value: "reviews,questions")
+            .addCustomDisplayParameter("filteredstats", withValue: "reviews,questions")
         
         request.load({ (response) in
             
