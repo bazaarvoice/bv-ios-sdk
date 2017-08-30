@@ -369,6 +369,11 @@
     for (NSString* key in self.freeformTags) {
         parameters[key] = self.freeformTags[key];
     }
+    for (BVStringKeyValuePair* keyValuePair in self.customFormPairs) {
+        NSString* key = [keyValuePair key];
+        NSString* value = [keyValuePair value];
+        parameters[key] = value;
+    }
     
     return parameters;
     

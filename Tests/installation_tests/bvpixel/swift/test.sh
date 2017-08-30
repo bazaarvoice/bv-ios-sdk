@@ -4,11 +4,8 @@
 set -e
 set -o pipefail
 
-echo "Building stand-alone bvpixel..."
+echo "Building stand-alone bvpixel"
 
-#gem install xcpretty --no-ri --no-rdoc
+cd "$(dirname "$0")"
 
-TESTDIR="$(cd $(dirname $0); pwd)"
-cd $TESTDIR
-
-xcodebuild build -project "${TESTDIR}/bvpixel.xcodeproj" -scheme bvpixel -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 6,OS=latest'
+xcodebuild build -project ./bvpixel.xcodeproj -scheme bvpixel -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 7,OS=latest'

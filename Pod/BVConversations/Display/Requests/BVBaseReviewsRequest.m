@@ -81,7 +81,7 @@
     [self.includes addObject:[BVReviewIncludeTypeUtil toString:include]];
     
     if (include == BVReviewIncludeTypeProducts){
-        [self addAdditionalField:@"Stats" value:@"Reviews"]; // Always include stats when requesting products with reviews
+        [self addCustomDisplayParameter:@"Stats" withValue:@"Reviews"]; // Always include stats when requesting products with reviews
     }
     
     return self;

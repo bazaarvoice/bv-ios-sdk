@@ -32,6 +32,8 @@
         SET_IF_NOT_NULL(_type, [fieldDictionary objectForKey:@"Type"]);
         SET_IF_NOT_NULL(_value, [fieldDictionary objectForKey:@"Value"]);
         
+        _bvFormInputType = [BVFormInputTypeUtil fromString:_type];
+        
         if (!isObjectNilOrNull([fieldDictionary objectForKey:@"MinLength"])){
             _minLength = [NSNumber numberWithInteger:[[fieldDictionary objectForKey:@"MinLength"] integerValue]];
         }

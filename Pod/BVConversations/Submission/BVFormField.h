@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "BVFormFieldOptions.h"
+#import "BVFormInputType.h"
 
 /**
   This model is a single element of a Conversations Submission Form.
@@ -18,6 +19,7 @@
 @interface BVFormField : NSObject
 
 @property NSArray<BVFormFieldOptions *> * _Nonnull options;
+@property BVFormInputType bvFormInputType;
 
 @property NSString * _Nonnull identifier;
 @property NSString * _Nonnull label;

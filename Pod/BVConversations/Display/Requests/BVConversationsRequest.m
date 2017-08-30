@@ -14,7 +14,7 @@
 #import "BVSDKConfiguration.h"
 
 @interface BVConversationsRequest()
-@property (strong, nonatomic) NSMutableArray<BVStringKeyValuePair*>* additionalParams;
+@property (strong, nonatomic) NSMutableArray<BVStringKeyValuePair*>* customQueryParameters;
 @end
 
 @implementation BVConversationsRequest
@@ -31,8 +31,8 @@
     [params addObject:[BVStringKeyValuePair pairWithKey:@"_buildNumber" value:[BVDiagnosticHelpers buildVersionNumber]]];
     [params addObject:[BVStringKeyValuePair pairWithKey:@"_bvIosSdkVersion" value:BV_SDK_VERSION]];
     
-    if (_additionalParams){
-        [params addObjectsFromArray:_additionalParams];
+    if (_customQueryParameters){
+        [params addObjectsFromArray:_customQueryParameters];
     }
 
     return params;
@@ -40,22 +40,22 @@
 }
 
 -(nonnull instancetype)addAdditionalField:(nonnull NSString*)fieldName value:(nonnull NSString*)value{
-    
-    if (fieldName && value){
-        
-        if (!self.additionalParams){
-            self.additionalParams = [NSMutableArray array];
+    return [self addCustomDisplayParameter:fieldName withValue:value];
+}
+
+-(nonnull instancetype)addCustomDisplayParameter:(NSString *)parameter withValue:(NSString *)value {
+    if (parameter && value){
+        if (!self.customQueryParameters){
+            self.customQueryParameters = [NSMutableArray array];
         }
         
-        [_additionalParams addObject:[BVStringKeyValuePair pairWithKey:fieldName value:value]];
-        
+        [_customQueryParameters addObject:[BVStringKeyValuePair pairWithKey:parameter value:value]];
     } else {
         NSAssert(NO, @"illegal use of non-null parameters");
     }
     
     return self;
 }
-
 
 
 -(NSString* _Nonnull)endpoint {
