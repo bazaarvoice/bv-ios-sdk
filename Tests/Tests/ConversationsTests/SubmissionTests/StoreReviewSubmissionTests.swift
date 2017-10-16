@@ -60,8 +60,6 @@ class StoreReviewSubmissionTests: XCTestCase {
         review.addRatingQuestion("HelpfullNess", value: 3)
         review.addRatingQuestion("Inventory", value: 4)
         
-        //review.addPhoto(PhotoUploadTests.createImage()!, withPhotoCaption: "Who let the dogs out of this store!")
-        
         return review
     }
     

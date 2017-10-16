@@ -42,6 +42,7 @@
 		15BE4D261E55F03200C12B57 /* BVCurationsUICollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 870F133E1E490B5200D46BE6 /* BVCurationsUICollectionView.m */; };
 		15D4F83B1DF5D5F800E6B30D /* testNotificationProductConfig.json in Resources */ = {isa = PBXBuildFile; fileRef = 15D4F83A1DF5D5F800E6B30D /* testNotificationProductConfig.json */; };
 		15D4F83F1DF5EC3C00E6B30D /* ph.png in Resources */ = {isa = PBXBuildFile; fileRef = 15D4F83E1DF5EC3C00E6B30D /* ph.png */; };
+		5F140C5D1F9553FE00905828 /* skelly_android.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5F140C5C1F9553FE00905828 /* skelly_android.jpg */; };
 		5F51EA4D1F575659002FA8FD /* BVFormInputType.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F51EA4C1F575659002FA8FD /* BVFormInputType.m */; };
 		5F51EA501F5F2BB4002FA8FD /* BVFormInputType.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F51EA4B1F575578002FA8FD /* BVFormInputType.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5F608FF41F6AF3E100E197CE /* BVSubmissionErrorCode.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F608FF31F6AD8F200E197CE /* BVSubmissionErrorCode.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -552,6 +553,7 @@
 		15DA53A81E4D05A70028402D /* BVSDKConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVSDKConfiguration.m; sourceTree = "<group>"; };
 		3462CE8D50CC0B93A458E62C /* Pods-BVSDKTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BVSDKTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BVSDKTests/Pods-BVSDKTests.debug.xcconfig"; sourceTree = "<group>"; };
 		387BAAAEE154D9B41D414692 /* Pods-BVSDK-BVSDKTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BVSDK-BVSDKTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-BVSDK-BVSDKTests/Pods-BVSDK-BVSDKTests.release.xcconfig"; sourceTree = "<group>"; };
+		5F140C5C1F9553FE00905828 /* skelly_android.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = skelly_android.jpg; sourceTree = "<group>"; };
 		5F51EA4B1F575578002FA8FD /* BVFormInputType.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BVFormInputType.h; sourceTree = "<group>"; };
 		5F51EA4C1F575659002FA8FD /* BVFormInputType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVFormInputType.m; sourceTree = "<group>"; };
 		5F608FF31F6AD8F200E197CE /* BVSubmissionErrorCode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BVSubmissionErrorCode.h; sourceTree = "<group>"; };
@@ -2044,6 +2046,7 @@
 		87F2DE021DAD945D00FB43F3 /* SubmissionTests */ = {
 			isa = PBXGroup;
 			children = (
+				5F140C5C1F9553FE00905828 /* skelly_android.jpg */,
 				87F2DE031DAD945D00FB43F3 /* AnswerSubmissionTests.swift */,
 				87EDAFC81EDDC6A900FA07C0 /* CommentSubmissionTests.swift */,
 				87F2DE041DAD945D00FB43F3 /* PhotoUploadTests.swift */,
@@ -2431,6 +2434,7 @@
 				87F2DDC51DAD698500FB43F3 /* userProfile1.json in Resources */,
 				87F2DDB11DAD698500FB43F3 /* testShowReview.json in Resources */,
 				87F2DDB91DAD698500FB43F3 /* curationsFeedTest1.json in Resources */,
+				5F140C5D1F9553FE00905828 /* skelly_android.jpg in Resources */,
 				87F2DDA71DAD698500FB43F3 /* testShowCommentStory.json in Resources */,
 				8777BB451EBA4F26008C4715 /* testSyndicationSource.json in Resources */,
 				87F2DD981DAD698500FB43F3 /* conversationsGenericPostResponse.json in Resources */,

@@ -22,6 +22,7 @@ typedef NS_ENUM(NSInteger, BVPhotoContentType) {
 
 @property (readonly) UIImage* _Nonnull photo;
 @property (readonly) NSString* _Nullable photoCaption;
+@property (readwrite) int maxImageBytes; // Set by BVUploadablePhoto itself, but is here for testing
 
 -(nonnull instancetype)initWithPhoto:(nonnull UIImage*)photo photoCaption:(nullable NSString*)caption;
 -(nonnull instancetype) __unavailable init;

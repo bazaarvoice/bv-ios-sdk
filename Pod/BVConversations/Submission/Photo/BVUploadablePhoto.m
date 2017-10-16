@@ -12,6 +12,8 @@
 #import "BVAnalyticsManager.h"
 #import "BVSDKConfiguration.h"
 
+static int const MAX_IMAGE_BYTES = 5 * 1024 * 1024; // BV API max is 5MB
+
 @interface BVUploadablePhoto()
 
 @property (readwrite) UIImage* _Nonnull photo;
@@ -26,6 +28,7 @@
     if(self){
         self.photo = photo;
         self.photoCaption = caption;
+        self.maxImageBytes = MAX_IMAGE_BYTES;
     }
     return self;
 }
@@ -57,7 +60,10 @@
     [self appendKey:@"apiversion" value:@"5.4" toMultipartData:body withBoundary:boundary];
     [self appendKey:@"passkey" value:[self getPasskey] toMultipartData:body withBoundary:boundary];
     [self appendKey:@"contenttype" value:[self BVPhotoContentTypeToString:type] toMultipartData:body withBoundary:boundary];
-    [self appendKey:@"photo" data: UIImagePNGRepresentation(self.photo) toMultipartData:body withBoundary:boundary];
+    
+    NSData *nsData = [self nsDataForPhoto];
+    
+    [self appendKey:@"photo" data: nsData toMultipartData:body withBoundary:boundary];
     
     // close form
     [body appendData:[[NSString stringWithFormat:@"--%@--\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
@@ -66,7 +72,7 @@
     
     NSURLSession* session = [NSURLSession sharedSession];
     
-    [[BVLogger sharedLogger] verbose:[NSString stringWithFormat:@"POST: %@\n with BODY: %@", urlString, body]];
+    [[BVLogger sharedLogger] verbose:[NSString stringWithFormat:@"POST: %@\n", urlString]];
     
     NSURLSessionDataTask *sessionTask = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable httpError) {
         
@@ -94,7 +100,7 @@
             }
             else if(statusCode >= 300){
                 // HTTP status code indicates failure
-                NSError* statusError = [NSError errorWithDomain:@"com.bazaarvoice.bvsdk" code:BV_ERROR_NETWORK_FAILED userInfo:@{NSLocalizedDescriptionKey:@"Photo upload failed."}];
+                NSError* statusError = [NSError errorWithDomain:@"com.bazaarvoice.bvsdk" code:BV_ERROR_NETWORK_FAILED userInfo:@{NSLocalizedDescriptionKey:@"Photo upload failed. Error code: BV_ERROR_NETWORK_FAILED"}];
                 [[BVLogger sharedLogger] printError:statusError];
                 failure(@[statusError]);
             }
@@ -111,14 +117,14 @@
             }
             else {
                 // Unknown error -- ex: api responded successfully but did not have photo URL
-                NSError* error = [NSError errorWithDomain:@"com.bazaarvoice.bvsdk" code:BV_ERROR_PARSING_FAILED userInfo:@{NSLocalizedDescriptionKey:@"Photo upload failed."}];
+                NSError* error = [NSError errorWithDomain:@"com.bazaarvoice.bvsdk" code:BV_ERROR_PARSING_FAILED userInfo:@{NSLocalizedDescriptionKey:@"Photo upload failed. Error code: BV_ERROR_PARSING_FAILED"}];
                 [[BVLogger sharedLogger] printError:error];
                 failure(@[error]);
             }
             
         }
         @catch (NSException *exception) {
-            NSError* error = [NSError errorWithDomain:BVErrDomain code:BV_ERROR_UNKNOWN userInfo:@{NSLocalizedDescriptionKey:@"An unknown parsing error occurred."}];
+            NSError* error = [NSError errorWithDomain:BVErrDomain code:BV_ERROR_UNKNOWN userInfo:@{NSLocalizedDescriptionKey:@"An unknown parsing error occurred. Error code: BV_ERROR_UNKNOWN"}];
             [[BVLogger sharedLogger] printError:error];
             failure(@[error]);
         }
@@ -129,6 +135,35 @@
     // start photo upload
     [sessionTask resume];
 
+}
+
+- (nonnull NSData*) nsDataForPhoto {
+    NSData *nsData = UIImageJPEGRepresentation(self.photo, 1.0);
+    if (nsData.length > self.maxImageBytes) {
+        nsData = UIImageJPEGRepresentation(self.photo, 0.9);
+        NSUInteger imageByteCount = nsData.length;
+        if (imageByteCount > self.maxImageBytes) {
+            UIImage *workingImage = self.photo;
+            
+            while (imageByteCount > self.maxImageBytes) {
+                CGSize oldSize = workingImage.size;
+                CGSize newSize = CGSizeMake(oldSize.width / 2, oldSize.height / 2);
+                workingImage = [self resize:workingImage withTargetSize:newSize];
+                nsData = UIImageJPEGRepresentation(workingImage, 0.9);
+                imageByteCount = nsData.length;
+            }
+        }
+    }
+    return nsData;
+}
+
+- (nonnull UIImage*)resize:(UIImage *)image withTargetSize:(CGSize)targetSize {
+    CGRect rect = CGRectMake(0, 0, targetSize.width, targetSize.height);
+    UIGraphicsBeginImageContextWithOptions(targetSize, false, 1.0);
+    [image drawInRect:rect];
+    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return newImage;
 }
 
 

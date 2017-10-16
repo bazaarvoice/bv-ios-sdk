@@ -169,10 +169,8 @@
             }
             
         } failure:^(NSArray<NSError *> * _Nonnull errors) {
-            
             if (!self.failureCalled) {
                 self.failureCalled = true; // only call failure block once, if multiple photos failed.
-                
                 [[BVLogger sharedLogger] printErrors:errors];
                 failure(errors);
             }
