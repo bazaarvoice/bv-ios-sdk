@@ -21,7 +21,6 @@ class ReviewSubmissionTests: XCTestCase {
     }
     
     func testSubmitReviewWithPhoto() {
-        
         let expectation = self.expectation(description: "testSubmitReviewWithPhoto")
         
         let review = self.fillOutReview(.submit)
@@ -29,6 +28,11 @@ class ReviewSubmissionTests: XCTestCase {
             XCTAssertTrue(reviewSubmission.formFields?.keys.count == 0)
             expectation.fulfill()
         }, failure: { (errors) in
+            print(errors.description)
+            for error in errors {
+                guard let nsError = error as? NSError else { continue }
+                print(nsError.userInfo["BVFieldErrorMessage"])
+            }
             XCTFail()
             expectation.fulfill()
         })
@@ -55,7 +59,7 @@ class ReviewSubmissionTests: XCTestCase {
     }
     
     let VIDEO_URL = "https://www.youtube.com/watch?v=oHg5SJYRHA0"
-    let VIDEO_CAPTION = "yo dawg"
+    let VIDEO_CAPTION = "Very videogenic"
     
     func testPreviewReviewWithVideo() {
         
@@ -105,8 +109,8 @@ class ReviewSubmissionTests: XCTestCase {
         review.addRatingQuestion("Fit", value: 3)
         review.addCustomSubmissionParameter("_foo", withValue: "bar")
         
-        if let image = PhotoUploadTests.createImage() {
-            review.addPhoto(image, withPhotoCaption: "Yo dawg")
+        if let image = PhotoUploadTests.createPNG() {
+            review.addPhoto(image, withPhotoCaption: "Very photogenic")
         }
         
         return review

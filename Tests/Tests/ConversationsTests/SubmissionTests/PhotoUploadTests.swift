@@ -20,12 +20,11 @@ class PhotoUploadTests: XCTestCase {
     }
 
     
-    func testUploadablePhoto() {
-        
+    func testUploadablePhotoPNGSuccess() {
         let expectation = self.expectation(description: "")
         
-        if let image = PhotoUploadTests.createImage() {
-            let photo = BVUploadablePhoto(photo: image, photoCaption: "Yo dawhhhh")
+        if let image = PhotoUploadTests.createPNG() {
+            let photo = BVUploadablePhoto(photo: image, photoCaption: "Very photogenic")
             // upload photo, make sure it returns a non-empty URL
             photo.upload(for: .review, success: { (photoUrl) in
                 XCTAssertTrue(photoUrl.characters.count > 0)
@@ -43,9 +42,30 @@ class PhotoUploadTests: XCTestCase {
         waitForExpectations(timeout: 10, handler: nil)
     }
     
+    func testUploadablePhotoJPGTooLargeSuccess() {
+        let expectation = self.expectation(description: "")
+        
+        if let image = PhotoUploadTests.createJPG() {
+            let photo = BVUploadablePhoto(photo: image, photoCaption: "Very photogenic")
+            // upload photo, make sure it returns a non-empty URL
+            photo.upload(for: .review, success: { (photoUrl) in
+                XCTAssertTrue(photoUrl.characters.count > 0)
+                expectation.fulfill()
+            }) { (errors) in
+                XCTFail()
+                expectation.fulfill()
+            }
+            
+        } else {
+            expectation.fulfill()
+            XCTFail()
+        }
+        
+        waitForExpectations(timeout: 30, handler: nil)
+    }
     
     func testUploadablePhotoFailure() {
-        let photo = BVUploadablePhoto(photo: UIImage(), photoCaption: "Yo dawhhhh")
+        let photo = BVUploadablePhoto(photo: UIImage(), photoCaption: "Very photogenic")
         
         // upload photo, make sure it returns a non-empty URL
         let expectation = self.expectation(description: "")
@@ -65,11 +85,11 @@ class PhotoUploadTests: XCTestCase {
         waitForExpectations(timeout: 10, handler: nil)
     }
     
-    
-    class func createImage() -> UIImage? {
-        
+    class func createPNG() -> UIImage? {
         return UIImage(named: "ph.png", in: Bundle(for: PhotoUploadTests.self), compatibleWith: nil)
-        
     }
     
+    class func createJPG() -> UIImage? {
+        return UIImage(named: "skelly_android.jpg", in: Bundle(for: PhotoUploadTests.self), compatibleWith: nil)
+    }
 }
