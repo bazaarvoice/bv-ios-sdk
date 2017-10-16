@@ -65,8 +65,8 @@ class AnswerSubmissionTests: XCTestCase {
         answer.agreedToTermsAndConditions = true
         answer.action = action
         
-        if let image = PhotoUploadTests.createImage() {
-            answer.addPhoto(image, withPhotoCaption: "Yo dawg")
+        if let image = PhotoUploadTests.createPNG() {
+            answer.addPhoto(image, withPhotoCaption: "Very photogenic")
         }
         
         return answer

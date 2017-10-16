@@ -43,10 +43,6 @@ class CommentSubmissionTests: XCTestCase {
         commentRequest.userEmail = "developer@bazaarvoice.com"
         commentRequest.agreedToTermsAndConditions = true
         
-//        if let image = PhotoUploadTests.createImage() {
-//            commentRequest.addPhoto(image, withPhotoCaption: "Yo dawg")
-//        }
-        
         commentRequest.submit({ (commentSubmission) in
             
             XCTAssertTrue(commentSubmission.formFields?.keys.count == 11)
