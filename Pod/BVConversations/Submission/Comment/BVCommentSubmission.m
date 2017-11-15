@@ -145,7 +145,7 @@
             }
             else if(statusCode >= 300){
                 // HTTP status code indicates failure
-                NSError* statusError = [NSError errorWithDomain:@"com.bazaarvoice.bvsdk" code:BV_ERROR_NETWORK_FAILED userInfo:@{NSLocalizedDescriptionKey:@"Photo upload failed."}];
+                NSError* statusError = [NSError errorWithDomain:BVErrDomain code:BV_ERROR_NETWORK_FAILED userInfo:@{NSLocalizedDescriptionKey:@"Photo upload failed."}];
                 [self sendError:statusError failureCallback:failure];
             }
             else if (jsonParsingError) {

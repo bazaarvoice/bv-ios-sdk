@@ -100,7 +100,7 @@ static int const MAX_IMAGE_BYTES = 5 * 1024 * 1024; // BV API max is 5MB
             }
             else if(statusCode >= 300){
                 // HTTP status code indicates failure
-                NSError* statusError = [NSError errorWithDomain:@"com.bazaarvoice.bvsdk" code:BV_ERROR_NETWORK_FAILED userInfo:@{NSLocalizedDescriptionKey:@"Photo upload failed. Error code: BV_ERROR_NETWORK_FAILED"}];
+                NSError* statusError = [NSError errorWithDomain:BVErrDomain code:BV_ERROR_NETWORK_FAILED userInfo:@{NSLocalizedDescriptionKey:@"Photo upload failed. Error code: BV_ERROR_NETWORK_FAILED"}];
                 [[BVLogger sharedLogger] printError:statusError];
                 failure(@[statusError]);
             }
@@ -117,7 +117,7 @@ static int const MAX_IMAGE_BYTES = 5 * 1024 * 1024; // BV API max is 5MB
             }
             else {
                 // Unknown error -- ex: api responded successfully but did not have photo URL
-                NSError* error = [NSError errorWithDomain:@"com.bazaarvoice.bvsdk" code:BV_ERROR_PARSING_FAILED userInfo:@{NSLocalizedDescriptionKey:@"Photo upload failed. Error code: BV_ERROR_PARSING_FAILED"}];
+                NSError* error = [NSError errorWithDomain:BVErrDomain code:BV_ERROR_PARSING_FAILED userInfo:@{NSLocalizedDescriptionKey:@"Photo upload failed. Error code: BV_ERROR_PARSING_FAILED"}];
                 [[BVLogger sharedLogger] printError:error];
                 failure(@[error]);
             }
