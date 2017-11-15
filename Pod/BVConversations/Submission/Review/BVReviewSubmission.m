@@ -219,7 +219,7 @@
             }
             else if(statusCode >= 300){
                 // HTTP status code indicates failure
-                NSError* statusError = [NSError errorWithDomain:@"com.bazaarvoice.bvsdk" code:BV_ERROR_NETWORK_FAILED userInfo:@{NSLocalizedDescriptionKey:@"Review upload failed."}];
+                NSError* statusError = [NSError errorWithDomain:BVErrDomain code:BV_ERROR_NETWORK_FAILED userInfo:@{NSLocalizedDescriptionKey:@"Review upload failed."}];
                 [[BVLogger sharedLogger] printError:statusError];
                 dispatch_async(dispatch_get_main_queue(), ^{
                     failure(@[statusError]);
