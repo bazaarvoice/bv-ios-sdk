@@ -27,7 +27,7 @@ class PhotoUploadTests: XCTestCase {
             let photo = BVUploadablePhoto(photo: image, photoCaption: "Very photogenic")
             // upload photo, make sure it returns a non-empty URL
             photo.upload(for: .review, success: { (photoUrl) in
-                XCTAssertTrue(photoUrl.characters.count > 0)
+                XCTAssertTrue(photoUrl.count > 0)
                 expectation.fulfill()
             }) { (errors) in
                 XCTFail()
@@ -49,7 +49,7 @@ class PhotoUploadTests: XCTestCase {
             let photo = BVUploadablePhoto(photo: image, photoCaption: "Very photogenic")
             // upload photo, make sure it returns a non-empty URL
             photo.upload(for: .review, success: { (photoUrl) in
-                XCTAssertTrue(photoUrl.characters.count > 0)
+                XCTAssertTrue(photoUrl.count > 0)
                 expectation.fulfill()
             }) { (errors) in
                 XCTFail()

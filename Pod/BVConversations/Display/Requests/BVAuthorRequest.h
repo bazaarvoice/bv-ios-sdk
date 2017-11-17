@@ -28,14 +28,14 @@
 /// The type of submitted content to include. Call once for each type of Reviews, Questions, Answers.
 - (nonnull instancetype)includeContent:(BVAuthorContentType)contentType limit:(int)limit;
 
-/// When Reviews are included in the respont, optinally add one or more sort parameters.
+/// When Reviews are included in the response, optinally add one or more sort parameters.
 - (nonnull instancetype)sortIncludedReviews:(BVSortOptionReviews)option order:(BVSortOrder)order;
-/// When Questions are included in the respont, optinally add one or more sort parameters.
+/// When Questions are included in the response, optinally add one or more sort parameters.
 - (nonnull instancetype)sortIncludedQuestions:(BVSortOptionQuestions)option order:(BVSortOrder)order;
-/// When Answers are included in the respont, optinally add one or more sort parameters.
+/// When Answers are included in the response, optinally add one or more sort parameters.
 - (nonnull instancetype)sortIncludedAnswers:(BVSortOptionAnswers)option order:(BVSortOrder)order;
 
-/// Make an asynch http request to fethre the Author's profile data. See the BVAuthorResponse model for availble fields.
+/// Make an asynch http request to fetch the Author's profile data. See the BVAuthorResponse model for available fields.
 - (void)load:(void (^ _Nonnull)(BVAuthorResponse * _Nonnull response))success failure:(ConversationsFailureHandler _Nonnull)failure;
 
 // internal use

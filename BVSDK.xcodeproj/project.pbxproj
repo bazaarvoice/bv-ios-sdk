@@ -18,6 +18,17 @@
 			name = "BVSDK-Universal";
 			productName = "BVSDK-Universal";
 		};
+		B561DE1C1FC3838F0019BE89 /* CommonCryptoModuleMap */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = B561DE1D1FC3838F0019BE89 /* Build configuration list for PBXAggregateTarget "CommonCryptoModuleMap" */;
+			buildPhases = (
+				B561DE201FC383D20019BE89 /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = CommonCryptoModuleMap;
+			productName = CommonCryptoModuleMap;
+		};
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
@@ -519,6 +530,15 @@
 		87F2DE171DAD945D00FB43F3 /* StoreReviewSubmissionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F2DE071DAD945D00FB43F3 /* StoreReviewSubmissionTests.swift */; };
 		87FEC8CA1DB1145D007DD44E /* integrate-dynamic-framework.sh in Resources */ = {isa = PBXBuildFile; fileRef = 87FEC8C91DB1145D007DD44E /* integrate-dynamic-framework.sh */; };
 		8D1764414ABEFA876BE81636 /* Pods_BVSDKTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7892A8713545E74147C58ECB /* Pods_BVSDKTests.framework */; };
+		B56E1F921FBF86360025D5B4 /* UASSubmissionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56E1F911FBF86360025D5B4 /* UASSubmissionTests.swift */; };
+		B575C3861FBDFD6F000F890B /* BVUASSubmission.h in Headers */ = {isa = PBXBuildFile; fileRef = B575C3841FBDFD6F000F890B /* BVUASSubmission.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B575C3871FBDFD6F000F890B /* BVUASSubmission.m in Sources */ = {isa = PBXBuildFile; fileRef = B575C3851FBDFD6F000F890B /* BVUASSubmission.m */; };
+		B575C38A1FBE02FE000F890B /* BVUASSubmissionErrorResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = B575C3881FBE02FE000F890B /* BVUASSubmissionErrorResponse.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B575C38B1FBE02FE000F890B /* BVUASSubmissionErrorResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = B575C3891FBE02FE000F890B /* BVUASSubmissionErrorResponse.m */; };
+		B575C38E1FBE1A4F000F890B /* BVUASSubmissionResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = B575C38C1FBE1A4F000F890B /* BVUASSubmissionResponse.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B575C38F1FBE1A4F000F890B /* BVUASSubmissionResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = B575C38D1FBE1A4F000F890B /* BVUASSubmissionResponse.m */; };
+		B575C3921FBE2479000F890B /* BVSubmittedUAS.h in Headers */ = {isa = PBXBuildFile; fileRef = B575C3901FBE2479000F890B /* BVSubmittedUAS.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B575C3931FBE2479000F890B /* BVSubmittedUAS.m in Sources */ = {isa = PBXBuildFile; fileRef = B575C3911FBE2479000F890B /* BVSubmittedUAS.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -528,6 +548,20 @@
 			proxyType = 1;
 			remoteGlobalIDString = 87F2DAA61DAD579D00FB43F3;
 			remoteInfo = BVSDK;
+		};
+		B561DE211FC384340019BE89 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 87F2DA9E1DAD579D00FB43F3 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B561DE1C1FC3838F0019BE89;
+			remoteInfo = CommonCryptoModuleMap;
+		};
+		B561DE231FCC82770019BE89 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 87F2DA9E1DAD579D00FB43F3 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 87F2DAAF1DAD579D00FB43F3;
+			remoteInfo = BVSDKTests;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -1045,6 +1079,15 @@
 		87F2DE071DAD945D00FB43F3 /* StoreReviewSubmissionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreReviewSubmissionTests.swift; sourceTree = "<group>"; };
 		87FEC8C91DB1145D007DD44E /* integrate-dynamic-framework.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = "integrate-dynamic-framework.sh"; sourceTree = "<group>"; };
 		89529D79D81B13BA86882542 /* Pods-BVSDKTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BVSDKTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-BVSDKTests/Pods-BVSDKTests.release.xcconfig"; sourceTree = "<group>"; };
+		B56E1F911FBF86360025D5B4 /* UASSubmissionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UASSubmissionTests.swift; sourceTree = "<group>"; };
+		B575C3841FBDFD6F000F890B /* BVUASSubmission.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = BVUASSubmission.h; path = ../Auth/BVUASSubmission.h; sourceTree = "<group>"; };
+		B575C3851FBDFD6F000F890B /* BVUASSubmission.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = BVUASSubmission.m; path = ../Auth/BVUASSubmission.m; sourceTree = "<group>"; };
+		B575C3881FBE02FE000F890B /* BVUASSubmissionErrorResponse.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = BVUASSubmissionErrorResponse.h; path = ../Auth/BVUASSubmissionErrorResponse.h; sourceTree = "<group>"; };
+		B575C3891FBE02FE000F890B /* BVUASSubmissionErrorResponse.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = BVUASSubmissionErrorResponse.m; path = ../Auth/BVUASSubmissionErrorResponse.m; sourceTree = "<group>"; };
+		B575C38C1FBE1A4F000F890B /* BVUASSubmissionResponse.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = BVUASSubmissionResponse.h; path = ../Auth/BVUASSubmissionResponse.h; sourceTree = "<group>"; };
+		B575C38D1FBE1A4F000F890B /* BVUASSubmissionResponse.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = BVUASSubmissionResponse.m; path = ../Auth/BVUASSubmissionResponse.m; sourceTree = "<group>"; };
+		B575C3901FBE2479000F890B /* BVSubmittedUAS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = BVSubmittedUAS.h; path = ../Auth/BVSubmittedUAS.h; sourceTree = "<group>"; };
+		B575C3911FBE2479000F890B /* BVSubmittedUAS.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = BVSubmittedUAS.m; path = ../Auth/BVSubmittedUAS.m; sourceTree = "<group>"; };
 		EC098EFAFB725736F0751BA0 /* libPods-BVSDK.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BVSDK.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -1092,8 +1135,9 @@
 				870F13401E490B5200D46BE6 /* BVCurationsUICollectionViewCell.m */,
 				1544B36C1E37D4F7000B0427 /* SocialMediaIcons */,
 			);
-			path = BVCurationsUI;
-			sourceTree = "<group>";
+			name = BVCurationsUI;
+			path = Pod/BVCurationsUI;
+			sourceTree = SOURCE_ROOT;
 		};
 		87252B0B1EF46FF40011C845 /* Video */ = {
 			isa = PBXGroup;
@@ -1401,7 +1445,6 @@
 				87F2DB0F1DAD585E00FB43F3 /* BVCommaUtil.m */,
 				87F2DB101DAD585E00FB43F3 /* BVStoreIncludeContentType.h */,
 				87F2DB111DAD585E00FB43F3 /* BVStoreIncludeContentType.m */,
-				87F2DB121DAD585E00FB43F3 /* Model */,
 				87C5FF641E393ED3004EE6E8 /* BVAuthorContentType.h */,
 				87C5FF651E393ED3004EE6E8 /* BVAuthorContentType.m */,
 				87C5FF681E394C73004EE6E8 /* BVAuthorInclude.h */,
@@ -1413,6 +1456,7 @@
 				87F2DB5D1DAD585E00FB43F3 /* PDPContentType.h */,
 				87F2DB5E1DAD585E00FB43F3 /* PDPContentType.m */,
 				87F2DB601DAD585E00FB43F3 /* PDPInclude.m */,
+				87F2DB121DAD585E00FB43F3 /* Model */,
 				87F2DB611DAD585E00FB43F3 /* Requests */,
 				87F2DB711DAD585E00FB43F3 /* Sorting & Filtering */,
 			);
@@ -1615,16 +1659,18 @@
 		87F2DB881DAD585E00FB43F3 /* Submission */ = {
 			isa = PBXGroup;
 			children = (
+				877AD2921EE1D134006C7070 /* BVBaseUGCSubmission.h */,
+				877AD2931EE1D134006C7070 /* BVBaseUGCSubmission.m */,
 				87F2DB921DAD585E00FB43F3 /* BVFieldError.h */,
 				87F2DB931DAD585E00FB43F3 /* BVFieldError.m */,
 				87F2DB941DAD585E00FB43F3 /* BVFormField.h */,
 				87F2DB951DAD585E00FB43F3 /* BVFormField.m */,
 				87F2DB961DAD585E00FB43F3 /* BVFormFieldOptions.h */,
 				87F2DB971DAD585E00FB43F3 /* BVFormFieldOptions.m */,
+				5F51EA4B1F575578002FA8FD /* BVFormInputType.h */,
+				5F51EA4C1F575659002FA8FD /* BVFormInputType.m */,
 				87F2DB981DAD585E00FB43F3 /* BVSubmission.h */,
 				87F2DB991DAD585E00FB43F3 /* BVSubmission.m */,
-				877AD2921EE1D134006C7070 /* BVBaseUGCSubmission.h */,
-				877AD2931EE1D134006C7070 /* BVBaseUGCSubmission.m */,
 				87F2DB9A1DAD585E00FB43F3 /* BVSubmissionAction.h */,
 				87F2DB9B1DAD585E00FB43F3 /* BVSubmissionAction.m */,
 				5F608FF31F6AD8F200E197CE /* BVSubmissionErrorCode.h */,
@@ -1632,6 +1678,9 @@
 				87F2DB9D1DAD585E00FB43F3 /* BVSubmissionErrorResponse.m */,
 				87F2DB9E1DAD585E00FB43F3 /* BVSubmissionResponse.h */,
 				87F2DB9F1DAD585E00FB43F3 /* BVSubmissionResponse.m */,
+				5F6201E01F70399200454D77 /* NSError+BVSubmissionErrorCodeParser.h */,
+				5F6201E21F7039EA00454D77 /* NSError+BVSubmissionErrorCodeParser.m */,
+				B575C37B1FBDEF07000F890B /* Auth */,
 				87F2DB891DAD585E00FB43F3 /* Answer */,
 				87EDAFCE1EDDCEAD00FA07C0 /* Comment */,
 				87A02B5D1E0963020002701B /* Feedback */,
@@ -1639,10 +1688,6 @@
 				87F2DBA61DAD585E00FB43F3 /* Question */,
 				87F2DBAF1DAD585E00FB43F3 /* Review */,
 				87252B0B1EF46FF40011C845 /* Video */,
-				5F51EA4B1F575578002FA8FD /* BVFormInputType.h */,
-				5F51EA4C1F575659002FA8FD /* BVFormInputType.m */,
-				5F6201E01F70399200454D77 /* NSError+BVSubmissionErrorCodeParser.h */,
-				5F6201E21F7039EA00454D77 /* NSError+BVSubmissionErrorCodeParser.m */,
 			);
 			path = Submission;
 			sourceTree = "<group>";
@@ -2047,14 +2092,15 @@
 			isa = PBXGroup;
 			children = (
 				5F140C5C1F9553FE00905828 /* skelly_android.jpg */,
+				15D4F83E1DF5EC3C00E6B30D /* ph.png */,
 				87F2DE031DAD945D00FB43F3 /* AnswerSubmissionTests.swift */,
 				87EDAFC81EDDC6A900FA07C0 /* CommentSubmissionTests.swift */,
+				87A02B5E1E0963710002701B /* FeedbackSubmissionTests.swift */,
 				87F2DE041DAD945D00FB43F3 /* PhotoUploadTests.swift */,
-				15D4F83E1DF5EC3C00E6B30D /* ph.png */,
 				87F2DE051DAD945D00FB43F3 /* QuestionSubmissionTests.swift */,
 				87F2DE061DAD945D00FB43F3 /* ReviewSubmissionTests.swift */,
 				87F2DE071DAD945D00FB43F3 /* StoreReviewSubmissionTests.swift */,
-				87A02B5E1E0963710002701B /* FeedbackSubmissionTests.swift */,
+				B56E1F911FBF86360025D5B4 /* UASSubmissionTests.swift */,
 			);
 			path = SubmissionTests;
 			sourceTree = "<group>";
@@ -2078,6 +2124,22 @@
 				387BAAAEE154D9B41D414692 /* Pods-BVSDK-BVSDKTests.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		B575C37B1FBDEF07000F890B /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				B575C3841FBDFD6F000F890B /* BVUASSubmission.h */,
+				B575C3851FBDFD6F000F890B /* BVUASSubmission.m */,
+				B575C3881FBE02FE000F890B /* BVUASSubmissionErrorResponse.h */,
+				B575C3891FBE02FE000F890B /* BVUASSubmissionErrorResponse.m */,
+				B575C38C1FBE1A4F000F890B /* BVUASSubmissionResponse.h */,
+				B575C38D1FBE1A4F000F890B /* BVUASSubmissionResponse.m */,
+				B575C3901FBE2479000F890B /* BVSubmittedUAS.h */,
+				B575C3911FBE2479000F890B /* BVSubmittedUAS.m */,
+			);
+			name = Auth;
+			path = "New Group";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -2289,6 +2351,10 @@
 				87252B091EF46FA10011C845 /* BVUploadableYouTubeVideo.h in Headers */,
 				87EDAFCC1EDDC9F400FA07C0 /* BVCommentSubmission.h in Headers */,
 				5F6201E11F70399200454D77 /* NSError+BVSubmissionErrorCodeParser.h in Headers */,
+				B575C3861FBDFD6F000F890B /* BVUASSubmission.h in Headers */,
+				B575C3921FBE2479000F890B /* BVSubmittedUAS.h in Headers */,
+				B575C38A1FBE02FE000F890B /* BVUASSubmissionErrorResponse.h in Headers */,
+				B575C38E1FBE1A4F000F890B /* BVUASSubmissionResponse.h in Headers */,
 				5F51EA501F5F2BB4002FA8FD /* BVFormInputType.h in Headers */,
 				5F6201DC1F7030FA00454D77 /* NSError+BVErrorCodeParser.h in Headers */,
 				5F608FF41F6AF3E100E197CE /* BVSubmissionErrorCode.h in Headers */,
@@ -2310,6 +2376,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 87F2DABB1DAD579D00FB43F3 /* Build configuration list for PBXNativeTarget "BVSDK" */;
 			buildPhases = (
+				B561DE251FCC82900019BE89 /* ShellScript */,
 				87F2DAA21DAD579D00FB43F3 /* Sources */,
 				87F2DAA31DAD579D00FB43F3 /* Frameworks */,
 				87F2DAA41DAD579D00FB43F3 /* Headers */,
@@ -2318,6 +2385,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				B561DE241FCC82770019BE89 /* PBXTargetDependency */,
 			);
 			name = BVSDK;
 			productName = BVSDK;
@@ -2338,6 +2406,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				B561DE221FC384340019BE89 /* PBXTargetDependency */,
 				87F2DAB31DAD579D00FB43F3 /* PBXTargetDependency */,
 			);
 			name = BVSDKTests;
@@ -2356,7 +2425,7 @@
 				TargetAttributes = {
 					87F2DAA61DAD579D00FB43F3 = {
 						CreatedOnToolsVersion = 8.0;
-						LastSwiftMigration = 0830;
+						LastSwiftMigration = 0910;
 						ProvisioningStyle = Automatic;
 					};
 					87F2DAAF1DAD579D00FB43F3 = {
@@ -2366,6 +2435,10 @@
 					};
 					87F2DDC71DAD6C6E00FB43F3 = {
 						CreatedOnToolsVersion = 8.0;
+						ProvisioningStyle = Automatic;
+					};
+					B561DE1C1FC3838F0019BE89 = {
+						CreatedOnToolsVersion = 9.1;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -2385,6 +2458,7 @@
 				87F2DAA61DAD579D00FB43F3 /* BVSDK */,
 				87F2DAAF1DAD579D00FB43F3 /* BVSDKTests */,
 				87F2DDC71DAD6C6E00FB43F3 /* BVSDK-Universal */,
+				B561DE1C1FC3838F0019BE89 /* CommonCryptoModuleMap */,
 			);
 		};
 /* End PBXProject section */
@@ -2526,6 +2600,32 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BVSDKTests/Pods-BVSDKTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		B561DE201FC383D20019BE89 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/bash;
+			shellScript = "# This if-statement means we'll only run the main script if the CommonCryptoModuleMap directory doesn't exist\n# Because otherwise the rest of the script causes a full recompile for anything where CommonCrypto is a dependency\n# Do a \"Clean Build Folder\" to remove this directory and trigger the rest of the script to run\nif [ -d \"${BUILT_PRODUCTS_DIR}/CommonCryptoModuleMap\" ]; then\necho \"${BUILT_PRODUCTS_DIR}/CommonCryptoModuleMap directory already exists, so skipping the rest of the script.\"\nexit 0\nfi\n\nmkdir -p \"${BUILT_PRODUCTS_DIR}/CommonCryptoModuleMap\"\ncat <<EOF > \"${BUILT_PRODUCTS_DIR}/CommonCryptoModuleMap/module.modulemap\"\nmodule CommonCrypto [system] {\n    header \"${SDKROOT}/usr/include/CommonCrypto/CommonCrypto.h\"\n    export *\n}\nEOF";
+		};
+		B561DE251FCC82900019BE89 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "TAGS=\"VALIDATE:\"\necho \"searching ${SRCROOT} for ${TAGS}\"\nfind \"${SRCROOT}\" \\( -name \"*.h\" -or -name \"*.m\" -or -name \"*.swift\" \\) -print0 | xargs -0 egrep --with-filename --line-number --only-matching \"($TAGS).*\\$\" | perl -p -e \"s/($TAGS)/ warning: \\$1/\"";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -2598,6 +2698,7 @@
 				87F2DCD01DAD585E00FB43F3 /* BVAnswerSubmissionResponse.m in Sources */,
 				87F2DCC21DAD585E00FB43F3 /* BVSort.m in Sources */,
 				87F2DCE01DAD585E00FB43F3 /* BVSubmissionResponse.m in Sources */,
+				B575C38F1FBE1A4F000F890B /* BVUASSubmissionResponse.m in Sources */,
 				87F2DCD81DAD585E00FB43F3 /* BVFormFieldOptions.m in Sources */,
 				87F2DD301DAD585E00FB43F3 /* BVVisit.m in Sources */,
 				87F2DCAA1DAD585E00FB43F3 /* BVConversationsRequest.m in Sources */,
@@ -2648,6 +2749,7 @@
 				87F2DCDE1DAD585E00FB43F3 /* BVSubmissionErrorResponse.m in Sources */,
 				87F2DC921DAD585E00FB43F3 /* BVVideo.m in Sources */,
 				153974481E6F151500BA52C1 /* BVBaseReviewsRequest.m in Sources */,
+				B575C3871FBDFD6F000F890B /* BVUASSubmission.m in Sources */,
 				87E810E61ECCA0190032C753 /* BVSortOptionsComments.m in Sources */,
 				87F2DCB21DAD585E00FB43F3 /* BVBulkStoreItemsRequest.m in Sources */,
 				87F2DCE41DAD585E00FB43F3 /* BVUploadableStorePhoto.m in Sources */,
@@ -2679,6 +2781,7 @@
 				873DC49A1E7482840080FA03 /* BVPageViewEvent.m in Sources */,
 				87F2DCE81DAD585E00FB43F3 /* BVQuestionSubmissionErrorResponse.m in Sources */,
 				87F2DD401DAD585E00FB43F3 /* BVRecommendationsRequest.m in Sources */,
+				B575C38B1FBE02FE000F890B /* BVUASSubmissionErrorResponse.m in Sources */,
 				87EDAFCD1EDDC9F400FA07C0 /* BVCommentSubmission.m in Sources */,
 				87C5FE9A1E22914C004EE6E8 /* BVStoreNotificationConfigurationLoader.m in Sources */,
 				87F2DC6B1DAD585E00FB43F3 /* BVConversationsInclude.m in Sources */,
@@ -2707,6 +2810,7 @@
 				87F2DC771DAD585E00FB43F3 /* BVModelUtil.m in Sources */,
 				87F2DCBA1DAD585E00FB43F3 /* BVFilterOperator.m in Sources */,
 				87F2DC5D1DAD585E00FB43F3 /* BVBadge.m in Sources */,
+				B575C3931FBE2479000F890B /* BVSubmittedUAS.m in Sources */,
 				87C5FEB71E22A05D004EE6E8 /* BVAuthenticatedUser.m in Sources */,
 				87F2DD081DAD585E00FB43F3 /* BVQuestionsTableView.m in Sources */,
 				87F2DCCA1DAD585E00FB43F3 /* BVSortOptionReviews.m in Sources */,
@@ -2737,6 +2841,7 @@
 				87B6DF9C1ECA3A0F00B75835 /* CommentsDisplayTests.swift in Sources */,
 				87F2DD641DAD5E9400FB43F3 /* BVUserProfileTests.m in Sources */,
 				87F2DE171DAD945D00FB43F3 /* StoreReviewSubmissionTests.swift in Sources */,
+				B56E1F921FBF86360025D5B4 /* UASSubmissionTests.swift in Sources */,
 				87F2DE0C1DAD945D00FB43F3 /* ReviewDisplayTests.swift in Sources */,
 				87F2DE141DAD945D00FB43F3 /* PhotoUploadTests.swift in Sources */,
 				87A9ECBA1E1DA93A00666636 /* BVPINTests.m in Sources */,
@@ -2773,6 +2878,16 @@
 			isa = PBXTargetDependency;
 			target = 87F2DAA61DAD579D00FB43F3 /* BVSDK */;
 			targetProxy = 87F2DAB21DAD579D00FB43F3 /* PBXContainerItemProxy */;
+		};
+		B561DE221FC384340019BE89 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B561DE1C1FC3838F0019BE89 /* CommonCryptoModuleMap */;
+			targetProxy = B561DE211FC384340019BE89 /* PBXContainerItemProxy */;
+		};
+		B561DE241FCC82770019BE89 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 87F2DAAF1DAD579D00FB43F3 /* BVSDKTests */;
+			targetProxy = B561DE231FCC82770019BE89 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -2946,12 +3061,12 @@
 			baseConfigurationReference = 3462CE8D50CC0B93A458E62C /* Pods-BVSDKTests.debug.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = BVSDKTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks ${BUILT_PRODUCTS_DIR}/CommonCryptoModuleMap";
 				PRODUCT_BUNDLE_IDENTIFIER = com.bazaarvoice.bvsdk.BVSDKTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "./BVSDKTests/BVSDKTests-Bridging-Header.h";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -2960,12 +3075,12 @@
 			baseConfigurationReference = 89529D79D81B13BA86882542 /* Pods-BVSDKTests.release.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = BVSDKTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks ${BUILT_PRODUCTS_DIR}/CommonCryptoModuleMap";
 				PRODUCT_BUNDLE_IDENTIFIER = com.bazaarvoice.bvsdk.BVSDKTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "./BVSDKTests/BVSDKTests-Bridging-Header.h";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
@@ -2979,6 +3094,22 @@
 		87F2DDCA1DAD6C6E00FB43F3 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		B561DE1E1FC3838F0019BE89 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		B561DE1F1FC3838F0019BE89 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -3018,6 +3149,15 @@
 			buildConfigurations = (
 				87F2DDC91DAD6C6E00FB43F3 /* Debug */,
 				87F2DDCA1DAD6C6E00FB43F3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B561DE1D1FC3838F0019BE89 /* Build configuration list for PBXAggregateTarget "CommonCryptoModuleMap" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B561DE1E1FC3838F0019BE89 /* Debug */,
+				B561DE1F1FC3838F0019BE89 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

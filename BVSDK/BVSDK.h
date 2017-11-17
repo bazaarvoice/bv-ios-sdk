@@ -99,7 +99,6 @@ FOUNDATION_EXPORT const unsigned char BVSDKVersionString[];
 
 #import <BVSDK/BVAuthorRequest.h>
 #import <BVSDK/BVAuthorInclude.h>
-#import <BVSDK/BVReviewsRequest.h>
 #import <BVSDK/BVBaseReviewsRequest.h>
 #import <BVSDK/BVBaseProductRequest.h>
 #import <BVSDK/BVProductTextSearchRequest.h>
@@ -123,6 +122,12 @@ FOUNDATION_EXPORT const unsigned char BVSDKVersionString[];
 #import <BVSDK/BVCommentSubmissionResponse.h>
 #import <BVSDK/BVSubmittedComment.h>
 #import <BVSDK/BVCommentSubmissionErrorResponse.h>
+
+// Conversations Auth
+#import <BVSDK/BVUASSubmission.h>
+#import <BVSDK/BVUASSubmissionErrorResponse.h>
+#import <BVSDK/BVUASSubmissionResponse.h>
+#import <BVSDK/BVSubmittedUAS.h>
 
 // Curations
 #import <BVSDK/BVCurations.h>
