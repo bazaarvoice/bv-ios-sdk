@@ -95,7 +95,7 @@ class ConversationsStoresDisplayTests: XCTestCase {
         request.includeStatistics(.reviews)
         request.load({ (response) in
             // Success
-            XCTAssertEqual(Int(response.results.count), Int(response.totalResults!))
+            XCTAssertEqual(Int(response.results.count), Int(truncating: response.totalResults!))
 
             for store : BVStore in response.results {
 
@@ -144,7 +144,7 @@ class ConversationsStoresDisplayTests: XCTestCase {
         request.includeStatistics(.reviews)
         request.load({ (response) in
             // Success
-            XCTAssertEqual(Int(response.results.count), Int(response.totalResults!))
+            XCTAssertEqual(Int(response.results.count), Int(truncating: response.totalResults!))
             
             for store : BVStore in response.results {
                 
@@ -191,7 +191,7 @@ class ConversationsStoresDisplayTests: XCTestCase {
         request.includeStatistics(.reviews)
         request.load({ (response) in
             // Success
-            XCTAssertEqual(Int(response.results.count), Int(response.totalResults!))
+            XCTAssertEqual(Int(response.results.count), Int(truncating: response.totalResults!))
         
             expectation.fulfill()
         }) { (error) in

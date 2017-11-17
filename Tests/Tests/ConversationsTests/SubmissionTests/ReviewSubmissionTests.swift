@@ -30,8 +30,8 @@ class ReviewSubmissionTests: XCTestCase {
         }, failure: { (errors) in
             print(errors.description)
             for error in errors {
-                guard let nsError = error as? NSError else { continue }
-                print(nsError.userInfo["BVFieldErrorMessage"])
+                let nsError = error as NSError
+                print(nsError.userInfo["BVFieldErrorMessage"] ?? "")
             }
             XCTFail()
             expectation.fulfill()

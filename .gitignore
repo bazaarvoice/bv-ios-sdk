@@ -18,8 +18,7 @@ profile
 DerivedData
 *.hmap
 *.ipa
-
-BVSDK.framework.zip
+*.xcworkspace
 
 # Bundler
 .bundle
@@ -40,3 +39,6 @@ Output/
 Tests/installation_tests/carthage/Cartfile
 Tests/installation_tests/carthage/Cartfile.resolved
 Tests/installation_tests/carthage/Carthage/*
+
+# BV Specific
+BVSDK.framework.zip
