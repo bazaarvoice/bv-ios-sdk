@@ -8,6 +8,7 @@ import UIKit
 import BVSDK
 import FontAwesomeKit
 import SDWebImage
+
 class NewProductCurationsTableViewCell: UITableViewCell, BVCurationsUICollectionViewDelegate {
     
     @IBOutlet weak var curationsCarousel : BVCurationsUICollectionView!

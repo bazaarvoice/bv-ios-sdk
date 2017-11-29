@@ -35,7 +35,6 @@
 		15BA73971DA6852100EAA1E9 /* StoreRatingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BA73951DA6852100EAA1E9 /* StoreRatingTableViewCell.swift */; };
 		15BA73981DA6852100EAA1E9 /* StoreRatingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 15BA73961DA6852100EAA1E9 /* StoreRatingTableViewCell.xib */; };
 		15BD82081D9D53B600C65ADA /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 15BD82061D9D53B600C65ADA /* MainInterface.storyboard */; };
-		15D4F3361DEE03E600E6B30D /* BVSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15D4F3331DEE03C400E6B30D /* BVSDK.framework */; };
 		15D4F3371DEE040100E6B30D /* MockDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73DD1A061CE021DC00BCF87C /* MockDataManager.swift */; };
 		15D5BEC81D79D10200D34EA0 /* JPSThumbnailAnnotation+Curations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D5BEC71D79D10200D34EA0 /* JPSThumbnailAnnotation+Curations.swift */; };
 		15D5BECA1D7A05E900D34EA0 /* CurationsPhotoMapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 15D5BEC91D7A05E900D34EA0 /* CurationsPhotoMapViewController.xib */; };
@@ -181,9 +180,6 @@
 		878309911CECF4140097FC48 /* RatingsAndReviewsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8783098F1CECF4140097FC48 /* RatingsAndReviewsViewController.xib */; };
 		878309961CEDF4070097FC48 /* AskAQuestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878309941CEDF4070097FC48 /* AskAQuestionViewController.swift */; };
 		878309971CEDF4070097FC48 /* AskAQuestionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 878309951CEDF4070097FC48 /* AskAQuestionViewController.xib */; };
-		878D4C5E1DD66B1500430654 /* BVSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8779DB151DD20C7E00E6CAF5 /* BVSDK.framework */; };
-		878D4C5F1DD66BD400430654 /* BVSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8779DB151DD20C7E00E6CAF5 /* BVSDK.framework */; };
-		878D4C601DD66BD400430654 /* BVSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8779DB151DD20C7E00E6CAF5 /* BVSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8791449A1CF8BAAE00976220 /* revolution_cycles.png in Resources */ = {isa = PBXBuildFile; fileRef = 879144991CF8BAAE00976220 /* revolution_cycles.png */; };
 		8792AB981D91E6140055B519 /* storeBulkFeedWithStatistics.json in Resources */ = {isa = PBXBuildFile; fileRef = 8792AB971D91E6140055B519 /* storeBulkFeedWithStatistics.json */; };
 		879A62931E805DB500F46ECA /* BVBasePIIEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 879A62921E805DB500F46ECA /* BVBasePIIEvent.m */; };
@@ -285,48 +281,6 @@
 			remoteGlobalIDString = 7385D84E1CE3ACD700CA5F5E;
 			remoteInfo = "Curations Custom Post Extension";
 		};
-		8779DB091DD20BAE00E6CAF5 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 8779DB031DD20BAE00E6CAF5 /* BVSDK.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 87F2DAA71DAD579D00FB43F3;
-			remoteInfo = BVSDK;
-		};
-		8779DB0B1DD20BAE00E6CAF5 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 8779DB031DD20BAE00E6CAF5 /* BVSDK.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 87F2DAB01DAD579D00FB43F3;
-			remoteInfo = BVSDKTests;
-		};
-		8779DB141DD20C7E00E6CAF5 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 8779DB0E1DD20C7E00E6CAF5 /* BVSDK.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 87F2DAA71DAD579D00FB43F3;
-			remoteInfo = BVSDK;
-		};
-		8779DB161DD20C7E00E6CAF5 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 8779DB0E1DD20C7E00E6CAF5 /* BVSDK.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 87F2DAB01DAD579D00FB43F3;
-			remoteInfo = BVSDKTests;
-		};
-		8779DB1F1DD20C9800E6CAF5 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 8779DB0E1DD20C7E00E6CAF5 /* BVSDK.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 87F2DAA61DAD579D00FB43F3;
-			remoteInfo = BVSDK;
-		};
-		878D4C611DD66BD400430654 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 8779DB0E1DD20C7E00E6CAF5 /* BVSDK.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 87F2DAA61DAD579D00FB43F3;
-			remoteInfo = BVSDK;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -349,7 +303,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				878D4C601DD66BD400430654 /* BVSDK.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -386,7 +339,6 @@
 		15BD82071D9D53B600C65ADA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
 		15D4F15A1DEDBE2900E6B30D /* BVProductReviewContentExtension-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BVProductReviewContentExtension-Bridging-Header.h"; sourceTree = "<group>"; };
 		15D4F3291DEDE89B00E6B30D /* Curations Custom Post Extension-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Curations Custom Post Extension-Bridging-Header.h"; sourceTree = "<group>"; };
-		15D4F3331DEE03C400E6B30D /* BVSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BVSDK.framework; path = "../../../../Library/Developer/Xcode/DerivedData/BVSDKDemo-atqvdojnloauwvetbqaukrebnvpo/Build/Products/Debug-iphoneuniversal/BVSDK.framework"; sourceTree = "<group>"; };
 		15D5BEC71D79D10200D34EA0 /* JPSThumbnailAnnotation+Curations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "JPSThumbnailAnnotation+Curations.swift"; sourceTree = "<group>"; };
 		15D5BEC91D7A05E900D34EA0 /* CurationsPhotoMapViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CurationsPhotoMapViewController.xib; path = Resources/CurationsPhotoMapViewController.xib; sourceTree = "<group>"; };
 		15D5BECD1D7A0AB500D34EA0 /* minusBtn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = minusBtn.png; sourceTree = "<group>"; };
@@ -404,7 +356,6 @@
 		15EE0E1D1DA553C700FADEE0 /* StoreWriteReviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreWriteReviewViewController.swift; sourceTree = "<group>"; };
 		15EE0E1E1DA553C700FADEE0 /* StoreWriteReviewViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StoreWriteReviewViewController.xib; sourceTree = "<group>"; };
 		1D38BD81035DF0FB5F5D4E5C /* Pods-Curations Custom Post Extension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Curations Custom Post Extension.release.xcconfig"; path = "Pods/Target Support Files/Pods-Curations Custom Post Extension/Pods-Curations Custom Post Extension.release.xcconfig"; sourceTree = "<group>"; };
-		2241824302D6124ADB7FD0DB /* Pods-BVSDKDemoUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BVSDKDemoUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-BVSDKDemoUITests/Pods-BVSDKDemoUITests.release.xcconfig"; sourceTree = "<group>"; };
 		52CFBE9EEE604F1F249F13C6 /* Pods-BVSDKDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BVSDKDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-BVSDKDemo/Pods-BVSDKDemo.release.xcconfig"; sourceTree = "<group>"; };
 		636DE8CB900E4EB79DF875EF /* Pods_BVSDKDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BVSDKDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		730A646B1CE5548400580E9C /* NewProductPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewProductPageViewController.swift; sourceTree = "<group>"; };
@@ -559,8 +510,6 @@
 		8772167B1D3FDAD4007E5C6C /* conversationsReviewsEnduranceCycles_SortHighestRated.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = conversationsReviewsEnduranceCycles_SortHighestRated.json; path = ../../../Tests/Tests/resources/conversations/sortingReviews/conversationsReviewsEnduranceCycles_SortHighestRated.json; sourceTree = "<group>"; };
 		8772167C1D3FDAD4007E5C6C /* conversationsReviewsEnduranceCycles_SortLowestRated.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = conversationsReviewsEnduranceCycles_SortLowestRated.json; path = ../../../Tests/Tests/resources/conversations/sortingReviews/conversationsReviewsEnduranceCycles_SortLowestRated.json; sourceTree = "<group>"; };
 		8772167D1D3FDAD4007E5C6C /* conversationsReviewsEnduranceCycles_SortMostHelpful.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = conversationsReviewsEnduranceCycles_SortMostHelpful.json; path = ../../../Tests/Tests/resources/conversations/sortingReviews/conversationsReviewsEnduranceCycles_SortMostHelpful.json; sourceTree = "<group>"; };
-		8779DB031DD20BAE00E6CAF5 /* BVSDK.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = BVSDK.xcodeproj; path = ../../BVSDK.xcodeproj; sourceTree = "<group>"; };
-		8779DB0E1DD20C7E00E6CAF5 /* BVSDK.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = BVSDK.xcodeproj; path = ../../BVSDK.xcodeproj; sourceTree = "<group>"; };
 		877AD26F1EDF4C1C006C7070 /* ReviewCommentsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReviewCommentsViewController.swift; path = Conversations/ReviewCommentsViewController.swift; sourceTree = "<group>"; };
 		877AD2701EDF4C1C006C7070 /* ReviewCommentsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ReviewCommentsViewController.xib; path = Conversations/ReviewCommentsViewController.xib; sourceTree = "<group>"; };
 		877AD27A1EDF7051006C7070 /* ReviewCommentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewCommentTableViewCell.swift; sourceTree = "<group>"; };
@@ -671,12 +620,8 @@
 		87F24D861DAE886E002231D6 /* StoreReviewsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StoreReviewsViewController.swift; path = Conversations/Stores/StoreReviewsViewController.swift; sourceTree = "<group>"; };
 		87F24D871DAE886E002231D6 /* StoreReviewsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = StoreReviewsViewController.xib; path = Conversations/Stores/StoreReviewsViewController.xib; sourceTree = "<group>"; };
 		87F5B9351DC38F37004D2297 /* testNotificationConfig.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = testNotificationConfig.json; path = ../../../Tests/Tests/resources/notification_config/testNotificationConfig.json; sourceTree = "<group>"; };
-		A1B2E58157C774DED6AA2470 /* Pods-BVReviewContentExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BVReviewContentExtension.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BVReviewContentExtension/Pods-BVReviewContentExtension.debug.xcconfig"; sourceTree = "<group>"; };
-		AA0D5C0129A6A5DF343DA7F6 /* Pods-BVRecommendationsContentExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BVRecommendationsContentExtension.release.xcconfig"; path = "Pods/Target Support Files/Pods-BVRecommendationsContentExtension/Pods-BVRecommendationsContentExtension.release.xcconfig"; sourceTree = "<group>"; };
 		BC927E763E958B0ADE062DDB /* Pods-Curations Custom Post Extension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Curations Custom Post Extension.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Curations Custom Post Extension/Pods-Curations Custom Post Extension.debug.xcconfig"; sourceTree = "<group>"; };
 		BF76865CF343C4C4833D6B9B /* Pods_Curations_Custom_Post_Extension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Curations_Custom_Post_Extension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		D34098CDCE45BD1E8C987E0D /* Pods-BVSDKDemoUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BVSDKDemoUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BVSDKDemoUITests/Pods-BVSDKDemoUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		E65C71C84E4A3F403ACCE275 /* Pods-BVRecommendationsContentExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BVRecommendationsContentExtension.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BVRecommendationsContentExtension/Pods-BVRecommendationsContentExtension.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -702,8 +647,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				878D4C5F1DD66BD400430654 /* BVSDK.framework in Frameworks */,
-				878D4C5E1DD66B1500430654 /* BVSDK.framework in Frameworks */,
 				86891E156A6593CDBA88DDB3 /* Pods_BVSDKDemo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -719,7 +662,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				15D4F3361DEE03E600E6B30D /* BVSDK.framework in Frameworks */,
 				5C81E71CEBBFF22100F702EC /* Pods_Curations_Custom_Post_Extension.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -803,8 +745,6 @@
 		15D67B667D505FE5AB8DAF63 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				15D4F3331DEE03C400E6B30D /* BVSDK.framework */,
-				8779DB031DD20BAE00E6CAF5 /* BVSDK.xcodeproj */,
 				8742A37A1D7869370043B4A3 /* UserNotificationsUI.framework */,
 				8742A3781D7864640043B4A3 /* UserNotifications.framework */,
 				636DE8CB900E4EB79DF875EF /* Pods_BVSDKDemo.framework */,
@@ -818,11 +758,6 @@
 			children = (
 				85EE127F748BF21B76427E51 /* Pods-BVSDKDemo.debug.xcconfig */,
 				52CFBE9EEE604F1F249F13C6 /* Pods-BVSDKDemo.release.xcconfig */,
-				D34098CDCE45BD1E8C987E0D /* Pods-BVSDKDemoUITests.debug.xcconfig */,
-				2241824302D6124ADB7FD0DB /* Pods-BVSDKDemoUITests.release.xcconfig */,
-				E65C71C84E4A3F403ACCE275 /* Pods-BVRecommendationsContentExtension.debug.xcconfig */,
-				AA0D5C0129A6A5DF343DA7F6 /* Pods-BVRecommendationsContentExtension.release.xcconfig */,
-				A1B2E58157C774DED6AA2470 /* Pods-BVReviewContentExtension.debug.xcconfig */,
 				BC927E763E958B0ADE062DDB /* Pods-Curations Custom Post Extension.debug.xcconfig */,
 				1D38BD81035DF0FB5F5D4E5C /* Pods-Curations Custom Post Extension.release.xcconfig */,
 			);
@@ -832,7 +767,6 @@
 		73199AE11CDD84E4006CC59D = {
 			isa = PBXGroup;
 			children = (
-				8779DB0E1DD20C7E00E6CAF5 /* BVSDK.xcodeproj */,
 				732E188A1CE653ED000A3EC9 /* config */,
 				73199AEC1CDD84E4006CC59D /* BVSDKDemo */,
 				73199B011CDD84E4006CC59D /* BVSDKDemoTests */,
@@ -1304,24 +1238,6 @@
 			name = ConversationsSorting;
 			sourceTree = "<group>";
 		};
-		8779DB041DD20BAE00E6CAF5 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				8779DB0A1DD20BAE00E6CAF5 /* BVSDK.framework */,
-				8779DB0C1DD20BAE00E6CAF5 /* BVSDKTests.xctest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		8779DB0F1DD20C7E00E6CAF5 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				8779DB151DD20C7E00E6CAF5 /* BVSDK.framework */,
-				8779DB171DD20C7E00E6CAF5 /* BVSDKTests.xctest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		878D4E381DDA542700430654 /* BVSDK */ = {
 			isa = PBXGroup;
 			children = (
@@ -1538,8 +1454,6 @@
 			dependencies = (
 				7385D8581CE3ACD800CA5F5E /* PBXTargetDependency */,
 				15A35F311D8C2AE80031E308 /* PBXTargetDependency */,
-				8779DB201DD20C9800E6CAF5 /* PBXTargetDependency */,
-				878D4C621DD66BD400430654 /* PBXTargetDependency */,
 				15B00EB81DCBB69800BE5778 /* PBXTargetDependency */,
 			);
 			name = BVSDKDemo;
@@ -1646,16 +1560,6 @@
 			mainGroup = 73199AE11CDD84E4006CC59D;
 			productRefGroup = 73199AEB1CDD84E4006CC59D /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = 8779DB0F1DD20C7E00E6CAF5 /* Products */;
-					ProjectRef = 8779DB0E1DD20C7E00E6CAF5 /* BVSDK.xcodeproj */;
-				},
-				{
-					ProductGroup = 8779DB041DD20BAE00E6CAF5 /* Products */;
-					ProjectRef = 8779DB031DD20BAE00E6CAF5 /* BVSDK.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				73199AE91CDD84E4006CC59D /* BVSDKDemo */,
@@ -1666,37 +1570,6 @@
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		8779DB0A1DD20BAE00E6CAF5 /* BVSDK.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = BVSDK.framework;
-			remoteRef = 8779DB091DD20BAE00E6CAF5 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		8779DB0C1DD20BAE00E6CAF5 /* BVSDKTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = BVSDKTests.xctest;
-			remoteRef = 8779DB0B1DD20BAE00E6CAF5 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		8779DB151DD20C7E00E6CAF5 /* BVSDK.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = BVSDK.framework;
-			remoteRef = 8779DB141DD20C7E00E6CAF5 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		8779DB171DD20C7E00E6CAF5 /* BVSDKTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = BVSDKTests.xctest;
-			remoteRef = 8779DB161DD20C7E00E6CAF5 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		15A35F231D8C2AE80031E308 /* Resources */ = {
@@ -1843,6 +1716,7 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-BVSDKDemo/Pods-BVSDKDemo-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/BVSDK/BVSDK.framework",
 				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
@@ -1856,10 +1730,10 @@
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 				"${BUILT_PRODUCTS_DIR}/XLActionController/XLActionController.framework",
 				"${BUILT_PRODUCTS_DIR}/youtube-ios-player-helper/youtube_ios_player_helper.framework",
-				"${BUILT_PRODUCTS_DIR}/BVSDK/BVSDK.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BVSDK.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
@@ -1873,7 +1747,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/XLActionController.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/youtube_ios_player_helper.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BVSDK.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -2199,16 +2072,6 @@
 			target = 7385D84E1CE3ACD700CA5F5E /* Curations Custom Post Extension */;
 			targetProxy = 7385D8571CE3ACD800CA5F5E /* PBXContainerItemProxy */;
 		};
-		8779DB201DD20C9800E6CAF5 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = BVSDK;
-			targetProxy = 8779DB1F1DD20C9800E6CAF5 /* PBXContainerItemProxy */;
-		};
-		878D4C621DD66BD400430654 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = BVSDK;
-			targetProxy = 878D4C611DD66BD400430654 /* PBXContainerItemProxy */;
-		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
@@ -2500,7 +2363,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.bazaarvoice.BVSDKDemoTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BVSDKDemo.app/BVSDKDemo";
 			};
 			name = Debug;
@@ -2513,7 +2376,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.bazaarvoice.BVSDKDemoTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BVSDKDemo.app/BVSDKDemo";
 			};
 			name = Release;

@@ -10,6 +10,7 @@ import BVSDK
 import Fabric
 import Crashlytics
 import FBSDKCoreKit
+import UserNotifications
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {

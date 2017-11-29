@@ -38,7 +38,7 @@ class BaseDemoComposeServiceViewController: SLComposeServiceViewController {
     override func isContentValid() -> Bool {
         // Do validation of contentText and/or NSExtensionContext attachments here
         super.isContentValid()
-        if (self.textView.text.characters.count > 0){
+        if (self.textView.text.count > 0){
             return true
         }
         
