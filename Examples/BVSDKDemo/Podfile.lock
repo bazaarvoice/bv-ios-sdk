@@ -5,16 +5,22 @@ PODS:
   - Bolts/AppLinks (1.8.4):
     - Bolts/Tasks
   - Bolts/Tasks (1.8.4)
-  - BVSDK/BVCurations (6.7.3):
+  - BVSDK (6.8.2):
+    - BVSDK/Core (= 6.8.2)
+  - BVSDK/BVCurations (6.8.2):
     - BVSDK/Core
-  - BVSDK/BVLocation (6.7.3):
+  - BVSDK/BVCurationsUI (6.8.2):
+    - BVSDK/BVCurations
+  - BVSDK/BVLocation (6.8.2):
     - BVSDK/Core
-  - BVSDK/BVNotifications (6.7.3):
+  - BVSDK/BVNotifications (6.8.2):
     - BVSDK/BVLocation
     - BVSDK/BVPIN
-  - BVSDK/BVPIN (6.7.3):
+  - BVSDK/BVPIN (6.8.2):
     - BVSDK/Core
-  - BVSDK/Core (6.7.3)
+  - BVSDK/BVRecommendations (6.8.2):
+    - BVSDK/Core
+  - BVSDK/Core (6.8.2)
   - Crashlytics (3.9.0):
     - Fabric (~> 1.7.0)
   - Fabric (1.7.0)
@@ -45,6 +51,8 @@ PODS:
   - OHHTTPStubs/NSURLSession (6.0.0):
     - OHHTTPStubs/Core
   - OHHTTPStubs/OHPathHelpers (6.0.0)
+  - OHHTTPStubs/Swift (6.0.0):
+    - OHHTTPStubs/Default
   - SDForms (0.9.3):
     - HCSStarRatingView
   - SDWebImage (4.1.2):
@@ -57,9 +65,12 @@ PODS:
   - youtube-ios-player-helper (0.1.6)
 
 DEPENDENCIES:
+  - BVSDK (from `../../`)
   - BVSDK/BVCurations (from `../../`)
+  - BVSDK/BVCurationsUI (from `../../`)
   - BVSDK/BVNotifications (from `../../`)
   - BVSDK/BVPIN (from `../../`)
+  - BVSDK/BVRecommendations (from `../../`)
   - Crashlytics
   - Fabric
   - FBSDKCoreKit
@@ -70,6 +81,7 @@ DEPENDENCIES:
   - HCSStarRatingView
   - NVActivityIndicatorView
   - OHHTTPStubs
+  - OHHTTPStubs/Swift
   - SDForms (from `https://github.com/austimkelly/SDForms.git`, branch `master`)
   - SDWebImage
   - SwiftyJSON
@@ -90,7 +102,7 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
-  BVSDK: ec397e9b752010eea87922249c6fdf789c14fd04
+  BVSDK: 0c42aea536aaeb1cef2eb719e949bbe57d860f98
   Crashlytics: 64aad5dd97249dd3ff94b979fea140144590cdd3
   Fabric: e6be012366472553807dada21243c5ab8d904151
   FBSDKCoreKit: ebc6c5f5b3f0e72396041050e2266781a38ac587
@@ -107,6 +119,6 @@ SPEC CHECKSUMS:
   XLActionController: 57fe0ce1642e2eed971b188b490762345fdbf963
   youtube-ios-player-helper: 21ab92db027c7ff86cb17a3843a3f6eafc8158d2
 
-PODFILE CHECKSUM: 3a115e607e30995a4b012d2f2cea55a41345326c
+PODFILE CHECKSUM: 26be4b69685a1d8bf9be8d33e7896a0a34203de4
 
 COCOAPODS: 1.3.1

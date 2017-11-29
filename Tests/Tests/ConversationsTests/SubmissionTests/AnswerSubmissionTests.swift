@@ -83,7 +83,7 @@ class AnswerSubmissionTests: XCTestCase {
             XCTFail()
         }, failure: { (errors) in
             
-            XCTAssertEqual(errors.count, 2)
+            XCTAssertEqual(errors.count, 1)
             for error in errors as [NSError] {
                 
                 if error.userInfo[BVFieldErrorName] == nil {
