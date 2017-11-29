@@ -4,54 +4,51 @@ platform :ios, '8.0'
 # Using swift, so Dynamic Frameworks required!
 use_frameworks!
 
-def common_pods
-	
-	pod 'OHHTTPStubs'
-	pod 'SwiftyJSON'
+def bvsdk_pod
+  pod 'BVSDK', :path => "../../"
+  pod 'BVSDK/BVCurations', :path => "../../"
+  pod 'BVSDK/BVCurationsUI', :path => "../../"
+  pod 'BVSDK/BVRecommendations', :path => "../../"
 
+  ## FIXME !!!!!!! ##
+  # temporarily add in BVPIN since it's required when you bring in core stuff
+  pod 'BVSDK/BVPIN', :path => "../../"
+  pod 'BVSDK/BVNotifications', :path => "../../"
+end
+
+def common_pods
+  pod 'OHHTTPStubs'
+  pod 'OHHTTPStubs/Swift'
+  pod 'SwiftyJSON'
+  bvsdk_pod
 end
 
 target 'BVSDKDemo' do
-
-	common_pods
-
-	pod 'Fabric'
-	pod 'Crashlytics'
-	pod 'SDWebImage'
-	pod 'Google-Mobile-Ads-SDK'
-	pod 'HCSStarRatingView'
-	pod 'NVActivityIndicatorView'
-	pod 'FontAwesomeKit/FontAwesome'
-    pod 'XLActionController', '~> 3.0'
-    pod 'youtube-ios-player-helper'
-    pod 'SDForms', :git => 'https://github.com/austimkelly/SDForms.git', :branch => 'master'
-    
-    pod 'FBSDKCoreKit'
-    pod 'FBSDKLoginKit'
-    pod 'FBSDKShareKit'
-
+  common_pods
+  pod 'Fabric'
+  pod 'Crashlytics'
+  pod 'SDWebImage'
+  pod 'Google-Mobile-Ads-SDK'
+  pod 'HCSStarRatingView'
+  pod 'NVActivityIndicatorView'
+  pod 'FontAwesomeKit/FontAwesome'
+  pod 'XLActionController', '~> 3.0'
+  pod 'youtube-ios-player-helper'
+  pod 'SDForms', :git => 'https://github.com/austimkelly/SDForms.git', :branch => 'master'
+  pod 'FBSDKCoreKit'
+  pod 'FBSDKLoginKit'
+  pod 'FBSDKShareKit'
 end
 
 target 'Curations Custom Post Extension' do
-
-	common_pods
-	pod 'BVSDK/BVCurations', :path => "../../"
-
-	## FIXME !!!!!!! ##
-    # temporarily add in BVPIN since it's required when you bring in core stuff
-    pod 'BVSDK/BVPIN', :path => "../../"
-    pod 'BVSDK/BVNotifications', :path => "../../"
-
+  common_pods
 end
 
 post_install do |installer|
-    installer.pods_project.targets.each do |target|
-
-        target.build_configurations.each do |config|
-            config.build_settings['SWIFT_VERSION'] = '3.0'
-            config.build_settings['APPLICATION_EXTENSION_API_ONLY'] = 'NO'
-        end
+  installer.pods_project.targets.each do |target|
+    target.build_configurations.each do |config|
+      config.build_settings['SWIFT_VERSION'] = '3.0'
+      config.build_settings['APPLICATION_EXTENSION_API_ONLY'] = 'NO'
     end
+  end
 end
-
-
