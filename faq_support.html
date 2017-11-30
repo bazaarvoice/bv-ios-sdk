@@ -145,7 +145,7 @@ $(function(){
                 </span>
                 <ul>
 
-                    
+
                     <!-- BV Pixel -->
 					<li class="nav-item">
                                     <a class="nav-link" href="bvpixel_implementation.html"><span>BV Pixel</span></a>
@@ -169,7 +169,13 @@ $(function(){
                                     <a class="nav-link" href="content_submission.html"><span>Content Submission</span></a>
                                 </li>
                                 <li class="nav-item">
+                                    <a class="nav-link" href="conversations_authentication.html"><span>Authentication</span></a>
+                                </li>
+                                <li class="nav-item">
                                     <a class="nav-link" href="conversations_iovation.html"><span>Authenticity with iovation</span></a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="conversations_badges.html"><span>Badges</span></a>
                                 </li>
                             </ul>
                         </div>
@@ -201,13 +207,13 @@ $(function(){
                     <li class="nav-item">
                         <a class="nav-link" href="product_recommendations.html"><span>Product Recommendations (Beta)</span></a>
                     </li>
-                    
+
                     <!-- Advertising -->
                     <li class="nav-item">
                         <a class="nav-link" href="advertising.html"><span>Advertising</span></a>
                     </li>
 
-                    
+
                     <!-- Ratings Reviews Stores -->
                      <li class="nav-item">
                         <a class="nav-link" role="button" data-toggle="collapse" href="#conversationsStoresDropdown"
@@ -228,7 +234,7 @@ $(function(){
                             </ul>
                         </div>
                     </li>
-                    
+
                     <!-- PIN -->
                     <li class="nav-item">
                         <a class="nav-link" href="pin.html"><span>Post Interaction Notifications (Beta)</span></a>
@@ -241,7 +247,7 @@ $(function(){
 
                 </ul>
             </li>
-            
+
             <li class="nav-item">
                 <a class="nav-link" href="user_authentication_token.html">
                     <span><i class="m-r-1 fa fa-lock"></i>User Authentication Token</span>
@@ -274,6 +280,7 @@ $(function(){
     </div>
 </nav>
 
+
       <div id="application_container">
         <div id="task_container">
           <div id="task_content" class="app-content">
@@ -295,6 +302,7 @@ $(function(){
     <li><a href="#upgrade">Upgrading to BVSDK 7.0 (Deprecations)</a></li>
     <li><a href="#thirdparty">Does the SDK use any 3rd pary source code?</a></li>
     <li><a href="#support">How do I get support?</a></li>
+    <li><a href="#t_and_c">Are the terms and conditions available through the SDK?</a></li>
 </ol>
 
 
@@ -372,6 +380,14 @@ BVSDKManager.shared().apiKeyConversations = "YOUR_CONVERSATIONS_KEY"
 <h5 class="question">Does the Bazaarvoice Mobile SDK use any 3rd-Party Source Code?</h5>
 <p class="answer">No, the SDK is entirely based on the Cocoa Frameworks for iOS.</p>
 
+<a name="t_and_c"></a>
+<h5 class="question">Are the terms and conditions available through the SDK?</h5>
+<p class="answer">
+  No, currently it is not available through the SDK, however you should be able to access the content by logging into
+  your <a href="https://config.portal.bazaarvoice.com/siteManager">configuration console</a>, then selecting Edit for the configuration
+  you want terms & conditions for. Then you can access them from
+  <a href="https://config.portal.bazaarvoice.com/config/pages/displayOptions/legalAndGuidelines/termsAndConditions/text">here</a>.
+</p>
 
 <br>
 <a name="support"></a>

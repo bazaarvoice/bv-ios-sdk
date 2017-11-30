@@ -145,7 +145,7 @@ $(function(){
                 </span>
                 <ul>
 
-                    
+
                     <!-- BV Pixel -->
 					<li class="nav-item">
                                     <a class="nav-link" href="bvpixel_implementation.html"><span>BV Pixel</span></a>
@@ -169,7 +169,13 @@ $(function(){
                                     <a class="nav-link" href="content_submission.html"><span>Content Submission</span></a>
                                 </li>
                                 <li class="nav-item">
+                                    <a class="nav-link" href="conversations_authentication.html"><span>Authentication</span></a>
+                                </li>
+                                <li class="nav-item">
                                     <a class="nav-link" href="conversations_iovation.html"><span>Authenticity with iovation</span></a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="conversations_badges.html"><span>Badges</span></a>
                                 </li>
                             </ul>
                         </div>
@@ -201,13 +207,13 @@ $(function(){
                     <li class="nav-item">
                         <a class="nav-link" href="product_recommendations.html"><span>Product Recommendations (Beta)</span></a>
                     </li>
-                    
+
                     <!-- Advertising -->
                     <li class="nav-item">
                         <a class="nav-link" href="advertising.html"><span>Advertising</span></a>
                     </li>
 
-                    
+
                     <!-- Ratings Reviews Stores -->
                      <li class="nav-item">
                         <a class="nav-link" role="button" data-toggle="collapse" href="#conversationsStoresDropdown"
@@ -228,7 +234,7 @@ $(function(){
                             </ul>
                         </div>
                     </li>
-                    
+
                     <!-- PIN -->
                     <li class="nav-item">
                         <a class="nav-link" href="pin.html"><span>Post Interaction Notifications (Beta)</span></a>
@@ -241,7 +247,7 @@ $(function(){
 
                 </ul>
             </li>
-            
+
             <li class="nav-item">
                 <a class="nav-link" href="user_authentication_token.html">
                     <span><i class="m-r-1 fa fa-lock"></i>User Authentication Token</span>
@@ -274,6 +280,7 @@ $(function(){
     </div>
 </nav>
 
+
       <div id="application_container">
         <div id="task_container">
           <div id="task_content" class="app-content">
@@ -284,7 +291,7 @@ $(function(){
 	Conversations - Content Submission
 </div>
 
-<p>The BVSDK makes it easy to upload Consumer Generated Content (Reviews, Questions, Answers) to the Bazaarvoice platform. The <a href="https://developer.bazaarvoice.com/apis/conversations/">full API documentation</a> details what each field represents which is not covered here. Contact Bazaarvoice to set up Conversations if you haven't done so already.</p>
+<p>The BVSDK makes it easy to upload Consumer Generated Content (Reviews, Questions, Answers) to the Bazaarvoice platform. The <a href="https://developer.bazaarvoice.com/conversations-api">full API documentation</a> details what each field represents which is not covered here. Contact Bazaarvoice to set up Conversations if you haven't done so already.</p>
 
 <p class="bg-info well-lg" style="padding:4px;"><i class="fa fa-hand-o-right"></i>  Important: You will need your <strong>apiKeyConversations</strong> to implement and use Conversations with Mobile SDKs.</p>
 
@@ -300,17 +307,59 @@ The completed project for this code walkthrough for Swift and Objective-C is in 
 <ol>
   <li><a href="#reviews">Reviews</a></li>
   <li><a href="#reviewcomments">Review Comments</a></li>
-  <li><a href="#questions">Questions</li>
+  <li><a href="#questions">Questions</a></li>
   <li><a href="#answers">Answers</a></li>
   <li><a href="#feedback">Feedback</a></li>
 </ol>
 
 <hr>
 
-<h4 id="reviews">Review Submission</h4>
-<p>To start, let's upload a simple Review. Create a <code>BVReviewSubmission</code> object and fill out appropriate fields.</p>
-<p>Note that a <code>BVReviewSubmission</code> object requires a <code>reviewTitle</code>, <code>reviewText</code>, <code>rating</code>, and <code>productId</code> (for which this review corresponds to).</p>
+<h2>Using Conversations Submission API</h2>
 
+<p>After you install the Mobile SDK, complete the following steps to submit consumer-generated content.</p>
+<br/>
+<h4>Step 1: View Form Options</h4>
+<p>
+  For each option available in a submission form, there is a boolean flag determining whether it is a
+  required field or not. You can discover this by iterating through the available form fields, which
+  can be found by making a preview submission request.
+</p>
+
+<p>
+  These form fields may also contain extra information, such as available submission values, and keys
+  for fields specific to your config such as context data values, etc.
+</p>
+
+<pre><code class="swift">review.load({ (response: BVReviewSubmissionResponse) in
+    for (formFieldIdentifier, formField) in response.formFields {
+      // formFieldIdentifier is the name of the key that must be used for submission
+      // formField contains metadata
+      let isRequired = formField.required; // Whether this field is required or optional
+    }
+  }, failure: { (errors: [NSError]) in
+    // handle error
+  }
+})
+</code></pre>
+<br/>
+<br/>
+
+<h4>Step 2: Send Submission Request</h4>
+
+<ul class="nav nav-tabs" role="tablist">
+  <li role="presentation" class="active"><a href="#review_submit_tab" role="tab" data-toggle="tab">Review Submission</a></li>
+  <li role="presentation"><a href="#question_submit_tab" role="tab" data-toggle="tab">Question Submission</a></li>
+  <li role="presentation"><a href="#answer_submit_tab" role="tab" data-toggle="tab">Answer Submission</a></li>
+  <li role="presentation"><a href="#review_comment_submit_tab" role="tab" data-toggle="tab">Review Comment Submission</a></li>
+  <li role="presentation"><a href="#feedback_submit_tab" role="tab" data-toggle="tab">Feedback Submission</a></li>
+</ul>
+<div class="tab-content code-switcher">
+
+<!--Review Submission-->
+<div role="tabpanel" class="tab-pane active" id="review_submit_tab">
+  <h4 id="reviews">Review Submission</h4>
+  <p>Create a <code>BVReviewSubmission</code> object and fill out appropriate fields.</p>
+  <p>Note that a <code>BVReviewSubmission</code> object requires a <code>reviewTitle</code>, <code>reviewText</code>, <code>rating</code>, and <code>productId</code> (for which this review corresponds to).</p>
 <ul class="nav nav-tabs" role="tablist">
   <li role="presentation" class="active"><a href="#swift" aria-controls="swift" role="tab" data-toggle="tab">Swift</a></li>
   <li role="presentation"><a href="#objc" aria-controls="objc" role="tab" data-toggle="tab">Objective-C</a></li>
@@ -333,7 +382,14 @@ review.agreedToTermsAndConditions  = true
 review.addPhoto(userPhoto, withPhotoCaption: userPhotoCaption)
 
 // add youtube video link, if your configuration supports it
-review.addVideoURL(userYouTubeUrl, withCaption: userVideoCaption)</code></pre>
+review.addVideoURL(userYouTubeUrl, withCaption: userVideoCaption)
+
+// Submitting this review is as easy as calling submit
+review.submit({ (reviewSubmission: BVReviewSubmissionResponse) in
+  // review submitted successfully! 🎉
+}, failure: { (errors: [NSError]) in
+  // handle failure appropriately
+})</code></pre>
 	</div>
 	<!-- objective-c -->
 	<div role="tabpanel" class="tab-pane" id="objc">
@@ -351,107 +407,129 @@ review.agreedToTermsAndConditions  = [NSNumber numberWithBool:YES];
 [review addPhoto: userPhoto withPhotoCaption: userPhotoCaption];
 
 // add youtube video link, if your configuration supports it
-[review addVideoURL: userYouTubeUrl withCaption: userVideoCaption];</code></pre>
+[review addVideoURL: userYouTubeUrl withCaption: userVideoCaption];
+
+// Submitting this review is as easy as calling submit
+[review submit:^(BVReviewSubmissionResponse * _Nonnull response) {
+  // review submitted successfully! 🎉
+} failure:^(NSArray&lt;NSError *&gt; * _Nonnull errors) {
+  // handle failure appropriately
+}];</code></pre>
 	</div>
 </div>
-<br>
-<p>All available fields are detailed in <code>BVReviewSubmission.h</code> and further in <a href="https://developer.bazaarvoice.com/apis/conversations/">Bazaarvoice's API Documentation</a>. Required fields, and specific rules per field (<font color="#666"><i>"reviewText must be longer than X characters"</i></font>) is dependent on your specific deployment setup.</p>
+</div>
 
-<br>
-<p>Submitting this review is as easy as calling <code>submit</code>:</p>
-<ul class="nav nav-tabs" role="tablist">
+
+<!--Question Submission-->
+<div role="tabpanel" class="tab-pane" id="question_submit_tab">
+    <h4 id="questions">Question Submission</h4>
+  <p>Submitting a question is nearly identical to submitting a review, detailed above. Create an instance of <code>BVQuestionSubmission</code>, fill in some parameters, and submit it!</p>
+  <p>Note that an <code>QuestionSubmission</code> object requires a <code>productId</code> for which this question corresponds to.</p>
+  <ul class="nav nav-tabs" role="tablist">
   <li role="presentation" class="active"><a href="#swift" aria-controls="swift" role="tab" data-toggle="tab">Swift</a></li>
   <li role="presentation"><a href="#objc" aria-controls="objc" role="tab" data-toggle="tab">Objective-C</a></li>
 </ul>
-<div class="tab-content code-switcher">
-	<div role="tabpanel" class="tab-pane active" id="swift">
-<pre><code class="swift">review.submit({ (reviewSubmission: BVReviewSubmissionResponse) in
-    // review submitted successfully! 🎉
+  <!-- Tab panes -->
+  <div class="tab-content code-switcher">
+    <!-- swift -->
+    <div role="tabpanel" class="tab-pane active" id="swift">
+<pre><code class="swift">// create question submission and fill out with user-input values
+let question = BVQuestionSubmission(productId: "test1")
+question.questionSummary = userQuestion // "Heavy?"
+question.questionDetails = userQuestion // "How much does this weigh?"
+question.userNickname = userNickname // "Samantha55"
+question.userId = userId             // user's external ID
+question.userEmail = userEmail       // "test@test.com"
+question.agreedToTermsAndConditions  = true
+
+// submit the question
+question.submit({ (questionSubmission: BVQuestionSubmissionResponse) in
+  // question submitted successfully! 🎉
 }, failure: { (errors: [NSError]) in
     // handle failure appropriately
 })</code></pre>
-	</div>
-	<div role="tabpanel" class="tab-pane" id="objc">
-<pre><code class="objectivec">[review submit:^(BVReviewSubmissionResponse * _Nonnull response) {
-    // review submitted successfully! 🎉
-} failure:^(NSArray<NSError *> * _Nonnull errors) {
-    // handle failure appropriately
-}];</code></pre>
-	</div>
-</div>
-<br>
-<p>However, submitting content is very error-prone: the user forgets to fill out a field, or chooses the same nickname as a different reviewer. Giving the user a chance to correct the problems is essential, and easy to do:</p>
+    </div>
+    <!-- objective-c -->
+    <div role="tabpanel" class="tab-pane" id="objc">
+<pre><code class="objectivec">// create question submission and fill out with user-input values
+BVQuestionSubmission* question = [[BVQuestionSubmission alloc] initWithProductId:@"test1"];
+question.questionSummary = userQuestion; // "Heavy?"
+question.questionDetails = userQuestion; // "How much does this weigh?"
+question.userNickname = userNickname;    // "Samantha55"
+question.userId = userId;                // user's external ID
+question.userEmail = userEmail;          // "test@test.com"
+question.agreedToTermsAndConditions;  [NSNumber numberWithBool:YES];
 
-<ul class="nav nav-tabs" role="tablist">
+// submit the question
+[question submit:^(BVQuestionSubmissionResponse * _Nonnull response) {
+  // question submitted successfully! 🎉
+} failure:^(NSArray&lt;NSError *&gt; * _Nonnull errors) {
+  // handle failure appropriately
+}];</code></pre>
+    </div>
+  </div>
+</div>
+
+<!-- Answer Submission -->
+<div role="tabpanel" class="tab-pane" id="answer_submit_tab">
+  <h4 id="answers">Answer Submission</h4>
+  <p>Submitting an answer is nearly identical to submitting a review or question. Create an instance of <code>BVAnswerSubmission</code>, fill in some parameters, and submit it!</p>
+  <p>Note that an <code>AnswerSubmission</code> object requires a <code>questionId</code> for which this answer responds to, and <code>answerText</code>, which is the body of the answer.</p>
+
+  <ul class="nav nav-tabs" role="tablist">
   <li role="presentation" class="active"><a href="#swift" aria-controls="swift" role="tab" data-toggle="tab">Swift</a></li>
   <li role="presentation"><a href="#objc" aria-controls="objc" role="tab" data-toggle="tab">Objective-C</a></li>
 </ul>
-<div class="tab-content code-switcher">
-	<div role="tabpanel" class="tab-pane active" id="swift">
-<pre><code class="swift">review.submit({ (reviewSubmission: BVReviewSubmissionResponse) in
-    // review submitted successfully! 🎉
+  <!-- Tab panes -->
+  <div class="tab-content code-switcher">
+    <!-- swift -->
+    <div role="tabpanel" class="tab-pane active" id="swift">
+<pre><code class="swift">// create answer submission and fill out with user-input values
+let answer = BVAnswerSubmission(questionId: userQuestionId, answerText: userAnswerText)
+answer.userNickname = userNickname // "Samantha55"
+answer.userId = userId             // user's external ID
+answer.userEmail = userEmail       // "test@test.com"
+answer.agreedToTermsAndConditions = true
+
+// submit the answer
+answer.submit({ (answerSubmission: BVAnswerSubmissionResponse) in
+  // answer submitted successfully! 🎉
 }, failure: { (errors: [NSError]) in
+  // handle failure appropriately
+})</code></pre>
+    </div>
+    <!-- objective-c -->
+    <div role="tabpanel" class="tab-pane" id="objc">
+<pre><code class="objectivec">// create answer submission and fill out with user-input values
+BVAnswerSubmission* answer = [[BVAnswerSubmission alloc] initWithQuestionId:userQuestionId answerText:userAnswerText];
+answer.userNickname = userNickname; // "Samantha55"
+answer.userId = userId;             // user's external ID
+answer.userEmail = userEmail;       // "test@test.com"
+answer.agreedToTermsAndConditions = [NSNumber numberWithBool:YES];
 
-    for error in errors {
-    
-        // If fields had errors, useful information is available in the error
-        let fieldErrorName = error.userInfo[BVFieldErrorName] as? String
-        let fieldErrorMessage = error.userInfo[BVFieldErrorMessage] as? String
-    
-        if fieldErrorName == "reviewText" {
-            // fieldErrorMessage = "You must enter review text."
-            displayErrorForReviewText(fieldErrorMessage)
-        }
-
-        if fieldErrorName == "rating" {
-            // fieldErrorMessage = "This field must be between 1 and 5."
-            displayErrorForRating(fieldErrorMessage)
-        }
-
-    }
-
-})
-</code></pre>
-	</div>
-	<div role="tabpanel" class="tab-pane" id="objc">
-<pre><code class="objectivec">[review submit:^(BVReviewSubmissionResponse * _Nonnull response) {
-    // review submitted successfully! 🎉
-} failure:^(NSArray<NSError *> * _Nonnull errors) {
-    
-    for (NSError* error in errors) {
-
-        // If fields had errors, useful information is available in the error
-        NSString* fieldErrorName = error.userInfo[BVFieldErrorName];
-        NSString* fieldErrorMessage = error.userInfo[BVFieldErrorMessage];
-        
-        if (fieldErrorName && [fieldErrorName isEqualToString:@"reviewText"]) {
-            // fieldErrorMessage = "You must enter review text."
-            [self displayErrorForReviewText:fieldErrorMessage];
-        }
-        
-        if (fieldErrorName && [fieldErrorName isEqualToString:@"rating"]) {
-            // fieldErrorMessage = "This field must be between 1 and 5."
-            [self displayErrorForRating:fieldErrorMessage];
-        }
-
-    }
+// submit the answer
+[answer submit:^(BVAnswerSubmissionResponse * _Nonnull response) {
+  // answer submitted successfully! 🎉
+} failure:^(NSArray&lt;NSError *&gt; * _Nonnull errors) {
+  // handle failure appropriately
 }];</code></pre>
-	</div>
+    </div>
+  </div>
 </div>
-<br>
-<br>
+
+
 
 <!-- Review Comment Submission -->
+<div role="tabpanel" class="tab-pane" id="review_comment_submit_tab">
+  <h4 id="reviewcomments">Review Comment Submission</h4>
+  <p>Submitting a review comment is as easy as creating a <code>BVCommentSubmission</code> object with the default initializer and filling out appropriate properties on the <code>BVCommentSubmission</code> object. Look at the sample below for some starter code.</p>
 
-<h4 id="reviewcomments">Review Comment Submission</h4>
-<p>Submitting a review comment is as easy as creating a <code>BVCommentSubmission</code> object with the default initializer and filling out appropriate properties on the <code>BVCommentSubmission</code> object. Look at the sample below for some starter code.</p>
-
-<ul class="nav nav-tabs" role="tablist">
+  <ul class="nav nav-tabs" role="tablist">
   <li role="presentation" class="active"><a href="#swift" aria-controls="swift" role="tab" data-toggle="tab">Swift</a></li>
   <li role="presentation"><a href="#objc" aria-controls="objc" role="tab" data-toggle="tab">Objective-C</a></li>
 </ul>
-<!-- Tab panes -->
-<div class="tab-content code-switcher">
+  <!-- Tab panes -->
+  <div class="tab-content code-switcher">
     <!-- swift -->
     <div role="tabpanel" class="tab-pane active" id="swift">
 <pre><code class="swift">let commentText = "I love comments! They are just the most! Seriously!"
@@ -471,19 +549,16 @@ commentRequest.userEmail = "developer@bazaarvoice.com"
 commentRequest.agreedToTermsAndConditions = true
 
 // Some PRR clients may support adding photos, check your configuration
-//        if let photo = UIImage(named: "puppy"){
-//            commentRequest.addPhoto(photo, withPhotoCaption: "Review Comment Pupper!")
-//        }
+//  if let photo = UIImage(named: "puppy"){
+//    commentRequest.addPhoto(photo, withPhotoCaption: "Review Comment Pupper!")
+//  }
 
 commentRequest.submit({ (commentSubmission) in
-    
-    // success
-    self.showAlertSuccess(message: "Success Submitting Review Comment!")
-    
+  // success
+  self.showAlertSuccess(message: "Success Submitting Review Comment!")
 }, failure: { (errors) in
-    // error
-    self.showAlertError(message: errors.description)
-
+  // error
+  self.showAlertError(message: errors.description)
 })
 </code></pre>
     </div>
@@ -509,169 +584,83 @@ submission.agreedToTermsAndConditions = [NSNumber numberWithBool:YES];
 //[submission addPhoto:[UIImage imageNamed:@"puppy"] withPhotoCaption:@"What a cute pupper!"];
 
 [submission submit:^(BVCommentSubmissionResponse * _Nonnull response) {
-    // success
-    [self showSuccess:@"Success Submitting Feedback!"];
-} failure:^(NSArray<NSError *> * _Nonnull errors) {
-    // error
-    [self showError:errors.description];
+  // success
+  [self showSuccess:@"Success Submitting Feedback!"];
+} failure:^(NSArray&lt;NSError *&gt; * _Nonnull errors) {
+  // error
+  [self showError:errors.description];
 }];
 </code></pre>
     </div>
+  </div>
 </div>
-<br>
 
-<br>
-<br>
 
-<!-- Question Submission -->
 
-<h4 id="questions">Question Submission</h4>
-<p>Submitting a question is nearly identical to submitting a review, detailed above. Create an instance of <code>BVQuestionSubmission</code>, fill in some parameters, and submit it!</p>
-<p>Note that an <code>QuestionSubmission</code> object requires a <code>productId</code> for which this question corresponds to.</p>
-<ul class="nav nav-tabs" role="tablist">
+<!-- Feedback Submission -->
+<div role="tabpanel" class="tab-pane" id="feedback_submit_tab">
+  <h4 id="feedback">Feedback Submission</h4>
+  <p>Submitting a feedback is the simplest of content submissions. Create an instance of <code>BVFeedbackSubmission</code>, fill out the required parameters, and submit it! You can use the Feedback submission for either Helpfulness votes or for flagging inappropriate content, just set the type with the <code>BVFeedbackType</code> enumerator. </p>
+  <p>Note that a <code>BVFeedbackSubmission</code> object requires a <code>contentId</code> which will correspond to the identifer of the Review, Question, or Answer your client is providing feedback on.</p>
+
+  <p class="bg-warning well-lg" style="padding:4px;"><i class="fa fa-hand-o-right"></i>   Important: You cannot submit feedback for syndicated content. Make sure to check the <code>IsSyndicated</code> flag before you display your feedback UI. </p>
+
+  <ul class="nav nav-tabs" role="tablist">
   <li role="presentation" class="active"><a href="#swift" aria-controls="swift" role="tab" data-toggle="tab">Swift</a></li>
   <li role="presentation"><a href="#objc" aria-controls="objc" role="tab" data-toggle="tab">Objective-C</a></li>
 </ul>
-<!-- Tab panes -->
-<div class="tab-content code-switcher">
-	<!-- swift -->
-	<div role="tabpanel" class="tab-pane active" id="swift">
-<pre><code class="swift">// create question submission and fill out with user-input values
-let question = BVQuestionSubmission(productId: "test1")    
-question.questionSummary = userQuestion // "Heavy?"
-question.questionDetails = userQuestion // "How much does this weigh?"
-question.userNickname = userNickname // "Samantha55"
-question.userId = userId             // user's external ID
-question.userEmail = userEmail       // "test@test.com"
-question.agreedToTermsAndConditions  = true
-
-// submit the question
-question.submit({ (questionSubmission: BVQuestionSubmissionResponse) in
-    // question submitted successfully! 🎉
-}, failure: { (errors: [NSError]) in
-    // handle failure appropriately
-})</code></pre>
-	</div>
-	<!-- objective-c -->
-	<div role="tabpanel" class="tab-pane" id="objc">
-<pre><code class="objectivec">// create question submission and fill out with user-input values
-BVQuestionSubmission* question = [[BVQuestionSubmission alloc] initWithProductId:@"test1"];
-question.questionSummary = userQuestion; // "Heavy?"
-question.questionDetails = userQuestion; // "How much does this weigh?"
-question.userNickname = userNickname;    // "Samantha55"
-question.userId = userId;                // user's external ID
-question.userEmail = userEmail;          // "test@test.com"
-question.agreedToTermsAndConditions;  [NSNumber numberWithBool:YES];
-
-// submit the question
-[question submit:^(BVQuestionSubmissionResponse * _Nonnull response) {
-    // question submitted successfully! 🎉
-} failure:^(NSArray<NSError *> * _Nonnull errors) {
-    // handle failure appropriately
-}];</code></pre>
-	</div>
-</div>
-<br>
-<br>
-
-<h4 id="answers">Answer Submission</h4>
-<p>Submitting an answer is nearly identical to submitting a review or question. Create an instance of <code>BVAnswerSubmission</code>, fill in some parameters, and submit it!</p>
-<p>Note that an <code>AnswerSubmission</code> object requires a <code>questionId</code> for which this answer responds to, and <code>answerText</code>, which is the body of the answer.</p>
-
-<ul class="nav nav-tabs" role="tablist">
-  <li role="presentation" class="active"><a href="#swift" aria-controls="swift" role="tab" data-toggle="tab">Swift</a></li>
-  <li role="presentation"><a href="#objc" aria-controls="objc" role="tab" data-toggle="tab">Objective-C</a></li>
-</ul>
-<!-- Tab panes -->
-<div class="tab-content code-switcher">
-	<!-- swift -->
-	<div role="tabpanel" class="tab-pane active" id="swift">
-<pre><code class="swift">// create answer submission and fill out with user-input values
-let answer = BVAnswerSubmission(questionId: userQuestionId, answerText: userAnswerText) 
-answer.userNickname = userNickname // "Samantha55"
-answer.userId = userId             // user's external ID
-answer.userEmail = userEmail       // "test@test.com"
-answer.agreedToTermsAndConditions = true
-
-// submit the answer
-answer.submit({ (answerSubmission: BVAnswerSubmissionResponse) in
-    // answer submitted successfully! 🎉
-}, failure: { (errors: [NSError]) in
-    // handle failure appropriately
-})</code></pre>
-	</div>
-	<!-- objective-c -->
-	<div role="tabpanel" class="tab-pane" id="objc">
-<pre><code class="objectivec">// create answer submission and fill out with user-input values
-BVAnswerSubmission* answer = [[BVAnswerSubmission alloc] initWithQuestionId:userQuestionId answerText:userAnswerText];
-answer.userNickname = userNickname; // "Samantha55"
-answer.userId = userId;             // user's external ID
-answer.userEmail = userEmail;       // "test@test.com"
-answer.agreedToTermsAndConditions = [NSNumber numberWithBool:YES];
-
-// submit the answer
-[answer submit:^(BVAnswerSubmissionResponse * _Nonnull response) {
-    // answer submitted successfully! 🎉
-} failure:^(NSArray<NSError *> * _Nonnull errors) {
-    // handle failure appropriately
-}];</code></pre>
-	</div>
-</div>
-<br>
-<br>
-
-<h4 id="feedback">Feedback Submission</h4>
-<p>Submitting a feedback is the simplest of content submissions. Create an instance of <code>BVFeedbackSubmission</code>, fill out the required parameters, and submit it! You can use the Feedback submission for either Helpfulness votes or for flagging inappropriate content, just set the type with the <code>BVFeedbackType</code> enumerator. </p>
-<p>Note that a <code>BVFeedbackSubmission</code> object requires a <code>contentId</code> which will correspond to the identifer of the Review, Question, or Answer your client is providing feedback on.</p>
-
-<p class="bg-warning well-lg" style="padding:4px;"><i class="fa fa-hand-o-right"></i>   Important: You cannot submit feedback for syndicated content. Make sure to check the <code>IsSyndicated</code> flag before you display your feedback UI. </p>
-
-<ul class="nav nav-tabs" role="tablist">
-  <li role="presentation" class="active"><a href="#swift" aria-controls="swift" role="tab" data-toggle="tab">Swift</a></li>
-  <li role="presentation"><a href="#objc" aria-controls="objc" role="tab" data-toggle="tab">Objective-C</a></li>
-</ul>
-<!-- Tab panes -->
-<div class="tab-content code-switcher">
+  <!-- Tab panes -->
+  <div class="tab-content code-switcher">
     <!-- swift -->
     <div role="tabpanel" class="tab-pane active" id="swift">
 <pre><code class="swift">let feedback = BVFeedbackSubmission(contentId: contentId,
                                             withContentType: BVFeedbackContentType.Review,
                                             withFeedbackType: BVFeedbackType.Helpfulness)
-        
+
 feedback.userId = userId
 feedback.vote = BVFeedbackVote.Positive // or .Negative for down vote
 
 feedback.submit({ (response) in
-    // success
-    // Make sure to disable the submission UI so the user can't submit again.
+  // success
+  // Make sure to disable the submission UI so the user can't submit again.
 }) { (errors) in
-    // error
-    // Ooops, some error. Rollback if needed.
+  // error
+  // Ooops, some error. Rollback if needed.
 }
 </code></pre>
     </div>
     <!-- objective-c -->
     <div role="tabpanel" class="tab-pane" id="objc">
-<pre><code class="objectivec">BVFeedbackSubmission *feedback = [[BVFeedbackSubmission alloc] initWithContentId:contentId 
-    withConentType:BVFeedbackContentTypeReview 
+<pre><code class="objectivec">BVFeedbackSubmission *feedback = [[BVFeedbackSubmission alloc] initWithContentId:contentId
+    withConentType:BVFeedbackContentTypeReview
     withFeedbackType:BVFeedbackTypeHelpfulness];
-    
+
 feedback.userId = userId
 feedback.vote = BVFeedbackVotePositive;
 feedback.action = BVSubmissionActionPreview;
 
 [feedback submit:^(BVFeedbackSubmissionResponse * _Nonnull response) {
-    // success
-    // Make sure to disable the submission UI so the user can't submit again.
-} failure:^(NSArray<NSError *> * _Nonnull errors) {
-    // error
-    // Ooops, some error. Rollback if needed.
+  // success
+  // Make sure to disable the submission UI so the user can't submit again.
+} failure:^(NSArray&lt;NSError *&gt; * _Nonnull errors) {
+  // error
+  // Ooops, some error. Rollback if needed.
 }];
 </code></pre>
     </div>
+  </div>
 </div>
-<br>
-<br>
+
+
+</div>
+<br/>
+
+<h2>Generic Form Field Options</h2>
+
+<p>All available fields are detailed in <code>BVReviewSubmission.h</code> and further in <a href="https://developer.bazaarvoice.com/apis/conversations/">Bazaarvoice's API Documentation</a>. Required fields, and specific rules per field (<font color="#666"><i>"reviewText must be longer than X characters"</i></font>) is dependent on your specific deployment setup.</p>
+
+<br/>
+
 
 
 
