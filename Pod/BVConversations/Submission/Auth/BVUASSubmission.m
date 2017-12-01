@@ -19,6 +19,8 @@
 
 @implementation BVUASSubmission
 
+@dynamic action;
+
 - (nonnull instancetype)initWithBvAuthToken:(nonnull NSString *)bvAuthToken {
     if ((self = [super init])) {
         self.bvAuthToken = bvAuthToken ?: @"";
