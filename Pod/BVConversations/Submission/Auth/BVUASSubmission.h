@@ -52,5 +52,6 @@ typedef void (^UASSubmissionCompletion)(
        failure:(nonnull ConversationsFailureHandler)failure;
 
 @property (readonly) NSString *_Nonnull bvAuthToken;
+@property BVSubmissionAction action UNAVAILABLE_ATTRIBUTE;
 
 @end
