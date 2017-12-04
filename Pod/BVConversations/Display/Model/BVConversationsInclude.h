@@ -5,26 +5,26 @@
 //  Copyright © 2016 Bazaarvoice. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-#import "BVProduct.h"
 #import "BVAnswer.h"
+#import "BVAuthor.h"
+#import "BVComment.h"
+#import "BVProduct.h"
 #import "BVQuestion.h"
 #import "BVReview.h"
-#import "BVComment.h"
-#import "BVAuthor.h"
+#import <Foundation/Foundation.h>
 
 /// Internal utility - used only within BVSDK
 @interface BVConversationsInclude : NSObject
 
--(id _Nonnull)initWithApiResponse:(NSDictionary* _Nonnull)apiResponse;
+- (nonnull id)initWithApiResponse:(nonnull NSDictionary *)apiResponse;
 
--(BVAnswer* _Nullable)getAnswerById:(NSString* _Nonnull)answerId;
--(BVProduct* _Nullable)getProductById:(NSString* _Nonnull)productId;
--(BVReview* _Nullable)getReviewById:(NSString* _Nonnull)reviewId;
--(BVQuestion* _Nullable)getQuestionById:(NSString* _Nonnull)questionId;
--(BVComment* _Nullable)getCommentById:(NSString* _Nonnull)commentId;
--(BVAuthor* _Nullable)getAuthorById:(NSString* _Nonnull)authorId;
+- (nullable BVAnswer *)getAnswerById:(nonnull NSString *)answerId;
+- (nullable BVProduct *)getProductById:(nonnull NSString *)productId;
+- (nullable BVReview *)getReviewById:(nonnull NSString *)reviewId;
+- (nullable BVQuestion *)getQuestionById:(nonnull NSString *)questionId;
+- (nullable BVComment *)getCommentById:(nonnull NSString *)commentId;
+- (nullable BVAuthor *)getAuthorById:(nonnull NSString *)authorId;
 
-@property (nonatomic, strong, readonly) NSDictionary  * _Nonnull apiResponse;
+@property(nonnull, nonatomic, strong, readonly) NSDictionary *apiResponse;
 
 @end

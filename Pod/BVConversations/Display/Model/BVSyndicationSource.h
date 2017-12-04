@@ -7,16 +7,17 @@
 
 #import <Foundation/Foundation.h>
 
-
 /**
- If a review is syndicated, a BVSyndicationSource will contain the details of where the syndication is coming from is displayed. NOTE: The API key must be configured to show syndicated content.
+ If a review is syndicated, a BVSyndicationSource will contain the details of
+ where the syndication is coming from is displayed. NOTE: The API key must be
+ configured to show syndicated content.
  */
 @interface BVSyndicationSource : NSObject
 
-@property (readonly) NSString * _Nullable logoImageUrl;
-@property (readonly) NSString * _Nullable contentLink;
-@property (readonly) NSString * _Nullable name;
+@property(nullable, readonly) NSString *logoImageUrl;
+@property(nullable, readonly) NSString *contentLink;
+@property(nullable, readonly) NSString *name;
 
--(id _Nullable)initWithApiResponse:(id _Nullable)apiResponse;
+- (nullable id)initWithApiResponse:(nullable id)apiResponse;
 
 @end

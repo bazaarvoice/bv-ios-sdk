@@ -7,38 +7,39 @@
 
 #import <Foundation/Foundation.h>
 
-#import "BVGenericConversationsResult.h"
 #import "BVBadge.h"
+#import "BVGenericConversationsResult.h"
 #import "BVSyndicationSource.h"
 
-@interface BVComment : NSObject<BVGenericConversationsResult>
+@interface BVComment : NSObject <BVGenericConversationsResult>
 
-@property (readonly) NSString* _Nullable title;
-@property (readonly) NSString* _Nullable commentText;
-@property (readonly) NSString* _Nullable reviewId;
-@property (readonly) NSString* _Nullable commentId;
-@property (readonly) NSString* _Nullable campaignId;
+@property(nullable, readonly) NSString *title;
+@property(nullable, readonly) NSString *commentText;
+@property(nullable, readonly) NSString *reviewId;
+@property(nullable, readonly) NSString *commentId;
+@property(nullable, readonly) NSString *campaignId;
 
-@property (readonly) NSString* _Nullable userNickname;
-@property (readonly) NSString* _Nullable authorId;
-@property (readonly) NSString* _Nullable userLocation;
-@property (readonly) NSDate* _Nullable submissionTime;
-@property (readonly) NSDate* _Nullable lastModeratedTime;
-@property (readonly) NSDate* _Nullable lastModificationTime;
+@property(nullable, readonly) NSString *userNickname;
+@property(nullable, readonly) NSString *authorId;
+@property(nullable, readonly) NSString *userLocation;
+@property(nullable, readonly) NSDate *submissionTime;
+@property(nullable, readonly) NSDate *lastModeratedTime;
+@property(nullable, readonly) NSDate *lastModificationTime;
 
-@property (readonly) NSString* _Nullable submissionId;
-@property (readonly) NSNumber* _Nullable totalFeedbackCount;
-@property (readonly) NSNumber* _Nullable totalPositiveFeedbackCount;
-@property (readonly) NSNumber* _Nullable totalNegativeFeedbackCount;
+@property(nullable, readonly) NSString *submissionId;
+@property(nullable, readonly) NSNumber *totalFeedbackCount;
+@property(nullable, readonly) NSNumber *totalPositiveFeedbackCount;
+@property(nullable, readonly) NSNumber *totalNegativeFeedbackCount;
 
-@property (readonly) NSString* _Nullable contentLocale;
+@property(nullable, readonly) NSString *contentLocale;
 
-@property (readonly) NSArray<BVBadge*>* _Nonnull badges;
+@property(nonnull, readonly) NSArray<BVBadge *> *badges;
 
-@property (readonly) BOOL isSyndicated;
-@property (nonatomic, strong, readonly, nullable) BVSyndicationSource* syndicationSource;
+@property(readonly) BOOL isSyndicated;
+@property(nullable, nonatomic, strong, readonly)
+    BVSyndicationSource *syndicationSource;
 
-@property (nonatomic, strong, readonly) BVConversationsInclude * _Nullable includes;
-
+@property(nullable, nonatomic, strong, readonly)
+    BVConversationsInclude *includes;
 
 @end

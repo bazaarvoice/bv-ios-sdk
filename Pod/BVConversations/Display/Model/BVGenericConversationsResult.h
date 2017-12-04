@@ -10,6 +10,7 @@
 /// Internal protocol - used only within BVSDK
 @protocol BVGenericConversationsResult
 
--(id _Nonnull)initWithApiResponse:(NSDictionary* _Nonnull)apiResponse includes:(BVConversationsInclude* _Nullable)includes;
+- (nonnull id)initWithApiResponse:(nonnull NSDictionary *)apiResponse
+                         includes:(nullable BVConversationsInclude *)includes;
 
 @end

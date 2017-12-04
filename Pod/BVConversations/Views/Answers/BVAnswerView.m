@@ -10,17 +10,15 @@
 
 @implementation BVAnswerView
 
--(void)setAnswer:(BVAnswer *)answer {
-    
-    _answer = answer;
-    
+- (void)setAnswer:(BVAnswer *)answer {
+
+  _answer = answer;
 }
 
 - (void)didMoveToSuperview {
-    
-    [super didMoveToSuperview];
-    [BVViewsHelper checkGestureRecognizers:self.gestureRecognizers];
-    
+
+  [super didMoveToSuperview];
+  [BVViewsHelper checkGestureRecognizers:self.gestureRecognizers];
 }
 
 @end

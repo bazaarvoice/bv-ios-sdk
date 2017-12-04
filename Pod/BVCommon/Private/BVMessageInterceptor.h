@@ -9,9 +9,9 @@
 
 @interface BVMessageInterceptor : NSObject
 
-@property (nonatomic, assign) id receiver;
-@property (nonatomic, assign) id middleMan;
+@property(nonatomic, assign) id receiver;
+@property(nonatomic, assign) id middleMan;
 
--(id)initWithMiddleman:(id)middleMan;
+- (id)initWithMiddleman:(id)middleMan;
 
 @end

@@ -10,7 +10,8 @@
 /// Internal utility - used only within BVSDK
 @interface BVCommaUtil : NSObject
 
-+(NSString* _Nonnull)escape:(NSString* _Nonnull)productId;
-+(NSArray<NSString*>* _Nonnull)escapeMultiple:(NSArray<NSString*>* _Nonnull)productIds;
++ (nonnull NSString *)escape:(nonnull NSString *)productId;
++ (nonnull NSArray<NSString *> *)escapeMultiple:
+    (nonnull NSArray<NSString *> *)productIds;
 
 @end

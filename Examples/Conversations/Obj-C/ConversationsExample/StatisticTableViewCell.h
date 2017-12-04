@@ -9,7 +9,7 @@
 
 @interface StatisticTableViewCell : UITableViewCell
 
-@property (weak, nonatomic) IBOutlet UILabel *statTypeLabel;
-@property (weak, nonatomic) IBOutlet UILabel *statValueLabel;
+@property(weak, nonatomic) IBOutlet UILabel *statTypeLabel;
+@property(weak, nonatomic) IBOutlet UILabel *statValueLabel;
 
 @end

@@ -9,15 +9,14 @@
 
 /// Types of Bazaarvoice content that can be included with a Profile.
 typedef NS_ENUM(NSInteger, BVAuthorContentType) {
-    BVAuthorContentTypeReviews,
-    BVAuthorContentTypeQuestions,
-    BVAuthorContentTypeAnswers,
-    BVAuthorContentTypeReviewComments
+  BVAuthorContentTypeReviews,
+  BVAuthorContentTypeQuestions,
+  BVAuthorContentTypeAnswers,
+  BVAuthorContentTypeReviewComments
 };
-
 
 @interface BVAuthorContentTypeUtil : NSObject
 
-+(NSString*)toString:(BVAuthorContentType)type;
++ (NSString *)toString:(BVAuthorContentType)type;
 
 @end

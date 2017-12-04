@@ -5,8 +5,8 @@
 //  Copyright © 2017 Bazaarvoice. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
 #import "BVSubmissionErrorResponse.h"
+#import <Foundation/Foundation.h>
 
 /// Failed UAS submission response
 @interface BVUASSubmissionErrorResponse : BVSubmissionErrorResponse

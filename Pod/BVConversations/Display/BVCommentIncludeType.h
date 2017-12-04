@@ -9,16 +9,13 @@
 
 /// Types of Bazaarvoice content that can be included with a Profile.
 typedef NS_ENUM(NSInteger, BVCommentIncludeType) {
-    BVCommentIncludeTypeReviews,
-    BVCommentIncludeTypeProducts,
-    BVCommentIncludeTypeAuthors
+  BVCommentIncludeTypeReviews,
+  BVCommentIncludeTypeProducts,
+  BVCommentIncludeTypeAuthors
 };
-
 
 @interface BVCommentIncludeTypeUtil : NSObject
 
-+(NSString*)toString:(BVCommentIncludeType)type;
++ (NSString *)toString:(BVCommentIncludeType)type;
 
 @end
-
-

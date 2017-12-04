@@ -9,8 +9,9 @@
 
 @interface BVStringKeyValuePair : NSObject
 
-@property NSString* _Nonnull key;
-@property NSString* _Nullable value;
-+(instancetype _Nonnull)pairWithKey:(NSString* _Nonnull)key value:(NSString* _Nullable)value;
+@property(nonnull) NSString *key;
+@property(nullable) NSString *value;
++ (nonnull instancetype)pairWithKey:(nonnull NSString *)key
+                              value:(nullable NSString *)value;
 
 @end

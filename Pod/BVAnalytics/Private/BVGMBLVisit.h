@@ -8,14 +8,15 @@
 #import <Foundation/Foundation.h>
 
 /**
- *  BVGMBLVisit is a holder object that is used to hold and pass around Gimbal-based 'Visit' events.
+ *  BVGMBLVisit is a holder object that is used to hold and pass around
+ * Gimbal-based 'Visit' events.
  */
 @interface BVGMBLVisit : NSObject
 
-@property NSDate* arrivalDate;
+@property NSDate *arrivalDate;
 @property NSTimeInterval dwellTime;
-@property NSDate* departureDate;
-@property NSString* identifier;
-@property NSString* name;
+@property NSDate *departureDate;
+@property NSString *identifier;
+@property NSString *name;
 
 @end

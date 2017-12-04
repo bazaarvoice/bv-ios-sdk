@@ -10,6 +10,6 @@
 #import "BVBaseConversationsResponse.h"
 #import "BVComment.h"
 
-@interface BVCommentsResponse : BVBaseConversationsResultsResponse<BVComment*>
+@interface BVCommentsResponse : BVBaseConversationsResultsResponse <BVComment *>
 
 @end

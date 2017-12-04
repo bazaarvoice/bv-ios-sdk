@@ -9,14 +9,14 @@
 
 @interface BVSubmittedComment : NSObject
 
-@property (readonly) NSString* _Nullable commentText;
-@property (readonly) NSString* _Nullable title;
-@property (readonly) BOOL sendEmailAlertWhenAnswered;
-@property (readonly) NSDate* _Nullable submissionTime;
-@property (readonly) NSNumber* _Nullable typicalHoursToPost;
-@property (readonly) NSString* _Nullable submissionId;
-@property (readonly) NSString* _Nullable commentId;
+@property(nullable, readonly) NSString *commentText;
+@property(nullable, readonly) NSString *title;
+@property(readonly) BOOL sendEmailAlertWhenAnswered;
+@property(nullable, readonly) NSDate *submissionTime;
+@property(nullable, readonly) NSNumber *typicalHoursToPost;
+@property(nullable, readonly) NSString *submissionId;
+@property(nullable, readonly) NSString *commentId;
 
--(nullable instancetype)initWithApiResponse:(nullable id)apiResponse;
+- (nullable instancetype)initWithApiResponse:(nullable id)apiResponse;
 
 @end

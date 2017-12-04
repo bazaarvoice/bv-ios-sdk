@@ -5,10 +5,10 @@
 //  Copyright © 2017 Bazaarvoice. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-#import "BVSubmissionErrorCode.h"
 #import "BVFieldError.h"
+#import "BVSubmissionErrorCode.h"
+#import <Foundation/Foundation.h>
 
 @interface NSError (BVSubmissionErrorCodeParser)
--(BVSubmissionErrorCode)bvSubmissionErrorCode;
+- (BVSubmissionErrorCode)bvSubmissionErrorCode;
 @end

@@ -10,20 +10,21 @@
 
 @implementation BVDistributionElement
 
--(id _Nonnull)initWithApiResponse:(NSDictionary* _Nonnull)apiResponse {
-    self = [super init];
-    if(self){
-        SET_IF_NOT_NULL(self.label, apiResponse[@"Label"])
-        SET_IF_NOT_NULL(self.identifier, apiResponse[@"Id"])
-        
-        NSMutableArray* tempValues = [NSMutableArray array];
-        for(NSDictionary* value in apiResponse[@"Values"]) {
-            BVDistributionValue* distributionValue = [[BVDistributionValue alloc] initWithApiResponse:value];
-            [tempValues addObject:distributionValue];
-        }
-        self.values = tempValues;
+- (nonnull id)initWithApiResponse:(nonnull NSDictionary *)apiResponse {
+  self = [super init];
+  if (self) {
+    SET_IF_NOT_NULL(self.label, apiResponse[@"Label"])
+    SET_IF_NOT_NULL(self.identifier, apiResponse[@"Id"])
+
+    NSMutableArray *tempValues = [NSMutableArray array];
+    for (NSDictionary *value in apiResponse[@"Values"]) {
+      BVDistributionValue *distributionValue =
+          [[BVDistributionValue alloc] initWithApiResponse:value];
+      [tempValues addObject:distributionValue];
     }
-    return self;
+    self.values = tempValues;
+  }
+  return self;
 }
 
 @end

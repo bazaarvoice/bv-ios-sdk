@@ -9,6 +9,6 @@
 
 @interface UILabelWithInset : UILabel
 
--(id)initWithInset:(UIEdgeInsets)insets;
+- (id)initWithInset:(UIEdgeInsets)insets;
 
 @end

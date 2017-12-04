@@ -7,10 +7,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface UIColor(BVColor)
+@interface UIColor (BVColor)
 
-+(UIColor*)bazaarvoiceNavy;
-+(UIColor*)bazaarvoiceTeal;
-+(UIColor*)bazaarvoiceGold;
++ (UIColor *)bazaarvoiceNavy;
++ (UIColor *)bazaarvoiceTeal;
++ (UIColor *)bazaarvoiceGold;
 
 @end

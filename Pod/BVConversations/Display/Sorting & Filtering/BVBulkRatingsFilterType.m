@@ -9,14 +9,11 @@
 
 @implementation BVBulkRatingsFilterTypeUtil
 
-+(NSString* _Nonnull)toString:(BVBulkRatingsFilterType)filterOperator {
-    
-    switch (filterOperator) {
-            
-        case BVBulkRatingsFilterTypeContentLocale: return @"ContentLocale";
-            
-    }
-    
++ (nonnull NSString *)toString:(BVBulkRatingsFilterType)filterOperator {
+  switch (filterOperator) {
+  case BVBulkRatingsFilterTypeContentLocale:
+    return @"ContentLocale";
+  }
 }
 
 @end

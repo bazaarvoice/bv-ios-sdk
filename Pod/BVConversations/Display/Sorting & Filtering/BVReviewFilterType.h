@@ -11,35 +11,35 @@
  The allowable filter types for `BVReviewsRequest` requests.
  */
 typedef NS_ENUM(NSInteger, BVReviewFilterType) {
-    BVReviewFilterTypeId,
-    BVReviewFilterTypeAuthorId,
-    BVReviewFilterTypeCampaignId,
-    BVReviewFilterTypeCategoryAncestorId,
-    BVReviewFilterTypeContentLocale,
-    BVReviewFilterTypeHasComments,
-    BVReviewFilterTypeHasPhotos,
-    BVReviewFilterTypeHasTags,
-    BVReviewFilterTypeHasVideos,
-    BVReviewFilterTypeIsFeatured,
-    BVReviewFilterTypeIsRatingsOnly,
-    BVReviewFilterTypeIsRecommended,
-    BVReviewFilterTypeIsSubjectActive,
-    BVReviewFilterTypeIsSyndicated,
-    BVReviewFilterTypeLastModeratedTime,
-    BVReviewFilterTypeLastModificationTime,
-    BVReviewFilterTypeModeratorCode,
-    BVReviewFilterTypeRating,
-    BVReviewFilterTypeSubmissionId,
-    BVReviewFilterTypeSubmissionTime,
-    BVReviewFilterTypeTotalCommentCount,
-    BVReviewFilterTypeTotalFeedbackCount,
-    BVReviewFilterTypeTotalNegativeFeedbackCount,
-    BVReviewFilterTypeTotalPositiveFeedbackCount,
-    BVReviewFilterTypeUserLocation
+  BVReviewFilterTypeId,
+  BVReviewFilterTypeAuthorId,
+  BVReviewFilterTypeCampaignId,
+  BVReviewFilterTypeCategoryAncestorId,
+  BVReviewFilterTypeContentLocale,
+  BVReviewFilterTypeHasComments,
+  BVReviewFilterTypeHasPhotos,
+  BVReviewFilterTypeHasTags,
+  BVReviewFilterTypeHasVideos,
+  BVReviewFilterTypeIsFeatured,
+  BVReviewFilterTypeIsRatingsOnly,
+  BVReviewFilterTypeIsRecommended,
+  BVReviewFilterTypeIsSubjectActive,
+  BVReviewFilterTypeIsSyndicated,
+  BVReviewFilterTypeLastModeratedTime,
+  BVReviewFilterTypeLastModificationTime,
+  BVReviewFilterTypeModeratorCode,
+  BVReviewFilterTypeRating,
+  BVReviewFilterTypeSubmissionId,
+  BVReviewFilterTypeSubmissionTime,
+  BVReviewFilterTypeTotalCommentCount,
+  BVReviewFilterTypeTotalFeedbackCount,
+  BVReviewFilterTypeTotalNegativeFeedbackCount,
+  BVReviewFilterTypeTotalPositiveFeedbackCount,
+  BVReviewFilterTypeUserLocation
 };
 
 @interface BVReviewFilterTypeUtil : NSObject
 
-+(NSString* _Nonnull)toString:(BVReviewFilterType)filterOperator;
++ (nonnull NSString *)toString:(BVReviewFilterType)filterOperator;
 
 @end

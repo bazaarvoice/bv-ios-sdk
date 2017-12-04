@@ -5,11 +5,13 @@
 //  Copyright © 2016 Bazaarvoice. All rights reserved.
 //
 
+#import <Foundation/Foundation.h>
+
 @protocol BVDisplayableProductContent
 
-@property (nonatomic, strong, readonly, nonnull) NSString *identifier;
-@property (nonatomic, strong, readonly, nullable) NSString *displayName;
-@property (nonatomic, strong, readonly, nullable) NSString *displayImageUrl;
-@property (nonatomic, strong, readonly, nullable) NSNumber *averageRating;
+@property(nonatomic, strong, readonly, nonnull) NSString *identifier;
+@property(nonatomic, strong, readonly, nullable) NSString *displayName;
+@property(nonatomic, strong, readonly, nullable) NSString *displayImageUrl;
+@property(nonatomic, strong, readonly, nullable) NSNumber *averageRating;
 
 @end

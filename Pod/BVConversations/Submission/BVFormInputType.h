@@ -11,17 +11,17 @@
  Type of form input type.
  */
 typedef NS_ENUM(NSInteger, BVFormInputType) {
-    BVFormInputTypeBooleanInput,
-    BVFormInputTypeFileInput,
-    BVFormInputTypeIntegerInput,
-    BVFormInputTypeSelectInput,
-    BVFormInputTypeTextAreaInput,
-    BVFormInputTypeTextInput,
-    BVFormInputTypeUnknown
+  BVFormInputTypeBooleanInput,
+  BVFormInputTypeFileInput,
+  BVFormInputTypeIntegerInput,
+  BVFormInputTypeSelectInput,
+  BVFormInputTypeTextAreaInput,
+  BVFormInputTypeTextInput,
+  BVFormInputTypeUnknown
 };
 
 @interface BVFormInputTypeUtil : NSObject
 
-+ (BVFormInputType)fromString:(NSString* _Nullable)str;
++ (BVFormInputType)fromString:(nullable NSString *)str;
 
 @end

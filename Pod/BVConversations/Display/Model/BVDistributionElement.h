@@ -5,18 +5,18 @@
 //  Copyright © 2016 Bazaarvoice. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
 #import "BVDistributionValue.h"
+#import <Foundation/Foundation.h>
 
 /*
  A single tag distribition.
  */
 @interface BVDistributionElement : NSObject
 
-@property NSString* _Nonnull label;
-@property NSString* _Nonnull identifier;
-@property NSArray<BVDistributionValue*>* _Nonnull values;
+@property(nonnull) NSString *label;
+@property(nonnull) NSString *identifier;
+@property(nonnull) NSArray<BVDistributionValue *> *values;
 
--(id _Nonnull)initWithApiResponse:(NSDictionary* _Nonnull)apiResponse;
+- (nonnull id)initWithApiResponse:(nonnull NSDictionary *)apiResponse;
 
 @end

@@ -11,6 +11,7 @@
 #import "BVNotificationConstants.h"
 
 @protocol BVNotificationHandler;
-@interface BVNotificationViewController : UIViewController<UNNotificationContentExtension>
+@interface BVNotificationViewController
+    : UIViewController <UNNotificationContentExtension>
 
 @end

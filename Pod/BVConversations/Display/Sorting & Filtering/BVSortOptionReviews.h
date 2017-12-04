@@ -11,35 +11,35 @@
  The allowable sort types for `BVReviewsRequest` requests.
  */
 typedef NS_ENUM(NSInteger, BVSortOptionReviews) {
-    BVSortOptionReviewsId,
-    BVSortOptionReviewsAuthorId,
-    BVSortOptionReviewsCampaignId,
-    BVSortOptionReviewsContentLocale,
-    BVSortOptionReviewsHasComments,
-    BVSortOptionReviewsHasPhotos,
-    BVSortOptionReviewsHasTags,
-    BVSortOptionReviewsHasVideos,
-    BVSortOptionReviewsHelpfulness,
-    BVSortOptionReviewsIsFeatured,
-    BVSortOptionReviewsIsRatingsOnly,
-    BVSortOptionReviewsIsRecommended,
-    BVSortOptionReviewsIsSubjectActive,
-    BVSortOptionReviewsIsSyndicated,
-    BVSortOptionReviewsLastModeratedTime,
-    BVSortOptionReviewsLastModificationTime,
-    BVSortOptionReviewsProductId,
-    BVSortOptionReviewsRating,
-    BVSortOptionReviewsSubmissionId,
-    BVSortOptionReviewsSubmissionTime,
-    BVSortOptionReviewsTotalCommentCount,
-    BVSortOptionReviewsTotalFeedbackCount,
-    BVSortOptionReviewsTotalNegativeFeedbackCount,
-    BVSortOptionReviewsTotalPositiveFeedbackCount,
-    BVSortOptionReviewsUserLocation
+  BVSortOptionReviewsId,
+  BVSortOptionReviewsAuthorId,
+  BVSortOptionReviewsCampaignId,
+  BVSortOptionReviewsContentLocale,
+  BVSortOptionReviewsHasComments,
+  BVSortOptionReviewsHasPhotos,
+  BVSortOptionReviewsHasTags,
+  BVSortOptionReviewsHasVideos,
+  BVSortOptionReviewsHelpfulness,
+  BVSortOptionReviewsIsFeatured,
+  BVSortOptionReviewsIsRatingsOnly,
+  BVSortOptionReviewsIsRecommended,
+  BVSortOptionReviewsIsSubjectActive,
+  BVSortOptionReviewsIsSyndicated,
+  BVSortOptionReviewsLastModeratedTime,
+  BVSortOptionReviewsLastModificationTime,
+  BVSortOptionReviewsProductId,
+  BVSortOptionReviewsRating,
+  BVSortOptionReviewsSubmissionId,
+  BVSortOptionReviewsSubmissionTime,
+  BVSortOptionReviewsTotalCommentCount,
+  BVSortOptionReviewsTotalFeedbackCount,
+  BVSortOptionReviewsTotalNegativeFeedbackCount,
+  BVSortOptionReviewsTotalPositiveFeedbackCount,
+  BVSortOptionReviewsUserLocation
 };
 
 @interface BVSortOptionReviewUtil : NSObject
 
-+(NSString* _Nonnull)toString:(BVSortOptionReviews)BVSortOptionReviews;
++ (nonnull NSString *)toString:(BVSortOptionReviews)BVSortOptionReviews;
 
 @end

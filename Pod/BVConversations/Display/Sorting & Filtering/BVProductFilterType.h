@@ -11,26 +11,26 @@
  The allowable filter types for `BVProductDisplayPageRequest` requests.
  */
 typedef NS_ENUM(NSInteger, BVProductFilterType) {
-    BVProductFilterTypeId,
-    BVProductFilterTypeAverageOverallRating,
-    BVProductFilterTypeCategoryAncestorId,
-    BVProductFilterTypeCategoryId,
-    BVProductFilterTypeIsActive,
-    BVProductFilterTypeIsDisabled,
-    BVProductFilterTypeLastAnswerTime,
-    BVProductFilterTypeLastQuestionTime,
-    BVProductFilterTypeLastReviewTime,
-    BVProductFilterTypeLastStoryTime,
-    BVProductFilterTypeName,
-    BVProductFilterTypeRatingsOnlyReviewCount,
-    BVProductFilterTypeTotalAnswerCount,
-    BVProductFilterTypeTotalQuestionCount,
-    BVProductFilterTypeTotalReviewCount,
-    BVProductFilterTypeTotalStoryCount
+  BVProductFilterTypeId,
+  BVProductFilterTypeAverageOverallRating,
+  BVProductFilterTypeCategoryAncestorId,
+  BVProductFilterTypeCategoryId,
+  BVProductFilterTypeIsActive,
+  BVProductFilterTypeIsDisabled,
+  BVProductFilterTypeLastAnswerTime,
+  BVProductFilterTypeLastQuestionTime,
+  BVProductFilterTypeLastReviewTime,
+  BVProductFilterTypeLastStoryTime,
+  BVProductFilterTypeName,
+  BVProductFilterTypeRatingsOnlyReviewCount,
+  BVProductFilterTypeTotalAnswerCount,
+  BVProductFilterTypeTotalQuestionCount,
+  BVProductFilterTypeTotalReviewCount,
+  BVProductFilterTypeTotalStoryCount
 };
 
 @interface BVProductFilterTypeUtil : NSObject
 
-+(NSString* _Nonnull)toString:(BVProductFilterType)filterOperator;
++ (nonnull NSString *)toString:(BVProductFilterType)filterOperator;
 
 @end

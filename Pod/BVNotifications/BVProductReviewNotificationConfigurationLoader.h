@@ -12,10 +12,12 @@
 @interface BVProductReviewNotificationConfigurationLoader : NSObject
 
 /**
-  Configuration properties that determine display text and delay vaues for a product review notification.
+  Configuration properties that determine display text and delay vaues for a
+  product review notification.
  */
-@property (strong, readonly) BVProductReviewNotificationProperties * _Nonnull bvProductReviewNotificationProperties;
+@property(nonnull, strong, readonly) BVProductReviewNotificationProperties
+    *bvProductReviewNotificationProperties;
 
-+(id _Nonnull)sharedManager;
++ (nonnull id)sharedManager;
 
 @end

@@ -10,11 +10,12 @@
 // For internal use only.
 @interface BVShopperProfileRequestCache : NSURLCache
 
-+(instancetype)sharedCache;
++ (instancetype)sharedCache;
 
--(NSCachedURLResponse *)cachedResponseForRequest:(NSURLRequest *)request;
+- (NSCachedURLResponse *)cachedResponseForRequest:(NSURLRequest *)request;
 
-- (void)storeCachedResponse:(NSCachedURLResponse *)cachedResponse forRequest:(NSURLRequest *)request;
+- (void)storeCachedResponse:(NSCachedURLResponse *)cachedResponse
+                 forRequest:(NSURLRequest *)request;
 
 - (void)printCacheSize;
 

@@ -6,14 +6,15 @@
 //
 
 #import "BVProductsResponse.h"
-#import "BVProduct.h"
 #import "BVConversationsInclude.h"
 #import "BVNullHelper.h"
+#import "BVProduct.h"
 
 @implementation BVProductsResponse
 
--(id)createResult:(NSDictionary *)raw includes:(BVConversationsInclude *)includes {
-    return [[BVProduct alloc] initWithApiResponse:raw includes:includes];
+- (id)createResult:(NSDictionary *)raw
+          includes:(BVConversationsInclude *)includes {
+  return [[BVProduct alloc] initWithApiResponse:raw includes:includes];
 }
 
 @end

@@ -10,9 +10,9 @@
 
 @interface BVBaseAnalyticsHelper : NSObject
 
-+(NSDictionary*)getImpressionParams;
-+(NSDictionary*)getPageViewParams;
-+(NSDictionary*)getFeatureUsedParams;
-+(NSDictionary*)getFeatureUsedInViewParams;
++ (NSDictionary *)getImpressionParams;
++ (NSDictionary *)getPageViewParams;
++ (NSDictionary *)getFeatureUsedParams;
++ (NSDictionary *)getFeatureUsedInViewParams;
 
 @end

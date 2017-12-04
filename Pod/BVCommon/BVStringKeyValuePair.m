@@ -9,11 +9,12 @@
 
 @implementation BVStringKeyValuePair
 
-+(instancetype _Nonnull)pairWithKey:(NSString* _Nonnull)key value:(NSString* _Nullable)value {
-    BVStringKeyValuePair* pair = [[BVStringKeyValuePair alloc] init];
-    pair.key = key;
-    pair.value = value;
-    return pair;
++ (nonnull instancetype)pairWithKey:(nonnull NSString *)key
+                              value:(nullable NSString *)value {
+  BVStringKeyValuePair *pair = [[BVStringKeyValuePair alloc] init];
+  pair.key = key;
+  pair.value = value;
+  return pair;
 }
 
 @end

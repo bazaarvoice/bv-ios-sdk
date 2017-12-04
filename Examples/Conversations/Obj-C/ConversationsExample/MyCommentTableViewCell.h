@@ -11,6 +11,6 @@
 
 @interface MyCommentTableViewCell : UITableViewCell
 
-@property (nonatomic, strong) BVComment *comment;
+@property(nonatomic, strong) BVComment *comment;
 
 @end

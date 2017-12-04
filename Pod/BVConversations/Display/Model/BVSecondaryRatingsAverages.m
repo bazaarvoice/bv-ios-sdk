@@ -10,25 +10,24 @@
 
 @implementation BVSecondaryRatingsAverages
 
-+(BVSecondaryRatingsAverages* _Nullable)createWithDictionary:(id _Nullable)apiResponse {
++ (nullable BVSecondaryRatingsAverages *)createWithDictionary:
+    (nullable id)apiResponse {
+  if (apiResponse == nil || ![apiResponse isKindOfClass:[NSDictionary class]]) {
+    return nil;
+  }
+  NSMutableDictionary *result = [NSMutableDictionary dictionary];
 
-    if (apiResponse == nil || ![apiResponse isKindOfClass:[NSDictionary class]]) {
-        return nil;
+  NSDictionary *apiObject = apiResponse;
+
+  for (NSString *key in apiObject) {
+    NSDictionary *value = apiObject[key];
+    id avgRating = value[@"AverageRating"];
+
+    if (avgRating != [NSNull null]) {
+      result[key] = avgRating;
     }
-    NSMutableDictionary* result = [NSMutableDictionary dictionary];
-    
-    NSDictionary* apiObject = apiResponse;
-    
-    for(NSString* key in apiObject){
-        NSDictionary* value = apiObject[key];
-        id avgRating = value[@"AverageRating"];
-        
-        if(avgRating != [NSNull null]){
-            result[key] = avgRating;
-        }
-    }
-    return (BVSecondaryRatingsAverages*)result;
-    
+  }
+  return (BVSecondaryRatingsAverages *)result;
 }
 
 @end

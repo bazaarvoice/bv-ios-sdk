@@ -9,8 +9,8 @@
 
 @interface BVAdTypesCell : UICollectionViewCell
 
-@property (weak, nonatomic) IBOutlet UIImageView* backgroundImage;
-@property (weak, nonatomic) IBOutlet UILabel* cellTitleLabel;
-@property (weak, nonatomic) IBOutlet UILabel* cellDescriptionLabel;
+@property(weak, nonatomic) IBOutlet UIImageView *backgroundImage;
+@property(weak, nonatomic) IBOutlet UILabel *cellTitleLabel;
+@property(weak, nonatomic) IBOutlet UILabel *cellDescriptionLabel;
 
 @end

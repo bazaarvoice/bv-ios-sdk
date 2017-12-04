@@ -458,7 +458,6 @@
 		87F2DD481DAD585E00FB43F3 /* BVShopperProfileRequestCache.h in Headers */ = {isa = PBXBuildFile; fileRef = 87F2DC161DAD585E00FB43F3 /* BVShopperProfileRequestCache.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		87F2DD4B1DAD589800FB43F3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87F2DD4A1DAD589800FB43F3 /* UIKit.framework */; };
 		87F2DD4D1DAD589E00FB43F3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87F2DD4C1DAD589E00FB43F3 /* Foundation.framework */; };
-		87F2DD501DAD592A00FB43F3 /* Gimbal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87F2DD4F1DAD592A00FB43F3 /* Gimbal.framework */; };
 		87F2DD521DAD597C00FB43F3 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 87F2DD511DAD597C00FB43F3 /* libz.tbd */; };
 		87F2DD5E1DAD5E9400FB43F3 /* BVBaseStubTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 87F2DD551DAD5E9400FB43F3 /* BVBaseStubTestCase.m */; };
 		87F2DD601DAD5E9400FB43F3 /* BVCurationsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 87F2DD571DAD5E9400FB43F3 /* BVCurationsTests.m */; };
@@ -539,6 +538,7 @@
 		B575C38F1FBE1A4F000F890B /* BVUASSubmissionResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = B575C38D1FBE1A4F000F890B /* BVUASSubmissionResponse.m */; };
 		B575C3921FBE2479000F890B /* BVSubmittedUAS.h in Headers */ = {isa = PBXBuildFile; fileRef = B575C3901FBE2479000F890B /* BVSubmittedUAS.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B575C3931FBE2479000F890B /* BVSubmittedUAS.m in Sources */ = {isa = PBXBuildFile; fileRef = B575C3911FBE2479000F890B /* BVSubmittedUAS.m */; };
+		B5E1F5331FD5F2F0000F5DB5 /* Gimbal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5E1F5321FD5F2F0000F5DB5 /* Gimbal.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -996,7 +996,6 @@
 		87F2DC161DAD585E00FB43F3 /* BVShopperProfileRequestCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVShopperProfileRequestCache.h; sourceTree = "<group>"; };
 		87F2DD4A1DAD589800FB43F3 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		87F2DD4C1DAD589E00FB43F3 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		87F2DD4F1DAD592A00FB43F3 /* Gimbal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Gimbal.framework; sourceTree = "<group>"; };
 		87F2DD511DAD597C00FB43F3 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		87F2DD541DAD5E9400FB43F3 /* BVBaseStubTestCase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BVBaseStubTestCase.h; path = Tests/Tests/BVBaseStubTestCase.h; sourceTree = SOURCE_ROOT; };
 		87F2DD551DAD5E9400FB43F3 /* BVBaseStubTestCase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BVBaseStubTestCase.m; path = Tests/Tests/BVBaseStubTestCase.m; sourceTree = SOURCE_ROOT; };
@@ -1079,6 +1078,7 @@
 		B575C38D1FBE1A4F000F890B /* BVUASSubmissionResponse.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = BVUASSubmissionResponse.m; path = ../Auth/BVUASSubmissionResponse.m; sourceTree = "<group>"; };
 		B575C3901FBE2479000F890B /* BVSubmittedUAS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = BVSubmittedUAS.h; path = ../Auth/BVSubmittedUAS.h; sourceTree = "<group>"; };
 		B575C3911FBE2479000F890B /* BVSubmittedUAS.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = BVSubmittedUAS.m; path = ../Auth/BVSubmittedUAS.m; sourceTree = "<group>"; };
+		B5E1F5321FD5F2F0000F5DB5 /* Gimbal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Gimbal.framework; path = Frameworks/Gimbal.framework; sourceTree = SOURCE_ROOT; };
 		EC098EFAFB725736F0751BA0 /* libPods-BVSDK.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BVSDK.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -1091,7 +1091,7 @@
 				87F2DD521DAD597C00FB43F3 /* libz.tbd in Frameworks */,
 				87F2DD4D1DAD589E00FB43F3 /* Foundation.framework in Frameworks */,
 				87F2DD4B1DAD589800FB43F3 /* UIKit.framework in Frameworks */,
-				87F2DD501DAD592A00FB43F3 /* Gimbal.framework in Frameworks */,
+				B5E1F5331FD5F2F0000F5DB5 /* Gimbal.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1919,10 +1919,10 @@
 			isa = PBXGroup;
 			children = (
 				87F2DD511DAD597C00FB43F3 /* libz.tbd */,
-				87F2DD4F1DAD592A00FB43F3 /* Gimbal.framework */,
+				B5E1F5321FD5F2F0000F5DB5 /* Gimbal.framework */,
 			);
 			name = "3rd Party Frameworks";
-			path = Pod/Frameworks;
+			path = Frameworks;
 			sourceTree = "<group>";
 		};
 		87F2DD651DAD698400FB43F3 /* conversations */ = {
@@ -2999,7 +2999,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/Pod/Frameworks",
+					"$(PROJECT_DIR)/Frameworks",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = "";
@@ -3026,7 +3026,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/Pod/Frameworks",
+					"$(PROJECT_DIR)/Frameworks",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = "";

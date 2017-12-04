@@ -6,13 +6,14 @@
 //
 //
 
-#import "BVNotificationConstants.h"
 #import "BVNotificationCenterObject.h"
+#import "BVNotificationConstants.h"
 
-@interface BVStoreReviewNotificationCenter : NSObject<BVStoreNotificationCenterObject>
+@interface BVStoreReviewNotificationCenter
+    : NSObject <BVStoreNotificationCenterObject>
 
--(id _Null_unspecified)init __attribute__((unavailable("Use sharedCenter")));
+- (id _Null_unspecified)init __attribute__((unavailable("Use sharedCenter")));
 
-+(instancetype _Nonnull)sharedCenter;
++ (nonnull instancetype)sharedCenter;
 
 @end

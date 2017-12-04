@@ -17,9 +17,10 @@
 
 @end
 
-@interface JPSThumbnailAnnotation : NSObject <MKAnnotation, JPSThumbnailAnnotationProtocol>
+@interface JPSThumbnailAnnotation
+    : NSObject <MKAnnotation, JPSThumbnailAnnotationProtocol>
 
-@property (nonatomic, readonly) CLLocationCoordinate2D coordinate;
+@property(nonatomic, readonly) CLLocationCoordinate2D coordinate;
 
 + (instancetype)annotationWithThumbnail:(JPSThumbnail *)thumbnail;
 - (id)initWithThumbnail:(JPSThumbnail *)thumbnail;

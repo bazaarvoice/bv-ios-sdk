@@ -5,13 +5,13 @@
 //  Copyright © 2016 Bazaarvoice. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
 #import "BVSubmissionErrorResponse.h"
 #import "BVSubmittedQuestion.h"
+#import <Foundation/Foundation.h>
 
 /// Failed question submission response.
 @interface BVQuestionSubmissionErrorResponse : BVSubmissionErrorResponse
 
-@property BVSubmittedQuestion* _Nullable question;
+@property(nullable) BVSubmittedQuestion *question;
 
 @end

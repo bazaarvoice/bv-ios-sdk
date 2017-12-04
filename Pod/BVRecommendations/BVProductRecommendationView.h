@@ -6,35 +6,34 @@
 //
 //
 
-#import <UIKit/UIKit.h>
 #import "BVRecommendedProduct.h"
-
+#import <UIKit/UIKit.h>
 
 /// A collection view cell to show a single product recommendation in.
-/// This cell should be used in combination with `BVRecommendationCollectionView`.
+/// This cell should be used in combination with
+/// `BVRecommendationCollectionView`.
 @interface BVRecommendationCollectionViewCell : UICollectionViewCell
 
 /// The BVRecommendedProduct shown in this view
-@property (strong, nonatomic) BVRecommendedProduct* bvRecommendedProduct;
+@property(strong, nonatomic) BVRecommendedProduct *bvRecommendedProduct;
 
 @end
-
 
 /// A table view cell to show a single product recommendation in.
 /// This cell should be used in combination with `BVRecommendationTableView`.
 @interface BVRecommendationTableViewCell : UITableViewCell
 
 /// The BVRecommendedProduct shown in this view
-@property (strong, nonatomic) BVRecommendedProduct* bvRecommendedProduct;
+@property(strong, nonatomic) BVRecommendedProduct *bvRecommendedProduct;
 
 @end
 
-
 /// A view to show a single product recommendation in.
-/// This view may be used in combination with `BVProductRecommendationsContainer`, which holds one or more of these views.
+/// This view may be used in combination with
+/// `BVProductRecommendationsContainer`, which holds one or more of these views.
 @interface BVProductRecommendationView : UIView
 
 /// The BVRecommendedProduct shown in this view
-@property (strong, nonatomic) BVRecommendedProduct* bvRecommendedProduct;
+@property(strong, nonatomic) BVRecommendedProduct *bvRecommendedProduct;
 
 @end

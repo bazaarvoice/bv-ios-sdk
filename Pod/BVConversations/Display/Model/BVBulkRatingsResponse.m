@@ -10,8 +10,9 @@
 
 @implementation BVBulkRatingsResponse
 
--(id)createResult:(NSDictionary *)raw includes:(BVConversationsInclude *)includes {
-    return [[BVProductStatistics alloc] initWithApiResponse: raw];
+- (id)createResult:(NSDictionary *)raw
+          includes:(BVConversationsInclude *)includes {
+  return [[BVProductStatistics alloc] initWithApiResponse:raw];
 }
 
 @end

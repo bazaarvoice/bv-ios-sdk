@@ -5,15 +5,15 @@
 //  Copyright © 2016 Bazaarvoice. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-#import "BVSubmittedFeedback.h"
 #import "BVFeedbackSubmissionResponse.h"
 #import "BVSubmissionResponse.h"
+#import "BVSubmittedFeedback.h"
+#import <Foundation/Foundation.h>
 
 @interface BVFeedbackSubmissionResponse : BVSubmissionResponse
 
--(nonnull instancetype)initWithApiResponse:(NSDictionary * _Nonnull )apiResponse;
+- (nonnull instancetype)initWithApiResponse:(nonnull NSDictionary *)apiResponse;
 
-@property BVSubmittedFeedback* _Nullable feedback;
+@property(nullable) BVSubmittedFeedback *feedback;
 
 @end

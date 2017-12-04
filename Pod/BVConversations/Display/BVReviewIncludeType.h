@@ -7,16 +7,14 @@
 
 #import <Foundation/Foundation.h>
 
-
 /// Types of Bazaarvoice content that can be included with a Profile.
 typedef NS_ENUM(NSInteger, BVReviewIncludeType) {
-    BVReviewIncludeTypeProducts,
-    BVReviewIncludeTypeComments
+  BVReviewIncludeTypeProducts,
+  BVReviewIncludeTypeComments
 };
-
 
 @interface BVReviewIncludeTypeUtil : NSObject
 
-+(NSString*)toString:(BVReviewIncludeType)type;
++ (NSString *)toString:(BVReviewIncludeType)type;
 
 @end

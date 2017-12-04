@@ -10,6 +10,6 @@
 
 @interface BVCommentSubmissionResponse : BVSubmissionResponse
 
-@property BVSubmittedComment* _Nullable comment;
+@property(nullable) BVSubmittedComment *comment;
 
 @end

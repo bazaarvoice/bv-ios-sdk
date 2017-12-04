@@ -8,20 +8,21 @@
 #import <Foundation/Foundation.h>
 
 /*
- BVFilterOperator describes the operator used on filters added to request objects.
- For example: to search reviews that have ratings greater than 3, you would use the BVFilterOperatorGreaterThanOrEqualTo operator.
+ BVFilterOperator describes the operator used on filters added to request
+ objects. For example: to search reviews that have ratings greater than 3, you
+ would use the BVFilterOperatorGreaterThanOrEqualTo operator.
  */
 typedef NS_ENUM(NSInteger, BVFilterOperator) {
-    BVFilterOperatorGreaterThan,
-    BVFilterOperatorGreaterThanOrEqualTo,
-    BVFilterOperatorLessThan,
-    BVFilterOperatorLessThanOrEqualTo,
-    BVFilterOperatorEqualTo,
-    BVFilterOperatorNotEqualTo,
+  BVFilterOperatorGreaterThan,
+  BVFilterOperatorGreaterThanOrEqualTo,
+  BVFilterOperatorLessThan,
+  BVFilterOperatorLessThanOrEqualTo,
+  BVFilterOperatorEqualTo,
+  BVFilterOperatorNotEqualTo,
 };
 
 @interface BVFilterOperatorUtil : NSObject
 
-+(NSString* _Nonnull)toString:(BVFilterOperator)filterOperator;
++ (nonnull NSString *)toString:(BVFilterOperator)filterOperator;
 
 @end

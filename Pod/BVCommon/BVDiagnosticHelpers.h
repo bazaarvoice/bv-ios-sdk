@@ -9,7 +9,7 @@
 
 @interface BVDiagnosticHelpers : NSObject
 
-+(NSString*)releaseVersionNumber;
-+(NSString*)buildVersionNumber;
++ (NSString *)releaseVersionNumber;
++ (NSString *)buildVersionNumber;
 
 @end

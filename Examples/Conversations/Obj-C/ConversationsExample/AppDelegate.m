@@ -10,15 +10,15 @@
 
 @implementation AppDelegate
 
+- (BOOL)application:(UIApplication *)application
+    didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+  // Override point for customization after application launch.
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
-    
 #warning See bvsdk_config_staging.json and bvsdk_config_product.json in the project for API key and client ID settings.
-    [BVSDKManager configure:BVConfigurationTypeStaging];
-    [[BVSDKManager sharedManager] setLogLevel:BVLogLevelVerbose];
-    
-    return YES;
+  [BVSDKManager configure:BVConfigurationTypeStaging];
+  [[BVSDKManager sharedManager] setLogLevel:BVLogLevelVerbose];
+
+  return YES;
 }
 
 @end

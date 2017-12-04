@@ -5,10 +5,9 @@
 //  Copyright © 2017 Bazaarvoice. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
 #import "BVErrorCode.h"
+#import <Foundation/Foundation.h>
 
 @interface NSError (BVErrorCodeParser)
--(BVErrorCode)bvErrorCode;
+- (BVErrorCode)bvErrorCode;
 @end
-

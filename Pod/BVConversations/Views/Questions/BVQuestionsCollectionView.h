@@ -12,8 +12,9 @@
 /// A sub-classed UICollectionView for displaying BVQuestionTableViewCells
 @interface BVQuestionsCollectionView : UICollectionView
 
-/// Helper method to asynchronously load the Questions for given request. This helper also ensures the proper analytic tracking is fired for reporting.
-- (void)load:(nonnull BVQuestionsAndAnswersRequest*)request
+/// Helper method to asynchronously load the Questions for given request. This
+/// helper also ensures the proper analytic tracking is fired for reporting.
+- (void)load:(nonnull BVQuestionsAndAnswersRequest *)request
      success:(nonnull QuestionsAndAnswersSuccessHandler)success
      failure:(nonnull ConversationsFailureHandler)failure;
 

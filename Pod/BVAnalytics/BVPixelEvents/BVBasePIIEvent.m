@@ -7,71 +7,63 @@
 
 #import "BVBasePIIEvent.h"
 
-static NSSet* whitelistParams;
+static NSSet *whitelistParams;
 
 @implementation BVBasePIIEvent
 
 @synthesize additionalParams;
 
--(instancetype)initWithParams:(NSDictionary * _Nullable)params{
-    
-    self = [super init];
-    
-    if (self){
-        sranddev();
-        //these are considered the only non-PII params
-        whitelistParams= [[NSSet alloc]initWithObjects: @"orderId", @"affiliation", @"total",
-                          @"tax", @"shipping", @"city",
-                          @"state", @"country", @"currency",
-                          @"items", @"locale", @"type",
-                          @"label", @"value", @"proxy",
-                          @"partnerSource", @"TestCase", @"TestSession",
-                          @"dc",@"ref",nil];
-        
-        self.additionalParams = params ? params : [NSDictionary dictionary];
+- (instancetype)initWithParams:(nullable NSDictionary *)params {
+  self = [super init];
+
+  if (self) {
+    sranddev();
+    // these are considered the only non-PII params
+    whitelistParams = [[NSSet alloc]
+        initWithObjects:@"orderId", @"affiliation", @"total", @"tax",
+                        @"shipping", @"city", @"state", @"country", @"currency",
+                        @"items", @"locale", @"type", @"label", @"value",
+                        @"proxy", @"partnerSource", @"TestCase", @"TestSession",
+                        @"dc", @"ref", nil];
+
+    self.additionalParams = params ? params : [NSDictionary dictionary];
+  }
+
+  return self;
+}
+
+- (NSDictionary *)toRaw {
+  NSAssert(NO, @"Should be implemented only by subclass");
+  return nil;
+}
+
+- (NSDictionary *)getNonPII:(nullable NSDictionary *)params {
+  NSMutableDictionary *nonPIIParmas = [NSMutableDictionary new];
+
+  if (params) {
+    for (NSString *key in params.allKeys) {
+      if ([whitelistParams containsObject:key]) {
+        [nonPIIParmas setObject:params[key] forKey:key];
+      }
     }
-    
-    return self;
-    
+  }
+  return nonPIIParmas;
 }
-
-- (NSDictionary *)toRaw{
-    NSAssert(NO, @"Should be implemented only by subclass");
-    return nil;
-}
-
--(NSDictionary*)getNonPII:(NSDictionary * _Nullable)params {
-    
-    NSMutableDictionary *nonPIIParmas = [NSMutableDictionary new];
-    
-    if(params){
-        for (NSString *key in params.allKeys){
-            if ([whitelistParams containsObject:key]){
-                [nonPIIParmas setObject:params[key] forKey:key];
-            }
-        }
-    }
-    return nonPIIParmas;
-}
-
 
 - (BOOL)hasPII {
-    
-    NSDictionary *nonPIIParams = [self getNonPII:self.additionalParams];
-    return nonPIIParams.count != self.additionalParams.count;
+  NSDictionary *nonPIIParams = [self getNonPII:self.additionalParams];
+  return nonPIIParams.count != self.additionalParams.count;
 }
 
+- (NSString *)getLoadId {
+  int charLimit = 20;
+  NSMutableString *loadId = [NSMutableString new];
 
--(NSString*)getLoadId {
-    
-    int charLimit = 20;
-    NSMutableString* loadId = [NSMutableString new];
-    
-    while (loadId.length < charLimit) {
-        [loadId appendFormat:@"%x", rand() % 16];
-    }
-    
-    return loadId;
+  while (loadId.length < charLimit) {
+    [loadId appendFormat:@"%x", rand() % 16];
+  }
+
+  return loadId;
 }
 
 @end
