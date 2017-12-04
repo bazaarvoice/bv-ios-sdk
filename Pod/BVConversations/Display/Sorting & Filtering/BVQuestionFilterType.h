@@ -11,37 +11,37 @@
  The allowable filter types for `BVQuestionsAndAnswersRequest` requests.
  */
 typedef NS_ENUM(NSInteger, BVQuestionFilterType) {
-    BVQuestionFilterTypeId,
-    BVQuestionFilterTypeAuthorId,
-    BVQuestionFilterTypeCampaignId,
-    BVQuestionFilterTypeCategoryAncestorId,
-    BVQuestionFilterTypeCategoryId,
-    BVQuestionFilterTypeContentLocale,
-    BVQuestionFilterTypeHasAnswers,
-    BVQuestionFilterTypeHasBestAnswer,
-    BVQuestionFilterTypeHasBrandAnswers,
-    BVQuestionFilterTypeHasPhotos,
-    BVQuestionFilterTypeHasStaffAnswers,
-    BVQuestionFilterTypeHasTags,
-    BVQuestionFilterTypeHasVideos,
-    BVQuestionFilterTypeIsFeatured,
-    BVQuestionFilterTypeIsSubjectActive,
-    BVQuestionFilterTypeLastApprovedAnswerSubmissionTime,
-    BVQuestionFilterTypeLastModeratedTime,
-    BVQuestionFilterTypeLastModificationTime,
-    BVQuestionFilterTypeModeratorCode,
-    BVQuestionFilterTypeSubmissionId,
-    BVQuestionFilterTypeSubmissionTime,
-    BVQuestionFilterTypeSummary,
-    BVQuestionFilterTypeTotalAnswerCount,
-    BVQuestionFilterTypeTotalFeedbackCount,
-    BVQuestionFilterTypeTotalNegativeFeedbackCount,
-    BVQuestionFilterTypeTotalPositiveFeedbackCount,
-    BVQuestionFilterTypeUserLocation
+  BVQuestionFilterTypeId,
+  BVQuestionFilterTypeAuthorId,
+  BVQuestionFilterTypeCampaignId,
+  BVQuestionFilterTypeCategoryAncestorId,
+  BVQuestionFilterTypeCategoryId,
+  BVQuestionFilterTypeContentLocale,
+  BVQuestionFilterTypeHasAnswers,
+  BVQuestionFilterTypeHasBestAnswer,
+  BVQuestionFilterTypeHasBrandAnswers,
+  BVQuestionFilterTypeHasPhotos,
+  BVQuestionFilterTypeHasStaffAnswers,
+  BVQuestionFilterTypeHasTags,
+  BVQuestionFilterTypeHasVideos,
+  BVQuestionFilterTypeIsFeatured,
+  BVQuestionFilterTypeIsSubjectActive,
+  BVQuestionFilterTypeLastApprovedAnswerSubmissionTime,
+  BVQuestionFilterTypeLastModeratedTime,
+  BVQuestionFilterTypeLastModificationTime,
+  BVQuestionFilterTypeModeratorCode,
+  BVQuestionFilterTypeSubmissionId,
+  BVQuestionFilterTypeSubmissionTime,
+  BVQuestionFilterTypeSummary,
+  BVQuestionFilterTypeTotalAnswerCount,
+  BVQuestionFilterTypeTotalFeedbackCount,
+  BVQuestionFilterTypeTotalNegativeFeedbackCount,
+  BVQuestionFilterTypeTotalPositiveFeedbackCount,
+  BVQuestionFilterTypeUserLocation
 };
 
 @interface BVQuestionFilterTypeUtil : NSObject
 
-+(NSString* _Nonnull)toString:(BVQuestionFilterType)filterOperator;
++ (nonnull NSString *)toString:(BVQuestionFilterType)filterOperator;
 
 @end

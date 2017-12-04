@@ -10,13 +10,13 @@
 
 @implementation BVDistributionValue
 
--(id _Nonnull)initWithApiResponse:(NSDictionary* _Nonnull)apiResponse {
-    self = [super init];
-    if(self){
-        SET_IF_NOT_NULL(self.value, apiResponse[@"Value"])
-        SET_IF_NOT_NULL(self.count, apiResponse[@"Count"])
-    }
-    return self;
+- (nonnull id)initWithApiResponse:(nonnull NSDictionary *)apiResponse {
+  self = [super init];
+  if (self) {
+    SET_IF_NOT_NULL(self.value, apiResponse[@"Value"])
+    SET_IF_NOT_NULL(self.count, apiResponse[@"Count"])
+  }
+  return self;
 }
 
 @end

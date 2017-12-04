@@ -10,7 +10,12 @@
 
 @interface BVStoreNotificationConfigurationLoader (Testing)
 
--(void)loadStoreNotificationConfiguration:(void (^ _Nonnull)(BVStoreReviewNotificationProperties * _Nonnull response))completion failure:(void (^ _Nonnull)(NSError * _Nonnull error))failure;
+- (void)
+loadStoreNotificationConfiguration:
+    (nonnull void (^)(BVStoreReviewNotificationProperties *__nonnull response))
+        completion
+                           failure:(nonnull void (^)(NSError *__nonnull error))
+                                       failure;
 
 @end
 

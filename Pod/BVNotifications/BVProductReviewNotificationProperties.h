@@ -6,8 +6,8 @@
 //
 //
 
-#import <Foundation/Foundation.h>
 #import "BVNotificationProperties.h"
+#import <Foundation/Foundation.h>
 
 @interface BVProductReviewNotificationProperties : BVNotificationProperties
 

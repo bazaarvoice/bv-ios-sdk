@@ -10,17 +10,17 @@
 
 @class JPSThumbnail;
 
-extern NSString * const kJPSThumbnailAnnotationViewReuseID;
+extern NSString *const kJPSThumbnailAnnotationViewReuseID;
 
 typedef NS_ENUM(NSInteger, JPSThumbnailAnnotationViewAnimationDirection) {
-    JPSThumbnailAnnotationViewAnimationDirectionGrow,
-    JPSThumbnailAnnotationViewAnimationDirectionShrink,
+  JPSThumbnailAnnotationViewAnimationDirectionGrow,
+  JPSThumbnailAnnotationViewAnimationDirectionShrink,
 };
 
 typedef NS_ENUM(NSInteger, JPSThumbnailAnnotationViewState) {
-    JPSThumbnailAnnotationViewStateCollapsed,
-    JPSThumbnailAnnotationViewStateExpanded,
-    JPSThumbnailAnnotationViewStateAnimating,
+  JPSThumbnailAnnotationViewStateCollapsed,
+  JPSThumbnailAnnotationViewStateExpanded,
+  JPSThumbnailAnnotationViewStateAnimating,
 };
 
 @protocol JPSThumbnailAnnotationViewProtocol <NSObject>
@@ -30,7 +30,8 @@ typedef NS_ENUM(NSInteger, JPSThumbnailAnnotationViewState) {
 
 @end
 
-@interface JPSThumbnailAnnotationView : MKAnnotationView <JPSThumbnailAnnotationViewProtocol>
+@interface JPSThumbnailAnnotationView
+    : MKAnnotationView <JPSThumbnailAnnotationViewProtocol>
 
 - (id)initWithAnnotation:(id<MKAnnotation>)annotation;
 

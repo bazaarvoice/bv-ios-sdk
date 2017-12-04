@@ -11,11 +11,11 @@
  Filter a `BVBulkRatingsRequest` based on content locale.
  */
 typedef NS_ENUM(NSInteger, BVBulkRatingsFilterType) {
-    BVBulkRatingsFilterTypeContentLocale
+  BVBulkRatingsFilterTypeContentLocale
 };
 
 @interface BVBulkRatingsFilterTypeUtil : NSObject
 
-+(NSString* _Nonnull)toString:(BVBulkRatingsFilterType)filterOperator;
++ (nonnull NSString *)toString:(BVBulkRatingsFilterType)filterOperator;
 
 @end

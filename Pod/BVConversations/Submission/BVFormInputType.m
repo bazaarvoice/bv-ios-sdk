@@ -9,28 +9,26 @@
 
 @implementation BVFormInputTypeUtil
 
-+ (BVFormInputType)fromString:(NSString* _Nullable)str{
-    
-    if([str isEqualToString:@"BooleanInput"]) {
-        return BVFormInputTypeBooleanInput;
-    }
-    if([str isEqualToString:@"FileInput"]) {
-        return BVFormInputTypeFileInput;
-    }
-    if([str isEqualToString:@"IntegerInput"]) {
-        return BVFormInputTypeIntegerInput;
-    }
-    if([str isEqualToString:@"SelectInput"]) {
-        return BVFormInputTypeSelectInput;
-    }
-    if([str isEqualToString:@"TextAreaInput"]) {
-        return BVFormInputTypeTextAreaInput;
-    }
-    if([str isEqualToString:@"TextInput"]) {
-        return BVFormInputTypeTextInput;
-    }
-    return BVFormInputTypeUnknown;
-    
++ (BVFormInputType)fromString:(nullable NSString *)str {
+  if ([str isEqualToString:@"BooleanInput"]) {
+    return BVFormInputTypeBooleanInput;
+  }
+  if ([str isEqualToString:@"FileInput"]) {
+    return BVFormInputTypeFileInput;
+  }
+  if ([str isEqualToString:@"IntegerInput"]) {
+    return BVFormInputTypeIntegerInput;
+  }
+  if ([str isEqualToString:@"SelectInput"]) {
+    return BVFormInputTypeSelectInput;
+  }
+  if ([str isEqualToString:@"TextAreaInput"]) {
+    return BVFormInputTypeTextAreaInput;
+  }
+  if ([str isEqualToString:@"TextInput"]) {
+    return BVFormInputTypeTextInput;
+  }
+  return BVFormInputTypeUnknown;
 }
 
 @end

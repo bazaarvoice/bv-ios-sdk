@@ -5,19 +5,20 @@
 //  Copyright © 2016 Bazaarvoice. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-#import "BVGenericConversationsResult.h"
 #import "BVAnswer.h"
-#import "BVDimensionAndDistributionUtil.h"
-#import "BVPhoto.h"
-#import "BVVideo.h"
-#import "BVContextDataValue.h"
 #import "BVBadge.h"
+#import "BVContextDataValue.h"
+#import "BVDimensionAndDistributionUtil.h"
+#import "BVGenericConversationsResult.h"
+#import "BVPhoto.h"
 #import "BVSyndicationSource.h"
+#import "BVVideo.h"
+#import <Foundation/Foundation.h>
 
 /*
- A consumer generated question about a product. For example: "Is this toaster heavy?" or "How many HDMI ports does this TV have?"
- 
+ A consumer generated question about a product. For example: "Is this toaster
+ heavy?" or "How many HDMI ports does this TV have?"
+
  Some commonly used data in a question:
     Answers to this question are included in the `answers` property.
     Question summary is included in the `questionSummary` property.
@@ -25,36 +26,39 @@
  */
 @interface BVQuestion : NSObject <BVGenericConversationsResult>
 
-@property (nonatomic, copy) NSArray<BVAnswer *> * _Nonnull answers;
-@property (nonatomic, copy) NSString * _Nullable questionSummary;
-@property (nonatomic, copy) NSString * _Nullable questionDetails;
-@property (nonatomic, copy) NSString * _Nullable userNickname;
-@property (nonatomic, strong) TagDimensions _Nullable tagDimensions;
-@property (nonatomic, copy) NSArray<BVPhoto *> * _Nonnull photos;
-@property (nonatomic, copy) NSString * _Nullable categoryId;
-@property (nonatomic, copy) NSArray<BVContextDataValue *> * _Nonnull contextDataValues;
-@property (nonatomic, copy) NSArray<BVVideo *> * _Nonnull videos;
-@property (nonatomic, copy) NSString * _Nullable submissionId;
-@property (nonatomic, strong) NSDate * _Nullable lastModificationTime;
-@property (nonatomic, copy) NSString * _Nullable userLocation;
-@property (nonatomic, copy) NSArray<BVBadge *> * _Nonnull badges;
-@property (nonatomic, copy) NSString * _Nullable authorId;
-@property (nonatomic, copy) NSArray<NSString *> * _Nonnull productRecommendationIds;
-@property (nonatomic, copy) NSString * _Nullable productId;
-@property (nonatomic, strong) NSDictionary * _Nonnull additionalFields;
-@property (nonatomic, copy) NSString * _Nullable campaignId;
-@property (nonatomic, strong) NSDate * _Nullable submissionTime;
-@property (nonatomic, copy) NSString * _Nullable contentLocale;
-@property (nonatomic, copy) NSString * _Nullable moderationStatus;
-@property (nonatomic, copy) NSString * _Nullable identifier;
-@property (nonatomic, strong) NSDate * _Nullable lastModeratedTime;
-@property (nonatomic, copy) NSNumber* _Nullable totalAnswerCount;
-@property (nonatomic, copy) NSNumber* _Nullable totalFeedbackCount;
-@property (nonatomic, copy) NSNumber* _Nullable totalPositiveFeedbackCount;
-@property (nonatomic, copy) NSNumber* _Nullable totalInappropriateFeedbackCount;
-@property (nonatomic, copy) NSNumber* _Nullable totalNegativeFeedbackCount;
+@property(nonnull, nonatomic, copy) NSArray<BVAnswer *> *answers;
+@property(nullable, nonatomic, copy) NSString *questionSummary;
+@property(nullable, nonatomic, copy) NSString *questionDetails;
+@property(nullable, nonatomic, copy) NSString *userNickname;
+@property(nullable, nonatomic, strong) TagDimensions tagDimensions;
+@property(nonnull, nonatomic, copy) NSArray<BVPhoto *> *photos;
+@property(nullable, nonatomic, copy) NSString *categoryId;
+@property(nonnull, nonatomic, copy)
+    NSArray<BVContextDataValue *> *contextDataValues;
+@property(nonnull, nonatomic, copy) NSArray<BVVideo *> *videos;
+@property(nullable, nonatomic, copy) NSString *submissionId;
+@property(nullable, nonatomic, strong) NSDate *lastModificationTime;
+@property(nullable, nonatomic, copy) NSString *userLocation;
+@property(nonnull, nonatomic, copy) NSArray<BVBadge *> *badges;
+@property(nullable, nonatomic, copy) NSString *authorId;
+@property(nonnull, nonatomic, copy)
+    NSArray<NSString *> *productRecommendationIds;
+@property(nullable, nonatomic, copy) NSString *productId;
+@property(nonnull, nonatomic, strong) NSDictionary *additionalFields;
+@property(nullable, nonatomic, copy) NSString *campaignId;
+@property(nullable, nonatomic, strong) NSDate *submissionTime;
+@property(nullable, nonatomic, copy) NSString *contentLocale;
+@property(nullable, nonatomic, copy) NSString *moderationStatus;
+@property(nullable, nonatomic, copy) NSString *identifier;
+@property(nullable, nonatomic, strong) NSDate *lastModeratedTime;
+@property(nullable, nonatomic, copy) NSNumber *totalAnswerCount;
+@property(nullable, nonatomic, copy) NSNumber *totalFeedbackCount;
+@property(nullable, nonatomic, copy) NSNumber *totalPositiveFeedbackCount;
+@property(nullable, nonatomic, copy) NSNumber *totalInappropriateFeedbackCount;
+@property(nullable, nonatomic, copy) NSNumber *totalNegativeFeedbackCount;
 @property bool isFeatured;
-@property (readonly) BOOL isSyndicated;
-@property (nonatomic, strong, readonly, nullable) BVSyndicationSource* syndicationSource;
+@property(readonly) BOOL isSyndicated;
+@property(nullable, nonatomic, strong, readonly)
+    BVSyndicationSource *syndicationSource;
 
 @end

@@ -11,6 +11,6 @@
 
 // Named .placeholderText, in case UITextView gains
 // a .placeholder property (like UITextField) in future iOS versions.
-@property (nonatomic, copy) NSString *placeholderText;
+@property(nonatomic, copy) NSString *placeholderText;
 
 @end

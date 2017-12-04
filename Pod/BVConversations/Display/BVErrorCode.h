@@ -11,26 +11,26 @@
  Type of error code
  */
 typedef NS_ENUM(NSInteger, BVErrorCode) {
-    // Common
-    BVErrorCodeBadRequest,
-    BVErrorCodeUnknown,
-    BVErrorCodeAccessDenied,
-    BVErrorCodeParamInvalidApiKey,
-    BVErrorCodeParamInvalidLocale,
-    BVErrorCodeRequestLimitReached,
-    BVErrorCodeUnsupported,
-    
-    // Display Request Specific
-    BVErrorCodeParamInvalidCallback,
-    BVErrorCodeParamInvalidFilterAttribute,
-    BVErrorCodeParamInvalidIncluded,
-    BVErrorCodeParamInvalidLimit,
-    BVErrorCodeParamInvalidOffset,
-    BVErrorCodeParamInvalidSearchAttribute,
-    BVErrorCodeParamInvalidSortAttribute,
-    
-    // Submission Request Specific
-    BVErrorCodeDuplicateSubmission,
-    BVErrorCodeParamInvalidParameters,
-    BVErrorCodeParamMissingUserId
+  // Common
+  BVErrorCodeBadRequest,
+  BVErrorCodeUnknown,
+  BVErrorCodeAccessDenied,
+  BVErrorCodeParamInvalidApiKey,
+  BVErrorCodeParamInvalidLocale,
+  BVErrorCodeRequestLimitReached,
+  BVErrorCodeUnsupported,
+
+  // Display Request Specific
+  BVErrorCodeParamInvalidCallback,
+  BVErrorCodeParamInvalidFilterAttribute,
+  BVErrorCodeParamInvalidIncluded,
+  BVErrorCodeParamInvalidLimit,
+  BVErrorCodeParamInvalidOffset,
+  BVErrorCodeParamInvalidSearchAttribute,
+  BVErrorCodeParamInvalidSortAttribute,
+
+  // Submission Request Specific
+  BVErrorCodeDuplicateSubmission,
+  BVErrorCodeParamInvalidParameters,
+  BVErrorCodeParamMissingUserId
 };

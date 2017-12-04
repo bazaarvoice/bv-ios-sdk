@@ -7,7 +7,7 @@
 
 #import "UILabelWithInset.h"
 
-@interface UILabelWithInset()
+@interface UILabelWithInset ()
 
 @property UIEdgeInsets insets;
 
@@ -15,18 +15,18 @@
 
 @implementation UILabelWithInset
 
--(id)initWithInset:(UIEdgeInsets)insets {
-    self = [super init];
-    if(self){
-        self.insets = insets;
-    }
-    return self;
+- (id)initWithInset:(UIEdgeInsets)insets {
+  self = [super init];
+  if (self) {
+    self.insets = insets;
+  }
+  return self;
 }
 
--(void)drawTextInRect:(CGRect)rect {
+- (void)drawTextInRect:(CGRect)rect {
 
-    CGRect insetRect = UIEdgeInsetsInsetRect(rect, self.insets);
-    [super drawTextInRect:insetRect];
+  CGRect insetRect = UIEdgeInsetsInsetRect(rect, self.insets);
+  [super drawTextInRect:insetRect];
 }
 
 @end

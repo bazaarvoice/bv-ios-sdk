@@ -11,22 +11,24 @@
 @implementation BannerDemoViewController
 
 - (void)viewDidLoad {
-    [super viewDidLoad];
-    
+  [super viewDidLoad];
 
-    self.bannerView.adUnitID = @"/6499/example/banner"; //Test adUnitId. Replace with your targeted adUnitId.
-    self.bannerView.rootViewController = self;
-    
-    DFPRequest* request = [DFPRequest request];
-    request.testDevices = @[ kGADSimulatorID ];
-    request.customTargeting = [[BVSDKManager sharedManager] getCustomTargeting];
-    [self.bannerView loadRequest:request];
+  self.bannerView.adUnitID = @"/6499/example/banner"; // Test adUnitId. Replace
+                                                      // with your targeted
+                                                      // adUnitId.
+  self.bannerView.rootViewController = self;
 
-    [self.view addSubview:self.bannerView];
+  DFPRequest *request = [DFPRequest request];
+  request.testDevices = @[ kGADSimulatorID ];
+  request.customTargeting = [[BVSDKManager sharedManager] getCustomTargeting];
+  [self.bannerView loadRequest:request];
+
+  [self.view addSubview:self.bannerView];
 }
 
 - (IBAction)closeButtonPressed {
-    [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+  [self.presentingViewController dismissViewControllerAnimated:YES
+                                                    completion:nil];
 }
 
 @end

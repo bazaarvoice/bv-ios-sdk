@@ -12,9 +12,9 @@
  */
 @interface BVDistributionValue : NSObject
 
-@property NSString* _Nonnull value;
-@property NSNumber* _Nonnull count;
+@property(nonnull) NSString *value;
+@property(nonnull) NSNumber *count;
 
--(id _Nonnull)initWithApiResponse:(NSDictionary* _Nonnull)apiResponse;
+- (nonnull id)initWithApiResponse:(nonnull NSDictionary *)apiResponse;
 
 @end

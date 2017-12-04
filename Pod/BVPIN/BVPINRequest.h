@@ -6,11 +6,13 @@
 //
 //
 
-#import <Foundation/Foundation.h>
 #import "BVPIN.h"
+#import <Foundation/Foundation.h>
 
 @interface BVPINRequest : NSObject
 
-+(void)getPendingPINs:(void(^ _Nonnull)(NSArray<BVPIN *> * _Nonnull pins))completion failure:(void(^ _Nonnull)(NSError * _Nonnull))failure;
++ (void)getPendingPINs:
+            (nonnull void (^)(NSArray<BVPIN *> *__nonnull pins))completion
+               failure:(nonnull void (^)(NSError *__nonnull))failure;
 
 @end

@@ -10,7 +10,7 @@
 /// A successfully submitted user authenticated string.
 @interface BVSubmittedUAS : NSObject
 
-@property (readonly) NSString *_Nullable authenticatedUser;
+@property(nullable, readonly) NSString *authenticatedUser;
 
 - (nullable instancetype)initWithApiResponse:(nullable id)apiResponse;
 

@@ -6,16 +6,24 @@
 //
 //
 
-#import <Foundation/Foundation.h>
-#import "BVStoreReviewNotificationProperties.h"
 #import "BVProductReviewNotificationProperties.h"
+#import "BVStoreReviewNotificationProperties.h"
+#import <Foundation/Foundation.h>
 
 #define S3_API_VERSION @"v1"
 #define NOTIFICATION_CONFIG_ROOT @"https://s3.amazonaws.com"
 
 @interface BVNotificationConfiguration : NSObject
 
-+ (void)loadGeofenceConfiguration:(NSURL * _Nonnull)url completion:(void (^ _Nonnull)(BVStoreReviewNotificationProperties * _Nonnull response))completion failure:(void (^ _Nonnull)(NSError * _Nonnull errors))failure;
-+ (void)loadPINConfiguration:(NSURL * _Nonnull)url completion:(void (^ _Nonnull)(BVProductReviewNotificationProperties * _Nonnull response))completion failure:(void (^ _Nonnull)(NSError * _Nonnull errors))failure;
++ (void)
+loadGeofenceConfiguration:(nonnull NSURL *)url
+               completion:(nonnull void (^)(BVStoreReviewNotificationProperties
+                                                *__nonnull response))completion
+                  failure:(nonnull void (^)(NSError *__nonnull errors))failure;
++ (void)
+loadPINConfiguration:(nonnull NSURL *)url
+          completion:(nonnull void (^)(BVProductReviewNotificationProperties
+                                           *__nonnull response))completion
+             failure:(nonnull void (^)(NSError *__nonnull errors))failure;
 
 @end

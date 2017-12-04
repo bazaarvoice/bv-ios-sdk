@@ -8,30 +8,30 @@
 #import "BVProductTextSearchRequest.h"
 #import "BVBulkProductResponse.h"
 
-@interface BVProductTextSearchRequest()
+@interface BVProductTextSearchRequest ()
 
-@property NSString* searchText;
+@property NSString *searchText;
 
 @end
 
 @implementation BVProductTextSearchRequest
 
--(instancetype)initWithSearchText:(NSString *)searchText {
-    if (self = [super init]) {
-        _searchText = searchText;
-    }
-    
-    return self;
+- (instancetype)initWithSearchText:(NSString *)searchText {
+  if (self = [super init]) {
+    _searchText = searchText;
+  }
+
+  return self;
 }
 
-- (NSMutableArray * _Nonnull)createParams {
-    
-    NSMutableArray<BVStringKeyValuePair*>* params = [super createParams];
-    if (_searchText) {
-        [params addObject:[BVStringKeyValuePair pairWithKey:@"search" value:_searchText]];
-    }
-    
-    return params;
+- (nonnull NSMutableArray *)createParams {
+  NSMutableArray<BVStringKeyValuePair *> *params = [super createParams];
+  if (_searchText) {
+    [params addObject:[BVStringKeyValuePair pairWithKey:@"search"
+                                                  value:_searchText]];
+  }
+
+  return params;
 }
 
 @end

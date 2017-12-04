@@ -8,16 +8,17 @@
 #import <Foundation/Foundation.h>
 
 /*
- The number of ratings for each star count. For example, 12 one-star reviews, 53 five-star reviews.
+ The number of ratings for each star count. For example, 12 one-star reviews, 53
+ five-star reviews.
  */
 @interface BVRatingDistribution : NSObject
 
-@property NSNumber* _Nonnull oneStarCount;
-@property NSNumber* _Nonnull twoStarCount;
-@property NSNumber* _Nonnull threeStarCount;
-@property NSNumber* _Nonnull fourStarCount;
-@property NSNumber* _Nonnull fiveStarCount;
+@property(nonnull) NSNumber *oneStarCount;
+@property(nonnull) NSNumber *twoStarCount;
+@property(nonnull) NSNumber *threeStarCount;
+@property(nonnull) NSNumber *fourStarCount;
+@property(nonnull) NSNumber *fiveStarCount;
 
--(id _Nullable)initWithApiResponse:(id _Nullable)apiRepsonse;
+- (nullable id)initWithApiResponse:(nullable id)apiRepsonse;
 
 @end

@@ -9,12 +9,14 @@
 
 @implementation BVDiagnosticHelpers
 
-+(NSString*)releaseVersionNumber {
-    return [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
++ (NSString *)releaseVersionNumber {
+  return [[[NSBundle mainBundle] infoDictionary]
+      objectForKey:@"CFBundleShortVersionString"];
 }
 
-+(NSString*)buildVersionNumber {
-    return [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"];
++ (NSString *)buildVersionNumber {
+  return
+      [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"];
 }
 
 @end

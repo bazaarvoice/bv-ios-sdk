@@ -9,23 +9,22 @@
 
 @implementation BVFilterOperatorUtil
 
-+(NSString* _Nonnull)toString:(BVFilterOperator)filterOperator {
-    
-    switch (filterOperator) {
-        case BVFilterOperatorGreaterThan:
-            return @"gt";
-        case BVFilterOperatorGreaterThanOrEqualTo:
-            return @"gte";
-        case BVFilterOperatorLessThan:
-            return @"lt";
-        case BVFilterOperatorLessThanOrEqualTo:
-            return @"lte";
-        case BVFilterOperatorEqualTo:
-            return @"eq";
-        case BVFilterOperatorNotEqualTo:
-            return @"neq";
-    }
-    
++ (nonnull NSString *)toString:(BVFilterOperator)filterOperator {
+
+  switch (filterOperator) {
+  case BVFilterOperatorGreaterThan:
+    return @"gt";
+  case BVFilterOperatorGreaterThanOrEqualTo:
+    return @"gte";
+  case BVFilterOperatorLessThan:
+    return @"lt";
+  case BVFilterOperatorLessThanOrEqualTo:
+    return @"lte";
+  case BVFilterOperatorEqualTo:
+    return @"eq";
+  case BVFilterOperatorNotEqualTo:
+    return @"neq";
+  }
 }
 
 @end

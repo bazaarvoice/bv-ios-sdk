@@ -11,11 +11,11 @@
  Types of Bazaarvoice content.
  */
 typedef NS_ENUM(NSInteger, BVStoreIncludeContentType) {
-    BVStoreIncludeContentTypeReviews
+  BVStoreIncludeContentTypeReviews
 };
 
 @interface BVStoreIncludeContentTypeUtil : NSObject
 
-+(NSString*)toString:(BVStoreIncludeContentType)type;
++ (NSString *)toString:(BVStoreIncludeContentType)type;
 
 @end

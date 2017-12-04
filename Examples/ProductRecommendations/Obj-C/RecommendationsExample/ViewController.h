@@ -8,8 +8,7 @@
 #import <UIKit/UIKit.h>
 @import BVSDK;
 
-@interface ViewController : UIViewController <UICollectionViewDelegate, UICollectionViewDataSource>
-
+@interface ViewController
+    : UIViewController <UICollectionViewDelegate, UICollectionViewDataSource>
 
 @end
-

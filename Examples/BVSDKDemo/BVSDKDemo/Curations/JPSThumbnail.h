@@ -10,19 +10,18 @@
 
 #import "JPSThumbnailAnnotation.h"
 
-
 @import MapKit;
 
 typedef void (^ActionBlock)();
 
 @interface JPSThumbnail : NSObject
 
-@property (nonatomic, strong) UIImage *image;
-@property (nonatomic, strong) NSURL *imageURL;
-@property (nonatomic, copy) NSString *title;
-@property (nonatomic, assign) NSUInteger thumbId;
-@property (nonatomic, copy) NSString *subtitle;
-@property (nonatomic, assign) CLLocationCoordinate2D coordinate;
-@property (nonatomic, copy) ActionBlock disclosureBlock;
+@property(nonatomic, strong) UIImage *image;
+@property(nonatomic, strong) NSURL *imageURL;
+@property(nonatomic, copy) NSString *title;
+@property(nonatomic, assign) NSUInteger thumbId;
+@property(nonatomic, copy) NSString *subtitle;
+@property(nonatomic, assign) CLLocationCoordinate2D coordinate;
+@property(nonatomic, copy) ActionBlock disclosureBlock;
 
 @end

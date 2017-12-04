@@ -9,19 +9,20 @@
 #import <Foundation/Foundation.h>
 
 /**
- A BVStoreLocation object is used to define the geo-location attributes of a BVStore object.
+ A BVStoreLocation object is used to define the geo-location attributes of a
+ BVStore object.
  */
 @interface BVStoreLocation : NSObject
 
-@property NSString* _Nullable latitude;
-@property NSString* _Nullable longitude;
-@property NSString* _Nullable address;
-@property NSString* _Nullable city;
-@property NSString* _Nullable state;
-@property NSString* _Nullable country;
-@property NSString* _Nullable postalcode;
-@property NSString* _Nullable phone;
-    
--(id _Nullable)initWithStoreAtrributes:(NSDictionary * _Nonnull)attributes;
+@property(nullable) NSString *latitude;
+@property(nullable) NSString *longitude;
+@property(nullable) NSString *address;
+@property(nullable) NSString *city;
+@property(nullable) NSString *state;
+@property(nullable) NSString *country;
+@property(nullable) NSString *postalcode;
+@property(nullable) NSString *phone;
+
+- (nullable id)initWithStoreAtrributes:(nonnull NSDictionary *)attributes;
 
 @end

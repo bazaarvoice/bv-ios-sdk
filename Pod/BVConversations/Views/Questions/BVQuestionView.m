@@ -10,18 +10,15 @@
 
 @implementation BVQuestionView
 
--(void)setQuestion:(BVQuestion *)question {
-    
-    _question = question;
-    
+- (void)setQuestion:(BVQuestion *)question {
+
+  _question = question;
 }
 
 - (void)didMoveToSuperview {
-    
-    [super didMoveToSuperview];
-    [BVViewsHelper checkGestureRecognizers:self.gestureRecognizers];
-    
-}
 
+  [super didMoveToSuperview];
+  [BVViewsHelper checkGestureRecognizers:self.gestureRecognizers];
+}
 
 @end

@@ -10,18 +10,18 @@
 #define BVNotifications_h
 
 // BVCommon
-#import "BVSDKConstants.h"
-#import "BVLogger.h"
 #import "BVBaseAnalyticsHelper.h"
+#import "BVLogger.h"
+#import "BVSDKConstants.h"
 
 // BVAnalytics
 #import "BVAnalyticsManager.h"
 
-//BVNotifications
-#import "BVProductReviewNotificationProperties.h"
-#import "BVStoreReviewNotificationProperties.h"
+// BVNotifications
 #import "BVNotificationProperties.h"
 #import "BVNotificationsAnalyticsHelper.h"
+#import "BVProductReviewNotificationProperties.h"
+#import "BVStoreReviewNotificationProperties.h"
 
 // BVExtensionNotifiations
 #import "BVNotificationViewController.h"

@@ -6,9 +6,10 @@
 //
 //
 
-#import <Foundation/Foundation.h>
 #import "BVNotificationCenterObject.h"
+#import <Foundation/Foundation.h>
 
-@interface BVStoreReviewSimpleNotificationCenter : NSObject<BVStoreNotificationCenterObject>
+@interface BVStoreReviewSimpleNotificationCenter
+    : NSObject <BVStoreNotificationCenterObject>
 
 @end

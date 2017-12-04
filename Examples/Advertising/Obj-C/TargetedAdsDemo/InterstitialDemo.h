@@ -10,7 +10,7 @@
 
 @interface InterstitialDemo : NSObject
 
--(id)initWithRootViewController:(UIViewController*)rootViewController;
--(void)requestInterstitial;
+- (id)initWithRootViewController:(UIViewController *)rootViewController;
+- (void)requestInterstitial;
 
 @end

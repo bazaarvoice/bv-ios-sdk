@@ -9,15 +9,16 @@
 
 @implementation BVAnswerSubmissionResponse
 
--(nonnull instancetype)initWithApiResponse:(NSDictionary*)apiResponse {
-    
-    self = [super initWithApiResponse:apiResponse];
-    
-    if(self){
-        self.answer = [[BVSubmittedAnswer alloc] initWithApiResponse:apiResponse[@"Answer"]];
-    }
-    
-    return self;
+- (nonnull instancetype)initWithApiResponse:(NSDictionary *)apiResponse {
+
+  self = [super initWithApiResponse:apiResponse];
+
+  if (self) {
+    self.answer =
+        [[BVSubmittedAnswer alloc] initWithApiResponse:apiResponse[@"Answer"]];
+  }
+
+  return self;
 }
 
 @end

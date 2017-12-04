@@ -6,18 +6,19 @@
 //
 //
 
-#import <Foundation/Foundation.h>
 #import "BVBaseAnalyticsHelper.h"
+#import <Foundation/Foundation.h>
 
-typedef enum {
-    ProductTypeStore,
-    ProductTypeProduct
-}ProductType;
+typedef enum { ProductTypeStore, ProductTypeProduct } ProductType;
 
 @interface BVNotificationsAnalyticsHelper : BVBaseAnalyticsHelper
 
-+(void)queueAnalyticEventForReviewNotificationInView:(NSString *)viewName withId:(NSString *)Id andProductType:(ProductType)type;
++ (void)queueAnalyticEventForReviewNotificationInView:(NSString *)viewName
+                                               withId:(NSString *)Id
+                                       andProductType:(ProductType)type;
 
-+(void)queueAnalyticEventForReviewUsedFeature:(NSString *)actionDetail withId:(NSString *)Id andProductType:(ProductType)type;
++ (void)queueAnalyticEventForReviewUsedFeature:(NSString *)actionDetail
+                                        withId:(NSString *)Id
+                                andProductType:(ProductType)type;
 
 @end

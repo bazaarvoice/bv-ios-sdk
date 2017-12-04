@@ -9,19 +9,20 @@
 
 /*
  A secondary rating value associated with a review.
- The definition of your secondary ratings (if any) are specific to your configuration.
+ The definition of your secondary ratings (if any) are specific to your
+ configuration.
  */
 @interface BVSecondaryRating : NSObject
 
-@property NSNumber* _Nullable value;
-@property NSNumber* _Nullable valueRange;
-@property NSString* _Nullable valueLabel;
-@property NSString* _Nullable maxLabel;
-@property NSString* _Nullable minLabel;
-@property NSString* _Nullable label;
-@property NSString* _Nullable displayType;
-@property NSString* _Nullable identifier;
+@property(nullable) NSNumber *value;
+@property(nullable) NSNumber *valueRange;
+@property(nullable) NSString *valueLabel;
+@property(nullable) NSString *maxLabel;
+@property(nullable) NSString *minLabel;
+@property(nullable) NSString *label;
+@property(nullable) NSString *displayType;
+@property(nullable) NSString *identifier;
 
--(id _Nonnull)initWithApiResponse:(NSDictionary* _Nonnull)apiResponse;
+- (nonnull id)initWithApiResponse:(nonnull NSDictionary *)apiResponse;
 
 @end

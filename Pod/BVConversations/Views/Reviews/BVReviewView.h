@@ -5,9 +5,8 @@
 //  Copyright © 2016 Bazaarvoice. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
 #import "BVReview.h"
-
+#import <UIKit/UIKit.h>
 
 /**
  A sub-classed UIView cell that contains one BVReview object for display.
@@ -17,7 +16,6 @@
 @interface BVReviewView : UIView
 
 /// The Conversations Reivew associated with this view
-@property (strong, nonatomic) BVReview *review;
-
+@property(strong, nonatomic) BVReview *review;
 
 @end

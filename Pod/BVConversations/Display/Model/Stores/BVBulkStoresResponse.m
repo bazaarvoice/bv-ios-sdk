@@ -11,8 +11,9 @@
 
 @implementation BVBulkStoresResponse
 
--(id)createResult:(NSDictionary *)raw includes:(BVConversationsInclude *)includes {
-    return [[BVStore alloc] initWithApiResponse:raw includes:includes];
+- (id)createResult:(NSDictionary *)raw
+          includes:(BVConversationsInclude *)includes {
+  return [[BVStore alloc] initWithApiResponse:raw includes:includes];
 }
 
 @end

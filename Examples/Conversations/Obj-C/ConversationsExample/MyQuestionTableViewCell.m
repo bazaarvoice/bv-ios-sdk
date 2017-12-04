@@ -7,22 +7,22 @@
 
 #import "MyQuestionTableViewCell.h"
 
-@interface MyQuestionTableViewCell()
+@interface MyQuestionTableViewCell ()
 
-@property (weak, nonatomic) IBOutlet UILabel *questionSummary;
-@property (weak, nonatomic) IBOutlet UILabel *questionDetails;
+@property(weak, nonatomic) IBOutlet UILabel *questionSummary;
+@property(weak, nonatomic) IBOutlet UILabel *questionDetails;
 
 @end
 
 @implementation MyQuestionTableViewCell
 
+- (void)setQuestion:(BVQuestion *)question {
 
-- (void)setQuestion:(BVQuestion *)question{
-    
-    super.question = question;
-    self.questionSummary.text = [NSString stringWithFormat:@"%@ (%lu Answers)", question.questionSummary, (unsigned long)question.answers.count];
-    self.questionDetails.text = question.questionDetails;
-    
+  super.question = question;
+  self.questionSummary.text =
+      [NSString stringWithFormat:@"%@ (%lu Answers)", question.questionSummary,
+                                 (unsigned long)question.answers.count];
+  self.questionDetails.text = question.questionDetails;
 }
 
 @end

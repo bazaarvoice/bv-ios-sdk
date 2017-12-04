@@ -9,8 +9,9 @@
 
 @implementation BVCommentsResponse
 
--(id)createResult:(NSDictionary *)raw includes:(BVConversationsInclude *)includes {
-    return [[BVComment alloc] initWithApiResponse:raw includes:includes];
+- (id)createResult:(NSDictionary *)raw
+          includes:(BVConversationsInclude *)includes {
+  return [[BVComment alloc] initWithApiResponse:raw includes:includes];
 }
 
 @end

@@ -8,7 +8,7 @@
 #import "BVRecommendedProduct.h"
 #import "BVRecsAnalyticsHelper.h"
 
-@interface BVRecommendedProduct()
+@interface BVRecommendedProduct ()
 
 @property bool hasSentImpressionEvent;
 
@@ -19,66 +19,67 @@
 @synthesize displayImageUrl;
 @synthesize displayName;
 
-- (id)initWithDictionary:(NSDictionary *)dict withRecommendationStats:(NSDictionary*)recommendationStats{
-    
-    self = [super init];
-    
-    NSMutableDictionary* combinedDictionary = [NSMutableDictionary dictionaryWithDictionary:dict];
-    [combinedDictionary addEntriesFromDictionary:recommendationStats];
-    self.rawProductDict = combinedDictionary;
-    
-    SET_IF_NOT_NULL(self.productName, [dict objectForKey:@"name"]);
-    SET_IF_NOT_NULL(self.productId, [dict objectForKey:@"product"]);
-    SET_IF_NOT_NULL(self.productPageURL, [dict objectForKey:@"product_page_url"]);
-    SET_IF_NOT_NULL(self.imageURL, [dict objectForKey:@"image_url"]);
-    SET_IF_NOT_NULL(self.averageRating, [dict objectForKey:@"avg_rating"]);
-    SET_IF_NOT_NULL(self.numReviews, [dict objectForKey:@"num_reviews"]);
-    SET_IF_NOT_NULL(self.price, [dict objectForKey:@"price"]);
+- (id)initWithDictionary:(NSDictionary *)dict
+    withRecommendationStats:(NSDictionary *)recommendationStats {
 
-    self.review = [[BVProductReview alloc] initWithDict:[dict objectForKey:@"review"]];
-    
-    self.sponsored = false;
-    if ([dict objectForKey:@"sponsored"] && [[dict objectForKey:@"sponsored"] integerValue] == 1){
-        self.sponsored = true;
-    }
-        
-    return self;
+  self = [super init];
+
+  NSMutableDictionary *combinedDictionary =
+      [NSMutableDictionary dictionaryWithDictionary:dict];
+  [combinedDictionary addEntriesFromDictionary:recommendationStats];
+  self.rawProductDict = combinedDictionary;
+
+  SET_IF_NOT_NULL(self.productName, [dict objectForKey:@"name"]);
+  SET_IF_NOT_NULL(self.productId, [dict objectForKey:@"product"]);
+  SET_IF_NOT_NULL(self.productPageURL, [dict objectForKey:@"product_page_url"]);
+  SET_IF_NOT_NULL(self.imageURL, [dict objectForKey:@"image_url"]);
+  SET_IF_NOT_NULL(self.averageRating, [dict objectForKey:@"avg_rating"]);
+  SET_IF_NOT_NULL(self.numReviews, [dict objectForKey:@"num_reviews"]);
+  SET_IF_NOT_NULL(self.price, [dict objectForKey:@"price"]);
+
+  self.review =
+      [[BVProductReview alloc] initWithDict:[dict objectForKey:@"review"]];
+
+  self.sponsored = false;
+  if ([dict objectForKey:@"sponsored"] &&
+      [[dict objectForKey:@"sponsored"] integerValue] == 1) {
+    self.sponsored = true;
+  }
+
+  return self;
 }
 
+- (void)recordImpression {
 
--(void)recordImpression {
-    
-    if(self.hasSentImpressionEvent) {
-        return;
-    }
-    self.hasSentImpressionEvent = true;
-    
-    [BVRecsAnalyticsHelper queueAnalyticsEventForProductView:self];
-    
+  if (self.hasSentImpressionEvent) {
+    return;
+  }
+  self.hasSentImpressionEvent = true;
+
+  [BVRecsAnalyticsHelper queueAnalyticsEventForProductView:self];
 }
 
--(void)recordTap {
- 
-    [BVRecsAnalyticsHelper queueAnalyticsEventForProductTapped:self];
-    
+- (void)recordTap {
+
+  [BVRecsAnalyticsHelper queueAnalyticsEventForProductTapped:self];
 }
 
+- (NSString *)description {
 
-- (NSString *)description{
-    
-    return [NSString stringWithFormat:@"BVProduct: %@ - id: %@", self.productName, self.productId];
+  return [NSString stringWithFormat:@"BVProduct: %@ - id: %@", self.productName,
+                                    self.productId];
 }
 
--(NSString*)identifier {
-    return _productId;
+- (NSString *)identifier {
+  return _productId;
 }
 
--(NSString*)displayName {
-    return _productName;
+- (NSString *)displayName {
+  return _productName;
 }
 
--(NSString*)displayImageUrl {
-    return _imageURL;
+- (NSString *)displayImageUrl {
+  return _imageURL;
 }
 
 @end

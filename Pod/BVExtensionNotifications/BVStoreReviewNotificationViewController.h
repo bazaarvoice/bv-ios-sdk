@@ -6,8 +6,9 @@
 //
 //
 
-#import <UIKit/UIKit.h>
 #import "BVNotificationViewController.h"
-@interface BVStoreReviewNotificationViewController : BVNotificationViewController
+#import <UIKit/UIKit.h>
+@interface BVStoreReviewNotificationViewController
+    : BVNotificationViewController
 
 @end

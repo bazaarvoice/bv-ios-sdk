@@ -8,19 +8,23 @@
 #import "BVSDKConfiguration.h"
 @implementation BVSDKConfiguration
 
--(instancetype _Nonnull)initWithDictionary:(NSDictionary * _Nonnull)dict configType:(BVConfigurationType)type {
-    if (self = [super init]) {
-        
-        _staging = type == BVConfigurationTypeStaging;
-        for(NSString *key in dict) {
-            if ([self respondsToSelector:NSSelectorFromString(key)]) {
-                [self setValue:dict[key] forKeyPath:key];
-            }else {
-                [[BVLogger sharedLogger] error:[NSString stringWithFormat:@"Unrecognized configuration option \"%@\" will be ignored", key]];
-            }
-        }
+- (nonnull instancetype)initWithDictionary:(nonnull NSDictionary *)dict
+                                configType:(BVConfigurationType)type {
+  if (self = [super init]) {
+    _staging = type == BVConfigurationTypeStaging;
+    for (NSString *key in dict) {
+      if ([self respondsToSelector:NSSelectorFromString(key)]) {
+        [self setValue:dict[key] forKeyPath:key];
+      } else {
+        [[BVLogger sharedLogger]
+            error:[NSString stringWithFormat:@"Unrecognized "
+                                             @"configuration option "
+                                             @"\"%@\" will be ignored",
+                                             key]];
+      }
     }
-    return self;
+  }
+  return self;
 }
 
 @end

@@ -9,17 +9,17 @@
 
 @implementation BVAuthorContentTypeUtil
 
-+(NSString*)toString:(BVAuthorContentType)type {
-    switch (type) {
-        case BVAuthorContentTypeReviews:
-            return @"Reviews";
-        case BVAuthorContentTypeAnswers:
-            return @"Answers";
-        case BVAuthorContentTypeQuestions:
-            return @"Questions";
-        case BVAuthorContentTypeReviewComments:
-            return @"Comments";
-    }
++ (NSString *)toString:(BVAuthorContentType)type {
+  switch (type) {
+  case BVAuthorContentTypeReviews:
+    return @"Reviews";
+  case BVAuthorContentTypeAnswers:
+    return @"Answers";
+  case BVAuthorContentTypeQuestions:
+    return @"Questions";
+  case BVAuthorContentTypeReviewComments:
+    return @"Comments";
+  }
 }
 
 @end

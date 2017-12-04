@@ -10,39 +10,44 @@
 
 @interface AnswersViewController () <UITableViewDataSource>
 
-@property (weak, nonatomic) IBOutlet BVAnswersTableView *answersTableView;
+@property(weak, nonatomic) IBOutlet BVAnswersTableView *answersTableView;
 
 @end
 
 @implementation AnswersViewController
 
 - (void)viewDidLoad {
-    [super viewDidLoad];
-    self.answersTableView.dataSource = self;
-    self.answersTableView.estimatedRowHeight = 44;
-    self.answersTableView.rowHeight = UITableViewAutomaticDimension;
-    [self.answersTableView registerNib:[UINib nibWithNibName:@"MyAnswerTableViewCell" bundle:nil] forCellReuseIdentifier:@"MyAnswerTableViewCell"];
+  [super viewDidLoad];
+  self.answersTableView.dataSource = self;
+  self.answersTableView.estimatedRowHeight = 44;
+  self.answersTableView.rowHeight = UITableViewAutomaticDimension;
+  [self.answersTableView
+                 registerNib:[UINib nibWithNibName:@"MyAnswerTableViewCell"
+                                            bundle:nil]
+      forCellReuseIdentifier:@"MyAnswerTableViewCell"];
 }
 
 #pragma mark UITableViewDatasource
 
--(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
-    return @"Questions Responses";
+- (NSString *)tableView:(UITableView *)tableView
+    titleForHeaderInSection:(NSInteger)section {
+  return @"Questions Responses";
 }
 
--(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return [self.question.answers count];
+- (NSInteger)tableView:(UITableView *)tableView
+    numberOfRowsInSection:(NSInteger)section {
+  return [self.question.answers count];
 }
 
+- (UITableViewCell *)tableView:(UITableView *)tableView
+         cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-    MyAnswerTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MyAnswerTableViewCell"];
-    
-    cell.answer = [self.question.answers objectAtIndex:indexPath.row];
-    
-    return cell;
+  MyAnswerTableViewCell *cell =
+      [tableView dequeueReusableCellWithIdentifier:@"MyAnswerTableViewCell"];
+
+  cell.answer = [self.question.answers objectAtIndex:indexPath.row];
+
+  return cell;
 }
-
 
 @end

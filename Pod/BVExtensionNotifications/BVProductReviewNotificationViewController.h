@@ -6,9 +6,10 @@
 //
 //
 
-#import <Foundation/Foundation.h>
 #import "BVNotificationViewController.h"
+#import <Foundation/Foundation.h>
 
-@interface BVProductReviewNotificationViewController : BVNotificationViewController<UNNotificationContentExtension>
+@interface BVProductReviewNotificationViewController
+    : BVNotificationViewController <UNNotificationContentExtension>
 
 @end

@@ -15,17 +15,17 @@
 @required
 
 /// Other transaction parameters such as user email.
-@property (nonatomic, strong) NSDictionary* _Nullable additionalParams;
-
+@property(nullable, nonatomic, strong) NSDictionary *additionalParams;
 
 /**
- Converts the analytic event implementing the BVAnalyticEvent protocol to a dictionary.
+ Converts the analytic event implementing the BVAnalyticEvent protocol to a
+ dictionary.
 
- @return The NSDictionary representation of this Bazaarvoice mobile analytic event.
+ @return The NSDictionary representation of this Bazaarvoice mobile analytic
+ event.
  */
-- (NSDictionary * _Nonnull)toRaw;
+- (nonnull NSDictionary *)toRaw;
 
 @end
-
 
 #endif /* BVAnalyticEvent_h */

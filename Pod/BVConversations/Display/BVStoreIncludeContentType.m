@@ -9,11 +9,11 @@
 
 @implementation BVStoreIncludeContentTypeUtil
 
-+(NSString*)toString:(BVStoreIncludeContentType)type {
-    switch (type) {
-        case BVStoreIncludeContentTypeReviews:
-            return @"Reviews";
-    }
++ (NSString *)toString:(BVStoreIncludeContentType)type {
+  switch (type) {
+  case BVStoreIncludeContentTypeReviews:
+    return @"Reviews";
+  }
 }
 
 @end

@@ -10,20 +10,20 @@
 /// A successfully submitted review.
 @interface BVSubmittedReview : NSObject
 
-@property NSString* _Nullable title;
-@property NSString* _Nullable reviewText;
-@property NSNumber* _Nullable rating;
-@property NSString* _Nullable reviewId;
+@property(nullable) NSString *title;
+@property(nullable) NSString *reviewText;
+@property(nullable) NSNumber *rating;
+@property(nullable) NSString *reviewId;
 
-@property NSString* _Nullable submissionId;
-@property NSDate* _Nullable submissionTime;
+@property(nullable) NSString *submissionId;
+@property(nullable) NSDate *submissionTime;
 
-@property NSNumber* _Nullable isRecommended;
-@property NSNumber* _Nullable sendEmailAlertWhenCommented;
-@property NSNumber* _Nullable sendEmailAlertWhenPublished;
+@property(nullable) NSNumber *isRecommended;
+@property(nullable) NSNumber *sendEmailAlertWhenCommented;
+@property(nullable) NSNumber *sendEmailAlertWhenPublished;
 
-@property NSNumber* _Nullable typicalHoursToPost;
+@property(nullable) NSNumber *typicalHoursToPost;
 
--(nullable instancetype)initWithApiResponse:(nullable id)apiResponse;
+- (nullable instancetype)initWithApiResponse:(nullable id)apiResponse;
 
 @end

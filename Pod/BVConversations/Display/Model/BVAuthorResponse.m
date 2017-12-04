@@ -6,11 +6,12 @@
 //
 
 #import "BVAuthorResponse.h"
-#import "BVNullHelper.h"
 #import "BVConversationsInclude.h"
+#import "BVNullHelper.h"
 
 @implementation BVAuthorResponse
--(id)createResult:(NSDictionary *)raw includes:(BVConversationsInclude *)includes {
-    return [[BVAuthor alloc] initWithApiResponse:raw includes:includes];
+- (id)createResult:(NSDictionary *)raw
+          includes:(BVConversationsInclude *)includes {
+  return [[BVAuthor alloc] initWithApiResponse:raw includes:includes];
 }
 @end

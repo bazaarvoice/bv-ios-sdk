@@ -6,9 +6,9 @@
 //
 
 #import "NotificationViewController.h"
+#import <MapKit/MapKit.h>
 #import <UserNotifications/UserNotifications.h>
 #import <UserNotificationsUI/UserNotificationsUI.h>
-#import <MapKit/MapKit.h>
 
 @interface NotificationViewController ()
 
@@ -16,9 +16,8 @@
 
 @implementation NotificationViewController
 
--(void)viewDidLoad {
-    [super viewDidLoad];
-    
+- (void)viewDidLoad {
+  [super viewDidLoad];
 }
 
 @end
