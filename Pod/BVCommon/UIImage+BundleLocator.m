@@ -8,12 +8,11 @@
 #import "UIImage+BundleLocator.h"
 
 @implementation UIImage (BundleLocator)
-+(UIImage*)bundledImageNamed:(NSString*) imageName
-{
-    
-    return [UIImage imageNamed:imageName
-                      inBundle:[NSBundle bundleForClass:[BundleLocator class]]
- compatibleWithTraitCollection:nil];
++ (UIImage *)bundledImageNamed:(NSString *)imageName {
+  return [UIImage imageNamed:imageName
+                           inBundle:[NSBundle
+                                        bundleForClass:[BundleLocator class]]
+      compatibleWithTraitCollection:nil];
 }
 @end
 

@@ -12,9 +12,9 @@
  */
 @interface BVBrand : NSObject
 
-@property NSString* _Nullable name;
-@property NSString* _Nullable identifier;
+@property(nullable) NSString *name;
+@property(nullable) NSString *identifier;
 
--(id _Nullable)initWithApiResponse:(id _Nullable)apiResponse;
+- (nullable id)initWithApiResponse:(nullable id)apiResponse;
 
 @end

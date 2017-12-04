@@ -9,23 +9,23 @@
 #import "BVSubmittedUAS.h"
 
 @interface BVUASSubmissionResponse ()
-@property (strong, nonatomic, readwrite)
-    BVSubmittedUAS *_Nullable userAuthenticationString;
+@property(nullable, strong, nonatomic, readwrite)
+    BVSubmittedUAS *userAuthenticationString;
 @end
 
 @implementation BVUASSubmissionResponse
 
 - (nullable BVSubmittedUAS *)userAuthenticationString {
-    return self.userAuthenticationString;
+  return self.userAuthenticationString;
 }
 
 - (nonnull instancetype)initWithApiResponse:(NSDictionary *)apiResponse {
-    if ((self = [super initWithApiResponse:apiResponse])) {
-        self.userAuthenticationString = [[BVSubmittedUAS alloc]
-            initWithApiResponse:apiResponse[@"Authentication"]];
-    }
+  if ((self = [super initWithApiResponse:apiResponse])) {
+    self.userAuthenticationString = [[BVSubmittedUAS alloc]
+        initWithApiResponse:apiResponse[@"Authentication"]];
+  }
 
-    return self;
+  return self;
 }
 
 @end

@@ -9,6 +9,6 @@
 
 @interface NativeContentAdDemoViewController : UIViewController
 
-@property (weak, nonatomic) IBOutlet UIButton* closeButton;
+@property(weak, nonatomic) IBOutlet UIButton *closeButton;
 
 @end

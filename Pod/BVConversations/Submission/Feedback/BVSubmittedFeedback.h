@@ -9,28 +9,27 @@
 
 @interface BVFeedbackInappropriateResponse : NSObject
 
--(nullable instancetype)initWithFeedbackResponse:(nullable id)feedbackDict;
+- (nullable instancetype)initWithFeedbackResponse:(nullable id)feedbackDict;
 
-@property NSString * _Nonnull authorId;
-@property NSString * _Nonnull reasonText;
-    
+@property(nonnull) NSString *authorId;
+@property(nonnull) NSString *reasonText;
+
 @end
 
 @interface BVFeedbackHelpfulnessResponse : NSObject
 
--(nullable instancetype)initWithFeedbackResponse:(nullable id)feedbackDict;
+- (nullable instancetype)initWithFeedbackResponse:(nullable id)feedbackDict;
 
-@property NSString * _Nonnull authorId;
-@property NSString * _Nonnull vote;
+@property(nonnull) NSString *authorId;
+@property(nonnull) NSString *vote;
 
 @end
 
-
 @interface BVSubmittedFeedback : NSObject
 
--(nullable instancetype)initWithApiResponse:(nullable id)apiResponse;
+- (nullable instancetype)initWithApiResponse:(nullable id)apiResponse;
 
-@property BVFeedbackInappropriateResponse * _Nonnull inappropriateResponse;
-@property BVFeedbackHelpfulnessResponse * _Nonnull helpfulnessResponse;
+@property(nonnull) BVFeedbackInappropriateResponse *inappropriateResponse;
+@property(nonnull) BVFeedbackHelpfulnessResponse *helpfulnessResponse;
 
 @end

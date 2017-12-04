@@ -10,13 +10,13 @@
 /// A successfully submitted answer.
 @interface BVSubmittedAnswer : NSObject
 
-@property NSString* _Nullable answerText;
+@property(nullable) NSString *answerText;
 @property bool sendEmailAlertWhenAnswered;
-@property NSDate* _Nullable submissionTime;
-@property NSNumber* _Nullable typicalHoursToPost;
-@property NSString* _Nullable submissionId;
-@property NSString* _Nullable answerId;
+@property(nullable) NSDate *submissionTime;
+@property(nullable) NSNumber *typicalHoursToPost;
+@property(nullable) NSString *submissionId;
+@property(nullable) NSString *answerId;
 
--(nullable instancetype)initWithApiResponse:(nullable id)apiResponse;
+- (nullable instancetype)initWithApiResponse:(nullable id)apiResponse;
 
 @end

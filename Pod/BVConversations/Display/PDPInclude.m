@@ -9,17 +9,18 @@
 
 @implementation PDPInclude
 
--(id _Nonnull)initWithContentType:(PDPContentType)type limit:(NSNumber* _Nullable)limit {
-    self = [super init];
-    if(self){
-        self.type = type;
-        self.limit = limit;
-    }
-    return self;
+- (nonnull id)initWithContentType:(PDPContentType)type
+                            limit:(nullable NSNumber *)limit {
+  self = [super init];
+  if (self) {
+    self.type = type;
+    self.limit = limit;
+  }
+  return self;
 }
 
--(NSString* _Nonnull)toParamString {
-    return [PDPContentTypeUtil toString:self.type];
+- (nonnull NSString *)toParamString {
+  return [PDPContentTypeUtil toString:self.type];
 }
 
 @end

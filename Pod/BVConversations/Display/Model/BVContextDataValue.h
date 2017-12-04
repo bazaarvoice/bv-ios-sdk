@@ -8,17 +8,18 @@
 #import <Foundation/Foundation.h>
 
 /*
- A Bazaarvoice Context Data Value. Generally, this is extra information collected when a user
+ A Bazaarvoice Context Data Value. Generally, this is extra information
+ collected when a user
  submitted a review, question, or answer.
- A common Context Data Value is "Age" and "Gender". 
+ A common Context Data Value is "Age" and "Gender".
  */
 @interface BVContextDataValue : NSObject
 
-@property NSString* _Nullable value;
-@property NSString* _Nullable valueLabel;
-@property NSString* _Nullable dimensionLabel;
-@property NSString* _Nullable identifier;
+@property(nullable) NSString *value;
+@property(nullable) NSString *valueLabel;
+@property(nullable) NSString *dimensionLabel;
+@property(nullable) NSString *identifier;
 
--(id _Nonnull)initWithApiResponse:(id _Nonnull)apiResponse;
+- (nonnull id)initWithApiResponse:(nonnull id)apiResponse;
 
 @end

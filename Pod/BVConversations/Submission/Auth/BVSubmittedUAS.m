@@ -9,23 +9,23 @@
 #import "BVNullHelper.h"
 
 @interface BVSubmittedUAS ()
-@property (strong, nonatomic, readwrite) NSString *_Nullable authenticatedUser;
+@property(nullable, strong, nonatomic, readwrite) NSString *authenticatedUser;
 @end
 
 @implementation BVSubmittedUAS
 
 - (nullable instancetype)initWithApiResponse:(nullable id)apiResponse {
-    if ((self = [super init])) {
-        if (apiResponse == nil ||
-            ![apiResponse isKindOfClass:[NSDictionary class]]) {
-            return nil;
-        }
-
-        NSDictionary *apiObject = apiResponse;
-
-        SET_IF_NOT_NULL(self.authenticatedUser, apiObject[@"User"])
+  if ((self = [super init])) {
+    if (apiResponse == nil ||
+        ![apiResponse isKindOfClass:[NSDictionary class]]) {
+      return nil;
     }
-    return self;
+
+    NSDictionary *apiObject = apiResponse;
+
+    SET_IF_NOT_NULL(self.authenticatedUser, apiObject[@"User"])
+  }
+  return self;
 }
 
 @end

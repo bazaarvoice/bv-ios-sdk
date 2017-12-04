@@ -7,20 +7,18 @@
 
 #import "MyAnswerTableViewCell.h"
 
-@interface MyAnswerTableViewCell()
+@interface MyAnswerTableViewCell ()
 
-@property (weak, nonatomic) IBOutlet UILabel *answerTestLabel;
+@property(weak, nonatomic) IBOutlet UILabel *answerTestLabel;
 
 @end
 
 @implementation MyAnswerTableViewCell
 
+- (void)setAnswer:(BVAnswer *)answer {
 
-- (void)setAnswer:(BVAnswer *)answer{
-    
-    super.answer = answer;
-    self.answerTestLabel.text = answer.answerText;
-    
+  super.answer = answer;
+  self.answerTestLabel.text = answer.answerText;
 }
 
 @end

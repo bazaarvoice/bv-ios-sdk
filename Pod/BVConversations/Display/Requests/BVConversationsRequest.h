@@ -7,36 +7,47 @@
 
 #import <Foundation/Foundation.h>
 
-#import "BVStringKeyValuePair.h"
-#import "BVReviewsResponse.h"
-#import "BVProductsResponse.h"
 #import "BVAuthorResponse.h"
+#import "BVProductsResponse.h"
+#import "BVReviewsResponse.h"
+#import "BVStringKeyValuePair.h"
 
-typedef void (^ConversationsFailureHandler)(NSArray<NSError*>* _Nonnull errors);
-
+typedef void (^ConversationsFailureHandler)(
+    NSArray<NSError *> *__nonnull errors);
 
 /// Internal class - used only within BVSDK
 @interface BVConversationsRequest : NSObject
 
--(NSMutableArray<BVStringKeyValuePair*>* _Nonnull)createParams;
--(NSString* _Nonnull)endpoint;
-+(NSString* _Nonnull)commonEndpoint;
+- (nonnull NSMutableArray<BVStringKeyValuePair *> *)createParams;
+- (nonnull NSString *)endpoint;
++ (nonnull NSString *)commonEndpoint;
 
--(nonnull instancetype)addAdditionalField:(nonnull NSString*)fieldName value:(nonnull NSString*)value __deprecated_msg("use addCustomDisplayParameter instead.");
+- (nonnull instancetype)addAdditionalField:(nonnull NSString *)fieldName
+                                     value:(nonnull NSString *)value
+    __deprecated_msg("use addCustomDisplayParameter instead.");
 
 /**
  This method adds extra user provided query parameters to a
  submission request, and will be urlencoded.
  */
--(nonnull instancetype)addCustomDisplayParameter:(nonnull NSString*)parameter withValue:(nonnull NSString*)value;
+- (nonnull instancetype)addCustomDisplayParameter:(nonnull NSString *)parameter
+                                        withValue:(nonnull NSString *)value;
 
-- (void)loadContent:(BVConversationsRequest * _Nonnull)request completion:(void (^ _Nonnull)(NSDictionary* _Nonnull response))completion failure:(void (^ _Nonnull)(NSArray<NSError*>* _Nonnull errors))failure;
--(void)sendError:(nonnull NSError*)error failureCallback:(nonnull ConversationsFailureHandler)failure;
--(void)sendErrors:(nonnull NSArray<NSError*>*)errors failureCallback:(nonnull ConversationsFailureHandler)failure;
+- (void)
+loadContent:(nonnull BVConversationsRequest *)request
+ completion:(nonnull void (^)(NSDictionary *__nonnull response))completion
+    failure:(nonnull void (^)(NSArray<NSError *> *__nonnull errors))failure;
 
-- (NSError * _Nonnull)limitError:(NSInteger)limit;
-- (NSError * _Nonnull)tooManyProductsError:(NSArray<NSString *> * _Nonnull)productIds;
+- (void)sendError:(nonnull NSError *)error
+    failureCallback:(nonnull ConversationsFailureHandler)failure;
 
-- (NSString * _Nonnull)getPassKey;
+- (void)sendErrors:(nonnull NSArray<NSError *> *)errors
+    failureCallback:(nonnull ConversationsFailureHandler)failure;
+
+- (nonnull NSError *)limitError:(NSInteger)limit;
+- (nonnull NSError *)tooManyProductsError:
+    (nonnull NSArray<NSString *> *)productIds;
+
+- (nonnull NSString *)getPassKey;
 
 @end

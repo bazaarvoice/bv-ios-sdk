@@ -6,11 +6,11 @@
 //
 //
 
-#import <Foundation/Foundation.h>
 #import "BVNotificationProperties.h"
+#import <Foundation/Foundation.h>
 
 @interface BVStoreReviewNotificationProperties : BVNotificationProperties
 
-@property (nonatomic, strong, readonly) NSString *defaultStoreImageUrl;
+@property(nonatomic, strong, readonly) NSString *defaultStoreImageUrl;
 
 @end

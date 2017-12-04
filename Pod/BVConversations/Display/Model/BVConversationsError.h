@@ -7,17 +7,18 @@
 
 #import <Foundation/Foundation.h>
 
-extern NSString* _Nonnull const BVKeyErrorMessage;
-extern NSString* _Nonnull const BVKeyErrorCode;
+extern NSString *__nonnull const BVKeyErrorMessage;
+extern NSString *__nonnull const BVKeyErrorCode;
 
 /// Internal class - used only within BVSDK
 @interface BVConversationsError : NSObject
 
-@property NSString* _Nonnull message;
-@property NSString* _Nonnull code;
+@property(nonnull) NSString *message;
+@property(nonnull) NSString *code;
 
--(id _Nonnull)initWithApiResponse:(NSDictionary* _Nonnull)apiResponse;
--(NSError* _Nonnull)toNSError;
-+(NSArray<BVConversationsError*>* _Nonnull)createErrorListFromApiResponse:(id _Nullable)apiResponse;
+- (nonnull id)initWithApiResponse:(nonnull NSDictionary *)apiResponse;
+- (nonnull NSError *)toNSError;
++ (nonnull NSArray<BVConversationsError *> *)createErrorListFromApiResponse:
+    (nullable id)apiResponse;
 
 @end

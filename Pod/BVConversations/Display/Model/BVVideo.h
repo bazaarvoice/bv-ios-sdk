@@ -12,13 +12,13 @@
  */
 @interface BVVideo : NSObject
 
-@property NSString* _Nullable videoHost;
-@property NSString* _Nullable caption;
-@property NSString* _Nullable videoThumbnailUrl;
-@property NSString* _Nullable videoId;
-@property NSString* _Nullable videoUrl;
-@property NSString* _Nullable videoIframeUrl;
+@property(nullable) NSString *videoHost;
+@property(nullable) NSString *caption;
+@property(nullable) NSString *videoThumbnailUrl;
+@property(nullable) NSString *videoId;
+@property(nullable) NSString *videoUrl;
+@property(nullable) NSString *videoIframeUrl;
 
--(id _Nullable)initWithApiResponse:(id _Nullable)apiResponse;
+- (nullable id)initWithApiResponse:(nullable id)apiResponse;
 
 @end

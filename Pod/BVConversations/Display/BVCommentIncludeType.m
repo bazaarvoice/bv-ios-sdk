@@ -1,3 +1,5 @@
+
+
 //
 //  BVCommentIncludeType.m
 //  BVSDK
@@ -9,14 +11,15 @@
 
 @implementation BVCommentIncludeTypeUtil
 
-+(NSString*)toString:(BVCommentIncludeType)type{
-    
-    switch (type) {
-        case BVCommentIncludeTypeProducts: return @"Products";
-        case BVCommentIncludeTypeReviews:  return @"Reviews";
-        case BVCommentIncludeTypeAuthors:  return @"Authors";
-    }
-    
++ (NSString *)toString:(BVCommentIncludeType)type {
+  switch (type) {
+  case BVCommentIncludeTypeProducts:
+    return @"Products";
+  case BVCommentIncludeTypeReviews:
+    return @"Reviews";
+  case BVCommentIncludeTypeAuthors:
+    return @"Authors";
+  }
 }
 
 @end

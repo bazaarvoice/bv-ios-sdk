@@ -8,7 +8,8 @@
 #import <Foundation/Foundation.h>
 
 /**
- *  BVGMBLSighting is a holder object that is used to hold and pass around Gimbal-based 'Sighting' events.
+ *  BVGMBLSighting is a holder object that is used to hold and pass around
+ * Gimbal-based 'Sighting' events.
  */
 @interface BVGMBLSighting : NSObject
 

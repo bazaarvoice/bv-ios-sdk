@@ -9,15 +9,15 @@
 
 @implementation PDPContentTypeUtil
 
-+(NSString*)toString:(PDPContentType)type {
-    switch (type) {
-        case PDPContentTypeReviews:
-            return @"Reviews";
-        case PDPContentTypeAnswers:
-            return @"Answers";
-        case PDPContentTypeQuestions:
-            return @"Questions";
-    }
++ (NSString *)toString:(PDPContentType)type {
+  switch (type) {
+  case PDPContentTypeReviews:
+    return @"Reviews";
+  case PDPContentTypeAnswers:
+    return @"Answers";
+  case PDPContentTypeQuestions:
+    return @"Questions";
+  }
 }
 
 @end

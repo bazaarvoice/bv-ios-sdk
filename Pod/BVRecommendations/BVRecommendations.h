@@ -9,14 +9,13 @@
 #define BVRecommendations_h
 
 #import "BVCore.h"
-#import "BVRecommendedProduct.h"
-#import "BVRecommendationsLoader.h"
-#import "BVRecsAnalyticsHelper.h"
 #import "BVProductRecommendationView.h"
 #import "BVProductRecommendationsContainer.h"
-#import "BVRecommendationsRequest.h"
-#import "BVShopperProfile.h"
-#import "BVProductRecommendationView.h"
 #import "BVProductReview.h"
+#import "BVRecommendationsLoader.h"
+#import "BVRecommendationsRequest.h"
+#import "BVRecommendedProduct.h"
+#import "BVRecsAnalyticsHelper.h"
+#import "BVShopperProfile.h"
 
 #endif

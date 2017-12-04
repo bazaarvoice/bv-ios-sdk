@@ -8,91 +8,89 @@
 #import "BVProductPageViews.h"
 #import "BVPixel.h"
 
-
-@interface BVProductDisplayPageViewController() {
-    bool hasSentPageviewEvent;
+@interface BVProductDisplayPageViewController () {
+  bool hasSentPageviewEvent;
 }
 @end
 
 @implementation BVProductDisplayPageViewController
 
--(void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    
-    if (!hasSentPageviewEvent && self.product != nil) {
-        hasSentPageviewEvent = true;
-        
-        NSString *brandName = self.product.brand != nil ? self.product.brand.name : nil;
-        BVPageViewEvent *pageView = [[BVPageViewEvent alloc] initWithProductId:self.product.identifier
-                                                        withBVPixelProductType:BVPixelProductTypeConversationsReviews
-                                                                     withBrand:brandName
-                                                                withCategoryId:self.product.categoryId
-                                                            withRootCategoryId:nil
-                                                          withAdditionalParams:nil];
-        
-        [BVPixel trackEvent:pageView];
+- (void)viewWillAppear:(BOOL)animated {
+  [super viewWillAppear:animated];
 
-    }
+  if (!hasSentPageviewEvent && self.product != nil) {
+    hasSentPageviewEvent = true;
+
+    NSString *brandName =
+        self.product.brand != nil ? self.product.brand.name : nil;
+    BVPageViewEvent *pageView = [[BVPageViewEvent alloc]
+             initWithProductId:self.product.identifier
+        withBVPixelProductType:BVPixelProductTypeConversationsReviews
+                     withBrand:brandName
+                withCategoryId:self.product.categoryId
+            withRootCategoryId:nil
+          withAdditionalParams:nil];
+
+    [BVPixel trackEvent:pageView];
+  }
 }
 
 @end
 
-
-
-@interface BVProductDisplayPageTableViewController(){
-    bool hasSentPageviewEvent;
+@interface BVProductDisplayPageTableViewController () {
+  bool hasSentPageviewEvent;
 }
 @end
 
 @implementation BVProductDisplayPageTableViewController
 
--(void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    
-    if (!hasSentPageviewEvent && self.product != nil) {
-        hasSentPageviewEvent = true;
-        
-        NSString *brandName = self.product.brand != nil ? self.product.brand.name : nil;
-        BVPageViewEvent *pageView = [[BVPageViewEvent alloc] initWithProductId:self.product.identifier
-                                                        withBVPixelProductType:BVPixelProductTypeConversationsReviews
-                                                                     withBrand:brandName
-                                                                withCategoryId:self.product.categoryId
-                                                            withRootCategoryId:nil
-                                                          withAdditionalParams:nil];
-        
-        [BVPixel trackEvent:pageView];
-        
-    }
+- (void)viewWillAppear:(BOOL)animated {
+  [super viewWillAppear:animated];
+
+  if (!hasSentPageviewEvent && self.product != nil) {
+    hasSentPageviewEvent = true;
+
+    NSString *brandName =
+        self.product.brand != nil ? self.product.brand.name : nil;
+    BVPageViewEvent *pageView = [[BVPageViewEvent alloc]
+             initWithProductId:self.product.identifier
+        withBVPixelProductType:BVPixelProductTypeConversationsReviews
+                     withBrand:brandName
+                withCategoryId:self.product.categoryId
+            withRootCategoryId:nil
+          withAdditionalParams:nil];
+
+    [BVPixel trackEvent:pageView];
+  }
 }
 
 @end
 
-
-
-@interface BVProductDisplayPageCollectionViewController() {
-    bool hasSentPageviewEvent;
+@interface BVProductDisplayPageCollectionViewController () {
+  bool hasSentPageviewEvent;
 }
 @end
 
 @implementation BVProductDisplayPageCollectionViewController
 
--(void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    
-    if (!hasSentPageviewEvent && self.product != nil) {
-        hasSentPageviewEvent = true;
-        
-        NSString *brandName = self.product.brand != nil ? self.product.brand.name : nil;
-        BVPageViewEvent *pageView = [[BVPageViewEvent alloc] initWithProductId:self.product.identifier
-                                                        withBVPixelProductType:BVPixelProductTypeConversationsReviews
-                                                                     withBrand:brandName
-                                                                withCategoryId:self.product.categoryId
-                                                            withRootCategoryId:nil
-                                                          withAdditionalParams:nil];
-        
-        [BVPixel trackEvent:pageView];
+- (void)viewWillAppear:(BOOL)animated {
+  [super viewWillAppear:animated];
 
-    }
+  if (!hasSentPageviewEvent && self.product != nil) {
+    hasSentPageviewEvent = true;
+
+    NSString *brandName =
+        self.product.brand != nil ? self.product.brand.name : nil;
+    BVPageViewEvent *pageView = [[BVPageViewEvent alloc]
+             initWithProductId:self.product.identifier
+        withBVPixelProductType:BVPixelProductTypeConversationsReviews
+                     withBrand:brandName
+                withCategoryId:self.product.categoryId
+            withRootCategoryId:nil
+          withAdditionalParams:nil];
+
+    [BVPixel trackEvent:pageView];
+  }
 }
 
 @end

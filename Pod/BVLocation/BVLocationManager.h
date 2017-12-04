@@ -5,7 +5,6 @@
 //  Copyright 2016 Bazaarvoice Inc. All rights reserved.
 //
 
-
 #import <Foundation/Foundation.h>
 
 @protocol BVLocationManagerDelegate;
@@ -17,35 +16,39 @@
     Register a delegate to BVLocationManagerDelegate callbacks
     Can register multiple delegates to receive callbacks
 */
-+(void)registerForLocationUpdates:(id<BVLocationManagerDelegate> _Nonnull)delegate;
++ (void)registerForLocationUpdates:
+    (nonnull id<BVLocationManagerDelegate>)delegate;
 
 /**
     Delegate will be unregistered so it will stop receiving callbacks
 */
-+(void)unregisterForLocationUpdates:(id<BVLocationManagerDelegate> _Nonnull)delegate;
++ (void)unregisterForLocationUpdates:
+    (nonnull id<BVLocationManagerDelegate>)delegate;
 
 /**
     Start updating location; All registered delegates will receive callbacks
 */
-+(void)startLocationUpdates;
++ (void)startLocationUpdates;
 
 /**
-    Stop updating location; All registered delegates will stop receiving callbacks
+    Stop updating location; All registered delegates will stop receiving
+   callbacks
 */
-+(void)stopLocationUpdates;
++ (void)stopLocationUpdates;
 
 @end
-
 
 @class BVVisit;
 @protocol BVLocationManagerDelegate <NSObject>
 
-/// All registered delegates will receive this callback whenever a user enters a store belonging to the client of the SDK.
+/// All registered delegates will receive this callback whenever a user enters a
+/// store belonging to the client of the SDK.
 @optional
--(void)didBeginVisit:(BVVisit* _Nonnull)visit;
+- (void)didBeginVisit:(nonnull BVVisit *)visit;
 
-/// All registered delegates will receive this callback whenever a user exits a store belonging to the client of the SDK.
+/// All registered delegates will receive this callback whenever a user exits a
+/// store belonging to the client of the SDK.
 @optional
--(void)didEndVisit:(BVVisit* _Nonnull)visit;
+- (void)didEndVisit:(nonnull BVVisit *)visit;
 
 @end

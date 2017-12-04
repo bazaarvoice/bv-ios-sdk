@@ -10,10 +10,12 @@
 
 @interface BVViewsHelper : NSObject
 
-+ (void)checkButtonsInSubviews:(NSArray*)subviews withTarget:(id)target withSelector:(SEL)targetSelector;
++ (void)checkButtonsInSubviews:(NSArray *)subviews
+                    withTarget:(id)target
+                  withSelector:(SEL)targetSelector;
 
 + (void)checkGestureRecognizers:(NSArray *)gestureRecognizers;
 
-+(NSString*)formatIndex:(NSIndexPath*)indexPath;
++ (NSString *)formatIndex:(NSIndexPath *)indexPath;
 
 @end

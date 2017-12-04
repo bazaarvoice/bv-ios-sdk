@@ -10,16 +10,15 @@
 
 @implementation BVReviewTableViewCell
 
--(void)setReview:(BVReview *)review {
-    
-    _review = review;
-    
+- (void)setReview:(BVReview *)review {
+
+  _review = review;
 }
 
 - (void)didMoveToSuperview {
-    
-    [super didMoveToSuperview];
-    [BVViewsHelper checkGestureRecognizers:self.gestureRecognizers];
+
+  [super didMoveToSuperview];
+  [BVViewsHelper checkGestureRecognizers:self.gestureRecognizers];
 }
 
 @end

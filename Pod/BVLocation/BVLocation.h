@@ -5,7 +5,6 @@
 //  Copyright 2016 Bazaarvoice Inc. All rights reserved.
 //
 
-
 #ifndef BVLocation_h
 #define BVLocation_h
 

@@ -7,13 +7,14 @@
 
 #import "BVQuestionsAndAnswersResponse.h"
 #import "BVConversationsInclude.h"
-#import "BVQuestion.h"
 #import "BVNullHelper.h"
+#import "BVQuestion.h"
 
 @implementation BVQuestionsAndAnswersResponse
 
--(id)createResult:(NSDictionary *)raw includes:(BVConversationsInclude *)includes {
-    return [[BVQuestion alloc] initWithApiResponse:raw includes:includes];
+- (id)createResult:(NSDictionary *)raw
+          includes:(BVConversationsInclude *)includes {
+  return [[BVQuestion alloc] initWithApiResponse:raw includes:includes];
 }
 
 @end

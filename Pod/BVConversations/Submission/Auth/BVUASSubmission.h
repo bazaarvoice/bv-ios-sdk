@@ -5,17 +5,18 @@
 //  Copyright © 2017 Bazaarvoice. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-#import "BVConversationsRequest.h"
 #import "BVBaseUGCSubmission.h"
+#import "BVConversationsRequest.h"
+#import <Foundation/Foundation.h>
 
 @class BVUASSubmissionResponse;
 
 typedef void (^UASSubmissionCompletion)(
-    BVUASSubmissionResponse *_Nonnull response);
+    BVUASSubmissionResponse *__nonnull response);
 
 /**
- Class to use to submit an user authentication string request with the bv_authtoken to the Bazaarvoice managed authentication platform.
+ Class to use to submit an user authentication string request with the
+ bv_authtoken to the Bazaarvoice managed authentication platform.
 
  For a description of the authentication process you can view the docs:
  https://developer.bazaarvoice.com/conversations-api/tutorials/submission/authentication/bv-mastered#step-4:-user-authentication
@@ -30,8 +31,7 @@ typedef void (^UASSubmissionCompletion)(
  @param bvAuthToken    The bvAuthToken representing the
  hosted authenticating user.
  */
-- (nonnull instancetype)initWithBvAuthToken:
-    (nonnull NSString *)bvAuthToken;
+- (nonnull instancetype)initWithBvAuthToken:(nonnull NSString *)bvAuthToken;
 - (nonnull instancetype)__unavailable init;
 
 /**
@@ -51,7 +51,7 @@ typedef void (^UASSubmissionCompletion)(
 - (void)submit:(nonnull UASSubmissionCompletion)success
        failure:(nonnull ConversationsFailureHandler)failure;
 
-@property (readonly) NSString *_Nonnull bvAuthToken;
+@property(nonnull, readonly) NSString *bvAuthToken;
 @property BVSubmissionAction action UNAVAILABLE_ATTRIBUTE;
 
 @end

@@ -12,14 +12,17 @@
  */
 @interface BVSubmissionResponse : NSObject
 
-@property NSString* _Nullable locale;
-@property NSString* _Nullable submissionId;
-@property NSNumber* _Nullable typicalHoursToPost;
-@property NSString* _Nullable authorSubmissionToken;
+@property(nullable) NSString *locale;
+@property(nullable) NSString *submissionId;
+@property(nullable) NSNumber *typicalHoursToPost;
+@property(nullable) NSString *authorSubmissionToken;
 
-/// Form fields are present in Preview mode only. The form fileds are a dictionry of BVFormField objects where the keys are form field elements. For details, please also refer to the Bazaarvoice Developer Portal: https://developer.bazaarvoice.com/docs/read/conversations_api/tutorials/submission/how_to_build_a_subission_form#fields-element
-@property NSDictionary * _Nullable formFields;
+/// Form fields are present in Preview mode only. The form fileds are a
+/// dictionry of BVFormField objects where the keys are form field elements. For
+/// details, please also refer to the Bazaarvoice Developer Portal:
+/// https://developer.bazaarvoice.com/docs/read/conversations_api/tutorials/submission/how_to_build_a_subission_form#fields-element
+@property(nullable) NSDictionary *formFields;
 
--(nonnull instancetype)initWithApiResponse:(nonnull NSDictionary*)apiResponse;
+- (nonnull instancetype)initWithApiResponse:(nonnull NSDictionary *)apiResponse;
 
 @end

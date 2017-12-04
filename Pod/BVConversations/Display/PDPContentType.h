@@ -11,13 +11,13 @@
  Types of Bazaarvoice content.
  */
 typedef NS_ENUM(NSInteger, PDPContentType) {
-    PDPContentTypeReviews,
-    PDPContentTypeQuestions,
-    PDPContentTypeAnswers
+  PDPContentTypeReviews,
+  PDPContentTypeQuestions,
+  PDPContentTypeAnswers
 };
 
 @interface PDPContentTypeUtil : NSObject
 
-+(NSString*)toString:(PDPContentType)type;
++ (NSString *)toString:(PDPContentType)type;
 
 @end

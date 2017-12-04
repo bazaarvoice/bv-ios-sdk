@@ -7,7 +7,6 @@
 
 #import <UIKit/UIKit.h>
 
-
 @class MKMapView;
 @class LocationPickerView;
 
@@ -16,82 +15,82 @@
 
 typedef void (^LocationPickerViewBlock)(LocationPickerView *locationPicker);
 
-
 @interface LocationPickerView : UIView <UIScrollViewDelegate>
 
 /** How much of the screen the map takes up initially and the height
  it returns to after scrolling is done. By default this is set to
  "180.0f". */
-@property (nonatomic) CGFloat defaultMapHeight;
+@property(nonatomic) CGFloat defaultMapHeight;
 
 /** How fast the map scrolls with the table view. If this is set to
  "1.0" it scrolls at the same speed. A value less than "1.0" produces
  a slower scrolling map while a value greater than "1.0" makes the map
  scroll faster. The default value is "0.5". */
-@property (nonatomic) CGFloat parallaxScrollFactor;
+@property(nonatomic) CGFloat parallaxScrollFactor;
 
 /** Determines whether or not the user can pull to a certain point
- on the table view to expand the map. This is disabled by default 
+ on the table view to expand the map. This is disabled by default
  because it may interfere with pull-to-refresh or other controls. */
-@property (nonatomic) BOOL pullToExpandMapEnabled;
+@property(nonatomic) BOOL pullToExpandMapEnabled;
 
-/** The amount you must "pull down" on the scroll view to make the 
+/** The amount you must "pull down" on the scroll view to make the
  map view pop-out to full screen. By default this is set to "140.0f". */
-@property (nonatomic) CGFloat amountToScrollToFullScreenMap;
+@property(nonatomic) CGFloat amountToScrollToFullScreenMap;
 
 /** If set to YES, this will automatically create an "X" button to shrink
  the map back down when it is shown. The button hides when the map returns
  to it's default size. This property defaults to NO. */
-@property (nonatomic) BOOL shouldCreateHideMapButton;
+@property(nonatomic) BOOL shouldCreateHideMapButton;
 
 /** If the map is tracking the user location and this variable is set to 'YES',
- the map will automatically center on the user's location when shrinking / expanding.
- This defaults to NO. */
-@property (nonatomic) BOOL shouldAutoCenterOnUserLocation;
+ the map will automatically center on the user's location when shrinking /
+ expanding. This defaults to NO. */
+@property(nonatomic) BOOL shouldAutoCenterOnUserLocation;
 
 /** Is the map covering the full screen? */
-@property (nonatomic, readonly) BOOL isMapFullScreen;
+@property(nonatomic, readonly) BOOL isMapFullScreen;
 
 /** The delegate gets notified when the map expands, shrinks, etc. */
-@property (nonatomic, weak) IBOutlet id<LocationPickerViewDelegate> delegate;
+@property(nonatomic, weak) IBOutlet id<LocationPickerViewDelegate> delegate;
 
 /** The map view, duh. */
-@property (nonatomic, strong) MKMapView *mapView;
+@property(nonatomic, strong) MKMapView *mapView;
 
 /** Table view that sits below the map. */
-@property (nonatomic, strong) UITableView *tableView;
+@property(nonatomic, strong) UITableView *tableView;
 
 /** The view to the tableview background view. */
-@property (nonatomic, strong) UIView *backgroundView;
+@property(nonatomic, strong) UIView *backgroundView;
 
 /** The color of the backgroundView */
-@property (nonatomic, strong) UIColor *backgroundViewColor;
+@property(nonatomic, strong) UIColor *backgroundViewColor;
 
 /** This UITableViewDataSource is forwarded to the LocationPickers's
  UITableView when it is created. */
-@property (nonatomic, weak) IBOutlet id<UITableViewDataSource> tableViewDataSource;
+@property(nonatomic, weak) IBOutlet id<UITableViewDataSource>
+    tableViewDataSource;
 
 /** This UITableViewDelegate is forwarded to the LocationPickers's
  UITableView when it is created. */
-@property (nonatomic, weak) IBOutlet id<UITableViewDelegate> tableViewDelegate;
+@property(nonatomic, weak) IBOutlet id<UITableViewDelegate> tableViewDelegate;
 
 /** This MKMapViewDelegate is forwarded to the LocationPickers's
  MKMapView when it is created. */
-@property (nonatomic, weak) IBOutlet id<MKMapViewDelegate> mapViewDelegate;
+@property(nonatomic, weak) IBOutlet id<MKMapViewDelegate> mapViewDelegate;
 
 /** Called after the tableView has been loaded. Allows for additional setup. */
-@property (nonatomic, copy) LocationPickerViewBlock tableViewDidLoadBlock;
+@property(nonatomic, copy) LocationPickerViewBlock tableViewDidLoadBlock;
 
 /** Called after the mapView has been loaded. Allows for additional setup. */
-@property (nonatomic, copy) LocationPickerViewBlock mapViewDidLoadBlock;
+@property(nonatomic, copy) LocationPickerViewBlock mapViewDidLoadBlock;
 
-@property (nonatomic, copy) LocationPickerViewBlock mapViewWillExpand;
-@property (nonatomic, copy) LocationPickerViewBlock mapViewDidExpand;
-@property (nonatomic, copy) LocationPickerViewBlock mapViewWillBeHidden;
-@property (nonatomic, copy) LocationPickerViewBlock mapViewWasHidden;
+@property(nonatomic, copy) LocationPickerViewBlock mapViewWillExpand;
+@property(nonatomic, copy) LocationPickerViewBlock mapViewDidExpand;
+@property(nonatomic, copy) LocationPickerViewBlock mapViewWillBeHidden;
+@property(nonatomic, copy) LocationPickerViewBlock mapViewWasHidden;
 
 /* custom action for close map view button, overrides default action */
-@property (nonatomic, copy) LocationPickerViewBlock mapCloseButtonTapped;
+@property(nonatomic, copy) LocationPickerViewBlock mapCloseButtonTapped;
 
 /** Makes the map view full screen. */
 - (void)expandMapView:(id)sender animated:(BOOL)animated;
@@ -108,24 +107,24 @@ typedef void (^LocationPickerViewBlock)(LocationPickerView *locationPicker);
 - (void)setCustomCloseButton:(UIButton *)closeButton;
 
 /** Set custom close button map at x/y point */
-- (void)setCustomCloseButton:(UIButton *)closeButton atPoint:(CGPoint)buttonPoint;
+- (void)setCustomCloseButton:(UIButton *)closeButton
+                     atPoint:(CGPoint)buttonPoint;
 
 @end
-
 
 @protocol LocationPickerViewDelegate <NSObject>
 
 @optional
 
-/** Called when the mapView is loaded or reloaded. Alternatively, the block 
+/** Called when the mapView is loaded or reloaded. Alternatively, the block
  properties of LocationPickerView can be used. */
 - (void)locationPicker:(LocationPickerView *)locationPicker
-     mapViewDidLoad:(MKMapView *)mapView;
+        mapViewDidLoad:(MKMapView *)mapView;
 
 /** Called when the tableView is loaded or reloaded. Alternatively, the block
  properties of LocationPickerView can be used.  */
 - (void)locationPicker:(LocationPickerView *)locationPicker
-        tableViewDidLoad:(UITableView *)tableView;
+      tableViewDidLoad:(UITableView *)tableView;
 
 /** Called when the mapView is about to be expanded (made fullscreen).
  Use this to perform custom animations or set attributes of the map/table. */
@@ -140,7 +139,7 @@ typedef void (^LocationPickerViewBlock)(LocationPickerView *locationPicker);
 /** Called when the mapView is about to be hidden (made tiny). Use this to
  perform custom animations or set attributes of the map/table. */
 - (void)locationPicker:(LocationPickerView *)locationPicker
-   mapViewWillBeHidden:(MKMapView *)mapView;
+    mapViewWillBeHidden:(MKMapView *)mapView;
 
 /** Called when the mapView was hidden (made tiny). Use this to
  perform custom animations or set attributes of the map/table. */

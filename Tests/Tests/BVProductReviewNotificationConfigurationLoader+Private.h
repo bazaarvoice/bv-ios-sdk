@@ -10,7 +10,11 @@
 
 @interface BVProductReviewNotificationConfigurationLoader (Testing)
 
--(void)loadPINConfiguration:(void (^ _Nonnull)(BVProductReviewNotificationProperties * _Nonnull response))completion failure:(void (^ _Nonnull)(NSError * _Nonnull error))failure;
+- (void)loadPINConfiguration:
+            (nonnull void (^)(BVProductReviewNotificationProperties *__nonnull
+                                  response))completion
+                     failure:
+                         (nonnull void (^)(NSError *__nonnull error))failure;
 
 @end
 

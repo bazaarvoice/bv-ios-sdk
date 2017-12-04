@@ -9,8 +9,9 @@
 
 @implementation BVBulkProductResponse
 
--(id)createResult:(NSDictionary *)raw includes:(BVConversationsInclude *)includes {
-    return [[BVProduct alloc] initWithApiResponse:raw includes:includes];
+- (id)createResult:(NSDictionary *)raw
+          includes:(BVConversationsInclude *)includes {
+  return [[BVProduct alloc] initWithApiResponse:raw includes:includes];
 }
 
 @end

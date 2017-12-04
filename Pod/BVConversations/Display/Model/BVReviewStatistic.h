@@ -8,14 +8,14 @@
 #import <Foundation/Foundation.h>
 
 /*
- A set of statistics about reviews. Used in `BVProductStatistics`. 
+ A set of statistics about reviews. Used in `BVProductStatistics`.
  */
 @interface BVReviewStatistic : NSObject
 
-@property NSNumber* _Nullable totalReviewCount;
-@property NSNumber* _Nullable averageOverallRating;
-@property NSNumber* _Nullable overallRatingRange;
+@property(nullable) NSNumber *totalReviewCount;
+@property(nullable) NSNumber *averageOverallRating;
+@property(nullable) NSNumber *overallRatingRange;
 
--(id _Nullable)initWithApiResponse:(id _Nullable)apiResponse;
+- (nullable id)initWithApiResponse:(nullable id)apiResponse;
 
 @end

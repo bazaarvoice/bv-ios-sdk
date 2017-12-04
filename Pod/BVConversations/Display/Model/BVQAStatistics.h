@@ -5,35 +5,35 @@
 //  Copyright © 2016 Bazaarvoice. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
 #import "BVDimensionAndDistributionUtil.h"
+#import <Foundation/Foundation.h>
 
 /*
  Statistics about the Questions and Answers for a product.
  */
 @interface BVQAStatistics : NSObject
 
-@property NSNumber* _Nullable helpfulVoteCount;
-@property NSNumber* _Nullable bestAnswerCount;
-@property NSNumber* _Nullable totalAnswerCount;
-@property NSNumber* _Nullable totalQuestionCount;
-@property NSNumber* _Nullable featuredQuestionCount;
-@property NSNumber* _Nullable featuredAnswerCount;
+@property(nullable) NSNumber *helpfulVoteCount;
+@property(nullable) NSNumber *bestAnswerCount;
+@property(nullable) NSNumber *totalAnswerCount;
+@property(nullable) NSNumber *totalQuestionCount;
+@property(nullable) NSNumber *featuredQuestionCount;
+@property(nullable) NSNumber *featuredAnswerCount;
 
-@property NSNumber* _Nullable questionHelpfulVoteCount;
-@property NSNumber* _Nullable answerNotHelpfulVoteCount;
-@property NSNumber* _Nullable questionNotHelpfulVoteCount;
-@property NSNumber* _Nullable answerHelpfulVoteCount;
+@property(nullable) NSNumber *questionHelpfulVoteCount;
+@property(nullable) NSNumber *answerNotHelpfulVoteCount;
+@property(nullable) NSNumber *questionNotHelpfulVoteCount;
+@property(nullable) NSNumber *answerHelpfulVoteCount;
 
-@property TagDistribution _Nullable tagDistribution;
-@property ContextDataDistribution _Nullable contextDataDistribution;
+@property(nullable) TagDistribution tagDistribution;
+@property(nullable) ContextDataDistribution contextDataDistribution;
 
-@property NSDate* _Nullable firstQuestionTime;
-@property NSDate* _Nullable lastQuestionTime;
-@property NSDate* _Nullable firstAnswerTime;
-@property NSDate* _Nullable lastAnswerTime;
-@property NSDate* _Nullable lastQuestionAnswerTime;
+@property(nullable) NSDate *firstQuestionTime;
+@property(nullable) NSDate *lastQuestionTime;
+@property(nullable) NSDate *firstAnswerTime;
+@property(nullable) NSDate *lastAnswerTime;
+@property(nullable) NSDate *lastQuestionAnswerTime;
 
--(id _Nullable)initWithApiResponse:(id _Nullable)apiResponse;
+- (nullable id)initWithApiResponse:(nullable id)apiResponse;
 
 @end

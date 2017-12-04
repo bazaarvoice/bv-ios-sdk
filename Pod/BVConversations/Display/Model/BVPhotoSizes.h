@@ -12,9 +12,9 @@
  */
 @interface BVPhotoSizes : NSObject
 
-@property NSString* _Nullable thumbnailUrl;
-@property NSString* _Nullable normalUrl;
+@property(nullable) NSString *thumbnailUrl;
+@property(nullable) NSString *normalUrl;
 
--(id _Nullable)initWithApiResponse:(id _Nullable)apiResponse;
+- (nullable id)initWithApiResponse:(nullable id)apiResponse;
 
 @end

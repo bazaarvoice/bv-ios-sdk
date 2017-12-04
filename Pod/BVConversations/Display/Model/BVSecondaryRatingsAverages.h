@@ -9,6 +9,7 @@
 
 @interface BVSecondaryRatingsAverages : NSDictionary
 
-+(BVSecondaryRatingsAverages* _Nullable)createWithDictionary:(id _Nullable)apiResponse;
++ (nullable BVSecondaryRatingsAverages *)createWithDictionary:
+    (nullable id)apiResponse;
 
 @end

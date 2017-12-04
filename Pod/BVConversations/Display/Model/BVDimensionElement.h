@@ -8,14 +8,14 @@
 #import <Foundation/Foundation.h>
 
 /*
- A single tag dimension. 
+ A single tag dimension.
  */
 @interface BVDimensionElement : NSObject
 
-@property NSString* _Nullable label;
-@property NSString* _Nullable identifier;
-@property NSArray<NSString*>* _Nullable values;
+@property(nullable) NSString *label;
+@property(nullable) NSString *identifier;
+@property(nullable) NSArray<NSString *> *values;
 
--(id _Nonnull)initWithApiResponse:(NSDictionary* _Nonnull)apiResponse;
+- (nonnull id)initWithApiResponse:(nonnull NSDictionary *)apiResponse;
 
 @end

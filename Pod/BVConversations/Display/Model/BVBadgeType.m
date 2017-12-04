@@ -9,19 +9,18 @@
 
 @implementation BVBadgeTypeUtil
 
-+ (BVBadgeType)fromString:(NSString* _Nullable)str{
-    
-    if([str isEqualToString:@"Merit"]) {
-        return BVBadgeTypeMerit;
-    }
-    if([str isEqualToString:@"Affiliation"]) {
-        return BVBadgeTypeAffiliation;
-    }
-    if([str isEqualToString:@"Rank"]) {
-        return BVBadgeTypeRank;
-    }
-    return BVBadgeTypeCustom;
-    
++ (BVBadgeType)fromString:(nullable NSString *)str {
+
+  if ([str isEqualToString:@"Merit"]) {
+    return BVBadgeTypeMerit;
+  }
+  if ([str isEqualToString:@"Affiliation"]) {
+    return BVBadgeTypeAffiliation;
+  }
+  if ([str isEqualToString:@"Rank"]) {
+    return BVBadgeTypeRank;
+  }
+  return BVBadgeTypeCustom;
 }
 
 @end

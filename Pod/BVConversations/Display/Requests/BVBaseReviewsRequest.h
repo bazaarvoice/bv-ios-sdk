@@ -5,45 +5,58 @@
 //  Copyright 2017 Bazaarvoice Inc. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
 #import "BVConversationsRequest.h"
-#import "BVSort.h"
-#import "BVSortOptionReviews.h"
-#import "BVReviewFilterType.h"
 #import "BVFilterOperator.h"
 #import "BVResponse.h"
+#import "BVReviewFilterType.h"
 #import "BVReviewIncludeType.h"
+#import "BVSort.h"
+#import "BVSortOptionReviews.h"
+#import <Foundation/Foundation.h>
 
 @class BVFilter;
 
-@interface BVBaseReviewsRequest<__covariant BVResponseType: id<BVResponse>> : BVConversationsRequest
+@interface BVBaseReviewsRequest < __covariant BVResponseType : id <BVResponse>
+> : BVConversationsRequest
 
-- (nonnull instancetype) __unavailable init;
-- (nonnull instancetype)initWithID:(NSString * _Nonnull)ID limit:(int)limit offset:(int)offset;
+    - (nonnull instancetype)__unavailable init;
+- (nonnull instancetype)initWithID:(nonnull NSString *)ID
+                             limit:(int)limit
+                            offset:(int)offset;
 
-@property (nonatomic, assign, readonly) int limit;
-@property (nonatomic, assign, readonly) int offset;
-@property (nonatomic, strong, readonly) NSString* _Nullable ID;
-@property (nonatomic, strong, readonly) NSString* _Nullable search;
-@property (nonatomic, strong, readonly) NSMutableArray<BVSort*>* _Nonnull sorts;
-@property (nonatomic, strong, readonly) NSMutableArray<BVFilter*>* _Nonnull filters;
-@property (nonatomic, strong, readonly) NSMutableArray<NSString *> * _Nonnull includes;
+@property(nonatomic, assign, readonly) int limit;
+@property(nonatomic, assign, readonly) int offset;
+@property(nullable, nonatomic, strong, readonly) NSString *ID;
+@property(nullable, nonatomic, strong, readonly) NSString *search;
+@property(nonnull, nonatomic, strong, readonly) NSMutableArray<BVSort *> *sorts;
+@property(nonnull, nonatomic, strong, readonly)
+    NSMutableArray<BVFilter *> *filters;
+@property(nonnull, nonatomic, strong, readonly)
+    NSMutableArray<NSString *> *includes;
 
-- (void)sendReviewResultsAnalytics:(NSArray<BVReview *> * _Nonnull)reviews;
-- (void)sendReviewsAnalytics:(BVReviewsResponse* _Nonnull)reviewsResponse;
-- (nonnull instancetype)search:(NSString * _Nonnull)search;
+- (void)sendReviewResultsAnalytics:(nonnull NSArray<BVReview *> *)reviews;
+- (void)sendReviewsAnalytics:(nonnull BVReviewsResponse *)reviewsResponse;
+- (nonnull instancetype)search:(nonnull NSString *)search;
 
 - (nonnull instancetype)addInclude:(BVReviewIncludeType)include;
 
-- (nonnull instancetype)addSort:(BVSortOptionProducts)option order:(BVSortOrder)order __deprecated_msg("use sortReviews instead");
+- (nonnull instancetype)addSort:(BVSortOptionProducts)option
+                          order:(BVSortOrder)order
+    __deprecated_msg("use sortReviews instead");
 
-- (nonnull instancetype)addReviewSort:(BVSortOptionReviews)option order:(BVSortOrder)order;
+- (nonnull instancetype)addReviewSort:(BVSortOptionReviews)option
+                                order:(BVSortOrder)order;
 
-- (nonnull instancetype)addFilter:(BVReviewFilterType)type filterOperator:(BVFilterOperator)filterOperator value:(NSString * _Nonnull)value;
-- (nonnull instancetype)addFilter:(BVReviewFilterType)type filterOperator:(BVFilterOperator)filterOperator values:(NSArray<NSString *> * _Nonnull)values;
+- (nonnull instancetype)addFilter:(BVReviewFilterType)type
+                   filterOperator:(BVFilterOperator)filterOperator
+                            value:(nonnull NSString *)value;
+- (nonnull instancetype)addFilter:(BVReviewFilterType)type
+                   filterOperator:(BVFilterOperator)filterOperator
+                           values:(nonnull NSArray<NSString *> *)values;
 
-- (void)load:(void (^ _Nonnull)(BVResponseType _Nonnull response))success failure:(ConversationsFailureHandler _Nonnull)failure;
+- (void)load:(nonnull void (^)(BVResponseType __nonnull response))success
+     failure:(nonnull ConversationsFailureHandler)failure;
 
-- (nonnull BVResponseType)createResponse:(NSDictionary * _Nonnull)raw;
+- (nonnull BVResponseType)createResponse:(nonnull NSDictionary *)raw;
 
 @end

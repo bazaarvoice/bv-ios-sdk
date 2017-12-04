@@ -7,14 +7,16 @@
 
 #import <UIKit/UIKit.h>
 
-#import "BVViewsHelper.h"
 #import "BVStoreReviewsRequest.h"
+#import "BVViewsHelper.h"
 
-/// A sub-classed UITableView for displaying BVReviewTableViewCells, where review are from a parent BVStore.
+/// A sub-classed UITableView for displaying BVReviewTableViewCells, where
+/// review are from a parent BVStore.
 @interface BVStoreReviewsTableView : UITableView
 
-/// Helper method to asynchronously load the Reviews for a given request. This helper also ensures the proper analytic tracking is fired for reporting.
-- (void)load:(nonnull BVStoreReviewsRequest*)request
+/// Helper method to asynchronously load the Reviews for a given request. This
+/// helper also ensures the proper analytic tracking is fired for reporting.
+- (void)load:(nonnull BVStoreReviewsRequest *)request
      success:(nonnull StoreReviewRequestCompletionHandler)success
      failure:(nonnull ConversationsFailureHandler)failure;
 

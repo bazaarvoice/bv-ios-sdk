@@ -9,5 +9,4 @@
 
 @interface MyReviewTableViewCell : BVReviewTableViewCell
 
-
 @end

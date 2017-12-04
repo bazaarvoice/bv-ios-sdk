@@ -5,13 +5,13 @@
 //  Copyright © 2016 Bazaarvoice. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
 #import "BVSubmissionErrorResponse.h"
 #import "BVSubmittedReview.h"
+#import <Foundation/Foundation.h>
 
 /// Failed review submission response.
 @interface BVReviewSubmissionErrorResponse : BVSubmissionErrorResponse
 
-@property BVSubmittedReview* _Nullable review;
+@property(nullable) BVSubmittedReview *review;
 
 @end

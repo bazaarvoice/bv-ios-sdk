@@ -5,26 +5,25 @@
 //  Copyright © 2016 Bazaarvoice. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-#import "BVPhoto.h"
-#import "BVVideo.h"
-#import "BVContextDataValue.h"
 #import "BVBadge.h"
-#import "BVSecondaryRating.h"
+#import "BVContextDataValue.h"
 #import "BVDimensionAndDistributionUtil.h"
+#import "BVPhoto.h"
+#import "BVSecondaryRating.h"
+#import "BVVideo.h"
+#import <Foundation/Foundation.h>
 
 /// Internal class - used only within BVSDK
 @interface BVModelUtil : NSObject
 
-+ (NSDate * _Nullable)convertTimestampToDatetime:(id _Nullable)timestamp;
-+ (NSArray<BVPhoto *> * _Nonnull)parsePhotos:(id _Nullable)apiResponse;
-+ (NSArray<BVVideo *> * _Nonnull)parseVideos:(id _Nullable)apiResponse;
-+ (NSArray<BVContextDataValue *> * _Nonnull)parseContextDataValues:(id _Nullable)apiResponse;
-+ (NSArray<BVBadge *> * _Nonnull)parseBadges:(id _Nullable)apiResponse;
-+ (NSArray<BVSecondaryRating *> * _Nonnull)parseSecondaryRatings:(id _Nullable)apiResponse;
-+ (TagDimensions _Nullable)parseTagDimension:(id _Nullable)apiResponse;
++ (nullable NSDate *)convertTimestampToDatetime:(nullable id)timestamp;
++ (nonnull NSArray<BVPhoto *> *)parsePhotos:(nullable id)apiResponse;
++ (nonnull NSArray<BVVideo *> *)parseVideos:(nullable id)apiResponse;
++ (nonnull NSArray<BVContextDataValue *> *)parseContextDataValues:
+    (nullable id)apiResponse;
++ (nonnull NSArray<BVBadge *> *)parseBadges:(nullable id)apiResponse;
++ (nonnull NSArray<BVSecondaryRating *> *)parseSecondaryRatings:
+    (nullable id)apiResponse;
++ (nullable TagDimensions)parseTagDimension:(nullable id)apiResponse;
 
 @end
-
-
-

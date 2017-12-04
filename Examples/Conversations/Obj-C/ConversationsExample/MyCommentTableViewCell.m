@@ -9,25 +9,22 @@
 
 @interface MyCommentTableViewCell ()
 
-@property (weak, nonatomic) IBOutlet UILabel *commentTitle;
-@property (weak, nonatomic) IBOutlet UILabel *commentText;
-
+@property(weak, nonatomic) IBOutlet UILabel *commentTitle;
+@property(weak, nonatomic) IBOutlet UILabel *commentText;
 
 @end
-
 
 @implementation MyCommentTableViewCell
 
 @synthesize comment = _comment;
 
-- (void)setComment:(BVComment *)comment{
-    
-    _comment = comment;
-    self.commentTitle.text = self.comment.title ? self.comment.title : @"No title";
-    self.commentText.text =  self.comment.commentText ? self.comment.commentText : @"No comment text";
-    
+- (void)setComment:(BVComment *)comment {
+
+  _comment = comment;
+  self.commentTitle.text =
+      self.comment.title ? self.comment.title : @"No title";
+  self.commentText.text =
+      self.comment.commentText ? self.comment.commentText : @"No comment text";
 }
-
-
 
 @end

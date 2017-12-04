@@ -11,15 +11,14 @@
  Type of badge. See BVBadge.h for usage.
  */
 typedef NS_ENUM(NSInteger, BVBadgeType) {
-    BVBadgeTypeMerit,
-    BVBadgeTypeAffiliation,
-    BVBadgeTypeRank,
-    BVBadgeTypeCustom
+  BVBadgeTypeMerit,
+  BVBadgeTypeAffiliation,
+  BVBadgeTypeRank,
+  BVBadgeTypeCustom
 };
 
 @interface BVBadgeTypeUtil : NSObject
 
-+ (BVBadgeType)fromString:(NSString* _Nullable)str;
++ (BVBadgeType)fromString:(nullable NSString *)str;
 
 @end
-

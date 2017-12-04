@@ -9,11 +9,13 @@
 
 @implementation BVReviewIncludeTypeUtil
 
-+(NSString*)toString:(BVReviewIncludeType)type {
-    switch (type) {
-        case BVReviewIncludeTypeProducts: return @"Products";
-        case BVReviewIncludeTypeComments: return @"Comments";
-    }
++ (NSString *)toString:(BVReviewIncludeType)type {
+  switch (type) {
+  case BVReviewIncludeTypeProducts:
+    return @"Products";
+  case BVReviewIncludeTypeComments:
+    return @"Comments";
+  }
 }
 
 @end

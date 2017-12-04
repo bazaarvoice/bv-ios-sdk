@@ -9,15 +9,15 @@
 
 @implementation BVSubmissionActionUtil
 
-+(NSString* _Nonnull)toString:(BVSubmissionAction)action {
-    
-    switch (action) {
-            
-        case BVSubmissionActionSubmit: return @"Submit";
-        case BVSubmissionActionPreview: return @"Preview";
-            
-    }
-    
++ (nonnull NSString *)toString:(BVSubmissionAction)action {
+
+  switch (action) {
+
+  case BVSubmissionActionSubmit:
+    return @"Submit";
+  case BVSubmissionActionPreview:
+    return @"Preview";
+  }
 }
 
 @end

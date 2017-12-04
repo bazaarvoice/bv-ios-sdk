@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface UIImage (BundleLocator)
-+(UIImage*)bundledImageNamed:(NSString*) imageName;
++ (UIImage *)bundledImageNamed:(NSString *)imageName;
 @end
 
 @interface BundleLocator : NSObject

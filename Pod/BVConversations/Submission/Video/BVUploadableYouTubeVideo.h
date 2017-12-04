@@ -9,9 +9,10 @@
 
 @interface BVUploadableYouTubeVideo : NSObject
 
--(nonnull instancetype)initWithVideoURL:(nonnull NSString*)url videoCaption:(nullable NSString*)caption;
+- (nonnull instancetype)initWithVideoURL:(nonnull NSString *)url
+                            videoCaption:(nullable NSString *)caption;
 
-@property (readonly) NSString* _Nonnull videoURL;
-@property (readonly) NSString* _Nullable videoCaption;
+@property(nonnull, readonly) NSString *videoURL;
+@property(nullable, readonly) NSString *videoCaption;
 
 @end

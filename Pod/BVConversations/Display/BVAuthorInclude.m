@@ -9,17 +9,18 @@
 
 @implementation BVAuthorInclude
 
--(id _Nonnull)initWithContentType:(BVAuthorContentType)type limit:(NSNumber* _Nullable)limit {
-    self = [super init];
-    if(self){
-        self.type = type;
-        self.limit = limit;
-    }
-    return self;
+- (nonnull id)initWithContentType:(BVAuthorContentType)type
+                            limit:(nullable NSNumber *)limit {
+  self = [super init];
+  if (self) {
+    self.type = type;
+    self.limit = limit;
+  }
+  return self;
 }
 
--(NSString* _Nonnull)toParamString {
-    return [BVAuthorContentTypeUtil toString:self.type];
+- (nonnull NSString *)toParamString {
+  return [BVAuthorContentTypeUtil toString:self.type];
 }
 
 @end

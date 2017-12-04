@@ -10,23 +10,23 @@
 
 @implementation BVSyndicationSource
 
--(id _Nullable)initWithApiResponse:(id _Nullable)apiResponse {
-    self = [super init];
-    if(self) {
-        if (apiResponse == nil || ![apiResponse isKindOfClass:[NSDictionary class]]) {
-            return nil;
-        }
-        
-        NSDictionary* apiObject = [apiResponse objectForKey:@"SyndicationSource"];
-        
-        if (apiObject){
-            SET_IF_NOT_NULL(_name, apiObject[@"Name"]);
-            SET_IF_NOT_NULL(_contentLink, apiObject[@"ContentLink"]);
-            SET_IF_NOT_NULL(_logoImageUrl, apiObject[@"LogoImageUrl"]);
-        }
-        
+- (nullable id)initWithApiResponse:(nullable id)apiResponse {
+  self = [super init];
+  if (self) {
+    if (apiResponse == nil ||
+        ![apiResponse isKindOfClass:[NSDictionary class]]) {
+      return nil;
     }
-    return self;
+
+    NSDictionary *apiObject = [apiResponse objectForKey:@"SyndicationSource"];
+
+    if (apiObject) {
+      SET_IF_NOT_NULL(_name, apiObject[@"Name"]);
+      SET_IF_NOT_NULL(_contentLink, apiObject[@"ContentLink"]);
+      SET_IF_NOT_NULL(_logoImageUrl, apiObject[@"LogoImageUrl"]);
+    }
+  }
+  return self;
 }
 
 @end

@@ -6,14 +6,15 @@
 //
 //
 
-#import <Foundation/Foundation.h>
 #import "BVDisplayableProductContent.h"
+#import <Foundation/Foundation.h>
 
-@interface BVPIN : NSObject<BVDisplayableProductContent>
+@interface BVPIN : NSObject <BVDisplayableProductContent>
 
 - (instancetype)init NS_UNAVAILABLE;
 
--(instancetype)initWithDictionary:(NSDictionary*)dictionary NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithDictionary:(NSDictionary *)dictionary
+    NS_DESIGNATED_INITIALIZER;
 
 @property(nonatomic, strong, readonly) NSNumber *averageRating;
 
