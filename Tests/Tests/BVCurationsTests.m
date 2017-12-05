@@ -30,7 +30,8 @@
 }
 
 - (void)tearDown {
-  // Put teardown code here. This method is called after the invocation of each
+  // Put teardown code here. This method is called after the invocation of
+  // each
   // test method in the class.
   [super tearDown];
 }
@@ -45,7 +46,6 @@
 
 // Test normal parse result from a feed
 - (void)testFetchCurations {
-
   [self addStubWith200ResponseForJSONFileNamed:@"curationsFeedTest1.json"];
 
   __weak XCTestExpectation *expectation =
@@ -70,7 +70,6 @@
         bool hasPhotos = NO;
         bool hasVideos = NO;
         for (BVCurationsFeedItem *feedItem in feedItems) {
-
           if (feedItem.photos.count > 0) {
             hasPhotos = YES;
           }
@@ -103,7 +102,6 @@
 
 // Test fetching curations with user's geolocation
 - (void)testFetchCurationsWithLocation {
-
   [self addStubWith200ResponseForJSONFileNamed:@"curationsFeedTest1.json"];
 
   __weak XCTestExpectation *expectation =
@@ -125,7 +123,6 @@
 
         int locationCount = 0;
         for (BVCurationsFeedItem *feedItem in feedItems) {
-
           if (feedItem.coordinates != nil &&
               feedItem.coordinates.latitude != nil &&
               feedItem.coordinates.longitude != nil) {
@@ -133,9 +130,10 @@
           }
         }
 
-        XCTAssertEqual(
-            21, locationCount,
-            @"There should be 11 feed items with coordinates attached to them");
+        XCTAssertEqual(21, locationCount,
+                       @"There should be 11 feed items "
+                       @"with coordinates attached to "
+                       @"them");
         XCTAssertEqual(40, [feedItems count],
                        @"There should be 20 total feed items");
 
@@ -158,7 +156,6 @@
 
 // Test proper failure of malformed JSON
 - (void)testFetchCurationsMalformedJSON {
-
   [self addStubWith200ResponseForJSONFileNamed:@"malformedJSON.json"];
 
   __weak XCTestExpectation *expectation =
@@ -195,7 +192,6 @@
 
 // Test proper failure of empty body but 200 response
 - (void)testEmptyBodyFromFeedRequest {
-
   [self addStubWith200ResponseForJSONFileNamed:@""];
 
   __weak XCTestExpectation *expectation =
@@ -232,7 +228,6 @@
 
 // HTTP status 500
 - (void)testServerError500 {
-
   [self addStubWithResultFile:@""
                    statusCode:500
                   withHeaders:@{@"Content-Type" : @"application/json"}];
@@ -271,7 +266,6 @@
 
 // Test proper failure of empty body but 200 response
 - (void)testNon200Status {
-
   [self addStubWithResultFile:@"curations500Error.json"
                    statusCode:200
                   withHeaders:@{
@@ -320,7 +314,6 @@
 // Test setting all the display api query string input and that we can fetch
 // them out parameterized as NSURLQueryItem objects.
 - (void)testCurationsFeedQueryStringParams {
-
   NSDictionary *expectedResults = @{
     @"passkey" : @"fakeymcfakersonfakekey",
     @"client" : @"test-classic",
@@ -369,12 +362,11 @@
 
   NSArray *queryParams = [feedRequest createQueryItems];
 
-  XCTAssertTrue(
-      [queryParams count] == [[expectedResults allKeys] count],
-      @"Number of query items is not equal to the expected results dictionary");
+  XCTAssertTrue([queryParams count] == [[expectedResults allKeys] count],
+                @"Number of query items is not equal to the expected results "
+                @"dictionary");
 
   for (NSURLQueryItem *qi in queryParams) {
-
     NSString *name = qi.name;
     NSString *value = qi.value;
 
@@ -390,7 +382,6 @@
 // Test for serialization/de-serialization of the API parameters for
 // BVCurationsAddPostParams
 - (void)testPostParamsOnly {
-
   // Test inputs - required
   NSString *aliasInput = @"aliasText";
   NSString *tokenInput = @"tokenText";
@@ -413,12 +404,19 @@
 
   NSArray *linksInput =
       @[ @"http://www.bazaarvoice.com/", @"http://acl-live.com/" ];
-  NSArray *photosInput = @[
-    @"http://homeopathyplus.com/wp-content/uploads/2013/01/"
-    @"MotherTeresa-223x300.png",
-    @"https://upload.wikimedia.org/wikipedia/commons/6/6f/"
-    @"Einstein-formal_portrait-35.jpg"
-  ];
+
+  // To eliminate the NSString literal warning within NSArray convenience
+  // initializer.
+  NSString *photosUrl1 = [NSString
+      stringWithFormat:@"%@", @"http://homeopathyplus.com/wp-content/uploads/"
+                              @"2013/01/MotherTeresa-223x300.png"];
+
+  NSString *photosUrl2 =
+      [NSString stringWithFormat:@"%@", @"https://upload.wikimedia.org/"
+                                        @"wikipedia/commons/6/6f/"
+                                        @"Einstein-formal_portrait-35.jpg"];
+
+  NSArray *photosInput = @[ photosUrl1, photosUrl2 ];
 
   UIImage *testImage = [self loadTestImageNamed:@"test_pattern.jpg"];
 
@@ -522,7 +520,6 @@
 }
 
 - (void)testPostPhotoSuccess {
-
   __weak XCTestExpectation *expectation =
       [self expectationWithDescription:@"testPostPhotoSuccess"];
 
@@ -566,7 +563,6 @@
 }
 
 - (void)testPostPhotoFail {
-
   __weak XCTestExpectation *expectation =
       [self expectationWithDescription:@"testPostPhotoFail"];
 
@@ -614,7 +610,6 @@
 }
 
 - (void)testPostMissingRequiredKey {
-
   __weak XCTestExpectation *expectation =
       [self expectationWithDescription:@"testPostMissingRequiredKey"];
 
@@ -655,7 +650,6 @@
 }
 
 - (void)testPostMalformedJSONResponse {
-
   __weak XCTestExpectation *expectation =
       [self expectationWithDescription:@"testPostMalformedJSONResponse"];
 
@@ -695,11 +689,11 @@
 }
 
 - (void)testPostNilRequestObject {
-
   __weak XCTestExpectation *expectation =
       [self expectationWithDescription:@"testPostNilRequestObject"];
 
-  // Hit the API - which should never make an API call and just return the error
+  // Hit the API - which should never make an API call and just return the
+  // error
   // handler
   BVCurationsPhotoUploader *uploadAPI = [[BVCurationsPhotoUploader alloc] init];
 
@@ -724,7 +718,6 @@
 }
 
 - (void)waitForExpectations {
-
   [self waitForExpectationsWithTimeout:30.0
                                handler:^(NSError *error) {
 
