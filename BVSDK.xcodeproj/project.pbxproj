@@ -213,7 +213,6 @@
 		87EDAFDA1EDDD3E200FA07C0 /* BVCommentSubmissionErrorResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 87EDAFD81EDDD3E200FA07C0 /* BVCommentSubmissionErrorResponse.m */; };
 		87F2DAB11DAD579D00FB43F3 /* BVSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87F2DAA71DAD579D00FB43F3 /* BVSDK.framework */; };
 		87F2DAB81DAD579D00FB43F3 /* BVSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = 87F2DAAA1DAD579D00FB43F3 /* BVSDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		87F2DC171DAD585E00FB43F3 /* BVAdsMessageInterceptor.h in Headers */ = {isa = PBXBuildFile; fileRef = 87F2DAC31DAD585E00FB43F3 /* BVAdsMessageInterceptor.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		87F2DC181DAD585E00FB43F3 /* BVAnalyticsManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 87F2DAC51DAD585E00FB43F3 /* BVAnalyticsManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		87F2DC191DAD585E00FB43F3 /* BVAnalyticsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 87F2DAC61DAD585E00FB43F3 /* BVAnalyticsManager.m */; };
 		87F2DC1C1DAD585E00FB43F3 /* BVLocationEventsHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 87F2DAC91DAD585E00FB43F3 /* BVLocationEventsHelper.h */; settings = {ATTRIBUTES = (Private, ); }; };
@@ -751,7 +750,6 @@
 		87F2DAAB1DAD579D00FB43F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		87F2DAB01DAD579D00FB43F3 /* BVSDKTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BVSDKTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		87F2DAB71DAD579D00FB43F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		87F2DAC31DAD585E00FB43F3 /* BVAdsMessageInterceptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVAdsMessageInterceptor.h; sourceTree = "<group>"; };
 		87F2DAC51DAD585E00FB43F3 /* BVAnalyticsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BVAnalyticsManager.h; path = ../BVAnalyticsManager.h; sourceTree = "<group>"; };
 		87F2DAC61DAD585E00FB43F3 /* BVAnalyticsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BVAnalyticsManager.m; path = ../BVAnalyticsManager.m; sourceTree = "<group>"; };
 		87F2DAC91DAD585E00FB43F3 /* BVLocationEventsHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BVLocationEventsHelper.h; path = ../BVLocationEventsHelper.h; sourceTree = "<group>"; };
@@ -1332,7 +1330,6 @@
 			isa = PBXGroup;
 			children = (
 				87FEC8C81DB11448007DD44E /* Support Files */,
-				87F2DAC11DAD585E00FB43F3 /* BVAdvertising */,
 				87C5FE9F1E22A05D004EE6E8 /* BVCommon */,
 				87F2DAC41DAD585E00FB43F3 /* BVAnalytics */,
 				87F2DAF61DAD585E00FB43F3 /* BVConversations */,
@@ -1369,23 +1366,6 @@
 				15D4F8451DF5EFFF00E6B30D /* BVSDKTests-Bridging-Header.h */,
 			);
 			path = BVSDKTests;
-			sourceTree = "<group>";
-		};
-		87F2DAC11DAD585E00FB43F3 /* BVAdvertising */ = {
-			isa = PBXGroup;
-			children = (
-				87F2DAC21DAD585E00FB43F3 /* Private */,
-			);
-			name = BVAdvertising;
-			path = Pod/BVAdvertising;
-			sourceTree = SOURCE_ROOT;
-		};
-		87F2DAC21DAD585E00FB43F3 /* Private */ = {
-			isa = PBXGroup;
-			children = (
-				87F2DAC31DAD585E00FB43F3 /* BVAdsMessageInterceptor.h */,
-			);
-			path = Private;
 			sourceTree = "<group>";
 		};
 		87F2DAC41DAD585E00FB43F3 /* BVAnalytics */ = {
@@ -2298,7 +2278,6 @@
 				87F2DC601DAD585E00FB43F3 /* BVBrand.h in Headers */,
 				87F2DD2F1DAD585E00FB43F3 /* BVVisit.h in Headers */,
 				87F2DC841DAD585E00FB43F3 /* BVRatingDistribution.h in Headers */,
-				87F2DC171DAD585E00FB43F3 /* BVAdsMessageInterceptor.h in Headers */,
 				87F2DC5E1DAD585E00FB43F3 /* BVBadgeType.h in Headers */,
 				1539745C1E719B9600BA52C1 /* BVBaseConversationsResponse.h in Headers */,
 				87A02B621E0967EE0002701B /* BVFeedbackSubmission.h in Headers */,

@@ -38,10 +38,6 @@ Pod::Spec.new do |s|
     conversations.dependency 'BVSDK/Core'
   end
 
-  s.subspec 'BVAdvertising' do |ads|
-    ads.dependency 'BVSDK/Core'
-  end
-
   s.subspec 'BVRecommendations' do |recs|
     recs.source_files = 'Pod/BVRecommendations/**/*.{h,m}'
     recs.dependency 'BVSDK/Core'
@@ -60,7 +56,7 @@ Pod::Spec.new do |s|
 
   s.subspec 'BVLocation' do |location|
     location.source_files = 'Pod/BVLocation/**/*.{h,m}'
-    location.vendored_frameworks = 'Pod/Frameworks/Gimbal.framework'
+    location.vendored_frameworks = 'Frameworks/Gimbal.framework'
     location.library = 'z'
     location.dependency 'BVSDK/Core'
   end
