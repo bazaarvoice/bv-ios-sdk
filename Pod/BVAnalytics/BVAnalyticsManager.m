@@ -92,36 +92,40 @@ static BVAnalyticsManager *analyticsInstance = nil;
 - (void)registerForAppStateChanges {
   static dispatch_once_t onceToken;
   dispatch_once(&onceToken, ^{
-    [[NSNotificationCenter defaultCenter]
-        addObserver:self
-           selector:@selector(applicationDidFinishLaunching)
-               name:UIApplicationDidFinishLaunchingNotification
-             object:nil];
-
-    [[NSNotificationCenter defaultCenter]
-        addObserver:self
-           selector:@selector(applicationDidBecomeActive)
-               name:UIApplicationDidBecomeActiveNotification
-             object:nil];
-
-    [[NSNotificationCenter defaultCenter]
-        addObserver:self
-           selector:@selector(applicationDidEnterBackground)
-               name:UIApplicationDidEnterBackgroundNotification
-             object:nil];
+    [self setUpApplicationDidFinishLaunching];
+    [self setUpApplicationDidBecomeActive];
+    [self setUpApplicationDidEnterBackground];
   });
 }
 
-- (void)applicationDidFinishLaunching {
-  [self sendAppLaunchedEvent];
+- (void)setUpApplicationDidFinishLaunching {
+  [[NSNotificationCenter defaultCenter]
+      addObserverForName:UIApplicationDidFinishLaunchingNotification
+                  object:nil
+                   queue:[NSOperationQueue mainQueue]
+              usingBlock:^(NSNotification *note) {
+                [self sendAppLaunchedEvent:note.userInfo];
+              }];
 }
 
-- (void)applicationDidBecomeActive {
-  [self sendAppActiveEvent];
+- (void)setUpApplicationDidBecomeActive {
+  [[NSNotificationCenter defaultCenter]
+      addObserverForName:UIApplicationDidBecomeActiveNotification
+                  object:nil
+                   queue:[NSOperationQueue mainQueue]
+              usingBlock:^(NSNotification *note) {
+                [self sendAppActiveEvent:note.userInfo];
+              }];
 }
 
-- (void)applicationDidEnterBackground {
-  [self sendAppInBackgroundEvent];
+- (void)setUpApplicationDidEnterBackground {
+  [[NSNotificationCenter defaultCenter]
+      addObserverForName:UIApplicationDidEnterBackgroundNotification
+                  object:nil
+                   queue:[NSOperationQueue mainQueue]
+              usingBlock:^(NSNotification *note) {
+                [self sendAppInBackgroundEvent:note.userInfo];
+              }];
 }
 
 #pragma mark - App lifecycle events
@@ -134,19 +138,56 @@ static BVAnalyticsManager *analyticsInstance = nil;
   };
 }
 
-- (void)sendAppLaunchedEvent {
-  [self sendAppStateEvent:@"launched"];
+- (void)sendAppLaunchedEvent:(NSDictionary *)userInfo {
+  NSDictionary *additionalContext = @{@"appSubState" : @"user-initiated"};
+
+  if (userInfo) {
+    do {
+
+      if ([userInfo objectForKey:UIApplicationLaunchOptionsURLKey]) {
+        additionalContext = @{@"appSubState" : @"url-initiated"};
+        break;
+      }
+
+      if ([userInfo
+              objectForKey:UIApplicationLaunchOptionsSourceApplicationKey]) {
+        additionalContext = @{@"appSubState" : @"other-app-initiated"};
+        break;
+      }
+
+      if ([userInfo
+              objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey]) {
+        additionalContext =
+            @{@"appSubState" : @"remote-notification-initiated"};
+        break;
+      }
+
+      if ([userInfo
+              objectForKey:UIApplicationLaunchOptionsLocalNotificationKey]) {
+        additionalContext = @{@"appSubState" : @"local-notification-initiated"};
+        break;
+      }
+
+    } while (NO);
+  }
+
+  [self sendAppStateEvent:@"launched" appSubState:additionalContext];
 }
 
-- (void)sendAppActiveEvent {
+- (void)sendAppActiveEvent:(NSDictionary *)userInfo {
   [self sendAppStateEvent:@"active"];
 }
 
-- (void)sendAppInBackgroundEvent {
+- (void)sendAppInBackgroundEvent:(NSDictionary *)userInfo {
   [self sendAppStateEvent:@"background"];
 }
 
 - (void)sendAppStateEvent:(NSString *)appState {
+  [self sendAppStateEvent:appState appSubState:nil];
+}
+
+- (void)sendAppStateEvent:(NSString *)appState
+              appSubState:(NSDictionary *)additionalContext {
   // build param dictionary
 
   NSMutableDictionary *eventData = [NSMutableDictionary
@@ -155,6 +196,10 @@ static BVAnalyticsManager *analyticsInstance = nil;
   [eventData addEntriesFromDictionary:[self getMobileDiagnosticParams]];
   [eventData addEntriesFromDictionary:[self getAppStateEventParams]];
   [eventData setObject:appState forKey:@"appState"];
+
+  if (additionalContext) {
+    [eventData addEntriesFromDictionary:additionalContext];
+  }
 
   // send request
   [self queueEvent:eventData];
