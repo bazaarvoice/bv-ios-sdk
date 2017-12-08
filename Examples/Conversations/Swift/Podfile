@@ -5,5 +5,6 @@ use_frameworks!
 
 target 'ConversationsExample' do
 	pod 'BVSDK/BVConversations', :path => "../../../"
+	pod 'BVSDK/BVConversationsUI', :path => "../../../"
 end
 
