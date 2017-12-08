@@ -6,6 +6,6 @@ use_frameworks!
 target 'CurationsExample' do
 	pod 'BVSDK/BVCurations', :path => "../../../"
 	pod 'BVSDK/BVCurationsUI', :path => "../../../"
-    pod 'SDWebImage'
+	pod 'SDWebImage'
 end
 

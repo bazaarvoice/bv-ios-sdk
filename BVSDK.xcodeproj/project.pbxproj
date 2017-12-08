@@ -380,16 +380,6 @@
 		87F2DCF41DAD585E00FB43F3 /* BVSubmittedReview.m in Sources */ = {isa = PBXBuildFile; fileRef = 87F2DBB71DAD585E00FB43F3 /* BVSubmittedReview.m */; };
 		87F2DCF51DAD585E00FB43F3 /* BVStoreReviewSubmission.h in Headers */ = {isa = PBXBuildFile; fileRef = 87F2DBB91DAD585E00FB43F3 /* BVStoreReviewSubmission.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		87F2DCF61DAD585E00FB43F3 /* BVStoreReviewSubmission.m in Sources */ = {isa = PBXBuildFile; fileRef = 87F2DBBA1DAD585E00FB43F3 /* BVStoreReviewSubmission.m */; };
-		87F2DCF71DAD585E00FB43F3 /* BVAnswerCollectionViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 87F2DBBD1DAD585E00FB43F3 /* BVAnswerCollectionViewCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		87F2DCF81DAD585E00FB43F3 /* BVAnswerCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 87F2DBBE1DAD585E00FB43F3 /* BVAnswerCollectionViewCell.m */; };
-		87F2DCF91DAD585E00FB43F3 /* BVAnswersCollectionView.h in Headers */ = {isa = PBXBuildFile; fileRef = 87F2DBBF1DAD585E00FB43F3 /* BVAnswersCollectionView.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		87F2DCFA1DAD585E00FB43F3 /* BVAnswersCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 87F2DBC01DAD585E00FB43F3 /* BVAnswersCollectionView.m */; };
-		87F2DCFB1DAD585E00FB43F3 /* BVAnswersTableView.h in Headers */ = {isa = PBXBuildFile; fileRef = 87F2DBC11DAD585E00FB43F3 /* BVAnswersTableView.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		87F2DCFC1DAD585E00FB43F3 /* BVAnswersTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 87F2DBC21DAD585E00FB43F3 /* BVAnswersTableView.m */; };
-		87F2DCFD1DAD585E00FB43F3 /* BVAnswerTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 87F2DBC31DAD585E00FB43F3 /* BVAnswerTableViewCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		87F2DCFE1DAD585E00FB43F3 /* BVAnswerTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 87F2DBC41DAD585E00FB43F3 /* BVAnswerTableViewCell.m */; };
-		87F2DCFF1DAD585E00FB43F3 /* BVAnswerView.h in Headers */ = {isa = PBXBuildFile; fileRef = 87F2DBC51DAD585E00FB43F3 /* BVAnswerView.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		87F2DD001DAD585E00FB43F3 /* BVAnswerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 87F2DBC61DAD585E00FB43F3 /* BVAnswerView.m */; };
 		87F2DD011DAD585E00FB43F3 /* BVProductPageViews.h in Headers */ = {isa = PBXBuildFile; fileRef = 87F2DBC81DAD585E00FB43F3 /* BVProductPageViews.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		87F2DD021DAD585E00FB43F3 /* BVProductPageViews.m in Sources */ = {isa = PBXBuildFile; fileRef = 87F2DBC91DAD585E00FB43F3 /* BVProductPageViews.m */; };
 		87F2DD031DAD585E00FB43F3 /* BVQuestionCollectionViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 87F2DBCB1DAD585E00FB43F3 /* BVQuestionCollectionViewCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -537,6 +527,16 @@
 		B5A764A21FDAFB7B00B5DC9A /* BVViewsHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = B5A764A01FDAFB7B00B5DC9A /* BVViewsHelper.m */; };
 		B5A764A41FDAFB9C00B5DC9A /* UIImage+BundleLocator.m in Sources */ = {isa = PBXBuildFile; fileRef = B5A764A31FDAFB9C00B5DC9A /* UIImage+BundleLocator.m */; };
 		B5A764A61FDAFBA700B5DC9A /* UIImage+BundleLocator.h in Headers */ = {isa = PBXBuildFile; fileRef = B5A764A51FDAFBA700B5DC9A /* UIImage+BundleLocator.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		B5A764B21FDB1ACE00B5DC9A /* BVAnswersTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = B5A764A81FDB1ACD00B5DC9A /* BVAnswersTableView.m */; };
+		B5A764B31FDB1ACE00B5DC9A /* BVAnswerView.h in Headers */ = {isa = PBXBuildFile; fileRef = B5A764A91FDB1ACD00B5DC9A /* BVAnswerView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B5A764B41FDB1ACE00B5DC9A /* BVAnswersTableView.h in Headers */ = {isa = PBXBuildFile; fileRef = B5A764AA1FDB1ACD00B5DC9A /* BVAnswersTableView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B5A764B51FDB1ACE00B5DC9A /* BVAnswerCollectionViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = B5A764AB1FDB1ACD00B5DC9A /* BVAnswerCollectionViewCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B5A764B61FDB1ACE00B5DC9A /* BVAnswersCollectionView.h in Headers */ = {isa = PBXBuildFile; fileRef = B5A764AC1FDB1ACD00B5DC9A /* BVAnswersCollectionView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B5A764B71FDB1ACE00B5DC9A /* BVAnswersCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = B5A764AD1FDB1ACD00B5DC9A /* BVAnswersCollectionView.m */; };
+		B5A764B81FDB1ACE00B5DC9A /* BVAnswerTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = B5A764AE1FDB1ACD00B5DC9A /* BVAnswerTableViewCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B5A764B91FDB1ACE00B5DC9A /* BVAnswerCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B5A764AF1FDB1ACD00B5DC9A /* BVAnswerCollectionViewCell.m */; };
+		B5A764BA1FDB1ACE00B5DC9A /* BVAnswerView.m in Sources */ = {isa = PBXBuildFile; fileRef = B5A764B01FDB1ACE00B5DC9A /* BVAnswerView.m */; };
+		B5A764BB1FDB1ACE00B5DC9A /* BVAnswerTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B5A764B11FDB1ACE00B5DC9A /* BVAnswerTableViewCell.m */; };
 		B5E1F5331FD5F2F0000F5DB5 /* Gimbal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5E1F5321FD5F2F0000F5DB5 /* Gimbal.framework */; };
 /* End PBXBuildFile section */
 
@@ -917,16 +917,6 @@
 		87F2DBB71DAD585E00FB43F3 /* BVSubmittedReview.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVSubmittedReview.m; sourceTree = "<group>"; };
 		87F2DBB91DAD585E00FB43F3 /* BVStoreReviewSubmission.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVStoreReviewSubmission.h; sourceTree = "<group>"; };
 		87F2DBBA1DAD585E00FB43F3 /* BVStoreReviewSubmission.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVStoreReviewSubmission.m; sourceTree = "<group>"; };
-		87F2DBBD1DAD585E00FB43F3 /* BVAnswerCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVAnswerCollectionViewCell.h; sourceTree = "<group>"; };
-		87F2DBBE1DAD585E00FB43F3 /* BVAnswerCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVAnswerCollectionViewCell.m; sourceTree = "<group>"; };
-		87F2DBBF1DAD585E00FB43F3 /* BVAnswersCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVAnswersCollectionView.h; sourceTree = "<group>"; };
-		87F2DBC01DAD585E00FB43F3 /* BVAnswersCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVAnswersCollectionView.m; sourceTree = "<group>"; };
-		87F2DBC11DAD585E00FB43F3 /* BVAnswersTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVAnswersTableView.h; sourceTree = "<group>"; };
-		87F2DBC21DAD585E00FB43F3 /* BVAnswersTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVAnswersTableView.m; sourceTree = "<group>"; };
-		87F2DBC31DAD585E00FB43F3 /* BVAnswerTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVAnswerTableViewCell.h; sourceTree = "<group>"; };
-		87F2DBC41DAD585E00FB43F3 /* BVAnswerTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVAnswerTableViewCell.m; sourceTree = "<group>"; };
-		87F2DBC51DAD585E00FB43F3 /* BVAnswerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVAnswerView.h; sourceTree = "<group>"; };
-		87F2DBC61DAD585E00FB43F3 /* BVAnswerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVAnswerView.m; sourceTree = "<group>"; };
 		87F2DBC81DAD585E00FB43F3 /* BVProductPageViews.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVProductPageViews.h; sourceTree = "<group>"; };
 		87F2DBC91DAD585E00FB43F3 /* BVProductPageViews.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVProductPageViews.m; sourceTree = "<group>"; };
 		87F2DBCB1DAD585E00FB43F3 /* BVQuestionCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVQuestionCollectionViewCell.h; sourceTree = "<group>"; };
@@ -1076,6 +1066,16 @@
 		B5A764A01FDAFB7B00B5DC9A /* BVViewsHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BVViewsHelper.m; path = Pod/BVCommonUI/BVViewsHelper.m; sourceTree = SOURCE_ROOT; };
 		B5A764A31FDAFB9C00B5DC9A /* UIImage+BundleLocator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+BundleLocator.m"; sourceTree = "<group>"; };
 		B5A764A51FDAFBA700B5DC9A /* UIImage+BundleLocator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+BundleLocator.h"; sourceTree = "<group>"; };
+		B5A764A81FDB1ACD00B5DC9A /* BVAnswersTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BVAnswersTableView.m; path = Pod/BVConversationsUI/Views/Answers/BVAnswersTableView.m; sourceTree = SOURCE_ROOT; };
+		B5A764A91FDB1ACD00B5DC9A /* BVAnswerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BVAnswerView.h; path = Pod/BVConversationsUI/Views/Answers/BVAnswerView.h; sourceTree = SOURCE_ROOT; };
+		B5A764AA1FDB1ACD00B5DC9A /* BVAnswersTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BVAnswersTableView.h; path = Pod/BVConversationsUI/Views/Answers/BVAnswersTableView.h; sourceTree = SOURCE_ROOT; };
+		B5A764AB1FDB1ACD00B5DC9A /* BVAnswerCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BVAnswerCollectionViewCell.h; path = Pod/BVConversationsUI/Views/Answers/BVAnswerCollectionViewCell.h; sourceTree = SOURCE_ROOT; };
+		B5A764AC1FDB1ACD00B5DC9A /* BVAnswersCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BVAnswersCollectionView.h; path = Pod/BVConversationsUI/Views/Answers/BVAnswersCollectionView.h; sourceTree = SOURCE_ROOT; };
+		B5A764AD1FDB1ACD00B5DC9A /* BVAnswersCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BVAnswersCollectionView.m; path = Pod/BVConversationsUI/Views/Answers/BVAnswersCollectionView.m; sourceTree = SOURCE_ROOT; };
+		B5A764AE1FDB1ACD00B5DC9A /* BVAnswerTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BVAnswerTableViewCell.h; path = Pod/BVConversationsUI/Views/Answers/BVAnswerTableViewCell.h; sourceTree = SOURCE_ROOT; };
+		B5A764AF1FDB1ACD00B5DC9A /* BVAnswerCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BVAnswerCollectionViewCell.m; path = Pod/BVConversationsUI/Views/Answers/BVAnswerCollectionViewCell.m; sourceTree = SOURCE_ROOT; };
+		B5A764B01FDB1ACE00B5DC9A /* BVAnswerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BVAnswerView.m; path = Pod/BVConversationsUI/Views/Answers/BVAnswerView.m; sourceTree = SOURCE_ROOT; };
+		B5A764B11FDB1ACE00B5DC9A /* BVAnswerTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BVAnswerTableViewCell.m; path = Pod/BVConversationsUI/Views/Answers/BVAnswerTableViewCell.m; sourceTree = SOURCE_ROOT; };
 		B5E1F5321FD5F2F0000F5DB5 /* Gimbal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Gimbal.framework; path = Frameworks/Gimbal.framework; sourceTree = SOURCE_ROOT; };
 		EC098EFAFB725736F0751BA0 /* libPods-BVSDK.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BVSDK.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -1330,6 +1330,7 @@
 				B5A7649D1FDAEBB900B5DC9A /* BVCommonUI */,
 				87F2DAC41DAD585E00FB43F3 /* BVAnalytics */,
 				87F2DAF61DAD585E00FB43F3 /* BVConversations */,
+				B5A764A71FDB1A7500B5DC9A /* BVConversationsUI */,
 				87F2DBE01DAD585E00FB43F3 /* BVCurations */,
 				15970ECE1E366BB500807032 /* BVCurationsUI */,
 				87F2DBF21DAD585E00FB43F3 /* BVLocation */,
@@ -1400,7 +1401,6 @@
 			children = (
 				87F2DB0A1DAD585E00FB43F3 /* Display */,
 				87F2DB881DAD585E00FB43F3 /* Submission */,
-				87F2DBBB1DAD585E00FB43F3 /* Views */,
 			);
 			name = BVConversations;
 			path = Pod/BVConversations;
@@ -1748,16 +1748,16 @@
 		87F2DBBC1DAD585E00FB43F3 /* Answers */ = {
 			isa = PBXGroup;
 			children = (
-				87F2DBBD1DAD585E00FB43F3 /* BVAnswerCollectionViewCell.h */,
-				87F2DBBE1DAD585E00FB43F3 /* BVAnswerCollectionViewCell.m */,
-				87F2DBBF1DAD585E00FB43F3 /* BVAnswersCollectionView.h */,
-				87F2DBC01DAD585E00FB43F3 /* BVAnswersCollectionView.m */,
-				87F2DBC11DAD585E00FB43F3 /* BVAnswersTableView.h */,
-				87F2DBC21DAD585E00FB43F3 /* BVAnswersTableView.m */,
-				87F2DBC31DAD585E00FB43F3 /* BVAnswerTableViewCell.h */,
-				87F2DBC41DAD585E00FB43F3 /* BVAnswerTableViewCell.m */,
-				87F2DBC51DAD585E00FB43F3 /* BVAnswerView.h */,
-				87F2DBC61DAD585E00FB43F3 /* BVAnswerView.m */,
+				B5A764AB1FDB1ACD00B5DC9A /* BVAnswerCollectionViewCell.h */,
+				B5A764AF1FDB1ACD00B5DC9A /* BVAnswerCollectionViewCell.m */,
+				B5A764AC1FDB1ACD00B5DC9A /* BVAnswersCollectionView.h */,
+				B5A764AD1FDB1ACD00B5DC9A /* BVAnswersCollectionView.m */,
+				B5A764AA1FDB1ACD00B5DC9A /* BVAnswersTableView.h */,
+				B5A764A81FDB1ACD00B5DC9A /* BVAnswersTableView.m */,
+				B5A764AE1FDB1ACD00B5DC9A /* BVAnswerTableViewCell.h */,
+				B5A764B11FDB1ACE00B5DC9A /* BVAnswerTableViewCell.m */,
+				B5A764A91FDB1ACD00B5DC9A /* BVAnswerView.h */,
+				B5A764B01FDB1ACE00B5DC9A /* BVAnswerView.m */,
 			);
 			path = Answers;
 			sourceTree = "<group>";
@@ -2104,8 +2104,7 @@
 				B575C3901FBE2479000F890B /* BVSubmittedUAS.h */,
 				B575C3911FBE2479000F890B /* BVSubmittedUAS.m */,
 			);
-			name = Auth;
-			path = "New Group";
+			path = Auth;
 			sourceTree = "<group>";
 		};
 		B5A7649D1FDAEBB900B5DC9A /* BVCommonUI */ = {
@@ -2127,6 +2126,15 @@
 			);
 			path = Private;
 			sourceTree = "<group>";
+		};
+		B5A764A71FDB1A7500B5DC9A /* BVConversationsUI */ = {
+			isa = PBXGroup;
+			children = (
+				87F2DBBB1DAD585E00FB43F3 /* Views */,
+			);
+			name = BVConversationsUI;
+			path = Pod/BVConversationsUI;
+			sourceTree = SOURCE_ROOT;
 		};
 /* End PBXGroup section */
 
@@ -2202,7 +2210,6 @@
 				87F2DD131DAD585E00FB43F3 /* BVReviewTableViewCell.h in Headers */,
 				87F2DCB51DAD585E00FB43F3 /* BVBulkRatingsFilterType.h in Headers */,
 				87F2DC931DAD585E00FB43F3 /* BVAnswer.h in Headers */,
-				87F2DCFD1DAD585E00FB43F3 /* BVAnswerTableViewCell.h in Headers */,
 				87F2DCAD1DAD585E00FB43F3 /* BVQuestionsAndAnswersRequest.h in Headers */,
 				87F2DCBD1DAD585E00FB43F3 /* BVQuestionFilterType.h in Headers */,
 				87F2DCE11DAD585E00FB43F3 /* BVUploadablePhoto.h in Headers */,
@@ -2210,7 +2217,6 @@
 				87F2DC8F1DAD585E00FB43F3 /* BVSecondaryRatingsAverages.h in Headers */,
 				87F2DD361DAD585E00FB43F3 /* BVProductRecommendationsContainer.h in Headers */,
 				87F2DCE91DAD585E00FB43F3 /* BVQuestionSubmissionResponse.h in Headers */,
-				87F2DCF91DAD585E00FB43F3 /* BVAnswersCollectionView.h in Headers */,
 				153974471E6F151500BA52C1 /* BVBaseReviewsRequest.h in Headers */,
 				87F2DCE31DAD585E00FB43F3 /* BVUploadableStorePhoto.h in Headers */,
 				87F2DD241DAD585E00FB43F3 /* BVCurationsFeedRequest.h in Headers */,
@@ -2219,7 +2225,6 @@
 				87F2DD2B1DAD585E00FB43F3 /* BVLocationManager.h in Headers */,
 				87F2DC711DAD585E00FB43F3 /* BVDistributionElement.h in Headers */,
 				87F2DCDD1DAD585E00FB43F3 /* BVSubmissionErrorResponse.h in Headers */,
-				87F2DCFB1DAD585E00FB43F3 /* BVAnswersTableView.h in Headers */,
 				87F2DD2D1DAD585E00FB43F3 /* BVPlaceAttributes.h in Headers */,
 				87F2DC8D1DAD585E00FB43F3 /* BVSecondaryRating.h in Headers */,
 				87F2DCF31DAD585E00FB43F3 /* BVSubmittedReview.h in Headers */,
@@ -2239,7 +2244,6 @@
 				87F2DC781DAD585E00FB43F3 /* BVPhoto.h in Headers */,
 				87F2DD031DAD585E00FB43F3 /* BVQuestionCollectionViewCell.h in Headers */,
 				87F2DCA91DAD585E00FB43F3 /* BVConversationsRequest.h in Headers */,
-				87F2DCF71DAD585E00FB43F3 /* BVAnswerCollectionViewCell.h in Headers */,
 				87F2DC7E1DAD585E00FB43F3 /* BVProductStatistics.h in Headers */,
 				87F2DCB31DAD585E00FB43F3 /* BVStoreReviewsRequest.h in Headers */,
 				150FC2CA1E71C58B00717041 /* BVBaseProductRequest.h in Headers */,
@@ -2290,7 +2294,6 @@
 				87C5FEBB1E22A05D004EE6E8 /* BVDiagnosticHelpers.h in Headers */,
 				87F2DCB11DAD585E00FB43F3 /* BVBulkStoreItemsRequest.h in Headers */,
 				87F2DCA51DAD585E00FB43F3 /* PDPInclude.h in Headers */,
-				87F2DCFF1DAD585E00FB43F3 /* BVAnswerView.h in Headers */,
 				87F2DC601DAD585E00FB43F3 /* BVBrand.h in Headers */,
 				87F2DD2F1DAD585E00FB43F3 /* BVVisit.h in Headers */,
 				87F2DC841DAD585E00FB43F3 /* BVRatingDistribution.h in Headers */,
@@ -2338,6 +2341,11 @@
 				5F6201E11F70399200454D77 /* NSError+BVSubmissionErrorCodeParser.h in Headers */,
 				B575C3861FBDFD6F000F890B /* BVUASSubmission.h in Headers */,
 				B575C3921FBE2479000F890B /* BVSubmittedUAS.h in Headers */,
+				B5A764B31FDB1ACE00B5DC9A /* BVAnswerView.h in Headers */,
+				B5A764B41FDB1ACE00B5DC9A /* BVAnswersTableView.h in Headers */,
+				B5A764B61FDB1ACE00B5DC9A /* BVAnswersCollectionView.h in Headers */,
+				B5A764B51FDB1ACE00B5DC9A /* BVAnswerCollectionViewCell.h in Headers */,
+				B5A764B81FDB1ACE00B5DC9A /* BVAnswerTableViewCell.h in Headers */,
 				B575C38A1FBE02FE000F890B /* BVUASSubmissionErrorResponse.h in Headers */,
 				B575C38E1FBE1A4F000F890B /* BVUASSubmissionResponse.h in Headers */,
 				5F51EA501F5F2BB4002FA8FD /* BVFormInputType.h in Headers */,
@@ -2633,8 +2641,6 @@
 				87F2DC1D1DAD585E00FB43F3 /* BVLocationEventsHelper.m in Sources */,
 				87F2DCEA1DAD585E00FB43F3 /* BVQuestionSubmissionResponse.m in Sources */,
 				B5A764A21FDAFB7B00B5DC9A /* BVViewsHelper.m in Sources */,
-				87F2DCFA1DAD585E00FB43F3 /* BVAnswersCollectionView.m in Sources */,
-				87F2DCFE1DAD585E00FB43F3 /* BVAnswerTableViewCell.m in Sources */,
 				87F2DC831DAD585E00FB43F3 /* BVQuestionsAndAnswersResponse.m in Sources */,
 				87F2DD3E1DAD585E00FB43F3 /* BVRecommendationsLoader.m in Sources */,
 				87F2DD471DAD585E00FB43F3 /* BVShopperProfileRequestCache.m in Sources */,
@@ -2663,7 +2669,6 @@
 				873DC4961E7482840080FA03 /* BVImpressionEvent.m in Sources */,
 				87F2DCF21DAD585E00FB43F3 /* BVReviewSubmissionResponse.m in Sources */,
 				87F2DCDA1DAD585E00FB43F3 /* BVSubmission.m in Sources */,
-				87F2DCFC1DAD585E00FB43F3 /* BVAnswersTableView.m in Sources */,
 				87F2DCCC1DAD585E00FB43F3 /* BVAnswerSubmission.m in Sources */,
 				875411741E1F201E006C5C6E /* BVNotificationProperties.m in Sources */,
 				875411711E1F201E006C5C6E /* BVNotificationConfiguration.m in Sources */,
@@ -2695,11 +2700,13 @@
 				87F2DCF01DAD585E00FB43F3 /* BVReviewSubmissionErrorResponse.m in Sources */,
 				87F2DCA21DAD585E00FB43F3 /* BVStoreReviewsResponse.m in Sources */,
 				87F2DD251DAD585E00FB43F3 /* BVCurationsFeedRequest.m in Sources */,
+				B5A764B71FDB1ACE00B5DC9A /* BVAnswersCollectionView.m in Sources */,
 				87F2DCB41DAD585E00FB43F3 /* BVStoreReviewsRequest.m in Sources */,
 				87F2DD121DAD585E00FB43F3 /* BVReviewsTableView.m in Sources */,
 				87C5FEB91E22A05D004EE6E8 /* BVBaseAnalyticsHelper.m in Sources */,
 				87F2DD421DAD585E00FB43F3 /* BVRecommendedProduct.m in Sources */,
 				87F2DC8A1DAD585E00FB43F3 /* BVReviewStatistic.m in Sources */,
+				B5A764B21FDB1ACE00B5DC9A /* BVAnswersTableView.m in Sources */,
 				1539745D1E719B9600BA52C1 /* BVBaseConversationsResponse.m in Sources */,
 				87F2DD141DAD585E00FB43F3 /* BVReviewTableViewCell.m in Sources */,
 				87F2DD2A1DAD585E00FB43F3 /* BVLocationAnalyticsHelper.m in Sources */,
@@ -2707,7 +2714,6 @@
 				87F2DCEC1DAD585E00FB43F3 /* BVSubmittedQuestion.m in Sources */,
 				87F2DCA01DAD585E00FB43F3 /* BVBulkStoresResponse.m in Sources */,
 				87C5FF5D1E36A8B7004EE6E8 /* BVAuthorResponse.m in Sources */,
-				87F2DD001DAD585E00FB43F3 /* BVAnswerView.m in Sources */,
 				87A02B671E096B300002701B /* BVFeedbackSubmissionResponse.m in Sources */,
 				87F2DC5F1DAD585E00FB43F3 /* BVBadgeType.m in Sources */,
 				87F2DD461DAD585E00FB43F3 /* BVShopperProfile.m in Sources */,
@@ -2744,6 +2750,7 @@
 				87A9ECC11E1DB9B300666636 /* BVPIN.m in Sources */,
 				87F2DCE21DAD585E00FB43F3 /* BVUploadablePhoto.m in Sources */,
 				150FC2CB1E71C58B00717041 /* BVBaseProductRequest.m in Sources */,
+				B5A764B91FDB1ACE00B5DC9A /* BVAnswerCollectionViewCell.m in Sources */,
 				87F2DD271DAD585E00FB43F3 /* BVCurationsPhotoUploader.m in Sources */,
 				87F2DD041DAD585E00FB43F3 /* BVQuestionCollectionViewCell.m in Sources */,
 				87F2DC191DAD585E00FB43F3 /* BVAnalyticsManager.m in Sources */,
@@ -2786,8 +2793,10 @@
 				873DC4901E7482840080FA03 /* BVAnalyticEventManager.m in Sources */,
 				87F2DC261DAD585E00FB43F3 /* BVGMBLSighting.m in Sources */,
 				873DC4A01E7482840080FA03 /* BVTransactionEvent.m in Sources */,
+				B5A764BB1FDB1ACE00B5DC9A /* BVAnswerTableViewCell.m in Sources */,
 				87F2DC741DAD585E00FB43F3 /* BVDistributionValue.m in Sources */,
 				87F2DCC01DAD585E00FB43F3 /* BVReviewFilterType.m in Sources */,
+				B5A764BA1FDB1ACE00B5DC9A /* BVAnswerView.m in Sources */,
 				87E810EE1ECCC4CD0032C753 /* BVCommentIncludeType.m in Sources */,
 				87F2DCB81DAD585E00FB43F3 /* BVFilter.m in Sources */,
 				87F2DC7F1DAD585E00FB43F3 /* BVProductStatistics.m in Sources */,
@@ -2801,7 +2810,6 @@
 				87F2DCA41DAD585E00FB43F3 /* PDPContentType.m in Sources */,
 				87F2DC671DAD585E00FB43F3 /* BVConversationsError.m in Sources */,
 				87F2DCA81DAD585E00FB43F3 /* BVBulkRatingsRequest.m in Sources */,
-				87F2DCF81DAD585E00FB43F3 /* BVAnswerCollectionViewCell.m in Sources */,
 				873DC49C1E7482840080FA03 /* BVPersonalizationEvent.m in Sources */,
 				87C5FE9E1E229168004EE6E8 /* BVProductReviewNotificationConfigurationLoader.m in Sources */,
 				87C5FF671E393ED3004EE6E8 /* BVAuthorContentType.m in Sources */,
