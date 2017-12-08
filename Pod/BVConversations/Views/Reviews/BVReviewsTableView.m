@@ -6,7 +6,7 @@
 //
 
 #import "BVReviewsTableView.h"
-#import "BVCore.h"
+#import "BVCommon.h"
 #import "BVMessageInterceptor.h"
 #import "BVReviewTableViewCell.h"
 #import "BVViewsHelper.h"

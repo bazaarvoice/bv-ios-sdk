@@ -6,8 +6,7 @@
 //
 
 #import "BVQuestionsCollectionView.h"
-
-#import "BVCore.h"
+#import "BVCommon.h"
 #import "BVMessageInterceptor.h"
 #import "BVQuestion.h"
 #import "BVQuestionCollectionViewCell.h"

@@ -8,7 +8,7 @@
 #ifndef BVRecommendations_h
 #define BVRecommendations_h
 
-#import "BVCore.h"
+#import "BVCommon.h"
 #import "BVProductRecommendationView.h"
 #import "BVProductRecommendationsContainer.h"
 #import "BVProductReview.h"

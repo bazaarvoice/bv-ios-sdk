@@ -6,7 +6,7 @@
 //
 
 #import "BVAuthenticatedUser.h"
-#import "BVCore.h"
+#import "BVCommon.h"
 #import <AdSupport/AdSupport.h>
 
 @interface BVAuthenticatedUser ()

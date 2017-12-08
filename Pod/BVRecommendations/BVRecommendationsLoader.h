@@ -7,7 +7,7 @@
 
 #import <Foundation/Foundation.h>
 
-#import "BVCore.h"
+#import "BVCommon.h"
 #import "BVRecommendationsRequest.h"
 #import "BVShopperProfile.h"
 

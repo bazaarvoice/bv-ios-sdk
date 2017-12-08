@@ -7,7 +7,7 @@
 
 #import "BVReviewsRequest.h"
 #import "BVCommaUtil.h"
-#import "BVCore.h"
+#import "BVCommon.h"
 #import "BVFilter.h"
 #import "BVSort.h"
 
