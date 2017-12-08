@@ -40,7 +40,12 @@ Pod::Spec.new do |s|
   s.subspec 'BVConversations' do |conversations|
     conversations.source_files = 'Pod/BVConversations/**/*.{h,m}'
     conversations.dependency 'BVSDK/BVCommon'
-    conversations.dependency 'BVSDK/BVCommonUI'
+  end
+
+  s.subspec 'BVConversationsUI' do |conversationsui|
+    conversationsui.source_files = 'Pod/BVConversationsUI/**/*.{h,m}'
+    conversationsui.dependency 'BVSDK/BVCommonUI'
+    conversationsui.dependency 'BVSDK/BVConversations'
   end
 
   s.subspec 'BVCurations' do |curations|
@@ -64,9 +69,10 @@ Pod::Spec.new do |s|
 
   s.subspec 'BVNotifications' do |notifications|
 
-    notifications.source_files = 'Pod/BVNotifications/**/*.{h,m}', 'Pod/BVAnalytics/**/*.{h,m}', 'Pod/BVConversations/**/*.{h,m}', 'Pod/BVCommon/*.{h,m}','Pod/BVCommon/Private/*.{h,m}','Pod/BVCommon/Notifications/BVNotificationCenterObject.h','Pod/BVCommon/Notifications/BVStoreReviewRichNotificationCenter.{h,m}','Pod/BVCommon/Notifications/BVNotificationConstants.h','Pod/BVCommon/Notifications/BVPIN.{h,m}'
+    notifications.source_files = 'Pod/BVNotifications/**/*.{h,m}', 'Pod/BVCommon/Private/*.{h,m}'
     notifications.resources = ['Pod/BVNotifications/mapThumbnail.png']
 
+    notifications.dependency 'BVSDK/BVConversationsUI'
     notifications.dependency 'BVSDK/BVLocation'
     notifications.dependency 'BVSDK/BVPIN'
   end
