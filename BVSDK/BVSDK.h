@@ -16,7 +16,7 @@ FOUNDATION_EXPORT const unsigned char BVSDKVersionString[];
 // In this header, you should import all the public headers of your framework
 // using statements like #import <BVSDK/PublicHeader.h>
 
-// Core
+// Common
 #import <BVSDK/BVCommaUtil.h>
 #import <BVSDK/BVDiagnosticHelpers.h>
 #import <BVSDK/BVViewsHelper.h>

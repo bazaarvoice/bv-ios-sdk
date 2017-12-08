@@ -8,7 +8,7 @@
 #import <AdSupport/ASIdentifierManager.h>
 
 #import "BVAnalyticsManager.h"
-#import "BVCore.h"
+#import "BVCommon.h"
 #import "BVRecommendationsLoader.h"
 #import "BVRecsAnalyticsHelper.h"
 #import "BVSDKConfiguration.h"

@@ -8,7 +8,7 @@
 #import "BVAnswersCollectionView.h"
 #import "BVAnswer.h"
 #import "BVAnswerCollectionViewCell.h"
-#import "BVCore.h"
+#import "BVCommon.h"
 #import "BVLogger.h"
 #import "BVMessageInterceptor.h"
 #import "BVViewsHelper.h"

@@ -6,7 +6,7 @@
 //
 
 #import "BVFieldError.h"
-#import "BVCore.h"
+#import "BVCommon.h"
 #import "BVNullHelper.h"
 #import "BVSubmissionErrorCode.h"
 

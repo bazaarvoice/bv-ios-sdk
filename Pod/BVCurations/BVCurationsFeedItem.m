@@ -7,7 +7,7 @@
 //
 
 #import "BVCurationsFeedItem.h"
-#import "BVCore.h"
+#import "BVCommon.h"
 
 @interface BVCurationsFeedItem ()
 

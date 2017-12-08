@@ -6,7 +6,7 @@
 //
 
 #import "BVProductReview.h"
-#import "BVCore.h"
+#import "BVCommon.h"
 
 @implementation BVProductReview
 

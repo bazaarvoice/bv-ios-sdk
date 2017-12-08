@@ -8,7 +8,7 @@
 #import "BVSDKManager.h"
 #import "BVAnalyticEventManager.h"
 #import "BVAnalyticsManager.h"
-#import "BVCore.h"
+#import "BVCommon.h"
 #import "BVSDKConfiguration.h"
 #import <UIKit/UIKit.h>
 

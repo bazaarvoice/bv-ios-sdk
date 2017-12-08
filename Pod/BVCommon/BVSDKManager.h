@@ -6,7 +6,7 @@
 //
 
 #import "BVAuthenticatedUser.h"
-#import "BVCore.h"
+#import "BVCommon.h"
 #import "BVLogger.h"
 #import <Foundation/Foundation.h>
 

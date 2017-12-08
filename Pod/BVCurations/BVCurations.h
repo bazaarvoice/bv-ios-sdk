@@ -9,7 +9,7 @@
 #ifndef BVCurations_h
 #define BVCurations_h
 
-#import "BVCore.h"
+#import "BVCommon.h"
 #import "BVCurationsAddPostRequest.h"
 #import "BVCurationsFeedItem.h"
 #import "BVCurationsFeedLoader.h"

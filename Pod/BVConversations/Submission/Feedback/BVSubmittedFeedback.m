@@ -6,7 +6,7 @@
 //
 
 #import "BVSubmittedFeedback.h"
-#import "BVCore.h"
+#import "BVCommon.h"
 
 @implementation BVFeedbackInappropriateResponse
 

@@ -7,7 +7,7 @@
 
 #import "BVQuestionsAndAnswersRequest.h"
 #import "BVCommaUtil.h"
-#import "BVCore.h"
+#import "BVCommon.h"
 #import "BVFilter.h"
 
 @interface BVQuestionsAndAnswersRequest ()
