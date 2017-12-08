@@ -6,7 +6,7 @@
 //
 
 #import "BVQuestionsTableView.h"
-#import "BVCore.h"
+#import "BVCommon.h"
 #import "BVMessageInterceptor.h"
 #import "BVQuestionTableViewCell.h"
 #import "BVViewsHelper.h"

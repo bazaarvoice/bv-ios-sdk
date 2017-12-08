@@ -5,7 +5,7 @@
 //  Copyright 2015 Bazaarvoice Inc. All rights reserved.
 //
 
-#import <BVSDK/BVCore.h>
+#import <BVSDK/BVCommon.h>
 #import <XCTest/XCTest.h>
 
 // 3rd Party

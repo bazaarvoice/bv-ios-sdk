@@ -13,9 +13,9 @@ Pod::Spec.new do |s|
   s.homepage = 'https://developer.bazaarvoice.com/'
   s.license = { :type => 'Commercial', :text => 'See https://developer.bazaarvoice.com/API_Terms_of_Use' }
   s.author = { 'Bazaarvoice' => 'support@bazaarvoice.com' }
-  s.source = { 
-    :git => "https://github.com/bazaarvoice/bv-ios-sdk.git", 
-    :tag => s.version.to_s 
+  s.source = {
+    :git => "https://github.com/bazaarvoice/bv-ios-sdk.git",
+    :tag => s.version.to_s
     }
   s.social_media_url = 'https://twitter.com/bazaarvoice'
   s.summary = 'Simple iOS SDK to interact with the Bazaarvoice platform API.'
@@ -23,34 +23,35 @@ Pod::Spec.new do |s|
 
   s.platform = :ios, '8.0'
   s.requires_arc = true
-  s.default_subspec = 'Core'
+  s.default_subspec = 'BVCommon'
 
-  s.subspec 'Core' do |core|
-     core.source_files = 'Pod/BVCommon/**/*.{h,m}', 'Pod/BVAnalytics/**/*.{h,m}'
+  s.subspec 'BVCommon' do |common|
+    common.source_files = 'Pod/BVCommon/**/*.{h,m}', 'Pod/BVAnalytics/**/*.{h,m}'
+  end
+
+  s.subspec 'BVCommonUI' do |commonui|
+    commonui.source_files = 'Pod/BVCommonUI/**/*.{h,m}'
   end
 
   s.subspec 'BVAnalytics' do |analytics|
-      analytics.dependency 'BVSDK/Core'
+    analytics.dependency 'BVSDK/BVCommon'
   end
 
   s.subspec 'BVConversations' do |conversations|
     conversations.source_files = 'Pod/BVConversations/**/*.{h,m}'
-    conversations.dependency 'BVSDK/Core'
-  end
-
-  s.subspec 'BVRecommendations' do |recs|
-    recs.source_files = 'Pod/BVRecommendations/**/*.{h,m}'
-    recs.dependency 'BVSDK/Core'
+    conversations.dependency 'BVSDK/BVCommon'
+    conversations.dependency 'BVSDK/BVCommonUI'
   end
 
   s.subspec 'BVCurations' do |curations|
     curations.source_files = 'Pod/BVCurations/**/*.{h,m}'
-    curations.dependency 'BVSDK/Core'
+    curations.dependency 'BVSDK/BVCommon'
   end
 
   s.subspec 'BVCurationsUI' do |curationsui|
     curationsui.source_files = 'Pod/BVCurationsUI/**/*.{h,m}'
     curationsui.dependency 'BVSDK/BVCurations'
+    curationsui.dependency 'BVSDK/BVCommonUI'
     curationsui.resources = ["Pod/BVCurationsUI/Assets/*.xcassets"]
   end
 
@@ -58,12 +59,7 @@ Pod::Spec.new do |s|
     location.source_files = 'Pod/BVLocation/**/*.{h,m}'
     location.vendored_frameworks = 'Frameworks/Gimbal.framework'
     location.library = 'z'
-    location.dependency 'BVSDK/Core'
-  end
-
-  s.subspec 'BVPIN' do |pin|
-    pin.source_files = 'Pod/BVPIN/**/*.{h,m}'
-    pin.dependency 'BVSDK/Core'
+    location.dependency 'BVSDK/BVCommon'
   end
 
   s.subspec 'BVNotifications' do |notifications|
@@ -73,6 +69,16 @@ Pod::Spec.new do |s|
 
     notifications.dependency 'BVSDK/BVLocation'
     notifications.dependency 'BVSDK/BVPIN'
+  end
+
+  s.subspec 'BVPIN' do |pin|
+    pin.source_files = 'Pod/BVPIN/**/*.{h,m}'
+    pin.dependency 'BVSDK/BVCommon'
+  end
+
+  s.subspec 'BVRecommendations' do |recs|
+    recs.source_files = 'Pod/BVRecommendations/**/*.{h,m}'
+    recs.dependency 'BVSDK/BVCommon'
   end
 
 end

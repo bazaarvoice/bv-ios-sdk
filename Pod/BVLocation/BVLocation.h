@@ -8,7 +8,7 @@
 #ifndef BVLocation_h
 #define BVLocation_h
 
-#import "BVCore.h"
+#import "BVCommon.h"
 #import "BVLocationManager.h"
 #import "BVVisit.h"
 

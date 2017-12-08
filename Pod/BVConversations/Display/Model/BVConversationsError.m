@@ -6,7 +6,7 @@
 //
 
 #import "BVConversationsError.h"
-#import "BVCore.h"
+#import "BVCommon.h"
 #import "BVNullHelper.h"
 
 NSString *__nonnull const BVKeyErrorMessage = @"BVKeyErrorMessage";

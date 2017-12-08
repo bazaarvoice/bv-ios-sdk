@@ -11,7 +11,7 @@
 
 #import <BVSDK/BVAnalyticsManager.h>
 #import <BVSDK/BVBulkRatingsRequest.h>
-#import <BVSDK/BVCore.h>
+#import <BVSDK/BVCommon.h>
 #import <BVSDK/BVNotificationsAnalyticsHelper.h>
 #import <BVSDK/BVProductDisplayPageRequest.h>
 #import <BVSDK/BVQuestionsAndAnswersRequest.h>

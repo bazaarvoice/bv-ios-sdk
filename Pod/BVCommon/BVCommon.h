@@ -5,8 +5,8 @@
 //  Copyright 2016 Bazaarvoice Inc. All rights reserved.
 //
 
-#ifndef BVCore_h
-#define BVCore_h
+#ifndef BVCommon_h
+#define BVCommon_h
 
 #include "BVAuthenticatedUser.h"
 #include "BVErrorCodeConstants.h"
@@ -16,4 +16,4 @@
 #include "BVSDKConstants.h"
 #include "BVSDKManager.h"
 
-#endif
+#endif /* BVCommon_h */

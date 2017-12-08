@@ -7,7 +7,7 @@
 //
 
 #import "BVNotificationConfiguration.h"
-#import "BVCore.h"
+#import "BVCommon.h"
 
 @implementation BVNotificationConfiguration
 

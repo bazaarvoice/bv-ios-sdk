@@ -7,7 +7,7 @@
 
 #import "BVAnswerSubmission.h"
 #import "BVAnswerSubmissionErrorResponse.h"
-#import "BVCore.h"
+#import "BVCommon.h"
 #import "BVSDKConfiguration.h"
 #import "BVSDKManager.h"
 #import "BVUploadablePhoto.h"
