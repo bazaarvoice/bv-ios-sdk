@@ -268,15 +268,23 @@ static NSString *const BVSDKConfigFileExt = @"json";
 
   // try to grab the profile as soon as its available
   [self updateUserProfileForce];
-  [self performSelector:@selector(updateUserProfileIfEmpty)
-             withObject:self
-             afterDelay:5.0];
-  [self performSelector:@selector(updateUserProfileIfEmpty)
-             withObject:self
-             afterDelay:12.0];
-  [self performSelector:@selector(updateUserProfileIfEmpty)
-             withObject:self
-             afterDelay:24.0];
+  [self waitForProfileUpdatesByPollingWithStep:6.0f andMaxTimeInterval:24.0f];
+}
+
+- (void)waitForProfileUpdatesByPollingWithStep:(NSTimeInterval)step
+                            andMaxTimeInterval:(NSTimeInterval)maxTimeInterval {
+
+  NSTimeInterval currentStep = step;
+
+  while (currentStep > maxTimeInterval) {
+    dispatch_after(
+        dispatch_time(DISPATCH_TIME_NOW, (int64_t)(currentStep * NSEC_PER_SEC)),
+        dispatch_get_main_queue(), ^{
+          [self updateUserProfileIfEmpty];
+        });
+
+    currentStep += currentStep;
+  }
 }
 
 - (BVAuthenticatedUser *)getBVAuthenticatedUser {

@@ -1219,7 +1219,6 @@
 		87C5FE9F1E22A05D004EE6E8 /* BVCommon */ = {
 			isa = PBXGroup;
 			children = (
-				15DA53A81E4D05A70028402D /* BVSDKConfiguration.m */,
 				87C5FEA01E22A05D004EE6E8 /* BVAuthenticatedUser.h */,
 				87C5FEA11E22A05D004EE6E8 /* BVAuthenticatedUser.m */,
 				87C5FEA21E22A05D004EE6E8 /* BVBaseAnalyticsHelper.h */,
@@ -1227,11 +1226,13 @@
 				87C5FEA41E22A05D004EE6E8 /* BVCore.h */,
 				87C5FEA51E22A05D004EE6E8 /* BVDiagnosticHelpers.h */,
 				87C5FEA61E22A05D004EE6E8 /* BVDiagnosticHelpers.m */,
+				15398EE91E69F5CA00A6685B /* BVDisplayableProductContent.h */,
 				87C5FEA71E22A05D004EE6E8 /* BVErrorCodeConstants.h */,
 				87C5FEA81E22A05D004EE6E8 /* BVLogger.h */,
 				87C5FEA91E22A05D004EE6E8 /* BVLogger.m */,
 				87C5FEAA1E22A05D004EE6E8 /* BVMessageInterceptor.m */,
 				87C5FEAB1E22A05D004EE6E8 /* BVNullHelper.h */,
+				15DA53A81E4D05A70028402D /* BVSDKConfiguration.m */,
 				87C5FEAC1E22A05D004EE6E8 /* BVSDKConstants.h */,
 				87C5FEAD1E22A05D004EE6E8 /* BVSDKManager.h */,
 				87C5FEAE1E22A05D004EE6E8 /* BVSDKManager.m */,
@@ -1240,7 +1241,6 @@
 				87C5FEB11E22A05D004EE6E8 /* BVViewsHelper.h */,
 				87C5FEB21E22A05D004EE6E8 /* BVViewsHelper.m */,
 				87DA86DB1E5229C5002E7860 /* UIImage+BundleLocator.m */,
-				15398EE91E69F5CA00A6685B /* BVDisplayableProductContent.h */,
 				87C5FEB31E22A05D004EE6E8 /* Private */,
 			);
 			name = BVCommon;
@@ -1250,8 +1250,8 @@
 		87C5FEB31E22A05D004EE6E8 /* Private */ = {
 			isa = PBXGroup;
 			children = (
-				15058B6D1E5CC21C0081E2BD /* BVSDKConfiguration.h */,
 				87C5FEB41E22A05D004EE6E8 /* BVMessageInterceptor.h */,
+				15058B6D1E5CC21C0081E2BD /* BVSDKConfiguration.h */,
 				87B3DADD1E522D2C00DE7843 /* UIImage+BundleLocator.h */,
 			);
 			path = Private;
