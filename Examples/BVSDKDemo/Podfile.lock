@@ -11,9 +11,11 @@ PODS:
   - BVSDK/BVCommonUI (6.8.2)
   - BVSDK/BVConversations (6.8.2):
     - BVSDK/BVCommon
+  - BVSDK/BVConversationsStores (6.8.2):
+    - BVSDK/BVConversations
   - BVSDK/BVConversationsUI (6.8.2):
     - BVSDK/BVCommonUI
-    - BVSDK/BVConversations
+    - BVSDK/BVConversationsStores
   - BVSDK/BVCurations (6.8.2):
     - BVSDK/BVCommon
   - BVSDK/BVCurationsUI (6.8.2):
@@ -110,7 +112,7 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
-  BVSDK: 28bfa8c1c6c3ab384b0e31247689456473cf8044
+  BVSDK: 803e4fa3338dbc5f41e207b97291201717c4eefc
   Crashlytics: 64aad5dd97249dd3ff94b979fea140144590cdd3
   Fabric: e6be012366472553807dada21243c5ab8d904151
   FBSDKCoreKit: ebc6c5f5b3f0e72396041050e2266781a38ac587
