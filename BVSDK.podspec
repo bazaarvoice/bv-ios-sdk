@@ -42,10 +42,15 @@ Pod::Spec.new do |s|
     conversations.dependency 'BVSDK/BVCommon'
   end
 
+  s.subspec 'BVConversationsStores' do |conversationsstores|
+    conversationsstores.source_files = 'Pod/BVConversationsStores/**/*.{h,m}'
+    conversationsstores.dependency 'BVSDK/BVConversations'
+  end
+
   s.subspec 'BVConversationsUI' do |conversationsui|
     conversationsui.source_files = 'Pod/BVConversationsUI/**/*.{h,m}'
     conversationsui.dependency 'BVSDK/BVCommonUI'
-    conversationsui.dependency 'BVSDK/BVConversations'
+    conversationsui.dependency 'BVSDK/BVConversationsStores'
   end
 
   s.subspec 'BVCurations' do |curations|
