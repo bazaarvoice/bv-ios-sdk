@@ -224,8 +224,6 @@
 		87F2DC2A1DAD585E00FB43F3 /* BVLocationWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 87F2DAD81DAD585E00FB43F3 /* BVLocationWrapper.m */; };
 		87F2DC581DAD585E00FB43F3 /* BVCommaUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = 87F2DB0E1DAD585E00FB43F3 /* BVCommaUtil.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		87F2DC591DAD585E00FB43F3 /* BVCommaUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 87F2DB0F1DAD585E00FB43F3 /* BVCommaUtil.m */; };
-		87F2DC5A1DAD585E00FB43F3 /* BVStoreIncludeContentType.h in Headers */ = {isa = PBXBuildFile; fileRef = 87F2DB101DAD585E00FB43F3 /* BVStoreIncludeContentType.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		87F2DC5B1DAD585E00FB43F3 /* BVStoreIncludeContentType.m in Sources */ = {isa = PBXBuildFile; fileRef = 87F2DB111DAD585E00FB43F3 /* BVStoreIncludeContentType.m */; };
 		87F2DC5C1DAD585E00FB43F3 /* BVBadge.h in Headers */ = {isa = PBXBuildFile; fileRef = 87F2DB131DAD585E00FB43F3 /* BVBadge.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		87F2DC5D1DAD585E00FB43F3 /* BVBadge.m in Sources */ = {isa = PBXBuildFile; fileRef = 87F2DB141DAD585E00FB43F3 /* BVBadge.m */; };
 		87F2DC5E1DAD585E00FB43F3 /* BVBadgeType.h in Headers */ = {isa = PBXBuildFile; fileRef = 87F2DB151DAD585E00FB43F3 /* BVBadgeType.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -288,14 +286,6 @@
 		87F2DC981DAD585E00FB43F3 /* BVQuestion.m in Sources */ = {isa = PBXBuildFile; fileRef = 87F2DB501DAD585E00FB43F3 /* BVQuestion.m */; };
 		87F2DC991DAD585E00FB43F3 /* BVReview.h in Headers */ = {isa = PBXBuildFile; fileRef = 87F2DB511DAD585E00FB43F3 /* BVReview.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		87F2DC9A1DAD585E00FB43F3 /* BVReview.m in Sources */ = {isa = PBXBuildFile; fileRef = 87F2DB521DAD585E00FB43F3 /* BVReview.m */; };
-		87F2DC9B1DAD585E00FB43F3 /* BVStore.h in Headers */ = {isa = PBXBuildFile; fileRef = 87F2DB541DAD585E00FB43F3 /* BVStore.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		87F2DC9C1DAD585E00FB43F3 /* BVStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 87F2DB551DAD585E00FB43F3 /* BVStore.m */; };
-		87F2DC9D1DAD585E00FB43F3 /* BVStoreLocation.h in Headers */ = {isa = PBXBuildFile; fileRef = 87F2DB561DAD585E00FB43F3 /* BVStoreLocation.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		87F2DC9E1DAD585E00FB43F3 /* BVStoreLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 87F2DB571DAD585E00FB43F3 /* BVStoreLocation.m */; };
-		87F2DC9F1DAD585E00FB43F3 /* BVBulkStoresResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = 87F2DB591DAD585E00FB43F3 /* BVBulkStoresResponse.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		87F2DCA01DAD585E00FB43F3 /* BVBulkStoresResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 87F2DB5A1DAD585E00FB43F3 /* BVBulkStoresResponse.m */; };
-		87F2DCA11DAD585E00FB43F3 /* BVStoreReviewsResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = 87F2DB5B1DAD585E00FB43F3 /* BVStoreReviewsResponse.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		87F2DCA21DAD585E00FB43F3 /* BVStoreReviewsResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 87F2DB5C1DAD585E00FB43F3 /* BVStoreReviewsResponse.m */; };
 		87F2DCA31DAD585E00FB43F3 /* PDPContentType.h in Headers */ = {isa = PBXBuildFile; fileRef = 87F2DB5D1DAD585E00FB43F3 /* PDPContentType.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		87F2DCA41DAD585E00FB43F3 /* PDPContentType.m in Sources */ = {isa = PBXBuildFile; fileRef = 87F2DB5E1DAD585E00FB43F3 /* PDPContentType.m */; };
 		87F2DCA51DAD585E00FB43F3 /* PDPInclude.h in Headers */ = {isa = PBXBuildFile; fileRef = 87F2DB5F1DAD585E00FB43F3 /* PDPInclude.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -310,10 +300,6 @@
 		87F2DCAE1DAD585E00FB43F3 /* BVQuestionsAndAnswersRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 87F2DB691DAD585E00FB43F3 /* BVQuestionsAndAnswersRequest.m */; };
 		87F2DCAF1DAD585E00FB43F3 /* BVReviewsRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 87F2DB6A1DAD585E00FB43F3 /* BVReviewsRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		87F2DCB01DAD585E00FB43F3 /* BVReviewsRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 87F2DB6B1DAD585E00FB43F3 /* BVReviewsRequest.m */; };
-		87F2DCB11DAD585E00FB43F3 /* BVBulkStoreItemsRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 87F2DB6D1DAD585E00FB43F3 /* BVBulkStoreItemsRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		87F2DCB21DAD585E00FB43F3 /* BVBulkStoreItemsRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 87F2DB6E1DAD585E00FB43F3 /* BVBulkStoreItemsRequest.m */; };
-		87F2DCB31DAD585E00FB43F3 /* BVStoreReviewsRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 87F2DB6F1DAD585E00FB43F3 /* BVStoreReviewsRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		87F2DCB41DAD585E00FB43F3 /* BVStoreReviewsRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 87F2DB701DAD585E00FB43F3 /* BVStoreReviewsRequest.m */; };
 		87F2DCB51DAD585E00FB43F3 /* BVBulkRatingsFilterType.h in Headers */ = {isa = PBXBuildFile; fileRef = 87F2DB721DAD585E00FB43F3 /* BVBulkRatingsFilterType.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		87F2DCB61DAD585E00FB43F3 /* BVBulkRatingsFilterType.m in Sources */ = {isa = PBXBuildFile; fileRef = 87F2DB731DAD585E00FB43F3 /* BVBulkRatingsFilterType.m */; };
 		87F2DCB71DAD585E00FB43F3 /* BVFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = 87F2DB741DAD585E00FB43F3 /* BVFilter.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -360,8 +346,6 @@
 		87F2DCE01DAD585E00FB43F3 /* BVSubmissionResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 87F2DB9F1DAD585E00FB43F3 /* BVSubmissionResponse.m */; };
 		87F2DCE11DAD585E00FB43F3 /* BVUploadablePhoto.h in Headers */ = {isa = PBXBuildFile; fileRef = 87F2DBA11DAD585E00FB43F3 /* BVUploadablePhoto.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		87F2DCE21DAD585E00FB43F3 /* BVUploadablePhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 87F2DBA21DAD585E00FB43F3 /* BVUploadablePhoto.m */; };
-		87F2DCE31DAD585E00FB43F3 /* BVUploadableStorePhoto.h in Headers */ = {isa = PBXBuildFile; fileRef = 87F2DBA41DAD585E00FB43F3 /* BVUploadableStorePhoto.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		87F2DCE41DAD585E00FB43F3 /* BVUploadableStorePhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 87F2DBA51DAD585E00FB43F3 /* BVUploadableStorePhoto.m */; };
 		87F2DCE51DAD585E00FB43F3 /* BVQuestionSubmission.h in Headers */ = {isa = PBXBuildFile; fileRef = 87F2DBA71DAD585E00FB43F3 /* BVQuestionSubmission.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		87F2DCE61DAD585E00FB43F3 /* BVQuestionSubmission.m in Sources */ = {isa = PBXBuildFile; fileRef = 87F2DBA81DAD585E00FB43F3 /* BVQuestionSubmission.m */; };
 		87F2DCE71DAD585E00FB43F3 /* BVQuestionSubmissionErrorResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = 87F2DBA91DAD585E00FB43F3 /* BVQuestionSubmissionErrorResponse.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -378,8 +362,6 @@
 		87F2DCF21DAD585E00FB43F3 /* BVReviewSubmissionResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 87F2DBB51DAD585E00FB43F3 /* BVReviewSubmissionResponse.m */; };
 		87F2DCF31DAD585E00FB43F3 /* BVSubmittedReview.h in Headers */ = {isa = PBXBuildFile; fileRef = 87F2DBB61DAD585E00FB43F3 /* BVSubmittedReview.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		87F2DCF41DAD585E00FB43F3 /* BVSubmittedReview.m in Sources */ = {isa = PBXBuildFile; fileRef = 87F2DBB71DAD585E00FB43F3 /* BVSubmittedReview.m */; };
-		87F2DCF51DAD585E00FB43F3 /* BVStoreReviewSubmission.h in Headers */ = {isa = PBXBuildFile; fileRef = 87F2DBB91DAD585E00FB43F3 /* BVStoreReviewSubmission.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		87F2DCF61DAD585E00FB43F3 /* BVStoreReviewSubmission.m in Sources */ = {isa = PBXBuildFile; fileRef = 87F2DBBA1DAD585E00FB43F3 /* BVStoreReviewSubmission.m */; };
 		87F2DD011DAD585E00FB43F3 /* BVProductPageViews.h in Headers */ = {isa = PBXBuildFile; fileRef = 87F2DBC81DAD585E00FB43F3 /* BVProductPageViews.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		87F2DD021DAD585E00FB43F3 /* BVProductPageViews.m in Sources */ = {isa = PBXBuildFile; fileRef = 87F2DBC91DAD585E00FB43F3 /* BVProductPageViews.m */; };
 		87F2DD031DAD585E00FB43F3 /* BVQuestionCollectionViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 87F2DBCB1DAD585E00FB43F3 /* BVQuestionCollectionViewCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -537,6 +519,24 @@
 		B5A764B91FDB1ACE00B5DC9A /* BVAnswerCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B5A764AF1FDB1ACD00B5DC9A /* BVAnswerCollectionViewCell.m */; };
 		B5A764BA1FDB1ACE00B5DC9A /* BVAnswerView.m in Sources */ = {isa = PBXBuildFile; fileRef = B5A764B01FDB1ACE00B5DC9A /* BVAnswerView.m */; };
 		B5A764BB1FDB1ACE00B5DC9A /* BVAnswerTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B5A764B11FDB1ACE00B5DC9A /* BVAnswerTableViewCell.m */; };
+		B5A764C61FE1912800B5DC9A /* BVStore.h in Headers */ = {isa = PBXBuildFile; fileRef = B5A764C21FE1912700B5DC9A /* BVStore.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B5A764C71FE1912800B5DC9A /* BVStoreLocation.h in Headers */ = {isa = PBXBuildFile; fileRef = B5A764C31FE1912800B5DC9A /* BVStoreLocation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B5A764C81FE1912800B5DC9A /* BVStoreLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = B5A764C41FE1912800B5DC9A /* BVStoreLocation.m */; };
+		B5A764C91FE1912800B5DC9A /* BVStore.m in Sources */ = {isa = PBXBuildFile; fileRef = B5A764C51FE1912800B5DC9A /* BVStore.m */; };
+		B5A764CE1FE1913800B5DC9A /* BVStoreReviewsRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = B5A764CA1FE1913800B5DC9A /* BVStoreReviewsRequest.m */; };
+		B5A764CF1FE1913800B5DC9A /* BVStoreReviewsRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = B5A764CB1FE1913800B5DC9A /* BVStoreReviewsRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B5A764D01FE1913800B5DC9A /* BVBulkStoreItemsRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = B5A764CC1FE1913800B5DC9A /* BVBulkStoreItemsRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B5A764D11FE1913800B5DC9A /* BVBulkStoreItemsRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = B5A764CD1FE1913800B5DC9A /* BVBulkStoreItemsRequest.m */; };
+		B5A764D61FE1915200B5DC9A /* BVBulkStoresResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = B5A764D21FE1915200B5DC9A /* BVBulkStoresResponse.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B5A764D71FE1915200B5DC9A /* BVStoreReviewsResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = B5A764D31FE1915200B5DC9A /* BVStoreReviewsResponse.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B5A764D81FE1915200B5DC9A /* BVStoreReviewsResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = B5A764D41FE1915200B5DC9A /* BVStoreReviewsResponse.m */; };
+		B5A764D91FE1915200B5DC9A /* BVBulkStoresResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = B5A764D51FE1915200B5DC9A /* BVBulkStoresResponse.m */; };
+		B5A764DC1FE1917C00B5DC9A /* BVStoreIncludeContentType.m in Sources */ = {isa = PBXBuildFile; fileRef = B5A764DA1FE1917C00B5DC9A /* BVStoreIncludeContentType.m */; };
+		B5A764DD1FE1917C00B5DC9A /* BVStoreIncludeContentType.h in Headers */ = {isa = PBXBuildFile; fileRef = B5A764DB1FE1917C00B5DC9A /* BVStoreIncludeContentType.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B5A764E21FE191AE00B5DC9A /* BVUploadableStorePhoto.h in Headers */ = {isa = PBXBuildFile; fileRef = B5A764E01FE191AE00B5DC9A /* BVUploadableStorePhoto.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B5A764E31FE191AE00B5DC9A /* BVUploadableStorePhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = B5A764E11FE191AE00B5DC9A /* BVUploadableStorePhoto.m */; };
+		B5A764E61FE191BA00B5DC9A /* BVStoreReviewSubmission.h in Headers */ = {isa = PBXBuildFile; fileRef = B5A764E41FE191BA00B5DC9A /* BVStoreReviewSubmission.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B5A764E71FE191BA00B5DC9A /* BVStoreReviewSubmission.m in Sources */ = {isa = PBXBuildFile; fileRef = B5A764E51FE191BA00B5DC9A /* BVStoreReviewSubmission.m */; };
 		B5E1F5331FD5F2F0000F5DB5 /* Gimbal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5E1F5321FD5F2F0000F5DB5 /* Gimbal.framework */; };
 /* End PBXBuildFile section */
 
@@ -761,8 +761,6 @@
 		87F2DAD81DAD585E00FB43F3 /* BVLocationWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVLocationWrapper.m; sourceTree = "<group>"; };
 		87F2DB0E1DAD585E00FB43F3 /* BVCommaUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVCommaUtil.h; sourceTree = "<group>"; };
 		87F2DB0F1DAD585E00FB43F3 /* BVCommaUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVCommaUtil.m; sourceTree = "<group>"; };
-		87F2DB101DAD585E00FB43F3 /* BVStoreIncludeContentType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVStoreIncludeContentType.h; sourceTree = "<group>"; };
-		87F2DB111DAD585E00FB43F3 /* BVStoreIncludeContentType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVStoreIncludeContentType.m; sourceTree = "<group>"; };
 		87F2DB131DAD585E00FB43F3 /* BVBadge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVBadge.h; sourceTree = "<group>"; };
 		87F2DB141DAD585E00FB43F3 /* BVBadge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVBadge.m; sourceTree = "<group>"; };
 		87F2DB151DAD585E00FB43F3 /* BVBadgeType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVBadgeType.h; sourceTree = "<group>"; };
@@ -825,14 +823,6 @@
 		87F2DB501DAD585E00FB43F3 /* BVQuestion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVQuestion.m; sourceTree = "<group>"; };
 		87F2DB511DAD585E00FB43F3 /* BVReview.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVReview.h; sourceTree = "<group>"; };
 		87F2DB521DAD585E00FB43F3 /* BVReview.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVReview.m; sourceTree = "<group>"; };
-		87F2DB541DAD585E00FB43F3 /* BVStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVStore.h; sourceTree = "<group>"; };
-		87F2DB551DAD585E00FB43F3 /* BVStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVStore.m; sourceTree = "<group>"; };
-		87F2DB561DAD585E00FB43F3 /* BVStoreLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVStoreLocation.h; sourceTree = "<group>"; };
-		87F2DB571DAD585E00FB43F3 /* BVStoreLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVStoreLocation.m; sourceTree = "<group>"; };
-		87F2DB591DAD585E00FB43F3 /* BVBulkStoresResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVBulkStoresResponse.h; sourceTree = "<group>"; };
-		87F2DB5A1DAD585E00FB43F3 /* BVBulkStoresResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVBulkStoresResponse.m; sourceTree = "<group>"; };
-		87F2DB5B1DAD585E00FB43F3 /* BVStoreReviewsResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVStoreReviewsResponse.h; sourceTree = "<group>"; };
-		87F2DB5C1DAD585E00FB43F3 /* BVStoreReviewsResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVStoreReviewsResponse.m; sourceTree = "<group>"; };
 		87F2DB5D1DAD585E00FB43F3 /* PDPContentType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDPContentType.h; sourceTree = "<group>"; };
 		87F2DB5E1DAD585E00FB43F3 /* PDPContentType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDPContentType.m; sourceTree = "<group>"; };
 		87F2DB5F1DAD585E00FB43F3 /* PDPInclude.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PDPInclude.h; path = ../PDPInclude.h; sourceTree = "<group>"; };
@@ -847,10 +837,6 @@
 		87F2DB691DAD585E00FB43F3 /* BVQuestionsAndAnswersRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVQuestionsAndAnswersRequest.m; sourceTree = "<group>"; };
 		87F2DB6A1DAD585E00FB43F3 /* BVReviewsRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVReviewsRequest.h; sourceTree = "<group>"; };
 		87F2DB6B1DAD585E00FB43F3 /* BVReviewsRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVReviewsRequest.m; sourceTree = "<group>"; };
-		87F2DB6D1DAD585E00FB43F3 /* BVBulkStoreItemsRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVBulkStoreItemsRequest.h; sourceTree = "<group>"; };
-		87F2DB6E1DAD585E00FB43F3 /* BVBulkStoreItemsRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVBulkStoreItemsRequest.m; sourceTree = "<group>"; };
-		87F2DB6F1DAD585E00FB43F3 /* BVStoreReviewsRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVStoreReviewsRequest.h; sourceTree = "<group>"; };
-		87F2DB701DAD585E00FB43F3 /* BVStoreReviewsRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVStoreReviewsRequest.m; sourceTree = "<group>"; };
 		87F2DB721DAD585E00FB43F3 /* BVBulkRatingsFilterType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVBulkRatingsFilterType.h; sourceTree = "<group>"; };
 		87F2DB731DAD585E00FB43F3 /* BVBulkRatingsFilterType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVBulkRatingsFilterType.m; sourceTree = "<group>"; };
 		87F2DB741DAD585E00FB43F3 /* BVFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVFilter.h; sourceTree = "<group>"; };
@@ -897,8 +883,6 @@
 		87F2DB9F1DAD585E00FB43F3 /* BVSubmissionResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVSubmissionResponse.m; sourceTree = "<group>"; };
 		87F2DBA11DAD585E00FB43F3 /* BVUploadablePhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVUploadablePhoto.h; sourceTree = "<group>"; };
 		87F2DBA21DAD585E00FB43F3 /* BVUploadablePhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVUploadablePhoto.m; sourceTree = "<group>"; };
-		87F2DBA41DAD585E00FB43F3 /* BVUploadableStorePhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVUploadableStorePhoto.h; sourceTree = "<group>"; };
-		87F2DBA51DAD585E00FB43F3 /* BVUploadableStorePhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVUploadableStorePhoto.m; sourceTree = "<group>"; };
 		87F2DBA71DAD585E00FB43F3 /* BVQuestionSubmission.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVQuestionSubmission.h; sourceTree = "<group>"; };
 		87F2DBA81DAD585E00FB43F3 /* BVQuestionSubmission.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVQuestionSubmission.m; sourceTree = "<group>"; };
 		87F2DBA91DAD585E00FB43F3 /* BVQuestionSubmissionErrorResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVQuestionSubmissionErrorResponse.h; sourceTree = "<group>"; };
@@ -915,8 +899,6 @@
 		87F2DBB51DAD585E00FB43F3 /* BVReviewSubmissionResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVReviewSubmissionResponse.m; sourceTree = "<group>"; };
 		87F2DBB61DAD585E00FB43F3 /* BVSubmittedReview.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVSubmittedReview.h; sourceTree = "<group>"; };
 		87F2DBB71DAD585E00FB43F3 /* BVSubmittedReview.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVSubmittedReview.m; sourceTree = "<group>"; };
-		87F2DBB91DAD585E00FB43F3 /* BVStoreReviewSubmission.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVStoreReviewSubmission.h; sourceTree = "<group>"; };
-		87F2DBBA1DAD585E00FB43F3 /* BVStoreReviewSubmission.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVStoreReviewSubmission.m; sourceTree = "<group>"; };
 		87F2DBC81DAD585E00FB43F3 /* BVProductPageViews.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVProductPageViews.h; sourceTree = "<group>"; };
 		87F2DBC91DAD585E00FB43F3 /* BVProductPageViews.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVProductPageViews.m; sourceTree = "<group>"; };
 		87F2DBCB1DAD585E00FB43F3 /* BVQuestionCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVQuestionCollectionViewCell.h; sourceTree = "<group>"; };
@@ -1076,6 +1058,24 @@
 		B5A764AF1FDB1ACD00B5DC9A /* BVAnswerCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BVAnswerCollectionViewCell.m; path = Pod/BVConversationsUI/Views/Answers/BVAnswerCollectionViewCell.m; sourceTree = SOURCE_ROOT; };
 		B5A764B01FDB1ACE00B5DC9A /* BVAnswerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BVAnswerView.m; path = Pod/BVConversationsUI/Views/Answers/BVAnswerView.m; sourceTree = SOURCE_ROOT; };
 		B5A764B11FDB1ACE00B5DC9A /* BVAnswerTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BVAnswerTableViewCell.m; path = Pod/BVConversationsUI/Views/Answers/BVAnswerTableViewCell.m; sourceTree = SOURCE_ROOT; };
+		B5A764C21FE1912700B5DC9A /* BVStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BVStore.h; path = Pod/BVConversationsStores/Display/Model/GenericConversationsResult/BVStore.h; sourceTree = SOURCE_ROOT; };
+		B5A764C31FE1912800B5DC9A /* BVStoreLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BVStoreLocation.h; path = Pod/BVConversationsStores/Display/Model/GenericConversationsResult/BVStoreLocation.h; sourceTree = SOURCE_ROOT; };
+		B5A764C41FE1912800B5DC9A /* BVStoreLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BVStoreLocation.m; path = Pod/BVConversationsStores/Display/Model/GenericConversationsResult/BVStoreLocation.m; sourceTree = SOURCE_ROOT; };
+		B5A764C51FE1912800B5DC9A /* BVStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BVStore.m; path = Pod/BVConversationsStores/Display/Model/GenericConversationsResult/BVStore.m; sourceTree = SOURCE_ROOT; };
+		B5A764CA1FE1913800B5DC9A /* BVStoreReviewsRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BVStoreReviewsRequest.m; path = Pod/BVConversationsStores/Display/Model/Requests/BVStoreReviewsRequest.m; sourceTree = SOURCE_ROOT; };
+		B5A764CB1FE1913800B5DC9A /* BVStoreReviewsRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BVStoreReviewsRequest.h; path = Pod/BVConversationsStores/Display/Model/Requests/BVStoreReviewsRequest.h; sourceTree = SOURCE_ROOT; };
+		B5A764CC1FE1913800B5DC9A /* BVBulkStoreItemsRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BVBulkStoreItemsRequest.h; path = Pod/BVConversationsStores/Display/Model/Requests/BVBulkStoreItemsRequest.h; sourceTree = SOURCE_ROOT; };
+		B5A764CD1FE1913800B5DC9A /* BVBulkStoreItemsRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BVBulkStoreItemsRequest.m; path = Pod/BVConversationsStores/Display/Model/Requests/BVBulkStoreItemsRequest.m; sourceTree = SOURCE_ROOT; };
+		B5A764D21FE1915200B5DC9A /* BVBulkStoresResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BVBulkStoresResponse.h; path = Pod/BVConversationsStores/Display/Model/BVBulkStoresResponse.h; sourceTree = SOURCE_ROOT; };
+		B5A764D31FE1915200B5DC9A /* BVStoreReviewsResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BVStoreReviewsResponse.h; path = Pod/BVConversationsStores/Display/Model/BVStoreReviewsResponse.h; sourceTree = SOURCE_ROOT; };
+		B5A764D41FE1915200B5DC9A /* BVStoreReviewsResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BVStoreReviewsResponse.m; path = Pod/BVConversationsStores/Display/Model/BVStoreReviewsResponse.m; sourceTree = SOURCE_ROOT; };
+		B5A764D51FE1915200B5DC9A /* BVBulkStoresResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BVBulkStoresResponse.m; path = Pod/BVConversationsStores/Display/Model/BVBulkStoresResponse.m; sourceTree = SOURCE_ROOT; };
+		B5A764DA1FE1917C00B5DC9A /* BVStoreIncludeContentType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BVStoreIncludeContentType.m; path = Pod/BVConversationsStores/Display/BVStoreIncludeContentType.m; sourceTree = SOURCE_ROOT; };
+		B5A764DB1FE1917C00B5DC9A /* BVStoreIncludeContentType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BVStoreIncludeContentType.h; path = Pod/BVConversationsStores/Display/BVStoreIncludeContentType.h; sourceTree = SOURCE_ROOT; };
+		B5A764E01FE191AE00B5DC9A /* BVUploadableStorePhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BVUploadableStorePhoto.h; path = Pod/BVConversationsStores/Submission/Photo/BVUploadableStorePhoto.h; sourceTree = SOURCE_ROOT; };
+		B5A764E11FE191AE00B5DC9A /* BVUploadableStorePhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BVUploadableStorePhoto.m; path = Pod/BVConversationsStores/Submission/Photo/BVUploadableStorePhoto.m; sourceTree = SOURCE_ROOT; };
+		B5A764E41FE191BA00B5DC9A /* BVStoreReviewSubmission.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BVStoreReviewSubmission.h; path = Pod/BVConversationsStores/Submission/Review/BVStoreReviewSubmission.h; sourceTree = SOURCE_ROOT; };
+		B5A764E51FE191BA00B5DC9A /* BVStoreReviewSubmission.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BVStoreReviewSubmission.m; path = Pod/BVConversationsStores/Submission/Review/BVStoreReviewSubmission.m; sourceTree = SOURCE_ROOT; };
 		B5E1F5321FD5F2F0000F5DB5 /* Gimbal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Gimbal.framework; path = Frameworks/Gimbal.framework; sourceTree = SOURCE_ROOT; };
 		EC098EFAFB725736F0751BA0 /* libPods-BVSDK.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BVSDK.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -1330,6 +1330,7 @@
 				B5A7649D1FDAEBB900B5DC9A /* BVCommonUI */,
 				87F2DAC41DAD585E00FB43F3 /* BVAnalytics */,
 				87F2DAF61DAD585E00FB43F3 /* BVConversations */,
+				B5A764BC1FE190A400B5DC9A /* BVConversationsStores */,
 				B5A764A71FDB1A7500B5DC9A /* BVConversationsUI */,
 				87F2DBE01DAD585E00FB43F3 /* BVCurations */,
 				15970ECE1E366BB500807032 /* BVCurationsUI */,
@@ -1411,8 +1412,6 @@
 			children = (
 				87F2DB0E1DAD585E00FB43F3 /* BVCommaUtil.h */,
 				87F2DB0F1DAD585E00FB43F3 /* BVCommaUtil.m */,
-				87F2DB101DAD585E00FB43F3 /* BVStoreIncludeContentType.h */,
-				87F2DB111DAD585E00FB43F3 /* BVStoreIncludeContentType.m */,
 				87C5FF641E393ED3004EE6E8 /* BVAuthorContentType.h */,
 				87C5FF651E393ED3004EE6E8 /* BVAuthorContentType.m */,
 				87C5FF681E394C73004EE6E8 /* BVAuthorInclude.h */,
@@ -1434,7 +1433,6 @@
 		87F2DB121DAD585E00FB43F3 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				87F2DB4A1DAD585E00FB43F3 /* GenericConversationsResult */,
 				87C5FF5A1E36A8B7004EE6E8 /* BVAuthorResponse.h */,
 				87C5FF5B1E36A8B7004EE6E8 /* BVAuthorResponse.m */,
 				87F2DB131DAD585E00FB43F3 /* BVBadge.h */,
@@ -1499,9 +1497,9 @@
 				87F2DB471DAD585E00FB43F3 /* BVSecondaryRatingsAverages.m */,
 				87F2DB481DAD585E00FB43F3 /* BVVideo.h */,
 				87F2DB491DAD585E00FB43F3 /* BVVideo.m */,
-				87F2DB581DAD585E00FB43F3 /* Stores */,
 				5F6201DB1F7030FA00454D77 /* NSError+BVErrorCodeParser.h */,
 				5F6201DD1F70342C00454D77 /* NSError+BVErrorCodeParser.m */,
+				87F2DB4A1DAD585E00FB43F3 /* GenericConversationsResult */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1522,31 +1520,8 @@
 				87F2DB501DAD585E00FB43F3 /* BVQuestion.m */,
 				87F2DB511DAD585E00FB43F3 /* BVReview.h */,
 				87F2DB521DAD585E00FB43F3 /* BVReview.m */,
-				87F2DB531DAD585E00FB43F3 /* Stores */,
 			);
 			path = GenericConversationsResult;
-			sourceTree = "<group>";
-		};
-		87F2DB531DAD585E00FB43F3 /* Stores */ = {
-			isa = PBXGroup;
-			children = (
-				87F2DB541DAD585E00FB43F3 /* BVStore.h */,
-				87F2DB551DAD585E00FB43F3 /* BVStore.m */,
-				87F2DB561DAD585E00FB43F3 /* BVStoreLocation.h */,
-				87F2DB571DAD585E00FB43F3 /* BVStoreLocation.m */,
-			);
-			path = Stores;
-			sourceTree = "<group>";
-		};
-		87F2DB581DAD585E00FB43F3 /* Stores */ = {
-			isa = PBXGroup;
-			children = (
-				87F2DB591DAD585E00FB43F3 /* BVBulkStoresResponse.h */,
-				87F2DB5A1DAD585E00FB43F3 /* BVBulkStoresResponse.m */,
-				87F2DB5B1DAD585E00FB43F3 /* BVStoreReviewsResponse.h */,
-				87F2DB5C1DAD585E00FB43F3 /* BVStoreReviewsResponse.m */,
-			);
-			path = Stores;
 			sourceTree = "<group>";
 		};
 		87F2DB611DAD585E00FB43F3 /* Requests */ = {
@@ -1558,6 +1533,8 @@
 				153974461E6F151500BA52C1 /* BVBaseReviewsRequest.m */,
 				150FC2C81E71C58B00717041 /* BVBaseProductRequest.h */,
 				150FC2C91E71C58B00717041 /* BVBaseProductRequest.m */,
+				158CF5851E71F4CD000EA063 /* BVBulkProductRequest.h */,
+				158CF5861E71F4CD000EA063 /* BVBulkProductRequest.m */,
 				87F2DB621DAD585E00FB43F3 /* BVBulkRatingsRequest.h */,
 				87F2DB631DAD585E00FB43F3 /* BVBulkRatingsRequest.m */,
 				87B6DF9F1ECA424300B75835 /* BVCommentsRequest.h */,
@@ -1568,27 +1545,13 @@
 				87F2DB671DAD585E00FB43F3 /* BVProductDisplayPageRequest.m */,
 				1539744B1E6F556B00BA52C1 /* BVProductTextSearchRequest.h */,
 				1539744C1E6F556B00BA52C1 /* BVProductTextSearchRequest.m */,
-				158CF5851E71F4CD000EA063 /* BVBulkProductRequest.h */,
-				158CF5861E71F4CD000EA063 /* BVBulkProductRequest.m */,
-				87F2DB5F1DAD585E00FB43F3 /* PDPInclude.h */,
 				87F2DB681DAD585E00FB43F3 /* BVQuestionsAndAnswersRequest.h */,
 				87F2DB691DAD585E00FB43F3 /* BVQuestionsAndAnswersRequest.m */,
 				87F2DB6A1DAD585E00FB43F3 /* BVReviewsRequest.h */,
 				87F2DB6B1DAD585E00FB43F3 /* BVReviewsRequest.m */,
-				87F2DB6C1DAD585E00FB43F3 /* Stores */,
+				87F2DB5F1DAD585E00FB43F3 /* PDPInclude.h */,
 			);
 			path = Requests;
-			sourceTree = "<group>";
-		};
-		87F2DB6C1DAD585E00FB43F3 /* Stores */ = {
-			isa = PBXGroup;
-			children = (
-				87F2DB6D1DAD585E00FB43F3 /* BVBulkStoreItemsRequest.h */,
-				87F2DB6E1DAD585E00FB43F3 /* BVBulkStoreItemsRequest.m */,
-				87F2DB6F1DAD585E00FB43F3 /* BVStoreReviewsRequest.h */,
-				87F2DB701DAD585E00FB43F3 /* BVStoreReviewsRequest.m */,
-			);
-			path = Stores;
 			sourceTree = "<group>";
 		};
 		87F2DB711DAD585E00FB43F3 /* Sorting & Filtering */ = {
@@ -1680,18 +1643,8 @@
 			children = (
 				87F2DBA11DAD585E00FB43F3 /* BVUploadablePhoto.h */,
 				87F2DBA21DAD585E00FB43F3 /* BVUploadablePhoto.m */,
-				87F2DBA31DAD585E00FB43F3 /* Stores */,
 			);
 			path = Photo;
-			sourceTree = "<group>";
-		};
-		87F2DBA31DAD585E00FB43F3 /* Stores */ = {
-			isa = PBXGroup;
-			children = (
-				87F2DBA41DAD585E00FB43F3 /* BVUploadableStorePhoto.h */,
-				87F2DBA51DAD585E00FB43F3 /* BVUploadableStorePhoto.m */,
-			);
-			path = Stores;
 			sourceTree = "<group>";
 		};
 		87F2DBA61DAD585E00FB43F3 /* Question */ = {
@@ -1720,18 +1673,8 @@
 				87F2DBB51DAD585E00FB43F3 /* BVReviewSubmissionResponse.m */,
 				87F2DBB61DAD585E00FB43F3 /* BVSubmittedReview.h */,
 				87F2DBB71DAD585E00FB43F3 /* BVSubmittedReview.m */,
-				87F2DBB81DAD585E00FB43F3 /* Store */,
 			);
 			path = Review;
-			sourceTree = "<group>";
-		};
-		87F2DBB81DAD585E00FB43F3 /* Store */ = {
-			isa = PBXGroup;
-			children = (
-				87F2DBB91DAD585E00FB43F3 /* BVStoreReviewSubmission.h */,
-				87F2DBBA1DAD585E00FB43F3 /* BVStoreReviewSubmission.m */,
-			);
-			path = Store;
 			sourceTree = "<group>";
 		};
 		87F2DBBB1DAD585E00FB43F3 /* Views */ = {
@@ -1791,8 +1734,8 @@
 		87F2DBD51DAD585E00FB43F3 /* Reviews */ = {
 			isa = PBXGroup;
 			children = (
-				8779DB241DD20D5D00E6CAF5 /* BVStoreReviewsTableView.m */,
 				8779DB261DD20D8D00E6CAF5 /* BVStoreReviewsTableView.h */,
+				8779DB241DD20D5D00E6CAF5 /* BVStoreReviewsTableView.m */,
 				87F2DBD61DAD585E00FB43F3 /* BVReviewCollectionViewCell.h */,
 				87F2DBD71DAD585E00FB43F3 /* BVReviewCollectionViewCell.m */,
 				87F2DBD81DAD585E00FB43F3 /* BVReviewsCollectionView.h */,
@@ -2136,6 +2079,87 @@
 			path = Pod/BVConversationsUI;
 			sourceTree = SOURCE_ROOT;
 		};
+		B5A764BC1FE190A400B5DC9A /* BVConversationsStores */ = {
+			isa = PBXGroup;
+			children = (
+				B5A764BD1FE190DA00B5DC9A /* Display */,
+				B5A764BE1FE190E000B5DC9A /* Submission */,
+			);
+			path = BVConversationsStores;
+			sourceTree = "<group>";
+		};
+		B5A764BD1FE190DA00B5DC9A /* Display */ = {
+			isa = PBXGroup;
+			children = (
+				B5A764DB1FE1917C00B5DC9A /* BVStoreIncludeContentType.h */,
+				B5A764DA1FE1917C00B5DC9A /* BVStoreIncludeContentType.m */,
+				B5A764BF1FE190F400B5DC9A /* Model */,
+			);
+			path = Display;
+			sourceTree = "<group>";
+		};
+		B5A764BE1FE190E000B5DC9A /* Submission */ = {
+			isa = PBXGroup;
+			children = (
+				B5A764DE1FE1919A00B5DC9A /* Photo */,
+				B5A764DF1FE191A000B5DC9A /* Review */,
+			);
+			path = Submission;
+			sourceTree = "<group>";
+		};
+		B5A764BF1FE190F400B5DC9A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B5A764D21FE1915200B5DC9A /* BVBulkStoresResponse.h */,
+				B5A764D51FE1915200B5DC9A /* BVBulkStoresResponse.m */,
+				B5A764D31FE1915200B5DC9A /* BVStoreReviewsResponse.h */,
+				B5A764D41FE1915200B5DC9A /* BVStoreReviewsResponse.m */,
+				B5A764C11FE1911A00B5DC9A /* GenericConversationsResult */,
+				B5A764C01FE1910100B5DC9A /* Requests */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		B5A764C01FE1910100B5DC9A /* Requests */ = {
+			isa = PBXGroup;
+			children = (
+				B5A764CC1FE1913800B5DC9A /* BVBulkStoreItemsRequest.h */,
+				B5A764CD1FE1913800B5DC9A /* BVBulkStoreItemsRequest.m */,
+				B5A764CB1FE1913800B5DC9A /* BVStoreReviewsRequest.h */,
+				B5A764CA1FE1913800B5DC9A /* BVStoreReviewsRequest.m */,
+			);
+			path = Requests;
+			sourceTree = "<group>";
+		};
+		B5A764C11FE1911A00B5DC9A /* GenericConversationsResult */ = {
+			isa = PBXGroup;
+			children = (
+				B5A764C21FE1912700B5DC9A /* BVStore.h */,
+				B5A764C51FE1912800B5DC9A /* BVStore.m */,
+				B5A764C31FE1912800B5DC9A /* BVStoreLocation.h */,
+				B5A764C41FE1912800B5DC9A /* BVStoreLocation.m */,
+			);
+			path = GenericConversationsResult;
+			sourceTree = "<group>";
+		};
+		B5A764DE1FE1919A00B5DC9A /* Photo */ = {
+			isa = PBXGroup;
+			children = (
+				B5A764E01FE191AE00B5DC9A /* BVUploadableStorePhoto.h */,
+				B5A764E11FE191AE00B5DC9A /* BVUploadableStorePhoto.m */,
+			);
+			path = Photo;
+			sourceTree = "<group>";
+		};
+		B5A764DF1FE191A000B5DC9A /* Review */ = {
+			isa = PBXGroup;
+			children = (
+				B5A764E41FE191BA00B5DC9A /* BVStoreReviewSubmission.h */,
+				B5A764E51FE191BA00B5DC9A /* BVStoreReviewSubmission.m */,
+			);
+			path = Review;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -2186,7 +2210,6 @@
 				87F2DD171DAD585E00FB43F3 /* BVCurations.h in Headers */,
 				87F2DD261DAD585E00FB43F3 /* BVCurationsPhotoUploader.h in Headers */,
 				87F2DC621DAD585E00FB43F3 /* BVBulkRatingsResponse.h in Headers */,
-				87F2DC9F1DAD585E00FB43F3 /* BVBulkStoresResponse.h in Headers */,
 				87F2DCAF1DAD585E00FB43F3 /* BVReviewsRequest.h in Headers */,
 				87F2DC731DAD585E00FB43F3 /* BVDistributionValue.h in Headers */,
 				87F2DC681DAD585E00FB43F3 /* BVConversationsErrorResponse.h in Headers */,
@@ -2203,8 +2226,6 @@
 				87F2DCB71DAD585E00FB43F3 /* BVFilter.h in Headers */,
 				8779DB271DD20D8D00E6CAF5 /* BVStoreReviewsTableView.h in Headers */,
 				87F2DCBB1DAD585E00FB43F3 /* BVProductFilterType.h in Headers */,
-				87F2DCF51DAD585E00FB43F3 /* BVStoreReviewSubmission.h in Headers */,
-				87F2DC5A1DAD585E00FB43F3 /* BVStoreIncludeContentType.h in Headers */,
 				87F2DCE71DAD585E00FB43F3 /* BVQuestionSubmissionErrorResponse.h in Headers */,
 				158CF5871E71F4CD000EA063 /* BVBulkProductRequest.h in Headers */,
 				87F2DD131DAD585E00FB43F3 /* BVReviewTableViewCell.h in Headers */,
@@ -2218,7 +2239,6 @@
 				87F2DD361DAD585E00FB43F3 /* BVProductRecommendationsContainer.h in Headers */,
 				87F2DCE91DAD585E00FB43F3 /* BVQuestionSubmissionResponse.h in Headers */,
 				153974471E6F151500BA52C1 /* BVBaseReviewsRequest.h in Headers */,
-				87F2DCE31DAD585E00FB43F3 /* BVUploadableStorePhoto.h in Headers */,
 				87F2DD241DAD585E00FB43F3 /* BVCurationsFeedRequest.h in Headers */,
 				87F2DCD51DAD585E00FB43F3 /* BVFormField.h in Headers */,
 				87F2DD091DAD585E00FB43F3 /* BVQuestionTableViewCell.h in Headers */,
@@ -2238,14 +2258,12 @@
 				87F2DCA31DAD585E00FB43F3 /* PDPContentType.h in Headers */,
 				87F2DCC11DAD585E00FB43F3 /* BVSort.h in Headers */,
 				87F2DCD31DAD585E00FB43F3 /* BVFieldError.h in Headers */,
-				87F2DCA11DAD585E00FB43F3 /* BVStoreReviewsResponse.h in Headers */,
 				87F2DCA71DAD585E00FB43F3 /* BVBulkRatingsRequest.h in Headers */,
 				87F2DD0B1DAD585E00FB43F3 /* BVQuestionView.h in Headers */,
 				87F2DC781DAD585E00FB43F3 /* BVPhoto.h in Headers */,
 				87F2DD031DAD585E00FB43F3 /* BVQuestionCollectionViewCell.h in Headers */,
 				87F2DCA91DAD585E00FB43F3 /* BVConversationsRequest.h in Headers */,
 				87F2DC7E1DAD585E00FB43F3 /* BVProductStatistics.h in Headers */,
-				87F2DCB31DAD585E00FB43F3 /* BVStoreReviewsRequest.h in Headers */,
 				150FC2CA1E71C58B00717041 /* BVBaseProductRequest.h in Headers */,
 				87F2DC8B1DAD585E00FB43F3 /* BVReviewStatistics.h in Headers */,
 				87F2DC801DAD585E00FB43F3 /* BVQAStatistics.h in Headers */,
@@ -2255,8 +2273,6 @@
 				87F2DC891DAD585E00FB43F3 /* BVReviewStatistic.h in Headers */,
 				87F2DD011DAD585E00FB43F3 /* BVProductPageViews.h in Headers */,
 				87F2DD381DAD585E00FB43F3 /* BVProductRecommendationView.h in Headers */,
-				87F2DC9B1DAD585E00FB43F3 /* BVStore.h in Headers */,
-				87F2DC9D1DAD585E00FB43F3 /* BVStoreLocation.h in Headers */,
 				87F2DCEF1DAD585E00FB43F3 /* BVReviewSubmissionErrorResponse.h in Headers */,
 				87F2DCDB1DAD585E00FB43F3 /* BVSubmissionAction.h in Headers */,
 				87F2DD481DAD585E00FB43F3 /* BVShopperProfileRequestCache.h in Headers */,
@@ -2292,7 +2308,6 @@
 				87C5FEB61E22A05D004EE6E8 /* BVAuthenticatedUser.h in Headers */,
 				87C5FEC11E22A05D004EE6E8 /* BVNullHelper.h in Headers */,
 				87C5FEBB1E22A05D004EE6E8 /* BVDiagnosticHelpers.h in Headers */,
-				87F2DCB11DAD585E00FB43F3 /* BVBulkStoreItemsRequest.h in Headers */,
 				87F2DCA51DAD585E00FB43F3 /* PDPInclude.h in Headers */,
 				87F2DC601DAD585E00FB43F3 /* BVBrand.h in Headers */,
 				87F2DD2F1DAD585E00FB43F3 /* BVVisit.h in Headers */,
@@ -2343,6 +2358,15 @@
 				B575C3921FBE2479000F890B /* BVSubmittedUAS.h in Headers */,
 				B5A764B31FDB1ACE00B5DC9A /* BVAnswerView.h in Headers */,
 				B5A764B41FDB1ACE00B5DC9A /* BVAnswersTableView.h in Headers */,
+				B5A764C61FE1912800B5DC9A /* BVStore.h in Headers */,
+				B5A764D71FE1915200B5DC9A /* BVStoreReviewsResponse.h in Headers */,
+				B5A764C71FE1912800B5DC9A /* BVStoreLocation.h in Headers */,
+				B5A764E21FE191AE00B5DC9A /* BVUploadableStorePhoto.h in Headers */,
+				B5A764CF1FE1913800B5DC9A /* BVStoreReviewsRequest.h in Headers */,
+				B5A764DD1FE1917C00B5DC9A /* BVStoreIncludeContentType.h in Headers */,
+				B5A764E61FE191BA00B5DC9A /* BVStoreReviewSubmission.h in Headers */,
+				B5A764D01FE1913800B5DC9A /* BVBulkStoreItemsRequest.h in Headers */,
+				B5A764D61FE1915200B5DC9A /* BVBulkStoresResponse.h in Headers */,
 				B5A764B61FDB1ACE00B5DC9A /* BVAnswersCollectionView.h in Headers */,
 				B5A764B51FDB1ACE00B5DC9A /* BVAnswerCollectionViewCell.h in Headers */,
 				B5A764B81FDB1ACE00B5DC9A /* BVAnswerTableViewCell.h in Headers */,
@@ -2645,6 +2669,7 @@
 				87F2DD3E1DAD585E00FB43F3 /* BVRecommendationsLoader.m in Sources */,
 				87F2DD471DAD585E00FB43F3 /* BVShopperProfileRequestCache.m in Sources */,
 				87F2DCAC1DAD585E00FB43F3 /* BVProductDisplayPageRequest.m in Sources */,
+				B5A764DC1FE1917C00B5DC9A /* BVStoreIncludeContentType.m in Sources */,
 				87F2DC961DAD585E00FB43F3 /* BVProduct.m in Sources */,
 				87EDAFDA1EDDD3E200FA07C0 /* BVCommentSubmissionErrorResponse.m in Sources */,
 				87F2DC881DAD585E00FB43F3 /* BVReviewsResponse.m in Sources */,
@@ -2655,12 +2680,14 @@
 				87A02B631E0967EE0002701B /* BVFeedbackSubmission.m in Sources */,
 				87F2DCE61DAD585E00FB43F3 /* BVQuestionSubmission.m in Sources */,
 				875411861E1F201E006C5C6E /* BVStoreReviewRichNotificationCenter.m in Sources */,
+				B5A764C81FE1912800B5DC9A /* BVStoreLocation.m in Sources */,
 				87F2DD371DAD585E00FB43F3 /* BVProductRecommendationsContainer.m in Sources */,
 				158CF5881E71F4CD000EA063 /* BVBulkProductRequest.m in Sources */,
 				87F2DC981DAD585E00FB43F3 /* BVQuestion.m in Sources */,
 				87F2DD0A1DAD585E00FB43F3 /* BVQuestionTableViewCell.m in Sources */,
 				875411801E1F201E006C5C6E /* BVProductReviewSimpleNotificationCenter.m in Sources */,
 				87F2DD231DAD585E00FB43F3 /* BVCurationsFeedLoader.m in Sources */,
+				B5A764C91FE1912800B5DC9A /* BVStore.m in Sources */,
 				873DC4A21E7482840080FA03 /* BVTransactionItem.m in Sources */,
 				87F2DCD61DAD585E00FB43F3 /* BVFormField.m in Sources */,
 				87C5FEC41E22A05D004EE6E8 /* BVSDKManager.m in Sources */,
@@ -2670,18 +2697,19 @@
 				87F2DCF21DAD585E00FB43F3 /* BVReviewSubmissionResponse.m in Sources */,
 				87F2DCDA1DAD585E00FB43F3 /* BVSubmission.m in Sources */,
 				87F2DCCC1DAD585E00FB43F3 /* BVAnswerSubmission.m in Sources */,
+				B5A764D91FE1915200B5DC9A /* BVBulkStoresResponse.m in Sources */,
 				875411741E1F201E006C5C6E /* BVNotificationProperties.m in Sources */,
 				875411711E1F201E006C5C6E /* BVNotificationConfiguration.m in Sources */,
 				87F2DD0E1DAD585E00FB43F3 /* BVReviewCollectionViewCell.m in Sources */,
 				87F2DC591DAD585E00FB43F3 /* BVCommaUtil.m in Sources */,
 				87F2DCA61DAD585E00FB43F3 /* PDPInclude.m in Sources */,
 				87F2DC811DAD585E00FB43F3 /* BVQAStatistics.m in Sources */,
+				B5A764E71FE191BA00B5DC9A /* BVStoreReviewSubmission.m in Sources */,
 				87C5FEBF1E22A05D004EE6E8 /* BVLogger.m in Sources */,
 				873DC4981E7482840080FA03 /* BVInViewEvent.m in Sources */,
 				87C5FEC01E22A05D004EE6E8 /* BVMessageInterceptor.m in Sources */,
 				87F2DD101DAD585E00FB43F3 /* BVReviewsCollectionView.m in Sources */,
 				8754117C1E1F201E006C5C6E /* BVProductReviewNotificationProperties.m in Sources */,
-				87F2DC9C1DAD585E00FB43F3 /* BVStore.m in Sources */,
 				875411881E1F201E006C5C6E /* BVStoreReviewSimpleNotificationCenter.m in Sources */,
 				87F2DC651DAD585E00FB43F3 /* BVContextDataValue.m in Sources */,
 				87F2DD391DAD585E00FB43F3 /* BVProductRecommendationView.m in Sources */,
@@ -2698,10 +2726,8 @@
 				8777BB431EBA3823008C4715 /* BVSyndicationSource.m in Sources */,
 				87C5FF591E368DF2004EE6E8 /* BVAuthorRequest.m in Sources */,
 				87F2DCF01DAD585E00FB43F3 /* BVReviewSubmissionErrorResponse.m in Sources */,
-				87F2DCA21DAD585E00FB43F3 /* BVStoreReviewsResponse.m in Sources */,
 				87F2DD251DAD585E00FB43F3 /* BVCurationsFeedRequest.m in Sources */,
 				B5A764B71FDB1ACE00B5DC9A /* BVAnswersCollectionView.m in Sources */,
-				87F2DCB41DAD585E00FB43F3 /* BVStoreReviewsRequest.m in Sources */,
 				87F2DD121DAD585E00FB43F3 /* BVReviewsTableView.m in Sources */,
 				87C5FEB91E22A05D004EE6E8 /* BVBaseAnalyticsHelper.m in Sources */,
 				87F2DD421DAD585E00FB43F3 /* BVRecommendedProduct.m in Sources */,
@@ -2712,7 +2738,6 @@
 				87F2DD2A1DAD585E00FB43F3 /* BVLocationAnalyticsHelper.m in Sources */,
 				87F2DC2A1DAD585E00FB43F3 /* BVLocationWrapper.m in Sources */,
 				87F2DCEC1DAD585E00FB43F3 /* BVSubmittedQuestion.m in Sources */,
-				87F2DCA01DAD585E00FB43F3 /* BVBulkStoresResponse.m in Sources */,
 				87C5FF5D1E36A8B7004EE6E8 /* BVAuthorResponse.m in Sources */,
 				87A02B671E096B300002701B /* BVFeedbackSubmissionResponse.m in Sources */,
 				87F2DC5F1DAD585E00FB43F3 /* BVBadgeType.m in Sources */,
@@ -2724,10 +2749,12 @@
 				87D424EA1E89C32E00147FDB /* BVReviewIncludeType.m in Sources */,
 				87F2DCD21DAD585E00FB43F3 /* BVSubmittedAnswer.m in Sources */,
 				87F2DCBC1DAD585E00FB43F3 /* BVProductFilterType.m in Sources */,
+				B5A764E31FE191AE00B5DC9A /* BVUploadableStorePhoto.m in Sources */,
 				875411781E1F201E006C5C6E /* BVOpenURLMetaData.m in Sources */,
 				873DC4941E7482840080FA03 /* BVFeatureUsedEvent.m in Sources */,
 				87F2DCB01DAD585E00FB43F3 /* BVReviewsRequest.m in Sources */,
 				87F2DC9A1DAD585E00FB43F3 /* BVReview.m in Sources */,
+				B5A764CE1FE1913800B5DC9A /* BVStoreReviewsRequest.m in Sources */,
 				875410B11E1F10DF006C5C6E /* BVNotificationViewController.m in Sources */,
 				87E810EA1ECCA3CF0032C753 /* BVCommentFilterType.m in Sources */,
 				87B6DFAA1ECA49B600B75835 /* BVCommentsResponse.m in Sources */,
@@ -2742,8 +2769,6 @@
 				153974481E6F151500BA52C1 /* BVBaseReviewsRequest.m in Sources */,
 				B575C3871FBDFD6F000F890B /* BVUASSubmission.m in Sources */,
 				87E810E61ECCA0190032C753 /* BVSortOptionsComments.m in Sources */,
-				87F2DCB21DAD585E00FB43F3 /* BVBulkStoreItemsRequest.m in Sources */,
-				87F2DCE41DAD585E00FB43F3 /* BVUploadableStorePhoto.m in Sources */,
 				875411761E1F201E006C5C6E /* BVNotificationsAnalyticsHelper.m in Sources */,
 				87D425281E8EE39700147FDB /* BVViewedCGCEvent.m in Sources */,
 				87F2DD061DAD585E00FB43F3 /* BVQuestionsCollectionView.m in Sources */,
@@ -2763,13 +2788,10 @@
 				87A02B6B1E0971AC0002701B /* BVSubmittedFeedback.m in Sources */,
 				87F2DC901DAD585E00FB43F3 /* BVSecondaryRatingsAverages.m in Sources */,
 				87F2DCDC1DAD585E00FB43F3 /* BVSubmissionAction.m in Sources */,
-				87F2DCF61DAD585E00FB43F3 /* BVStoreReviewSubmission.m in Sources */,
 				8754117E1E1F201E006C5C6E /* BVProductReviewRichNotificationCenter.m in Sources */,
 				875410B51E1F10DF006C5C6E /* BVStoreReviewNotificationViewController.m in Sources */,
 				8779DB251DD20D5D00E6CAF5 /* BVStoreReviewsTableView.m in Sources */,
 				87A9ECC31E1DB9B300666636 /* BVPINRequest.m in Sources */,
-				87F2DC9E1DAD585E00FB43F3 /* BVStoreLocation.m in Sources */,
-				87F2DC5B1DAD585E00FB43F3 /* BVStoreIncludeContentType.m in Sources */,
 				873DC49A1E7482840080FA03 /* BVPageViewEvent.m in Sources */,
 				87F2DCE81DAD585E00FB43F3 /* BVQuestionSubmissionErrorResponse.m in Sources */,
 				87F2DD401DAD585E00FB43F3 /* BVRecommendationsRequest.m in Sources */,
@@ -2814,6 +2836,7 @@
 				87C5FE9E1E229168004EE6E8 /* BVProductReviewNotificationConfigurationLoader.m in Sources */,
 				87C5FF671E393ED3004EE6E8 /* BVAuthorContentType.m in Sources */,
 				87F2DC691DAD585E00FB43F3 /* BVConversationsErrorResponse.m in Sources */,
+				B5A764D11FE1913800B5DC9A /* BVBulkStoreItemsRequest.m in Sources */,
 				87F2DCC41DAD585E00FB43F3 /* BVSortOptionAnswers.m in Sources */,
 				87F2DC631DAD585E00FB43F3 /* BVBulkRatingsResponse.m in Sources */,
 				87F2DCC61DAD585E00FB43F3 /* BVSortOptionProducts.m in Sources */,
@@ -2822,6 +2845,7 @@
 				87B6DFA61ECA484400B75835 /* BVComment.m in Sources */,
 				87F2DC8E1DAD585E00FB43F3 /* BVSecondaryRating.m in Sources */,
 				87F2DD191DAD585E00FB43F3 /* BVCurationsAddPostRequest.m in Sources */,
+				B5A764D81FE1915200B5DC9A /* BVStoreReviewsResponse.m in Sources */,
 				87EDAFD61EDDD1FD00FA07C0 /* BVSubmittedComment.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
