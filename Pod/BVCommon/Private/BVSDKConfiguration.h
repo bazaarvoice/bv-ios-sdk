@@ -36,8 +36,7 @@
 @property(nonatomic, strong, readonly, nullable)
     NSString *PINContentExtensionCategory;
 
-/// Your private API key for the BVRecommendations and BVAdvertising products
-/// (Shopper Advertising)
+/// Your private API key for the BVRecommendations product
 @property(nonatomic, strong, readonly, nullable)
     NSString *apiKeyShopperAdvertising;
 

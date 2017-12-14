@@ -48,8 +48,9 @@
   NSString *clientId = sdkMgr.configuration.clientId;
   NSString *apiKey = sdkMgr.configuration.apiKeyCurations;
 
-  NSAssert(apiKey.length, @"apiKeyCurations must be set on BVSDKManager before "
-                          @"using the Curations SDK.");
+  NSAssert(apiKey && 0 < apiKey.length,
+           @"apiKeyCurations must be set on BVSDKManager before "
+           @"using the Curations SDK.");
 
   // Build up the query parameters...
 
