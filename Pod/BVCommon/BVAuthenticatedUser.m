@@ -28,6 +28,9 @@
     return;
   }
 
+  NSAssert(passKey && 0 < passKey.length,
+           @"You must supply apiKeyShopperAdvertising in the BVSDKManager.");
+
   if (force || [self shouldUpdateProfile]) {
     NSString *idfa = [
         [[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString];

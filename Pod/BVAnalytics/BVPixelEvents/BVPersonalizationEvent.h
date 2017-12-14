@@ -17,7 +17,7 @@
 
 /**
  Set user information. Associates a user profile with device for taylored
- advertising and recommendations.
+ recommendations.
  Use of this method requires that a valid key has been set for
  apiKeyShopperMarketing.
 */

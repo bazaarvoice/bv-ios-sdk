@@ -28,8 +28,9 @@
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wunused-variable"
   NSString *apiKey = [BVSDKManager sharedManager].configuration.apiKeyCurations;
-  NSAssert(apiKey.length, @"apiKeyCurations must be set on BVSDKManager before "
-                          @"using the Curations SDK.");
+  NSAssert(apiKey && 0 < apiKey.length,
+           @"apiKeyCurations must be set on BVSDKManager before "
+           @"using the Curations SDK.");
 #pragma clang diagnostic pop
   NSString *endPoint = [NSString
       stringWithFormat:@"%@/curations/content/get", [self urlRootCurations]];

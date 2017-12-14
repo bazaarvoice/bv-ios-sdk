@@ -72,7 +72,7 @@ typedef NS_ENUM(NSUInteger, BVConfigurationType) {
 /// BVLogLevel.kBVLogLevelError
 - (void)setLogLevel:(BVLogLevel)logLevel;
 
-/// Read-only value of urlRoot for Shopper Advertising APIs. Varies depending on
+/// Read-only value of urlRoot for BVRecommendations APIs. Varies depending on
 /// value of staging.
 @property(nonnull, nonatomic, readonly) NSString *urlRootShopperAdvertising;
 
@@ -120,8 +120,7 @@ typedef NS_ENUM(NSUInteger, BVConfigurationType) {
                               "BVSDKManager#configure:(BVConfigurationType)"
                               "configurationType instead.")));
 
-/// Your private API key for the BVRecommendations and BVAdvertising products
-/// (Shopper Advertising)
+/// Your private API key for the BVRecommendations products
 @property(nonnull, nonatomic, strong) NSString *apiKeyShopperAdvertising
     __attribute__((deprecated("Use "
                               "BVSDKManager#configure:(BVConfigurationType)"
@@ -141,7 +140,7 @@ typedef NS_ENUM(NSUInteger, BVConfigurationType) {
 
 /**
     Set user information. Associates a user profile with device for taylored
-   advertising and recommendations.
+    recommendations.
     Use of this method requires that a valid key has been set for
    apiKeyShopperMarketing.
 

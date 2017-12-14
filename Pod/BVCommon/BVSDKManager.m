@@ -149,9 +149,10 @@ static NSString *const BVSDKConfigFileExt = @"json";
 }
 
 - (void)assertConfiguration {
-  NSAssert(_clientId.length, @"You must supply valid client id in the "
-                             @"BVSDKManager before using the Bazaarvoice "
-                             @"SDK.");
+  NSAssert(_clientId && 0 < _clientId.length,
+           @"You must supply valid client id in the "
+           @"BVSDKManager before using the Bazaarvoice "
+           @"SDK.");
 }
 
 // SDK supports only a single setting for production or stage
@@ -232,13 +233,12 @@ static NSString *const BVSDKConfigFileExt = @"json";
 #pragma mark - user
 
 - (void)setUserWithAuthString:(NSString *)userAuthString {
-  if (!userAuthString.length) {
+  if (userAuthString && 0 < userAuthString.length) {
+    [self setUserId:userAuthString];
+  } else {
     [[BVLogger sharedLogger] error:@"No userAuthString was supplied for "
                                    @"the recommendations manager!"];
-    return;
   }
-
-  [self setUserId:userAuthString];
 }
 
 // Update the user profile by calling the /users/ endpoint if the targeting
@@ -292,10 +292,8 @@ static NSString *const BVSDKConfigFileExt = @"json";
 }
 
 - (NSDictionary *)getCustomTargeting {
-  NSAssert(_apiKeyShopperAdvertising.length,
-           @"You must supply apiKeyShopperAdvertising in the BVSDKManager "
-           @"before using BVAdvertising.");
-
+  NSAssert(_apiKeyShopperAdvertising && 0 < _apiKeyShopperAdvertising.length,
+           @"You must supply apiKeyShopperAdvertising in the BVSDKManager.");
   return [self.bvUser getTargetingKeywords];
 }
 

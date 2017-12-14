@@ -127,7 +127,8 @@
                                 value:[self includesToParams:self.includes]]];
   }
 
-  if ([self statisticsToParams:self.PDPContentTypeStatistics].length > 0) {
+  NSString *pcts = [self statisticsToParams:self.PDPContentTypeStatistics];
+  if (pcts && pcts.length > 0) {
     [params
         addObject:[BVStringKeyValuePair
                       pairWithKey:@"Stats"

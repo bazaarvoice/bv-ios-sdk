@@ -180,7 +180,8 @@ loadProfile:(nonnull BVConversationsRequest *)request
                                 value:[filter toParameterString]]];
   }
 
-  if ([self statisticsToParams:self.authorContentTypeStatistics].length > 0) {
+  NSString *acts = [self statisticsToParams:self.authorContentTypeStatistics];
+  if (acts && acts.length > 0) {
     [params
         addObject:[BVStringKeyValuePair
                       pairWithKey:@"Stats"
