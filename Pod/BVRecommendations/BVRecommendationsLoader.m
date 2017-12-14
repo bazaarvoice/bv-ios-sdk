@@ -33,8 +33,9 @@
 
   // check that `apiKeyShopperAdvertising` is valid. Will fail only in debug
   // mode.
-  NSAssert(apiKey.length, @"You must supply apiKeyShopperAdvertising in the "
-                          @"BVSDKManager before using the Bazaarvoice SDK.");
+  NSAssert(apiKey && 0 < apiKey.length,
+           @"You must supply apiKeyShopperAdvertising in the "
+           @"BVSDKManager before using the Bazaarvoice SDK.");
 
   // Cool, clientId and passKey are valid.
 

@@ -20,7 +20,7 @@
   NSString *passKey =
       [BVSDKManager sharedManager].configuration.apiKeyCurations;
 
-  NSAssert(passKey.length, @"apiKeyCurations is required!");
+  NSAssert(passKey && 0 < passKey.length, @"apiKeyCurations is required!");
 
   if (!postParams) {
     NSDictionary *userInfo = @{

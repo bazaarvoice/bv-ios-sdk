@@ -19,8 +19,8 @@
                otherParams:(nullable NSDictionary *)params {
   self = [super initWithParams:params];
 
-  NSAssert(type && type.length > 0, @"You must provide a type");
-  NSAssert(value && value.length > 0, @"You must provide a value");
+  NSAssert(type && 0 < type.length, @"You must provide a type");
+  NSAssert(value && 0 < value.length, @"You must provide a value");
 
   if (self) {
     _type = type;

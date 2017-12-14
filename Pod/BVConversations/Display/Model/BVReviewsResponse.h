@@ -6,9 +6,10 @@
 //
 
 #import "BVBaseConversationsResponse.h"
-#import "BVResponse.h"
-#import "BVReview.h"
 #import <Foundation/Foundation.h>
+
+@class BVReview;
+
 /*
  A response to a `BVReviewsResponse`. Contains one or multiple (up to 20)
  `BVReview` objects in the `results` array.

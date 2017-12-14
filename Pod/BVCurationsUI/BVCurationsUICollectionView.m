@@ -147,7 +147,7 @@
     req.before = _lastFetchedTimeStamp;
   }
 
-  if (_productId.length) {
+  if (_productId && 0 < _productId.length) {
     req.externalId = _productId;
   }
 
