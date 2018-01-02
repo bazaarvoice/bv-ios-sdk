@@ -20,7 +20,7 @@ $(function(){
 
 	// select the tab in the sidebar to reflect current page position
 
-	var tabName = "FAQ and Support";
+	var tabName = "Badges";
 
 	$('.nav-link.active').removeClass('active');
 	console.log('active tab: ', tabName);
@@ -152,7 +152,7 @@ function scrollAndClickById(id) {
 
     ga('create', UA-56370630-4, 'auto');
     ga('set', {
-      title: 'FAQ and Support'
+      title: 'Badges'
     });
     ga('send', 'pageview');
   </script>
@@ -226,7 +226,7 @@ function scrollAndClickById(id) {
                                         id="conversationsDropdownArrow"
                                         class="fa fa-sort-desc fa-rotate-270"></i></span></span>
                         </a>
-                        <div class="collapse "
+                        <div class="collapse in"
                              id="conversationsDropdown">
                             <ul>
                                 <li class="nav-item">
@@ -355,115 +355,65 @@ function scrollAndClickById(id) {
               <div class="page-container">
 
                 <div class="flex flex-row" id="content_title">
-    FAQ and Support
+  Badges
 </div>
-<hr>
-<h3>Frequently Asked Questions</h3>
-<br>
 
-<p><b>Contents</b></p>
+<p>
+  Bazaarvoice badges allow content and/or contributors to be recognized, or flagged,
+  as having an additional meaning. Badges can support such concepts as 'featured'
+  content, indicating a contributor's expertise on a product, acknowledge incentivized
+  content, and also top content providers. Badges are placed on user generated content
+  (reviews, questions, answers) or on contributors.
+</p>
 
-<ol>
-    <li><a href="#idfa">Does the Bazaarvoice Mobile SDK use IDFA?</a></li>
-    <li><a href="#swift">Is Swift 2.3 supported by the SDK?</a></li>
-    <li><a href="#upgrade">Upgrading to BVSDK 7.0 (Deprecations)</a></li>
-    <li><a href="#thirdparty">Does the SDK use any 3rd pary source code?</a></li>
-    <li><a href="#support">How do I get support?</a></li>
-    <li><a href="#t_and_c">Are the terms and conditions available through the SDK?</a></li>
-</ol>
+<p>
+  Badges will be returned as an array with the CGC response objects that include them,
+  (i.e. Review, Question, Answer, Comment).
+</p>
 
+<p>
+  Image links are not returned from the Conversations API. The display for Conversation API clients is left up to your creative interpretation.
+</p>
 
-<a name="idfa"></a>
-<h5 class="question">Does the Bazaarvoice Mobile SDK use IDFA?</h5>
-<p class="answer">Yes, the SDK uses IDFA for both the Advertising and Product Recommendations modules. The SDK checks whether the user has "Limit Ad Tracking" enabled, and respects the option if enabled.</p>
-<p class="answer">If you use the Advertising module and/or the Product Recommendations module, you must submit applications via iTunes Connect, letting Apple know that the app uses IDFA for targeted advertising.</p>
-
-<br>
-
-<a name="swift"></a>
-<h5 class="question">Is Swift 2.3 supported by the SDK?</h5>
-<p class="answer">The SDK is written entirely in Objective-C, so there should not be any issue with any version of Swift you are writing against, or will write against. As long as you are using the minimum support version of XCode, happy Swifting!</p>
-
-<br>
-
-<a name="upgrade"></a>
-<h5 class="question">Upgrading to BVSDK 7.0 (Deprecations)</h5>
-<p class="answer">Setting your API keys in code is now deprecated. You will need to generate your <a
-        href="./installation.html">configuration files</a> using your own API keys, include the configuration files in your app target, and initialize the BVSDK. Visit the <a>Installation and Configuration</a> for more information.</p>
-
-<ul class="nav nav-tabs" role="tablist">
+<p>
+  <ul class="nav nav-tabs" role="tablist">
   <li role="presentation" class="active"><a href="#swift" aria-controls="swift" role="tab" data-toggle="tab">Swift</a></li>
   <li role="presentation"><a href="#objc" aria-controls="objc" role="tab" data-toggle="tab">Objective-C</a></li>
 </ul>
-<div class="tab-content code-switcher">
-
+  <!-- Tab panes -->
+  <div class="tab-content code-switcher">
     <!-- swift -->
     <div role="tabpanel" class="tab-pane active" id="swift">
+      <pre><code class="swift">let results = response.results
+let review = results[0]
+let badges = review.badges
+for badge in badges {
+  // id that can be used to obtain the related ContextDataValues that can
+  // also be returned in the API response when configured
+  let identifier = badge.identifier
 
-
-        <p>Your in-code configuration. (The old way)</p>
-        <pre><code class="swift">BVSDKManager.shared().clientId = "YOUR_CLIENT_ID"
-BVSDKManager.shared().staging = true;
-BVSDKManager.shared().apiKeyCurations = "YOUR_CURATIONS_KEY"
-BVSDKManager.shared().apiKeyConversations = "YOUR_CONVERSATIONS_KEY"
-</code></pre>
-        <p>Configuration using the generator. (The new way)</p>
-        <img src="ios-img/faq/config_file_gen.png" style="height:450px;" />
-        <p>Once you've entered a valid configuration you will be given the option to download your configuration
-            files. This will download <strong>bvsdk_config_prod.json</strong> and/or <strong>bvsdk_config_staging
-                .json</strong> depending on API keys entered. These files will need to be added to your app target.</p>
-        <br>
-        <p>Finally in your AppDelegate, call the BVSDK configuration method with your desired environment:
-            (production/staging).</p>
-        <pre><code class="swift">BVSDKManager.configure(.prod) //Configure with Prod API keys
-
-//BVSDKManager.configure(.staging) //Configure with Staging API keys
-        </code></pre>
+  // The specific item the badge is meant for. Typical values are
+  // 'REVIEWS', 'QUESTIONS', or 'ANSWERS'.
+  let contentType = badge.contentType
+}</code></pre>
     </div>
-
     <!-- objective-c -->
     <div role="tabpanel" class="tab-pane" id="objc">
+      <pre><code class="objectivec"></code>NSArray* results = response.results;
+BVReview* review = results[0];
+NSArray* badges = review.badges;
+for (BVBadge* badge in badges) {
+  // id that can be used to obtain the related ContextDataValues that can
+  // also be returned in the API response when configured
+  NSString* badgeIdentifier = badge.identifier;
 
-        <p>Your in-code configuration. (The old way)</p>
-        <pre><code class="objectivec">[[BVSDKManager sharedManager] setClientId:@"YOUR_CLIENT_ID"];
-[[BVSDKManager sharedManager] setApiKeyCurations:@"YOUR_CURATIONS_KEY"];
-[[BVSDKManager sharedManager] setApiKeyConversations:@"YOUR_CONVERSATIONS_KEY"];
-[[BVSDKManager sharedManager] setStaging:YES];  // Set to NO for production!</code></pre>
-        <p>Configuration using the generator. (The new way)</p>
-        <img src="ios-img/faq/config_file_gen.png" style="height:450px;" />
-        <p>Once you've entered a valid configuration you will be given the option to download your configuration
-            files. This will download <strong>bvsdk_config_prod.json</strong> and/or <strong>bvsdk_config_staging
-                .json</strong> depending on API keys entered. These files will need to be added to your app target.</p>
-        <p>Finally in your app delegate call BVSDK configuration method with your desired environment
-            (production/staging).</p>
-        <pre><code class="objectivec">[BVSDKManager configure:BVConfigurationTypeProd]; //Configure with Prod API keys
-
-//[BVSDKManager configure:BVConfigurationTypeStaging]; //Configure with Staging API keys
-        </code></pre>
+  // The specific item the badge is meant for. Typical values are
+  // 'REVIEWS', 'QUESTIONS', or 'ANSWERS'.
+  NSString* badgeContentType = badge.contentType;
+}</pre>
     </div>
-</div>
-<br>
-<a name="thirdparty"></a>
-<h5 class="question">Does the Bazaarvoice Mobile SDK use any 3rd-Party Source Code?</h5>
-<p class="answer">No, the SDK is entirely based on the Cocoa Frameworks for iOS.</p>
-
-<a name="t_and_c"></a>
-<h5 class="question">Are the terms and conditions available through the SDK?</h5>
-<p class="answer">
-  No, currently it is not available through the SDK, however you should be able to access the content by logging into
-  your <a href="https://config.portal.bazaarvoice.com/siteManager">configuration console</a>, then selecting Edit for the configuration
-  you want terms & conditions for. Then you can access them from
-  <a href="https://config.portal.bazaarvoice.com/config/pages/displayOptions/legalAndGuidelines/termsAndConditions/text">here</a>.
+  </div>
 </p>
-
-<br>
-<a name="support"></a>
-<h3>Support</h3>
-<p>If you have problems/questions implementing the Mobile SDK, contact <a href="mailto:support@bazaarvoice.com">Mobile Development at Bazaarvoice</a>.</p>
-<p>If you have questions about licensing or general configuration of the Conversations API, contact <a href="mailto:support@bazaarvoice.com">Bazaarvoice Client Care</a>.</p>
-<h5>Pull Requests and Issue Tracking</h5>
-<p>If you would like to contribute specific enhancements to the Mobile SDKs, feel free to fork this repository and and create a pull request. For general enhancements or requests, you can drop a request in the GitHub issue tracker for this repository.</p>
-<br>
 
 
 

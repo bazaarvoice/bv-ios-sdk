@@ -6,14 +6,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
-  
+
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
   <script type="text/javascript" src="./assets/js/highlight.pack.js"></script>
-  
+
   <script type="text/javascript" src="./assets/js/jquery_rotate.js"></script>
   <script type="text/javascript" src="./assets/js/main.js"></script>
   <script type="text/javascript" src="./assets/js/popover.js"></script>
-  
+
   <script>
     
 $(function(){
@@ -31,10 +31,77 @@ $(function(){
 });
   </script>
 
+  <script>
+    /**
+ * Scrolls to the element with the provided class name.
+ *
+ * @param {String} id - the id of the element we want to scroll to
+ */
+function scrollToElementById(id) {
+  if (!id) {
+    throw TypeError(
+      'scrollToElementByID(string) - requires a string to be passed in as param'
+    );
+  }
+  const element = document.getElementById(id);
+  if (!element) {
+    throw Error(`No element found with id "${id}".`);
+  }
+  scrollToElement(element);
+}
+
+/**
+ * Scrolls the viewport to the provided element.
+ * @param  {DOMNode} element the element to scroll to.
+ */
+function scrollToElement(element) {
+  try {
+    element.scrollIntoView();
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+/**
+ * Clicks on the element with the provided class name.
+ * @param {String} id - the id of the element we want to click on.
+ */
+function triggerClickById(id) {
+  if (!id) {
+    throw TypeError(
+      'triggerClickById(string) - requires a string to be passed in as param'
+    );
+  }
+  const element = document.getElementById(id);
+  if (!element) {
+    throw Error(`No element found with id "${id}".`);
+  }
+  triggerClickOnElement(element);
+}
+
+/**
+ * Clicks on the provided element.
+ * @param  {DOMNode} element the element to click on.
+ */
+function triggerClickOnElement(element) {
+  try {
+    element.click();
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+function scrollAndClickById(id) {
+  triggerClickById(id);
+  scrollToElementById(id);
+}
+
+  </script>
+
 
   <script>
   $(document).ready(function(){
-      $('[data-toggle="popover"]').popover(); 
+      $('[data-toggle="popover"]').popover();
   });
 
   /* Close all the other popovers */
@@ -47,7 +114,7 @@ $(function(){
   });
 
   </script>
-  
+
   <script>hljs.initHighlightingOnLoad();</script>
 
 
@@ -57,7 +124,7 @@ $(function(){
   <link rel="stylesheet" type="text/css" href="./assets/css/highlightjs/default.min.css">
   <link rel="stylesheet" type="text/css" href="./assets/css/main.css">
 
-  
+
   <link rel="apple-touch-icon-precomposed" sizes="57x57" href="./public/apple-touch-icon-57x57.png" />
   <link rel="apple-touch-icon-precomposed" sizes="114x114" href="./public/apple-touch-icon-114x114.png" />
   <link rel="apple-touch-icon-precomposed" sizes="72x72" href="./public/apple-touch-icon-72x72.png" />
@@ -271,7 +338,7 @@ $(function(){
             <br>
             <li class="nav-item">
                 <a class="nav-link"
-                   href="mailto:mobilecoreteam@bazaarvoice.com?subject=iOS SDK documentation feedback"
+                   href="mailto:support@bazaarvoice.com?subject=iOS SDK documentation feedback"
                    style="border: 1px #fff solid;">
                     <span><i class="m-r-1 fa fa-envelope"></i>Feedback</span>
                 </a>
@@ -291,7 +358,7 @@ $(function(){
 	Product Recommendations
 </div>
 
-<p><span class="bg-warning well-lg" style="padding:4px;"> <i class="fa fa-hand-o-right"></i> The Product Recommendations module is currently in limited beta release. If you'd like to participate, contact <a href="mailto:mobilecoreteam@bazaarvoice.com">Bazaarvoice.</a></span></p>
+<p><span class="bg-warning well-lg" style="padding:4px;"> <i class="fa fa-hand-o-right"></i> The Product Recommendations module is currently in limited beta release. If you'd like to participate, contact <a href="mailto:support@bazaarvoice.com">Bazaarvoice.</a></span></p>
 
 <p>Use the following guide to fetch and display product recommendations in your iOS app with Bazaarvoice Mobile SDKs. The instructions include Swift and Objective-C implementation to display Product Recommendations in a <code>UICollectonView</code>. If you are familiar with the design pattern of implementing a <code>UICollectionView</code> or <code>UITableView</code> in iOS, implementing the Product Recommendations module should be straightforward.</p>
 
@@ -359,7 +426,7 @@ The completed project for this code walkthrough for Swift and Objective-C is in 
   <li role="presentation" class="active"><a href="#swift" aria-controls="swift" role="tab" data-toggle="tab">Swift</a></li>
   <li role="presentation"><a href="#objc" aria-controls="objc" role="tab" data-toggle="tab">Objective-C</a></li>
 </ul>
-		
+
 		<div class="tab-content code-switcher">
 			<!-- swift -->
 			<div role="tabpanel" class="tab-pane active" id="swift">
@@ -378,18 +445,18 @@ class DemoCell: BVRecommendationCollectionViewCell {
     @IBOutlet weak var starRating : HCSStarRatingView!
 
     override var bvRecommendedProduct: BVRecommendedProduct! {
-        
+
         didSet {
-            
+
             let imageUrl = NSURL(string: bvRecommendedProduct.imageURL)
             self.productName.text = bvRecommendedProduct.productName
             self.rating.text = "\(bvRecommendedProduct.averageRating ?? 0)"
             self.numReview.text = "(\(bvRecommendedProduct.numReviews ?? 0) reviews)"
             self.starRating.value = (CGFloat)(bvRecommendedProduct.averageRating.floatValue)
             self.productImageView?.sd_setImageWithURL(imageUrl)
-            
+
         }
-        
+
     }
 
 }</code></pre>
@@ -397,7 +464,7 @@ class DemoCell: BVRecommendationCollectionViewCell {
 			<!-- objective-c -->
 			<div role="tabpanel" class="tab-pane" id="objc">
 				<p><pre><code class="objectivec">// DemoCell.m
-//  
+//
 #import "DemoCell.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 
@@ -415,9 +482,9 @@ class DemoCell: BVRecommendationCollectionViewCell {
 @implementation DemoCell
 
 - (void)setBvRecommendedProduct:(BVRecommendedProduct *)bvRecommendedProduct {
-    
+
     super.bvRecommendedProduct = bvRecommendedProduct;
-    
+
     NSURL *url = [NSURL URLWithString:self.bvRecommendedProduct.imageURL];
     [self.productImageView sd_setImageWithURL:url];
     self.productName.text = bvRecommendedProduct.productName;
@@ -425,7 +492,7 @@ class DemoCell: BVRecommendationCollectionViewCell {
     self.starRating.value = [bvRecommendedProduct.averageRating floatValue];
     self.numReview.text = [NSString stringWithFormat:@"(%ld)", [bvRecommendedProduct.numReviews longValue]];
     self.price.text = bvRecommendedProduct.price;
-   
+
 }
 
 @end
@@ -459,19 +526,19 @@ class DemoCell: BVRecommendationCollectionViewCell {
 	</li>
 	<li>
 		<p>Add an outlet for the collection view:</p>
-		
+
 
 		<ul class="nav nav-tabs" role="tablist">
   <li role="presentation" class="active"><a href="#swift" aria-controls="swift" role="tab" data-toggle="tab">Swift</a></li>
   <li role="presentation"><a href="#objc" aria-controls="objc" role="tab" data-toggle="tab">Objective-C</a></li>
 </ul>
-		
+
 
 		<div class="tab-content code-switcher">
 			<!-- swift -->
 			<div role="tabpanel" class="tab-pane active" id="swift">
-<pre><code class="swift">class DemoViewController: UIViewController {  
-    @IBOutlet weak var recommendationsView : BVProductRecommendationsCollectionView!  
+<pre><code class="swift">class DemoViewController: UIViewController {
+    @IBOutlet weak var recommendationsView : BVProductRecommendationsCollectionView!
 }  </code></pre>
 			</div>
 			<!-- objective-c -->
@@ -694,6 +761,7 @@ class DemoCell: BVRecommendationCollectionViewCell {
 </ol>
 
 <br>
+
 
 
 <div class="well well-sm">
