@@ -23,7 +23,7 @@
 // Use this method to stub calls to bazaarvoice and add any resultFile, headers,
 // and HTTP status you want
 - (void)addStubWithResultFile:(NSString *)resultFile
-                   statusCode:(int)httpStatus
+                   statusCode:(NSInteger)httpStatus
                   withHeaders:(NSDictionary *)httpHeaders;
 
 @end

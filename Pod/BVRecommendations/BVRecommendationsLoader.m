@@ -16,6 +16,10 @@
 
 @implementation BVRecommendationsLoader
 
++ (void)purgeRecommendationsCache {
+  [[BVShopperProfileRequestCache sharedCache] removeAllCachedResponses];
+}
+
 - (void)loadRequest:(BVRecommendationsRequest *)request
     completionHandler:(recommendationsCompletionHandler)completionHandler
          errorHandler:(recommendationsErrorHandler)errorHandler {

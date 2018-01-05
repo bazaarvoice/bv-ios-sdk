@@ -19,6 +19,13 @@ typedef void (^recommendationsCompletionHandler)(
 typedef void (^recommendationsErrorHandler)(NSError *__nonnull);
 
 /**
+    Purges the internal cache of the BVRecommendation Engine.
+
+    @availability 3.3.0 and later
+ */
++ (void)purgeRecommendationsCache;
+
+/**
     Load product recommendations based on data fed in from `request`.
 
     @param request             The request parameters to load

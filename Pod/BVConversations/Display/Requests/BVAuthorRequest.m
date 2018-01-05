@@ -6,21 +6,25 @@
 //
 
 #import "BVAuthorRequest.h"
-#import "BVAuthorInclude.h"
+#import "BVAnswersSortOption.h"
+#import "BVAuthorIncludeType.h"
 #import "BVCommaUtil.h"
-#import "BVFilter.h"
 #import "BVLogger.h"
+#import "BVMonotonicSortOrder.h"
 #import "BVPixel.h"
+#import "BVQuestionsSortOption.h"
+#import "BVRelationalFilterOperator.h"
+#import "BVReviewsSortOption.h"
 #import "BVSort.h"
 
 @interface BVAuthorRequest ()
 
-@property int limit;
-@property int offset;
+@property NSUInteger limit;
+@property NSUInteger offset;
 @property(nullable) NSString *search;
 @property(nonnull) NSMutableArray<BVFilter *> *filters;
-@property(nonnull) NSMutableArray<NSNumber *> *authorContentTypeStatistics;
-@property NSMutableArray<BVAuthorInclude *> *includes;
+@property(nonnull) NSMutableArray<BVAuthorIncludeType *> *authorIncludeTypes;
+@property NSMutableArray<BVInclude *> *includes;
 @property(nonnull) NSMutableArray<BVSort *> *reviewSorts;
 @property(nonnull) NSMutableArray<BVSort *> *questionSorts;
 @property(nonnull) NSMutableArray<BVSort *> *answerSorts;
@@ -34,11 +38,11 @@
 }
 
 - (nonnull instancetype)initWithAuthorId:(nonnull NSString *)authorId
-                                   limit:(int)limit
-                                  offset:(int)offset {
+                                   limit:(NSUInteger)limit
+                                  offset:(NSUInteger)offset {
   self = [super init];
   if (self) {
-    self.authorContentTypeStatistics = [NSMutableArray array];
+    self.authorIncludeTypes = [NSMutableArray array];
     self.filters = [NSMutableArray array];
 
     self.includes = [NSMutableArray array];
@@ -48,62 +52,87 @@
 
     _authorId = [BVCommaUtil escape:authorId];
 
-    self.limit = (int)limit;
-    self.offset = (int)offset;
+    self.limit = limit;
+    self.offset = offset;
 
     self.filters = [NSMutableArray array];
 
     // filter the request to the given productId
-    BVFilter *filter = [[BVFilter alloc] initWithString:@"Id"
-                                         filterOperator:BVFilterOperatorEqualTo
-                                                 values:@[ self.authorId ]];
+    BVFilter *filter = [[BVFilter alloc]
+        initWithString:@"Id"
+        filterOperator:[BVRelationalFilterOperator
+                           filterOperatorWithRawValue:
+                               BVRelationalFilterOperatorValueEqualTo]
+                values:@[ self.authorId ]];
     [self.filters addObject:filter];
   }
   return self;
 }
 
-- (nonnull instancetype)includeStatistics:(BVAuthorContentType)contentType {
-  if (contentType == BVAuthorContentTypeReviewComments) {
+- (nonnull instancetype)includeStatistics:
+    (BVAuthorIncludeTypeValue)authorIncludeTypeValue {
+  if (authorIncludeTypeValue == BVAuthorIncludeTypeValueAuthorReviewComments) {
     NSAssert(NO, @"Including Review Comment Statistics is not supported "
                  @"with an authors request.");
     return self;
   }
 
-  [self.authorContentTypeStatistics addObject:@(contentType)];
+  [self.authorIncludeTypes
+      addObject:[BVAuthorIncludeType
+                    includeTypeWithRawValue:authorIncludeTypeValue]];
   return self;
 }
 
-- (nonnull instancetype)includeContent:(BVAuthorContentType)contentType
-                                 limit:(int)limit {
-  BVAuthorInclude *include =
-      [[BVAuthorInclude alloc] initWithContentType:contentType limit:@(limit)];
+- (nonnull instancetype)includeAuthorIncludeTypeValue:
+                            (BVAuthorIncludeTypeValue)authorIncludeTypeValue
+                                                limit:(NSUInteger)limit {
+
+  BVInclude *include = [[BVInclude alloc]
+      initWithIncludeType:[BVAuthorIncludeType
+                              includeTypeWithRawValue:authorIncludeTypeValue]
+             includeLimit:@(limit)];
+
   [self.includes addObject:include];
   return self;
 }
 
-- (nonnull instancetype)sortIncludedReviews:(BVSortOptionReviews)option
-                                      order:(BVSortOrder)order {
+- (nonnull instancetype)
+sortByReviewsSortOptionValue:(BVReviewsSortOptionValue)reviewsSortOptionValue
+     monotonicSortOrderValue:
+         (BVMonotonicSortOrderValue)monotonicSortOrderValue {
   BVSort *sort = [[BVSort alloc]
-      initWithOptionString:[BVSortOptionReviewUtil toString:option]
-                     order:order];
+      initWithSortOption:[BVReviewsSortOption
+                             sortOptionWithRawValue:reviewsSortOptionValue]
+               sortOrder:[BVMonotonicSortOrder
+                             sortOrderWithRawValue:monotonicSortOrderValue]];
   [self.reviewSorts addObject:sort];
   return self;
 }
 
-- (nonnull instancetype)sortIncludedQuestions:(BVSortOptionQuestions)option
-                                        order:(BVSortOrder)order {
+- (nonnull instancetype)sortByQuestionsSortOptionValue:
+                            (BVQuestionsSortOptionValue)questionsSortOptionValue
+                               monotonicSortOrderValue:
+                                   (BVMonotonicSortOrderValue)
+                                       monotonicSortOrderValue {
   BVSort *sort = [[BVSort alloc]
-      initWithOptionString:[BVSortOptionQuestionsUtil toString:option]
-                     order:order];
+      initWithSortOption:[BVQuestionsSortOption
+                             sortOptionWithRawValue:questionsSortOptionValue]
+               sortOrder:[BVMonotonicSortOrder
+                             sortOrderWithRawValue:monotonicSortOrderValue]];
   [self.questionSorts addObject:sort];
   return self;
 }
 
-- (nonnull instancetype)sortIncludedAnswers:(BVSortOptionAnswers)option
-                                      order:(BVSortOrder)order {
+- (nonnull instancetype)
+sortByAnswersSortOptionValue:(BVAnswersSortOptionValue)answersSortOptionValue
+     monotonicSortOrderValue:
+         (BVMonotonicSortOrderValue)monotonicSortOrderValue {
+
   BVSort *sort = [[BVSort alloc]
-      initWithOptionString:[BVSortOptionAnswersUtil toString:option]
-                     order:order];
+      initWithSortOption:[BVAnswersSortOption
+                             sortOptionWithRawValue:answersSortOptionValue]
+               sortOrder:[BVMonotonicSortOrder
+                             sortOrderWithRawValue:monotonicSortOrderValue]];
   [self.answerSorts addObject:sort];
   return self;
 }
@@ -168,11 +197,13 @@ loadProfile:(nonnull BVConversationsRequest *)request
   [params
       addObject:[BVStringKeyValuePair
                     pairWithKey:@"Limit"
-                          value:[NSString stringWithFormat:@"%i", self.limit]]];
-  [params addObject:[BVStringKeyValuePair
-                        pairWithKey:@"Offset"
-                              value:[NSString
-                                        stringWithFormat:@"%i", self.offset]]];
+                          value:[NSString
+                                    stringWithFormat:@"%i", (int)self.limit]]];
+  [params
+      addObject:[BVStringKeyValuePair
+                    pairWithKey:@"Offset"
+                          value:[NSString
+                                    stringWithFormat:@"%i", (int)self.offset]]];
 
   for (BVFilter *filter in self.filters) {
     [params addObject:[BVStringKeyValuePair
@@ -180,13 +211,9 @@ loadProfile:(nonnull BVConversationsRequest *)request
                                 value:[filter toParameterString]]];
   }
 
-  NSString *acts = [self statisticsToParams:self.authorContentTypeStatistics];
-  if (acts && acts.length > 0) {
-    [params
-        addObject:[BVStringKeyValuePair
-                      pairWithKey:@"Stats"
-                            value:[self statisticsToParams:
-                                            self.authorContentTypeStatistics]]];
+  NSString *stats = [self statisticsToParams:self.authorIncludeTypes];
+  if (stats && stats.length > 0) {
+    [params addObject:[BVStringKeyValuePair pairWithKey:@"Stats" value:stats]];
   }
 
   if (self.includes.count > 0) {
@@ -195,14 +222,13 @@ loadProfile:(nonnull BVConversationsRequest *)request
                                 value:[self includesToParams:self.includes]]];
   }
 
-  for (BVAuthorInclude *include in self.includes) {
-    if (include.limit != nil) {
-      NSString *key = [NSString
-          stringWithFormat:@"Limit_%@",
-                           [BVAuthorContentTypeUtil toString:include.type]];
+  for (BVInclude *include in self.includes) {
+    if (include.includeLimit != nil) {
+      NSString *key =
+          [NSString stringWithFormat:@"Limit_%@", [include toParameterString]];
       BVStringKeyValuePair *pair = [BVStringKeyValuePair
           pairWithKey:key
-                value:[NSString stringWithFormat:@"%@", include.limit]];
+                value:[NSString stringWithFormat:@"%@", include.includeLimit]];
       [params addObject:pair];
     }
   }
@@ -226,11 +252,11 @@ loadProfile:(nonnull BVConversationsRequest *)request
 }
 
 - (nonnull NSString *)includesToParams:
-    (nonnull NSArray<BVAuthorInclude *> *)includes {
+    (nonnull NSArray<BVInclude *> *)includes {
   NSMutableArray *strings = [NSMutableArray array];
 
-  for (BVAuthorInclude *include in includes) {
-    [strings addObject:[include toParamString]];
+  for (BVInclude *include in includes) {
+    [strings addObject:[include toParameterString]];
   }
 
   NSArray<NSString *> *sortedArray = [strings
@@ -240,11 +266,11 @@ loadProfile:(nonnull BVConversationsRequest *)request
 }
 
 - (nonnull NSString *)statisticsToParams:
-    (nonnull NSArray<NSNumber *> *)statistics {
-  NSMutableArray *strings = [NSMutableArray array];
+    (nonnull NSArray<BVAuthorIncludeType *> *)statistics {
+  NSMutableArray<NSString *> *strings = [NSMutableArray array];
 
-  for (NSNumber *stat in statistics) {
-    [strings addObject:[BVAuthorContentTypeUtil toString:[stat intValue]]];
+  for (BVAuthorIncludeType *stat in statistics) {
+    [strings addObject:stat.toIncludeTypeParameterString];
   }
 
   NSArray<NSString *> *sortedArray = [strings
@@ -258,7 +284,7 @@ loadProfile:(nonnull BVConversationsRequest *)request
   NSMutableArray *strings = [NSMutableArray array];
 
   for (BVSort *sort in sorts) {
-    [strings addObject:[sort toString]];
+    [strings addObject:[sort toParameterString]];
   }
 
   NSString *combined = [strings componentsJoinedByString:@","];

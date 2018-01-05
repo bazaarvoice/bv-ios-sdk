@@ -59,12 +59,15 @@ typedef enum {
 
   BVAuthorRequest *request =
       [[BVAuthorRequest alloc] initWithAuthorId:authorId];
-  [request includeStatistics:BVAuthorContentTypeReviews];
-  [request includeStatistics:BVAuthorContentTypeQuestions];
-  [request includeStatistics:BVAuthorContentTypeAnswers];
-  [request includeContent:BVAuthorContentTypeReviews limit:5];
-  [request includeContent:BVAuthorContentTypeQuestions limit:5];
-  [request includeContent:BVAuthorContentTypeAnswers limit:5];
+  [request includeStatistics:BVAuthorIncludeTypeValueAuthorReviews];
+  [request includeStatistics:BVAuthorIncludeTypeValueAuthorQuestions];
+  [request includeStatistics:BVAuthorIncludeTypeValueAuthorAnswers];
+  [request includeAuthorIncludeTypeValue:BVAuthorIncludeTypeValueAuthorReviews
+                                   limit:5];
+  [request includeAuthorIncludeTypeValue:BVAuthorIncludeTypeValueAuthorQuestions
+                                   limit:5];
+  [request includeAuthorIncludeTypeValue:BVAuthorIncludeTypeValueAuthorAnswers
+                                   limit:5];
 
   [request load:^(BVAuthorResponse *_Nonnull response) {
 

@@ -12,7 +12,7 @@
 #import "BVSDKManager.h"
 #import "BVSubmissionErrorResponse.h"
 
-static int const MAX_IMAGE_BYTES = 5 * 1024 * 1024; // BV API max is 5MB
+static NSUInteger const MAX_IMAGE_BYTES = 5 * 1024 * 1024; // BV API max is 5MB
 
 @interface BVUploadablePhoto ()
 

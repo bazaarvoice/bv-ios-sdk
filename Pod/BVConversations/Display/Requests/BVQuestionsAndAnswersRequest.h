@@ -5,14 +5,9 @@
 //  Copyright © 2016 Bazaarvoice. All rights reserved.
 //
 
+#import "BVConversationDisplay.h"
 #import "BVConversationsRequest.h"
-#import "BVFilterOperator.h"
-#import "BVQuestionFilterType.h"
 #import "BVQuestionsAndAnswersResponse.h"
-#import "BVSort.h"
-#import "BVSortOptionAnswers.h"
-#import "BVSortOptionQuestions.h"
-#import <Foundation/Foundation.h>
 
 typedef void (^QuestionsAndAnswersSuccessHandler)(
     BVQuestionsAndAnswersResponse *__nonnull response);
@@ -28,23 +23,28 @@ typedef void (^QuestionsAndAnswersSuccessHandler)(
 @property(nonnull, readonly) NSString *productId;
 
 - (nonnull instancetype)initWithProductId:(nonnull NSString *)productId
-                                    limit:(int)limit
-                                   offset:(int)offset;
+                                    limit:(NSUInteger)limit
+                                   offset:(NSUInteger)offset;
 - (nonnull instancetype)__unavailable init;
 
-- (nonnull instancetype)addSort:(BVSortOptionProducts)option
-                          order:(BVSortOrder)order
-    __deprecated_msg("use sortQuestions and sortAnswers instead");
+- (nonnull instancetype)sortByQuestionsSortOptionValue:
+                            (BVQuestionsSortOptionValue)questionsSortOptionValue
+                               monotonicSortOrderValue:
+                                   (BVMonotonicSortOrderValue)
+                                       monotonicSortOrderValue;
 
-- (nonnull instancetype)addQuestionSort:(BVSortOptionQuestions)option
-                                  order:(BVSortOrder)order;
+- (nonnull instancetype)
+  filterOnQuestionFilterValue:(BVQuestionFilterValue)questionFilterValue
+relationalFilterOperatorValue:
+    (BVRelationalFilterOperatorValue)relationalFilterOperatorValue
+                        value:(nonnull NSString *)value;
 
-- (nonnull instancetype)addFilter:(BVQuestionFilterType)type
-                   filterOperator:(BVFilterOperator)filterOperator
-                            value:(nonnull NSString *)value;
-- (nonnull instancetype)addFilter:(BVQuestionFilterType)type
-                   filterOperator:(BVFilterOperator)filterOperator
-                           values:(nonnull NSArray<NSString *> *)values;
+- (nonnull instancetype)
+  filterOnQuestionFilterValue:(BVQuestionFilterValue)questionFilterValue
+relationalFilterOperatorValue:
+    (BVRelationalFilterOperatorValue)relationalFilterOperatorValue
+                       values:(nonnull NSArray<NSString *> *)values;
+
 - (nonnull instancetype)search:(nonnull NSString *)search;
 
 - (void)load:(nonnull void (^)(

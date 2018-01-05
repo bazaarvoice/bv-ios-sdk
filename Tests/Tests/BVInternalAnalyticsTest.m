@@ -30,8 +30,8 @@
 @interface BVInternalAnalyticsTests : BVBaseStubTestCase {
   XCTestExpectation *impressionExpectation;
   XCTestExpectation *pageviewExpectation;
-  int numberOfExpectedImpressionAnalyticsEvents;
-  int numberOfExpectedPageviewAnalyticsEvents;
+  NSInteger numberOfExpectedImpressionAnalyticsEvents;
+  NSInteger numberOfExpectedPageviewAnalyticsEvents;
 }
 @end
 
@@ -100,7 +100,7 @@
 
 - (void)analyticsImpressionEventCompleted:(NSNotification *)notification {
   NSLog(@"analytics impression event fired in tests: %i",
-        numberOfExpectedImpressionAnalyticsEvents);
+        (int)numberOfExpectedImpressionAnalyticsEvents);
 
   NSError *err = (NSError *)[notification object];
   if (err) {
@@ -115,7 +115,7 @@
 
 - (void)analyticsPageviewEventCompleted:(NSNotification *)notification {
   NSLog(@"analytics pageview event fired in tests: %i",
-        numberOfExpectedPageviewAnalyticsEvents);
+        (int)numberOfExpectedPageviewAnalyticsEvents);
 
   NSError *err = (NSError *)[notification object];
   if (err) {
@@ -205,8 +205,8 @@
 
   BVProductDisplayPageRequest *pdpRequest =
       [[BVProductDisplayPageRequest alloc] initWithProductId:@"test4"];
-  [pdpRequest includeStatistics:PDPContentTypeReviews];
-  [pdpRequest includeStatistics:PDPContentTypeQuestions];
+  [pdpRequest includeStatistics:BVPDPIncludeTypeValuePDPReviews];
+  [pdpRequest includeStatistics:BVPDPIncludeTypeValuePDPQuestions];
   [pdpRequest load:^(BVProductsResponse *__nonnull response) {
     [[BVAnalyticsManager sharedManager] flushQueue];
   }
@@ -251,8 +251,8 @@
   // Should send one product page view and one or impression for a review
   BVProductDisplayPageRequest *pdpRequest =
       [[BVProductDisplayPageRequest alloc] initWithProductId:@"test4"];
-  [pdpRequest includeStatistics:PDPContentTypeReviews];
-  [pdpRequest includeStatistics:PDPContentTypeQuestions];
+  [pdpRequest includeStatistics:BVPDPIncludeTypeValuePDPReviews];
+  [pdpRequest includeStatistics:BVPDPIncludeTypeValuePDPQuestions];
   [pdpRequest load:^(BVProductsResponse *__nonnull response) {
     [[BVAnalyticsManager sharedManager] flushQueue];
   }

@@ -180,7 +180,7 @@
         } else {
           NSMutableArray *indexPaths = [NSMutableArray new];
           NSUInteger inserted = (limit <= items.count) ? limit : items.count;
-          for (int i = 0; i < inserted; i++) {
+          for (NSUInteger i = 0; i < inserted; i++) {
             [indexPaths
                 addObject:[NSIndexPath
                               indexPathForItem:weakSelf.curationsFeedItems

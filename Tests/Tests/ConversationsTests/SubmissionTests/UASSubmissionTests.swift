@@ -2,7 +2,6 @@
 //  UASSubmissionTests.swift
 //  BVSDKTests
 //
-//  Created by Michael Van Milligan on 11/17/17.
 //  Copyright © 2017 Bazaarvoice. All rights reserved.
 //
 

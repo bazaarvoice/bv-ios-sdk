@@ -6,11 +6,7 @@
 //
 
 #import "BVBaseReviewsRequest.h"
-#import "BVFilterOperator.h"
-#import "BVReviewFilterType.h"
 #import "BVReviewsResponse.h"
-#import "BVSort.h"
-#import "BVSortOptionReviews.h"
 #import <Foundation/Foundation.h>
 
 typedef void (^ReviewRequestCompletionHandler)(
@@ -26,8 +22,8 @@ typedef void (^ReviewRequestCompletionHandler)(
 @property(nonnull, readonly) NSString *productId;
 
 - (nonnull instancetype)initWithProductId:(nonnull NSString *)productId
-                                    limit:(int)limit
-                                   offset:(int)offset;
+                                    limit:(NSUInteger)limit
+                                   offset:(NSUInteger)offset;
 - (nonnull instancetype)__unavailable init;
 
 @end
