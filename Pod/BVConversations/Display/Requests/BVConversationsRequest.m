@@ -11,7 +11,6 @@
 #import "BVDiagnosticHelpers.h"
 #import "BVSDKConfiguration.h"
 #import "BVSDKManager.h"
-#import "BVStoreReviewsResponse.h"
 
 @interface BVConversationsRequest ()
 @property(strong, nonatomic)

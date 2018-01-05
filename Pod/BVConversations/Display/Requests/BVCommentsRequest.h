@@ -17,7 +17,9 @@
 
 @interface BVCommentsRequest : BVConversationsRequest
 
-@property(nonnull, readonly) NSString *reviewId;
+@property(nonnull, readonly) NSString *productId;
+@property(nullable, readonly) NSString *reviewId;
+@property(nullable, readonly) NSString *commentId;
 @property(nonatomic, assign, readonly) UInt16 limit;
 @property(nonatomic, assign, readonly) UInt16 offset;
 @property(nonnull, nonatomic, strong, readonly) NSMutableArray<BVSort *> *sorts;
@@ -25,12 +27,13 @@
     NSMutableArray<BVFilter *> *filters;
 @property(nonnull, nonatomic, strong, readonly)
     NSMutableArray<NSString *> *includes;
-@property(nonnull, readonly) NSString *commentId;
 
-- (nonnull instancetype)initWithReviewId:(nonnull NSString *)reviewId
-                                   limit:(UInt16)limit
-                                  offset:(UInt16)offset;
-- (nonnull instancetype)initWithCommentId:(nonnull NSString *)commentId;
+- (nonnull instancetype)initWithProductId:(nonnull NSString *)productId
+                              andReviewId:(nonnull NSString *)reviewId
+                                    limit:(UInt16)limit
+                                   offset:(UInt16)offset;
+- (nonnull instancetype)initWithProductId:(nonnull NSString *)productId
+                             andCommentId:(nonnull NSString *)commentId;
 
 - (nonnull instancetype)__unavailable init;
 
