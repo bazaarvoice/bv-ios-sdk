@@ -13,11 +13,13 @@
 
 @implementation BVCommentsRequest
 
-- (nonnull instancetype)initWithReviewId:(nonnull NSString *)reviewId
-                                   limit:(UInt16)limit
-                                  offset:(UInt16)offset {
+- (nonnull instancetype)initWithProductId:(nonnull NSString *)productId
+                              andReviewId:(nonnull NSString *)reviewId
+                                    limit:(UInt16)limit
+                                   offset:(UInt16)offset {
   self = [super init];
   if (self) {
+    _productId = productId;
     _reviewId = reviewId;
     _limit = limit;
     _offset = offset;
@@ -29,9 +31,11 @@
   return self;
 }
 
-- (nonnull instancetype)initWithCommentId:(nonnull NSString *)commentId {
+- (nonnull instancetype)initWithProductId:(nonnull NSString *)productId
+                             andCommentId:(nonnull NSString *)commentId {
   self = [super init];
   if (self) {
+    _productId = productId;
     _commentId = commentId;
     _filters = [NSMutableArray array];
     _sorts = [NSMutableArray array];
@@ -96,15 +100,32 @@ loadComments:(nonnull BVConversationsRequest *)request
 }
 
 - (nonnull NSMutableArray *)createParams {
+
   NSMutableArray<BVStringKeyValuePair *> *params = [super createParams];
 
-  // There are two ways to make a request: 1) with a review Id to get a bunch
-  // of comments or 2) just get single review.
+  // There are two ways to make a request with a product identifier: 1) with a
+  // review identifier to get a bunch of comments or 2) with a comment
+  // identifier to just get single review.
+  NSAssert(self.productId, @"You must supply a valid product identifier in the "
+                           @"supplied initiaizers.");
+
+  NSAssert(self.commentId || self.reviewId, @"You must also supply a valid "
+                                            @"comment or review identifier in "
+                                            @"the supplied initiaizers.");
+
+  if (self.productId) {
+    [params
+        addObject:[BVStringKeyValuePair
+                      pairWithKey:@"Filter"
+                            value:[NSString stringWithFormat:@"ProductId:%@",
+                                                             self.productId]]];
+  }
+
   if (self.reviewId) {
     [params
         addObject:[BVStringKeyValuePair
                       pairWithKey:@"Filter"
-                            value:[NSString stringWithFormat:@"reviewId:%@",
+                            value:[NSString stringWithFormat:@"ReviewId:%@",
                                                              self.reviewId]]];
     [params addObject:[BVStringKeyValuePair
                           pairWithKey:@"Limit"
@@ -114,8 +135,9 @@ loadComments:(nonnull BVConversationsRequest *)request
                           pairWithKey:@"Offset"
                                 value:[NSString stringWithFormat:@"%i",
                                                                  self.offset]]];
+  }
 
-  } else if (self.commentId) {
+  if (self.commentId) {
     BVFilter *commentIdFilter =
         [[BVFilter alloc] initWithType:BVProductFilterTypeId
                         filterOperator:BVFilterOperatorEqualTo
@@ -123,10 +145,6 @@ loadComments:(nonnull BVConversationsRequest *)request
     [params addObject:[BVStringKeyValuePair
                           pairWithKey:@"Filter"
                                 value:[commentIdFilter toParameterString]]];
-
-  } else {
-    NSAssert(NO, @"You must supply a valid comment or review ID in the "
-                 @"supplied initiaizers.");
   }
 
   for (BVFilter *filter in self.filters) {
