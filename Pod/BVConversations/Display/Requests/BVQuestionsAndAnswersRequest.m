@@ -8,12 +8,15 @@
 #import "BVQuestionsAndAnswersRequest.h"
 #import "BVCommaUtil.h"
 #import "BVCommon.h"
-#import "BVFilter.h"
+#import "BVMonotonicSortOrder.h"
+#import "BVQuestionFilterType.h"
+#import "BVQuestionsSortOption.h"
+#import "BVRelationalFilterOperator.h"
 
 @interface BVQuestionsAndAnswersRequest ()
 
-@property int limit;
-@property int offset;
+@property NSUInteger limit;
+@property NSUInteger offset;
 @property(nullable) NSString *search;
 @property(nonnull) NSMutableArray<BVFilter *> *filters;
 @property(nonnull) NSMutableArray<BVSort *> *sorts;
@@ -23,57 +26,85 @@
 @implementation BVQuestionsAndAnswersRequest
 
 - (nonnull instancetype)initWithProductId:(nonnull NSString *)productId
-                                    limit:(int)limit
-                                   offset:(int)offset {
+                                    limit:(NSUInteger)limit
+                                   offset:(NSUInteger)offset {
   self = [super init];
   if (self) {
     _productId = [BVCommaUtil escape:productId];
-    self.limit = (int)limit;
-    self.offset = (int)offset;
+    self.limit = limit;
+    self.offset = offset;
 
     self.filters = [NSMutableArray array];
     self.sorts = [NSMutableArray array];
 
     // filter the request to the given productId
-    BVFilter *filter = [[BVFilter alloc] initWithString:@"ProductId"
-                                         filterOperator:BVFilterOperatorEqualTo
-                                                 values:@[ self.productId ]];
+    BVFilter *filter = [[BVFilter alloc]
+        initWithFilterType:
+            [BVQuestionFilterType
+                filterTypeWithRawValue:BVQuestionFilterValueQuestionProductId]
+            filterOperator:[BVRelationalFilterOperator
+                               filterOperatorWithRawValue:
+                                   BVRelationalFilterOperatorValueEqualTo]
+                    values:@[ self.productId ]];
     [self.filters addObject:filter];
   }
   return self;
 }
 
-- (nonnull instancetype)addSort:(BVSortOptionProducts)option
-                          order:(BVSortOrder)order {
-  LOG_DEPRECATED_MESSAGE(@"addSort")
-  BVSort *sort = [[BVSort alloc] initWithOption:option order:order];
-  [self.sorts addObject:sort];
-  return self;
-}
-
-- (nonnull instancetype)addQuestionSort:(BVSortOptionQuestions)option
-                                  order:(BVSortOrder)order {
+- (nonnull instancetype)sortByQuestionsSortOptionValue:
+                            (BVQuestionsSortOptionValue)questionsSortOptionValue
+                               monotonicSortOrderValue:
+                                   (BVMonotonicSortOrderValue)
+                                       monotonicSortOrderValue {
   BVSort *sort = [[BVSort alloc]
-      initWithOptionString:[BVSortOptionQuestionsUtil toString:option]
-                     order:order];
+      initWithSortOption:[BVQuestionsSortOption
+                             sortOptionWithRawValue:questionsSortOptionValue]
+               sortOrder:[BVMonotonicSortOrder
+                             sortOrderWithRawValue:monotonicSortOrderValue]];
   [self.sorts addObject:sort];
   return self;
 }
 
-- (nonnull instancetype)addFilter:(BVQuestionFilterType)type
-                   filterOperator:(BVFilterOperator)filterOperator
-                            value:(nonnull NSString *)value {
-  [self addFilter:type filterOperator:filterOperator values:@[ value ]];
+- (nonnull instancetype)
+  filterOnQuestionFilterValue:(BVQuestionFilterValue)questionFilterValue
+relationalFilterOperatorValue:
+    (BVRelationalFilterOperatorValue)relationalFilterOperatorValue
+                        value:(nonnull NSString *)value {
+  [self filterOnQuestionFilterValue:questionFilterValue
+      relationalFilterOperatorValue:relationalFilterOperatorValue
+                             values:@[ value ]];
   return self;
 }
 
-- (nonnull instancetype)addFilter:(BVQuestionFilterType)type
-                   filterOperator:(BVFilterOperator)filterOperator
-                           values:(nonnull NSArray<NSString *> *)values {
+- (nonnull instancetype)
+  filterOnQuestionFilterValue:(BVQuestionFilterValue)questionFilterValue
+relationalFilterOperatorValue:
+    (BVRelationalFilterOperatorValue)relationalFilterOperatorValue
+                       values:(nonnull NSArray<NSString *> *)values {
+
+  BVQuestionFilterType *questionFilterType =
+      [BVQuestionFilterType filterTypeWithRawValue:questionFilterValue];
+
+  BVRelationalFilterOperator *relationalFilterOperator =
+      [BVRelationalFilterOperator
+          filterOperatorWithRawValue:relationalFilterOperatorValue];
+
+  [self addQuestionFilterType:questionFilterType
+      relationalFilterOperator:relationalFilterOperator
+                        values:values];
+
+  return self;
+}
+
+- (nonnull instancetype)
+   addQuestionFilterType:(nonnull BVQuestionFilterType *)questionFilterType
+relationalFilterOperator:
+    (nonnull BVRelationalFilterOperator *)relationalFilterOperator
+                  values:(nonnull NSArray<NSString *> *)values {
   BVFilter *filter =
-      [[BVFilter alloc] initWithString:[BVQuestionFilterTypeUtil toString:type]
-                        filterOperator:filterOperator
-                                values:values];
+      [[BVFilter alloc] initWithFilterType:questionFilterType
+                            filterOperator:relationalFilterOperator
+                                    values:values];
   [self.filters addObject:filter];
   return self;
 }
@@ -160,11 +191,13 @@ loadQuestions:(nonnull BVConversationsRequest *)request
   [params
       addObject:[BVStringKeyValuePair
                     pairWithKey:@"Limit"
-                          value:[NSString stringWithFormat:@"%i", self.limit]]];
-  [params addObject:[BVStringKeyValuePair
-                        pairWithKey:@"Offset"
-                              value:[NSString
-                                        stringWithFormat:@"%i", self.offset]]];
+                          value:[NSString
+                                    stringWithFormat:@"%i", (int)self.limit]]];
+  [params
+      addObject:[BVStringKeyValuePair
+                    pairWithKey:@"Offset"
+                          value:[NSString
+                                    stringWithFormat:@"%i", (int)self.offset]]];
 
   for (BVFilter *filter in self.filters) {
     [params addObject:[BVStringKeyValuePair
@@ -175,7 +208,7 @@ loadQuestions:(nonnull BVConversationsRequest *)request
   if ([self.sorts count] > 0) {
     NSMutableArray<NSString *> *sortsAsStrings = [NSMutableArray array];
     for (BVSort *sort in self.sorts) {
-      [sortsAsStrings addObject:[sort toString]];
+      [sortsAsStrings addObject:[sort toParameterString]];
     }
     NSString *allTogetherNow = [sortsAsStrings componentsJoinedByString:@","];
     [params addObject:[BVStringKeyValuePair pairWithKey:@"Sort"

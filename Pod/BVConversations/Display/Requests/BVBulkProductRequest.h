@@ -6,18 +6,23 @@
 //
 
 #import "BVBaseProductRequest.h"
-#import "BVProductFilterType.h"
-#import <Foundation/Foundation.h>
+#import "BVConversationDisplay.h"
 
 @interface BVBulkProductRequest : BVBaseSortableProductRequest
 
-- (nonnull instancetype)addProductSort:(BVSortOptionProducts)option
-                                 order:(BVSortOrder)order;
-- (nonnull instancetype)addFilter:(BVProductFilterType)type
-                   filterOperator:(BVFilterOperator)filterOperator
-                            value:(nonnull NSString *)value;
-- (nonnull instancetype)addFilter:(BVProductFilterType)type
-                   filterOperator:(BVFilterOperator)filterOperator
-                           values:(nonnull NSArray<NSString *> *)values;
+- (nonnull instancetype)
+sortByProductsSortOptionValue:(BVProductsSortOptionValue)productsSortOptionValue
+      monotonicSortOrderValue:
+          (BVMonotonicSortOrderValue)monotonicSortOrderValue;
+- (nonnull instancetype)
+   filterOnProductFilterValue:(BVProductFilterValue)productFilterValue
+relationalFilterOperatorValue:
+    (BVRelationalFilterOperatorValue)relationalFilterOperatorValue
+                        value:(nonnull NSString *)value;
+- (nonnull instancetype)
+   filterOnProductFilterValue:(BVProductFilterValue)productFilterValue
+relationalFilterOperatorValue:
+    (BVRelationalFilterOperatorValue)relationalFilterOperatorValue
+                       values:(nonnull NSArray<NSString *> *)values;
 
 @end

@@ -8,16 +8,22 @@
 
 #import "BVBaseReviewsRequest.h"
 #import "BVAnalyticsManager.h"
+#import "BVBaseReviewsRequest_Private.h"
 #import "BVCommaUtil.h"
 #import "BVCommon.h"
 #import "BVFilter.h"
+#import "BVMonotonicSortOrder.h"
+#import "BVRelationalFilterOperator.h"
+#import "BVReviewFilterType.h"
+#import "BVReviewIncludeType.h"
+#import "BVReviewsSortOption.h"
 #import "BVSort.h"
 
 @implementation BVBaseReviewsRequest
 
 - (nonnull instancetype)initWithID:(nonnull NSString *)ID
-                             limit:(int)limit
-                            offset:(int)offset {
+                             limit:(NSUInteger)limit
+                            offset:(NSUInteger)offset {
   if (self = [super init]) {
     [self initDefaultProps:ID];
     _limit = limit;
@@ -34,9 +40,13 @@
   _includes = [NSMutableArray array];
 
   // filter the request to the given productId
-  BVFilter *filter = [[BVFilter alloc] initWithString:@"ProductId"
-                                       filterOperator:BVFilterOperatorEqualTo
-                                               values:@[ _ID ]];
+  BVFilter *filter = [[BVFilter alloc]
+      initWithFilterType:[BVReviewFilterType filterTypeWithRawValue:
+                                                 BVReviewFilterValueProductId]
+          filterOperator:[BVRelationalFilterOperator
+                             filterOperatorWithRawValue:
+                                 BVRelationalFilterOperatorValueEqualTo]
+                  values:@[ _ID ]];
   [self.filters addObject:filter];
 }
 
@@ -48,11 +58,13 @@
   [params
       addObject:[BVStringKeyValuePair
                     pairWithKey:@"Limit"
-                          value:[NSString stringWithFormat:@"%i", self.limit]]];
-  [params addObject:[BVStringKeyValuePair
-                        pairWithKey:@"Offset"
-                              value:[NSString
-                                        stringWithFormat:@"%i", self.offset]]];
+                          value:[NSString
+                                    stringWithFormat:@"%i", (int)self.limit]]];
+  [params
+      addObject:[BVStringKeyValuePair
+                    pairWithKey:@"Offset"
+                          value:[NSString
+                                    stringWithFormat:@"%i", (int)self.offset]]];
 
   for (BVFilter *filter in self.filters) {
     [params addObject:[BVStringKeyValuePair
@@ -60,15 +72,16 @@
                                 value:[filter toParameterString]]];
   }
 
-  for (NSString *include in self.includes) {
-    [params
-        addObject:[BVStringKeyValuePair pairWithKey:@"Include" value:include]];
+  for (BVIncludeType *include in self.includes) {
+    [params addObject:[BVStringKeyValuePair
+                          pairWithKey:@"Include"
+                                value:[include toIncludeTypeParameterString]]];
   }
 
   if ([self.sorts count] > 0) {
     NSMutableArray<NSString *> *sortsAsStrings = [NSMutableArray array];
     for (BVSort *sort in self.sorts) {
-      [sortsAsStrings addObject:[sort toString]];
+      [sortsAsStrings addObject:[sort toParameterString]];
     }
     NSString *allTogetherNow = [sortsAsStrings componentsJoinedByString:@","];
     [params addObject:[BVStringKeyValuePair pairWithKey:@"Sort"
@@ -88,10 +101,13 @@
   return self;
 }
 
-- (nonnull instancetype)addInclude:(BVReviewIncludeType)include {
-  [self.includes addObject:[BVReviewIncludeTypeUtil toString:include]];
+- (nonnull instancetype)includeReviewIncludeTypeValue:
+    (BVReviewIncludeTypeValue)reviewIncludeTypeValue {
 
-  if (include == BVReviewIncludeTypeProducts) {
+  [self.includes addObject:[BVReviewIncludeType
+                               includeTypeWithRawValue:reviewIncludeTypeValue]];
+
+  if (reviewIncludeTypeValue == BVReviewIncludeTypeValueReviewProducts) {
     [self addCustomDisplayParameter:@"Stats"
                           withValue:@"Reviews"]; // Always include stats
                                                  // when requesting products
@@ -101,37 +117,42 @@
   return self;
 }
 
-- (nonnull instancetype)addSort:(BVSortOptionProducts)option
-                          order:(BVSortOrder)order {
-  LOG_DEPRECATED_MESSAGE(@"addSort")
-  BVSort *sort = [[BVSort alloc] initWithOption:option order:order];
-  [self.sorts addObject:sort];
-  return self;
-}
-
-- (nonnull instancetype)addReviewSort:(BVSortOptionReviews)option
-                                order:(BVSortOrder)order {
+- (nonnull instancetype)
+sortByReviewsSortOptionValue:(BVReviewsSortOptionValue)reviewsSortOptionValue
+     monotonicSortOrderValue:
+         (BVMonotonicSortOrderValue)monotonicSortOrderValue {
   BVSort *sort = [[BVSort alloc]
-      initWithOptionString:[BVSortOptionReviewUtil toString:option]
-                     order:order];
+      initWithSortOption:[BVReviewsSortOption
+                             sortOptionWithRawValue:reviewsSortOptionValue]
+               sortOrder:[BVMonotonicSortOrder
+                             sortOrderWithRawValue:monotonicSortOrderValue]];
   [self.sorts addObject:sort];
   return self;
 }
 
-- (nonnull instancetype)addFilter:(BVReviewFilterType)type
-                   filterOperator:(BVFilterOperator)filterOperator
-                            value:(nonnull NSString *)value {
-  [self addFilter:type filterOperator:filterOperator values:@[ value ]];
+- (nonnull instancetype)
+    filterOnReviewFilterValue:(BVReviewFilterValue)reviewFilterValue
+relationalFilterOperatorValue:
+    (BVRelationalFilterOperatorValue)relationalFilterOperatorValue
+                        value:(nonnull NSString *)value {
+  [self filterOnReviewFilterValue:reviewFilterValue
+      relationalFilterOperatorValue:relationalFilterOperatorValue
+                             values:@[ value ]];
   return self;
 }
 
-- (nonnull instancetype)addFilter:(BVReviewFilterType)type
-                   filterOperator:(BVFilterOperator)filterOperator
-                           values:(nonnull NSArray<NSString *> *)values {
-  BVFilter *filter =
-      [[BVFilter alloc] initWithString:[BVReviewFilterTypeUtil toString:type]
-                        filterOperator:filterOperator
-                                values:values];
+- (nonnull instancetype)
+    filterOnReviewFilterValue:(BVReviewFilterValue)reviewFilterValue
+relationalFilterOperatorValue:
+    (BVRelationalFilterOperatorValue)relationalFilterOperatorValue
+                       values:(nonnull NSArray<NSString *> *)values {
+  BVFilter *filter = [[BVFilter alloc]
+      initWithFilterType:[BVReviewFilterType
+                             filterTypeWithRawValue:reviewFilterValue]
+          filterOperator:
+              [BVRelationalFilterOperator
+                  filterOperatorWithRawValue:relationalFilterOperatorValue]
+                  values:values];
   [self.filters addObject:filter];
   return self;
 }

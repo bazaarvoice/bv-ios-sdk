@@ -22,7 +22,7 @@
       NSNumber *count = value[@"Count"];
       NSNumber *valueNum = value[@"RatingValue"];
 
-      int valueInt = [valueNum intValue];
+      NSUInteger valueInt = [valueNum unsignedIntegerValue];
       switch (valueInt) {
       case 1:
         self.oneStarCount = count;

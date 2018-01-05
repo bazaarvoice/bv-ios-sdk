@@ -6,54 +6,43 @@
 //
 
 #import "BVBulkProductResponse.h"
+#import "BVConversationDisplay.h"
 #import "BVConversationsRequest.h"
-#import "BVFilter.h"
-#import "BVFilterOperator.h"
-#import "BVQuestionFilterType.h"
-#import "BVReviewFilterType.h"
-#import "BVSort.h"
-#import "BVSortOptionAnswers.h"
-#import "BVSortOptionQuestions.h"
-#import "BVSortOptionReviews.h"
-#import "PDPInclude.h"
-#import <Foundation/Foundation.h>
 
 typedef void (^ProductSearchRequestCompletionHandler)(
     BVBulkProductResponse *__nonnull response);
 
 @interface BVBaseProductRequest : BVConversationsRequest
 
-/// Type of social content to inlcude with the product request. NOTE:
+/// Type of social content to include with the product request. NOTE:
 /// PDPContentType is only supported for statistics, no for Includes.
-- (nonnull instancetype)includeContent:(PDPContentType)contentType
-                                 limit:(int)limit;
+- (nonnull instancetype)includePDPIncludeTypeValue:
+                            (BVPDPIncludeTypeValue)pdpIncludeTypeValue
+                                             limit:(NSUInteger)limit;
 
 // Includes statistics for the included content type.
-- (nonnull instancetype)includeStatistics:(PDPContentType)contentType;
+- (nonnull instancetype)includeStatistics:
+    (BVPDPIncludeTypeValue)pdpIncludeTypeValue;
 
 /// Inclusive filter to add for included reviews.
-- (nonnull instancetype)addIncludedReviewsFilter:(BVReviewFilterType)type
-                                  filterOperator:
-                                      (BVFilterOperator)filterOperator
-                                           value:(nonnull NSString *)value;
+- (nonnull instancetype)
+    filterOnReviewFilterValue:(BVReviewFilterValue)reviewFilterValue
+relationalFilterOperatorValue:
+    (BVRelationalFilterOperatorValue)relationalFilterOperatorValue
+                        value:(nonnull NSString *)value;
 
 /// Inclusive filter to add for included questions.
-- (nonnull instancetype)addIncludedQuestionsFilter:(BVQuestionFilterType)type
-                                    filterOperator:
-                                        (BVFilterOperator)filterOperator
-                                             value:(nonnull NSString *)value;
-
-/// Asynchronous call to fetch data for this request.
-
-- (nonnull NSString *)statisticsToParams:
-    (nonnull NSArray<NSNumber *> *)statistics;
-- (nonnull NSString *)includesToParams:
-    (nonnull NSArray<PDPInclude *> *)includes;
+- (nonnull instancetype)
+  filterOnQuestionFilterValue:(BVQuestionFilterValue)questionFilterValue
+relationalFilterOperatorValue:
+    (BVRelationalFilterOperatorValue)relationalFilterOperatorValue
+                        value:(nonnull NSString *)value;
 
 @end
 
 @interface BVBaseProductsRequest : BVBaseProductRequest
 
+/// Asynchronous call to fetch data for this request.
 - (void)load:(nonnull ProductSearchRequestCompletionHandler)success
      failure:(nonnull ConversationsFailureHandler)failure;
 
@@ -63,16 +52,15 @@ typedef void (^ProductSearchRequestCompletionHandler)(
 
 /// When adding reviews to include, you can add a sort parameter on the included
 /// reviews.
-- (nonnull instancetype)sortIncludedReviews:(BVSortOptionReviews)option
-                                      order:(BVSortOrder)order;
+- (nonnull instancetype)
+sortByReviewsSortOptionValue:(BVReviewsSortOptionValue)reviewsSortOptionValue
+     monotonicSortOrderValue:(BVMonotonicSortOrderValue)monotonicSortOrderValue;
 /// When adding questions to include, you can add a sort parameter on the
 /// included questions.
-- (nonnull instancetype)sortIncludedQuestions:(BVSortOptionQuestions)option
-                                        order:(BVSortOrder)order;
-/// When adding answers to include, you can add a sort parameter on the included
-/// answer.
-- (nonnull instancetype)sortIncludedAnswers:(BVSortOptionAnswers)option
-                                      order:(BVSortOrder)order
-    __deprecated_msg("Including answers is not supported on product calls.");
+- (nonnull instancetype)sortByQuestionsSortOptionValue:
+                            (BVQuestionsSortOptionValue)questionsSortOptionValue
+                               monotonicSortOrderValue:
+                                   (BVMonotonicSortOrderValue)
+                                       monotonicSortOrderValue;
 
 @end

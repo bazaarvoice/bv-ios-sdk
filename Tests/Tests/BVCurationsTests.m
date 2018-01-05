@@ -121,7 +121,7 @@
             feedItems,
             @"ERROR: feeItems should not be nil in curations api response.");
 
-        int locationCount = 0;
+        NSInteger locationCount = 0;
         for (BVCurationsFeedItem *feedItem in feedItems) {
           if (feedItem.coordinates != nil &&
               feedItem.coordinates.latitude != nil &&

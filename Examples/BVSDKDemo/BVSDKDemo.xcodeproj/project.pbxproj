@@ -646,17 +646,9 @@
 		736D4CD41CDED0C40095EE6B /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				736D4CD51CDED0C40095EE6B /* Curations Feed */,
 				736D4CDE1CDED0C40095EE6B /* Lightbox Demo */,
 			);
 			path = "View Controllers";
-			sourceTree = "<group>";
-		};
-		736D4CD51CDED0C40095EE6B /* Curations Feed */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "Curations Feed";
 			sourceTree = "<group>";
 		};
 		736D4CDE1CDED0C40095EE6B /* Lightbox Demo */ = {

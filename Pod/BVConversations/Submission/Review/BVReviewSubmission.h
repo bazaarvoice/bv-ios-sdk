@@ -80,14 +80,14 @@ typedef void (^ReviewSubmissionCompletion)(
 - (void)addContextDataValueBool:(nonnull NSString *)contextDataValueName
                           value:(bool)value;
 - (void)addRatingQuestion:(nonnull NSString *)ratingQuestionName
-                    value:(int)value;
+                    value:(NSInteger)value;
 - (void)addRatingSlider:(nonnull NSString *)ratingQuestionName
                   value:(nonnull NSString *)value;
 - (void)addPredefinedTagDimension:(nonnull NSString *)tagQuestionId
                             tagId:(nonnull NSString *)tagId
                             value:(nonnull NSString *)value;
 - (void)addFreeformTagDimension:(nonnull NSString *)tagQuestionId
-                      tagNumber:(int)tagNumber
+                      tagNumber:(NSInteger)tagNumber
                           value:(nonnull NSString *)value;
 - (nonnull NSString *)getPasskey;
 

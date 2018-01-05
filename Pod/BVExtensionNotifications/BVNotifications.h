@@ -14,9 +14,6 @@
 #import "BVLogger.h"
 #import "BVSDKConstants.h"
 
-// BVAnalytics
-#import "BVAnalyticsManager.h"
-
 // BVNotifications
 #import "BVNotificationProperties.h"
 #import "BVNotificationsAnalyticsHelper.h"

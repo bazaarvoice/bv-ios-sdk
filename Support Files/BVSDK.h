@@ -17,7 +17,6 @@ FOUNDATION_EXPORT const unsigned char BVSDKVersionString[];
 // using statements like #import <BVSDK/PublicHeader.h>
 
 // Common
-#import <BVSDK/BVCommaUtil.h>
 #import <BVSDK/BVDiagnosticHelpers.h>
 #import <BVSDK/BVViewsHelper.h>
 
@@ -45,10 +44,33 @@ FOUNDATION_EXPORT const unsigned char BVSDKVersionString[];
 #import <BVSDK/BVBaseAnalyticsHelper.h>
 
 // Conversations
+#import <BVSDK/BVAnswersSortOptionValue.h>
+#import <BVSDK/BVAuthorIncludeTypeValue.h>
+#import <BVSDK/BVBulkRatingFilterValue.h>
+#import <BVSDK/BVBulkRatingIncludeTypeValue.h>
+#import <BVSDK/BVCommentFilterValue.h>
+#import <BVSDK/BVCommentIncludeTypeValue.h>
+#import <BVSDK/BVCommentsSortOptionValue.h>
+#import <BVSDK/BVConversationDisplay.h>
+#import <BVSDK/BVFilterOperatorValues.h>
+#import <BVSDK/BVFilterTypeValues.h>
+#import <BVSDK/BVIncludeTypeValues.h>
+#import <BVSDK/BVMonotonicSortOrderValue.h>
+#import <BVSDK/BVPDPIncludeTypeValue.h>
+#import <BVSDK/BVProductFilterValue.h>
+#import <BVSDK/BVProductsSortOptionValue.h>
+#import <BVSDK/BVQuestionFilterValue.h>
+#import <BVSDK/BVQuestionsSortOptionValue.h>
+#import <BVSDK/BVReviewFilterValue.h>
+#import <BVSDK/BVReviewIncludeTypeValue.h>
+#import <BVSDK/BVReviewsSortOptionValue.h>
+#import <BVSDK/BVSortOptionValues.h>
+#import <BVSDK/BVSortOrderValues.h>
+#import <BVSDK/BVStoreIncludeTypeValue.h>
+
 #import <BVSDK/BVAuthor.h>
 #import <BVSDK/BVConversationsErrorResponse.h>
 #import <BVSDK/BVConversationsInclude.h>
-#import <BVSDK/BVFilter.h>
 #import <BVSDK/BVFormField.h>
 #import <BVSDK/BVFormFieldOptions.h>
 #import <BVSDK/BVProduct.h>
@@ -56,9 +78,7 @@ FOUNDATION_EXPORT const unsigned char BVSDKVersionString[];
 
 #import <BVSDK/BVConversationsError.h>
 #import <BVSDK/BVConversationsErrorResponse.h>
-#import <BVSDK/BVConversationsInclude.h>
 #import <BVSDK/BVErrorCode.h>
-#import <BVSDK/BVFilter.h>
 #import <BVSDK/BVFormField.h>
 #import <BVSDK/BVFormFieldOptions.h>
 #import <BVSDK/BVModelUtil.h>
@@ -77,7 +97,6 @@ FOUNDATION_EXPORT const unsigned char BVSDKVersionString[];
 #import <BVSDK/BVConversationsRequest.h>
 #import <BVSDK/BVUploadableStorePhoto.h>
 
-#import <BVSDK/BVBulkRatingsFilterType.h>
 #import <BVSDK/BVBulkRatingsRequest.h>
 #import <BVSDK/BVBulkStoreItemsRequest.h>
 #import <BVSDK/BVProductDisplayPageRequest.h>
@@ -94,7 +113,6 @@ FOUNDATION_EXPORT const unsigned char BVSDKVersionString[];
 #import <BVSDK/BVStoreReviewsRequest.h>
 #import <BVSDK/BVUploadablePhoto.h>
 
-#import <BVSDK/BVAuthorInclude.h>
 #import <BVSDK/BVAuthorRequest.h>
 #import <BVSDK/BVBaseProductRequest.h>
 #import <BVSDK/BVBaseReviewsRequest.h>
@@ -151,4 +169,3 @@ FOUNDATION_EXPORT const unsigned char BVSDKVersionString[];
 #import <BVSDK/BVProductReview.h>
 #import <BVSDK/BVRecommendations.h>
 #import <BVSDK/BVRecsAnalyticsHelper.h>
-#import <BVSDK/BVShopperProfileRequestCache.h>

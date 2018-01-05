@@ -87,7 +87,7 @@
                                                   error:&errorJSON];
 
             if (!errorJSON) {
-              int status = [self getStatusCodeFromResponse:responseDict];
+              NSInteger status = [self getStatusCodeFromResponse:responseDict];
               if (status < 299) {
                 [[BVLogger sharedLogger]
                     verbose:[NSString
@@ -156,7 +156,7 @@
 }
 
 // Response code may be in either 'status' or 'code' as an integer
-- (int)getStatusCodeFromResponse:(NSDictionary *)response {
+- (NSInteger)getStatusCodeFromResponse:(NSDictionary *)response {
   long status = 200; // presume success unless we can dig out the exact failure
 
   if ([response objectForKey:@"code"] != nil &&
@@ -171,7 +171,7 @@
     status = [[response objectForKey:@"status"] integerValue];
   }
 
-  return (int)status;
+  return status;
 }
 
 - (NSString *)getErrorStringFromResponse:(NSDictionary *)response {

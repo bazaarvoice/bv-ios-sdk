@@ -8,9 +8,9 @@
 import UIKit
 
 class StatisticTableViewCell: UITableViewCell {
-
-    @IBOutlet weak var statTypeLabel: UILabel!
-    
-    @IBOutlet weak var statValueLabel: UILabel!
-    
+  
+  @IBOutlet weak var statTypeLabel: UILabel!
+  
+  @IBOutlet weak var statValueLabel: UILabel!
+  
 }

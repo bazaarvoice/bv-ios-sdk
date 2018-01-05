@@ -32,7 +32,7 @@
 @property(nullable) NSString *reviewText;
 @property(nullable) NSString *userNickname;
 @property(nullable) NSString *title;
-@property int rating;
+@property NSUInteger rating;
 
 @property(nullable) BVProduct *product;
 @property(nullable) TagDimensions tagDimensions;

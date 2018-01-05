@@ -78,9 +78,9 @@
 
 /// https://developer.bazaarvoice.com/apis/conversations/tutorials/field_types#rating-question---normal
 - (void)addRatingQuestion:(nonnull NSString *)ratingQuestionName
-                    value:(int)value {
+                    value:(NSInteger)value {
   NSString *key = [NSString stringWithFormat:@"rating_%@", ratingQuestionName];
-  NSString *valueAsString = [NSString stringWithFormat:@"%i", value];
+  NSString *valueAsString = [NSString stringWithFormat:@"%i", (int)value];
   self.ratingQuestions[key] = valueAsString;
 }
 
@@ -102,10 +102,10 @@
 
 /// https://developer.bazaarvoice.com/apis/conversations/tutorials/field_types#tags---tag-dimensions
 - (void)addFreeformTagDimension:(nonnull NSString *)tagQuestionId
-                      tagNumber:(int)tagNumber
+                      tagNumber:(NSInteger)tagNumber
                           value:(nonnull NSString *)value {
   NSString *key =
-      [NSString stringWithFormat:@"tag_%@_%i", tagQuestionId, tagNumber];
+      [NSString stringWithFormat:@"tag_%@_%i", tagQuestionId, (int)tagNumber];
   self.freeformTags[key] = value;
 }
 
@@ -373,29 +373,29 @@ createSubmissionParameters:(BVSubmissionAction)action
   parameters[@"userid"] = self.userId;
   parameters[@"userlocation"] = self.userLocation;
 
-  int photoIndex = 0;
+  NSUInteger photoIndex = 0;
   for (NSString *url in photoUrls) {
-    NSString *key = [NSString stringWithFormat:@"photourl_%i", photoIndex];
+    NSString *key = [NSString stringWithFormat:@"photourl_%i", (int)photoIndex];
     parameters[key] = url;
     photoIndex += 1;
   }
 
-  int captionIndex = 0;
+  NSUInteger captionIndex = 0;
   for (NSString *caption in photoCaptions) {
     NSString *key =
-        [NSString stringWithFormat:@"photocaption_%i", captionIndex];
+        [NSString stringWithFormat:@"photocaption_%i", (int)captionIndex];
     parameters[key] = caption;
     captionIndex += 1;
   }
 
-  int videoIndex = 1;
+  NSUInteger videoIndex = 1;
   for (BVUploadableYouTubeVideo *video in self.videos) {
-    NSString *key = [NSString stringWithFormat:@"VideoUrl_%i", videoIndex];
+    NSString *key = [NSString stringWithFormat:@"VideoUrl_%i", (int)videoIndex];
     parameters[key] = video.videoURL;
 
     if (video.videoCaption) {
       NSString *key =
-          [NSString stringWithFormat:@"VideoCaption_%i", videoIndex];
+          [NSString stringWithFormat:@"VideoCaption_%i", (int)videoIndex];
       parameters[key] = video.videoCaption;
     }
 
