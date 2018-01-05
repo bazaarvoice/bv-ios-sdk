@@ -42,7 +42,7 @@
 }
 
 - (void)addStubWithResultFile:(NSString *)resultFile
-                   statusCode:(int)httpStatus
+                   statusCode:(NSInteger)httpStatus
                   withHeaders:(NSDictionary *)httpHeaders {
 
   [OHHTTPStubs stubRequestsPassingTest:^BOOL(NSURLRequest *request) {
@@ -52,7 +52,7 @@
         // return normal user profile from /users API
         return [[OHHTTPStubsResponse
             responseWithFileAtPath:OHPathForFile(resultFile, self.class)
-                        statusCode:httpStatus
+                        statusCode:(int)httpStatus
                            headers:httpHeaders]
             responseTime:OHHTTPStubsDownloadSpeedWifi];
       }];

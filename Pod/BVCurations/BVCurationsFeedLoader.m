@@ -68,10 +68,10 @@
             // check response body status code first. Curations API will return
             // a 200 response on failures, but put the HTTP status in the "code"
             // value.
-            int status = 200;
+            NSInteger status = 200;
 
             if ([responseDict objectForKey:@"code"] != nil) {
-              status = (int)[[responseDict objectForKey:@"code"] integerValue];
+              status = [[responseDict objectForKey:@"code"] integerValue];
             }
 
             if (status < 300) {

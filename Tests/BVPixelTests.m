@@ -50,8 +50,8 @@
 @interface BVPixelTests : BVBaseStubTestCase {
   XCTestExpectation *impressionExpectation;
   XCTestExpectation *pageviewExpectation;
-  int numberOfExpectedImpressionAnalyticsEvents;
-  int numberOfExpectedPageviewAnalyticsEvents;
+  NSInteger numberOfExpectedImpressionAnalyticsEvents;
+  NSInteger numberOfExpectedPageviewAnalyticsEvents;
 }
 @end
 
@@ -114,7 +114,7 @@
 - (void)analyticsImpressionEventCompleted:(NSNotification *)notification {
 
   NSLog(@"analytics impression event fired in tests: %i",
-        numberOfExpectedImpressionAnalyticsEvents);
+        (int)numberOfExpectedImpressionAnalyticsEvents);
 
   NSError *err = (NSError *)[notification object];
   if (err) {
@@ -130,7 +130,7 @@
 - (void)analyticsPageviewEventCompleted:(NSNotification *)notification {
 
   NSLog(@"analytics pageview event fired in tests: %i",
-        numberOfExpectedPageviewAnalyticsEvents);
+        (int)numberOfExpectedPageviewAnalyticsEvents);
 
   NSError *err = (NSError *)[notification object];
   if (err) {

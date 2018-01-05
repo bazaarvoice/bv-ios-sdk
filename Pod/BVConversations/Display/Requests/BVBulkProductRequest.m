@@ -6,6 +6,10 @@
 //
 
 #import "BVBulkProductRequest.h"
+#import "BVMonotonicSortOrder.h"
+#import "BVProductFilterType.h"
+#import "BVProductsSortOption.h"
+#import "BVRelationalFilterOperator.h"
 
 @interface BVBulkProductRequest ()
 
@@ -25,11 +29,15 @@
   return self;
 }
 
-- (nonnull instancetype)addProductSort:(BVSortOptionProducts)option
-                                 order:(BVSortOrder)order {
+- (nonnull instancetype)
+sortByProductsSortOptionValue:(BVProductsSortOptionValue)productsSortOptionValue
+      monotonicSortOrderValue:
+          (BVMonotonicSortOrderValue)monotonicSortOrderValue {
   BVSort *sort = [[BVSort alloc]
-      initWithOptionString:[BVSortOptionProductsUtil toString:option]
-                     order:order];
+      initWithSortOption:[BVProductsSortOption
+                             sortOptionWithRawValue:monotonicSortOrderValue]
+               sortOrder:[BVMonotonicSortOrder
+                             sortOrderWithRawValue:monotonicSortOrderValue]];
   [self.sorts addObject:sort];
   return self;
 }
@@ -54,7 +62,7 @@
   if ([self.sorts count] > 0) {
     NSMutableArray<NSString *> *sortsAsStrings = [NSMutableArray array];
     for (BVSort *sort in self.sorts) {
-      [sortsAsStrings addObject:[sort toString]];
+      [sortsAsStrings addObject:[sort toParameterString]];
     }
     NSString *allTogetherNow = [sortsAsStrings componentsJoinedByString:@","];
     [params addObject:[BVStringKeyValuePair pairWithKey:@"Sort"
@@ -70,20 +78,43 @@
   return params;
 }
 
-- (nonnull instancetype)addFilter:(BVProductFilterType)type
-                   filterOperator:(BVFilterOperator)filterOperator
-                            value:(nonnull NSString *)value {
-  [self addFilter:type filterOperator:filterOperator values:@[ value ]];
+- (nonnull instancetype)
+   filterOnProductFilterValue:(BVProductFilterValue)productFilterValue
+relationalFilterOperatorValue:
+    (BVRelationalFilterOperatorValue)relationalFilterOperatorValue
+                        value:(nonnull NSString *)value {
+  [self filterOnProductFilterValue:productFilterValue
+      relationalFilterOperatorValue:relationalFilterOperatorValue
+                             values:@[ value ]];
   return self;
 }
 
-- (nonnull instancetype)addFilter:(BVProductFilterType)type
-                   filterOperator:(BVFilterOperator)filterOperator
-                           values:(nonnull NSArray<NSString *> *)values {
+- (nonnull instancetype)
+   filterOnProductFilterValue:(BVProductFilterValue)productFilterValue
+relationalFilterOperatorValue:
+    (BVRelationalFilterOperatorValue)relationalFilterOperatorValue
+                       values:(nonnull NSArray<NSString *> *)values {
+  BVProductFilterType *productFilterType =
+      [BVProductFilterType filterTypeWithRawValue:productFilterValue];
+
+  BVRelationalFilterOperator *relationalFilterOperator =
+      [BVRelationalFilterOperator
+          filterOperatorWithRawValue:relationalFilterOperatorValue];
+
+  [self addProductFilterType:productFilterType
+      relationalFilterOperator:relationalFilterOperator
+                        values:values];
+  return self;
+}
+
+- (nonnull instancetype)
+    addProductFilterType:(nonnull BVProductFilterType *)productFilterType
+relationalFilterOperator:(nonnull BVFilterOperator *)relationalFilterOperator
+                  values:(nonnull NSArray<NSString *> *)values {
   BVFilter *filter =
-      [[BVFilter alloc] initWithString:[BVProductFilterTypeUtil toString:type]
-                        filterOperator:filterOperator
-                                values:values];
+      [[BVFilter alloc] initWithFilterType:productFilterType
+                            filterOperator:relationalFilterOperator
+                                    values:values];
   [self.filters addObject:filter];
   return self;
 }

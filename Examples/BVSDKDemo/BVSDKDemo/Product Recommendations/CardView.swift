@@ -8,14 +8,14 @@
 import UIKit
 
 class CardView: UIView {
+  
+  override func awakeFromNib() {
+    super.awakeFromNib()
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        
-        self.layer.cornerRadius = 0
-        self.layer.borderColor = UIColor.lightGray.cgColor
-        self.layer.borderWidth = 0.5
-        
-    }
-
+    self.layer.cornerRadius = 0
+    self.layer.borderColor = UIColor.lightGray.cgColor
+    self.layer.borderWidth = 0.5
+    
+  }
+  
 }

@@ -78,7 +78,7 @@
 
     NSNumber *num = apiResponse[@"Rating"];
     if (num && [num isKindOfClass:[NSNumber class]]) {
-      self.rating = (int)[num integerValue];
+      self.rating = [num unsignedIntegerValue];
     } else {
       self.rating = 0;
     }

@@ -8,6 +8,14 @@
 //
 
 #import "BVBaseProductRequest.h"
+#import "BVBaseProductRequest_Private.h"
+#import "BVMonotonicSortOrder.h"
+#import "BVPDPIncludeType.h"
+#import "BVQuestionFilterType.h"
+#import "BVQuestionsSortOption.h"
+#import "BVRelationalFilterOperator.h"
+#import "BVReviewFilterType.h"
+#import "BVReviewsSortOption.h"
 
 @interface BVBaseProductRequest ()
 
@@ -16,9 +24,9 @@
 @property(nonnull, nonatomic, strong, readonly)
     NSMutableArray<BVFilter *> *questionFilters;
 @property(nonnull, nonatomic, strong, readonly)
-    NSMutableArray<NSNumber *> *PDPContentTypeStatistics;
+    NSMutableArray<BVInclude *> *pdpIncludes;
 @property(nonnull, nonatomic, strong, readonly)
-    NSMutableArray<PDPInclude *> *includes;
+    NSMutableArray<BVInclude *> *includes;
 
 @end
 
@@ -29,18 +37,18 @@
     _includes = [NSMutableArray array];
     _reviewFilters = [NSMutableArray array];
     _questionFilters = [NSMutableArray array];
-    _PDPContentTypeStatistics = [NSMutableArray array];
+    _pdpIncludes = [NSMutableArray array];
   }
 
   return self;
 }
 
 - (nonnull NSString *)includesToParams:
-    (nonnull NSArray<PDPInclude *> *)includes {
-  NSMutableArray *strings = [NSMutableArray array];
+    (nonnull NSArray<BVInclude *> *)includes {
+  NSMutableArray<NSString *> *strings = [NSMutableArray array];
 
-  for (PDPInclude *include in includes) {
-    [strings addObject:[include toParamString]];
+  for (BVInclude *include in includes) {
+    [strings addObject:[include toParameterString]];
   }
 
   NSArray<NSString *> *sortedArray = [strings
@@ -50,11 +58,11 @@
 }
 
 - (nonnull NSString *)statisticsToParams:
-    (nonnull NSArray<NSNumber *> *)statistics {
+    (nonnull NSArray<BVInclude *> *)statistics {
   NSMutableArray *strings = [NSMutableArray array];
 
-  for (NSNumber *stat in statistics) {
-    [strings addObject:[PDPContentTypeUtil toString:[stat intValue]]];
+  for (BVInclude *stat in statistics) {
+    [strings addObject:[stat toParameterString]];
   }
 
   NSArray<NSString *> *sortedArray = [strings
@@ -67,40 +75,93 @@
   return @"products.json";
 }
 
-- (nonnull instancetype)includeContent:(PDPContentType)contentType
-                                 limit:(int)limit {
-  PDPInclude *include =
-      [[PDPInclude alloc] initWithContentType:contentType limit:@(limit)];
+- (nonnull instancetype)includePDPIncludeTypeValue:
+                            (BVPDPIncludeTypeValue)pdpIncludeTypeValue
+                                             limit:(NSUInteger)limit {
+  BVInclude *include = [[BVInclude alloc]
+      initWithIncludeType:[BVPDPIncludeType
+                              includeTypeWithRawValue:pdpIncludeTypeValue]
+             includeLimit:@(limit)];
+
   [self.includes addObject:include];
   return self;
 }
 
-- (nonnull instancetype)includeStatistics:(PDPContentType)contentType {
-  [self.PDPContentTypeStatistics addObject:@(contentType)];
+- (nonnull instancetype)includeStatistics:
+    (BVPDPIncludeTypeValue)pdpIncludeTypeValue {
+
+  BVInclude *statToInclude = [[BVInclude alloc]
+      initWithIncludeType:[BVPDPIncludeType
+                              includeTypeWithRawValue:pdpIncludeTypeValue]];
+
+  [self.pdpIncludes addObject:statToInclude];
   return self;
 }
 
-- (nonnull instancetype)addIncludedReviewsFilter:(BVReviewFilterType)type
-                                  filterOperator:
-                                      (BVFilterOperator)filterOperator
-                                           value:(nonnull NSString *)value {
+- (nonnull instancetype)
+    filterOnReviewFilterValue:(BVReviewFilterValue)reviewFilterValue
+relationalFilterOperatorValue:
+    (BVRelationalFilterOperatorValue)relationalFilterOperatorValue
+                        value:(nonnull NSString *)value {
+  BVReviewFilterType *includedReviewsFilterType =
+      [BVReviewFilterType filterTypeWithRawValue:reviewFilterValue];
+
+  BVRelationalFilterOperator *relationalFilterOperator =
+      [BVRelationalFilterOperator
+          filterOperatorWithRawValue:relationalFilterOperatorValue];
+
+  [self addIncludedReviewsFilterType:includedReviewsFilterType
+            relationalFilterOperator:relationalFilterOperator
+                               value:value];
+
+  return self;
+}
+
+- (nonnull instancetype)
+addIncludedReviewsFilterType:
+    (nonnull BVReviewFilterType *)includedReviewsFilterType
+    relationalFilterOperator:
+        (nonnull BVFilterOperator *)relationalFilterOperator
+                       value:(nonnull NSString *)value {
   BVFilter *filter =
-      [[BVFilter alloc] initWithString:[BVReviewFilterTypeUtil toString:type]
-                        filterOperator:filterOperator
-                                values:@[ value ]];
+      [[BVFilter alloc] initWithFilterType:includedReviewsFilterType
+                            filterOperator:relationalFilterOperator
+                                    values:@[ value ]];
 
   [self.reviewFilters addObject:filter];
   return self;
 }
 
-- (nonnull instancetype)addIncludedQuestionsFilter:(BVQuestionFilterType)type
-                                    filterOperator:
-                                        (BVFilterOperator)filterOperator
-                                             value:(nonnull NSString *)value {
+- (nonnull instancetype)
+  filterOnQuestionFilterValue:(BVQuestionFilterValue)questionFilterValue
+relationalFilterOperatorValue:
+    (BVRelationalFilterOperatorValue)relationalFilterOperatorValue
+                        value:(nonnull NSString *)value {
+
+  BVQuestionFilterType *includedQuestionsFilterType =
+      [BVQuestionFilterType filterTypeWithRawValue:questionFilterValue];
+
+  BVRelationalFilterOperator *relationalFilterOperator =
+      [BVRelationalFilterOperator
+          filterOperatorWithRawValue:relationalFilterOperatorValue];
+
+  [self addIncludedQuestionsFilterType:includedQuestionsFilterType
+              relationalFilterOperator:relationalFilterOperator
+                                 value:value];
+
+  return self;
+}
+
+- (nonnull instancetype)
+addIncludedQuestionsFilterType:
+    (nonnull BVQuestionFilterType *)includedQuestionsFilterType
+      relationalFilterOperator:
+          (nonnull BVFilterOperator *)relationalFilterOperator
+                         value:(nonnull NSString *)value {
   BVFilter *filter =
-      [[BVFilter alloc] initWithString:[BVQuestionFilterTypeUtil toString:type]
-                        filterOperator:filterOperator
-                                values:@[ value ]];
+      [[BVFilter alloc] initWithFilterType:includedQuestionsFilterType
+                            filterOperator:relationalFilterOperator
+                                    values:@[ value ]];
 
   [self.questionFilters addObject:filter];
   return self;
@@ -127,23 +188,21 @@
                                 value:[self includesToParams:self.includes]]];
   }
 
-  NSString *pcts = [self statisticsToParams:self.PDPContentTypeStatistics];
+  NSString *pcts = [self statisticsToParams:self.pdpIncludes];
   if (pcts && pcts.length > 0) {
     [params
         addObject:[BVStringKeyValuePair
                       pairWithKey:@"Stats"
-                            value:[self statisticsToParams:
-                                            self.PDPContentTypeStatistics]]];
+                            value:[self statisticsToParams:self.pdpIncludes]]];
   }
 
-  for (PDPInclude *include in self.includes) {
-    if (include.limit != nil) {
-      NSString *key = [NSString
-          stringWithFormat:@"Limit_%@",
-                           [PDPContentTypeUtil toString:include.type]];
+  for (BVInclude *include in self.includes) {
+    if (include.includeLimit != nil) {
+      NSString *key =
+          [NSString stringWithFormat:@"Limit_%@", [include toParameterString]];
       BVStringKeyValuePair *pair = [BVStringKeyValuePair
           pairWithKey:key
-                value:[NSString stringWithFormat:@"%@", include.limit]];
+                value:[NSString stringWithFormat:@"%@", include.includeLimit]];
       [params addObject:pair];
     }
   }
@@ -212,7 +271,7 @@
   NSMutableArray *strings = [NSMutableArray array];
 
   for (BVSort *sort in sorts) {
-    [strings addObject:[sort toString]];
+    [strings addObject:[sort toParameterString]];
   }
 
   NSString *combined = [strings componentsJoinedByString:@","];
@@ -220,30 +279,30 @@
   return [BVStringKeyValuePair pairWithKey:paramKey value:combined];
 }
 
-- (nonnull instancetype)sortIncludedReviews:(BVSortOptionReviews)option
-                                      order:(BVSortOrder)order {
+- (nonnull instancetype)
+sortByReviewsSortOptionValue:(BVReviewsSortOptionValue)reviewsSortOptionValue
+     monotonicSortOrderValue:
+         (BVMonotonicSortOrderValue)monotonicSortOrderValue {
   BVSort *sort = [[BVSort alloc]
-      initWithOptionString:[BVSortOptionReviewUtil toString:option]
-                     order:order];
+      initWithSortOption:[BVReviewsSortOption
+                             sortOptionWithRawValue:reviewsSortOptionValue]
+               sortOrder:[BVMonotonicSortOrder
+                             sortOrderWithRawValue:monotonicSortOrderValue]];
   [self.reviewSorts addObject:sort];
   return self;
 }
 
-- (nonnull instancetype)sortIncludedQuestions:(BVSortOptionQuestions)option
-                                        order:(BVSortOrder)order {
+- (nonnull instancetype)sortByQuestionsSortOptionValue:
+                            (BVQuestionsSortOptionValue)questionsSortOptionValue
+                               monotonicSortOrderValue:
+                                   (BVMonotonicSortOrderValue)
+                                       monotonicSortOrderValue {
   BVSort *sort = [[BVSort alloc]
-      initWithOptionString:[BVSortOptionQuestionsUtil toString:option]
-                     order:order];
+      initWithSortOption:[BVQuestionsSortOption
+                             sortOptionWithRawValue:questionsSortOptionValue]
+               sortOrder:[BVMonotonicSortOrder
+                             sortOrderWithRawValue:monotonicSortOrderValue]];
   [self.questionSorts addObject:sort];
-  return self;
-}
-
-- (nonnull instancetype)sortIncludedAnswers:(BVSortOptionAnswers)option
-                                      order:(BVSortOrder)order {
-  BVSort *sort = [[BVSort alloc]
-      initWithOptionString:[BVSortOptionAnswersUtil toString:option]
-                     order:order];
-  [self.answerSorts addObject:sort];
   return self;
 }
 

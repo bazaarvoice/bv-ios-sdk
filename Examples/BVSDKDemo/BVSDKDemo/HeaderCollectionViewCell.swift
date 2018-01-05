@@ -8,12 +8,12 @@
 import UIKit
 
 class HeaderCollectionViewCell: UICollectionViewCell {
-
-    @IBOutlet weak var textLbl: UILabel?
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        textLbl?.textColor = UIColor.bazaarvoiceNavy()
-        textLbl?.baselineAdjustment = .alignCenters
-    }
-
+  
+  @IBOutlet weak var textLbl: UILabel?
+  override func awakeFromNib() {
+    super.awakeFromNib()
+    textLbl?.textColor = UIColor.bazaarvoiceNavy()
+    textLbl?.baselineAdjustment = .alignCenters
+  }
+  
 }

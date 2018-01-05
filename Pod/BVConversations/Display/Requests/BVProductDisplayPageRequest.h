@@ -6,7 +6,6 @@
 //
 
 #import "BVBaseProductRequest.h"
-#import "PDPContentType.h"
 #import <Foundation/Foundation.h>
 
 typedef void (^ProductRequestCompletionHandler)(

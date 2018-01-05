@@ -8,12 +8,12 @@
 import XCTest
 
 class BVSDKDemoTests: XCTestCase {
-    
-    override func setUp() {
-        super.setUp()
-    }
-    
-    func testExample() {
-    }
-    
+  
+  override func setUp() {
+    super.setUp()
+  }
+  
+  func testExample() {
+  }
+  
 }

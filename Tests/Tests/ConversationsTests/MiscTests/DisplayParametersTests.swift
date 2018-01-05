@@ -11,21 +11,30 @@ import XCTest
 
 
 class DisplayParametersTests: XCTestCase {
+  
+  func testParamsAreSorted() {
     
-    func testParamsAreSorted() {
-        
-        let request = BVProductDisplayPageRequest(productId: "test1")
-        
-        
+    let request = BVProductDisplayPageRequest(productId: "test1")
     
-        XCTAssertEqual(request.statistics(toParams: [NSNumber(value:PDPContentType.reviews.rawValue)]), "Reviews")
-        XCTAssertEqual(request.statistics(toParams: [NSNumber(value: PDPContentType.questions.rawValue)]), "Questions")
-        XCTAssertEqual(request.statistics(toParams: [NSNumber(value: PDPContentType.answers.rawValue)]), "Answers")
-        XCTAssertEqual(request.statistics(toParams: [NSNumber(value: PDPContentType.reviews.rawValue), NSNumber(value: PDPContentType.answers.rawValue)]), "Answers,Reviews")
-        XCTAssertEqual(request.statistics(toParams: [NSNumber(value: PDPContentType.answers.rawValue), NSNumber(value: PDPContentType.reviews.rawValue)]), "Answers,Reviews")
-        XCTAssertEqual(request.statistics(toParams: [NSNumber(value: PDPContentType.reviews.rawValue), NSNumber(value: PDPContentType.answers.rawValue), NSNumber(value: PDPContentType.questions.rawValue)]), "Answers,Questions,Reviews")
-        XCTAssertEqual(request.statistics(toParams: [NSNumber(value: PDPContentType.reviews.rawValue), NSNumber(value: PDPContentType.questions.rawValue), NSNumber(value: PDPContentType.answers.rawValue)]), "Answers,Questions,Reviews")
-        
-    }
+    let pdpAnswers:BVInclude = BVInclude(includeType: BVPDPIncludeType(pdpIncludeTypeValue: .pdpAnswers))
     
+    let pdpQuestions:BVInclude = BVInclude(includeType: BVPDPIncludeType(pdpIncludeTypeValue: .pdpQuestions))
+    
+    let pdpReviews:BVInclude = BVInclude(includeType: BVPDPIncludeType(pdpIncludeTypeValue: .pdpReviews))
+    
+    XCTAssertEqual(request.statistics(toParams: [pdpReviews]), "Reviews")
+    XCTAssertEqual(request.statistics(toParams: [pdpQuestions]), "Questions")
+    XCTAssertEqual(request.statistics(toParams: [pdpAnswers]), "Answers")
+    XCTAssertEqual(request.statistics(
+      toParams: [pdpReviews, pdpAnswers]), "Answers,Reviews")
+    XCTAssertEqual(request.statistics(
+      toParams: [pdpQuestions, pdpAnswers]), "Answers,Questions")
+    XCTAssertEqual(request.statistics(
+      toParams: [pdpReviews, pdpQuestions, pdpAnswers]),
+                   "Answers,Questions,Reviews")
+    XCTAssertEqual(request.statistics(
+      toParams: [pdpAnswers, pdpReviews, pdpQuestions]),
+                   "Answers,Questions,Reviews")
+  }
+  
 }

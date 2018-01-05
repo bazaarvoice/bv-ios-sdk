@@ -5,18 +5,10 @@
 //  Copyright © 2016 Bazaarvoice. All rights reserved.
 //
 
-#import "BVBulkRatingsFilterType.h"
 #import "BVBulkRatingsResponse.h"
+#import "BVConversationDisplay.h"
 #import "BVConversationsRequest.h"
-#import "BVFilterOperator.h"
-#import "PDPInclude.h"
 #import <Foundation/Foundation.h>
-
-typedef NS_ENUM(NSInteger, BulkRatingsStatsType) {
-  BulkRatingsStatsTypeReviews,
-  BulkRatingsStatsTypeNativeReviews,
-  BulkRatingsStatsTypeAll
-};
 
 typedef void (^BulkRatingsSuccessHandler)(
     BVBulkRatingsResponse *__nonnull response);
@@ -30,16 +22,23 @@ typedef void (^BulkRatingsSuccessHandler)(
 
 - (nonnull instancetype)
 initWithProductIds:(nonnull NSArray<NSString *> *)productIds
-        statistics:(enum BulkRatingsStatsType)statistics;
+        statistics:(BVBulkRatingIncludeTypeValue)bulkRatingIncludeTypeValue;
 - (nonnull instancetype)__unavailable init;
 
 - (nonnull NSString *)endpoint;
 - (void)load:
             (nonnull void (^)(BVBulkRatingsResponse *__nonnull response))success
      failure:(nonnull ConversationsFailureHandler)failure;
-- (nonnull instancetype)addFilter:(BVBulkRatingsFilterType)type
-                   filterOperator:(BVFilterOperator)filterOperator
-                           values:(nonnull NSArray<NSString *> *)values;
+- (nonnull instancetype)
+filterOnBulkRatingFilterValue:(BVBulkRatingFilterValue)bulkRatingFilterValue
+relationalFilterOperatorValue:
+    (BVRelationalFilterOperatorValue)relationalFilterOperatorValue
+                        value:(nonnull NSString *)value;
+- (nonnull instancetype)
+filterOnBulkRatingFilterValue:(BVBulkRatingFilterValue)bulkRatingFilterValue
+relationalFilterOperatorValue:
+    (BVRelationalFilterOperatorValue)relationalFilterOperatorValue
+                       values:(nonnull NSArray<NSString *> *)values;
 - (nonnull NSMutableArray *)createParams;
 
 @end

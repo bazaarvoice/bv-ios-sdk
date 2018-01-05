@@ -8,9 +8,9 @@
 #import "BVProductDisplayPageRequest.h"
 #import "BVAnalyticsManager.h"
 #import "BVCommaUtil.h"
-#import "BVFilterOperator.h"
 #import "BVPixel.h"
 #import "BVProductFilterType.h"
+#import "BVRelationalFilterOperator.h"
 
 @interface BVProductDisplayPageRequest ()
 
@@ -104,10 +104,15 @@ loadProducts:(nonnull BVConversationsRequest *)request
   NSMutableArray<BVStringKeyValuePair *> *params = [super createParams];
 
   BVFilter *filter = [[BVFilter alloc]
-      initWithString:[BVProductFilterTypeUtil toString:BVProductFilterTypeId]
-      filterOperator:BVFilterOperatorEqualTo
-              values:@[ self.productId ]];
+      initWithFilterType:[BVProductFilterType filterTypeWithRawValue:
+                                                  BVProductFilterValueProductId]
+          filterOperator:[BVRelationalFilterOperator
+                             filterOperatorWithRawValue:
+                                 BVRelationalFilterOperatorValueEqualTo]
+                  values:@[ self.productId ]];
+
   NSString *filterValue = [filter toParameterString];
+
   [params
       addObject:[BVStringKeyValuePair pairWithKey:@"Filter" value:filterValue]];
 

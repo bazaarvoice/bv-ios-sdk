@@ -6,14 +6,16 @@
 //
 
 #import "BVBulkRatingsRequest.h"
+#import "BVBulkRatingFilterType.h"
+#import "BVBulkRatingIncludeType.h"
 #import "BVCommaUtil.h"
-#import "BVFilter.h"
 #import "BVLogger.h"
+#import "BVRelationalFilterOperator.h"
 
 @interface BVBulkRatingsRequest ()
 
 @property(nonnull) NSArray<NSString *> *productIds;
-@property BulkRatingsStatsType statistics;
+@property(nonnull) NSMutableArray<BVBulkRatingIncludeType *> *statistics;
 @property(nonnull) NSMutableArray<BVFilter *> *filters;
 
 @end
@@ -26,16 +28,26 @@
 
 - (nonnull instancetype)
 initWithProductIds:(nonnull NSArray<NSString *> *)productIds
-        statistics:(enum BulkRatingsStatsType)statistics {
+        statistics:(BVBulkRatingIncludeTypeValue)bulkRatingIncludeTypeValue {
   self = [super init];
   if (self) {
     self.productIds = [BVCommaUtil escapeMultiple:productIds];
-    self.statistics = statistics;
+
+    /// This is a single element array for now...
+    self.statistics = [NSMutableArray arrayWithArray:@[
+      [BVBulkRatingIncludeType
+          includeTypeWithRawValue:bulkRatingIncludeTypeValue]
+    ]];
 
     self.filters = [NSMutableArray array];
-    BVFilter *filter = [[BVFilter alloc] initWithString:@"ProductId"
-                                         filterOperator:BVFilterOperatorEqualTo
-                                                 values:productIds];
+    BVFilter *filter = [[BVFilter alloc]
+        initWithFilterType:[BVBulkRatingFilterType
+                               filterTypeWithRawValue:
+                                   BVBulkRatingFilterValueBulkRatingProductId]
+            filterOperator:[BVRelationalFilterOperator
+                               filterOperatorWithRawValue:
+                                   BVRelationalFilterOperatorValueEqualTo]
+                    values:productIds];
     [self.filters addObject:filter];
   }
   return self;
@@ -73,14 +85,43 @@ loadBulkRatings:(nonnull BVConversationsRequest *)request
             failure:failure];
 }
 
-- (nonnull instancetype)addFilter:(BVBulkRatingsFilterType)type
-                   filterOperator:(BVFilterOperator)filterOperator
-                           values:(nonnull NSArray<NSString *> *)values {
-  BVFilter *filter = [[BVFilter alloc]
-      initWithString:[BVBulkRatingsFilterTypeUtil toString:type]
-      filterOperator:filterOperator
-              values:values];
+- (nonnull instancetype)
+addBulkRatingsFilterType:(nonnull BVBulkRatingFilterType *)bulkRatingsFilterType
+relationalFilterOperator:
+    (nonnull BVRelationalFilterOperator *)relationalFilterOperator
+                  values:(nonnull NSArray<NSString *> *)values {
+  BVFilter *filter =
+      [[BVFilter alloc] initWithFilterType:bulkRatingsFilterType
+                            filterOperator:relationalFilterOperator
+                                    values:values];
   [self.filters addObject:filter];
+  return self;
+}
+
+- (nonnull instancetype)
+filterOnBulkRatingFilterValue:(BVBulkRatingFilterValue)bulkRatingFilterValue
+relationalFilterOperatorValue:
+    (BVRelationalFilterOperatorValue)relationalFilterOperatorValue
+                        value:(nonnull NSString *)value {
+  [self filterOnBulkRatingFilterValue:bulkRatingFilterValue
+        relationalFilterOperatorValue:relationalFilterOperatorValue
+                               values:@[ value ]];
+  return self;
+}
+
+- (nonnull instancetype)
+filterOnBulkRatingFilterValue:(BVBulkRatingFilterValue)bulkRatingFilterValue
+relationalFilterOperatorValue:
+    (BVRelationalFilterOperatorValue)relationalFilterOperatorValue
+                       values:(nonnull NSArray<NSString *> *)values {
+  BVBulkRatingFilterType *bulkRatingsFilterType =
+      [BVBulkRatingFilterType filterTypeWithRawValue:bulkRatingFilterValue];
+  BVRelationalFilterOperator *relationalFilterOperator =
+      [BVRelationalFilterOperator
+          filterOperatorWithRawValue:relationalFilterOperatorValue];
+  [self addBulkRatingsFilterType:bulkRatingsFilterType
+        relationalFilterOperator:relationalFilterOperator
+                          values:values];
   return self;
 }
 
@@ -100,15 +141,19 @@ loadBulkRatings:(nonnull BVConversationsRequest *)request
   return params;
 }
 
-- (nonnull NSString *)statsToString:(BulkRatingsStatsType)stats {
-  switch (stats) {
-  case BulkRatingsStatsTypeReviews:
-    return @"Reviews";
-  case BulkRatingsStatsTypeNativeReviews:
-    return @"NativeReviews";
-  case BulkRatingsStatsTypeAll:
-    return @"Reviews,NativeReviews";
+- (nonnull NSString *)statsToString:
+    (NSMutableArray<BVBulkRatingIncludeType *> *)statistics {
+  NSMutableArray<NSString *> *statisticsStringArray =
+      [NSMutableArray arrayWithCapacity:statistics.count];
+
+  for (BVBulkRatingIncludeType *stat in statistics) {
+    [statisticsStringArray addObject:[stat toIncludeTypeParameterString]];
   }
+
+  NSArray<NSString *> *sortedArray = [statisticsStringArray
+      sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
+
+  return [sortedArray componentsJoinedByString:@","];
 }
 
 @end

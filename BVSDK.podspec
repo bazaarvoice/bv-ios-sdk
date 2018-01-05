@@ -27,10 +27,12 @@ Pod::Spec.new do |s|
 
   s.subspec 'BVCommon' do |common|
     common.source_files = 'Pod/BVCommon/**/*.{h,m}', 'Pod/BVAnalytics/**/*.{h,m}'
+    common.private_header_files = 'Pod/BVCommon/**/Private/*.{h,m}', 'Pod/BVAnalytics/**/Private/*.{h,m}'
   end
 
   s.subspec 'BVCommonUI' do |commonui|
     commonui.source_files = 'Pod/BVCommonUI/**/*.{h,m}'
+    commonui.private_header_files = 'Pod/BVCommonUI/**/Private/*.{h,m}'
   end
 
   s.subspec 'BVAnalytics' do |analytics|
@@ -39,11 +41,13 @@ Pod::Spec.new do |s|
 
   s.subspec 'BVConversations' do |conversations|
     conversations.source_files = 'Pod/BVConversations/**/*.{h,m}'
+    conversations.private_header_files = 'Pod/BVConversations/**/Private/*.{h,m}'
     conversations.dependency 'BVSDK/BVCommon'
   end
 
   s.subspec 'BVConversationsStores' do |conversationsstores|
-    conversationsstores.source_files = 'Pod/BVConversationsStores/**/*.{h,m}'
+    conversationsstores.source_files = 'Pod/BVConversationsStores/**/*.{h,m}', 'Pod/BVConversations/**/Private/*.{h,m}'
+    conversationsstores.private_header_files = 'Pod/BVConversationsStores/**/Private/*.{h,m}'
     conversationsstores.dependency 'BVSDK/BVConversations'
   end
 
@@ -62,7 +66,7 @@ Pod::Spec.new do |s|
     curationsui.source_files = 'Pod/BVCurationsUI/**/*.{h,m}'
     curationsui.dependency 'BVSDK/BVCurations'
     curationsui.dependency 'BVSDK/BVCommonUI'
-    curationsui.resources = ["Pod/BVCurationsUI/Assets/*.xcassets"]
+    curationsui.resources = ["Pod/BVCurationsUI/SocialMediaIcons/*.xcassets"]
   end
 
   s.subspec 'BVNotifications' do |notifications|
@@ -75,6 +79,7 @@ Pod::Spec.new do |s|
 
   s.subspec 'BVRecommendations' do |recs|
     recs.source_files = 'Pod/BVRecommendations/**/*.{h,m}'
+    recs.private_header_files = 'Pod/BVRecommendations/**/Private/*.{h,m}'
     recs.dependency 'BVSDK/BVCommon'
   end
 

@@ -10,82 +10,146 @@ import XCTest
 @testable import BVSDK
 
 class FilterTests: XCTestCase {
+  
+  func testOperatorStringify() {
     
-    func testOperatorStringify() {
-        
-        XCTAssertEqual("Id:gt:test1",  BVFilter(type: .id, filterOperator: .greaterThan, value: "test1").toParameterString())
-        XCTAssertEqual("Id:gte:test1", BVFilter(type: .id, filterOperator: .greaterThanOrEqualTo, value: "test1").toParameterString())
-        XCTAssertEqual("Id:lt:test1",  BVFilter(type: .id, filterOperator: .lessThan, value: "test1").toParameterString())
-        XCTAssertEqual("Id:lte:test1", BVFilter(type: .id, filterOperator: .lessThanOrEqualTo, value: "test1").toParameterString())
-        XCTAssertEqual("Id:eq:test1",  BVFilter(type: .id, filterOperator: .equalTo, value: "test1").toParameterString())
-        XCTAssertEqual("Id:neq:test1", BVFilter(type: .id, filterOperator: .notEqualTo, value: "test1").toParameterString())
-        
-    }
+    let productIdFilterType:BVProductFilterType = BVProductFilterType(productFilterValue: .productId)
     
-    func testTypeStringify() {
-        
-        XCTAssertEqual("Id:eq:val",                      BVFilter(type: .id, filterOperator: .equalTo, value: "val").toParameterString())
-        XCTAssertEqual("AverageOverallRating:eq:val",    BVFilter(type: .averageOverallRating, filterOperator: .equalTo, value: "val").toParameterString())
-        XCTAssertEqual("CategoryAncestorId:eq:val",      BVFilter(type: .categoryAncestorId, filterOperator: .equalTo, value: "val").toParameterString())
-        XCTAssertEqual("CategoryId:eq:val",              BVFilter(type: .categoryId, filterOperator: .equalTo, value: "val").toParameterString())
-        XCTAssertEqual("IsActive:eq:val",                BVFilter(type: .isActive, filterOperator: .equalTo, value: "val").toParameterString())
-        XCTAssertEqual("IsDisabled:eq:val",              BVFilter(type: .isDisabled, filterOperator: .equalTo, value: "val").toParameterString())
-        XCTAssertEqual("LastAnswerTime:eq:val",          BVFilter(type: .lastAnswerTime, filterOperator: .equalTo, value: "val").toParameterString())
-        XCTAssertEqual("LastQuestionTime:eq:val",        BVFilter(type: .lastQuestionTime, filterOperator: .equalTo, value: "val").toParameterString())
-        XCTAssertEqual("LastReviewTime:eq:val",          BVFilter(type: .lastReviewTime, filterOperator: .equalTo, value: "val").toParameterString())
-        XCTAssertEqual("LastStoryTime:eq:val",           BVFilter(type: .lastStoryTime, filterOperator: .equalTo, value: "val").toParameterString())
-        XCTAssertEqual("Name:eq:val",                    BVFilter(type: .name, filterOperator: .equalTo, value: "val").toParameterString())
-        XCTAssertEqual("RatingsOnlyReviewCount:eq:val",  BVFilter(type: .ratingsOnlyReviewCount, filterOperator: .equalTo, value: "val").toParameterString())
-        XCTAssertEqual("TotalAnswerCount:eq:val",        BVFilter(type: .totalAnswerCount, filterOperator: .equalTo, value: "val").toParameterString())
-        XCTAssertEqual("TotalQuestionCount:eq:val",      BVFilter(type: .totalQuestionCount, filterOperator: .equalTo, value: "val").toParameterString())
-        XCTAssertEqual("TotalReviewCount:eq:val",        BVFilter(type: .totalReviewCount, filterOperator: .equalTo, value: "val").toParameterString())
-        XCTAssertEqual("TotalStoryCount:eq:val",         BVFilter(type: .totalStoryCount, filterOperator: .equalTo, value: "val").toParameterString())
-        
-    }
+    let equalToFilterOperator:BVRelationalFilterOperator =
+      BVRelationalFilterOperator(relationalFilterValue: .equalTo)
     
-    func testFilterSorting() {
-        
-        XCTAssertEqual("Id:eq:aaa,bbb,ccc", BVFilter(type: .id, filterOperator: .equalTo, values: ["aaa", "bbb", "ccc"]).toParameterString())
-        XCTAssertEqual("Id:eq:aaa,bbb,ccc", BVFilter(type: .id, filterOperator: .equalTo, values: ["bbb", "aaa", "ccc"]).toParameterString())
-        XCTAssertEqual("Id:eq:aaa,bbb,ccc", BVFilter(type: .id, filterOperator: .equalTo, values: ["ccc", "bbb", "aaa"]).toParameterString())
-        
-    }
+    let notEqualToFilterOperator:BVRelationalFilterOperator =
+      BVRelationalFilterOperator(relationalFilterValue: .notEqualTo)
     
-    func testValueEscaping() {
-        
-        XCTAssertEqual("Id:eq:a\\,a\\:a%26a", BVFilter(type: .id, filterOperator: .equalTo, value: "a,a:a&a").toParameterString())
-        XCTAssertEqual("Id:eq:a\\,aa,b\\:bb,c%26cc", BVFilter(type: .id, filterOperator: .equalTo, values: ["a,aa", "b:bb", "c&cc"]).toParameterString())
-        XCTAssertEqual("Id:eq:a\\,aa,b\\:bb,c%26cc", BVFilter(string: "Id", filterOperator: .equalTo, values: ["a,aa", "b:bb", "c&cc"]).toParameterString())
-        
-    }
+    let greaterThanFilterOperator:BVRelationalFilterOperator =
+      BVRelationalFilterOperator(relationalFilterValue: .greaterThan)
     
+    let greaterThanOrEqualToFilterOperator:BVRelationalFilterOperator =
+      BVRelationalFilterOperator(relationalFilterValue: .greaterThanOrEqualTo)
+    
+    let lessThanFilterOperator:BVRelationalFilterOperator =
+      BVRelationalFilterOperator(relationalFilterValue: .lessThan)
+    
+    let lessThanOrEqualToFilterOperator:BVRelationalFilterOperator =
+      BVRelationalFilterOperator(relationalFilterValue: .lessThanOrEqualTo)
+    
+    XCTAssertEqual("Id:gt:test1",  BVFilter(filterType: productIdFilterType, filterOperator: greaterThanFilterOperator, value: "test1").toParameterString())
+    XCTAssertEqual("Id:gte:test1", BVFilter(filterType: productIdFilterType, filterOperator: greaterThanOrEqualToFilterOperator, value: "test1").toParameterString())
+    XCTAssertEqual("Id:lt:test1",  BVFilter(filterType: productIdFilterType, filterOperator: lessThanFilterOperator, value: "test1").toParameterString())
+    XCTAssertEqual("Id:lte:test1", BVFilter(filterType: productIdFilterType, filterOperator: lessThanOrEqualToFilterOperator, value: "test1").toParameterString())
+    XCTAssertEqual("Id:eq:test1",  BVFilter(filterType: productIdFilterType, filterOperator: equalToFilterOperator, value: "test1").toParameterString())
+    XCTAssertEqual("Id:neq:test1", BVFilter(filterType: productIdFilterType, filterOperator: notEqualToFilterOperator, value: "test1").toParameterString())
+    
+  }
+  
+  func testTypeStringify() {
+    
+    let productIdFilterType:BVProductFilterType = BVProductFilterType(productFilterValue: .productId)
+    
+    let productAverageOverallRatingFilterType:BVProductFilterType = BVProductFilterType(productFilterValue: .productAverageOverallRating)
+    
+    let productCategoryAncestorIdFilterType:BVProductFilterType = BVProductFilterType(productFilterValue: .productCategoryAncestorId)
+    
+    let productCategoryIdFilterType:BVProductFilterType = BVProductFilterType(productFilterValue: .productCategoryId)
+    
+    let productIsActiveFilterType:BVProductFilterType = BVProductFilterType(productFilterValue: .productIsActive)
+    
+    let productIsDisabledFilterType:BVProductFilterType = BVProductFilterType(productFilterValue: .productIsDisabled)
+    
+    let productLastAnswerTimeFilterType:BVProductFilterType = BVProductFilterType(productFilterValue: .productLastAnswerTime)
+    
+    let productLastQuestionTimeFilterType:BVProductFilterType = BVProductFilterType(productFilterValue: .productLastQuestionTime)
+    
+    let productLastReviewTimeFilterType:BVProductFilterType = BVProductFilterType(productFilterValue: .productLastReviewTime)
+    
+    let productLastStoryTimeFilterType:BVProductFilterType = BVProductFilterType(productFilterValue: .productLastStoryTime)
+    
+    let productNameFilterType:BVProductFilterType = BVProductFilterType(productFilterValue: .productName)
+    
+    let productRatingsOnlyReviewCountFilterType:BVProductFilterType = BVProductFilterType(productFilterValue: .productRatingsOnlyReviewCount)
+    
+    let productTotalAnswerCountFilterType:BVProductFilterType = BVProductFilterType(productFilterValue: .productTotalAnswerCount)
+    
+    let productTotalQuestionCountFilterType:BVProductFilterType = BVProductFilterType(productFilterValue: .productTotalQuestionCount)
+    
+    let productTotalReviewCountFilterType:BVProductFilterType = BVProductFilterType(productFilterValue: .productTotalReviewCount)
+    
+    let productTotalStoryCountFilterType:BVProductFilterType = BVProductFilterType(productFilterValue: .productTotalStoryCount)
+    
+    let equalToFilterOperator:BVRelationalFilterOperator =
+      BVRelationalFilterOperator(relationalFilterValue: .equalTo)
+    
+    XCTAssertEqual("Id:eq:val",                      BVFilter(filterType: productIdFilterType, filterOperator: equalToFilterOperator, value: "val").toParameterString())
+    XCTAssertEqual("AverageOverallRating:eq:val",    BVFilter(filterType: productAverageOverallRatingFilterType, filterOperator: equalToFilterOperator, value: "val").toParameterString())
+    XCTAssertEqual("CategoryAncestorId:eq:val",      BVFilter(filterType: productCategoryAncestorIdFilterType, filterOperator: equalToFilterOperator, value: "val").toParameterString())
+    XCTAssertEqual("CategoryId:eq:val",              BVFilter(filterType: productCategoryIdFilterType, filterOperator: equalToFilterOperator, value: "val").toParameterString())
+    XCTAssertEqual("IsActive:eq:val",                BVFilter(filterType: productIsActiveFilterType, filterOperator: equalToFilterOperator, value: "val").toParameterString())
+    XCTAssertEqual("IsDisabled:eq:val",              BVFilter(filterType: productIsDisabledFilterType, filterOperator: equalToFilterOperator, value: "val").toParameterString())
+    XCTAssertEqual("LastAnswerTime:eq:val",          BVFilter(filterType: productLastAnswerTimeFilterType, filterOperator: equalToFilterOperator, value: "val").toParameterString())
+    XCTAssertEqual("LastQuestionTime:eq:val",        BVFilter(filterType: productLastQuestionTimeFilterType, filterOperator: equalToFilterOperator, value: "val").toParameterString())
+    XCTAssertEqual("LastReviewTime:eq:val",          BVFilter(filterType: productLastReviewTimeFilterType, filterOperator: equalToFilterOperator, value: "val").toParameterString())
+    XCTAssertEqual("LastStoryTime:eq:val",           BVFilter(filterType: productLastStoryTimeFilterType, filterOperator: equalToFilterOperator, value: "val").toParameterString())
+    XCTAssertEqual("Name:eq:val",                    BVFilter(filterType: productNameFilterType, filterOperator: equalToFilterOperator, value: "val").toParameterString())
+    XCTAssertEqual("RatingsOnlyReviewCount:eq:val",  BVFilter(filterType: productRatingsOnlyReviewCountFilterType, filterOperator: equalToFilterOperator, value: "val").toParameterString())
+    XCTAssertEqual("TotalAnswerCount:eq:val",        BVFilter(filterType: productTotalAnswerCountFilterType, filterOperator: equalToFilterOperator, value: "val").toParameterString())
+    XCTAssertEqual("TotalQuestionCount:eq:val",      BVFilter(filterType: productTotalQuestionCountFilterType, filterOperator: equalToFilterOperator, value: "val").toParameterString())
+    XCTAssertEqual("TotalReviewCount:eq:val",        BVFilter(filterType: productTotalReviewCountFilterType, filterOperator: equalToFilterOperator, value: "val").toParameterString())
+    XCTAssertEqual("TotalStoryCount:eq:val",         BVFilter(filterType: productTotalStoryCountFilterType, filterOperator: equalToFilterOperator, value: "val").toParameterString())
+    
+  }
+  
+  func testFilterSorting() {
+    
+    let productIdFilterOperator:BVProductFilterType = BVProductFilterType(productFilterValue: .productId)
+    
+    let equalToFilterOperator:BVRelationalFilterOperator =
+      BVRelationalFilterOperator(relationalFilterValue: .equalTo)
+    
+    XCTAssertEqual("Id:eq:aaa,bbb,ccc", BVFilter(filterType: productIdFilterOperator, filterOperator: equalToFilterOperator, values: ["aaa", "bbb", "ccc"]).toParameterString())
+    XCTAssertEqual("Id:eq:aaa,bbb,ccc", BVFilter(filterType: productIdFilterOperator, filterOperator: equalToFilterOperator, values: ["bbb", "aaa", "ccc"]).toParameterString())
+    XCTAssertEqual("Id:eq:aaa,bbb,ccc", BVFilter(filterType: productIdFilterOperator, filterOperator: equalToFilterOperator, values: ["ccc", "bbb", "aaa"]).toParameterString())
+    
+  }
+  
+  func testValueEscaping() {
+    
+    let productIdFilterOperator:BVProductFilterType = BVProductFilterType(productFilterValue: .productId)
+    
+    let equalToFilterOperator:BVRelationalFilterOperator =
+      BVRelationalFilterOperator(relationalFilterValue: .equalTo)
+    
+    XCTAssertEqual("Id:eq:a\\,a\\:a%26a", BVFilter(filterType: productIdFilterOperator, filterOperator: equalToFilterOperator, value: "a,a:a&a").toParameterString())
+    XCTAssertEqual("Id:eq:a\\,aa,b\\:bb,c%26cc", BVFilter(filterType: productIdFilterOperator, filterOperator: equalToFilterOperator, values: ["a,aa", "b:bb", "c&cc"]).toParameterString())
+    XCTAssertEqual("Id:eq:a\\,aa,b\\:bb,c%26cc", BVFilter(string: "Id", filterOperator: equalToFilterOperator, values: ["a,aa", "b:bb", "c&cc"]).toParameterString())
+  }
+  
 }
 
 class SortTests: XCTestCase {
+  
+  func testSimpleSort() {
+    let request = BVProductDisplayPageRequest(productId: "test1")
+      .include(.pdpReviews, limit: 10)
+      .sort(by: .reviewRating, monotonicSortOrderValue: .descending)
     
-    func testSimpleSort() {
-        let request = BVProductDisplayPageRequest(productId: "test1")
-            .include(.reviews, limit: 10)
-            .sortIncludedReviews(.rating, order: .descending)
-        
-        let params = request.createParams()
-        XCTAssertNotNil(getParamValue(params, keyToSearchFor: "Sort_Reviews"))
-        XCTAssertEqual (getParamValue(params, keyToSearchFor: "Sort_Reviews"), "Rating:desc")
-    }
+    let params = request.createParams()
+    XCTAssertNotNil(getParamValue(params, keyToSearchFor: "Sort_Reviews"))
+    XCTAssertEqual (getParamValue(params, keyToSearchFor: "Sort_Reviews"), "Rating:desc")
+  }
+  
+  func testComplicatedSort() {
+    let request = BVProductDisplayPageRequest(productId: "test1")
+      .include(.pdpReviews, limit: 10)
+      .sort(by: .reviewRating, monotonicSortOrderValue: .descending)
+      .sort(by: .reviewSubmissionTime, monotonicSortOrderValue: .descending)
+      .sort(by: .questionTotalAnswerCount, monotonicSortOrderValue: .descending)
+      .sort(by: .questionTotalFeedbackCount, monotonicSortOrderValue: .ascending)
     
-    func testComplicatedSort() {
-        let request = BVProductDisplayPageRequest(productId: "test1")
-            .include(.reviews, limit: 10)
-            .sortIncludedReviews(.rating, order: .descending)
-            .sortIncludedReviews(.submissionTime, order: .descending)
-            .sortIncludedQuestions(.totalAnswerCount, order: .descending)
-            .sortIncludedQuestions(.totalFeedbackCount, order: .ascending)
-        
-        let params = request.createParams()
-        XCTAssertNotNil(getParamValue(params, keyToSearchFor: "Sort_Reviews"))
-        XCTAssertEqual (getParamValue(params, keyToSearchFor: "Sort_Reviews"), "Rating:desc,SubmissionTime:desc")
-        XCTAssertNotNil(getParamValue(params, keyToSearchFor: "Sort_Questions"))
-        XCTAssertEqual (getParamValue(params, keyToSearchFor: "Sort_Questions"), "TotalAnswerCount:desc,TotalFeedbackCount:asc")
-    }
-    
+    let params = request.createParams()
+    XCTAssertNotNil(getParamValue(params, keyToSearchFor: "Sort_Reviews"))
+    XCTAssertEqual (getParamValue(params, keyToSearchFor: "Sort_Reviews"), "Rating:desc,SubmissionTime:desc")
+    XCTAssertNotNil(getParamValue(params, keyToSearchFor: "Sort_Questions"))
+    XCTAssertEqual (getParamValue(params, keyToSearchFor: "Sort_Questions"), "TotalAnswerCount:desc,TotalFeedbackCount:asc")
+  }
+  
 }

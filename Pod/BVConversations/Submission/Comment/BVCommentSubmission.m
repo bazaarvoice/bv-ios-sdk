@@ -250,17 +250,17 @@ createSubmissionParameters:(BVSubmissionAction)action
   parameters[@"userid"] = self.userId;
   parameters[@"userlocation"] = self.userLocation;
 
-  int photoIndex = 0;
+  NSUInteger photoIndex = 0;
   for (NSString *url in photoUrls) {
-    NSString *key = [NSString stringWithFormat:@"photourl_%i", photoIndex];
+    NSString *key = [NSString stringWithFormat:@"photourl_%i", (int)photoIndex];
     parameters[key] = url;
     photoIndex += 1;
   }
 
-  int captionIndex = 0;
+  NSUInteger captionIndex = 0;
   for (NSString *caption in photoCaptions) {
     NSString *key =
-        [NSString stringWithFormat:@"photocaption_%i", captionIndex];
+        [NSString stringWithFormat:@"photocaption_%i", (int)captionIndex];
     parameters[key] = caption;
     captionIndex += 1;
   }

@@ -11,7 +11,6 @@
 #import "BVDiagnosticHelpers.h"
 #import "BVSDKConfiguration.h"
 #import "BVSDKManager.h"
-#import "BVStoreReviewsResponse.h"
 
 @interface BVConversationsRequest ()
 @property(strong, nonatomic)
@@ -105,6 +104,8 @@ loadContent:(nonnull BVConversationsRequest *)request
   NSArray<BVStringKeyValuePair *> *parameters = [request createParams];
   urlComponents.queryItems = [self getQueryItems:parameters];
   NSURLRequest *urlRequest = [NSURLRequest requestWithURL:urlComponents.URL];
+
+  // NSLog(@"REQUEST: %@", urlRequest);
 
   [[BVLogger sharedLogger]
       verbose:[NSString stringWithFormat:@"GET: %@", urlRequest.URL]];

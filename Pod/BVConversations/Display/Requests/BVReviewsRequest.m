@@ -14,8 +14,8 @@
 @implementation BVReviewsRequest
 
 - (nonnull instancetype)initWithProductId:(nonnull NSString *)productId
-                                    limit:(int)limit
-                                   offset:(int)offset {
+                                    limit:(NSUInteger)limit
+                                   offset:(NSUInteger)offset {
   return self = [super initWithID:productId limit:limit offset:offset];
 }
 
