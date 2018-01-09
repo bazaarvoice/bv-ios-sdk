@@ -10,7 +10,6 @@
 #import "BVConversationsInclude.h"
 #import "BVNotificationConstants.h"
 #import "BVNotificationsAnalyticsHelper.h"
-#import "BVPIN.h"
 #import "BVProduct.h"
 #import "BVProductDisplayPageRequest.h"
 #import "BVProductReviewNotificationConfigurationLoader.h"
@@ -18,10 +17,28 @@
 #import "BVSDKConfiguration.h"
 #import "BVSDKManager.h"
 
+@interface BVProductReviewRichNotificationCenter ()
+
+- (void)addNotificationCategories:
+    (BVProductReviewNotificationProperties *)notificationProperties
+    NS_AVAILABLE_IOS(10_0);
+- (void)queueReviewWithProductId:(nonnull NSString *)productId
+    NS_AVAILABLE_IOS(10_0);
+- (void)queueReviewWithProduct:(BVProduct *)product NS_AVAILABLE_IOS(10_0);
+- (void)rescheduleNotification:(NSDictionary *)productDict
+                      includes:(NSDictionary *)includes
+                     noteProps:(BVNotificationProperties *)noteProps
+    NS_AVAILABLE_IOS(10_0);
+- (void)queueProductReview:(BVProductReviewNotificationProperties *)noteProps
+                   product:(BVProduct *)product NS_AVAILABLE_IOS(10_0);
+
+@end
+
 @implementation BVProductReviewRichNotificationCenter
 
 - (void)addNotificationCategories:
     (BVProductReviewNotificationProperties *)notificationProperties {
+
   UNUserNotificationCenter *center =
       [UNUserNotificationCenter currentNotificationCenter];
   UNNotificationAction *replyAction = [UNNotificationAction
@@ -68,19 +85,6 @@
                                sharedManager]
                                bvProductReviewNotificationProperties]
                    product:product];
-}
-
-- (void)queuePIN:(BVPIN *)pin {
-  [self loadProductInfo:pin.identifier
-             completion:^(BVProduct *__nullable product) {
-               if (product) {
-                 [self queueProductReview:
-                           [[BVProductReviewNotificationConfigurationLoader
-                               sharedManager]
-                               bvProductReviewNotificationProperties]
-                                  product:product];
-               }
-             }];
 }
 
 - (void)rescheduleNotification:(NSDictionary *)productDict

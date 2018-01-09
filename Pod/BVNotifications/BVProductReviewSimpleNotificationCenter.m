@@ -25,10 +25,6 @@
                    product:product];
 }
 
-- (void)queuePIN:(nonnull BVPIN *)pin {
-  [self queueReviewWithProductId:pin.identifier];
-}
-
 - (void)queueReviewWithProductId:(nonnull NSString *)productId {
   [self loadProductInfo:productId
              completion:^(BVProduct *__nullable product) {
