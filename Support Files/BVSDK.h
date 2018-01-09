@@ -145,13 +145,6 @@ FOUNDATION_EXPORT const unsigned char BVSDKVersionString[];
 #import <BVSDK/BVCurationsUICollectionView.h>
 #import <BVSDK/BVCurationsUICollectionViewCell.h>
 
-// Location
-#import <BVSDK/BVLocation.h>
-#import <BVSDK/BVLocationAnalyticsHelper.h>
-#import <BVSDK/BVLocationManager.h>
-#import <BVSDK/BVLocationWrapper.h>
-#import <BVSDK/BVPlaceAttributes.h>
-
 // Recommendations
 #import <BVSDK/BVProductRecommendationView.h>
 #import <BVSDK/BVProductRecommendationsContainer.h>
@@ -159,7 +152,3 @@ FOUNDATION_EXPORT const unsigned char BVSDKVersionString[];
 #import <BVSDK/BVRecommendations.h>
 #import <BVSDK/BVRecsAnalyticsHelper.h>
 #import <BVSDK/BVShopperProfileRequestCache.h>
-
-// Post Interaction Notifications
-#import <BVSDK/BVPIN.h>
-#import <BVSDK/BVPINRequest.h>

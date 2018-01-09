@@ -5,31 +5,25 @@ PODS:
   - Bolts/AppLinks (1.8.4):
     - Bolts/Tasks
   - Bolts/Tasks (1.8.4)
-  - BVSDK (6.8.2):
-    - BVSDK/BVCommon (= 6.8.2)
-  - BVSDK/BVCommon (6.8.2)
-  - BVSDK/BVCommonUI (6.8.2)
-  - BVSDK/BVConversations (6.8.2):
+  - BVSDK (6.9.0):
+    - BVSDK/BVCommon (= 6.9.0)
+  - BVSDK/BVCommon (6.9.0)
+  - BVSDK/BVCommonUI (6.9.0)
+  - BVSDK/BVConversations (6.9.0):
     - BVSDK/BVCommon
-  - BVSDK/BVConversationsStores (6.8.2):
+  - BVSDK/BVConversationsStores (6.9.0):
     - BVSDK/BVConversations
-  - BVSDK/BVConversationsUI (6.8.2):
+  - BVSDK/BVConversationsUI (6.9.0):
     - BVSDK/BVCommonUI
     - BVSDK/BVConversationsStores
-  - BVSDK/BVCurations (6.8.2):
+  - BVSDK/BVCurations (6.9.0):
     - BVSDK/BVCommon
-  - BVSDK/BVCurationsUI (6.8.2):
+  - BVSDK/BVCurationsUI (6.9.0):
     - BVSDK/BVCommonUI
     - BVSDK/BVCurations
-  - BVSDK/BVLocation (6.8.2):
-    - BVSDK/BVCommon
-  - BVSDK/BVNotifications (6.8.2):
+  - BVSDK/BVNotifications (6.9.0):
     - BVSDK/BVConversationsUI
-    - BVSDK/BVLocation
-    - BVSDK/BVPIN
-  - BVSDK/BVPIN (6.8.2):
-    - BVSDK/BVCommon
-  - BVSDK/BVRecommendations (6.8.2):
+  - BVSDK/BVRecommendations (6.9.0):
     - BVSDK/BVCommon
   - Crashlytics (3.9.0):
     - Fabric (~> 1.7.0)
@@ -79,7 +73,6 @@ DEPENDENCIES:
   - BVSDK/BVCurations (from `../../`)
   - BVSDK/BVCurationsUI (from `../../`)
   - BVSDK/BVNotifications (from `../../`)
-  - BVSDK/BVPIN (from `../../`)
   - BVSDK/BVRecommendations (from `../../`)
   - Crashlytics
   - Fabric
@@ -112,7 +105,7 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
-  BVSDK: 803e4fa3338dbc5f41e207b97291201717c4eefc
+  BVSDK: 04ea97e106d5c9175fa1b072b9bd18bfc2f50a93
   Crashlytics: 64aad5dd97249dd3ff94b979fea140144590cdd3
   Fabric: e6be012366472553807dada21243c5ab8d904151
   FBSDKCoreKit: ebc6c5f5b3f0e72396041050e2266781a38ac587
@@ -129,6 +122,6 @@ SPEC CHECKSUMS:
   XLActionController: 57fe0ce1642e2eed971b188b490762345fdbf963
   youtube-ios-player-helper: 21ab92db027c7ff86cb17a3843a3f6eafc8158d2
 
-PODFILE CHECKSUM: 26be4b69685a1d8bf9be8d33e7896a0a34203de4
+PODFILE CHECKSUM: f2145d845c38000175311cab40ce05f8499461d6
 
 COCOAPODS: 1.3.1

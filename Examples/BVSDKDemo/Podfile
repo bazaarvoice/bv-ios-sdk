@@ -9,10 +9,6 @@ def bvsdk_pod
   pod 'BVSDK/BVCurations', :path => "../../"
   pod 'BVSDK/BVCurationsUI', :path => "../../"
   pod 'BVSDK/BVRecommendations', :path => "../../"
-
-  ## FIXME !!!!!!! ##
-  # temporarily add in BVPIN since it's required when you bring in core stuff
-  pod 'BVSDK/BVPIN', :path => "../../"
   pod 'BVSDK/BVNotifications', :path => "../../"
 end
 
