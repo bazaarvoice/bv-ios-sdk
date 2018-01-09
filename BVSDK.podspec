@@ -9,7 +9,7 @@
 
 Pod::Spec.new do |s|
   s.name = "BVSDK"
-  s.version = '6.8.2'
+  s.version = '6.9.0'
   s.homepage = 'https://developer.bazaarvoice.com/'
   s.license = { :type => 'Commercial', :text => 'See https://developer.bazaarvoice.com/API_Terms_of_Use' }
   s.author = { 'Bazaarvoice' => 'support@bazaarvoice.com' }
@@ -65,26 +65,12 @@ Pod::Spec.new do |s|
     curationsui.resources = ["Pod/BVCurationsUI/Assets/*.xcassets"]
   end
 
-  s.subspec 'BVLocation' do |location|
-    location.source_files = 'Pod/BVLocation/**/*.{h,m}'
-    location.vendored_frameworks = 'Frameworks/Gimbal.framework'
-    location.library = 'z'
-    location.dependency 'BVSDK/BVCommon'
-  end
-
   s.subspec 'BVNotifications' do |notifications|
 
     notifications.source_files = 'Pod/BVNotifications/**/*.{h,m}', 'Pod/BVCommon/Private/*.{h,m}'
     notifications.resources = ['Pod/BVNotifications/mapThumbnail.png']
 
     notifications.dependency 'BVSDK/BVConversationsUI'
-    notifications.dependency 'BVSDK/BVLocation'
-    notifications.dependency 'BVSDK/BVPIN'
-  end
-
-  s.subspec 'BVPIN' do |pin|
-    pin.source_files = 'Pod/BVPIN/**/*.{h,m}'
-    pin.dependency 'BVSDK/BVCommon'
   end
 
   s.subspec 'BVRecommendations' do |recs|

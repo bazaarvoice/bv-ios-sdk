@@ -10,7 +10,6 @@
 #import <BVSDK/BVSDKManager.h>
 #import <BVSDK/BVStoreNotificationConfigurationLoader.h>
 
-#import "BVProductReviewNotificationConfigurationLoader+Private.h"
 #import "BVStoreNotificationConfigurationLoader+Private.h"
 
 static const NSString *clientId = @"testingtesting";
@@ -98,68 +97,6 @@ static const NSString *clientId = @"testingtesting";
         XCTAssertTrue([noteProps.reviewPromptRemindText
                           isEqualToString:@"Bad Experience"],
                       @"fail reviewPromptRemindText");
-
-        XCTAssertTrue(noteProps.requestReviewOnAppOpen,
-                      @"fail requestReviewOnAppOpen flag");
-        XCTAssertTrue(noteProps.notificationsEnabled,
-                      @"fail notificationsEnabled flag");
-
-        [expectation fulfill];
-
-      }
-      failure:^(NSError *__nonnull errors) {
-        // fail
-        XCTFail("testLoadNotificationConfigAPI should not have called failure "
-                "block");
-      }];
-
-  [self waitForExpectations];
-}
-
-- (void)testLoadPINNotificationConfigAPI {
-  __weak XCTestExpectation *expectation =
-      [self expectationWithDescription:@"testLoadNotificationConfigAPI"];
-
-  [self
-      addStubForS3ResponseForConfigPath:
-          [NSString stringWithFormat:@"%@/incubator-mobile-apps/sdk/%@/ios/"
-                                     @"%@/pin/pinConfig.json",
-                                     @"https://s3.amazonaws.com", @"v1",
-                                     clientId]
-                          JSONFileNamed:@"testNotificationProductConfig.json"];
-  // Testing private API
-  [[BVProductReviewNotificationConfigurationLoader sharedManager]
-      loadPINConfiguration:^(
-          BVProductReviewNotificationProperties *__nonnull response) {
-        // success
-        BVProductReviewNotificationProperties *noteProps =
-            [[BVProductReviewNotificationConfigurationLoader sharedManager]
-                bvProductReviewNotificationProperties];
-
-        XCTAssertNotNil(noteProps, @"Config note properties should not be nil");
-        XCTAssertEqual(noteProps.visitDuration, 5, @"Unexpected visitDuration");
-        XCTAssertEqual(noteProps.notificationDelay, 5,
-                       @"Unexpected notificationDelay");
-        XCTAssertEqual(noteProps.remindMeLaterDuration, 86400,
-                       @"Unexpected remindMeLaterDuration");
-
-        XCTAssertTrue([noteProps.customUrlScheme isEqualToString:@"bvsdkdemo"],
-                      @"customUrlScheme failure");
-
-        XCTAssertTrue(
-            [noteProps.reviewPromtDispayText
-                isEqualToString:@"Thank you for your Recent Purchase."],
-            @"fail reviewPromtDispayText");
-        XCTAssertTrue([noteProps.reviewPromptSubtitleText
-                          isEqualToString:@"Would you like to leave a Review?"],
-                      @"fail reviewPromptSubtitleText");
-        XCTAssertTrue([noteProps.reviewPromtNoReview isEqualToString:@"No"],
-                      @"fail reviewPromtNoReview");
-        XCTAssertTrue([noteProps.reviewPromptYesReview isEqualToString:@"Yes"],
-                      @"fail reviewPromptYesReview");
-        XCTAssertTrue(
-            [noteProps.reviewPromptRemindText isEqualToString:@"Later"],
-            @"fail reviewPromptRemindText");
 
         XCTAssertTrue(noteProps.requestReviewOnAppOpen,
                       @"fail requestReviewOnAppOpen flag");
