@@ -17,6 +17,28 @@
 #import "BVStoreNotificationConfigurationLoader.h"
 #import <MapKit/MapKit.h>
 
+@interface BVStoreReviewRichNotificationCenter ()
+
+- (UNNotificationAttachment *)createMapSnapshot:(BVStore *)store
+    NS_AVAILABLE_IOS(10_0);
+- (void)rescheduleNotification:(NSDictionary *)productDict
+                      includes:(NSDictionary *)includes
+                     noteProps:(BVStoreReviewNotificationProperties *)noteProps
+    NS_AVAILABLE_IOS(10_0);
+- (void)
+scheduleRichNotification:(BVStoreReviewNotificationProperties *)noteProps
+             attachments:(NSArray<UNNotificationAttachment *> *)attachments
+                   store:(BVStore *)store
+                  region:(MKCoordinateRegion)region NS_AVAILABLE_IOS(10_0);
+- (void)addNotificationCategories:
+    (BVStoreReviewNotificationProperties *)notificationProperties
+    NS_AVAILABLE_IOS(10_0);
+- (void)queueReviewWithStore:(nonnull BVStore *)store NS_AVAILABLE_IOS(10_0);
+- (void)queueReviewWithStoreId:(nonnull NSString *)storeId
+    NS_AVAILABLE_IOS(10_0);
+
+@end
+
 @implementation BVStoreReviewRichNotificationCenter
 
 - (id)init {

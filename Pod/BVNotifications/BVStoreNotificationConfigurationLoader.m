@@ -6,15 +6,12 @@
 //
 
 #import "BVStoreNotificationConfigurationLoader.h"
-#import "BVLocationManager.h"
 #import "BVNotificationConfiguration.h"
-#import "BVPlaceAttributes.h"
 #import "BVSDKConfiguration.h"
 #import "BVSDKManager.h"
 #import "BVStoreReviewNotificationCenter.h"
-#import "BVVisit.h"
 
-@interface BVStoreNotificationConfigurationLoader () <BVLocationManagerDelegate>
+@interface BVStoreNotificationConfigurationLoader ()
 
 @end
 
@@ -41,8 +38,6 @@
            selector:@selector(receiveConversationsStoreAPIKey:)
                name:CONVERSATIONS_STORES_API_KEY_SET_NOTIFICATION
              object:nil];
-
-    [BVLocationManager registerForLocationUpdates:self];
   }
 
   return self;
@@ -108,43 +103,5 @@ loadStoreNotificationConfiguration:
             error:@"ERROR: Failed to load BVStoreReviewNotificationProperties"];
         failure(error);
       }];
-}
-
-#pragma mark BVLocationManagerDelegate
-- (void)didBeginVisit:(nonnull BVVisit *)visit {
-  [self receiveStoreVisitNotification:visit];
-}
-
-- (void)didEndVisit:(nonnull BVVisit *)visit {
-  [self receiveStoreVisitNotification:visit];
-}
-
-- (void)receiveStoreVisitNotification:(BVVisit *)visit {
-  BVSDKManager *sdkMgr = [BVSDKManager sharedManager];
-  if ([self isClientConfiguredForPush:sdkMgr]) {
-    // Check and make sure the visit time has been met before trying to
-    // queue a notification
-    BVStoreReviewNotificationProperties *noteProps =
-        [[BVStoreNotificationConfigurationLoader sharedManager]
-            bvStoreReviewNotificationProperties];
-
-    NSTimeInterval visitDuration =
-        [visit.departureDate timeIntervalSinceDate:visit.arrivalDate];
-
-    if (visitDuration >= noteProps.visitDuration) {
-      // queue up the notification....
-      [[BVStoreReviewNotificationCenter sharedCenter]
-          queueReviewWithStoreId:visit.storeId];
-
-    } else {
-      [[BVLogger sharedLogger]
-          verbose:[NSString stringWithFormat:@"Vist time of %f, not long "
-                                             @"enough to post "
-                                             @"notification. Need %f "
-                                             @"seconds.",
-                                             visitDuration,
-                                             noteProps.visitDuration]];
-    }
-  }
 }
 @end
