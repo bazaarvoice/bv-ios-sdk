@@ -36,7 +36,6 @@ class NewProductPageViewController: BVProductDisplayPageViewController, UITableV
     enum ProductDetailSection : Int {
         case ratings = 0
         case questions
-        case location
         case curations
         case curationsAddPhoto
         case curationsPhotoMap
@@ -88,9 +87,7 @@ class NewProductPageViewController: BVProductDisplayPageViewController, UITableV
         super.viewDidLoad()
         
         ProfileUtils.trackViewController(self)
-        
-        defaultStoreId = LocationPreferenceUtils.getDefaultStore() != nil ? (LocationPreferenceUtils.getDefaultStore()?.identifier)! : "0"
-        
+      
         // load a native content ad
         self.loadNativeAd()
         
@@ -125,14 +122,6 @@ class NewProductPageViewController: BVProductDisplayPageViewController, UITableV
     override func viewDidAppear(_ animated: Bool) {
         
         self.updateCartBadgeCount()
-        
-        let cachedDefaultStore = LocationPreferenceUtils.getDefaultStore()
-        if cachedDefaultStore != nil && self.defaultStoreId != cachedDefaultStore?.identifier {
-            let indexPath = IndexPath(row: 0, section: ProductDetailSection.location.rawValue)
-            self.tableView.reloadRows(at: [indexPath], with: UITableViewRowAnimation.top)
-            defaultStoreId = (cachedDefaultStore?.identifier)!
-        }
-        
     }
     
     private func addBarButtonItems(){
@@ -303,8 +292,6 @@ class NewProductPageViewController: BVProductDisplayPageViewController, UITableV
             return config.curationsKey != "REPLACE_ME"
         case .recommendations:
             return config.shopperAdvertisingKey != "REPLACE_ME"
-        case .location:
-            return true
         }
         
     }
@@ -315,9 +302,6 @@ class NewProductPageViewController: BVProductDisplayPageViewController, UITableV
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         switch section {
-            
-        case ProductDetailSection.location.rawValue:
-            return 1
             
         case ProductDetailSection.ratings.rawValue:
             return sdkIsConfiguredFor(.ratings) ? 1 : 0
@@ -454,26 +438,6 @@ class NewProductPageViewController: BVProductDisplayPageViewController, UITableV
             
         }
         
-        if (indexPath as NSIndexPath).section == ProductDetailSection.location.rawValue {
-            
-            let cell = tableView.dequeueReusableCell(withIdentifier: "ProductPageButtonCell") as! ProductPageButtonCell
-            
-            cell.button.removeTarget(nil, action: nil, for: .allEvents)
-            cell.button.addTarget(self, action: #selector(NewProductPageViewController.locationSettingsPressed), for: .touchUpInside)
-            cell.setCustomLeftIcon(FAKFontAwesome.mapMarkerIcon(withSize:))
-            cell.setCustomRightIcon(FAKFontAwesome.chevronRightIcon(withSize:))
-            
-            var buttonText = "Set your default store location!"
-            if let defaultCachedStore = LocationPreferenceUtils.getDefaultStore() {
-                buttonText = "My Store: " + defaultCachedStore.city + ", " + defaultCachedStore.state
-            }
-            
-            cell.button.setTitle(buttonText, for: UIControlState())
-            
-            return cell
-            
-        }
-        
         if (indexPath as NSIndexPath).section == ProductDetailSection.curationsAddPhoto.rawValue {
             
             let cell = tableView.dequeueReusableCell(withIdentifier: "ProductPageButtonCell") as! ProductPageButtonCell
@@ -533,14 +497,6 @@ class NewProductPageViewController: BVProductDisplayPageViewController, UITableV
             product: product!
         )
         self.navigationController?.pushViewController(questionsVC, animated: true)
-        
-    }
-    
-    func locationSettingsPressed() {
-        
-        let locationSettingsVC = LocationSettings(nibName:"LocationSettings", bundle: nil)
-        
-        self.navigationController?.pushViewController(locationSettingsVC, animated: true)
         
     }
     

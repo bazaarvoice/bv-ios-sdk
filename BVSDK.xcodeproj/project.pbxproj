@@ -138,11 +138,6 @@
 		87A02B6A1E0971AC0002701B /* BVSubmittedFeedback.h in Headers */ = {isa = PBXBuildFile; fileRef = 87A02B681E0971AC0002701B /* BVSubmittedFeedback.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		87A02B6B1E0971AC0002701B /* BVSubmittedFeedback.m in Sources */ = {isa = PBXBuildFile; fileRef = 87A02B691E0971AC0002701B /* BVSubmittedFeedback.m */; };
 		87A9ECB81E1DA87E00666636 /* productsToReviewResult.json in Resources */ = {isa = PBXBuildFile; fileRef = 87A9ECB71E1DA87E00666636 /* productsToReviewResult.json */; };
-		87A9ECBA1E1DA93A00666636 /* BVPINTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 87A9ECB91E1DA93A00666636 /* BVPINTests.m */; };
-		87A9ECC01E1DB9B300666636 /* BVPIN.h in Headers */ = {isa = PBXBuildFile; fileRef = 87A9ECBC1E1DB9B300666636 /* BVPIN.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		87A9ECC11E1DB9B300666636 /* BVPIN.m in Sources */ = {isa = PBXBuildFile; fileRef = 87A9ECBD1E1DB9B300666636 /* BVPIN.m */; };
-		87A9ECC21E1DB9B300666636 /* BVPINRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 87A9ECBE1E1DB9B300666636 /* BVPINRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		87A9ECC31E1DB9B300666636 /* BVPINRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 87A9ECBF1E1DB9B300666636 /* BVPINRequest.m */; };
 		87B6DF9C1ECA3A0F00B75835 /* CommentsDisplayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B6DF9B1ECA3A0F00B75835 /* CommentsDisplayTests.swift */; };
 		87B6DFA11ECA424300B75835 /* BVCommentsRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 87B6DF9F1ECA424300B75835 /* BVCommentsRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		87B6DFA21ECA424300B75835 /* BVCommentsRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 87B6DFA01ECA424300B75835 /* BVCommentsRequest.m */; };
@@ -209,17 +204,9 @@
 		87F2DAB81DAD579D00FB43F3 /* BVSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = 87F2DAAA1DAD579D00FB43F3 /* BVSDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		87F2DC181DAD585E00FB43F3 /* BVAnalyticsManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 87F2DAC51DAD585E00FB43F3 /* BVAnalyticsManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		87F2DC191DAD585E00FB43F3 /* BVAnalyticsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 87F2DAC61DAD585E00FB43F3 /* BVAnalyticsManager.m */; };
-		87F2DC1C1DAD585E00FB43F3 /* BVLocationEventsHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 87F2DAC91DAD585E00FB43F3 /* BVLocationEventsHelper.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		87F2DC1D1DAD585E00FB43F3 /* BVLocationEventsHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 87F2DACA1DAD585E00FB43F3 /* BVLocationEventsHelper.m */; };
 		87F2DC1E1DAD585E00FB43F3 /* BVPixel.h in Headers */ = {isa = PBXBuildFile; fileRef = 87F2DACB1DAD585E00FB43F3 /* BVPixel.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		87F2DC1F1DAD585E00FB43F3 /* BVPixel.m in Sources */ = {isa = PBXBuildFile; fileRef = 87F2DACC1DAD585E00FB43F3 /* BVPixel.m */; };
 		87F2DC241DAD585E00FB43F3 /* BVContextualInterests.h in Headers */ = {isa = PBXBuildFile; fileRef = 87F2DAD21DAD585E00FB43F3 /* BVContextualInterests.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		87F2DC251DAD585E00FB43F3 /* BVGMBLSighting.h in Headers */ = {isa = PBXBuildFile; fileRef = 87F2DAD31DAD585E00FB43F3 /* BVGMBLSighting.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		87F2DC261DAD585E00FB43F3 /* BVGMBLSighting.m in Sources */ = {isa = PBXBuildFile; fileRef = 87F2DAD41DAD585E00FB43F3 /* BVGMBLSighting.m */; };
-		87F2DC271DAD585E00FB43F3 /* BVGMBLVisit.h in Headers */ = {isa = PBXBuildFile; fileRef = 87F2DAD51DAD585E00FB43F3 /* BVGMBLVisit.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		87F2DC281DAD585E00FB43F3 /* BVGMBLVisit.m in Sources */ = {isa = PBXBuildFile; fileRef = 87F2DAD61DAD585E00FB43F3 /* BVGMBLVisit.m */; };
-		87F2DC291DAD585E00FB43F3 /* BVLocationWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = 87F2DAD71DAD585E00FB43F3 /* BVLocationWrapper.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		87F2DC2A1DAD585E00FB43F3 /* BVLocationWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 87F2DAD81DAD585E00FB43F3 /* BVLocationWrapper.m */; };
 		87F2DC581DAD585E00FB43F3 /* BVCommaUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = 87F2DB0E1DAD585E00FB43F3 /* BVCommaUtil.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		87F2DC591DAD585E00FB43F3 /* BVCommaUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 87F2DB0F1DAD585E00FB43F3 /* BVCommaUtil.m */; };
 		87F2DC5C1DAD585E00FB43F3 /* BVBadge.h in Headers */ = {isa = PBXBuildFile; fileRef = 87F2DB131DAD585E00FB43F3 /* BVBadge.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -393,15 +380,6 @@
 		87F2DD251DAD585E00FB43F3 /* BVCurationsFeedRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 87F2DBEF1DAD585E00FB43F3 /* BVCurationsFeedRequest.m */; };
 		87F2DD261DAD585E00FB43F3 /* BVCurationsPhotoUploader.h in Headers */ = {isa = PBXBuildFile; fileRef = 87F2DBF01DAD585E00FB43F3 /* BVCurationsPhotoUploader.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		87F2DD271DAD585E00FB43F3 /* BVCurationsPhotoUploader.m in Sources */ = {isa = PBXBuildFile; fileRef = 87F2DBF11DAD585E00FB43F3 /* BVCurationsPhotoUploader.m */; };
-		87F2DD281DAD585E00FB43F3 /* BVLocation.h in Headers */ = {isa = PBXBuildFile; fileRef = 87F2DBF31DAD585E00FB43F3 /* BVLocation.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		87F2DD291DAD585E00FB43F3 /* BVLocationAnalyticsHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 87F2DBF41DAD585E00FB43F3 /* BVLocationAnalyticsHelper.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		87F2DD2A1DAD585E00FB43F3 /* BVLocationAnalyticsHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 87F2DBF51DAD585E00FB43F3 /* BVLocationAnalyticsHelper.m */; };
-		87F2DD2B1DAD585E00FB43F3 /* BVLocationManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 87F2DBF61DAD585E00FB43F3 /* BVLocationManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		87F2DD2C1DAD585E00FB43F3 /* BVLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 87F2DBF71DAD585E00FB43F3 /* BVLocationManager.m */; };
-		87F2DD2D1DAD585E00FB43F3 /* BVPlaceAttributes.h in Headers */ = {isa = PBXBuildFile; fileRef = 87F2DBF81DAD585E00FB43F3 /* BVPlaceAttributes.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		87F2DD2E1DAD585E00FB43F3 /* BVPlaceAttributes.m in Sources */ = {isa = PBXBuildFile; fileRef = 87F2DBF91DAD585E00FB43F3 /* BVPlaceAttributes.m */; };
-		87F2DD2F1DAD585E00FB43F3 /* BVVisit.h in Headers */ = {isa = PBXBuildFile; fileRef = 87F2DBFA1DAD585E00FB43F3 /* BVVisit.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		87F2DD301DAD585E00FB43F3 /* BVVisit.m in Sources */ = {isa = PBXBuildFile; fileRef = 87F2DBFB1DAD585E00FB43F3 /* BVVisit.m */; };
 		87F2DD361DAD585E00FB43F3 /* BVProductRecommendationsContainer.h in Headers */ = {isa = PBXBuildFile; fileRef = 87F2DC031DAD585E00FB43F3 /* BVProductRecommendationsContainer.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		87F2DD371DAD585E00FB43F3 /* BVProductRecommendationsContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 87F2DC041DAD585E00FB43F3 /* BVProductRecommendationsContainer.m */; };
 		87F2DD381DAD585E00FB43F3 /* BVProductRecommendationView.h in Headers */ = {isa = PBXBuildFile; fileRef = 87F2DC051DAD585E00FB43F3 /* BVProductRecommendationView.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -423,10 +401,8 @@
 		87F2DD481DAD585E00FB43F3 /* BVShopperProfileRequestCache.h in Headers */ = {isa = PBXBuildFile; fileRef = 87F2DC161DAD585E00FB43F3 /* BVShopperProfileRequestCache.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		87F2DD4B1DAD589800FB43F3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87F2DD4A1DAD589800FB43F3 /* UIKit.framework */; };
 		87F2DD4D1DAD589E00FB43F3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87F2DD4C1DAD589E00FB43F3 /* Foundation.framework */; };
-		87F2DD521DAD597C00FB43F3 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 87F2DD511DAD597C00FB43F3 /* libz.tbd */; };
 		87F2DD5E1DAD5E9400FB43F3 /* BVBaseStubTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 87F2DD551DAD5E9400FB43F3 /* BVBaseStubTestCase.m */; };
 		87F2DD601DAD5E9400FB43F3 /* BVCurationsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 87F2DD571DAD5E9400FB43F3 /* BVCurationsTests.m */; };
-		87F2DD611DAD5E9400FB43F3 /* BVLocationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 87F2DD581DAD5E9400FB43F3 /* BVLocationTests.m */; };
 		87F2DD621DAD5E9400FB43F3 /* BVNotificationConfigTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 87F2DD5A1DAD5E9400FB43F3 /* BVNotificationConfigTests.m */; };
 		87F2DD631DAD5E9400FB43F3 /* BVRecommendationsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 87F2DD5B1DAD5E9400FB43F3 /* BVRecommendationsTests.m */; };
 		87F2DD641DAD5E9400FB43F3 /* BVUserProfileTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 87F2DD5C1DAD5E9400FB43F3 /* BVUserProfileTests.m */; };
@@ -537,7 +513,6 @@
 		B5A764E71FE191BA00B5DC9A /* BVStoreReviewSubmission.m in Sources */ = {isa = PBXBuildFile; fileRef = B5A764E51FE191BA00B5DC9A /* BVStoreReviewSubmission.m */; };
 		B5A92D961FE85EEE008DA17C /* BVFeedbackSubmission.h in Headers */ = {isa = PBXBuildFile; fileRef = B5A92D951FE85EEE008DA17C /* BVFeedbackSubmission.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B5DDA04E1FE8633800C47C01 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B5DDA04D1FE8633800C47C01 /* Assets.xcassets */; };
-		B5E1F5331FD5F2F0000F5DB5 /* Gimbal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5E1F5321FD5F2F0000F5DB5 /* Gimbal.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -672,11 +647,6 @@
 		87A02B681E0971AC0002701B /* BVSubmittedFeedback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVSubmittedFeedback.h; sourceTree = "<group>"; };
 		87A02B691E0971AC0002701B /* BVSubmittedFeedback.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVSubmittedFeedback.m; sourceTree = "<group>"; };
 		87A9ECB71E1DA87E00666636 /* productsToReviewResult.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = productsToReviewResult.json; path = Tests/Tests/resources/pin/productsToReviewResult.json; sourceTree = SOURCE_ROOT; };
-		87A9ECB91E1DA93A00666636 /* BVPINTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BVPINTests.m; path = Tests/Tests/BVPINTests.m; sourceTree = SOURCE_ROOT; };
-		87A9ECBC1E1DB9B300666636 /* BVPIN.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVPIN.h; sourceTree = "<group>"; };
-		87A9ECBD1E1DB9B300666636 /* BVPIN.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVPIN.m; sourceTree = "<group>"; };
-		87A9ECBE1E1DB9B300666636 /* BVPINRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVPINRequest.h; sourceTree = "<group>"; };
-		87A9ECBF1E1DB9B300666636 /* BVPINRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVPINRequest.m; sourceTree = "<group>"; };
 		87B6DF9B1ECA3A0F00B75835 /* CommentsDisplayTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentsDisplayTests.swift; sourceTree = "<group>"; };
 		87B6DF9F1ECA424300B75835 /* BVCommentsRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVCommentsRequest.h; sourceTree = "<group>"; };
 		87B6DFA01ECA424300B75835 /* BVCommentsRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVCommentsRequest.m; sourceTree = "<group>"; };
@@ -707,7 +677,6 @@
 		87C5FEAF1E22A05D004EE6E8 /* BVStringKeyValuePair.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVStringKeyValuePair.h; sourceTree = "<group>"; };
 		87C5FEB01E22A05D004EE6E8 /* BVStringKeyValuePair.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVStringKeyValuePair.m; sourceTree = "<group>"; };
 		87C5FEB41E22A05D004EE6E8 /* BVMessageInterceptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVMessageInterceptor.h; sourceTree = "<group>"; };
-		87C5FECC1E22A5BE004EE6E8 /* BVProductReviewNotificationConfigurationLoader+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "BVProductReviewNotificationConfigurationLoader+Private.h"; path = "Tests/Tests/BVProductReviewNotificationConfigurationLoader+Private.h"; sourceTree = SOURCE_ROOT; };
 		87C5FF561E368DF2004EE6E8 /* BVAuthorRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVAuthorRequest.h; sourceTree = "<group>"; };
 		87C5FF571E368DF2004EE6E8 /* BVAuthorRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVAuthorRequest.m; sourceTree = "<group>"; };
 		87C5FF5A1E36A8B7004EE6E8 /* BVAuthorResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVAuthorResponse.h; sourceTree = "<group>"; };
@@ -746,17 +715,9 @@
 		87F2DAB71DAD579D00FB43F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		87F2DAC51DAD585E00FB43F3 /* BVAnalyticsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BVAnalyticsManager.h; path = ../BVAnalyticsManager.h; sourceTree = "<group>"; };
 		87F2DAC61DAD585E00FB43F3 /* BVAnalyticsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BVAnalyticsManager.m; path = ../BVAnalyticsManager.m; sourceTree = "<group>"; };
-		87F2DAC91DAD585E00FB43F3 /* BVLocationEventsHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BVLocationEventsHelper.h; path = ../BVLocationEventsHelper.h; sourceTree = "<group>"; };
-		87F2DACA1DAD585E00FB43F3 /* BVLocationEventsHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BVLocationEventsHelper.m; path = ../BVLocationEventsHelper.m; sourceTree = "<group>"; };
 		87F2DACB1DAD585E00FB43F3 /* BVPixel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVPixel.h; sourceTree = "<group>"; };
 		87F2DACC1DAD585E00FB43F3 /* BVPixel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVPixel.m; sourceTree = "<group>"; };
 		87F2DAD21DAD585E00FB43F3 /* BVContextualInterests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVContextualInterests.h; sourceTree = "<group>"; };
-		87F2DAD31DAD585E00FB43F3 /* BVGMBLSighting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVGMBLSighting.h; sourceTree = "<group>"; };
-		87F2DAD41DAD585E00FB43F3 /* BVGMBLSighting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVGMBLSighting.m; sourceTree = "<group>"; };
-		87F2DAD51DAD585E00FB43F3 /* BVGMBLVisit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVGMBLVisit.h; sourceTree = "<group>"; };
-		87F2DAD61DAD585E00FB43F3 /* BVGMBLVisit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVGMBLVisit.m; sourceTree = "<group>"; };
-		87F2DAD71DAD585E00FB43F3 /* BVLocationWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVLocationWrapper.h; sourceTree = "<group>"; };
-		87F2DAD81DAD585E00FB43F3 /* BVLocationWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVLocationWrapper.m; sourceTree = "<group>"; };
 		87F2DB0E1DAD585E00FB43F3 /* BVCommaUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVCommaUtil.h; sourceTree = "<group>"; };
 		87F2DB0F1DAD585E00FB43F3 /* BVCommaUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVCommaUtil.m; sourceTree = "<group>"; };
 		87F2DB131DAD585E00FB43F3 /* BVBadge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVBadge.h; sourceTree = "<group>"; };
@@ -930,15 +891,6 @@
 		87F2DBEF1DAD585E00FB43F3 /* BVCurationsFeedRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVCurationsFeedRequest.m; sourceTree = "<group>"; };
 		87F2DBF01DAD585E00FB43F3 /* BVCurationsPhotoUploader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVCurationsPhotoUploader.h; sourceTree = "<group>"; };
 		87F2DBF11DAD585E00FB43F3 /* BVCurationsPhotoUploader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVCurationsPhotoUploader.m; sourceTree = "<group>"; };
-		87F2DBF31DAD585E00FB43F3 /* BVLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVLocation.h; sourceTree = "<group>"; };
-		87F2DBF41DAD585E00FB43F3 /* BVLocationAnalyticsHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVLocationAnalyticsHelper.h; sourceTree = "<group>"; };
-		87F2DBF51DAD585E00FB43F3 /* BVLocationAnalyticsHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVLocationAnalyticsHelper.m; sourceTree = "<group>"; };
-		87F2DBF61DAD585E00FB43F3 /* BVLocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVLocationManager.h; sourceTree = "<group>"; };
-		87F2DBF71DAD585E00FB43F3 /* BVLocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVLocationManager.m; sourceTree = "<group>"; };
-		87F2DBF81DAD585E00FB43F3 /* BVPlaceAttributes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVPlaceAttributes.h; sourceTree = "<group>"; };
-		87F2DBF91DAD585E00FB43F3 /* BVPlaceAttributes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVPlaceAttributes.m; sourceTree = "<group>"; };
-		87F2DBFA1DAD585E00FB43F3 /* BVVisit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVVisit.h; sourceTree = "<group>"; };
-		87F2DBFB1DAD585E00FB43F3 /* BVVisit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVVisit.m; sourceTree = "<group>"; };
 		87F2DC031DAD585E00FB43F3 /* BVProductRecommendationsContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVProductRecommendationsContainer.h; sourceTree = "<group>"; };
 		87F2DC041DAD585E00FB43F3 /* BVProductRecommendationsContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVProductRecommendationsContainer.m; sourceTree = "<group>"; };
 		87F2DC051DAD585E00FB43F3 /* BVProductRecommendationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVProductRecommendationView.h; sourceTree = "<group>"; };
@@ -960,11 +912,9 @@
 		87F2DC161DAD585E00FB43F3 /* BVShopperProfileRequestCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVShopperProfileRequestCache.h; sourceTree = "<group>"; };
 		87F2DD4A1DAD589800FB43F3 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		87F2DD4C1DAD589E00FB43F3 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		87F2DD511DAD597C00FB43F3 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		87F2DD541DAD5E9400FB43F3 /* BVBaseStubTestCase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BVBaseStubTestCase.h; path = Tests/Tests/BVBaseStubTestCase.h; sourceTree = SOURCE_ROOT; };
 		87F2DD551DAD5E9400FB43F3 /* BVBaseStubTestCase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BVBaseStubTestCase.m; path = Tests/Tests/BVBaseStubTestCase.m; sourceTree = SOURCE_ROOT; };
 		87F2DD571DAD5E9400FB43F3 /* BVCurationsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BVCurationsTests.m; path = Tests/Tests/BVCurationsTests.m; sourceTree = SOURCE_ROOT; };
-		87F2DD581DAD5E9400FB43F3 /* BVLocationTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BVLocationTests.m; path = Tests/Tests/BVLocationTests.m; sourceTree = SOURCE_ROOT; };
 		87F2DD591DAD5E9400FB43F3 /* BVNotificationConfigTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BVNotificationConfigTests.h; path = Tests/Tests/BVNotificationConfigTests.h; sourceTree = SOURCE_ROOT; };
 		87F2DD5A1DAD5E9400FB43F3 /* BVNotificationConfigTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BVNotificationConfigTests.m; path = Tests/Tests/BVNotificationConfigTests.m; sourceTree = SOURCE_ROOT; };
 		87F2DD5B1DAD5E9400FB43F3 /* BVRecommendationsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BVRecommendationsTests.m; path = Tests/Tests/BVRecommendationsTests.m; sourceTree = SOURCE_ROOT; };
@@ -1076,7 +1026,6 @@
 		B5A764E51FE191BA00B5DC9A /* BVStoreReviewSubmission.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BVStoreReviewSubmission.m; path = Pod/BVConversationsStores/Submission/Review/BVStoreReviewSubmission.m; sourceTree = SOURCE_ROOT; };
 		B5A92D951FE85EEE008DA17C /* BVFeedbackSubmission.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVFeedbackSubmission.h; sourceTree = "<group>"; };
 		B5DDA04D1FE8633800C47C01 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		B5E1F5321FD5F2F0000F5DB5 /* Gimbal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Gimbal.framework; sourceTree = "<group>"; };
 		EC098EFAFB725736F0751BA0 /* libPods-BVSDK.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BVSDK.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -1086,10 +1035,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				155261E91E413A22008887A8 /* Social.framework in Frameworks */,
-				87F2DD521DAD597C00FB43F3 /* libz.tbd in Frameworks */,
 				87F2DD4D1DAD589E00FB43F3 /* Foundation.framework in Frameworks */,
 				87F2DD4B1DAD589800FB43F3 /* UIKit.framework in Frameworks */,
-				B5E1F5331FD5F2F0000F5DB5 /* Gimbal.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1204,18 +1151,6 @@
 			path = Feedback;
 			sourceTree = "<group>";
 		};
-		87A9ECBB1E1DB9B300666636 /* BVPIN */ = {
-			isa = PBXGroup;
-			children = (
-				87A9ECBC1E1DB9B300666636 /* BVPIN.h */,
-				87A9ECBD1E1DB9B300666636 /* BVPIN.m */,
-				87A9ECBE1E1DB9B300666636 /* BVPINRequest.h */,
-				87A9ECBF1E1DB9B300666636 /* BVPINRequest.m */,
-			);
-			name = BVPIN;
-			path = Pod/BVPIN;
-			sourceTree = "<group>";
-		};
 		87C5FE9F1E22A05D004EE6E8 /* BVCommon */ = {
 			isa = PBXGroup;
 			children = (
@@ -1305,7 +1240,6 @@
 			isa = PBXGroup;
 			children = (
 				87F2DAA91DAD579D00FB43F3 /* BVSDK */,
-				87F2DD4E1DAD592A00FB43F3 /* 3rd Party Frameworks */,
 				87F2DAB41DAD579D00FB43F3 /* BVSDKTests */,
 				87F2DAA81DAD579D00FB43F3 /* Products */,
 				87F2DD491DAD589800FB43F3 /* Frameworks */,
@@ -1334,11 +1268,9 @@
 				B5A764A71FDB1A7500B5DC9A /* BVConversationsUI */,
 				87F2DBE01DAD585E00FB43F3 /* BVCurations */,
 				15970ECE1E366BB500807032 /* BVCurationsUI */,
-				87F2DBF21DAD585E00FB43F3 /* BVLocation */,
 				875411531E1F201E006C5C6E /* BVNotifications */,
 				875410A71E1F10DF006C5C6E /* BVExtensionNotifications */,
 				87F2DC021DAD585E00FB43F3 /* BVRecommendations */,
-				87A9ECBB1E1DB9B300666636 /* BVPIN */,
 			);
 			name = BVSDK;
 			sourceTree = "<group>";
@@ -1353,13 +1285,10 @@
 				87E28C821E5F88FE00915FDB /* BVPixelTests.m */,
 				87F2DD551DAD5E9400FB43F3 /* BVBaseStubTestCase.m */,
 				87F2DD571DAD5E9400FB43F3 /* BVCurationsTests.m */,
-				87F2DD581DAD5E9400FB43F3 /* BVLocationTests.m */,
 				87F2DD591DAD5E9400FB43F3 /* BVNotificationConfigTests.h */,
 				87F2DD5A1DAD5E9400FB43F3 /* BVNotificationConfigTests.m */,
 				87F2DD5B1DAD5E9400FB43F3 /* BVRecommendationsTests.m */,
 				87F2DD5C1DAD5E9400FB43F3 /* BVUserProfileTests.m */,
-				87A9ECB91E1DA93A00666636 /* BVPINTests.m */,
-				87C5FECC1E22A5BE004EE6E8 /* BVProductReviewNotificationConfigurationLoader+Private.h */,
 				879D090F1DCA7DDE006B51D3 /* BVStoreNotificationConfigurationLoader+Private.h */,
 				87F2DAB71DAD579D00FB43F3 /* Info.plist */,
 				15D4F8451DF5EFFF00E6B30D /* BVSDKTests-Bridging-Header.h */,
@@ -1384,15 +1313,7 @@
 			children = (
 				87F2DAC51DAD585E00FB43F3 /* BVAnalyticsManager.h */,
 				87F2DAC61DAD585E00FB43F3 /* BVAnalyticsManager.m */,
-				87F2DAC91DAD585E00FB43F3 /* BVLocationEventsHelper.h */,
-				87F2DACA1DAD585E00FB43F3 /* BVLocationEventsHelper.m */,
 				87F2DAD21DAD585E00FB43F3 /* BVContextualInterests.h */,
-				87F2DAD31DAD585E00FB43F3 /* BVGMBLSighting.h */,
-				87F2DAD41DAD585E00FB43F3 /* BVGMBLSighting.m */,
-				87F2DAD51DAD585E00FB43F3 /* BVGMBLVisit.h */,
-				87F2DAD61DAD585E00FB43F3 /* BVGMBLVisit.m */,
-				87F2DAD71DAD585E00FB43F3 /* BVLocationWrapper.h */,
-				87F2DAD81DAD585E00FB43F3 /* BVLocationWrapper.m */,
 			);
 			path = Private;
 			sourceTree = "<group>";
@@ -1769,23 +1690,6 @@
 			path = Pod/BVCurations;
 			sourceTree = "<group>";
 		};
-		87F2DBF21DAD585E00FB43F3 /* BVLocation */ = {
-			isa = PBXGroup;
-			children = (
-				87F2DBF31DAD585E00FB43F3 /* BVLocation.h */,
-				87F2DBF41DAD585E00FB43F3 /* BVLocationAnalyticsHelper.h */,
-				87F2DBF51DAD585E00FB43F3 /* BVLocationAnalyticsHelper.m */,
-				87F2DBF61DAD585E00FB43F3 /* BVLocationManager.h */,
-				87F2DBF71DAD585E00FB43F3 /* BVLocationManager.m */,
-				87F2DBF81DAD585E00FB43F3 /* BVPlaceAttributes.h */,
-				87F2DBF91DAD585E00FB43F3 /* BVPlaceAttributes.m */,
-				87F2DBFA1DAD585E00FB43F3 /* BVVisit.h */,
-				87F2DBFB1DAD585E00FB43F3 /* BVVisit.m */,
-			);
-			name = BVLocation;
-			path = Pod/BVLocation;
-			sourceTree = "<group>";
-		};
 		87F2DC021DAD585E00FB43F3 /* BVRecommendations */ = {
 			isa = PBXGroup;
 			children = (
@@ -1833,16 +1737,6 @@
 				7892A8713545E74147C58ECB /* Pods_BVSDKTests.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		87F2DD4E1DAD592A00FB43F3 /* 3rd Party Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				87F2DD511DAD597C00FB43F3 /* libz.tbd */,
-				B5E1F5321FD5F2F0000F5DB5 /* Gimbal.framework */,
-			);
-			name = "3rd Party Frameworks";
-			path = Frameworks;
 			sourceTree = "<group>";
 		};
 		87F2DD651DAD698400FB43F3 /* conversations */ = {
@@ -2172,12 +2066,9 @@
 				87D424F31E8AD45400147FDB /* BVCurationsUICollectionView.h in Headers */,
 				87F2DC181DAD585E00FB43F3 /* BVAnalyticsManager.h in Headers */,
 				153550B01E898CF800C62D90 /* BVCurationsUICollectionViewCell.h in Headers */,
-				87A9ECC01E1DB9B300666636 /* BVPIN.h in Headers */,
-				87A9ECC21E1DB9B300666636 /* BVPINRequest.h in Headers */,
 				87F2DD431DAD585E00FB43F3 /* BVRecsAnalyticsHelper.h in Headers */,
 				87F2DCC31DAD585E00FB43F3 /* BVSortOptionAnswers.h in Headers */,
 				87F2DC641DAD585E00FB43F3 /* BVContextDataValue.h in Headers */,
-				87F2DD291DAD585E00FB43F3 /* BVLocationAnalyticsHelper.h in Headers */,
 				87F2DD221DAD585E00FB43F3 /* BVCurationsFeedLoader.h in Headers */,
 				87F2DD181DAD585E00FB43F3 /* BVCurationsAddPostRequest.h in Headers */,
 				87F2DCBF1DAD585E00FB43F3 /* BVReviewFilterType.h in Headers */,
@@ -2191,7 +2082,6 @@
 				87F2DD111DAD585E00FB43F3 /* BVReviewsTableView.h in Headers */,
 				87F2DCDF1DAD585E00FB43F3 /* BVSubmissionResponse.h in Headers */,
 				87F2DCD11DAD585E00FB43F3 /* BVSubmittedAnswer.h in Headers */,
-				87F2DD281DAD585E00FB43F3 /* BVLocation.h in Headers */,
 				87F2DCEB1DAD585E00FB43F3 /* BVSubmittedQuestion.h in Headers */,
 				87F2DC7A1DAD585E00FB43F3 /* BVPhotoSizes.h in Headers */,
 				87F2DCF11DAD585E00FB43F3 /* BVReviewSubmissionResponse.h in Headers */,
@@ -2203,7 +2093,6 @@
 				87F2DCD71DAD585E00FB43F3 /* BVFormFieldOptions.h in Headers */,
 				87F2DC861DAD585E00FB43F3 /* BVResponse.h in Headers */,
 				87F2DCCD1DAD585E00FB43F3 /* BVAnswerSubmissionErrorResponse.h in Headers */,
-				87F2DC291DAD585E00FB43F3 /* BVLocationWrapper.h in Headers */,
 				87F2DC6A1DAD585E00FB43F3 /* BVConversationsInclude.h in Headers */,
 				87F2DCC71DAD585E00FB43F3 /* BVSortOptionQuestions.h in Headers */,
 				87F2DC581DAD585E00FB43F3 /* BVCommaUtil.h in Headers */,
@@ -2243,10 +2132,8 @@
 				87F2DD241DAD585E00FB43F3 /* BVCurationsFeedRequest.h in Headers */,
 				87F2DCD51DAD585E00FB43F3 /* BVFormField.h in Headers */,
 				87F2DD091DAD585E00FB43F3 /* BVQuestionTableViewCell.h in Headers */,
-				87F2DD2B1DAD585E00FB43F3 /* BVLocationManager.h in Headers */,
 				87F2DC711DAD585E00FB43F3 /* BVDistributionElement.h in Headers */,
 				87F2DCDD1DAD585E00FB43F3 /* BVSubmissionErrorResponse.h in Headers */,
-				87F2DD2D1DAD585E00FB43F3 /* BVPlaceAttributes.h in Headers */,
 				87F2DC8D1DAD585E00FB43F3 /* BVSecondaryRating.h in Headers */,
 				87F2DCF31DAD585E00FB43F3 /* BVSubmittedReview.h in Headers */,
 				87F2DCC91DAD585E00FB43F3 /* BVSortOptionReviews.h in Headers */,
@@ -2311,7 +2198,6 @@
 				87C5FEBB1E22A05D004EE6E8 /* BVDiagnosticHelpers.h in Headers */,
 				87F2DCA51DAD585E00FB43F3 /* PDPInclude.h in Headers */,
 				87F2DC601DAD585E00FB43F3 /* BVBrand.h in Headers */,
-				87F2DD2F1DAD585E00FB43F3 /* BVVisit.h in Headers */,
 				87F2DC841DAD585E00FB43F3 /* BVRatingDistribution.h in Headers */,
 				87F2DC5E1DAD585E00FB43F3 /* BVBadgeType.h in Headers */,
 				1539745C1E719B9600BA52C1 /* BVBaseConversationsResponse.h in Headers */,
@@ -2378,10 +2264,7 @@
 				5F608FF41F6AF3E100E197CE /* BVSubmissionErrorCode.h in Headers */,
 				B5A764A61FDAFBA700B5DC9A /* UIImage+BundleLocator.h in Headers */,
 				87F2DC241DAD585E00FB43F3 /* BVContextualInterests.h in Headers */,
-				87F2DC251DAD585E00FB43F3 /* BVGMBLSighting.h in Headers */,
-				87F2DC271DAD585E00FB43F3 /* BVGMBLVisit.h in Headers */,
 				87C5FEC91E22A05D004EE6E8 /* BVMessageInterceptor.h in Headers */,
-				87F2DC1C1DAD585E00FB43F3 /* BVLocationEventsHelper.h in Headers */,
 				87F2DD201DAD585E00FB43F3 /* BVCurationsFeedItem.h in Headers */,
 				15058B6E1E5CC21C0081E2BD /* BVSDKConfiguration.h in Headers */,
 			);
@@ -2663,7 +2546,6 @@
 				150FC2D31E71DEAE00717041 /* BVProductTextSearchRequest.m in Sources */,
 				5F51EA4D1F575659002FA8FD /* BVFormInputType.m in Sources */,
 				B5A764A41FDAFB9C00B5DC9A /* UIImage+BundleLocator.m in Sources */,
-				87F2DC1D1DAD585E00FB43F3 /* BVLocationEventsHelper.m in Sources */,
 				87F2DCEA1DAD585E00FB43F3 /* BVQuestionSubmissionResponse.m in Sources */,
 				B5A764A21FDAFB7B00B5DC9A /* BVViewsHelper.m in Sources */,
 				87F2DC831DAD585E00FB43F3 /* BVQuestionsAndAnswersResponse.m in Sources */,
@@ -2677,7 +2559,6 @@
 				873DC4921E7482840080FA03 /* BVConversionEvent.m in Sources */,
 				87F2DCCE1DAD585E00FB43F3 /* BVAnswerSubmissionErrorResponse.m in Sources */,
 				87F2DD0C1DAD585E00FB43F3 /* BVQuestionView.m in Sources */,
-				87F2DC281DAD585E00FB43F3 /* BVGMBLVisit.m in Sources */,
 				87A02B631E0967EE0002701B /* BVFeedbackSubmission.m in Sources */,
 				87F2DCE61DAD585E00FB43F3 /* BVQuestionSubmission.m in Sources */,
 				875411861E1F201E006C5C6E /* BVStoreReviewRichNotificationCenter.m in Sources */,
@@ -2719,7 +2600,6 @@
 				87F2DCE01DAD585E00FB43F3 /* BVSubmissionResponse.m in Sources */,
 				B575C38F1FBE1A4F000F890B /* BVUASSubmissionResponse.m in Sources */,
 				87F2DCD81DAD585E00FB43F3 /* BVFormFieldOptions.m in Sources */,
-				87F2DD301DAD585E00FB43F3 /* BVVisit.m in Sources */,
 				87F2DCAA1DAD585E00FB43F3 /* BVConversationsRequest.m in Sources */,
 				87F2DCC81DAD585E00FB43F3 /* BVSortOptionQuestions.m in Sources */,
 				87C5FEBC1E22A05D004EE6E8 /* BVDiagnosticHelpers.m in Sources */,
@@ -2736,8 +2616,6 @@
 				B5A764B21FDB1ACE00B5DC9A /* BVAnswersTableView.m in Sources */,
 				1539745D1E719B9600BA52C1 /* BVBaseConversationsResponse.m in Sources */,
 				87F2DD141DAD585E00FB43F3 /* BVReviewTableViewCell.m in Sources */,
-				87F2DD2A1DAD585E00FB43F3 /* BVLocationAnalyticsHelper.m in Sources */,
-				87F2DC2A1DAD585E00FB43F3 /* BVLocationWrapper.m in Sources */,
 				87F2DCEC1DAD585E00FB43F3 /* BVSubmittedQuestion.m in Sources */,
 				87C5FF5D1E36A8B7004EE6E8 /* BVAuthorResponse.m in Sources */,
 				87A02B671E096B300002701B /* BVFeedbackSubmissionResponse.m in Sources */,
@@ -2762,7 +2640,6 @@
 				873DC49E1E7482840080FA03 /* BVPixelTypes.m in Sources */,
 				875411821E1F201E006C5C6E /* BVStoreReviewNotificationCenter.m in Sources */,
 				87F2DCB61DAD585E00FB43F3 /* BVBulkRatingsFilterType.m in Sources */,
-				87F2DD2C1DAD585E00FB43F3 /* BVLocationManager.m in Sources */,
 				87F2DC6F1DAD585E00FB43F3 /* BVDimensionElement.m in Sources */,
 				879A628C1E80502100F46ECA /* BVBasePIIEvent.m in Sources */,
 				87F2DCDE1DAD585E00FB43F3 /* BVSubmissionErrorResponse.m in Sources */,
@@ -2773,7 +2650,6 @@
 				875411761E1F201E006C5C6E /* BVNotificationsAnalyticsHelper.m in Sources */,
 				87D425281E8EE39700147FDB /* BVViewedCGCEvent.m in Sources */,
 				87F2DD061DAD585E00FB43F3 /* BVQuestionsCollectionView.m in Sources */,
-				87A9ECC11E1DB9B300666636 /* BVPIN.m in Sources */,
 				87F2DCE21DAD585E00FB43F3 /* BVUploadablePhoto.m in Sources */,
 				150FC2CB1E71C58B00717041 /* BVBaseProductRequest.m in Sources */,
 				B5A764B91FDB1ACE00B5DC9A /* BVAnswerCollectionViewCell.m in Sources */,
@@ -2782,7 +2658,6 @@
 				87F2DC191DAD585E00FB43F3 /* BVAnalyticsManager.m in Sources */,
 				87F2DC721DAD585E00FB43F3 /* BVDistributionElement.m in Sources */,
 				87C5FEC61E22A05D004EE6E8 /* BVStringKeyValuePair.m in Sources */,
-				87F2DD2E1DAD585E00FB43F3 /* BVPlaceAttributes.m in Sources */,
 				87F2DC7D1DAD585E00FB43F3 /* BVProductsResponse.m in Sources */,
 				875411841E1F201E006C5C6E /* BVStoreReviewNotificationProperties.m in Sources */,
 				87F2DCBE1DAD585E00FB43F3 /* BVQuestionFilterType.m in Sources */,
@@ -2792,7 +2667,6 @@
 				8754117E1E1F201E006C5C6E /* BVProductReviewRichNotificationCenter.m in Sources */,
 				875410B51E1F10DF006C5C6E /* BVStoreReviewNotificationViewController.m in Sources */,
 				8779DB251DD20D5D00E6CAF5 /* BVStoreReviewsTableView.m in Sources */,
-				87A9ECC31E1DB9B300666636 /* BVPINRequest.m in Sources */,
 				873DC49A1E7482840080FA03 /* BVPageViewEvent.m in Sources */,
 				87F2DCE81DAD585E00FB43F3 /* BVQuestionSubmissionErrorResponse.m in Sources */,
 				87F2DD401DAD585E00FB43F3 /* BVRecommendationsRequest.m in Sources */,
@@ -2814,7 +2688,6 @@
 				87F2DC1F1DAD585E00FB43F3 /* BVPixel.m in Sources */,
 				5F6201E31F7039EA00454D77 /* NSError+BVSubmissionErrorCodeParser.m in Sources */,
 				873DC4901E7482840080FA03 /* BVAnalyticEventManager.m in Sources */,
-				87F2DC261DAD585E00FB43F3 /* BVGMBLSighting.m in Sources */,
 				873DC4A01E7482840080FA03 /* BVTransactionEvent.m in Sources */,
 				B5A764BB1FDB1ACE00B5DC9A /* BVAnswerTableViewCell.m in Sources */,
 				87F2DC741DAD585E00FB43F3 /* BVDistributionValue.m in Sources */,
@@ -2861,7 +2734,6 @@
 				B56E1F921FBF86360025D5B4 /* UASSubmissionTests.swift in Sources */,
 				87F2DE0C1DAD945D00FB43F3 /* ReviewDisplayTests.swift in Sources */,
 				87F2DE141DAD945D00FB43F3 /* PhotoUploadTests.swift in Sources */,
-				87A9ECBA1E1DA93A00666636 /* BVPINTests.m in Sources */,
 				87F2DE0F1DAD945D00FB43F3 /* DisplayParametersTests.swift in Sources */,
 				87F2DE081DAD945D00FB43F3 /* ConversationsDisplayTests.swift in Sources */,
 				87F2DD621DAD5E9400FB43F3 /* BVNotificationConfigTests.m in Sources */,
@@ -2876,7 +2748,6 @@
 				87F2DE131DAD945D00FB43F3 /* AnswerSubmissionTests.swift in Sources */,
 				87F2DE0E1DAD945D00FB43F3 /* ConversationsTests.swift in Sources */,
 				87E28C831E5F88FE00915FDB /* BVPixelTests.m in Sources */,
-				87F2DD611DAD5E9400FB43F3 /* BVLocationTests.m in Sources */,
 				87F2DE151DAD945D00FB43F3 /* QuestionSubmissionTests.swift in Sources */,
 				87F2DD631DAD5E9400FB43F3 /* BVRecommendationsTests.m in Sources */,
 				87F2DE091DAD945D00FB43F3 /* InlineRatingsDisplayTests.swift in Sources */,
@@ -3028,7 +2899,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/Frameworks",
+					"$(PROJECT_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = "";
@@ -3055,7 +2926,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/Frameworks",
+					"$(PROJECT_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = "";

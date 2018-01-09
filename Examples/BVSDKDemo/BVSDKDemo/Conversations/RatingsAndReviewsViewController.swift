@@ -110,12 +110,6 @@ class RatingsAndReviewsViewController: UIViewController, UITableViewDelegate, UI
             request.addReviewSort(.helpfulness, order: .descending)
         } else if selectedFilterOption == FilterOptions.mostComments.rawValue {
             request.addReviewSort(.totalCommentCount, order: .descending)
-        } else if selectedFilterOption == FilterOptions.location.rawValue {
-            if let defaultCachedStore = LocationPreferenceUtils.getDefaultStore(){
-                request.addFilter(.userLocation, filterOperator: .equalTo, value: (defaultCachedStore.city))
-            } else {
-                _ = SweetAlert().showAlert("No store set.", subTitle: "Please set a default store.", style: .error)
-            }
         }
         
         self.tableView.load(request, success: { (response) in

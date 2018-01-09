@@ -13,4 +13,8 @@
     : NSObject <UNUserNotificationCenterDelegate,
                 BVStoreNotificationCenterObject>
 
+- (void)userNotificationCenter:(nonnull UNUserNotificationCenter *)center
+    didReceiveNotificationResponse:(nonnull UNNotificationResponse *)response
+    NS_AVAILABLE_IOS(10_0);
+
 @end
