@@ -19,7 +19,6 @@
 #import <UIKit/UIKit.h>
 #import <UserNotifications/UserNotifications.h>
 
-#import "BVPIN.h"
 #import "BVStore.h"
 #import "BVStoreReviewNotificationProperties.h"
 
@@ -30,7 +29,8 @@
     (nonnull BVNotificationProperties *)notificationProperties;
 
 - (void)userNotificationCenter:(nonnull UNUserNotificationCenter *)center
-    didReceiveNotificationResponse:(nonnull UNNotificationResponse *)response;
+    didReceiveNotificationResponse:(nonnull UNNotificationResponse *)response
+    NS_AVAILABLE_IOS(10_0);
 
 - (void)handleActionWithIdentifier:(nullable NSString *)identifier
               forLocalNotification:(nonnull UILocalNotification *)notification;
@@ -41,7 +41,6 @@
 
 @optional
 - (void)queueReviewWithProduct:(nonnull BVProduct *)product;
-- (void)queuePIN:(nonnull BVPIN *)pin;
 - (void)queueReviewWithProductId:(nonnull NSString *)productId;
 
 @end
