@@ -62,7 +62,7 @@ Pod::Spec.new do |s|
     curationsui.source_files = 'Pod/BVCurationsUI/**/*.{h,m}'
     curationsui.dependency 'BVSDK/BVCurations'
     curationsui.dependency 'BVSDK/BVCommonUI'
-    curationsui.resources = ["Pod/BVCurationsUI/SocialMediaIcons/Assets/*.xcassets"]
+    curationsui.resources = ["Pod/BVCurationsUI/SocialMediaIcons/*.xcassets"]
   end
 
   s.subspec 'BVNotifications' do |notifications|
