@@ -275,12 +275,6 @@ function scrollAndClickById(id) {
                         <a class="nav-link" href="product_recommendations.html"><span>Product Recommendations (Beta)</span></a>
                     </li>
 
-                    <!-- Advertising -->
-                    <li class="nav-item">
-                        <a class="nav-link" href="advertising.html"><span>Advertising</span></a>
-                    </li>
-
-
                     <!-- Ratings Reviews Stores -->
                      <li class="nav-item">
                         <a class="nav-link" role="button" data-toggle="collapse" href="#conversationsStoresDropdown"
@@ -377,13 +371,12 @@ files. This will download <strong>bvsdk_config_prod.json</strong> and/or <strong
 	Basic Example Projects
 </div>
 <hr>
-<p>Product Recommendations, Advertising, Curations, and Conversations all come with example projects, which demonstrate how to properly implement these modules. Each of the BVSDK modules below are located under the <a href="https://github.com/bazaarvoice/bv-ios-sdk/tree/master/Examples">/Examples</a> directory and have both Swift and Objective-C reference implementations:</p>
+<p>Product Recommendations, Curations, and Conversations all come with example projects, which demonstrate how to properly implement these modules. Each of the BVSDK modules below are located under the <a href="https://github.com/bazaarvoice/bv-ios-sdk/tree/master/Examples">/Examples</a> directory and have both Swift and Objective-C reference implementations:</p>
 <ul>
 	<li><strong>Conversations</strong>: Demonstrates a minimal configuration for constructing a Conversations API request for display or content submission.
 	</li>
 	<li><strong>Curations</strong>: Shows how to display a social feed and sumbit photos.</li>
 	<li><strong>Product Recommendations</strong>: Shows how you can fetch and display product recommendations for a user.</li>
-	<li><strong>Advertising</strong>: Shows how you can utlize Bazaarvoice's shopper segment data to provide targeting advertising to your customers.</li>
 </ul>
 <br>
 
@@ -408,7 +401,7 @@ files. This will download <strong>bvsdk_config_prod.json</strong> and/or <strong
 
 The full BVSDK project works out-of-the box under the <code>/Examples/BVSDKDemo</code> folder. Just run <code>pod install</code> in that folder and open the <code>BVSDKDemo.xcworkspace</code> to execute the project. By default the app runs in mock mode (using <a href="https://github.com/AliSoftware/OHHTTPStubs/">OHHTTPSStubs</a>) and will display sample data from a ficticious project catalog for a ficticious company, Endurance Cycles.
 </br></br>
-The demonstration shows the major components of the SDK from Product Recommendations, Advertising, Curations REST API and Custom Photo Upload. The Conversations examples demonstrate how read Conversation statistics, fetch reviews and questions as well as demonstrations on how to construct forms for uploading UGC content such as Rating & Reviews, Questions, and Feedback.
+The demonstration shows the major components of the SDK from Product Recommendations, Curations REST API, and Custom Photo Upload. The Conversations examples demonstrate how read Conversation statistics, fetch reviews and questions as well as demonstrations on how to construct forms for uploading UGC content such as Rating & Reviews, Questions, and Feedback.
 </br></br>
 
 <p class="bg-info well-lg" style="padding:4px;"><i class="fa fa-hand-o-right"></i>  Note: The BVSDKDemo uses App Groups capabilities and an Extension. Becuase of this you won't be able to run this app on your device unless you remove the Curations Custom Post Extension or add the proper permission to your own App ID in your own Apple Developer Account.</p>
@@ -424,7 +417,6 @@ The demonstration shows the major components of the SDK from Product Recommendat
     </script>
 
 </p></p>
-
 
 
 
