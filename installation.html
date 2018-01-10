@@ -301,17 +301,6 @@ function scrollAndClickById(id) {
                             </ul>
                         </div>
                     </li>
-
-                    <!-- PIN -->
-                    <li class="nav-item">
-                        <a class="nav-link" href="pin.html"><span>Post Interaction Notifications (Beta)</span></a>
-                    </li>
-
-                    <!-- Location -->
-                    <li class="nav-item">
-                        <a class="nav-link" href="location.html"><span>Location (Beta)</span></a>
-                    </li>
-
                 </ul>
             </li>
 
@@ -398,16 +387,17 @@ We support installation of the Bazaarvoice SDK for iOS with CocoaPods, Carthage,
         <br><br>
         <pre><code># each pod is a subpsec so you only need to add the lines for the component you are installing.
 pod 'BVSDK/BVAnalytics' // Automatically installed by any of the submodules below
+pod 'BVSDK/BVCommon'
+pod 'BVSDK/BVCommonUI'
+pod 'BVSDK/BVConversations'
+pod 'BVSDK/BVConversationsStores'
+pod 'BVSDK/BVConversationsUI'
 pod 'BVSDK/BVCurations'
 pod 'BVSDK/BVCurationsUI'
-pod 'BVSDK/BVConversations'
-pod 'BVSDK/BVAdvertising'
-pod 'BVSDK/BVRecommendations'
-pod 'BVSDK/BVLocation'
-pod 'BVSDK/BVPIN'
 pod 'BVSDK/BVNotifications'
+pod 'BVSDK/BVRecommendations'
 </code></pre>
-       
+
         3. Run the following command from a terminal:
         <br><br>
         <pre><code>$ pod install</code></pre>
@@ -434,19 +424,19 @@ pod 'BVSDK/BVNotifications'
          <pre><code>$ carthage update</code></pre>
 
       </div>
-   
+
       <!-- dynamicframework -->
       <div role="tabpanel" class="tab-pane" id="dynamicframework">
         1. Download the latest <code>BVSDK.framework.zip</code> from our <a href="https://github.com/bazaarvoice/bv-ios-sdk/releases">GitHub releases page</a>.<br><br>
         2. Drag <code>BVSDK.framework</code> to the "Embedded Binaries" section of your Xcode project's "General" settings. Make sure to select "Copy items if needed".<br><br>
         3. Head to the "Build Phases" section of your Xcode project settings, and create a new "Run Script Build Phase". Paste the following snippet into the text field:<br><br>
         <pre><code>bash "${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/BVSDK.framework/integrate-dynamic-framework.sh"</code></pre>
-        
+
       </div>
-     
+
       <!-- sourcecode -->
       <div role="tabpanel" class="tab-pane" id="sourcecode">
-        
+
         <p>Clone this repo, or download the <a href="https://github.com/bazaarvoice/bv-ios-sdk/releases">latest release from GitHub</a>:</p>
         <img src="ios-img/manual_installation/download.png" style="height:200px;" class="center-block img-fluid" />
 
@@ -844,6 +834,7 @@ BVSDKManager.configure(withConfiguration: configDict, configType: .staging)</cod
 
 
 <br>
+
 
 
 <div class="well well-sm">
