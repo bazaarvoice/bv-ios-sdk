@@ -6,7 +6,6 @@
 //
 
 #import "BVUploadablePhoto.h"
-#import "BVAnalyticsManager.h"
 #import "BVConversationsRequest.h"
 #import "BVSDKConfiguration.h"
 #import "BVSDKManager.h"

@@ -10,15 +10,15 @@
 
 #import "BVAnalyticEventManager.h"
 #import "BVAnalyticsManager.h"
+#import "BVLocaleServiceManager.h"
 #import "BVLogger.h"
 #import "BVPersonalizationEvent.h"
+#import "BVSDKConfiguration.h"
 #import "BVSDKConstants.h"
+#import "BVSDKManager.h"
 
 #include <sys/sysctl.h>
 #include <sys/utsname.h>
-
-#define BV_MAGPIE_ENDPOINT @"https://network.bazaarvoice.com/event"
-#define BV_MAGPIE_STAGING_ENDPOINT @"https://network-stg.bazaarvoice.com/event"
 
 @interface BVAnalyticsManager ()
 
@@ -28,11 +28,17 @@
 @property NSTimer *queueFlushTimer;
 @property NSTimeInterval queueFlushInterval;
 
+@property(nonatomic, strong)
+    dispatch_queue_t localeUpdatenotificationTokenQueue;
+@property(strong) id<NSObject> localeUpdateNotificationCenterToken;
+
 @property(nonatomic, strong) dispatch_queue_t concurrentEventQueue;
 
 @end
 
 @implementation BVAnalyticsManager
+
+@synthesize analyticsLocale = _analyticsLocale;
 
 static BVAnalyticsManager *analyticsInstance = nil;
 
@@ -40,8 +46,6 @@ static BVAnalyticsManager *analyticsInstance = nil;
   static dispatch_once_t onceToken;
   dispatch_once(&onceToken, ^{
     analyticsInstance = [[self alloc] init];
-    analyticsInstance->_concurrentEventQueue = dispatch_queue_create(
-        "com.bazaarvoice.analyticEventQueue", DISPATCH_QUEUE_CONCURRENT);
   });
 
   return analyticsInstance;
@@ -52,6 +56,11 @@ static BVAnalyticsManager *analyticsInstance = nil;
   if (self != nil) {
     self.eventQueue = [NSMutableArray array];
     self.pageviewQueue = [NSMutableArray array];
+    self.concurrentEventQueue = dispatch_queue_create(
+        "com.bazaarvoice.analyticEventQueue", DISPATCH_QUEUE_CONCURRENT);
+    self.localeUpdatenotificationTokenQueue = dispatch_queue_create(
+        "com.bazaarvoice.notificationTokenQueue", DISPATCH_QUEUE_SERIAL);
+
     [self setFlushInterval:10.0];
     [self registerForAppStateChanges];
   }
@@ -413,6 +422,64 @@ static BVAnalyticsManager *analyticsInstance = nil;
   };
 }
 
+#pragma mark - NSLocale Analytic Handling
+
+- (NSLocale *)analyticsLocale {
+  __block NSLocale *locale = nil;
+  dispatch_sync(self.localeUpdatenotificationTokenQueue, ^{
+    locale = _analyticsLocale;
+  });
+  return locale;
+}
+
+- (void)setAnalyticsLocale:(NSLocale *)analyticsLocale {
+  dispatch_sync(self.localeUpdatenotificationTokenQueue, ^{
+    _analyticsLocale = analyticsLocale;
+
+    [[BVLogger sharedLogger]
+        analyticsMessage:[NSString
+                             stringWithFormat:@"Analytics has set Locale: %@",
+                                              _analyticsLocale.countryCode]];
+
+    if (_analyticsLocale) {
+      /// Turn off locale state changes
+      [self unregisterForCurrentLocaleDidChangeNotifications];
+    } else {
+      _analyticsLocale = [NSLocale autoupdatingCurrentLocale];
+      /// Turn on locale state changes
+      [self registerForCurrentLocaleDidChangeNotifications];
+    }
+  });
+}
+
+- (void)registerForCurrentLocaleDidChangeNotifications {
+
+  [[BVLogger sharedLogger]
+      analyticsMessage:
+          @"Analytics REGISTERING for Locale Change Notifications."];
+
+  self.localeUpdateNotificationCenterToken =
+      [[NSNotificationCenter defaultCenter]
+          addObserverForName:NSCurrentLocaleDidChangeNotification
+                      object:nil
+                       queue:[NSOperationQueue mainQueue]
+                  usingBlock:^(NSNotification *note) {
+                    self.analyticsLocale = [NSLocale autoupdatingCurrentLocale];
+                  }];
+}
+
+- (void)unregisterForCurrentLocaleDidChangeNotifications {
+
+  [[BVLogger sharedLogger]
+      analyticsMessage:
+          @"Analytics UNREGISTERING for Locale Change Notifications."];
+
+  if (self.localeUpdateNotificationCenterToken) {
+    [[NSNotificationCenter defaultCenter]
+        removeObserver:self.localeUpdateNotificationCenterToken];
+  }
+}
+
 #pragma mark - Helpers
 
 - (NSString *)formatDate:(NSDate *)date {
@@ -427,14 +494,20 @@ static BVAnalyticsManager *analyticsInstance = nil;
 }
 
 - (NSString *)baseUrl {
+  BVLocaleServiceManager *localeServiceManager =
+      [BVLocaleServiceManager sharedManager];
+  NSAssert(localeServiceManager, @"BVLocaleServiceManager is nil.");
+
   if (self.isStagingServer) {
-    [[BVLogger sharedLogger] error:@"WARNING: Using staging server for "
-                                   @"analytic events. This should only "
-                                   @"enabled for non-production."];
-    return BV_MAGPIE_STAGING_ENDPOINT;
-  } else {
-    return BV_MAGPIE_ENDPOINT;
+    [[BVLogger sharedLogger]
+        error:@"WARNING: Using staging server for analytic events. This should "
+              @"only be enabled for non-production."];
   }
+
+  return [localeServiceManager
+      resourceForService:BVLocaleServiceManagerServiceAnalytics
+              withLocale:self.analyticsLocale
+         andIsProduction:(!self.isStagingServer)];
 }
 
 - (void)setFlushInterval:(NSTimeInterval)newInterval {

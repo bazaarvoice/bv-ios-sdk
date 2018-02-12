@@ -462,6 +462,10 @@
 		87F2DE171DAD945D00FB43F3 /* StoreReviewSubmissionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F2DE071DAD945D00FB43F3 /* StoreReviewSubmissionTests.swift */; };
 		87FEC8CA1DB1145D007DD44E /* integrate-dynamic-framework.sh in Resources */ = {isa = PBXBuildFile; fileRef = 87FEC8C91DB1145D007DD44E /* integrate-dynamic-framework.sh */; };
 		8D1764414ABEFA876BE81636 /* Pods_BVSDKTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7892A8713545E74147C58ECB /* Pods_BVSDKTests.framework */; };
+		B56D717E2031F79F002EC872 /* BVLocaleServiceManager.h in Headers */ = {isa = PBXBuildFile; fileRef = B56D717C2031F79F002EC872 /* BVLocaleServiceManager.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		B56D717F2031F79F002EC872 /* BVLocaleServiceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B56D717D2031F79F002EC872 /* BVLocaleServiceManager.m */; };
+		B56D71802031F79F002EC872 /* BVLocaleServiceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B56D717D2031F79F002EC872 /* BVLocaleServiceManager.m */; };
+		B56D71822032476A002EC872 /* BVLocaleManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B56D71812032476A002EC872 /* BVLocaleManagerTests.m */; };
 		B56E1F921FBF86360025D5B4 /* UASSubmissionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56E1F911FBF86360025D5B4 /* UASSubmissionTests.swift */; };
 		B575C3861FBDFD6F000F890B /* BVUASSubmission.h in Headers */ = {isa = PBXBuildFile; fileRef = B575C3841FBDFD6F000F890B /* BVUASSubmission.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B575C3871FBDFD6F000F890B /* BVUASSubmission.m in Sources */ = {isa = PBXBuildFile; fileRef = B575C3851FBDFD6F000F890B /* BVUASSubmission.m */; };
@@ -727,7 +731,7 @@
 		87D424E81E89C32E00147FDB /* BVReviewIncludeType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVReviewIncludeType.m; sourceTree = "<group>"; };
 		87D425251E8EE39700147FDB /* BVViewedCGCEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVViewedCGCEvent.h; sourceTree = "<group>"; };
 		87D425261E8EE39700147FDB /* BVViewedCGCEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVViewedCGCEvent.m; sourceTree = "<group>"; };
-		87E28C821E5F88FE00915FDB /* BVPixelTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BVPixelTests.m; path = Tests/BVPixelTests.m; sourceTree = SOURCE_ROOT; };
+		87E28C821E5F88FE00915FDB /* BVPixelTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BVPixelTests.m; path = Tests/Tests/BVPixelTests.m; sourceTree = SOURCE_ROOT; };
 		87E810E31ECCA0190032C753 /* BVCommentsSortOption.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVCommentsSortOption.h; sourceTree = "<group>"; };
 		87E810E41ECCA0190032C753 /* BVCommentsSortOption.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVCommentsSortOption.m; sourceTree = "<group>"; };
 		87E810E71ECCA3CF0032C753 /* BVCommentFilterType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVCommentFilterType.h; sourceTree = "<group>"; };
@@ -748,8 +752,8 @@
 		87F2DAAB1DAD579D00FB43F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		87F2DAB01DAD579D00FB43F3 /* BVSDKTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BVSDKTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		87F2DAB71DAD579D00FB43F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		87F2DAC51DAD585E00FB43F3 /* BVAnalyticsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BVAnalyticsManager.h; path = ../BVAnalyticsManager.h; sourceTree = "<group>"; };
-		87F2DAC61DAD585E00FB43F3 /* BVAnalyticsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BVAnalyticsManager.m; path = ../BVAnalyticsManager.m; sourceTree = "<group>"; };
+		87F2DAC51DAD585E00FB43F3 /* BVAnalyticsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVAnalyticsManager.h; sourceTree = "<group>"; };
+		87F2DAC61DAD585E00FB43F3 /* BVAnalyticsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVAnalyticsManager.m; sourceTree = "<group>"; };
 		87F2DACB1DAD585E00FB43F3 /* BVPixel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVPixel.h; sourceTree = "<group>"; };
 		87F2DACC1DAD585E00FB43F3 /* BVPixel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVPixel.m; sourceTree = "<group>"; };
 		87F2DAD21DAD585E00FB43F3 /* BVContextualInterests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVContextualInterests.h; sourceTree = "<group>"; };
@@ -1014,6 +1018,9 @@
 		87F2DE071DAD945D00FB43F3 /* StoreReviewSubmissionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreReviewSubmissionTests.swift; sourceTree = "<group>"; };
 		87FEC8C91DB1145D007DD44E /* integrate-dynamic-framework.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = "integrate-dynamic-framework.sh"; sourceTree = "<group>"; };
 		89529D79D81B13BA86882542 /* Pods-BVSDKTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BVSDKTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-BVSDKTests/Pods-BVSDKTests.release.xcconfig"; sourceTree = "<group>"; };
+		B56D717C2031F79F002EC872 /* BVLocaleServiceManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BVLocaleServiceManager.h; sourceTree = "<group>"; };
+		B56D717D2031F79F002EC872 /* BVLocaleServiceManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BVLocaleServiceManager.m; sourceTree = "<group>"; };
+		B56D71812032476A002EC872 /* BVLocaleManagerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = BVLocaleManagerTests.m; path = Tests/Tests/BVLocaleManagerTests.m; sourceTree = SOURCE_ROOT; };
 		B56E1F911FBF86360025D5B4 /* UASSubmissionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UASSubmissionTests.swift; sourceTree = "<group>"; };
 		B575C3841FBDFD6F000F890B /* BVUASSubmission.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = BVUASSubmission.h; path = ../Auth/BVUASSubmission.h; sourceTree = "<group>"; };
 		B575C3851FBDFD6F000F890B /* BVUASSubmission.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = BVUASSubmission.m; path = ../Auth/BVUASSubmission.m; sourceTree = "<group>"; };
@@ -1359,17 +1366,18 @@
 				87F2DDF21DAD945D00FB43F3 /* ConversationsTests */,
 				87F2DDC61DAD698900FB43F3 /* MockData */,
 				87F2DD541DAD5E9400FB43F3 /* BVBaseStubTestCase.h */,
-				8779DB6C1DD3AAE800E6CAF5 /* BVInternalAnalyticsTest.m */,
-				87E28C821E5F88FE00915FDB /* BVPixelTests.m */,
 				87F2DD551DAD5E9400FB43F3 /* BVBaseStubTestCase.m */,
 				87F2DD571DAD5E9400FB43F3 /* BVCurationsTests.m */,
+				8779DB6C1DD3AAE800E6CAF5 /* BVInternalAnalyticsTest.m */,
+				B56D71812032476A002EC872 /* BVLocaleManagerTests.m */,
+				87E28C821E5F88FE00915FDB /* BVPixelTests.m */,
 				87F2DD591DAD5E9400FB43F3 /* BVNotificationConfigTests.h */,
 				87F2DD5A1DAD5E9400FB43F3 /* BVNotificationConfigTests.m */,
 				87F2DD5B1DAD5E9400FB43F3 /* BVRecommendationsTests.m */,
-				87F2DD5C1DAD5E9400FB43F3 /* BVUserProfileTests.m */,
-				879D090F1DCA7DDE006B51D3 /* BVStoreNotificationConfigurationLoader+Private.h */,
-				87F2DAB71DAD579D00FB43F3 /* Info.plist */,
 				15D4F8451DF5EFFF00E6B30D /* BVSDKTests-Bridging-Header.h */,
+				879D090F1DCA7DDE006B51D3 /* BVStoreNotificationConfigurationLoader+Private.h */,
+				87F2DD5C1DAD5E9400FB43F3 /* BVUserProfileTests.m */,
+				87F2DAB71DAD579D00FB43F3 /* Info.plist */,
 			);
 			path = BVSDKTests;
 			sourceTree = "<group>";
@@ -1392,6 +1400,8 @@
 				87F2DAC51DAD585E00FB43F3 /* BVAnalyticsManager.h */,
 				87F2DAC61DAD585E00FB43F3 /* BVAnalyticsManager.m */,
 				87F2DAD21DAD585E00FB43F3 /* BVContextualInterests.h */,
+				B56D717C2031F79F002EC872 /* BVLocaleServiceManager.h */,
+				B56D717D2031F79F002EC872 /* BVLocaleServiceManager.m */,
 			);
 			path = Private;
 			sourceTree = "<group>";
@@ -2252,6 +2262,7 @@
 				87F2DCD71DAD585E00FB43F3 /* BVFormFieldOptions.h in Headers */,
 				87F2DC861DAD585E00FB43F3 /* BVResponse.h in Headers */,
 				87F2DCCD1DAD585E00FB43F3 /* BVAnswerSubmissionErrorResponse.h in Headers */,
+				B56D717E2031F79F002EC872 /* BVLocaleServiceManager.h in Headers */,
 				87F2DC6A1DAD585E00FB43F3 /* BVConversationsInclude.h in Headers */,
 				87F2DCC71DAD585E00FB43F3 /* BVQuestionsSortOption.h in Headers */,
 				87F2DC581DAD585E00FB43F3 /* BVCommaUtil.h in Headers */,
@@ -2761,6 +2772,7 @@
 				873DC4961E7482840080FA03 /* BVImpressionEvent.m in Sources */,
 				87F2DCF21DAD585E00FB43F3 /* BVReviewSubmissionResponse.m in Sources */,
 				87F2DCDA1DAD585E00FB43F3 /* BVSubmission.m in Sources */,
+				B56D717F2031F79F002EC872 /* BVLocaleServiceManager.m in Sources */,
 				87F2DCCC1DAD585E00FB43F3 /* BVAnswerSubmission.m in Sources */,
 				B583AED22006B4AA001E9548 /* BVRelationalFilterOperator.m in Sources */,
 				B5A764D91FE1915200B5DC9A /* BVBulkStoresResponse.m in Sources */,
@@ -2928,8 +2940,10 @@
 				87F2DE111DAD945D00FB43F3 /* ProductIdEscapeTests.swift in Sources */,
 				87F2DD5E1DAD5E9400FB43F3 /* BVBaseStubTestCase.m in Sources */,
 				87F2DE0D1DAD945D00FB43F3 /* ConversationsStoresDisplayTests.swift in Sources */,
+				B56D71802031F79F002EC872 /* BVLocaleServiceManager.m in Sources */,
 				87EDAFC91EDDC6A900FA07C0 /* CommentSubmissionTests.swift in Sources */,
 				87F2DE0B1DAD945D00FB43F3 /* QuestionDisplayTests.swift in Sources */,
+				B56D71822032476A002EC872 /* BVLocaleManagerTests.m in Sources */,
 				8779DB6D1DD3AAE800E6CAF5 /* BVInternalAnalyticsTest.m in Sources */,
 				87F2DE101DAD945D00FB43F3 /* FilterTests.swift in Sources */,
 				87F2DE0A1DAD945D00FB43F3 /* ProductDisplayTests.swift in Sources */,

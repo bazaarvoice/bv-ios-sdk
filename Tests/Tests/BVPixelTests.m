@@ -9,6 +9,7 @@
 
 #import "BVAnalyticsManager.h"
 #import "BVBaseStubTestCase.h"
+#import "BVLocaleServiceManager.h"
 #import "BVSDKConfiguration.h"
 #import "BVSDKManager.h"
 

@@ -105,6 +105,18 @@ static NSString *const BVSDKConfigFileExt = @"json";
                                                        configType:configType];
   [BVAnalyticsManager sharedManager].isDryRunAnalytics =
       _configuration.dryRunAnalytics;
+
+  /// Handle Analytics Locale Configuration
+  NSLocale *analyticsLocale = nil;
+  NSString *analyticsLocaleIdentifier =
+      _configuration.analyticsLocaleIdentifier;
+  if (analyticsLocaleIdentifier) {
+    analyticsLocale =
+        [[NSLocale alloc] initWithLocaleIdentifier:analyticsLocaleIdentifier];
+  }
+
+  [BVAnalyticsManager sharedManager].analyticsLocale = analyticsLocale;
+
   [self copyJson:config toObj:self];
 }
 
