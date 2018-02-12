@@ -7,7 +7,6 @@
 //
 
 #import "BVBaseReviewsRequest.h"
-#import "BVAnalyticsManager.h"
 #import "BVBaseReviewsRequest_Private.h"
 #import "BVCommaUtil.h"
 #import "BVCommon.h"
