@@ -50,6 +50,10 @@
 
 @property(nonatomic, assign, readonly) BOOL dryRunAnalytics;
 
+/// The Locale Specific binding for Analytics
+@property(nonatomic, strong, readonly, nullable)
+    NSString *analyticsLocaleIdentifier;
+
 @end
 
 // expose config to internal SDK

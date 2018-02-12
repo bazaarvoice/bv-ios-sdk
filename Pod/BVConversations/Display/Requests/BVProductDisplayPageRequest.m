@@ -6,7 +6,6 @@
 //
 
 #import "BVProductDisplayPageRequest.h"
-#import "BVAnalyticsManager.h"
 #import "BVCommaUtil.h"
 #import "BVPixel.h"
 #import "BVProductFilterType.h"

@@ -23,6 +23,10 @@
 /// NO
 @property(nonatomic, assign) BOOL isDryRunAnalytics;
 
+/// This can be optionally set by the configuration, otherwise, we just use the
+/// current.
+@property(nonatomic, strong) NSLocale *analyticsLocale;
+
 /// Create and get the singleton instance of the analytics manager.
 + (BVAnalyticsManager *)sharedManager;
 

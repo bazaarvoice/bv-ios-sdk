@@ -6,7 +6,6 @@
 //
 
 #import "BVConversationsRequest.h"
-#import "BVAnalyticsManager.h"
 #import "BVConversationsErrorResponse.h"
 #import "BVDiagnosticHelpers.h"
 #import "BVSDKConfiguration.h"
