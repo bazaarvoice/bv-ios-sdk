@@ -7,6 +7,10 @@
 
 #import "BVLogger.h"
 
+#if __has_builtin(__builtin_os_log_format)
+#import <os/log.h>
+#endif /* OSLog check */
+
 #define BV_LOG_TAG @"<bazaarvoice>"
 
 @implementation BVLogger
@@ -18,37 +22,33 @@ static BVLogger *sharedLoggerInstance = nil;
   dispatch_once(&onceToken, ^{
     sharedLoggerInstance = [[self alloc] init];
   });
-
   return sharedLoggerInstance;
 }
 
 - (id)init {
-  self = [super init];
-  if (self) {
+  if ((self = [super init])) {
     self.logLevel = BVLogLevelError;
   }
   return self;
 }
 
-- (void)analyticsMessage:(NSString *)message {
-  if (self.logLevel == BVLogLevelAnalyticsOnly) {
-    NSLog(@"%@: %@", BV_LOG_TAG, message);
-  }
+- (void)analyticsMessage:(nonnull NSString *)message {
+  [self printMessage:message forLogLevel:BVLogLevelAnalyticsOnly];
 }
 
-- (void)verbose:(NSString *)message {
+- (void)verbose:(nonnull NSString *)message {
   [self printMessage:message forLogLevel:BVLogLevelVerbose];
 }
 
-- (void)info:(NSString *)message {
+- (void)info:(nonnull NSString *)message {
   [self printMessage:message forLogLevel:BVLogLevelInfo];
 }
 
-- (void)warning:(NSString *)message {
+- (void)warning:(nonnull NSString *)message {
   [self printMessage:message forLogLevel:BVLogLevelWarning];
 }
 
-- (void)error:(NSString *)message {
+- (void)error:(nonnull NSString *)message {
   [self printMessage:message forLogLevel:BVLogLevelError];
 }
 
@@ -62,10 +62,57 @@ static BVLogger *sharedLoggerInstance = nil;
   }
 }
 
-- (void)printMessage:(NSString *)message forLogLevel:(BVLogLevel)logLevel {
-  if (self.logLevel >= logLevel && self.logLevel != BVLogLevelAnalyticsOnly) {
-    NSLog(@"%@: %@", BV_LOG_TAG, message);
+- (void)printMessage:(nonnull NSString *)message
+         forLogLevel:(BVLogLevel)logLevel {
+
+  if (BVLogLevelNone == self.logLevel || !message || 0 == message.length) {
+    return;
   }
+
+  NSString *logMsg = [NSString stringWithFormat:@"%@: %@", BV_LOG_TAG, message];
+
+  if (BVLogLevelAnalyticsOnly == logLevel &&
+      BVLogLevelAnalyticsOnly == self.logLevel) {
+    [self enqueueMessage:logMsg forLogLevel:logLevel];
+    return;
+  }
+
+  if (logLevel <= self.logLevel) {
+    [self enqueueMessage:logMsg forLogLevel:logLevel];
+  }
+}
+
+- (void)enqueueMessage:(nonnull NSString *)message
+           forLogLevel:(BVLogLevel)logLevel {
+
+  dispatch_async(dispatch_get_main_queue(), ^{
+#if __has_builtin(__builtin_os_log_format)
+
+    if (@available(iOS 10.0, macOS 10.12, tvOS 10.0, watchOS 3.0, *)) {
+      const char *msg = [message UTF8String];
+
+      switch (logLevel) {
+
+      case BVLogLevelError:
+        os_log_error(OS_LOG_DEFAULT, "%{public}s", msg);
+        break;
+      case BVLogLevelAnalyticsOnly:
+      case BVLogLevelWarning:
+      case BVLogLevelInfo:
+        os_log_info(OS_LOG_DEFAULT, "%{public}s", msg);
+        break;
+      case BVLogLevelVerbose:
+      default:
+        os_log_debug(OS_LOG_DEFAULT, "%{public}s", msg);
+        break;
+      }
+    }
+
+#endif /* OSLog check */
+
+    /// We'll log to both loggers for the time being
+    NSLog(@"%@", message);
+  });
 }
 
 @end
