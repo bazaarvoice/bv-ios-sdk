@@ -94,6 +94,33 @@ static NSString *euStagingValue;
   configuredLocaleIdentifier = nil;
 }
 
+- (void)testAnalyticsLocaleUpdate {
+  XCTestExpectation *updateExpectation =
+      [self expectationWithDescription:@"testAnalyticsLocaleUpdate"];
+
+  NSLocale *currentLocale = [NSLocale autoupdatingCurrentLocale];
+  [BVAnalyticsManager sharedManager].analyticsLocale = nil;
+
+  [[NSNotificationCenter defaultCenter]
+      postNotificationName:NSCurrentLocaleDidChangeNotification
+                    object:nil];
+
+  dispatch_after(
+      dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3.0 * NSEC_PER_SEC)),
+      dispatch_get_main_queue(), ^{
+        NSLocale *updatedLocale =
+            [BVAnalyticsManager sharedManager].analyticsLocale;
+        XCTAssertEqualObjects(updatedLocale, currentLocale,
+                              @"Updated Locale not equal to Generated Locale");
+        [updateExpectation fulfill];
+      });
+
+  [self waitForExpectations:@[ updateExpectation ] timeout:6.0f];
+
+  /// Reset, just in case.
+  configuredLocaleIdentifier = nil;
+}
+
 - (void)testAnalyticsLocaleRoutingEfficacy {
 
   BVLocaleServiceManager *localeServiceManager =

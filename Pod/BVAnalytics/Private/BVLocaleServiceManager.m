@@ -8,6 +8,8 @@
 #import "BVLocaleServiceManager.h"
 #import "BVLogger.h"
 
+#define __ISA(X, CLASS) ([(X) isKindOfClass:[CLASS class]])
+
 /// If we have to expand this we will rethink how we package all these fields
 /// it's just that we don't have any other examples in order to determine a
 /// proper course of action.
@@ -57,7 +59,7 @@ static BVLocaleServiceManager *localeManagerInstance = nil;
 }
 
 static NSDictionary *resourceDictionary = nil;
-+ (nonnull NSDictionary *)localeResouceDictionary {
++ (nonnull NSDictionary *)localeResourceDictionary {
   static dispatch_once_t resourceDictionaryOnceToken;
   dispatch_once(&resourceDictionaryOnceToken, ^{
     resourceDictionary = @{
@@ -146,40 +148,47 @@ static NSDictionary *resourceDictionary = nil;
     return resource;
   }
 
-  /// Validate that we get back a valid locale identifier
-  NSString *localeIdentifier = locale.countryCode.uppercaseString;
+  id localeObject = [locale objectForKey:NSLocaleCountryCode];
+  NSString *localeIdentifier = (__ISA(localeObject, NSString))
+                                   ? ((NSString *)localeObject).uppercaseString
+                                   : nil;
   NSAssert(localeIdentifier,
            @"This should have received a valid locale identifier, %@", locale);
   if (!localeIdentifier) {
     return resource;
   }
 
-  /// Validate localeResouceDictionary pieces
-  NSDictionary *resourceDictionary = [[self class] localeResouceDictionary];
+  /// Validate localeResourceDictionary pieces
+  NSDictionary *resourceDictionary = [[self class] localeResourceDictionary];
   NSAssert(resourceDictionary, @"Resource dictionary shouldn't be nil.");
   if (!resourceDictionary) {
     return resource;
   }
 
   /// Validate the specific service dictionary we're querying
+  id serviceObj = [resourceDictionary objectForKey:serviceValue];
   NSDictionary *serviceDictionary =
-      [resourceDictionary objectForKey:serviceValue];
+      (__ISA(serviceObj, NSDictionary)) ? (NSDictionary *)serviceObj : nil;
   NSAssert(serviceDictionary, @"Service dictionary shouldn't be nil.");
   if (!serviceDictionary) {
     return resource;
   }
 
   /// Validate the service values dictionary
-  NSDictionary *valuesDict = [serviceDictionary
+  id valuesObj = [serviceDictionary
       objectForKey:BV_LOCALE_SERVICE_MANAGER_RESOURCE_VALUES];
+  NSDictionary *valuesDict =
+      (__ISA(valuesObj, NSDictionary)) ? (NSDictionary *)valuesObj : nil;
   NSAssert(valuesDict, @"Values dictionary shouldn't be nil.");
   if (!valuesDict) {
     return resource;
   }
 
   /// Validate the service mappings dictionary
-  NSDictionary *mappingsDict = [serviceDictionary
+  id mappingsObj = [serviceDictionary
       objectForKey:BV_LOCALE_SERVICE_MANAGER_RESOURCE_MAPPINGS];
+  NSDictionary *mappingsDict =
+      (__ISA(mappingsObj, NSDictionary)) ? (NSDictionary *)mappingsObj : nil;
   NSAssert(mappingsDict, @"Mappings dictionary shouldn't be nil.");
   if (!mappingsDict) {
     return resource;
@@ -190,7 +199,9 @@ static NSDictionary *resourceDictionary = nil;
                ?: BV_LOCALE_SERVICE_MANAGER_RESOURCE_DEFAULT;
 
   /// Grab the proper specfic value dictionary
-  NSDictionary *valueDict = [valuesDict objectForKey:map];
+  id valueObj = [valuesDict objectForKey:map];
+  NSDictionary *valueDict =
+      (__ISA(valueObj, NSDictionary)) ? (NSDictionary *)valueObj : nil;
   NSAssert(valueDict, @"Value dictionary shouldn't be nil.");
   if (!valueDict) {
     return resource;
@@ -199,7 +210,10 @@ static NSDictionary *resourceDictionary = nil;
   id environmentKey = isProduction
                           ? BV_LOCALE_SERVICE_MANAGER_RESOURCE_PRODUCTION
                           : BV_LOCALE_SERVICE_MANAGER_RESOURCE_STAGING;
-  NSString *value = [valueDict objectForKey:environmentKey];
+
+  id resourceObj = [valueDict objectForKey:environmentKey];
+  NSString *value =
+      (__ISA(resourceObj, NSString)) ? (NSString *)resourceObj : nil;
   NSAssert(value, @"No proper value for environment key.");
   if (!value) {
     return resource;
