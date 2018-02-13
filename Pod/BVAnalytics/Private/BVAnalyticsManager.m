@@ -29,7 +29,7 @@
 @property NSTimeInterval queueFlushInterval;
 
 @property(nonatomic, strong)
-    dispatch_queue_t localeUpdatenotificationTokenQueue;
+    dispatch_queue_t localeUpdateNotificationTokenQueue;
 @property(strong) id<NSObject> localeUpdateNotificationCenterToken;
 
 @property(nonatomic, strong) dispatch_queue_t concurrentEventQueue;
@@ -58,7 +58,7 @@ static BVAnalyticsManager *analyticsInstance = nil;
     self.pageviewQueue = [NSMutableArray array];
     self.concurrentEventQueue = dispatch_queue_create(
         "com.bazaarvoice.analyticEventQueue", DISPATCH_QUEUE_CONCURRENT);
-    self.localeUpdatenotificationTokenQueue = dispatch_queue_create(
+    self.localeUpdateNotificationTokenQueue = dispatch_queue_create(
         "com.bazaarvoice.notificationTokenQueue", DISPATCH_QUEUE_SERIAL);
 
     [self setFlushInterval:10.0];
@@ -426,20 +426,15 @@ static BVAnalyticsManager *analyticsInstance = nil;
 
 - (NSLocale *)analyticsLocale {
   __block NSLocale *locale = nil;
-  dispatch_sync(self.localeUpdatenotificationTokenQueue, ^{
+  dispatch_sync(self.localeUpdateNotificationTokenQueue, ^{
     locale = _analyticsLocale;
   });
   return locale;
 }
 
 - (void)setAnalyticsLocale:(NSLocale *)analyticsLocale {
-  dispatch_sync(self.localeUpdatenotificationTokenQueue, ^{
+  dispatch_sync(self.localeUpdateNotificationTokenQueue, ^{
     _analyticsLocale = analyticsLocale;
-
-    [[BVLogger sharedLogger]
-        analyticsMessage:[NSString
-                             stringWithFormat:@"Analytics has set Locale: %@",
-                                              _analyticsLocale.countryCode]];
 
     if (_analyticsLocale) {
       /// Turn off locale state changes
@@ -449,23 +444,49 @@ static BVAnalyticsManager *analyticsInstance = nil;
       /// Turn on locale state changes
       [self registerForCurrentLocaleDidChangeNotifications];
     }
+
+    [self logAnalyticsLocaleUnsafe];
   });
 }
 
-- (void)registerForCurrentLocaleDidChangeNotifications {
+- (void)logAnalyticsLocale {
+  dispatch_sync(self.localeUpdateNotificationTokenQueue, ^{
+    [self logAnalyticsLocaleUnsafe];
+  });
+}
+
+- (void)logAnalyticsLocaleUnsafe {
+  NSString *logLocale = nil;
+  if (_analyticsLocale) {
+    logLocale =
+        ((NSString *)[_analyticsLocale objectForKey:NSLocaleCountryCode])
+            .uppercaseString;
+  }
 
   [[BVLogger sharedLogger]
-      analyticsMessage:
-          @"Analytics REGISTERING for Locale Change Notifications."];
+      analyticsMessage:[NSString
+                           stringWithFormat:@"Configuration has set Locale: %@",
+                                            logLocale]];
+}
 
-  self.localeUpdateNotificationCenterToken =
-      [[NSNotificationCenter defaultCenter]
-          addObserverForName:NSCurrentLocaleDidChangeNotification
-                      object:nil
-                       queue:[NSOperationQueue mainQueue]
-                  usingBlock:^(NSNotification *note) {
-                    self.analyticsLocale = [NSLocale autoupdatingCurrentLocale];
-                  }];
+- (void)registerForCurrentLocaleDidChangeNotifications {
+  if (!self.localeUpdateNotificationCenterToken) {
+    [[BVLogger sharedLogger]
+        analyticsMessage:
+            @"Analytics REGISTERING for Locale Change Notifications."];
+
+    self.localeUpdateNotificationCenterToken =
+        [[NSNotificationCenter defaultCenter]
+            addObserverForName:NSCurrentLocaleDidChangeNotification
+                        object:nil
+                         queue:[NSOperationQueue mainQueue]
+                    usingBlock:^(NSNotification *note) {
+                      dispatch_sync(self.localeUpdateNotificationTokenQueue, ^{
+                        _analyticsLocale = [NSLocale autoupdatingCurrentLocale];
+                        [self logAnalyticsLocaleUnsafe];
+                      });
+                    }];
+  }
 }
 
 - (void)unregisterForCurrentLocaleDidChangeNotifications {
@@ -477,6 +498,7 @@ static BVAnalyticsManager *analyticsInstance = nil;
   if (self.localeUpdateNotificationCenterToken) {
     [[NSNotificationCenter defaultCenter]
         removeObserver:self.localeUpdateNotificationCenterToken];
+    self.localeUpdateNotificationCenterToken = nil;
   }
 }
 
