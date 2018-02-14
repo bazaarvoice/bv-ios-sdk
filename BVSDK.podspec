@@ -26,13 +26,13 @@ Pod::Spec.new do |s|
   s.default_subspec = 'BVCommon'
 
   s.subspec 'BVCommon' do |common|
-    common.source_files = 'Pod/BVCommon/**/*.{h,m}', 'Pod/BVAnalytics/**/*.{h,m}'
-    common.private_header_files = 'Pod/BVCommon/**/Private/*.{h,m}', 'Pod/BVAnalytics/**/Private/*.{h,m}'
+    common.source_files = 'BVSDK/BVCommon/**/*.{h,m}', 'BVSDK/BVAnalytics/**/*.{h,m}'
+    common.private_header_files = 'BVSDK/BVCommon/**/Private/*.{h,m}', 'BVSDK/BVAnalytics/**/Private/*.{h,m}'
   end
 
   s.subspec 'BVCommonUI' do |commonui|
-    commonui.source_files = 'Pod/BVCommonUI/**/*.{h,m}'
-    commonui.private_header_files = 'Pod/BVCommonUI/**/Private/*.{h,m}'
+    commonui.source_files = 'BVSDK/BVCommonUI/**/*.{h,m}'
+    commonui.private_header_files = 'BVSDK/BVCommonUI/**/Private/*.{h,m}'
   end
 
   s.subspec 'BVAnalytics' do |analytics|
@@ -40,46 +40,46 @@ Pod::Spec.new do |s|
   end
 
   s.subspec 'BVConversations' do |conversations|
-    conversations.source_files = 'Pod/BVConversations/**/*.{h,m}'
-    conversations.private_header_files = 'Pod/BVConversations/**/Private/*.{h,m}'
+    conversations.source_files = 'BVSDK/BVConversations/**/*.{h,m}'
+    conversations.private_header_files = 'BVSDK/BVConversations/**/Private/*.{h,m}'
     conversations.dependency 'BVSDK/BVCommon'
   end
 
   s.subspec 'BVConversationsStores' do |conversationsstores|
-    conversationsstores.source_files = 'Pod/BVConversationsStores/**/*.{h,m}', 'Pod/BVConversations/**/Private/*.{h,m}'
-    conversationsstores.private_header_files = 'Pod/BVConversationsStores/**/Private/*.{h,m}'
+    conversationsstores.source_files = 'BVSDK/BVConversationsStores/**/*.{h,m}', 'BVSDK/BVConversations/**/Private/*.{h,m}'
+    conversationsstores.private_header_files = 'BVSDK/BVConversationsStores/**/Private/*.{h,m}'
     conversationsstores.dependency 'BVSDK/BVConversations'
   end
 
   s.subspec 'BVConversationsUI' do |conversationsui|
-    conversationsui.source_files = 'Pod/BVConversationsUI/**/*.{h,m}'
+    conversationsui.source_files = 'BVSDK/BVConversationsUI/**/*.{h,m}'
     conversationsui.dependency 'BVSDK/BVCommonUI'
     conversationsui.dependency 'BVSDK/BVConversationsStores'
   end
 
   s.subspec 'BVCurations' do |curations|
-    curations.source_files = 'Pod/BVCurations/**/*.{h,m}'
+    curations.source_files = 'BVSDK/BVCurations/**/*.{h,m}'
     curations.dependency 'BVSDK/BVCommon'
   end
 
   s.subspec 'BVCurationsUI' do |curationsui|
-    curationsui.source_files = 'Pod/BVCurationsUI/**/*.{h,m}'
+    curationsui.source_files = 'BVSDK/BVCurationsUI/**/*.{h,m}'
     curationsui.dependency 'BVSDK/BVCurations'
     curationsui.dependency 'BVSDK/BVCommonUI'
-    curationsui.resources = ["Pod/BVCurationsUI/SocialMediaIcons/*.xcassets"]
+    curationsui.resources = ["BVSDK/BVCurationsUI/SocialMediaIcons/*.xcassets"]
   end
 
   s.subspec 'BVNotifications' do |notifications|
 
-    notifications.source_files = 'Pod/BVNotifications/**/*.{h,m}', 'Pod/BVCommon/Private/*.{h,m}'
-    notifications.resources = ['Pod/BVNotifications/mapThumbnail.png']
+    notifications.source_files = 'BVSDK/BVNotifications/**/*.{h,m}', 'BVSDK/BVCommon/Private/*.{h,m}'
+    notifications.resources = ['BVSDK/BVNotifications/mapThumbnail.png']
 
     notifications.dependency 'BVSDK/BVConversationsUI'
   end
 
   s.subspec 'BVRecommendations' do |recs|
-    recs.source_files = 'Pod/BVRecommendations/**/*.{h,m}'
-    recs.private_header_files = 'Pod/BVRecommendations/**/Private/*.{h,m}'
+    recs.source_files = 'BVSDK/BVRecommendations/**/*.{h,m}'
+    recs.private_header_files = 'BVSDK/BVRecommendations/**/Private/*.{h,m}'
     recs.dependency 'BVSDK/BVCommon'
   end
 

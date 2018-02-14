@@ -136,7 +136,7 @@
 				87ACA1461E92AFD1009D74BD /* BVViewedCGCEvent.m */,
 			);
 			name = BVPixelEvents;
-			path = ../../../../Pod/BVAnalytics/BVPixelEvents;
+			path = ../../../../BVSDK/BVAnalytics/BVPixelEvents;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

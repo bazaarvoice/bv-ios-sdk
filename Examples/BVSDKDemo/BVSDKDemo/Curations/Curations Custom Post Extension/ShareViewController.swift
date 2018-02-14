@@ -62,7 +62,7 @@ class ShareViewController: BaseDemoComposeServiceViewController {
         
         // Error
         self.spinner.removeFromSuperview()
-        _ = SweetAlert().showAlert("Error Submitting Photo!", subTitle: error?.localizedDescription, style: AlertStyle.error, buttonTitle: "OK", action: { (isOtherButton) -> Void in
+        _ = SweetAlert().showAlert("Error Submitting Photo!", subTitle: error.localizedDescription, style: AlertStyle.error, buttonTitle: "OK", action: { (isOtherButton) -> Void in
           
           // completion
           self.dismiss(animated: true, completion: { () -> Void in
