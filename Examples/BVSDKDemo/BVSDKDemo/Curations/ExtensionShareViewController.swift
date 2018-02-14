@@ -102,7 +102,7 @@ class ExtensionShareViewController: BaseDemoComposeServiceViewController {
     }) { (error) -> Void in
       
       // Error
-      print("Photo upload error: " + (error?.localizedDescription)!)
+      print("Photo upload error: " + (error.localizedDescription))
       
       // completion
       self.extensionContext!.completeRequest(returningItems: [], completionHandler: nil)
