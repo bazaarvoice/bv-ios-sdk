@@ -10,7 +10,7 @@
 #import "BVBaseProductRequest.h"
 #import "BVBaseProductRequest_Private.h"
 #import "BVMonotonicSortOrder.h"
-#import "BVPDPIncludeType.h"
+#import "BVProductIncludeType.h"
 #import "BVQuestionFilterType.h"
 #import "BVQuestionsSortOption.h"
 #import "BVRelationalFilterOperator.h"
@@ -75,12 +75,12 @@
   return @"products.json";
 }
 
-- (nonnull instancetype)includePDPIncludeTypeValue:
-                            (BVPDPIncludeTypeValue)pdpIncludeTypeValue
-                                             limit:(NSUInteger)limit {
+- (nonnull instancetype)includeProductIncludeTypeValue:
+                            (BVProductIncludeTypeValue)productIncludeTypeValue
+                                                 limit:(NSUInteger)limit {
   BVInclude *include = [[BVInclude alloc]
-      initWithIncludeType:[BVPDPIncludeType
-                              includeTypeWithRawValue:pdpIncludeTypeValue]
+      initWithIncludeType:[BVProductIncludeType
+                              includeTypeWithRawValue:productIncludeTypeValue]
              includeLimit:@(limit)];
 
   [self.includes addObject:include];
@@ -88,11 +88,11 @@
 }
 
 - (nonnull instancetype)includeStatistics:
-    (BVPDPIncludeTypeValue)pdpIncludeTypeValue {
+    (BVProductIncludeTypeValue)productIncludeTypeValue {
 
   BVInclude *statToInclude = [[BVInclude alloc]
-      initWithIncludeType:[BVPDPIncludeType
-                              includeTypeWithRawValue:pdpIncludeTypeValue]];
+      initWithIncludeType:[BVProductIncludeType
+                              includeTypeWithRawValue:productIncludeTypeValue]];
 
   [self.pdpIncludes addObject:statToInclude];
   return self;

@@ -16,11 +16,11 @@ class DisplayParametersTests: XCTestCase {
     
     let request = BVProductDisplayPageRequest(productId: "test1")
     
-    let pdpAnswers:BVInclude = BVInclude(includeType: BVPDPIncludeType(pdpIncludeTypeValue: .pdpAnswers))
+    let pdpAnswers:BVInclude = BVInclude(includeType: BVProductIncludeType(pdpIncludeTypeValue: .answers))
     
-    let pdpQuestions:BVInclude = BVInclude(includeType: BVPDPIncludeType(pdpIncludeTypeValue: .pdpQuestions))
+    let pdpQuestions:BVInclude = BVInclude(includeType: BVProductIncludeType(pdpIncludeTypeValue: .questions))
     
-    let pdpReviews:BVInclude = BVInclude(includeType: BVPDPIncludeType(pdpIncludeTypeValue: .pdpReviews))
+    let pdpReviews:BVInclude = BVInclude(includeType: BVProductIncludeType(pdpIncludeTypeValue: .reviews))
     
     XCTAssertEqual(request.statistics(toParams: [pdpReviews]), "Reviews")
     XCTAssertEqual(request.statistics(toParams: [pdpQuestions]), "Questions")

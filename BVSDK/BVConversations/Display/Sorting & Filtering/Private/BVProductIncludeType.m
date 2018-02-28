@@ -1,37 +1,37 @@
 //
-//  BVPDPIncludeType.m
+//  BVProductIncludeType.m
 //  BVSDK
 //
 //  Copyright © 2018 Bazaarvoice. All rights reserved.
 //
 
-#import "BVPDPIncludeType.h"
+#import "BVProductIncludeType.h"
 
-@interface BVPDPIncludeType ()
+@interface BVProductIncludeType ()
 @property(nonnull, nonatomic, readwrite) NSString *value;
 @end
 
-@implementation BVPDPIncludeType
+@implementation BVProductIncludeType
 
 + (nonnull NSString *)toIncludeTypeParameterStringWithRawValue:
     (NSInteger)rawValue {
-  return [BVPDPIncludeType includeTypeWithRawValue:rawValue].value;
+  return [BVProductIncludeType includeTypeWithRawValue:rawValue].value;
 }
 
 + (nonnull instancetype)includeTypeWithRawValue:(NSInteger)rawValue {
-  return [[BVPDPIncludeType alloc] initWithRawValue:rawValue];
+  return [[BVProductIncludeType alloc] initWithRawValue:rawValue];
 }
 
 - (nonnull instancetype)initWithRawValue:(NSInteger)rawValue {
   if ((self = [super initWithRawValue:rawValue])) {
     switch (rawValue) {
-    case BVPDPIncludeTypeValuePDPReviews:
+    case BVProductIncludeTypeValueReviews:
       self.value = @"Reviews";
       break;
-    case BVPDPIncludeTypeValuePDPAnswers:
+    case BVProductIncludeTypeValueAnswers:
       self.value = @"Answers";
       break;
-    case BVPDPIncludeTypeValuePDPQuestions:
+    case BVProductIncludeTypeValueQuestions:
       self.value = @"Questions";
       break;
     }
@@ -44,8 +44,8 @@
 }
 
 - (nonnull instancetype)initWithPDPIncludeTypeValue:
-    (BVPDPIncludeTypeValue)pdpIncludeTypeValue {
-  return [BVPDPIncludeType includeTypeWithRawValue:pdpIncludeTypeValue];
+    (BVProductIncludeTypeValue)pdpIncludeTypeValue {
+  return [BVProductIncludeType includeTypeWithRawValue:pdpIncludeTypeValue];
 }
 
 @end

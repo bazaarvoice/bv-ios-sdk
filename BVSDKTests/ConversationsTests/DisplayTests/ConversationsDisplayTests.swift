@@ -27,8 +27,8 @@ class ConversationsDisplayTests: XCTestCase {
     let expectation = self.expectation(description: "")
     
     let request = BVProductDisplayPageRequest(productId: "test1")
-      .include(.pdpReviews, limit: 10)
-      .include(.pdpQuestions, limit: 5)
+      .include(.reviews, limit: 10)
+      .include(.questions, limit: 5)
     
     //      .include(.reviews, limit: 10)
     //      .include(.questions, limit: 5)

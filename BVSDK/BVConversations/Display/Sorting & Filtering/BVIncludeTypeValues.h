@@ -13,7 +13,7 @@
 #import <BVSDK/BVAuthorIncludeTypeValue.h>
 #import <BVSDK/BVBulkRatingIncludeTypeValue.h>
 #import <BVSDK/BVCommentIncludeTypeValue.h>
-#import <BVSDK/BVPDPIncludeTypeValue.h>
+#import <BVSDK/BVProductIncludeTypeValue.h>
 #import <BVSDK/BVReviewIncludeTypeValue.h>
 
 #endif /* BVINCLUDETYPEVALUES_H */

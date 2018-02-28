@@ -53,10 +53,10 @@ class PDPViewController: BVProductDisplayPageViewController, UITableViewDataSour
     demoStatsTableView.register(UINib(nibName: "StatisticTableViewCell", bundle: nil), forCellReuseIdentifier: "StatisticTableViewCell")
     
     let productPage = BVProductDisplayPageRequest(productId: Constants.TEST_PRODUCT_ID)
-      .includeStatistics(.pdpReviews)
-      .includeStatistics(.pdpQuestions)
-      .includeStatistics(.pdpAnswers)
-      .include(.pdpQuestions, limit: 10) // Include 10 Questions
+      .includeStatistics(.reviews)
+      .includeStatistics(.questions)
+      .includeStatistics(.answers)
+      .include(.questions, limit: 10) // Include 10 Questions
       .sort(by: .questionTotalAnswerCount, monotonicSortOrderValue: .descending) // For the included answers, add by most answers, descending.
     
     productPage.load({ (response) in

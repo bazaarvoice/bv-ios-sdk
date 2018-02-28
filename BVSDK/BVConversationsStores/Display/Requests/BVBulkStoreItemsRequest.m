@@ -7,8 +7,8 @@
 //
 
 #import "BVBulkStoreItemsRequest.h"
-#import "BVPDPIncludeType.h"
 #import "BVProductFilterType.h"
+#import "BVProductIncludeType.h"
 #import "BVRelationalFilterOperator.h"
 #import "BVSDKConfiguration.h"
 #import "BVSDKManager.h"

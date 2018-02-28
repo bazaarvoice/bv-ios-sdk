@@ -9,7 +9,7 @@
 #import "BVCommaUtil.h"
 #import "BVFilter.h"
 #import "BVLogger.h"
-#import "BVPDPIncludeType.h"
+#import "BVProductIncludeType.h"
 #import "BVSDKConfiguration.h"
 #import "BVSDKManager.h"
 #import "BVSort.h"

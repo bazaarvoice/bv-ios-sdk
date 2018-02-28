@@ -9,7 +9,7 @@
 
 Pod::Spec.new do |s|
   s.name = "BVSDK"
-  s.version = '6.9.0'
+  s.version = '7.0.0'
   s.homepage = 'https://developer.bazaarvoice.com/'
   s.license = { :type => 'Commercial', :text => 'See https://developer.bazaarvoice.com/API_Terms_of_Use' }
   s.author = { 'Bazaarvoice' => 'support@bazaarvoice.com' }
@@ -27,12 +27,12 @@ Pod::Spec.new do |s|
 
   s.subspec 'BVCommon' do |common|
     common.source_files = 'BVSDK/BVCommon/**/*.{h,m}', 'BVSDK/BVAnalytics/**/*.{h,m}'
-    common.private_header_files = 'BVSDK/BVCommon/**/Private/*.{h,m}', 'BVSDK/BVAnalytics/**/Private/*.{h,m}'
+    common.private_header_files = 'BVSDK/BVCommon/**/Private/*.{h}', 'BVSDK/BVAnalytics/**/Private/*.{h}'
   end
 
   s.subspec 'BVCommonUI' do |commonui|
     commonui.source_files = 'BVSDK/BVCommonUI/**/*.{h,m}'
-    commonui.private_header_files = 'BVSDK/BVCommonUI/**/Private/*.{h,m}'
+    commonui.private_header_files = 'BVSDK/BVCommonUI/**/Private/*.{h}'
   end
 
   s.subspec 'BVAnalytics' do |analytics|
@@ -41,13 +41,13 @@ Pod::Spec.new do |s|
 
   s.subspec 'BVConversations' do |conversations|
     conversations.source_files = 'BVSDK/BVConversations/**/*.{h,m}'
-    conversations.private_header_files = 'BVSDK/BVConversations/**/Private/*.{h,m}'
+    conversations.private_header_files = 'BVSDK/BVConversations/**/Private/*.{h}'
     conversations.dependency 'BVSDK/BVCommon'
   end
 
   s.subspec 'BVConversationsStores' do |conversationsstores|
     conversationsstores.source_files = 'BVSDK/BVConversationsStores/**/*.{h,m}', 'BVSDK/BVConversations/**/Private/*.{h,m}'
-    conversationsstores.private_header_files = 'BVSDK/BVConversationsStores/**/Private/*.{h,m}'
+    conversationsstores.private_header_files = 'BVSDK/BVConversationsStores/**/Private/*.{h}'
     conversationsstores.dependency 'BVSDK/BVConversations'
   end
 
@@ -79,7 +79,7 @@ Pod::Spec.new do |s|
 
   s.subspec 'BVRecommendations' do |recs|
     recs.source_files = 'BVSDK/BVRecommendations/**/*.{h,m}'
-    recs.private_header_files = 'BVSDK/BVRecommendations/**/Private/*.{h,m}'
+    recs.private_header_files = 'BVSDK/BVRecommendations/**/Private/*.{h}'
     recs.dependency 'BVSDK/BVCommon'
   end
 
