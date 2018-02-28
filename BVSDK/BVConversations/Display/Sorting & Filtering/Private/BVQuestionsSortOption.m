@@ -64,7 +64,7 @@
     case BVQuestionsSortOptionValueQuestionLastModificationTime:
       self.value = @"LastModificationTime";
       break;
-    case BVQuestionsSortOptionValueQuestionLastModeratorCode:
+    case BVQuestionsSortOptionValueQuestionModeratorCode:
       self.value = @"ModeratorCode";
       break;
     case BVQuestionsSortOptionValueQuestionProductId:

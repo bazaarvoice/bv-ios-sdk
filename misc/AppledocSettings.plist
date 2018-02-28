@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN"
+	"http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>--output</key>
+  <string>.</string>
+  <key>--input</key>
+  <array>
+    <string>../BVSDK</string>
+  </array>
+	<key>--ignore</key>
+	<array>
+		<string>.m</string>
+		<string>Private</string>
+	</array>
+  <key>--no-repeat-first-par</key>
+  <true/>
+  <key>--keep-intermediate-files</key>
+  <true/>
+  <key>--no-install-docset</key>
+  <true/>
+  <key>--keep-undocumented-objects</key>
+  <true/>
+  <key>--keep-undocumented-members</key>
+  <true/>
+  <key>--search-undocumented-doc</key>
+  <true/>
+  <key>--index-desc</key>
+  <string>./desc.txt</string>
+  <key>--project-name</key>
+  <string>Bazaarvoice iOS SDK</string>
+	<key>--project-company</key>
+	<string>Bazaarvoice</string>
+	<key>--company-id</key>
+	<string>com.bazaarvoice</string>
+	<key>--verbose</key>
+	<string>4</string>
+	<key>--logformat</key>
+	<integer>1</integer>
+</dict>
+</plist>

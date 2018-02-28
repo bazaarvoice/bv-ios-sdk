@@ -25,7 +25,6 @@
 @property(nonnull, nonatomic, strong) NSString *PINContentExtensionCategory;
 @property(nonnull, nonatomic, strong) NSString *apiKeyShopperAdvertising;
 @property(nonnull, nonatomic, strong) NSString *apiKeyCurations;
-@property(nonnull, nonatomic, strong) NSString *apiKeyLocation;
 @end
 
 @implementation BVSDKManager
@@ -96,7 +95,6 @@ static NSString *const BVSDKConfigFileExt = @"json";
     _apiKeyConversations = nil;
     _apiKeyShopperAdvertising = nil;
     _apiKeyConversationsStores = nil;
-    _apiKeyLocation = nil;
     _configuration = [[BVSDKConfiguration alloc] init];
   }
   return self;
@@ -239,17 +237,6 @@ static NSString *const BVSDKConfigFileExt = @"json";
                   userInfo:userInfo];
   [_configuration setValue:apiKeyConversationsStores
                 forKeyPath:@"apiKeyConversationsStores"];
-}
-
-- (void)setApiKeyLocation:(NSString *)apiKeyLocation {
-  _apiKeyLocation = apiKeyLocation;
-  NSDictionary *userInfo =
-      @{LOCATION_API_KEY_SET_NOTIFICATION : _apiKeyLocation};
-  [[NSNotificationCenter defaultCenter]
-      postNotificationName:LOCATION_API_KEY_SET_NOTIFICATION
-                    object:nil
-                  userInfo:userInfo];
-  [_configuration setValue:apiKeyLocation forKeyPath:@"apiKeyLocation"];
 }
 
 - (void)setApiKeyPIN:(NSString *)apiKeyPIN {

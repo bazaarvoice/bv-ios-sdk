@@ -54,11 +54,11 @@ typedef enum {
 
   BVProductDisplayPageRequest *request =
       [[BVProductDisplayPageRequest alloc] initWithProductId:@"test1"];
-  [request includeStatistics:BVPDPIncludeTypeValuePDPReviews];
-  [request includeStatistics:BVPDPIncludeTypeValuePDPAnswers];
-  [request includeStatistics:BVPDPIncludeTypeValuePDPQuestions];
-  [request includePDPIncludeTypeValue:BVPDPIncludeTypeValuePDPQuestions
-                                limit:10];
+  [request includeStatistics:BVProductIncludeTypeValueReviews];
+  [request includeStatistics:BVProductIncludeTypeValueAnswers];
+  [request includeStatistics:BVProductIncludeTypeValueQuestions];
+  [request includeProductIncludeTypeValue:BVProductIncludeTypeValueQuestions
+                                    limit:10];
   [request sortByQuestionsSortOptionValue:
                BVQuestionsSortOptionValueQuestionTotalAnswerCount
                   monotonicSortOrderValue:BVMonotonicSortOrderValueDescending];

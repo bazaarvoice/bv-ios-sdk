@@ -56,8 +56,8 @@ FOUNDATION_EXPORT const unsigned char BVSDKVersionString[];
 #import <BVSDK/BVFilterTypeValues.h>
 #import <BVSDK/BVIncludeTypeValues.h>
 #import <BVSDK/BVMonotonicSortOrderValue.h>
-#import <BVSDK/BVPDPIncludeTypeValue.h>
 #import <BVSDK/BVProductFilterValue.h>
+#import <BVSDK/BVProductIncludeTypeValue.h>
 #import <BVSDK/BVProductsSortOptionValue.h>
 #import <BVSDK/BVQuestionFilterValue.h>
 #import <BVSDK/BVQuestionsSortOptionValue.h>

@@ -43,9 +43,6 @@
 /// Your private API key for the BVCurations API
 @property(nonatomic, strong, readonly, nullable) NSString *apiKeyCurations;
 
-/// Your private API key for the BVLocations API
-@property(nonatomic, strong, readonly, nullable) NSString *apiKeyLocation;
-
 @property(nonatomic, assign, readonly) BOOL staging;
 
 @property(nonatomic, assign, readonly) BOOL dryRunAnalytics;

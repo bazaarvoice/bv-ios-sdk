@@ -168,8 +168,8 @@ class NewProductPageViewController: BVProductDisplayPageViewController, UITableV
   func loadConversationsStats() {
     
     let request = BVProductDisplayPageRequest(productId: productId)
-      .includeStatistics(.pdpReviews)
-      .includeStatistics(.pdpQuestions)
+      .includeStatistics(.reviews)
+      .includeStatistics(.questions)
     
     request.load({ (response) in
       

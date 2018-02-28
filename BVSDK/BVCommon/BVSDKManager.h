@@ -16,10 +16,6 @@ typedef NS_ENUM(NSUInteger, BVConfigurationType) {
   BVConfigurationTypeStaging
 };
 
-// For internal use of notifying the BVLocation module when the SDK has been
-// intialized.
-#define LOCATION_API_KEY_SET_NOTIFICATION @"locationAPIKeyReady"
-
 // For intenal use of notifying with the Conversations Store api key has been
 // initialized.
 #define CONVERSATIONS_STORES_API_KEY_SET_NOTIFICATION                          \

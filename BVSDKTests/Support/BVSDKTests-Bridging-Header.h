@@ -13,8 +13,8 @@
 #import "BVCommaUtil.h"
 #import "BVCommentsRequest_Private.h"
 #import "BVNetworkDelegateTestsDelegate.h"
-#import "BVPDPIncludeType.h"
 #import "BVProductFilterType.h"
+#import "BVProductIncludeType.h"
 #import "BVRelationalFilterOperator.h"
 #import "UIImage+BundleLocator.h"
 

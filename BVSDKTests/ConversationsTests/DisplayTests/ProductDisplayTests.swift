@@ -23,9 +23,9 @@ class ProductDisplayTests: XCTestCase {
     let expectation = self.expectation(description: "")
     
     let request = BVProductDisplayPageRequest(productId: "test1")
-      .include(.pdpReviews, limit: 10)
-      .include(.pdpQuestions, limit: 5)
-      .includeStatistics(.pdpReviews)
+      .include(.reviews, limit: 10)
+      .include(.questions, limit: 5)
+      .includeStatistics(.reviews)
     
     request.load({ (response) in
       
@@ -64,13 +64,13 @@ class ProductDisplayTests: XCTestCase {
     let expectation = self.expectation(description: "")
     
     let request = BVProductDisplayPageRequest(productId: "test1")
-      .include(.pdpReviews, limit: 10)
-      .include(.pdpQuestions, limit: 5)
+      .include(.reviews, limit: 10)
+      .include(.questions, limit: 5)
       // only include reviews where isRatingsOnly is false
       .filter(on: .isRatingsOnly, relationalFilterOperatorValue: .equalTo, value: "false")
       // only include questions where isFeatured is not equal to true
       .filter(on: .questionIsFeatured, relationalFilterOperatorValue: .notEqualTo, value: "true")
-      .includeStatistics(.pdpReviews)
+      .includeStatistics(.reviews)
     
     request.load({ (response) in
       
