@@ -25,7 +25,7 @@ typedef NS_ENUM(NSInteger, BVQuestionsSortOptionValue) {
   BVQuestionsSortOptionValueQuestionIsFeatured,
   BVQuestionsSortOptionValueQuestionIsSubjectActive,
   BVQuestionsSortOptionValueQuestionLastApprovedAnswerSubmissionTime,
-  BVQuestionsSortOptionValueQuestionLastModeratorCode,
+  BVQuestionsSortOptionValueQuestionModeratorCode,
   BVQuestionsSortOptionValueQuestionLastModeratedTime,
   BVQuestionsSortOptionValueQuestionLastModificationTime,
   BVQuestionsSortOptionValueQuestionProductId,

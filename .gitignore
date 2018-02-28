@@ -41,5 +41,9 @@ Tests/installation_tests/carthage/Cartfile
 Tests/installation_tests/carthage/Cartfile.resolved
 Tests/installation_tests/carthage/Carthage/*
 
+# ignore appledoc
+misc/docset
+misc/html
+
 # BV Specific
 BVSDK.framework.zip

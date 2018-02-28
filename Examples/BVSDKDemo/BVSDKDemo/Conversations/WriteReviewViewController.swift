@@ -80,8 +80,8 @@ class WriteReviewViewController: UIViewController, SDFormDelegate, SDFormDataSou
       self.view.addSubview(self.spinner)
     }
     let request = BVProductDisplayPageRequest(productId: productId)
-      .includeStatistics(.pdpReviews)
-      .includeStatistics(.pdpQuestions)
+      .includeStatistics(.reviews)
+      .includeStatistics(.questions)
     request.load({ (response) in
       self.product = response.result
       self.updateProductUI(product: response.result!)

@@ -15,14 +15,14 @@ typedef void (^ProductSearchRequestCompletionHandler)(
 @interface BVBaseProductRequest : BVConversationsRequest
 
 /// Type of social content to include with the product request. NOTE:
-/// PDPContentType is only supported for statistics, no for Includes.
-- (nonnull instancetype)includePDPIncludeTypeValue:
-                            (BVPDPIncludeTypeValue)pdpIncludeTypeValue
-                                             limit:(NSUInteger)limit;
+/// BVProductIncludeTypeValue is only supported for statistics, no for Includes.
+- (nonnull instancetype)includeProductIncludeTypeValue:
+                            (BVProductIncludeTypeValue)productIncludeTypeValue
+                                                 limit:(NSUInteger)limit;
 
 // Includes statistics for the included content type.
 - (nonnull instancetype)includeStatistics:
-    (BVPDPIncludeTypeValue)pdpIncludeTypeValue;
+    (BVProductIncludeTypeValue)productIncludeTypeValue;
 
 /// Inclusive filter to add for included reviews.
 - (nonnull instancetype)

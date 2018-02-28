@@ -128,7 +128,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
   private func doConversationsSearch(_ searchText: String, completion: @escaping CircleSearchView<BVDisplayableProductContent>.SearchCompletionHandler) {
     
     let req = BVProductTextSearchRequest(searchText: searchText)
-    req.includeStatistics(.pdpReviews)
+    req.includeStatistics(.reviews)
     req.load({[completion](res) in
       self.products = res.results
       self.recommendationsCollectionView.reloadData()
@@ -306,7 +306,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
       .filter(on: .productIsActive, relationalFilterOperatorValue: .equalTo, value: "true")
       .filter(on: .productIsDisabled, relationalFilterOperatorValue: .equalTo, value: "false")
     if (!omitStats){
-      req.includeStatistics(.pdpReviews)
+      req.includeStatistics(.reviews)
     }
     
     req.sort(by: .reviewRating, monotonicSortOrderValue: .descending)

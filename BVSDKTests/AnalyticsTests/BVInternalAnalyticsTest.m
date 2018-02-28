@@ -205,8 +205,8 @@
 
   BVProductDisplayPageRequest *pdpRequest =
       [[BVProductDisplayPageRequest alloc] initWithProductId:@"test4"];
-  [pdpRequest includeStatistics:BVPDPIncludeTypeValuePDPReviews];
-  [pdpRequest includeStatistics:BVPDPIncludeTypeValuePDPQuestions];
+  [pdpRequest includeStatistics:BVProductIncludeTypeValueReviews];
+  [pdpRequest includeStatistics:BVProductIncludeTypeValueQuestions];
   [pdpRequest load:^(BVProductsResponse *__nonnull response) {
     [[BVAnalyticsManager sharedManager] flushQueue];
   }
@@ -251,8 +251,8 @@
   // Should send one product page view and one or impression for a review
   BVProductDisplayPageRequest *pdpRequest =
       [[BVProductDisplayPageRequest alloc] initWithProductId:@"test4"];
-  [pdpRequest includeStatistics:BVPDPIncludeTypeValuePDPReviews];
-  [pdpRequest includeStatistics:BVPDPIncludeTypeValuePDPQuestions];
+  [pdpRequest includeStatistics:BVProductIncludeTypeValueReviews];
+  [pdpRequest includeStatistics:BVProductIncludeTypeValueQuestions];
   [pdpRequest load:^(BVProductsResponse *__nonnull response) {
     [[BVAnalyticsManager sharedManager] flushQueue];
   }

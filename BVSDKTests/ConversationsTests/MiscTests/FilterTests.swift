@@ -129,7 +129,7 @@ class SortTests: XCTestCase {
   
   func testSimpleSort() {
     let request = BVProductDisplayPageRequest(productId: "test1")
-      .include(.pdpReviews, limit: 10)
+      .include(.reviews, limit: 10)
       .sort(by: .reviewRating, monotonicSortOrderValue: .descending)
     
     let params = request.createParams()
@@ -139,7 +139,7 @@ class SortTests: XCTestCase {
   
   func testComplicatedSort() {
     let request = BVProductDisplayPageRequest(productId: "test1")
-      .include(.pdpReviews, limit: 10)
+      .include(.reviews, limit: 10)
       .sort(by: .reviewRating, monotonicSortOrderValue: .descending)
       .sort(by: .reviewSubmissionTime, monotonicSortOrderValue: .descending)
       .sort(by: .questionTotalAnswerCount, monotonicSortOrderValue: .descending)
