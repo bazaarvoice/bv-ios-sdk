@@ -9,27 +9,27 @@ import UIKit
 import FBSDKLoginKit
 
 class FacebookLoginViewController: UIViewController {
+  
+  @IBOutlet weak var fbLoginButton: FBSDKLoginButton!
+  
+  let descriptionLabel = UILabel()
+  
+  override func viewWillAppear(_ animated: Bool) {
     
-    @IBOutlet weak var fbLoginButton: FBSDKLoginButton!
+    super.viewWillAppear(animated)
     
-    let descriptionLabel = UILabel()
+    self.navigationController?.isNavigationBarHidden = true
     
-    override func viewWillAppear(_ animated: Bool) {
-        
-        super.viewWillAppear(animated)
-        
-        self.navigationController?.isNavigationBarHidden = true
-        
-        // check that user is logged in to facebook
-        if(FBSDKAccessToken.current() != nil) {
-            fbLoginButton.removeFromSuperview()
-            self.presentingViewController?.dismiss(animated: true, completion: nil)
-        }
-       
+    // check that user is logged in to facebook
+    if(FBSDKAccessToken.current() != nil) {
+      fbLoginButton.removeFromSuperview()
+      self.presentingViewController?.dismiss(animated: true, completion: nil)
     }
     
-    override func viewWillLayoutSubviews() {
-        super.viewWillLayoutSubviews()
-    }
-
+  }
+  
+  override func viewWillLayoutSubviews() {
+    super.viewWillLayoutSubviews()
+  }
+  
 }

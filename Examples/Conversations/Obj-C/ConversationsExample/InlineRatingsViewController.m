@@ -34,9 +34,9 @@
   NSArray *productIds =
       @[ @"test1", @"test2", @"test3", @"test4", @"test5", @"test6" ];
 
-  BVBulkRatingsRequest *request =
-      [[BVBulkRatingsRequest alloc] initWithProductIds:productIds
-                                            statistics:BulkRatingsStatsTypeAll];
+  BVBulkRatingsRequest *request = [[BVBulkRatingsRequest alloc]
+      initWithProductIds:productIds
+              statistics:BVBulkRatingIncludeTypeValueBulkRatingAll];
 
   [request load:^(BVBulkRatingsResponse *_Nonnull response) {
     self.productStatistics = response.results;

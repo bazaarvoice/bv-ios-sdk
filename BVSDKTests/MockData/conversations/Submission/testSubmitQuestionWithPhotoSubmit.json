@@ -1,0 +1,21 @@
+{
+  "Locale": "en_US",
+  "Errors": [],
+  "Form": [],
+  "FormErrors": {},
+  "SubmissionId": "u9exxhtcxlev3lfz0gtjdi35d",
+  "Question": {
+    "QuestionSummary": "Question title question title?",
+    "SubmissionTime": "2018-03-07T19:48:50.965+00:00",
+    "SubmissionId": null,
+    "SendEmailAlertWhenAnswered": false,
+    "TypicalHoursToPost": null,
+    "QuestionDetails": "Question body Question body Question body Question body Question body Question body Question body",
+    "Id": null,
+    "SendEmailAlertWhenPublished": false
+  },
+  "TypicalHoursToPost": 72,
+  "Data": {},
+  "AuthorSubmissionToken": "e1c07363c8718760ec1efff945bcd6bb7573657269643d5573657249643235393433313030303426646174653d3230313830333037266d61786167653d37",
+  "HasErrors": false
+}
