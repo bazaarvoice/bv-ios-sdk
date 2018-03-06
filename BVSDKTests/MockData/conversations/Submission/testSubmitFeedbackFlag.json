@@ -1,0 +1,17 @@
+{
+  "Locale": "en_US",
+  "Errors": [],
+  "Feedback": {
+    "Inappropriate": {
+      "AuthorId": "userId1302958052",
+      "ReasonText": "Optional reason text in this field."
+    }
+  },
+  "Form": [],
+  "FormErrors": {},
+  "SubmissionId": null,
+  "Data": {},
+  "TypicalHoursToPost": null,
+  "AuthorSubmissionToken": null,
+  "HasErrors": false
+}
