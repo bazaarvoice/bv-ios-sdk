@@ -33,7 +33,10 @@
       forCellReuseIdentifier:@"MyCommentTableViewCell"];
 
   BVCommentsRequest *request =
-      [[BVCommentsRequest alloc] initWithReviewId:@"192548" limit:99 offset:0];
+      [[BVCommentsRequest alloc] initWithProductId:@"1000001"
+                                       andReviewId:@"192548"
+                                             limit:99
+                                            offset:0];
 
   [request load:^(BVCommentsResponse *_Nonnull response) {
     // success

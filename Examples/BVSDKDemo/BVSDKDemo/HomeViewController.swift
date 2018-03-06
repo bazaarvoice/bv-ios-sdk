@@ -163,7 +163,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
   
   func refresh(_ refreshControl: UIRefreshControl) {
     // clear any cached recommendations, and reload latest recommendations from API
-    BVShopperProfileRequestCache.shared().removeAllCachedResponses()
+    BVRecommendationsLoader.purgeRecommendationsCache()
     self.loadProducts()
   }
   
@@ -301,14 +301,15 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
   }
   
   func loadConversations(omitStats : Bool) {
-    let req = BVBulkProductRequest().addProductSort(.averageOverallRating, order: .descending)
-      .add(.totalReviewCount, filterOperator: .greaterThanOrEqualTo, value: "10")
-      .add(.isActive, filterOperator: .equalTo, value: "true")
-      .add(.isDisabled, filterOperator: .equalTo, value: "false")
+    let req = BVBulkProductRequest().sort(by: .productAverageOverallRating, monotonicSortOrderValue: .descending)
+      .filter(on: .productTotalReviewCount, relationalFilterOperatorValue: .greaterThanOrEqualTo, value: "10")
+      .filter(on: .productIsActive, relationalFilterOperatorValue: .equalTo, value: "true")
+      .filter(on: .productIsDisabled, relationalFilterOperatorValue: .equalTo, value: "false")
     if (!omitStats){
       req.includeStatistics(.reviews)
     }
-    req.sortIncludedReviews(.rating, order: .descending)
+    
+    req.sort(by: .reviewRating, monotonicSortOrderValue: .descending)
     req.load({(response) in
       self.doneLoading(response.results)
     }){(errs) in

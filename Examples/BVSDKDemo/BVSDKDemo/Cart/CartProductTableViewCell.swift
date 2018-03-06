@@ -9,30 +9,30 @@ import UIKit
 import BVSDK
 
 class CartProductTableViewCell: UITableViewCell {
-
-    @IBOutlet weak var productImageView: UIImageView!
-    @IBOutlet weak var productTitle: UILabel!
-    @IBOutlet weak var productPrice: UILabel!
+  
+  @IBOutlet weak var productImageView: UIImageView!
+  @IBOutlet weak var productTitle: UILabel!
+  @IBOutlet weak var productPrice: UILabel!
+  
+  var product : BVProduct? {
     
-    var product : BVProduct? {
-    
-        didSet {
-            if let _ = product {
-                productTitle.text = product?.name
-                productImageView.sd_setImage(with: NSURL(string: (product?.imageUrl!)!) as URL!)
-                productPrice.text = "$0.00"
-            }
-        }
+    didSet {
+      if let _ = product {
+        productTitle.text = product?.name
+        productImageView.sd_setImage(with: NSURL(string: (product?.imageUrl!)!) as URL!)
+        productPrice.text = "$0.00"
+      }
     }
+  }
+  
+  override func awakeFromNib() {
+    super.awakeFromNib()
+  }
+  
+  override func setSelected(_ selected: Bool, animated: Bool) {
+    super.setSelected(selected, animated: animated)
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-    
+    // Configure the view for the selected state
+  }
+  
 }

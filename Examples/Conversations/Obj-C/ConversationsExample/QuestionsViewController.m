@@ -40,12 +40,13 @@
                                                         limit:20
                                                        offset:0];
   // optionally add in a sort option
-  [request addQuestionSort:BVSortOptionQuestionsLastModeratedTime
-                     order:BVSortOrderDescending];
+  [request sortByQuestionsSortOptionValue:
+               BVQuestionsSortOptionValueQuestionLastModeratedTime
+                  monotonicSortOrderValue:BVMonotonicSortOrderValueDescending];
   // optionally add in a filter
-  [request addFilter:BVQuestionFilterTypeHasAnswers
-      filterOperator:BVFilterOperatorEqualTo
-               value:@"true"];
+  [request filterOnQuestionFilterValue:BVQuestionFilterValueQuestionHasAnswers
+         relationalFilterOperatorValue:BVRelationalFilterOperatorValueEqualTo
+                                 value:@"true"];
 
   [self.questionsTableView load:request
       success:^(BVQuestionsAndAnswersResponse *_Nonnull response) {

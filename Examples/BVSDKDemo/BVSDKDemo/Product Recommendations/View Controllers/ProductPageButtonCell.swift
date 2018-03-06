@@ -10,33 +10,33 @@ import QuartzCore
 import FontAwesomeKit
 
 class ProductPageButtonCell: UITableViewCell {
+  
+  
+  @IBOutlet weak var button : UIButton!
+  @IBOutlet weak var rightIcon : UIImageView!
+  @IBOutlet weak var leftIcon : UIImageView!
+  
+  
+  func setCustomLeftIcon(_ icon : ((_ size: CGFloat) -> FAKFontAwesome!)) {
+    leftIcon.image = getIconImage(icon)
+  }
+  
+  func setCustomRightIcon(_ icon : ((_ size: CGFloat) -> FAKFontAwesome!)) {
+    rightIcon.image = getIconImage(icon)
+  }
+  
+  func getIconImage(_ icon : ((_ size: CGFloat) -> FAKFontAwesome!)) -> UIImage {
     
-
-    @IBOutlet weak var button : UIButton!
-    @IBOutlet weak var rightIcon : UIImageView!
-    @IBOutlet weak var leftIcon : UIImageView!
+    let size = CGFloat(20)
     
+    let newIcon = icon(size)
+    newIcon?.addAttribute(
+      NSForegroundColorAttributeName,
+      value: UIColor.lightGray.withAlphaComponent(0.5)
+    )
     
-    func setCustomLeftIcon(_ icon : ((_ size: CGFloat) -> FAKFontAwesome!)) {
-        leftIcon.image = getIconImage(icon)
-    }
+    return newIcon!.image(with: CGSize(width: size, height: size))
     
-    func setCustomRightIcon(_ icon : ((_ size: CGFloat) -> FAKFontAwesome!)) {
-        rightIcon.image = getIconImage(icon)
-    }
-    
-    func getIconImage(_ icon : ((_ size: CGFloat) -> FAKFontAwesome!)) -> UIImage {
-        
-        let size = CGFloat(20)
-        
-        let newIcon = icon(size)
-        newIcon?.addAttribute(
-            NSForegroundColorAttributeName,
-            value: UIColor.lightGray.withAlphaComponent(0.5)
-        )
-        
-        return newIcon!.image(with: CGSize(width: size, height: size))
-        
-    }
-    
+  }
+  
 }
