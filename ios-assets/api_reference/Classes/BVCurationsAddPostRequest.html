@@ -64,7 +64,11 @@
 		
 		<option value="//api/name/image">image</option>
 		
+		<option value="//api/name/latitude">latitude</option>
+		
 		<option value="//api/name/links">links</option>
+		
+		<option value="//api/name/longitude">longitude</option>
 		
 		<option value="//api/name/permalink">permalink</option>
 		
@@ -122,7 +126,7 @@
 	<td>NSObject</td>
 </tr><tr>
 	<th>Declared in</th>
-	<td>BVCurationsAddPostRequest.h<br />BVCurationsAddPostRequest.m</td>
+	<td>BVCurationsAddPostRequest.h</td>
 </tr>
 						</tbody></table></div>
 					
@@ -156,7 +160,7 @@
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>- (id)initWithGroups:(NSArray&lt;NSString*&gt; *)<em>groups</em> withAuthorAlias:(NSString *)<em>alias</em> withToken:(NSString *)<em>token</em> withText:(NSString *)<em>text</em></code></div>
+			<div class="method-subsection method-declaration"><code>- (nonnull id)initWithGroups:(nonnull NSArray&lt;NSString*&gt; *)<em>groups</em> withAuthorAlias:(nonnull NSString *)<em>alias</em> withToken:(nonnull NSString *)<em>token</em> withText:(nonnull NSString *)<em>text</em></code></div>
 
 		    
 			
@@ -166,7 +170,8 @@
 				
 					<tr>
 						<th scope="row" class="argument-name"><code>groups</code></th>
-						<td><p>Array of NSStrings that specifies which Curations group or <a href="#//api/name/groups">groups</a> to post to.</p></td>
+						<td><p>Array of NSStrings that specifies which Curations group or <a href="#//api/name/groups">groups</a>
+to post to.</p></td>
 					</tr>
 				
 					<tr>
@@ -191,7 +196,8 @@
 			
 			<div class="method-subsection return">
 				<h4 class="method-subtitle parameter-title">Return Value</h4>
-				<p>Fully initialized BVCurationsAddPostParams with the minimum required parameters.</p>
+				<p>Fully initialized BVCurationsAddPostParams with the minimum required
+parameters.</p>
 			</div>
 			
 
@@ -229,7 +235,7 @@
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>- (id)initWithGroups:(NSArray&lt;NSString*&gt; *)<em>groups</em> withAuthorAlias:(NSString *)<em>alias</em> withToken:(NSString *)<em>token</em> withText:(NSString *)<em>text</em> withImage:(UIImage *)<em>image</em></code></div>
+			<div class="method-subsection method-declaration"><code>- (nonnull id)initWithGroups:(nonnull NSArray&lt;NSString*&gt; *)<em>groups</em> withAuthorAlias:(nonnull NSString *)<em>alias</em> withToken:(nonnull NSString *)<em>token</em> withText:(nonnull NSString *)<em>text</em> withImage:(nonnull UIImage *)<em>image</em></code></div>
 
 		    
 			
@@ -239,7 +245,8 @@
 				
 					<tr>
 						<th scope="row" class="argument-name"><code>groups</code></th>
-						<td><p>Array of NSStrings that specifies which Curations group or <a href="#//api/name/groups">groups</a> to post to.</p></td>
+						<td><p>Array of NSStrings that specifies which Curations group or <a href="#//api/name/groups">groups</a>
+to post to.</p></td>
 					</tr>
 				
 					<tr>
@@ -269,7 +276,8 @@
 			
 			<div class="method-subsection return">
 				<h4 class="method-subtitle parameter-title">Return Value</h4>
-				<p>Fully initialized BVCurationsAddPostParams with the minimum required parameters.</p>
+				<p>Fully initialized BVCurationsAddPostParams with the minimum required
+parameters.</p>
 			</div>
 			
 
@@ -307,7 +315,7 @@
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>- (instancetype)init</code></div>
+			<div class="method-subsection method-declaration"><code>- (nonnull instancetype)init</code></div>
 
 		    
 			
@@ -353,7 +361,7 @@
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>- (NSData *)serializeParameters</code></div>
+			<div class="method-subsection method-declaration"><code>- (nonnull NSData *)serializeParameters</code></div>
 
 		    
 			
@@ -389,12 +397,13 @@
 			
 			
 			<div class="method-subsection brief-description">
-				<p>Array of NSStrings that specifies which Curations group or groups to post to. Set this with the designated initializer.</p>
+				<p>Array of NSStrings that specifies which Curations group or groups to post to.
+Set this with the designated initializer.</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>@property (readonly) NSArray&lt;NSString*&gt; *groups</code></div>
+			<div class="method-subsection method-declaration"><code>@property (nonnull, readonly) NSArray&lt;NSString*&gt; *groups</code></div>
 
 		    
 			
@@ -435,7 +444,7 @@
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>@property (readonly) NSString *alias</code></div>
+			<div class="method-subsection method-declaration"><code>@property (nonnull, readonly) NSString *alias</code></div>
 
 		    
 			
@@ -471,12 +480,13 @@
 			
 			
 			<div class="method-subsection brief-description">
-				<p>The user&rsquo;s comment for this post object. Set this with the designated initializer.</p>
+				<p>The user&rsquo;s comment for this post object. Set this with the designated
+initializer.</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>@property (readonly) NSString *token</code></div>
+			<div class="method-subsection method-declaration"><code>@property (nonnull, readonly) NSString *token</code></div>
 
 		    
 			
@@ -517,7 +527,7 @@
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>@property NSString *text</code></div>
+			<div class="method-subsection method-declaration"><code>@property (nonnull) NSString *text</code></div>
 
 		    
 			
@@ -558,7 +568,7 @@
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>@property NSString *authorAvatarURL</code></div>
+			<div class="method-subsection method-declaration"><code>@property (nonnull) NSString *authorAvatarURL</code></div>
 
 		    
 			
@@ -599,7 +609,7 @@
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>@property NSString *authorProfileURL</code></div>
+			<div class="method-subsection method-declaration"><code>@property (nonnull) NSString *authorProfileURL</code></div>
 
 		    
 			
@@ -635,12 +645,13 @@
 			
 			
 			<div class="method-subsection brief-description">
-				<p>A list of tags, with each tag specified as a string, to be added to the post. Example: @[&ldquo;ffiv&rdquo;, &ldquo;cecil&rdquo;]</p>
+				<p>A list of tags, with each tag specified as a string, to be added to the
+post. Example: @[&ldquo;ffiv&rdquo;, &ldquo;cecil&rdquo;]</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>@property NSArray&lt;NSString*&gt; *tags</code></div>
+			<div class="method-subsection method-declaration"><code>@property (nonnull) NSArray&lt;NSString*&gt; *tags</code></div>
 
 		    
 			
@@ -681,7 +692,7 @@
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>@property NSString *permalink</code></div>
+			<div class="method-subsection method-declaration"><code>@property (nonnull) NSString *permalink</code></div>
 
 		    
 			
@@ -722,7 +733,7 @@
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>@property NSString *place</code></div>
+			<div class="method-subsection method-declaration"><code>@property (nonnull) NSString *place</code></div>
 
 		    
 			
@@ -763,7 +774,7 @@
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>@property NSString *teaser</code></div>
+			<div class="method-subsection method-declaration"><code>@property (nonnull) NSString *teaser</code></div>
 
 		    
 			
@@ -799,12 +810,96 @@
 			
 			
 			<div class="method-subsection brief-description">
-				<p>The Unix timestamp for then this update was considered to be created. If you don&rsquo;t send this, we&rsquo;ll use the time that it was added to our system as the default.</p>
+				<p>The Unix timestamp for then this update was considered to be created. If you
+don&rsquo;t send this, we&rsquo;ll use the time that it was added to our system as the
+default.</p>
 			</div>
 			
 		    
 
 			<div class="method-subsection method-declaration"><code>@property double unixTimeStamp</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BVCurationsAddPostRequest.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/longitude" title="longitude"></a>
+	<h3 class="method-title"><code><a href="#//api/name/longitude">&nbsp;&nbsp;longitude</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>The longitude attributed to the post.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property double longitude</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BVCurationsAddPostRequest.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/latitude" title="latitude"></a>
+	<h3 class="method-title"><code><a href="#//api/name/latitude">&nbsp;&nbsp;latitude</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>The latitude attributed to the post.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property double latitude</code></div>
 
 		    
 			
@@ -845,7 +940,7 @@
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>@property UIImage *image</code></div>
+			<div class="method-subsection method-declaration"><code>@property (nonnull) UIImage *image</code></div>
 
 		    
 			
@@ -881,12 +976,13 @@
 			
 			
 			<div class="method-subsection brief-description">
-				<p>Attach URL strings for links for custom udpates. These links will be attached to the post.</p>
+				<p>Attach URL strings for links for custom udpates. These links will be
+attached to the post.</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>@property NSArray&lt;NSString*&gt; *links</code></div>
+			<div class="method-subsection method-declaration"><code>@property (nonnull) NSArray&lt;NSString*&gt; *links</code></div>
 
 		    
 			
@@ -922,12 +1018,14 @@
 			
 			
 			<div class="method-subsection brief-description">
-				<p>Attach URLs to photos for custom udpates. These images displayed from the fully-qualified URLs will be displayed in the post. When this option is used, the &lsquo;image&rsquo; value will be ignored.</p>
+				<p>Attach URLs to photos for custom udpates. These images displayed from the
+fully-qualified URLs will be displayed in the post. When this option is used,
+the &lsquo;image&rsquo; value will be ignored.</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>@property NSArray&lt;NSString*&gt; *photos</code></div>
+			<div class="method-subsection method-declaration"><code>@property (nonnull) NSArray&lt;NSString*&gt; *photos</code></div>
 
 		    
 			
@@ -966,7 +1064,7 @@
 				<footer>
 					<div class="footer-copyright">
 						
-						<p class="copyright">Copyright &copy; 2016 Bazaarvoice. All rights reserved. Updated: 2016-10-28</p>
+						<p class="copyright">Copyright &copy; 2018 Bazaarvoice. All rights reserved. Updated: 2018-03-06</p>
 						
 						
 						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>

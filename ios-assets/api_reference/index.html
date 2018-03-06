@@ -44,7 +44,7 @@
 					<div class="section section-overview index-overview">
 						
 						
-						<p>The Bazaarvoice SDK is an iOS static library that provides an easy way to generate REST calls to the Bazaarvoice API.</p>
+						<p>The Bazaarvoice SDK is an iOS framework that provides an easy way to generate REST calls to the Bazaarvoice API.</p>
 
 <h2>SDK Organization:</h2>
 
@@ -52,27 +52,47 @@
 
 <p>The SDK modules are:</p>
 
-<h3>BVAdvertising</h3>
+<h3>BVCommon</h3>
 
-<p>Wraps the ability to use 1st party data for serving up custom DFP advertisements.</p>
+<p>Global dependencies and helper tools for the below modules</p>
+
+<h3>BVCommonUI</h3>
+
+<p>Global UI dependencies and helper tools for the below modules</p>
+
+<h3>BVAnalytics</h3>
+
+<p><a href="Classes/BVPixel.html">BVPixel</a>; analytics tracking of transaction and non-commerce analytics.</p>
 
 <h3>BVConversations</h3>
 
-<p>API and analytics for the Bazaarvoice Conversations API.</p>
+<p>API and analytics for the Conversations API.</p>
+
+<h3>BVConversationsStores</h3>
+
+<p>API and analytics for the Conversations API related to Stores.</p>
+
+<h3>BVConversationsUI</h3>
+
+<p>UI components related to the Conversations API.</p>
 
 <h3>BVCurations</h3>
 
-<p>API, UICollectionView widget, and analytics for the Curations REST API.</p>
+<p>API and analytics for the Curations API.</p>
+
+<h3>BVCurationsUI</h3>
+
+<p>UI components related to the Conversations API.</p>
+
+<h3>BVNotifications</h3>
+
+<p>Notification tools related to BVEvents.</p>
 
 <h3>BVRecommendations</h3>
 
-<p>API, UI widgets, and analytics for the Product Recommendations REST API.</p>
+<p>API, UI widgets, and analytics for the Product Recommendations API.</p>
 
-<h3>BV Pixel</h3>
-
-<p>BVAnalyics also includes the BV Pixel feature for analytics tracking of transaction and non-commerce analytics.</p>
-
-<p>Please consult the <a href="https://github.com/bazaarvoice/bv-ios-sdk/wiki">BVSDK Developer Wiki</a> for more details on installing and using the SDK modules.</p>
+<p>Please consult the <a href="https://bazaarvoice.github.io/bv-ios-sdk/">BVSDK Docs</a> for more details on installing and using the SDK modules.</p>
 						
 						
 					</div>
@@ -86,7 +106,9 @@
 							<h2 class="index-title">Class References</h2>
 							<ul>
 								
-								<li><a href="Classes/BVAnalyticsManager.html">BVAnalyticsManager</a></li>
+								<li><a href="Classes/BVAnalyticEventManager.html">BVAnalyticEventManager</a></li>
+								
+								<li><a href="Classes/BVAnswer.html">BVAnswer</a></li>
 								
 								<li><a href="Classes/BVAnswerCollectionViewCell.html">BVAnswerCollectionViewCell</a></li>
 								
@@ -106,31 +128,75 @@
 								
 								<li><a href="Classes/BVAuthenticatedUser.html">BVAuthenticatedUser</a></li>
 								
+								<li><a href="Classes/BVAuthor.html">BVAuthor</a></li>
+								
+								<li><a href="Classes/BVAuthorRequest.html">BVAuthorRequest</a></li>
+								
+								<li><a href="Classes/BVAuthorResponse.html">BVAuthorResponse</a></li>
+								
+								<li><a href="Classes/BVBadge.html">BVBadge</a></li>
+								
+								<li><a href="Classes/BVBadgeTypeUtil.html">BVBadgeTypeUtil</a></li>
+								
+								<li><a href="Classes/BVBaseAnalyticsHelper.html">BVBaseAnalyticsHelper</a></li>
+								
+								<li><a href="Classes/BVBaseConversationsResponse.html">BVBaseConversationsResponse</a></li>
+								
+								<li><a href="Classes/BVBaseConversationsResultResponse.html">BVBaseConversationsResultResponse</a></li>
+								
+								<li><a href="Classes/BVBaseConversationsResultsResponse.html">BVBaseConversationsResultsResponse</a></li>
+								
+								<li><a href="Classes/BVBasePIIEvent.html">BVBasePIIEvent</a></li>
+								
+								<li><a href="Classes/BVBaseProductRequest.html">BVBaseProductRequest</a></li>
+								
+								<li><a href="Classes/BVBaseProductsRequest.html">BVBaseProductsRequest</a></li>
+								
+								<li><a href="Classes/BVBaseReviewsRequest.html">BVBaseReviewsRequest</a></li>
+								
+								<li><a href="Classes/BVBaseSortableProductRequest.html">BVBaseSortableProductRequest</a></li>
+								
+								<li><a href="Classes/BVBaseUGCSubmission.html">BVBaseUGCSubmission</a></li>
+								
+								<li><a href="Classes/BVBrand.html">BVBrand</a></li>
+								
+								<li><a href="Classes/BVBulkProductRequest.html">BVBulkProductRequest</a></li>
+								
+								<li><a href="Classes/BVBulkProductResponse.html">BVBulkProductResponse</a></li>
+								
+								<li><a href="Classes/BVBulkRatingsRequest.html">BVBulkRatingsRequest</a></li>
+								
+								<li><a href="Classes/BVBulkRatingsResponse.html">BVBulkRatingsResponse</a></li>
+								
 								<li><a href="Classes/BVBulkStoreItemsRequest.html">BVBulkStoreItemsRequest</a></li>
 								
 								<li><a href="Classes/BVBulkStoresResponse.html">BVBulkStoresResponse</a></li>
 								
-								<li><a href="Classes/BVCommaUtil.html">BVCommaUtil</a></li>
+								<li><a href="Classes/BVComment.html">BVComment</a></li>
 								
-								<li><a href="Classes/BVConversationsAnalyticsHelper.html">BVConversationsAnalyticsHelper</a></li>
+								<li><a href="Classes/BVCommentSubmission.html">BVCommentSubmission</a></li>
 								
-								<li><a href="Classes/BVConversationsAnalyticsUtil.html">BVConversationsAnalyticsUtil</a></li>
+								<li><a href="Classes/BVCommentSubmissionErrorResponse.html">BVCommentSubmissionErrorResponse</a></li>
+								
+								<li><a href="Classes/BVCommentSubmissionResponse.html">BVCommentSubmissionResponse</a></li>
+								
+								<li><a href="Classes/BVCommentsRequest.html">BVCommentsRequest</a></li>
+								
+								<li><a href="Classes/BVCommentsResponse.html">BVCommentsResponse</a></li>
+								
+								<li><a href="Classes/BVContextDataValue.html">BVContextDataValue</a></li>
 								
 								<li><a href="Classes/BVConversationsError.html">BVConversationsError</a></li>
+								
+								<li><a href="Classes/BVConversationsErrorResponse.html">BVConversationsErrorResponse</a></li>
 								
 								<li><a href="Classes/BVConversationsInclude.html">BVConversationsInclude</a></li>
 								
 								<li><a href="Classes/BVConversationsRequest.html">BVConversationsRequest</a></li>
 								
-								<li><a href="Classes/BVConversion.html">BVConversion</a></li>
+								<li><a href="Classes/BVConversionEvent.html">BVConversionEvent</a></li>
 								
 								<li><a href="Classes/BVCurationsAddPostRequest.html">BVCurationsAddPostRequest</a></li>
-								
-								<li><a href="Classes/BVCurationsAnalyticsHelper.html">BVCurationsAnalyticsHelper</a></li>
-								
-								<li><a href="Classes/BVCurationsCollectionView.html">BVCurationsCollectionView</a></li>
-								
-								<li><a href="Classes/BVCurationsCollectionViewCell.html">BVCurationsCollectionViewCell</a></li>
 								
 								<li><a href="Classes/BVCurationsCoordinates.html">BVCurationsCoordinates</a></li>
 								
@@ -146,41 +212,83 @@
 								
 								<li><a href="Classes/BVCurationsPostAuthor.html">BVCurationsPostAuthor</a></li>
 								
+								<li><a href="Classes/BVCurationsPostViewController.html">BVCurationsPostViewController</a></li>
+								
 								<li><a href="Classes/BVCurationsProductDetail.html">BVCurationsProductDetail</a></li>
+								
+								<li><a href="Classes/BVCurationsUICollectionView.html">BVCurationsUICollectionView</a></li>
+								
+								<li><a href="Classes/BVCurationsUICollectionViewCell.html">BVCurationsUICollectionViewCell</a></li>
 								
 								<li><a href="Classes/BVCurationsVideo.html">BVCurationsVideo</a></li>
 								
+								<li><a href="Classes/BVDiagnosticHelpers.html">BVDiagnosticHelpers</a></li>
+								
 								<li><a href="Classes/BVDimensionAndDistributionUtil.html">BVDimensionAndDistributionUtil</a></li>
 								
-								<li><a href="Classes/BVFilter.html">BVFilter</a></li>
+								<li><a href="Classes/BVDimensionElement.html">BVDimensionElement</a></li>
+								
+								<li><a href="Classes/BVDistributionElement.html">BVDistributionElement</a></li>
+								
+								<li><a href="Classes/BVDistributionValue.html">BVDistributionValue</a></li>
+								
+								<li><a href="Classes/BVFeatureUsedEvent.html">BVFeatureUsedEvent</a></li>
+								
+								<li><a href="Classes/BVFeedbackHelpfulnessResponse.html">BVFeedbackHelpfulnessResponse</a></li>
+								
+								<li><a href="Classes/BVFeedbackInappropriateResponse.html">BVFeedbackInappropriateResponse</a></li>
+								
+								<li><a href="Classes/BVFeedbackSubmission.html">BVFeedbackSubmission</a></li>
+								
+								<li><a href="Classes/BVFeedbackSubmissionResponse.html">BVFeedbackSubmissionResponse</a></li>
+								
+								<li><a href="Classes/BVFieldError.html">BVFieldError</a></li>
 								
 								<li><a href="Classes/BVFormField.html">BVFormField</a></li>
 								
 								<li><a href="Classes/BVFormFieldOptions.html">BVFormFieldOptions</a></li>
 								
-								<li><a href="Classes/BVGMBLSighting.html">BVGMBLSighting</a></li>
+								<li><a href="Classes/BVFormInputTypeUtil.html">BVFormInputTypeUtil</a></li>
 								
-								<li><a href="Classes/BVGMBLVisit.html">BVGMBLVisit</a></li>
+								<li><a href="Classes/BVImpressionEvent.html">BVImpressionEvent</a></li>
 								
-								<li><a href="Classes/BVGet.html">BVGet</a></li>
-								
-								<li><a href="Classes/BVLocationEventsHelper.html">BVLocationEventsHelper</a></li>
-								
-								<li><a href="Classes/BVLocationManager.html">BVLocationManager</a></li>
+								<li><a href="Classes/BVInViewEvent.html">BVInViewEvent</a></li>
 								
 								<li><a href="Classes/BVLogger.html">BVLogger</a></li>
 								
-								<li><a href="Classes/BVMediaPost.html">BVMediaPost</a></li>
-								
 								<li><a href="Classes/BVModelUtil.html">BVModelUtil</a></li>
+								
+								<li><a href="Classes/BVNotificationConfiguration.html">BVNotificationConfiguration</a></li>
+								
+								<li><a href="Classes/BVNotificationProperties.html">BVNotificationProperties</a></li>
+								
+								<li><a href="Classes/BVNotificationViewController.html">BVNotificationViewController</a></li>
 								
 								<li><a href="Classes/BVNotificationsAnalyticsHelper.html">BVNotificationsAnalyticsHelper</a></li>
 								
+								<li><a href="Classes/BVOpenURLMetaData.html">BVOpenURLMetaData</a></li>
+								
+								<li><a href="Classes/BVPageViewEvent.html">BVPageViewEvent</a></li>
+								
+								<li><a href="Classes/BVPersonalizationEvent.html">BVPersonalizationEvent</a></li>
+								
+								<li><a href="Classes/BVPhoto.html">BVPhoto</a></li>
+								
+								<li><a href="Classes/BVPhotoSizes.html">BVPhotoSizes</a></li>
+								
 								<li><a href="Classes/BVPixel.html">BVPixel</a></li>
 								
-								<li><a href="Classes/BVPost.html">BVPost</a></li>
+								<li><a href="Classes/BVPixelFeatureUsedEventNameUtil.html">BVPixelFeatureUsedEventNameUtil</a></li>
+								
+								<li><a href="Classes/BVPixelImpressionContentTypeUtil.html">BVPixelImpressionContentTypeUtil</a></li>
+								
+								<li><a href="Classes/BVPixelProductTypeUtil.html">BVPixelProductTypeUtil</a></li>
+								
+								<li><a href="Classes/BVProduct.html">BVProduct</a></li>
 								
 								<li><a href="Classes/BVProductDisplayPageCollectionViewController.html">BVProductDisplayPageCollectionViewController</a></li>
+								
+								<li><a href="Classes/BVProductDisplayPageRequest.html">BVProductDisplayPageRequest</a></li>
 								
 								<li><a href="Classes/BVProductDisplayPageTableViewController.html">BVProductDisplayPageTableViewController</a></li>
 								
@@ -196,6 +304,28 @@
 								
 								<li><a href="Classes/BVProductReview.html">BVProductReview</a></li>
 								
+								<li><a href="Classes/BVProductReviewNotificationCenter.html">BVProductReviewNotificationCenter</a></li>
+								
+								<li><a href="Classes/BVProductReviewNotificationConfigurationLoader.html">BVProductReviewNotificationConfigurationLoader</a></li>
+								
+								<li><a href="Classes/BVProductReviewNotificationProperties.html">BVProductReviewNotificationProperties</a></li>
+								
+								<li><a href="Classes/BVProductReviewNotificationViewController.html">BVProductReviewNotificationViewController</a></li>
+								
+								<li><a href="Classes/BVProductReviewRichNotificationCenter.html">BVProductReviewRichNotificationCenter</a></li>
+								
+								<li><a href="Classes/BVProductReviewSimpleNotificationCenter.html">BVProductReviewSimpleNotificationCenter</a></li>
+								
+								<li><a href="Classes/BVProductStatistics.html">BVProductStatistics</a></li>
+								
+								<li><a href="Classes/BVProductTextSearchRequest.html">BVProductTextSearchRequest</a></li>
+								
+								<li><a href="Classes/BVProductsResponse.html">BVProductsResponse</a></li>
+								
+								<li><a href="Classes/BVQAStatistics.html">BVQAStatistics</a></li>
+								
+								<li><a href="Classes/BVQuestion.html">BVQuestion</a></li>
+								
 								<li><a href="Classes/BVQuestionCollectionViewCell.html">BVQuestionCollectionViewCell</a></li>
 								
 								<li><a href="Classes/BVQuestionSubmission.html">BVQuestionSubmission</a></li>
@@ -208,9 +338,15 @@
 								
 								<li><a href="Classes/BVQuestionView.html">BVQuestionView</a></li>
 								
+								<li><a href="Classes/BVQuestionsAndAnswersRequest.html">BVQuestionsAndAnswersRequest</a></li>
+								
+								<li><a href="Classes/BVQuestionsAndAnswersResponse.html">BVQuestionsAndAnswersResponse</a></li>
+								
 								<li><a href="Classes/BVQuestionsCollectionView.html">BVQuestionsCollectionView</a></li>
 								
 								<li><a href="Classes/BVQuestionsTableView.html">BVQuestionsTableView</a></li>
+								
+								<li><a href="Classes/BVRatingDistribution.html">BVRatingDistribution</a></li>
 								
 								<li><a href="Classes/BVRecommendationCollectionViewCell.html">BVRecommendationCollectionViewCell</a></li>
 								
@@ -224,7 +360,13 @@
 								
 								<li><a href="Classes/BVRecsAnalyticsHelper.html">BVRecsAnalyticsHelper</a></li>
 								
+								<li><a href="Classes/BVReview.html">BVReview</a></li>
+								
 								<li><a href="Classes/BVReviewCollectionViewCell.html">BVReviewCollectionViewCell</a></li>
+								
+								<li><a href="Classes/BVReviewStatistic.html">BVReviewStatistic</a></li>
+								
+								<li><a href="Classes/BVReviewStatistics.html">BVReviewStatistics</a></li>
 								
 								<li><a href="Classes/BVReviewSubmission.html">BVReviewSubmission</a></li>
 								
@@ -238,11 +380,17 @@
 								
 								<li><a href="Classes/BVReviewsCollectionView.html">BVReviewsCollectionView</a></li>
 								
+								<li><a href="Classes/BVReviewsRequest.html">BVReviewsRequest</a></li>
+								
+								<li><a href="Classes/BVReviewsResponse.html">BVReviewsResponse</a></li>
+								
 								<li><a href="Classes/BVReviewsTableView.html">BVReviewsTableView</a></li>
 								
 								<li><a href="Classes/BVSDKManager.html">BVSDKManager</a></li>
 								
-								<li><a href="Classes/BVSettings.html">BVSettings</a></li>
+								<li><a href="Classes/BVSecondaryRating.html">BVSecondaryRating</a></li>
+								
+								<li><a href="Classes/BVSecondaryRatingsAverages.html">BVSecondaryRatingsAverages</a></li>
 								
 								<li><a href="Classes/BVShopperProfile.html">BVShopperProfile</a></li>
 								
@@ -250,25 +398,71 @@
 								
 								<li><a href="Classes/BVStoreLocation.html">BVStoreLocation</a></li>
 								
+								<li><a href="Classes/BVStoreNotificationConfigurationLoader.html">BVStoreNotificationConfigurationLoader</a></li>
+								
+								<li><a href="Classes/BVStoreReviewNotificationCenter.html">BVStoreReviewNotificationCenter</a></li>
+								
+								<li><a href="Classes/BVStoreReviewNotificationProperties.html">BVStoreReviewNotificationProperties</a></li>
+								
+								<li><a href="Classes/BVStoreReviewNotificationViewController.html">BVStoreReviewNotificationViewController</a></li>
+								
+								<li><a href="Classes/BVStoreReviewRichNotificationCenter.html">BVStoreReviewRichNotificationCenter</a></li>
+								
+								<li><a href="Classes/BVStoreReviewSimpleNotificationCenter.html">BVStoreReviewSimpleNotificationCenter</a></li>
+								
 								<li><a href="Classes/BVStoreReviewSubmission.html">BVStoreReviewSubmission</a></li>
+								
+								<li><a href="Classes/BVStoreReviewsRequest.html">BVStoreReviewsRequest</a></li>
 								
 								<li><a href="Classes/BVStoreReviewsResponse.html">BVStoreReviewsResponse</a></li>
 								
 								<li><a href="Classes/BVStoreReviewsTableView.html">BVStoreReviewsTableView</a></li>
 								
+								<li><a href="Classes/BVStringKeyValuePair.html">BVStringKeyValuePair</a></li>
+								
+								<li><a href="Classes/BVSubmission.html">BVSubmission</a></li>
+								
+								<li><a href="Classes/BVSubmissionActionUtil.html">BVSubmissionActionUtil</a></li>
+								
+								<li><a href="Classes/BVSubmissionErrorResponse.html">BVSubmissionErrorResponse</a></li>
+								
 								<li><a href="Classes/BVSubmissionResponse.html">BVSubmissionResponse</a></li>
 								
 								<li><a href="Classes/BVSubmittedAnswer.html">BVSubmittedAnswer</a></li>
+								
+								<li><a href="Classes/BVSubmittedComment.html">BVSubmittedComment</a></li>
+								
+								<li><a href="Classes/BVSubmittedFeedback.html">BVSubmittedFeedback</a></li>
 								
 								<li><a href="Classes/BVSubmittedQuestion.html">BVSubmittedQuestion</a></li>
 								
 								<li><a href="Classes/BVSubmittedReview.html">BVSubmittedReview</a></li>
 								
-								<li><a href="Classes/BVTransaction.html">BVTransaction</a></li>
+								<li><a href="Classes/BVSubmittedUAS.html">BVSubmittedUAS</a></li>
+								
+								<li><a href="Classes/BVSyndicationSource.html">BVSyndicationSource</a></li>
+								
+								<li><a href="Classes/BVTransactionEvent.html">BVTransactionEvent</a></li>
 								
 								<li><a href="Classes/BVTransactionItem.html">BVTransactionItem</a></li>
 								
-								<li><a href="Classes/PDPInclude.html">PDPInclude</a></li>
+								<li><a href="Classes/BVUASSubmission.html">BVUASSubmission</a></li>
+								
+								<li><a href="Classes/BVUASSubmissionErrorResponse.html">BVUASSubmissionErrorResponse</a></li>
+								
+								<li><a href="Classes/BVUASSubmissionResponse.html">BVUASSubmissionResponse</a></li>
+								
+								<li><a href="Classes/BVUploadablePhoto.html">BVUploadablePhoto</a></li>
+								
+								<li><a href="Classes/BVUploadableStorePhoto.html">BVUploadableStorePhoto</a></li>
+								
+								<li><a href="Classes/BVUploadableYouTubeVideo.html">BVUploadableYouTubeVideo</a></li>
+								
+								<li><a href="Classes/BVVideo.html">BVVideo</a></li>
+								
+								<li><a href="Classes/BVViewedCGCEvent.html">BVViewedCGCEvent</a></li>
+								
+								<li><a href="Classes/BVViewsHelper.html">BVViewsHelper</a></li>
 								
 							</ul>
 						</div>
@@ -280,17 +474,25 @@
 							<h2 class="index-title">Protocol References</h2>
 							<ul>
 								
-								<li><a href="Protocols/BVDelegate.html">BVDelegate</a></li>
+								<li><a href="Protocols/BVAnalyticEvent.html">BVAnalyticEvent</a></li>
 								
-								<li><a href="Protocols/BVDisplayableContent.html">BVDisplayableContent</a></li>
+								<li><a href="Protocols/BVCurationsUICollectionViewDelegate.html">BVCurationsUICollectionViewDelegate</a></li>
+								
+								<li><a href="Protocols/BVDisplayableProductContent.html">BVDisplayableProductContent</a></li>
 								
 								<li><a href="Protocols/BVGenericConversationsResult.html">BVGenericConversationsResult</a></li>
 								
-								<li><a href="Protocols/BVLocationManagerDelegate.html">BVLocationManagerDelegate</a></li>
+								<li><a href="Protocols/BVNotificationCenterObject.html">BVNotificationCenterObject</a></li>
+								
+								<li><a href="Protocols/BVProductNotificationCenterObject.html">BVProductNotificationCenterObject</a></li>
 								
 								<li><a href="Protocols/BVRecommendationsContainerProtocol.html">BVRecommendationsContainerProtocol</a></li>
 								
 								<li><a href="Protocols/BVResponse.html">BVResponse</a></li>
+								
+								<li><a href="Protocols/BVStoreNotificationCenterObject.html">BVStoreNotificationCenterObject</a></li>
+								
+								<li><a href="Protocols/BVURLSessionDelegate.html">BVURLSessionDelegate</a></li>
 								
 							</ul>
 							
@@ -299,45 +501,86 @@
 							<h2 class="index-title">Constant References</h2>
 							<ul>
 								
+									<li><a href="Constants/BVAnswersSortOptionValue.html">BVAnswersSortOptionValue</a></li>
+								
+									<li><a href="Constants/BVAuthorIncludeTypeValue.html">BVAuthorIncludeTypeValue</a></li>
+								
 									<li><a href="Constants/BVBadgeType.html">BVBadgeType</a></li>
 								
-									<li><a href="Constants/BVBulkRatingsFilterType.html">BVBulkRatingsFilterType</a></li>
+									<li><a href="Constants/BVBulkRatingFilterValue.html">BVBulkRatingFilterValue</a></li>
 								
-									<li><a href="Constants/BVFilterOperator.html">BVFilterOperator</a></li>
+									<li><a href="Constants/BVBulkRatingIncludeTypeValue.html">BVBulkRatingIncludeTypeValue</a></li>
+								
+									<li><a href="Constants/BVCommentFilterValue.html">BVCommentFilterValue</a></li>
+								
+									<li><a href="Constants/BVCommentIncludeTypeValue.html">BVCommentIncludeTypeValue</a></li>
+								
+									<li><a href="Constants/BVCommentsSortOptionValue.html">BVCommentsSortOptionValue</a></li>
+								
+									<li><a href="Constants/BVConfigurationType.html">BVConfigurationType</a></li>
+								
+									<li><a href="Constants/BVCurationsUILayout.html">BVCurationsUILayout</a></li>
+								
+									<li><a href="Constants/BVErrorCode.html">BVErrorCode</a></li>
+								
+									<li><a href="Constants/BVFeedbackContentType.html">BVFeedbackContentType</a></li>
+								
+									<li><a href="Constants/BVFeedbackType.html">BVFeedbackType</a></li>
+								
+									<li><a href="Constants/BVFeedbackVote.html">BVFeedbackVote</a></li>
+								
+									<li><a href="Constants/BVFormInputType.html">BVFormInputType</a></li>
 								
 									<li><a href="Constants/BVLogLevel.html">BVLogLevel</a></li>
 								
+									<li><a href="Constants/BVMonotonicSortOrderValue.html">BVMonotonicSortOrderValue</a></li>
+								
 									<li><a href="Constants/BVPhotoContentType.html">BVPhotoContentType</a></li>
 								
-									<li><a href="Constants/BVProductFilterType.html">BVProductFilterType</a></li>
+									<li><a href="Constants/BVPixelFeatureUsedEventName.html">BVPixelFeatureUsedEventName</a></li>
+								
+									<li><a href="Constants/BVPixelImpressionContentType.html">BVPixelImpressionContentType</a></li>
+								
+									<li><a href="Constants/BVPixelProductType.html">BVPixelProductType</a></li>
+								
+									<li><a href="Constants/BVProductFilterValue.html">BVProductFilterValue</a></li>
+								
+									<li><a href="Constants/BVProductIncludeTypeValue.html">BVProductIncludeTypeValue</a></li>
 								
 									<li><a href="Constants/BVProductRecommendationWidget.html">BVProductRecommendationWidget</a></li>
 								
-									<li><a href="Constants/BVQuestionFilterType.html">BVQuestionFilterType</a></li>
+									<li><a href="Constants/BVProductsSortOptionValue.html">BVProductsSortOptionValue</a></li>
 								
-									<li><a href="Constants/BVReviewFilterType.html">BVReviewFilterType</a></li>
+									<li><a href="Constants/BVQuestionFilterValue.html">BVQuestionFilterValue</a></li>
 								
-									<li><a href="Constants/BVSortOptionAnswers.html">BVSortOptionAnswers</a></li>
+									<li><a href="Constants/BVQuestionsSortOptionValue.html">BVQuestionsSortOptionValue</a></li>
 								
-									<li><a href="Constants/BVSortOptionProducts.html">BVSortOptionProducts</a></li>
+									<li><a href="Constants/BVRelationalFilterOperatorValue.html">BVRelationalFilterOperatorValue</a></li>
 								
-									<li><a href="Constants/BVSortOptionQuestions.html">BVSortOptionQuestions</a></li>
+									<li><a href="Constants/BVReviewFilterValue.html">BVReviewFilterValue</a></li>
 								
-									<li><a href="Constants/BVSortOptionReviews.html">BVSortOptionReviews</a></li>
+									<li><a href="Constants/BVReviewIncludeTypeValue.html">BVReviewIncludeTypeValue</a></li>
 								
-									<li><a href="Constants/BVSortOrder.html">BVSortOrder</a></li>
+									<li><a href="Constants/BVReviewsSortOptionValue.html">BVReviewsSortOptionValue</a></li>
 								
-									<li><a href="Constants/BVStoreIncludeContentType.html">BVStoreIncludeContentType</a></li>
+									<li><a href="Constants/BVStoreIncludeTypeValue.html">BVStoreIncludeTypeValue</a></li>
 								
 									<li><a href="Constants/BVSubmissionAction.html">BVSubmissionAction</a></li>
 								
-									<li><a href="Constants/BulkRatingsStatsType.html">BulkRatingsStatsType</a></li>
-								
-									<li><a href="Constants/PDPContentType.html">PDPContentType</a></li>
+									<li><a href="Constants/BVSubmissionErrorCode.html">BVSubmissionErrorCode</a></li>
 								
 							</ul>
 							
 
+							
+							<h2 class="index-title">Category References</h2>
+							<ul>
+								
+								<li><a href="Categories/NSError+BVErrorCodeParser.html">NSError(BVErrorCodeParser)</a></li>
+								
+								<li><a href="Categories/NSError+BVSubmissionErrorCodeParser.html">NSError(BVSubmissionErrorCodeParser)</a></li>
+								
+							</ul>
 							
 						</div>
 						
@@ -346,7 +589,7 @@
 					<footer>
 						<div class="footer-copyright">
 							
-							<p class="copyright">Copyright &copy; 2016 Bazaarvoice. All rights reserved. Updated: 2016-10-28</p>
+							<p class="copyright">Copyright &copy; 2018 Bazaarvoice. All rights reserved. Updated: 2018-03-06</p>
 							
 							
 							<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>

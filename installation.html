@@ -289,9 +289,6 @@ function scrollAndClickById(id) {
                                 <li class="nav-item">
                                     <a class="nav-link" href="conversations_stores.html"><span>Display and Submit API</span></a>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="conversations_stores_push.html"><span>Stores Push Notifications</span></a>
-                                </li>
                             </ul>
                         </div>
                     </li>
@@ -299,8 +296,18 @@ function scrollAndClickById(id) {
             </li>
 
             <li class="nav-item">
+                <a class="nav-link" href="analytics_and_location.html">
+                    <span><i class="m-r-1 fa fa-globe"></i>Analytics and Location</span>
+                </a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link" href="user_authentication_token.html">
                     <span><i class="m-r-1 fa fa-lock"></i>User Authentication Token</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="networking_delegation.html">
+                    <span><i class="m-r-1 fa fa-paper-plane"></i>Networking Delegation</span>
                 </a>
             </li>
             <li class="nav-item">
@@ -525,16 +532,13 @@ Once you have install the source code for the SDK, you are now ready to add your
             this.ph = ph
         }
 
-        var rows= [new KeyRow("apiKeyCurations", "Curations", "Curations"),
-            new KeyRow("apiKeyConversations", "Conversations", "Conversations"),
-            new KeyRow("apiKeyConversationsStores", "Conversations for Stores", "Conversations for Stores"),
-            new KeyRow("apiKeyShopperAdvertising", "Product Recommendations & Advertising","Shopper Advertising"),
-            new KeyRow("apiKeyLocation", "Location" , "Location")]
-
-        var isIOS = 'bv-ios-sdk' === 'bv-ios-sdk' // TODO: After MOB-759 is done this can be removed. Android removed pin with MOB-760
-        if (isIOS) {
-          rows.push(new KeyRow("apiKeyPIN", "Post Interaction Notifications", "PIN"))
-        }
+        var rows= [
+          new KeyRow("apiKeyCurations", "Curations", "Curations"),
+          new KeyRow("apiKeyConversations", "Conversations", "Conversations"),
+          new KeyRow("apiKeyConversationsStores", "Conversations for Stores", "Conversations for Stores"),
+          new KeyRow("apiKeyShopperAdvertising", "Product Recommendations", "Product Recommendations"),
+          new KeyRow("analyticsLocaleIdentifier", "Analytics Locale", "Analytics Locale")
+        ]
 
         function getTableHTML() {
             var html = ["<tr class=\"odd\" style=\" background-color: #F7F7F7;\"><th style=\" width:30%;\">Products</th><th>Production API Keys</th><th>Staging API Keys</th></tr>"]
@@ -602,7 +606,7 @@ Once you have install the source code for the SDK, you are now ready to add your
                   (isPlural)? "files" : "file", needTo, steps)
           return instructionStr
         }
-        
+
         function updateDownloadHint() {
             var instructions = document.getElementById("downloadInstructions")
             var clientId = $('.edit_ClientID#clientId').val()
@@ -626,7 +630,7 @@ Once you have install the source code for the SDK, you are now ready to add your
 
         updateDownloadHint()
 
-        
+
 
         function getJSONProd() {
             return getJSON("Prod")
@@ -672,8 +676,9 @@ Once you have install the source code for the SDK, you are now ready to add your
             document.body.removeChild(el)
         }
 
-        
+
     </script>
+
 
     		</div>
     </div>

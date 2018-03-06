@@ -56,6 +56,10 @@
 	
 	<optgroup label="Properties">
 		
+		<option value="//api/name/categoryId">categoryId</option>
+		
+		<option value="//api/name/limit">limit</option>
+		
 		<option value="//api/name/productId">productId</option>
 		
 	</optgroup>
@@ -67,6 +71,12 @@
 	<optgroup label="Instance Methods">
 		
 		<option value="//api/name/init">- init</option>
+		
+		<option value="//api/name/initWithLimit:">- initWithLimit:</option>
+		
+		<option value="//api/name/initWithLimit:withCategoryId:">- initWithLimit:withCategoryId:</option>
+		
+		<option value="//api/name/initWithLimit:withProductId:">- initWithLimit:withProductId:</option>
 		
 		<option value="//api/name/new">- new</option>
 		
@@ -94,7 +104,7 @@
 	<td>NSObject</td>
 </tr><tr>
 	<th>Declared in</th>
-	<td>BVRecommendationsRequest.h<br />BVRecommendationsRequest.m</td>
+	<td>BVRecommendationsRequest.h</td>
 </tr>
 						</tbody></table></div>
 					
@@ -104,14 +114,25 @@
 					<div class="section section-overview">
 						<a title="Overview" name="overview"></a>
 						<h2 class="subtitle subtitle-overview">Overview</h2>
-						<pre><code>Recommendations can be requested with a limit and optional productId and categoryId filtering.
-
-When filtered to a `productId`, the recommendations will be largely related to that product.
-
-When filtered to a `categoryId`, the recommendations will be limited to products in that category.
-
-`limit` is the maximum number of recommendations to load. Suggested: 20. Max: 50.
+						<pre><code>Recommendations can be requested with a limit and optional productId and
 </code></pre>
+
+<p>   <a href="#//api/name/categoryId">categoryId</a> filtering.</p>
+
+<pre><code>When filtered to a `productId`, the recommendations will be largely related
+</code></pre>
+
+<p>   to that product.</p>
+
+<pre><code>When filtered to a `categoryId`, the recommendations will be limited to
+</code></pre>
+
+<p>   products in that category.</p>
+
+<pre><code>`limit` is the maximum number of recommendations to load. Suggested: 20.
+</code></pre>
+
+<p>   Max: 50.</p>
 					</div>
 					
 					
@@ -127,6 +148,54 @@ When filtered to a `categoryId`, the recommendations will be limited to products
 
 						<div class="task-list">
 							<div class="section-method">
+	<a name="//api/name/initWithLimit:" title="initWithLimit:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/initWithLimit:">&ndash;&nbsp;initWithLimit:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+
+			<div class="method-subsection method-declaration"><code>- (instancetype)initWithLimit:(NSUInteger)<em>limit</em></code></div>
+
+		    
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/initWithLimit:withProductId:" title="initWithLimit:withProductId:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/initWithLimit:withProductId:">&ndash;&nbsp;initWithLimit:withProductId:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+
+			<div class="method-subsection method-declaration"><code>- (instancetype)initWithLimit:(NSUInteger)<em>limit</em> withProductId:(NSString *)<em>productId</em></code></div>
+
+		    
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/initWithLimit:withCategoryId:" title="initWithLimit:withCategoryId:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/initWithLimit:withCategoryId:">&ndash;&nbsp;initWithLimit:withCategoryId:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+
+			<div class="method-subsection method-declaration"><code>- (instancetype)initWithLimit:(NSUInteger)<em>limit</em> withCategoryId:(NSString *)<em>categoryId</em></code></div>
+
+		    
+		</div>
+	</div>
+</div><div class="section-method">
 	<a name="//api/name/init" title="init"></a>
 	<h3 class="method-title"><code><a href="#//api/name/init">&ndash;&nbsp;init</a></code>
 </h3>
@@ -138,7 +207,7 @@ When filtered to a `categoryId`, the recommendations will be limited to products
 			
 			
 			<div class="method-subsection brief-description">
-				<p>Unavailable - use -initWithLimit: instead</p>
+				<p>Unavailable - use <a href="#//api/name/initWithLimit:">initWithLimit:</a> instead</p>
 			</div>
 			
 		    
@@ -179,7 +248,7 @@ When filtered to a `categoryId`, the recommendations will be limited to products
 			
 			
 			<div class="method-subsection brief-description">
-				<p>Unavailable - use -initWithLimit: instead</p>
+				<p>Unavailable - use <a href="#//api/name/initWithLimit:">initWithLimit:</a> instead</p>
 			</div>
 			
 		    
@@ -249,6 +318,38 @@ When filtered to a `categoryId`, the recommendations will be limited to products
 			
 		</div>
 	</div>
+</div><div class="section-method">
+	<a name="//api/name/categoryId" title="categoryId"></a>
+	<h3 class="method-title"><code><a href="#//api/name/categoryId">&nbsp;&nbsp;categoryId</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+
+			<div class="method-subsection method-declaration"><code>@property (readonly) NSString *categoryId</code></div>
+
+		    
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/limit" title="limit"></a>
+	<h3 class="method-title"><code><a href="#//api/name/limit">&nbsp;&nbsp;limit</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+
+			<div class="method-subsection method-declaration"><code>@property (readonly) NSUInteger limit</code></div>
+
+		    
+		</div>
+	</div>
 </div>
 						</div>
 						
@@ -264,7 +365,7 @@ When filtered to a `categoryId`, the recommendations will be limited to products
 				<footer>
 					<div class="footer-copyright">
 						
-						<p class="copyright">Copyright &copy; 2016 Bazaarvoice. All rights reserved. Updated: 2016-10-28</p>
+						<p class="copyright">Copyright &copy; 2018 Bazaarvoice. All rights reserved. Updated: 2018-03-06</p>
 						
 						
 						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>

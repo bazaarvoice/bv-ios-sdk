@@ -60,6 +60,12 @@
 	
 	<optgroup label="Instance Methods">
 		
+		<option value="//api/name/__unavailable">- __unavailable</option>
+		
+		<option value="//api/name/createParams">- createParams</option>
+		
+		<option value="//api/name/endpoint">- endpoint</option>
+		
 		<option value="//api/name/includeStatistics:">- includeStatistics:</option>
 		
 		<option value="//api/name/init:offset:">- init:offset:</option>
@@ -92,7 +98,7 @@
 	<td><a href="../Classes/BVConversationsRequest.html">BVConversationsRequest</a> : NSObject</td>
 </tr><tr>
 	<th>Declared in</th>
-	<td>BVBulkStoreItemsRequest.h<br />BVBulkStoreItemsRequest.m</td>
+	<td>BVBulkStoreItemsRequest.h</td>
 </tr>
 						</tbody></table></div>
 					
@@ -102,12 +108,18 @@
 					<div class="section section-overview">
 						<a title="Overview" name="overview"></a>
 						<h2 class="subtitle subtitle-overview">Overview</h2>
-						<pre><code>Use the BVBulkStoreItemsRequest object for making requests to either fetch stores by limit and offset, or by specific store Id(s).
-Please use the designated initializers for each use case:
-
-• init:(int)limit offset:(int)offset - Use this initializer when you want to load multiple stores in batches.
-• (nonnull instancetype)initWithStoreIds:(NSArray * _Nonnull)storeIds - Use this initializer when you know the store Id or Ids you want to fetch.
+						<pre><code>Use the BVBulkStoreItemsRequest object for making requests to either fetch
 </code></pre>
+
+<p>   stores by limit and offset, or by specific store Id(s).
+    Please use the designated initializers for each use case:</p>
+
+<pre><code>• init:(int)limit offset:(int)offset - Use this initializer when you want to
+</code></pre>
+
+<p>   load multiple stores in batches.
+    • (nonnull instancetype)<a href="#//api/name/initWithStoreIds:">initWithStoreIds:</a>(NSArray * nonnull)storeIds - Use
+   this initializer when you know the store Id or Ids you want to fetch.</p>
 					</div>
 					
 					
@@ -134,12 +146,13 @@ Please use the designated initializers for each use case:
 			
 			
 			<div class="method-subsection brief-description">
-				<p>Initialize fetching of stores when requesting many store objects at once and/or paging</p>
+				<p>Initialize fetching of stores when requesting many store objects at once
+and/or paging</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>- (nonnull instancetype)init:(int)<em>limit</em> offset:(int)<em>offset</em></code></div>
+			<div class="method-subsection method-declaration"><code>- (nonnull instancetype)init:(NSUInteger)<em>limit</em> offset:(NSUInteger)<em>offset</em></code></div>
 
 		    
 			
@@ -180,7 +193,7 @@ Please use the designated initializers for each use case:
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>- (nonnull instancetype)initWithStoreIds:(NSArray *_Nonnull)<em>storeIds</em></code></div>
+			<div class="method-subsection method-declaration"><code>- (nonnull instancetype)initWithStoreIds:(nonnull NSArray *)<em>storeIds</em></code></div>
 
 		    
 			
@@ -205,6 +218,22 @@ Please use the designated initializers for each use case:
 		</div>
 	</div>
 </div><div class="section-method">
+	<a name="//api/name/__unavailable" title="__unavailable"></a>
+	<h3 class="method-title"><code><a href="#//api/name/__unavailable">&ndash;&nbsp;__unavailable</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+
+			<div class="method-subsection method-declaration"><code>- (nonnull instancetype)__unavailable</code></div>
+
+		    
+		</div>
+	</div>
+</div><div class="section-method">
 	<a name="//api/name/includeStatistics:" title="includeStatistics:"></a>
 	<h3 class="method-title"><code><a href="#//api/name/includeStatistics:">&ndash;&nbsp;includeStatistics:</a></code>
 </h3>
@@ -216,12 +245,13 @@ Please use the designated initializers for each use case:
 			
 			
 			<div class="method-subsection brief-description">
-				<p>When you apply PDPContentTypeReviews to the content type, you will get review statistics in the <a href="../Classes/BVStore.html">BVStore</a> object(s)</p>
+				<p>When you apply reviews to the content type, you will get review statistics
+in the <a href="../Classes/BVStore.html">BVStore</a> object(s)</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>- (nonnull instancetype)includeStatistics:(BVStoreIncludeContentType)<em>contentType</em></code></div>
+			<div class="method-subsection method-declaration"><code>- (nonnull instancetype)includeStatistics:(BVStoreIncludeTypeValue)<em>storeIncludeTypeValue</em></code></div>
 
 		    
 			
@@ -262,7 +292,7 @@ Please use the designated initializers for each use case:
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>- (void)load:(void ( ^ _Nonnull ) ( BVBulkStoresResponse *_Nonnull response ))<em>success</em> failure:(ConversationsFailureHandler _Nonnull)<em>failure</em></code></div>
+			<div class="method-subsection method-declaration"><code>- (void)load:(nonnull void ( ^ ) ( BVBulkStoresResponse *__nonnull response ))<em>success</em> failure:(nonnull ConversationsFailureHandler)<em>failure</em></code></div>
 
 		    
 			
@@ -286,6 +316,38 @@ Please use the designated initializers for each use case:
 			
 		</div>
 	</div>
+</div><div class="section-method">
+	<a name="//api/name/endpoint" title="endpoint"></a>
+	<h3 class="method-title"><code><a href="#//api/name/endpoint">&ndash;&nbsp;endpoint</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+
+			<div class="method-subsection method-declaration"><code>- (nonnull NSString *)endpoint</code></div>
+
+		    
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/createParams" title="createParams"></a>
+	<h3 class="method-title"><code><a href="#//api/name/createParams">&ndash;&nbsp;createParams</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+
+			<div class="method-subsection method-declaration"><code>- (nonnull NSMutableArray *)createParams</code></div>
+
+		    
+		</div>
+	</div>
 </div>
 						</div>
 						
@@ -301,7 +363,7 @@ Please use the designated initializers for each use case:
 				<footer>
 					<div class="footer-copyright">
 						
-						<p class="copyright">Copyright &copy; 2016 Bazaarvoice. All rights reserved. Updated: 2016-10-28</p>
+						<p class="copyright">Copyright &copy; 2018 Bazaarvoice. All rights reserved. Updated: 2018-03-06</p>
 						
 						
 						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>

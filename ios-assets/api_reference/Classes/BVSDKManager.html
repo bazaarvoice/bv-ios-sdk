@@ -12,7 +12,7 @@
 <body class="appledoc">
 	<header>
 		<div class="container" class="hide-in-xcode">
-
+			
 			<h1 id="library-title">
 				<a href="../index.html">Bazaarvoice iOS SDK </a>
 			</h1>
@@ -20,7 +20,7 @@
 			<p id="developer-home">
 				<a href="../index.html">Bazaarvoice</a>
 			</p>
-
+			
 		</div>
 	</header>
 
@@ -42,67 +42,57 @@
 
 							<select id="jump-to">
 	<option value="top">Jump To&#133;</option>
-
+	
 	<option value="overview">Overview</option>
+	
 
-
-
-
+	
+	
 	<option value="tasks">Tasks</option>
+	
+	
 
-
-
-
-
+	
+	
 	<optgroup label="Properties">
-
-		<option value="//api/name/apiKeyConversations">apiKeyConversations</option>
-
-		<option value="//api/name/apiKeyConversationsStores">apiKeyConversationsStores</option>
-
-		<option value="//api/name/apiKeyCurations">apiKeyCurations</option>
-
-		<option value="//api/name/apiKeyLocation">apiKeyLocation</option>
-
-		<option value="//api/name/apiKeyShopperAdvertising">apiKeyShopperAdvertising</option>
-
-		<option value="//api/name/bvStoreReviewNotificationProperties">bvStoreReviewNotificationProperties</option>
-
+		
 		<option value="//api/name/bvUser">bvUser</option>
-
-		<option value="//api/name/clientId">clientId</option>
-
-		<option value="//api/name/staging">staging</option>
-
-		<option value="//api/name/storeReviewContentExtensionCategory">storeReviewContentExtensionCategory</option>
-
+		
 		<option value="//api/name/timeout">timeout</option>
-
+		
 		<option value="//api/name/urlRootShopperAdvertising">urlRootShopperAdvertising</option>
-
+		
+		<option value="//api/name/urlSessionDelegate">urlSessionDelegate</option>
+		
 	</optgroup>
+	
 
-
-
+	
 	<optgroup label="Class Methods">
-
+		
+		<option value="//api/name/configure:">+ configure:</option>
+		
+		<option value="//api/name/configureWithConfiguration:configType:">+ configureWithConfiguration:configType:</option>
+		
 		<option value="//api/name/sharedManager">+ sharedManager</option>
-
+		
 	</optgroup>
+	
 
-
-
+	
 	<optgroup label="Instance Methods">
-
+		
 		<option value="//api/name/getCustomTargeting">- getCustomTargeting</option>
-
+		
+		<option value="//api/name/init">- init</option>
+		
 		<option value="//api/name/setLogLevel:">- setLogLevel:</option>
-
+		
 		<option value="//api/name/setUserWithAuthString:">- setUserWithAuthString:</option>
-
+		
 	</optgroup>
-
-
+	
+	
 </select>
 						</label>
 					</li>
@@ -117,226 +107,107 @@
 				<main role="main">
 					<h1 class="title">BVSDKManager Class Reference</h1>
 
-
+					
 					<div class="section section-specification"><table cellspacing="0"><tbody>
 						<tr>
 	<th>Inherits from</th>
 	<td>NSObject</td>
 </tr><tr>
 	<th>Declared in</th>
-	<td>BVSDKManager.h<br />BVSDKManager.m</td>
+	<td>BVSDKManager.h</td>
 </tr>
 						</tbody></table></div>
+					
 
-
-
-
+                    
+					
 					<div class="section section-overview">
 						<a title="Overview" name="overview"></a>
 						<h2 class="subtitle subtitle-overview">Overview</h2>
-						<p>   The singleton instance for registering your API key and server to use. Any use of the BVRecommendations API must start here!</p>
+						<p>   The singleton instance for registering your API key and server to use. Any
+use of the BVRecommendations API must start here!</p>
 
 <h2>Code Examples: Initializing the SDK Manager</h2>
 
 <h3>Objective-C</h3>
 
-<pre><code>    [BVSDKManager sharedManager].staging = YES;  //  NO for production
-    [BVSDKManager sharedManager].clientId = @"YOUR_CLIENT_ID";
-    // If using Converstations API, add this line:
-    [BVSDKManager sharedManager].apiKeyConversations = @"YOUR_CONVERSATIONS_API_KEY";
-    // If using Recommendations, add this line:
-    [BVSDKManager sharedManager].apiKeyShopperAdvertising = @"YOUR_SHOPPER_MARKETING_KEY";
-</code></pre>
+<p><code>
+    // Will search app bundle for file bvsdk_config_staging.json for
+BVConfigurationTypeStaging or
+    // bvsdk_config_prod.json for BVConfigurationTypeProd. BVSDK will be
+configured using this file
+    [BVSDKManager configure:BVConfigurationTypeStaging];
+</code></p>
 
 <h3>Swift</h3>
 
 <pre><code>@code
-let mgr = BVSDKManager.sharedManager()
-mgr.setLogLevel(BVLogLevel.Verbose)
-// If using Converstations API, add this line:
-apiKeyConversations = "YOUR_CONVERSATIONS_API_KEY"
-// If using Recommendations, add this line:
-mgr.apiKeyShopperAdvertising = "YOUR_SHOPPER_MARKETING_KEY"
-mgr.clientId = "YOUR_CLIENT_ID"
-mgr.staging = false  //  true for production
-@endcode
+// Will search app bundle for file bvsdk_config_staging.json for
 </code></pre>
+
+<p>BVConfigurationTypeStaging or
+    // bvsdk_config_prod.json for BVConfigurationTypeProd. BVSDK will be
+configured using this file
+    BVSDKManager.configure(.staging)
+    @endcode</p>
 					</div>
+					
+					
 
-
-
-
-
+					
+					
 					<div class="section section-tasks">
 						<a title="Tasks" name="tasks"></a>
+						
 
-
-
-
+						
+						
 
 						<div class="task-list">
 							<div class="section-method">
-	<a name="//api/name/sharedManager" title="sharedManager"></a>
-	<h3 class="method-title"><code><a href="#//api/name/sharedManager">+&nbsp;sharedManager</a></code>
+	<a name="//api/name/urlSessionDelegate" title="urlSessionDelegate"></a>
+	<h3 class="method-title"><code><a href="#//api/name/urlSessionDelegate">&nbsp;&nbsp;urlSessionDelegate</a></code>
 </h3>
 
 	<div class="method-info">
 		<div class="pointy-thing"></div>
 
 		<div class="method-info-container">
-
-
+			
+			
 			<div class="method-subsection brief-description">
-				<p>Singleton pattern. Use this <code>sharedManager</code> whenever interacting with BVSDK.</p>
+				<p><a href="../Protocols/BVURLSessionDelegate.html">BVURLSessionDelegate</a> used to acquire NSURLSession objects and proxy methods.
+Please see <a href="../Protocols/BVURLSessionDelegate.html">BVURLSessionDelegate</a>.h for more details. Setting this is
+guaranteed to be thread safe, however, it isn&rsquo;t atomic with respect to
+currently enqueued and running jobs so behavior is undefined if you
+set/unset this anytime after initialization. It&rsquo;s best to set this at launch
+and to not unset.</p>
 			</div>
+			
+		    
 
+			<div class="method-subsection method-declaration"><code>@property (nullable, nonatomic, weak) id&lt;BVURLSessionDelegate&gt; urlSessionDelegate</code></div>
 
+		    
+			
 
-			<div class="method-subsection method-declaration"><code>+ (instancetype)sharedManager</code></div>
+			
 
+			
 
+			
 
+			
 
+			
 
-
-
-
-
-
-
-
-
-
-
+			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
 				<p><code class="declared-in-ref">BVSDKManager.h</code></p>
 			</div>
-
-
-		</div>
-	</div>
-</div><div class="section-method">
-	<a name="//api/name/setLogLevel:" title="setLogLevel:"></a>
-	<h3 class="method-title"><code><a href="#//api/name/setLogLevel:">&ndash;&nbsp;setLogLevel:</a></code>
-</h3>
-
-	<div class="method-info">
-		<div class="pointy-thing"></div>
-
-		<div class="method-info-container">
-
-
-			<div class="method-subsection brief-description">
-				<p>Set the log level for getting log and event info. Default is <a href="../Constants/BVLogLevel.html">BVLogLevel</a>.kBVLogLevelError</p>
-			</div>
-
-
-
-			<div class="method-subsection method-declaration"><code>- (void)setLogLevel:(BVLogLevel)<em>logLevel</em></code></div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-			<div class="method-subsection declared-in-section">
-				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">BVSDKManager.h</code></p>
-			</div>
-
-
-		</div>
-	</div>
-</div><div class="section-method">
-	<a name="//api/name/clientId" title="clientId"></a>
-	<h3 class="method-title"><code><a href="#//api/name/clientId">&nbsp;&nbsp;clientId</a></code>
-</h3>
-
-	<div class="method-info">
-		<div class="pointy-thing"></div>
-
-		<div class="method-info-container">
-
-
-			<div class="method-subsection brief-description">
-				<p>Client ID associated with the API key</p>
-			</div>
-
-
-
-			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSString *clientId</code></div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-			<div class="method-subsection declared-in-section">
-				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">BVSDKManager.h</code></p>
-			</div>
-
-
-		</div>
-	</div>
-</div><div class="section-method">
-	<a name="//api/name/staging" title="staging"></a>
-	<h3 class="method-title"><code><a href="#//api/name/staging">&nbsp;&nbsp;staging</a></code>
-</h3>
-
-	<div class="method-info">
-		<div class="pointy-thing"></div>
-
-		<div class="method-info-container">
-
-
-			<div class="method-subsection brief-description">
-				<p>Boolean indicating whether this request should go to staging (true) or production (false).  Default is production (false).</p>
-			</div>
-
-
-
-			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) BOOL staging</code></div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-			<div class="method-subsection declared-in-section">
-				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">BVSDKManager.h</code></p>
-			</div>
-
-
+			
+			
 		</div>
 	</div>
 </div><div class="section-method">
@@ -348,459 +219,37 @@ mgr.staging = false  //  true for production
 		<div class="pointy-thing"></div>
 
 		<div class="method-info-container">
-
-			<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) NSString *urlRootShopperAdvertising</code></div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-			<div class="method-subsection declared-in-section">
-				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">BVSDKManager.h</code></p>
-			</div>
-
-
-		</div>
-	</div>
-</div><div class="section-method">
-	<a name="//api/name/apiKeyConversations" title="apiKeyConversations"></a>
-	<h3 class="method-title"><code><a href="#//api/name/apiKeyConversations">&nbsp;&nbsp;apiKeyConversations</a></code>
-</h3>
-
-	<div class="method-info">
-		<div class="pointy-thing"></div>
-
-		<div class="method-info-container">
-
-
+			
+			
 			<div class="method-subsection brief-description">
-				<p>Your private API key for the BVConversations product</p>
+				<p>Read-only value of urlRoot for BVRecommendations APIs. Varies depending on
+value of staging.</p>
 			</div>
+			
+		    
 
+			<div class="method-subsection method-declaration"><code>@property (nonnull, nonatomic, readonly) NSString *urlRootShopperAdvertising</code></div>
 
+		    
+			
 
-			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSString *apiKeyConversations</code></div>
+			
 
+			
 
+			
 
+			
 
+			
 
-
-
-
-
-
-
-
-
-
-
+			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
 				<p><code class="declared-in-ref">BVSDKManager.h</code></p>
 			</div>
-
-
-		</div>
-	</div>
-</div><div class="section-method">
-	<a name="//api/name/apiKeyConversationsStores" title="apiKeyConversationsStores"></a>
-	<h3 class="method-title"><code><a href="#//api/name/apiKeyConversationsStores">&nbsp;&nbsp;apiKeyConversationsStores</a></code>
-</h3>
-
-	<div class="method-info">
-		<div class="pointy-thing"></div>
-
-		<div class="method-info-container">
-
-
-			<div class="method-subsection brief-description">
-				<p>Your private API key for the BVConversations, Store Reviews product</p>
-			</div>
-
-
-
-			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSString *apiKeyConversationsStores</code></div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-			<div class="method-subsection declared-in-section">
-				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">BVSDKManager.h</code></p>
-			</div>
-
-
-		</div>
-	</div>
-</div><div class="section-method">
-	<a name="//api/name/storeReviewContentExtensionCategory" title="storeReviewContentExtensionCategory"></a>
-	<h3 class="method-title"><code><a href="#//api/name/storeReviewContentExtensionCategory">&nbsp;&nbsp;storeReviewContentExtensionCategory</a></code>
-</h3>
-
-	<div class="method-info">
-		<div class="pointy-thing"></div>
-
-		<div class="method-info-container">
-
-
-			<div class="method-subsection brief-description">
-				<p>The category of the Notification Content Extension you will use for store review notifications</p>
-			</div>
-
-
-
-			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSString *storeReviewContentExtensionCategory</code></div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-			<div class="method-subsection declared-in-section">
-				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">BVSDKManager.h</code></p>
-			</div>
-
-
-		</div>
-	</div>
-</div><div class="section-method">
-	<a name="//api/name/apiKeyShopperAdvertising" title="apiKeyShopperAdvertising"></a>
-	<h3 class="method-title"><code><a href="#//api/name/apiKeyShopperAdvertising">&nbsp;&nbsp;apiKeyShopperAdvertising</a></code>
-</h3>
-
-	<div class="method-info">
-		<div class="pointy-thing"></div>
-
-		<div class="method-info-container">
-
-
-			<div class="method-subsection brief-description">
-				<p>Your private API key for the BVRecommendations.</p>
-			</div>
-
-
-
-			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSString *apiKeyShopperAdvertising</code></div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-			<div class="method-subsection declared-in-section">
-				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">BVSDKManager.h</code></p>
-			</div>
-
-
-		</div>
-	</div>
-</div><div class="section-method">
-	<a name="//api/name/apiKeyCurations" title="apiKeyCurations"></a>
-	<h3 class="method-title"><code><a href="#//api/name/apiKeyCurations">&nbsp;&nbsp;apiKeyCurations</a></code>
-</h3>
-
-	<div class="method-info">
-		<div class="pointy-thing"></div>
-
-		<div class="method-info-container">
-
-
-			<div class="method-subsection brief-description">
-				<p>Your private API key for the BVCurations API</p>
-			</div>
-
-
-
-			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSString *apiKeyCurations</code></div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-			<div class="method-subsection declared-in-section">
-				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">BVSDKManager.h</code></p>
-			</div>
-
-
-		</div>
-	</div>
-</div><div class="section-method">
-	<a name="//api/name/apiKeyLocation" title="apiKeyLocation"></a>
-	<h3 class="method-title"><code><a href="#//api/name/apiKeyLocation">&nbsp;&nbsp;apiKeyLocation</a></code>
-</h3>
-
-	<div class="method-info">
-		<div class="pointy-thing"></div>
-
-		<div class="method-info-container">
-
-
-			<div class="method-subsection brief-description">
-				<p>Your private API key for the BVLocations API</p>
-			</div>
-
-
-
-			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSString *apiKeyLocation</code></div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-			<div class="method-subsection declared-in-section">
-				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">BVSDKManager.h</code></p>
-			</div>
-
-
-		</div>
-	</div>
-</div><div class="section-method">
-	<a name="//api/name/setUserWithAuthString:" title="setUserWithAuthString:"></a>
-	<h3 class="method-title"><code><a href="#//api/name/setUserWithAuthString:">&ndash;&nbsp;setUserWithAuthString:</a></code>
-</h3>
-
-	<div class="method-info">
-		<div class="pointy-thing"></div>
-
-		<div class="method-info-container">
-
-
-			<div class="method-subsection brief-description">
-				<pre><code>Set user information. Associates a user profile with device for taylored recommendations.
-Use of this method requires that a valid key has been set for apiKeyShopperMarketing.
-</code></pre>
-			</div>
-
-
-
-			<div class="method-subsection method-declaration"><code>- (void)setUserWithAuthString:(NSString *)<em>userAuthString</em></code></div>
-
-
-
-			<div class="method-subsection arguments-section parameters">
-				<h4 class="method-subtitle parameter-title">Parameters</h4>
-				<table class="argument-def parameter-def">
-
-					<tr>
-						<th scope="row" class="argument-name"><code>userAuthString</code></th>
-						<td><p>The UAS that was generated server-side for Bazaarvoice.</p></td>
-					</tr>
-
-				</table>
-			</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-			<div class="method-subsection declared-in-section">
-				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">BVSDKManager.h</code></p>
-			</div>
-
-
-		</div>
-	</div>
-</div><div class="section-method">
-	<a name="//api/name/bvUser" title="bvUser"></a>
-	<h3 class="method-title"><code><a href="#//api/name/bvUser">&nbsp;&nbsp;bvUser</a></code>
-</h3>
-
-	<div class="method-info">
-		<div class="pointy-thing"></div>
-
-		<div class="method-info-container">
-
-
-			<div class="method-subsection brief-description">
-				<p>The authenticed user retrieved after calling setUserWithAuthString. The model may be empty until the BV user profile has been reconcilled.</p>
-			</div>
-
-
-
-			<div class="method-subsection method-declaration"><code>@property (strong, readonly) BVAuthenticatedUser *bvUser</code></div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-			<div class="method-subsection declared-in-section">
-				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">BVSDKManager.h</code></p>
-			</div>
-
-
-		</div>
-	</div>
-</div><div class="section-method">
-	<a name="//api/name/bvStoreReviewNotificationProperties" title="bvStoreReviewNotificationProperties"></a>
-	<h3 class="method-title"><code><a href="#//api/name/bvStoreReviewNotificationProperties">&nbsp;&nbsp;bvStoreReviewNotificationProperties</a></code>
-</h3>
-
-	<div class="method-info">
-		<div class="pointy-thing"></div>
-
-		<div class="method-info-container">
-
-
-			<div class="method-subsection brief-description">
-				<p>These properties are available after setting the BVSDKManager#apiKeyLConversationsStores. Clients typically do not need to access these properties except for help in debugging.</p>
-			</div>
-
-
-
-			<div class="method-subsection method-declaration"><code>@property (strong, readonly) BVStoreReviewNotificationProperties *bvStoreReviewNotificationProperties</code></div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-			<div class="method-subsection declared-in-section">
-				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">BVSDKManager.h</code></p>
-			</div>
-
-
-		</div>
-	</div>
-</div><div class="section-method">
-	<a name="//api/name/getCustomTargeting" title="getCustomTargeting"></a>
-	<h3 class="method-title"><code><a href="#//api/name/getCustomTargeting">&ndash;&nbsp;getCustomTargeting</a></code>
-</h3>
-
-	<div class="method-info">
-		<div class="pointy-thing"></div>
-
-		<div class="method-info-container">
-
-
-			<div class="method-subsection brief-description">
-				<pre><code>Generate DFP (Doubleclick For Publsher's) compatible custom targeting.
-
-@code
-DFPRequest* request = [[DFPRequest request] request];
-request.customerTargeting = [[BVSDKManager sharedManager] getTargetingKeywords];
-@endcode
-</code></pre>
-			</div>
-
-
-
-			<div class="method-subsection method-declaration"><code>- (NSDictionary *)getCustomTargeting</code></div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-			<div class="method-subsection declared-in-section">
-				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">BVSDKManager.h</code></p>
-			</div>
-
-
+			
+			
 		</div>
 	</div>
 </div><div class="section-method">
@@ -812,58 +261,344 @@ request.customerTargeting = [[BVSDKManager sharedManager] getTargetingKeywords];
 		<div class="pointy-thing"></div>
 
 		<div class="method-info-container">
-
-
+			
+			
 			<div class="method-subsection brief-description">
-				<p>Network timeout in seconds.  Default is 60 seconds.  Note that iOS may set a minimum timeout of 240 seconds for post requests.</p>
+				<p>Network timeout in seconds.  Default is 60 seconds.  Note that iOS may set a
+minimum timeout of 240 seconds for post requests.</p>
 			</div>
-
-
+			
+		    
 
 			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) float timeout</code></div>
 
+		    
+			
 
+			
 
+			
 
+			
 
+			
 
+			
 
-
-
-
-
-
-
-
-
+			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
 				<p><code class="declared-in-ref">BVSDKManager.h</code></p>
 			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/bvUser" title="bvUser"></a>
+	<h3 class="method-title"><code><a href="#//api/name/bvUser">&nbsp;&nbsp;bvUser</a></code>
+</h3>
 
+	<div class="method-info">
+		<div class="pointy-thing"></div>
 
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>The authenticed user retrieved after calling setUserWithAuthString. The
+model may be empty until the BV user profile has been reconcilled.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonnull, strong, readonly) BVAuthenticatedUser *bvUser</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BVSDKManager.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/configure:" title="configure:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/configure:">+&nbsp;configure:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+
+			<div class="method-subsection method-declaration"><code>+ (void)configure:(BVConfigurationType)<em>configurationType</em></code></div>
+
+		    
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/configureWithConfiguration:configType:" title="configureWithConfiguration:configType:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/configureWithConfiguration:configType:">+&nbsp;configureWithConfiguration:configType:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+
+			<div class="method-subsection method-declaration"><code>+ (void)configureWithConfiguration:(nonnull NSDictionary *)<em>configDict</em> configType:(BVConfigurationType)<em>configType</em></code></div>
+
+		    
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/sharedManager" title="sharedManager"></a>
+	<h3 class="method-title"><code><a href="#//api/name/sharedManager">+&nbsp;sharedManager</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Singleton pattern. Use this <code>sharedManager</code> whenever interacting with BVSDK.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (nonnull instancetype)sharedManager</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BVSDKManager.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/init" title="init"></a>
+	<h3 class="method-title"><code><a href="#//api/name/init">&ndash;&nbsp;init</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+
+			<div class="method-subsection method-declaration"><code>- (nonnull id)init</code></div>
+
+		    
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/setLogLevel:" title="setLogLevel:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/setLogLevel:">&ndash;&nbsp;setLogLevel:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Set the log level for getting log and event info. Default is
+<a href="../Constants/BVLogLevel.html">BVLogLevel</a>.kBVLogLevelError</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)setLogLevel:(BVLogLevel)<em>logLevel</em></code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BVSDKManager.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/setUserWithAuthString:" title="setUserWithAuthString:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/setUserWithAuthString:">&ndash;&nbsp;setUserWithAuthString:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<pre><code>Set user information. Associates a user profile with device for taylored
+recommendations.
+Use of this method requires that a valid key has been set for
+</code></pre>
+
+<p>   apiKeyShopperMarketing.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)setUserWithAuthString:(nonnull NSString *)<em>userAuthString</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>userAuthString</code></th>
+						<td><p>The UAS that was generated server-side for
+   Bazaarvoice.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BVSDKManager.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/getCustomTargeting" title="getCustomTargeting"></a>
+	<h3 class="method-title"><code><a href="#//api/name/getCustomTargeting">&ndash;&nbsp;getCustomTargeting</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<pre><code>Generate DFP (Doubleclick For Publsher's) compatible custom targeting.
+</code></pre>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (nonnull NSDictionary *)getCustomTargeting</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<pre><code>@code
+DFPRequest* request = [[DFPRequest request] request];
+request.customerTargeting = [[BVSDKManager sharedManager]
+</code></pre>
+
+<p>   getTargetingKeywords];
+    @endcode</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BVSDKManager.h</code></p>
+			</div>
+			
+			
 		</div>
 	</div>
 </div>
 						</div>
-
+						
 					</div>
+					
+					
 
-
-
-
-
-
+                    
+                    
+          
 				</main>
 
 				<footer>
 					<div class="footer-copyright">
-
-						<p class="copyright">Copyright &copy; 2016 Bazaarvoice. All rights reserved. Updated: 2016-10-28</p>
-
-
+						
+						<p class="copyright">Copyright &copy; 2018 Bazaarvoice. All rights reserved. Updated: 2018-03-06</p>
+						
+						
 						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>
-
+						
 					</div>
 				</footer>
 			</div>

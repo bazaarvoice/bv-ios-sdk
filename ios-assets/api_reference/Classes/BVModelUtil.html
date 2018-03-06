@@ -48,11 +48,31 @@
 
 	
 	
+	<option value="tasks">Tasks</option>
+	
 	
 
 	
 	
 
+	
+	<optgroup label="Class Methods">
+		
+		<option value="//api/name/convertTimestampToDatetime:">+ convertTimestampToDatetime:</option>
+		
+		<option value="//api/name/parseBadges:">+ parseBadges:</option>
+		
+		<option value="//api/name/parseContextDataValues:">+ parseContextDataValues:</option>
+		
+		<option value="//api/name/parsePhotos:">+ parsePhotos:</option>
+		
+		<option value="//api/name/parseSecondaryRatings:">+ parseSecondaryRatings:</option>
+		
+		<option value="//api/name/parseTagDimension:">+ parseTagDimension:</option>
+		
+		<option value="//api/name/parseVideos:">+ parseVideos:</option>
+		
+	</optgroup>
 	
 
 	
@@ -78,7 +98,7 @@
 	<td>NSObject</td>
 </tr><tr>
 	<th>Declared in</th>
-	<td>BVModelUtil.h<br />BVModelUtil.m</td>
+	<td>BVModelUtil.h</td>
 </tr>
 						</tbody></table></div>
 					
@@ -95,6 +115,131 @@
 
 					
 					
+					<div class="section section-tasks">
+						<a title="Tasks" name="tasks"></a>
+						
+
+						
+						
+
+						<div class="task-list">
+							<div class="section-method">
+	<a name="//api/name/convertTimestampToDatetime:" title="convertTimestampToDatetime:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/convertTimestampToDatetime:">+&nbsp;convertTimestampToDatetime:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+
+			<div class="method-subsection method-declaration"><code>+ (nullable NSDate *)convertTimestampToDatetime:(nullable id)<em>timestamp</em></code></div>
+
+		    
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/parsePhotos:" title="parsePhotos:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/parsePhotos:">+&nbsp;parsePhotos:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+
+			<div class="method-subsection method-declaration"><code>+ (nonnull NSArray&lt;BVPhoto*&gt; *)parsePhotos:(nullable id)<em>apiResponse</em></code></div>
+
+		    
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/parseVideos:" title="parseVideos:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/parseVideos:">+&nbsp;parseVideos:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+
+			<div class="method-subsection method-declaration"><code>+ (nonnull NSArray&lt;BVVideo*&gt; *)parseVideos:(nullable id)<em>apiResponse</em></code></div>
+
+		    
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/parseContextDataValues:" title="parseContextDataValues:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/parseContextDataValues:">+&nbsp;parseContextDataValues:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+
+			<div class="method-subsection method-declaration"><code>+ (nonnull NSArray&lt;BVContextDataValue*&gt; *)parseContextDataValues:(nullable id)<em>apiResponse</em></code></div>
+
+		    
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/parseBadges:" title="parseBadges:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/parseBadges:">+&nbsp;parseBadges:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+
+			<div class="method-subsection method-declaration"><code>+ (nonnull NSArray&lt;BVBadge*&gt; *)parseBadges:(nullable id)<em>apiResponse</em></code></div>
+
+		    
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/parseSecondaryRatings:" title="parseSecondaryRatings:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/parseSecondaryRatings:">+&nbsp;parseSecondaryRatings:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+
+			<div class="method-subsection method-declaration"><code>+ (nonnull NSArray&lt;BVSecondaryRating*&gt; *)parseSecondaryRatings:(nullable id)<em>apiResponse</em></code></div>
+
+		    
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/parseTagDimension:" title="parseTagDimension:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/parseTagDimension:">+&nbsp;parseTagDimension:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+
+			<div class="method-subsection method-declaration"><code>+ (nullable TagDimensions)parseTagDimension:(nullable id)<em>apiResponse</em></code></div>
+
+		    
+		</div>
+	</div>
+</div>
+						</div>
+						
+					</div>
+					
 					
 
                     
@@ -105,7 +250,7 @@
 				<footer>
 					<div class="footer-copyright">
 						
-						<p class="copyright">Copyright &copy; 2016 Bazaarvoice. All rights reserved. Updated: 2016-10-28</p>
+						<p class="copyright">Copyright &copy; 2018 Bazaarvoice. All rights reserved. Updated: 2018-03-06</p>
 						
 						
 						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>

@@ -62,8 +62,6 @@
 		
 		<option value="//api/name/before">before</option>
 		
-		<option value="//api/name/explicitPermission">explicitPermission</option>
-		
 		<option value="//api/name/externalId">externalId</option>
 		
 		<option value="//api/name/featured">featured</option>
@@ -76,6 +74,8 @@
 		
 		<option value="//api/name/hasPhoto">hasPhoto</option>
 		
+		<option value="//api/name/hasPhotoOrVideo">hasPhotoOrVideo</option>
+		
 		<option value="//api/name/hasVideo">hasVideo</option>
 		
 		<option value="//api/name/includeComments">includeComments</option>
@@ -83,8 +83,6 @@
 		<option value="//api/name/limit">limit</option>
 		
 		<option value="//api/name/media">media</option>
-		
-		<option value="//api/name/perGroupLimit">perGroupLimit</option>
 		
 		<option value="//api/name/tags">tags</option>
 		
@@ -130,7 +128,7 @@
 	<td>NSObject</td>
 </tr><tr>
 	<th>Declared in</th>
-	<td>BVCurationsFeedRequest.h<br />BVCurationsFeedRequest.m</td>
+	<td>BVCurationsFeedRequest.h</td>
 </tr>
 						</tbody></table></div>
 					
@@ -140,7 +138,8 @@
 					<div class="section section-overview">
 						<a title="Overview" name="overview"></a>
 						<h2 class="subtitle subtitle-overview">Overview</h2>
-						<p>Use the BVCurationsFeedRequest object to construct query parameters used by the BVGetCurationsFeed API request.</p>
+						<p>Use the BVCurationsFeedRequest object to construct query parameters used by the
+BVGetCurationsFeed API request.</p>
 					</div>
 					
 					
@@ -262,7 +261,8 @@
 			
 			
 			<div class="method-subsection brief-description">
-				<p>Creates an array of NSURLQueryItem item objects for use in querying the Curations feed API.</p>
+				<p>Creates an array of NSURLQueryItem item objects for use in querying the
+Curations feed API.</p>
 			</div>
 			
 		    
@@ -303,7 +303,8 @@
 			
 			
 			<div class="method-subsection brief-description">
-				<p>The administered groups which you want to query. This parameter is required. The values in the groups are configured in the Curations management console.</p>
+				<p>The administered groups which you want to query. This parameter is required.
+The values in the groups are configured in the Curations management console.</p>
 			</div>
 			
 		    
@@ -385,7 +386,8 @@
 			
 			
 			<div class="method-subsection brief-description">
-				<p>Sending a UNIX timestamp for after returns content posted only on or after that time.</p>
+				<p>Sending a UNIX timestamp for after returns content posted only on or after
+that time.</p>
 			</div>
 			
 		    
@@ -426,7 +428,8 @@
 			
 			
 			<div class="method-subsection brief-description">
-				<p>Sending a UNIX timestamp for before returns content posted only on or before that time.</p>
+				<p>Sending a UNIX timestamp for before returns content posted only on or before
+that time.</p>
 			</div>
 			
 		    
@@ -467,7 +470,10 @@
 			
 			
 			<div class="method-subsection brief-description">
-				<p>Sending a value for author returns updates that match only that author. If this is set, Bazaarvoice will perform a lookup against either the token or alias of the author. Any author that matches either one is considered a match.</p>
+				<p>Sending a value for author returns updates that match only that author. If
+this is set, Bazaarvoice will perform a lookup against either the token or
+alias of the author. Any author that matches either one is considered a
+match.</p>
 			</div>
 			
 		    
@@ -508,8 +514,13 @@
 			
 			
 			<div class="method-subsection brief-description">
-				<pre><code>Sending a number for featured requires at least that many featured updates to come down in your feed. These featured updates count against the overall limit specified in limit. For example, setting limit to 25 and featured to 10 returns 10 featured updates and 15 other updates, which may be featured or non-featured).
+				<pre><code>Sending a number for featured requires at least that many featured updates
 </code></pre>
+
+<p>   to come down in your feed. These featured updates count against the overall
+   <a href="#//api/name/limit">limit</a> specified in <a href="#//api/name/limit">limit</a>. For example, setting <a href="#//api/name/limit">limit</a> to 25 and featured to 10
+   returns 10 featured updates and 15 other updates, which may be featured or
+   non-featured).</p>
 			</div>
 			
 		    
@@ -526,8 +537,13 @@
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<pre><code>If you specify a number greater than the number of featured updates that you have in the feed, Bazaarvoice sends all the featured updates and counts that number against the total limit. Continuing the prior example, if you only have 7 featured updates in your feed, you'd get the 7 featured updates and then 18 non-featured updates.)
+				<pre><code>If you specify a number greater than the number of featured updates that you
 </code></pre>
+
+<p>   have in the feed, Bazaarvoice sends all the featured updates and counts that
+   number against the total <a href="#//api/name/limit">limit</a>. Continuing the prior example, if you only
+   have 7 featured updates in your feed, you&rsquo;d get the 7 featured updates and
+   then 18 non-featured updates.)</p>
 			</div>
 			
 
@@ -556,13 +572,16 @@
 			
 			
 			<div class="method-subsection brief-description">
-				<pre><code>Setting has_geotag causes the feed to be filtered based on the presence or absence of a geotag on the update. Set this to true to require a geotag or false to require the absence of one.
+				<pre><code>Setting has_geotag causes the feed to be filtered based on the presence or
 </code></pre>
+
+<p>   absence of a geotag on the update. Set this to true to require a geotag or
+   false to require the absence of one.</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>@property BOOL hasGeotag</code></div>
+			<div class="method-subsection method-declaration"><code>@property NSNumber *hasGeotag</code></div>
 
 		    
 			
@@ -574,8 +593,10 @@
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<pre><code>Note that setting one or more has_geotag, has_link, has_photo, or has_video parameters yields the intersection (not the union) of the selected filters.
+				<pre><code>Note that setting one or more has_geotag, has_link, has_photo, or has_video
 </code></pre>
+
+<p>   parameters yields the intersection (not the union) of the selected filters.</p>
 			</div>
 			
 
@@ -604,13 +625,16 @@
 			
 			
 			<div class="method-subsection brief-description">
-				<pre><code>Setting has_link causes the feed to be filtered based on the presence or absence of a link on the update. Set this to true to require a link or false to require the absence of one.
+				<pre><code>Setting has_link causes the feed to be filtered based on the presence or
 </code></pre>
+
+<p>   absence of a link on the update. Set this to true to require a link or false
+   to require the absence of one.</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>@property BOOL hasLink</code></div>
+			<div class="method-subsection method-declaration"><code>@property NSNumber *hasLink</code></div>
 
 		    
 			
@@ -622,8 +646,10 @@
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<pre><code>Note that setting one or more has_geotag, has_link, has_photo, or has_video parameters yields the intersection (not the union) of the selected filters.
+				<pre><code>Note that setting one or more has_geotag, has_link, has_photo, or has_video
 </code></pre>
+
+<p>   parameters yields the intersection (not the union) of the selected filters.</p>
 			</div>
 			
 
@@ -652,12 +678,13 @@
 			
 			
 			<div class="method-subsection brief-description">
-				<p>Note that setting one or more has_geotag, has_link, has_photo, or has_video parameters yields the intersection (not the union) of the selected filters.</p>
+				<p>Note that setting one or more has_geotag, has_link, has_photo, or has_video
+parameters yields the intersection (not the union) of the selected filters.</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>@property BOOL hasPhoto</code></div>
+			<div class="method-subsection method-declaration"><code>@property NSNumber *hasPhoto</code></div>
 
 		    
 			
@@ -693,13 +720,59 @@
 			
 			
 			<div class="method-subsection brief-description">
-				<pre><code>Note that setting one or more has_geotag, has_link, has_photo, or has_video parameters yields the intersection (not the union) of the selected filters.
+				<pre><code>Note that setting one or more has_geotag, has_link, has_photo, or
+has_video parameters yields the intersection (not the union) of the
+selected filters.
 </code></pre>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>@property BOOL hasVideo</code></div>
+			<div class="method-subsection method-declaration"><code>@property NSNumber *hasVideo</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BVCurationsFeedRequest.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/hasPhotoOrVideo" title="hasPhotoOrVideo"></a>
+	<h3 class="method-title"><code><a href="#//api/name/hasPhotoOrVideo">&nbsp;&nbsp;hasPhotoOrVideo</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<pre><code>Note that setting one or more hasPhotoOrVideo, has_geotag, has_link,
+has_photo, or has_video parameters yields the intersection (not the
+union) of the selected filters.
+</code></pre>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property NSNumber *hasPhotoOrVideo</code></div>
 
 		    
 			
@@ -735,12 +808,17 @@
 			
 			
 			<div class="method-subsection brief-description">
-				<p>On some channels, Bazaarvoice sends comments about an update along with the update. This option controls whether comments are included in your feed. Be aware that including comments, especially in feeds where they are common, can drastically increase output size and reduce performance. Also, Bazaarvoice does not poll for comments indefinitely. When an update reaches a certain age, its comments are no longer updated.</p>
+				<p>On some channels, Bazaarvoice sends comments about an update along with the
+update. This option controls whether comments are included in your feed. Be
+aware that including comments, especially in feeds where they are common,
+can drastically increase output size and reduce performance. Also,
+Bazaarvoice does not poll for comments indefinitely. When an update reaches
+a certain age, its comments are no longer updated.</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>@property BOOL includeComments</code></div>
+			<div class="method-subsection method-declaration"><code>@property NSNumber *includeComments</code></div>
 
 		    
 			
@@ -776,7 +854,10 @@
 			
 			
 			<div class="method-subsection brief-description">
-				<p>This is the number of updates Bazaarvoice sends. You can request any number between 0 and 100. If you ask for more updates than exist in the feed, Bazaarvoice sends what is available. Asking for a large number of updates does not guarantee you will get that many updates.</p>
+				<p>This is the number of updates Bazaarvoice sends. You can request any number
+between 0 and 100. If you ask for more updates than exist in the feed,
+Bazaarvoice sends what is available. Asking for a large number of updates
+does not guarantee you will get that many updates.</p>
 			</div>
 			
 		    
@@ -817,53 +898,17 @@
 			
 			
 			<div class="method-subsection brief-description">
-				<p>Sending the media property overrides default sizes for images and videos. Send media as a nested dictionary-like object. Keys should be the type of media, most often photo or video, although a few other keys such as icon will work. The values should be dictionaries themselves, with width and height keys, the values of which can be ints or strings. For example: {&lsquo;video&rsquo;: {&lsquo;width&rsquo;: 480, &lsquo;height&rsquo;: 360}}.</p>
+				<p>Sending the media property overrides default sizes for images and videos.
+Send media as a nested dictionary-like object. Keys should be the type of
+media, most often photo or video, although a few other keys such as icon
+will work. The values should be dictionaries themselves, with width and
+height keys, the values of which can be ints or strings. For example:
+{&lsquo;video&rsquo;: {&lsquo;width&rsquo;: 480, &lsquo;height&rsquo;: 360}}.</p>
 			</div>
 			
 		    
 
 			<div class="method-subsection method-declaration"><code>@property NSDictionary *media</code></div>
-
-		    
-			
-
-			
-
-			
-
-			
-
-			
-
-			
-
-			
-			<div class="method-subsection declared-in-section">
-				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">BVCurationsFeedRequest.h</code></p>
-			</div>
-			
-			
-		</div>
-	</div>
-</div><div class="section-method">
-	<a name="//api/name/perGroupLimit" title="perGroupLimit"></a>
-	<h3 class="method-title"><code><a href="#//api/name/perGroupLimit">&nbsp;&nbsp;perGroupLimit</a></code>
-</h3>
-
-	<div class="method-info">
-		<div class="pointy-thing"></div>
-
-		<div class="method-info-container">
-			
-			
-			<div class="method-subsection brief-description">
-				<p>If provided, this limits the total number of updates from each group within your feed to the given <a href="#//api/name/limit">limit</a>. For example, if your feed comprises three <a href="#//api/name/groups">groups</a>, and you set per_group_<a href="#//api/name/limit">limit</a> to 3, you will get no more than three updates from each group for a possible maximum total of nine updates. If your feed comprises a single group, this parameter is functionally identical to <a href="#//api/name/limit">limit</a>, and the lower value of the two parameters will be used. (<b class="deprecated">Deprecated:</b><span class="deprecated"> perGroupLimit is deprecated and will be removed in a future release.</span>)</p>
-			</div>
-			
-		    
-
-			<div class="method-subsection method-declaration"><code>@property NSUInteger perGroupLimit</code></div>
 
 		    
 			
@@ -899,8 +944,11 @@
 			
 			
 			<div class="method-subsection brief-description">
-				<p>String Array where each element is a string representing a tag. Setting this causes the system to return only updates with at least one of the tags in the tag array.
-If you want to include only one tag in your feed, you can send this as a string instead of an array with a single value, but either will work.</p>
+				<p>String Array where each element is a string representing a tag. Setting this
+causes the system to return only updates with at least one of the tags in
+the tag array. If you want to include only one tag in your feed, you can
+send this as a string instead of an array with a single value, but either
+will work.</p>
 			</div>
 			
 		    
@@ -942,54 +990,14 @@ If you want to include only one tag in your feed, you can send this as a string 
 			
 			<div class="method-subsection brief-description">
 				<pre><code>The external product id used for syndication.
-Setting externalId returns both client content and syndicated content. If externalId is not valid, only client content will be returned.
+Setting externalId returns both client content and syndicated content. If
+externalId is not valid, only client content will be returned.
 </code></pre>
 			</div>
 			
 		    
 
 			<div class="method-subsection method-declaration"><code>@property NSString *externalId</code></div>
-
-		    
-			
-
-			
-
-			
-
-			
-
-			
-
-			
-
-			
-			<div class="method-subsection declared-in-section">
-				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">BVCurationsFeedRequest.h</code></p>
-			</div>
-			
-			
-		</div>
-	</div>
-</div><div class="section-method">
-	<a name="//api/name/explicitPermission" title="explicitPermission"></a>
-	<h3 class="method-title"><code><a href="#//api/name/explicitPermission">&nbsp;&nbsp;explicitPermission</a></code>
-</h3>
-
-	<div class="method-info">
-		<div class="pointy-thing"></div>
-
-		<div class="method-info-container">
-			
-			
-			<div class="method-subsection brief-description">
-				<p>Setting to true returns only content that is Rights Management approved. (<b class="deprecated">Deprecated:</b><span class="deprecated"> explicitPermission is deprecated and will be removed in a future release.</span>)</p>
-			</div>
-			
-		    
-
-			<div class="method-subsection method-declaration"><code>@property BOOL explicitPermission</code></div>
 
 		    
 			
@@ -1025,12 +1033,13 @@ Setting externalId returns both client content and syndicated content. If extern
 			
 			
 			<div class="method-subsection brief-description">
-				<p>Setting to true to include product data tagged in the Curations feed. May not be availale for all feeds.</p>
+				<p>Setting to true to include product data tagged in the Curations feed. May
+not be availale for all feeds.</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>@property BOOL withProductData</code></div>
+			<div class="method-subsection method-declaration"><code>@property NSNumber *withProductData</code></div>
 
 		    
 			
@@ -1069,7 +1078,7 @@ Setting externalId returns both client content and syndicated content. If extern
 				<footer>
 					<div class="footer-copyright">
 						
-						<p class="copyright">Copyright &copy; 2016 Bazaarvoice. All rights reserved. Updated: 2016-10-28</p>
+						<p class="copyright">Copyright &copy; 2018 Bazaarvoice. All rights reserved. Updated: 2018-03-06</p>
 						
 						
 						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>

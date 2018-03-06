@@ -56,41 +56,13 @@
 	
 	<optgroup label="Properties">
 		
-		<option value="//api/name/action">action</option>
-		
-		<option value="//api/name/agreedToTermsAndConditions">agreedToTermsAndConditions</option>
-		
-		<option value="//api/name/campaignId">campaignId</option>
-		
-		<option value="//api/name/fingerPrint">fingerPrint</option>
-		
-		<option value="//api/name/hostedAuthenticationCallback">hostedAuthenticationCallback</option>
-		
-		<option value="//api/name/hostedAuthenticationEmail">hostedAuthenticationEmail</option>
-		
 		<option value="//api/name/isRecommended">isRecommended</option>
-		
-		<option value="//api/name/locale">locale</option>
 		
 		<option value="//api/name/netPromoterComment">netPromoterComment</option>
 		
 		<option value="//api/name/netPromoterScore">netPromoterScore</option>
 		
-		<option value="//api/name/photos">photos</option>
-		
 		<option value="//api/name/productId">productId</option>
-		
-		<option value="//api/name/sendEmailAlertWhenPublished">sendEmailAlertWhenPublished</option>
-		
-		<option value="//api/name/user">user</option>
-		
-		<option value="//api/name/userEmail">userEmail</option>
-		
-		<option value="//api/name/userId">userId</option>
-		
-		<option value="//api/name/userLocation">userLocation</option>
-		
-		<option value="//api/name/userNickname">userNickname</option>
 		
 	</optgroup>
 	
@@ -100,6 +72,8 @@
 	
 	<optgroup label="Instance Methods">
 		
+		<option value="//api/name/__unavailable">- __unavailable</option>
+		
 		<option value="//api/name/addAdditionalField:value:">- addAdditionalField:value:</option>
 		
 		<option value="//api/name/addContextDataValueBool:value:">- addContextDataValueBool:value:</option>
@@ -108,13 +82,15 @@
 		
 		<option value="//api/name/addFreeformTagDimension:tagNumber:value:">- addFreeformTagDimension:tagNumber:value:</option>
 		
-		<option value="//api/name/addPhoto:withPhotoCaption:">- addPhoto:withPhotoCaption:</option>
-		
 		<option value="//api/name/addPredefinedTagDimension:tagId:value:">- addPredefinedTagDimension:tagId:value:</option>
 		
 		<option value="//api/name/addRatingQuestion:value:">- addRatingQuestion:value:</option>
 		
 		<option value="//api/name/addRatingSlider:value:">- addRatingSlider:value:</option>
+		
+		<option value="//api/name/addVideoURL:withCaption:">- addVideoURL:withCaption:</option>
+		
+		<option value="//api/name/getPasskey">- getPasskey</option>
 		
 		<option value="//api/name/initWithReviewTitle:reviewText:rating:productId:">- initWithReviewTitle:reviewText:rating:productId:</option>
 		
@@ -141,10 +117,10 @@
 					<div class="section section-specification"><table cellspacing="0"><tbody>
 						<tr>
 	<th>Inherits from</th>
-	<td>NSObject</td>
+	<td><a href="../Classes/BVBaseUGCSubmission.html">BVBaseUGCSubmission</a> : <a href="../Classes/BVSubmission.html">BVSubmission</a> : NSObject</td>
 </tr><tr>
 	<th>Declared in</th>
-	<td>BVReviewSubmission.h<br />BVReviewSubmission.m</td>
+	<td>BVReviewSubmission.h</td>
 </tr>
 						</tbody></table></div>
 					
@@ -156,7 +132,8 @@
 						<h2 class="subtitle subtitle-overview">Overview</h2>
 						<p>Class to use to submit a review to the Bazaarvoice platform.</p>
 
-<p>Of the many parameters possible on a BVReviewSubmission, the ones needed for submission depend on your specific implementation.</p>
+<p>Of the many parameters possible on a BVReviewSubmission, the ones needed for
+submission depend on your specific implementation.</p>
 
 <p>For a description of possible fields see our API documentation at:
 <a href="https://developer.bazaarvoice.com/docs/read/conversations/reviews/submit/5_4">https://developer.bazaarvoice.com/docs/read/conversations/reviews/submit/5_4</a></p>
@@ -245,8 +222,8 @@
 		</div>
 	</div>
 </div><div class="section-method">
-	<a name="//api/name/addPhoto:withPhotoCaption:" title="addPhoto:withPhotoCaption:"></a>
-	<h3 class="method-title"><code><a href="#//api/name/addPhoto:withPhotoCaption:">&ndash;&nbsp;addPhoto:withPhotoCaption:</a></code>
+	<a name="//api/name/__unavailable" title="__unavailable"></a>
+	<h3 class="method-title"><code><a href="#//api/name/__unavailable">&ndash;&nbsp;__unavailable</a></code>
 </h3>
 
 	<div class="method-info">
@@ -254,52 +231,10 @@
 
 		<div class="method-info-container">
 			
-			
-			<div class="method-subsection brief-description">
-				<p>Submit a user-provided photo attached to this answer.</p>
-			</div>
-			
-		    
 
-			<div class="method-subsection method-declaration"><code>- (void)addPhoto:(nonnull UIImage *)<em>image</em> withPhotoCaption:(nullable NSString *)<em>photoCaption</em></code></div>
+			<div class="method-subsection method-declaration"><code>- (nonnull instancetype)__unavailable</code></div>
 
 		    
-			
-			<div class="method-subsection arguments-section parameters">
-				<h4 class="method-subtitle parameter-title">Parameters</h4>
-				<table class="argument-def parameter-def">
-				
-					<tr>
-						<th scope="row" class="argument-name"><code>image</code></th>
-						<td><p>The user-provded image attached to this answer.</p></td>
-					</tr>
-				
-					<tr>
-						<th scope="row" class="argument-name"><code>photoCaption</code></th>
-						<td><p>The user-provided caption for the photo.</p></td>
-					</tr>
-				
-				</table>
-			</div>
-			
-
-			
-
-			
-
-			
-
-			
-
-			
-
-			
-			<div class="method-subsection declared-in-section">
-				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">BVReviewSubmission.h</code></p>
-			</div>
-			
-			
 		</div>
 	</div>
 </div><div class="section-method">
@@ -314,7 +249,9 @@
 			
 			
 			<div class="method-subsection brief-description">
-				<p>Submit this answer to the Bazaarvoice platform. If the <a href="#//api/name/action"><code>action</code></a> of this object is set to <code>BVSubmissionActionPreview</code> then the submission will NOT actually take place.</p>
+				<p>Submit this answer to the Bazaarvoice platform. If the <code>action</code> of this object
+is set to <code>BVSubmissionActionPreview</code> then the submission will NOT actually
+take place.</p>
 			</div>
 			
 		    
@@ -329,12 +266,15 @@
 				
 					<tr>
 						<th scope="row" class="argument-name"><code>success</code></th>
-						<td><p>The success block is called when a successful submission occurs.</p></td>
+						<td><p>The success block is called when a successful submission
+occurs.</p></td>
 					</tr>
 				
 					<tr>
 						<th scope="row" class="argument-name"><code>failure</code></th>
-						<td><p>The failure block is called when an unsuccessful submission occurs. This could be for a number of reasons: network failures, submission parameters invalid, or server errors occur.</p></td>
+						<td><p>The failure block is called when an unsuccessful submission
+occurs. This could be for a number of reasons: network failures, submission
+parameters invalid, or server errors occur.</p></td>
 					</tr>
 				
 				</table>
@@ -348,501 +288,9 @@
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>A submission can fail for many reasons, and is dependent on your submission configuration.</p>
+				<p>A submission can fail for many reasons, and is dependent on your submission
+configuration.</p>
 			</div>
-			
-
-			
-
-			
-
-			
-			<div class="method-subsection declared-in-section">
-				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">BVReviewSubmission.h</code></p>
-			</div>
-			
-			
-		</div>
-	</div>
-</div><div class="section-method">
-	<a name="//api/name/action" title="action"></a>
-	<h3 class="method-title"><code><a href="#//api/name/action">&nbsp;&nbsp;action</a></code>
-</h3>
-
-	<div class="method-info">
-		<div class="pointy-thing"></div>
-
-		<div class="method-info-container">
-			
-			
-			<div class="method-subsection brief-description">
-				<p>Set whether or not to to perform a preview on the submission or submit for real. Default is BVSubmissionActionPreview.
-A preview is like a dry run, but validation of the fields will occur through the API call over the network but no data will be submitted.</p>
-			</div>
-			
-		    
-
-			<div class="method-subsection method-declaration"><code>@property BVSubmissionAction action</code></div>
-
-		    
-			
-
-			
-
-			
-
-			
-
-			
-
-			
-
-			
-			<div class="method-subsection declared-in-section">
-				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">BVReviewSubmission.h</code></p>
-			</div>
-			
-			
-		</div>
-	</div>
-</div><div class="section-method">
-	<a name="//api/name/user" title="user"></a>
-	<h3 class="method-title"><code><a href="#//api/name/user">&nbsp;&nbsp;user</a></code>
-</h3>
-
-	<div class="method-info">
-		<div class="pointy-thing"></div>
-
-		<div class="method-info-container">
-			
-			
-			<div class="method-subsection brief-description">
-				<p>Value of the encrypted user. This parameter demonstrates that a user has been authenticated. Note that the UserId parameter does not contain authentication information and should not be used for hosted authentication. See the Authenticate User method for more information.</p>
-			</div>
-			
-		    
-
-			<div class="method-subsection method-declaration"><code>@property NSString *user</code></div>
-
-		    
-			
-
-			
-
-			
-
-			
-
-			
-
-			
-
-			
-			<div class="method-subsection declared-in-section">
-				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">BVReviewSubmission.h</code></p>
-			</div>
-			
-			
-		</div>
-	</div>
-</div><div class="section-method">
-	<a name="//api/name/userEmail" title="userEmail"></a>
-	<h3 class="method-title"><code><a href="#//api/name/userEmail">&nbsp;&nbsp;userEmail</a></code>
-</h3>
-
-	<div class="method-info">
-		<div class="pointy-thing"></div>
-
-		<div class="method-info-container">
-			
-			
-			<div class="method-subsection brief-description">
-				<p>User&rsquo;s email address</p>
-			</div>
-			
-		    
-
-			<div class="method-subsection method-declaration"><code>@property NSString *userEmail</code></div>
-
-		    
-			
-
-			
-
-			
-
-			
-
-			
-
-			
-
-			
-			<div class="method-subsection declared-in-section">
-				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">BVReviewSubmission.h</code></p>
-			</div>
-			
-			
-		</div>
-	</div>
-</div><div class="section-method">
-	<a name="//api/name/userId" title="userId"></a>
-	<h3 class="method-title"><code><a href="#//api/name/userId">&nbsp;&nbsp;userId</a></code>
-</h3>
-
-	<div class="method-info">
-		<div class="pointy-thing"></div>
-
-		<div class="method-info-container">
-			
-			
-			<div class="method-subsection brief-description">
-				<p>User&rsquo;s external ID. Do not use email addresses for this value.</p>
-			</div>
-			
-		    
-
-			<div class="method-subsection method-declaration"><code>@property NSString *userId</code></div>
-
-		    
-			
-
-			
-
-			
-
-			
-
-			
-
-			
-
-			
-			<div class="method-subsection declared-in-section">
-				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">BVReviewSubmission.h</code></p>
-			</div>
-			
-			
-		</div>
-	</div>
-</div><div class="section-method">
-	<a name="//api/name/userLocation" title="userLocation"></a>
-	<h3 class="method-title"><code><a href="#//api/name/userLocation">&nbsp;&nbsp;userLocation</a></code>
-</h3>
-
-	<div class="method-info">
-		<div class="pointy-thing"></div>
-
-		<div class="method-info-container">
-			
-			
-			<div class="method-subsection brief-description">
-				<p>User location text</p>
-			</div>
-			
-		    
-
-			<div class="method-subsection method-declaration"><code>@property NSString *userLocation</code></div>
-
-		    
-			
-
-			
-
-			
-
-			
-
-			
-
-			
-
-			
-			<div class="method-subsection declared-in-section">
-				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">BVReviewSubmission.h</code></p>
-			</div>
-			
-			
-		</div>
-	</div>
-</div><div class="section-method">
-	<a name="//api/name/userNickname" title="userNickname"></a>
-	<h3 class="method-title"><code><a href="#//api/name/userNickname">&nbsp;&nbsp;userNickname</a></code>
-</h3>
-
-	<div class="method-info">
-		<div class="pointy-thing"></div>
-
-		<div class="method-info-container">
-			
-			
-			<div class="method-subsection brief-description">
-				<p>User nickname display text</p>
-			</div>
-			
-		    
-
-			<div class="method-subsection method-declaration"><code>@property NSString *userNickname</code></div>
-
-		    
-			
-
-			
-
-			
-
-			
-
-			
-
-			
-
-			
-			<div class="method-subsection declared-in-section">
-				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">BVReviewSubmission.h</code></p>
-			</div>
-			
-			
-		</div>
-	</div>
-</div><div class="section-method">
-	<a name="//api/name/agreedToTermsAndConditions" title="agreedToTermsAndConditions"></a>
-	<h3 class="method-title"><code><a href="#//api/name/agreedToTermsAndConditions">&nbsp;&nbsp;agreedToTermsAndConditions</a></code>
-</h3>
-
-	<div class="method-info">
-		<div class="pointy-thing"></div>
-
-		<div class="method-info-container">
-			
-			
-			<div class="method-subsection brief-description">
-				<p>Boolean indicating whether or not the <a href="#//api/name/user">user</a> agreed to the terms and conditions. Required depending on the client&rsquo;s settings.</p>
-			</div>
-			
-		    
-
-			<div class="method-subsection method-declaration"><code>@property NSNumber *agreedToTermsAndConditions</code></div>
-
-		    
-			
-
-			
-
-			
-
-			
-
-			
-
-			
-
-			
-			<div class="method-subsection declared-in-section">
-				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">BVReviewSubmission.h</code></p>
-			</div>
-			
-			
-		</div>
-	</div>
-</div><div class="section-method">
-	<a name="//api/name/sendEmailAlertWhenPublished" title="sendEmailAlertWhenPublished"></a>
-	<h3 class="method-title"><code><a href="#//api/name/sendEmailAlertWhenPublished">&nbsp;&nbsp;sendEmailAlertWhenPublished</a></code>
-</h3>
-
-	<div class="method-info">
-		<div class="pointy-thing"></div>
-
-		<div class="method-info-container">
-			
-			
-			<div class="method-subsection brief-description">
-				<p>Boolean indicating whether or not the <a href="#//api/name/user">user</a> wants to be notified when his/her content is published.</p>
-			</div>
-			
-		    
-
-			<div class="method-subsection method-declaration"><code>@property NSNumber *sendEmailAlertWhenPublished</code></div>
-
-		    
-			
-
-			
-
-			
-
-			
-
-			
-
-			
-
-			
-			<div class="method-subsection declared-in-section">
-				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">BVReviewSubmission.h</code></p>
-			</div>
-			
-			
-		</div>
-	</div>
-</div><div class="section-method">
-	<a name="//api/name/locale" title="locale"></a>
-	<h3 class="method-title"><code><a href="#//api/name/locale">&nbsp;&nbsp;locale</a></code>
-</h3>
-
-	<div class="method-info">
-		<div class="pointy-thing"></div>
-
-		<div class="method-info-container">
-			
-			
-			<div class="method-subsection brief-description">
-				<p>Locale to display Labels, Configuration, Product Attributes and Category Attributes in. The default value is the locale defined in the display associated with the API key.</p>
-			</div>
-			
-		    
-
-			<div class="method-subsection method-declaration"><code>@property NSString *locale</code></div>
-
-		    
-			
-
-			
-
-			
-
-			
-
-			
-
-			
-
-			
-			<div class="method-subsection declared-in-section">
-				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">BVReviewSubmission.h</code></p>
-			</div>
-			
-			
-		</div>
-	</div>
-</div><div class="section-method">
-	<a name="//api/name/campaignId" title="campaignId"></a>
-	<h3 class="method-title"><code><a href="#//api/name/campaignId">&nbsp;&nbsp;campaignId</a></code>
-</h3>
-
-	<div class="method-info">
-		<div class="pointy-thing"></div>
-
-		<div class="method-info-container">
-			
-			
-			<div class="method-subsection brief-description">
-				<p>Arbitrary text that may be saved alongside content to indicate vehicle by which content was captured, e.g. “post-purchase email”.</p>
-			</div>
-			
-		    
-
-			<div class="method-subsection method-declaration"><code>@property NSString *campaignId</code></div>
-
-		    
-			
-
-			
-
-			
-
-			
-
-			
-
-			
-
-			
-			<div class="method-subsection declared-in-section">
-				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">BVReviewSubmission.h</code></p>
-			</div>
-			
-			
-		</div>
-	</div>
-</div><div class="section-method">
-	<a name="//api/name/hostedAuthenticationEmail" title="hostedAuthenticationEmail"></a>
-	<h3 class="method-title"><code><a href="#//api/name/hostedAuthenticationEmail">&nbsp;&nbsp;hostedAuthenticationEmail</a></code>
-</h3>
-
-	<div class="method-info">
-		<div class="pointy-thing"></div>
-
-		<div class="method-info-container">
-			
-			
-			<div class="method-subsection brief-description">
-				<p>Email address where the submitter will receive the confirmation email. If you are configured to use hosted email authentication, this parameter is required. See the Authenticate User method for more information on hosted authentication.</p>
-			</div>
-			
-		    
-
-			<div class="method-subsection method-declaration"><code>@property NSString *hostedAuthenticationEmail</code></div>
-
-		    
-			
-
-			
-
-			
-
-			
-
-			
-
-			
-
-			
-			<div class="method-subsection declared-in-section">
-				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">BVReviewSubmission.h</code></p>
-			</div>
-			
-			
-		</div>
-	</div>
-</div><div class="section-method">
-	<a name="//api/name/hostedAuthenticationCallback" title="hostedAuthenticationCallback"></a>
-	<h3 class="method-title"><code><a href="#//api/name/hostedAuthenticationCallback">&nbsp;&nbsp;hostedAuthenticationCallback</a></code>
-</h3>
-
-	<div class="method-info">
-		<div class="pointy-thing"></div>
-
-		<div class="method-info-container">
-			
-			
-			<div class="method-subsection brief-description">
-				<p>URL of the link contained in the <a href="#//api/name/user">user</a> authentication email. This should point to a landing page where a web application exists to complete the <a href="#//api/name/user">user</a> authentication process. The host for the URL must be one of the domains configured for the client. The link in the email will contain a <a href="#//api/name/user">user</a> authentication token (authtoken) that is used to verify the submitter. If you are configured to use hosted email authentication, this parameter is required. See the hosted authentication tutorial for more information.</p>
-			</div>
-			
-		    
-
-			<div class="method-subsection method-declaration"><code>@property NSString *hostedAuthenticationCallback</code></div>
-
-		    
-			
-
-			
-
-			
-
 			
 
 			
@@ -870,12 +318,13 @@ A preview is like a dry run, but validation of the fields will occur through the
 			
 			
 			<div class="method-subsection brief-description">
-				<p>Value is text representing a <a href="#//api/name/user">user</a> comment to explain numerical Net Promoter score.</p>
+				<p>Value is text representing a user comment to explain numerical Net Promoter
+score.</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>@property NSString *netPromoterComment</code></div>
+			<div class="method-subsection method-declaration"><code>@property (nullable) NSString *netPromoterComment</code></div>
 
 		    
 			
@@ -911,12 +360,13 @@ A preview is like a dry run, but validation of the fields will occur through the
 			
 			
 			<div class="method-subsection brief-description">
-				<p>Value is positive integer between 1 and 10 representing a numerical <a href="#//api/name/rating">rating</a> in response to “How would you rate this company?”</p>
+				<p>Value is positive integer between 1 and 10 representing a numerical rating
+in response to “How would you rate this company?”</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>@property NSNumber *netPromoterScore</code></div>
+			<div class="method-subsection method-declaration"><code>@property (nullable) NSNumber *netPromoterScore</code></div>
 
 		    
 			
@@ -952,99 +402,13 @@ A preview is like a dry run, but validation of the fields will occur through the
 			
 			
 			<div class="method-subsection brief-description">
-				<p>Value is true or false; default is null – &ldquo;true&rdquo; or &ldquo;false&rdquo; answer to &ldquo;I would recommend this to a friend&rdquo;. Required dependent on client settings.</p>
+				<p>Value is true or false; default is null – &ldquo;true&rdquo; or &ldquo;false&rdquo; answer to &ldquo;I
+would recommend this to a friend&rdquo;. Required dependent on client settings.</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>@property NSNumber *isRecommended</code></div>
-
-		    
-			
-
-			
-
-			
-
-			
-
-			
-
-			
-
-			
-			<div class="method-subsection declared-in-section">
-				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">BVReviewSubmission.h</code></p>
-			</div>
-			
-			
-		</div>
-	</div>
-</div><div class="section-method">
-	<a name="//api/name/fingerPrint" title="fingerPrint"></a>
-	<h3 class="method-title"><code><a href="#//api/name/fingerPrint">&nbsp;&nbsp;fingerPrint</a></code>
-</h3>
-
-	<div class="method-info">
-		<div class="pointy-thing"></div>
-
-		<div class="method-info-container">
-			
-			
-			<div class="method-subsection brief-description">
-				<p>Fingerprint of content author&rsquo;s device. See the Authenticity Tutorial for more information.</p>
-			</div>
-			
-		    
-
-			<div class="method-subsection method-declaration"><code>@property NSString *fingerPrint</code></div>
-
-		    
-			
-
-			
-
-			
-
-			
-			<div class="method-subsection discussion-section">
-				<h4 class="method-subtitle">Discussion</h4>
-				<p>Per the Bazaarvoice Authenticity Policy, you must send a device fingerprint attached to each submission. If you fail to send a device fingerprint with your submission, Bazaarvoice may take any <a href="#//api/name/action">action</a> deemed necessary in Bazaarvoice’s sole discretion to protect the integrity of the network. Such actions may include but are not limited to: rejection of your content, halting syndication of your content on the Bazaarvoice network, revocation of your API key, or revocation of your API license.</p>
-			</div>
-			
-
-			
-
-			
-
-			
-			<div class="method-subsection declared-in-section">
-				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">BVReviewSubmission.h</code></p>
-			</div>
-			
-			
-		</div>
-	</div>
-</div><div class="section-method">
-	<a name="//api/name/photos" title="photos"></a>
-	<h3 class="method-title"><code><a href="#//api/name/photos">&nbsp;&nbsp;photos</a></code>
-</h3>
-
-	<div class="method-info">
-		<div class="pointy-thing"></div>
-
-		<div class="method-info-container">
-			
-			
-			<div class="method-subsection brief-description">
-				<p>An array of BVUploadablePhoto objects to attach to a review submission.</p>
-			</div>
-			
-		    
-
-			<div class="method-subsection method-declaration"><code>@property NSMutableArray&lt;BVUploadablePhoto*&gt; *photos</code></div>
+			<div class="method-subsection method-declaration"><code>@property (nullable) NSNumber *isRecommended</code></div>
 
 		    
 			
@@ -1085,7 +449,7 @@ A preview is like a dry run, but validation of the fields will occur through the
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>@property (readonly) NSString *productId</code></div>
+			<div class="method-subsection method-declaration"><code>@property (nonnull, readonly) NSString *productId</code></div>
 
 		    
 			
@@ -1119,35 +483,10 @@ A preview is like a dry run, but validation of the fields will occur through the
 
 		<div class="method-info-container">
 			
-			
-			<div class="method-subsection brief-description">
-				<p><a href="https://developer.bazaarvoice.com/apis/conversations/tutorials/field_types">https://developer.bazaarvoice.com/apis/conversations/tutorials/field_types</a>#additional-field</p>
-			</div>
-			
-		    
 
 			<div class="method-subsection method-declaration"><code>- (void)addAdditionalField:(nonnull NSString *)<em>fieldName</em> value:(nonnull NSString *)<em>value</em></code></div>
 
 		    
-			
-
-			
-
-			
-
-			
-
-			
-
-			
-
-			
-			<div class="method-subsection declared-in-section">
-				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">BVReviewSubmission.m</code></p>
-			</div>
-			
-			
 		</div>
 	</div>
 </div><div class="section-method">
@@ -1160,35 +499,10 @@ A preview is like a dry run, but validation of the fields will occur through the
 
 		<div class="method-info-container">
 			
-			
-			<div class="method-subsection brief-description">
-				<p><a href="https://developer.bazaarvoice.com/apis/conversations/tutorials/field_types">https://developer.bazaarvoice.com/apis/conversations/tutorials/field_types</a>#context-data-question</p>
-			</div>
-			
-		    
 
 			<div class="method-subsection method-declaration"><code>- (void)addContextDataValueString:(nonnull NSString *)<em>contextDataValueName</em> value:(nonnull NSString *)<em>value</em></code></div>
 
 		    
-			
-
-			
-
-			
-
-			
-
-			
-
-			
-
-			
-			<div class="method-subsection declared-in-section">
-				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">BVReviewSubmission.m</code></p>
-			</div>
-			
-			
 		</div>
 	</div>
 </div><div class="section-method">
@@ -1201,35 +515,10 @@ A preview is like a dry run, but validation of the fields will occur through the
 
 		<div class="method-info-container">
 			
-			
-			<div class="method-subsection brief-description">
-				<p><a href="https://developer.bazaarvoice.com/apis/conversations/tutorials/field_types">https://developer.bazaarvoice.com/apis/conversations/tutorials/field_types</a>#context-data-question</p>
-			</div>
-			
-		    
 
 			<div class="method-subsection method-declaration"><code>- (void)addContextDataValueBool:(nonnull NSString *)<em>contextDataValueName</em> value:(bool)<em>value</em></code></div>
 
 		    
-			
-
-			
-
-			
-
-			
-
-			
-
-			
-
-			
-			<div class="method-subsection declared-in-section">
-				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">BVReviewSubmission.m</code></p>
-			</div>
-			
-			
 		</div>
 	</div>
 </div><div class="section-method">
@@ -1242,35 +531,10 @@ A preview is like a dry run, but validation of the fields will occur through the
 
 		<div class="method-info-container">
 			
-			
-			<div class="method-subsection brief-description">
-				<p><a href="https://developer.bazaarvoice.com/apis/conversations/tutorials/field_types">https://developer.bazaarvoice.com/apis/conversations/tutorials/field_types</a>#rating-question&mdash;normal</p>
-			</div>
-			
-		    
 
-			<div class="method-subsection method-declaration"><code>- (void)addRatingQuestion:(nonnull NSString *)<em>ratingQuestionName</em> value:(int)<em>value</em></code></div>
+			<div class="method-subsection method-declaration"><code>- (void)addRatingQuestion:(nonnull NSString *)<em>ratingQuestionName</em> value:(NSInteger)<em>value</em></code></div>
 
 		    
-			
-
-			
-
-			
-
-			
-
-			
-
-			
-
-			
-			<div class="method-subsection declared-in-section">
-				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">BVReviewSubmission.m</code></p>
-			</div>
-			
-			
 		</div>
 	</div>
 </div><div class="section-method">
@@ -1283,35 +547,10 @@ A preview is like a dry run, but validation of the fields will occur through the
 
 		<div class="method-info-container">
 			
-			
-			<div class="method-subsection brief-description">
-				<p><a href="https://developer.bazaarvoice.com/apis/conversations/tutorials/field_types">https://developer.bazaarvoice.com/apis/conversations/tutorials/field_types</a>#rating-question&mdash;slider</p>
-			</div>
-			
-		    
 
 			<div class="method-subsection method-declaration"><code>- (void)addRatingSlider:(nonnull NSString *)<em>ratingQuestionName</em> value:(nonnull NSString *)<em>value</em></code></div>
 
 		    
-			
-
-			
-
-			
-
-			
-
-			
-
-			
-
-			
-			<div class="method-subsection declared-in-section">
-				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">BVReviewSubmission.m</code></p>
-			</div>
-			
-			
 		</div>
 	</div>
 </div><div class="section-method">
@@ -1324,35 +563,10 @@ A preview is like a dry run, but validation of the fields will occur through the
 
 		<div class="method-info-container">
 			
-			
-			<div class="method-subsection brief-description">
-				<p><a href="https://developer.bazaarvoice.com/apis/conversations/tutorials/field_types">https://developer.bazaarvoice.com/apis/conversations/tutorials/field_types</a>#tags&mdash;tag-dimensions</p>
-			</div>
-			
-		    
 
 			<div class="method-subsection method-declaration"><code>- (void)addPredefinedTagDimension:(nonnull NSString *)<em>tagQuestionId</em> tagId:(nonnull NSString *)<em>tagId</em> value:(nonnull NSString *)<em>value</em></code></div>
 
 		    
-			
-
-			
-
-			
-
-			
-
-			
-
-			
-
-			
-			<div class="method-subsection declared-in-section">
-				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">BVReviewSubmission.m</code></p>
-			</div>
-			
-			
 		</div>
 	</div>
 </div><div class="section-method">
@@ -1365,16 +579,65 @@ A preview is like a dry run, but validation of the fields will occur through the
 
 		<div class="method-info-container">
 			
+
+			<div class="method-subsection method-declaration"><code>- (void)addFreeformTagDimension:(nonnull NSString *)<em>tagQuestionId</em> tagNumber:(NSInteger)<em>tagNumber</em> value:(nonnull NSString *)<em>value</em></code></div>
+
+		    
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/getPasskey" title="getPasskey"></a>
+	<h3 class="method-title"><code><a href="#//api/name/getPasskey">&ndash;&nbsp;getPasskey</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+
+			<div class="method-subsection method-declaration"><code>- (nonnull NSString *)getPasskey</code></div>
+
+		    
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/addVideoURL:withCaption:" title="addVideoURL:withCaption:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/addVideoURL:withCaption:">&ndash;&nbsp;addVideoURL:withCaption:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
 			
 			<div class="method-subsection brief-description">
-				<p><a href="https://developer.bazaarvoice.com/apis/conversations/tutorials/field_types">https://developer.bazaarvoice.com/apis/conversations/tutorials/field_types</a>#tags&mdash;tag-dimensions</p>
+				<p>Submit a Youtube video link with UGC</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>- (void)addFreeformTagDimension:(nonnull NSString *)<em>tagQuestionId</em> tagNumber:(int)<em>tagNumber</em> value:(nonnull NSString *)<em>value</em></code></div>
+			<div class="method-subsection method-declaration"><code>- (void)addVideoURL:(nonnull NSString *)<em>url</em> withCaption:(nullable NSString *)<em>videoCaption</em></code></div>
 
 		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>url</code></th>
+						<td><p>The full URL string of the Youtube video</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>videoCaption</code></th>
+						<td><p>The use-provided caption for the video</p></td>
+					</tr>
+				
+				</table>
+			</div>
 			
 
 			
@@ -1390,7 +653,7 @@ A preview is like a dry run, but validation of the fields will occur through the
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">BVReviewSubmission.m</code></p>
+				<p><code class="declared-in-ref">BVReviewSubmission.h</code></p>
 			</div>
 			
 			
@@ -1411,7 +674,7 @@ A preview is like a dry run, but validation of the fields will occur through the
 				<footer>
 					<div class="footer-copyright">
 						
-						<p class="copyright">Copyright &copy; 2016 Bazaarvoice. All rights reserved. Updated: 2016-10-28</p>
+						<p class="copyright">Copyright &copy; 2018 Bazaarvoice. All rights reserved. Updated: 2018-03-06</p>
 						
 						
 						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>
