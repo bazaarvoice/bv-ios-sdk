@@ -1,4 +1,4 @@
-The Bazaarvoice SDK is an iOS static library that provides an easy way to generate REST calls to the Bazaarvoice API.
+The Bazaarvoice SDK is an iOS framework that provides an easy way to generate REST calls to the Bazaarvoice API.
 
 ## SDK Organization:
 
@@ -6,26 +6,44 @@ The BVSDK is comprised of 4 main product features, also know as SDK modules. ALl
 
 The SDK modules are:
 
-### BVAdvertising
+### BVCommon
 
-Wraps the ability to use 1st party data for serving up custom DFP advertisements.
+Global dependencies and helper tools for the below modules
+
+### BVCommonUI
+
+Global UI dependencies and helper tools for the below modules
+
+### BVAnalytics
+
+BVPixel; analytics tracking of transaction and non-commerce analytics.
 
 ### BVConversations
 
-API and analytics for the Bazaarvoice Conversations API.
+API and analytics for the Conversations API.
+
+### BVConversationsStores
+
+API and analytics for the Conversations API related to Stores.
+
+### BVConversationsUI
+
+UI components related to the Conversations API.
 
 ### BVCurations
 
-API, UICollectionView widget, and analytics for the Curations REST API.
+API and analytics for the Curations API.
+
+### BVCurationsUI
+
+UI components related to the Conversations API.
+
+### BVNotifications
+
+Notification tools related to BVEvents.
 
 ### BVRecommendations
 
-API, UI widgets, and analytics for the Product Recommendations REST API.
+API, UI widgets, and analytics for the Product Recommendations API.
 
-### BV Pixel
-
-BVAnalyics also includes the BV Pixel feature for analytics tracking of transaction and non-commerce analytics.
-
-Please consult the [BVSDK Developer Wiki](https://github.com/bazaarvoice/bv-ios-sdk/wiki) for more details on installing and using the SDK modules.
-
-
+Please consult the [BVSDK Docs](https://bazaarvoice.github.io/bv-ios-sdk/) for more details on installing and using the SDK modules.

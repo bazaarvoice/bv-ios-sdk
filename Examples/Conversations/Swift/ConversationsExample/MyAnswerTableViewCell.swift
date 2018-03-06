@@ -9,14 +9,14 @@ import UIKit
 import BVSDK
 
 class MyAnswerTableViewCell: BVAnswerTableViewCell {
-
-    @IBOutlet weak var answerTestLabel : UILabel!
-    
-    override var answer: BVAnswer? {
-        didSet {
-            answerTestLabel.text = answer?.answerText
-        }
+  
+  @IBOutlet weak var answerTestLabel : UILabel!
+  
+  override var answer: BVAnswer? {
+    didSet {
+      answerTestLabel.text = answer?.answerText
     }
-    
-
+  }
+  
+  
 }
