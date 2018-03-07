@@ -9,7 +9,7 @@
 import XCTest
 @testable import BVSDK
 
-class PhotoUploadTests: XCTestCase {
+class PhotoUploadTests: BVBaseStubTestCase {
   
   override func setUp() {
     super.setUp()
@@ -23,6 +23,12 @@ class PhotoUploadTests: XCTestCase {
   
   func testUploadablePhotoPNGSuccessWithNetworkDelegate() {
     let mainExpectation = self.expectation(description: "")
+    
+    let sequenceFiles:[String] =
+      [
+        "testUploadablePhotoPNGSuccess.json"
+    ]
+    addStubWith200Response(forJSONFilesNamed: sequenceFiles)
     
     if let image = PhotoUploadTests.createPNG() {
       let photo =
@@ -60,6 +66,12 @@ class PhotoUploadTests: XCTestCase {
   func testUploadablePhotoPNGSuccess() {
     let expectation = self.expectation(description: "")
     
+    let sequenceFiles:[String] =
+      [
+        "testUploadablePhotoPNGSuccess.json"
+    ]
+    addStubWith200Response(forJSONFilesNamed: sequenceFiles)
+    
     if let image = PhotoUploadTests.createPNG() {
       let photo =
         BVUploadablePhoto(photo: image, photoCaption: "Very photogenic")
@@ -82,6 +94,12 @@ class PhotoUploadTests: XCTestCase {
   
   func testUploadablePhotoJPGTooLargeSuccess() {
     let expectation = self.expectation(description: "")
+    
+    let sequenceFiles:[String] =
+      [
+        "testUploadablePhotoJPGTooLargeSuccess.json"
+    ]
+    addStubWith200Response(forJSONFilesNamed: sequenceFiles)
     
     if let image = PhotoUploadTests.createJPG() {
       let photo =
@@ -107,6 +125,12 @@ class PhotoUploadTests: XCTestCase {
     let photo =
       BVUploadablePhoto(
         photo: UIImage(), photoCaption: "Very photogenic")
+    
+    let sequenceFiles:[String] =
+      [
+        "testUploadablePhotoFailure.json"
+    ]
+    addStubWith200Response(forJSONFilesNamed: sequenceFiles)
     
     // upload photo, make sure it returns a non-empty URL
     let expectation = self.expectation(description: "")

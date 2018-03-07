@@ -20,13 +20,23 @@
 
 // Will stub out calls to bazaarvoice.com, return 200, and a resultFile with
 // Content-Type = application/json
-- (void)addStubWith200ResponseForJSONFileNamed:(NSString *)resultFile;
+- (void)addStubWith200ResponseForJSONFileNamed:(nonnull NSString *)resultFile
+                               withPassingTest:
+                                   (nullable OHHTTPStubsTestBlock)testBlock;
+- (void)addStubWith200ResponseForJSONFileNamed:(nonnull NSString *)resultFile;
+
+- (void)addStubWith200ResponseForJSONFilesNamed:
+            (nonnull NSArray<NSString *> *)resultFileArray
+                                withPassingTest:
+                                    (nullable OHHTTPStubsTestBlock)testBlock;
+- (void)addStubWith200ResponseForJSONFilesNamed:
+    (nonnull NSArray<NSString *> *)resultFileArray;
 
 // Use this method to stub calls to bazaarvoice and add any resultFile, headers,
 // and HTTP status you want
-- (void)addStubWithResultFile:(NSString *)resultFile
+- (void)addStubWithResultFile:(nonnull NSString *)resultFile
                    statusCode:(NSInteger)httpStatus
-                  withHeaders:(NSDictionary *)httpHeaders;
+                  withHeaders:(nonnull NSDictionary *)httpHeaders;
 
 // Use these methods to protect against XCode going on to run other tests until
 // this test suite has completed all tests. The problem is that even if you are

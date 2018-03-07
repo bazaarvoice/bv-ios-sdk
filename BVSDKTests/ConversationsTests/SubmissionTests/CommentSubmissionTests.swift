@@ -8,7 +8,7 @@
 import XCTest
 @testable import BVSDK
 
-class CommentSubmissionTests: XCTestCase {
+class CommentSubmissionTests: BVBaseStubTestCase {
   
   override func setUp() {
     super.setUp()
@@ -26,6 +26,12 @@ class CommentSubmissionTests: XCTestCase {
   func testSubmitReviewComment() {
     
     let expectation = self.expectation(description: "testSubmitReviewComment")
+    
+    let sequenceFiles:[String] =
+      [
+        "testSubmitReviewComment.json"
+    ]
+    addStubWith200Response(forJSONFilesNamed: sequenceFiles)
     
     let commentText = "Comment text Comment text Comment text Comment text Comment text Comment text Comment text Comment text"
     let commentTitle = "Comment title"
@@ -64,9 +70,15 @@ class CommentSubmissionTests: XCTestCase {
     
   }
   
-  func testSumbitCommentWithError() {
+  func testSumbitReviewCommentWithError() {
     
     let expectation = self.expectation(description: "testSubmitReviewComment")
+    
+    let sequenceFiles:[String] =
+      [
+        "testSumbitReviewCommentWithError.json"
+    ]
+    addStubWith200Response(forJSONFilesNamed: sequenceFiles)
     
     let commentText = "short text"
     let commentRequest = BVCommentSubmission(reviewId: "12345", withCommentText: commentText)

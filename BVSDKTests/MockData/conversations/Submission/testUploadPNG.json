@@ -1,0 +1,53 @@
+{
+  "Locale": "en_US",
+  "Errors": [],
+  "Form": [
+           {
+           "Type": "Field",
+           "Id": "photo"
+           }
+           ],
+  "FormErrors": {},
+  "SubmissionId": null,
+  "Data": {
+    "Fields": {
+      "photo": {
+        "Options": [],
+        "Type": "FileInput",
+        "Required": null,
+        "Label": null,
+        "Value": null,
+        "MinLength": null,
+        "Id": "photo",
+        "MaxLength": null,
+        "Default": null
+      }
+    },
+    "Groups": {},
+    "FieldsOrder": [
+                    "photo"
+                    ],
+    "GroupsOrder": []
+  },
+  "Photo": {
+    "Sizes": {
+      "normal": {
+        "Id": "normal",
+        "Url": "https://answers.apitestcustomer.bazaarvoice.com/bvstaging/answers/submit/5555/ps_amazon_s3_37jyqa37vk6huyox0b1ttnkhw/photo.jpg"
+      },
+      "thumbnail": {
+        "Id": "thumbnail",
+        "Url": "https://answers.apitestcustomer.bazaarvoice.com/bvstaging/answers/submit/5555/ps_amazon_s3_37jyqa37vk6huyox0b1ttnkhw/photoThumb.jpg"
+      }
+    },
+    "Id": "37jyqa37vk6huyox0b1ttnkhw",
+    "SizesOrder": [
+                   "thumbnail",
+                   "normal"
+                   ],
+    "Caption": null
+  },
+  "TypicalHoursToPost": null,
+  "AuthorSubmissionToken": null,
+  "HasErrors": false
+}

@@ -9,7 +9,7 @@
 import XCTest
 @testable import BVSDK
 
-class ReviewSubmissionTests: XCTestCase {
+class ReviewSubmissionTests: BVBaseStubTestCase {
   
   override func setUp() {
     super.setUp()
@@ -24,6 +24,14 @@ class ReviewSubmissionTests: XCTestCase {
   func testSubmitReviewWithPhoto() {
     let expectation =
       self.expectation(description: "testSubmitReviewWithPhoto")
+    
+    let sequenceFiles:[String] =
+      [
+        "testSubmitReviewWithPhotoPreview.json",
+        "testUploadablePhotoPNGSuccess.json",
+        "testSubmitReviewWithPhotoSubmit.json"
+    ]
+    addStubWith200Response(forJSONFilesNamed: sequenceFiles)
     
     let review = self.fillOutReview(.submit)
     
@@ -46,6 +54,14 @@ class ReviewSubmissionTests: XCTestCase {
   func testSubmitReviewWithPhotoAndNetworkDelegate() {
     let mainExpectation =
       self.expectation(description: "testSubmitReviewWithPhoto")
+    
+    let sequenceFiles:[String] =
+      [
+        "testSubmitReviewWithPhotoPreview.json",
+        "testUploadablePhotoPNGSuccess.json",
+        "testSubmitReviewWithPhotoSubmit.json"
+    ]
+    addStubWith200Response(forJSONFilesNamed: sequenceFiles)
     
     let review = self.fillOutReview(.submit)
     
@@ -78,10 +94,16 @@ class ReviewSubmissionTests: XCTestCase {
     waitForExpectations(timeout: 10, handler: nil)
   }
   
-  func testPreviewReviewWithPhoto() {
+  func testSubmitReviewWithPhotoPreview() {
     
     let expectation =
       self.expectation(description: "testPreviewReviewWithPhoto")
+    
+    let sequenceFiles:[String] =
+      [
+        "testSubmitReviewWithPhotoPreview.json"
+    ]
+    addStubWith200Response(forJSONFilesNamed: sequenceFiles)
     
     let review = self.fillOutReview(.preview)
     
@@ -100,10 +122,16 @@ class ReviewSubmissionTests: XCTestCase {
   let VIDEO_URL = "https://www.youtube.com/watch?v=oHg5SJYRHA0"
   let VIDEO_CAPTION = "Very videogenic"
   
-  func testPreviewReviewWithVideo() {
+  func testSubmitReviewWithVideoPreview() {
     
     let expectation =
       self.expectation(description: "testPreviewReviewWithVideo")
+    
+    let sequenceFiles:[String] =
+      [
+        "testSubmitReviewWithVideoPreview.json"
+    ]
+    addStubWith200Response(forJSONFilesNamed: sequenceFiles)
     
     let review = self.fillOutReview(.preview)
     review.addVideoURL(VIDEO_URL, withCaption: VIDEO_CAPTION)
@@ -120,48 +148,15 @@ class ReviewSubmissionTests: XCTestCase {
     waitForExpectations(timeout: 10, handler: nil)
   }
   
-  func fillOutReview(_ action : BVSubmissionAction) -> BVReviewSubmission {
-    let review = BVReviewSubmission(
-      reviewTitle: "review title",
-      reviewText: "more than 50 more than 50 more than 50 more than 50 more" +
-      "than 50",
-      rating: 4,
-      productId: "test1")
-    
-    let randomId = String(arc4random())
-    
-    review.campaignId = "BV_REVIEW_DISPLAY"
-    review.locale = "en_US"
-    review.sendEmailAlertWhenCommented = true
-    review.sendEmailAlertWhenPublished = true
-    review.userNickname = "UserNickname" + randomId
-    review.netPromoterScore = 5
-    review.netPromoterComment = "Never!"
-    review.userId = "UserId" + randomId
-    review.userEmail = "developer@bazaarvoice.com"
-    review.agreedToTermsAndConditions = true
-    review.action = action
-    
-    review.addContextDataValueBool("VerifiedPurchaser", value: false)
-    review.addContextDataValueString("Age", value: "18to24")
-    review.addContextDataValueString("Gender", value: "Male")
-    review.addRatingQuestion("Quality", value: 1)
-    review.addRatingQuestion("Value", value: 3)
-    review.addRatingQuestion("HowDoes", value: 4)
-    review.addRatingQuestion("Fit", value: 3)
-    review.addCustomSubmissionParameter("_foo", withValue: "bar")
-    
-    if let image = PhotoUploadTests.createPNG() {
-      review.addPhoto(image, withPhotoCaption: "Very photogenic")
-    }
-    
-    return review
-  }
-  
-  
   func testSubmitReviewFailure() {
     let expectation =
       self.expectation(description: "testSubmitReviewFailure")
+    
+    let sequenceFiles:[String] =
+      [
+        "testSubmitReviewFailure.json"
+    ]
+    addStubWith200Response(forJSONFilesNamed: sequenceFiles)
     
     let review = BVReviewSubmission(
       reviewTitle: "", reviewText: "", rating: 123, productId: "1000001")
@@ -184,6 +179,12 @@ class ReviewSubmissionTests: XCTestCase {
   func testSubmitReviewFailureFormCodeParsing() {
     let expectation =
       self.expectation(description: "testSubmitReviewFailure")
+    
+    let sequenceFiles:[String] =
+      [
+        "testSubmitReviewFailureFormCodeParsing.json"
+    ]
+    addStubWith200Response(forJSONFilesNamed: sequenceFiles)
     
     let review = BVReviewSubmission(
       reviewTitle: "", reviewText: "", rating: 123, productId: "1000001")
@@ -231,6 +232,12 @@ class ReviewSubmissionTests: XCTestCase {
     let expectation =
       self.expectation(description: "testSubmitReviewFailure")
     
+    let sequenceFiles:[String] =
+      [
+        "testSubmitReviewFailureCodeParsing.json"
+    ]
+    addStubWith200Response(forJSONFilesNamed: sequenceFiles)
+    
     let review = BVReviewSubmission(
       reviewTitle: "", reviewText: "", rating: 123, productId: "")
     review.userNickname = "cgil"
@@ -259,5 +266,43 @@ class ReviewSubmissionTests: XCTestCase {
       expectation.fulfill()
     })
     waitForExpectations(timeout: 10, handler: nil)
+  }
+  
+  func fillOutReview(_ action : BVSubmissionAction) -> BVReviewSubmission {
+    let review = BVReviewSubmission(
+      reviewTitle: "review title",
+      reviewText: "more than 50 more than 50 more than 50 more than 50 more" +
+      "than 50",
+      rating: 4,
+      productId: "test1")
+    
+    let randomId = String(arc4random())
+    
+    review.campaignId = "BV_REVIEW_DISPLAY"
+    review.locale = "en_US"
+    review.sendEmailAlertWhenCommented = true
+    review.sendEmailAlertWhenPublished = true
+    review.userNickname = "UserNickname" + randomId
+    review.netPromoterScore = 5
+    review.netPromoterComment = "Never!"
+    review.userId = "UserId" + randomId
+    review.userEmail = "developer@bazaarvoice.com"
+    review.agreedToTermsAndConditions = true
+    review.action = action
+    
+    review.addContextDataValueBool("VerifiedPurchaser", value: false)
+    review.addContextDataValueString("Age", value: "18to24")
+    review.addContextDataValueString("Gender", value: "Male")
+    review.addRatingQuestion("Quality", value: 1)
+    review.addRatingQuestion("Value", value: 3)
+    review.addRatingQuestion("HowDoes", value: 4)
+    review.addRatingQuestion("Fit", value: 3)
+    review.addCustomSubmissionParameter("_foo", withValue: "bar")
+    
+    if let image = PhotoUploadTests.createPNG() {
+      review.addPhoto(image, withPhotoCaption: "Very photogenic")
+    }
+    
+    return review
   }
 }

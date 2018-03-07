@@ -1,0 +1,16 @@
+{
+  "Locale": null,
+  "Errors": [
+             {
+             "Message": "Invalid value for contentid 'badidshouldmakeerror'",
+             "Code": "ERROR_PARAM_INVALID_PARAMETERS"
+             }
+             ],
+  "Form": [],
+  "FormErrors": {},
+  "SubmissionId": null,
+  "Data": {},
+  "TypicalHoursToPost": null,
+  "AuthorSubmissionToken": null,
+  "HasErrors": true
+}

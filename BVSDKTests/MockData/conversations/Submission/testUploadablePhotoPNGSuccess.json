@@ -1,0 +1,53 @@
+{
+  "Locale": "en_US",
+  "Errors": [],
+  "Form": [
+           {
+           "Type": "Field",
+           "Id": "photo"
+           }
+           ],
+  "FormErrors": {},
+  "SubmissionId": null,
+  "Data": {
+    "Fields": {
+      "photo": {
+        "Options": [],
+        "Type": "FileInput",
+        "Required": null,
+        "Label": null,
+        "Value": null,
+        "MinLength": null,
+        "Id": "photo",
+        "MaxLength": null,
+        "Default": null
+      }
+    },
+    "Groups": {},
+    "FieldsOrder": [
+                    "photo"
+                    ],
+    "GroupsOrder": []
+  },
+  "Photo": {
+    "Sizes": {
+      "normal": {
+        "Id": "normal",
+        "Url": "https://reviews.apitestcustomer.bazaarvoice.com/bvstaging/submit/5556/ps_amazon_s3_5xbeeqai83qpvoueqkame61y0/photo.jpg"
+      },
+      "thumbnail": {
+        "Id": "thumbnail",
+        "Url": "https://reviews.apitestcustomer.bazaarvoice.com/bvstaging/submit/5556/ps_amazon_s3_5xbeeqai83qpvoueqkame61y0/photoThumb.jpg"
+      }
+    },
+    "Id": "5xbeeqai83qpvoueqkame61y0",
+    "SizesOrder": [
+                   "thumbnail",
+                   "normal"
+                   ],
+    "Caption": null
+  },
+  "TypicalHoursToPost": null,
+  "AuthorSubmissionToken": null,
+  "HasErrors": false
+}

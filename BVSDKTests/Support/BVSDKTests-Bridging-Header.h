@@ -10,6 +10,7 @@
 
 #import "BVBaseProductRequest_Private.h"
 #import "BVBaseReviewsRequest_Private.h"
+#import "BVBaseStubTestCase.h"
 #import "BVCommaUtil.h"
 #import "BVCommentsRequest_Private.h"
 #import "BVNetworkDelegateTestsDelegate.h"

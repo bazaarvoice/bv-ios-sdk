@@ -9,7 +9,7 @@
 import XCTest
 @testable import BVSDK
 
-class StoreReviewSubmissionTests: XCTestCase {
+class StoreReviewSubmissionTests: BVBaseStubTestCase {
   
   override func setUp() {
     super.setUp()
@@ -23,6 +23,12 @@ class StoreReviewSubmissionTests: XCTestCase {
     
     let expectation = self.expectation(description: "testSubmitStoreReviewWithPhoto")
     
+    let sequenceFiles:[String] =
+      [
+        "testSubmitStoreReviewWithPhoto.json"
+    ]
+    addStubWith200Response(forJSONFilesNamed: sequenceFiles)
+    
     let review = self.fillOutReview()
     review.submit({ (reviewSubmission) in
       expectation.fulfill()
@@ -34,38 +40,14 @@ class StoreReviewSubmissionTests: XCTestCase {
     waitForExpectations(timeout: 10, handler: nil)
   }
   
-  func fillOutReview() -> BVStoreReviewSubmission {
-    let review = BVStoreReviewSubmission(reviewTitle: "The best store ever!",
-                                         reviewText: "The store has some of the friendliest staff, and very knowledgable!",
-                                         rating: 5,
-                                         storeId: "1")
-    
-    let randomId = String(arc4random())
-    
-    review.locale = "en_US"
-    review.sendEmailAlertWhenCommented = true
-    review.sendEmailAlertWhenPublished = true
-    review.userNickname = "UserNickname" + randomId
-    //review.user = "userField" + randomId
-    review.userId = "userField" + randomId
-    review.netPromoterScore = 5
-    review.userEmail = "developer@bazaarvoice.com"
-    review.agreedToTermsAndConditions = true
-    review.action = .preview
-    
-    review.addContextDataValueBool("VerifiedPurchaser", value: false)
-    review.addContextDataValueString("Age", value: "18to24")
-    review.addContextDataValueString("Gender", value: "Male")
-    review.addRatingQuestion("Cleanliness", value: 1)
-    review.addRatingQuestion("HelpfullNess", value: 3)
-    review.addRatingQuestion("Inventory", value: 4)
-    
-    return review
-  }
-  
-  
   func testSubmitReviewFailureStore() {
     let expectation = self.expectation(description: "testSubmitReviewFailureStore")
+    
+    let sequenceFiles:[String] =
+      [
+        "testSubmitReviewFailureStore.json"
+    ]
+    addStubWith200Response(forJSONFilesNamed: sequenceFiles)
     
     let review = BVStoreReviewSubmission(reviewTitle: "", reviewText: "", rating: 123, storeId: "1000001")
     review.userNickname = "cgil"
@@ -83,4 +65,31 @@ class StoreReviewSubmissionTests: XCTestCase {
     waitForExpectations(timeout: 10, handler: nil)
   }
   
+  func fillOutReview() -> BVStoreReviewSubmission {
+    let review = BVStoreReviewSubmission(reviewTitle: "The best store ever!",
+                                         reviewText: "The store has some of the friendliest staff, and very knowledgable!",
+                                         rating: 5,
+                                         storeId: "1")
+    
+    let randomId = String(arc4random())
+    
+    review.locale = "en_US"
+    review.sendEmailAlertWhenCommented = true
+    review.sendEmailAlertWhenPublished = true
+    review.userNickname = "UserNickname" + randomId
+    review.userId = "userField" + randomId
+    review.netPromoterScore = 5
+    review.userEmail = "developer@bazaarvoice.com"
+    review.agreedToTermsAndConditions = true
+    review.action = .preview
+    
+    review.addContextDataValueBool("VerifiedPurchaser", value: false)
+    review.addContextDataValueString("Age", value: "18to24")
+    review.addContextDataValueString("Gender", value: "Male")
+    review.addRatingQuestion("Cleanliness", value: 1)
+    review.addRatingQuestion("HelpfullNess", value: 3)
+    review.addRatingQuestion("Inventory", value: 4)
+    
+    return review
+  }
 }
