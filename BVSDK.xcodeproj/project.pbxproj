@@ -533,6 +533,21 @@
 		B5A764E31FE191AE00B5DC9A /* BVUploadableStorePhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = B5A764E11FE191AE00B5DC9A /* BVUploadableStorePhoto.m */; };
 		B5A764E61FE191BA00B5DC9A /* BVStoreReviewSubmission.h in Headers */ = {isa = PBXBuildFile; fileRef = B5A764E41FE191BA00B5DC9A /* BVStoreReviewSubmission.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B5A764E71FE191BA00B5DC9A /* BVStoreReviewSubmission.m in Sources */ = {isa = PBXBuildFile; fileRef = B5A764E51FE191BA00B5DC9A /* BVStoreReviewSubmission.m */; };
+		B5A7B51920503E0900494F83 /* testSubmitAnswerWithPhotoPreview.json in Resources */ = {isa = PBXBuildFile; fileRef = B5A7B51820503E0900494F83 /* testSubmitAnswerWithPhotoPreview.json */; };
+		B5A7B51E205049D100494F83 /* testUploadPNG.json in Resources */ = {isa = PBXBuildFile; fileRef = B5A7B51D205049D100494F83 /* testUploadPNG.json */; };
+		B5A7B52020504A8800494F83 /* testSubmitAnswerWithPhotoSubmit.json in Resources */ = {isa = PBXBuildFile; fileRef = B5A7B51F20504A8800494F83 /* testSubmitAnswerWithPhotoSubmit.json */; };
+		B5A7B52220504F3000494F83 /* testSubmitAnswerFailure.json in Resources */ = {isa = PBXBuildFile; fileRef = B5A7B52120504F3000494F83 /* testSubmitAnswerFailure.json */; };
+		B5A7B524205059FA00494F83 /* testSubmitReviewComment.json in Resources */ = {isa = PBXBuildFile; fileRef = B5A7B523205059FA00494F83 /* testSubmitReviewComment.json */; };
+		B5A7B52620505BCC00494F83 /* testSumbitReviewCommentWithError.json in Resources */ = {isa = PBXBuildFile; fileRef = B5A7B52520505BCC00494F83 /* testSumbitReviewCommentWithError.json */; };
+		B5A7B52820505E0900494F83 /* testSubmitFeedbackHelpfulness.json in Resources */ = {isa = PBXBuildFile; fileRef = B5A7B52720505E0900494F83 /* testSubmitFeedbackHelpfulness.json */; };
+		B5A7B52A20505E9600494F83 /* testSubmitFeedbackFlag.json in Resources */ = {isa = PBXBuildFile; fileRef = B5A7B52920505E9600494F83 /* testSubmitFeedbackFlag.json */; };
+		B5A7B52C20505EBA00494F83 /* testSubmitFeedbackFailure.json in Resources */ = {isa = PBXBuildFile; fileRef = B5A7B52B20505EBA00494F83 /* testSubmitFeedbackFailure.json */; };
+		B5A7B52E205072D000494F83 /* testUploadablePhotoPNGSuccess.json in Resources */ = {isa = PBXBuildFile; fileRef = B5A7B52D205072D000494F83 /* testUploadablePhotoPNGSuccess.json */; };
+		B5A7B530205072EB00494F83 /* testUploadablePhotoJPGTooLargeSuccess.json in Resources */ = {isa = PBXBuildFile; fileRef = B5A7B52F205072EB00494F83 /* testUploadablePhotoJPGTooLargeSuccess.json */; };
+		B5A7B5322050730500494F83 /* testUploadablePhotoFailure.json in Resources */ = {isa = PBXBuildFile; fileRef = B5A7B5312050730500494F83 /* testUploadablePhotoFailure.json */; };
+		B5A7B5342050758300494F83 /* testSubmitQuestionWithPhotoPreview.json in Resources */ = {isa = PBXBuildFile; fileRef = B5A7B5332050758300494F83 /* testSubmitQuestionWithPhotoPreview.json */; };
+		B5A7B5382050764D00494F83 /* testSubmitQuestionFailure.json in Resources */ = {isa = PBXBuildFile; fileRef = B5A7B5372050764D00494F83 /* testSubmitQuestionFailure.json */; };
+		B5A7B53C20507A6A00494F83 /* testSubmitQuestionWithPhotoSubmit.json in Resources */ = {isa = PBXBuildFile; fileRef = B5A7B53B20507A6A00494F83 /* testSubmitQuestionWithPhotoSubmit.json */; };
 		B5A92D961FE85EEE008DA17C /* BVFeedbackSubmission.h in Headers */ = {isa = PBXBuildFile; fileRef = B5A92D951FE85EEE008DA17C /* BVFeedbackSubmission.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B5BE768A200E984B002BA818 /* BVBulkRatingFilterValue.h in Headers */ = {isa = PBXBuildFile; fileRef = B5BE7689200E97DB002BA818 /* BVBulkRatingFilterValue.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B5BE768C200E9FA0002BA818 /* BVCommentFilterValue.h in Headers */ = {isa = PBXBuildFile; fileRef = B5BE768B200E9F34002BA818 /* BVCommentFilterValue.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -557,6 +572,16 @@
 		B5BE787720113462002BA818 /* BVBulkRatingIncludeTypeValue.h in Headers */ = {isa = PBXBuildFile; fileRef = B5BE787620113462002BA818 /* BVBulkRatingIncludeTypeValue.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B5BE787A20113A32002BA818 /* BVBulkRatingIncludeType.h in Headers */ = {isa = PBXBuildFile; fileRef = B5BE787820113A32002BA818 /* BVBulkRatingIncludeType.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		B5BE787B20113A32002BA818 /* BVBulkRatingIncludeType.m in Sources */ = {isa = PBXBuildFile; fileRef = B5BE787920113A32002BA818 /* BVBulkRatingIncludeType.m */; };
+		B5D7E83220507D9100DEB434 /* testSubmitReviewWithPhotoPreview.json in Resources */ = {isa = PBXBuildFile; fileRef = B5D7E83120507D9100DEB434 /* testSubmitReviewWithPhotoPreview.json */; };
+		B5D7E83620507DCB00DEB434 /* testSubmitReviewWithPhotoSubmit.json in Resources */ = {isa = PBXBuildFile; fileRef = B5D7E83520507DCB00DEB434 /* testSubmitReviewWithPhotoSubmit.json */; };
+		B5D7E83820507E3300DEB434 /* testSubmitReviewWithVideoPreview.json in Resources */ = {isa = PBXBuildFile; fileRef = B5D7E83720507E3300DEB434 /* testSubmitReviewWithVideoPreview.json */; };
+		B5D7E83A20507E5300DEB434 /* testSubmitReviewFailure.json in Resources */ = {isa = PBXBuildFile; fileRef = B5D7E83920507E5300DEB434 /* testSubmitReviewFailure.json */; };
+		B5D7E83C20507E6D00DEB434 /* testSubmitReviewFailureFormCodeParsing.json in Resources */ = {isa = PBXBuildFile; fileRef = B5D7E83B20507E6D00DEB434 /* testSubmitReviewFailureFormCodeParsing.json */; };
+		B5D7E83E20507E8400DEB434 /* testSubmitReviewFailureCodeParsing.json in Resources */ = {isa = PBXBuildFile; fileRef = B5D7E83D20507E8400DEB434 /* testSubmitReviewFailureCodeParsing.json */; };
+		B5D7E840205083EC00DEB434 /* testSubmitStoreReviewWithPhoto.json in Resources */ = {isa = PBXBuildFile; fileRef = B5D7E83F205083EC00DEB434 /* testSubmitStoreReviewWithPhoto.json */; };
+		B5D7E8422050840E00DEB434 /* testSubmitReviewFailureStore.json in Resources */ = {isa = PBXBuildFile; fileRef = B5D7E8412050840E00DEB434 /* testSubmitReviewFailureStore.json */; };
+		B5D7E8442051F4A900DEB434 /* BVAnalyticsManager+Testing.h in Headers */ = {isa = PBXBuildFile; fileRef = B5D7E8432051F4A900DEB434 /* BVAnalyticsManager+Testing.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		B5D7E846205312DA00DEB434 /* BVAuthenticatedUser+Testing.h in Headers */ = {isa = PBXBuildFile; fileRef = B5D7E845205312DA00DEB434 /* BVAuthenticatedUser+Testing.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		B5DDA04E1FE8633800C47C01 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B5DDA04D1FE8633800C47C01 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
@@ -1092,6 +1117,21 @@
 		B5A764E11FE191AE00B5DC9A /* BVUploadableStorePhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVUploadableStorePhoto.m; sourceTree = "<group>"; };
 		B5A764E41FE191BA00B5DC9A /* BVStoreReviewSubmission.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BVStoreReviewSubmission.h; path = BVSDK/BVConversationsStores/Submission/Review/BVStoreReviewSubmission.h; sourceTree = SOURCE_ROOT; };
 		B5A764E51FE191BA00B5DC9A /* BVStoreReviewSubmission.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BVStoreReviewSubmission.m; path = BVSDK/BVConversationsStores/Submission/Review/BVStoreReviewSubmission.m; sourceTree = SOURCE_ROOT; };
+		B5A7B51820503E0900494F83 /* testSubmitAnswerWithPhotoPreview.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = testSubmitAnswerWithPhotoPreview.json; sourceTree = "<group>"; };
+		B5A7B51D205049D100494F83 /* testUploadPNG.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = testUploadPNG.json; sourceTree = "<group>"; };
+		B5A7B51F20504A8800494F83 /* testSubmitAnswerWithPhotoSubmit.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = testSubmitAnswerWithPhotoSubmit.json; sourceTree = "<group>"; };
+		B5A7B52120504F3000494F83 /* testSubmitAnswerFailure.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = testSubmitAnswerFailure.json; sourceTree = "<group>"; };
+		B5A7B523205059FA00494F83 /* testSubmitReviewComment.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = testSubmitReviewComment.json; sourceTree = "<group>"; };
+		B5A7B52520505BCC00494F83 /* testSumbitReviewCommentWithError.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = testSumbitReviewCommentWithError.json; sourceTree = "<group>"; };
+		B5A7B52720505E0900494F83 /* testSubmitFeedbackHelpfulness.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = testSubmitFeedbackHelpfulness.json; sourceTree = "<group>"; };
+		B5A7B52920505E9600494F83 /* testSubmitFeedbackFlag.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = testSubmitFeedbackFlag.json; sourceTree = "<group>"; };
+		B5A7B52B20505EBA00494F83 /* testSubmitFeedbackFailure.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = testSubmitFeedbackFailure.json; sourceTree = "<group>"; };
+		B5A7B52D205072D000494F83 /* testUploadablePhotoPNGSuccess.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = testUploadablePhotoPNGSuccess.json; sourceTree = "<group>"; };
+		B5A7B52F205072EB00494F83 /* testUploadablePhotoJPGTooLargeSuccess.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = testUploadablePhotoJPGTooLargeSuccess.json; sourceTree = "<group>"; };
+		B5A7B5312050730500494F83 /* testUploadablePhotoFailure.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = testUploadablePhotoFailure.json; sourceTree = "<group>"; };
+		B5A7B5332050758300494F83 /* testSubmitQuestionWithPhotoPreview.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = testSubmitQuestionWithPhotoPreview.json; sourceTree = "<group>"; };
+		B5A7B5372050764D00494F83 /* testSubmitQuestionFailure.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = testSubmitQuestionFailure.json; sourceTree = "<group>"; };
+		B5A7B53B20507A6A00494F83 /* testSubmitQuestionWithPhotoSubmit.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = testSubmitQuestionWithPhotoSubmit.json; sourceTree = "<group>"; };
 		B5A92D951FE85EEE008DA17C /* BVFeedbackSubmission.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVFeedbackSubmission.h; sourceTree = "<group>"; };
 		B5BE7689200E97DB002BA818 /* BVBulkRatingFilterValue.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BVBulkRatingFilterValue.h; sourceTree = "<group>"; };
 		B5BE768B200E9F34002BA818 /* BVCommentFilterValue.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BVCommentFilterValue.h; sourceTree = "<group>"; };
@@ -1116,6 +1156,16 @@
 		B5BE787620113462002BA818 /* BVBulkRatingIncludeTypeValue.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BVBulkRatingIncludeTypeValue.h; sourceTree = "<group>"; };
 		B5BE787820113A32002BA818 /* BVBulkRatingIncludeType.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BVBulkRatingIncludeType.h; sourceTree = "<group>"; };
 		B5BE787920113A32002BA818 /* BVBulkRatingIncludeType.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BVBulkRatingIncludeType.m; sourceTree = "<group>"; };
+		B5D7E83120507D9100DEB434 /* testSubmitReviewWithPhotoPreview.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = testSubmitReviewWithPhotoPreview.json; sourceTree = "<group>"; };
+		B5D7E83520507DCB00DEB434 /* testSubmitReviewWithPhotoSubmit.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = testSubmitReviewWithPhotoSubmit.json; sourceTree = "<group>"; };
+		B5D7E83720507E3300DEB434 /* testSubmitReviewWithVideoPreview.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = testSubmitReviewWithVideoPreview.json; sourceTree = "<group>"; };
+		B5D7E83920507E5300DEB434 /* testSubmitReviewFailure.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = testSubmitReviewFailure.json; sourceTree = "<group>"; };
+		B5D7E83B20507E6D00DEB434 /* testSubmitReviewFailureFormCodeParsing.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = testSubmitReviewFailureFormCodeParsing.json; sourceTree = "<group>"; };
+		B5D7E83D20507E8400DEB434 /* testSubmitReviewFailureCodeParsing.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = testSubmitReviewFailureCodeParsing.json; sourceTree = "<group>"; };
+		B5D7E83F205083EC00DEB434 /* testSubmitStoreReviewWithPhoto.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = testSubmitStoreReviewWithPhoto.json; sourceTree = "<group>"; };
+		B5D7E8412050840E00DEB434 /* testSubmitReviewFailureStore.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = testSubmitReviewFailureStore.json; sourceTree = "<group>"; };
+		B5D7E8432051F4A900DEB434 /* BVAnalyticsManager+Testing.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BVAnalyticsManager+Testing.h"; sourceTree = "<group>"; };
+		B5D7E845205312DA00DEB434 /* BVAuthenticatedUser+Testing.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BVAuthenticatedUser+Testing.h"; sourceTree = "<group>"; };
 		B5DDA04D1FE8633800C47C01 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EC098EFAFB725736F0751BA0 /* libPods-BVSDK.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BVSDK.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -1270,6 +1320,7 @@
 		87C5FEB31E22A05D004EE6E8 /* Private */ = {
 			isa = PBXGroup;
 			children = (
+				B5D7E845205312DA00DEB434 /* BVAuthenticatedUser+Testing.h */,
 				87C5FEB41E22A05D004EE6E8 /* BVMessageInterceptor.h */,
 				B59F8F19203490CA00087EF0 /* BVNetworkingManager.h */,
 				B59F8F1A203490CA00087EF0 /* BVNetworkingManager.m */,
@@ -1396,6 +1447,7 @@
 			children = (
 				87F2DAC51DAD585E00FB43F3 /* BVAnalyticsManager.h */,
 				87F2DAC61DAD585E00FB43F3 /* BVAnalyticsManager.m */,
+				B5D7E8432051F4A900DEB434 /* BVAnalyticsManager+Testing.h */,
 				87F2DAD21DAD585E00FB43F3 /* BVContextualInterests.h */,
 				B56D717C2031F79F002EC872 /* BVLocaleServiceManager.h */,
 				B56D717D2031F79F002EC872 /* BVLocaleServiceManager.m */,
@@ -1809,34 +1861,8 @@
 		87F2DD651DAD698400FB43F3 /* conversations */ = {
 			isa = PBXGroup;
 			children = (
-				879D09101DCA8014006B51D3 /* testNotificationConfig.json */,
-				15D4F83A1DF5D5F800E6B30D /* testNotificationProductConfig.json */,
-				87F2DD661DAD698400FB43F3 /* conversationsGenericPostResponse.json */,
-				87F2DD671DAD698400FB43F3 /* conversationsQuestionsIncludeAnswers.json */,
-				87F2DD681DAD698400FB43F3 /* conversationsReviewsEnduranceCycles.json */,
-				87F2DD691DAD698400FB43F3 /* sortingReviews */,
-				87F2DD6E1DAD698400FB43F3 /* stores */,
-				87F2DD731DAD698400FB43F3 /* testShowCategory.json */,
-				87F2DD741DAD698400FB43F3 /* testShowCategorySparse.json */,
-				87F2DD751DAD698400FB43F3 /* testShowComments.json */,
-				87F2DD761DAD698400FB43F3 /* testShowCommentsSparse.json */,
-				87F2DD771DAD698400FB43F3 /* testShowCommentStory.json */,
-				87F2DD781DAD698400FB43F3 /* testShowCommentStorySparse.json */,
-				87F2DD791DAD698400FB43F3 /* testShowProducts.json */,
-				87F2DD7A1DAD698400FB43F3 /* testShowProductsSparse.json */,
-				87F2DD7B1DAD698400FB43F3 /* testShowProfile.json */,
-				87F2DD7C1DAD698400FB43F3 /* testShowProfileSparse.json */,
-				87F2DD7D1DAD698400FB43F3 /* testShowQuestion.json */,
-				87F2DD7E1DAD698400FB43F3 /* testShowQuestions.json */,
-				87F2DD7F1DAD698400FB43F3 /* testShowQuestionSparse.json */,
-				87F2DD801DAD698400FB43F3 /* testShowQuestionsSparse.json */,
-				87F2DD811DAD698400FB43F3 /* testShowReview.json */,
-				87F2DD821DAD698400FB43F3 /* testShowReviewIncludesSearch.json */,
-				87F2DD831DAD698400FB43F3 /* testShowReviewSparse.json */,
-				87F2DD841DAD698400FB43F3 /* testShowStatistics.json */,
-				87F2DD851DAD698400FB43F3 /* testShowStory.json */,
-				87F2DD861DAD698500FB43F3 /* testShowStorySparse.json */,
-				8777BB441EBA4F26008C4715 /* testSyndicationSource.json */,
+				B5A7B51620503D7500494F83 /* Display */,
+				B5A7B51720503DB400494F83 /* Submission */,
 			);
 			path = conversations;
 			sourceTree = "<group>";
@@ -2230,6 +2256,71 @@
 			path = Review;
 			sourceTree = "<group>";
 		};
+		B5A7B51620503D7500494F83 /* Display */ = {
+			isa = PBXGroup;
+			children = (
+				87F2DD661DAD698400FB43F3 /* conversationsGenericPostResponse.json */,
+				87F2DD671DAD698400FB43F3 /* conversationsQuestionsIncludeAnswers.json */,
+				87F2DD681DAD698400FB43F3 /* conversationsReviewsEnduranceCycles.json */,
+				87F2DD691DAD698400FB43F3 /* sortingReviews */,
+				87F2DD6E1DAD698400FB43F3 /* stores */,
+				879D09101DCA8014006B51D3 /* testNotificationConfig.json */,
+				15D4F83A1DF5D5F800E6B30D /* testNotificationProductConfig.json */,
+				87F2DD731DAD698400FB43F3 /* testShowCategory.json */,
+				87F2DD741DAD698400FB43F3 /* testShowCategorySparse.json */,
+				87F2DD751DAD698400FB43F3 /* testShowComments.json */,
+				87F2DD761DAD698400FB43F3 /* testShowCommentsSparse.json */,
+				87F2DD771DAD698400FB43F3 /* testShowCommentStory.json */,
+				87F2DD781DAD698400FB43F3 /* testShowCommentStorySparse.json */,
+				87F2DD791DAD698400FB43F3 /* testShowProducts.json */,
+				87F2DD7A1DAD698400FB43F3 /* testShowProductsSparse.json */,
+				87F2DD7B1DAD698400FB43F3 /* testShowProfile.json */,
+				87F2DD7C1DAD698400FB43F3 /* testShowProfileSparse.json */,
+				87F2DD7D1DAD698400FB43F3 /* testShowQuestion.json */,
+				87F2DD7E1DAD698400FB43F3 /* testShowQuestions.json */,
+				87F2DD7F1DAD698400FB43F3 /* testShowQuestionSparse.json */,
+				87F2DD801DAD698400FB43F3 /* testShowQuestionsSparse.json */,
+				87F2DD811DAD698400FB43F3 /* testShowReview.json */,
+				87F2DD821DAD698400FB43F3 /* testShowReviewIncludesSearch.json */,
+				87F2DD831DAD698400FB43F3 /* testShowReviewSparse.json */,
+				87F2DD841DAD698400FB43F3 /* testShowStatistics.json */,
+				87F2DD851DAD698400FB43F3 /* testShowStory.json */,
+				87F2DD861DAD698500FB43F3 /* testShowStorySparse.json */,
+				8777BB441EBA4F26008C4715 /* testSyndicationSource.json */,
+			);
+			path = Display;
+			sourceTree = "<group>";
+		};
+		B5A7B51720503DB400494F83 /* Submission */ = {
+			isa = PBXGroup;
+			children = (
+				B5A7B52120504F3000494F83 /* testSubmitAnswerFailure.json */,
+				B5A7B51820503E0900494F83 /* testSubmitAnswerWithPhotoPreview.json */,
+				B5A7B51F20504A8800494F83 /* testSubmitAnswerWithPhotoSubmit.json */,
+				B5A7B52B20505EBA00494F83 /* testSubmitFeedbackFailure.json */,
+				B5A7B52920505E9600494F83 /* testSubmitFeedbackFlag.json */,
+				B5A7B52720505E0900494F83 /* testSubmitFeedbackHelpfulness.json */,
+				B5A7B5372050764D00494F83 /* testSubmitQuestionFailure.json */,
+				B5A7B53B20507A6A00494F83 /* testSubmitQuestionWithPhotoSubmit.json */,
+				B5A7B5332050758300494F83 /* testSubmitQuestionWithPhotoPreview.json */,
+				B5D7E83920507E5300DEB434 /* testSubmitReviewFailure.json */,
+				B5D7E83D20507E8400DEB434 /* testSubmitReviewFailureCodeParsing.json */,
+				B5D7E83B20507E6D00DEB434 /* testSubmitReviewFailureFormCodeParsing.json */,
+				B5A7B52520505BCC00494F83 /* testSumbitReviewCommentWithError.json */,
+				B5A7B523205059FA00494F83 /* testSubmitReviewComment.json */,
+				B5D7E83120507D9100DEB434 /* testSubmitReviewWithPhotoPreview.json */,
+				B5D7E83520507DCB00DEB434 /* testSubmitReviewWithPhotoSubmit.json */,
+				B5D7E83720507E3300DEB434 /* testSubmitReviewWithVideoPreview.json */,
+				B5D7E83F205083EC00DEB434 /* testSubmitStoreReviewWithPhoto.json */,
+				B5D7E8412050840E00DEB434 /* testSubmitReviewFailureStore.json */,
+				B5A7B5312050730500494F83 /* testUploadablePhotoFailure.json */,
+				B5A7B52F205072EB00494F83 /* testUploadablePhotoJPGTooLargeSuccess.json */,
+				B5A7B52D205072D000494F83 /* testUploadablePhotoPNGSuccess.json */,
+				B5A7B51D205049D100494F83 /* testUploadPNG.json */,
+			);
+			path = Submission;
+			sourceTree = "<group>";
+		};
 		B5BE76A9200EB19D002BA818 /* Private */ = {
 			isa = PBXGroup;
 			children = (
@@ -2369,6 +2460,7 @@
 				B5BE76AB200EB1DE002BA818 /* BVBaseProductRequest_Private.h in Headers */,
 				87F2DCD31DAD585E00FB43F3 /* BVFieldError.h in Headers */,
 				87F2DCA71DAD585E00FB43F3 /* BVBulkRatingsRequest.h in Headers */,
+				B5D7E846205312DA00DEB434 /* BVAuthenticatedUser+Testing.h in Headers */,
 				87F2DD0B1DAD585E00FB43F3 /* BVQuestionView.h in Headers */,
 				87F2DC781DAD585E00FB43F3 /* BVPhoto.h in Headers */,
 				87F2DD031DAD585E00FB43F3 /* BVQuestionCollectionViewCell.h in Headers */,
@@ -2393,6 +2485,7 @@
 				8754117D1E1F201E006C5C6E /* BVProductReviewRichNotificationCenter.h in Headers */,
 				875411791E1F201E006C5C6E /* BVProductReviewNotificationCenter.h in Headers */,
 				875410B41E1F10DF006C5C6E /* BVStoreReviewNotificationViewController.h in Headers */,
+				B5D7E8442051F4A900DEB434 /* BVAnalyticsManager+Testing.h in Headers */,
 				B583B128200E8ABE001E9548 /* BVFilterTypeValues.h in Headers */,
 				875410B01E1F10DF006C5C6E /* BVNotificationViewController.h in Headers */,
 				875411851E1F201E006C5C6E /* BVStoreReviewRichNotificationCenter.h in Headers */,
@@ -2620,13 +2713,18 @@
 			files = (
 				87F2DDAE1DAD698500FB43F3 /* testShowQuestions.json in Resources */,
 				87F2DDA51DAD698500FB43F3 /* testShowComments.json in Resources */,
+				B5A7B52620505BCC00494F83 /* testSumbitReviewCommentWithError.json in Resources */,
 				87F2DDB31DAD698500FB43F3 /* testShowReviewSparse.json in Resources */,
+				B5A7B52220504F3000494F83 /* testSubmitAnswerFailure.json in Resources */,
 				87F2DDB41DAD698500FB43F3 /* testShowStatistics.json in Resources */,
+				B5A7B53C20507A6A00494F83 /* testSubmitQuestionWithPhotoSubmit.json in Resources */,
 				87F2DDB61DAD698500FB43F3 /* testShowStorySparse.json in Resources */,
 				87F2DDC21DAD698500FB43F3 /* recommendationsByProductId.json in Resources */,
+				B5A7B52820505E0900494F83 /* testSubmitFeedbackHelpfulness.json in Resources */,
 				87F2DDA31DAD698500FB43F3 /* testShowCategory.json in Resources */,
 				87F2DDAA1DAD698500FB43F3 /* testShowProductsSparse.json in Resources */,
 				87F2DDC41DAD698500FB43F3 /* recommendationsResult.json in Resources */,
+				B5A7B51E205049D100494F83 /* testUploadPNG.json in Resources */,
 				87F2DD9D1DAD698500FB43F3 /* conversationsReviewsEnduranceCycles_SortLowestRated.json in Resources */,
 				87F2DDBB1DAD698500FB43F3 /* post_MissingRequiredKey.json in Resources */,
 				87F2DDA21DAD698500FB43F3 /* storeNoStoresFoundResult.json in Resources */,
@@ -2634,16 +2732,23 @@
 				87F2DDB01DAD698500FB43F3 /* testShowQuestionsSparse.json in Resources */,
 				87F2DDAB1DAD698500FB43F3 /* testShowProfile.json in Resources */,
 				87F2DD9B1DAD698500FB43F3 /* conversationsReviewsEnduranceCycles_FilterLocation.json in Resources */,
+				B5D7E83820507E3300DEB434 /* testSubmitReviewWithVideoPreview.json in Resources */,
+				B5D7E83A20507E5300DEB434 /* testSubmitReviewFailure.json in Resources */,
+				B5A7B51920503E0900494F83 /* testSubmitAnswerWithPhotoPreview.json in Resources */,
 				87F2DDAD1DAD698500FB43F3 /* testShowQuestion.json in Resources */,
 				87F2DDAF1DAD698500FB43F3 /* testShowQuestionSparse.json in Resources */,
+				B5A7B524205059FA00494F83 /* testSubmitReviewComment.json in Resources */,
+				B5D7E83620507DCB00DEB434 /* testSubmitReviewWithPhotoSubmit.json in Resources */,
 				87F2DDB51DAD698500FB43F3 /* testShowStory.json in Resources */,
 				87F2DDBA1DAD698500FB43F3 /* post_ErrorParsingBody.json in Resources */,
 				87F2DDAC1DAD698500FB43F3 /* testShowProfileSparse.json in Resources */,
 				87F2DD9A1DAD698500FB43F3 /* conversationsReviewsEnduranceCycles.json in Resources */,
+				B5A7B52020504A8800494F83 /* testSubmitAnswerWithPhotoSubmit.json in Resources */,
 				87F2DDC01DAD698500FB43F3 /* productsToReviewResult.json in Resources */,
 				87F2DDBC1DAD698500FB43F3 /* post_successfulCreation.json in Resources */,
 				87F2DDBE1DAD698500FB43F3 /* test_pattern.jpg in Resources */,
 				879D09111DCA8014006B51D3 /* testNotificationConfig.json in Resources */,
+				B5A7B52A20505E9600494F83 /* testSubmitFeedbackFlag.json in Resources */,
 				87F2DDC51DAD698500FB43F3 /* userProfile1.json in Resources */,
 				87F2DDB11DAD698500FB43F3 /* testShowReview.json in Resources */,
 				87F2DDB91DAD698500FB43F3 /* curationsFeedTest1.json in Resources */,
@@ -2654,20 +2759,31 @@
 				87F2DDB71DAD698500FB43F3 /* curations500Error.json in Resources */,
 				87F2DDA61DAD698500FB43F3 /* testShowCommentsSparse.json in Resources */,
 				87F2DDC11DAD698500FB43F3 /* recommendationsByCategoryId.json in Resources */,
+				B5A7B5322050730500494F83 /* testUploadablePhotoFailure.json in Resources */,
 				87F2DD9F1DAD698500FB43F3 /* storeBulkFeedWithStatistics.json in Resources */,
 				87F2DD991DAD698500FB43F3 /* conversationsQuestionsIncludeAnswers.json in Resources */,
 				87F2DD9C1DAD698500FB43F3 /* conversationsReviewsEnduranceCycles_SortHighestRated.json in Resources */,
+				B5D7E83E20507E8400DEB434 /* testSubmitReviewFailureCodeParsing.json in Resources */,
+				B5A7B52C20505EBA00494F83 /* testSubmitFeedbackFailure.json in Resources */,
 				87F2DDB21DAD698500FB43F3 /* testShowReviewIncludesSearch.json in Resources */,
 				87F2DDA41DAD698500FB43F3 /* testShowCategorySparse.json in Resources */,
+				B5D7E840205083EC00DEB434 /* testSubmitStoreReviewWithPhoto.json in Resources */,
 				15D4F83B1DF5D5F800E6B30D /* testNotificationProductConfig.json in Resources */,
+				B5A7B5342050758300494F83 /* testSubmitQuestionWithPhotoPreview.json in Resources */,
+				B5A7B5382050764D00494F83 /* testSubmitQuestionFailure.json in Resources */,
 				87F2DDC31DAD698500FB43F3 /* recommendationsNullJSON.json in Resources */,
 				87F2DDA91DAD698500FB43F3 /* testShowProducts.json in Resources */,
 				15D4F83F1DF5EC3C00E6B30D /* ph.png in Resources */,
 				87A9ECB81E1DA87E00666636 /* malformedJSON.json in Resources */,
 				87F2DDBD1DAD698500FB43F3 /* puppy.jpg in Resources */,
+				B5D7E83220507D9100DEB434 /* testSubmitReviewWithPhotoPreview.json in Resources */,
 				87F2DDA01DAD698500FB43F3 /* storeFetchByIds.json in Resources */,
+				B5D7E83C20507E6D00DEB434 /* testSubmitReviewFailureFormCodeParsing.json in Resources */,
+				B5A7B52E205072D000494F83 /* testUploadablePhotoPNGSuccess.json in Resources */,
+				B5A7B530205072EB00494F83 /* testUploadablePhotoJPGTooLargeSuccess.json in Resources */,
 				87F2DDA11DAD698500FB43F3 /* storeItemWithStatsAndReviews.json in Resources */,
 				87F2DD9E1DAD698500FB43F3 /* conversationsReviewsEnduranceCycles_SortMostHelpful.json in Resources */,
+				B5D7E8422050840E00DEB434 /* testSubmitReviewFailureStore.json in Resources */,
 				87F2DDBF1DAD698500FB43F3 /* emptyJSON.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

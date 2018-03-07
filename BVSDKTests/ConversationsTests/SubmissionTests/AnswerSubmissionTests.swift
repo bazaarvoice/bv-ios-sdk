@@ -9,7 +9,7 @@
 import XCTest
 @testable import BVSDK
 
-class AnswerSubmissionTests: XCTestCase {
+class AnswerSubmissionTests: BVBaseStubTestCase {
   
   override func setUp() {
     super.setUp()
@@ -22,6 +22,14 @@ class AnswerSubmissionTests: XCTestCase {
   
   func testSubmitAnswerWithPhoto() {
     let expectation = self.expectation(description: "testSubmitAnswerWithPhoto")
+    
+    let sequenceFiles:[String] =
+      [
+        "testSubmitAnswerWithPhotoPreview.json",
+        "testUploadPNG.json",
+        "testSubmitAnswerWithPhotoSubmit.json"
+    ]
+    addStubWith200Response(forJSONFilesNamed: sequenceFiles)
     
     let answer = self.fillOutAnswer(.submit)
     answer.submit({ (answerSubmission) in
@@ -37,6 +45,14 @@ class AnswerSubmissionTests: XCTestCase {
   
   func testPreviewAnswerWithPhoto() {
     let expectation = self.expectation(description: "testPreviewAnswerWithPhoto")
+    
+    let sequenceFiles:[String] =
+      [
+        "testSubmitAnswerWithPhotoPreview.json",
+        "testUploadPNG.json"
+    ]
+    addStubWith200Response(forJSONFilesNamed: sequenceFiles)
+    
     let answer = self.fillOutAnswer(.preview)
     answer.submit({ (answerSubmission) in
       expectation.fulfill()
@@ -78,6 +94,12 @@ class AnswerSubmissionTests: XCTestCase {
     let answer = BVAnswerSubmission(questionId: "6104", answerText: "")
     answer.userId = "craiggil"
     answer.action = .preview
+    
+    let sequenceFiles:[String] =
+      [
+        "testSubmitAnswerFailure.json"
+    ]
+    addStubWith200Response(forJSONFilesNamed: sequenceFiles)
     
     answer.submit({ (questionSubmission) in
       XCTFail()

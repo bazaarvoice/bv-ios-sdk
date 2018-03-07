@@ -5,6 +5,8 @@
 //  Copyright © 2016 Bazaarvoice. All rights reserved.
 //
 
+#define __ISA(X, CLASS) ([(X) isKindOfClass:[CLASS class]])
+
 #ifndef BVNullHelper_h
 #define BVNullHelper_h
 

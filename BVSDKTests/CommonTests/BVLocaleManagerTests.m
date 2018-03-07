@@ -7,11 +7,12 @@
 
 #import <XCTest/XCTest.h>
 
-#import "BVAnalyticsManager.h"
+#import <BVSDK/BVAnalyticsManager+Testing.h>
+#import <BVSDK/BVLocaleServiceManager.h>
+#import <BVSDK/BVSDKConfiguration.h>
+#import <BVSDK/BVSDKManager.h>
+
 #import "BVBaseStubTestCase.h"
-#import "BVLocaleServiceManager.h"
-#import "BVSDKConfiguration.h"
-#import "BVSDKManager.h"
 
 static NSString *configuredLocaleIdentifier;
 static NSString *nonEUProductionValue;
@@ -48,13 +49,6 @@ static NSString *euStagingValue;
 
 - (void)tearDown {
   [super tearDown];
-}
-
-- (void)testPerformanceExample {
-  // This is an example of a performance test case.
-  [self measureBlock:^{
-    [self testAnalyticsLocaleRoutingEfficacy];
-  }];
 }
 
 #pragma mark - BVLocaleServiceManagerServiceAnalytics
