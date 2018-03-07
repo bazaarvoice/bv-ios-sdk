@@ -5,7 +5,7 @@
 //  Copyright 2016 Bazaarvoice Inc. All rights reserved.
 //
 
-#import "BVAuthenticatedUser.h"
+#import "BVAuthenticatedUser+Testing.h"
 #import "BVCommon.h"
 #import "BVNetworkingManager.h"
 #import <AdSupport/AdSupport.h>
@@ -74,6 +74,10 @@
                 [NSJSONSerialization JSONObjectWithData:data
                                                 options:kNilOptions
                                                   error:&errorJson];
+
+            NSString *jasonString =
+                [NSString stringWithUTF8String:[data bytes]];
+            NSLog(@"jsonString: %@", jasonString);
 
             if (!errorJson) {
               // JSON response parsing.

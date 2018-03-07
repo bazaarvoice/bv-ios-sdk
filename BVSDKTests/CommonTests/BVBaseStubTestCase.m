@@ -13,6 +13,7 @@
   } while (0)
 
 #import "BVBaseStubTestCase.h"
+#import <BVSDK/BVNullHelper.h>
 #import <XCTest/XCTest.h>
 
 @interface BVBaseStubTestCase ()
@@ -63,19 +64,62 @@
 }
 
 - (void)addStubWith200ResponseForJSONFileNamed:(NSString *)resultFile {
+  [self addStubWith200ResponseForJSONFileNamed:resultFile withPassingTest:nil];
+}
+
+- (void)addStubWith200ResponseForJSONFileNamed:(nonnull NSString *)resultFile
+                               withPassingTest:
+                                   (nullable OHHTTPStubsTestBlock)testBlock {
+  [self addStubWith200ResponseForJSONFilesNamed:@[ resultFile ]
+                                withPassingTest:testBlock];
+}
+
+- (void)addStubWith200ResponseForJSONFilesNamed:
+    (nonnull NSArray<NSString *> *)resultFileArray {
+  [self addStubWith200ResponseForJSONFilesNamed:resultFileArray
+                                withPassingTest:nil];
+}
+
+- (void)addStubWith200ResponseForJSONFilesNamed:
+            (nonnull NSArray<NSString *> *)resultFileArray
+                                withPassingTest:
+                                    (nullable OHHTTPStubsTestBlock)testBlock {
+
+  __block NSUInteger callCount = 0;
+  NSUInteger fileCount = resultFileArray.count;
+  OHHTTPStubsTestBlock passableTest =
+      testBlock ?: ^BOOL(NSURLRequest *request) {
+        return [request.URL.host containsString:@"bazaarvoice.com"];
+      };
 
   [OHHTTPStubs stubRequestsPassingTest:^BOOL(NSURLRequest *request) {
-    return [request.URL.host containsString:@"bazaarvoice.com"];
+    return passableTest(request);
   }
       withStubResponse:^OHHTTPStubsResponse *(NSURLRequest *request) {
-        // return normal user profile from /users API
-        return [[OHHTTPStubsResponse
-            responseWithFileAtPath:OHPathForFile(resultFile, self.class)
-                        statusCode:200
-                           headers:@{
-                             @"Content-Type" :
-                                 @"application/json;charset=utf-8"
-                           }] responseTime:OHHTTPStubsDownloadSpeedWifi];
+
+        if (callCount < fileCount) {
+          id fileObj = [resultFileArray objectAtIndex:callCount];
+          if (__ISA(fileObj, NSString)) {
+            NSString *resultFile = (NSString *)fileObj;
+
+            // Increment count
+            callCount++;
+
+            return [[OHHTTPStubsResponse
+                responseWithFileAtPath:OHPathForFile(resultFile, self.class)
+                            statusCode:200
+                               headers:@{
+                                 @"Content-Type" :
+                                     @"application/json;charset=utf-8"
+                               }] responseTime:OHHTTPStubsDownloadSpeedWifi];
+          }
+        }
+
+        NSError *resourceUnavailableError =
+            [NSError errorWithDomain:NSURLErrorDomain
+                                code:kCFURLErrorResourceUnavailable
+                            userInfo:nil];
+        return [OHHTTPStubsResponse responseWithError:resourceUnavailableError];
       }];
 }
 

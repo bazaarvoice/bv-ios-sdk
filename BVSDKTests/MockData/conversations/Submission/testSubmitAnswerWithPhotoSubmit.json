@@ -1,0 +1,19 @@
+{
+  "Locale": "en_US",
+  "Answer": {
+    "SubmissionTime": "2018-03-07T16:26:54.066+00:00",
+    "SubmissionId": null,
+    "AnswerText": "Answer text Answer text Answer text Answer text Answer text Answer text Answer text Answer text",
+    "TypicalHoursToPost": null,
+    "Id": null,
+    "SendEmailAlertWhenPublished": false
+  },
+  "Errors": [],
+  "Form": [],
+  "FormErrors": {},
+  "SubmissionId": "9rw2y80ry7e3f4zyqwu57gi4u",
+  "TypicalHoursToPost": 72,
+  "Data": {},
+  "AuthorSubmissionToken": "9e690831910027226570ad6e4f234e407573657269643d5573657249643131383730363733353226646174653d3230313830333037266d61786167653d37",
+  "HasErrors": false
+}

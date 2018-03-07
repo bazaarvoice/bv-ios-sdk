@@ -1,0 +1,16 @@
+{
+  "Locale": null,
+  "Errors": [
+             {
+             "Message": "",
+             "Code": "ERROR_PARAM_MISSING_USER_ID"
+             }
+             ],
+  "Form": [],
+  "FormErrors": {},
+  "SubmissionId": null,
+  "Data": {},
+  "TypicalHoursToPost": null,
+  "AuthorSubmissionToken": null,
+  "HasErrors": true
+}

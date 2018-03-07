@@ -8,7 +8,7 @@
 import XCTest
 @testable import BVSDK
 
-class FeedbackSubmissionTests: XCTestCase {
+class FeedbackSubmissionTests: BVBaseStubTestCase {
   
   override func setUp() {
     super.setUp()
@@ -24,11 +24,15 @@ class FeedbackSubmissionTests: XCTestCase {
     
     let expectation = self.expectation(description: "testSubmitFeedbackHelpfulness")
     
+    let sequenceFiles:[String] =
+      [
+        "testSubmitFeedbackHelpfulness.json"
+    ]
+    addStubWith200Response(forJSONFilesNamed: sequenceFiles)
+    
     let feedback = BVFeedbackSubmission(contentId: "83725", with: .review, with: .helpfulness)
     
-    let randomId = String(arc4random())
-    
-    feedback.userId = "userId" + randomId
+    feedback.userId = "userId3532791931"
     feedback.vote = .positive
     
     feedback.submit({ (response) in
@@ -54,11 +58,15 @@ class FeedbackSubmissionTests: XCTestCase {
     
     let expectation = self.expectation(description: "testSubmitFeedbackFlag")
     
+    let sequenceFiles:[String] =
+      [
+        "testSubmitFeedbackFlag.json"
+    ]
+    addStubWith200Response(forJSONFilesNamed: sequenceFiles)
+    
     let feedback = BVFeedbackSubmission(contentId: "83725", with: .review, with: .inappropriate)
     
-    let randomId = String(arc4random())
-    
-    feedback.userId = "userId" + randomId
+    feedback.userId = "userId1302958052"
     feedback.reasonText = "Optional reason text in this field."
     
     feedback.submit({ (response) in
@@ -80,15 +88,19 @@ class FeedbackSubmissionTests: XCTestCase {
   }
   
   
-  func testSubmissionFailure() {
+  func testSubmitFeedbackFailure() {
     
     let expectation = self.expectation(description: "testSubmitFeedbackFlag")
     
+    let sequenceFiles:[String] =
+      [
+        "testSubmitFeedbackFailure.json"
+    ]
+    addStubWith200Response(forJSONFilesNamed: sequenceFiles)
+    
     let feedback = BVFeedbackSubmission(contentId: "badidshouldmakeerror", with: .review, with: .inappropriate)
     
-    let randomId = String(arc4random())
-    
-    feedback.userId = "userId" + randomId
+    feedback.userId = "userId" + String(arc4random())
     
     feedback.submit({ (response) in
       // success
@@ -103,6 +115,4 @@ class FeedbackSubmissionTests: XCTestCase {
     
     waitForExpectations(timeout: 10, handler: nil)
   }
-  
-  
 }
