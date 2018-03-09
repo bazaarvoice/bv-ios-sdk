@@ -20,7 +20,15 @@
 
 // Will stub out calls to bazaarvoice.com, return 200, and a resultFile with
 // Content-Type = application/json
+- (void)addStubWith200ResponseForJSONFileNamed:(nonnull NSString *)resultFile
+                               withPassingTest:
+                                   (nullable OHHTTPStubsTestBlock)testBlock;
 - (void)addStubWith200ResponseForJSONFileNamed:(nonnull NSString *)resultFile;
+
+- (void)addStubWith200ResponseForJSONFilesNamed:
+            (nonnull NSArray<NSString *> *)resultFileArray
+                                withPassingTest:
+                                    (nullable OHHTTPStubsTestBlock)testBlock;
 - (void)addStubWith200ResponseForJSONFilesNamed:
     (nonnull NSArray<NSString *> *)resultFileArray;
 
