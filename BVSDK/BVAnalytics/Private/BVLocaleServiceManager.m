@@ -7,8 +7,7 @@
 
 #import "BVLocaleServiceManager.h"
 #import "BVLogger.h"
-
-#define __ISA(X, CLASS) ([(X) isKindOfClass:[CLASS class]])
+#import "BVNullHelper.h"
 
 /// If we have to expand this we will rethink how we package all these fields
 /// it's just that we don't have any other examples in order to determine a
