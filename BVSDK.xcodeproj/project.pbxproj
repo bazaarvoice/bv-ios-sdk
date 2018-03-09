@@ -580,6 +580,8 @@
 		B5D7E83E20507E8400DEB434 /* testSubmitReviewFailureCodeParsing.json in Resources */ = {isa = PBXBuildFile; fileRef = B5D7E83D20507E8400DEB434 /* testSubmitReviewFailureCodeParsing.json */; };
 		B5D7E840205083EC00DEB434 /* testSubmitStoreReviewWithPhoto.json in Resources */ = {isa = PBXBuildFile; fileRef = B5D7E83F205083EC00DEB434 /* testSubmitStoreReviewWithPhoto.json */; };
 		B5D7E8422050840E00DEB434 /* testSubmitReviewFailureStore.json in Resources */ = {isa = PBXBuildFile; fileRef = B5D7E8412050840E00DEB434 /* testSubmitReviewFailureStore.json */; };
+		B5D7E8442051F4A900DEB434 /* BVAnalyticsManager+Testing.h in Headers */ = {isa = PBXBuildFile; fileRef = B5D7E8432051F4A900DEB434 /* BVAnalyticsManager+Testing.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		B5D7E846205312DA00DEB434 /* BVAuthenticatedUser+Testing.h in Headers */ = {isa = PBXBuildFile; fileRef = B5D7E845205312DA00DEB434 /* BVAuthenticatedUser+Testing.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		B5DDA04E1FE8633800C47C01 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B5DDA04D1FE8633800C47C01 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
@@ -1162,6 +1164,8 @@
 		B5D7E83D20507E8400DEB434 /* testSubmitReviewFailureCodeParsing.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = testSubmitReviewFailureCodeParsing.json; sourceTree = "<group>"; };
 		B5D7E83F205083EC00DEB434 /* testSubmitStoreReviewWithPhoto.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = testSubmitStoreReviewWithPhoto.json; sourceTree = "<group>"; };
 		B5D7E8412050840E00DEB434 /* testSubmitReviewFailureStore.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = testSubmitReviewFailureStore.json; sourceTree = "<group>"; };
+		B5D7E8432051F4A900DEB434 /* BVAnalyticsManager+Testing.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BVAnalyticsManager+Testing.h"; sourceTree = "<group>"; };
+		B5D7E845205312DA00DEB434 /* BVAuthenticatedUser+Testing.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BVAuthenticatedUser+Testing.h"; sourceTree = "<group>"; };
 		B5DDA04D1FE8633800C47C01 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EC098EFAFB725736F0751BA0 /* libPods-BVSDK.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BVSDK.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -1316,6 +1320,7 @@
 		87C5FEB31E22A05D004EE6E8 /* Private */ = {
 			isa = PBXGroup;
 			children = (
+				B5D7E845205312DA00DEB434 /* BVAuthenticatedUser+Testing.h */,
 				87C5FEB41E22A05D004EE6E8 /* BVMessageInterceptor.h */,
 				B59F8F19203490CA00087EF0 /* BVNetworkingManager.h */,
 				B59F8F1A203490CA00087EF0 /* BVNetworkingManager.m */,
@@ -1442,6 +1447,7 @@
 			children = (
 				87F2DAC51DAD585E00FB43F3 /* BVAnalyticsManager.h */,
 				87F2DAC61DAD585E00FB43F3 /* BVAnalyticsManager.m */,
+				B5D7E8432051F4A900DEB434 /* BVAnalyticsManager+Testing.h */,
 				87F2DAD21DAD585E00FB43F3 /* BVContextualInterests.h */,
 				B56D717C2031F79F002EC872 /* BVLocaleServiceManager.h */,
 				B56D717D2031F79F002EC872 /* BVLocaleServiceManager.m */,
@@ -2454,6 +2460,7 @@
 				B5BE76AB200EB1DE002BA818 /* BVBaseProductRequest_Private.h in Headers */,
 				87F2DCD31DAD585E00FB43F3 /* BVFieldError.h in Headers */,
 				87F2DCA71DAD585E00FB43F3 /* BVBulkRatingsRequest.h in Headers */,
+				B5D7E846205312DA00DEB434 /* BVAuthenticatedUser+Testing.h in Headers */,
 				87F2DD0B1DAD585E00FB43F3 /* BVQuestionView.h in Headers */,
 				87F2DC781DAD585E00FB43F3 /* BVPhoto.h in Headers */,
 				87F2DD031DAD585E00FB43F3 /* BVQuestionCollectionViewCell.h in Headers */,
@@ -2478,6 +2485,7 @@
 				8754117D1E1F201E006C5C6E /* BVProductReviewRichNotificationCenter.h in Headers */,
 				875411791E1F201E006C5C6E /* BVProductReviewNotificationCenter.h in Headers */,
 				875410B41E1F10DF006C5C6E /* BVStoreReviewNotificationViewController.h in Headers */,
+				B5D7E8442051F4A900DEB434 /* BVAnalyticsManager+Testing.h in Headers */,
 				B583B128200E8ABE001E9548 /* BVFilterTypeValues.h in Headers */,
 				875410B01E1F10DF006C5C6E /* BVNotificationViewController.h in Headers */,
 				875411851E1F201E006C5C6E /* BVStoreReviewRichNotificationCenter.h in Headers */,

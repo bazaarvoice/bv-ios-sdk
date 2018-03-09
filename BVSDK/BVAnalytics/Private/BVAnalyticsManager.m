@@ -9,10 +9,11 @@
 #import <UIKit/UIKit.h>
 
 #import "BVAnalyticEventManager.h"
-#import "BVAnalyticsManager.h"
+#import "BVAnalyticsManager+Testing.h"
 #import "BVLocaleServiceManager.h"
 #import "BVLogger.h"
 #import "BVNetworkingManager.h"
+#import "BVNullHelper.h"
 #import "BVPersonalizationEvent.h"
 #import "BVSDKConfiguration.h"
 #import "BVSDKConstants.h"
@@ -23,26 +24,40 @@
 
 @interface BVAnalyticsManager ()
 
-@property(strong)
-    NSMutableArray *eventQueue; // Impressions, other non-pageview events
-@property(strong) NSMutableArray *pageviewQueue; // Page views
-@property NSTimer *queueFlushTimer;
-@property NSTimeInterval queueFlushInterval;
+@property(nonatomic, strong)
+    NSMutableArray *eventQueue; /// Impressions, other non-pageview events
+@property(nonatomic, strong) NSMutableArray *pageviewQueue; /// Page views
+@property(nonatomic, strong) dispatch_queue_t concurrentEventQueue;
+
+@property(nonatomic, strong) dispatch_source_t queueFlushTimer;
+@property(nonatomic, assign, readwrite) NSTimeInterval queueFlushInterval;
+@property(nonatomic, strong) dispatch_queue_t timerEventQueue;
 
 @property(nonatomic, strong)
     dispatch_queue_t localeUpdateNotificationTokenQueue;
-@property(strong) id<NSObject> localeUpdateNotificationCenterToken;
+@property(nonatomic, strong) id<NSObject> localeUpdateNotificationCenterToken;
 
-@property(nonatomic, strong) dispatch_queue_t concurrentEventQueue;
+/// Testing
+@property(nonatomic, strong, readonly)
+    NSMutableDictionary<NSString *, dispatch_block_t>
+        *testImpressionEventCompletionQueue;
+@property(nonatomic, strong, readonly)
+    NSMutableDictionary<NSString *, dispatch_block_t>
+        *testPageViewEventCompletionQueue;
 
 @end
 
 @implementation BVAnalyticsManager
 
-@synthesize analyticsLocale = _analyticsLocale;
+@synthesize analyticsLocale = _analyticsLocale,
+            testImpressionEventCompletionQueue =
+                _testImpressionEventCompletionQueue,
+            testPageViewEventCompletionQueue =
+                _testPageViewEventCompletionQueue;
+
+#pragma mark - Class Methods
 
 static BVAnalyticsManager *analyticsInstance = nil;
-
 + (BVAnalyticsManager *)sharedManager {
   static dispatch_once_t onceToken;
   dispatch_once(&onceToken, ^{
@@ -52,13 +67,44 @@ static BVAnalyticsManager *analyticsInstance = nil;
   return analyticsInstance;
 }
 
+#pragma mark - Class Properties
+
+- (void)setFlushInterval:(NSTimeInterval)newFlushInterval {
+  dispatch_sync(self.timerEventQueue, ^{
+    self.queueFlushInterval = newFlushInterval;
+  });
+}
+
+- (NSMutableDictionary<NSString *, dispatch_block_t> *)
+    testImpressionEventCompletionQueue {
+
+  if (!_testImpressionEventCompletionQueue) {
+    _testImpressionEventCompletionQueue = [NSMutableDictionary dictionary];
+  }
+
+  return _testImpressionEventCompletionQueue;
+}
+
+- (NSMutableDictionary<NSString *, dispatch_block_t> *)
+    testPageViewEventCompletionQueue {
+
+  if (!_testPageViewEventCompletionQueue) {
+    _testPageViewEventCompletionQueue = [NSMutableDictionary dictionary];
+  }
+
+  return _testPageViewEventCompletionQueue;
+}
+
+#pragma mark - Class Init
+
 - (id)init {
-  self = [super init];
-  if (self != nil) {
+  if ((self = [super init])) {
     self.eventQueue = [NSMutableArray array];
     self.pageviewQueue = [NSMutableArray array];
     self.concurrentEventQueue = dispatch_queue_create(
         "com.bazaarvoice.analyticEventQueue", DISPATCH_QUEUE_CONCURRENT);
+    self.timerEventQueue = dispatch_queue_create(
+        "com.bazaarvoice.timerEventQueue", DISPATCH_QUEUE_SERIAL);
     self.localeUpdateNotificationTokenQueue = dispatch_queue_create(
         "com.bazaarvoice.notificationTokenQueue", DISPATCH_QUEUE_SERIAL);
 
@@ -67,6 +113,8 @@ static BVAnalyticsManager *analyticsInstance = nil;
   }
   return self;
 }
+
+#pragma mark - Analytics Constant Parameters
 
 - (NSMutableDictionary *)getMobileDiagnosticParams {
   // get diagnostic data
@@ -215,6 +263,41 @@ static BVAnalyticsManager *analyticsInstance = nil;
   [self queueEvent:eventData];
 }
 
+#pragma mark - Event Timer
+
+- (void)setTimer {
+  dispatch_sync(self.timerEventQueue, ^{
+    if (nil == self.queueFlushTimer) {
+      self.queueFlushTimer = dispatch_source_create(
+          DISPATCH_SOURCE_TYPE_TIMER, 0, 0, self.concurrentEventQueue);
+
+      NSAssert(self.queueFlushTimer,
+               @"dispatch_source_t timer wasn't allocated properly.");
+
+      if (self.queueFlushTimer) {
+        dispatch_source_set_timer(
+            self.queueFlushTimer,
+            dispatch_time(DISPATCH_TIME_NOW,
+                          self.queueFlushInterval * NSEC_PER_SEC),
+            DISPATCH_TIME_FOREVER, 0 * NSEC_PER_SEC);
+        dispatch_source_set_event_handler(self.queueFlushTimer, ^{
+          [self flushQueue];
+        });
+        dispatch_resume(self.queueFlushTimer);
+      }
+    }
+  });
+}
+
+- (void)invalidateTimer {
+  dispatch_sync(self.timerEventQueue, ^{
+    if (nil != self.queueFlushTimer) {
+      dispatch_source_cancel(self.queueFlushTimer);
+      self.queueFlushTimer = nil;
+    }
+  });
+}
+
 #pragma mark - Event Queueing
 
 - (void)queueEvent:(NSDictionary *)eventData {
@@ -241,7 +324,6 @@ static BVAnalyticsManager *analyticsInstance = nil;
   dispatch_barrier_sync(self.concurrentEventQueue, ^{
     // Update event queue
     [self.eventQueue addObject:eventForQueue];
-
   });
 
   [self scheduleEventQueueFlush];
@@ -252,18 +334,8 @@ static BVAnalyticsManager *analyticsInstance = nil;
   // many times, a rush of events come very close to each other, and then
   // things are quiet for a while.
 
-  dispatch_async(dispatch_get_main_queue(), ^{
-
-    if (self.queueFlushTimer == nil) {
-      SEL flushQueueSelector = @selector(flushQueue);
-
-      self.queueFlushTimer =
-          [NSTimer scheduledTimerWithTimeInterval:self.queueFlushInterval
-                                           target:self
-                                         selector:flushQueueSelector
-                                         userInfo:nil
-                                          repeats:NO];
-    }
+  dispatch_async(self.concurrentEventQueue, ^{
+    [self setTimer];
   });
 }
 
@@ -277,22 +349,25 @@ static BVAnalyticsManager *analyticsInstance = nil;
   dispatch_barrier_sync(self.concurrentEventQueue, ^{
     // Update PageView queue events
     [self.pageviewQueue addObject:eventForQueue];
-    dispatch_async(dispatch_get_main_queue(), ^{
-      [self flushQueue];
-    });
+  });
+
+  [self flushQueue];
+}
+
+- (void)flushQueue {
+  dispatch_barrier_async(self.concurrentEventQueue, ^{
+    [self flushQueueUnsafe];
   });
 }
 
 // Flush queue for POST batch
-- (void)flushQueue {
+- (void)flushQueueUnsafe {
   // clear flush timer
-  if (self.queueFlushTimer != nil) {
-    [self.queueFlushTimer invalidate];
-  }
-  self.queueFlushTimer = nil;
+  [self invalidateTimer];
 
   // send events
   if ([self.eventQueue count] > 0) {
+
     NSDictionary *batch = @{@"batch" : self.eventQueue};
     [self
          sendBatchedPOSTEvent:batch
@@ -304,47 +379,33 @@ static BVAnalyticsManager *analyticsInstance = nil;
                                     error.localizedDescription]];
           }
 
-          // For internal testing
-          dispatch_async(dispatch_get_main_queue(), ^{
-            [[NSNotificationCenter defaultCenter]
-                postNotificationName:@"BV_INTERNAL_MAGPIE_EVENT_COMPLETED"
-                              object:error];
-          });
+          [self flushImpressionEventCompletionQueue];
 
         }];
 
-    dispatch_barrier_sync(self.concurrentEventQueue, ^{
-      // purge queue
-      [self.eventQueue removeAllObjects];
-    });
+    // purge queue
+    [self.eventQueue removeAllObjects];
   }
 
   // send page view events
   if ([self.pageviewQueue count] > 0) {
+
     NSDictionary *batch = @{@"batch" : self.pageviewQueue};
-    [self
-         sendBatchedPOSTEvent:batch
-        withCompletionHandler:^(NSError *__nullable error) {
-          if (error) {
-            [[BVLogger sharedLogger]
-                error:[NSString stringWithFormat:
-                                    @"ERROR: posting magpie pageview event%@",
-                                    error.localizedDescription]];
-          }
+    [self sendBatchedPOSTEvent:batch
+         withCompletionHandler:^(NSError *__nullable error) {
+           if (error) {
+             [[BVLogger sharedLogger]
+                 error:[NSString stringWithFormat:
+                                     @"ERROR: posting magpie pageview event%@",
+                                     error.localizedDescription]];
+           }
 
-          // For internal testing
-          dispatch_async(dispatch_get_main_queue(), ^{
-            [[NSNotificationCenter defaultCenter]
-                postNotificationName:@"BV_INTERNAL_PAGEVIEW_ANALYTICS_COMPLETED"
-                              object:error];
-          });
+           [self flushPageViewEventCompletionQueue];
 
-        }];
+         }];
 
-    dispatch_barrier_sync(self.concurrentEventQueue, ^{
-      // purge pageview queue
-      [self.pageviewQueue removeAllObjects];
-    });
+    // purge pageview queue
+    [self.pageviewQueue removeAllObjects];
   }
 }
 
@@ -424,7 +485,9 @@ static BVAnalyticsManager *analyticsInstance = nil;
                 [[BVLogger sharedLogger] analyticsMessage:message];
               }
 
-              completionHandler(error);
+              dispatch_barrier_async(self.concurrentEventQueue, ^{
+                completionHandler(error);
+              });
 
             }];
 
@@ -542,8 +605,80 @@ static BVAnalyticsManager *analyticsInstance = nil;
          andIsProduction:(!self.isStagingServer)];
 }
 
-- (void)setFlushInterval:(NSTimeInterval)newInterval {
-  self.queueFlushInterval = newInterval;
+#pragma mark - Testing
+
+- (void)enqueueImpressionTestWithName:(NSString *)testName
+                  withCompletionBlock:(dispatch_block_t)completionBlock {
+
+  dispatch_barrier_sync(self.concurrentEventQueue, ^{
+
+    dispatch_block_t opaqueCompletion =
+        self.testImpressionEventCompletionQueue[testName];
+    if (opaqueCompletion) {
+      opaqueCompletion();
+    }
+
+    self.testImpressionEventCompletionQueue[testName] = completionBlock;
+
+    NSAssert(
+        2 > self.testImpressionEventCompletionQueue.allKeys.count,
+        @"Attempting to run more than one test, probably a race condition.");
+  });
+}
+
+- (void)enqueuePageViewTestWithName:(NSString *)testName
+                withCompletionBlock:(dispatch_block_t)completionBlock {
+
+  dispatch_barrier_sync(self.concurrentEventQueue, ^{
+
+    dispatch_block_t opaqueCompletion =
+        self.testPageViewEventCompletionQueue[testName];
+    if (opaqueCompletion) {
+      opaqueCompletion();
+    }
+
+    self.testPageViewEventCompletionQueue[testName] = completionBlock;
+
+    NSAssert(
+        2 > self.testPageViewEventCompletionQueue.allKeys.count,
+        @"Attempting to run more than one test, probably a race condition.");
+  });
+}
+
+- (void)flushImpressionEventCompletionQueue {
+
+  dispatch_barrier_async(self.concurrentEventQueue, ^{
+
+    if (!_testImpressionEventCompletionQueue) {
+      return;
+    }
+
+    dispatch_block_t opaqueCompletion =
+        self.testImpressionEventCompletionQueue.allValues.firstObject;
+    if (opaqueCompletion) {
+      opaqueCompletion();
+    }
+
+    [self.testImpressionEventCompletionQueue removeAllObjects];
+  });
+}
+
+- (void)flushPageViewEventCompletionQueue {
+
+  dispatch_barrier_async(self.concurrentEventQueue, ^{
+
+    if (!_testPageViewEventCompletionQueue) {
+      return;
+    }
+
+    dispatch_block_t opaqueCompletion =
+        self.testPageViewEventCompletionQueue.allValues.firstObject;
+    if (opaqueCompletion) {
+      opaqueCompletion();
+    }
+
+    [self.testPageViewEventCompletionQueue removeAllObjects];
+  });
 }
 
 @end

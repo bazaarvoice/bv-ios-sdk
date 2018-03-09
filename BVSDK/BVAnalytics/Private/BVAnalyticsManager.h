@@ -65,7 +65,4 @@
  */
 - (NSMutableDictionary *)getMobileDiagnosticParams;
 
-/// internal use
-- (void)setFlushInterval:(NSTimeInterval)newInterval;
-
 @end

@@ -5,9 +5,6 @@
 //  Copyright 2016 Bazaarvoice Inc. All rights reserved.
 //
 
-#define BV_INTERNAL_PROFILE_UPDATED_COMPLETED                                  \
-  @"BV_INTERNAL_PROFILE_UPDATED_COMPLETED"
-
 /// user information can be included in the userAuthString - sent with:
 /// [[BVSDKManager sharedManager] setUserWithAuthString:myAuthString];
 

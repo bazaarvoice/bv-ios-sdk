@@ -7,11 +7,12 @@
 
 #import <XCTest/XCTest.h>
 
-#import "BVAnalyticsManager.h"
+#import <BVSDK/BVAnalyticsManager+Testing.h>
+#import <BVSDK/BVLocaleServiceManager.h>
+#import <BVSDK/BVSDKConfiguration.h>
+#import <BVSDK/BVSDKManager.h>
+
 #import "BVBaseStubTestCase.h"
-#import "BVLocaleServiceManager.h"
-#import "BVSDKConfiguration.h"
-#import "BVSDKManager.h"
 
 static NSString *configuredLocaleIdentifier;
 static NSString *nonEUProductionValue;

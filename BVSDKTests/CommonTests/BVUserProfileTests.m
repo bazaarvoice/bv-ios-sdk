@@ -5,41 +5,31 @@
 //  Copyright 2015 Bazaarvoice Inc. All rights reserved.
 //
 
+#import <BVSDK/BVAnalyticsManager+Testing.h>
+#import <BVSDK/BVAuthenticatedUser+Testing.h>
 #import <BVSDK/BVCommon.h>
 #import <XCTest/XCTest.h>
 
-// 3rd Party
-#import <OHHTTPStubs/OHHTTPStubs.h>
-#import <OHHTTPStubs/OHPathHelpers.h>
+#import "BVBaseStubTestCase.h"
 
 static BVAuthenticatedUser *user = nil;
 
-@interface BVUserProfileTests : XCTestCase {
-
-  XCTestExpectation *userProfileExpectation;
-  XCTestExpectation *magpieEventExpectation;
-}
+@interface BVUserProfileTests : BVBaseStubTestCase
+@property(nonatomic, copy) OHHTTPStubsTestBlock passableTest;
+@property(nonatomic, strong) XCTestExpectation *userProfileExpectation;
 @end
 
 @implementation BVUserProfileTests
 
 - (void)setUp {
-
   [super setUp];
 
-  // Put setup code here. This method is called before the invocation of each
-  // test method in the class.
+  user = nil;
 
   [[NSNotificationCenter defaultCenter]
       addObserver:self
          selector:@selector(userProfileUpdated:)
-             name:@"BV_INTERNAL_PROFILE_UPDATED_COMPLETED"
-           object:nil];
-
-  [[NSNotificationCenter defaultCenter]
-      addObserver:self
-         selector:@selector(magpieEventReceived:)
-             name:@"BV_INTERNAL_MAGPIE_EVENT_COMPLETED"
+             name:BV_INTERNAL_PROFILE_UPDATED_COMPLETED
            object:nil];
 
   // set up the BVAdsSDK with your clientId, and AdsPassKey
@@ -49,37 +39,22 @@ static BVAuthenticatedUser *user = nil;
   [BVSDKManager configureWithConfiguration:configDict
                                 configType:BVConfigurationTypeStaging];
   [sdkManager setLogLevel:BVLogLevelError];
+
+  self.passableTest = ^BOOL(NSURLRequest *_Nonnull request) {
+    return ![request.HTTPMethod isEqualToString:@"POST"] &&
+           [request.URL.host containsString:@"bazaarvoice.com"];
+  };
 }
 
 - (void)tearDown {
-  // Put teardown code here. This method is called after the invocation of each
-  // test method in the class.
   [super tearDown];
 
   [[NSNotificationCenter defaultCenter]
       removeObserver:self
-                name:@"BV_INTERNAL_PROFILE_UPDATED_COMPLETED"
+                name:BV_INTERNAL_PROFILE_UPDATED_COMPLETED
               object:nil];
 
-  [[NSNotificationCenter defaultCenter]
-      removeObserver:self
-                name:@"BV_INTERNAL_MAGPIE_EVENT_COMPLETED"
-              object:nil];
-
-  [OHHTTPStubs removeAllStubs];
-}
-
-- (void)magpieEventReceived:(NSNotification *)notification {
-
-  XCTAssertNotNil(notification, "Magpie event notification was nil");
-
-  // notification object comes back with a filled out NSError, which we expect
-  // to be nil
-
-  XCTAssertNil(notification.object,
-               @"Notification object should have been nil!");
-
-  [magpieEventExpectation fulfill];
+  self.userProfileExpectation = nil;
 }
 
 - (void)waitForExpectations {
@@ -94,6 +69,22 @@ static BVAuthenticatedUser *user = nil;
                                }];
 }
 
+- (dispatch_block_t)generateAnalyticsCompletionBlock {
+  NSDate *now = [NSDate date];
+  NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+  [dateFormat setDateFormat:@"HH:mm:ss"];
+  NSString *dateString = [dateFormat stringFromDate:now];
+
+  NSString *description =
+      [NSString stringWithFormat:@"BVUserProfileTests-%@", dateString];
+  XCTestExpectation *expectation =
+      [self expectationWithDescription:description];
+
+  return ^{
+    [expectation fulfill];
+  };
+}
+
 // For a typical user profile call, the client will simply pass in the UAS
 // string and be done with it. The logic behind the call to
 // BVSDKManager#setUserWithAuthString will handle all requirements for making
@@ -101,24 +92,15 @@ static BVAuthenticatedUser *user = nil;
 // The text itself
 - (void)testSetUserProfile {
 
-  userProfileExpectation =
+  self.userProfileExpectation =
       [self expectationWithDescription:@"Expecting user profile network event"];
-  magpieEventExpectation =
-      [self expectationWithDescription:
-                @"Expecting magpie profile personalization event"];
 
-  [OHHTTPStubs stubRequestsPassingTest:^BOOL(NSURLRequest *request) {
-    return [request.URL.host containsString:@"bazaarvoice.com"];
-  }
-      withStubResponse:^OHHTTPStubsResponse *(NSURLRequest *request) {
-        // return normal user profile from /users API
-        return [[OHHTTPStubsResponse
-            responseWithFileAtPath:OHPathForFile(@"userProfile1.json",
-                                                 self.class)
-                        statusCode:200
-                           headers:@{@"Content-Type" : @"application/json"}]
-            responseTime:OHHTTPStubsDownloadSpeedWifi];
-      }];
+  [[BVAnalyticsManager sharedManager]
+      enqueueImpressionTestWithName:@"testSetUserProfile"
+                withCompletionBlock:[self generateAnalyticsCompletionBlock]];
+
+  [self addStubWith200ResponseForJSONFileNamed:@"userProfile1.json"
+                               withPassingTest:self.passableTest];
 
   [[BVSDKManager sharedManager]
       setUserWithAuthString:@"0ce436b29697d6bc74f30f724b9b0bb6646174653d3132333"
@@ -135,7 +117,8 @@ static BVAuthenticatedUser *user = nil;
 // BVAuthenticatedUser object with profile info
 - (void)userProfileUpdated:(NSNotification *)notification {
 
-  XCTAssertNotNil(notification, @"Notifcation was nil from user profile fetch");
+  XCTAssertNotNil(notification,
+                  @"NSNotification was nil from user profile fetch");
 
   user = (BVAuthenticatedUser *)[notification object];
   XCTAssertNotNil(user, @"User profile is nil after profile fetch");
@@ -156,7 +139,7 @@ static BVAuthenticatedUser *user = nil;
   XCTAssertTrue([interestsKeyWords containsString:@"apparelaccessories_HIGH"],
                 @"Expected apparelaccessories_HIGH in keyword result");
 
-  [userProfileExpectation fulfill];
+  [self.userProfileExpectation fulfill];
 }
 
 @end

@@ -7,11 +7,12 @@
 
 #import <XCTest/XCTest.h>
 
-#import "BVAnalyticsManager.h"
+#import <BVSDK/BVAnalyticsManager+Testing.h>
+#import <BVSDK/BVLocaleServiceManager.h>
+#import <BVSDK/BVSDKConfiguration.h>
+#import <BVSDK/BVSDKManager.h>
+
 #import "BVBaseStubTestCase.h"
-#import "BVLocaleServiceManager.h"
-#import "BVSDKConfiguration.h"
-#import "BVSDKManager.h"
 
 #define ANALYTICS_TEST_USING_MOCK_DATA                                         \
   1 // Setting to 1 uses mock result. Set to 0 to make network request.
@@ -48,12 +49,7 @@
 
 @end
 
-@interface BVPixelTests : BVBaseStubTestCase {
-  XCTestExpectation *impressionExpectation;
-  XCTestExpectation *pageviewExpectation;
-  NSInteger numberOfExpectedImpressionAnalyticsEvents;
-  NSInteger numberOfExpectedPageviewAnalyticsEvents;
-}
+@interface BVPixelTests : BVBaseStubTestCase
 @end
 
 @implementation BVPixelTests
@@ -67,39 +63,11 @@
   [BVSDKManager configureWithConfiguration:configDict
                                 configType:BVConfigurationTypeProd];
   [[BVSDKManager sharedManager] setLogLevel:BVLogLevelAnalyticsOnly];
-
-  [[NSNotificationCenter defaultCenter]
-      addObserver:self
-         selector:@selector(analyticsPageviewEventCompleted:)
-             name:@"BV_INTERNAL_PAGEVIEW_ANALYTICS_COMPLETED"
-           object:nil];
-
-  [[NSNotificationCenter defaultCenter]
-      addObserver:self
-         selector:@selector(analyticsImpressionEventCompleted:)
-             name:@"BV_INTERNAL_MAGPIE_EVENT_COMPLETED"
-           object:nil];
-
-  impressionExpectation = [self
-      expectationWithDescription:@"Expecting impression analytics events"];
-  pageviewExpectation =
-      [self expectationWithDescription:@"Expecting pageview analytics events"];
-  numberOfExpectedImpressionAnalyticsEvents = 0;
-  numberOfExpectedPageviewAnalyticsEvents = 0;
 }
 
 - (void)tearDown {
 
   [super tearDown];
-
-  [[NSNotificationCenter defaultCenter]
-      removeObserver:self
-                name:@"BV_INTERNAL_PAGEVIEW_ANALYTICS_COMPLETED"
-              object:nil];
-  [[NSNotificationCenter defaultCenter]
-      removeObserver:self
-                name:@"BV_INTERNAL_MAGPIE_EVENT_COMPLETED"
-              object:nil];
 }
 
 - (void)waitForAnalytics {
@@ -112,47 +80,20 @@
                                }];
 }
 
-- (void)analyticsImpressionEventCompleted:(NSNotification *)notification {
+- (dispatch_block_t)generateAnalyticsCompletionBlock {
+  NSDate *now = [NSDate date];
+  NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+  [dateFormat setDateFormat:@"HH:mm:ss"];
+  NSString *dateString = [dateFormat stringFromDate:now];
 
-  NSLog(@"analytics impression event fired in tests: %i",
-        (int)numberOfExpectedImpressionAnalyticsEvents);
+  NSString *description =
+      [NSString stringWithFormat:@"BVPixelTests-%@", dateString];
+  XCTestExpectation *expectation =
+      [self expectationWithDescription:description];
 
-  NSError *err = (NSError *)[notification object];
-  if (err) {
-    XCTFail(@"ERROR: Analytic event failed %@", err);
-  } else {
-    NSLog(@"Analytic Impression HTTP success.");
-  }
-
-  numberOfExpectedImpressionAnalyticsEvents -= 1;
-  [self checkComplete];
-}
-
-- (void)analyticsPageviewEventCompleted:(NSNotification *)notification {
-
-  NSLog(@"analytics pageview event fired in tests: %i",
-        (int)numberOfExpectedPageviewAnalyticsEvents);
-
-  NSError *err = (NSError *)[notification object];
-  if (err) {
-    XCTFail(@"ERROR: Analytic event failed %@", err);
-  } else {
-    NSLog(@"Analytic Page View HTTP success.");
-  }
-
-  numberOfExpectedPageviewAnalyticsEvents -= 1;
-  [self checkComplete];
-}
-
-- (void)checkComplete {
-  if (numberOfExpectedImpressionAnalyticsEvents == 0) {
-    [impressionExpectation fulfill];
-    numberOfExpectedImpressionAnalyticsEvents = -1;
-  }
-  if (numberOfExpectedPageviewAnalyticsEvents == 0) {
-    [pageviewExpectation fulfill];
-    numberOfExpectedPageviewAnalyticsEvents = -1;
-  }
+  return ^{
+    [expectation fulfill];
+  };
 }
 
 - (void)checkCommonEventParams:(NSDictionary *)eventDict {
@@ -176,8 +117,9 @@
 
 - (void)testProductPageViewEventParameters {
 
-  numberOfExpectedImpressionAnalyticsEvents = 0;
-  numberOfExpectedPageviewAnalyticsEvents = 1;
+  [[BVAnalyticsManager sharedManager]
+      enqueuePageViewTestWithName:@"testProductPageViewEventParameters"
+              withCompletionBlock:[self generateAnalyticsCompletionBlock]];
 
   NSDictionary *testValues = @{
     @"productId" : @"12345",
@@ -213,8 +155,9 @@
 
 - (void)testImpressionEventParametersReview {
 
-  numberOfExpectedImpressionAnalyticsEvents = 1;
-  numberOfExpectedPageviewAnalyticsEvents = 0;
+  [[BVAnalyticsManager sharedManager]
+      enqueueImpressionTestWithName:@"testImpressionEventParametersReview"
+                withCompletionBlock:[self generateAnalyticsCompletionBlock]];
 
   NSDictionary *testValues = @{
     @"productId" : @"12345",
@@ -252,8 +195,9 @@
 
 - (void)testImpressionEventParametersQuestion {
 
-  numberOfExpectedImpressionAnalyticsEvents = 1;
-  numberOfExpectedPageviewAnalyticsEvents = 0;
+  [[BVAnalyticsManager sharedManager]
+      enqueueImpressionTestWithName:@"testImpressionEventParametersQuestion"
+                withCompletionBlock:[self generateAnalyticsCompletionBlock]];
 
   NSDictionary *testValues = @{
     @"productId" : @"12345",
@@ -291,8 +235,9 @@
 
 - (void)testImpressionEventParametersAnswer {
 
-  numberOfExpectedImpressionAnalyticsEvents = 1;
-  numberOfExpectedPageviewAnalyticsEvents = 0;
+  [[BVAnalyticsManager sharedManager]
+      enqueueImpressionTestWithName:@"testImpressionEventParametersAnswer"
+                withCompletionBlock:[self generateAnalyticsCompletionBlock]];
 
   NSDictionary *testValues = @{
     @"productId" : @"12345",
@@ -330,8 +275,9 @@
 
 - (void)testViewedCGC {
 
-  numberOfExpectedImpressionAnalyticsEvents = 1;
-  numberOfExpectedPageviewAnalyticsEvents = 0;
+  [[BVAnalyticsManager sharedManager]
+      enqueueImpressionTestWithName:@"testViewedCGC"
+                withCompletionBlock:[self generateAnalyticsCompletionBlock]];
 
   NSDictionary *testValues = @{
     @"productId" : @"12345",
@@ -368,8 +314,9 @@
 
   [[BVAnalyticsManager sharedManager] setFlushInterval:0.1];
 
-  numberOfExpectedImpressionAnalyticsEvents = 1;
-  numberOfExpectedPageviewAnalyticsEvents = 0;
+  [[BVAnalyticsManager sharedManager]
+      enqueueImpressionTestWithName:@"testFeatureUsedProfile"
+                withCompletionBlock:[self generateAnalyticsCompletionBlock]];
 
   NSDictionary *extraParams =
       @{@"interaction" : @"false", @"page" : @"authorId"};
@@ -411,8 +358,9 @@
 
 - (void)testUsedFeatureWriteReview {
 
-  numberOfExpectedImpressionAnalyticsEvents = 1;
-  numberOfExpectedPageviewAnalyticsEvents = 0;
+  [[BVAnalyticsManager sharedManager]
+      enqueueImpressionTestWithName:@"testUsedFeatureWriteReview"
+                withCompletionBlock:[self generateAnalyticsCompletionBlock]];
 
   NSDictionary *testValues = @{
     @"productId" : @"12345",
@@ -454,8 +402,9 @@
 
 - (void)testUsedFeatureFeedbackHelpfulness {
 
-  numberOfExpectedImpressionAnalyticsEvents = 1;
-  numberOfExpectedPageviewAnalyticsEvents = 0;
+  [[BVAnalyticsManager sharedManager]
+      enqueueImpressionTestWithName:@"testUsedFeatureFeedbackHelpfulness"
+                withCompletionBlock:[self generateAnalyticsCompletionBlock]];
 
   NSDictionary *additionalParams = @{
     @"contentType" : [BVPixelImpressionContentTypeUtil
@@ -491,8 +440,9 @@
 
 - (void)testUsedFeatureFeedbackInappropriate {
 
-  numberOfExpectedImpressionAnalyticsEvents = 1;
-  numberOfExpectedPageviewAnalyticsEvents = 0;
+  [[BVAnalyticsManager sharedManager]
+      enqueueImpressionTestWithName:@"testUsedFeatureFeedbackInappropriate"
+                withCompletionBlock:[self generateAnalyticsCompletionBlock]];
 
   NSDictionary *additionalParams = @{
     @"contentType" : [BVPixelImpressionContentTypeUtil
@@ -528,8 +478,9 @@
 
 - (void)testInViewEvent {
 
-  numberOfExpectedImpressionAnalyticsEvents = 1;
-  numberOfExpectedPageviewAnalyticsEvents = 0;
+  [[BVAnalyticsManager sharedManager]
+      enqueueImpressionTestWithName:@"testInViewEvent"
+                withCompletionBlock:[self generateAnalyticsCompletionBlock]];
 
   NSDictionary *testValues = @{
     @"productId" : @"12345",
@@ -569,8 +520,9 @@
   [self addStubWith200ResponseForJSONFileNamed:@"emptyJSON.json"];
 #endif
 
-  numberOfExpectedImpressionAnalyticsEvents = 1;
-  numberOfExpectedPageviewAnalyticsEvents = 0;
+  [[BVAnalyticsManager sharedManager]
+      enqueueImpressionTestWithName:@"testTransactionConversionNoPII"
+                withCompletionBlock:[self generateAnalyticsCompletionBlock]];
 
   NSArray *orderItems =
       @[ [[BVTransactionItem alloc] initWithSku:@"123"
@@ -604,8 +556,9 @@
   [self addStubWith200ResponseForJSONFileNamed:@"emptyJSON.json"];
 #endif
 
-  numberOfExpectedImpressionAnalyticsEvents = 1;
-  numberOfExpectedPageviewAnalyticsEvents = 0;
+  [[BVAnalyticsManager sharedManager]
+      enqueueImpressionTestWithName:@"testTransactionConversionPII"
+                withCompletionBlock:[self generateAnalyticsCompletionBlock]];
 
   NSArray *orderItems =
       @[ [[BVTransactionItem alloc] initWithSku:@"123"
@@ -663,8 +616,9 @@
   [self addStubWith200ResponseForJSONFileNamed:@"emptyJSON.json"];
 #endif
 
-  numberOfExpectedImpressionAnalyticsEvents = 1;
-  numberOfExpectedPageviewAnalyticsEvents = 0;
+  [[BVAnalyticsManager sharedManager]
+      enqueueImpressionTestWithName:@"testNonTransactionConversionNoPII"
+                withCompletionBlock:[self generateAnalyticsCompletionBlock]];
 
   BVConversionEvent *conversion = [[BVConversionEvent alloc]
       initWithType:@"Broucher Download"
@@ -692,8 +646,9 @@
   [self addStubWith200ResponseForJSONFileNamed:@"emptyJSON.json"];
 #endif
 
-  numberOfExpectedImpressionAnalyticsEvents = 1;
-  numberOfExpectedPageviewAnalyticsEvents = 0;
+  [[BVAnalyticsManager sharedManager]
+      enqueueImpressionTestWithName:@"testNonTransactionConversionPII"
+                withCompletionBlock:[self generateAnalyticsCompletionBlock]];
 
   BVConversionEvent *conversion =
       [[BVConversionEvent alloc] initWithType:@"Broucher Download"
