@@ -135,11 +135,18 @@ static NSUInteger const MAX_IMAGE_BYTES = 5 * 1024 * 1024; // BV API max is 5MB
 
             if (photoUrl) {
               // successful response!
-              success(photoUrl);
+              dispatch_async(dispatch_get_main_queue(), ^{
+                success(photoUrl);
+              });
+
             } else if (httpError) {
               // network error was generated
               [[BVLogger sharedLogger] printError:httpError];
-              failure(@[ httpError ]);
+
+              dispatch_async(dispatch_get_main_queue(), ^{
+                failure(@[ httpError ]);
+              });
+
             } else if (statusCode >= 300) {
               // HTTP status code indicates failure
               NSError *statusError =
@@ -151,17 +158,29 @@ static NSUInteger const MAX_IMAGE_BYTES = 5 * 1024 * 1024; // BV API max is 5MB
                                         @"BV_ERROR_NETWORK_FAILED"
                                   }];
               [[BVLogger sharedLogger] printError:statusError];
-              failure(@[ statusError ]);
+
+              dispatch_async(dispatch_get_main_queue(), ^{
+                failure(@[ statusError ]);
+              });
+
             } else if (jsonParsingError) {
               // json parsing failed
               [[BVLogger sharedLogger] printError:jsonParsingError];
-              failure(@[ jsonParsingError ]);
+
+              dispatch_async(dispatch_get_main_queue(), ^{
+                failure(@[ jsonParsingError ]);
+              });
+
             } else if (errorResponse) {
               // bazaarvoice-specific error occured -- ex: API key is
               // invalid
               NSArray<NSError *> *errors = [errorResponse toNSErrors];
               [[BVLogger sharedLogger] printErrors:errors];
-              failure(errors);
+
+              dispatch_async(dispatch_get_main_queue(), ^{
+                failure(errors);
+              });
+
             } else {
               // Unknown error -- ex: api responded successfully but did
               // not have photo URL
@@ -174,7 +193,10 @@ static NSUInteger const MAX_IMAGE_BYTES = 5 * 1024 * 1024; // BV API max is 5MB
                                         @"BV_ERROR_PARSING_FAILED"
                                   }];
               [[BVLogger sharedLogger] printError:error];
-              failure(@[ error ]);
+
+              dispatch_async(dispatch_get_main_queue(), ^{
+                failure(@[ error ]);
+              });
             }
 
           } @catch (NSException *exception) {
@@ -187,7 +209,10 @@ static NSUInteger const MAX_IMAGE_BYTES = 5 * 1024 * 1024; // BV API max is 5MB
                              @"code: BV_ERROR_UNKNOWN"
                        }];
             [[BVLogger sharedLogger] printError:error];
-            failure(@[ error ]);
+
+            dispatch_async(dispatch_get_main_queue(), ^{
+              failure(@[ error ]);
+            });
           }
 
         }];
