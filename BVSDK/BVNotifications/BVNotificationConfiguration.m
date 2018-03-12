@@ -120,11 +120,17 @@ loadPINConfiguration:(nonnull NSURL *)url
                            options:NSJSONReadingMutableLeaves
                              error:&jsonError];
             if (jsonDict) {
-              completion(jsonDict, nil);
+
+              dispatch_async(dispatch_get_main_queue(), ^{
+                completion(jsonDict, nil);
+              });
             }
 
           } else {
-            completion(nil, error);
+
+            dispatch_async(dispatch_get_main_queue(), ^{
+              completion(nil, error);
+            });
           }
 
         }];
