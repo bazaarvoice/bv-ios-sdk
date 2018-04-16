@@ -344,7 +344,10 @@ function scrollAndClickById(id) {
             <div class="scroll-container scrollable--scrollbar">
               <div class="page-container">
 
-                <div class="flex flex-row" id="content_title">
+                <p class="bg-danger well-lg" style="padding:4px;"><i class="fa fa-hand-o-right"></i> This documentation is currently deprecated and will be removed soon. <a class="bg-danger" href="https://developer.bazaarvoice.com/mobile-sdks">Here is the new location of the updated documentation</a></p>
+
+
+<div class="flex flex-row" id="content_title">
 	Curations Custom Posts
 </div>
 
@@ -357,7 +360,7 @@ First, choose the upload API you want to use:
 <br><br>
 <ol>
 
-  <li><a href="#photouploaderapi">Photo Upload API</a> - If you have your own submission UI, you can easily submit using the <code>BVCurationsPhotoUploader</code> instance to handle the API request for you. </li> 
+  <li><a href="#photouploaderapi">Photo Upload API</a> - If you have your own submission UI, you can easily submit using the <code>BVCurationsPhotoUploader</code> instance to handle the API request for you. </li>
   <i>...or...</i>
   <li><a href="#photouploaderui">BVCurationsPostViewController - </a> Our <code>BVCurationsPostViewController</code> is a subclass of Apple's <code>SLComponseViewController</code>. When using this method to upload photos, you can give your end-users a familiar native experience using Apple's best practices for sharing content. This component can also be skinned with your company logo and navigation bar color.</li>
 <br>
@@ -395,7 +398,7 @@ First, choose the upload API you want to use:
 	<div role="tabpanel" class="tab-pane active" id="swift">
 <pre><code class="swift">// upload this UIImage to Curations with the BVSDK
 func uploadImageToCurations(image:UIImage) {
-    
+
     // Required parameters
     let aliasInput = "username"
     let tokenInput = "user_token"
@@ -413,7 +416,7 @@ func uploadImageToCurations(image:UIImage) {
     // alternatively, you can upload a photo(s) via HTTPS instead of a UIImage
     // params.photos = ["https://upload.wikimedia.org/wikipedia/commons/6/6f/Einstein-formal_portrait-35.jpg"]
 
-    // You can also geo-tag photo uploads, which can also in turn be used to 
+    // You can also geo-tag photo uploads, which can also in turn be used to
     // find photos by location and/or create photo maps
     params.latitude = 35.997825
     params.longitude = -113.766150
@@ -436,7 +439,7 @@ func uploadImageToCurations(image:UIImage) {
 
 // upload this UIImage to Curations with the BVSDK
 - (void)uploadImageToCurations:(UIImage*)image {
-    
+
     // Required params
     NSString *aliasInput = @"username";
     NSString *tokenInput = @"user_token";
@@ -468,7 +471,7 @@ func uploadImageToCurations(image:UIImage) {
     } withFailure:^(NSError *error) {
         // error
         NSLog(@"ERROR: %@", error.localizedDescription);
-    }];   
+    }];
 }</code></pre>
 	</div>
 
@@ -515,29 +518,29 @@ Before you present the <code>BVCurationsPostViewController</code> you should alr
                                                      withAuthorAlias: "authorAlias",
                                                      withToken: "token",
                                                      withText: "Hello.")
-        
+
         // We've hard-coded an image here for testing, where you would normally have the user select from a gallery or camera.
         shareRequest.image = UIImage(named: "curations_test_image")!
-        
+
         // Now we just post the share view controller with a couple of styling options.
         let shareVC = BVCurationsPostViewController.init(postRequest: shareRequest,
                                                           logoImage: UIImage(named: "happy_icon")!,
                                                           bavBarColor: UIColor.orangeColor(),
                                                           navBarTintColor: UIColor.whiteColor())
-        
+
         shareVC.placeholder = "Say something awesome\nabout your photo!"
         shareVC.modalPresentationStyle = UIModalPresentationStyle.OverCurrentContext;
-        
+
         shareVC.didPressCancel = {
             self.navigationController?.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
             print("User cancelled")
         }
-        
+
         shareVC.didBeginPost = {
             // Here you could add your own spinner
             print("Beginning Post Submission...")
         }
-        
+
         shareVC.didCompletePost = {(error) in
             // Here you could remove your spinner if added to the view
              self.navigationController?.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
@@ -547,8 +550,8 @@ Before you present the <code>BVCurationsPostViewController</code> you should alr
                 print("Successful submission!")
             }
         }
-        
-        self.navigationController?.presentViewController(shareVC, animated: true, completion: { 
+
+        self.navigationController?.presentViewController(shareVC, animated: true, completion: {
             // completion
         })</code></pre>
     </div>
@@ -560,21 +563,21 @@ Before you present the <code>BVCurationsPostViewController</code> you should alr
                                           withAuthorAlias:@"authorAlias"
                                           withToken:@"token"
                                           withText:@"Hello"];
-    
+
     // We've hard-coded an image here for testing, where you would normally have the user select from a gallery or camera.
     request.image = [UIImage imageNamed:@"curations_test_image"];
-    
+
     // Now we just post the share view controller with a couple of styling options.
-    
+
     BVCurationsPostViewController *shareVC = [[BVCurationsPostViewController alloc]
                                                initWithPostRequest:request
                                                logoImage:[UIImage imageNamed:@"happy_icon"]
                                                bavBarColor:[UIColor orangeColor]
                                                navBarTintColor:[UIColor whiteColor]];
-    
+
     shareVC.placeholder = @"Say something awesome\nabout your photo!";
     shareVC.modalPresentationStyle = UIModalPresentationOverCurrentContext;
-    
+
     [shareVC setDidPressCancel:^{
         // completion
         [self.navigationController.presentingViewController dismissViewControllerAnimated:true completion:^{
@@ -582,12 +585,12 @@ Before you present the <code>BVCurationsPostViewController</code> you should alr
             NSLog(@"User tapped cancel.");
         }];
     }];
-    
+
     [shareVC setDidBeginPost:^{
         // Here you could add your own spinner
         NSLog(@"Starting photo upload");
     }];
-    
+
     [shareVC setDidPressCancel:^{
         // completion
         NSLog(@"User tapped cancel.");
@@ -595,7 +598,7 @@ Before you present the <code>BVCurationsPostViewController</code> you should alr
             // completion
         }];
     }];
-    
+
     [shareVC setDidCompletePost:^(NSError * _Nullable error) {
         // completion
         if (error){
@@ -604,7 +607,7 @@ Before you present the <code>BVCurationsPostViewController</code> you should alr
             NSLog(@"Success submitting photo.");
         }
     }];
-    
+
     [self.navigationController presentViewController:shareVC animated:YES completion:^{
         // completion
     }];
@@ -621,6 +624,7 @@ Before you present the <code>BVCurationsPostViewController</code> you should alr
 <p>After you successfully create a Custom Post, check your Curations Management Console to verify the content has been uploaded and is ready for moderation, as shown in the screenshot below. Please contact Bazaarvoice if you are unfamiliar with how to log into the Curations Management Console.</p>
 <img src="ios-img/curations_custom_posts/curations_successful_custom_post.png" style="height:180px;" class="center-block img-fluid" />
 <br>
+
 
 
 <div class="well well-sm">

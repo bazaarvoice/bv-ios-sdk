@@ -344,7 +344,10 @@ function scrollAndClickById(id) {
             <div class="scroll-container scrollable--scrollbar">
               <div class="page-container">
 
-                <div class="flex flex-row" id="content_title">
+                <p class="bg-danger well-lg" style="padding:4px;"><i class="fa fa-hand-o-right"></i> This documentation is currently deprecated and will be removed soon. <a class="bg-danger" href="https://developer.bazaarvoice.com/mobile-sdks">Here is the new location of the updated documentation</a></p>
+
+
+<div class="flex flex-row" id="content_title">
 	User Authentication Token
 </div>
 <hr>
@@ -352,7 +355,8 @@ function scrollAndClickById(id) {
 <p>After a user is authenticated inside your user login workflow, use <code>BVSDKManager#setUserWithAuthString()</code> to set up the user authentication token.</p>
 
 
-<p class="bg-info well-lg" style="padding:4px;"><i class="fa fa-hand-o-right"></i>  Note: The authentication token created with your existing Bazaarvoice implementation logic needs to be provided to the BVSDKManager. However, the steps to encrypt your authentication token are still applicable even if you are not a Conversations client.</p>
+<p class="bg-info well-lg" style="padding:4px;"><i class="fa fa-hand-o-right"></i>  <a class="bg-info"></a> Note: The authentication token created with your existing Bazaarvoice implementation logic needs to be provided to the BVSDKManager. However, the steps to encrypt your authentication token are still applicable even if you are not a Conversations client.</p>
+
 
 
 <br>
@@ -385,6 +389,7 @@ BVSDKManager.shared().setUserWithAuthString("0ce436b29697d6bc74f30f724b9b0bb6646
 
 <p>After <code>setAuthenticatedUser</code> has been called from the <code>BVSDKManager</code>, Bazaarvoice will begin matching data to this user's profile. The process runs nearly in real-time, but is not instant. The Mobile SDK will poll to update the user profile and should reflect the user's interests within seconds.</p>
 <br>
+
 
 
 <div class="well well-sm">

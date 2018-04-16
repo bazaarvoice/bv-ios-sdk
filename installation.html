@@ -344,7 +344,10 @@ function scrollAndClickById(id) {
             <div class="scroll-container scrollable--scrollbar">
               <div class="page-container">
 
-                <div class="flex flex-row" id="content_title">
+                <p class="bg-danger well-lg" style="padding:4px;"><i class="fa fa-hand-o-right"></i> This documentation is currently deprecated and will be removed soon. <a class="bg-danger" href="https://developer.bazaarvoice.com/mobile-sdks">Here is the new location of the updated documentation</a></p>
+
+
+<div class="flex flex-row" id="content_title">
   Installation
 </div>
 <p>This guide shows you how to install and configure the Bazaarvoice Mobile SDK into your iOS app. Please make sure you have all the <a href="requirements.html">needed requirements</a> for your application first! Bazaarvoice supports XCode 8.0 or higher.</p>
@@ -360,7 +363,8 @@ function scrollAndClickById(id) {
 </ol>
 </p>
 
-<p class="bg-info well-lg" style="padding:4px;"><i class="fa fa-hand-o-right"></i>  If you need to use XCode 7.3, the last supported SDK version is 4.2.4.</p>
+<p class="bg-info well-lg" style="padding:4px;"><i class="fa fa-hand-o-right"></i>  <a class="bg-info"></a> If you need to use XCode 7.3, the last supported SDK version is 4.2.4.</p>
+
 
 <a name="install"></a>
 <h3>Installing the BVSDK</h3>
@@ -485,8 +489,9 @@ Once you have install the source code for the SDK, you are now ready to add your
               please see <a
                     href='https://developer.bazaarvoice.com/docs/read/conversations_api/api_key_processes/requesting_api_keys'>Conversations Requesting API Keys</a>.
             <br><br>
-            For all other API keys or if you don't know your client ID, contact <a
+            For all other API keys, Configuration Values, or if you don't know your client ID, contact <a
                     href="https://developer.bazaarvoice.com/support">Client Care</a> or your implementation team.
+                    <br><br>
         </p>
     </div>
 
@@ -544,8 +549,11 @@ Once you have install the source code for the SDK, you are now ready to add your
             var html = ["<tr class=\"odd\" style=\" background-color: #F7F7F7;\"><th style=\" width:30%;\">Products</th><th>Production API Keys</th><th>Staging API Keys</th></tr>"]
 
             for (row in rows) {
-                html.push(String.format("<tr><th>{0}</th><td><input type=\"text\" onfocus=\"this.oldValue = this.value;\" class= \"prodKeyText\" id=\"{1}Prod\" placeholder=\"{2} Production API Key\" style=\"width:100%\"/></td>" +
-                    "<td><input type=\"text\" class= \"stagingKeyText\" id=\"{1}Staging\" onfocus=\"this.oldValue = this.value;\" placeholder=\"{2} Staging API Key\" style=\"width:100%\"/></td></tr>", rows[row].title, rows[row].key, rows[row].ph))
+
+              var placeholderText = (rows[row].key == "analyticsLocaleIdentifier") ? "Configuration Value" : "API Key"
+
+              html.push(String.format("<tr><th>{0}</th><td><input type=\"text\" onfocus=\"this.oldValue = this.value;\" class= \"prodKeyText\" id=\"{1}Prod\" placeholder=\"{2} Production {3}\" style=\"width:100%\"/></td>" +
+              "<td><input type=\"text\" class= \"stagingKeyText\" id=\"{1}Staging\" onfocus=\"this.oldValue = this.value;\" placeholder=\"{2} Staging {3}\" style=\"width:100%\"/></td></tr>", rows[row].title, rows[row].key, rows[row].ph, placeholderText))
             }
 
             return html.join("")

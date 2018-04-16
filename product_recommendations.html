@@ -344,7 +344,10 @@ function scrollAndClickById(id) {
             <div class="scroll-container scrollable--scrollbar">
               <div class="page-container">
 
-                <div class="flex flex-row" id="content_title">
+                <p class="bg-danger well-lg" style="padding:4px;"><i class="fa fa-hand-o-right"></i> This documentation is currently deprecated and will be removed soon. <a class="bg-danger" href="https://developer.bazaarvoice.com/mobile-sdks">Here is the new location of the updated documentation</a></p>
+
+
+<div class="flex flex-row" id="content_title">
 	Product Recommendations
 </div>
 
@@ -367,7 +370,8 @@ The completed project for this code walkthrough for Swift and Objective-C is in 
 	After a user is authenticated inside your user login workflow, set user information inside the <code>BVSDKManager#sharedManager()</code> object.
 </p>
 
-<p class="bg-info well-lg" style="padding:4px;"><i class="fa fa-hand-o-right"></i>  Note: You must give the userAuthString created with your existing Bazaarvoice implementation logic to the <strong>BVSDKManager</strong> object. However, the steps to encrypt your userAuthString are applicable even if you are not a Conversations client.</p>
+<p class="bg-info well-lg" style="padding:4px;"><i class="fa fa-hand-o-right"></i>  <a class="bg-info"></a> Note: You must give the userAuthString created with your existing Bazaarvoice implementation logic to the <strong>BVSDKManager</strong> object. However, the steps to encrypt your userAuthString are applicable even if you are not a Conversations client.</p>
+
 
 <h5>Example Authentication String for Testing</h5>
 <p>
@@ -410,7 +414,8 @@ The completed project for this code walkthrough for Swift and Objective-C is in 
 	<li>
 		<p>Use the following code to set its superclass as <code>BVRecommendationCollectionViewCell</code> in the <code>DemoCell</code> file, and add appropriate view outlets.</p>
 
-<p class="bg-info well-lg" style="padding:4px;"><i class="fa fa-hand-o-right"></i>  Note: The starRating object in this example is done with the open-source project HCSStarRatingView.</p>
+<p class="bg-info well-lg" style="padding:4px;"><i class="fa fa-hand-o-right"></i>  <a class="bg-info"></a> Note: The starRating object in this example is done with the open-source project HCSStarRatingView.</p>
+
 
 		<ul class="nav nav-tabs" role="tablist">
   <li role="presentation" class="active"><a href="#swift" aria-controls="swift" role="tab" data-toggle="tab">Swift</a></li>
@@ -491,7 +496,8 @@ class DemoCell: BVRecommendationCollectionViewCell {
 		</div>
 
 		<br>
-		<p class="bg-info well-lg" style="padding:4px;"><i class="fa fa-hand-o-right"></i>  Tip: The above DemoCell outlets are suggestions for building a custom cell. The outlets map efficiently to each BVRecommendedProduct data object. However, the outlets are not required and you can configure your cell any way you want.</p>
+		<p class="bg-info well-lg" style="padding:4px;"><i class="fa fa-hand-o-right"></i>  <a class="bg-info"></a> Tip: The above DemoCell outlets are suggestions for building a custom cell. The outlets map efficiently to each BVRecommendedProduct data object. However, the outlets are not required and you can configure your cell any way you want.</p>
+
 
 		<br>
 
@@ -700,7 +706,8 @@ class DemoCell: BVRecommendationCollectionViewCell {
 	<li>
 		<p>Create and complete <code>collectionView:cellForItemAtIndexPath</code>.</p>
 
-<p class="bg-info well-lg" style="padding:4px;"><i class="fa fa-hand-o-right"></i>  Note: Image loading in this demo uses SDWebImage</p>
+<p class="bg-info well-lg" style="padding:4px;"><i class="fa fa-hand-o-right"></i>  <a class="bg-info"></a> Note: Image loading in this demo uses SDWebImage</p>
+
 
 
 		<ul class="nav nav-tabs" role="tablist">

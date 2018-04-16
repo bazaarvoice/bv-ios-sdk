@@ -344,7 +344,10 @@ function scrollAndClickById(id) {
             <div class="scroll-container scrollable--scrollbar">
               <div class="page-container">
 
-                <div class="flex flex-row" id="content_title">
+                <p class="bg-danger well-lg" style="padding:4px;"><i class="fa fa-hand-o-right"></i> This documentation is currently deprecated and will be removed soon. <a class="bg-danger" href="https://developer.bazaarvoice.com/mobile-sdks">Here is the new location of the updated documentation</a></p>
+
+
+<div class="flex flex-row" id="content_title">
 	BV Pixel Implementation
 </div>
 <p>The Bazaarvoice API Analytics solution, better known as BV Pixel, aims to pass events from all views containing consumer-generated content (CGC) within a client's mobile application to Bazaarvoice. This includes viewing product statistics and CGC display views for Reviews, Questions, and Answers. Using this collected data, Bazaarvoice reports on the influence that CGC has throughout the client's mobile application. </p>
@@ -385,35 +388,35 @@ function scrollAndClickById(id) {
 	<!-- swift -->
 	<div role="tabpanel" class="tab-pane active" id="swift">
 <pre><code class="swift">/*
-  Construct an array of BVTransactionItem based on the transaction. 
+  Construct an array of BVTransactionItem based on the transaction.
   Sku is required but the more parameters provided the better.
 */
 
-let firstItem = BVTransactionItem(sku:"123", 
-                                  name: "cat food", 
-                                  category: "pets", 
-                                  price: 10.99, 
-                                  quantity: 1, 
+let firstItem = BVTransactionItem(sku:"123",
+                                  name: "cat food",
+                                  category: "pets",
+                                  price: 10.99,
+                                  quantity: 1,
                                   imageUrl: "http://example.com/catfood.jpg")
-let secondItem = BVTransactionItem(sku: "321", 
-                                  name: "dog food", 
-                                  category: "pets", 
-                                  price: 14.99, 
-                                  quantity: 1, 
+let secondItem = BVTransactionItem(sku: "321",
+                                  name: "dog food",
+                                  category: "pets",
+                                  price: 14.99,
+                                  quantity: 1,
                                   imageUrl: "http://example.com/dogfood.jpg")
 
 let transactionItems = [firstItem, secondItem]
 
 /*
-  Construct a BVTransactionEvent 
+  Construct a BVTransactionEvent
   OrderId, orderTotal, and orderItems are required.
   You may include any other key value params you'd like.
   BVTransactionEvent also has convenience setters for commonly used params.
 */
 
-let transaction = BVTransactionEvent(orderId:"order id", 
-                          orderTotal: 33.11, 
-                          orderItems: transactionItems, 
+let transaction = BVTransactionEvent(orderId:"order id",
+                          orderTotal: 33.11,
+                          orderItems: transactionItems,
                           andOtherParams: ["state":"TX","email":"some.one@domain.com"])
 
 transaction.shipping = 4.99
@@ -429,7 +432,7 @@ BVPixel.trackEvent(transaction)
 	<!-- objective-c -->
 	<div role="tabpanel" class="tab-pane" id="objc">
 <pre><code class="objectivec">/*
-Construct an array of BVTransactionItem based on the transaction. 
+Construct an array of BVTransactionItem based on the transaction.
 Sku is required but the more parameters provided the better.
 */
 
@@ -449,7 +452,7 @@ BVTransactionItem *secondItem = [[BVTransactionItem alloc]init:@"321"
 NSArray *transactionItems = @[firstItem, secondItem];
 
 /*
-Construct a BVTransactionEvent 
+Construct a BVTransactionEvent
 OrderId, orderTotal, and orderItems are required.
 You may include any other key value params you'd like.
 BVTransaction also has convenience setters for commonly used params.
@@ -468,7 +471,7 @@ Use the BVPixel to track the Conversion Transaction Event.
 */
 
 [BVPixel trackEvent:transaction];
-</code></pre>							
+</code></pre>
 	</div>
 </div>
 <br>
@@ -511,14 +514,14 @@ Use the BVPixel to track the Conversion Transaction Event.
 	<!-- swift -->
 	<div role="tabpanel" class="tab-pane active" id="swift">
 <pre><code class="swift">/*
-Construct a BVConversionEvent 
-Type and value are required. Label is recommended. 
+Construct a BVConversionEvent
+Type and value are required. Label is recommended.
 Include any other key value params you want.
 */
 
-let conversion = BVConversionEvent("BrochureDownload", 
-value: "YourDefinedValue", 
-label: "Model xyz brochure", 
+let conversion = BVConversionEvent("BrochureDownload",
+value: "YourDefinedValue",
+label: "Model xyz brochure",
 otherParams: ["state":"TX","email":"some.one@domain.com"])
 
 /*
@@ -531,7 +534,7 @@ BVPixel.trackEvent(conversion)
 	<!-- objective-c -->
 	<div role="tabpanel" class="tab-pane" id="objc">
 <pre><code class="objectivec">/*
-Construct a BVConversionEvent 
+Construct a BVConversionEvent
 Type and value are required. Label is recommended.
 Include any other key value params you want.
 */
@@ -546,7 +549,7 @@ Use the BVPixel to track the Non-commerce Conversion Event.
 */
 
 [BVPixel trackEvent:conversion];
-</code></pre>							
+</code></pre>
 	</div>
 </div>
 
@@ -612,7 +615,7 @@ BVPageViewEvent *pageViewEvent = [[BVPageViewEvent alloc]
                         withAdditionalParams:nil];
 
 [BVPixel trackEvent:pageViewEvent];
-</code></pre>							
+</code></pre>
 	</div>
 </div>
 
@@ -670,7 +673,7 @@ BVPixel.trackEvent(inViewEvent)
                                              withAdditionalParams:nil];
 
 [BVPixel trackEvent:inViewEvent];
-</code></pre>							
+</code></pre>
 	</div>
 </div>
 
@@ -716,7 +719,7 @@ BVPixel.trackEvent(inViewEvent)
                                            with: .conversationsReviews,
                                            with: .typeReview, withBrand: "optionalBrand",
                                            withAdditionalParams: nil)
-        
+
 BVPixel.trackEvent(reviewImpression)
 </code></pre>
 	</div>
@@ -730,7 +733,7 @@ BVPixel.trackEvent(reviewImpression)
                                                withBrand:nil withAdditionalParams:nil];
 
 [BVPixel trackEvent:reviewImpression];
-</code></pre>							
+</code></pre>
 	</div>
 </div>
 
@@ -775,7 +778,7 @@ BVPixel.trackEvent(reviewImpression)
                               with: .conversationsReviews,
                               withEventName: .eventNameWriteReview,
                               withAdditionalParams: nil)
-        
+
 BVPixel.trackEvent(writeReviewEvent)
 </code></pre>
 	</div>
@@ -786,9 +789,9 @@ BVPixel.trackEvent(writeReviewEvent)
                                   withProductType:BVPixelProductTypeConversationsReviews
                                      withEventName:BVPixelFeatureUsedEventNameWriteReview
                                     withAdditionalParams:nil];
-    
+
 [BVPixel trackEvent:writeReviewEvent];
-</code></pre>							
+</code></pre>
 	</div>
 </div>
 
@@ -835,7 +838,7 @@ BVPixel.trackEvent(writeReviewEvent)
                                          with: .conversationsQuestionAnswer,
                                          withBrand: "brandName",
                                          withAdditionalParams: nil)
-        
+
 BVPixel.trackEvent(viewedCGCEvent)
 </code></pre>
   </div>
@@ -849,7 +852,7 @@ BVPixel.trackEvent(viewedCGCEvent)
                                         withAdditionalParams:nil];
 
 [BVPixel trackEvent:viewedCGCEvent];
-</code></pre>             
+</code></pre>
   </div>
 </div>
 
@@ -858,11 +861,6 @@ BVPixel.trackEvent(viewedCGCEvent)
   </div>
 
 </div>
-
-
-
-
-
 
 
 
