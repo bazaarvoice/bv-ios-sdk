@@ -8,5 +8,5 @@
 [![Build Status](https://travis-ci.org/bazaarvoice/bv-ios-sdk.svg?branch=master)](https://travis-ci.org/bazaarvoice/bv-ios-sdk)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 
-## Bazaarvoice iOS SDK 
-Full documentation for this SDK lives at: https://bazaarvoice.github.io/bv-ios-sdk/
+## Bazaarvoice iOS SDK
+Full documentation for this SDK lives at: https://developer.bazaarvoice.com/mobile-sdks/ios
