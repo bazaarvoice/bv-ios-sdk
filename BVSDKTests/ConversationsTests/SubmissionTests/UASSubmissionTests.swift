@@ -6,7 +6,6 @@
 //
 
 import XCTest
-import CommonCrypto
 @testable import BVSDK
 
 class UASSubmissionTests: XCTestCase {

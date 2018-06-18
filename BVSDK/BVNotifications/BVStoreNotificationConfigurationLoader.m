@@ -94,7 +94,7 @@ loadStoreNotificationConfiguration:
       completion:^(BVStoreReviewNotificationProperties *__nonnull response) {
         [[BVLogger sharedLogger]
             verbose:@"Successfully loaded BVStoreReviewNotificationProperties"];
-        _bvStoreReviewNotificationProperties = response;
+        self->_bvStoreReviewNotificationProperties = response;
         completion(response);
 
       }
