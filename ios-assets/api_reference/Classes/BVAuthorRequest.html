@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<title>BVAuthorRequest Class Reference</title>
+
+	<link rel="stylesheet" href="../css/style.css">
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1.4">
+	<meta name="generator" content="appledoc 2.2.1 (build 1334)">
+</head>
+<body class="appledoc">
+	<header>
+		<div class="container" class="hide-in-xcode">
+			
+			<h1 id="library-title">
+				<a href="../index.html">Bazaarvoice iOS SDK </a>
+			</h1>
+
+			<p id="developer-home">
+				<a href="../index.html">Bazaarvoice</a>
+			</p>
+			
+		</div>
+	</header>
+
+	<aside>
+		<div class="container">
+			<nav>
+				<ul id="header-buttons" role="toolbar">
+					<li><a href="../index.html">Index</a></li>
+<li><a href="../hierarchy.html">Hierarchy</a></li>
+
+					<li id="on-this-page" role="navigation">
+						<label>
+							On This Page
+
+							<div class="chevron">
+								<div class="chevy chevron-left"></div>
+								<div class="chevy chevron-right"></div>
+							</div>
+
+							<select id="jump-to">
+	<option value="top">Jump To&#133;</option>
+	
+	<option value="overview">Overview</option>
+	
+
+	
+	
+	<option value="tasks">Tasks</option>
+	
+	
+
+	
+	
+	<optgroup label="Properties">
+		
+		<option value="//api/name/authorId">authorId</option>
+		
+	</optgroup>
+	
+
+	
+
+	
+	<optgroup label="Instance Methods">
+		
+		<option value="//api/name/__unavailable">- __unavailable</option>
+		
+		<option value="//api/name/createParams">- createParams</option>
+		
+		<option value="//api/name/endpoint">- endpoint</option>
+		
+		<option value="//api/name/includeAuthorIncludeTypeValue:limit:">- includeAuthorIncludeTypeValue:limit:</option>
+		
+		<option value="//api/name/includeStatistics:">- includeStatistics:</option>
+		
+		<option value="//api/name/initWithAuthorId:">- initWithAuthorId:</option>
+		
+		<option value="//api/name/load:failure:">- load:failure:</option>
+		
+		<option value="//api/name/sortByAnswersSortOptionValue:monotonicSortOrderValue:">- sortByAnswersSortOptionValue:monotonicSortOrderValue:</option>
+		
+		<option value="//api/name/sortByQuestionsSortOptionValue:monotonicSortOrderValue:">- sortByQuestionsSortOptionValue:monotonicSortOrderValue:</option>
+		
+		<option value="//api/name/sortByReviewsSortOptionValue:monotonicSortOrderValue:">- sortByReviewsSortOptionValue:monotonicSortOrderValue:</option>
+		
+	</optgroup>
+	
+	
+</select>
+						</label>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</aside>
+
+	<article>
+		<div id="overview_contents" class="container">
+			<div id="content">
+				<main role="main">
+					<h1 class="title">BVAuthorRequest Class Reference</h1>
+
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+	<th>Inherits from</th>
+	<td><a href="../Classes/BVConversationsRequest.html">BVConversationsRequest</a> : NSObject</td>
+</tr><tr>
+	<th>Declared in</th>
+	<td>BVAuthorRequest.h</td>
+</tr>
+						</tbody></table></div>
+					
+
+                    
+					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p>This class allow you to build request parameters and request a user profile
+(author) and accepted content (Reviews, Questions, Answers) the author has
+submitted. The request builder conforms to parameters described in
+<a href="https://developer.bazaarvoice.com/docs/read/conversations_api/reference/latest/profiles/display">https://developer.bazaarvoice.com/docs/read/conversations_api/reference/latest/profiles/display</a>#parameters</p>
+					</div>
+					
+					
+
+					
+					
+					<div class="section section-tasks">
+						<a title="Tasks" name="tasks"></a>
+						
+
+						
+						
+
+						<div class="task-list">
+							<div class="section-method">
+	<a name="//api/name/authorId" title="authorId"></a>
+	<h3 class="method-title"><code><a href="#//api/name/authorId">&nbsp;&nbsp;authorId</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+
+			<div class="method-subsection method-declaration"><code>@property (nonnull, readonly) NSString *authorId</code></div>
+
+		    
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/initWithAuthorId:" title="initWithAuthorId:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/initWithAuthorId:">&ndash;&nbsp;initWithAuthorId:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>The id for the author&rsquo;s profile you are trying to fetch</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (nonnull instancetype)initWithAuthorId:(nonnull NSString *)<em>authorId</em></code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BVAuthorRequest.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/__unavailable" title="__unavailable"></a>
+	<h3 class="method-title"><code><a href="#//api/name/__unavailable">&ndash;&nbsp;__unavailable</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+
+			<div class="method-subsection method-declaration"><code>- (nonnull instancetype)__unavailable</code></div>
+
+		    
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/includeStatistics:" title="includeStatistics:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/includeStatistics:">&ndash;&nbsp;includeStatistics:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Add the statistics for the content type. Call multiple times for more than
+one submission type.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (nonnull instancetype)includeStatistics:(BVAuthorIncludeTypeValue)<em>authorIncludeTypeValue</em></code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BVAuthorRequest.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/includeAuthorIncludeTypeValue:limit:" title="includeAuthorIncludeTypeValue:limit:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/includeAuthorIncludeTypeValue:limit:">&ndash;&nbsp;includeAuthorIncludeTypeValue:limit:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>The type of submitted content to include. Call once for each type of
+Reviews, Questions, Answers.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (nonnull instancetype)includeAuthorIncludeTypeValue:(BVAuthorIncludeTypeValue)<em>authorIncludeTypeValue</em> limit:(NSUInteger)<em>limit</em></code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BVAuthorRequest.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/sortByReviewsSortOptionValue:monotonicSortOrderValue:" title="sortByReviewsSortOptionValue:monotonicSortOrderValue:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/sortByReviewsSortOptionValue:monotonicSortOrderValue:">&ndash;&nbsp;sortByReviewsSortOptionValue:monotonicSortOrderValue:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>When Reviews are included in the response, optinally add one or more sort
+parameters.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (nonnull instancetype)sortByReviewsSortOptionValue:(BVReviewsSortOptionValue)<em>reviewsSortOptionValue</em> monotonicSortOrderValue:(BVMonotonicSortOrderValue)<em>monotonicSortOrderValue</em></code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BVAuthorRequest.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/sortByQuestionsSortOptionValue:monotonicSortOrderValue:" title="sortByQuestionsSortOptionValue:monotonicSortOrderValue:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/sortByQuestionsSortOptionValue:monotonicSortOrderValue:">&ndash;&nbsp;sortByQuestionsSortOptionValue:monotonicSortOrderValue:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>When Questions are included in the response, optinally add one or more sort
+parameters.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (nonnull instancetype)sortByQuestionsSortOptionValue:(BVQuestionsSortOptionValue)<em>questionsSortOptionValue</em> monotonicSortOrderValue:(BVMonotonicSortOrderValue)<em>monotonicSortOrderValue</em></code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BVAuthorRequest.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/sortByAnswersSortOptionValue:monotonicSortOrderValue:" title="sortByAnswersSortOptionValue:monotonicSortOrderValue:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/sortByAnswersSortOptionValue:monotonicSortOrderValue:">&ndash;&nbsp;sortByAnswersSortOptionValue:monotonicSortOrderValue:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>When Answers are included in the response, optinally add one or more sort
+parameters.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (nonnull instancetype)sortByAnswersSortOptionValue:(BVAnswersSortOptionValue)<em>answersSortOptionValue</em> monotonicSortOrderValue:(BVMonotonicSortOrderValue)<em>monotonicSortOrderValue</em></code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BVAuthorRequest.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/load:failure:" title="load:failure:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/load:failure:">&ndash;&nbsp;load:failure:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Make an asynch http request to fetch the Author&rsquo;s profile data. See the
+<a href="../Classes/BVAuthorResponse.html">BVAuthorResponse</a> model for available fields.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)load:(nonnull void ( ^ ) ( BVAuthorResponse *__nonnull response ))<em>success</em> failure:(nonnull ConversationsFailureHandler)<em>failure</em></code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BVAuthorRequest.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/endpoint" title="endpoint"></a>
+	<h3 class="method-title"><code><a href="#//api/name/endpoint">&ndash;&nbsp;endpoint</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+
+			<div class="method-subsection method-declaration"><code>- (nonnull NSString *)endpoint</code></div>
+
+		    
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/createParams" title="createParams"></a>
+	<h3 class="method-title"><code><a href="#//api/name/createParams">&ndash;&nbsp;createParams</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+
+			<div class="method-subsection method-declaration"><code>- (nonnull NSMutableArray *)createParams</code></div>
+
+		    
+		</div>
+	</div>
+</div>
+						</div>
+						
+					</div>
+					
+					
+
+                    
+                    
+          
+				</main>
+
+				<footer>
+					<div class="footer-copyright">
+						
+						<p class="copyright">Copyright &copy; 2018 Bazaarvoice. All rights reserved. Updated: 2018-03-06</p>
+						
+						
+						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>
+						
+					</div>
+				</footer>
+			</div>
+		</div>
+	</article>
+
+	<script src="../js/script.js"></script>
+</body>
+</html>
