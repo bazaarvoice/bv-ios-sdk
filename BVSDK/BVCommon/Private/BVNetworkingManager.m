@@ -40,10 +40,10 @@ __strong static BVNetworkingManager *networkingManagerInstance = nil;
       }
     }
 
-    _bvNetworkingSession =
+    self->_bvNetworkingSession =
         [NSURLSession sessionWithConfiguration:config
                                       delegate:self
-                                 delegateQueue:_networkingOperationQueue];
+                                 delegateQueue:self->_networkingOperationQueue];
   });
 
   return _bvNetworkingSession;

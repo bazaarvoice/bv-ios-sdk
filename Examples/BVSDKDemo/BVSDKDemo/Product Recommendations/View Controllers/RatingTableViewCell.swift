@@ -82,7 +82,7 @@ class RatingTableViewCell: BVReviewTableViewCell {
     
   }
   
-  func getIconImage(_ icon : ((_ size: CGFloat) -> FAKFontAwesome!), color: UIColor) -> UIImage {
+  func getIconImage(_ icon : ((_ size: CGFloat) -> FAKFontAwesome?), color: UIColor) -> UIImage {
     
     let size = CGFloat(22)
     

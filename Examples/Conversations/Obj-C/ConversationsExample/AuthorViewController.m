@@ -74,7 +74,7 @@ typedef enum {
     // Success!
     NSLog(@"Succesfully loaded profile: %@", response);
     self.authorResponse = response;
-    [_authorProfileTableView reloadData];
+    [self->_authorProfileTableView reloadData];
 
   }
       failure:^(NSArray<NSError *> *_Nonnull errors) {

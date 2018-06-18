@@ -77,7 +77,7 @@
         [[BVLogger sharedLogger]
             verbose:
                 @"Successfully loaded BVProductReviewNotificationProperties"];
-        _bvProductReviewNotificationProperties = response;
+        self->_bvProductReviewNotificationProperties = response;
         completion(response);
 
       }

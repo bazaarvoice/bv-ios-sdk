@@ -12,7 +12,7 @@
 
 @import MapKit;
 
-typedef void (^ActionBlock)();
+typedef void (^ActionBlock)(void);
 
 @interface JPSThumbnail : NSObject
 

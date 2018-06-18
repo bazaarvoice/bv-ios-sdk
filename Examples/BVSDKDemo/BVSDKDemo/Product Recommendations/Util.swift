@@ -39,14 +39,14 @@ class Util: NSObject {
   }
   
   /// Get a default light grey icon
-  static func getFontAwesomeIconImage(_ icon : ((_ size: CGFloat) -> FAKFontAwesome!)) -> UIImage {
+  static func getFontAwesomeIconImage(_ icon : ((_ size: CGFloat) -> FAKFontAwesome?)) -> UIImage {
     
     return self.getFontAwesomeIconImage(icon, color: UIColor.lightGray, alpha: 0.5, size: 20)
     
   }
   
   /// Get an icon with specified size, color, and alpha
-  static func getFontAwesomeIconImage(_ icon : ((_ size: CGFloat) -> FAKFontAwesome!),
+  static func getFontAwesomeIconImage(_ icon : ((_ size: CGFloat) -> FAKFontAwesome?),
                                       color : UIColor,
                                       alpha : CGFloat,
                                       size : CGFloat) -> UIImage {
