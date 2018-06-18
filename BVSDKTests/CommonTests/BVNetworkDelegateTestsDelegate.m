@@ -23,21 +23,21 @@
 - (XCTestExpectation *)urlSessionExpectation {
   __block XCTestExpectation *tempExpectation = nil;
   dispatch_sync(self.blockQueue, ^{
-    tempExpectation = _urlSessionExpectation;
+    tempExpectation = self->_urlSessionExpectation;
   });
   return tempExpectation;
 }
 
 - (void)setUrlSessionExpectation:(XCTestExpectation *)urlSessionExpectation {
   dispatch_sync(self.blockQueue, ^{
-    _urlSessionExpectation = urlSessionExpectation;
+    self->_urlSessionExpectation = urlSessionExpectation;
   });
 }
 
 - (XCTestExpectation *)urlSessionTaskExpectation {
   __block XCTestExpectation *tempExpectation = nil;
   dispatch_sync(self.blockQueue, ^{
-    tempExpectation = _urlSessionTaskExpectation;
+    tempExpectation = self->_urlSessionTaskExpectation;
   });
   return tempExpectation;
 }
@@ -45,7 +45,7 @@
 - (void)setUrlSessionTaskExpectation:
     (XCTestExpectation *)urlSessionTaskExpectation {
   dispatch_sync(self.blockQueue, ^{
-    _urlSessionTaskExpectation = urlSessionTaskExpectation;
+    self->_urlSessionTaskExpectation = urlSessionTaskExpectation;
   });
 }
 

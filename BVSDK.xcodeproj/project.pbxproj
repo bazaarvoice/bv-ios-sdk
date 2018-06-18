@@ -18,17 +18,6 @@
 			name = "BVSDK-Universal";
 			productName = "BVSDK-Universal";
 		};
-		B561DE1C1FC3838F0019BE89 /* CommonCryptoModuleMap */ = {
-			isa = PBXAggregateTarget;
-			buildConfigurationList = B561DE1D1FC3838F0019BE89 /* Build configuration list for PBXAggregateTarget "CommonCryptoModuleMap" */;
-			buildPhases = (
-				B561DE201FC383D20019BE89 /* ShellScript */,
-			);
-			dependencies = (
-			);
-			name = CommonCryptoModuleMap;
-			productName = CommonCryptoModuleMap;
-		};
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
@@ -592,13 +581,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = 87F2DAA61DAD579D00FB43F3;
 			remoteInfo = BVSDK;
-		};
-		B561DE211FC384340019BE89 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 87F2DA9E1DAD579D00FB43F3 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = B561DE1C1FC3838F0019BE89;
-			remoteInfo = CommonCryptoModuleMap;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -2633,12 +2615,10 @@
 				87F2DAAD1DAD579D00FB43F3 /* Frameworks */,
 				87F2DAAE1DAD579D00FB43F3 /* Resources */,
 				8FD522D26F8D16CB58E49BBE /* [CP] Embed Pods Frameworks */,
-				2B613BCF4BFD2CDDE34996AF /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				B561DE221FC384340019BE89 /* PBXTargetDependency */,
 				87F2DAB31DAD579D00FB43F3 /* PBXTargetDependency */,
 			);
 			name = BVSDKTests;
@@ -2652,7 +2632,7 @@
 		87F2DA9E1DAD579D00FB43F3 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0900;
+				LastUpgradeCheck = 0940;
 				ORGANIZATIONNAME = Bazaarvoice;
 				TargetAttributes = {
 					87F2DAA61DAD579D00FB43F3 = {
@@ -2668,10 +2648,6 @@
 					};
 					87F2DDC71DAD6C6E00FB43F3 = {
 						CreatedOnToolsVersion = 8.0;
-						ProvisioningStyle = Automatic;
-					};
-					B561DE1C1FC3838F0019BE89 = {
-						CreatedOnToolsVersion = 9.1;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -2691,7 +2667,6 @@
 				87F2DAA61DAD579D00FB43F3 /* BVSDK */,
 				87F2DAAF1DAD579D00FB43F3 /* BVSDKTests */,
 				87F2DDC71DAD6C6E00FB43F3 /* BVSDK-Universal */,
-				B561DE1C1FC3838F0019BE89 /* CommonCryptoModuleMap */,
 			);
 		};
 /* End PBXProject section */
@@ -2791,21 +2766,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		2B613BCF4BFD2CDDE34996AF /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BVSDKTests/Pods-BVSDKTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		32EDD6FE42A25B4578CF0D6C /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -2854,19 +2814,6 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BVSDKTests/Pods-BVSDKTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
-		};
-		B561DE201FC383D20019BE89 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/bash;
-			shellScript = "# This if-statement means we'll only run the main script if the CommonCryptoModuleMap directory doesn't exist\n# Because otherwise the rest of the script causes a full recompile for anything where CommonCrypto is a dependency\n# Do a \"Clean Build Folder\" to remove this directory and trigger the rest of the script to run\nif [ -d \"${BUILT_PRODUCTS_DIR}/CommonCryptoModuleMap\" ]; then\necho \"${BUILT_PRODUCTS_DIR}/CommonCryptoModuleMap directory already exists, so skipping the rest of the script.\"\nexit 0\nfi\n\nmkdir -p \"${BUILT_PRODUCTS_DIR}/CommonCryptoModuleMap\"\ncat <<EOF > \"${BUILT_PRODUCTS_DIR}/CommonCryptoModuleMap/module.modulemap\"\nmodule CommonCrypto [system] {\n    header \"${SDKROOT}/usr/include/CommonCrypto/CommonCrypto.h\"\n    export *\n}\nEOF";
 		};
 		B561DE251FCC82900019BE89 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -3132,11 +3079,6 @@
 			target = 87F2DAA61DAD579D00FB43F3 /* BVSDK */;
 			targetProxy = 87F2DAB21DAD579D00FB43F3 /* PBXContainerItemProxy */;
 		};
-		B561DE221FC384340019BE89 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = B561DE1C1FC3838F0019BE89 /* CommonCryptoModuleMap */;
-			targetProxy = B561DE211FC384340019BE89 /* PBXContainerItemProxy */;
-		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
@@ -3153,6 +3095,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -3160,6 +3103,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -3192,7 +3136,7 @@
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -3212,6 +3156,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -3219,6 +3164,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -3245,7 +3191,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -3276,7 +3222,6 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.2;
 			};
 			name = Debug;
 		};
@@ -3302,7 +3247,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.bazaarvoice.bvsdk;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.2;
 			};
 			name = Release;
 		};
@@ -3317,7 +3261,6 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "./BVSDKTests/Support/BVSDKTests-Bridging-Header.h";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -3332,7 +3275,6 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "./BVSDKTests/Support/BVSDKTests-Bridging-Header.h";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -3340,7 +3282,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.2;
 			};
 			name = Debug;
 		};
@@ -3348,25 +3289,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.2;
-			};
-			name = Release;
-		};
-		B561DE1E1FC3838F0019BE89 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.2;
-			};
-			name = Debug;
-		};
-		B561DE1F1FC3838F0019BE89 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.2;
 			};
 			name = Release;
 		};
@@ -3405,15 +3327,6 @@
 			buildConfigurations = (
 				87F2DDC91DAD6C6E00FB43F3 /* Debug */,
 				87F2DDCA1DAD6C6E00FB43F3 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		B561DE1D1FC3838F0019BE89 /* Build configuration list for PBXAggregateTarget "CommonCryptoModuleMap" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				B561DE1E1FC3838F0019BE89 /* Debug */,
-				B561DE1F1FC3838F0019BE89 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
