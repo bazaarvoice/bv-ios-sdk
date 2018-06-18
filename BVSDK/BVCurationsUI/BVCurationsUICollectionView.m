@@ -1,3 +1,6 @@
+
+
+
 //
 //  BVCurationsCollectionView.m
 //  Bazaarvoice SDK
@@ -13,17 +16,17 @@
 @interface BVCurationsUICollectionView () <
     UICollectionViewDelegate, UICollectionViewDataSource,
     UICollectionViewDelegateFlowLayout, UIScrollViewDelegate>
-@property(nonatomic, strong) BVCurationsFeedLoader *curationsFeedLoader;
-@property(nonatomic, strong)
+@property (nonatomic, strong) BVCurationsFeedLoader *curationsFeedLoader;
+@property (nonatomic, strong)
     NSMutableArray<BVCurationsFeedItem *> *curationsFeedItems;
-@property(nonatomic, strong) NSNumber *lastFetchedTimeStamp;
-@property(nonatomic, assign) CGFloat totalHeight;
-@property(nonatomic, assign) BOOL pendingUpdate;
-@property(nonatomic, assign) BOOL allItemsFetched;
-@property(nonatomic, strong) NSMutableSet *impressedItems;
-@property(nonatomic, assign) CGFloat oldTimeStamp;
-@property(nonatomic, assign) CGFloat oldBounds;
-@property(nonatomic, strong) NSNumber *shouldRequestImageLoad;
+@property (nonatomic, strong) NSNumber *lastFetchedTimeStamp;
+@property (nonatomic, assign) CGFloat totalHeight;
+@property (nonatomic, assign) BOOL pendingUpdate;
+@property (nonatomic, assign) BOOL allItemsFetched;
+@property (nonatomic, strong) NSMutableSet *impressedItems;
+@property (nonatomic, assign) CGFloat oldTimeStamp;
+@property (nonatomic, assign) CGFloat oldBounds;
+@property (nonatomic, strong) NSNumber *shouldRequestImageLoad;
 @end
 
 #define BVCurationCVCellID @"BVCurationsCollectionViewCell"
@@ -35,357 +38,363 @@
 
 - (instancetype)initWithFrame:(CGRect)frame
          collectionViewLayout:(UICollectionViewLayout *)layout {
-  if ([super initWithFrame:frame collectionViewLayout:layout]) {
-    [self setup];
-  }
-  return self;
+    if ([super initWithFrame:frame collectionViewLayout:layout]) {
+        [self setup];
+    }
+    return self;
 }
 
 - (instancetype)initWithCoder:(NSCoder *)aDecoder {
-  if ([super initWithCoder:aDecoder]) {
-    [self setup];
-  }
+    if ([super initWithCoder:aDecoder]) {
+        [self setup];
+    }
 
-  return self;
+    return self;
 }
 
 - (void)setup {
-  _curationsFeedLoader = [[BVCurationsFeedLoader alloc] init];
-  _curationsFeedItems = [NSMutableArray new];
-  _impressedItems = [NSMutableSet new];
-  _fetchSize = 10;
-  _infiniteScrollEnabled = YES;
-  _itemsPerRow = 2;
-  _pendingUpdate = NO;
-  _shouldRequestImageLoad = @YES;
+    _curationsFeedLoader = [[BVCurationsFeedLoader alloc] init];
+    _curationsFeedItems = [NSMutableArray new];
+    _impressedItems = [NSMutableSet new];
+    _fetchSize = 10;
+    _infiniteScrollEnabled = YES;
+    _itemsPerRow = 2;
+    _pendingUpdate = NO;
+    _shouldRequestImageLoad = @YES;
 
-  self.delegate = self;
-  self.dataSource = self;
-  [self registerClass:[BVCurationsUICollectionViewCell class]
-      forCellWithReuseIdentifier:BVCurationCVCellID];
-  UICollectionViewFlowLayout *layout =
-      (UICollectionViewFlowLayout *)self.collectionViewLayout;
-  layout.minimumLineSpacing = BVCurationsDesiredPadding;
-  layout.minimumInteritemSpacing = BVCurationsDesiredPadding;
+    self.delegate = self;
+    self.dataSource = self;
+    [self registerClass:[BVCurationsUICollectionViewCell class]
+        forCellWithReuseIdentifier:BVCurationCVCellID];
+    UICollectionViewFlowLayout *layout =
+        (UICollectionViewFlowLayout *)self.collectionViewLayout;
+    layout.minimumLineSpacing = BVCurationsDesiredPadding;
+    layout.minimumInteritemSpacing = BVCurationsDesiredPadding;
 }
 
 - (void)loadFeed {
-  NSUInteger fetchSize = _fetchSize;
+    NSUInteger fetchSize = _fetchSize;
 
-  /*
-   If enabled we need to bump the initial fetch size to load just enough
-   items to enable scrolling (need a little bit off screen)
-   */
-  if (_infiniteScrollEnabled) {
-    CGFloat oneCellHeight = [self getOneCellDim:_itemsPerRow];
-    NSUInteger totalExpected = _curationsFeedItems.count + fetchSize;
-    CGFloat estimatedTotalHeight =
-        oneCellHeight * ceil(totalExpected / _itemsPerRow);
-    if (estimatedTotalHeight < self.bounds.size.height) {
-      CGFloat diff = self.bounds.size.height - estimatedTotalHeight;
-      NSUInteger numRowOffSet = ceil(diff / oneCellHeight);
-      fetchSize += (numRowOffSet * _itemsPerRow);
+    /*
+     If enabled we need to bump the initial fetch size to load just enough
+     items to enable scrolling (need a little bit off screen)
+     */
+    if (_infiniteScrollEnabled) {
+        CGFloat oneCellHeight = [self getOneCellDim:_itemsPerRow];
+        NSUInteger totalExpected = _curationsFeedItems.count + fetchSize;
+        CGFloat estimatedTotalHeight =
+            oneCellHeight * ceil(totalExpected / _itemsPerRow);
+        if (estimatedTotalHeight < self.bounds.size.height) {
+            CGFloat diff = self.bounds.size.height - estimatedTotalHeight;
+            NSUInteger numRowOffSet = ceil(diff / oneCellHeight);
+            fetchSize += (numRowOffSet * _itemsPerRow);
+        }
     }
-  }
 
-  [self loadCurationsFeed:fetchSize lastFetched:_lastFetchedTimeStamp];
+    [self loadCurationsFeed:fetchSize lastFetched:_lastFetchedTimeStamp];
 }
 
 - (void)setDelegate:(id<UICollectionViewDelegate>)delegate {
-  // placeholder may want to disallow
-  super.delegate = delegate;
+    // placeholder may want to disallow
+    super.delegate = delegate;
 }
 
 - (void)setDataSource:(id<UICollectionViewDataSource>)dataSource {
-  // placeholder may want to disallow
-  super.dataSource = dataSource;
+    // placeholder may want to disallow
+    super.dataSource = dataSource;
 }
 
 - (void)setBvCurationsUILayout:(BVCurationsUILayout)bvCurationsUILayout {
-  _bvCurationsUILayout = bvCurationsUILayout;
-  UICollectionViewFlowLayout *layout =
-      (UICollectionViewFlowLayout *)self.collectionViewLayout;
-  switch (_bvCurationsUILayout) {
-  case BVCurationsUILayoutGrid:
-    layout.scrollDirection = UICollectionViewScrollDirectionVertical;
-    break;
-  case BVCurationsUILayoutCarousel:
-    layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
-    break;
-  default:
-    break;
-  }
-  [self updateInfiniteScrollMeasurements:self.curationsFeedItems.count
-                             itemsPerRow:self.itemsPerRow];
+    _bvCurationsUILayout = bvCurationsUILayout;
+    UICollectionViewFlowLayout *layout =
+        (UICollectionViewFlowLayout *)self.collectionViewLayout;
+    switch (_bvCurationsUILayout) {
+        case BVCurationsUILayoutGrid:
+            layout.scrollDirection = UICollectionViewScrollDirectionVertical;
+            break;
+        case BVCurationsUILayoutCarousel:
+            layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
+            break;
+        default:
+            break;
+    }
+    [self updateInfiniteScrollMeasurements:self.curationsFeedItems.count
+                               itemsPerRow:self.itemsPerRow];
 
-  [self reloadData];
+    [self reloadData];
 }
 
 - (NSArray<BVCurationsFeedItem *> *)feedItems {
-  return [NSArray arrayWithArray:_curationsFeedItems];
+    return [NSArray arrayWithArray:_curationsFeedItems];
 }
 
 - (void)loadCurationsFeed:(NSUInteger)limit
               lastFetched:(NSNumber *)lastFetchedTimeStamp {
-  if (_pendingUpdate || _allItemsFetched) {
-    return;
-  }
+    if (_pendingUpdate || _allItemsFetched) {
+        return;
+    }
 
-  if (!_groups) {
-    [[BVLogger sharedLogger] error:@"Groups not set on "
-                                   @"BVCurationsUICollectionView. Unable "
-                                   @"to load feed"];
-    return;
-  }
+    if (!_groups) {
+        [[BVLogger sharedLogger] error:@"Groups not set on "
+                                       @"BVCurationsUICollectionView. Unable "
+                                       @"to load feed"];
+        return;
+    }
 
-  _pendingUpdate = YES;
-  BVCurationsFeedRequest *req =
-      [[BVCurationsFeedRequest alloc] initWithGroups:_groups];
-  req.limit = limit;
-  req.hasPhotoOrVideo = @YES;
-  if (_lastFetchedTimeStamp) {
-    req.before = _lastFetchedTimeStamp;
-  }
+    _pendingUpdate = YES;
+    BVCurationsFeedRequest *req =
+        [[BVCurationsFeedRequest alloc] initWithGroups:_groups];
+    req.limit = limit;
+    req.hasPhotoOrVideo = @YES;
+    if (_lastFetchedTimeStamp) {
+        req.before = _lastFetchedTimeStamp;
+    }
 
-  if (_productId && 0 < _productId.length) {
-    req.externalId = _productId;
-  }
+    if (_productId && 0 < _productId.length) {
+        req.externalId = _productId;
+    }
 
-  __weak typeof(self) weakSelf = self;
-  [_curationsFeedLoader loadFeedWithRequest:req
-      completionHandler:^(NSArray<BVCurationsFeedItem *> *items) {
+    __weak typeof(self) weakSelf = self;
+    [_curationsFeedLoader loadFeedWithRequest:req
+        completionHandler:^(NSArray<BVCurationsFeedItem *> *items) {
 
-        BVInViewEvent *inViewEvent = [[BVInViewEvent alloc]
-               initWithProductId:req.externalId
-                       withBrand:nil
-                 withProductType:BVPixelProductTypeCurations
-                 withContainerId:@"CurationsUICollectionView"
-            withAdditionalParams:nil];
+          BVInViewEvent *inViewEvent = [[BVInViewEvent alloc]
+                 initWithProductId:req.externalId
+                         withBrand:nil
+                   withProductType:BVPixelProductTypeCurations
+                   withContainerId:@"CurationsUICollectionView"
+              withAdditionalParams:nil];
 
-        [BVPixel trackEvent:inViewEvent];
+          [BVPixel trackEvent:inViewEvent];
 
-        weakSelf.allItemsFetched = !items.count;
-        weakSelf.pendingUpdate = NO;
-        weakSelf.lastFetchedTimeStamp = items.lastObject.timestamp;
-        [weakSelf.curationsFeedItems addObjectsFromArray:items];
-        [weakSelf
-            updateInfiniteScrollMeasurements:weakSelf.curationsFeedItems.count
-                                 itemsPerRow:weakSelf.itemsPerRow];
+          weakSelf.allItemsFetched = !items.count;
+          weakSelf.pendingUpdate = NO;
+          weakSelf.lastFetchedTimeStamp = items.lastObject.timestamp;
+          [weakSelf.curationsFeedItems addObjectsFromArray:items];
+          [weakSelf
+              updateInfiniteScrollMeasurements:weakSelf.curationsFeedItems.count
+                                   itemsPerRow:weakSelf.itemsPerRow];
 
-        BOOL errorState = items.count > limit; // if for whatever reason the
-                                               // api returns more items than
-                                               // expected we'll just reload
-        if (errorState) {
-          [self reloadData];
-        } else {
-          NSMutableArray *indexPaths = [NSMutableArray new];
-          NSUInteger inserted = (limit <= items.count) ? limit : items.count;
-          for (NSUInteger i = 0; i < inserted; i++) {
-            [indexPaths
-                addObject:[NSIndexPath
-                              indexPathForItem:weakSelf.curationsFeedItems
-                                                   .count -
-                                               1 - i
-                                     inSection:0]];
+          BOOL errorState = items.count > limit; // if for whatever reason the
+                                                 // api returns more items than
+                                                 // expected we'll just reload
+          if (errorState) {
+              [self reloadData];
+          } else {
+              NSMutableArray *indexPaths = [NSMutableArray new];
+              NSUInteger inserted =
+                  (limit <= items.count) ? limit : items.count;
+              for (NSUInteger i = 0; i < inserted; i++) {
+                  [indexPaths
+                      addObject:[NSIndexPath
+                                    indexPathForItem:weakSelf.curationsFeedItems
+                                                         .count -
+                                                     1 - i
+                                           inSection:0]];
+              }
+
+              [self insertItemsAtIndexPaths:indexPaths];
           }
-
-          [self insertItemsAtIndexPaths:indexPaths];
         }
-      }
-      withFailure:^(NSError *err) {
-        weakSelf.pendingUpdate = NO;
-        if ([_curationsDelegate
-                respondsToSelector:@selector(curationsFailedToLoadFeed:)]) {
-          [_curationsDelegate curationsFailedToLoadFeed:err];
-        }
-      }];
+        withFailure:^(NSError *err) {
+          weakSelf.pendingUpdate = NO;
+          if ([self->_curationsDelegate
+                  respondsToSelector:@selector(curationsFailedToLoadFeed:)]) {
+              [self->_curationsDelegate curationsFailedToLoadFeed:err];
+          }
+        }];
 }
 
 - (void)setItemsPerRow:(NSUInteger)itemsPerRow {
-  _itemsPerRow = itemsPerRow;
-  [self updateInfiniteScrollMeasurements:self.curationsFeedItems.count
-                             itemsPerRow:self.itemsPerRow];
-  [self loadFeed];
+    _itemsPerRow = itemsPerRow;
+    [self updateInfiniteScrollMeasurements:self.curationsFeedItems.count
+                               itemsPerRow:self.itemsPerRow];
+    [self loadFeed];
 }
 
 - (void)updateInfiniteScrollMeasurements:(NSInteger)itemCount
                              itemsPerRow:(NSInteger)itemsPerRow {
-  _totalHeight = [self getTotalHeight:itemCount itemsPerRow:itemsPerRow];
+    _totalHeight = [self getTotalHeight:itemCount itemsPerRow:itemsPerRow];
 }
 
 - (CGFloat)getTotalHeight:(NSInteger)itemCount
               itemsPerRow:(NSInteger)itemsPerRow {
-  CGFloat oneCellHeight = [self getOneCellDim:itemsPerRow];
-  NSInteger numRows;
-  if (_bvCurationsUILayout == BVCurationsUILayoutGrid) {
-    numRows = ceil(_curationsFeedItems.count / _itemsPerRow);
-  } else {
-    numRows = _curationsFeedItems.count;
-  }
-  return oneCellHeight * numRows;
+    CGFloat oneCellHeight = [self getOneCellDim:itemsPerRow];
+    NSInteger numRows;
+    if (_bvCurationsUILayout == BVCurationsUILayoutGrid) {
+        numRows = ceil(_curationsFeedItems.count / _itemsPerRow);
+    } else {
+        numRows = _curationsFeedItems.count;
+    }
+    return oneCellHeight * numRows;
 }
 
 - (CGFloat)getOneCellDim:(NSInteger)itemsPerRow {
-  CGFloat dim;
-  if (_bvCurationsUILayout == BVCurationsUILayoutGrid) {
-    dim = (self.frame.size.width / itemsPerRow) - BVCurationsDesiredPadding;
-  } else {
-    dim = self.frame.size.height - BVCurationsDesiredPadding;
-  }
-  return dim;
+    CGFloat dim;
+    if (_bvCurationsUILayout == BVCurationsUILayoutGrid) {
+        dim = (self.frame.size.width / itemsPerRow) - BVCurationsDesiredPadding;
+    } else {
+        dim = self.frame.size.height - BVCurationsDesiredPadding;
+    }
+    return dim;
 }
 
 - (void)setFrame:(CGRect)frame {
-  super.frame = frame;
-  if (_itemsPerRow) {
-    [self updateInfiniteScrollMeasurements:_curationsFeedItems.count
-                               itemsPerRow:_itemsPerRow];
-  }
+    super.frame = frame;
+    if (_itemsPerRow) {
+        [self updateInfiniteScrollMeasurements:_curationsFeedItems.count
+                                   itemsPerRow:_itemsPerRow];
+    }
 }
 
 #pragma mark : UICollectionViewDataSource
 - (NSInteger)collectionView:(UICollectionView *)collectionView
      numberOfItemsInSection:(NSInteger)section {
-  return _curationsFeedItems.count;
+    return _curationsFeedItems.count;
 }
 
 - (__kindof UICollectionViewCell *)collectionView:
                                        (UICollectionView *)collectionView
                            cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-  BVCurationsUICollectionViewCell *cell =
-      [collectionView dequeueReusableCellWithReuseIdentifier:BVCurationCVCellID
-                                                forIndexPath:indexPath];
-  cell.shouldLoadObject = self;
-  cell.shouldLoadKeypath = @"shouldRequestImageLoad";
-  cell.loadImageHandler =
-      ^(NSString *__nonnull imageUrl,
-        BVCurationsLoadImageCompletion __nonnull completion) {
-        [_curationsDelegate curationsLoadImage:imageUrl completion:completion];
-      };
-  cell.loadImageIsCachedHandler = ^(
-      NSString *__nonnull imageUrl,
-      BVCurationsIsImageCachedCompletion completion) {
-    [_curationsDelegate
-        curationsImageIsCached:imageUrl
-                    completion:^(BOOL isCached, NSString *__nonnull imageUrl) {
-                      completion(isCached, imageUrl);
-                    }];
-  };
-  cell.curationsFeedItem = _curationsFeedItems[indexPath.item];
+    BVCurationsUICollectionViewCell *cell = [collectionView
+        dequeueReusableCellWithReuseIdentifier:BVCurationCVCellID
+                                  forIndexPath:indexPath];
+    cell.shouldLoadObject = self;
+    cell.shouldLoadKeypath = @"shouldRequestImageLoad";
+    cell.loadImageHandler =
+        ^(NSString *__nonnull imageUrl,
+          BVCurationsLoadImageCompletion __nonnull completion) {
+          [self->_curationsDelegate curationsLoadImage:imageUrl
+                                            completion:completion];
+        };
+    cell.loadImageIsCachedHandler =
+        ^(NSString *__nonnull imageUrl,
+          BVCurationsIsImageCachedCompletion completion) {
+          [self->_curationsDelegate
+              curationsImageIsCached:imageUrl
+                          completion:^(BOOL isCached,
+                                       NSString *__nonnull imageUrl) {
+                            completion(isCached, imageUrl);
+                          }];
+        };
+    cell.curationsFeedItem = _curationsFeedItems[indexPath.item];
 
-  if (![_impressedItems containsObject:cell.curationsFeedItem]) {
-    [_impressedItems addObject:cell.curationsFeedItem];
+    if (![_impressedItems containsObject:cell.curationsFeedItem]) {
+        [_impressedItems addObject:cell.curationsFeedItem];
 
-    BVCurationsFeedItem *item = cell.curationsFeedItem;
+        BVCurationsFeedItem *item = cell.curationsFeedItem;
 
-    BVImpressionEvent *impression = [[BVImpressionEvent alloc]
-           initWithProductId:item.externalId
-               withContentId:item.contentId
-              withCategoryId:nil
-             withProductType:BVPixelProductTypeCurations
-             withContentType:BVPixelImpressionContentCurationsFeedItem
-                   withBrand:nil
-        withAdditionalParams:@{@"syndicationSource" : item.sourceClient}];
+        BVImpressionEvent *impression = [[BVImpressionEvent alloc]
+               initWithProductId:item.externalId
+                   withContentId:item.contentId
+                  withCategoryId:nil
+                 withProductType:BVPixelProductTypeCurations
+                 withContentType:BVPixelImpressionContentCurationsFeedItem
+                       withBrand:nil
+            withAdditionalParams:@{
+                @"syndicationSource" : item.sourceClient
+            }];
 
-    [BVPixel trackEvent:impression];
-  }
-  return cell;
+        [BVPixel trackEvent:impression];
+    }
+    return cell;
 }
 
 #pragma mark : UICollectionViewDelegateFlowLayout
 - (CGSize)collectionView:(UICollectionView *)collectionView
                     layout:(UICollectionViewLayout *)collectionViewLayout
     sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-  CGFloat oneCellDim = [self getOneCellDim:_itemsPerRow];
-  return CGSizeMake(oneCellDim, oneCellDim);
+    CGFloat oneCellDim = [self getOneCellDim:_itemsPerRow];
+    return CGSizeMake(oneCellDim, oneCellDim);
 }
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView
                         layout:(UICollectionViewLayout *)collectionViewLayout
         insetForSectionAtIndex:(NSInteger)section {
-  CGFloat padding = BVCurationsDesiredPadding / 2;
-  return UIEdgeInsetsMake(padding, padding, padding, padding);
+    CGFloat padding = BVCurationsDesiredPadding / 2;
+    return UIEdgeInsetsMake(padding, padding, padding, padding);
 }
 
 #pragma mark : UICollectionViewDelegate
 - (void)collectionView:(UICollectionView *)collectionView
     didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-  [collectionView deselectItemAtIndexPath:indexPath animated:YES];
-  BVCurationsFeedItem *item = _curationsFeedItems[indexPath.item];
+    [collectionView deselectItemAtIndexPath:indexPath animated:YES];
+    BVCurationsFeedItem *item = _curationsFeedItems[indexPath.item];
 
-  BVFeatureUsedEvent *tapEvent = [[BVFeatureUsedEvent alloc]
-         initWithProductId:item.externalId
-                 withBrand:nil
-           withProductType:BVPixelProductTypeCurations
-             withEventName:BVPixelFeatureUsedEventContentClick
-      withAdditionalParams:nil];
+    BVFeatureUsedEvent *tapEvent = [[BVFeatureUsedEvent alloc]
+           initWithProductId:item.externalId
+                   withBrand:nil
+             withProductType:BVPixelProductTypeCurations
+               withEventName:BVPixelFeatureUsedEventContentClick
+        withAdditionalParams:nil];
 
-  [BVPixel trackEvent:tapEvent];
+    [BVPixel trackEvent:tapEvent];
 
-  if ([_curationsDelegate
-          respondsToSelector:@selector(curationsDidSelectFeedItem:)]) {
-    [_curationsDelegate curationsDidSelectFeedItem:item];
-  }
+    if ([_curationsDelegate
+            respondsToSelector:@selector(curationsDidSelectFeedItem:)]) {
+        [_curationsDelegate curationsDidSelectFeedItem:item];
+    }
 }
 
 #pragma mark : UIScrollViewDelegate
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-  if (!_infiniteScrollEnabled || _allItemsFetched) {
-    return;
-  }
+    if (!_infiniteScrollEnabled || _allItemsFetched) {
+        return;
+    }
 
-  CGFloat timestamp = [[NSDate date] timeIntervalSince1970];
-  CGFloat newBounds = (_bvCurationsUILayout == BVCurationsUILayoutGrid)
-                          ? scrollView.bounds.origin.y
-                          : scrollView.bounds.origin.x;
-  CGFloat boundsDiff = fabs(_oldBounds - newBounds);
-  CGFloat timeDiff = timestamp - _oldTimeStamp;
-  _oldTimeStamp = timestamp;
-  _oldBounds = newBounds;
-  CGFloat velocity = boundsDiff / timeDiff;
+    CGFloat timestamp = [[NSDate date] timeIntervalSince1970];
+    CGFloat newBounds = (_bvCurationsUILayout == BVCurationsUILayoutGrid)
+                            ? scrollView.bounds.origin.y
+                            : scrollView.bounds.origin.x;
+    CGFloat boundsDiff = fabs(_oldBounds - newBounds);
+    CGFloat timeDiff = timestamp - _oldTimeStamp;
+    _oldTimeStamp = timestamp;
+    _oldBounds = newBounds;
+    CGFloat velocity = boundsDiff / timeDiff;
 
-  if (velocity < BVCurationsVelocityThreshold) {
-    [self attemptToTransitionToLoadImages];
-  } else {
-    _shouldRequestImageLoad = @NO;
-  }
+    if (velocity < BVCurationsVelocityThreshold) {
+        [self attemptToTransitionToLoadImages];
+    } else {
+        _shouldRequestImageLoad = @NO;
+    }
 
-  CGFloat oneCellHeight = [self getOneCellDim:_itemsPerRow];
-  CGFloat lowerBounds;
-  if (_bvCurationsUILayout == BVCurationsUILayoutGrid) {
-    lowerBounds = scrollView.bounds.origin.y + scrollView.bounds.size.height;
-  } else {
-    lowerBounds = scrollView.bounds.origin.x + scrollView.bounds.size.width;
-  }
+    CGFloat oneCellHeight = [self getOneCellDim:_itemsPerRow];
+    CGFloat lowerBounds;
+    if (_bvCurationsUILayout == BVCurationsUILayoutGrid) {
+        lowerBounds =
+            scrollView.bounds.origin.y + scrollView.bounds.size.height;
+    } else {
+        lowerBounds = scrollView.bounds.origin.x + scrollView.bounds.size.width;
+    }
 
-  CGFloat totalHeigthWithReloadOffest =
-      (_totalHeight - (oneCellHeight * BVCurationsRowsOffScreenBeforeReload));
-  if (lowerBounds > totalHeigthWithReloadOffest) {
-    [self loadCurationsFeed:_fetchSize lastFetched:_lastFetchedTimeStamp];
-  }
+    CGFloat totalHeigthWithReloadOffest =
+        (_totalHeight - (oneCellHeight * BVCurationsRowsOffScreenBeforeReload));
+    if (lowerBounds > totalHeigthWithReloadOffest) {
+        [self loadCurationsFeed:_fetchSize lastFetched:_lastFetchedTimeStamp];
+    }
 }
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
-  [self attemptToTransitionToLoadImages];
+    [self attemptToTransitionToLoadImages];
 
-  BVFeatureUsedEvent *scrollEvent = [[BVFeatureUsedEvent alloc]
-         initWithProductId:_productId
-                 withBrand:nil
-           withProductType:BVPixelProductTypeCurations
-             withEventName:BVPixelFeatureUsedEventNameScrolled
-      withAdditionalParams:nil];
+    BVFeatureUsedEvent *scrollEvent = [[BVFeatureUsedEvent alloc]
+           initWithProductId:_productId
+                   withBrand:nil
+             withProductType:BVPixelProductTypeCurations
+               withEventName:BVPixelFeatureUsedEventNameScrolled
+        withAdditionalParams:nil];
 
-  [BVPixel trackEvent:scrollEvent];
+    [BVPixel trackEvent:scrollEvent];
 }
 
 - (void)scrollViewDidScrollToTop:(UIScrollView *)scrollView {
-  [self attemptToTransitionToLoadImages];
+    [self attemptToTransitionToLoadImages];
 }
 
 - (void)attemptToTransitionToLoadImages {
-  BOOL transition = !_shouldRequestImageLoad.boolValue;
-  if (transition) {
-    self.shouldRequestImageLoad = @YES;
-  }
+    BOOL transition = !_shouldRequestImageLoad.boolValue;
+    if (transition) {
+        self.shouldRequestImageLoad = @YES;
+    }
 }
 @end

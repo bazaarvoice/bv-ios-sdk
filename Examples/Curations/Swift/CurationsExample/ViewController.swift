@@ -40,7 +40,7 @@ class ViewController: UIViewController, BVCurationsUICollectionViewDelegate {
     }
     
     // This demo shows how to create a customized Share View Controller and upload an image and text to Curations.
-    func didTapAddPhotoButton(_ sender: AnyObject) {
+    @objc func didTapAddPhotoButton(_ sender: AnyObject) {
         
         // Here we load our request with the groups we want to subit to and additional info.
         let shareRequest = BVCurationsAddPostRequest(groups: [],

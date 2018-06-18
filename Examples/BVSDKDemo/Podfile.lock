@@ -91,9 +91,27 @@ DEPENDENCIES:
   - XLActionController (~> 3.0)
   - youtube-ios-player-helper
 
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Bolts
+    - Crashlytics
+    - Fabric
+    - FBSDKCoreKit
+    - FBSDKLoginKit
+    - FBSDKShareKit
+    - FontAwesomeKit
+    - Google-Mobile-Ads-SDK
+    - HCSStarRatingView
+    - NVActivityIndicatorView
+    - OHHTTPStubs
+    - SDWebImage
+    - SwiftyJSON
+    - XLActionController
+    - youtube-ios-player-helper
+
 EXTERNAL SOURCES:
   BVSDK:
-    :path: ../../
+    :path: "../../"
   SDForms:
     :branch: master
     :git: https://github.com/austimkelly/SDForms.git
@@ -124,4 +142,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: f2145d845c38000175311cab40ce05f8499461d6
 
-COCOAPODS: 1.4.0
+COCOAPODS: 1.5.2
