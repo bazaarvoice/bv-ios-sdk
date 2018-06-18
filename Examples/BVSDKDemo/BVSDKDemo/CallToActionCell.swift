@@ -16,15 +16,15 @@ class CallToActionCell: UITableViewCell {
   @IBOutlet weak var leftIcon : UIImageView!
   
   
-  func setCustomLeftIcon(_ icon : ((_ size: CGFloat) -> FAKFontAwesome!)) {
+  func setCustomLeftIcon(_ icon : ((_ size: CGFloat) -> FAKFontAwesome?)) {
     leftIcon.image = getIconImage(icon)
   }
   
-  func setCustomRightIcon(_ icon : ((_ size: CGFloat) -> FAKFontAwesome!)) {
+  func setCustomRightIcon(_ icon : ((_ size: CGFloat) -> FAKFontAwesome?)) {
     rightIcon.image = getIconImage(icon)
   }
   
-  func getIconImage(_ icon : ((_ size: CGFloat) -> FAKFontAwesome!)) -> UIImage {
+  func getIconImage(_ icon : ((_ size: CGFloat) -> FAKFontAwesome?)) -> UIImage {
     
     let size = CGFloat(20)
     

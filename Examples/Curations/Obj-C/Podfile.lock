@@ -1,9 +1,9 @@
 PODS:
-  - BVSDK/BVCommon (6.9.0)
-  - BVSDK/BVCommonUI (6.9.0)
-  - BVSDK/BVCurations (6.9.0):
+  - BVSDK/BVCommon (7.0.0)
+  - BVSDK/BVCommonUI (7.0.0)
+  - BVSDK/BVCurations (7.0.0):
     - BVSDK/BVCommon
-  - BVSDK/BVCurationsUI (6.9.0):
+  - BVSDK/BVCurationsUI (7.0.0):
     - BVSDK/BVCommonUI
     - BVSDK/BVCurations
   - SDWebImage (4.0.0):
@@ -15,14 +15,18 @@ DEPENDENCIES:
   - BVSDK/BVCurationsUI (from `../../../`)
   - SDWebImage
 
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - SDWebImage
+
 EXTERNAL SOURCES:
   BVSDK:
-    :path: ../../../
+    :path: "../../../"
 
 SPEC CHECKSUMS:
-  BVSDK: b9c9bd6679ea67b31cd3fbd19835a145fa36aae0
+  BVSDK: aa21c06aafe277c00e47882fbc0df77e7bd02e2a
   SDWebImage: 76a6348bdc74eb5a55dd08a091ef298e56b55e41
 
 PODFILE CHECKSUM: cdc1a54abccc6f1bd449642f2d541237ae6dc4ab
 
-COCOAPODS: 1.3.1
+COCOAPODS: 1.5.2
