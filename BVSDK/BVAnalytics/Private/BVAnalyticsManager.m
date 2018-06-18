@@ -24,24 +24,24 @@
 
 @interface BVAnalyticsManager ()
 
-@property(nonatomic, strong)
+@property (nonatomic, strong)
     NSMutableArray *eventQueue; /// Impressions, other non-pageview events
-@property(nonatomic, strong) NSMutableArray *pageviewQueue; /// Page views
-@property(nonatomic, strong) dispatch_queue_t concurrentEventQueue;
+@property (nonatomic, strong) NSMutableArray *pageviewQueue; /// Page views
+@property (nonatomic, strong) dispatch_queue_t concurrentEventQueue;
 
-@property(nonatomic, strong) dispatch_source_t queueFlushTimer;
-@property(nonatomic, assign, readwrite) NSTimeInterval queueFlushInterval;
-@property(nonatomic, strong) dispatch_queue_t timerEventQueue;
+@property (nonatomic, strong) dispatch_source_t queueFlushTimer;
+@property (nonatomic, assign, readwrite) NSTimeInterval queueFlushInterval;
+@property (nonatomic, strong) dispatch_queue_t timerEventQueue;
 
-@property(nonatomic, strong)
+@property (nonatomic, strong)
     dispatch_queue_t localeUpdateNotificationTokenQueue;
-@property(nonatomic, strong) id<NSObject> localeUpdateNotificationCenterToken;
+@property (nonatomic, strong) id<NSObject> localeUpdateNotificationCenterToken;
 
 /// Testing
-@property(nonatomic, strong, readonly)
+@property (nonatomic, strong, readonly)
     NSMutableDictionary<NSString *, dispatch_block_t>
         *testImpressionEventCompletionQueue;
-@property(nonatomic, strong, readonly)
+@property (nonatomic, strong, readonly)
     NSMutableDictionary<NSString *, dispatch_block_t>
         *testPageViewEventCompletionQueue;
 
@@ -59,626 +59,630 @@
 
 static BVAnalyticsManager *analyticsInstance = nil;
 + (BVAnalyticsManager *)sharedManager {
-  static dispatch_once_t onceToken;
-  dispatch_once(&onceToken, ^{
-    analyticsInstance = [[self alloc] init];
-  });
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+      analyticsInstance = [[self alloc] init];
+    });
 
-  return analyticsInstance;
+    return analyticsInstance;
 }
 
 #pragma mark - Class Properties
 
 - (void)setFlushInterval:(NSTimeInterval)newFlushInterval {
-  dispatch_sync(self.timerEventQueue, ^{
-    self.queueFlushInterval = newFlushInterval;
-  });
+    dispatch_sync(self.timerEventQueue, ^{
+      self.queueFlushInterval = newFlushInterval;
+    });
 }
 
 - (NSMutableDictionary<NSString *, dispatch_block_t> *)
     testImpressionEventCompletionQueue {
+    if (!_testImpressionEventCompletionQueue) {
+        _testImpressionEventCompletionQueue = [NSMutableDictionary dictionary];
+    }
 
-  if (!_testImpressionEventCompletionQueue) {
-    _testImpressionEventCompletionQueue = [NSMutableDictionary dictionary];
-  }
-
-  return _testImpressionEventCompletionQueue;
+    return _testImpressionEventCompletionQueue;
 }
 
 - (NSMutableDictionary<NSString *, dispatch_block_t> *)
     testPageViewEventCompletionQueue {
+    if (!_testPageViewEventCompletionQueue) {
+        _testPageViewEventCompletionQueue = [NSMutableDictionary dictionary];
+    }
 
-  if (!_testPageViewEventCompletionQueue) {
-    _testPageViewEventCompletionQueue = [NSMutableDictionary dictionary];
-  }
-
-  return _testPageViewEventCompletionQueue;
+    return _testPageViewEventCompletionQueue;
 }
 
 #pragma mark - Class Init
 
 - (id)init {
-  if ((self = [super init])) {
-    self.eventQueue = [NSMutableArray array];
-    self.pageviewQueue = [NSMutableArray array];
-    self.concurrentEventQueue = dispatch_queue_create(
-        "com.bazaarvoice.analyticEventQueue", DISPATCH_QUEUE_CONCURRENT);
-    self.timerEventQueue = dispatch_queue_create(
-        "com.bazaarvoice.timerEventQueue", DISPATCH_QUEUE_SERIAL);
-    self.localeUpdateNotificationTokenQueue = dispatch_queue_create(
-        "com.bazaarvoice.notificationTokenQueue", DISPATCH_QUEUE_SERIAL);
+    if ((self = [super init])) {
+        self.eventQueue = [NSMutableArray array];
+        self.pageviewQueue = [NSMutableArray array];
+        self.concurrentEventQueue = dispatch_queue_create(
+            "com.bazaarvoice.analyticEventQueue", DISPATCH_QUEUE_CONCURRENT);
+        self.timerEventQueue = dispatch_queue_create(
+            "com.bazaarvoice.timerEventQueue", DISPATCH_QUEUE_SERIAL);
+        self.localeUpdateNotificationTokenQueue = dispatch_queue_create(
+            "com.bazaarvoice.notificationTokenQueue", DISPATCH_QUEUE_SERIAL);
 
-    [self setFlushInterval:10.0];
-    [self registerForAppStateChanges];
-  }
-  return self;
+        [self setFlushInterval:10.0];
+        [self registerForAppStateChanges];
+    }
+    return self;
 }
 
 #pragma mark - Analytics Constant Parameters
 
 - (NSMutableDictionary *)getMobileDiagnosticParams {
-  // get diagnostic data
-  NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
+    // get diagnostic data
+    NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
 
-  NSString *bundleIdentifier = [[NSBundle mainBundle] bundleIdentifier];
-  NSString *osVersion = [[UIDevice currentDevice] systemVersion];
-  NSString *majorMinor =
-      [infoDictionary objectForKey:@"CFBundleShortVersionString"];
-  NSString *build =
-      [infoDictionary objectForKey:(NSString *)kCFBundleVersionKey];
-  NSString *appVersion =
-      [NSString stringWithFormat:@"%@.%@", majorMinor, build];
+    NSString *bundleIdentifier = [[NSBundle mainBundle] bundleIdentifier];
+    NSString *osVersion = [[UIDevice currentDevice] systemVersion];
+    NSString *majorMinor =
+        [infoDictionary objectForKey:@"CFBundleShortVersionString"];
+    NSString *build =
+        [infoDictionary objectForKey:(NSString *)kCFBundleVersionKey];
+    NSString *appVersion =
+        [NSString stringWithFormat:@"%@.%@", majorMinor, build];
 
-  struct utsname systemInfo;
-  uname(&systemInfo);
-  NSString *platform = [NSString stringWithCString:systemInfo.machine
-                                          encoding:NSUTF8StringEncoding];
+    struct utsname systemInfo;
+    uname(&systemInfo);
+    NSString *platform = [NSString stringWithCString:systemInfo.machine
+                                            encoding:NSUTF8StringEncoding];
 
-  NSMutableDictionary *params = [NSMutableDictionary dictionary];
-  [params setValue:bundleIdentifier forKey:@"mobileAppIdentifier"];
-  [params setValue:appVersion forKey:@"mobileAppVersion"];
-  [params setValue:osVersion forKey:@"mobileOSVersion"];
-  [params setValue:@"ios" forKey:@"mobileOS"];
-  [params setValue:platform forKey:@"mobileDeviceName"];
-  [params setValue:BV_SDK_VERSION forKey:@"bvSDKVersion"];
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    [params setValue:bundleIdentifier forKey:@"mobileAppIdentifier"];
+    [params setValue:appVersion forKey:@"mobileAppVersion"];
+    [params setValue:osVersion forKey:@"mobileOSVersion"];
+    [params setValue:@"ios" forKey:@"mobileOS"];
+    [params setValue:platform forKey:@"mobileDeviceName"];
+    [params setValue:BV_SDK_VERSION forKey:@"bvSDKVersion"];
 
-  return params;
+    return params;
 }
 
 #pragma mark - Application state change updates
 
 - (void)registerForAppStateChanges {
-  static dispatch_once_t onceToken;
-  dispatch_once(&onceToken, ^{
-    [self setUpApplicationDidFinishLaunching];
-    [self setUpApplicationDidBecomeActive];
-    [self setUpApplicationDidEnterBackground];
-  });
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+      [self setUpApplicationDidFinishLaunching];
+      [self setUpApplicationDidBecomeActive];
+      [self setUpApplicationDidEnterBackground];
+    });
 }
 
 - (void)setUpApplicationDidFinishLaunching {
-  [[NSNotificationCenter defaultCenter]
-      addObserverForName:UIApplicationDidFinishLaunchingNotification
-                  object:nil
-                   queue:[NSOperationQueue mainQueue]
-              usingBlock:^(NSNotification *note) {
-                [self sendAppLaunchedEvent:note.userInfo];
-              }];
+    [[NSNotificationCenter defaultCenter]
+        addObserverForName:UIApplicationDidFinishLaunchingNotification
+                    object:nil
+                     queue:[NSOperationQueue mainQueue]
+                usingBlock:^(NSNotification *note) {
+                  [self sendAppLaunchedEvent:note.userInfo];
+                }];
 }
 
 - (void)setUpApplicationDidBecomeActive {
-  [[NSNotificationCenter defaultCenter]
-      addObserverForName:UIApplicationDidBecomeActiveNotification
-                  object:nil
-                   queue:[NSOperationQueue mainQueue]
-              usingBlock:^(NSNotification *note) {
-                [self sendAppActiveEvent:note.userInfo];
-              }];
+    [[NSNotificationCenter defaultCenter]
+        addObserverForName:UIApplicationDidBecomeActiveNotification
+                    object:nil
+                     queue:[NSOperationQueue mainQueue]
+                usingBlock:^(NSNotification *note) {
+                  [self sendAppActiveEvent:note.userInfo];
+                }];
 }
 
 - (void)setUpApplicationDidEnterBackground {
-  [[NSNotificationCenter defaultCenter]
-      addObserverForName:UIApplicationDidEnterBackgroundNotification
-                  object:nil
-                   queue:[NSOperationQueue mainQueue]
-              usingBlock:^(NSNotification *note) {
-                [self sendAppInBackgroundEvent:note.userInfo];
-              }];
+    [[NSNotificationCenter defaultCenter]
+        addObserverForName:UIApplicationDidEnterBackgroundNotification
+                    object:nil
+                     queue:[NSOperationQueue mainQueue]
+                usingBlock:^(NSNotification *note) {
+                  [self sendAppInBackgroundEvent:note.userInfo];
+                }];
 }
 
 #pragma mark - App lifecycle events
 
 - (NSDictionary *)getAppStateEventParams {
-  return @{
-    @"cl" : @"Lifecycle",
-    @"type" : @"MobileApp",
-    @"source" : @"mobile-lifecycle"
-  };
+    return @{
+        @"cl" : @"Lifecycle",
+        @"type" : @"MobileApp",
+        @"source" : @"mobile-lifecycle"
+    };
 }
 
 - (void)sendAppLaunchedEvent:(NSDictionary *)userInfo {
-  NSDictionary *additionalContext = @{@"appSubState" : @"user-initiated"};
+    NSDictionary *additionalContext = @{ @"appSubState" : @"user-initiated" };
 
-  if (userInfo) {
-    do {
+    if (userInfo) {
+        do {
+            if ([userInfo objectForKey:UIApplicationLaunchOptionsURLKey]) {
+                additionalContext = @{ @"appSubState" : @"url-initiated" };
+                break;
+            }
 
-      if ([userInfo objectForKey:UIApplicationLaunchOptionsURLKey]) {
-        additionalContext = @{@"appSubState" : @"url-initiated"};
-        break;
-      }
+            if ([userInfo objectForKey:
+                              UIApplicationLaunchOptionsSourceApplicationKey]) {
+                additionalContext =
+                    @{ @"appSubState" : @"other-app-initiated" };
+                break;
+            }
 
-      if ([userInfo
-              objectForKey:UIApplicationLaunchOptionsSourceApplicationKey]) {
-        additionalContext = @{@"appSubState" : @"other-app-initiated"};
-        break;
-      }
+            if ([userInfo
+                    objectForKey:
+                        UIApplicationLaunchOptionsRemoteNotificationKey]) {
+                additionalContext =
+                    @{ @"appSubState" : @"remote-notification-initiated" };
+                break;
+            }
 
-      if ([userInfo
-              objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey]) {
-        additionalContext =
-            @{@"appSubState" : @"remote-notification-initiated"};
-        break;
-      }
+            if ([userInfo objectForKey:
+                              UIApplicationLaunchOptionsLocalNotificationKey]) {
+                additionalContext =
+                    @{ @"appSubState" : @"local-notification-initiated" };
+                break;
+            }
 
-      if ([userInfo
-              objectForKey:UIApplicationLaunchOptionsLocalNotificationKey]) {
-        additionalContext = @{@"appSubState" : @"local-notification-initiated"};
-        break;
-      }
+        } while (NO);
+    }
 
-    } while (NO);
-  }
-
-  [self sendAppStateEvent:@"launched" appSubState:additionalContext];
+    [self sendAppStateEvent:@"launched" appSubState:additionalContext];
 }
 
 - (void)sendAppActiveEvent:(NSDictionary *)userInfo {
-  [self sendAppStateEvent:@"active"];
+    [self sendAppStateEvent:@"active"];
 }
 
 - (void)sendAppInBackgroundEvent:(NSDictionary *)userInfo {
-  [self sendAppStateEvent:@"background"];
+    [self sendAppStateEvent:@"background"];
 }
 
 - (void)sendAppStateEvent:(NSString *)appState {
-  [self sendAppStateEvent:appState appSubState:nil];
+    [self sendAppStateEvent:appState appSubState:nil];
 }
 
 - (void)sendAppStateEvent:(NSString *)appState
               appSubState:(NSDictionary *)additionalContext {
-  // build param dictionary
+    // build param dictionary
 
-  NSMutableDictionary *eventData = [NSMutableDictionary
-      dictionaryWithDictionary:[[BVAnalyticEventManager sharedManager]
-                                   getCommonAnalyticsDictAnonymous:NO]];
-  [eventData addEntriesFromDictionary:[self getMobileDiagnosticParams]];
-  [eventData addEntriesFromDictionary:[self getAppStateEventParams]];
-  [eventData setObject:appState forKey:@"appState"];
+    NSMutableDictionary *eventData = [NSMutableDictionary
+        dictionaryWithDictionary:[[BVAnalyticEventManager sharedManager]
+                                     getCommonAnalyticsDictAnonymous:NO]];
+    [eventData addEntriesFromDictionary:[self getMobileDiagnosticParams]];
+    [eventData addEntriesFromDictionary:[self getAppStateEventParams]];
+    [eventData setObject:appState forKey:@"appState"];
 
-  if (additionalContext) {
-    [eventData addEntriesFromDictionary:additionalContext];
-  }
+    if (additionalContext) {
+        [eventData addEntriesFromDictionary:additionalContext];
+    }
 
-  // send request
-  [self queueEvent:eventData];
+    // send request
+    [self queueEvent:eventData];
 }
 
 #pragma mark - Event Timer
 
 - (void)setTimer {
-  dispatch_sync(self.timerEventQueue, ^{
-    if (nil == self.queueFlushTimer) {
-      self.queueFlushTimer = dispatch_source_create(
-          DISPATCH_SOURCE_TYPE_TIMER, 0, 0, self.concurrentEventQueue);
+    dispatch_sync(self.timerEventQueue, ^{
+      if (nil == self.queueFlushTimer) {
+          self.queueFlushTimer = dispatch_source_create(
+              DISPATCH_SOURCE_TYPE_TIMER, 0, 0, self.concurrentEventQueue);
 
-      NSAssert(self.queueFlushTimer,
-               @"dispatch_source_t timer wasn't allocated properly.");
+          NSAssert(self.queueFlushTimer,
+                   @"dispatch_source_t timer wasn't allocated properly.");
 
-      if (self.queueFlushTimer) {
-        dispatch_source_set_timer(
-            self.queueFlushTimer,
-            dispatch_time(DISPATCH_TIME_NOW,
-                          self.queueFlushInterval * NSEC_PER_SEC),
-            DISPATCH_TIME_FOREVER, 0 * NSEC_PER_SEC);
-        dispatch_source_set_event_handler(self.queueFlushTimer, ^{
-          [self flushQueue];
-        });
-        dispatch_resume(self.queueFlushTimer);
+          if (self.queueFlushTimer) {
+              dispatch_source_set_timer(
+                  self.queueFlushTimer,
+                  dispatch_time(DISPATCH_TIME_NOW,
+                                self.queueFlushInterval * NSEC_PER_SEC),
+                  DISPATCH_TIME_FOREVER, 0 * NSEC_PER_SEC);
+              dispatch_source_set_event_handler(self.queueFlushTimer, ^{
+                [self flushQueue];
+              });
+              dispatch_resume(self.queueFlushTimer);
+          }
       }
-    }
-  });
+    });
 }
 
 - (void)invalidateTimer {
-  dispatch_sync(self.timerEventQueue, ^{
-    if (nil != self.queueFlushTimer) {
-      dispatch_source_cancel(self.queueFlushTimer);
-      self.queueFlushTimer = nil;
-    }
-  });
+    dispatch_sync(self.timerEventQueue, ^{
+      if (nil != self.queueFlushTimer) {
+          dispatch_source_cancel(self.queueFlushTimer);
+          self.queueFlushTimer = nil;
+      }
+    });
 }
 
 #pragma mark - Event Queueing
 
 - (void)queueEvent:(NSDictionary *)eventData {
-  [[BVLogger sharedLogger]
-      analyticsMessage:[NSString
-                           stringWithFormat:@"%@ - %@ - %@",
-                                            [eventData objectForKey:@"cl"],
-                                            [eventData objectForKey:@"type"],
-                                            [eventData objectForKey:@"name"]]];
-  [self processEvent:eventData isAnonymous:NO];
+    [[BVLogger sharedLogger]
+        analyticsMessage:[NSString
+                             stringWithFormat:@"%@ - %@ - %@",
+                                              [eventData objectForKey:@"cl"],
+                                              [eventData objectForKey:@"type"],
+                                              [eventData
+                                                  objectForKey:@"name"]]];
+    [self processEvent:eventData isAnonymous:NO];
 }
 
 - (void)queueAnonymousEvent:(NSDictionary *)eventData {
-  [self processEvent:eventData isAnonymous:YES];
+    [self processEvent:eventData isAnonymous:YES];
 }
 
 - (void)processEvent:(NSDictionary *)eventData isAnonymous:(BOOL)anonymous {
-  NSMutableDictionary *eventForQueue =
-      [NSMutableDictionary dictionaryWithDictionary:eventData];
-  [eventForQueue
-      addEntriesFromDictionary:[[BVAnalyticEventManager sharedManager]
-                                   getCommonAnalyticsDictAnonymous:anonymous]];
+    NSMutableDictionary *eventForQueue =
+        [NSMutableDictionary dictionaryWithDictionary:eventData];
+    [eventForQueue addEntriesFromDictionary:
+                       [[BVAnalyticEventManager sharedManager]
+                           getCommonAnalyticsDictAnonymous:anonymous]];
 
-  dispatch_barrier_sync(self.concurrentEventQueue, ^{
-    // Update event queue
-    [self.eventQueue addObject:eventForQueue];
-  });
+    dispatch_barrier_sync(self.concurrentEventQueue, ^{
+      // Update event queue
+      [self.eventQueue addObject:eventForQueue];
+    });
 
-  [self scheduleEventQueueFlush];
+    [self scheduleEventQueueFlush];
 }
 
 - (void)scheduleEventQueueFlush {
-  // schedule a queue flush, if not already scheduled
-  // many times, a rush of events come very close to each other, and then
-  // things are quiet for a while.
+    // schedule a queue flush, if not already scheduled
+    // many times, a rush of events come very close to each other, and then
+    // things are quiet for a while.
 
-  dispatch_async(self.concurrentEventQueue, ^{
-    [self setTimer];
-  });
+    dispatch_async(self.concurrentEventQueue, ^{
+      [self setTimer];
+    });
 }
 
 - (void)queuePageViewEventDict:(NSDictionary *)pageViewEvent {
-  NSMutableDictionary *eventForQueue =
-      [NSMutableDictionary dictionaryWithDictionary:pageViewEvent];
-  [eventForQueue
-      addEntriesFromDictionary:[[BVAnalyticEventManager sharedManager]
-                                   getCommonAnalyticsDictAnonymous:NO]];
+    NSMutableDictionary *eventForQueue =
+        [NSMutableDictionary dictionaryWithDictionary:pageViewEvent];
+    [eventForQueue
+        addEntriesFromDictionary:[[BVAnalyticEventManager sharedManager]
+                                     getCommonAnalyticsDictAnonymous:NO]];
 
-  dispatch_barrier_sync(self.concurrentEventQueue, ^{
-    // Update PageView queue events
-    [self.pageviewQueue addObject:eventForQueue];
-  });
+    dispatch_barrier_sync(self.concurrentEventQueue, ^{
+      // Update PageView queue events
+      [self.pageviewQueue addObject:eventForQueue];
+    });
 
-  [self flushQueue];
+    [self flushQueue];
 }
 
 - (void)flushQueue {
-  dispatch_barrier_async(self.concurrentEventQueue, ^{
-    [self flushQueueUnsafe];
-  });
+    dispatch_barrier_async(self.concurrentEventQueue, ^{
+      [self flushQueueUnsafe];
+    });
 }
 
 // Flush queue for POST batch
 - (void)flushQueueUnsafe {
-  // clear flush timer
-  [self invalidateTimer];
+    // clear flush timer
+    [self invalidateTimer];
 
-  // send events
-  if ([self.eventQueue count] > 0) {
-
-    NSDictionary *batch = @{@"batch" : self.eventQueue};
-    [self
-         sendBatchedPOSTEvent:batch
-        withCompletionHandler:^(NSError *__nullable error) {
-          if (error) {
-            [[BVLogger sharedLogger]
-                error:[NSString stringWithFormat:
+    // send events
+    if ([self.eventQueue count] > 0) {
+        NSDictionary *batch = @{ @"batch" : self.eventQueue };
+        [self
+             sendBatchedPOSTEvent:batch
+            withCompletionHandler:^(NSError *__nullable error) {
+              if (error) {
+                  [[BVLogger sharedLogger]
+                      error:[NSString
+                                stringWithFormat:
                                     @"ERROR: posting magpie impression event%@",
                                     error.localizedDescription]];
-          }
+              }
 
-          [self flushImpressionEventCompletionQueue];
+              [self flushImpressionEventCompletionQueue];
 
-        }];
+            }];
 
-    // purge queue
-    [self.eventQueue removeAllObjects];
-  }
+        // purge queue
+        [self.eventQueue removeAllObjects];
+    }
 
-  // send page view events
-  if ([self.pageviewQueue count] > 0) {
-
-    NSDictionary *batch = @{@"batch" : self.pageviewQueue};
-    [self sendBatchedPOSTEvent:batch
-         withCompletionHandler:^(NSError *__nullable error) {
-           if (error) {
-             [[BVLogger sharedLogger]
-                 error:[NSString stringWithFormat:
+    // send page view events
+    if ([self.pageviewQueue count] > 0) {
+        NSDictionary *batch = @{ @"batch" : self.pageviewQueue };
+        [self sendBatchedPOSTEvent:batch
+             withCompletionHandler:^(NSError *__nullable error) {
+               if (error) {
+                   [[BVLogger sharedLogger]
+                       error:[NSString
+                                 stringWithFormat:
                                      @"ERROR: posting magpie pageview event%@",
                                      error.localizedDescription]];
-           }
+               }
 
-           [self flushPageViewEventCompletionQueue];
+               [self flushPageViewEventCompletionQueue];
 
-         }];
+             }];
 
-    // purge pageview queue
-    [self.pageviewQueue removeAllObjects];
-  }
+        // purge pageview queue
+        [self.pageviewQueue removeAllObjects];
+    }
 }
 
 - (void)sendBatchedPOSTEvent:(NSDictionary *)eventData
        withCompletionHandler:
            (void (^)(NSError *__nullable error))completionHandler {
-  NSURL *url = [NSURL URLWithString:[self baseUrl]];
-  [[BVLogger sharedLogger]
-      analyticsMessage:[NSString
-                           stringWithFormat:@"POST Event: %@\nWith Data:%@",
-                                            url, eventData]];
-
-  if (_isDryRunAnalytics) {
+    NSURL *url = [NSURL URLWithString:[self baseUrl]];
     [[BVLogger sharedLogger]
-        info:@"Analytic events are not being sent to server"];
-    return;
-  }
+        analyticsMessage:[NSString
+                             stringWithFormat:@"POST Event: %@\nWith Data:%@",
+                                              url, eventData]];
 
-  /// For private classes we ask for the NSURLSession but we don't hand back any
-  /// objects since it would be useless to the developers as they have no
-  /// interface to the object graph.
-  NSURLSession *session = nil;
-  id<BVURLSessionDelegate> sessionDelegate =
-      [BVSDKManager sharedManager].urlSessionDelegate;
-  if (sessionDelegate &&
-      [sessionDelegate respondsToSelector:@selector(URLSessionForBVObject:)]) {
-    session = [sessionDelegate URLSessionForBVObject:nil];
-  }
+    if (_isDryRunAnalytics) {
+        [[BVLogger sharedLogger]
+            info:@"Analytic events are not being sent to server"];
+        return;
+    }
 
-  session = session ?: [BVNetworkingManager sharedManager].bvNetworkingSession;
+    /// For private classes we ask for the NSURLSession but we don't hand back
+    /// any
+    /// objects since it would be useless to the developers as they have no
+    /// interface to the object graph.
+    NSURLSession *session = nil;
+    id<BVURLSessionDelegate> sessionDelegate =
+        [BVSDKManager sharedManager].urlSessionDelegate;
+    if (sessionDelegate &&
+        [sessionDelegate
+            respondsToSelector:@selector(URLSessionForBVObject:)]) {
+        session = [sessionDelegate URLSessionForBVObject:nil];
+    }
 
-  NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url];
-  request.HTTPMethod = @"POST";
-  [request setValue:@"application/json"
-      forHTTPHeaderField:@"Content-Type"]; // content type
+    session =
+        session ?: [BVNetworkingManager sharedManager].bvNetworkingSession;
 
-  NSError *error = nil;
-  NSData *data = [NSJSONSerialization dataWithJSONObject:eventData
-                                                 options:kNilOptions
-                                                   error:&error];
+    NSMutableURLRequest *request =
+        [[NSMutableURLRequest alloc] initWithURL:url];
+    request.HTTPMethod = @"POST";
+    [request setValue:@"application/json"
+        forHTTPHeaderField:@"Content-Type"]; // content type
 
-  if (!error) {
-    NSURLSessionUploadTask *postTask = [session
-        uploadTaskWithRequest:request
-                     fromData:data
-            completionHandler:^(NSData *data, NSURLResponse *response,
-                                NSError *error) {
+    NSError *error = nil;
+    NSData *data = [NSJSONSerialization dataWithJSONObject:eventData
+                                                   options:kNilOptions
+                                                     error:&error];
 
-              // completion
-              // one-way communication, client->server: disregard results
-              // but log error, if any
-              NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
-              if ((httpResponse && httpResponse.statusCode >= 300) ||
-                  error != nil) {
-                if (data) {
-                  NSString *errorMsg =
-                      [[NSString alloc] initWithData:data
-                                            encoding:NSUTF8StringEncoding];
-                  [[BVLogger sharedLogger] error:errorMsg];
+    if (!error) {
+        NSURLSessionUploadTask *postTask = [session
+            uploadTaskWithRequest:request
+                         fromData:data
+                completionHandler:^(NSData *data, NSURLResponse *response,
+                                    NSError *error) {
 
-                } else {
-                  [[BVLogger sharedLogger]
-                      error:[NSString
-                                stringWithFormat:@"ERROR: Posting "
-                                                 @"analytics event "
-                                                 @"failed with "
-                                                 @"status: %ld and "
-                                                 @"error: %@",
-                                                 (long)httpResponse.statusCode,
-                                                 error]];
-                }
+                  // completion
+                  // one-way communication, client->server: disregard results
+                  // but log error, if any
+                  NSHTTPURLResponse *httpResponse =
+                      (NSHTTPURLResponse *)response;
+                  if ((httpResponse && httpResponse.statusCode >= 300) ||
+                      error != nil) {
+                      if (data) {
+                          NSString *errorMsg = [[NSString alloc]
+                              initWithData:data
+                                  encoding:NSUTF8StringEncoding];
+                          [[BVLogger sharedLogger] error:errorMsg];
 
-              } else {
-                // Successful analyatics event sent
-                NSString *message = [NSString
-                    stringWithFormat:@"Analytics event sent successfully."];
-                [[BVLogger sharedLogger] analyticsMessage:message];
-              }
+                      } else {
+                          [[BVLogger sharedLogger]
+                              error:[NSString
+                                        stringWithFormat:@"ERROR: Posting "
+                                                         @"analytics event "
+                                                         @"failed with "
+                                                         @"status: %ld and "
+                                                         @"error: %@",
+                                                         (long)httpResponse
+                                                             .statusCode,
+                                                         error]];
+                      }
 
-              dispatch_barrier_async(self.concurrentEventQueue, ^{
-                completionHandler(error);
-              });
+                  } else {
+                      // Successful analyatics event sent
+                      NSString *message =
+                          [NSString stringWithFormat:
+                                        @"Analytics event sent successfully."];
+                      [[BVLogger sharedLogger] analyticsMessage:message];
+                  }
 
-            }];
+                  dispatch_barrier_async(self.concurrentEventQueue, ^{
+                    completionHandler(error);
+                  });
 
-    [postTask resume];
-  };
+                }];
+
+        [postTask resume];
+    };
 }
 
 #pragma mark - NSLocale Analytic Handling
 
 - (NSLocale *)analyticsLocale {
-  __block NSLocale *locale = nil;
-  dispatch_sync(self.localeUpdateNotificationTokenQueue, ^{
-    locale = _analyticsLocale;
-  });
-  return locale;
+    __block NSLocale *locale = nil;
+    dispatch_sync(self.localeUpdateNotificationTokenQueue, ^{
+      locale = self->_analyticsLocale;
+    });
+    return locale;
 }
 
 - (void)setAnalyticsLocale:(NSLocale *)analyticsLocale {
-  dispatch_sync(self.localeUpdateNotificationTokenQueue, ^{
-    _analyticsLocale = analyticsLocale;
+    dispatch_sync(self.localeUpdateNotificationTokenQueue, ^{
+      self->_analyticsLocale = analyticsLocale;
 
-    if (_analyticsLocale) {
-      /// Turn off locale state changes
-      [self unregisterForCurrentLocaleDidChangeNotifications];
-    } else {
-      _analyticsLocale = [NSLocale autoupdatingCurrentLocale];
-      /// Turn on locale state changes
-      [self registerForCurrentLocaleDidChangeNotifications];
-    }
+      if (self->_analyticsLocale) {
+          /// Turn off locale state changes
+          [self unregisterForCurrentLocaleDidChangeNotifications];
+      } else {
+          self->_analyticsLocale = [NSLocale autoupdatingCurrentLocale];
+          /// Turn on locale state changes
+          [self registerForCurrentLocaleDidChangeNotifications];
+      }
 
-    [self logAnalyticsLocaleUnsafe];
-  });
+      [self logAnalyticsLocaleUnsafe];
+    });
 }
 
 - (void)logAnalyticsLocale {
-  dispatch_sync(self.localeUpdateNotificationTokenQueue, ^{
-    [self logAnalyticsLocaleUnsafe];
-  });
+    dispatch_sync(self.localeUpdateNotificationTokenQueue, ^{
+      [self logAnalyticsLocaleUnsafe];
+    });
 }
 
 - (void)logAnalyticsLocaleUnsafe {
-  NSString *logLocale = nil;
-  if (_analyticsLocale) {
-    logLocale =
-        ((NSString *)[_analyticsLocale objectForKey:NSLocaleCountryCode])
-            .uppercaseString;
-  }
+    NSString *logLocale = nil;
+    if (_analyticsLocale) {
+        logLocale =
+            ((NSString *)[_analyticsLocale objectForKey:NSLocaleCountryCode])
+                .uppercaseString;
+    }
 
-  [[BVLogger sharedLogger]
-      analyticsMessage:[NSString
-                           stringWithFormat:@"Configuration has set Locale: %@",
-                                            logLocale]];
+    [[BVLogger sharedLogger]
+        analyticsMessage:
+            [NSString stringWithFormat:@"Configuration has set Locale: %@",
+                                       logLocale]];
 }
 
 - (void)registerForCurrentLocaleDidChangeNotifications {
-  if (!self.localeUpdateNotificationCenterToken) {
-    [[BVLogger sharedLogger]
-        analyticsMessage:
-            @"Analytics REGISTERING for Locale Change Notifications."];
+    if (!self.localeUpdateNotificationCenterToken) {
+        [[BVLogger sharedLogger]
+            analyticsMessage:
+                @"Analytics REGISTERING for Locale Change Notifications."];
 
-    self.localeUpdateNotificationCenterToken =
-        [[NSNotificationCenter defaultCenter]
+        self.localeUpdateNotificationCenterToken = [
+            [NSNotificationCenter defaultCenter]
             addObserverForName:NSCurrentLocaleDidChangeNotification
                         object:nil
                          queue:[NSOperationQueue mainQueue]
                     usingBlock:^(NSNotification *note) {
                       dispatch_sync(self.localeUpdateNotificationTokenQueue, ^{
-                        _analyticsLocale = [NSLocale autoupdatingCurrentLocale];
+                        self->_analyticsLocale =
+                            [NSLocale autoupdatingCurrentLocale];
                         [self logAnalyticsLocaleUnsafe];
                       });
                     }];
-  }
+    }
 }
 
 - (void)unregisterForCurrentLocaleDidChangeNotifications {
+    [[BVLogger sharedLogger]
+        analyticsMessage:
+            @"Analytics UNREGISTERING for Locale Change Notifications."];
 
-  [[BVLogger sharedLogger]
-      analyticsMessage:
-          @"Analytics UNREGISTERING for Locale Change Notifications."];
-
-  if (self.localeUpdateNotificationCenterToken) {
-    [[NSNotificationCenter defaultCenter]
-        removeObserver:self.localeUpdateNotificationCenterToken];
-    self.localeUpdateNotificationCenterToken = nil;
-  }
+    if (self.localeUpdateNotificationCenterToken) {
+        [[NSNotificationCenter defaultCenter]
+            removeObserver:self.localeUpdateNotificationCenterToken];
+        self.localeUpdateNotificationCenterToken = nil;
+    }
 }
 
 #pragma mark - Helpers
 
 - (NSString *)formatDate:(NSDate *)date {
-  NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-  NSLocale *enUSPOSIXLocale =
-      [NSLocale localeWithLocaleIdentifier:@"en_US_POSIX"];
-  [dateFormatter setLocale:enUSPOSIXLocale];
-  [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ssZZZZZ"];
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    NSLocale *enUSPOSIXLocale =
+        [NSLocale localeWithLocaleIdentifier:@"en_US_POSIX"];
+    [dateFormatter setLocale:enUSPOSIXLocale];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ssZZZZZ"];
 
-  return [dateFormatter
-      stringFromDate:date]; // return ISO-8601 formatted UTC timestamp
+    return [dateFormatter
+        stringFromDate:date]; // return ISO-8601 formatted UTC timestamp
 }
 
 - (NSString *)baseUrl {
-  BVLocaleServiceManager *localeServiceManager =
-      [BVLocaleServiceManager sharedManager];
-  NSAssert(localeServiceManager, @"BVLocaleServiceManager is nil.");
+    BVLocaleServiceManager *localeServiceManager =
+        [BVLocaleServiceManager sharedManager];
+    NSAssert(localeServiceManager, @"BVLocaleServiceManager is nil.");
 
-  if (self.isStagingServer) {
-    [[BVLogger sharedLogger]
-        error:@"WARNING: Using staging server for analytic events. This should "
-              @"only be enabled for non-production."];
-  }
+    if (self.isStagingServer) {
+        [[BVLogger sharedLogger] error:@"WARNING: Using staging server for "
+                                       @"analytic events. This should "
+                                       @"only be enabled for non-production."];
+    }
 
-  return [localeServiceManager
-      resourceForService:BVLocaleServiceManagerServiceAnalytics
-              withLocale:self.analyticsLocale
-         andIsProduction:(!self.isStagingServer)];
+    return [localeServiceManager
+        resourceForService:BVLocaleServiceManagerServiceAnalytics
+                withLocale:self.analyticsLocale
+           andIsProduction:(!self.isStagingServer)];
 }
 
 #pragma mark - Testing
 
 - (void)enqueueImpressionTestWithName:(NSString *)testName
                   withCompletionBlock:(dispatch_block_t)completionBlock {
+    dispatch_barrier_sync(self.concurrentEventQueue, ^{
 
-  dispatch_barrier_sync(self.concurrentEventQueue, ^{
+      dispatch_block_t opaqueCompletion =
+          self.testImpressionEventCompletionQueue[testName];
+      if (opaqueCompletion) {
+          opaqueCompletion();
+      }
 
-    dispatch_block_t opaqueCompletion =
-        self.testImpressionEventCompletionQueue[testName];
-    if (opaqueCompletion) {
-      opaqueCompletion();
-    }
+      self.testImpressionEventCompletionQueue[testName] = completionBlock;
 
-    self.testImpressionEventCompletionQueue[testName] = completionBlock;
-
-    NSAssert(
-        2 > self.testImpressionEventCompletionQueue.allKeys.count,
-        @"Attempting to run more than one test, probably a race condition.");
-  });
+      NSAssert(
+          2 > self.testImpressionEventCompletionQueue.allKeys.count,
+          @"Attempting to run more than one test, probably a race condition.");
+    });
 }
 
 - (void)enqueuePageViewTestWithName:(NSString *)testName
                 withCompletionBlock:(dispatch_block_t)completionBlock {
+    dispatch_barrier_sync(self.concurrentEventQueue, ^{
 
-  dispatch_barrier_sync(self.concurrentEventQueue, ^{
+      dispatch_block_t opaqueCompletion =
+          self.testPageViewEventCompletionQueue[testName];
+      if (opaqueCompletion) {
+          opaqueCompletion();
+      }
 
-    dispatch_block_t opaqueCompletion =
-        self.testPageViewEventCompletionQueue[testName];
-    if (opaqueCompletion) {
-      opaqueCompletion();
-    }
+      self.testPageViewEventCompletionQueue[testName] = completionBlock;
 
-    self.testPageViewEventCompletionQueue[testName] = completionBlock;
-
-    NSAssert(
-        2 > self.testPageViewEventCompletionQueue.allKeys.count,
-        @"Attempting to run more than one test, probably a race condition.");
-  });
+      NSAssert(
+          2 > self.testPageViewEventCompletionQueue.allKeys.count,
+          @"Attempting to run more than one test, probably a race condition.");
+    });
 }
 
 - (void)flushImpressionEventCompletionQueue {
+    dispatch_barrier_async(self.concurrentEventQueue, ^{
 
-  dispatch_barrier_async(self.concurrentEventQueue, ^{
+      if (!self->_testImpressionEventCompletionQueue) {
+          return;
+      }
 
-    if (!_testImpressionEventCompletionQueue) {
-      return;
-    }
+      dispatch_block_t opaqueCompletion =
+          self.testImpressionEventCompletionQueue.allValues.firstObject;
+      if (opaqueCompletion) {
+          opaqueCompletion();
+      }
 
-    dispatch_block_t opaqueCompletion =
-        self.testImpressionEventCompletionQueue.allValues.firstObject;
-    if (opaqueCompletion) {
-      opaqueCompletion();
-    }
-
-    [self.testImpressionEventCompletionQueue removeAllObjects];
-  });
+      [self.testImpressionEventCompletionQueue removeAllObjects];
+    });
 }
 
 - (void)flushPageViewEventCompletionQueue {
+    dispatch_barrier_async(self.concurrentEventQueue, ^{
 
-  dispatch_barrier_async(self.concurrentEventQueue, ^{
+      if (!self->_testPageViewEventCompletionQueue) {
+          return;
+      }
 
-    if (!_testPageViewEventCompletionQueue) {
-      return;
-    }
+      dispatch_block_t opaqueCompletion =
+          self.testPageViewEventCompletionQueue.allValues.firstObject;
+      if (opaqueCompletion) {
+          opaqueCompletion();
+      }
 
-    dispatch_block_t opaqueCompletion =
-        self.testPageViewEventCompletionQueue.allValues.firstObject;
-    if (opaqueCompletion) {
-      opaqueCompletion();
-    }
-
-    [self.testPageViewEventCompletionQueue removeAllObjects];
-  });
+      [self.testPageViewEventCompletionQueue removeAllObjects];
+    });
 }
 
 @end
