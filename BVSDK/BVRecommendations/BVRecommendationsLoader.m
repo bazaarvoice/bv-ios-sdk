@@ -20,239 +20,249 @@
 @implementation BVRecommendationsLoader
 
 + (void)purgeRecommendationsCache {
-  [[BVShopperProfileRequestCache sharedCache] removeAllCachedResponses];
+    [[BVShopperProfileRequestCache sharedCache] removeAllCachedResponses];
 }
 
 - (instancetype)init {
-  return ((self = [super init]));
+    return ((self = [super init]));
 }
 
 - (void)loadRequest:(BVRecommendationsRequest *)request
     completionHandler:(recommendationsCompletionHandler)completionHandler
          errorHandler:(recommendationsErrorHandler)errorHandler {
-  // check if SDK is properly configured
-  // if not, hit the error handler
-  if (![self isSDKValid]) {
-    [self errorOnMainThread:[self invalidSDKError] handler:errorHandler];
-    return;
-  }
+    // check if SDK is properly configured
+    // if not, hit the error handler
+    if (![self isSDKValid]) {
+        [self errorOnMainThread:[self invalidSDKError] handler:errorHandler];
+        return;
+    }
 
-  BVSDKManager *sdkMgr = [BVSDKManager sharedManager];
-  NSString *client = sdkMgr.configuration.clientId;
-  NSString *apiRoot = sdkMgr.urlRootShopperAdvertising;
-  NSString *apiKey = sdkMgr.configuration.apiKeyShopperAdvertising;
+    BVSDKManager *sdkMgr = [BVSDKManager sharedManager];
+    NSString *client = sdkMgr.configuration.clientId;
+    NSString *apiRoot = sdkMgr.urlRootShopperAdvertising;
+    NSString *apiKey = sdkMgr.configuration.apiKeyShopperAdvertising;
 
-  // check that `apiKeyShopperAdvertising` is valid. Will fail only in debug
-  // mode.
-  NSAssert(apiKey && 0 < apiKey.length,
-           @"You must supply apiKeyShopperAdvertising in the "
-           @"BVSDKManager before using the Bazaarvoice SDK.");
+    // check that `apiKeyShopperAdvertising` is valid. Will fail only in debug
+    // mode.
+    NSAssert(apiKey && 0 < apiKey.length,
+             @"You must supply apiKeyShopperAdvertising in the "
+             @"BVSDKManager before using the Bazaarvoice SDK.");
 
-  // Cool, clientId and passKey are valid.
+    // Cool, clientId and passKey are valid.
 
-  BVShopperProfileRequestCache *cache =
-      [BVShopperProfileRequestCache sharedCache];
+    BVShopperProfileRequestCache *cache =
+        [BVShopperProfileRequestCache sharedCache];
 
-  NSUInteger limit = request.limit;
-  NSString *productId = request.productId;
-  NSString *categoryId = request.categoryId;
+    NSUInteger limit = request.limit;
+    NSString *productId = request.productId;
+    NSString *categoryId = request.categoryId;
 
-  NSString *idfaString = [self getIdfaString];
+    NSString *idfaString = [self getIdfaString];
 
-  if (limit <= 0 || limit > 50) {
-    limit = 20; // default limit
-  }
+    if (limit <= 0 || limit > 50) {
+        limit = 20; // default limit
+    }
 
-  NSString *idParam = [NSString stringWithFormat:@"magpie_idfa_%@", idfaString];
+    NSString *sdkVersionParam = [NSString
+        stringWithFormat:@"%@=%@", @"_bvIosSdkVersion", BV_SDK_VERSION];
 
-  NSString *filterTypes = @"interests,brands,recommendations,reviews";
+    NSString *idParam =
+        [NSString stringWithFormat:@"magpie_idfa_%@", idfaString];
 
-  NSString *endPoint = [NSString
-      stringWithFormat:
-          @"%@/recommendations/%@?passKey=%@&include=%@&limit=%lu&client=%@",
-          apiRoot, idParam, apiKey, filterTypes, (unsigned long)limit, client];
+    NSString *filterTypes = @"interests,brands,recommendations,reviews";
 
-  if (productId != nil) {
-    endPoint = [endPoint
-        stringByAppendingString:[NSString stringWithFormat:@"&product=%@/%@",
-                                                           client, productId]];
-  }
+    NSString *endPoint = [NSString
+        stringWithFormat:@"%@/recommendations/"
+                         @"%@?%@&passKey=%@&include=%@&limit=%lu&client=%@",
+                         apiRoot, idParam, sdkVersionParam, apiKey, filterTypes,
+                         (unsigned long)limit, client];
 
-  if (categoryId != nil) {
-    endPoint = [endPoint
-        stringByAppendingString:[NSString stringWithFormat:@"&category=%@",
-                                                           categoryId]];
-  }
+    if (productId != nil) {
+        endPoint = [endPoint
+            stringByAppendingString:[NSString
+                                        stringWithFormat:@"&product=%@/%@",
+                                                         client, productId]];
+    }
 
-  [[BVLogger sharedLogger]
-      verbose:[NSString stringWithFormat:@"GET: %@", endPoint]];
-
-  NSURLRequest *networkRequest =
-      [NSURLRequest requestWithURL:[NSURL URLWithString:endPoint]];
-
-  NSCachedURLResponse *cachedResp =
-      [cache cachedResponseForRequest:networkRequest];
-
-  NSURLSession *session = nil;
-  id<BVURLSessionDelegate> sessionDelegate =
-      [BVSDKManager sharedManager].urlSessionDelegate;
-  if (sessionDelegate &&
-      [sessionDelegate respondsToSelector:@selector(URLSessionForBVObject:)]) {
-    session = [sessionDelegate URLSessionForBVObject:self];
-  }
-
-  if (cachedResp) {
-    NSDictionary *responseDict =
-        [NSJSONSerialization JSONObjectWithData:cachedResp.data
-                                        options:kNilOptions
-                                          error:nil];
-
-    BVShopperProfile *profile =
-        [[BVShopperProfile alloc] initWithDictionary:responseDict];
-
-    [cache printCacheSize];
+    if (categoryId != nil) {
+        endPoint = [endPoint
+            stringByAppendingString:[NSString stringWithFormat:@"&category=%@",
+                                                               categoryId]];
+    }
 
     [[BVLogger sharedLogger]
-        verbose:[NSString
-                    stringWithFormat:@"CACHED RESPONSE: %@", responseDict]];
+        verbose:[NSString stringWithFormat:@"GET: %@", endPoint]];
 
-    [self completionOnMainThread:profile.recommendations
-                         handler:completionHandler];
+    NSURLRequest *networkRequest =
+        [NSURLRequest requestWithURL:[NSURL URLWithString:endPoint]];
 
-    return;
-  }
+    NSCachedURLResponse *cachedResp =
+        [cache cachedResponseForRequest:networkRequest];
 
-  session = session ?: [BVNetworkingManager sharedManager].bvNetworkingSession;
+    NSURLSession *session = nil;
+    id<BVURLSessionDelegate> sessionDelegate =
+        [BVSDKManager sharedManager].urlSessionDelegate;
+    if (sessionDelegate &&
+        [sessionDelegate
+            respondsToSelector:@selector(URLSessionForBVObject:)]) {
+        session = [sessionDelegate URLSessionForBVObject:self];
+    }
 
-  NSURLSessionDataTask *task = [session
-      dataTaskWithRequest:networkRequest
-        completionHandler:^(NSData *data, NSURLResponse *response,
-                            NSError *error) {
+    if (cachedResp) {
+        NSDictionary *responseDict =
+            [NSJSONSerialization JSONObjectWithData:cachedResp.data
+                                            options:kNilOptions
+                                              error:nil];
 
-          NSHTTPURLResponse *urlResp = (NSHTTPURLResponse *)response;
+        BVShopperProfile *profile =
+            [[BVShopperProfile alloc] initWithDictionary:responseDict];
 
-          if ((!error && urlResp.statusCode < 300) && data != nil) {
-            NSHTTPURLResponse *httpResp = (NSHTTPURLResponse *)response;
+        [cache printCacheSize];
 
-            NSError *errorJSON;
-            NSDictionary *responseDict =
-                [NSJSONSerialization JSONObjectWithData:data
-                                                options:kNilOptions
-                                                  error:&errorJSON];
+        [[BVLogger sharedLogger]
+            verbose:[NSString
+                        stringWithFormat:@"CACHED RESPONSE: %@", responseDict]];
 
-            if (!errorJSON) {
-              BVShopperProfile *profile =
-                  [[BVShopperProfile alloc] initWithDictionary:responseDict];
+        [self completionOnMainThread:profile.recommendations
+                             handler:completionHandler];
 
-              [[BVLogger sharedLogger]
-                  verbose:[NSString stringWithFormat:@"RESPONSE: (%ld): %@",
+        return;
+    }
+
+    session =
+        session ?: [BVNetworkingManager sharedManager].bvNetworkingSession;
+
+    NSURLSessionDataTask *task = [session
+        dataTaskWithRequest:networkRequest
+          completionHandler:^(NSData *data, NSURLResponse *response,
+                              NSError *error) {
+
+            NSHTTPURLResponse *urlResp = (NSHTTPURLResponse *)response;
+
+            if ((!error && urlResp.statusCode < 300) && data != nil) {
+                NSHTTPURLResponse *httpResp = (NSHTTPURLResponse *)response;
+
+                NSError *errorJSON;
+                NSDictionary *responseDict =
+                    [NSJSONSerialization JSONObjectWithData:data
+                                                    options:kNilOptions
+                                                      error:&errorJSON];
+
+                if (!errorJSON) {
+                    BVShopperProfile *profile = [[BVShopperProfile alloc]
+                        initWithDictionary:responseDict];
+
+                    [[BVLogger sharedLogger]
+                        verbose:[NSString
+                                    stringWithFormat:@"RESPONSE: (%ld): %@",
                                                      (long)httpResp.statusCode,
                                                      responseDict]];
 
-              // Successful response, save in cache
-              NSCachedURLResponse *newCachedResp =
-                  [[NSCachedURLResponse alloc] initWithResponse:response
-                                                           data:data];
+                    // Successful response, save in cache
+                    NSCachedURLResponse *newCachedResp =
+                        [[NSCachedURLResponse alloc] initWithResponse:response
+                                                                 data:data];
 
-              [cache storeCachedResponse:newCachedResp
-                              forRequest:networkRequest];
+                    [cache storeCachedResponse:newCachedResp
+                                    forRequest:networkRequest];
 
-              // Success!
-              [self completionOnMainThread:profile.recommendations
-                                   handler:completionHandler];
+                    // Success!
+                    [self completionOnMainThread:profile.recommendations
+                                         handler:completionHandler];
 
-              return;
+                    return;
+
+                } else {
+                    // serialization error
+                    [self errorOnMainThread:errorJSON handler:errorHandler];
+                    return;
+                }
 
             } else {
-              // serialization error
-              [self errorOnMainThread:errorJSON handler:errorHandler];
-              return;
+                // request error
+                if (error) {
+                    [self errorOnMainThread:error handler:errorHandler];
+                    return;
+                } else {
+                    NSDictionary *userInfo =
+                        @{NSLocalizedDescriptionKey : urlResp.description};
+                    NSError *err = [NSError errorWithDomain:BVErrDomain
+                                                       code:urlResp.statusCode
+                                                   userInfo:userInfo];
+                    [self errorOnMainThread:err handler:errorHandler];
+                    return;
+                }
             }
 
-          } else {
-            // request error
-            if (error) {
-              [self errorOnMainThread:error handler:errorHandler];
-              return;
-            } else {
-              NSDictionary *userInfo =
-                  @{NSLocalizedDescriptionKey : urlResp.description};
-              NSError *err = [NSError errorWithDomain:BVErrDomain
-                                                 code:urlResp.statusCode
-                                             userInfo:userInfo];
-              [self errorOnMainThread:err handler:errorHandler];
-              return;
-            }
-          }
+          }];
 
-        }];
+    [task resume];
 
-  [task resume];
-
-  if (sessionDelegate &&
-      [sessionDelegate respondsToSelector:@selector
-                       (URLSessionTask:fromBVObject:withURLSession:)]) {
-    [sessionDelegate URLSessionTask:task
-                       fromBVObject:self
-                     withURLSession:session];
-  }
+    if (sessionDelegate &&
+        [sessionDelegate respondsToSelector:@selector(URLSessionTask:
+                                                        fromBVObject:
+                                                      withURLSession:)]) {
+        [sessionDelegate URLSessionTask:task
+                           fromBVObject:self
+                         withURLSession:session];
+    }
 }
 
 - (void)
 completionOnMainThread:(NSArray<BVRecommendedProduct *> *)recommendations
                handler:(recommendationsCompletionHandler)completionHandler {
-  dispatch_async(dispatch_get_main_queue(), ^{
-    completionHandler(recommendations);
-  });
+    dispatch_async(dispatch_get_main_queue(), ^{
+      completionHandler(recommendations);
+    });
 }
 
 - (void)errorOnMainThread:(NSError *)error
                   handler:(recommendationsErrorHandler)errorHandler {
-  dispatch_async(dispatch_get_main_queue(), ^{
-    errorHandler(error);
-  });
+    dispatch_async(dispatch_get_main_queue(), ^{
+      errorHandler(error);
+    });
 }
 
 - (NSString *)getIdfaString {
-  if ([[ASIdentifierManager sharedManager] isAdvertisingTrackingEnabled]) {
-    return [[[ASIdentifierManager sharedManager] advertisingIdentifier]
-        UUIDString];
-  } else {
-    return @"nontracking";
-  }
+    if ([[ASIdentifierManager sharedManager] isAdvertisingTrackingEnabled]) {
+        return [[[ASIdentifierManager sharedManager] advertisingIdentifier]
+            UUIDString];
+    } else {
+        return @"nontracking";
+    }
 }
 
 - (BOOL)isSDKValid {
-  NSString *clientId = [BVSDKManager sharedManager].configuration.clientId;
-  NSString *passKey =
-      [BVSDKManager sharedManager].configuration.apiKeyShopperAdvertising;
+    NSString *clientId = [BVSDKManager sharedManager].configuration.clientId;
+    NSString *passKey =
+        [BVSDKManager sharedManager].configuration.apiKeyShopperAdvertising;
 
-  if (clientId == nil || passKey == nil || [clientId isEqualToString:@""] ||
-      [passKey isEqualToString:@""]) {
-    return NO;
-  }
+    if (clientId == nil || passKey == nil || [clientId isEqualToString:@""] ||
+        [passKey isEqualToString:@""]) {
+        return NO;
+    }
 
-  return YES;
+    return YES;
 }
 
 - (NSError *)invalidSDKError {
-  NSMutableDictionary *userInfo = [NSMutableDictionary dictionary];
+    NSMutableDictionary *userInfo = [NSMutableDictionary dictionary];
 
-  NSString *clientId = [BVSDKManager sharedManager].configuration.clientId;
-  NSString *passKey =
-      [BVSDKManager sharedManager].configuration.apiKeyShopperAdvertising;
+    NSString *clientId = [BVSDKManager sharedManager].configuration.clientId;
+    NSString *passKey =
+        [BVSDKManager sharedManager].configuration.apiKeyShopperAdvertising;
 
-  if ([clientId isEqualToString:@""]) {
-    [userInfo setValue:@"Client Id is not set."
-                forKey:NSLocalizedDescriptionKey];
-  }
+    if ([clientId isEqualToString:@""]) {
+        [userInfo setValue:@"Client Id is not set."
+                    forKey:NSLocalizedDescriptionKey];
+    }
 
-  if ([passKey isEqualToString:@""]) {
-    [userInfo setValue:@"apiKeyShopperAdvertising is not set."
-                forKey:NSLocalizedDescriptionKey];
-  }
+    if ([passKey isEqualToString:@""]) {
+        [userInfo setValue:@"apiKeyShopperAdvertising is not set."
+                    forKey:NSLocalizedDescriptionKey];
+    }
 
-  return [NSError errorWithDomain:BVErrDomain code:-1 userInfo:userInfo];
+    return [NSError errorWithDomain:BVErrDomain code:-1 userInfo:userInfo];
 }
 
 @end
