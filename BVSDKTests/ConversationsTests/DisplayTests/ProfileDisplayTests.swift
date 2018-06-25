@@ -6,6 +6,7 @@
 //
 
 import XCTest
+import Foundation
 @testable import BVSDK
 
 // Tests conforming to API description at: https://developer.bazaarvoice.com/docs/read/conversations_api/reference/latest/profiles/display
@@ -116,8 +117,8 @@ class ProfileDisplayTests: XCTestCase {
       let profile = response.results.first!
       
       // QA Statistics
-      XCTAssertEqual(profile.qaStatistics?.totalAnswerCount, 33)
-      XCTAssertEqual(profile.qaStatistics?.totalQuestionCount, 37)
+      XCTAssertGreaterThanOrEqual(profile.qaStatistics?.totalAnswerCount?.intValue ?? -1, 37)
+      XCTAssertGreaterThanOrEqual(profile.qaStatistics?.totalQuestionCount?.intValue ?? -1, 37)
       XCTAssertEqual(profile.qaStatistics?.answerHelpfulVoteCount, 0)
       XCTAssertEqual(profile.qaStatistics?.helpfulVoteCount, 0)
       XCTAssertEqual(profile.qaStatistics?.answerHelpfulVoteCount, 0)

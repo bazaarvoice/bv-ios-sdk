@@ -15,7 +15,7 @@
 
 __strong static BVRecsAnalyticsHelper *analyticsInstance = nil;
 
-static const NSString *bvProductName = @"Recommendations";
+static const NSString *bvProductName = @"Personalization";
 
 + (NSDictionary *)getRelavantInfoForRecommendationType:
                       (BVRecommendedProduct *)product
