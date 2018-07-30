@@ -14,8 +14,6 @@
 - (void)setBvRecommendedProduct:(BVRecommendedProduct *)bvRecommendedProduct {
 
   _bvRecommendedProduct = bvRecommendedProduct;
-
-  [_bvRecommendedProduct recordImpression];
 }
 
 - (void)recommendationViewClicked {
@@ -68,8 +66,6 @@
 - (void)setBvRecommendedProduct:(BVRecommendedProduct *)bvRecommendedProduct {
 
   _bvRecommendedProduct = bvRecommendedProduct;
-
-  [_bvRecommendedProduct recordImpression];
 }
 
 - (void)recommendationViewClicked {
@@ -122,8 +118,6 @@
 - (void)setBvRecommendedProduct:(BVRecommendedProduct *)bvRecommendedProduct {
 
   _bvRecommendedProduct = bvRecommendedProduct;
-
-  [_bvRecommendedProduct recordImpression];
 }
 
 - (void)recommendationViewClicked {

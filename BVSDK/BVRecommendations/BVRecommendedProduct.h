@@ -59,9 +59,6 @@
 /// Record a tap event -- the user tapped a product
 - (void)recordTap;
 
-/// Record an impression event -- the user was shown this product
-- (void)recordImpression;
-
 /// Internal use
 @property(nonnull, strong, nonatomic) NSDictionary *rawProductDict;
 
