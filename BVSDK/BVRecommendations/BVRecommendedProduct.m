@@ -49,16 +49,6 @@
   return self;
 }
 
-- (void)recordImpression {
-
-  if (self.hasSentImpressionEvent) {
-    return;
-  }
-  self.hasSentImpressionEvent = true;
-
-  [BVRecsAnalyticsHelper queueAnalyticsEventForProductView:self];
-}
-
 - (void)recordTap {
 
   [BVRecsAnalyticsHelper queueAnalyticsEventForProductTapped:self];
