@@ -14,12 +14,13 @@
 #define BVID_STORAGE_KEY @"BVID_STORAGE_KEY"
 
 @interface BVAnalyticEventManager ()
-
 @property(strong, nonatomic) NSString *BVID;
-
+@property(strong, nonatomic) dispatch_queue_t ivarQueue;
 @end
 
 @implementation BVAnalyticEventManager
+
+@synthesize clientId = _clientId;
 
 __strong static BVAnalyticEventManager *mgrInstance = nil;
 
@@ -32,9 +33,32 @@ __strong static BVAnalyticEventManager *mgrInstance = nil;
   return mgrInstance;
 }
 
+- (void)setClientId:(NSString *)clientId {
+  /*
+   * We make this sticky to protect against client toggles, i.e., you can
+   * never set this to "nil". It alwaays retains the previous client id.
+   */
+  if (clientId) {
+    dispatch_sync(self.ivarQueue, ^{
+      self->_clientId = clientId;
+    });
+  }
+}
+
+- (NSString *)clientId {
+  __block NSString *blockClientId = nil;
+  dispatch_sync(self.ivarQueue, ^{
+    blockClientId = self->_clientId;
+  });
+  return blockClientId;
+}
+
 - (id)init {
   self = [super init];
   if (self != nil) {
+    self.ivarQueue = dispatch_queue_create(
+        "com.bazaarvoice.BVAnalyticEventManager.ivarQueue",
+        DISPATCH_QUEUE_SERIAL);
     _eventSource = @"native-mobile-custom";
     self.BVID =
         [[NSUserDefaults standardUserDefaults] stringForKey:BVID_STORAGE_KEY];
