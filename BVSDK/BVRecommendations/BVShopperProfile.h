@@ -5,10 +5,9 @@
 //  Copyright 2016 Bazaarvoice Inc. All rights reserved.
 //
 
-#ifndef BVShopperProfile_h
-#define BVShopperProfile_h
+#ifndef BVSHOPPERPROFILE_H
+#define BVSHOPPERPROFILE_H
 
-#import "BVRecommendedProduct.h"
 #import <Foundation/Foundation.h>
 
 /// Data model for a user's shopper profile including: interests, brands, and
@@ -42,4 +41,4 @@
 
 @end
 
-#endif
+#endif /* BVSHOPPERPROFILE_H */

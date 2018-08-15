@@ -6,6 +6,9 @@
 //
 
 #import "BVRecommendedProduct.h"
+#import "BVCommon.h"
+#import "BVNullHelper.h"
+#import "BVProductReview.h"
 #import "BVRecsAnalyticsHelper.h"
 
 @interface BVRecommendedProduct ()

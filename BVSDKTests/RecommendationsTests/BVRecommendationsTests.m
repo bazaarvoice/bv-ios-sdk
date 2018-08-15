@@ -7,6 +7,8 @@
 
 #import <AdSupport/ASIdentifierManager.h>
 #import <BVSDK/BVRecommendations.h>
+#import <BVSDK/BVRecommendationsLoader+Private.h>
+#import <BVSDK/BVRecommendationsRequest+Private.h>
 #import <XCTest/XCTest.h>
 
 #import "BVBaseStubTestCase.h"
@@ -18,22 +20,95 @@
 @implementation BVRecommendationsTests
 
 - (void)setUp {
-  [super setUp];
-  // Put setup code here. This method is called before the invocation of each
-  // test method in the class.
-
-  NSDictionary *configDict =
-      @{@"apiKeyShopperAdvertising" : @"fakekey", @"clientId" : @"iosunittest"};
+  NSDictionary *configDict = @{
+    @"apiKeyShopperAdvertising" :
+        @"srZ86SuQ0JupyKrtBHILGIIFsqJoeP4tXYJlQfjojBmuo",
+    @"clientId" : @"APITestCustomer"
+  };
   [BVSDKManager configureWithConfiguration:configDict
-                                configType:BVConfigurationTypeStaging];
+                                configType:BVConfigurationTypeProd];
   [[BVSDKManager sharedManager] setLogLevel:BVLogLevelError];
   [BVSDKManager sharedManager].urlSessionDelegate = nil;
+
+  [super setUp];
 }
 
 - (void)tearDown {
-  // Put teardown code here. This method is called after the invocation of
-  // each test method in the class.
   [super tearDown];
+}
+
+- (void)testParseURLAndDoLiveQueryRecommendations {
+
+  __weak XCTestExpectation *expectation = [self
+      expectationWithDescription:@"testParseURLAndDoLiveQueryRecommendations"];
+
+  BVRecommendationsRequest *request =
+      [[BVRecommendationsRequest alloc] initWithLimit:10];
+
+  [request addStrategy:@""];
+  [request addStrategy:@"   \n"];
+  [request addStrategy:@"FOO"];
+  [request addStrategy:@"BAR"];
+  [request addStrategy:@"bar"];
+  [request addStrategy:@"BAZ"];
+  [request addStrategy:@"baz"];
+
+  request.averageRating = @(3.333333333333333333333333);
+  request.brandId = @"brand1234567";
+  request.interest = @"football";
+  request.locale = [NSLocale currentLocale];
+  request.lookback =
+      [[NSCalendar currentCalendar] dateByAddingUnit:NSCalendarUnitSecond
+                                               value:-10
+                                              toDate:[NSDate date]
+                                             options:0];
+
+  XCTAssertTrue(!request.purposeIsSet);
+  request.purpose = BVRecommendationsRequestPurposeAds;
+  XCTAssertTrue(request.purposeIsSet);
+
+  request.requiredCategory = @"foosball";
+  request = [request addInclude:BVRecommendationsRequestIncludeBrands];
+  request = [request addInclude:BVRecommendationsRequestIncludeCategories];
+  request = [request addInclude:BVRecommendationsRequestIncludeInterests];
+  request = [request addInclude:BVRecommendationsRequestIncludeRecommendations];
+
+  BVRecommendationsLoader *loader = [[BVRecommendationsLoader alloc] init];
+  NSString *currentLocale = [NSString
+      stringWithFormat:@"locale=%@", [NSLocale currentLocale].localeIdentifier];
+  NSString *urlString = [loader getURLForRequest:request].absoluteString;
+
+  XCTAssertTrue([urlString containsString:@"lookback=10s"]);
+  XCTAssertTrue([urlString containsString:@"strategies=bar,baz,foo"]);
+  XCTAssertTrue([urlString containsString:@"bvbrandid=brand1234567"]);
+  XCTAssertTrue([urlString containsString:@"avg_rating=3.33333"]);
+  XCTAssertTrue(
+      [urlString containsString:@"required_category=APITestCustomer/foosball"]);
+  XCTAssertTrue([urlString containsString:@"interest=football"]);
+  XCTAssertTrue([urlString containsString:currentLocale]);
+  XCTAssertTrue([urlString containsString:@"purpose=ads"]);
+  XCTAssertTrue(
+      [urlString containsString:@"include=brands,category_recommendations,"
+                                @"interests,recommendations"]);
+
+  [loader loadRequest:request
+      completionHandler:^(
+          NSArray<BVRecommendedProduct *> *__nonnull recommendations) {
+
+        XCTAssertTrue([recommendations count] > 0,
+                      @"Recommendation result should not be size 0");
+        [expectation fulfill];
+
+      }
+      errorHandler:^(NSError *__nonnull error) {
+
+        XCTFail(@"Error handler should not have been called");
+
+        [expectation fulfill];
+
+      }];
+
+  [self waitForExpectations];
 }
 
 // Basic test that fetches the client's IDFA and returns an array of product
@@ -113,7 +188,7 @@
 
   BVRecommendationsRequest *request =
       [[BVRecommendationsRequest alloc] initWithLimit:10
-                                        withProductId:@"client/productId1234"];
+                                        withProductId:@"productId1234"];
   BVRecommendationsLoader *loader = [[BVRecommendationsLoader alloc] init];
   [loader loadRequest:request
       completionHandler:^(
@@ -143,7 +218,7 @@
 
   BVRecommendationsRequest *request =
       [[BVRecommendationsRequest alloc] initWithLimit:10
-                                       withCategoryId:@"client/categoryId0100"];
+                                       withCategoryId:@"categoryId0100"];
   BVRecommendationsLoader *loader = [[BVRecommendationsLoader alloc] init];
   [loader loadRequest:request
       completionHandler:^(

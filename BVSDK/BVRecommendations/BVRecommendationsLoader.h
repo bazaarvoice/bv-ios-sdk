@@ -7,9 +7,8 @@
 
 #import <Foundation/Foundation.h>
 
-#import "BVCommon.h"
-#import "BVRecommendationsRequest.h"
-#import "BVShopperProfile.h"
+@class BVRecommendationsRequest;
+@class BVRecommendedProduct;
 
 typedef void (^recommendationsCompletionHandler)(
     NSArray<BVRecommendedProduct *> *__nonnull);

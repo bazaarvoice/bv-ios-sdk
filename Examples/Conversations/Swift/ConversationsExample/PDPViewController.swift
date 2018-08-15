@@ -42,8 +42,8 @@ class PDPViewController: BVProductDisplayPageViewController, UITableViewDataSour
     static var count: Int { return QAStatRows.QuestionNotHelpfulVoteCount.hashValue + 1}
   }
   
-  var reviewStats = BVReviewStatistics()
-  var questionAnswerStats = BVQAStatistics()
+  var reviewStats: BVReviewStatistics?
+  var questionAnswerStats: BVQAStatistics?
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -61,9 +61,8 @@ class PDPViewController: BVProductDisplayPageViewController, UITableViewDataSour
     
     productPage.load({ (response) in
       
-      self.reviewStats         = (response.result?.reviewStatistics)!
-      self.questionAnswerStats = (response.result?.qaStatistics)!
-      
+      self.reviewStats         = response.result?.reviewStatistics
+      self.questionAnswerStats = response.result?.qaStatistics
       self.demoStatsTableView.reloadData()
       
     }) { (error) in
@@ -110,25 +109,25 @@ class PDPViewController: BVProductDisplayPageViewController, UITableViewDataSour
       switch indexPath.row {
       case ReviewStateRows.TotalReviewCount.rawValue:
         cell.statTypeLabel.text = "Total Review Count"
-        cell.statValueLabel.text = reviewStats.totalReviewCount?.stringValue
+        cell.statValueLabel.text = reviewStats?.totalReviewCount?.stringValue
       case ReviewStateRows.AverageOverallRating.rawValue:
         cell.statTypeLabel.text = "Average Overall Rating"
-        cell.statValueLabel.text = reviewStats.averageOverallRating?.stringValue
+        cell.statValueLabel.text = reviewStats?.averageOverallRating?.stringValue
       case ReviewStateRows.HelpfulVoteCount.rawValue:
         cell.statTypeLabel.text = "Helpful Vote Count"
-        cell.statValueLabel.text = reviewStats.helpfulVoteCount?.stringValue
+        cell.statValueLabel.text = reviewStats?.helpfulVoteCount?.stringValue
       case ReviewStateRows.NotHelpfulVoteCount.rawValue:
         cell.statTypeLabel.text = "Not Helpful Vote Count"
-        cell.statValueLabel.text = reviewStats.notHelpfulVoteCount?.stringValue
+        cell.statValueLabel.text = reviewStats?.notHelpfulVoteCount?.stringValue
       case ReviewStateRows.RecommendedCount.rawValue:
         cell.statTypeLabel.text = "Recommended Count"
-        cell.statValueLabel.text = reviewStats.recommendedCount?.stringValue
+        cell.statValueLabel.text = reviewStats?.recommendedCount?.stringValue
       case ReviewStateRows.NotRecommendedCount.rawValue:
         cell.statTypeLabel.text = "Not Recommeded Count"
-        cell.statValueLabel.text = reviewStats.notRecommendedCount?.stringValue
+        cell.statValueLabel.text = reviewStats?.notRecommendedCount?.stringValue
       case ReviewStateRows.OverallRatingRange.rawValue:
         cell.statTypeLabel.text = "Overall Rating Range"
-        cell.statValueLabel.text = reviewStats.overallRatingRange?.stringValue
+        cell.statValueLabel.text = reviewStats?.overallRatingRange?.stringValue
       default:
         cell.statTypeLabel.text = "Error"
         cell.statValueLabel.text = "Error"
@@ -140,22 +139,22 @@ class PDPViewController: BVProductDisplayPageViewController, UITableViewDataSour
       switch indexPath.row {
       case QAStatRows.TotalQuestions.rawValue:
         cell.statTypeLabel.text = "Total Question Count"
-        cell.statValueLabel.text = questionAnswerStats.totalQuestionCount?.stringValue
+        cell.statValueLabel.text = questionAnswerStats?.totalQuestionCount?.stringValue
       case QAStatRows.TotalAnswers.rawValue:
         cell.statTypeLabel.text = "Total Answer Count"
-        cell.statValueLabel.text = questionAnswerStats.totalAnswerCount?.stringValue
+        cell.statValueLabel.text = questionAnswerStats?.totalAnswerCount?.stringValue
       case QAStatRows.AnswerHelpfulVoteCount.rawValue:
         cell.statTypeLabel.text = "Answer Helpful Vote Count"
-        cell.statValueLabel.text = questionAnswerStats.answerHelpfulVoteCount?.stringValue
+        cell.statValueLabel.text = questionAnswerStats?.answerHelpfulVoteCount?.stringValue
       case QAStatRows.AnswerNotHelpfulVoteCount.rawValue:
         cell.statTypeLabel.text = "Answer Not Helpful Vote Count"
-        cell.statValueLabel.text = questionAnswerStats.answerNotHelpfulVoteCount?.stringValue
+        cell.statValueLabel.text = questionAnswerStats?.answerNotHelpfulVoteCount?.stringValue
       case QAStatRows.QuestionHelpfulVoteCount.rawValue:
         cell.statTypeLabel.text = "Question Helpful Vote Count"
-        cell.statValueLabel.text = questionAnswerStats.questionHelpfulVoteCount?.stringValue
+        cell.statValueLabel.text = questionAnswerStats?.questionHelpfulVoteCount?.stringValue
       case QAStatRows.QuestionNotHelpfulVoteCount.rawValue:
         cell.statTypeLabel.text = "Question Not Helpful Vote Count"
-        cell.statValueLabel.text = questionAnswerStats.questionNotHelpfulVoteCount?.stringValue
+        cell.statValueLabel.text = questionAnswerStats?.questionNotHelpfulVoteCount?.stringValue
       default:
         cell.statTypeLabel.text = "Error"
         cell.statValueLabel.text = "Error"
@@ -166,8 +165,5 @@ class PDPViewController: BVProductDisplayPageViewController, UITableViewDataSour
     }
     
     return cell
-    
   }
-  
-  
 }

@@ -5,6 +5,7 @@
 //  Copyright 2016 Bazaarvoice Inc. All rights reserved.
 //
 
+#import "BVRecommendationsRequestOptions.h"
 #import <Foundation/Foundation.h>
 
 /**
@@ -23,8 +24,10 @@
 @interface BVRecommendationsRequest : NSObject
 
 - (instancetype)initWithLimit:(NSUInteger)limit;
+
 - (instancetype)initWithLimit:(NSUInteger)limit
                 withProductId:(NSString *)productId;
+
 - (instancetype)initWithLimit:(NSUInteger)limit
                withCategoryId:(NSString *)categoryId;
 
@@ -36,9 +39,17 @@
 - (instancetype) new
     __attribute__((unavailable("Use -initWithLimit: instead")));
 
-/// internal use
-@property(readonly) NSString *productId;
-@property(readonly) NSString *categoryId;
+@property(nullable, readonly) NSString *productId;
+@property(nullable, readonly) NSString *categoryId;
 @property(readonly) NSUInteger limit;
+
+@property(nullable, nonatomic, strong) NSNumber *averageRating;
+@property(nullable, nonatomic, strong) NSString *brandId;
+@property(nullable, nonatomic, strong) NSString *interest;
+@property(nullable, nonatomic, strong) NSLocale *locale;
+@property(nonatomic, assign) BVRecommendationsRequestPurpose purpose;
+@property(nullable, nonatomic, strong) NSString *requiredCategory;
+
+- (nonnull instancetype)addInclude:(BVRecommendationsRequestInclude)include;
 
 @end
