@@ -32,16 +32,17 @@ class AnswersViewController: UIViewController, UITableViewDataSource, UITableVie
   
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return question!.answers.count
+    guard let count = question?.answers.count else {
+      return 0
+    }
+    return count
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: "MyAnswerTableViewCell")! as! MyAnswerTableViewCell
     
-    cell.answer = question!.answers[indexPath.row];
+    cell.answer = question?.answers[indexPath.row]
     
     return cell
   }
-  
 }
-

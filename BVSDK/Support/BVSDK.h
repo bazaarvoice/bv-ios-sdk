@@ -164,8 +164,4 @@ FOUNDATION_EXPORT const unsigned char BVSDKVersionString[];
 #import <BVSDK/BVCurationsUICollectionViewCell.h>
 
 // Recommendations
-#import <BVSDK/BVProductRecommendationView.h>
-#import <BVSDK/BVProductRecommendationsContainer.h>
-#import <BVSDK/BVProductReview.h>
 #import <BVSDK/BVRecommendations.h>
-#import <BVSDK/BVRecsAnalyticsHelper.h>

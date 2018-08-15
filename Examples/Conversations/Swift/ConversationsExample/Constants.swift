@@ -23,5 +23,4 @@ struct Constants {
   
   // Review Product Id with Comments
   static let TEST_REVIEW_PRODUCT_ID_FOR_COMMENTS = "1000001"
-  
 }

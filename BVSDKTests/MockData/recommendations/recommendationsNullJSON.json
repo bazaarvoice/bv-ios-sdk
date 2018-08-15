@@ -1,37 +1,43 @@
 {
-    "profile": {
-        "interests": {
-            "uncategorized": "MED",
-            "apparelaccessories": "HIGH",
-            "womensmaternity": "MED",
-            "womensshoes": "LOW"
-        },
-        "brands": {
-            "brand1": "MED",
-            "anotherbrand": "MED"
-        },
-        "recommendations": ["<null>"],
-        "recommendationStats": {
-            "RKI": 4,
-            "RKB": 2,
-            "RKP": 5,
-            "RKC": 1,
-            "RKT": 0
-        },
-        "products": {
-            "testcustomer/tc5005151849": {
-                "client": "testcustomer",
-                "product": "<null>",
-                "name": "<null>",
-                "image_url": "<null>",
-                "product_page_url": "<null>",
-                "num_reviews": 188,
-                "avg_rating": 4.65,
-                "interests": ["<null>"],
-                "category_ids": ["<null>"],
-                "RS": "<null>",
-                "sponsored": false
-            }
-        }
+  "profile":{
+    "interests":{
+      "uncategorized":"MED",
+      "apparelaccessories":"HIGH",
+      "womensmaternity":"MED",
+      "womensshoes":"LOW"
+    },
+    "brands":{
+      "brand1":"MED",
+      "anotherbrand":"MED"
+    },
+    "recommendations":[
+                       "<null>"
+                       ],
+    "recommendationStats":{
+      "RKI":4,
+      "RKB":2,
+      "RKP":5,
+      "RKC":1,
+      "RKT":0
+    },
+    "products":{
+      "testcustomer/tc5005151849":{
+        "client":"testcustomer",
+        "product":"<null>",
+        "name":"<null>",
+        "image_url":"<null>",
+        "product_page_url":"<null>",
+        "num_reviews":188,
+        "avg_rating":4.65,
+        "interests":[
+                     "<null>"
+                     ],
+        "category_ids":[
+                        "<null>"
+                        ],
+        "RS":"<null>",
+        "sponsored":false
+      }
     }
+  }
 }
