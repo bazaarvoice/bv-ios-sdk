@@ -7,24 +7,24 @@
 //  Copyright 2016 Bazaarvoice Inc. All rights reserved.
 //
 
-#import "BVRecommendationsLoader.h"
-#import "BVShopperProfile.h"
 #import <Foundation/Foundation.h>
 
 @class BVRecommendationsLoader;
+@class BVRecommendationsRequest;
+@class BVRecommendedProduct;
 
 /// When interacting with a BVRecommendationsUI component, this enum provides a
 /// list of container types the user interacted with.
 typedef NS_ENUM(NSInteger, BVProductRecommendationWidget) {
 
-    /// Product recommendations from a horizontally scrolling collection view.
-    RecommendationsCarousel,
+  /// Product recommendations from a horizontally scrolling collection view.
+  RecommendationsCarousel,
 
-    /// Product recommendations from a UITableView
-    RecommendationsTableView,
+  /// Product recommendations from a UITableView
+  RecommendationsTableView,
 
-    /// Custom widget created.
-    RecommendationsCustom
+  /// Custom widget created.
+  RecommendationsCustom
 
 };
 

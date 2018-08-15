@@ -61,7 +61,6 @@ class AuthorViewController: UIViewController, UITableViewDataSource {
       print(error)
       
     }
-    
   }
   
   // MARK: UITableViewDatasource
@@ -108,10 +107,6 @@ class AuthorViewController: UIViewController, UITableViewDataSource {
       print("Error: No results to display")
       return 0;
     }
-    
-    
-    
-    
   }
   
   func createAutorStats(author: BVAuthor) -> String {
@@ -179,5 +174,4 @@ class AuthorViewController: UIViewController, UITableViewDataSource {
       return UITableViewCell()
     }
   }
-  
 }

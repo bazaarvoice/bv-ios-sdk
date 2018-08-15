@@ -485,6 +485,11 @@
 		B583B128200E8ABE001E9548 /* BVFilterTypeValues.h in Headers */ = {isa = PBXBuildFile; fileRef = B583B122200E8ABD001E9548 /* BVFilterTypeValues.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B583B129200E8ABE001E9548 /* BVFilterOperatorValues.h in Headers */ = {isa = PBXBuildFile; fileRef = B583B123200E8ABE001E9548 /* BVFilterOperatorValues.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B583B12A200E8ABE001E9548 /* BVSortOptionValues.h in Headers */ = {isa = PBXBuildFile; fileRef = B583B124200E8ABE001E9548 /* BVSortOptionValues.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B588E7002124A23600F76040 /* BVRecommendationsRequestOptions.h in Headers */ = {isa = PBXBuildFile; fileRef = B588E6FF2124A23600F76040 /* BVRecommendationsRequestOptions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B588E7052124B01D00F76040 /* BVRecommendationsRequestOptionsUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = B588E7032124B01D00F76040 /* BVRecommendationsRequestOptionsUtil.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		B588E7062124B01D00F76040 /* BVRecommendationsRequestOptionsUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = B588E7042124B01D00F76040 /* BVRecommendationsRequestOptionsUtil.m */; };
+		B588E7082124BEFA00F76040 /* BVRecommendationsRequest+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = B588E7072124BEFA00F76040 /* BVRecommendationsRequest+Private.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		B588E70C212B463300F76040 /* BVRecommendationsLoader+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = B588E70B212B463300F76040 /* BVRecommendationsLoader+Private.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		B59185962040DADC006BE717 /* BVInternalAnalyticsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8779DB6C1DD3AAE800E6CAF5 /* BVInternalAnalyticsTest.m */; };
 		B59F8F1B203490CA00087EF0 /* BVNetworkingManager.h in Headers */ = {isa = PBXBuildFile; fileRef = B59F8F19203490CA00087EF0 /* BVNetworkingManager.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		B59F8F1C203490CA00087EF0 /* BVNetworkingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B59F8F1A203490CA00087EF0 /* BVNetworkingManager.m */; };
@@ -1062,6 +1067,11 @@
 		B583B122200E8ABD001E9548 /* BVFilterTypeValues.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVFilterTypeValues.h; sourceTree = "<group>"; };
 		B583B123200E8ABE001E9548 /* BVFilterOperatorValues.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVFilterOperatorValues.h; sourceTree = "<group>"; };
 		B583B124200E8ABE001E9548 /* BVSortOptionValues.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVSortOptionValues.h; sourceTree = "<group>"; };
+		B588E6FF2124A23600F76040 /* BVRecommendationsRequestOptions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BVRecommendationsRequestOptions.h; sourceTree = "<group>"; };
+		B588E7032124B01D00F76040 /* BVRecommendationsRequestOptionsUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BVRecommendationsRequestOptionsUtil.h; sourceTree = "<group>"; };
+		B588E7042124B01D00F76040 /* BVRecommendationsRequestOptionsUtil.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BVRecommendationsRequestOptionsUtil.m; sourceTree = "<group>"; };
+		B588E7072124BEFA00F76040 /* BVRecommendationsRequest+Private.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BVRecommendationsRequest+Private.h"; sourceTree = "<group>"; };
+		B588E70B212B463300F76040 /* BVRecommendationsLoader+Private.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BVRecommendationsLoader+Private.h"; sourceTree = "<group>"; };
 		B59F8F19203490CA00087EF0 /* BVNetworkingManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BVNetworkingManager.h; sourceTree = "<group>"; };
 		B59F8F1A203490CA00087EF0 /* BVNetworkingManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BVNetworkingManager.m; sourceTree = "<group>"; };
 		B59F8F1D2034C7B900087EF0 /* BVURLSessionDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BVURLSessionDelegate.h; sourceTree = "<group>"; };
@@ -1806,6 +1816,7 @@
 				87F2DC0B1DAD585E00FB43F3 /* BVRecommendationsLoader.m */,
 				87F2DC0C1DAD585E00FB43F3 /* BVRecommendationsRequest.h */,
 				87F2DC0D1DAD585E00FB43F3 /* BVRecommendationsRequest.m */,
+				B588E6FF2124A23600F76040 /* BVRecommendationsRequestOptions.h */,
 				87F2DC0E1DAD585E00FB43F3 /* BVRecommendedProduct.h */,
 				87F2DC0F1DAD585E00FB43F3 /* BVRecommendedProduct.m */,
 				87F2DC101DAD585E00FB43F3 /* BVRecsAnalyticsHelper.h */,
@@ -1820,6 +1831,10 @@
 		87F2DC151DAD585E00FB43F3 /* Private */ = {
 			isa = PBXGroup;
 			children = (
+				B588E70B212B463300F76040 /* BVRecommendationsLoader+Private.h */,
+				B588E7032124B01D00F76040 /* BVRecommendationsRequestOptionsUtil.h */,
+				B588E7042124B01D00F76040 /* BVRecommendationsRequestOptionsUtil.m */,
+				B588E7072124BEFA00F76040 /* BVRecommendationsRequest+Private.h */,
 				87F2DC161DAD585E00FB43F3 /* BVShopperProfileRequestCache.h */,
 				87F2DC141DAD585E00FB43F3 /* BVShopperProfileRequestCache.m */,
 			);
@@ -1893,7 +1908,6 @@
 				87F2DD941DAD698500FB43F3 /* recommendationsByProductId.json */,
 				87F2DD951DAD698500FB43F3 /* recommendationsNullJSON.json */,
 				87F2DD961DAD698500FB43F3 /* recommendationsResult.json */,
-				87F2DD971DAD698500FB43F3 /* userProfile1.json */,
 			);
 			path = recommendations;
 			sourceTree = "<group>";
@@ -1907,6 +1921,7 @@
 				87A9ECB71E1DA87E00666636 /* malformedJSON.json */,
 				87F2DD911DAD698500FB43F3 /* productsToReviewResult.json */,
 				87F2DD921DAD698500FB43F3 /* recommendations */,
+				87F2DD971DAD698500FB43F3 /* userProfile1.json */,
 			);
 			path = MockData;
 			sourceTree = "<group>";
@@ -2358,6 +2373,7 @@
 				87F2DD0F1DAD585E00FB43F3 /* BVReviewsCollectionView.h in Headers */,
 				B583B127200E8ABE001E9548 /* BVSortOrderValues.h in Headers */,
 				87F2DCCB1DAD585E00FB43F3 /* BVAnswerSubmission.h in Headers */,
+				B588E7002124A23600F76040 /* BVRecommendationsRequestOptions.h in Headers */,
 				87F2DCD91DAD585E00FB43F3 /* BVSubmission.h in Headers */,
 				5FE2C0811F6B05100090DD55 /* BVErrorCode.h in Headers */,
 				87F2DC911DAD585E00FB43F3 /* BVVideo.h in Headers */,
@@ -2444,6 +2460,7 @@
 				87F2DCA71DAD585E00FB43F3 /* BVBulkRatingsRequest.h in Headers */,
 				B5D7E846205312DA00DEB434 /* BVAuthenticatedUser+Testing.h in Headers */,
 				87F2DD0B1DAD585E00FB43F3 /* BVQuestionView.h in Headers */,
+				B588E7082124BEFA00F76040 /* BVRecommendationsRequest+Private.h in Headers */,
 				87F2DC781DAD585E00FB43F3 /* BVPhoto.h in Headers */,
 				87F2DD031DAD585E00FB43F3 /* BVQuestionCollectionViewCell.h in Headers */,
 				87F2DCA91DAD585E00FB43F3 /* BVConversationsRequest.h in Headers */,
@@ -2498,6 +2515,7 @@
 				87C5FEBA1E22A05D004EE6E8 /* BVCommon.h in Headers */,
 				87C5FEC21E22A05D004EE6E8 /* BVSDKConstants.h in Headers */,
 				87C5FEB61E22A05D004EE6E8 /* BVAuthenticatedUser.h in Headers */,
+				B588E7052124B01D00F76040 /* BVRecommendationsRequestOptionsUtil.h in Headers */,
 				87C5FEC11E22A05D004EE6E8 /* BVNullHelper.h in Headers */,
 				87C5FEBB1E22A05D004EE6E8 /* BVDiagnosticHelpers.h in Headers */,
 				87F2DC601DAD585E00FB43F3 /* BVBrand.h in Headers */,
@@ -2534,6 +2552,7 @@
 				87D424E91E89C32E00147FDB /* BVReviewIncludeType.h in Headers */,
 				87D425271E8EE39700147FDB /* BVViewedCGCEvent.h in Headers */,
 				8777BB421EBA3823008C4715 /* BVSyndicationSource.h in Headers */,
+				B588E70C212B463300F76040 /* BVRecommendationsLoader+Private.h in Headers */,
 				87B6DFA11ECA424300B75835 /* BVCommentsRequest.h in Headers */,
 				87B6DFA91ECA49B600B75835 /* BVCommentsResponse.h in Headers */,
 				B5BE76A8200EA6B4002BA818 /* BVReviewsSortOptionValue.h in Headers */,
@@ -2886,6 +2905,7 @@
 				B583AED22006B4AA001E9548 /* BVRelationalFilterOperator.m in Sources */,
 				B5A764D91FE1915200B5DC9A /* BVBulkStoresResponse.m in Sources */,
 				875411741E1F201E006C5C6E /* BVNotificationProperties.m in Sources */,
+				B588E7062124B01D00F76040 /* BVRecommendationsRequestOptionsUtil.m in Sources */,
 				875411711E1F201E006C5C6E /* BVNotificationConfiguration.m in Sources */,
 				87F2DD0E1DAD585E00FB43F3 /* BVReviewCollectionViewCell.m in Sources */,
 				87F2DC591DAD585E00FB43F3 /* BVCommaUtil.m in Sources */,

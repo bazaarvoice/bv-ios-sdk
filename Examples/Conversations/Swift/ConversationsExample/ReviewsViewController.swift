@@ -32,11 +32,8 @@ class ReviewsViewController: UIViewController, UITableViewDataSource {
       self.reviewsTableView.reloadData()
       
     }) { (error) in
-      
       print(error)
-      
     }
-    
   }
   
   // MARK: UITableViewDatasource
@@ -56,5 +53,4 @@ class ReviewsViewController: UIViewController, UITableViewDataSource {
     
     return tableCell
   }
-  
 }

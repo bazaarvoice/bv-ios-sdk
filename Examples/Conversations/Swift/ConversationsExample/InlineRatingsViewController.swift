@@ -30,7 +30,6 @@ class InlineRatingsViewController: UIViewController, UITableViewDataSource {
     }) { (error) in
       print(error)
     }
-    
   }
   
   // MARK: UITableViewDatasource
@@ -51,5 +50,4 @@ class InlineRatingsViewController: UIViewController, UITableViewDataSource {
     
     return cell
   }
-  
 }

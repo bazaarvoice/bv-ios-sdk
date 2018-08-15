@@ -32,9 +32,6 @@ class DemoCell: BVRecommendationCollectionViewCell {
       self.numReview.text = "(\(bvRecommendedProduct.numReviews.intValue) reviews)"
       self.starRating.value = (CGFloat)(bvRecommendedProduct.averageRating.floatValue)
       self.productImageView?.sd_setImage(with: imageUrl)
-      
     }
-    
   }
-  
 }
