@@ -16,30 +16,36 @@ class MyReviewTableViewCell: BVReviewTableViewCell {
     didSet {
       
       var titleString = review?.title
+      let author = review?.userNickname ?? "no author"
       
       // Get the author and date
       let dateFormatter = DateFormatter()
       dateFormatter.dateFormat = "yyyy-MM-dd hh:mm:ss"
-      let dateString = dateFormatter.string(from: (review?.submissionTime)!)
+      
+      var dateString: String = "N/A"
+      if let submissionTime = review?.submissionTime {
+        dateString = dateFormatter.string(from: submissionTime)
+      }
       
       var badgesString = "\nBadges: ["
       
       // let's see if this author has any badges
-      for badge : BVBadge in (review?.badges)! {
-        
-        badgesString += " \(badge.identifier!) "
-        
+      if let badges = review?.badges {
+        badges.forEach { badgesString += " \($0.identifier!) " }
       }
       
       badgesString += "]"
       
-      titleString = titleString?.appending("\nBy \(review!.userNickname ?? "no author") on \(dateString)\(badgesString)")
+      titleString = titleString?.appending("\nBy \(author) on \(dateString)\(badgesString)")
       
       // Add any context data values, if present. E.g. Age, Gender, other....
-      for contextDataValue in (review?.contextDataValues)! {
-        let value = contextDataValue.valueLabel ?? "Value Not defined"
-        let label = contextDataValue.dimensionLabel ?? "Label Not defined"
-        titleString?.append("\n\(label): \(value)")
+      
+      if let contextDataValues = review?.contextDataValues {
+        contextDataValues.forEach {
+          let value = $0.valueLabel ?? "Value Not defined"
+          let label = $0.dimensionLabel ?? "Label Not defined"
+          titleString?.append("\n\(label): \(value)")
+        }
       }
       
       reviewTitle.text = titleString
@@ -49,24 +55,32 @@ class MyReviewTableViewCell: BVReviewTableViewCell {
       
       reviewString?.append("\n")
       
-      reviewString?.append("\nIs Recommended?  \(review!.isRecommended)")
-      reviewString?.append("\nIs Syndicated?  \(review!.isSyndicated)")
+      reviewString?.append("\nIs Recommended?  \(review?.isRecommended ?? false)")
+      reviewString?.append("\nIs Syndicated?  \(review?.isSyndicated ?? false)")
       
-      if (review!.isSyndicated && (review!.syndicationSource != nil)){
-        reviewString?.append("\nSyndication Source: \(review!.syndicationSource!.name!)")
+      if let isSyndicated = review?.isSyndicated,
+        let syndicationSourceName = review?.syndicationSource?.name {
+        if isSyndicated {
+          reviewString?.append("\nSyndication Source: \(syndicationSourceName)")
+        }
       }
       
-      reviewString?.append("\nHelpful Count: \(review!.totalPositiveFeedbackCount!)")
-      reviewString?.append("\nNot Helpful Count: \(review!.totalNegativeFeedbackCount!)")
+      if let totalPositiveFeedbackCount = review?.totalPositiveFeedbackCount,
+        let totalNegativeFeedbackCount = review?.totalNegativeFeedbackCount {
+        reviewString?.append("\nHelpful Count: \(totalPositiveFeedbackCount)")
+        reviewString?.append("\nNot Helpful Count: \(totalNegativeFeedbackCount)")
+      }
       
       // See if there are context data values
       var secondaryRatingsText = "\nSecondary Ratings: ["
       
       // Check and see if this reviewer supplied any of the secondary ratings
-      for rating : BVSecondaryRating in (review?.secondaryRatings)! {
-        let value = rating.value as! NSInteger
-        let label = rating.label ?? "Label Not defined"
-        secondaryRatingsText += " \(label)(\(value)) "
+      if let secondaryRatings = review?.secondaryRatings {
+        secondaryRatings.forEach {
+          let value = ($0.value as? NSInteger) ?? -1
+          let label = $0.label ?? "Label Not defined"
+          secondaryRatingsText += " \(label)(\(value)) "
+        }
       }
       
       secondaryRatingsText += "]"
@@ -74,13 +88,13 @@ class MyReviewTableViewCell: BVReviewTableViewCell {
       reviewString?.append(secondaryRatingsText)
       
       // check for comments
-      let commentsText = "\nNum Comments: [\(review!.comments.count)]"
-      
-      reviewString?.append(commentsText)
+      if let commentsCount = review?.comments.count {
+        let commentsText = "\nNum Comments: [\(commentsCount)]"
+        reviewString?.append(commentsText)
+      }
       
       reviewText.text = reviewString
       
     }
   }
-  
 }

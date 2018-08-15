@@ -128,8 +128,8 @@ class ProfileDisplayTests: XCTestCase {
       
       // Review Statistics
       XCTAssertEqual(profile.reviewStatistics?.totalReviewCount, 23)
-      XCTAssertEqual(profile.reviewStatistics?.helpfulVoteCount, 66)
-      XCTAssertEqual(profile.reviewStatistics?.notHelpfulVoteCount, 58)
+      XCTAssertGreaterThanOrEqual(profile.reviewStatistics?.helpfulVoteCount?.intValue ?? -1, 66)
+      XCTAssertGreaterThanOrEqual(profile.reviewStatistics?.notHelpfulVoteCount?.intValue ?? -1, 58)
       XCTAssertEqual(profile.reviewStatistics?.notRecommendedCount, 1)
       XCTAssertEqual(profile.reviewStatistics?.overallRatingRange, 5)
       XCTAssertEqual(profile.reviewStatistics?.ratingDistribution?.fiveStarCount, 7)

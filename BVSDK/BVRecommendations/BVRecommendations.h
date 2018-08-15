@@ -5,8 +5,8 @@
 //  Copyright 2016 Bazaarvoice Inc. All rights reserved.
 //
 
-#ifndef BVRecommendations_h
-#define BVRecommendations_h
+#ifndef BVRECOMMENDATIONS_H
+#define BVRECOMMENDATIONS_H
 
 #import "BVCommon.h"
 #import "BVProductRecommendationView.h"
@@ -14,8 +14,9 @@
 #import "BVProductReview.h"
 #import "BVRecommendationsLoader.h"
 #import "BVRecommendationsRequest.h"
+#import "BVRecommendationsRequestOptions.h"
 #import "BVRecommendedProduct.h"
 #import "BVRecsAnalyticsHelper.h"
 #import "BVShopperProfile.h"
 
-#endif
+#endif /* BVRECOMMENDATIONS_H */

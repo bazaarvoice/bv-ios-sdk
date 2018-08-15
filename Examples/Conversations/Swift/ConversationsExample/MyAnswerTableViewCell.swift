@@ -9,7 +9,6 @@ import UIKit
 import BVSDK
 
 class MyAnswerTableViewCell: BVAnswerTableViewCell {
-  
   @IBOutlet weak var answerTestLabel : UILabel!
   
   override var answer: BVAnswer? {
@@ -17,6 +16,4 @@ class MyAnswerTableViewCell: BVAnswerTableViewCell {
       answerTestLabel.text = answer?.answerText
     }
   }
-  
-  
 }
