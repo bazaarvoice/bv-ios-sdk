@@ -6,8 +6,9 @@
 //
 //
 
-#import "BVRecommendedProduct.h"
 #import <UIKit/UIKit.h>
+
+@class BVRecommendedProduct;
 
 /// A collection view cell to show a single product recommendation in.
 /// This cell should be used in combination with

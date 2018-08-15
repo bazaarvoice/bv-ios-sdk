@@ -35,7 +35,6 @@ class CommentsViewController: UIViewController, UITableViewDataSource {
       print("ERROR fetching comments: \(error.first!.localizedDescription)")
       
     }
-    
   }
   
   override func didReceiveMemoryWarning() {
@@ -60,7 +59,4 @@ class CommentsViewController: UIViewController, UITableViewDataSource {
     
     return tableCell
   }
-  
-  
-  
 }

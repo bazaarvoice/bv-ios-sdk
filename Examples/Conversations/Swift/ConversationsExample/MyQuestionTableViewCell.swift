@@ -9,7 +9,6 @@ import UIKit
 import BVSDK
 
 class MyQuestionTableViewCell: BVQuestionTableViewCell {
-  
   @IBOutlet weak var questionSummary : UILabel!
   @IBOutlet weak var questionDetails : UILabel!
   
@@ -19,5 +18,4 @@ class MyQuestionTableViewCell: BVQuestionTableViewCell {
       questionDetails.text = question!.questionDetails
     }
   }
-  
 }

@@ -1,11 +1,11 @@
 PODS:
-  - BVSDK/BVCommon (7.0.0)
-  - BVSDK/BVCommonUI (7.0.0)
-  - BVSDK/BVConversations (7.0.0):
+  - BVSDK/BVCommon (7.0.1)
+  - BVSDK/BVCommonUI (7.0.1)
+  - BVSDK/BVConversations (7.0.1):
     - BVSDK/BVCommon
-  - BVSDK/BVConversationsStores (7.0.0):
+  - BVSDK/BVConversationsStores (7.0.1):
     - BVSDK/BVConversations
-  - BVSDK/BVConversationsUI (7.0.0):
+  - BVSDK/BVConversationsUI (7.0.1):
     - BVSDK/BVCommonUI
     - BVSDK/BVConversationsStores
 
@@ -19,8 +19,8 @@ EXTERNAL SOURCES:
     :path: "../../../"
 
 SPEC CHECKSUMS:
-  BVSDK: aa21c06aafe277c00e47882fbc0df77e7bd02e2a
+  BVSDK: 80d1890852ff80cf5c132c69110657ca341fb635
 
 PODFILE CHECKSUM: 5f046e8508ae294ed9a88db12438549234c28c85
 
-COCOAPODS: 1.5.2
+COCOAPODS: 1.5.3

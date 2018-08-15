@@ -5,25 +5,25 @@ PODS:
   - Bolts/AppLinks (1.8.4):
     - Bolts/Tasks
   - Bolts/Tasks (1.8.4)
-  - BVSDK (7.0.0):
-    - BVSDK/BVCommon (= 7.0.0)
-  - BVSDK/BVCommon (7.0.0)
-  - BVSDK/BVCommonUI (7.0.0)
-  - BVSDK/BVConversations (7.0.0):
+  - BVSDK (7.0.1):
+    - BVSDK/BVCommon (= 7.0.1)
+  - BVSDK/BVCommon (7.0.1)
+  - BVSDK/BVCommonUI (7.0.1)
+  - BVSDK/BVConversations (7.0.1):
     - BVSDK/BVCommon
-  - BVSDK/BVConversationsStores (7.0.0):
+  - BVSDK/BVConversationsStores (7.0.1):
     - BVSDK/BVConversations
-  - BVSDK/BVConversationsUI (7.0.0):
+  - BVSDK/BVConversationsUI (7.0.1):
     - BVSDK/BVCommonUI
     - BVSDK/BVConversationsStores
-  - BVSDK/BVCurations (7.0.0):
+  - BVSDK/BVCurations (7.0.1):
     - BVSDK/BVCommon
-  - BVSDK/BVCurationsUI (7.0.0):
+  - BVSDK/BVCurationsUI (7.0.1):
     - BVSDK/BVCommonUI
     - BVSDK/BVCurations
-  - BVSDK/BVNotifications (7.0.0):
+  - BVSDK/BVNotifications (7.0.1):
     - BVSDK/BVConversationsUI
-  - BVSDK/BVRecommendations (7.0.0):
+  - BVSDK/BVRecommendations (7.0.1):
     - BVSDK/BVCommon
   - Crashlytics (3.9.0):
     - Fabric (~> 1.7.0)
@@ -123,7 +123,7 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
-  BVSDK: aa21c06aafe277c00e47882fbc0df77e7bd02e2a
+  BVSDK: 80d1890852ff80cf5c132c69110657ca341fb635
   Crashlytics: 64aad5dd97249dd3ff94b979fea140144590cdd3
   Fabric: e6be012366472553807dada21243c5ab8d904151
   FBSDKCoreKit: ebc6c5f5b3f0e72396041050e2266781a38ac587
@@ -142,4 +142,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: f2145d845c38000175311cab40ce05f8499461d6
 
-COCOAPODS: 1.5.2
+COCOAPODS: 1.5.3

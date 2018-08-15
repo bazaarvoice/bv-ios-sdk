@@ -39,7 +39,6 @@ class QuestionsViewController: UIViewController, UITableViewDataSource, UITableV
       print(error)
       
     }
-    
   }
   
   // MARK: UITableViewDatasource
@@ -47,7 +46,6 @@ class QuestionsViewController: UIViewController, UITableViewDataSource, UITableV
   func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
     return "Question Responses"
   }
-  
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return questions.count
@@ -61,7 +59,6 @@ class QuestionsViewController: UIViewController, UITableViewDataSource, UITableV
     return cell
   }
   
-  
   // MARK: UITableViewDelegate
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -73,5 +70,4 @@ class QuestionsViewController: UIViewController, UITableViewDataSource, UITableV
     answersVC.question = question
     self.navigationController?.pushViewController(answersVC, animated: true)
   }
-  
 }

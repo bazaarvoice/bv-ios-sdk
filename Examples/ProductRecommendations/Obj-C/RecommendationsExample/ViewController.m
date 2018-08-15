@@ -41,8 +41,8 @@
       [[BVRecommendationsRequest alloc] initWithLimit:20];
 
   [self.recommendationsView loadRequest:request
-      completionHandler:^(NSArray *proudcts) {
-        self.products = proudcts;
+      completionHandler:^(NSArray *products) {
+        self.products = products;
         [self.recommendationsView reloadData];
       }
       errorHandler:^(NSError *error) {

@@ -7,6 +7,7 @@
 //
 
 #import "BVProductRecommendationView.h"
+#import "BVRecommendedProduct.h"
 #import "BVRecsAnalyticsHelper.h"
 
 @implementation BVRecommendationCollectionViewCell
