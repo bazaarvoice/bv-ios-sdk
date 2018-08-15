@@ -1,18 +1,19 @@
 
 
 //
-//  BVProduct.h
+//  BVRecommendedProduct.h
 //  Bazaarvoice SDK
 //
 //  Copyright 2016 Bazaarvoice Inc. All rights reserved.
 //
 
-#ifndef BVRecommendedProduct_h
-#define BVRecommendedProduct_h
+#ifndef BVRECOMMENDEDPRODUCT_H
+#define BVRECOMMENDEDPRODUCT_H
 
 #import "BVDisplayableProductContent.h"
-#import "BVProductReview.h"
 #import <Foundation/Foundation.h>
+
+@class BVProductReview;
 
 /// Model contents for a single product recommendation display item
 @interface BVRecommendedProduct : NSObject <BVDisplayableProductContent>
@@ -64,4 +65,4 @@
 
 @end
 
-#endif
+#endif /* BVRECOMMENDEDPRODUCT_H */

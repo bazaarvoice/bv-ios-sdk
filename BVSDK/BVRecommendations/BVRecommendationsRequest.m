@@ -5,7 +5,8 @@
 //  Copyright 2016 Bazaarvoice Inc. All rights reserved.
 //
 
-#import "BVRecommendationsRequest.h"
+#import "BVRecommendationsRequest+Private.h"
+#import "BVRecommendationsRequestOptionsUtil.h"
 
 @interface BVRecommendationsRequest ()
 
@@ -17,34 +18,69 @@
 
 @implementation BVRecommendationsRequest
 
+- (void)setPurpose:(BVRecommendationsRequestPurpose)purpose {
+  _purposeIsSet = YES;
+  _purpose = purpose;
+}
+
+- (instancetype)commonInit {
+  self.allowInactiveProducts = NO;
+  _purpose = BVRecommendationsRequestPurposeAds;
+  _purposeIsSet = NO;
+
+  _includes = [NSMutableSet<NSString *> set];
+  _interests = [NSMutableSet<NSString *> set];
+  _strategies = [NSMutableSet<NSString *> set];
+
+  return self;
+}
+
 - (instancetype)initWithLimit:(NSUInteger)limit {
-  self = [super init];
-  if (self) {
+  if ((self = [super init])) {
     self.productId = nil;
     self.categoryId = nil;
     self.limit = limit;
   }
-  return self;
+  return [self commonInit];
 }
 
 - (instancetype)initWithLimit:(NSUInteger)limit
                 withProductId:(NSString *)productId {
-  self = [super init];
-  if (self) {
+  if ((self = [super init])) {
     self.productId = productId;
     self.categoryId = nil;
     self.limit = limit;
   }
-  return self;
+  return [self commonInit];
 }
 
 - (instancetype)initWithLimit:(NSUInteger)limit
                withCategoryId:(NSString *)categoryId {
-  self = [super init];
-  if (self) {
+  if ((self = [super init])) {
     self.productId = nil;
     self.categoryId = categoryId;
     self.limit = limit;
+  }
+  return [self commonInit];
+}
+
+- (nonnull instancetype)addInclude:(BVRecommendationsRequestInclude)include {
+  [self.includes addObject:[BVRecommendationsRequestOptionsUtil
+                               valueForRecommendationsRequestInclude:include]
+                               .lowercaseString];
+  return self;
+}
+
+- (nonnull instancetype)addStrategy:(nonnull NSString *)strategy {
+  if (!strategy) {
+    return self;
+  }
+
+  NSString *trimmedStrategy = [strategy
+      stringByTrimmingCharactersInSet:[NSCharacterSet
+                                          whitespaceAndNewlineCharacterSet]];
+  if (0 < trimmedStrategy.length) {
+    [self.strategies addObject:trimmedStrategy.lowercaseString];
   }
   return self;
 }
