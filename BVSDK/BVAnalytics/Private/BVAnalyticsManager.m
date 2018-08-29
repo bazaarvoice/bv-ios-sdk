@@ -11,7 +11,7 @@
 #import "BVAnalyticEventManager.h"
 #import "BVAnalyticsManager+Testing.h"
 #import "BVLocaleServiceManager.h"
-#import "BVLogger.h"
+#import "BVLogger+Private.h"
 #import "BVNetworkingManager.h"
 #import "BVNullHelper.h"
 #import "BVPersonalizationEvent.h"
@@ -414,9 +414,13 @@ static BVAnalyticsManager *analyticsInstance = nil;
                                             url, eventData]];
 
   if (_isDryRunAnalytics) {
+#ifdef DEBUG
     [[BVLogger sharedLogger]
         info:@"Analytic events are not being sent to server"];
     return;
+#else
+    BVAssert(NO, @"Disable dry run analytics before pushing a release build.");
+#endif
   }
 
   /// For private classes we ask for the NSURLSession but we don't hand back
