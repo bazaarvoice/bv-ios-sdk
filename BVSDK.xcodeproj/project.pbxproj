@@ -485,6 +485,7 @@
 		B583B128200E8ABE001E9548 /* BVFilterTypeValues.h in Headers */ = {isa = PBXBuildFile; fileRef = B583B122200E8ABD001E9548 /* BVFilterTypeValues.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B583B129200E8ABE001E9548 /* BVFilterOperatorValues.h in Headers */ = {isa = PBXBuildFile; fileRef = B583B123200E8ABE001E9548 /* BVFilterOperatorValues.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B583B12A200E8ABE001E9548 /* BVSortOptionValues.h in Headers */ = {isa = PBXBuildFile; fileRef = B583B124200E8ABE001E9548 /* BVSortOptionValues.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B58639702136F4CB00EFD763 /* BVLogger+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = B586396F2136F4CA00EFD763 /* BVLogger+Private.h */; };
 		B588E7002124A23600F76040 /* BVRecommendationsRequestOptions.h in Headers */ = {isa = PBXBuildFile; fileRef = B588E6FF2124A23600F76040 /* BVRecommendationsRequestOptions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B588E7052124B01D00F76040 /* BVRecommendationsRequestOptionsUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = B588E7032124B01D00F76040 /* BVRecommendationsRequestOptionsUtil.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		B588E7062124B01D00F76040 /* BVRecommendationsRequestOptionsUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = B588E7042124B01D00F76040 /* BVRecommendationsRequestOptionsUtil.m */; };
@@ -1067,6 +1068,7 @@
 		B583B122200E8ABD001E9548 /* BVFilterTypeValues.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVFilterTypeValues.h; sourceTree = "<group>"; };
 		B583B123200E8ABE001E9548 /* BVFilterOperatorValues.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVFilterOperatorValues.h; sourceTree = "<group>"; };
 		B583B124200E8ABE001E9548 /* BVSortOptionValues.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVSortOptionValues.h; sourceTree = "<group>"; };
+		B586396F2136F4CA00EFD763 /* BVLogger+Private.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BVLogger+Private.h"; sourceTree = "<group>"; };
 		B588E6FF2124A23600F76040 /* BVRecommendationsRequestOptions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BVRecommendationsRequestOptions.h; sourceTree = "<group>"; };
 		B588E7032124B01D00F76040 /* BVRecommendationsRequestOptionsUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BVRecommendationsRequestOptionsUtil.h; sourceTree = "<group>"; };
 		B588E7042124B01D00F76040 /* BVRecommendationsRequestOptionsUtil.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BVRecommendationsRequestOptionsUtil.m; sourceTree = "<group>"; };
@@ -1313,6 +1315,7 @@
 			isa = PBXGroup;
 			children = (
 				B5D7E845205312DA00DEB434 /* BVAuthenticatedUser+Testing.h */,
+				B586396F2136F4CA00EFD763 /* BVLogger+Private.h */,
 				87C5FEB41E22A05D004EE6E8 /* BVMessageInterceptor.h */,
 				B59F8F19203490CA00087EF0 /* BVNetworkingManager.h */,
 				B59F8F1A203490CA00087EF0 /* BVNetworkingManager.m */,
@@ -2415,6 +2418,7 @@
 				87F2DD411DAD585E00FB43F3 /* BVRecommendedProduct.h in Headers */,
 				87F2DD051DAD585E00FB43F3 /* BVQuestionsCollectionView.h in Headers */,
 				87F2DC1E1DAD585E00FB43F3 /* BVPixel.h in Headers */,
+				B58639702136F4CB00EFD763 /* BVLogger+Private.h in Headers */,
 				87F2DC991DAD585E00FB43F3 /* BVReview.h in Headers */,
 				87F2DCCF1DAD585E00FB43F3 /* BVAnswerSubmissionResponse.h in Headers */,
 				87F2DAB81DAD579D00FB43F3 /* BVSDK.h in Headers */,

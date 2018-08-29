@@ -316,7 +316,7 @@ completionOnMainThread:(NSArray<BVRecommendedProduct *> *)recommendations
 
     if (0 < secondsComponent.second) {
       NSString *duration =
-          [NSString stringWithFormat:@"%lus", secondsComponent.second];
+          [NSString stringWithFormat:@"%ld", (long)secondsComponent.second];
 
       endPoint = [endPoint
           stringByAppendingString:[NSString stringWithFormat:@"&lookback=%@",
