@@ -7,6 +7,7 @@
 
 #import "BVUploadablePhoto.h"
 #import "BVConversationsRequest.h"
+#import "BVMultiPart+NSURLRequest.h"
 #import "BVNetworkingManager.h"
 #import "BVSDKConfiguration.h"
 #import "BVSDKManager.h"
@@ -54,40 +55,70 @@ static NSUInteger const MAX_IMAGE_BYTES = 5 * 1024 * 1024; // BV API max is 5MB
                                  [BVConversationsRequest commonEndpoint]];
   NSURL *url = [NSURL URLWithString:urlString];
 
-  // create request
-  NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url];
-  [request setHTTPMethod:@"POST"];
+  NSString *passKey = [self getPasskey];
+  NSString *photoContentType = [self BVPhotoContentTypeToString:type];
+  NSData *photoData = [self nsDataForPhoto];
+
+  if (!passKey || !photoContentType || !photoData) {
+    NSError *statusError =
+        [NSError errorWithDomain:BVErrDomain
+                            code:BV_ERROR_FIELD_INVALID
+                        userInfo:@{
+                          NSLocalizedDescriptionKey :
+                              @"Invalid initialization of BVUploadablePhoto"
+                        }];
+    [[BVLogger sharedLogger] printError:statusError];
+
+    dispatch_async(dispatch_get_main_queue(), ^{
+      failure(@[ statusError ]);
+    });
+
+    return;
+  }
+
+  NSDictionary *contentDictionary = @{
+    @"apiversion" : @"5.4",
+    @"passkey" : passKey,
+    @"contenttype" : photoContentType,
+    @"photo" : photoData
+  };
 
   // add multipart form data
   NSMutableData *body = [NSMutableData data];
-  NSString *boundary = @"----------------------------f3a1ba9c57bd";
+  NSString *boundary =
+      [NSURLRequest generateBoundaryWithData:body
+                        andContentDictionary:contentDictionary];
+
+  if (!boundary) {
+    NSError *statusError =
+        [NSError errorWithDomain:BVErrDomain
+                            code:BV_ERROR_UNKNOWN
+                        userInfo:@{
+                          NSLocalizedDescriptionKey :
+                              @"Couldn't generate multi-part boundary, this "
+                              @"shouldn't ever happen. Please file a bug."
+                              @"BV_ERROR_UNKNOWN"
+                        }];
+    [[BVLogger sharedLogger] printError:statusError];
+
+    dispatch_async(dispatch_get_main_queue(), ^{
+      failure(@[ statusError ]);
+    });
+
+    return;
+  } else {
+    [[BVLogger sharedLogger]
+        verbose:[NSString stringWithFormat:
+                              @"Generated boundary: %@, for content body: %@\n",
+                              boundary, body]];
+  }
+
+  // create request
+  NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url];
+  [request setHTTPMethod:@"POST"];
   NSString *contentType =
       [NSString stringWithFormat:@"multipart/form-data; boundary=%@", boundary];
   [request addValue:contentType forHTTPHeaderField:@"Content-Type"];
-
-  [self appendKey:@"apiversion"
-                value:@"5.4"
-      toMultipartData:body
-         withBoundary:boundary];
-  [self appendKey:@"passkey"
-                value:[self getPasskey]
-      toMultipartData:body
-         withBoundary:boundary];
-  [self appendKey:@"contenttype"
-                value:[self BVPhotoContentTypeToString:type]
-      toMultipartData:body
-         withBoundary:boundary];
-
-  NSData *nsData = [self nsDataForPhoto];
-
-  [self appendKey:@"photo"
-                 data:nsData
-      toMultipartData:body
-         withBoundary:boundary];
-
-  // close form
-  [body appendData:[[NSString stringWithFormat:@"--%@--\r\n", boundary]
-                       dataUsingEncoding:NSUTF8StringEncoding]];
   [request setValue:[NSString
                         stringWithFormat:@"%lu", (unsigned long)[body length]]
       forHTTPHeaderField:@"Content-Length"];
@@ -229,9 +260,13 @@ static NSUInteger const MAX_IMAGE_BYTES = 5 * 1024 * 1024; // BV API max is 5MB
   }
 }
 
-- (nonnull NSData *)nsDataForPhoto {
+- (nullable NSString *)getPasskey {
+  return [BVSDKManager sharedManager].configuration.apiKeyConversations;
+}
+
+- (nullable NSData *)nsDataForPhoto {
   NSData *nsData = UIImageJPEGRepresentation(self.photo, 1.0);
-  if (nsData.length > self.maxImageBytes) {
+  if (nsData && nsData.length > self.maxImageBytes) {
     nsData = UIImageJPEGRepresentation(self.photo, 0.9);
     NSUInteger imageByteCount = nsData.length;
     if (imageByteCount > self.maxImageBytes) {
@@ -256,42 +291,6 @@ static NSUInteger const MAX_IMAGE_BYTES = 5 * 1024 * 1024; // BV API max is 5MB
   UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
   UIGraphicsEndImageContext();
   return newImage;
-}
-
-- (void)appendKey:(NSString *)key
-              value:(NSString *)value
-    toMultipartData:(NSMutableData *)body
-       withBoundary:(NSString *)boundary {
-  [body appendData:[[NSString stringWithFormat:@"--%@\r\n", boundary]
-                       dataUsingEncoding:NSUTF8StringEncoding]];
-  [body appendData:[[NSString stringWithFormat:@"Content-Disposition: "
-                                               @"form-data; "
-                                               @"name=\"%@\"\r\n\r\n",
-                                               key]
-                       dataUsingEncoding:NSUTF8StringEncoding]];
-  [body appendData:[value dataUsingEncoding:NSUTF8StringEncoding]];
-  [body appendData:[@"\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
-}
-
-- (void)appendKey:(NSString *)key
-               data:(NSData *)data
-    toMultipartData:(NSMutableData *)body
-       withBoundary:(NSString *)boundary {
-  [body appendData:[[NSString stringWithFormat:@"--%@\r\n", boundary]
-                       dataUsingEncoding:NSUTF8StringEncoding]];
-  [body appendData:[[NSString stringWithFormat:@"Content-Disposition: "
-                                               @"form-data; name=\"%@\"; "
-                                               @"filename=\"upload\"\r\n",
-                                               key]
-                       dataUsingEncoding:NSUTF8StringEncoding]];
-  [body appendData:[@"Content-Type: application/octet-stream\r\n\r\n"
-                       dataUsingEncoding:NSUTF8StringEncoding]];
-  [body appendData:[NSData dataWithData:data]];
-  [body appendData:[@"\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
-}
-
-- (nonnull NSString *)getPasskey {
-  return [BVSDKManager sharedManager].configuration.apiKeyConversations;
 }
 
 @end

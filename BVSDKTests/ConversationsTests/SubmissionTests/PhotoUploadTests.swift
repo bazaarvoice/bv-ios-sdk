@@ -122,19 +122,26 @@ class PhotoUploadTests: BVBaseStubTestCase {
   }
   
   func testUploadablePhotoFailure() {
+    
+    // upload photo, make sure it returns a non-empty URL
+    let expectation = self.expectation(description: "testUploadablePhotoFailure")
+    
+    guard let image = PhotoUploadTests.createJPG() else {
+      XCTFail()
+      expectation.fulfill()
+      return
+    }
+    
     let photo =
       BVUploadablePhoto(
-        photo: UIImage(), photoCaption: "Very photogenic")
+        photo: image, photoCaption: "Very photogenic")
     
     let sequenceFiles:[String] =
       [
         "testUploadablePhotoFailure.json"
     ]
     addStubWith200Response(forJSONFilesNamed: sequenceFiles)
-    
-    // upload photo, make sure it returns a non-empty URL
-    let expectation = self.expectation(description: "")
-    
+
     photo.upload(for: .review, success: { (photoUrl) in
       XCTFail()
       expectation.fulfill()
