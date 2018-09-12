@@ -486,6 +486,8 @@
 		B583B129200E8ABE001E9548 /* BVFilterOperatorValues.h in Headers */ = {isa = PBXBuildFile; fileRef = B583B123200E8ABE001E9548 /* BVFilterOperatorValues.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B583B12A200E8ABE001E9548 /* BVSortOptionValues.h in Headers */ = {isa = PBXBuildFile; fileRef = B583B124200E8ABE001E9548 /* BVSortOptionValues.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B58639702136F4CB00EFD763 /* BVLogger+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = B586396F2136F4CA00EFD763 /* BVLogger+Private.h */; };
+		B586397F214822A700EFD763 /* BVMultiPart+NSURLRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = B586397D214822A700EFD763 /* BVMultiPart+NSURLRequest.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		B5863980214822A700EFD763 /* BVMultiPart+NSURLRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = B586397E214822A700EFD763 /* BVMultiPart+NSURLRequest.m */; };
 		B588E7002124A23600F76040 /* BVRecommendationsRequestOptions.h in Headers */ = {isa = PBXBuildFile; fileRef = B588E6FF2124A23600F76040 /* BVRecommendationsRequestOptions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B588E7052124B01D00F76040 /* BVRecommendationsRequestOptionsUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = B588E7032124B01D00F76040 /* BVRecommendationsRequestOptionsUtil.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		B588E7062124B01D00F76040 /* BVRecommendationsRequestOptionsUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = B588E7042124B01D00F76040 /* BVRecommendationsRequestOptionsUtil.m */; };
@@ -1069,6 +1071,8 @@
 		B583B123200E8ABE001E9548 /* BVFilterOperatorValues.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVFilterOperatorValues.h; sourceTree = "<group>"; };
 		B583B124200E8ABE001E9548 /* BVSortOptionValues.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVSortOptionValues.h; sourceTree = "<group>"; };
 		B586396F2136F4CA00EFD763 /* BVLogger+Private.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BVLogger+Private.h"; sourceTree = "<group>"; };
+		B586397D214822A700EFD763 /* BVMultiPart+NSURLRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BVMultiPart+NSURLRequest.h"; sourceTree = "<group>"; };
+		B586397E214822A700EFD763 /* BVMultiPart+NSURLRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "BVMultiPart+NSURLRequest.m"; sourceTree = "<group>"; };
 		B588E6FF2124A23600F76040 /* BVRecommendationsRequestOptions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BVRecommendationsRequestOptions.h; sourceTree = "<group>"; };
 		B588E7032124B01D00F76040 /* BVRecommendationsRequestOptionsUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BVRecommendationsRequestOptionsUtil.h; sourceTree = "<group>"; };
 		B588E7042124B01D00F76040 /* BVRecommendationsRequestOptionsUtil.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BVRecommendationsRequestOptionsUtil.m; sourceTree = "<group>"; };
@@ -1317,6 +1321,8 @@
 				B5D7E845205312DA00DEB434 /* BVAuthenticatedUser+Testing.h */,
 				B586396F2136F4CA00EFD763 /* BVLogger+Private.h */,
 				87C5FEB41E22A05D004EE6E8 /* BVMessageInterceptor.h */,
+				B586397D214822A700EFD763 /* BVMultiPart+NSURLRequest.h */,
+				B586397E214822A700EFD763 /* BVMultiPart+NSURLRequest.m */,
 				B59F8F19203490CA00087EF0 /* BVNetworkingManager.h */,
 				B59F8F1A203490CA00087EF0 /* BVNetworkingManager.m */,
 				15058B6D1E5CC21C0081E2BD /* BVSDKConfiguration.h */,
@@ -2473,6 +2479,7 @@
 				150FC2CA1E71C58B00717041 /* BVBaseProductRequest.h in Headers */,
 				87F2DC8B1DAD585E00FB43F3 /* BVReviewStatistics.h in Headers */,
 				87F2DC801DAD585E00FB43F3 /* BVQAStatistics.h in Headers */,
+				B586397F214822A700EFD763 /* BVMultiPart+NSURLRequest.h in Headers */,
 				87F2DC6E1DAD585E00FB43F3 /* BVDimensionElement.h in Headers */,
 				87F2DC871DAD585E00FB43F3 /* BVReviewsResponse.h in Headers */,
 				87F2DC7C1DAD585E00FB43F3 /* BVProductsResponse.h in Headers */,
@@ -2906,6 +2913,7 @@
 				87F2DCDA1DAD585E00FB43F3 /* BVSubmission.m in Sources */,
 				B56D717F2031F79F002EC872 /* BVLocaleServiceManager.m in Sources */,
 				87F2DCCC1DAD585E00FB43F3 /* BVAnswerSubmission.m in Sources */,
+				B5863980214822A700EFD763 /* BVMultiPart+NSURLRequest.m in Sources */,
 				B583AED22006B4AA001E9548 /* BVRelationalFilterOperator.m in Sources */,
 				B5A764D91FE1915200B5DC9A /* BVBulkStoresResponse.m in Sources */,
 				875411741E1F201E006C5C6E /* BVNotificationProperties.m in Sources */,
