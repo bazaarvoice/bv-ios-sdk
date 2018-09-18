@@ -1,6 +1,6 @@
 //
 //  ConversationsError.m
-//  Pods
+//  BVSDK
 //
 //  Copyright © 2016 Bazaarvoice. All rights reserved.
 //
@@ -9,8 +9,8 @@
 #import "BVCommon.h"
 #import "BVNullHelper.h"
 
-NSString *__nonnull const BVKeyErrorMessage = @"BVKeyErrorMessage";
 NSString *__nonnull const BVKeyErrorCode = @"BVKeyErrorCode";
+NSString *__nonnull const BVKeyErrorMessage = @"BVKeyErrorMessage";
 
 @implementation BVConversationsError
 
@@ -26,7 +26,7 @@ NSString *__nonnull const BVKeyErrorCode = @"BVKeyErrorCode";
   NSString *description =
       [NSString stringWithFormat:@"%@: %@", self.code, self.message];
   return [NSError errorWithDomain:BVErrDomain
-                             code:999
+                             code:BVKeyErrorDomainCode.integerValue
                          userInfo:@{
                            NSLocalizedDescriptionKey : description,
                            BVKeyErrorMessage : self.message,

@@ -1,6 +1,6 @@
 //
 //  BVSubmission.m
-//  Conversations
+//  BVSDK
 //
 //  Copyright © 2016 Bazaarvoice. All rights reserved.
 //
@@ -153,12 +153,16 @@ static NSString *urlEncode(id object) {
 
           if (statusCode >= 300) {
             // HTTP status code indicates failure
-            NSError *statusError = [NSError
-                errorWithDomain:BVErrDomain
-                           code:BV_ERROR_NETWORK_FAILED
-                       userInfo:@{
-                         NSLocalizedDescriptionKey : @"Photo upload failed."
-                       }];
+            NSString *errorDescription =
+                [NSString stringWithFormat:@"Unknown network error occurred, "
+                                           @"HTTP Status Code : [%lu].",
+                                           (unsigned long)statusCode];
+            NSError *statusError =
+                [NSError errorWithDomain:BVErrDomain
+                                    code:BV_ERROR_NETWORK_FAILED
+                                userInfo:@{
+                                  NSLocalizedDescriptionKey : errorDescription
+                                }];
 
             [self sendError:statusError failureCallback:failure];
             return;

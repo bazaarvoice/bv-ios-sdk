@@ -1,6 +1,6 @@
 //
 //  BVSubmittedUAS.m
-//  Conversations
+//  BVSDK
 //
 //  Copyright © 2017 Bazaarvoice. All rights reserved.
 //

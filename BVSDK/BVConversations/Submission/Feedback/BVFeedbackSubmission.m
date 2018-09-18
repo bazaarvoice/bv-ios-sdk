@@ -29,10 +29,9 @@
 }
 
 - (nonnull NSDictionary *)createSubmissionParameters {
-  NSMutableDictionary *parameters =
-      [NSMutableDictionary dictionaryWithDictionary:@{@"apiversion" : @"5.4"}];
+  NSMutableDictionary *parameters = [NSMutableDictionary
+      dictionaryWithDictionary:[super createSubmissionParameters]];
 
-  parameters[@"passkey"] = self.conversationsKey;
   parameters[@"userid"] = self.userId;
   parameters[@"contentId"] = self.contentId;
 
