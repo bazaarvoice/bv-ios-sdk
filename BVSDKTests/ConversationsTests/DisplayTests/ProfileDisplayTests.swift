@@ -1,6 +1,6 @@
 //
 //  ProfileDisplayTests.swift
-//  BVSDK
+//  BVSDKTests
 //
 //  Copyright © 2017 Bazaarvoice. All rights reserved.
 //

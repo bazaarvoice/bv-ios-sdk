@@ -1,6 +1,6 @@
 //
 //  BVCommentsSortOption.h
-//  Conversations
+//  BVSDK
 //
 //  Copyright © 2017 Bazaarvoice. All rights reserved.
 //

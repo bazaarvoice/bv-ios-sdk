@@ -1,6 +1,6 @@
 //
 //  PhotoSizes.m
-//  Conversations
+//  BVSDK
 //
 //  Copyright © 2016 Bazaarvoice. All rights reserved.
 //
