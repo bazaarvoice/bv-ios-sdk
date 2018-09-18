@@ -6,6 +6,9 @@
 //
 //
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-implementations"
+
 #import "BVCurationsPostViewController.h"
 #import "BVCurationsAddPostRequest.h"
 #import "BVCurationsPhotoUploader.h"
@@ -202,3 +205,5 @@
 }
 
 @end
+
+#pragma clang diagnostic pop

@@ -10,6 +10,8 @@
 #import <UIKit/UIKit.h>
 
 @class BVCurationsAddPostRequest;
+
+__attribute__ ((deprecated))
 @interface BVCurationsPostViewController : SLComposeServiceViewController
 
 - (nonnull instancetype)init __attribute__((unavailable("init not available")));
