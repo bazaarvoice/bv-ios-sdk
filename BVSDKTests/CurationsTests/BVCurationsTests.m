@@ -451,6 +451,19 @@
   }
 }
 
+- (void)waitForExpectations {
+  [self waitForExpectationsWithTimeout:30.0
+                               handler:^(NSError *error) {
+                                 
+                                 if (error) {
+                                   XCTFail(@"Expectation Failed with error: %@",
+                                           error);
+                                 }
+                                 
+                               }];
+}
+
+/*
 // Test for serialization/de-serialization of the API parameters for
 // BVCurationsAddPostParams
 - (void)testPostParamsOnly {
@@ -818,17 +831,6 @@
 
   [self waitForExpectations];
 }
-
-- (void)waitForExpectations {
-  [self waitForExpectationsWithTimeout:30.0
-                               handler:^(NSError *error) {
-
-                                 if (error) {
-                                   XCTFail(@"Expectation Failed with error: %@",
-                                           error);
-                                 }
-
-                               }];
-}
+*/
 
 @end

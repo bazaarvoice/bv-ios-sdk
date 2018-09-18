@@ -33,57 +33,6 @@ class ViewController: UIViewController, BVCurationsUICollectionViewDelegate {
     
     curationsCollectionView?.backgroundColor = UIColor.lightGray
     stepper?.value = Double(numRowsStart)
-    // Add a bar button item so we can demo curations submission
-    let submitButton  = UIBarButtonItem(title: "Add Photo",  style: .plain, target: self, action: #selector(didTapAddPhotoButton))
-    self.navigationItem.rightBarButtonItem = submitButton
-    
-  }
-  
-  // This demo shows how to create a customized Share View Controller and upload an image and text to Curations.
-  @objc func didTapAddPhotoButton(_ sender: AnyObject) {
-    
-    // Here we load our request with the groups we want to subit to and additional info.
-    let shareRequest = BVCurationsAddPostRequest(groups: [],
-                                                 withAuthorAlias: "authorAlias",
-                                                 withToken: "token",
-                                                 withText: "Hello.")
-    
-    // We've hard-coded an image here for testing, where you would normally have the user select from a gallery or camera.
-    shareRequest.image = UIImage(named: "curations_test_image")!
-    
-    // Now we just post the share view controller with a couple of styling options.
-    let shareVC = BVCurationsPostViewController.init(postRequest: shareRequest,
-                                                     logoImage: UIImage(named: "happy_icon")!,
-                                                     bavBarColor: UIColor.orange,
-                                                     navBarTintColor: UIColor.white)
-    
-    shareVC.placeholder = "Say something awesome\nabout your photo!"
-    shareVC.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext;
-    
-    shareVC.didPressCancel = {
-      self.navigationController?.presentingViewController?.dismiss(animated: true, completion: nil)
-      print("User cancelled")
-    }
-    
-    shareVC.didBeginPost = {
-      // Here you could add your own spinner
-      print("Beginning Post Submission...")
-    }
-    
-    shareVC.didCompletePost = {(error) in
-      // Here you could remove your spinner if added to the view
-      self.navigationController?.presentingViewController?.dismiss(animated: true, completion: nil)
-      if let err = error {
-        print("Ooops, the submissions failed: " + err.localizedDescription)
-      } else {
-        print("Successful submission!")
-      }
-    }
-    
-    self.navigationController?.present(shareVC, animated: true, completion: { 
-      // completion
-    })
-    
   }
   
   @IBAction func updateRowCount(_ sender: UIStepper) {
