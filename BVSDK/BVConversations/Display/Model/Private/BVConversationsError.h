@@ -1,14 +1,16 @@
 //
 //  ConversationsError.h
-//  Pods
+//  BVSDK
 //
 //  Copyright © 2016 Bazaarvoice. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 
-extern NSString *__nonnull const BVKeyErrorMessage;
+#define BVKeyErrorDomainCode @(999)
+
 extern NSString *__nonnull const BVKeyErrorCode;
+extern NSString *__nonnull const BVKeyErrorMessage;
 
 @interface BVConversationsError : NSObject
 

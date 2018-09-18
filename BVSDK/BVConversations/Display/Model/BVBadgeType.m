@@ -1,6 +1,6 @@
 //
 //  BadgeTypeUtil.m
-//  Pods
+//  BVSDK
 //
 //  Copyright © 2016 Bazaarvoice. All rights reserved.
 //

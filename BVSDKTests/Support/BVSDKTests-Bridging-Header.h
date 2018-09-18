@@ -1,6 +1,6 @@
 //
 //  BVSDKTests-Bridging-Header.h
-//  BVSDK
+//  BVSDKTests
 //
 //  Copyright © 2016 Bazaarvoice. All rights reserved.
 //
