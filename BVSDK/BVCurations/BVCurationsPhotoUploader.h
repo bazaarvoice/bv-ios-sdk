@@ -10,12 +10,16 @@
 
 #import "BVCurationsAddPostRequest.h"
 
+__attribute__ ((deprecated))
 typedef void (^uploadCompletionHandler)(void);
+
+__attribute__ ((deprecated))
 typedef void (^uploadErrorHandler)(NSError *__nonnull);
 
 /*!
  API for posting Custom Content to Curations.
  */
+__attribute__ ((deprecated))
 @interface BVCurationsPhotoUploader : NSObject
 
 /*!

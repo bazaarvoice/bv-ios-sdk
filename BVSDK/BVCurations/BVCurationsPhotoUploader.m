@@ -6,6 +6,9 @@
 //
 //
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-implementations"
+
 #import "BVCurationsPhotoUploader.h"
 #import "BVCurations.h"
 #import "BVNetworkingManager.h"
@@ -277,3 +280,5 @@
 }
 
 @end
+
+#pragma clang diagnostic pop

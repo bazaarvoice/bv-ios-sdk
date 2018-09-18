@@ -11,6 +11,7 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
+__attribute__ ((deprecated))
 @interface BVCurationsAddPostRequest : NSObject
 
 /*!
