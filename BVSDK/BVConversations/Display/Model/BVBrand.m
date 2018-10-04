@@ -11,17 +11,15 @@
 @implementation BVBrand
 
 - (nullable id)initWithApiResponse:(nullable id)apiResponse {
-  self = [super init];
-  if (self) {
-    if ([apiResponse isKindOfClass:[NSDictionary class]]) {
-      NSDictionary *apiObject = (NSDictionary *)apiResponse;
-
-      SET_IF_NOT_NULL(self.name, apiObject[@"Name"])
-      SET_IF_NOT_NULL(self.identifier, apiObject[@"Id"])
-
-    } else {
+  if ((self = [super init])) {
+    if (![apiResponse isKindOfClass:[NSDictionary class]]) {
       return nil;
     }
+
+    NSDictionary *apiObject = (NSDictionary *)apiResponse;
+
+    SET_IF_NOT_NULL(self.name, apiObject[@"Name"])
+    SET_IF_NOT_NULL(self.identifier, apiObject[@"Id"])
   }
   return self;
 }

@@ -6,17 +6,41 @@
 //
 
 #import "BVAuthor.h"
+#import "BVAnswer.h"
+#import "BVBadge.h"
+#import "BVContextDataValue.h"
 #import "BVConversationsInclude.h"
+#import "BVDimensionAndDistributionUtil.h"
+#import "BVGenericConversationsResult+Private.h"
 #import "BVModelUtil.h"
 #import "BVNullHelper.h"
+#import "BVPhoto.h"
+#import "BVQAStatistics.h"
+#import "BVQuestion.h"
+#import "BVReview.h"
+#import "BVReviewStatistics.h"
+#import "BVSecondaryRating.h"
+#import "BVVideo.h"
+
+@interface BVAuthor ()
+
+@property(nonnull, readwrite) NSArray<BVAnswer *> *includedAnswers;
+@property(nonnull, readwrite) NSArray<BVComment *> *includedComments;
+@property(nonnull, readwrite) NSArray<BVQuestion *> *includedQuestions;
+@property(nonnull, readwrite) NSArray<BVReview *> *includedReviews;
+
+@end
 
 @implementation BVAuthor
 
 - (id)initWithApiResponse:(NSDictionary *)apiResponse
                  includes:(BVConversationsInclude *)includes {
-  self = [super init];
-  if (self) {
-    _includes = includes;
+  if ((self = [super init])) {
+
+    if (!includes) {
+      includes =
+          [[BVConversationsInclude alloc] initWithApiResponse:apiResponse];
+    }
 
     SET_IF_NOT_NULL(self.userNickname, apiResponse[@"UserNickname"])
     SET_IF_NOT_NULL(self.userLocation, apiResponse[@"Location"])
@@ -42,37 +66,14 @@
     self.secondaryRatings =
         [BVModelUtil parseSecondaryRatings:apiResponse[@"SecondaryRatings"]];
 
-    NSArray<NSString *> *reviewIds = apiResponse[@"ReviewIds"];
-    NSMutableArray<BVReview *> *tempReviews = [NSMutableArray array];
-    for (NSString *reviewId in reviewIds) {
-      BVReview *review = [includes getReviewById:reviewId];
-      [tempReviews addObject:review];
-    }
-    self.includedReviews = tempReviews;
-
-    NSArray<NSString *> *questionIds = apiResponse[@"QuestionIds"];
-    NSMutableArray<BVQuestion *> *tempQuestions = [NSMutableArray array];
-    for (NSString *questionId in questionIds) {
-      BVQuestion *question = [includes getQuestionById:questionId];
-      [tempQuestions addObject:question];
-    }
-    self.includedQuestions = tempQuestions;
-
-    NSArray<NSString *> *commentIds = apiResponse[@"CommentIds"];
-    NSMutableArray<BVComment *> *tempComments = [NSMutableArray array];
-    for (NSString *commentId in commentIds) {
-      BVComment *comment = [includes getCommentById:commentId];
-      [tempComments addObject:comment];
-    }
-    self.includedComments = tempComments;
-
-    NSArray<NSString *> *answerIds = apiResponse[@"AnswerIds"];
-    NSMutableArray<BVAnswer *> *tempAnswers = [NSMutableArray array];
-    for (NSString *answerId in answerIds) {
-      BVAnswer *answer = [includes getAnswerById:answerId];
-      [tempAnswers addObject:answer];
-    }
-    self.includedAnswers = tempAnswers;
+    GET_BVOBJECTS_FROM_CONVERSATIONS_INCLUDE(_includedAnswers, includes,
+                                             Answer);
+    GET_BVOBJECTS_FROM_CONVERSATIONS_INCLUDE(_includedComments, includes,
+                                             Comment);
+    GET_BVOBJECTS_FROM_CONVERSATIONS_INCLUDE(_includedQuestions, includes,
+                                             Question);
+    GET_BVOBJECTS_FROM_CONVERSATIONS_INCLUDE(_includedReviews, includes,
+                                             Review);
   }
   return self;
 }

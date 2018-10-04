@@ -5,10 +5,9 @@
 //  Copyright © 2016 Bazaarvoice. All rights reserved.
 //
 
-#import "BVUploadablePhoto.h"
+#import "BVPhotoSubmission.h"
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-@interface BVUploadableStorePhoto : BVUploadablePhoto
-
+@interface BVUploadableStorePhoto : BVPhotoSubmission
 @end

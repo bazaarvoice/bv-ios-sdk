@@ -7,7 +7,7 @@
 
 #import "BVMultiPart+NSURLRequest.h"
 #import "BVNullHelper.h"
-#include <Security/SecRandom.h>
+#import "BVRandom+NSString.h"
 
 #define BVFORM_BOUNDARY_RETRY_COUNT 10
 #define BVFORM_BOUNDARY_LENGTH 20
@@ -59,7 +59,7 @@ generateBoundaryWithData:(nonnull NSMutableData *)bodyData
       enumerateKeysAndObjectsUsingBlock:^(id _Nonnull key, id _Nonnull obj,
                                           BOOL *_Nonnull stop) {
         // It has to be a NSString key
-        if (!__ISA(key, NSString)) {
+        if (!__IS_KIND_OF(key, NSString)) {
           return;
         }
 
@@ -72,7 +72,7 @@ generateBoundaryWithData:(nonnull NSMutableData *)bodyData
         NSMutableData *data = [NSMutableData data];
 
         // For now we'll only support NSString and NSData values
-        if (__ISA(obj, NSString)) {
+        if (__IS_KIND_OF(obj, NSString)) {
           NSString *value = (NSString *)obj;
           [data appendData:[BVFORM_NSSTRING_FOR_KEY(keyString)
                                dataUsingEncoding:NSUTF8StringEncoding]];
@@ -83,7 +83,7 @@ generateBoundaryWithData:(nonnull NSMutableData *)bodyData
           return;
         }
 
-        if (__ISA(obj, NSData)) {
+        if (__IS_KIND_OF(obj, NSData)) {
           NSData *value = (NSData *)obj;
           [data appendData:[BVFORM_NSSTRING_FOR_FILENAME(keyString)
                                dataUsingEncoding:NSUTF8StringEncoding]];
@@ -106,29 +106,18 @@ generateBoundaryWithData:(nonnull NSMutableData *)bodyData
   NSInteger tries = BVFORM_BOUNDARY_RETRY_COUNT;
 
   do {
-
     // Decrement the retry counter
     tries--;
 
     // Default state is "worked" since it should work 99.99999%
     __block BOOL itWorked = YES;
 
-    // Stack based scratchpad
-    uint8_t randomBytes[BVFORM_BOUNDARY_LENGTH];
-    size_t randomBytesLength = sizeof(randomBytes) / sizeof(randomBytes[0]);
-
-    // Copy random bytes
-    if (errSecSuccess !=
-        SecRandomCopyBytes(kSecRandomDefault, randomBytesLength, randomBytes)) {
-      continue;
-    }
-
     // Build up random boundary string with prefix
     NSMutableString *candidate =
         [NSMutableString stringWithString:BVFORM_BOUNDARY_PREFIX];
-    for (NSInteger index = 0; index < randomBytesLength; index++) {
-      [candidate appendFormat:@"%x", randomBytes[index]];
-    }
+    [candidate
+        appendString:[NSString
+                         randomHexStringWithLength:BVFORM_BOUNDARY_LENGTH]];
 
     // Search body data for subdata matching...
     NSData *candidateData = [candidate dataUsingEncoding:NSUTF8StringEncoding];

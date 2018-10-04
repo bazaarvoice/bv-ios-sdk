@@ -12,15 +12,13 @@
 @implementation BVSubmittedQuestion
 
 - (nullable instancetype)initWithApiResponse:(nullable id)apiResponse {
-  self = [super init];
-  if (self) {
+  if ((self = [super init])) {
 
-    if (apiResponse == nil ||
-        ![apiResponse isKindOfClass:[NSDictionary class]]) {
+    if (!__IS_KIND_OF(apiResponse, NSDictionary)) {
       return nil;
     }
 
-    NSDictionary *apiObject = apiResponse;
+    NSDictionary *apiObject = (NSDictionary *)apiResponse;
 
     SET_IF_NOT_NULL(self.questionSummary, apiObject[@"QuestionSummary"])
     SET_IF_NOT_NULL(self.questionDetails, apiObject[@"QuestionDetails"])

@@ -5,25 +5,38 @@
 //  Copyright © 2016 Bazaarvoice. All rights reserved.
 //
 
-#define __ISA(X, CLASS) ([(X) isKindOfClass:[CLASS class]])
+#import <Foundation/Foundation.h>
+
+#define __IS_A(X, CLASS) ([(X) isMemberOfClass:[CLASS class]])
+#define __IS_KIND_OF(X, CLASS) ([(X) isKindOfClass:[CLASS class]])
+
+#define __ASSERT_IS_A(X, CLASS, MSG)                                           \
+  do {                                                                         \
+    NSAssert(__IS_A(X, CLASS), MSG);                                           \
+  } while (0)
+
+#define __ASSERT_ISNT_A(X, CLASS, MSG)                                         \
+  do {                                                                         \
+    NSAssert(!__IS_A(X, CLASS), MSG);                                          \
+  } while (0)
 
 #ifndef BVNullHelper_h
 #define BVNullHelper_h
 
 #define SET_IF_NOT_NULL(target, value)                                         \
-  if (value != [NSNull null]) {                                                \
+  if (value && value != [NSNull null]) {                                       \
     target = value;                                                            \
   }
 
 #define SET_DEFAULT_IF_NULL(target, value, default)                            \
-  if (value && value != [NSNull null]) {                                       \
+  if (value && value && value != [NSNull null]) {                              \
     target = value;                                                            \
   } else {                                                                     \
     target = default;                                                          \
   }
 
 static inline bool isObjectNilOrNull(NSObject *object) {
-  if (object == nil || object == [NSNull null]) {
+  if (!object || object == [NSNull null]) {
     return true;
   } else {
     return false;

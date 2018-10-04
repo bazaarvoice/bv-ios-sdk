@@ -13,11 +13,7 @@
 @implementation BVFormField
 
 - (id)initWithFormFieldDictionary:(NSDictionary *)fieldDictionary {
-
-  self = [super init];
-
-  if (self) {
-
+  if ((self = [super init])) {
     _identifier = @"";
     _label = @"";
     _type = @"";

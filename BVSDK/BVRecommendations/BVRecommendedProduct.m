@@ -5,10 +5,9 @@
 //  Copyright 2016 Bazaarvoice Inc. All rights reserved.
 //
 
-#import "BVRecommendedProduct.h"
-#import "BVCommon.h"
 #import "BVNullHelper.h"
-#import "BVProductReview.h"
+#import "BVProductReview+Private.h"
+#import "BVRecommendedProduct+Private.h"
 #import "BVRecsAnalyticsHelper.h"
 
 @interface BVRecommendedProduct ()

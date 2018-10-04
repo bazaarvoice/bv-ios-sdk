@@ -10,7 +10,7 @@
 #import "BVProductReviewNotificationConfigurationLoader.h"
 #import "BVNotificationConfiguration.h"
 #import "BVSDKConfiguration.h"
-#import "BVSDKManager.h"
+#import "BVSDKManager+Private.h"
 
 @implementation BVProductReviewNotificationConfigurationLoader
 

@@ -27,16 +27,14 @@
 @implementation BVReviewsCollectionView
 
 - (id)init {
-  self = [super init];
-  if (self) {
+  if ((self = [super init])) {
     [self setup];
   }
   return self;
 }
 
 - (id)initWithFrame:(CGRect)frame {
-  self = [super initWithFrame:frame];
-  if (self) {
+  if ((self = [super initWithFrame:frame])) {
     [self setup];
   }
   return self;
@@ -44,16 +42,14 @@
 
 - (id)initWithFrame:(CGRect)frame
     collectionViewLayout:(UICollectionViewLayout *)layout {
-  self = [super initWithFrame:frame collectionViewLayout:layout];
-  if (self) {
+  if ((self = [super initWithFrame:frame collectionViewLayout:layout])) {
     [self setup];
   }
   return self;
 }
 
 - (id)initWithCoder:(NSCoder *)aDecoder {
-  self = [super initWithCoder:aDecoder];
-  if (self) {
+  if ((self = [super initWithCoder:aDecoder])) {
     [self setup];
   }
   return self;
@@ -70,7 +66,7 @@
 
 - (void)tryToSendInViewEvent {
 
-  if (hasEnteredView && productId != nil) {
+  if (hasEnteredView && productId) {
     if (!hasSentInViewEvent) {
       hasSentInViewEvent = true;
 
@@ -186,7 +182,7 @@
 
     BVReviewCollectionViewCell *bvCell = (BVReviewCollectionViewCell *)cell;
     BVReview *review = bvCell.review;
-    if (review != nil) {
+    if (review) {
       [cellToProductMap setObject:review
                            forKey:[BVViewsHelper formatIndex:indexPath]];
     } else {

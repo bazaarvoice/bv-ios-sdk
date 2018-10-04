@@ -5,10 +5,10 @@
 //  Copyright © 2016 Bazaarvoice. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import "BVSubmittedType.h"
 
 /// A successfully submitted review.
-@interface BVSubmittedReview : NSObject
+@interface BVSubmittedReview : BVSubmittedType
 
 @property(nullable) NSString *title;
 @property(nullable) NSString *reviewText;

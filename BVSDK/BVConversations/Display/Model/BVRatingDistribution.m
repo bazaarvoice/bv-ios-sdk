@@ -9,15 +9,13 @@
 
 @implementation BVRatingDistribution
 
-- (nullable id)initWithApiResponse:(nullable id)apiRepsonse {
-
-  self = [super init];
-  if (self) {
-    if (apiRepsonse == nil || ![apiRepsonse isKindOfClass:[NSArray class]]) {
+- (nullable id)initWithApiResponse:(nullable id)apiResponse {
+  if ((self = [super init])) {
+    if (!apiResponse || ![apiResponse isKindOfClass:[NSArray class]]) {
       return nil;
     }
 
-    NSArray<NSDictionary *> *apiObject = apiRepsonse;
+    NSArray<NSDictionary *> *apiObject = (NSArray<NSDictionary *> *)apiResponse;
     for (NSDictionary *value in apiObject) {
       NSNumber *count = value[@"Count"];
       NSNumber *valueNum = value[@"RatingValue"];

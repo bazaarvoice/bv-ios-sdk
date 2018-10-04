@@ -24,6 +24,11 @@
 		879A62DB1E80614000F46ECA /* BVTransactionEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 879A62CF1E80614000F46ECA /* BVTransactionEvent.m */; };
 		879A62DC1E80614000F46ECA /* BVTransactionItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 879A62D11E80614000F46ECA /* BVTransactionItem.m */; };
 		87ACA1471E92AFD1009D74BD /* BVViewedCGCEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 87ACA1461E92AFD1009D74BD /* BVViewedCGCEvent.m */; };
+		B57B836E21640630006B378E /* BVRandom+NSString.m in Sources */ = {isa = PBXBuildFile; fileRef = B57B835821640630006B378E /* BVRandom+NSString.m */; };
+		B57B837121640630006B378E /* BVStringKeyValuePair.m in Sources */ = {isa = PBXBuildFile; fileRef = B57B835D21640630006B378E /* BVStringKeyValuePair.m */; };
+		B57B837421640630006B378E /* BVBaseAnalyticsHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = B57B836721640630006B378E /* BVBaseAnalyticsHelper.m */; };
+		B57B837521640630006B378E /* BVDiagnosticHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = B57B836921640630006B378E /* BVDiagnosticHelpers.m */; };
+		B57B837621640630006B378E /* BVLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = B57B836B21640630006B378E /* BVLogger.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -61,6 +66,24 @@
 		879A62E31E8063F900F46ECA /* bridging-header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "bridging-header.h"; path = "../bridging-header.h"; sourceTree = "<group>"; };
 		87ACA1451E92AFD1009D74BD /* BVViewedCGCEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVViewedCGCEvent.h; sourceTree = "<group>"; };
 		87ACA1461E92AFD1009D74BD /* BVViewedCGCEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVViewedCGCEvent.m; sourceTree = "<group>"; };
+		B57B8341216405E2006B378E /* BVLocaleServiceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVLocaleServiceManager.h; sourceTree = "<group>"; };
+		B57B8342216405E2006B378E /* BVContextualInterests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVContextualInterests.h; sourceTree = "<group>"; };
+		B57B8344216405E2006B378E /* BVAnalyticEventManager+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "BVAnalyticEventManager+Private.h"; sourceTree = "<group>"; };
+		B57B8345216405E2006B378E /* BVAnalyticsManager+Testing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "BVAnalyticsManager+Testing.h"; sourceTree = "<group>"; };
+		B57B834E21640630006B378E /* BVDiagnosticHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVDiagnosticHelpers.h; sourceTree = "<group>"; };
+		B57B835021640630006B378E /* BVBaseAnalyticsHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVBaseAnalyticsHelper.h; sourceTree = "<group>"; };
+		B57B835121640630006B378E /* BVLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVLogger.h; sourceTree = "<group>"; };
+		B57B835221640630006B378E /* BVNullHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVNullHelper.h; sourceTree = "<group>"; };
+		B57B835721640630006B378E /* BVStringKeyValuePair.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVStringKeyValuePair.h; sourceTree = "<group>"; };
+		B57B835821640630006B378E /* BVRandom+NSString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "BVRandom+NSString.m"; sourceTree = "<group>"; };
+		B57B835C21640630006B378E /* BVLogger+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "BVLogger+Private.h"; sourceTree = "<group>"; };
+		B57B835D21640630006B378E /* BVStringKeyValuePair.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVStringKeyValuePair.m; sourceTree = "<group>"; };
+		B57B836021640630006B378E /* BVRandom+NSString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "BVRandom+NSString.h"; sourceTree = "<group>"; };
+		B57B836521640630006B378E /* BVURLSessionDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVURLSessionDelegate.h; sourceTree = "<group>"; };
+		B57B836621640630006B378E /* BVErrorCodeConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVErrorCodeConstants.h; sourceTree = "<group>"; };
+		B57B836721640630006B378E /* BVBaseAnalyticsHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVBaseAnalyticsHelper.m; sourceTree = "<group>"; };
+		B57B836921640630006B378E /* BVDiagnosticHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVDiagnosticHelpers.m; sourceTree = "<group>"; };
+		B57B836B21640630006B378E /* BVLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVLogger.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +131,8 @@
 		879A62BA1E80614000F46ECA /* BVPixelEvents */ = {
 			isa = PBXGroup;
 			children = (
+				B57B834A21640630006B378E /* BVCommon */,
+				B57B8340216405E2006B378E /* Private */,
 				879A62DE1E8062D900F46ECA /* BVPixelEvents.h */,
 				879A62BB1E80614000F46ECA /* BVAnalyticEvent.h */,
 				879A62BC1E80614000F46ECA /* BVAnalyticEventManager.h */,
@@ -137,6 +162,48 @@
 			);
 			name = BVPixelEvents;
 			path = ../../../../BVSDK/BVAnalytics/BVPixelEvents;
+			sourceTree = "<group>";
+		};
+		B57B8340216405E2006B378E /* Private */ = {
+			isa = PBXGroup;
+			children = (
+				B57B8341216405E2006B378E /* BVLocaleServiceManager.h */,
+				B57B8342216405E2006B378E /* BVContextualInterests.h */,
+				B57B8344216405E2006B378E /* BVAnalyticEventManager+Private.h */,
+				B57B8345216405E2006B378E /* BVAnalyticsManager+Testing.h */,
+			);
+			name = Private;
+			path = ../Private;
+			sourceTree = "<group>";
+		};
+		B57B834A21640630006B378E /* BVCommon */ = {
+			isa = PBXGroup;
+			children = (
+				B57B834E21640630006B378E /* BVDiagnosticHelpers.h */,
+				B57B835021640630006B378E /* BVBaseAnalyticsHelper.h */,
+				B57B835121640630006B378E /* BVLogger.h */,
+				B57B835221640630006B378E /* BVNullHelper.h */,
+				B57B835321640630006B378E /* Private */,
+				B57B836521640630006B378E /* BVURLSessionDelegate.h */,
+				B57B836621640630006B378E /* BVErrorCodeConstants.h */,
+				B57B836721640630006B378E /* BVBaseAnalyticsHelper.m */,
+				B57B836921640630006B378E /* BVDiagnosticHelpers.m */,
+				B57B836B21640630006B378E /* BVLogger.m */,
+			);
+			name = BVCommon;
+			path = ../../BVCommon;
+			sourceTree = "<group>";
+		};
+		B57B835321640630006B378E /* Private */ = {
+			isa = PBXGroup;
+			children = (
+				B57B835C21640630006B378E /* BVLogger+Private.h */,
+				B57B836021640630006B378E /* BVRandom+NSString.h */,
+				B57B835821640630006B378E /* BVRandom+NSString.m */,
+				B57B835721640630006B378E /* BVStringKeyValuePair.h */,
+				B57B835D21640630006B378E /* BVStringKeyValuePair.m */,
+			);
+			path = Private;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -213,17 +280,22 @@
 			files = (
 				879A62D51E80614000F46ECA /* BVFeatureUsedEvent.m in Sources */,
 				879A62DC1E80614000F46ECA /* BVTransactionItem.m in Sources */,
+				B57B836E21640630006B378E /* BVRandom+NSString.m in Sources */,
 				879A62D21E80614000F46ECA /* BVAnalyticEventManager.m in Sources */,
 				879A62D61E80614000F46ECA /* BVImpressionEvent.m in Sources */,
 				879A62DB1E80614000F46ECA /* BVTransactionEvent.m in Sources */,
 				879A62D81E80614000F46ECA /* BVPageViewEvent.m in Sources */,
+				B57B837521640630006B378E /* BVDiagnosticHelpers.m in Sources */,
 				879A62AB1E80609200F46ECA /* ViewController.swift in Sources */,
 				879A62D91E80614000F46ECA /* BVPersonalizationEvent.m in Sources */,
 				879A62D31E80614000F46ECA /* BVBasePIIEvent.m in Sources */,
 				879A62DA1E80614000F46ECA /* BVPixelTypes.m in Sources */,
 				879A62A91E80609200F46ECA /* AppDelegate.swift in Sources */,
+				B57B837621640630006B378E /* BVLogger.m in Sources */,
 				879A62D71E80614000F46ECA /* BVInViewEvent.m in Sources */,
+				B57B837121640630006B378E /* BVStringKeyValuePair.m in Sources */,
 				87ACA1471E92AFD1009D74BD /* BVViewedCGCEvent.m in Sources */,
+				B57B837421640630006B378E /* BVBaseAnalyticsHelper.m in Sources */,
 				879A62D41E80614000F46ECA /* BVConversionEvent.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

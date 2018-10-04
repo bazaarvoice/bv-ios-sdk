@@ -10,14 +10,10 @@
 @implementation BVCommentSubmissionResponse
 
 - (nonnull instancetype)initWithApiResponse:(NSDictionary *)apiResponse {
-
-  self = [super initWithApiResponse:apiResponse];
-
-  if (self) {
-    self.comment = [[BVSubmittedComment alloc]
+  if ((self = [super initWithApiResponse:apiResponse])) {
+    self.result = [[BVSubmittedComment alloc]
         initWithApiResponse:apiResponse[@"Comment"]];
   }
-
   return self;
 }
 

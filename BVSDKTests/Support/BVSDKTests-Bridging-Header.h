@@ -8,15 +8,19 @@
 #ifndef BVSDKTests_Bridging_Header_h
 #define BVSDKTests_Bridging_Header_h
 
-#import "BVBaseProductRequest_Private.h"
-#import "BVBaseReviewsRequest_Private.h"
+#import "BVBaseProductRequest+Private.h"
+#import "BVBaseReviewsRequest+Private.h"
 #import "BVBaseStubTestCase.h"
 #import "BVCommaUtil.h"
-#import "BVCommentsRequest_Private.h"
+#import "BVCommentsRequest+Private.h"
+#import "BVConversationsRequest+Private.h"
+#import "BVFieldError.h"
 #import "BVNetworkDelegateTestsDelegate.h"
 #import "BVProductFilterType.h"
 #import "BVProductIncludeType.h"
 #import "BVRelationalFilterOperator.h"
+#import "BVStringKeyValuePair.h"
+#import "BVSubmission+Private.h"
 #import "UIImage+BundleLocator.h"
 
 #endif /* BVSDKTests_Bridging_Header_h */

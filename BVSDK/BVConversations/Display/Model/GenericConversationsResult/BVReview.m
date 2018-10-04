@@ -6,28 +6,35 @@
 //
 
 #import "BVReview.h"
-#import "BVConversationsInclude.h"
+#import "BVBadge.h"
+#import "BVComment.h"
+#import "BVContextDataValue.h"
+#import "BVDimensionAndDistributionUtil.h"
+#import "BVGenericConversationsResult+Private.h"
 #import "BVModelUtil.h"
 #import "BVNullHelper.h"
+#import "BVPhoto.h"
 #import "BVProduct.h"
+#import "BVSecondaryRating.h"
+#import "BVSyndicationSource.h"
+#import "BVVideo.h"
+
+@interface BVReview ()
+
+@property(nonnull, readwrite) NSArray<BVComment *> *includedComments;
+
+@end
 
 @implementation BVReview
 
 - (id)initWithApiResponse:(NSDictionary *)apiResponse
                  includes:(BVConversationsInclude *)includes {
-  self = [super init];
-  if (self) {
-    NSMutableArray *tmpComments = [NSMutableArray array];
-    NSArray *commentIds = apiResponse[@"CommentIds"];
-    if (commentIds) {
-      for (NSString *commentId in (NSArray *)commentIds) {
-        BVComment *comment = [includes getCommentById:commentId];
-        if (comment) {
-          [tmpComments addObject:comment];
-        }
-      }
+  if ((self = [super init])) {
+
+    if (!includes) {
+      includes =
+          [[BVConversationsInclude alloc] initWithApiResponse:apiResponse];
     }
-    _comments = [NSArray arrayWithArray:tmpComments];
 
     NSString *productId = apiResponse[@"ProductId"];
     self.product = [includes getProductById:productId];
@@ -107,6 +114,9 @@
     self.badges = [BVModelUtil parseBadges:apiResponse[@"Badges"]];
     self.secondaryRatings =
         [BVModelUtil parseSecondaryRatings:apiResponse[@"SecondaryRatings"]];
+
+    GET_BVOBJECTS_FROM_CONVERSATIONS_INCLUDE(_includedComments, includes,
+                                             Comment);
   }
   return self;
 }

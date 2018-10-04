@@ -10,8 +10,6 @@
 #import <Foundation/Foundation.h>
 
 /// Successful review submission response.
-@interface BVReviewSubmissionResponse : BVSubmissionResponse
-
-@property(nullable) BVSubmittedReview *review;
-
+@interface BVReviewSubmissionResponse
+    : BVSubmissionResponse <BVSubmittedReview *>
 @end

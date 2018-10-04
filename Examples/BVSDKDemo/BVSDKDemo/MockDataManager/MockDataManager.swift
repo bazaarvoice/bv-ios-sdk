@@ -350,7 +350,7 @@ class MockDataManager {
     
     do {
       let data = try Data(contentsOf: URL(fileURLWithPath: path), options: NSData.ReadingOptions.mappedIfSafe)
-      var json = JSON(data: data)
+      var json = try JSON(data: data)
       
       let recommendations:[String] = json["profile"]["recommendations"].arrayValue.map { $0.string!}
       // randomize order

@@ -5,15 +5,16 @@
 //  Copyright 2016 Bazaarvoice Inc. All rights reserved.
 //
 
-#import "BVSDKManager.h"
-#import "BVAnalyticEventManager.h"
+#import "BVAnalyticEventManager+Private.h"
 #import "BVAnalyticsManager.h"
+#import "BVAuthenticatedUser+Private.h"
 #import "BVCommon.h"
 #import "BVSDKConfiguration.h"
+#import "BVSDKManager+Private.h"
 #import <UIKit/UIKit.h>
 
 @interface BVSDKManager ()
-@property(nonatomic, strong) BVSDKConfiguration *configuration;
+@property(nonatomic, strong, nonnull) BVSDKConfiguration *internalConfiguration;
 @property(nonatomic, strong) dispatch_queue_t urlSessionDelegateQueue;
 @property(nonnull, nonatomic, strong) NSString *clientId;
 @property(nonatomic, assign) BOOL staging;
@@ -35,6 +36,10 @@ static NSString *const BVSDKConfigFileExt = @"json";
 
 @synthesize urlSessionDelegate = _urlSessionDelegate,
             urlSessionDelegateQueue = _urlSessionDelegateQueue;
+
+- (BVSDKConfiguration *)configuration {
+  return _internalConfiguration;
+}
 
 - (nullable id<BVURLSessionDelegate>)urlSessionDelegate {
   __block id<BVURLSessionDelegate> tempDelegate = nil;
@@ -95,7 +100,7 @@ static NSString *const BVSDKConfigFileExt = @"json";
     _apiKeyConversations = nil;
     _apiKeyShopperAdvertising = nil;
     _apiKeyConversationsStores = nil;
-    _configuration = [[BVSDKConfiguration alloc] init];
+    _internalConfiguration = [[BVSDKConfiguration alloc] init];
   }
   return self;
 }
@@ -133,15 +138,16 @@ static NSString *const BVSDKConfigFileExt = @"json";
   NSMutableDictionary *config = dict.mutableCopy;
   [config setObject:@(configType == BVConfigurationTypeStaging)
              forKey:@"staging"];
-  _configuration = [[BVSDKConfiguration alloc] initWithDictionary:dict
-                                                       configType:configType];
+  _internalConfiguration =
+      [[BVSDKConfiguration alloc] initWithDictionary:dict
+                                          configType:configType];
   [BVAnalyticsManager sharedManager].isDryRunAnalytics =
-      _configuration.dryRunAnalytics;
+      _internalConfiguration.dryRunAnalytics;
 
   /// Handle Analytics Locale Configuration
   NSLocale *analyticsLocale = nil;
   NSString *analyticsLocaleIdentifier =
-      _configuration.analyticsLocaleIdentifier;
+      _internalConfiguration.analyticsLocaleIdentifier;
 
   if (analyticsLocaleIdentifier) {
     analyticsLocale =
@@ -158,10 +164,6 @@ static NSString *const BVSDKConfigFileExt = @"json";
   [BVAnalyticsManager sharedManager].analyticsLocale = analyticsLocale;
 
   [self copyJson:config toObj:self];
-}
-
-- (void)setConfiguration:(nonnull BVSDKConfiguration *)configuration {
-  _configuration = configuration;
 }
 
 - (void)copyJson:(NSDictionary *)json toObj:(NSObject *)obj {
@@ -197,7 +199,7 @@ static NSString *const BVSDKConfigFileExt = @"json";
   [BVAnalyticEventManager sharedManager].clientId = clientId;
   [BVAnalyticEventManager sharedManager].eventSource = @"native-mobile-sdk";
   [self assertConfiguration];
-  [_configuration setValue:clientId forKeyPath:@"clientId"];
+  [_internalConfiguration setValue:clientId forKeyPath:@"clientId"];
 }
 
 - (void)assertConfiguration {
@@ -211,19 +213,19 @@ static NSString *const BVSDKConfigFileExt = @"json";
 - (void)setStaging:(BOOL)staging {
   _staging = staging;
   [BVAnalyticsManager sharedManager].isStagingServer = staging;
-  [_configuration setValue:@(staging) forKeyPath:@"staging"];
+  [_internalConfiguration setValue:@(staging) forKeyPath:@"staging"];
 }
 
 - (void)setApiKeyShopperAdvertising:(NSString *)apiKeyShopperAdvertising {
   _apiKeyShopperAdvertising = apiKeyShopperAdvertising;
-  [_configuration setValue:apiKeyShopperAdvertising
-                forKeyPath:@"apiKeyShopperAdvertising"];
+  [_internalConfiguration setValue:apiKeyShopperAdvertising
+                        forKeyPath:@"apiKeyShopperAdvertising"];
 }
 
 - (void)setApiKeyConversations:(NSString *)apiKeyConversations {
   _apiKeyConversations = apiKeyConversations;
-  [_configuration setValue:apiKeyConversations
-                forKeyPath:@"apiKeyConversations"];
+  [_internalConfiguration setValue:apiKeyConversations
+                        forKeyPath:@"apiKeyConversations"];
 }
 
 - (void)setApiKeyConversationsStores:(NSString *)apiKeyConversationsStores {
@@ -235,8 +237,8 @@ static NSString *const BVSDKConfigFileExt = @"json";
       postNotificationName:CONVERSATIONS_STORES_API_KEY_SET_NOTIFICATION
                     object:nil
                   userInfo:userInfo];
-  [_configuration setValue:apiKeyConversationsStores
-                forKeyPath:@"apiKeyConversationsStores"];
+  [_internalConfiguration setValue:apiKeyConversationsStores
+                        forKeyPath:@"apiKeyConversationsStores"];
 }
 
 - (void)setApiKeyPIN:(NSString *)apiKeyPIN {
@@ -246,25 +248,26 @@ static NSString *const BVSDKConfigFileExt = @"json";
       postNotificationName:PIN_API_KEY_SET_NOTIFICATION
                     object:nil
                   userInfo:userInfo];
-  [_configuration setValue:apiKeyPIN forKeyPath:@"apiKeyPIN"];
+  [_internalConfiguration setValue:apiKeyPIN forKeyPath:@"apiKeyPIN"];
 }
 
 - (void)setStoreReviewContentExtensionCategory:
     (NSString *)storeReviewContentExtensionCategory {
   _storeReviewContentExtensionCategory = storeReviewContentExtensionCategory;
-  [_configuration setValue:storeReviewContentExtensionCategory
-                forKeyPath:@"storeReviewContentExtensionCategory"];
+  [_internalConfiguration setValue:storeReviewContentExtensionCategory
+                        forKeyPath:@"storeReviewContentExtensionCategory"];
 }
 
 - (void)setPINContentExtensionCategory:(NSString *)PINContentExtensionCategory {
   _PINContentExtensionCategory = PINContentExtensionCategory;
-  [_configuration setValue:PINContentExtensionCategory
-                forKeyPath:@"PINContentExtensionCategory"];
+  [_internalConfiguration setValue:PINContentExtensionCategory
+                        forKeyPath:@"PINContentExtensionCategory"];
 }
 
 - (void)setApiKeyCurations:(NSString *)apiKeyCurations {
   _apiKeyCurations = apiKeyCurations;
-  [_configuration setValue:apiKeyCurations forKeyPath:@"apiKeyCurations"];
+  [_internalConfiguration setValue:apiKeyCurations
+                        forKeyPath:@"apiKeyCurations"];
 }
 
 - (void)setLogLevel:(BVLogLevel)logLevel {

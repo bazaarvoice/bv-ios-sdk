@@ -6,6 +6,7 @@
 //
 
 #import "BVBasePIIEvent.h"
+#import "BVRandom+NSString.h"
 
 __strong static NSSet *whitelistParams;
 
@@ -14,10 +15,7 @@ __strong static NSSet *whitelistParams;
 @synthesize additionalParams;
 
 - (instancetype)initWithParams:(nullable NSDictionary *)params {
-  self = [super init];
-
-  if (self) {
-    sranddev();
+  if ((self = [super init])) {
     // these are considered the only non-PII params
     whitelistParams = [[NSSet alloc]
         initWithObjects:@"orderId", @"affiliation", @"total", @"tax",
@@ -28,7 +26,6 @@ __strong static NSSet *whitelistParams;
 
     self.additionalParams = params ? params : [NSDictionary dictionary];
   }
-
   return self;
 }
 
@@ -56,14 +53,7 @@ __strong static NSSet *whitelistParams;
 }
 
 - (NSString *)getLoadId {
-  int charLimit = 20;
-  NSMutableString *loadId = [NSMutableString new];
-
-  while (loadId.length < charLimit) {
-    [loadId appendFormat:@"%x", rand() % 16];
-  }
-
-  return loadId;
+  return [NSString randomHexStringWithLength:20];
 }
 
 @end

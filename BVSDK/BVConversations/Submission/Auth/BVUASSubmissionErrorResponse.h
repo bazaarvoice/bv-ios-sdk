@@ -6,9 +6,10 @@
 //
 
 #import "BVSubmissionErrorResponse.h"
+#import "BVSubmittedUAS.h"
 #import <Foundation/Foundation.h>
 
 /// Failed UAS submission response
-@interface BVUASSubmissionErrorResponse : BVSubmissionErrorResponse
-
+@interface BVUASSubmissionErrorResponse
+    : BVSubmissionErrorResponse <BVSubmittedUAS *>
 @end
