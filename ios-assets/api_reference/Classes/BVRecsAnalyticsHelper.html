@@ -60,11 +60,11 @@
 		
 		<option value="//api/name/queueAnalyticsEventForProductTapped:">+ queueAnalyticsEventForProductTapped:</option>
 		
-		<option value="//api/name/queueAnalyticsEventForProductView:">+ queueAnalyticsEventForProductView:</option>
-		
 		<option value="//api/name/queueAnalyticsEventForRecommendationsOnPage:">+ queueAnalyticsEventForRecommendationsOnPage:</option>
 		
 		<option value="//api/name/queueAnalyticsEventForWidgetScroll:">+ queueAnalyticsEventForWidgetScroll:</option>
+		
+		<option value="//api/name/queueEmbeddedRecommendationsPageViewEvent:pageType:withWidgetType:">+ queueEmbeddedRecommendationsPageViewEvent:pageType:withWidgetType:</option>
 		
 		<option value="//api/name/queueEmbeddedRecommendationsPageViewEvent:withWidgetType:">+ queueEmbeddedRecommendationsPageViewEvent:withWidgetType:</option>
 		
@@ -120,63 +120,6 @@
 
 						<div class="task-list">
 							<div class="section-method">
-	<a name="//api/name/queueAnalyticsEventForProductView:" title="queueAnalyticsEventForProductView:"></a>
-	<h3 class="method-title"><code><a href="#//api/name/queueAnalyticsEventForProductView:">+&nbsp;queueAnalyticsEventForProductView:</a></code>
-</h3>
-
-	<div class="method-info">
-		<div class="pointy-thing"></div>
-
-		<div class="method-info-container">
-			
-			
-			<div class="method-subsection brief-description">
-				<pre><code>Queue an analytic event for a visible BVRecommendedProduct recommendation.
-</code></pre>
-			</div>
-			
-		    
-
-			<div class="method-subsection method-declaration"><code>+ (void)queueAnalyticsEventForProductView:(BVRecommendedProduct *)<em>product</em></code></div>
-
-		    
-			
-			<div class="method-subsection arguments-section parameters">
-				<h4 class="method-subtitle parameter-title">Parameters</h4>
-				<table class="argument-def parameter-def">
-				
-					<tr>
-						<th scope="row" class="argument-name"><code>product</code></th>
-						<td><ul>
-<li>A <a href="../Classes/BVProduct.html">BVProduct</a> object that was visible on screen.</li>
-</ul>
-</td>
-					</tr>
-				
-				</table>
-			</div>
-			
-
-			
-
-			
-
-			
-
-			
-
-			
-
-			
-			<div class="method-subsection declared-in-section">
-				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">BVRecsAnalyticsHelper.h</code></p>
-			</div>
-			
-			
-		</div>
-	</div>
-</div><div class="section-method">
 	<a name="//api/name/queueAnalyticsEventForProductTapped:" title="queueAnalyticsEventForProductTapped:"></a>
 	<h3 class="method-title"><code><a href="#//api/name/queueAnalyticsEventForProductTapped:">+&nbsp;queueAnalyticsEventForProductTapped:</a></code>
 </h3>
@@ -291,6 +234,82 @@
 		</div>
 	</div>
 </div><div class="section-method">
+	<a name="//api/name/queueEmbeddedRecommendationsPageViewEvent:pageType:withWidgetType:" title="queueEmbeddedRecommendationsPageViewEvent:pageType:withWidgetType:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/queueEmbeddedRecommendationsPageViewEvent:pageType:withWidgetType:">+&nbsp;queueEmbeddedRecommendationsPageViewEvent:pageType:withWidgetType:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Queue an analytic event for a recommendation widigit becoming visible on
+screen.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (void)queueEmbeddedRecommendationsPageViewEvent:(BVRecommendationsRequest *)<em>recommendationsRequest</em> pageType:(Class)<em>pageType</em> withWidgetType:(BVProductRecommendationWidget)<em>widgetType</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>recommendationsRequest</code></th>
+						<td><ul>
+<li>The <a href="../Classes/BVRecommendationsRequest.html">BVRecommendationsRequest</a> use to
+construct the request parameters</li>
+</ul>
+</td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>pageType</code></th>
+						<td><ul>
+<li>The class of the page view object presenting</li>
+</ul>
+</td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>widgetType</code></th>
+						<td><ul>
+<li>One of enum of <a href="../Constants/BVProductRecommendationWidget.html">BVProductRecommendationWidget</a></li>
+</ul>
+
+
+<p>@availability 3.0.1 and later</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BVRecsAnalyticsHelper.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
 	<a name="//api/name/queueEmbeddedRecommendationsPageViewEvent:withWidgetType:" title="queueEmbeddedRecommendationsPageViewEvent:withWidgetType:"></a>
 	<h3 class="method-title"><code><a href="#//api/name/queueEmbeddedRecommendationsPageViewEvent:withWidgetType:">+&nbsp;queueEmbeddedRecommendationsPageViewEvent:withWidgetType:</a></code>
 </h3>
@@ -305,7 +324,7 @@
 				<pre><code>Queue an analytic event for a recommendation widigit becoming visible on
 </code></pre>
 
-<p>   screen.</p>
+<p>   screen. (<b class="deprecated">Deprecated:</b><span class="deprecated"> please use the pageType variant</span>)</p>
 			</div>
 			
 		    
@@ -391,7 +410,7 @@
 				<footer>
 					<div class="footer-copyright">
 						
-						<p class="copyright">Copyright &copy; 2018 Bazaarvoice. All rights reserved. Updated: 2018-03-06</p>
+						<p class="copyright">Copyright &copy; 2018 Bazaarvoice. All rights reserved. Updated: 2018-10-04</p>
 						
 						
 						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>

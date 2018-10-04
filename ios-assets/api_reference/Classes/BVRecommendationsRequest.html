@@ -56,11 +56,23 @@
 	
 	<optgroup label="Properties">
 		
+		<option value="//api/name/averageRating">averageRating</option>
+		
+		<option value="//api/name/brandId">brandId</option>
+		
 		<option value="//api/name/categoryId">categoryId</option>
+		
+		<option value="//api/name/interest">interest</option>
 		
 		<option value="//api/name/limit">limit</option>
 		
+		<option value="//api/name/locale">locale</option>
+		
 		<option value="//api/name/productId">productId</option>
+		
+		<option value="//api/name/purpose">purpose</option>
+		
+		<option value="//api/name/requiredCategory">requiredCategory</option>
 		
 	</optgroup>
 	
@@ -69,6 +81,8 @@
 
 	
 	<optgroup label="Instance Methods">
+		
+		<option value="//api/name/addInclude:">- addInclude:</option>
 		
 		<option value="//api/name/init">- init</option>
 		
@@ -287,35 +301,10 @@
 
 		<div class="method-info-container">
 			
-			
-			<div class="method-subsection brief-description">
-				<p>internal use</p>
-			</div>
-			
-		    
 
-			<div class="method-subsection method-declaration"><code>@property (readonly) NSString *productId</code></div>
+			<div class="method-subsection method-declaration"><code>@property (nullable, readonly) NSString *productId</code></div>
 
 		    
-			
-
-			
-
-			
-
-			
-
-			
-
-			
-
-			
-			<div class="method-subsection declared-in-section">
-				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">BVRecommendationsRequest.h</code></p>
-			</div>
-			
-			
 		</div>
 	</div>
 </div><div class="section-method">
@@ -329,7 +318,7 @@
 		<div class="method-info-container">
 			
 
-			<div class="method-subsection method-declaration"><code>@property (readonly) NSString *categoryId</code></div>
+			<div class="method-subsection method-declaration"><code>@property (nullable, readonly) NSString *categoryId</code></div>
 
 		    
 		</div>
@@ -350,6 +339,118 @@
 		    
 		</div>
 	</div>
+</div><div class="section-method">
+	<a name="//api/name/averageRating" title="averageRating"></a>
+	<h3 class="method-title"><code><a href="#//api/name/averageRating">&nbsp;&nbsp;averageRating</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+
+			<div class="method-subsection method-declaration"><code>@property (nullable, nonatomic, strong) NSNumber *averageRating</code></div>
+
+		    
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/brandId" title="brandId"></a>
+	<h3 class="method-title"><code><a href="#//api/name/brandId">&nbsp;&nbsp;brandId</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+
+			<div class="method-subsection method-declaration"><code>@property (nullable, nonatomic, strong) NSString *brandId</code></div>
+
+		    
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/interest" title="interest"></a>
+	<h3 class="method-title"><code><a href="#//api/name/interest">&nbsp;&nbsp;interest</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+
+			<div class="method-subsection method-declaration"><code>@property (nullable, nonatomic, strong) NSString *interest</code></div>
+
+		    
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/locale" title="locale"></a>
+	<h3 class="method-title"><code><a href="#//api/name/locale">&nbsp;&nbsp;locale</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+
+			<div class="method-subsection method-declaration"><code>@property (nullable, nonatomic, strong) NSLocale *locale</code></div>
+
+		    
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/purpose" title="purpose"></a>
+	<h3 class="method-title"><code><a href="#//api/name/purpose">&nbsp;&nbsp;purpose</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) BVRecommendationsRequestPurpose purpose</code></div>
+
+		    
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/requiredCategory" title="requiredCategory"></a>
+	<h3 class="method-title"><code><a href="#//api/name/requiredCategory">&nbsp;&nbsp;requiredCategory</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+
+			<div class="method-subsection method-declaration"><code>@property (nullable, nonatomic, strong) NSString *requiredCategory</code></div>
+
+		    
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/addInclude:" title="addInclude:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/addInclude:">&ndash;&nbsp;addInclude:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+
+			<div class="method-subsection method-declaration"><code>- (nonnull instancetype)addInclude:(BVRecommendationsRequestInclude)<em>include</em></code></div>
+
+		    
+		</div>
+	</div>
 </div>
 						</div>
 						
@@ -365,7 +466,7 @@
 				<footer>
 					<div class="footer-copyright">
 						
-						<p class="copyright">Copyright &copy; 2018 Bazaarvoice. All rights reserved. Updated: 2018-03-06</p>
+						<p class="copyright">Copyright &copy; 2018 Bazaarvoice. All rights reserved. Updated: 2018-10-04</p>
 						
 						
 						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>
