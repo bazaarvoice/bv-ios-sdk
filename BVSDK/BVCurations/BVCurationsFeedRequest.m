@@ -8,6 +8,7 @@
 
 #import "BVCurationsFeedRequest.h"
 #import "BVSDKConfiguration.h"
+#import "BVSDKManager+Private.h"
 
 @interface BVCurationsFeedRequest ()
 
@@ -19,21 +20,16 @@
 @implementation BVCurationsFeedRequest
 
 - (id)initWithGroups:(NSArray<NSString *> *)groups {
-
-  self = [super init];
-
-  if (self) {
+  if ((self = [super init])) {
     _limit = 10;
     _after = [NSNumber numberWithLong:0];
     _before = [NSNumber numberWithLong:0];
     _groups = groups;
   }
-
   return self;
 }
 
 - (void)setLatitude:(double)latitude longitude:(double)longitude {
-
   self.latitude = [NSNumber numberWithDouble:latitude];
   self.longitude = [NSNumber numberWithDouble:longitude];
 }
@@ -54,7 +50,7 @@
 
   // Build up the query parameters...
 
-  if (self.limit > 100)
+  if (100 < self.limit)
     self.limit = 20;
 
   NSURLQueryItem *search =
@@ -81,7 +77,7 @@
   // Add the optional query params...
 
   // geolocation, if available
-  if (self.latitude != nil && self.longitude != nil) {
+  if (self.latitude && self.longitude) {
     NSString *paramString =
         [NSString stringWithFormat:@"%@,%@", self.latitude, self.longitude];
     NSURLQueryItem *geolocation =
@@ -116,13 +112,13 @@
     [queryItems addObject:afterQI];
   }
 
-  if (self.author != nil) {
+  if (self.author) {
     NSURLQueryItem *authorQI =
         [NSURLQueryItem queryItemWithName:@"author" value:self.author];
     [queryItems addObject:authorQI];
   }
 
-  if (self.featured > 0) {
+  if (0 < self.featured) {
     NSURLQueryItem *featuredQI = [NSURLQueryItem
         queryItemWithName:@"featured"
                     value:[NSString
@@ -193,7 +189,7 @@
                                                             options:0
                                                               error:&error];
 
-    if (!jsonMediaData || error != nil) {
+    if (!jsonMediaData || error) {
       [[BVLogger sharedLogger] error:@"Unable to parameterize media dictionary "
                                      @"for curations request."];
     } else {

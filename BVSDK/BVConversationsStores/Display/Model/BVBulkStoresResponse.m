@@ -6,6 +6,7 @@
 //
 
 #import "BVBulkStoresResponse.h"
+#import "BVGenericConversationsResult+Private.h"
 #import "BVNullHelper.h"
 #import "BVStore.h"
 

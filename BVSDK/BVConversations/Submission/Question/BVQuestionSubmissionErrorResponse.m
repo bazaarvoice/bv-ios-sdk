@@ -6,21 +6,18 @@
 //
 
 #import "BVQuestionSubmissionErrorResponse.h"
+#import "BVNullHelper.h"
 
 @implementation BVQuestionSubmissionErrorResponse
 
 - (instancetype)initWithApiResponse:(nullable id)apiResponse {
-
-  self = [super initWithApiResponse:apiResponse];
-
-  if (self) {
-    NSDictionary *apiObject = apiResponse; // [super initWithApiResponse:]
-                                           // checks that this is nonnull and a
-                                           // dictionary
-    self.question = [[BVSubmittedQuestion alloc]
-        initWithApiResponse:apiObject[@"Question"]];
+  if ((self = [super initWithApiResponse:apiResponse])) {
+    if (__IS_KIND_OF(apiResponse, NSDictionary)) {
+      NSDictionary *apiObject = (NSDictionary *)apiResponse;
+      self.errorResult = [[BVSubmittedQuestion alloc]
+          initWithApiResponse:apiObject[@"Question"]];
+    }
   }
-
   return self;
 }
 

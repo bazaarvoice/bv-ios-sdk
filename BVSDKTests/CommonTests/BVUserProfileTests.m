@@ -6,6 +6,7 @@
 //
 
 #import <BVSDK/BVAnalyticsManager+Testing.h>
+#import <BVSDK/BVAuthenticatedUser+Private.h>
 #import <BVSDK/BVAuthenticatedUser+Testing.h>
 #import <BVSDK/BVCommon.h>
 #import <XCTest/XCTest.h>
@@ -99,8 +100,8 @@ static BVAuthenticatedUser *user = nil;
       enqueueImpressionTestWithName:@"testSetUserProfile"
                 withCompletionBlock:[self generateAnalyticsCompletionBlock]];
 
-  [self addStubWith200ResponseForJSONFileNamed:@"userProfile1.json"
-                               withPassingTest:self.passableTest];
+  [self forceStubWithJSON:@"userProfile1.json"
+          withPassingTest:self.passableTest];
 
   [[BVSDKManager sharedManager]
       setUserWithAuthString:@"0ce436b29697d6bc74f30f724b9b0bb6646174653d3132333"

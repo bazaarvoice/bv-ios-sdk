@@ -20,24 +20,18 @@
 - (id)initWithDict:(NSDictionary *)dict
     withReferencedProducts:(NSDictionary *)referencedProducts
             withExternalId:(NSString *)externalId {
-
-  self = [self initWithDict:dict withReferencedProducts:referencedProducts];
-
-  if (self) {
-
+  if ((self = [self initWithDict:dict
+           withReferencedProducts:referencedProducts])) {
     self.externalId = externalId;
   }
-
   return self;
 }
 
 - (id)initWithDict:(NSDictionary *)dict
     withReferencedProducts:(NSDictionary *)referencedProducts {
-  self = [super init];
-  if (self) {
+  if ((self = [super init])) {
 
-    if (dict != nil) {
-
+    if (dict) {
       self.channel = [dict objectForKey:@"channel"];
       self.contentId = [dict objectForKey:@"id"];
       self.rating = [dict objectForKey:@"rating"];
@@ -70,8 +64,8 @@
       // dictionary model
 
       self.referencedProducts = [NSArray array];
-      if (referencedProducts != nil && self.tags != nil &&
-          referencedProducts.allKeys.count > 0 && self.tags.count > 0) {
+      if (referencedProducts && self.tags &&
+          0 < referencedProducts.allKeys.count && 0 < self.tags.count) {
 
         NSMutableArray *tmpProducts = [NSMutableArray array];
 
@@ -155,11 +149,8 @@
 @implementation BVCurationsCoordinates
 
 - (id)initWithDict:(NSDictionary *)dict {
-  self = [super init];
-  if (self) {
-
-    if (dict != nil) {
-
+  if ((self = [super init])) {
+    if (dict) {
       SET_IF_NOT_NULL(self.latitude, [dict objectForKey:@"latitude"])
       SET_IF_NOT_NULL(self.longitude, [dict objectForKey:@"longitude"])
     }
@@ -180,11 +171,8 @@
 @implementation BVCurationsPhoto
 
 - (id)initWithDict:(NSDictionary *)dict {
-  self = [super init];
-  if (self) {
-
-    if (dict != nil) {
-
+  if ((self = [super init])) {
+    if (dict) {
       SET_IF_NOT_NULL(self.origin, [dict objectForKey:@"origin"])
       SET_IF_NOT_NULL(self.permalink, [dict objectForKey:@"permalink"])
       SET_IF_NOT_NULL(self.token, [dict objectForKey:@"dict"])
@@ -211,11 +199,8 @@
 @implementation BVCurationsVideo
 
 - (id)initWithDict:(NSDictionary *)dict {
-  self = [super init];
-  if (self) {
-
-    if (dict != nil) {
-
+  if ((self = [super init])) {
+    if (dict) {
       SET_IF_NOT_NULL(self.origin, [dict objectForKey:@"origin"])
       SET_IF_NOT_NULL(self.permalink, [dict objectForKey:@"permalink"])
       SET_IF_NOT_NULL(self.code, [dict objectForKey:@"code"])
@@ -243,11 +228,8 @@
 @implementation BVCurationsPostAuthor
 
 - (id)initWithDict:(NSDictionary *)dict {
-  self = [super init];
-  if (self) {
-
-    if (dict != nil) {
-
+  if ((self = [super init])) {
+    if (dict) {
       SET_IF_NOT_NULL(self.profile, [dict objectForKey:@"profile"])
       SET_IF_NOT_NULL(self.username, [dict objectForKey:@"username"])
       SET_IF_NOT_NULL(self.alias, [dict objectForKey:@"alias"])
@@ -275,12 +257,8 @@
 @synthesize averageRating;
 
 - (id)initWithDict:(NSDictionary *)dict withKey:(NSString *)key {
-
-  self = [super init];
-  if (self) {
-
-    if (dict != nil) {
-
+  if ((self = [super init])) {
+    if (dict) {
       self.productKey = key;
       SET_IF_NOT_NULL(self.productId, [dict objectForKey:@"Id"])
       SET_IF_NOT_NULL(self.productImageUrl, [dict objectForKey:@"ImageUrl"])
@@ -296,8 +274,8 @@
       SET_IF_NOT_NULL(self.totalReviewCount,
                       [dict objectForKey:@"TotalReviewCount"]);
 
-      if (self.totalReviewCount > 0 &&
-          [dict objectForKey:@"ReviewStatistics"] != nil) {
+      if (0 < self.totalReviewCount &&
+          [dict objectForKey:@"ReviewStatistics"]) {
         SET_IF_NOT_NULL(self.avgRating,
                         [[dict objectForKey:@"ReviewStatistics"]
                             objectForKey:@"AverageOverallRating"]);

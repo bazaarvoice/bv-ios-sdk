@@ -6,11 +6,8 @@
 //
 
 #import "BVSubmissionResponse.h"
+#import "BVSubmittedUAS.h"
 #import <Foundation/Foundation.h>
 
-@class BVSubmittedUAS;
-@interface BVUASSubmissionResponse : BVSubmissionResponse
-
-@property(nullable, readonly) BVSubmittedUAS *userAuthenticationString;
-
+@interface BVUASSubmissionResponse : BVSubmissionResponse <BVSubmittedUAS *>
 @end

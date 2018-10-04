@@ -19,8 +19,7 @@
 }
 
 - (nonnull id)initWithApiResponse:(nonnull NSDictionary *)apiResponse {
-  self = [super init];
-  if (self) {
+  if ((self = [super init])) {
     _apiResponse = apiResponse;
     self.brand = [[BVBrand alloc] initWithApiResponse:apiResponse[@"Brand"]];
 
@@ -45,16 +44,16 @@
 }
 
 - (nullable CLLocation *)getCLLocation {
-  CGFloat storeLongitude = 0.0;
-  CGFloat storeLatitute = 0.0;
+  CGFloat storeLongitude = 0.0f;
+  CGFloat storeLatitute = 0.0f;
   CLLocation *location = nil;
 
-  if (self.storeLocation != nil) {
+  if (self.storeLocation) {
     storeLongitude = [self.storeLocation.longitude floatValue];
     storeLatitute = [self.storeLocation.latitude floatValue];
   }
 
-  if (storeLongitude != 0.0 && storeLatitute != 0.0) {
+  if (0.0f != storeLongitude && 0.0f != storeLatitute) {
     location = [[CLLocation alloc] initWithLatitude:storeLatitute
                                           longitude:storeLongitude];
   }
@@ -63,7 +62,7 @@
 }
 
 - (CLLocationDistance)distanceInMetersFromCurrentLocation {
-  CLLocationDistance distanceMeters = -1.0;
+  CLLocationDistance distanceMeters = -1.0f;
 
   CLLocation *storeLocation = [self getCLLocation];
 
@@ -75,14 +74,8 @@
 }
 
 - (BOOL)hasGeoLoation {
-  BOOL hasLocation = NO;
-
-  if (self.storeLocation != nil && self.storeLocation.longitude != nil &&
-      self.storeLocation.latitude != nil) {
-    hasLocation = YES;
-  }
-
-  return hasLocation;
+  return (self.storeLocation && self.storeLocation.longitude &&
+          self.storeLocation.latitude);
 }
 
 @end

@@ -19,6 +19,6 @@
 @property(nonnull) NSNumber *fourStarCount;
 @property(nonnull) NSNumber *fiveStarCount;
 
-- (nullable id)initWithApiResponse:(nullable id)apiRepsonse;
+- (nullable id)initWithApiResponse:(nullable id)apiResponse;
 
 @end

@@ -37,7 +37,7 @@ NSString *const CACHE_DATE_KEY = @"cache date";
   if (cachedResponse) {
     NSDate *cacheDate = [[cachedResponse userInfo] objectForKey:CACHE_DATE_KEY];
     if ([cacheDate timeIntervalSinceNow] < -(_cacheMaxAgeInSeconds) ||
-        cacheDate == nil) {
+        !cacheDate) {
       [self removeCachedResponseForRequest:request];
       cachedResponse = nil;
     }

@@ -6,7 +6,7 @@
 //
 
 #import "BVFeatureUsedEvent.h"
-#import "BVAnalyticEventManager.h"
+#import "BVAnalyticEventManager+Private.h"
 
 @implementation BVFeatureUsedEvent
 
@@ -17,16 +17,13 @@
                 withProductType:(BVPixelProductType)bvProduct
                   withEventName:(BVPixelFeatureUsedEventName)eventName
            withAdditionalParams:(nullable NSDictionary *)params {
-  self = [super init];
-
-  if (self) {
+  if ((self = [super init])) {
     _productId = productId ? productId : @"unknown";
     _brand = brand;
     _bvProduct = bvProduct;
     _eventName = eventName;
     self.additionalParams = params ? params : [NSDictionary dictionary];
   }
-
   return self;
 }
 

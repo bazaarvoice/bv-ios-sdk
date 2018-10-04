@@ -6,7 +6,7 @@
 //
 
 #import "BVPageViewEvent.h"
-#import "BVAnalyticEventManager.h"
+#import "BVAnalyticEventManager+Private.h"
 
 @implementation BVPageViewEvent
 
@@ -21,17 +21,14 @@
 {
   NSAssert(productId, @"productId cannot be nil");
 
-  self = [super init];
-
-  if (self) {
-    _productId = productId == nil ? @"unknown" : productId;
+  if ((self = [super init])) {
+    _productId = productId ?: @"unknown";
     _bvProduct = bvProduct;
     _brand = brand;
     _categoryId = categoryId;
     _rootCategoryId = rootCategoryId;
-    self.additionalParams = params ? params : [NSDictionary dictionary];
+    self.additionalParams = params ?: [NSDictionary dictionary];
   }
-
   return self;
 }
 

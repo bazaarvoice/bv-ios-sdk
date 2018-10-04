@@ -5,21 +5,22 @@
 //  Copyright © 2017 Bazaarvoice. All rights reserved.
 //
 
-#import "BVAnswer.h"
-#import "BVBadge.h"
-#import "BVContextDataValue.h"
 #import "BVDimensionAndDistributionUtil.h"
 #import "BVGenericConversationsResult.h"
-#import "BVPhoto.h"
-#import "BVQAStatistics.h"
-#import "BVQuestion.h"
-#import "BVReview.h"
-#import "BVReviewStatistics.h"
-#import "BVSecondaryRating.h"
-#import "BVVideo.h"
-#import <UIKit/UIKit.h>
 
-@interface BVAuthor : NSObject <BVGenericConversationsResult>
+@class BVAnswer;
+@class BVBadge;
+@class BVComment;
+@class BVContextDataValue;
+@class BVPhoto;
+@class BVQAStatistics;
+@class BVQuestion;
+@class BVReview;
+@class BVReviewStatistics;
+@class BVSecondaryRating;
+@class BVVideo;
+
+@interface BVAuthor : BVGenericConversationsResult
 
 @property(nullable) NSString *userNickname;
 @property(nullable) NSString *authorId;
@@ -34,15 +35,12 @@
 @property(nonnull) NSArray<BVBadge *> *badges;
 @property(nonnull) NSArray<BVSecondaryRating *> *secondaryRatings;
 
-@property(nonnull) NSArray<BVReview *> *includedReviews;
-@property(nonnull) NSArray<BVQuestion *> *includedQuestions;
-@property(nonnull) NSArray<BVAnswer *> *includedAnswers;
-@property(nonnull) NSArray<BVComment *> *includedComments;
+@property(nonnull, readonly) NSArray<BVReview *> *includedReviews;
+@property(nonnull, readonly) NSArray<BVQuestion *> *includedQuestions;
+@property(nonnull, readonly) NSArray<BVAnswer *> *includedAnswers;
+@property(nonnull, readonly) NSArray<BVComment *> *includedComments;
 
 @property(nullable) BVReviewStatistics *reviewStatistics;
 @property(nullable) BVQAStatistics *qaStatistics;
-
-@property(nullable, nonatomic, strong, readonly)
-    BVConversationsInclude *includes;
 
 @end

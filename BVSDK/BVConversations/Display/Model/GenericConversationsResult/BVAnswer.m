@@ -6,15 +6,20 @@
 //
 
 #import "BVAnswer.h"
+#import "BVBadge.h"
+#import "BVContextDataValue.h"
+#import "BVGenericConversationsResult+Private.h"
 #import "BVModelUtil.h"
 #import "BVNullHelper.h"
+#import "BVPhoto.h"
+#import "BVSyndicationSource.h"
+#import "BVVideo.h"
 
 @implementation BVAnswer
 
 - (nonnull id)initWithApiResponse:(nonnull NSDictionary *)apiResponse
                          includes:(nullable BVConversationsInclude *)includes {
-  self = [super init];
-  if (self) {
+  if ((self = [super init])) {
     SET_IF_NOT_NULL(self.userNickname, apiResponse[@"UserNickname"])
     SET_IF_NOT_NULL(self.submissionId, apiResponse[@"SubmissionId"])
     SET_IF_NOT_NULL(self.questionId, apiResponse[@"QuestionId"])

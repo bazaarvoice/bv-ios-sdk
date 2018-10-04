@@ -12,7 +12,7 @@
 #import "BVNotificationConstants.h"
 #import "BVNotificationsAnalyticsHelper.h"
 #import "BVSDKConfiguration.h"
-#import "BVSDKManager.h"
+#import "BVSDKManager+Private.h"
 #import "BVStoreNotificationConfigurationLoader.h"
 #import "BVStoreReviewNotificationProperties.h"
 #import <UserNotifications/UserNotifications.h>

@@ -11,8 +11,7 @@
 @implementation BVDistributionElement
 
 - (nonnull id)initWithApiResponse:(nonnull NSDictionary *)apiResponse {
-  self = [super init];
-  if (self) {
+  if ((self = [super init])) {
     SET_IF_NOT_NULL(self.label, apiResponse[@"Label"])
     SET_IF_NOT_NULL(self.identifier, apiResponse[@"Id"])
 

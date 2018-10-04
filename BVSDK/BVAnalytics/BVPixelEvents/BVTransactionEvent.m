@@ -6,7 +6,7 @@
 //
 
 #import "BVTransactionEvent.h"
-#import "BVAnalyticEventManager.h"
+#import "BVAnalyticEventManager+Private.h"
 
 @implementation BVTransactionEvent
 
@@ -17,14 +17,11 @@
   NSAssert(orderId, @"orderId cannot be nil");
   NSAssert(items, @"items cannot be nil");
 
-  self = [super initWithParams:params];
-
-  if (self) {
+  if ((self = [super initWithParams:params])) {
     _orderId = orderId;
     _total = total;
     _items = items;
   }
-
   return self;
 }
 

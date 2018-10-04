@@ -5,17 +5,18 @@
 //  Copyright © 2016 Bazaarvoice. All rights reserved.
 //
 
-#import "BVDimensionAndDistributionUtil.h"
+#import "BVDimensionAndDistributionUtil+Private.h"
 
 @implementation BVDimensionAndDistributionUtil
 
 + (nullable TagDistribution)createDistributionWithApiResponse:
     (nullable id)apiResponse {
-  NSDictionary<NSString *, NSDictionary *> *apiObject = apiResponse;
-  if (apiObject == nil) {
+  if (!apiResponse) {
     return nil;
   }
 
+  NSDictionary<NSString *, NSDictionary *> *apiObject =
+      (NSDictionary<NSString *, NSDictionary *> *)apiResponse;
   TagDistribution tempValues = [NSMutableDictionary dictionary];
   for (NSString *key in apiObject) {
     NSDictionary *value = [apiObject objectForKey:key];

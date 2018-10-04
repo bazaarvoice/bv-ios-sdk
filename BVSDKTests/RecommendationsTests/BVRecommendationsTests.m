@@ -117,7 +117,7 @@
   __weak XCTestExpectation *expectation =
       [self expectationWithDescription:@"testFetchProductRecommendations"];
 
-  [self addStubWith200ResponseForJSONFileNamed:@"recommendationsResult.json"];
+  [self stubWithJSON:@"recommendationsResult.json"];
 
   BVRecommendationsRequest *request =
       [[BVRecommendationsRequest alloc] initWithLimit:10];
@@ -148,7 +148,7 @@
       [self expectationWithDescription:
                 @"testFetchProductRecommendationsWithNetworkingDelegate"];
 
-  [self addStubWith200ResponseForJSONFileNamed:@"recommendationsResult.json"];
+  [self stubWithJSON:@"recommendationsResult.json"];
 
   BVRecommendationsRequest *request =
       [[BVRecommendationsRequest alloc] initWithLimit:10];
@@ -183,8 +183,7 @@
   __weak XCTestExpectation *expectation =
       [self expectationWithDescription:@"testRecommendationsByProductId"];
 
-  [self addStubWith200ResponseForJSONFileNamed:
-            @"recommendationsByProductId.json"];
+  [self stubWithJSON:@"recommendationsByProductId.json"];
 
   BVRecommendationsRequest *request =
       [[BVRecommendationsRequest alloc] initWithLimit:10
@@ -213,8 +212,7 @@
   __weak XCTestExpectation *expectation =
       [self expectationWithDescription:@"testRecommendationsByCategoryId"];
 
-  [self addStubWith200ResponseForJSONFileNamed:
-            @"recommendationsByCategoryId.json"];
+  [self stubWithJSON:@"recommendationsByCategoryId.json"];
 
   BVRecommendationsRequest *request =
       [[BVRecommendationsRequest alloc] initWithLimit:10
@@ -245,7 +243,7 @@
       [self expectationWithDescription:
                 @"testFetchProductRecommendationsMalformedJSONResponse"];
 
-  [self addStubWith200ResponseForJSONFileNamed:@"malformedJSON.json"];
+  [self forceStubWithJSON:@"malformedJSON.json"];
 
   BVRecommendationsRequest *request =
       [[BVRecommendationsRequest alloc] initWithLimit:3];
@@ -277,7 +275,7 @@
   __weak XCTestExpectation *expectation = [self
       expectationWithDescription:@"testFetchProductRecommendationsNullJSON"];
 
-  [self addStubWith200ResponseForJSONFileNamed:@"recommendationsNullJSON.json"];
+  [self forceStubWithJSON:@"recommendationsNullJSON.json"];
 
   BVRecommendationsRequest *request =
       [[BVRecommendationsRequest alloc] initWithLimit:2];

@@ -10,8 +10,6 @@
 #import <Foundation/Foundation.h>
 
 /// Failed answer submission response.
-@interface BVAnswerSubmissionErrorResponse : BVSubmissionErrorResponse
-
-@property(nullable) BVSubmittedAnswer *answer;
-
+@interface BVAnswerSubmissionErrorResponse
+    : BVSubmissionErrorResponse <BVSubmittedAnswer *>
 @end

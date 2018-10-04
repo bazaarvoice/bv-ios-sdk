@@ -6,20 +6,16 @@
 //
 
 #import "BVPersonalizationEvent.h"
-#import "BVAnalyticEventManager.h"
+#import "BVAnalyticEventManager+Private.h"
 
 @implementation BVPersonalizationEvent
 
 @synthesize additionalParams;
 
 - (nonnull id)initWithUserAuthenticationString:(nonnull NSString *)uas {
-
-  self = [super init];
-  if (self) {
-
+  if ((self = [super init])) {
     _uas = uas;
   }
-
   return self;
 }
 

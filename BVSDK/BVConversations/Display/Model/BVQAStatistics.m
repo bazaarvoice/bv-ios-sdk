@@ -6,21 +6,19 @@
 //
 
 #import "BVQAStatistics.h"
-#import "BVDimensionAndDistributionUtil.h"
+#import "BVDimensionAndDistributionUtil+Private.h"
 #import "BVModelUtil.h"
 #import "BVNullHelper.h"
 
 @implementation BVQAStatistics
 
 - (nullable id)initWithApiResponse:(nullable id)apiResponse {
-
-  self = [super init];
-  if (self) {
-    if (apiResponse == nil) {
+  if ((self = [super init])) {
+    if (!apiResponse) {
       return nil;
     }
 
-    NSDictionary *apiObject = apiResponse;
+    NSDictionary *apiObject = (NSDictionary *)apiResponse;
 
     SET_IF_NOT_NULL(self.helpfulVoteCount, apiObject[@"HelpfulVoteCount"])
     SET_IF_NOT_NULL(self.bestAnswerCount, apiObject[@"BestAnswerCount"])

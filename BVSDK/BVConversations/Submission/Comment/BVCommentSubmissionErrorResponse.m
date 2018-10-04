@@ -6,21 +6,18 @@
 //
 
 #import "BVCommentSubmissionErrorResponse.h"
+#import "BVNullHelper.h"
 
 @implementation BVCommentSubmissionErrorResponse
 
 - (instancetype)initWithApiResponse:(nullable id)apiResponse {
-
-  self = [super initWithApiResponse:apiResponse];
-
-  if (self) {
-    NSDictionary *apiObject = apiResponse; // [super initWithApiResponse:]
-                                           // checks that this is nonnull and a
-                                           // dictionary
-    self.comment =
-        [[BVSubmittedComment alloc] initWithApiResponse:apiObject[@"Comment"]];
+  if ((self = [super initWithApiResponse:apiResponse])) {
+    if (__IS_KIND_OF(apiResponse, NSDictionary)) {
+      NSDictionary *apiObject = (NSDictionary *)apiResponse;
+      self.errorResult = [[BVSubmittedComment alloc]
+          initWithApiResponse:apiObject[@"Comment"]];
+    }
   }
-
   return self;
 }
 

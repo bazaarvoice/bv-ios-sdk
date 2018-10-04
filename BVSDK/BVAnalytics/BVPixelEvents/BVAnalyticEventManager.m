@@ -9,7 +9,7 @@
 #include <sys/sysctl.h>
 #include <sys/utsname.h>
 
-#import "BVAnalyticEventManager.h"
+#import "BVAnalyticEventManager+Private.h"
 
 #define BVID_STORAGE_KEY @"BVID_STORAGE_KEY"
 
@@ -21,6 +21,7 @@
 @implementation BVAnalyticEventManager
 
 @synthesize clientId = _clientId;
+@synthesize eventSource = _eventSource;
 
 __strong static BVAnalyticEventManager *mgrInstance = nil;
 
@@ -54,15 +55,14 @@ __strong static BVAnalyticEventManager *mgrInstance = nil;
 }
 
 - (id)init {
-  self = [super init];
-  if (self != nil) {
+  if ((self = [super init])) {
     self.ivarQueue = dispatch_queue_create(
         "com.bazaarvoice.BVAnalyticEventManager.ivarQueue",
         DISPATCH_QUEUE_SERIAL);
-    _eventSource = @"native-mobile-custom";
+    self.eventSource = @"native-mobile-custom";
     self.BVID =
         [[NSUserDefaults standardUserDefaults] stringForKey:BVID_STORAGE_KEY];
-    if (self.BVID == nil || [self.BVID length] == 0) {
+    if (!self.BVID || 0 == [self.BVID length]) {
       self.BVID = [[NSUUID UUID] UUIDString];
       [[NSUserDefaults standardUserDefaults] setValue:self.BVID
                                                forKey:BVID_STORAGE_KEY];
@@ -80,9 +80,9 @@ __strong static BVAnalyticEventManager *mgrInstance = nil;
     @"UA" : self.BVID
   }];
 
-  NSAssert(self.clientId != nil, @"Client ID cannot be nil. The client ID is "
-                                 @"the Compnay name you use in the "
-                                 @"Bazaarvoice workbench.");
+  NSAssert(self.clientId, @"Client ID cannot be nil. The client ID is "
+                          @"the Compnay name you use in the "
+                          @"Bazaarvoice workbench.");
 
   [params setValue:self.clientId forKey:@"client"];
 
