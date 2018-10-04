@@ -11,13 +11,13 @@
 @implementation BVPhoto
 
 - (nullable id)initWithApiResponse:(nullable id)apiResponse {
-  self = [super init];
-  if (self) {
+  if ((self = [super init])) {
 
-    if (apiResponse == nil) {
+    if (!apiResponse) {
       return nil;
     }
-    NSDictionary *apiObject = apiResponse;
+
+    NSDictionary *apiObject = (NSDictionary *)apiResponse;
     SET_IF_NOT_NULL(self.caption, apiObject[@"Caption"])
     SET_IF_NOT_NULL(self.identifier, apiObject[@"Id"])
     self.sizes = [[BVPhotoSizes alloc] initWithApiResponse:apiObject[@"Sizes"]];

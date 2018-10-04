@@ -224,9 +224,9 @@ class ReviewDisplayTests: XCTestCase {
       
       let review : BVReview = response.results.first!
       
-      XCTAssertTrue(review.comments.count >= 1)
+      XCTAssertTrue(review.includedComments.count >= 1)
       
-      let firstComment = review.comments.first!
+      let firstComment = review.includedComments.first!
       
       // XCTAssertNotNil(firstComment.title) -- title may be nil
       XCTAssertNotNil(firstComment.authorId)

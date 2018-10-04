@@ -11,15 +11,13 @@
 @implementation BVReviewStatistic
 
 - (nullable id)initWithApiResponse:(nullable id)apiResponse {
+  if ((self = [super init])) {
 
-  self = [super init];
-  if (self) {
-
-    if (apiResponse == nil ||
-        ![apiResponse isKindOfClass:[NSDictionary class]]) {
+    if (!apiResponse || ![apiResponse isKindOfClass:[NSDictionary class]]) {
       return nil;
     }
-    NSDictionary *apiObject = apiResponse;
+
+    NSDictionary *apiObject = (NSDictionary *)apiResponse;
 
     SET_IF_NOT_NULL(self.totalReviewCount, apiObject[@"TotalReviewCount"])
     SET_IF_NOT_NULL(self.averageOverallRating,

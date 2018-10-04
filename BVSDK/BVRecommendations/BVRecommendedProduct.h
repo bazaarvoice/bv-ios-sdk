@@ -60,9 +60,6 @@
 /// Record a tap event -- the user tapped a product
 - (void)recordTap;
 
-/// Internal use
-@property(nonnull, strong, nonatomic) NSDictionary *rawProductDict;
-
 @end
 
 #endif /* BVRECOMMENDEDPRODUCT_H */

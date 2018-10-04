@@ -5,7 +5,7 @@
 //  Copyright 2016 Bazaarvoice Inc. All rights reserved.
 
 #import "BVNotificationViewController.h"
-#import "BVAnalyticEventManager.h"
+#import "BVAnalyticEventManager+Private.h"
 #import "BVNotificationsAnalyticsHelper.h"
 
 @interface BVNotificationViewController (Private)

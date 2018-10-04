@@ -33,7 +33,7 @@
 }
 
 - (void)willMoveToSuperview:(UIView *)newSuperview {
-  if (newSuperview == nil || hasSentRenderedEvent) {
+  if (!newSuperview || hasSentRenderedEvent) {
     return;
   }
 
@@ -44,7 +44,7 @@
 }
 
 - (void)willMoveToWindow:(UIWindow *)newWindow {
-  if (newWindow == nil || hasSentSeenEvent) {
+  if (!newWindow || hasSentSeenEvent) {
     return;
   }
 
@@ -89,32 +89,28 @@
 }
 
 - (id)init {
-  self = [super init];
-  if (self) {
+  if ((self = [super init])) {
     [self setup];
   }
   return self;
 }
 
 - (id)initWithCoder:(NSCoder *)aDecoder {
-  self = [super initWithCoder:aDecoder];
-  if (self) {
+  if ((self = [super initWithCoder:aDecoder])) {
     [self setup];
   }
   return self;
 }
 
 - (id)initWithFrame:(CGRect)frame {
-  self = [super initWithFrame:frame];
-  if (self) {
+  if ((self = [super initWithFrame:frame])) {
     [self setup];
   }
   return self;
 }
 
 - (id)initWithFrame:(CGRect)frame style:(UITableViewStyle)style {
-  self = [super initWithFrame:frame style:style];
-  if (self) {
+  if ((self = [super initWithFrame:frame style:style])) {
     [self setup];
   }
   return self;
@@ -147,7 +143,7 @@
 }
 
 - (void)willMoveToSuperview:(UIView *)newSuperview {
-  if (newSuperview == nil || hasSentRenderedEvent) {
+  if (!newSuperview || hasSentRenderedEvent) {
     return;
   }
 
@@ -158,7 +154,7 @@
 }
 
 - (void)willMoveToWindow:(UIWindow *)newWindow {
-  if (newWindow == nil || hasSentSeenEvent) {
+  if (!newWindow || hasSentSeenEvent) {
     return;
   }
 
@@ -210,7 +206,7 @@
 
   BVRecommendedProduct *product = [cellToProductMap
       objectForKey:[BVProductRecommendationsContainer formatIndex:indexPath]];
-  if (product != nil) {
+  if (product) {
     [product recordTap];
   }
 }
@@ -226,7 +222,7 @@
     BVRecommendationTableViewCell *bvCell =
         (BVRecommendationTableViewCell *)cell;
     BVRecommendedProduct *product = bvCell.bvRecommendedProduct;
-    if (product != nil) {
+    if (product) {
       [cellToProductMap
           setObject:product
              forKey:[BVProductRecommendationsContainer formatIndex:indexPath]];
@@ -279,16 +275,14 @@
 }
 
 - (id)init {
-  self = [super init];
-  if (self) {
+  if ((self = [super init])) {
     [self setup];
   }
   return self;
 }
 
 - (id)initWithFrame:(CGRect)frame {
-  self = [super initWithFrame:frame];
-  if (self) {
+  if ((self = [super initWithFrame:frame])) {
     [self setup];
   }
   return self;
@@ -296,16 +290,14 @@
 
 - (id)initWithFrame:(CGRect)frame
     collectionViewLayout:(UICollectionViewLayout *)layout {
-  self = [super initWithFrame:frame collectionViewLayout:layout];
-  if (self) {
+  if ((self = [super initWithFrame:frame collectionViewLayout:layout])) {
     [self setup];
   }
   return self;
 }
 
 - (id)initWithCoder:(NSCoder *)aDecoder {
-  self = [super initWithCoder:aDecoder];
-  if (self) {
+  if ((self = [super initWithCoder:aDecoder])) {
     [self setup];
   }
   return self;
@@ -338,7 +330,7 @@
 }
 
 - (void)willMoveToSuperview:(UIView *)newSuperview {
-  if (newSuperview == nil || hasSentRenderedEvent) {
+  if (!newSuperview || hasSentRenderedEvent) {
     return;
   }
 
@@ -346,7 +338,7 @@
 }
 
 - (void)willMoveToWindow:(UIWindow *)newWindow {
-  if (newWindow == nil || hasSentSeenEvent) {
+  if (!newWindow || hasSentSeenEvent) {
     return;
   }
 
@@ -394,7 +386,7 @@
 
   BVRecommendedProduct *product = [cellToProductMap
       objectForKey:[BVProductRecommendationsContainer formatIndex:indexPath]];
-  if (product != nil) {
+  if (product) {
     [product recordTap];
   }
 }
@@ -411,7 +403,7 @@
     BVRecommendationCollectionViewCell *bvCell =
         (BVRecommendationCollectionViewCell *)cell;
     BVRecommendedProduct *product = bvCell.bvRecommendedProduct;
-    if (product != nil) {
+    if (product) {
       [cellToProductMap
           setObject:product
              forKey:[BVProductRecommendationsContainer formatIndex:indexPath]];

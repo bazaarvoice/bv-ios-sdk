@@ -13,7 +13,7 @@ control_c()
 	cleanup
   	exit $?
 }
- 
+
 # trap keyboard interrupt (control-c)
 trap control_c SIGINT
 
@@ -32,7 +32,7 @@ pod install --repo-update
 
 
 echo Running tests
-xcodebuild test -workspace ../BVSDK.xcworkspace -scheme "BVSDK-Tests" -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 6,OS=latest' | xcpretty -c
+xcodebuild test -workspace ../BVSDK.xcworkspace -scheme "BVSDK-Tests" GCC_PREPROCESSOR_DEFINITIONS='$GCC_PREPROCESSOR_DEFINITIONS BV_IGNORE_TESTING_STUBS=1' -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 6,OS=latest' | xcpretty -c
 
 
 cleanup

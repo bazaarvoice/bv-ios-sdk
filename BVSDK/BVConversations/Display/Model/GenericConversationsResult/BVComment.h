@@ -5,13 +5,17 @@
 //  Copyright © 2017 Bazaarvoice. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-
-#import "BVBadge.h"
 #import "BVGenericConversationsResult.h"
-#import "BVSyndicationSource.h"
 
-@interface BVComment : NSObject <BVGenericConversationsResult>
+@class BVAnswer;
+@class BVAuthor;
+@class BVBadge;
+@class BVProduct;
+@class BVQuestion;
+@class BVReview;
+@class BVSyndicationSource;
+
+@interface BVComment : BVGenericConversationsResult
 
 @property(nullable, readonly) NSString *title;
 @property(nullable, readonly) NSString *commentText;
@@ -39,7 +43,10 @@
 @property(nullable, nonatomic, strong, readonly)
     BVSyndicationSource *syndicationSource;
 
-@property(nullable, nonatomic, strong, readonly)
-    BVConversationsInclude *includes;
+@property(nonnull, readonly) NSArray<BVAnswer *> *includedAnswers;
+@property(nonnull, readonly) NSArray<BVAuthor *> *includedAuthors;
+@property(nonnull, readonly) NSArray<BVProduct *> *includedProducts;
+@property(nonnull, readonly) NSArray<BVQuestion *> *includedQuestions;
+@property(nonnull, readonly) NSArray<BVReview *> *includedReviews;
 
 @end

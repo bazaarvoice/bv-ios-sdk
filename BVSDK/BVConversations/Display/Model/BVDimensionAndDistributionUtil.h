@@ -14,11 +14,3 @@ typedef NSMutableDictionary<NSString *, BVDistributionElement *>
 typedef NSMutableDictionary<NSString *, BVDistributionElement *>
     *ContextDataDistribution;
 typedef NSMutableDictionary<NSString *, BVDimensionElement *> *TagDimensions;
-
-/// Internal utility - used only within BVSDK
-@interface BVDimensionAndDistributionUtil : NSObject
-
-+ (nullable TagDistribution)createDistributionWithApiResponse:
-    (nullable id)apiResponse;
-
-@end

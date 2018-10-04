@@ -6,11 +6,12 @@
 //
 
 #import "BVConversationsRequest.h"
-#import "BVConversationsErrorResponse.h"
 #import "BVDiagnosticHelpers.h"
+#import "BVDisplayErrorResponse.h"
 #import "BVNetworkingManager.h"
 #import "BVSDKConfiguration.h"
-#import "BVSDKManager.h"
+#import "BVSDKManager+Private.h"
+#import "BVStringKeyValuePair.h"
 
 @interface BVConversationsRequest ()
 @property(strong, nonatomic)
@@ -87,7 +88,7 @@
   NSMutableArray<NSURLQueryItem *> *queryItems = [NSMutableArray array];
 
   for (BVStringKeyValuePair *param in params) {
-    if (param.value != nil) {
+    if (param.value) {
       NSURLQueryItem *queryItem =
           [[NSURLQueryItem alloc] initWithName:param.key value:param.value];
       [queryItems addObject:queryItem];
@@ -163,15 +164,15 @@ processData:(nullable NSData *)data
       NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data
                                                            options:kNilOptions
                                                              error:&err];
-      if (json != nil) {
-        BVConversationsErrorResponse *errorResponse =
-            [[BVConversationsErrorResponse alloc] initWithApiResponse:json];
+      if (json) {
+        BVDisplayErrorResponse *errorResponse =
+            [[BVDisplayErrorResponse alloc] initWithApiResponse:json];
 
         [[BVLogger sharedLogger]
             verbose:[NSString stringWithFormat:@"RESPONSE: %@ (%ld)", json,
                                                (long)statusCode]];
 
-        if (errorResponse != nil) {
+        if (errorResponse) {
           [self sendErrors:[errorResponse toNSErrors] failureCallback:failure];
         } else {
           // invoke success callback on main thread
@@ -179,7 +180,7 @@ processData:(nullable NSData *)data
             completion(json);
           });
         }
-      } else if (err != nil) {
+      } else if (err) {
         [self sendError:err failureCallback:failure];
       } else {
         NSError *parsingError =

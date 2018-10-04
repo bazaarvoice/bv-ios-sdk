@@ -8,7 +8,6 @@
 
 #import "BVCurationsUICollectionViewCell.h"
 #import "BVCurationsFeedItem.h"
-#import "BVCurationsPhotoUploader.h"
 #import "BVLogger.h"
 #import "UIImage+BundleLocator.h"
 

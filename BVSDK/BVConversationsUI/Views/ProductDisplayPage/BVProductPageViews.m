@@ -6,6 +6,7 @@
 //
 
 #import "BVProductPageViews.h"
+#import "BVBrand.h"
 #import "BVPixel.h"
 
 @interface BVProductDisplayPageViewController () {
@@ -18,11 +19,10 @@
 - (void)viewWillAppear:(BOOL)animated {
   [super viewWillAppear:animated];
 
-  if (!hasSentPageviewEvent && self.product != nil) {
+  if (!hasSentPageviewEvent && self.product) {
     hasSentPageviewEvent = true;
 
-    NSString *brandName =
-        self.product.brand != nil ? self.product.brand.name : nil;
+    NSString *brandName = self.product.brand ? self.product.brand.name : nil;
     BVPageViewEvent *pageView = [[BVPageViewEvent alloc]
              initWithProductId:self.product.identifier
         withBVPixelProductType:BVPixelProductTypeConversationsReviews
@@ -47,11 +47,10 @@
 - (void)viewWillAppear:(BOOL)animated {
   [super viewWillAppear:animated];
 
-  if (!hasSentPageviewEvent && self.product != nil) {
+  if (!hasSentPageviewEvent && self.product) {
     hasSentPageviewEvent = true;
 
-    NSString *brandName =
-        self.product.brand != nil ? self.product.brand.name : nil;
+    NSString *brandName = self.product.brand ? self.product.brand.name : nil;
     BVPageViewEvent *pageView = [[BVPageViewEvent alloc]
              initWithProductId:self.product.identifier
         withBVPixelProductType:BVPixelProductTypeConversationsReviews
@@ -76,11 +75,10 @@
 - (void)viewWillAppear:(BOOL)animated {
   [super viewWillAppear:animated];
 
-  if (!hasSentPageviewEvent && self.product != nil) {
+  if (!hasSentPageviewEvent && self.product) {
     hasSentPageviewEvent = true;
 
-    NSString *brandName =
-        self.product.brand != nil ? self.product.brand.name : nil;
+    NSString *brandName = self.product.brand ? self.product.brand.name : nil;
     BVPageViewEvent *pageView = [[BVPageViewEvent alloc]
              initWithProductId:self.product.identifier
         withBVPixelProductType:BVPixelProductTypeConversationsReviews

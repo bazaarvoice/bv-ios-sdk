@@ -10,10 +10,7 @@
 @implementation BVUASSubmissionErrorResponse
 
 - (instancetype)initWithApiResponse:(nullable id)apiResponse {
-  if ((self = [super initWithApiResponse:apiResponse])) {
-    /// Nothing to be done here as of now.
-  }
-  return self;
+  return [super initWithApiResponse:apiResponse];
 }
 
 @end

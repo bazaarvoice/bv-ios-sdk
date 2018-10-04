@@ -201,7 +201,7 @@ class RatingTableViewCell: BVReviewTableViewCell {
   
   @IBAction func commentsButtonTapped(_ sender: Any) {
     if let onCommentTapped = self.onCommentIconTapped, totalCommentCount > 0 {
-      onCommentTapped((review?.comments)!)
+      onCommentTapped((review?.includedComments)!)
     }
   }
   

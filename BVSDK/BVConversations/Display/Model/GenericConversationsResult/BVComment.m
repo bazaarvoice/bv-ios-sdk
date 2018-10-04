@@ -6,16 +6,38 @@
 //
 
 #import "BVComment.h"
+#import "BVAnswer.h"
+#import "BVAuthor.h"
+#import "BVBadge.h"
+#import "BVConversationsInclude.h"
+#import "BVGenericConversationsResult+Private.h"
 #import "BVModelUtil.h"
 #import "BVNullHelper.h"
+#import "BVProduct.h"
+#import "BVQuestion.h"
+#import "BVReview.h"
+#import "BVSyndicationSource.h"
+
+@interface BVComment ()
+
+@property(nonnull, readwrite) NSArray<BVAnswer *> *includedAnswers;
+@property(nonnull, readwrite) NSArray<BVAuthor *> *includedAuthors;
+@property(nonnull, readwrite) NSArray<BVProduct *> *includedProducts;
+@property(nonnull, readwrite) NSArray<BVQuestion *> *includedQuestions;
+@property(nonnull, readwrite) NSArray<BVReview *> *includedReviews;
+
+@end
 
 @implementation BVComment
 
 - (id)initWithApiResponse:(NSDictionary *)apiResponse
                  includes:(BVConversationsInclude *)includes {
-  self = [super init];
-  if (self) {
-    _includes = includes;
+  if ((self = [super init])) {
+
+    if (!includes) {
+      includes =
+          [[BVConversationsInclude alloc] initWithApiResponse:apiResponse];
+    }
 
     SET_IF_NOT_NULL(_userNickname, apiResponse[@"UserNickname"])
     SET_IF_NOT_NULL(_userLocation, apiResponse[@"UserLocation"])
@@ -52,6 +74,17 @@
     }
 
     _badges = [BVModelUtil parseBadges:apiResponse[@"Badges"]];
+
+    GET_BVOBJECTS_FROM_CONVERSATIONS_INCLUDE(_includedAnswers, includes,
+                                             Answer);
+    GET_BVOBJECTS_FROM_CONVERSATIONS_INCLUDE(_includedAuthors, includes,
+                                             Author);
+    GET_BVOBJECTS_FROM_CONVERSATIONS_INCLUDE(_includedProducts, includes,
+                                             Product);
+    GET_BVOBJECTS_FROM_CONVERSATIONS_INCLUDE(_includedQuestions, includes,
+                                             Question);
+    GET_BVOBJECTS_FROM_CONVERSATIONS_INCLUDE(_includedReviews, includes,
+                                             Review);
   }
 
   return self;

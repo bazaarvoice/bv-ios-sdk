@@ -10,14 +10,10 @@
 @implementation BVReviewSubmissionResponse
 
 - (nonnull instancetype)initWithApiResponse:(NSDictionary *)apiResponse {
-
-  self = [super initWithApiResponse:apiResponse];
-
-  if (self) {
-    self.review =
+  if ((self = [super initWithApiResponse:apiResponse])) {
+    self.result =
         [[BVSubmittedReview alloc] initWithApiResponse:apiResponse[@"Review"]];
   }
-
   return self;
 }
 

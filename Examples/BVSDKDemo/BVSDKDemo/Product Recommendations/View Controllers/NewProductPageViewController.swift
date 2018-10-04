@@ -501,20 +501,22 @@ class NewProductPageViewController: BVProductDisplayPageViewController, UITableV
   }
   
   func curationsAddPhotoPressed() {
-    let shareRequest = BVCurationsAddPostRequest(
-      groups: CurationsDemoConstants.DEFAULT_FEED_GROUPS_CURATIONS,
-      withAuthorAlias: "anonymous",
-      withToken: "anonymous_nickname",
-      withText: ""
-    )
-    
-    let submitPhotoVC = DemoCustomPostViewController(
-      shareRequest: shareRequest,
-      placeholderText: "Say Hey!"
-    )
-    
-    submitPhotoVC.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
-    self.present(submitPhotoVC, animated: true, completion: nil)
+    /*
+     let shareRequest = BVCurationsAddPostRequest(
+     groups: CurationsDemoConstants.DEFAULT_FEED_GROUPS_CURATIONS,
+     withAuthorAlias: "anonymous",
+     withToken: "anonymous_nickname",
+     withText: ""
+     )
+     
+     let submitPhotoVC = DemoCustomPostViewController(
+     shareRequest: shareRequest,
+     placeholderText: "Say Hey!"
+     )
+     
+     submitPhotoVC.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
+     self.present(submitPhotoVC, animated: true, completion: nil)
+     */
   }
   
   func curationsViewPhotoMapPressed() {

@@ -5,8 +5,7 @@
 //  Copyright © 2016 Bazaarvoice. All rights reserved.
 //
 
-#import "BVBaseConversationsResponse.h"
-#import "BVResponse.h"
+#import "BVDisplayResponse.h"
 #import "BVReview.h"
 #import "BVStore.h"
 #import <Foundation/Foundation.h>
@@ -22,8 +21,7 @@
  empty. The `BVStore` property may also have `BVReviewStatistics` associated
  with it if the request indicitated to include review statistics.
  */
-@interface BVStoreReviewsResponse
-    : BVBaseConversationsResultsResponse <BVReview *>
+@interface BVStoreReviewsResponse : BVDisplayResultsResponse <BVReview *>
 
 @property(nullable) BVStore *store;
 

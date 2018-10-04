@@ -137,7 +137,7 @@ class QuestionAnswerViewController: UIViewController, UITableViewDelegate, UITab
       let callToActionCell = tableView.dequeueReusableCell(withIdentifier: "CallToActionCell") as! CallToActionCell
       callToActionCell.setCustomRightIcon(FAKFontAwesome.chevronRightIcon(withSize:))
       
-      let numAnswers = question.answers.count
+      let numAnswers = question.includedAnswers.count
       if numAnswers == 0 {
         callToActionCell.button.setTitle("Be the first to answer!", for: UIControlState())
         callToActionCell.setCustomLeftIcon(FAKFontAwesome.plusIcon(withSize:))

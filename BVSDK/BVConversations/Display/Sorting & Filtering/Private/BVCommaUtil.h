@@ -7,7 +7,6 @@
 
 #import <Foundation/Foundation.h>
 
-/// Internal utility - used only within BVSDK
 @interface BVCommaUtil : NSObject
 
 + (nonnull NSString *)escape:(nonnull NSString *)productId;

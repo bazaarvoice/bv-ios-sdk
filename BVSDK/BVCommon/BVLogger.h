@@ -60,7 +60,7 @@ typedef NS_ENUM(NSUInteger, BVLogLevel) {
 /// Logs all errors with log level BVLogLevelError.
 - (void)printErrors:(nonnull NSArray<NSError *> *)errors;
 
-/// Logs messages specific to analytic events that this SDK fires internally
+/// Logs messages specific to analytic events that this SDK fires
 - (void)analyticsMessage:(nonnull NSString *)message;
 
 @end

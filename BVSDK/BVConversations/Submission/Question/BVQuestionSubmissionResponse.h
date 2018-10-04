@@ -10,8 +10,6 @@
 #import <Foundation/Foundation.h>
 
 /// Successful question submission response.
-@interface BVQuestionSubmissionResponse : BVSubmissionResponse
-
-@property(nullable) BVSubmittedQuestion *question;
-
+@interface BVQuestionSubmissionResponse
+    : BVSubmissionResponse <BVSubmittedQuestion *>
 @end

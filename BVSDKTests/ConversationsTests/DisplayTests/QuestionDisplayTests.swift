@@ -39,9 +39,9 @@ class QuestionDisplayTests: XCTestCase {
       XCTAssertEqual(question.moderationStatus, "APPROVED")
       XCTAssertEqual(question.identifier, "14828")
       
-      XCTAssertEqual(question.answers.count, 1)
+      XCTAssertEqual(question.includedAnswers.count, 1)
       
-      let answer = question.answers.first!
+      let answer = question.includedAnswers.first!
       XCTAssertEqual(answer.userNickname, "asdfasdfasdfasdf")
       XCTAssertEqual(answer.questionId, "14828")
       XCTAssertEqual(answer.authorId, "c6ryqeb2bq0")

@@ -5,6 +5,7 @@
 //  Copyright © 2017 Bazaarvoice. All rights reserved.
 //
 
+#import "BVFieldError.h"
 #import "NSError+BVSubmissionErrorCodeParser.h"
 
 @implementation NSError (BVErrorCodeParser)

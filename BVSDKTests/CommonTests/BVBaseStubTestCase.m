@@ -64,29 +64,47 @@
   [OHHTTPStubs removeAllStubs];
 }
 
-- (void)addStubWith200ResponseForJSONFileNamed:(NSString *)resultFile {
-  [self addStubWith200ResponseForJSONFileNamed:resultFile withPassingTest:nil];
+- (void)stubWithJSON:(NSString *)resultFile {
+  [self stubWithJSON:resultFile withPassingTest:nil];
 }
 
-- (void)addStubWith200ResponseForJSONFileNamed:(nonnull NSString *)resultFile
-                               withPassingTest:
-                                   (nullable OHHTTPStubsTestBlock)testBlock {
-  [self addStubWith200ResponseForJSONFilesNamed:@[ resultFile ]
-                                withPassingTest:testBlock];
+- (void)forceStubWithJSON:(nonnull NSString *)resultFile {
+  [self forceStubWithJSON:resultFile withPassingTest:nil];
 }
 
-- (void)addStubWith200ResponseForJSONFilesNamed:
+- (void)stubWithJSON:(nonnull NSString *)resultFile
+     withPassingTest:(nullable OHHTTPStubsTestBlock)testBlock {
+  [self stubWithJSONSequence:@[ resultFile ] withPassingTest:testBlock];
+}
+
+- (void)forceStubWithJSON:(nonnull NSString *)resultFile
+          withPassingTest:(nullable OHHTTPStubsTestBlock)testBlock {
+  [self forceStubWithJSONSequence:@[ resultFile ] withPassingTest:testBlock];
+}
+
+- (void)stubWithJSONSequence:(nonnull NSArray<NSString *> *)resultFileArray {
+  [self stubWithJSONSequence:resultFileArray withPassingTest:nil];
+}
+
+- (void)forceStubWithJSONSequence:
     (nonnull NSArray<NSString *> *)resultFileArray {
-  [self addStubWith200ResponseForJSONFilesNamed:resultFileArray
-                                withPassingTest:nil];
+  [self forceStubWithJSONSequence:resultFileArray withPassingTest:nil];
 }
 
-- (void)addStubWith200ResponseForJSONFilesNamed:
-            (nonnull NSArray<NSString *> *)resultFileArray
-                                withPassingTest:
-                                    (nullable OHHTTPStubsTestBlock)testBlock {
+- (void)stubWithJSONSequence:(nonnull NSArray<NSString *> *)resultFileArray
+             withPassingTest:(nullable OHHTTPStubsTestBlock)testBlock {
+#ifdef BV_IGNORE_TESTING_STUBS
+  [self forceStubWithJSONSequence:resultFileArray withPassingTest:testBlock];
+#else
+  return;
+#endif
+}
+
+- (void)forceStubWithJSONSequence:(nonnull NSArray<NSString *> *)resultFileArray
+                  withPassingTest:(nullable OHHTTPStubsTestBlock)testBlock {
   __block NSUInteger callCount = 0;
   NSUInteger fileCount = resultFileArray.count;
+
   OHHTTPStubsTestBlock passableTest =
       testBlock ?: ^BOOL(NSURLRequest *request) {
         return [request.URL.host containsString:@"bazaarvoice.com"];
@@ -99,7 +117,7 @@
 
         if (callCount < fileCount) {
           id fileObj = [resultFileArray objectAtIndex:callCount];
-          if (__ISA(fileObj, NSString)) {
+          if (__IS_KIND_OF(fileObj, NSString)) {
             NSString *resultFile = (NSString *)fileObj;
 
             // Increment count
@@ -123,9 +141,21 @@
       }];
 }
 
-- (void)addStubWithResultFile:(NSString *)resultFile
-                   statusCode:(NSInteger)httpStatus
-                  withHeaders:(NSDictionary *)httpHeaders {
+- (void)stubWithResultFile:(NSString *)resultFile
+                statusCode:(NSInteger)httpStatus
+               withHeaders:(NSDictionary *)httpHeaders {
+#ifdef BV_IGNORE_TESTING_STUBS
+  [self forceStubWithResultFile:resultFile
+                     statusCode:httpStatus
+                    withHeaders:httpHeaders];
+#else
+  return;
+#endif
+}
+
+- (void)forceStubWithResultFile:(nonnull NSString *)resultFile
+                     statusCode:(NSInteger)httpStatus
+                    withHeaders:(nonnull NSDictionary *)httpHeaders {
   [OHHTTPStubs stubRequestsPassingTest:^BOOL(NSURLRequest *request) {
     return [request.URL.host containsString:@"bazaarvoice.com"];
   }

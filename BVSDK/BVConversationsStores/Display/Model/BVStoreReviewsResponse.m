@@ -7,6 +7,7 @@
 
 #import "BVStoreReviewsResponse.h"
 #import "BVConversationsInclude.h"
+#import "BVGenericConversationsResult+Private.h"
 #import "BVNullHelper.h"
 #import "BVReview.h"
 #import "BVStore.h"
@@ -14,9 +15,8 @@
 @implementation BVStoreReviewsResponse
 
 - (id)initWithApiResponse:(NSDictionary *)apiResponse {
-  self = [super initWithApiResponse:apiResponse];
-  if (self) {
-    NSDictionary *rawIncludes = apiResponse[@"Includes"];
+  if ((self = [super initWithApiResponse:apiResponse])) {
+    NSDictionary *rawIncludes = (NSDictionary *)apiResponse[@"Includes"];
     self.store = [self extractStoreFromIncludes:rawIncludes];
   }
   return self;

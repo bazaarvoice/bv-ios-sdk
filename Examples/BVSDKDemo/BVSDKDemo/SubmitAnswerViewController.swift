@@ -71,10 +71,10 @@ class SubmitAnswerViewController: UIViewController, SDFormDelegate, SDFormDataSo
     self.view.addSubview(self.spinner)
     self.tableView.resignFirstResponder()
     
-    let submission = BVAnswerSubmission(questionId: selectedQuestion.identifier ?? "", answerText: answerSubmissionParameters.answerText as? String ?? "")
+    let submission = BVAnswerSubmission(questionId: selectedQuestion.identifier ?? "", answerText: answerSubmissionParameters.answerText as String? ?? "")
     submission.action = .preview // Don't actually post, just run in preview mode!
-    submission.userNickname = answerSubmissionParameters.userNickname as? String
-    submission.userEmail = answerSubmissionParameters.userEmail as? String
+    submission.userNickname = answerSubmissionParameters.userNickname as String?
+    submission.userEmail = answerSubmissionParameters.userEmail as String?
     submission.sendEmailAlertWhenPublished = answerSubmissionParameters.sendEmailAlertWhenPublished
     let userId = "123abc\(arc4random())"
     submission.userId = userId

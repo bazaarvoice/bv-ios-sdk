@@ -6,7 +6,7 @@
 //
 
 #import "BVImpressionEvent.h"
-#import "BVAnalyticEventManager.h"
+#import "BVAnalyticEventManager+Private.h"
 
 @implementation BVImpressionEvent
 
@@ -19,9 +19,7 @@
                 withContentType:(BVPixelImpressionContentType)contentType
                       withBrand:(nullable NSString *)brand
            withAdditionalParams:(nullable NSDictionary *)params {
-  self = [super init];
-
-  if (self) {
+  if ((self = [super init])) {
     _productId = productId ? productId : @"unknown";
     _contentId = contentId ? contentId : @"unknown";
     _categoryId = categoryId;
@@ -30,7 +28,6 @@
     _brand = brand;
     self.additionalParams = params ? params : [NSDictionary dictionary];
   }
-
   return self;
 }
 

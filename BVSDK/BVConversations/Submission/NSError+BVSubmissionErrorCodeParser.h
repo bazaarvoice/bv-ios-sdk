@@ -5,7 +5,6 @@
 //  Copyright © 2017 Bazaarvoice. All rights reserved.
 //
 
-#import "BVFieldError.h"
 #import "BVSubmissionErrorCode.h"
 #import <Foundation/Foundation.h>
 

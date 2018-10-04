@@ -11,14 +11,10 @@
 @implementation BVFeedbackSubmissionResponse
 
 - (nonnull instancetype)initWithApiResponse:(NSDictionary *)apiResponse {
-
-  self = [super initWithApiResponse:apiResponse];
-
-  if (self) {
-    self.feedback = [[BVSubmittedFeedback alloc]
+  if ((self = [super initWithApiResponse:apiResponse])) {
+    self.result = [[BVSubmittedFeedback alloc]
         initWithApiResponse:apiResponse[@"Feedback"]];
   }
-
   return self;
 }
 
