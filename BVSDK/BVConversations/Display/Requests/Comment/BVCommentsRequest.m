@@ -16,6 +16,7 @@
 #import "BVMonotonicSortOrder.h"
 #import "BVPixel.h"
 #import "BVRelationalFilterOperator.h"
+#import "BVStringKeyValuePair.h"
 
 @interface BVCommentsRequest ()
 @end

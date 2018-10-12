@@ -8,6 +8,7 @@
 #import "BVProductTextSearchRequest.h"
 #import "BVBulkProductResponse.h"
 #import "BVConversationsRequest+Private.h"
+#import "BVStringKeyValuePair.h"
 
 @interface BVProductTextSearchRequest ()
 
