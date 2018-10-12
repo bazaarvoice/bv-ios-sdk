@@ -9,8 +9,8 @@
 #define BVCONVERSATIONSREQUEST_PRIVATE_H
 
 #import "BVConversationsRequest.h"
-#import "BVStringKeyValuePair.h"
 
+@class BVStringKeyValuePair;
 @interface BVConversationsRequest ()
 
 - (nonnull NSMutableArray<BVStringKeyValuePair *> *)createParams;

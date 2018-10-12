@@ -17,6 +17,7 @@
 #import "BVRelationalFilterOperator.h"
 #import "BVReviewsSortOption.h"
 #import "BVSort.h"
+#import "BVStringKeyValuePair.h"
 
 @interface BVAuthorRequest ()
 

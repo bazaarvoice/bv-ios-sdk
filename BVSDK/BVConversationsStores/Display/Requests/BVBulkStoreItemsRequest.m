@@ -14,6 +14,7 @@
 #import "BVSDKConfiguration.h"
 #import "BVSDKManager+Private.h"
 #import "BVStoreIncludeType.h"
+#import "BVStringKeyValuePair.h"
 
 @interface BVBulkStoreItemsRequest ()
 
