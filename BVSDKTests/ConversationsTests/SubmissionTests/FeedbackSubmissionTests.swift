@@ -1,6 +1,6 @@
 //
 //  FeedbackSubmissionTests.swift
-//  BVSDK
+//  BVSDKTests
 //
 //  Copyright © 2016 Bazaarvoice. All rights reserved.
 //
@@ -28,7 +28,7 @@ class FeedbackSubmissionTests: BVBaseStubTestCase {
       [
         "testSubmitFeedbackHelpfulness.json"
     ]
-    addStubWith200Response(forJSONFilesNamed: sequenceFiles)
+    stub(withJSONSequence: sequenceFiles)
     
     let feedback = BVFeedbackSubmission(contentId: "83725", with: .review, with: .helpfulness)
     
@@ -38,10 +38,11 @@ class FeedbackSubmissionTests: BVBaseStubTestCase {
     feedback.submit({ (response) in
       // success
       // verify response object....
-      XCTAssertNotNil(response.feedback)
-      XCTAssertTrue(response.feedback?.inappropriateResponse == nil)
-      XCTAssertEqual(response.feedback?.helpfulnessResponse.authorId, feedback.userId)
-      XCTAssertEqual(response.feedback?.helpfulnessResponse.vote, "POSITIVE")
+      XCTAssertNotNil(response.result)
+      let inappropriateResponse = response.result?.inappropriateResponse
+      XCTAssertNil(inappropriateResponse)
+      XCTAssertEqual(response.result?.helpfulnessResponse.authorId, feedback.userId)
+      XCTAssertEqual(response.result?.helpfulnessResponse.vote, "POSITIVE")
       
       expectation.fulfill()
       
@@ -62,7 +63,7 @@ class FeedbackSubmissionTests: BVBaseStubTestCase {
       [
         "testSubmitFeedbackFlag.json"
     ]
-    addStubWith200Response(forJSONFilesNamed: sequenceFiles)
+    stub(withJSONSequence: sequenceFiles)
     
     let feedback = BVFeedbackSubmission(contentId: "83725", with: .review, with: .inappropriate)
     
@@ -72,10 +73,11 @@ class FeedbackSubmissionTests: BVBaseStubTestCase {
     feedback.submit({ (response) in
       // success
       // verify response object...
-      XCTAssertNotNil(response.feedback)
-      XCTAssertTrue(response.feedback?.helpfulnessResponse == nil)
-      XCTAssertEqual(response.feedback?.inappropriateResponse.authorId, feedback.userId)
-      XCTAssertEqual(response.feedback?.inappropriateResponse.reasonText, feedback.reasonText)
+      XCTAssertNotNil(response.result)
+      let helpfulnessResponse = response.result?.helpfulnessResponse
+      XCTAssertNil(helpfulnessResponse)
+      XCTAssertEqual(response.result?.inappropriateResponse.authorId, feedback.userId)
+      XCTAssertEqual(response.result?.inappropriateResponse.reasonText, feedback.reasonText)
       expectation.fulfill()
       
     }) { (errors) in
@@ -96,7 +98,7 @@ class FeedbackSubmissionTests: BVBaseStubTestCase {
       [
         "testSubmitFeedbackFailure.json"
     ]
-    addStubWith200Response(forJSONFilesNamed: sequenceFiles)
+    stub(withJSONSequence: sequenceFiles)
     
     let feedback = BVFeedbackSubmission(contentId: "badidshouldmakeerror", with: .review, with: .inappropriate)
     

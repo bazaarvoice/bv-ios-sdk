@@ -8,8 +8,9 @@
 #import "BVRecsAnalyticsHelper.h"
 #import "BVAnalyticsManager.h"
 #import "BVRecommendationsRequest+Private.h"
-#import "BVRecommendedProduct.h"
+#import "BVRecommendedProduct+Private.h"
 #import "BVSDKConfiguration.h"
+#import "BVSDKManager+Private.h"
 #include <sys/sysctl.h>
 #include <sys/utsname.h>
 
@@ -155,7 +156,7 @@ static const NSString *bvProductName = @"Personalization";
 
   if (product.rawProductDict) {
     for (NSString *key in @[ @"RKB", @"RKI", @"RKP", @"RKT", @"RKC" ]) {
-      if ([product.rawProductDict objectForKey:key] != nil) {
+      if ([product.rawProductDict objectForKey:key]) {
         NSNumber *value =
             @([[product.rawProductDict objectForKey:key] integerValue]);
         [productAnalytics setObject:value forKey:key];

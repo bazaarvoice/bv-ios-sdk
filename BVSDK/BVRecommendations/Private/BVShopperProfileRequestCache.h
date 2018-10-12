@@ -7,7 +7,6 @@
 
 #import <Foundation/Foundation.h>
 
-// For internal use only.
 @interface BVShopperProfileRequestCache : NSURLCache
 
 + (instancetype)sharedCache;

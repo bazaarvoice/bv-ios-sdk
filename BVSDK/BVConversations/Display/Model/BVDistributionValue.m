@@ -1,6 +1,6 @@
 //
 //  DistributionValue.m
-//  Pods
+//  BVSDK
 //
 //  Copyright © 2016 Bazaarvoice. All rights reserved.
 //
@@ -11,8 +11,7 @@
 @implementation BVDistributionValue
 
 - (nonnull id)initWithApiResponse:(nonnull NSDictionary *)apiResponse {
-  self = [super init];
-  if (self) {
+  if ((self = [super init])) {
     SET_IF_NOT_NULL(self.value, apiResponse[@"Value"])
     SET_IF_NOT_NULL(self.count, apiResponse[@"Count"])
   }

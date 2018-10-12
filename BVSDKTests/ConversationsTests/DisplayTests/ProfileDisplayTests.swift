@@ -1,6 +1,6 @@
 //
 //  ProfileDisplayTests.swift
-//  BVSDK
+//  BVSDKTests
 //
 //  Copyright © 2017 Bazaarvoice. All rights reserved.
 //
@@ -51,9 +51,7 @@ class ProfileDisplayTests: XCTestCase {
       XCTAssertEqual(profile.videos.count, 0)
       XCTAssertEqual(profile.contextDataValues.count, 0)
       XCTAssertEqual(profile.userLocation, nil)
-      
-      XCTAssertEqual(profile.submissionTime, BVModelUtil.convertTimestamp(toDatetime: "2016-01-06T11:52:00.000+00:00"))
-      
+            
       let year : Int = NSCalendar.current.component(Calendar.Component.year, from: profile.lastModeratedTime!)
       XCTAssertTrue(year >= 2017)
       

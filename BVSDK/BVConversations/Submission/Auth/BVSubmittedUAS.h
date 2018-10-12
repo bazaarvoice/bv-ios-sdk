@@ -1,17 +1,14 @@
 //
 //  BVSubmittedUAS.h
-//  Conversations
+//  BVSDK
 //
 //  Copyright © 2017 Bazaarvoice. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import "BVSubmittedType.h"
 
 /// A successfully submitted user authenticated string.
-@interface BVSubmittedUAS : NSObject
+@interface BVSubmittedUAS : BVSubmittedType
 
 @property(nullable, readonly) NSString *authenticatedUser;
-
-- (nullable instancetype)initWithApiResponse:(nullable id)apiResponse;
-
 @end

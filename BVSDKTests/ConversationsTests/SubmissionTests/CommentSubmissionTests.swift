@@ -1,6 +1,6 @@
 //
 //  CommentSubmissionTests.swift
-//  BVSDK
+//  BVSDKTests
 //
 //  Copyright © 2017 Bazaarvoice. All rights reserved.
 //
@@ -31,7 +31,7 @@ class CommentSubmissionTests: BVBaseStubTestCase {
       [
         "testSubmitReviewComment.json"
     ]
-    addStubWith200Response(forJSONFilesNamed: sequenceFiles)
+    stub(withJSONSequence: sequenceFiles)
     
     let commentText = "Comment text Comment text Comment text Comment text Comment text Comment text Comment text Comment text"
     let commentTitle = "Comment title"
@@ -50,24 +50,27 @@ class CommentSubmissionTests: BVBaseStubTestCase {
     commentRequest.agreedToTermsAndConditions = true
     
     commentRequest.submit({ (commentSubmission) in
-      
-      XCTAssertTrue(commentSubmission.formFields?.keys.count == 11)
-      XCTAssertTrue(commentSubmission.comment?.title == commentTitle)
-      XCTAssertTrue(commentSubmission.comment?.commentText == commentText)
-      XCTAssertNil(commentSubmission.submissionId)
-      XCTAssertNotNil(commentSubmission.comment?.submissionTime)
-      XCTAssertTrue(commentSubmission.locale == "en_US")
-      
       expectation.fulfill()
       
+      guard let submittedComment = commentSubmission.result else {
+        XCTFail()
+        return
+      }
+      
+      XCTAssertEqual(commentSubmission.formFields?.keys.count, 11)
+      XCTAssertEqual(submittedComment.title, commentTitle)
+      XCTAssertEqual(submittedComment.commentText, commentText)
+      XCTAssertNil(commentSubmission.submissionId)
+      XCTAssertNotNil(submittedComment.submissionTime)
+      XCTAssertEqual(commentSubmission.locale, "en_US")
+      
     }, failure: { (errors) in
+      print(errors)
       expectation.fulfill()
       XCTFail()
     })
     
     waitForExpectations(timeout: 10, handler: nil)
-    
-    
   }
   
   func testSumbitReviewCommentWithError() {
@@ -78,7 +81,7 @@ class CommentSubmissionTests: BVBaseStubTestCase {
       [
         "testSumbitReviewCommentWithError.json"
     ]
-    addStubWith200Response(forJSONFilesNamed: sequenceFiles)
+    forceStub(withJSONSequence: sequenceFiles)
     
     let commentText = "short text"
     let commentRequest = BVCommentSubmission(reviewId: "12345", withCommentText: commentText)
@@ -91,10 +94,15 @@ class CommentSubmissionTests: BVBaseStubTestCase {
       
     }, failure: { (errors) in
       
-      let firstError = errors.first! as NSError
-      XCTAssertNotNil(firstError.localizedDescription.range(of: "ERROR_PARAM_MISSING_USER_ID"))
       expectation.fulfill()
       
+      guard let firstError = errors.first else {
+        print(errors)
+        return
+      }
+      
+      print(firstError)
+      XCTAssertNotNil(firstError.localizedDescription.range(of: "ERROR_PARAM_MISSING_USER_ID"))
     })
     
     waitForExpectations(timeout: 10, handler: nil)

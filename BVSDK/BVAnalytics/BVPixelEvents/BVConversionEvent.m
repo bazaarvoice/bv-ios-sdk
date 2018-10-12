@@ -7,7 +7,7 @@
 //
 
 #import "BVConversionEvent.h"
-#import "BVAnalyticEventManager.h"
+#import "BVAnalyticEventManager+Private.h"
 
 @implementation BVConversionEvent
 
@@ -17,18 +17,16 @@
                      value:(nonnull NSString *)value
                      label:(nullable NSString *)label
                otherParams:(nullable NSDictionary *)params {
-  self = [super initWithParams:params];
 
   NSAssert(type && 0 < type.length, @"You must provide a type");
   NSAssert(value && 0 < value.length, @"You must provide a value");
 
-  if (self) {
+  if ((self = [super initWithParams:params])) {
     _type = type;
     _value = value;
     _label = label;
     self.additionalParams = params ? params : [NSDictionary dictionary];
   }
-
   return self;
 }
 

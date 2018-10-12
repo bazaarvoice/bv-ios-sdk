@@ -14,12 +14,12 @@ import BVSDK
 // Both the in-app and extension demos in this app use this base class for customizing the post view controller UI.
 class BaseDemoComposeServiceViewController: SLComposeServiceViewController {
   
-  var postRequest : BVCurationsAddPostRequest?
+  //var postRequest : BVCurationsAddPostRequest?
   
-  convenience init!(shareRequest:BVCurationsAddPostRequest) {
+  convenience init() {
     
     self.init()
-    self.postRequest = shareRequest
+    //self.postRequest = shareRequest
   }
   
   override func viewDidLoad() {
@@ -46,14 +46,8 @@ class BaseDemoComposeServiceViewController: SLComposeServiceViewController {
   }
   
   override func loadPreviewView() -> UIView! {
-    
-    if (self.postRequest != nil && self.postRequest?.image != nil) {
-      let resizedImage = self.imageWithImage((self.postRequest?.image)!, scaledToSize: CGSize(width: 80,height: 80))
-      return UIImageView(image: resizedImage)
-    } else {
       // No postRequest/image was provided so call the super as this class was likely loaded from an extension.
       return super.loadPreviewView()
-    }
     
   }
   

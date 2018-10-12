@@ -1,18 +1,13 @@
 //
 //  BVUASSubmission.h
-//  Conversations
+//  BVSDK
 //
 //  Copyright © 2017 Bazaarvoice. All rights reserved.
 //
 
-#import "BVBaseUGCSubmission.h"
-#import "BVConversationsRequest.h"
+#import "BVSubmission.h"
+#import "BVSubmittedUAS.h"
 #import <Foundation/Foundation.h>
-
-@class BVUASSubmissionResponse;
-
-typedef void (^UASSubmissionCompletion)(
-    BVUASSubmissionResponse *__nonnull response);
 
 /**
  Class to use to submit an user authentication string request with the
@@ -23,7 +18,7 @@ typedef void (^UASSubmissionCompletion)(
 
  @availability 5.4.0 and later
  */
-@interface BVUASSubmission : BVBaseUGCSubmission
+@interface BVUASSubmission : BVSubmission <BVSubmittedUAS *>
 
 /**
  Create a new BVUASSubmissionResponse.
@@ -34,24 +29,6 @@ typedef void (^UASSubmissionCompletion)(
 - (nonnull instancetype)initWithBvAuthToken:(nonnull NSString *)bvAuthToken;
 - (nonnull instancetype)__unavailable init;
 
-/**
- Submit this answer to the Bazaarvoice platform. If the `action` of this object
- is set to `BVSubmissionActionPreview` then the submission will NOT actually
- take place.
-
- A submission can fail for many reasons, and is dependent on your submission
- configuration.
-
- @param success    The success block is called when a successful submission
- occurs.
- @param failure    The failure block is called when an unsuccessful submission
- occurs. This could be for a number of reasons: network failures, submission
- parameters invalid, or server errors occur.
- */
-- (void)submit:(nonnull UASSubmissionCompletion)success
-       failure:(nonnull ConversationsFailureHandler)failure;
-
 @property(nonnull, readonly) NSString *bvAuthToken;
-@property BVSubmissionAction action UNAVAILABLE_ATTRIBUTE;
 
 @end

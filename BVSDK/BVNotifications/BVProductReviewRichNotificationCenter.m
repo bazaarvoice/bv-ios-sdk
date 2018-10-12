@@ -8,6 +8,7 @@
 
 #import "BVProductReviewRichNotificationCenter.h"
 #import "BVConversationsInclude.h"
+#import "BVGenericConversationsResult+Private.h"
 #import "BVNotificationConstants.h"
 #import "BVNotificationsAnalyticsHelper.h"
 #import "BVProduct.h"
@@ -15,7 +16,7 @@
 #import "BVProductReviewNotificationConfigurationLoader.h"
 #import "BVProductReviewNotificationProperties.h"
 #import "BVSDKConfiguration.h"
-#import "BVSDKManager.h"
+#import "BVSDKManager+Private.h"
 
 @interface BVProductReviewRichNotificationCenter ()
 

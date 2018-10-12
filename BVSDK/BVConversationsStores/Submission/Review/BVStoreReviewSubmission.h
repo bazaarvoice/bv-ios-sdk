@@ -1,15 +1,12 @@
 //
 //  BVStoreReviewSubmission.h
-//  Conversations
+//  BVSDK
 //
 //  Copyright © 2016 Bazaarvoice. All rights reserved.
 //
 
-#import "BVConversationsRequest.h"
 #import "BVReviewSubmission.h"
 #import "BVReviewSubmissionResponse.h"
-#import "BVSubmissionAction.h"
-#import "BVUploadablePhoto.h"
 #import <UIKit/UIKit.h>
 
 typedef void (^ReviewSubmissionCompletion)(

@@ -1,22 +1,21 @@
 //
 //  BVReview.h
-//  Conversations
+//  BVSDK
 //
 //  Copyright © 2016 Bazaarvoice. All rights reserved.
 //
 
-#import "BVBadge.h"
-#import "BVComment.h"
-#import "BVContextDataValue.h"
 #import "BVDimensionAndDistributionUtil.h"
 #import "BVGenericConversationsResult.h"
-#import "BVPhoto.h"
-#import "BVSecondaryRating.h"
-#import "BVSyndicationSource.h"
-#import "BVVideo.h"
-#import <Foundation/Foundation.h>
 
+@class BVBadge;
+@class BVComment;
+@class BVContextDataValue;
+@class BVPhoto;
 @class BVProduct;
+@class BVSecondaryRating;
+@class BVSyndicationSource;
+@class BVVideo;
 
 /*
  A consumer generated review about a review.
@@ -27,13 +26,12 @@
     Review rating is availble in the `rating` property.
     User nickname is available in the `userNickname` property.
  */
-@interface BVReview : NSObject <BVGenericConversationsResult>
+@interface BVReview : BVGenericConversationsResult
 
 @property(nullable) NSString *reviewText;
 @property(nullable) NSString *userNickname;
 @property(nullable) NSString *title;
 @property NSUInteger rating;
-
 @property(nullable) BVProduct *product;
 @property(nullable) TagDimensions tagDimensions;
 @property(nullable) NSString *cons;
@@ -69,6 +67,7 @@
 @property(nullable) NSDate *lastModeratedTime;
 @property(nullable, nonatomic, strong, readonly)
     BVSyndicationSource *syndicationSource;
-@property(nonnull, readonly) NSArray<BVComment *> *comments;
+
+@property(nonnull, readonly) NSArray<BVComment *> *includedComments;
 
 @end

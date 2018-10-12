@@ -1,19 +1,12 @@
 //
 //  BVQuestionSubmission.h
-//  Conversations
+//  BVSDK
 //
 //  Copyright © 2016 Bazaarvoice. All rights reserved.
 //
 
 #import "BVBaseUGCSubmission.h"
-#import "BVConversationsRequest.h"
-#import "BVQuestionSubmissionResponse.h"
-#import "BVSubmissionAction.h"
-#import "BVUploadablePhoto.h"
-#import <Foundation/Foundation.h>
-
-typedef void (^QuestionSubmissionCompletion)(
-    BVQuestionSubmissionResponse *__nonnull response);
+#import "BVSubmittedQuestion.h"
 
 /**
  Class to use to submit a question to the Bazaarvoice platform.
@@ -26,7 +19,7 @@ typedef void (^QuestionSubmissionCompletion)(
 
  @availability 4.1.0 and later
  */
-@interface BVQuestionSubmission : BVBaseUGCSubmission
+@interface BVQuestionSubmission : BVBaseUGCSubmission <BVSubmittedQuestion *>
 
 /**
  Create a new BVQuestionSubmission.
@@ -36,28 +29,10 @@ typedef void (^QuestionSubmissionCompletion)(
 - (nonnull instancetype)initWithProductId:(nonnull NSString *)productId;
 - (nonnull instancetype)__unavailable init;
 
-/**
- Submit this answer to the Bazaarvoice platform. If the `action` of this object
- is set to `BVSubmissionActionPreview` then the submission will NOT actually
- take place.
-
- A submission can fail for many reasons, and is dependent on your submission
- configuration.
-
- @param success    The success block is called when a successful submission
- occurs.
- @param failure    The failure block is called when an unsuccessful submission
- occurs. This could be for a number of reasons: network failures, submission
- parameters invalid, or server errors occur.
- */
-- (void)submit:(nonnull QuestionSubmissionCompletion)success
-       failure:(nonnull ConversationsFailureHandler)failure;
-
 @property(nullable) NSString *questionSummary;
 @property(nullable) NSString *questionDetails;
 
 @property(nullable) NSNumber *isUserAnonymous;
-
 @property(nullable) NSNumber *sendEmailAlertWhenAnswered;
 
 @property(nonnull, readonly) NSString *productId;

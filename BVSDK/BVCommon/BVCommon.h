@@ -1,19 +1,20 @@
 //
-//  BVCore.h
+//  BVCommon.h
 //  Bazaarvoice SDK
 //
 //  Copyright 2016 Bazaarvoice Inc. All rights reserved.
 //
 
-#ifndef BVCommon_h
-#define BVCommon_h
+#ifndef BVCOMMON_H
+#define BVCOMMON_H
 
-#include "BVAuthenticatedUser.h"
-#include "BVErrorCodeConstants.h"
-#include "BVLogger.h"
-#include "BVNullHelper.h"
-#include "BVPixel.h"
-#include "BVSDKConstants.h"
-#include "BVSDKManager.h"
+#import "BVAuthenticatedUser.h"
+#import "BVDiagnosticHelpers.h"
+#import "BVErrorCodeConstants.h"
+#import "BVLogger.h"
+#import "BVNullHelper.h"
+#import "BVPixel.h"
+#import "BVSDKConstants.h"
+#import "BVSDKManager.h"
 
-#endif /* BVCommon_h */
+#endif /* BVCOMMON_H */

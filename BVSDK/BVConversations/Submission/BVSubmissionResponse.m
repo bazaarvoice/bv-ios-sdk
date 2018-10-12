@@ -1,6 +1,6 @@
 //
 //  SubmissionResponse.m
-//  Conversations
+//  BVSDK
 //
 //  Copyright © 2016 Bazaarvoice. All rights reserved.
 //
@@ -12,9 +12,7 @@
 @implementation BVSubmissionResponse
 
 - (nonnull instancetype)initWithApiResponse:(NSDictionary *)apiResponse {
-  self = [super init];
-  if (self) {
-
+  if ((self = [super init])) {
     SET_IF_NOT_NULL(self.locale, apiResponse[@"Locale"])
     SET_IF_NOT_NULL(self.submissionId, apiResponse[@"SubmissionId"])
     SET_IF_NOT_NULL(self.typicalHoursToPost, apiResponse[@"TypicalHoursToPost"])

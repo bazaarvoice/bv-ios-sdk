@@ -45,7 +45,4 @@
            withAPIKey:(NSString *)passKey
             isStaging:(BOOL)isStage;
 
-/// Internal use only. Use [[BVSDKManager sharedManager] getCustomTargeting].
-- (NSDictionary *)getTargetingKeywords;
-
 @end

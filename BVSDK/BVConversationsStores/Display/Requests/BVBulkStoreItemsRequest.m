@@ -1,17 +1,18 @@
 //
 //  BVStoreItemsRequest.m
-//  Pods
+//  BVSDK
 //
 //  Copyright © 2016 Bazaarvoice. All rights reserved.
 //
 //
 
 #import "BVBulkStoreItemsRequest.h"
+#import "BVConversationsRequest+Private.h"
 #import "BVProductFilterType.h"
 #import "BVProductIncludeType.h"
 #import "BVRelationalFilterOperator.h"
 #import "BVSDKConfiguration.h"
-#import "BVSDKManager.h"
+#import "BVSDKManager+Private.h"
 #import "BVStoreIncludeType.h"
 
 @interface BVBulkStoreItemsRequest ()
@@ -26,8 +27,7 @@
 @implementation BVBulkStoreItemsRequest
 
 - (nonnull instancetype)init:(NSUInteger)limit offset:(NSUInteger)offset {
-  self = [super init];
-  if (self) {
+  if ((self = [super init])) {
     self.limit = limit;
     self.offset = offset;
     [self initDefaultProps];
@@ -36,8 +36,7 @@
 }
 
 - (nonnull instancetype)initWithStoreIds:(nonnull NSArray *)storeIds {
-  self = [super init];
-  if (self) {
+  if ((self = [super init])) {
     self.limit = [storeIds count];
     self.offset = 0;
     [self initDefaultProps];
@@ -112,14 +111,14 @@
                           value:[NSString
                                     stringWithFormat:@"%i", (int)self.offset]]];
 
-  if (self.storeIncludeTypes.count) {
+  if (self.storeIncludeTypes && 0 < self.storeIncludeTypes.count) {
     [params addObject:[BVStringKeyValuePair
                           pairWithKey:@"Stats"
                                 value:[self statisticsToParams:
                                                 self.storeIncludeTypes]]];
   }
 
-  if ([self.filterStoreIds count] > 0) {
+  if (self.filterStoreIds && 0 < self.filterStoreIds.count) {
     BVFilter *filter = [[BVFilter alloc]
         initWithFilterType:
             [BVProductFilterType

@@ -1,6 +1,6 @@
 //
 //  BVReviewSubmissionErrorResponse.h
-//  Conversations
+//  BVSDK
 //
 //  Copyright © 2016 Bazaarvoice. All rights reserved.
 //
@@ -10,8 +10,6 @@
 #import <Foundation/Foundation.h>
 
 /// Failed review submission response.
-@interface BVReviewSubmissionErrorResponse : BVSubmissionErrorResponse
-
-@property(nullable) BVSubmittedReview *review;
-
+@interface BVReviewSubmissionErrorResponse
+    : BVSubmissionErrorResponse <BVSubmittedReview *>
 @end

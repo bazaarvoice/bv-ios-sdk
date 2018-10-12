@@ -1,32 +1,31 @@
 //
 //  BVQuestion.m
-//  Conversations
+//  BVSDK
 //
 //  Copyright © 2016 Bazaarvoice. All rights reserved.
 //
 
 #import "BVQuestion.h"
-#import "BVConversationsInclude.h"
+#import "BVAnswer.h"
+#import "BVBadge.h"
+#import "BVContextDataValue.h"
+#import "BVGenericConversationsResult+Private.h"
 #import "BVModelUtil.h"
 #import "BVNullHelper.h"
+#import "BVPhoto.h"
+#import "BVSyndicationSource.h"
+#import "BVVideo.h"
 
 @implementation BVQuestion
 
 - (id)initWithApiResponse:(NSDictionary *)apiResponse
                  includes:(BVConversationsInclude *)includes {
-  self = [super init];
-  if (self) {
-    NSArray<NSString *> *answerIds = apiResponse[@"AnswerIds"];
-    NSMutableArray<BVAnswer *> *tempAnswers = [NSMutableArray array];
+  if ((self = [super init])) {
 
-    if (includes) {
-      for (NSString *answerId in answerIds) {
-        BVAnswer *answer = [includes getAnswerById:answerId];
-        [tempAnswers addObject:answer];
-      }
+    if (!includes) {
+      includes =
+          [[BVConversationsInclude alloc] initWithApiResponse:apiResponse];
     }
-
-    self.answers = tempAnswers;
 
     SET_IF_NOT_NULL(self.questionSummary, apiResponse[@"QuestionSummary"])
     SET_IF_NOT_NULL(self.totalAnswerCount, apiResponse[@"TotalAnswerCount"])
@@ -83,6 +82,9 @@
     self.contextDataValues =
         [BVModelUtil parseContextDataValues:apiResponse[@"ContextDataValues"]];
     self.badges = [BVModelUtil parseBadges:apiResponse[@"Badges"]];
+
+    GET_BVOBJECTS_FROM_CONVERSATIONS_INCLUDE(_includedAnswers, includes,
+                                             Answer);
   }
   return self;
 }

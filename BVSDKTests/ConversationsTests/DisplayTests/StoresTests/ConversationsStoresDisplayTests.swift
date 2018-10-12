@@ -1,6 +1,6 @@
 //
 //  ConversationsStoresDisplayTests.swift
-//  Conversations
+//  BVSDKTests
 //
 //  Copyright © 2016 Bazaarvoice. All rights reserved.
 //
@@ -60,8 +60,8 @@ class ConversationsStoresDisplayTests: XCTestCase {
       for currReview in response.results {
         // make sure we have some review text in each BVReview object
         
-        XCTAssertTrue(currReview.productId != nil, "store productId id should never be nil in a review")
-        XCTAssertTrue(currReview.authorId != nil, "authorId should never be nil in a review")
+        XCTAssertNotNil(currReview.productId, "store productId id should never be nil in a review")
+        XCTAssertNotNil(currReview.authorId, "authorId should never be nil in a review")
       }
       
       XCTAssertNotNil(store.reviewStatistics, "store reviewStatistics should not be nil")

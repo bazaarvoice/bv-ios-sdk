@@ -1,6 +1,6 @@
 //
 //  CommentsDisplayTests.swift
-//  BVSDK
+//  BVSDKTests
 //
 //  Copyright © 2017 Bazaarvoice. All rights reserved.
 //
@@ -115,21 +115,45 @@ class CommentsDisplayTests: XCTestCase {
       
       XCTAssertEqual(response.results.count, 1)
       
-      let theComment : BVComment = response.results.first!
+      guard let theComment: BVComment = response.results.first else {
+        XCTFail()
+        expectation.fulfill()
+        return
+      }
+      
+      guard let reviewId: String = theComment.reviewId,
+        let theReview: BVReview = theComment
+          .includedReviews.first(where: { $0.identifier == reviewId })
+        else {
+          XCTFail()
+          expectation.fulfill()
+          return
+      }
+      
+      guard let productId: String = theReview.productId,
+        let theProduct: BVProduct = theComment
+          .includedProducts.first(where: { $0.identifier == productId }) else {
+            XCTFail()
+            expectation.fulfill()
+            return
+      }
+      
+      guard let authorId: String = theComment.authorId,
+        let theAuthor: BVAuthor = theComment
+          .includedAuthors.first(where: { $0.authorId == authorId })
+        else {
+          XCTFail()
+          expectation.fulfill()
+          return
+      }
       
       // Test included reviews
-      let theReview : BVReview = (theComment.includes?.getReviewById(theComment.reviewId!))!
-      XCTAssertNotNil(theReview)
       XCTAssertNotNil(theReview.title)
       
       // Test included products
-      let theProduct : BVProduct = (theComment.includes?.getProductById(theReview.productId!))!
-      XCTAssertNotNil(theProduct)
       XCTAssertNotNil(theProduct.name)
       
       // Test included authors
-      let theAuthor : BVAuthor = (theComment.includes?.getAuthorById(theComment.authorId!))!
-      XCTAssertNotNil(theAuthor)
       XCTAssertNotNil(theAuthor.userNickname)
       XCTAssertNotNil(theAuthor.authorId)
       
@@ -138,14 +162,13 @@ class CommentsDisplayTests: XCTestCase {
     }) { (error) in
       
       XCTFail("comments by product id display request error: \(error)")
+      expectation.fulfill()
       
     }
     
     self.waitForExpectations(timeout: 10) { (error) in
       XCTAssertNil(error, "Something went horribly wrong, request took too long.")
     }
-    
-    
   }
   
   func testCommentFilteringSorting() {

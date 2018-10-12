@@ -1,6 +1,6 @@
 //
 //  ProductIdEscapeTests.swift
-//  Conversations
+//  BVSDKTests
 //
 //  Copyright © 2016 Bazaarvoice. All rights reserved.
 //

@@ -7,17 +7,24 @@
 
 #import "BVSubmission.h"
 #import "BVSubmissionAction.h"
-#import "BVUploadablePhoto.h"
-#import "BVUploadableYouTubeVideo.h"
+#import "BVSubmissionResponse.h"
+#import "BVSubmittedType.h"
+
+@class UIImage;
 
 /// Base class used for defining common properties for a UGC content types of
 /// the Conversations API: Reviews, Review Comments, Questions and Answers.
-@interface BVBaseUGCSubmission : BVSubmission
+@interface BVBaseUGCSubmission <__covariant BVResponseType : BVSubmittedType *> : BVSubmission<BVResponseType>
 
 /// Set whether or not to to perform a preview on the submission or submit for
 /// real. Default is BVSubmissionActionPreview. A preview is like a dry run, but
 /// validation of the fields will occur through the API call over the network
 /// but no data will be submitted.
+/// - Note:
+/// \
+/// If the `action` of this object is set to `BVSubmissionActionPreview` then
+/// the submission will NOT actually take place.
+
 @property BVSubmissionAction action;
 
 /// Value of the encrypted user. This parameter demonstrates that a user has
@@ -42,8 +49,8 @@
 /// conditions. Required depending on the client's settings.
 @property(nullable) NSNumber *agreedToTermsAndConditions;
 
-// Boolean indicating whether or not the user wants to be notified when a
-// comment is posted on the content.
+/// Boolean indicating whether or not the user wants to be notified when a
+/// comment is posted on the content.
 @property(nullable) NSNumber *sendEmailAlertWhenCommented;
 
 /// Boolean indicating whether or not the user wants to be notified when his/her
@@ -74,40 +81,23 @@
 /// required. See the hosted authentication tutorial for more information.
 @property(nullable) NSString *hostedAuthenticationCallback;
 
-/**
- Fingerprint of content author's device. See the Authenticity Tutorial for more
- information.
-
- Per the Bazaarvoice Authenticity Policy, you must send a device fingerprint
- attached to each submission. If you fail to send a device fingerprint with your
- submission, Bazaarvoice may take any action deemed necessary in Bazaarvoice’s
- sole discretion to protect the integrity of the network. Such actions may
- include but are not limited to: rejection of your content, halting syndication
- of your content on the Bazaarvoice network, revocation of your API key, or
- revocation of your API license.
- */
+/// Fingerprint of content author's device. See the Authenticity Tutorial for
+/// more information.
+///
+/// Per the Bazaarvoice Authenticity Policy, you must send a device fingerprint
+/// attached to each submission. If you fail to send a device fingerprint with
+/// your submission, Bazaarvoice may take any action deemed necessary in
+/// Bazaarvoice’s sole discretion to protect the integrity of the network. Such
+/// actions may include but are not limited to: rejection of your content,
+/// halting syndication of your content on the Bazaarvoice network, revocation
+/// of your API key, or revocation of your API license.
 @property(nullable) NSString *fingerPrint;
 
-// An array of BVUploadablePhoto objects to attach to a review submission.
-@property(nullable) NSMutableArray<BVUploadablePhoto *> *photos;
-
-// An array of custom Key-Value pairs
-@property(nullable) NSMutableArray<BVStringKeyValuePair *> *customFormPairs;
-
-/**
- Submit a user-provided photo attached to this answer.
-
- @param image           The user-provded image attached to this answer.
- @param photoCaption    The user-provided caption for the photo.
- */
+/// Add a user-provided photo.
+///
+/// @param image           The user-provded image.
+/// @param photoCaption    The user-provided caption for the photo.
 - (void)addPhoto:(nonnull UIImage *)image
     withPhotoCaption:(nullable NSString *)photoCaption;
-
-/**
- This method adds extra user provided form parameters to a
- submission request, and will be urlencoded.
- */
-- (void)addCustomSubmissionParameter:(nonnull NSString *)parameter
-                           withValue:(nonnull NSString *)value;
 
 @end

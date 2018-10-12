@@ -1,14 +1,14 @@
 //
 //  BVSubmittedQuestion.h
-//  Conversations
+//  BVSDK
 //
 //  Copyright © 2016 Bazaarvoice. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import "BVSubmittedType.h"
 
 /// A successfully submitted question.
-@interface BVSubmittedQuestion : NSObject
+@interface BVSubmittedQuestion : BVSubmittedType
 
 @property(nullable) NSString *questionSummary;
 @property(nullable) NSString *questionDetails;
@@ -20,7 +20,5 @@
 @property(nullable) NSNumber *typicalHoursToPost;
 
 @property(nullable) NSDate *submissionTime;
-
-- (nullable instancetype)initWithApiResponse:(nullable id)apiResponse;
 
 @end

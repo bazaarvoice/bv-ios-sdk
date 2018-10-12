@@ -1,6 +1,6 @@
 //
 //  BVCurationsTests.m
-//  BVSDK
+//  BVSDKTests
 //
 //  Copyright © 2016 Bazaarvoice. All rights reserved.
 //
@@ -47,7 +47,7 @@
 
 // Test normal parse result from a feed
 - (void)testFetchCurations {
-  [self addStubWith200ResponseForJSONFileNamed:@"curationsFeedTest1.json"];
+  [self forceStubWithJSON:@"curationsFeedTest1.json"];
 
   __weak XCTestExpectation *expectation =
       [self expectationWithDescription:@"testFetchCurations"];
@@ -93,7 +93,7 @@
         NSString *errorString =
             [NSString stringWithFormat:@"ERROR: Curations API feed failure: %@",
                                        error.localizedDescription];
-        XCTAssert(errorString == nil, @"%@", errorString);
+        XCTAssertNil(errorString, @"%@", errorString);
 
         [expectation fulfill];
       }];
@@ -103,7 +103,7 @@
 
 // Test normal parse result from a feed but using network delegate
 - (void)testFetchCurationsWithNetworkDelegate {
-  [self addStubWith200ResponseForJSONFileNamed:@"curationsFeedTest1.json"];
+  [self forceStubWithJSON:@"curationsFeedTest1.json"];
 
   __weak XCTestExpectation *mainExpectation = [self
       expectationWithDescription:@"testFetchCurationsWithNetworkDelegate"];
@@ -164,7 +164,7 @@
         NSString *errorString =
             [NSString stringWithFormat:@"ERROR: Curations API feed failure: %@",
                                        error.localizedDescription];
-        XCTAssert(errorString == nil, @"%@", errorString);
+        XCTAssertNil(errorString, @"%@", errorString);
 
         [mainExpectation fulfill];
       }];
@@ -174,7 +174,7 @@
 
 // Test fetching curations with user's geolocation
 - (void)testFetchCurationsWithLocation {
-  [self addStubWith200ResponseForJSONFileNamed:@"curationsFeedTest1.json"];
+  [self forceStubWithJSON:@"curationsFeedTest1.json"];
 
   __weak XCTestExpectation *expectation =
       [self expectationWithDescription:@"testFetchCurationsWithLocation"];
@@ -195,9 +195,8 @@
 
         NSInteger locationCount = 0;
         for (BVCurationsFeedItem *feedItem in feedItems) {
-          if (feedItem.coordinates != nil &&
-              feedItem.coordinates.latitude != nil &&
-              feedItem.coordinates.longitude != nil) {
+          if (feedItem.coordinates && feedItem.coordinates.latitude &&
+              feedItem.coordinates.longitude) {
             locationCount += 1;
           }
         }
@@ -218,7 +217,7 @@
         NSString *errorString =
             [NSString stringWithFormat:@"ERROR: Curations API feed failure: %@",
                                        error.localizedDescription];
-        XCTAssert(errorString == nil, @"%@", errorString);
+        XCTAssertNil(errorString, @"%@", errorString);
 
         [expectation fulfill];
       }];
@@ -228,7 +227,7 @@
 
 // Test proper failure of malformed JSON
 - (void)testFetchCurationsMalformedJSON {
-  [self addStubWith200ResponseForJSONFileNamed:@"malformedJSON.json"];
+  [self stubWithJSON:@"malformedJSON.json"];
 
   __weak XCTestExpectation *expectation =
       [self expectationWithDescription:@"testFetchCurationsMalformedJSON"];
@@ -253,8 +252,8 @@
         NSString *errorString =
             [NSString stringWithFormat:@"ERROR: Curations API feed failure: %@",
                                        error.localizedDescription];
-        XCTAssert(errorString != nil, @"Expected a non nil error string: %@",
-                  errorString);
+        XCTAssertNotNil(errorString, @"Expected a non nil error string: %@",
+                        errorString);
 
         [expectation fulfill];
       }];
@@ -264,7 +263,7 @@
 
 // Test proper failure of empty body but 200 response
 - (void)testEmptyBodyFromFeedRequest {
-  [self addStubWith200ResponseForJSONFileNamed:@""];
+  [self stubWithJSON:@""];
 
   __weak XCTestExpectation *expectation =
       [self expectationWithDescription:@"testEmptyBodyFromFeedRequest"];
@@ -289,8 +288,8 @@
         NSString *errorString =
             [NSString stringWithFormat:@"ERROR: Curations API feed failure: %@",
                                        error.localizedDescription];
-        XCTAssert(errorString != nil, @"Expected a non nil error string: %@",
-                  errorString);
+        XCTAssertNotNil(errorString, @"Expected a non nil error string: %@",
+                        errorString);
 
         [expectation fulfill];
       }];
@@ -300,9 +299,9 @@
 
 // HTTP status 500
 - (void)testServerError500 {
-  [self addStubWithResultFile:@""
-                   statusCode:500
-                  withHeaders:@{@"Content-Type" : @"application/json"}];
+  [self stubWithResultFile:@""
+                statusCode:500
+               withHeaders:@{@"Content-Type" : @"application/json"}];
 
   __weak XCTestExpectation *expectation =
       [self expectationWithDescription:@"testEmptyBodyFromFeedRequest"];
@@ -327,8 +326,8 @@
         NSString *errorString =
             [NSString stringWithFormat:@"ERROR: Curations API feed failure: %@",
                                        error.localizedDescription];
-        XCTAssert(errorString != nil, @"Expected a non nil error string: %@",
-                  errorString);
+        XCTAssertNotNil(errorString, @"Expected a non nil error string: %@",
+                        errorString);
 
         [expectation fulfill];
       }];
@@ -338,18 +337,18 @@
 
 // Test proper failure of empty body but 200 response
 - (void)testNon200Status {
-  [self addStubWithResultFile:@"curations500Error.json"
-                   statusCode:200
-                  withHeaders:@{
-                    @"Content-Type" : @"application/json;charset=utf-8",
-                    @"Access-Control-Allow-Origin" : @"*",
-                    @"Connection" : @"keep-alive",
-                    @"Date" : @"Wed, 30 Mar 2016 15:52:51 GMT",
-                    @"Server" : @"nginx/1.6.2",
-                    @"Vary" : @"Accept-Encoding",
-                    @"X-Mashery-Responder" :
-                        @"prod-j-worker-bv-us-west-1c-06.mashery.com"
-                  }];
+  [self stubWithResultFile:@"curations500Error.json"
+                statusCode:200
+               withHeaders:@{
+                 @"Content-Type" : @"application/json;charset=utf-8",
+                 @"Access-Control-Allow-Origin" : @"*",
+                 @"Connection" : @"keep-alive",
+                 @"Date" : @"Wed, 30 Mar 2016 15:52:51 GMT",
+                 @"Server" : @"nginx/1.6.2",
+                 @"Vary" : @"Accept-Encoding",
+                 @"X-Mashery-Responder" :
+                     @"prod-j-worker-bv-us-west-1c-06.mashery.com"
+               }];
 
   __weak XCTestExpectation *expectation =
       [self expectationWithDescription:@"testNon200Status"];
@@ -374,8 +373,8 @@
         NSString *errorString =
             [NSString stringWithFormat:@"ERROR: Curations API feed failure: %@",
                                        error.localizedDescription];
-        XCTAssert(errorString != nil, @"Expected a non nil error string: %@",
-                  errorString);
+        XCTAssertNotNil(errorString, @"Expected a non nil error string: %@",
+                        errorString);
 
         [expectation fulfill];
       }];
@@ -454,12 +453,12 @@
 - (void)waitForExpectations {
   [self waitForExpectationsWithTimeout:30.0
                                handler:^(NSError *error) {
-                                 
+
                                  if (error) {
                                    XCTFail(@"Expectation Failed with error: %@",
                                            error);
                                  }
-                                 
+
                                }];
 }
 
@@ -534,7 +533,7 @@
                                                            options:kNilOptions
                                                              error:&error];
 
-  if (error || jsonDict == nil) {
+  if (error || jsonDict ) {
     // fail
     XCTAssertTrue(NO, @"An error occurred deserializing the parameters.");
   }
@@ -608,7 +607,7 @@
   __weak XCTestExpectation *expectation =
       [self expectationWithDescription:@"testPostPhotoSuccess"];
 
-  [self addStubWith200ResponseForJSONFileNamed:@"post_successfulCreation.json"];
+  [self stubWithJSON:@"post_successfulCreation.json"];
 
   // Construct the parmas with required
   NSString *aliasInput = @"mobileUnitTest";
@@ -651,7 +650,7 @@
   __weak XCTestExpectation *expectation =
       [self expectationWithDescription:@"testPostPhotoFail"];
 
-  [self addStubWith200ResponseForJSONFileNamed:@"post_ErrorParsingBody.json"];
+  [self stubWithJSON:@"post_ErrorParsingBody.json"];
 
   // Construct the parmas with required
   NSString *aliasInput = @"mobileUnitTest";
@@ -698,7 +697,7 @@
   __weak XCTestExpectation *expectation =
       [self expectationWithDescription:@"testPostMissingRequiredKey"];
 
-  [self addStubWith200ResponseForJSONFileNamed:@"post_MissingRequiredKey.json"];
+  [self stubWithJSON:@"post_MissingRequiredKey.json"];
 
   // Construct the parmas with required
   NSString *aliasInput = @"";
@@ -738,7 +737,7 @@
   __weak XCTestExpectation *expectation =
       [self expectationWithDescription:@"testPostMalformedJSONResponse"];
 
-  [self addStubWith200ResponseForJSONFileNamed:@"malformedJSON.json"];
+  [self stubWithJSON:@"malformedJSON.json"];
 
   // Construct the parmas with required
   NSString *aliasInput = @"";

@@ -10,11 +10,9 @@
 #define BVCurations_h
 
 #import "BVCommon.h"
-#import "BVCurationsAddPostRequest.h"
 #import "BVCurationsFeedItem.h"
 #import "BVCurationsFeedLoader.h"
 #import "BVCurationsFeedRequest.h"
-#import "BVCurationsPhotoUploader.h"
 #import "BVPixel.h"
 
 #endif

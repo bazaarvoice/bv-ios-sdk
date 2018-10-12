@@ -36,7 +36,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView
     numberOfRowsInSection:(NSInteger)section {
-  return [self.question.answers count];
+  return [self.question.includedAnswers count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView
@@ -45,7 +45,7 @@
   MyAnswerTableViewCell *cell =
       [tableView dequeueReusableCellWithIdentifier:@"MyAnswerTableViewCell"];
 
-  cell.answer = [self.question.answers objectAtIndex:indexPath.row];
+  cell.answer = [self.question.includedAnswers objectAtIndex:indexPath.row];
 
   return cell;
 }

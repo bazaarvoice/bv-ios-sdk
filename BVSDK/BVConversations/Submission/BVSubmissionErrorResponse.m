@@ -1,32 +1,34 @@
 //
 //  SubmissionErrorResponse.m
-//  Conversations
+//  BVSDK
 //
 //  Copyright © 2016 Bazaarvoice. All rights reserved.
 //
 
-#import "BVSubmissionErrorResponse.h"
+#import "BVConversationsError.h"
+#import "BVFieldError.h"
 #import "BVNullHelper.h"
+#import "BVSubmissionErrorResponse+Private.h"
+
+@interface BVSubmissionErrorResponse ()
+@property(nonnull) NSArray<BVConversationsError *> *errors;
+@end
 
 @implementation BVSubmissionErrorResponse
 
 - (nullable instancetype)initWithApiResponse:(nullable id)apiResponse {
-  self = [super init];
-  if (self) {
+  if ((self = [super init])) {
 
-    if (apiResponse == nil ||
-        ![apiResponse isKindOfClass:[NSDictionary class]]) {
+    if (!__IS_KIND_OF(apiResponse, NSDictionary)) {
       return nil;
     }
 
-    NSDictionary *apiObject = apiResponse;
+    NSDictionary *apiObject = (NSDictionary *)apiResponse;
 
     NSNumber *hasErrs = apiObject[@"HasErrors"];
-    if (hasErrs != nil) {
-      self.hasErrors = [hasErrs boolValue];
-    }
+    self.hasErrors = (hasErrs && [hasErrs boolValue]) ? YES : NO;
 
-    if (self.hasErrors == false) {
+    if (!self.hasErrors) {
       return nil;
     }
 

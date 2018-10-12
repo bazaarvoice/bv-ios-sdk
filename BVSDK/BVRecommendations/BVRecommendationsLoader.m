@@ -14,6 +14,7 @@
 #import "BVRecommendationsRequestOptionsUtil.h"
 #import "BVRecsAnalyticsHelper.h"
 #import "BVSDKConfiguration.h"
+#import "BVSDKManager+Private.h"
 #import "BVShopperProfile.h"
 #import "BVShopperProfileRequestCache.h"
 
@@ -374,11 +375,10 @@ completionOnMainThread:(NSArray<BVRecommendedProduct *> *)recommendations
   NSString *passKey =
       [BVSDKManager sharedManager].configuration.apiKeyShopperAdvertising;
 
-  if (clientId == nil || passKey == nil || [clientId isEqualToString:@""] ||
+  if (!clientId || !passKey || [clientId isEqualToString:@""] ||
       [passKey isEqualToString:@""]) {
     return NO;
   }
-
   return YES;
 }
 

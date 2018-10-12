@@ -12,22 +12,22 @@
 
 - (nullable instancetype)initWithFeedbackResponse:
     (nullable id)inapropriateDict {
-  self = [super init];
-  if (self) {
+  if ((self = [super init])) {
 
-    if (inapropriateDict == nil ||
-        ![inapropriateDict isKindOfClass:[NSDictionary class]]) {
+    if (!__IS_KIND_OF(inapropriateDict, NSDictionary)) {
       return nil;
     }
 
-    NSDictionary *values = [inapropriateDict objectForKey:@"Inappropriate"];
+    NSDictionary *container = (NSDictionary *)inapropriateDict;
+    NSDictionary *innerContainer = [container objectForKey:@"Inappropriate"];
 
-    if (values) {
-      SET_IF_NOT_NULL(self.authorId, [values objectForKey:@"AuthorId"]);
-      SET_IF_NOT_NULL(self.reasonText, [values objectForKey:@"ReasonText"]);
-    } else {
+    if (!__IS_KIND_OF(innerContainer, NSDictionary)) {
       return nil;
     }
+
+    NSDictionary *values = (NSDictionary *)innerContainer;
+    SET_IF_NOT_NULL(self.authorId, [values objectForKey:@"AuthorId"]);
+    SET_IF_NOT_NULL(self.reasonText, [values objectForKey:@"ReasonText"]);
   }
   return self;
 }
@@ -37,22 +37,22 @@
 @implementation BVFeedbackHelpfulnessResponse
 
 - (nullable instancetype)initWithFeedbackResponse:(nullable id)helpfulnessDict {
-  self = [super init];
-  if (self) {
+  if ((self = [super init])) {
 
-    if (helpfulnessDict == nil ||
-        ![helpfulnessDict isKindOfClass:[NSDictionary class]]) {
+    if (!__IS_KIND_OF(helpfulnessDict, NSDictionary)) {
       return nil;
     }
 
-    NSDictionary *values = [helpfulnessDict objectForKey:@"Helpfulness"];
+    NSDictionary *container = (NSDictionary *)helpfulnessDict;
+    NSDictionary *innerContainer = [container objectForKey:@"Helpfulness"];
 
-    if (values) {
-      SET_IF_NOT_NULL(self.authorId, [values objectForKey:@"AuthorId"]);
-      SET_IF_NOT_NULL(self.vote, [values objectForKey:@"Vote"]);
-    } else {
+    if (!__IS_KIND_OF(innerContainer, NSDictionary)) {
       return nil;
     }
+
+    NSDictionary *values = (NSDictionary *)innerContainer;
+    SET_IF_NOT_NULL(self.authorId, [values objectForKey:@"AuthorId"]);
+    SET_IF_NOT_NULL(self.vote, [values objectForKey:@"Vote"]);
   }
   return self;
 }
@@ -62,24 +62,17 @@
 @implementation BVSubmittedFeedback
 
 - (nullable instancetype)initWithApiResponse:(nullable id)apiResponse {
-  self = [super init];
-  if (self) {
+  if ((self = [super init])) {
 
-    if (apiResponse == nil ||
-        ![apiResponse isKindOfClass:[NSDictionary class]]) {
+    if (!__IS_KIND_OF(apiResponse, NSDictionary)) {
       return nil;
     }
 
-    NSDictionary *apiObject = apiResponse;
-
-    if (apiObject) {
-      self.inappropriateResponse = [[BVFeedbackInappropriateResponse alloc]
-          initWithFeedbackResponse:apiObject];
-      self.helpfulnessResponse = [[BVFeedbackHelpfulnessResponse alloc]
-          initWithFeedbackResponse:apiObject];
-    } else {
-      return nil;
-    }
+    NSDictionary *apiObject = (NSDictionary *)apiResponse;
+    self.inappropriateResponse = [[BVFeedbackInappropriateResponse alloc]
+        initWithFeedbackResponse:apiObject];
+    self.helpfulnessResponse = [[BVFeedbackHelpfulnessResponse alloc]
+        initWithFeedbackResponse:apiObject];
   }
   return self;
 }

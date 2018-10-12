@@ -64,7 +64,7 @@ class CurationsFeedItemDetailTableViewController: UITableViewController {
           
           // Have not yet tested out this video support.
           
-          _ = SweetAlert().showAlert("\(video.origin) is not yet supported in the demo app.", subTitle: "This feature is currenlty under development.", style: AlertStyle.warning)
+          _ = SweetAlert().showAlert("\(video.origin ?? "none") is not yet supported in the demo app.", subTitle: "This feature is currenlty under development.", style: AlertStyle.warning)
           
         }
         

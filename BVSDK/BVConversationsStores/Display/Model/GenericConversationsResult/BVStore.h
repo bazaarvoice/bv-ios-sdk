@@ -1,6 +1,6 @@
 //
 //  BVStore.h
-//  Conversations
+//  BVSDK
 //
 //  Copyright © 2016 Bazaarvoice. All rights reserved.
 //
@@ -28,7 +28,7 @@
     The storeLocation provides additional attributes about the store, such as
  geo-location and phone number.
  */
-@interface BVStore : NSObject <BVGenericConversationsResult>
+@interface BVStore : BVGenericConversationsResult
 
 @property(nullable) BVBrand *brand;
 @property(nullable) BVStoreLocation *storeLocation;
