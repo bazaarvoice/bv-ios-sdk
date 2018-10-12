@@ -25,6 +25,9 @@
 @interface BVBaseReviewsRequest ()
 @end
 
+@interface BVBaseReviewsRequest ()
+@end
+
 @implementation BVBaseReviewsRequest
 
 - (nonnull instancetype)initWithID:(nonnull NSString *)ID
