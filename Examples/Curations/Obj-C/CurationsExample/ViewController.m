@@ -48,7 +48,7 @@ static const NSInteger kNumRowsStart = 2;
   downloader.maxConcurrentDownloads = NSIntegerMax;
   downloader.executionOrder = SDWebImageDownloaderLIFOExecutionOrder;
   _sdMngr =
-  [[SDWebImageManager alloc] initWithCache:cache downloader:downloader];
+      [[SDWebImageManager alloc] initWithCache:cache downloader:downloader];
 }
 
 - (IBAction)stepColumnCount:(UIStepper *)sender {

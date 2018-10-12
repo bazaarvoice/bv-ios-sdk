@@ -26,16 +26,14 @@
 @implementation BVAnswersCollectionView
 
 - (id)init {
-  self = [super init];
-  if (self) {
+  if ((self = [super init])) {
     [self setup];
   }
   return self;
 }
 
 - (id)initWithFrame:(CGRect)frame {
-  self = [super initWithFrame:frame];
-  if (self) {
+  if ((self = [super initWithFrame:frame])) {
     [self setup];
   }
   return self;
@@ -43,16 +41,14 @@
 
 - (id)initWithFrame:(CGRect)frame
     collectionViewLayout:(UICollectionViewLayout *)layout {
-  self = [super initWithFrame:frame collectionViewLayout:layout];
-  if (self) {
+  if ((self = [super initWithFrame:frame collectionViewLayout:layout])) {
     [self setup];
   }
   return self;
 }
 
 - (id)initWithCoder:(NSCoder *)aDecoder {
-  self = [super initWithCoder:aDecoder];
-  if (self) {
+  if ((self = [super initWithCoder:aDecoder])) {
     [self setup];
   }
   return self;

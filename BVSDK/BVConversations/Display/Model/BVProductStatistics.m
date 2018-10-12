@@ -1,19 +1,19 @@
 //
 //  ProductStatistics.m
-//  Conversations
+//  BVSDK
 //
 //  Copyright © 2016 Bazaarvoice. All rights reserved.
 //
 
 #import "BVProductStatistics.h"
+#import "BVConversationsInclude.h"
 #import "BVNullHelper.h"
 
 @implementation BVProductStatistics
 
-- (nonnull id)initWithApiResponse:(nonnull NSDictionary *)apiResponse {
-
-  self = [super init];
-  if (self) {
+- (nonnull id)initWithApiResponse:(nonnull NSDictionary *)apiResponse
+                         includes:(nullable BVConversationsInclude *)includes {
+  if ((self = [super init])) {
     NSDictionary *productStatistics = apiResponse[@"ProductStatistics"];
 
     SET_IF_NOT_NULL(self.productId, productStatistics[@"ProductId"])

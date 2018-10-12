@@ -69,7 +69,7 @@ class AnswersViewController: UIViewController, UITableViewDataSource, UITableVie
       return 2
     }
     else {
-      return question.answers.count
+      return question.includedAnswers.count
     }
     
   }
@@ -102,7 +102,7 @@ class AnswersViewController: UIViewController, UITableViewDataSource, UITableVie
     else {
       let cell = tableView.dequeueReusableCell(withIdentifier: "AnswerTableViewCell") as! AnswerTableViewCell
       
-      cell.answer = question.answers[indexPath.row]
+      cell.answer = question.includedAnswers[indexPath.row]
       cell.onAuthorNickNameTapped = { (authorId) -> Void in
         let authorVC = AuthorProfileViewController(authorId: authorId)
         self.navigationController?.pushViewController(authorVC, animated: true)

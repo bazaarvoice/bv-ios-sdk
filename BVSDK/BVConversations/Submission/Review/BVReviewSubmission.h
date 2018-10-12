@@ -1,18 +1,12 @@
 //
 //  BVReviewSubmission.h
-//  Conversations
+//  BVSDK
 //
 //  Copyright © 2016 Bazaarvoice. All rights reserved.
 //
 
 #import "BVBaseUGCSubmission.h"
-#import "BVConversationsRequest.h"
-#import "BVReviewSubmissionResponse.h"
-#import "BVUploadablePhoto.h"
-#import <UIKit/UIKit.h>
-
-typedef void (^ReviewSubmissionCompletion)(
-    BVReviewSubmissionResponse *__nonnull response);
+#import "BVSubmittedReview.h"
 
 /**
  Class to use to submit a review to the Bazaarvoice platform.
@@ -25,7 +19,7 @@ typedef void (^ReviewSubmissionCompletion)(
 
  @availability 4.1.0 and later
  */
-@interface BVReviewSubmission : BVBaseUGCSubmission
+@interface BVReviewSubmission : BVBaseUGCSubmission <BVSubmittedReview *>
 
 /**
  Create a new BVReviewSubmission.
@@ -40,23 +34,6 @@ typedef void (^ReviewSubmissionCompletion)(
                                      rating:(NSUInteger)rating
                                   productId:(nonnull NSString *)productId;
 - (nonnull instancetype)__unavailable init;
-
-/**
- Submit this answer to the Bazaarvoice platform. If the `action` of this object
- is set to `BVSubmissionActionPreview` then the submission will NOT actually
- take place.
-
- A submission can fail for many reasons, and is dependent on your submission
- configuration.
-
- @param success    The success block is called when a successful submission
- occurs.
- @param failure    The failure block is called when an unsuccessful submission
- occurs. This could be for a number of reasons: network failures, submission
- parameters invalid, or server errors occur.
- */
-- (void)submit:(nonnull ReviewSubmissionCompletion)success
-       failure:(nonnull ConversationsFailureHandler)failure;
 
 /// Value is text representing a user comment to explain numerical Net Promoter
 /// score.
@@ -89,7 +66,6 @@ typedef void (^ReviewSubmissionCompletion)(
 - (void)addFreeformTagDimension:(nonnull NSString *)tagQuestionId
                       tagNumber:(NSInteger)tagNumber
                           value:(nonnull NSString *)value;
-- (nonnull NSString *)getPasskey;
 
 /**
  Submit a Youtube video link with UGC

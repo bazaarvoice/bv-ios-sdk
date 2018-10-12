@@ -1,6 +1,6 @@
 //
 //  ConversationsSubmissionTests.swift
-//  Conversations
+//  BVSDKTests
 //
 //  Copyright © 2016 Bazaarvoice. All rights reserved.
 //
@@ -31,7 +31,7 @@ class ReviewSubmissionTests: BVBaseStubTestCase {
         "testUploadablePhotoPNGSuccess.json",
         "testSubmitReviewWithPhotoSubmit.json"
     ]
-    addStubWith200Response(forJSONFilesNamed: sequenceFiles)
+    stub(withJSONSequence: sequenceFiles)
     
     let review = self.fillOutReview(.submit)
     
@@ -61,7 +61,7 @@ class ReviewSubmissionTests: BVBaseStubTestCase {
         "testUploadablePhotoPNGSuccess.json",
         "testSubmitReviewWithPhotoSubmit.json"
     ]
-    addStubWith200Response(forJSONFilesNamed: sequenceFiles)
+    stub(withJSONSequence: sequenceFiles)
     
     let review = self.fillOutReview(.submit)
     
@@ -103,7 +103,7 @@ class ReviewSubmissionTests: BVBaseStubTestCase {
       [
         "testSubmitReviewWithPhotoPreview.json"
     ]
-    addStubWith200Response(forJSONFilesNamed: sequenceFiles)
+    stub(withJSONSequence: sequenceFiles)
     
     let review = self.fillOutReview(.preview)
     
@@ -131,7 +131,7 @@ class ReviewSubmissionTests: BVBaseStubTestCase {
       [
         "testSubmitReviewWithVideoPreview.json"
     ]
-    addStubWith200Response(forJSONFilesNamed: sequenceFiles)
+    stub(withJSONSequence: sequenceFiles)
     
     let review = self.fillOutReview(.preview)
     review.addVideoURL(VIDEO_URL, withCaption: VIDEO_CAPTION)
@@ -156,7 +156,7 @@ class ReviewSubmissionTests: BVBaseStubTestCase {
       [
         "testSubmitReviewFailure.json"
     ]
-    addStubWith200Response(forJSONFilesNamed: sequenceFiles)
+    stub(withJSONSequence: sequenceFiles)
     
     let review = BVReviewSubmission(
       reviewTitle: "", reviewText: "", rating: 123, productId: "1000001")
@@ -184,7 +184,7 @@ class ReviewSubmissionTests: BVBaseStubTestCase {
       [
         "testSubmitReviewFailureFormCodeParsing.json"
     ]
-    addStubWith200Response(forJSONFilesNamed: sequenceFiles)
+    stub(withJSONSequence: sequenceFiles)
     
     let review = BVReviewSubmission(
       reviewTitle: "", reviewText: "", rating: 123, productId: "1000001")
@@ -236,7 +236,7 @@ class ReviewSubmissionTests: BVBaseStubTestCase {
       [
         "testSubmitReviewFailureCodeParsing.json"
     ]
-    addStubWith200Response(forJSONFilesNamed: sequenceFiles)
+    stub(withJSONSequence: sequenceFiles)
     
     let review = BVReviewSubmission(
       reviewTitle: "", reviewText: "", rating: 123, productId: "")

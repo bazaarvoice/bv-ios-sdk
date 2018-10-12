@@ -1,6 +1,6 @@
 //
 //  BVBaseStubTestCase.m
-//  BVSDK
+//  BVSDKTests
 //
 //  Copyright © 2017 Bazaarvoice. All rights reserved.
 //
@@ -10,12 +10,10 @@
 #import <BVSDK/BVAnalyticsManager+Testing.h>
 #import <BVSDK/BVLocaleServiceManager.h>
 #import <BVSDK/BVSDKConfiguration.h>
+#import <BVSDK/BVSDKManager+Private.h>
 #import <BVSDK/BVSDKManager.h>
 
 #import "BVBaseStubTestCase.h"
-
-#define ANALYTICS_TEST_USING_MOCK_DATA                                         \
-  1 // Setting to 1 uses mock result. Set to 0 to make network request.
 
 @interface BVAnalyticsManager (TestAccessors)
 @property(strong) NSMutableArray *eventQueue;
@@ -516,9 +514,7 @@
 
 - (void)testTransactionConversionNoPII {
 
-#if ANALYTICS_TEST_USING_MOCK_DATA == 1
-  [self addStubWith200ResponseForJSONFileNamed:@"emptyJSON.json"];
-#endif
+  [self forceStubWithJSON:@"emptyJSON.json"];
 
   [[BVAnalyticsManager sharedManager]
       enqueueImpressionTestWithName:@"testTransactionConversionNoPII"
@@ -552,9 +548,7 @@
 
 - (void)testTransactionConversionPII {
 
-#if ANALYTICS_TEST_USING_MOCK_DATA == 1
-  [self addStubWith200ResponseForJSONFileNamed:@"emptyJSON.json"];
-#endif
+  [self forceStubWithJSON:@"emptyJSON.json"];
 
   [[BVAnalyticsManager sharedManager]
       enqueueImpressionTestWithName:@"testTransactionConversionPII"
@@ -612,9 +606,7 @@
 
 - (void)testNonTransactionConversionNoPII {
 
-#if ANALYTICS_TEST_USING_MOCK_DATA == 1
-  [self addStubWith200ResponseForJSONFileNamed:@"emptyJSON.json"];
-#endif
+  [self forceStubWithJSON:@"emptyJSON.json"];
 
   [[BVAnalyticsManager sharedManager]
       enqueueImpressionTestWithName:@"testNonTransactionConversionNoPII"
@@ -642,9 +634,7 @@
 
 - (void)testNonTransactionConversionPII {
 
-#if ANALYTICS_TEST_USING_MOCK_DATA == 1
-  [self addStubWith200ResponseForJSONFileNamed:@"emptyJSON.json"];
-#endif
+  [self forceStubWithJSON:@"emptyJSON.json"];
 
   [[BVAnalyticsManager sharedManager]
       enqueueImpressionTestWithName:@"testNonTransactionConversionPII"

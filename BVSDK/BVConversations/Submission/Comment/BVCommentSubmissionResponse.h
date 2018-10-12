@@ -8,8 +8,6 @@
 #import "BVSubmissionResponse.h"
 #import "BVSubmittedComment.h"
 
-@interface BVCommentSubmissionResponse : BVSubmissionResponse
-
-@property(nullable) BVSubmittedComment *comment;
-
+@interface BVCommentSubmissionResponse
+    : BVSubmissionResponse <BVSubmittedComment *>
 @end

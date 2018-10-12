@@ -20,9 +20,7 @@
 
   NSAssert(sku, @"SKU cannot be nil");
 
-  self = [super init];
-
-  if (self) {
+  if ((self = [super init])) {
     _sku = sku;
     _name = name;
     _category = category;
@@ -31,7 +29,6 @@
     _quantity = quantity;
     self.additionalParams = [NSDictionary dictionary];
   }
-
   return self;
 }
 

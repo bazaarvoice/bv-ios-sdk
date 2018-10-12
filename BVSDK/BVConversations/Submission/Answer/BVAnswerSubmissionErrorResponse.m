@@ -1,26 +1,23 @@
 //
 //  BVAnswerSubmissionErrorResponse.m
-//  Conversations
+//  BVSDK
 //
 //  Copyright © 2016 Bazaarvoice. All rights reserved.
 //
 
 #import "BVAnswerSubmissionErrorResponse.h"
+#import "BVNullHelper.h"
 
 @implementation BVAnswerSubmissionErrorResponse
 
 - (instancetype)initWithApiResponse:(nullable id)apiResponse {
-
-  self = [super initWithApiResponse:apiResponse];
-
-  if (self) {
-    NSDictionary *apiObject = apiResponse; // [super initWithApiResponse:]
-                                           // checks that this is nonnull and a
-                                           // dictionary
-    self.answer =
-        [[BVSubmittedAnswer alloc] initWithApiResponse:apiObject[@"Answer"]];
+  if ((self = [super initWithApiResponse:apiResponse])) {
+    if (__IS_KIND_OF(apiResponse, NSDictionary)) {
+      NSDictionary *apiObject = (NSDictionary *)apiResponse;
+      self.errorResult =
+          [[BVSubmittedAnswer alloc] initWithApiResponse:apiObject[@"Answer"]];
+    }
   }
-
   return self;
 }
 

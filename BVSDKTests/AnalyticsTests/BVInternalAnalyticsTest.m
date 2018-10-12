@@ -21,9 +21,6 @@
 
 #import "BVBaseStubTestCase.h"
 
-#define ANALYTICS_TEST_USING_MOCK_DATA                                         \
-  1 // Setting to 1 uses mock result. Set to 0 to make network request.
-
 @interface BVAnalyticsManager (TestAccessors)
 @property(strong) NSMutableArray *eventQueue;
 @end
@@ -95,13 +92,11 @@
   // crash. The event queue is protected by a dispatch barrier to ensure the
   // analytics manager is thread-safe.
 
-#if ANALYTICS_TEST_USING_MOCK_DATA == 1
   NSArray<NSString *> *fileSequence = @[
     @"testShowReview.json", @"testShowReview.json", @"testShowProducts.json"
   ];
-  [self addStubWith200ResponseForJSONFilesNamed:fileSequence
-                                withPassingTest:self.passableTest];
-#endif
+  [self forceStubWithJSONSequence:fileSequence
+                  withPassingTest:self.passableTest];
 
   [[BVAnalyticsManager sharedManager]
       enqueueImpressionTestWithName:@"testBigAnalyticsEvent"
@@ -142,10 +137,8 @@
 }
 
 - (void)testAnalyticsQuestion {
-#if ANALYTICS_TEST_USING_MOCK_DATA == 1
-  [self addStubWith200ResponseForJSONFileNamed:@"testShowQuestion.json"
-                               withPassingTest:self.passableTest];
-#endif
+  [self forceStubWithJSON:@"testShowQuestion.json"
+          withPassingTest:self.passableTest];
 
   [[BVAnalyticsManager sharedManager]
       enqueueImpressionTestWithName:@"testAnalyticsQuestion"
@@ -172,10 +165,8 @@
 }
 
 - (void)testAnalyticsProducts {
-#if ANALYTICS_TEST_USING_MOCK_DATA == 1
-  [self addStubWith200ResponseForJSONFileNamed:@"testShowProducts.json"
-                               withPassingTest:self.passableTest];
-#endif
+  [self forceStubWithJSON:@"testShowProducts.json"
+          withPassingTest:self.passableTest];
 
   [[BVAnalyticsManager sharedManager]
       enqueueImpressionTestWithName:@"testAnalyticsProducts"
@@ -203,12 +194,10 @@
 #pragma mark BVRecommendations - Feature Used Tests
 
 - (void)testProductWidgetPageView {
-#if ANALYTICS_TEST_USING_MOCK_DATA == 1
   NSArray<NSString *> *fileSequence =
       @[ @"emptyJSON.json", @"emptyJSON.json", @"emptyJSON.json" ];
-  [self addStubWith200ResponseForJSONFilesNamed:fileSequence
-                                withPassingTest:self.passableTest];
-#endif
+  [self forceStubWithJSONSequence:fileSequence
+                  withPassingTest:self.passableTest];
 
   [[BVAnalyticsManager sharedManager]
       enqueueImpressionTestWithName:@"testProductWidgetPageView"
@@ -262,12 +251,7 @@
 }
 
 - (void)testProductWidgetSwiped {
-#if ANALYTICS_TEST_USING_MOCK_DATA == 1
-  [self addStubWith200ResponseForJSONFileNamed:@"emptyJSON.json"
-                               withPassingTest:self.passableTest];
-#else
-  [self addStubWith200ResponseForJSONFileNamed:@""];
-#endif
+  [self forceStubWithJSON:@"emptyJSON.json" withPassingTest:self.passableTest];
 
   [[BVAnalyticsManager sharedManager]
       enqueueImpressionTestWithName:@"testProductWidgetSwiped"
@@ -282,12 +266,7 @@
 }
 
 - (void)testProductFeatureUsed {
-#if ANALYTICS_TEST_USING_MOCK_DATA == 1
-  [self addStubWith200ResponseForJSONFileNamed:@"emptyJSON.json"
-                               withPassingTest:self.passableTest];
-#else
-  [self addStubWith200ResponseForJSONFileNamed:@""];
-#endif
+  [self forceStubWithJSON:@"emptyJSON.json" withPassingTest:self.passableTest];
 
   [[BVAnalyticsManager sharedManager]
       enqueueImpressionTestWithName:@"testProductFeatureUsed"
@@ -305,10 +284,7 @@
 #pragma mark BVNotifications Tests
 
 - (void)testNotificationInView {
-#if ANALYTICS_TEST_USING_MOCK_DATA == 1
-  [self addStubWith200ResponseForJSONFileNamed:@"emptyJSON.json"
-                               withPassingTest:self.passableTest];
-#endif
+  [self forceStubWithJSON:@"emptyJSON.json" withPassingTest:self.passableTest];
 
   [[BVAnalyticsManager sharedManager]
       enqueueImpressionTestWithName:@"testNotificationInView"
@@ -328,9 +304,7 @@
 }
 
 - (void)testNotificationUsedFeature {
-#if ANALYTICS_TEST_USING_MOCK_DATA == 1
-  [self addStubWith200ResponseForJSONFileNamed:@"emptyJSON.json"];
-#endif
+  [self forceStubWithJSON:@"emptyJSON.json"];
 
   [[BVAnalyticsManager sharedManager]
       enqueueImpressionTestWithName:@"testNotificationUsedFeature"

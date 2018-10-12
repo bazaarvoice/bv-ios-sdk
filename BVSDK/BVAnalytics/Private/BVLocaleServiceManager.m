@@ -148,7 +148,7 @@ __strong static NSDictionary *resourceDictionary = nil;
   }
 
   id localeObject = [locale objectForKey:NSLocaleCountryCode];
-  NSString *localeIdentifier = (__ISA(localeObject, NSString))
+  NSString *localeIdentifier = (__IS_KIND_OF(localeObject, NSString))
                                    ? ((NSString *)localeObject).uppercaseString
                                    : nil;
   NSAssert(localeIdentifier,
@@ -166,8 +166,9 @@ __strong static NSDictionary *resourceDictionary = nil;
 
   /// Validate the specific service dictionary we're querying
   id serviceObj = [resourceDictionary objectForKey:serviceValue];
-  NSDictionary *serviceDictionary =
-      (__ISA(serviceObj, NSDictionary)) ? (NSDictionary *)serviceObj : nil;
+  NSDictionary *serviceDictionary = (__IS_KIND_OF(serviceObj, NSDictionary))
+                                        ? (NSDictionary *)serviceObj
+                                        : nil;
   NSAssert(serviceDictionary, @"Service dictionary shouldn't be nil.");
   if (!serviceDictionary) {
     return resource;
@@ -177,7 +178,7 @@ __strong static NSDictionary *resourceDictionary = nil;
   id valuesObj = [serviceDictionary
       objectForKey:BV_LOCALE_SERVICE_MANAGER_RESOURCE_VALUES];
   NSDictionary *valuesDict =
-      (__ISA(valuesObj, NSDictionary)) ? (NSDictionary *)valuesObj : nil;
+      (__IS_KIND_OF(valuesObj, NSDictionary)) ? (NSDictionary *)valuesObj : nil;
   NSAssert(valuesDict, @"Values dictionary shouldn't be nil.");
   if (!valuesDict) {
     return resource;
@@ -186,8 +187,9 @@ __strong static NSDictionary *resourceDictionary = nil;
   /// Validate the service mappings dictionary
   id mappingsObj = [serviceDictionary
       objectForKey:BV_LOCALE_SERVICE_MANAGER_RESOURCE_MAPPINGS];
-  NSDictionary *mappingsDict =
-      (__ISA(mappingsObj, NSDictionary)) ? (NSDictionary *)mappingsObj : nil;
+  NSDictionary *mappingsDict = (__IS_KIND_OF(mappingsObj, NSDictionary))
+                                   ? (NSDictionary *)mappingsObj
+                                   : nil;
   NSAssert(mappingsDict, @"Mappings dictionary shouldn't be nil.");
   if (!mappingsDict) {
     return resource;
@@ -200,7 +202,7 @@ __strong static NSDictionary *resourceDictionary = nil;
   /// Grab the proper specfic value dictionary
   id valueObj = [valuesDict objectForKey:map];
   NSDictionary *valueDict =
-      (__ISA(valueObj, NSDictionary)) ? (NSDictionary *)valueObj : nil;
+      (__IS_KIND_OF(valueObj, NSDictionary)) ? (NSDictionary *)valueObj : nil;
   NSAssert(valueDict, @"Value dictionary shouldn't be nil.");
   if (!valueDict) {
     return resource;
@@ -212,7 +214,7 @@ __strong static NSDictionary *resourceDictionary = nil;
 
   id resourceObj = [valueDict objectForKey:environmentKey];
   NSString *value =
-      (__ISA(resourceObj, NSString)) ? (NSString *)resourceObj : nil;
+      (__IS_KIND_OF(resourceObj, NSString)) ? (NSString *)resourceObj : nil;
   NSAssert(value, @"No proper value for environment key.");
   if (!value) {
     return resource;

@@ -1,6 +1,6 @@
 //
 //  BVQuestionSubmissionErrorResponse.h
-//  Conversations
+//  BVSDK
 //
 //  Copyright © 2016 Bazaarvoice. All rights reserved.
 //
@@ -10,8 +10,6 @@
 #import <Foundation/Foundation.h>
 
 /// Failed question submission response.
-@interface BVQuestionSubmissionErrorResponse : BVSubmissionErrorResponse
-
-@property(nullable) BVSubmittedQuestion *question;
-
+@interface BVQuestionSubmissionErrorResponse
+    : BVSubmissionErrorResponse <BVSubmittedQuestion *>
 @end

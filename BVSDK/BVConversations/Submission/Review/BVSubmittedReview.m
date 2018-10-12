@@ -1,6 +1,6 @@
 //
 //  BVSubmittedReview.m
-//  Conversations
+//  BVSDK
 //
 //  Copyright © 2016 Bazaarvoice. All rights reserved.
 //
@@ -12,15 +12,13 @@
 @implementation BVSubmittedReview
 
 - (nullable instancetype)initWithApiResponse:(nullable id)apiResponse {
-  self = [super init];
-  if (self) {
+  if ((self = [super init])) {
 
-    if (apiResponse == nil ||
-        ![apiResponse isKindOfClass:[NSDictionary class]]) {
+    if (!__IS_KIND_OF(apiResponse, NSDictionary)) {
       return nil;
     }
 
-    NSDictionary *apiObject = apiResponse;
+    NSDictionary *apiObject = (NSDictionary *)apiResponse;
 
     SET_IF_NOT_NULL(self.title, apiObject[@"Title"])
     SET_IF_NOT_NULL(self.reviewText, apiObject[@"ReviewText"])

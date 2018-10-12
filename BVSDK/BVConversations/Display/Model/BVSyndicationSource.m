@@ -11,14 +11,13 @@
 @implementation BVSyndicationSource
 
 - (nullable id)initWithApiResponse:(nullable id)apiResponse {
-  self = [super init];
-  if (self) {
-    if (apiResponse == nil ||
-        ![apiResponse isKindOfClass:[NSDictionary class]]) {
+  if ((self = [super init])) {
+    if (!apiResponse || ![apiResponse isKindOfClass:[NSDictionary class]]) {
       return nil;
     }
 
-    NSDictionary *apiObject = [apiResponse objectForKey:@"SyndicationSource"];
+    NSDictionary *apiObject =
+        (NSDictionary *)[apiResponse objectForKey:@"SyndicationSource"];
 
     if (apiObject) {
       SET_IF_NOT_NULL(_name, apiObject[@"Name"]);

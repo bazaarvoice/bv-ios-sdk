@@ -1,6 +1,6 @@
 //
 //  SecondaryRating.m
-//  Conversations
+//  BVSDK
 //
 //  Copyright © 2016 Bazaarvoice. All rights reserved.
 //
@@ -11,8 +11,7 @@
 @implementation BVSecondaryRating
 
 - (nonnull id)initWithApiResponse:(nonnull NSDictionary *)apiResponse {
-  self = [super init];
-  if (self) {
+  if ((self = [super init])) {
     SET_IF_NOT_NULL(self.value, apiResponse[@"Value"])
     SET_IF_NOT_NULL(self.valueLabel, apiResponse[@"ValueLabel"])
     SET_IF_NOT_NULL(self.maxLabel, apiResponse[@"MaxLabel"])

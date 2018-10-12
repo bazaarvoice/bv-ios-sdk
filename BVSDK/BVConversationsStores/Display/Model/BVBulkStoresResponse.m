@@ -1,11 +1,12 @@
 //
 //  BVBulkStoresResponse.m
-//  Conversations
+//  BVSDK
 //
 //  Copyright © 2016 Bazaarvoice. All rights reserved.
 //
 
 #import "BVBulkStoresResponse.h"
+#import "BVGenericConversationsResult+Private.h"
 #import "BVNullHelper.h"
 #import "BVStore.h"
 

@@ -1,19 +1,19 @@
 //
 //  BVProduct.h
-//  Conversations
+//  BVSDK
 //
 //  Copyright © 2016 Bazaarvoice. All rights reserved.
 //
 
-#import "BVBrand.h"
 #import "BVDisplayableProductContent.h"
 #import "BVGenericConversationsResult.h"
-#import "BVQAStatistics.h"
-#import "BVQuestion.h"
-#import "BVReview.h"
-#import "BVReviewStatistics.h"
-#import <Foundation/Foundation.h>
-@class BVConversationsInclude;
+
+@class BVBrand;
+@class BVQAStatistics;
+@class BVQuestion;
+@class BVReview;
+@class BVReviewStatistics;
+
 /*
  The main information contained within a `BVProductResponse` which is a response
  to `BVProductDisplayPageRequest`.
@@ -30,7 +30,7 @@
  property, if requested in the `BVReviewsRequest` object.
  */
 @interface BVProduct
-    : NSObject <BVGenericConversationsResult, BVDisplayableProductContent>
+    : BVGenericConversationsResult <BVDisplayableProductContent>
 
 @property(nullable) BVBrand *brand;
 @property(nonnull) NSArray<NSString *> *ISBNs;
@@ -49,11 +49,7 @@
 @property(nullable) BVReviewStatistics *reviewStatistics;
 @property(nullable) BVQAStatistics *qaStatistics;
 
-@property(nonnull) NSArray<BVReview *> *includedReviews;
-@property(nonnull) NSArray<BVQuestion *> *includedQuestions;
-
-@property(nullable, nonatomic, strong, readonly)
-    BVConversationsInclude *includes;
-@property(nonnull, nonatomic, strong, readonly) NSDictionary *apiResponse;
+@property(nonnull, readonly) NSArray<BVReview *> *includedReviews;
+@property(nonnull, readonly) NSArray<BVQuestion *> *includedQuestions;
 
 @end

@@ -65,7 +65,7 @@ class UASSubmissionTests: XCTestCase {
       let uasSubmission:BVUASSubmission =
         BVUASSubmission(bvAuthToken: bvAuthToken)
       
-      uasSubmission.submit({ (response: BVUASSubmissionResponse) in
+      uasSubmission.submit({ (response: BVSubmissionResponse<BVSubmittedUAS>) in
         expectation.fulfill()
       }) { (errors:[Error]) in
         

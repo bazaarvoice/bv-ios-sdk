@@ -1,6 +1,6 @@
 //
 //  BVStoreLocation.m
-//  Conversations
+//  BVSDK
 //
 //  Copyright © 2016 Bazaarvoice. All rights reserved.
 //
@@ -11,9 +11,7 @@
 @implementation BVStoreLocation
 
 - (nullable id)initWithStoreAtrributes:(nonnull NSDictionary *)attributes {
-
-  self = [super init];
-  if (self) {
+  if ((self = [super init])) {
     self.longitude =
         [self getValueForKey:@"Longitude" withDictionary:attributes];
     self.latitude = [self getValueForKey:@"Latitude" withDictionary:attributes];

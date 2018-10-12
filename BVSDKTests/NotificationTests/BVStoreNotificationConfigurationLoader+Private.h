@@ -1,12 +1,12 @@
 //
 //  BVStoreNotificationConfigurationLoader+Private.h
-//  BVSDK
+//  BVSDKTests
 //
 //  Copyright © 2016 Bazaarvoice. All rights reserved.
 //
 
-#ifndef BVStoreNotificationConfigurationLoader_Private_h
-#define BVStoreNotificationConfigurationLoader_Private_h
+#ifndef BVSTORENOTIFICATIONCONFIGURATIONLOADER_PRIVATE_H
+#define BVSTORENOTIFICATIONCONFIGURATIONLOADER_PRIVATE_H
 
 @interface BVStoreNotificationConfigurationLoader (Testing)
 
@@ -19,4 +19,4 @@ loadStoreNotificationConfiguration:
 
 @end
 
-#endif /* BVStoreNotificationConfigurationLoader_Private_h */
+#endif /* BVSTORENOTIFICATIONCONFIGURATIONLOADER_PRIVATE_H */

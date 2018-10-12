@@ -1,6 +1,6 @@
 //
 //  AnswerSubmissionTests.swift
-//  Conversations
+//  BVSDKTests
 //
 //  Copyright © 2016 Bazaarvoice. All rights reserved.
 //
@@ -16,8 +16,7 @@ class AnswerSubmissionTests: BVBaseStubTestCase {
     let configDict = ["clientId": "apitestcustomer",
                       "apiKeyConversations": "KEY_REMOVED"];
     BVSDKManager.configure(withConfiguration: configDict, configType: .staging)
-    BVSDKManager.shared().setLogLevel(.error)
-    
+    BVSDKManager.shared().setLogLevel(.verbose)
   }
   
   func testSubmitAnswerWithPhoto() {
@@ -29,7 +28,7 @@ class AnswerSubmissionTests: BVBaseStubTestCase {
         "testUploadPNG.json",
         "testSubmitAnswerWithPhotoSubmit.json"
     ]
-    addStubWith200Response(forJSONFilesNamed: sequenceFiles)
+    stub(withJSONSequence: sequenceFiles)
     
     let answer = self.fillOutAnswer(.submit)
     answer.submit({ (answerSubmission) in
@@ -37,6 +36,7 @@ class AnswerSubmissionTests: BVBaseStubTestCase {
       XCTAssertTrue(answerSubmission.formFields?.keys.count == 0)
     }, failure: { (errors) in
       expectation.fulfill()
+      print(errors)
       XCTFail()
     })
     
@@ -51,7 +51,7 @@ class AnswerSubmissionTests: BVBaseStubTestCase {
         "testSubmitAnswerWithPhotoPreview.json",
         "testUploadPNG.json"
     ]
-    addStubWith200Response(forJSONFilesNamed: sequenceFiles)
+    stub(withJSONSequence: sequenceFiles)
     
     let answer = self.fillOutAnswer(.preview)
     answer.submit({ (answerSubmission) in
@@ -99,7 +99,7 @@ class AnswerSubmissionTests: BVBaseStubTestCase {
       [
         "testSubmitAnswerFailure.json"
     ]
-    addStubWith200Response(forJSONFilesNamed: sequenceFiles)
+    stub(withJSONSequence: sequenceFiles)
     
     answer.submit({ (questionSubmission) in
       XCTFail()
@@ -108,15 +108,13 @@ class AnswerSubmissionTests: BVBaseStubTestCase {
       XCTAssertEqual(errors.count, 1)
       for error in errors as [NSError] {
         
-        if error.userInfo[BVFieldErrorName] == nil {
-          // Would happen if we get internal server error and/or XML is returned
-          XCTFail("Malformed error response")
-          break
+        guard let fieldName = error.userInfo[BVFieldErrorName] as? String,
+          let errorCode = error.userInfo[BVFieldErrorCode] as? String,
+          let errorMessage = error.userInfo[BVFieldErrorMessage] as? String else {
+            // Would happen if we get internal server error and/or XML is returned
+            XCTFail("Malformed error response")
+            break
         }
-        
-        let fieldName = error.userInfo[BVFieldErrorName] as! String
-        let errorCode = error.userInfo[BVFieldErrorCode] as! String
-        let errorMessage = error.userInfo[BVFieldErrorMessage] as! String
         
         if fieldName == "answertext" {
           XCTAssertEqual(errorCode, "ERROR_FORM_REQUIRED")

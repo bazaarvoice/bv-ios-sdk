@@ -15,9 +15,12 @@
 @property(nonatomic, assign) BOOL allowInactiveProducts;
 @property(nullable, nonatomic, strong) NSDate *lookback;
 @property(nonatomic, readonly) BOOL purposeIsSet;
-@property(nonnull, nonatomic, strong) NSMutableSet<NSString *> *includes;
-@property(nonnull, nonatomic, strong) NSMutableSet<NSString *> *interests;
-@property(nonnull, nonatomic, strong) NSMutableSet<NSString *> *strategies;
+@property(nonnull, nonatomic, strong, readonly)
+    NSMutableSet<NSString *> *includes;
+@property(nonnull, nonatomic, strong, readonly)
+    NSMutableSet<NSString *> *interests;
+@property(nonnull, nonatomic, strong, readonly)
+    NSMutableSet<NSString *> *strategies;
 
 - (nonnull instancetype)addStrategy:(nonnull NSString *)strategy;
 

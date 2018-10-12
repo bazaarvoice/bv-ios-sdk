@@ -6,7 +6,7 @@
 //
 
 #import "BVInViewEvent.h"
-#import "BVAnalyticEventManager.h"
+#import "BVAnalyticEventManager+Private.h"
 #import "BVPixelTypes.h"
 
 @implementation BVInViewEvent
@@ -18,9 +18,7 @@
                 withProductType:(BVPixelProductType)bvProduct
                 withContainerId:(nonnull NSString *)containerId
            withAdditionalParams:(nullable NSDictionary *)params {
-  self = [super init];
-
-  if (self) {
+  if ((self = [super init])) {
     _productId = productId ? productId : @"unknown";
     _brand = brand;
     _bvProduct = bvProduct;
@@ -40,7 +38,7 @@
                                    nil];
 
   // Add nullable values
-  if (self.brand != nil) {
+  if (self.brand) {
     [eventDict addEntriesFromDictionary:@{@"brand" : self.brand}];
   }
 

@@ -1,13 +1,26 @@
 //
 //  BVProduct.m
-//  Conversations
+//  BVSDK
 //
 //  Copyright © 2016 Bazaarvoice. All rights reserved.
 //
 
 #import "BVProduct.h"
+#import "BVBrand.h"
 #import "BVConversationsInclude.h"
+#import "BVGenericConversationsResult+Private.h"
 #import "BVNullHelper.h"
+#import "BVQAStatistics.h"
+#import "BVQuestion.h"
+#import "BVReview.h"
+#import "BVReviewStatistics.h"
+
+@interface BVProduct ()
+
+@property(nonnull, readwrite) NSArray<BVReview *> *includedReviews;
+@property(nonnull, readwrite) NSArray<BVQuestion *> *includedQuestions;
+
+@end
 
 @implementation BVProduct
 
@@ -18,10 +31,13 @@
 
 - (id)initWithApiResponse:(NSDictionary *)apiResponse
                  includes:(BVConversationsInclude *)includes {
-  self = [super init];
-  if (self) {
-    _includes = includes;
-    _apiResponse = apiResponse;
+  if ((self = [super init])) {
+
+    if (!includes) {
+      includes =
+          [[BVConversationsInclude alloc] initWithApiResponse:apiResponse];
+    }
+
     self.brand = [[BVBrand alloc] initWithApiResponse:apiResponse[@"Brand"]];
 
     SET_IF_NOT_NULL(self.productDescription, apiResponse[@"Description"])
@@ -56,21 +72,10 @@
           initWithApiResponse:apiResponse[@"QAStatistics"]];
     }
 
-    NSArray<NSString *> *reviewIds = apiResponse[@"ReviewIds"];
-    NSMutableArray<BVReview *> *tempReviews = [NSMutableArray array];
-    for (NSString *reviewId in reviewIds) {
-      BVReview *review = [includes getReviewById:reviewId];
-      [tempReviews addObject:review];
-    }
-    self.includedReviews = tempReviews;
-
-    NSArray<NSString *> *questionIds = apiResponse[@"QuestionIds"];
-    NSMutableArray<BVQuestion *> *tempQuestions = [NSMutableArray array];
-    for (NSString *questionId in questionIds) {
-      BVQuestion *question = [includes getQuestionById:questionId];
-      [tempQuestions addObject:question];
-    }
-    self.includedQuestions = tempQuestions;
+    GET_BVOBJECTS_FROM_CONVERSATIONS_INCLUDE(_includedQuestions, includes,
+                                             Question);
+    GET_BVOBJECTS_FROM_CONVERSATIONS_INCLUDE(_includedReviews, includes,
+                                             Review);
   }
   return self;
 }

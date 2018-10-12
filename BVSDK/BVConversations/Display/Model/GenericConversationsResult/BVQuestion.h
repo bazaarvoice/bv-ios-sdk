@@ -1,19 +1,19 @@
 //
 //  BVQuestion.h
-//  Conversations
+//  BVSDK
 //
 //  Copyright © 2016 Bazaarvoice. All rights reserved.
 //
 
-#import "BVAnswer.h"
-#import "BVBadge.h"
-#import "BVContextDataValue.h"
 #import "BVDimensionAndDistributionUtil.h"
 #import "BVGenericConversationsResult.h"
-#import "BVPhoto.h"
-#import "BVSyndicationSource.h"
-#import "BVVideo.h"
-#import <Foundation/Foundation.h>
+
+@class BVAnswer;
+@class BVBadge;
+@class BVContextDataValue;
+@class BVPhoto;
+@class BVSyndicationSource;
+@class BVVideo;
 
 /*
  A consumer generated question about a product. For example: "Is this toaster
@@ -24,9 +24,8 @@
     Question summary is included in the `questionSummary` property.
     Question details are included in the `questionDetails` property.
  */
-@interface BVQuestion : NSObject <BVGenericConversationsResult>
+@interface BVQuestion : BVGenericConversationsResult
 
-@property(nonnull, nonatomic, copy) NSArray<BVAnswer *> *answers;
 @property(nullable, nonatomic, copy) NSString *questionSummary;
 @property(nullable, nonatomic, copy) NSString *questionDetails;
 @property(nullable, nonatomic, copy) NSString *userNickname;
@@ -60,5 +59,7 @@
 @property(readonly) BOOL isSyndicated;
 @property(nullable, nonatomic, strong, readonly)
     BVSyndicationSource *syndicationSource;
+
+@property(nonnull, nonatomic, copy) NSArray<BVAnswer *> *includedAnswers;
 
 @end

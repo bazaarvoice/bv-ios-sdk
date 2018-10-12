@@ -43,7 +43,7 @@
   _requestReviewOnAppOpen =
       [[configDict objectForKey:@"requestReviewOnAppOpen"] boolValue];
 
-  if ([configDict objectForKey:@"visitDuration"] != nil) {
+  if ([configDict objectForKey:@"visitDuration"]) {
     _visitDuration = [[configDict objectForKey:@"visitDuration"] integerValue];
   } else {
     _visitDuration = 300; // Default 5 minutes

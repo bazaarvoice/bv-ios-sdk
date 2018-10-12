@@ -7,20 +7,19 @@
 
 #import <AdSupport/AdSupport.h>
 #import <UIKit/UIKit.h>
+#include <sys/sysctl.h>
+#include <sys/utsname.h>
 
-#import "BVAnalyticEventManager.h"
+#import "BVAnalyticEventManager+Private.h"
 #import "BVAnalyticsManager+Testing.h"
 #import "BVLocaleServiceManager.h"
-#import "BVLogger+Private.h"
+#import "BVLogger.h"
 #import "BVNetworkingManager.h"
 #import "BVNullHelper.h"
 #import "BVPersonalizationEvent.h"
 #import "BVSDKConfiguration.h"
 #import "BVSDKConstants.h"
-#import "BVSDKManager.h"
-
-#include <sys/sysctl.h>
-#include <sys/utsname.h>
+#import "BVSDKManager+Private.h"
 
 @interface BVAnalyticsManager ()
 
@@ -106,7 +105,7 @@ static BVAnalyticsManager *analyticsInstance = nil;
     self.localeUpdateNotificationTokenQueue = dispatch_queue_create(
         "com.bazaarvoice.notificationTokenQueue", DISPATCH_QUEUE_SERIAL);
 
-    [self setFlushInterval:10.0];
+    [self setFlushInterval:10.0f];
     [self registerForAppStateChanges];
   }
   return self;
@@ -414,13 +413,9 @@ static BVAnalyticsManager *analyticsInstance = nil;
                                             url, eventData]];
 
   if (_isDryRunAnalytics) {
-#ifdef DEBUG
     [[BVLogger sharedLogger]
         info:@"Analytic events are not being sent to server"];
     return;
-#else
-    BVAssert(NO, @"Disable dry run analytics before pushing a release build.");
-#endif
   }
 
   /// For private classes we ask for the NSURLSession but we don't hand back
@@ -458,8 +453,7 @@ static BVAnalyticsManager *analyticsInstance = nil;
               // one-way communication, client->server: disregard results
               // but log error, if any
               NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
-              if ((httpResponse && httpResponse.statusCode >= 300) ||
-                  error != nil) {
+              if ((httpResponse && httpResponse.statusCode >= 300) || error) {
                 if (data) {
                   NSString *errorMsg =
                       [[NSString alloc] initWithData:data

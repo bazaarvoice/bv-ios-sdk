@@ -24,7 +24,7 @@ class ShareViewController: BaseDemoComposeServiceViewController {
   
   override func didSelectPost() {
     
-    postRequest?.text = self.textView.text
+    //postRequest?.text = self.textView.text
     
     super.didSelectPost()
     // This is called after the user selects Post. Do the upload of contentText and/or NSExtensionContext attachments.
@@ -37,44 +37,6 @@ class ShareViewController: BaseDemoComposeServiceViewController {
       self.spinner.frame.origin = CGPoint(x: self.view.frame.width/2 - SPINNER_HEIGHT_WIDTH/2, y: self.view.frame.height/4)
       self.view.addSubview(self.spinner)
       
-      // completion
-      let uploadAPI = BVCurationsPhotoUploader()
-      
-      // Upload the photo with the request!
-      uploadAPI.submitCurationsContent(withParams: self.postRequest, completionHandler: { (void) -> Void in
-        
-        // Success
-        
-        self.spinner.removeFromSuperview()
-        
-        _ = SweetAlert().showAlert("Success!", subTitle: "Your photo was successfully submitted and is pending approval. Please allow up to 72 hours for your photo to appear on our website.", style: AlertStyle.success, buttonTitle: "OK", action: { (isOtherButton) -> Void in
-          
-          // completion
-          self.dismiss(animated: true, completion: { () -> Void in
-            if let callback = self.onDismissComplete {
-              callback ()
-            }
-          })
-          
-        })
-        
-      }) { (error) -> Void in
-        
-        // Error
-        self.spinner.removeFromSuperview()
-        _ = SweetAlert().showAlert("Error Submitting Photo!", subTitle: error.localizedDescription, style: AlertStyle.error, buttonTitle: "OK", action: { (isOtherButton) -> Void in
-          
-          // completion
-          self.dismiss(animated: true, completion: { () -> Void in
-            if let callback = self.onDismissComplete {
-              callback ()
-            }
-          })
-          
-        })
-        
-      }
-      
     }
   }
   
@@ -82,7 +44,7 @@ class ShareViewController: BaseDemoComposeServiceViewController {
     // To add configuration options via table cells at the bottom of the sheet, return an array of SLComposeSheetConfigurationItem here.
     guard let aliasConfigItem = SLComposeSheetConfigurationItem() else { return nil }
     aliasConfigItem.title = "Username"
-    aliasConfigItem.value = self.postRequest?.alias
+    //aliasConfigItem.value = self.postRequest?.alias
     
     // Example how you might navigate to a UIViewController with an edit field...
     //        aliasConfigItem.tapHandler = {

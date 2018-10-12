@@ -66,7 +66,7 @@
 
           // Completion
           NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
-          if ((httpResponse && httpResponse.statusCode < 300) && data != nil) {
+          if ((httpResponse && httpResponse.statusCode < 300) && data) {
             // Success
 
             NSError *errorJson;
@@ -110,7 +110,7 @@
               [[BVLogger sharedLogger] error:errString];
             }
 
-            // For internal testing
+            // For testing
             dispatch_async(dispatch_get_main_queue(), ^{
               [[NSNotificationCenter defaultCenter]
                   postNotificationName:BV_INTERNAL_PROFILE_UPDATED_COMPLETED
@@ -126,7 +126,7 @@
                                  (long)httpResponse.statusCode, error];
             [[BVLogger sharedLogger] error:errString];
 
-            // For internal testing
+            // For testing
             dispatch_async(dispatch_get_main_queue(), ^{
               [[NSNotificationCenter defaultCenter]
                   postNotificationName:BV_INTERNAL_PROFILE_UPDATED_COMPLETED
@@ -144,7 +144,7 @@
 
 - (bool)shouldUpdateProfile {
   // Return true if the profile does not have any targeting keywords at all
-  return [self getTargetingKeywords] == nil ||
+  return ![self getTargetingKeywords] ||
          [[self getTargetingKeywords] allKeys].count == 0;
 }
 
@@ -156,12 +156,12 @@
       [[ASIdentifierManager sharedManager] isAdvertisingTrackingEnabled];
 #endif
 
-  if (self.personalizedPreferences == nil || !trackingEnabled)
+  if (!self.personalizedPreferences || !trackingEnabled)
     return nil;
 
   NSDictionary *profile =
       [self.personalizedPreferences objectForKey:@"profile"];
-  if (profile == nil) {
+  if (!profile) {
     return nil;
   }
 
@@ -171,7 +171,7 @@
     // ensure we don't include profile id
     if ([key isEqualToString:@"id"] == false) {
       NSDictionary *value = [profile objectForKey:key];
-      if (value != nil && [value count] > 0) {
+      if (value && [value count] > 0) {
         [targetingInfo setObject:[self generateString:value] forKey:key];
       }
     }

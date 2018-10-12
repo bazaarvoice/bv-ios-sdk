@@ -1,6 +1,6 @@
 //
 //  ConversationsSubmissionTests.swift
-//  Conversations
+//  BVSDKTests
 //
 //  Copyright © 2016 Bazaarvoice. All rights reserved.
 //
@@ -28,7 +28,7 @@ class QuestionSubmissionTests: BVBaseStubTestCase {
         "testUploadablePhotoPNGSuccess.json",
         "testSubmitQuestionWithPhotoSubmit.json"
     ]
-    addStubWith200Response(forJSONFilesNamed: sequenceFiles)
+    stub(withJSONSequence: sequenceFiles)
     
     let question = self.fillOutQuestion(.submit)
     question.submit({ (questionSubmission) in
@@ -48,7 +48,7 @@ class QuestionSubmissionTests: BVBaseStubTestCase {
       [
         "testSubmitQuestionWithPhotoPreview.json"
     ]
-    addStubWith200Response(forJSONFilesNamed: sequenceFiles)
+    stub(withJSONSequence: sequenceFiles)
     
     let question = self.fillOutQuestion(.preview)
     question.submit({ (questionSubmission) in
@@ -69,7 +69,7 @@ class QuestionSubmissionTests: BVBaseStubTestCase {
       [
         "testSubmitQuestionFailure.json"
     ]
-    addStubWith200Response(forJSONFilesNamed: sequenceFiles)
+    stub(withJSONSequence: sequenceFiles)
     
     let question = BVQuestionSubmission(productId: "1000001")
     question.userNickname = "cgil"
@@ -99,6 +99,7 @@ class QuestionSubmissionTests: BVBaseStubTestCase {
       
       expectation.fulfill()
     })
+    
     waitForExpectations(timeout: 10, handler: nil)
   }
   
