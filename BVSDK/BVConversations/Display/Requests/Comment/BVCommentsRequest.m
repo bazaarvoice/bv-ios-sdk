@@ -21,6 +21,9 @@
 @interface BVCommentsRequest ()
 @end
 
+@interface BVCommentsRequest ()
+@end
+
 @implementation BVCommentsRequest
 
 - (nonnull instancetype)initWithProductId:(nonnull NSString *)productId
