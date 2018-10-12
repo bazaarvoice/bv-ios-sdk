@@ -10,9 +10,6 @@
 /// A product review written about a BVRecommendedProduct
 @interface BVProductReview : NSObject
 
-/// Internal use
-- (id)initWithDict:(NSDictionary *)dict;
-
 /// Title of the review. Example: "Great product!", "Drains batteries too
 /// quickly."
 @property(strong, nonatomic) NSString *reviewTitle;

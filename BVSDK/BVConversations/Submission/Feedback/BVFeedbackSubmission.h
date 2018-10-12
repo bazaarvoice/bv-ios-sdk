@@ -5,12 +5,9 @@
 //  Copyright © 2016 Bazaarvoice. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-
-#import "BVFeedbackSubmissionResponse.h"
 #import "BVSubmission.h"
-#import "BVSubmissionAction.h"
-#import "BVSubmissionErrorResponse.h"
+#import "BVSubmittedFeedback.h"
+#import <Foundation/Foundation.h>
 
 /*
  Types of Bazaarvoice content supplying feedback on.
@@ -37,9 +34,6 @@ typedef NS_ENUM(NSInteger, BVFeedbackVote) {
   BVFeedbackVoteNegative
 };
 
-typedef void (^FeedbackSubmissionCompletion)(
-    BVFeedbackSubmissionResponse *__nonnull response);
-
 /**
  Class to use to submit a feedback to the Bazaarvoice platform.
 
@@ -52,7 +46,7 @@ typedef void (^FeedbackSubmissionCompletion)(
  @availability BVSDK 6.1.0 and later
  */
 
-@interface BVFeedbackSubmission : BVSubmission
+@interface BVFeedbackSubmission : BVSubmission <BVSubmittedFeedback *>
 
 @property(nonnull) NSString *contentId;
 @property BVFeedbackContentType contentType;
@@ -67,20 +61,5 @@ typedef void (^FeedbackSubmissionCompletion)(
                          withFeedbackType:(BVFeedbackType)feedbackType;
 
 - (nonnull instancetype)__unavailable init;
-
-/**
- Submit feedback to the Bazaarvoice platform.
-
- A submission can fail for many reasons, and is dependent on your submission
- configuration.
-
- @param success    The success block is called when a successful submission
- occurs.
- @param failure    The failure block is called when an unsuccessful submission
- occurs. This could be for a number of reasons: network failures, submission
- parameters invalid, or server errors occur.
- */
-- (void)submit:(nonnull FeedbackSubmissionCompletion)success
-       failure:(nonnull ConversationsFailureHandler)failure;
 
 @end

@@ -21,7 +21,7 @@
   super.question = question;
   self.questionSummary.text =
       [NSString stringWithFormat:@"%@ (%lu Answers)", question.questionSummary,
-                                 (unsigned long)question.answers.count];
+                                 (unsigned long)question.includedAnswers.count];
   self.questionDetails.text = question.questionDetails;
 }
 

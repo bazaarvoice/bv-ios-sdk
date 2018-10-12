@@ -6,7 +6,7 @@
 //
 
 #import "BVSDKManager.h"
-#import <Foundation/Foundation.h>
+
 @interface BVSDKConfiguration : NSObject
 
 - (nonnull instancetype)init __attribute__((unavailable("init not available")));
@@ -51,10 +51,4 @@
 @property(nonatomic, strong, readonly, nullable)
     NSString *analyticsLocaleIdentifier;
 
-@end
-
-// expose config to internal SDK
-@interface BVSDKManager (Config)
-@property(nonatomic, strong, readonly, nonnull)
-    BVSDKConfiguration *configuration;
 @end

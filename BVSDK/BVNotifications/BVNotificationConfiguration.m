@@ -20,7 +20,7 @@ loadGeofenceConfiguration:(nonnull NSURL *)url
   [self loadConfiguration:url
                completion:^(NSDictionary *response, NSError *error) {
 
-                 if (response == nil && error == nil) {
+                 if (!response && !error) {
                    NSString *errorMessage = @"No config found for geofence "
                                             @"notifications. Will not post "
                                             @"notification.";
@@ -57,7 +57,7 @@ loadPINConfiguration:(nonnull NSURL *)url
   [self loadConfiguration:url
                completion:^(NSDictionary *response, NSError *error) {
 
-                 if (response == nil && error == nil) {
+                 if (!response && !error) {
                    NSString *errorMessage = @"No notification config found "
                                             @"for PIN. Will not post "
                                             @"notifications.";

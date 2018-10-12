@@ -5,7 +5,7 @@
 //  Copyright © 2016 Bazaarvoice. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import "BVSubmittedType.h"
 
 @interface BVFeedbackInappropriateResponse : NSObject
 
@@ -25,9 +25,7 @@
 
 @end
 
-@interface BVSubmittedFeedback : NSObject
-
-- (nullable instancetype)initWithApiResponse:(nullable id)apiResponse;
+@interface BVSubmittedFeedback : BVSubmittedType
 
 @property(nonnull) BVFeedbackInappropriateResponse *inappropriateResponse;
 @property(nonnull) BVFeedbackHelpfulnessResponse *helpfulnessResponse;

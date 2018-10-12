@@ -6,7 +6,7 @@
 //
 
 #import "BVViewedCGCEvent.h"
-#import "BVAnalyticEventManager.h"
+#import "BVAnalyticEventManager+Private.h"
 #import "BVPixelTypes.h"
 
 @implementation BVViewedCGCEvent
@@ -19,9 +19,7 @@
                 withProductType:(BVPixelProductType)bvProduct
                       withBrand:(nullable NSString *)brand
            withAdditionalParams:(nullable NSDictionary *)params {
-  self = [super init];
-
-  if (self) {
+  if ((self = [super init])) {
     _productId = productId;
     _brand = brand;
     _bvProduct = bvProduct;
@@ -29,7 +27,6 @@
     _rootCategoryId = rootCategoryId;
     self.additionalParams = [NSDictionary dictionary];
   }
-
   return self;
 }
 

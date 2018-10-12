@@ -1,6 +1,6 @@
 //
 //  ReviewsRequest.m
-//  Conversations
+//  BVSDK
 //
 //  Copyright © 2016 Bazaarvoice. All rights reserved.
 //
@@ -11,7 +11,7 @@
 #import "BVLogger.h"
 #import "BVProductIncludeType.h"
 #import "BVSDKConfiguration.h"
-#import "BVSDKManager.h"
+#import "BVSDKManager+Private.h"
 #import "BVSort.h"
 #import "BVStoreIncludeType.h"
 
@@ -60,7 +60,7 @@
   return self.ID;
 }
 
-- (id<BVResponse>)createResponse:(NSDictionary *)raw {
+- (BVDisplayResponse *)createResponse:(NSDictionary *)raw {
   return [[BVStoreReviewsResponse alloc] initWithApiResponse:raw];
 }
 

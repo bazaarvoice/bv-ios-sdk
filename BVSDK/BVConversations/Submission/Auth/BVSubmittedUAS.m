@@ -1,6 +1,6 @@
 //
 //  BVSubmittedUAS.m
-//  Conversations
+//  BVSDK
 //
 //  Copyright © 2017 Bazaarvoice. All rights reserved.
 //
@@ -16,13 +16,11 @@
 
 - (nullable instancetype)initWithApiResponse:(nullable id)apiResponse {
   if ((self = [super init])) {
-    if (apiResponse == nil ||
-        ![apiResponse isKindOfClass:[NSDictionary class]]) {
+    if (!__IS_KIND_OF(apiResponse, NSDictionary)) {
       return nil;
     }
 
-    NSDictionary *apiObject = apiResponse;
-
+    NSDictionary *apiObject = (NSDictionary *)apiResponse;
     SET_IF_NOT_NULL(self.authenticatedUser, apiObject[@"User"])
   }
   return self;

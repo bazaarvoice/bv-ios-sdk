@@ -1,43 +1,36 @@
 //
 //  BVStoreReviewSubmission.m
-//  Conversations
+//  BVSDK
 //
 //  Copyright © 2016 Bazaarvoice. All rights reserved.
 //
 
 #import "BVStoreReviewSubmission.h"
-#import "BVReviewSubmissionErrorResponse.h"
+#import "BVBaseUGCSubmission+Private.h"
 #import "BVSDKConfiguration.h"
-#import "BVSDKManager.h"
+#import "BVSDKManager+Private.h"
 #import "BVUploadableStorePhoto.h"
 
 @interface BVStoreReviewSubmission ()
-
 @end
 
 @implementation BVStoreReviewSubmission
+
+- (NSString *)conversationsKey {
+  NSString *key =
+      [BVSDKManager sharedManager].configuration.apiKeyConversationsStores;
+  NSAssert(key, @"Conversations Stores key isn't configured");
+  return key;
+}
 
 - (nonnull instancetype)initWithReviewTitle:(nonnull NSString *)reviewTitle
                                  reviewText:(nonnull NSString *)reviewText
                                      rating:(NSUInteger)rating
                                     storeId:(nonnull NSString *)storeId {
-  self = [self initWithReviewTitle:reviewTitle
+  return [self initWithReviewTitle:reviewTitle
                         reviewText:reviewText
                             rating:rating
                          productId:storeId];
-  return self;
-}
-
-- (void)addPhoto:(nonnull UIImage *)image
-    withPhotoCaption:(nullable NSString *)photoCaption {
-  BVUploadableStorePhoto *photo =
-      [[BVUploadableStorePhoto alloc] initWithPhoto:image
-                                       photoCaption:photoCaption];
-  [self.photos addObject:photo];
-}
-
-- (nonnull NSString *)getPasskey {
-  return [BVSDKManager sharedManager].configuration.apiKeyConversationsStores;
 }
 
 @end

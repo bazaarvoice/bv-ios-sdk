@@ -1,6 +1,6 @@
 //
 //  Badge.m
-//  Pods
+//  BVSDK
 //
 //  Copyright © 2016 Bazaarvoice. All rights reserved.
 //
@@ -11,8 +11,7 @@
 @implementation BVBadge
 
 - (id)initWithApiResponse:(nonnull NSDictionary *)apiResponse {
-  self = [super init];
-  if (self) {
+  if ((self = [super init])) {
     self.badgeType =
         [BVBadgeTypeUtil fromString:[apiResponse objectForKey:@"BadgeType"]];
     SET_IF_NOT_NULL(self.identifier, apiResponse[@"Id"])

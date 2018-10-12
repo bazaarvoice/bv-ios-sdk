@@ -1,25 +1,24 @@
 //
 //  BVReviewStatistics.m
-//  Conversations
+//  BVSDK
 //
 //  Copyright © 2016 Bazaarvoice. All rights reserved.
 //
 
 #import "BVReviewStatistics.h"
+#import "BVDimensionAndDistributionUtil+Private.h"
 #import "BVModelUtil.h"
 #import "BVNullHelper.h"
 
 @implementation BVReviewStatistics
 
 - (nullable id)initWithApiResponse:(nullable id)apiResponse {
-  self = [super init];
-  if (self) {
-    if (apiResponse == nil ||
-        ![apiResponse isKindOfClass:[NSDictionary class]]) {
+  if ((self = [super init])) {
+    if (!apiResponse || ![apiResponse isKindOfClass:[NSDictionary class]]) {
       return nil;
     }
 
-    NSDictionary *apiObject = apiResponse;
+    NSDictionary *apiObject = (NSDictionary *)apiResponse;
 
     SET_IF_NOT_NULL(self.helpfulVoteCount, apiObject[@"HelpfulVoteCount"])
     SET_IF_NOT_NULL(self.notRecommendedCount, apiObject[@"NotRecommendedCount"])

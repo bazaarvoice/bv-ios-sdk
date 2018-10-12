@@ -1,6 +1,6 @@
 //
 //  BVReviewsTableView.m
-//  Conversations
+//  BVSDK
 //
 //  Copyright © 2016 Bazaarvoice. All rights reserved.
 //
@@ -25,24 +25,21 @@
 @implementation BVReviewsTableView
 
 - (id)init {
-  self = [super init];
-  if (self) {
+  if ((self = [super init])) {
     [self setup];
   }
   return self;
 }
 
 - (id)initWithFrame:(CGRect)frame {
-  self = [super initWithFrame:frame];
-  if (self) {
+  if ((self = [super initWithFrame:frame])) {
     [self setup];
   }
   return self;
 }
 
 - (id)initWithCoder:(NSCoder *)aDecoder {
-  self = [super initWithCoder:aDecoder];
-  if (self) {
+  if ((self = [super initWithCoder:aDecoder])) {
     [self setup];
   }
   return self;
@@ -59,7 +56,7 @@
 
 - (void)tryToSendInViewEvent {
 
-  if (hasEnteredView && productId != nil) {
+  if (hasEnteredView && productId) {
     if (!hasSentInViewEvent) {
       hasSentInViewEvent = true;
 
@@ -127,7 +124,7 @@
 
     BVReviewTableViewCell *reviewCell = (BVReviewTableViewCell *)cell;
     BVReview *review = reviewCell.review;
-    if (review != nil) {
+    if (review) {
       [cellToProductMap setObject:review
                            forKey:[BVViewsHelper formatIndex:indexPath]];
     } else {

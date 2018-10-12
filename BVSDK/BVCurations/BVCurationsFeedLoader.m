@@ -10,6 +10,7 @@
 #import "BVCurationsFeedItem.h"
 #import "BVNetworkingManager.h"
 #import "BVSDKConfiguration.h"
+#import "BVSDKManager+Private.h"
 
 @interface BVCurationsFeedLoader ()
 @end
@@ -68,7 +69,7 @@
 
         NSHTTPURLResponse *urlResp = (NSHTTPURLResponse *)response;
 
-        if ((!error && urlResp.statusCode < 300) && data != nil) {
+        if ((!error && urlResp.statusCode < 300) && data) {
 
           NSError *errorJSON;
           NSDictionary *responseDict =
@@ -87,7 +88,7 @@
             // value.
             NSInteger status = 200;
 
-            if ([responseDict objectForKey:@"code"] != nil) {
+            if ([responseDict objectForKey:@"code"]) {
               status = [[responseDict objectForKey:@"code"] integerValue];
             }
 
@@ -102,7 +103,7 @@
               NSDictionary *productData =
                   [responseDict objectForKey:@"productData"];
 
-              if (productData != nil) {
+              if (productData) {
 
                 for (NSString *key in productData.allKeys) {
 
@@ -122,7 +123,7 @@
                         withReferencedProducts:referencedProdcts
                                 withExternalId:feedRequest.externalId];
 
-                if (feedItem != nil) {
+                if (feedItem) {
                   [feedItemsArray addObject:feedItem];
                 }
               }
@@ -135,7 +136,7 @@
 
               // status indicates failure....
               NSString *reason = @"Unknown failure.";
-              if ([responseDict objectForKey:@"reason"] != nil) {
+              if ([responseDict objectForKey:@"reason"]) {
                 reason = [responseDict objectForKey:@"reason"];
               }
               NSDictionary *userInfo = @{NSLocalizedDescriptionKey : reason};

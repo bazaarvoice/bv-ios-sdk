@@ -1,6 +1,6 @@
 //
 //  SecondaryRatingsAverages.m
-//  Conversations
+//  BVSDK
 //
 //  Copyright © 2016 Bazaarvoice. All rights reserved.
 //
@@ -12,12 +12,12 @@
 
 + (nullable BVSecondaryRatingsAverages *)createWithDictionary:
     (nullable id)apiResponse {
-  if (apiResponse == nil || ![apiResponse isKindOfClass:[NSDictionary class]]) {
+  if (!apiResponse || ![apiResponse isKindOfClass:[NSDictionary class]]) {
     return nil;
   }
   NSMutableDictionary *result = [NSMutableDictionary dictionary];
 
-  NSDictionary *apiObject = apiResponse;
+  NSDictionary *apiObject = (NSDictionary *)apiResponse;
 
   for (NSString *key in apiObject) {
     NSDictionary *value = apiObject[key];

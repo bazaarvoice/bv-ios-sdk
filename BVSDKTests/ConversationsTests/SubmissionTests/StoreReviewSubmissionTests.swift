@@ -1,6 +1,6 @@
 //
 //  ConversationsSubmissionTests.swift
-//  Conversations
+//  BVSDKTests
 //
 //  Copyright © 2016 Bazaarvoice. All rights reserved.
 //
@@ -27,7 +27,7 @@ class StoreReviewSubmissionTests: BVBaseStubTestCase {
       [
         "testSubmitStoreReviewWithPhoto.json"
     ]
-    addStubWith200Response(forJSONFilesNamed: sequenceFiles)
+    stub(withJSONSequence: sequenceFiles)
     
     let review = self.fillOutReview()
     review.submit({ (reviewSubmission) in
@@ -47,7 +47,7 @@ class StoreReviewSubmissionTests: BVBaseStubTestCase {
       [
         "testSubmitReviewFailureStore.json"
     ]
-    addStubWith200Response(forJSONFilesNamed: sequenceFiles)
+    stub(withJSONSequence: sequenceFiles)
     
     let review = BVStoreReviewSubmission(reviewTitle: "", reviewText: "", rating: 123, storeId: "1000001")
     review.userNickname = "cgil"

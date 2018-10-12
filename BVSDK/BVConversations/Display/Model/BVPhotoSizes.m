@@ -1,6 +1,6 @@
 //
 //  PhotoSizes.m
-//  Conversations
+//  BVSDK
 //
 //  Copyright © 2016 Bazaarvoice. All rights reserved.
 //
@@ -11,14 +11,16 @@
 @implementation BVPhotoSizes
 
 - (nullable id)initWithApiResponse:(nullable id)apiResponse {
+  if ((self = [super init])) {
 
-  self = [super init];
-  if (self) {
-    NSDictionary<NSString *, NSDictionary<NSString *, NSString *> *>
-        *apiObject = apiResponse;
-    if (apiObject == nil) {
+    if (!apiResponse) {
       return nil;
     }
+
+    NSDictionary<NSString *, NSDictionary<NSString *, NSString *> *>
+        *apiObject =
+            (NSDictionary<NSString *, NSDictionary<NSString *, NSString *> *> *)
+                apiResponse;
 
     if (!isObjectNilOrNull(apiObject[@"thumbnail"][@"Url"])) {
       self.thumbnailUrl = apiObject[@"thumbnail"][@"Url"];

@@ -1,6 +1,6 @@
 //
 //  BVAnswerSubmissionResponse.m
-//  Conversations
+//  BVSDK
 //
 //  Copyright © 2016 Bazaarvoice. All rights reserved.
 //
@@ -10,14 +10,10 @@
 @implementation BVAnswerSubmissionResponse
 
 - (nonnull instancetype)initWithApiResponse:(NSDictionary *)apiResponse {
-
-  self = [super initWithApiResponse:apiResponse];
-
-  if (self) {
-    self.answer =
+  if ((self = [super initWithApiResponse:apiResponse])) {
+    self.result =
         [[BVSubmittedAnswer alloc] initWithApiResponse:apiResponse[@"Answer"]];
   }
-
   return self;
 }
 

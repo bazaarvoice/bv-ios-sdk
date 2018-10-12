@@ -1,26 +1,26 @@
 //
 //  BVAnswer.h
-//  Conversations
+//  BVSDK
 //
 //  Copyright © 2016 Bazaarvoice. All rights reserved.
 //
 
-#import "BVBadge.h"
-#import "BVContextDataValue.h"
 #import "BVGenericConversationsResult.h"
-#import "BVPhoto.h"
-#import "BVSyndicationSource.h"
-#import "BVVideo.h"
-#import <Foundation/Foundation.h>
+
+@class BVBadge;
+@class BVContextDataValue;
+@class BVPhoto;
+@class BVSyndicationSource;
+@class BVVideo;
 
 /*
  The answer to a question asked by a consumer.
 
  Commonly used data in an answer:
-    Answer text is included in the `answerText` property.
-    User nickname is included in the `userNickname` property.
+ Answer text is included in the `answerText` property.
+ User nickname is included in the `userNickname` property.
  */
-@interface BVAnswer : NSObject <BVGenericConversationsResult>
+@interface BVAnswer : BVGenericConversationsResult
 
 @property(nullable) NSString *answerText;
 @property(nullable) NSString *userNickname;

@@ -15,9 +15,4 @@
 /// client app does not use the BVSDKManager to initialize the SDK.
 @property(strong, nonatomic) NSString *clientId;
 
-// Internal use only
-@property(strong, nonatomic) NSString *eventSource;
-
-- (NSDictionary *)getCommonAnalyticsDictAnonymous:(BOOL)anonymous;
-
 @end

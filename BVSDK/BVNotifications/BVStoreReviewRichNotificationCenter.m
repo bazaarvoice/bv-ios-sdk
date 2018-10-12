@@ -13,7 +13,7 @@
 #import "BVNotificationsAnalyticsHelper.h"
 #import "BVProductDisplayPageRequest.h"
 #import "BVSDKConfiguration.h"
-#import "BVSDKManager.h"
+#import "BVSDKManager+Private.h"
 #import "BVStoreNotificationConfigurationLoader.h"
 #import <MapKit/MapKit.h>
 
@@ -42,9 +42,7 @@ scheduleRichNotification:(BVStoreReviewNotificationProperties *)noteProps
 @implementation BVStoreReviewRichNotificationCenter
 
 - (id)init {
-  self = [super init];
-
-  if (self) {
+  if ((self = [super init])) {
     NSFileManager *mngr = [NSFileManager defaultManager];
     BOOL isDir;
     if (![mngr fileExistsAtPath:ATTACHMENT_FILE_DIRECTORY isDirectory:&isDir]) {
@@ -108,7 +106,7 @@ scheduleRichNotification:(BVStoreReviewNotificationProperties *)noteProps
       [[BVStoreNotificationConfigurationLoader sharedManager]
           bvStoreReviewNotificationProperties];
 
-  if (noteProps == nil) {
+  if (!noteProps) {
     [[BVLogger sharedLogger]
         error:@"Unable to create notification with nil "
               @"BVStoreReviewNotificationProperties. Bad network "
