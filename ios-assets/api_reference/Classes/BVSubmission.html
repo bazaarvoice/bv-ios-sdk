@@ -58,11 +58,9 @@
 	
 	<optgroup label="Instance Methods">
 		
-		<option value="//api/name/sendError:failureCallback:">- sendError:failureCallback:</option>
+		<option value="//api/name/addCustomSubmissionParameter:withValue:">- addCustomSubmissionParameter:withValue:</option>
 		
-		<option value="//api/name/sendErrors:failureCallback:">- sendErrors:failureCallback:</option>
-		
-		<option value="//api/name/transformToPostBody:">- transformToPostBody:</option>
+		<option value="//api/name/submit:failure:">- submit:failure:</option>
 		
 	</optgroup>
 	
@@ -84,8 +82,8 @@
 					
 					<div class="section section-specification"><table cellspacing="0"><tbody>
 						<tr>
-	<th>Inherits from</th>
-	<td>NSObject</td>
+	<th>Conforms to</th>
+	<td>*<br />:<br />BVResponseType<br />BVSubmittedType<br />__covariant</td>
 </tr><tr>
 	<th>Declared in</th>
 	<td>BVSubmission.h</td>
@@ -106,8 +104,8 @@
 
 						<div class="task-list">
 							<div class="section-method">
-	<a name="//api/name/sendError:failureCallback:" title="sendError:failureCallback:"></a>
-	<h3 class="method-title"><code><a href="#//api/name/sendError:failureCallback:">&ndash;&nbsp;sendError:failureCallback:</a></code>
+	<a name="//api/name/addCustomSubmissionParameter:withValue:" title="addCustomSubmissionParameter:withValue:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/addCustomSubmissionParameter:withValue:">&ndash;&nbsp;addCustomSubmissionParameter:withValue:</a></code>
 </h3>
 
 	<div class="method-info">
@@ -115,15 +113,58 @@
 
 		<div class="method-info-container">
 			
+			
+			<div class="method-subsection brief-description">
+				<p>This method adds extra user provided form parameters to a
+submission request, and will be urlencoded.</p>
+			</div>
+			
+		    
 
-			<div class="method-subsection method-declaration"><code>- (void)sendError:(nonnull NSError *)<em>error</em> failureCallback:(nonnull ConversationsFailureHandler)<em>failure</em></code></div>
+			<div class="method-subsection method-declaration"><code>- (void)addCustomSubmissionParameter:(nonnull NSString *)<em>parameter</em> withValue:(nonnull NSString *)<em>value</em></code></div>
 
 		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>parameter</code></th>
+						<td><p>The user-provded key.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>value</code></th>
+						<td><p>The user-provided value.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BVSubmission.h</code></p>
+			</div>
+			
+			
 		</div>
 	</div>
 </div><div class="section-method">
-	<a name="//api/name/sendErrors:failureCallback:" title="sendErrors:failureCallback:"></a>
-	<h3 class="method-title"><code><a href="#//api/name/sendErrors:failureCallback:">&ndash;&nbsp;sendErrors:failureCallback:</a></code>
+	<a name="//api/name/submit:failure:" title="submit:failure:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/submit:failure:">&ndash;&nbsp;submit:failure:</a></code>
 </h3>
 
 	<div class="method-info">
@@ -131,26 +172,56 @@
 
 		<div class="method-info-container">
 			
+			
+			<div class="method-subsection brief-description">
+				<p>The success block is called when a successful submission
+occurs.</p>
+			</div>
+			
+		    
 
-			<div class="method-subsection method-declaration"><code>- (void)sendErrors:(nonnull NSArray&lt;NSError*&gt; *)<em>errors</em> failureCallback:(nonnull ConversationsFailureHandler)<em>failure</em></code></div>
+			<div class="method-subsection method-declaration"><code>- (void)submit:(void ( ^ __nonnull ) ( BVSubmissionResponse&lt;BVResponseType&gt; *__nonnull ))<em>success</em> failure:(nonnull ConversationsFailureHandler)<em>failure</em></code></div>
 
 		    
-		</div>
-	</div>
-</div><div class="section-method">
-	<a name="//api/name/transformToPostBody:" title="transformToPostBody:"></a>
-	<h3 class="method-title"><code><a href="#//api/name/transformToPostBody:">&ndash;&nbsp;transformToPostBody:</a></code>
-</h3>
-
-	<div class="method-info">
-		<div class="pointy-thing"></div>
-
-		<div class="method-info-container">
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>success</code></th>
+						<td><p>The success block is called when a successful submission
+occurs.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>failure</code></th>
+						<td><p>The failure block is called when an unsuccessful
+submission occurs. This could be for a number of reasons: network failures,
+submission parameters invalid, or server errors occur.</p></td>
+					</tr>
+				
+				</table>
+			</div>
 			
 
-			<div class="method-subsection method-declaration"><code>- (nonnull NSData *)transformToPostBody:(nonnull NSDictionary *)<em>parameters</em></code></div>
+			
 
-		    
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BVSubmission.h</code></p>
+			</div>
+			
+			
 		</div>
 	</div>
 </div>
@@ -168,7 +239,7 @@
 				<footer>
 					<div class="footer-copyright">
 						
-						<p class="copyright">Copyright &copy; 2018 Bazaarvoice. All rights reserved. Updated: 2018-10-04</p>
+						<p class="copyright">Copyright &copy; 2018 Bazaarvoice. All rights reserved. Updated: 2018-10-12</p>
 						
 						
 						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>

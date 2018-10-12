@@ -43,8 +43,6 @@
 							<select id="jump-to">
 	<option value="top">Jump To&#133;</option>
 	
-	<option value="overview">Overview</option>
-	
 
 	
 	
@@ -56,33 +54,13 @@
 	
 
 	
-	<optgroup label="Class Methods">
-		
-		<option value="//api/name/commonEndpoint">+ commonEndpoint</option>
-		
-	</optgroup>
-	
 
 	
 	<optgroup label="Instance Methods">
 		
 		<option value="//api/name/addCustomDisplayParameter:withValue:">- addCustomDisplayParameter:withValue:</option>
 		
-		<option value="//api/name/createParams">- createParams</option>
-		
-		<option value="//api/name/endpoint">- endpoint</option>
-		
-		<option value="//api/name/getPassKey">- getPassKey</option>
-		
-		<option value="//api/name/limitError:">- limitError:</option>
-		
 		<option value="//api/name/loadContent:completion:failure:">- loadContent:completion:failure:</option>
-		
-		<option value="//api/name/sendError:failureCallback:">- sendError:failureCallback:</option>
-		
-		<option value="//api/name/sendErrors:failureCallback:">- sendErrors:failureCallback:</option>
-		
-		<option value="//api/name/tooManyProductsError:">- tooManyProductsError:</option>
 		
 	</optgroup>
 	
@@ -114,14 +92,6 @@
 					
 
                     
-					
-					<div class="section section-overview">
-						<a title="Overview" name="overview"></a>
-						<h2 class="subtitle subtitle-overview">Overview</h2>
-						<p>Internal class - used only within BVSDK</p>
-					</div>
-					
-					
 
 					
 					
@@ -134,54 +104,6 @@
 
 						<div class="task-list">
 							<div class="section-method">
-	<a name="//api/name/createParams" title="createParams"></a>
-	<h3 class="method-title"><code><a href="#//api/name/createParams">&ndash;&nbsp;createParams</a></code>
-</h3>
-
-	<div class="method-info">
-		<div class="pointy-thing"></div>
-
-		<div class="method-info-container">
-			
-
-			<div class="method-subsection method-declaration"><code>- (nonnull NSMutableArray&lt;BVStringKeyValuePair*&gt; *)createParams</code></div>
-
-		    
-		</div>
-	</div>
-</div><div class="section-method">
-	<a name="//api/name/endpoint" title="endpoint"></a>
-	<h3 class="method-title"><code><a href="#//api/name/endpoint">&ndash;&nbsp;endpoint</a></code>
-</h3>
-
-	<div class="method-info">
-		<div class="pointy-thing"></div>
-
-		<div class="method-info-container">
-			
-
-			<div class="method-subsection method-declaration"><code>- (nonnull NSString *)endpoint</code></div>
-
-		    
-		</div>
-	</div>
-</div><div class="section-method">
-	<a name="//api/name/commonEndpoint" title="commonEndpoint"></a>
-	<h3 class="method-title"><code><a href="#//api/name/commonEndpoint">+&nbsp;commonEndpoint</a></code>
-</h3>
-
-	<div class="method-info">
-		<div class="pointy-thing"></div>
-
-		<div class="method-info-container">
-			
-
-			<div class="method-subsection method-declaration"><code>+ (nonnull NSString *)commonEndpoint</code></div>
-
-		    
-		</div>
-	</div>
-</div><div class="section-method">
 	<a name="//api/name/addCustomDisplayParameter:withValue:" title="addCustomDisplayParameter:withValue:"></a>
 	<h3 class="method-title"><code><a href="#//api/name/addCustomDisplayParameter:withValue:">&ndash;&nbsp;addCustomDisplayParameter:withValue:</a></code>
 </h3>
@@ -239,86 +161,6 @@ submission request, and will be urlencoded.</p>
 		    
 		</div>
 	</div>
-</div><div class="section-method">
-	<a name="//api/name/sendError:failureCallback:" title="sendError:failureCallback:"></a>
-	<h3 class="method-title"><code><a href="#//api/name/sendError:failureCallback:">&ndash;&nbsp;sendError:failureCallback:</a></code>
-</h3>
-
-	<div class="method-info">
-		<div class="pointy-thing"></div>
-
-		<div class="method-info-container">
-			
-
-			<div class="method-subsection method-declaration"><code>- (void)sendError:(nonnull NSError *)<em>error</em> failureCallback:(nonnull ConversationsFailureHandler)<em>failure</em></code></div>
-
-		    
-		</div>
-	</div>
-</div><div class="section-method">
-	<a name="//api/name/sendErrors:failureCallback:" title="sendErrors:failureCallback:"></a>
-	<h3 class="method-title"><code><a href="#//api/name/sendErrors:failureCallback:">&ndash;&nbsp;sendErrors:failureCallback:</a></code>
-</h3>
-
-	<div class="method-info">
-		<div class="pointy-thing"></div>
-
-		<div class="method-info-container">
-			
-
-			<div class="method-subsection method-declaration"><code>- (void)sendErrors:(nonnull NSArray&lt;NSError*&gt; *)<em>errors</em> failureCallback:(nonnull ConversationsFailureHandler)<em>failure</em></code></div>
-
-		    
-		</div>
-	</div>
-</div><div class="section-method">
-	<a name="//api/name/limitError:" title="limitError:"></a>
-	<h3 class="method-title"><code><a href="#//api/name/limitError:">&ndash;&nbsp;limitError:</a></code>
-</h3>
-
-	<div class="method-info">
-		<div class="pointy-thing"></div>
-
-		<div class="method-info-container">
-			
-
-			<div class="method-subsection method-declaration"><code>- (nonnull NSError *)limitError:(NSInteger)<em>limit</em></code></div>
-
-		    
-		</div>
-	</div>
-</div><div class="section-method">
-	<a name="//api/name/tooManyProductsError:" title="tooManyProductsError:"></a>
-	<h3 class="method-title"><code><a href="#//api/name/tooManyProductsError:">&ndash;&nbsp;tooManyProductsError:</a></code>
-</h3>
-
-	<div class="method-info">
-		<div class="pointy-thing"></div>
-
-		<div class="method-info-container">
-			
-
-			<div class="method-subsection method-declaration"><code>- (nonnull NSError *)tooManyProductsError:(nonnull NSArray&lt;NSString*&gt; *)<em>productIds</em></code></div>
-
-		    
-		</div>
-	</div>
-</div><div class="section-method">
-	<a name="//api/name/getPassKey" title="getPassKey"></a>
-	<h3 class="method-title"><code><a href="#//api/name/getPassKey">&ndash;&nbsp;getPassKey</a></code>
-</h3>
-
-	<div class="method-info">
-		<div class="pointy-thing"></div>
-
-		<div class="method-info-container">
-			
-
-			<div class="method-subsection method-declaration"><code>- (nonnull NSString *)getPassKey</code></div>
-
-		    
-		</div>
-	</div>
 </div>
 						</div>
 						
@@ -334,7 +176,7 @@ submission request, and will be urlencoded.</p>
 				<footer>
 					<div class="footer-copyright">
 						
-						<p class="copyright">Copyright &copy; 2018 Bazaarvoice. All rights reserved. Updated: 2018-10-04</p>
+						<p class="copyright">Copyright &copy; 2018 Bazaarvoice. All rights reserved. Updated: 2018-10-12</p>
 						
 						
 						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>

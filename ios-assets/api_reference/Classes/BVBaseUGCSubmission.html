@@ -62,8 +62,6 @@
 		
 		<option value="//api/name/campaignId">campaignId</option>
 		
-		<option value="//api/name/customFormPairs">customFormPairs</option>
-		
 		<option value="//api/name/fingerPrint">fingerPrint</option>
 		
 		<option value="//api/name/hostedAuthenticationCallback">hostedAuthenticationCallback</option>
@@ -71,8 +69,6 @@
 		<option value="//api/name/hostedAuthenticationEmail">hostedAuthenticationEmail</option>
 		
 		<option value="//api/name/locale">locale</option>
-		
-		<option value="//api/name/photos">photos</option>
 		
 		<option value="//api/name/sendEmailAlertWhenCommented">sendEmailAlertWhenCommented</option>
 		
@@ -96,8 +92,6 @@
 	
 	<optgroup label="Instance Methods">
 		
-		<option value="//api/name/addCustomSubmissionParameter:withValue:">- addCustomSubmissionParameter:withValue:</option>
-		
 		<option value="//api/name/addPhoto:withPhotoCaption:">- addPhoto:withPhotoCaption:</option>
 		
 	</optgroup>
@@ -120,8 +114,8 @@
 					
 					<div class="section section-specification"><table cellspacing="0"><tbody>
 						<tr>
-	<th>Inherits from</th>
-	<td><a href="../Classes/BVSubmission.html">BVSubmission</a> : NSObject</td>
+	<th>Conforms to</th>
+	<td>*<br />:<br />BVResponseType<br />BVSubmittedType<br />__covariant</td>
 </tr><tr>
 	<th>Declared in</th>
 	<td>BVBaseUGCSubmission.h</td>
@@ -165,7 +159,11 @@ the Conversations API: Reviews, Review Comments, Questions and Answers.</p>
 				<p>Set whether or not to to perform a preview on the submission or submit for
 real. Default is BVSubmissionActionPreview. A preview is like a dry run, but
 validation of the fields will occur through the API call over the network
-but no data will be submitted.</p>
+but no data will be submitted.
+- Note:
+\
+If the <code>action</code> of this object is set to <code>BVSubmissionActionPreview</code> then
+the submission will NOT actually take place.</p>
 			</div>
 			
 		    
@@ -454,10 +452,36 @@ conditions. Required depending on the client&rsquo;s settings.</p>
 
 		<div class="method-info-container">
 			
+			
+			<div class="method-subsection brief-description">
+				<p>Boolean indicating whether or not the <a href="#//api/name/user">user</a> wants to be notified when a
+comment is posted on the content.</p>
+			</div>
+			
+		    
 
 			<div class="method-subsection method-declaration"><code>@property (nullable) NSNumber *sendEmailAlertWhenCommented</code></div>
 
 		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BVBaseUGCSubmission.h</code></p>
+			</div>
+			
+			
 		</div>
 	</div>
 </div><div class="section-method">
@@ -690,8 +714,13 @@ required. See the hosted authentication tutorial for more information.</p>
 			
 			
 			<div class="method-subsection brief-description">
-				<p>Fingerprint of content author&rsquo;s device. See the Authenticity Tutorial for more
-information.</p>
+				<p>Per the Bazaarvoice Authenticity Policy, you must send a device fingerprint
+attached to each submission. If you fail to send a device fingerprint with
+your submission, Bazaarvoice may take any <a href="#//api/name/action">action</a> deemed necessary in
+Bazaarvoice’s sole discretion to protect the integrity of the network. Such
+actions may include but are not limited to: rejection of your content,
+halting syndication of your content on the Bazaarvoice network, revocation
+of your API key, or revocation of your API license.</p>
 			</div>
 			
 		    
@@ -706,17 +735,6 @@ information.</p>
 			
 
 			
-			<div class="method-subsection discussion-section">
-				<h4 class="method-subtitle">Discussion</h4>
-				<p>Per the Bazaarvoice Authenticity Policy, you must send a device fingerprint
-attached to each submission. If you fail to send a device fingerprint with your
-submission, Bazaarvoice may take any <a href="#//api/name/action">action</a> deemed necessary in Bazaarvoice’s
-sole discretion to protect the integrity of the network. Such actions may
-include but are not limited to: rejection of your content, halting syndication
-of your content on the Bazaarvoice network, revocation of your API key, or
-revocation of your API license.</p>
-			</div>
-			
 
 			
 
@@ -729,38 +747,6 @@ revocation of your API license.</p>
 			</div>
 			
 			
-		</div>
-	</div>
-</div><div class="section-method">
-	<a name="//api/name/photos" title="photos"></a>
-	<h3 class="method-title"><code><a href="#//api/name/photos">&nbsp;&nbsp;photos</a></code>
-</h3>
-
-	<div class="method-info">
-		<div class="pointy-thing"></div>
-
-		<div class="method-info-container">
-			
-
-			<div class="method-subsection method-declaration"><code>@property (nullable) NSMutableArray&lt;BVUploadablePhoto*&gt; *photos</code></div>
-
-		    
-		</div>
-	</div>
-</div><div class="section-method">
-	<a name="//api/name/customFormPairs" title="customFormPairs"></a>
-	<h3 class="method-title"><code><a href="#//api/name/customFormPairs">&nbsp;&nbsp;customFormPairs</a></code>
-</h3>
-
-	<div class="method-info">
-		<div class="pointy-thing"></div>
-
-		<div class="method-info-container">
-			
-
-			<div class="method-subsection method-declaration"><code>@property (nullable) NSMutableArray&lt;BVStringKeyValuePair*&gt; *customFormPairs</code></div>
-
-		    
 		</div>
 	</div>
 </div><div class="section-method">
@@ -775,7 +761,7 @@ revocation of your API license.</p>
 			
 			
 			<div class="method-subsection brief-description">
-				<p>Submit a user-provided photo attached to this answer.</p>
+				<p>The user-provded image.</p>
 			</div>
 			
 		    
@@ -790,7 +776,7 @@ revocation of your API license.</p>
 				
 					<tr>
 						<th scope="row" class="argument-name"><code>image</code></th>
-						<td><p>The user-provded image attached to this answer.</p></td>
+						<td><p>The user-provded image.</p></td>
 					</tr>
 				
 					<tr>
@@ -800,48 +786,6 @@ revocation of your API license.</p>
 				
 				</table>
 			</div>
-			
-
-			
-
-			
-
-			
-
-			
-
-			
-
-			
-			<div class="method-subsection declared-in-section">
-				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">BVBaseUGCSubmission.h</code></p>
-			</div>
-			
-			
-		</div>
-	</div>
-</div><div class="section-method">
-	<a name="//api/name/addCustomSubmissionParameter:withValue:" title="addCustomSubmissionParameter:withValue:"></a>
-	<h3 class="method-title"><code><a href="#//api/name/addCustomSubmissionParameter:withValue:">&ndash;&nbsp;addCustomSubmissionParameter:withValue:</a></code>
-</h3>
-
-	<div class="method-info">
-		<div class="pointy-thing"></div>
-
-		<div class="method-info-container">
-			
-			
-			<div class="method-subsection brief-description">
-				<p>This method adds extra <a href="#//api/name/user">user</a> provided form parameters to a
-submission request, and will be urlencoded.</p>
-			</div>
-			
-		    
-
-			<div class="method-subsection method-declaration"><code>- (void)addCustomSubmissionParameter:(nonnull NSString *)<em>parameter</em> withValue:(nonnull NSString *)<em>value</em></code></div>
-
-		    
 			
 
 			
@@ -878,7 +822,7 @@ submission request, and will be urlencoded.</p>
 				<footer>
 					<div class="footer-copyright">
 						
-						<p class="copyright">Copyright &copy; 2018 Bazaarvoice. All rights reserved. Updated: 2018-10-04</p>
+						<p class="copyright">Copyright &copy; 2018 Bazaarvoice. All rights reserved. Updated: 2018-10-12</p>
 						
 						
 						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>

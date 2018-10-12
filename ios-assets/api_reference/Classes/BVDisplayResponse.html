@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 
-	<title>BVStringKeyValuePair Class Reference</title>
+	<title>BVDisplayResponse Class Reference</title>
 
 	<link rel="stylesheet" href="../css/style.css">
 	<meta name="viewport" content="initial-scale=1, maximum-scale=1.4">
@@ -54,21 +54,25 @@
 	
 	<optgroup label="Properties">
 		
-		<option value="//api/name/key">key</option>
+		<option value="//api/name/limit">limit</option>
 		
-		<option value="//api/name/value">value</option>
+		<option value="//api/name/locale">locale</option>
 		
-	</optgroup>
-	
-
-	
-	<optgroup label="Class Methods">
+		<option value="//api/name/offset">offset</option>
 		
-		<option value="//api/name/pairWithKey:value:">+ pairWithKey:value:</option>
+		<option value="//api/name/totalResults">totalResults</option>
 		
 	</optgroup>
 	
 
+	
+
+	
+	<optgroup label="Instance Methods">
+		
+		<option value="//api/name/initWithApiResponse:">- initWithApiResponse:</option>
+		
+	</optgroup>
 	
 	
 </select>
@@ -83,16 +87,16 @@
 		<div id="overview_contents" class="container">
 			<div id="content">
 				<main role="main">
-					<h1 class="title">BVStringKeyValuePair Class Reference</h1>
+					<h1 class="title">BVDisplayResponse Class Reference</h1>
 
 					
 					<div class="section section-specification"><table cellspacing="0"><tbody>
 						<tr>
-	<th>Inherits from</th>
-	<td>NSObject</td>
+	<th>Conforms to</th>
+	<td>*<br />:<br />BVGenericConversationsResult<br />GenericType<br />__covariant</td>
 </tr><tr>
 	<th>Declared in</th>
-	<td>BVStringKeyValuePair.h</td>
+	<td>BVDisplayResponse.h</td>
 </tr>
 						</tbody></table></div>
 					
@@ -110,8 +114,8 @@
 
 						<div class="task-list">
 							<div class="section-method">
-	<a name="//api/name/key" title="key"></a>
-	<h3 class="method-title"><code><a href="#//api/name/key">&nbsp;&nbsp;key</a></code>
+	<a name="//api/name/offset" title="offset"></a>
+	<h3 class="method-title"><code><a href="#//api/name/offset">&nbsp;&nbsp;offset</a></code>
 </h3>
 
 	<div class="method-info">
@@ -120,14 +124,14 @@
 		<div class="method-info-container">
 			
 
-			<div class="method-subsection method-declaration"><code>@property (nonnull) NSString *key</code></div>
+			<div class="method-subsection method-declaration"><code>@property (nullable) NSNumber *offset</code></div>
 
 		    
 		</div>
 	</div>
 </div><div class="section-method">
-	<a name="//api/name/value" title="value"></a>
-	<h3 class="method-title"><code><a href="#//api/name/value">&nbsp;&nbsp;value</a></code>
+	<a name="//api/name/locale" title="locale"></a>
+	<h3 class="method-title"><code><a href="#//api/name/locale">&nbsp;&nbsp;locale</a></code>
 </h3>
 
 	<div class="method-info">
@@ -136,14 +140,14 @@
 		<div class="method-info-container">
 			
 
-			<div class="method-subsection method-declaration"><code>@property (nullable) NSString *value</code></div>
+			<div class="method-subsection method-declaration"><code>@property (nullable) NSString *locale</code></div>
 
 		    
 		</div>
 	</div>
 </div><div class="section-method">
-	<a name="//api/name/pairWithKey:value:" title="pairWithKey:value:"></a>
-	<h3 class="method-title"><code><a href="#//api/name/pairWithKey:value:">+&nbsp;pairWithKey:value:</a></code>
+	<a name="//api/name/totalResults" title="totalResults"></a>
+	<h3 class="method-title"><code><a href="#//api/name/totalResults">&nbsp;&nbsp;totalResults</a></code>
 </h3>
 
 	<div class="method-info">
@@ -152,7 +156,39 @@
 		<div class="method-info-container">
 			
 
-			<div class="method-subsection method-declaration"><code>+ (nonnull instancetype)pairWithKey:(nonnull NSString *)<em>key</em> value:(nullable NSString *)<em>value</em></code></div>
+			<div class="method-subsection method-declaration"><code>@property (nullable) NSNumber *totalResults</code></div>
+
+		    
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/limit" title="limit"></a>
+	<h3 class="method-title"><code><a href="#//api/name/limit">&nbsp;&nbsp;limit</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+
+			<div class="method-subsection method-declaration"><code>@property (nullable) NSNumber *limit</code></div>
+
+		    
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/initWithApiResponse:" title="initWithApiResponse:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/initWithApiResponse:">&ndash;&nbsp;initWithApiResponse:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+
+			<div class="method-subsection method-declaration"><code>- (nonnull instancetype)initWithApiResponse:(nonnull NSDictionary *)<em>apiResponse</em></code></div>
 
 		    
 		</div>
@@ -172,7 +208,7 @@
 				<footer>
 					<div class="footer-copyright">
 						
-						<p class="copyright">Copyright &copy; 2018 Bazaarvoice. All rights reserved. Updated: 2018-10-04</p>
+						<p class="copyright">Copyright &copy; 2018 Bazaarvoice. All rights reserved. Updated: 2018-10-12</p>
 						
 						
 						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>

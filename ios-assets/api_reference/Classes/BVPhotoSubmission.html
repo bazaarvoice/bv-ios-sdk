@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 
-	<title>BVConversationsError Class Reference</title>
+	<title>BVPhotoSubmission Class Reference</title>
 
 	<link rel="stylesheet" href="../css/style.css">
 	<meta name="viewport" content="initial-scale=1, maximum-scale=1.4">
@@ -43,8 +43,6 @@
 							<select id="jump-to">
 	<option value="top">Jump To&#133;</option>
 	
-	<option value="overview">Overview</option>
-	
 
 	
 	
@@ -56,27 +54,25 @@
 	
 	<optgroup label="Properties">
 		
-		<option value="//api/name/code">code</option>
+		<option value="//api/name/maxImageBytes">maxImageBytes</option>
 		
-		<option value="//api/name/message">message</option>
+		<option value="//api/name/photo">photo</option>
+		
+		<option value="//api/name/photoCaption">photoCaption</option>
+		
+		<option value="//api/name/photoContentType">photoContentType</option>
 		
 	</optgroup>
 	
 
-	
-	<optgroup label="Class Methods">
-		
-		<option value="//api/name/createErrorListFromApiResponse:">+ createErrorListFromApiResponse:</option>
-		
-	</optgroup>
 	
 
 	
 	<optgroup label="Instance Methods">
 		
-		<option value="//api/name/initWithApiResponse:">- initWithApiResponse:</option>
+		<option value="//api/name/__unavailable">- __unavailable</option>
 		
-		<option value="//api/name/toNSError">- toNSError</option>
+		<option value="//api/name/initWithPhoto:photoCaption:photoContentType:">- initWithPhoto:photoCaption:photoContentType:</option>
 		
 	</optgroup>
 	
@@ -93,29 +89,24 @@
 		<div id="overview_contents" class="container">
 			<div id="content">
 				<main role="main">
-					<h1 class="title">BVConversationsError Class Reference</h1>
+					<h1 class="title">BVPhotoSubmission Class Reference</h1>
 
 					
 					<div class="section section-specification"><table cellspacing="0"><tbody>
 						<tr>
 	<th>Inherits from</th>
-	<td>NSObject</td>
+	<td><a href="../Classes/BVSubmission.html">BVSubmission</a></td>
+</tr><tr>
+	<th>Conforms to</th>
+	<td>*<br />BVSubmittedPhoto</td>
 </tr><tr>
 	<th>Declared in</th>
-	<td>BVConversationsError.h</td>
+	<td>BVPhotoSubmission.h</td>
 </tr>
 						</tbody></table></div>
 					
 
                     
-					
-					<div class="section section-overview">
-						<a title="Overview" name="overview"></a>
-						<h2 class="subtitle subtitle-overview">Overview</h2>
-						<p>Internal class - used only within BVSDK</p>
-					</div>
-					
-					
 
 					
 					
@@ -128,8 +119,8 @@
 
 						<div class="task-list">
 							<div class="section-method">
-	<a name="//api/name/message" title="message"></a>
-	<h3 class="method-title"><code><a href="#//api/name/message">&nbsp;&nbsp;message</a></code>
+	<a name="//api/name/photo" title="photo"></a>
+	<h3 class="method-title"><code><a href="#//api/name/photo">&nbsp;&nbsp;photo</a></code>
 </h3>
 
 	<div class="method-info">
@@ -138,14 +129,14 @@
 		<div class="method-info-container">
 			
 
-			<div class="method-subsection method-declaration"><code>@property (nonnull) NSString *message</code></div>
+			<div class="method-subsection method-declaration"><code>@property (nonnull, readonly) UIImage *photo</code></div>
 
 		    
 		</div>
 	</div>
 </div><div class="section-method">
-	<a name="//api/name/code" title="code"></a>
-	<h3 class="method-title"><code><a href="#//api/name/code">&nbsp;&nbsp;code</a></code>
+	<a name="//api/name/photoCaption" title="photoCaption"></a>
+	<h3 class="method-title"><code><a href="#//api/name/photoCaption">&nbsp;&nbsp;photoCaption</a></code>
 </h3>
 
 	<div class="method-info">
@@ -154,14 +145,14 @@
 		<div class="method-info-container">
 			
 
-			<div class="method-subsection method-declaration"><code>@property (nonnull) NSString *code</code></div>
+			<div class="method-subsection method-declaration"><code>@property (nullable, readonly) NSString *photoCaption</code></div>
 
 		    
 		</div>
 	</div>
 </div><div class="section-method">
-	<a name="//api/name/initWithApiResponse:" title="initWithApiResponse:"></a>
-	<h3 class="method-title"><code><a href="#//api/name/initWithApiResponse:">&ndash;&nbsp;initWithApiResponse:</a></code>
+	<a name="//api/name/photoContentType" title="photoContentType"></a>
+	<h3 class="method-title"><code><a href="#//api/name/photoContentType">&nbsp;&nbsp;photoContentType</a></code>
 </h3>
 
 	<div class="method-info">
@@ -170,14 +161,14 @@
 		<div class="method-info-container">
 			
 
-			<div class="method-subsection method-declaration"><code>- (nonnull id)initWithApiResponse:(nonnull NSDictionary *)<em>apiResponse</em></code></div>
+			<div class="method-subsection method-declaration"><code>@property (readonly) BVPhotoContentType photoContentType</code></div>
 
 		    
 		</div>
 	</div>
 </div><div class="section-method">
-	<a name="//api/name/toNSError" title="toNSError"></a>
-	<h3 class="method-title"><code><a href="#//api/name/toNSError">&ndash;&nbsp;toNSError</a></code>
+	<a name="//api/name/maxImageBytes" title="maxImageBytes"></a>
+	<h3 class="method-title"><code><a href="#//api/name/maxImageBytes">&nbsp;&nbsp;maxImageBytes</a></code>
 </h3>
 
 	<div class="method-info">
@@ -186,14 +177,14 @@
 		<div class="method-info-container">
 			
 
-			<div class="method-subsection method-declaration"><code>- (nonnull NSError *)toNSError</code></div>
+			<div class="method-subsection method-declaration"><code>@property (readwrite) NSUInteger maxImageBytes</code></div>
 
 		    
 		</div>
 	</div>
 </div><div class="section-method">
-	<a name="//api/name/createErrorListFromApiResponse:" title="createErrorListFromApiResponse:"></a>
-	<h3 class="method-title"><code><a href="#//api/name/createErrorListFromApiResponse:">+&nbsp;createErrorListFromApiResponse:</a></code>
+	<a name="//api/name/initWithPhoto:photoCaption:photoContentType:" title="initWithPhoto:photoCaption:photoContentType:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/initWithPhoto:photoCaption:photoContentType:">&ndash;&nbsp;initWithPhoto:photoCaption:photoContentType:</a></code>
 </h3>
 
 	<div class="method-info">
@@ -202,7 +193,23 @@
 		<div class="method-info-container">
 			
 
-			<div class="method-subsection method-declaration"><code>+ (nonnull NSArray&lt;BVConversationsError*&gt; *)createErrorListFromApiResponse:(nullable id)<em>apiResponse</em></code></div>
+			<div class="method-subsection method-declaration"><code>- (nonnull instancetype)initWithPhoto:(nonnull UIImage *)<em>photo</em> photoCaption:(nullable NSString *)<em>photoCaption</em> photoContentType:(BVPhotoContentType)<em>photoContentType</em></code></div>
+
+		    
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/__unavailable" title="__unavailable"></a>
+	<h3 class="method-title"><code><a href="#//api/name/__unavailable">&ndash;&nbsp;__unavailable</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+
+			<div class="method-subsection method-declaration"><code>- (nonnull instancetype)__unavailable</code></div>
 
 		    
 		</div>
@@ -222,7 +229,7 @@
 				<footer>
 					<div class="footer-copyright">
 						
-						<p class="copyright">Copyright &copy; 2018 Bazaarvoice. All rights reserved. Updated: 2018-10-04</p>
+						<p class="copyright">Copyright &copy; 2018 Bazaarvoice. All rights reserved. Updated: 2018-10-12</p>
 						
 						
 						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>
