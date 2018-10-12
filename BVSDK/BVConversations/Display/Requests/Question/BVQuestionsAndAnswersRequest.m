@@ -13,6 +13,7 @@
 #import "BVQuestionFilterType.h"
 #import "BVQuestionsSortOption.h"
 #import "BVRelationalFilterOperator.h"
+#import "BVStringKeyValuePair.h"
 
 @interface BVQuestionsAndAnswersRequest ()
 
