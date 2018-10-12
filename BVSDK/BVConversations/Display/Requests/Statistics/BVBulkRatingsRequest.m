@@ -12,6 +12,7 @@
 #import "BVConversationsRequest+Private.h"
 #import "BVLogger.h"
 #import "BVRelationalFilterOperator.h"
+#import "BVStringKeyValuePair.h"
 
 @interface BVBulkRatingsRequest ()
 

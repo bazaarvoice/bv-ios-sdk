@@ -11,6 +11,7 @@
 #import "BVProductFilterType.h"
 #import "BVProductsSortOption.h"
 #import "BVRelationalFilterOperator.h"
+#import "BVStringKeyValuePair.h"
 
 @interface BVBulkProductRequest ()
 

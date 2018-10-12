@@ -15,6 +15,7 @@
 #import "BVQuestion.h"
 #import "BVRelationalFilterOperator.h"
 #import "BVReview.h"
+#import "BVStringKeyValuePair.h"
 
 @interface BVProductDisplayPageRequest ()
 
