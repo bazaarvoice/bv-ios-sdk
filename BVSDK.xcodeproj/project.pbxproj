@@ -436,7 +436,7 @@
 		B575C3931FBE2479000F890B /* BVSubmittedUAS.m in Sources */ = {isa = PBXBuildFile; fileRef = B575C3911FBE2479000F890B /* BVSubmittedUAS.m */; };
 		B57B8319215BDD76006B378E /* BVSubmission+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = B57B8318215BDD76006B378E /* BVSubmission+Private.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		B57B831B215BDE1E006B378E /* BVConversations.h in Headers */ = {isa = PBXBuildFile; fileRef = B57B831A215BDE1E006B378E /* BVConversations.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B57B831D215C0A89006B378E /* BVDisplayResponse+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = B57B831C215C0A89006B378E /* BVDisplayResponse+Private.h */; };
+		B57B831D215C0A89006B378E /* BVDisplayResponse+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = B57B831C215C0A89006B378E /* BVDisplayResponse+Private.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		B57B8320215C2E22006B378E /* BVSubmittedType.h in Headers */ = {isa = PBXBuildFile; fileRef = B57B831E215C2E22006B378E /* BVSubmittedType.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B57B8321215C2E22006B378E /* BVSubmittedType.m in Sources */ = {isa = PBXBuildFile; fileRef = B57B831F215C2E22006B378E /* BVSubmittedType.m */; };
 		B57B8324215E802A006B378E /* BVSubmittedPhoto.h in Headers */ = {isa = PBXBuildFile; fileRef = B57B8322215E802A006B378E /* BVSubmittedPhoto.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -482,10 +482,10 @@
 		B5863992214AFBD000EFD763 /* BVConversationsInclude.h in Headers */ = {isa = PBXBuildFile; fileRef = B586398A214AFBCF00EFD763 /* BVConversationsInclude.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		B5863993214AFBD000EFD763 /* BVConversationsError.h in Headers */ = {isa = PBXBuildFile; fileRef = B586398B214AFBCF00EFD763 /* BVConversationsError.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		B5863994214AFBD000EFD763 /* BVDimensionAndDistributionUtil+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = B586398C214AFBCF00EFD763 /* BVDimensionAndDistributionUtil+Private.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		B5863999214AFD7400EFD763 /* BVConversationsRequest+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = B5863995214AFD7300EFD763 /* BVConversationsRequest+Private.h */; };
-		B586399A214AFD7400EFD763 /* BVBaseReviewsRequest+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = B5863996214AFD7400EFD763 /* BVBaseReviewsRequest+Private.h */; };
-		B586399B214AFD7400EFD763 /* BVBaseProductRequest+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = B5863997214AFD7400EFD763 /* BVBaseProductRequest+Private.h */; };
-		B586399C214AFD7400EFD763 /* BVCommentsRequest+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = B5863998214AFD7400EFD763 /* BVCommentsRequest+Private.h */; };
+		B5863999214AFD7400EFD763 /* BVConversationsRequest+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = B5863995214AFD7300EFD763 /* BVConversationsRequest+Private.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		B586399A214AFD7400EFD763 /* BVBaseReviewsRequest+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = B5863996214AFD7400EFD763 /* BVBaseReviewsRequest+Private.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		B586399B214AFD7400EFD763 /* BVBaseProductRequest+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = B5863997214AFD7400EFD763 /* BVBaseProductRequest+Private.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		B586399C214AFD7400EFD763 /* BVCommentsRequest+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = B5863998214AFD7400EFD763 /* BVCommentsRequest+Private.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		B58639A1214AFD9D00EFD763 /* BVFieldError.m in Sources */ = {isa = PBXBuildFile; fileRef = B586399E214AFD9D00EFD763 /* BVFieldError.m */; };
 		B58639A2214AFD9D00EFD763 /* BVSubmissionErrorResponse+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = B586399F214AFD9D00EFD763 /* BVSubmissionErrorResponse+Private.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		B58639A3214AFD9D00EFD763 /* BVFieldError.h in Headers */ = {isa = PBXBuildFile; fileRef = B58639A0214AFD9D00EFD763 /* BVFieldError.h */; settings = {ATTRIBUTES = (Private, ); }; };
@@ -3455,6 +3455,10 @@
 			baseConfigurationReference = 89529D79D81B13BA86882542 /* Pods-BVSDKTests.release.xcconfig */;
 			buildSettings = {
 				DEVELOPMENT_TEAM = TH9FFAVND4;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"COCOAPODS=1",
+				);
 				INFOPLIST_FILE = BVSDKTests/Support/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks ${BUILT_PRODUCTS_DIR}/CommonCryptoModuleMap";
 				PRODUCT_BUNDLE_IDENTIFIER = com.bazaarvoice.bvsdk.BVSDKTests;
