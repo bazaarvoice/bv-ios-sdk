@@ -144,7 +144,7 @@ static NSString *urlEncode(id object) {
           NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)
               response; // This dataTask is used with only HTTP requests.
           NSInteger statusCode = httpResponse.statusCode;
-          NSError *jsonParsingError;
+          NSError *jsonParsingError = nil;
 
           if (httpError) {
             [self sendError:httpError failureCallback:failure];
