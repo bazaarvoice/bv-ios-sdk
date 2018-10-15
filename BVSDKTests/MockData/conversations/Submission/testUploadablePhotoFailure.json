@@ -1,48 +1,60 @@
 {
-  "Locale": "en_US",
-  "Errors": [],
-  "Form": [
-           {
-           "Type": "Field",
-           "Id": "photo"
-           }
-           ],
-  "FormErrors": {
-    "GroupErrors": {},
-    "GroupErrorsOrder": [],
-    "FieldErrors": {
-      "photo": {
-        "Field": "photo",
-        "Message": "We were unable to parse the image you uploaded.  Please ensure that the image is a valid BMP, PNG, GIF or JPEG file.",
-        "Code": "ERROR_FORM_IMAGE_PARSE"
+  "Locale":"en_US",
+  "Errors":[
+    
+  ],
+  "Form":[
+    {
+      "Type":"Field",
+      "Id":"photo"
+    }
+  ],
+  "FormErrors":{
+    "GroupErrors":{
+      
+    },
+    "GroupErrorsOrder":[
+      
+    ],
+    "FieldErrors":{
+      "photo":{
+        "Field":"photo",
+        "Message":"We were unable to parse the image you uploaded.  Please ensure that the image is a valid BMP, PNG, GIF or JPEG file.",
+        "Code":"ERROR_FORM_IMAGE_PARSE"
       }
     },
-    "FieldErrorsOrder": [
-                         "photo"
-                         ]
+    "FieldErrorsOrder":[
+      "photo"
+    ]
   },
-  "SubmissionId": null,
-  "Data": {
-    "Fields": {
-      "photo": {
-        "Options": [],
-        "Type": "FileInput",
-        "Required": null,
-        "Label": null,
-        "Value": null,
-        "MinLength": null,
-        "Id": "photo",
-        "MaxLength": null,
-        "Default": null
+  "SubmissionId":null,
+  "Data":{
+    "Fields":{
+      "photo":{
+        "Options":[
+          
+        ],
+        "Type":"FileInput",
+        "Required":null,
+        "Label":null,
+        "Value":null,
+        "MinLength":null,
+        "Id":"photo",
+        "MaxLength":null,
+        "Default":null
       }
     },
-    "Groups": {},
-    "FieldsOrder": [
-                    "photo"
-                    ],
-    "GroupsOrder": []
+    "Groups":{
+      
+    },
+    "FieldsOrder":[
+      "photo"
+    ],
+    "GroupsOrder":[
+      
+    ]
   },
-  "TypicalHoursToPost": null,
-  "AuthorSubmissionToken": null,
-  "HasErrors": true
+  "TypicalHoursToPost":null,
+  "AuthorSubmissionToken":null,
+  "HasErrors":true
 }
