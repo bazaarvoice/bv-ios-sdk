@@ -53,7 +53,8 @@ class ReviewSubmissionTests: BVBaseStubTestCase {
   
   func testSubmitReviewWithPhotoAndNetworkDelegate() {
     let mainExpectation =
-      self.expectation(description: "testSubmitReviewWithPhoto")
+      self.expectation(
+        description: "testSubmitReviewWithPhotoAndNetworkDelegate")
     
     let sequenceFiles:[String] =
       [
@@ -97,7 +98,7 @@ class ReviewSubmissionTests: BVBaseStubTestCase {
   func testSubmitReviewWithPhotoPreview() {
     
     let expectation =
-      self.expectation(description: "testPreviewReviewWithPhoto")
+      self.expectation(description: "testSubmitReviewWithPhotoPreview")
     
     let sequenceFiles:[String] =
       [
@@ -125,7 +126,7 @@ class ReviewSubmissionTests: BVBaseStubTestCase {
   func testSubmitReviewWithVideoPreview() {
     
     let expectation =
-      self.expectation(description: "testPreviewReviewWithVideo")
+      self.expectation(description: "testSubmitReviewWithVideoPreview")
     
     let sequenceFiles:[String] =
       [
@@ -178,7 +179,7 @@ class ReviewSubmissionTests: BVBaseStubTestCase {
   
   func testSubmitReviewFailureFormCodeParsing() {
     let expectation =
-      self.expectation(description: "testSubmitReviewFailure")
+      self.expectation(description: "testSubmitReviewFailureFormCodeParsing")
     
     let sequenceFiles:[String] =
       [
@@ -230,7 +231,7 @@ class ReviewSubmissionTests: BVBaseStubTestCase {
   
   func testSubmitReviewFailureCodeParsing() {
     let expectation =
-      self.expectation(description: "testSubmitReviewFailure")
+      self.expectation(description: "testSubmitReviewFailureCodeParsing")
     
     let sequenceFiles:[String] =
       [
