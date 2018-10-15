@@ -9,7 +9,7 @@
 
 Pod::Spec.new do |s|
   s.name = "BVSDK"
-  s.version = '8.0.0'
+  s.version = '8.0.1'
   s.homepage = 'https://developer.bazaarvoice.com/'
   s.license = { :type => 'Commercial', :text => 'See https://developer.bazaarvoice.com/API_Terms_of_Use' }
   s.author = { 'Bazaarvoice' => 'support@bazaarvoice.com' }
@@ -46,15 +46,13 @@ Pod::Spec.new do |s|
   end
 
   s.subspec 'BVConversationsStores' do |conversationsstores|
-    conversationsstores.source_files = 'BVSDK/BVConversationsStores/**/*.{h,m}', 'BVSDK/BVConversations/**/Private/*.{h,m}'
+    conversationsstores.source_files = 'BVSDK/BVConversationsStores/**/*.{h,m}'
     conversationsstores.private_header_files = 'BVSDK/BVConversationsStores/**/Private/*.{h}'
-    conversationsstores.dependency 'BVSDK/BVCommon'
     conversationsstores.dependency 'BVSDK/BVConversations'
   end
 
   s.subspec 'BVConversationsUI' do |conversationsui|
     conversationsui.source_files = 'BVSDK/BVConversationsUI/**/*.{h,m}'
-    conversationsui.dependency 'BVSDK/BVCommon'
     conversationsui.dependency 'BVSDK/BVCommonUI'
     conversationsui.dependency 'BVSDK/BVConversationsStores'
   end
@@ -73,9 +71,8 @@ Pod::Spec.new do |s|
   end
 
   s.subspec 'BVNotifications' do |notifications|
-    notifications.source_files = 'BVSDK/BVNotifications/**/*.{h,m}', 'BVSDK/BVCommon/Private/*.{h,m}'
+    notifications.source_files = 'BVSDK/BVNotifications/**/*.{h,m}'
     notifications.resources = ['BVSDK/BVNotifications/mapThumbnail.png']
-    notifications.dependency 'BVSDK/BVCommon'
     notifications.dependency 'BVSDK/BVConversationsUI'
   end
 
