@@ -13,7 +13,7 @@
 
 /// Set to true when sending events to the staging server. Default is NO
 /// (production)
-@property BOOL isStagingServer;
+@property(strong, nonatomic) NSNumber *isStagingServer;
 
 /// Sets the client ID for the API being used. App will assert if client ID is
 /// not set!

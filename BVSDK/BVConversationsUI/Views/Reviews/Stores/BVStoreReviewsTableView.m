@@ -15,9 +15,9 @@
                                        UITableViewDataSource> {
   BVMessageInterceptor *delegate_interceptor;
   BVMessageInterceptor *datasource_interceptor;
-  bool hasSentScrollEvent;
-  bool hasSentInViewEvent;
-  bool hasEnteredView;
+  BOOL hasSentScrollEvent;
+  BOOL hasSentInViewEvent;
+  BOOL hasEnteredView;
   NSMutableDictionary<NSString *, BVReview *> *cellToProductMap;
   NSString *productId;
 }
@@ -59,7 +59,7 @@
 
   if (hasEnteredView && productId) {
     if (!hasSentInViewEvent) {
-      hasSentInViewEvent = true;
+      hasSentInViewEvent = YES;
 
       BVInViewEvent *inView = [[BVInViewEvent alloc]
              initWithProductId:productId
@@ -75,7 +75,7 @@
 
 - (void)willMoveToWindow:(UIWindow *)newWindow {
   [super willMoveToWindow:newWindow];
-  hasEnteredView = true;
+  hasEnteredView = YES;
 
   [self tryToSendInViewEvent];
 }
@@ -133,7 +133,7 @@
       NSString *message = @"BVReviewsTableViewCell has nil `review` property. "
                           @"This must be set in `cellForItemAtIndexPath`.";
       [[BVLogger sharedLogger] error:message];
-      NSAssert(false, message);
+      NSAssert(NO, message);
     }
   }
 
@@ -162,7 +162,7 @@
   }
 
   if (!hasSentScrollEvent) {
-    hasSentScrollEvent = true;
+    hasSentScrollEvent = YES;
 
     BVFeatureUsedEvent *scrollEvent = [[BVFeatureUsedEvent alloc]
            initWithProductId:productId

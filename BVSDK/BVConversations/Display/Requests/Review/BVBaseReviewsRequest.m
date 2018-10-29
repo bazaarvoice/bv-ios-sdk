@@ -193,7 +193,7 @@ relationalFilterOperatorValue:
 }
 
 - (BVDisplayResponse *)createResponse:(NSDictionary *)raw {
-  NSAssert(true, @"Should be implemented in subclasses");
+  NSAssert(YES, @"Should be implemented in subclasses");
   return nil;
 }
 

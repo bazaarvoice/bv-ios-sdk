@@ -18,7 +18,7 @@
 
 @implementation BVAuthenticatedUser
 
-- (void)updateProfile:(bool)force
+- (void)updateProfile:(BOOL)force
            withAPIKey:(NSString *)passKey
             isStaging:(BOOL)isStage {
 // don't grab profile if user has opted for limited ad targeting
@@ -142,7 +142,7 @@
 #endif // DISABLE_BVSDK_IDFA
 }
 
-- (bool)shouldUpdateProfile {
+- (BOOL)shouldUpdateProfile {
   // Return true if the profile does not have any targeting keywords at all
   return ![self getTargetingKeywords] ||
          [[self getTargetingKeywords] allKeys].count == 0;
@@ -150,9 +150,9 @@
 
 - (NSDictionary *)getTargetingKeywords {
 #ifdef DISABLE_BVSDK_IDFA
-  bool trackingEnabled = false;
+  BOOL trackingEnabled = NO;
 #else
-  bool trackingEnabled =
+  BOOL trackingEnabled =
       [[ASIdentifierManager sharedManager] isAdvertisingTrackingEnabled];
 #endif
 
@@ -169,7 +169,7 @@
 
   for (NSString *key in profile) {
     // ensure we don't include profile id
-    if ([key isEqualToString:@"id"] == false) {
+    if (![key isEqualToString:@"id"]) {
       NSDictionary *value = [profile objectForKey:key];
       if (value && [value count] > 0) {
         [targetingInfo setObject:[self generateString:value] forKey:key];

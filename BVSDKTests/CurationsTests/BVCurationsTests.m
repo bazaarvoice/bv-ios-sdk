@@ -68,8 +68,8 @@
             feedItems,
             @"ERROR: feeItems should not be nil in curations api response.");
 
-        bool hasPhotos = NO;
-        bool hasVideos = NO;
+        BOOL hasPhotos = NO;
+        BOOL hasVideos = NO;
         for (BVCurationsFeedItem *feedItem in feedItems) {
           if (feedItem.photos.count > 0) {
             hasPhotos = YES;
@@ -139,8 +139,8 @@
             feedItems,
             @"ERROR: feeItems should not be nil in curations api response.");
 
-        bool hasPhotos = NO;
-        bool hasVideos = NO;
+        BOOL hasPhotos = NO;
+        BOOL hasVideos = NO;
         for (BVCurationsFeedItem *feedItem in feedItems) {
           if (feedItem.photos.count > 0) {
             hasPhotos = YES;

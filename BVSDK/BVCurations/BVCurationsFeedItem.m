@@ -11,7 +11,7 @@
 
 @interface BVCurationsFeedItem ()
 
-@property bool hasSentImpressionEvent;
+@property BOOL hasSentImpressionEvent;
 
 @end
 
@@ -111,7 +111,7 @@
   if (self.hasSentImpressionEvent) {
     return;
   }
-  self.hasSentImpressionEvent = true;
+  self.hasSentImpressionEvent = YES;
 
   BVImpressionEvent *impression = [[BVImpressionEvent alloc]
          initWithProductId:self.externalId

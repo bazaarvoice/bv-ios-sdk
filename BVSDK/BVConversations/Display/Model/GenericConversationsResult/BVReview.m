@@ -42,17 +42,17 @@
 
     NSNumber *recommended = apiResponse[@"IsRecommended"];
     if (![recommended isKindOfClass:[NSNull class]]) {
-      self.isRecommended = [recommended boolValue];
+      self.isRecommended = recommended;
     }
 
     NSNumber *ratingsOnly = apiResponse[@"IsRatingsOnly"];
     if (![ratingsOnly isKindOfClass:[NSNull class]]) {
-      self.isRatingsOnly = [ratingsOnly boolValue];
+      self.isRatingsOnly = ratingsOnly;
     }
 
     NSNumber *isSyndicated = apiResponse[@"IsSyndicated"];
     if (![isSyndicated isKindOfClass:[NSNull class]]) {
-      self.isSyndicated = [isSyndicated boolValue];
+      self.isSyndicated = isSyndicated;
 
       if (self.isSyndicated) {
         _syndicationSource =
@@ -62,7 +62,7 @@
 
     NSNumber *featured = apiResponse[@"IsFeatured"];
     if (![featured isKindOfClass:[NSNull class]]) {
-      self.isFeatured = [featured boolValue];
+      self.isFeatured = featured;
     }
 
     SET_IF_NOT_NULL(self.userNickname, apiResponse[@"UserNickname"])

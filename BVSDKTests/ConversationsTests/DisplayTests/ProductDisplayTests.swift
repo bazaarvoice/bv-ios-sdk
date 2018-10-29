@@ -83,12 +83,12 @@ class ProductDisplayTests: XCTestCase {
       
       // Iterate all the included reviews and verify that all the reviews have isRatingsOnly = false
       for review in product.includedReviews {
-        XCTAssertFalse(review.isRatingsOnly)
+        XCTAssertFalse(review.isRatingsOnly?.boolValue ?? false)
       }
       
       // Iterate all the included questions and verify that all the questions have isFeatured = false
       for question in product.includedQuestions {
-        XCTAssertFalse(question.isFeatured)
+        XCTAssertFalse(question.isFeatured?.boolValue ?? false)
       }
       
       expectation.fulfill()
