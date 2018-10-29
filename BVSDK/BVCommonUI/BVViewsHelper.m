@@ -31,9 +31,9 @@
       UIGestureRecognizer *tapRecognizer = (UIGestureRecognizer *)recognizer;
 
       if ([tapRecognizer cancelsTouchesInView]) {
-        NSAssert(false, @"UIGestureRecognizer must have "
-                        @"`cancelsTouchesInView` set to false for the "
-                        @"BVSDK to properly function.");
+        NSAssert(NO, @"UIGestureRecognizer must have "
+                     @"`cancelsTouchesInView` set to false for the "
+                     @"BVSDK to properly function.");
       }
     }
   }
