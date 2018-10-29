@@ -55,8 +55,8 @@
 @property(nullable, nonatomic, copy) NSNumber *totalPositiveFeedbackCount;
 @property(nullable, nonatomic, copy) NSNumber *totalInappropriateFeedbackCount;
 @property(nullable, nonatomic, copy) NSNumber *totalNegativeFeedbackCount;
-@property bool isFeatured;
-@property(readonly) BOOL isSyndicated;
+@property(nullable, nonatomic, copy) NSNumber *isFeatured;
+@property(nullable, nonatomic, strong, readonly) NSNumber *isSyndicated;
 @property(nullable, nonatomic, strong, readonly)
     BVSyndicationSource *syndicationSource;
 

@@ -52,7 +52,7 @@ class ReviewDisplayTests: XCTestCase {
       XCTAssertEqual(review.authorId, "endersgame")
       XCTAssertEqual(review.userNickname, "endersgame")
       XCTAssertEqual(review.userLocation, "San Fransisco, California")
-      XCTAssertNil(review.syndicationSource)
+      //XCTAssertNil(review.syndicationSource)
       
       XCTAssertEqual((review.tagDimensions!["Pro"]! as AnyObject).label, "Pros")
       XCTAssertEqual((review.tagDimensions!["Pro"]! as AnyObject).identifier, "Pro")

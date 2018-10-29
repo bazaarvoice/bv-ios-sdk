@@ -74,7 +74,7 @@
   _playIconImageView.translatesAutoresizingMaskIntoConstraints = NO;
   _playIconImageView.image = [UIImage bundledImageNamed:@"play"];
   _playIconImageView.contentMode = UIViewContentModeScaleAspectFit;
-  _playIconImageView.hidden = true;
+  _playIconImageView.hidden = YES;
   [self.contentView addSubview:_playIconImageView];
   NSLayoutConstraint *centerXPlay =
       [NSLayoutConstraint constraintWithItem:self.contentView

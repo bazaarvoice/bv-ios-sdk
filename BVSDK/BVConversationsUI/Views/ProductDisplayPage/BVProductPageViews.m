@@ -10,7 +10,7 @@
 #import "BVPixel.h"
 
 @interface BVProductDisplayPageViewController () {
-  bool hasSentPageviewEvent;
+  BOOL hasSentPageviewEvent;
 }
 @end
 
@@ -20,7 +20,7 @@
   [super viewWillAppear:animated];
 
   if (!hasSentPageviewEvent && self.product) {
-    hasSentPageviewEvent = true;
+    hasSentPageviewEvent = YES;
 
     NSString *brandName = self.product.brand ? self.product.brand.name : nil;
     BVPageViewEvent *pageView = [[BVPageViewEvent alloc]
@@ -38,7 +38,7 @@
 @end
 
 @interface BVProductDisplayPageTableViewController () {
-  bool hasSentPageviewEvent;
+  BOOL hasSentPageviewEvent;
 }
 @end
 
@@ -48,7 +48,7 @@
   [super viewWillAppear:animated];
 
   if (!hasSentPageviewEvent && self.product) {
-    hasSentPageviewEvent = true;
+    hasSentPageviewEvent = YES;
 
     NSString *brandName = self.product.brand ? self.product.brand.name : nil;
     BVPageViewEvent *pageView = [[BVPageViewEvent alloc]
@@ -66,7 +66,7 @@
 @end
 
 @interface BVProductDisplayPageCollectionViewController () {
-  bool hasSentPageviewEvent;
+  BOOL hasSentPageviewEvent;
 }
 @end
 
@@ -76,7 +76,7 @@
   [super viewWillAppear:animated];
 
   if (!hasSentPageviewEvent && self.product) {
-    hasSentPageviewEvent = true;
+    hasSentPageviewEvent = YES;
 
     NSString *brandName = self.product.brand ? self.product.brand.name : nil;
     BVPageViewEvent *pageView = [[BVPageViewEvent alloc]

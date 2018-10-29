@@ -35,11 +35,11 @@
     target = default;                                                          \
   }
 
-static inline bool isObjectNilOrNull(NSObject *object) {
+static inline BOOL isObjectNilOrNull(NSObject *object) {
   if (!object || object == [NSNull null]) {
-    return true;
+    return YES;
   } else {
-    return false;
+    return NO;
   }
 }
 

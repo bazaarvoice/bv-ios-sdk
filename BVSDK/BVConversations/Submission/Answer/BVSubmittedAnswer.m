@@ -30,7 +30,7 @@
 
     NSNumber *emailAlert = apiObject[@"SendEmailAlertWhenAnswered"];
     if (emailAlert) {
-      self.sendEmailAlertWhenAnswered = [emailAlert boolValue];
+      self.sendEmailAlertWhenAnswered = emailAlert;
     }
   }
   return self;

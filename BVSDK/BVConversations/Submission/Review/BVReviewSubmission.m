@@ -74,7 +74,7 @@
 
 /// https://developer.bazaarvoice.com/apis/conversations/tutorials/field_types#context-data-question
 - (void)addContextDataValueBool:(nonnull NSString *)contextDataValueName
-                          value:(bool)value {
+                          value:(BOOL)value {
   NSString *key =
       [NSString stringWithFormat:@"contextdatavalue_%@", contextDataValueName];
   self.contextDataValues[key] = value ? @"true" : @"false";
