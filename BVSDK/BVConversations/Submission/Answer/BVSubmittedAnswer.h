@@ -11,7 +11,7 @@
 @interface BVSubmittedAnswer : BVSubmittedType
 
 @property(nullable) NSString *answerText;
-@property bool sendEmailAlertWhenAnswered;
+@property(nullable) NSNumber *sendEmailAlertWhenAnswered;
 @property(nullable) NSDate *submissionTime;
 @property(nullable) NSNumber *typicalHoursToPost;
 @property(nullable) NSString *submissionId;

@@ -110,7 +110,7 @@ static const NSString *bvProductName = @"Personalization";
   [event
       addEntriesFromDictionary:[self
                                    getRelavantInfoForRecommendationType:product
-                                                              isVisible:true]];
+                                                              isVisible:YES]];
   [event setObject:@"ContentClick" forKey:@"name"];
   [[BVAnalyticsManager sharedManager] queueEvent:event];
 }

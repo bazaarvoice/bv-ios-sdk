@@ -12,7 +12,7 @@
 
 @interface BVRecommendedProduct ()
 
-@property bool hasSentImpressionEvent;
+@property BOOL hasSentImpressionEvent;
 
 @end
 
@@ -42,10 +42,10 @@
   self.review =
       [[BVProductReview alloc] initWithDict:[dict objectForKey:@"review"]];
 
-  self.sponsored = false;
+  self.sponsored = [NSNumber numberWithBool:NO];
   if ([dict objectForKey:@"sponsored"] &&
       [[dict objectForKey:@"sponsored"] integerValue] == 1) {
-    self.sponsored = true;
+    self.sponsored = [NSNumber numberWithBool:YES];
   }
 
   return self;

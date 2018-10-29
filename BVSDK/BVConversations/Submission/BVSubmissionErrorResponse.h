@@ -17,7 +17,7 @@
 @interface BVSubmissionErrorResponse <
     __covariant ResultType : BVSubmittedType *> : NSObject
 
-@property bool hasErrors;
+@property BOOL hasErrors;
 
 @property(nullable) NSString *locale;
 @property(nullable) NSString *submissionId;
