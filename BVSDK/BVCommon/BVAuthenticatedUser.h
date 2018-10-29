@@ -41,7 +41,7 @@
     @param passKey The Authentication string
     @param isStage pass in YES if using staging server, NO for production.
  */
-- (void)updateProfile:(bool)force
+- (void)updateProfile:(BOOL)force
            withAPIKey:(NSString *)passKey
             isStaging:(BOOL)isStage;
 

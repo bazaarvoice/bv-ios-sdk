@@ -55,7 +55,7 @@
 @property(nonnull, strong, nonatomic) BVProductReview *review;
 
 /// Whether this recommendation is a sponsored piece of content or not
-@property bool sponsored;
+@property(nonnull, strong, nonatomic) NSNumber *sponsored;
 
 /// Record a tap event -- the user tapped a product
 - (void)recordTap;

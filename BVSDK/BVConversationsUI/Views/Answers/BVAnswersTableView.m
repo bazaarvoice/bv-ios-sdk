@@ -14,9 +14,9 @@
 @interface BVAnswersTableView () <UITableViewDelegate, UITableViewDataSource> {
   BVMessageInterceptor *delegate_interceptor;
   BVMessageInterceptor *datasource_interceptor;
-  bool hasSentScrollEvent;
-  bool hasSentRenderedEvent;
-  bool hasSentSeenEvent;
+  BOOL hasSentScrollEvent;
+  BOOL hasSentRenderedEvent;
+  BOOL hasSentSeenEvent;
   NSMutableDictionary<NSString *, BVAnswer *> *cellToProductMap;
 }
 @end
@@ -105,7 +105,7 @@
       NSString *message = @"BVAnswerTableViewCell has nil `answer` property. "
                           @"This must be set in `cellForItemAtIndexPath`.";
       [[BVLogger sharedLogger] error:message];
-      NSAssert(false, message);
+      NSAssert(NO, message);
     }
   }
 
@@ -134,7 +134,7 @@
   }
 
   if (!hasSentScrollEvent) {
-    hasSentScrollEvent = true;
+    hasSentScrollEvent = YES;
 
     BVFeatureUsedEvent *scrollEvent = [[BVFeatureUsedEvent alloc]
            initWithProductId:@"none"

@@ -212,7 +212,8 @@ static NSString *const BVSDKConfigFileExt = @"json";
 // SDK supports only a single setting for production or stage
 - (void)setStaging:(BOOL)staging {
   _staging = staging;
-  [BVAnalyticsManager sharedManager].isStagingServer = staging;
+  [BVAnalyticsManager sharedManager].isStagingServer =
+      [NSNumber numberWithBool:staging];
   [_internalConfiguration setValue:@(staging) forKeyPath:@"staging"];
 }
 
@@ -288,7 +289,7 @@ static NSString *const BVSDKConfigFileExt = @"json";
 // Update the user profile by calling the /users/ endpoint if the targeting
 // params are empty.
 - (void)updateUserProfileIfEmpty {
-  [self.bvUser updateProfile:false
+  [self.bvUser updateProfile:NO
                   withAPIKey:self.configuration.apiKeyShopperAdvertising
                    isStaging:self.configuration.staging];
 }
@@ -296,7 +297,7 @@ static NSString *const BVSDKConfigFileExt = @"json";
 // Udpate the user profile by calling the /users/ endpoint, regardless of the
 // current state of the targeting params
 - (void)updateUserProfileForce {
-  [self.bvUser updateProfile:true
+  [self.bvUser updateProfile:YES
                   withAPIKey:self.configuration.apiKeyShopperAdvertising
                    isStaging:self.configuration.staging];
 }

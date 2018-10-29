@@ -11,8 +11,8 @@
 #import "BVRecommendations.h"
 
 @interface BVProductRecommendationsContainer () {
-  bool hasSentRenderedEvent;
-  bool hasSentSeenEvent;
+  BOOL hasSentRenderedEvent;
+  BOOL hasSentSeenEvent;
 }
 @end
 
@@ -37,7 +37,7 @@
     return;
   }
 
-  hasSentRenderedEvent = true;
+  hasSentRenderedEvent = YES;
 
   [BVRecsAnalyticsHelper
       queueAnalyticsEventForRecommendationsOnPage:RecommendationsCustom];
@@ -48,7 +48,7 @@
     return;
   }
 
-  hasSentSeenEvent = true;
+  hasSentSeenEvent = YES;
 }
 
 // helper
@@ -64,9 +64,9 @@
                                                  UITableViewDataSource> {
   BVMessageInterceptor *delegate_interceptor;
   BVMessageInterceptor *datasource_interceptor;
-  bool hasSentScrollEvent;
-  bool hasSentRenderedEvent;
-  bool hasSentSeenEvent;
+  BOOL hasSentScrollEvent;
+  BOOL hasSentRenderedEvent;
+  BOOL hasSentSeenEvent;
   NSMutableDictionary *cellToProductMap;
 }
 
@@ -147,7 +147,7 @@
     return;
   }
 
-  hasSentRenderedEvent = true;
+  hasSentRenderedEvent = YES;
 
   [BVRecsAnalyticsHelper
       queueAnalyticsEventForRecommendationsOnPage:RecommendationsTableView];
@@ -158,7 +158,7 @@
     return;
   }
 
-  hasSentSeenEvent = true;
+  hasSentSeenEvent = YES;
 }
 
 #pragma mark UIScrollViewDelegate
@@ -170,7 +170,7 @@
   }
 
   if (!hasSentScrollEvent) {
-    hasSentScrollEvent = true;
+    hasSentScrollEvent = YES;
     [BVRecsAnalyticsHelper
         queueAnalyticsEventForWidgetScroll:RecommendationsTableView];
   }
@@ -250,9 +250,9 @@
     UICollectionViewDelegate, UICollectionViewDataSource> {
   BVMessageInterceptor *delegate_interceptor;
   BVMessageInterceptor *datasource_interceptor;
-  bool hasSentScrollEvent;
-  bool hasSentRenderedEvent;
-  bool hasSentSeenEvent;
+  BOOL hasSentScrollEvent;
+  BOOL hasSentRenderedEvent;
+  BOOL hasSentSeenEvent;
   NSMutableDictionary *cellToProductMap;
 }
 
@@ -334,7 +334,7 @@
     return;
   }
 
-  hasSentRenderedEvent = true;
+  hasSentRenderedEvent = YES;
 }
 
 - (void)willMoveToWindow:(UIWindow *)newWindow {
@@ -342,7 +342,7 @@
     return;
   }
 
-  hasSentSeenEvent = true;
+  hasSentSeenEvent = YES;
 
   [BVRecsAnalyticsHelper
       queueAnalyticsEventForRecommendationsOnPage:RecommendationsCarousel];
@@ -357,7 +357,7 @@
   }
 
   if (!hasSentScrollEvent) {
-    hasSentScrollEvent = true;
+    hasSentScrollEvent = YES;
     [BVRecsAnalyticsHelper
         queueAnalyticsEventForWidgetScroll:RecommendationsCarousel];
   }

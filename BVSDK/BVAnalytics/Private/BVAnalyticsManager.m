@@ -135,7 +135,7 @@ static BVAnalyticsManager *analyticsInstance = nil;
   [params setValue:bundleIdentifier forKey:@"mobileAppIdentifier"];
   [params setValue:appVersion forKey:@"mobileAppVersion"];
   [params setValue:osVersion forKey:@"mobileOSVersion"];
-  [params setValue:@"ios" forKey:@"mobileOS"];
+  [params setValue:@"ios-objc" forKey:@"mobileOS"];
   [params setValue:platform forKey:@"mobileDeviceName"];
   [params setValue:BV_SDK_VERSION forKey:@"bvSDKVersion"];
 
