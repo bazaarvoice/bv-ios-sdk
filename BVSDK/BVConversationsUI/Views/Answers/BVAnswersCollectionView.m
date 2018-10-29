@@ -17,8 +17,8 @@
                                        UICollectionViewDataSource> {
   BVMessageInterceptor *delegate_interceptor;
   BVMessageInterceptor *datasource_interceptor;
-  bool hasSentScrollEvent;
-  bool hasSentSeenEvent;
+  BOOL hasSentScrollEvent;
+  BOOL hasSentSeenEvent;
   NSMutableDictionary<NSString *, BVAnswer *> *cellToProductMap;
 }
 @end
@@ -99,7 +99,7 @@
   }
 
   if (!hasSentScrollEvent) {
-    hasSentScrollEvent = true;
+    hasSentScrollEvent = YES;
 
     BVFeatureUsedEvent *scrollEvent = [[BVFeatureUsedEvent alloc]
            initWithProductId:@"none"
@@ -164,7 +164,7 @@
                           @"property. This must be set in "
                           @"`cellForItemAtIndexPath`.";
       [[BVLogger sharedLogger] error:message];
-      NSAssert(false, message);
+      NSAssert(NO, message);
     }
   }
 

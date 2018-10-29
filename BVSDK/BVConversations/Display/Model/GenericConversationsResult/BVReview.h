@@ -35,9 +35,9 @@
 @property(nullable) BVProduct *product;
 @property(nullable) TagDimensions tagDimensions;
 @property(nullable) NSString *cons;
-@property bool isRecommended;
-@property bool isRatingsOnly;
-@property bool isSyndicated;
+@property(nullable) NSNumber *isRecommended;
+@property(nullable) NSNumber *isRatingsOnly;
+@property(nullable) NSNumber *isSyndicated;
 @property(nullable) NSString *pros;
 @property(nonnull) NSArray<BVPhoto *> *photos;
 @property(nonnull) NSArray<BVContextDataValue *> *contextDataValues;
@@ -48,7 +48,7 @@
 @property(nullable) NSString *userLocation;
 @property(nonnull) NSArray<BVBadge *> *badges;
 @property(nullable) NSString *authorId;
-@property bool isFeatured;
+@property(nullable) NSNumber *isFeatured;
 @property(nullable) NSString *productId;
 @property(nonnull) NSArray<NSString *> *productRecommendationIds;
 @property(nullable) NSDictionary *additionalFields;

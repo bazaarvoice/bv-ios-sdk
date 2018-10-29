@@ -55,7 +55,7 @@
 - (void)addContextDataValueString:(nonnull NSString *)contextDataValueName
                             value:(nonnull NSString *)value;
 - (void)addContextDataValueBool:(nonnull NSString *)contextDataValueName
-                          value:(bool)value;
+                          value:(BOOL)value;
 - (void)addRatingQuestion:(nonnull NSString *)ratingQuestionName
                     value:(NSInteger)value;
 - (void)addRatingSlider:(nonnull NSString *)ratingQuestionName

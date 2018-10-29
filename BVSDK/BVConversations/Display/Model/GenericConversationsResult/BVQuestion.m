@@ -16,6 +16,10 @@
 #import "BVSyndicationSource.h"
 #import "BVVideo.h"
 
+@interface BVQuestion ()
+@property(nullable, nonatomic, strong, readwrite) NSNumber *isSyndicated;
+@end
+
 @implementation BVQuestion
 
 - (id)initWithApiResponse:(NSDictionary *)apiResponse
@@ -44,12 +48,12 @@
 
     NSNumber *featured = apiResponse[@"IsFeatured"];
     if (![featured isKindOfClass:[NSNull class]]) {
-      self.isFeatured = [featured boolValue];
+      self.isFeatured = featured;
     }
 
     NSNumber *isSyndicated = apiResponse[@"IsSyndicated"];
     if (![isSyndicated isKindOfClass:[NSNull class]]) {
-      _isSyndicated = [isSyndicated boolValue];
+      self.isSyndicated = isSyndicated;
 
       if (self.isSyndicated) {
         _syndicationSource =
