@@ -8,7 +8,7 @@
 #import "BVStoreReviewsRequest.h"
 #import "BVCommaUtil.h"
 #import "BVFilter.h"
-#import "BVLogger.h"
+#import "BVLogger+Private.h"
 #import "BVProductIncludeType.h"
 #import "BVSDKConfiguration.h"
 #import "BVSDKManager+Private.h"

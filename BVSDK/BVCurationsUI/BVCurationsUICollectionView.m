@@ -11,6 +11,7 @@
 #import "BVCurationsUICollectionView.h"
 #import "BVCurationsFeedLoader.h"
 #import "BVCurationsUICollectionViewCell.h"
+#import "BVLogger+Private.h"
 
 @interface BVCurationsUICollectionView () <
     UICollectionViewDelegate, UICollectionViewDataSource,
@@ -134,9 +135,9 @@
   }
 
   if (!_groups) {
-    [[BVLogger sharedLogger] error:@"Groups not set on "
-                                   @"BVCurationsUICollectionView. Unable "
-                                   @"to load feed"];
+    BVLogError(
+        @"Groups not set on BVCurationsUICollectionView. Unable to load feed",
+        BV_PRODUCT_CURATIONS_UI);
     return;
   }
 

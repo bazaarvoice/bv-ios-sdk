@@ -8,7 +8,7 @@
 
 #import "BVCurationsUICollectionViewCell.h"
 #import "BVCurationsFeedItem.h"
-#import "BVLogger.h"
+#import "BVLogger+Private.h"
 #import "UIImage+BundleLocator.h"
 
 @interface BVCurationsUICollectionViewCell ()
@@ -218,9 +218,10 @@
       });
     });
   } else {
-    [[BVLogger sharedLogger] error:@"Curations item not loaded due to nil "
-                                   @"BVCurationsFeedItemPressedHandler on "
-                                   @"BVCurationsUICollectionView"];
+    BVLogError(@"Curations item not loaded due to nil "
+               @"BVCurationsFeedItemPressedHandler on "
+               @"BVCurationsUICollectionView",
+               BV_PRODUCT_CURATIONS_UI);
   }
 
   _sourceIconImageView.image =

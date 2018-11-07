@@ -8,6 +8,7 @@
 //
 
 #import "BVProductReviewNotificationConfigurationLoader.h"
+#import "BVLogger+Private.h"
 #import "BVNotificationConfiguration.h"
 #import "BVSDKConfiguration.h"
 #import "BVSDKManager+Private.h"
@@ -46,8 +47,8 @@
   // as well.
 
   if ([[notification name] isEqualToString:PIN_API_KEY_SET_NOTIFICATION]) {
-    [[BVLogger sharedLogger]
-        verbose:@"Recieved notifcation for PIN configuration"];
+    BVLogVerbose(@"Recieved notifcation for PIN configuration",
+                 BV_PRODUCT_NOTIFICATIONS);
 
     [self loadPINConfiguration:^(
               BVProductReviewNotificationProperties *__nonnull response) {
@@ -74,17 +75,17 @@
                                                    configuration] clientId]]];
   [BVNotificationConfiguration loadPINConfiguration:url
       completion:^(BVProductReviewNotificationProperties *__nonnull response) {
-        [[BVLogger sharedLogger]
-            verbose:
-                @"Successfully loaded BVProductReviewNotificationProperties"];
+        BVLogVerbose(
+            @"Successfully loaded BVProductReviewNotificationProperties",
+            BV_PRODUCT_NOTIFICATIONS);
         self->_bvProductReviewNotificationProperties = response;
         completion(response);
 
       }
       failure:^(NSError *__nonnull error) {
-        [[BVLogger sharedLogger] error:@"ERROR: Failed to load "
-                                       @"BVProductReviewNotificationProperti"
-                                       @"es"];
+        BVLogError(
+            @"ERROR: Failed to load BVProductReviewNotificationProperties",
+            BV_PRODUCT_NOTIFICATIONS);
         failure(error);
       }];
 }

@@ -7,6 +7,7 @@
 
 #import "BVAuthenticatedUser+Testing.h"
 #import "BVCommon.h"
+#import "BVLogger+Private.h"
 #import "BVNetworkingManager.h"
 #import <AdSupport/AdSupport.h>
 
@@ -42,8 +43,8 @@
         [NSString stringWithFormat:@"%@/users/magpie_idfa_%@?passkey=%@",
                                    baseUrl, idfa, adsPassKey];
 
-    [[BVLogger sharedLogger]
-        verbose:[NSString stringWithFormat:@"GET: %@", profileUrl]];
+    BVLogVerbose(([NSString stringWithFormat:@"GET: %@", profileUrl]),
+                 BV_PRODUCT_COMMON);
 
     /// For private classes we ask for the NSURLSession but we don't hand back
     /// any objects since it would be useless to the developers as they have no
@@ -81,11 +82,11 @@
 
             if (!errorJson) {
               // JSON response parsing.
-              [[BVLogger sharedLogger]
-                  verbose:[NSString
-                              stringWithFormat:@"RESPONSE: (%ld): %@",
-                                               (long)httpResponse.statusCode,
-                                               responseDict]];
+              BVLogVerbose(
+                  ([NSString stringWithFormat:@"RESPONSE: (%ld): %@",
+                                              (long)httpResponse.statusCode,
+                                              responseDict]),
+                  BV_PRODUCT_COMMON);
 
               if ([self.personalizedPreferences
                       isEqualToDictionary:responseDict]) {
@@ -97,7 +98,7 @@
                                              @"user (may take a few "
                                              @"moments to update): %@",
                                              responseDict];
-              [[BVLogger sharedLogger] info:message];
+              BVLogInfo(message, BV_PRODUCT_COMMON);
 
               self.personalizedPreferences = responseDict;
 
@@ -107,7 +108,7 @@
                   stringWithFormat:@"ERROR: Authenticated User Profile "
                                    @"JSON error: %@",
                                    errorJson.localizedDescription];
-              [[BVLogger sharedLogger] error:errString];
+              BVLogError(errString, BV_PRODUCT_COMMON);
             }
 
             // For testing
@@ -124,7 +125,7 @@
                                  @"response. HTTP Status(%ld) with "
                                  @"error: %@",
                                  (long)httpResponse.statusCode, error];
-            [[BVLogger sharedLogger] error:errString];
+            BVLogError(errString, BV_PRODUCT_COMMON);
 
             // For testing
             dispatch_async(dispatch_get_main_queue(), ^{

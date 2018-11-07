@@ -11,8 +11,6 @@
 #import "BVRecommendedProduct+Private.h"
 #import "BVSDKConfiguration.h"
 #import "BVSDKManager+Private.h"
-#include <sys/sysctl.h>
-#include <sys/utsname.h>
 
 @implementation BVRecsAnalyticsHelper
 

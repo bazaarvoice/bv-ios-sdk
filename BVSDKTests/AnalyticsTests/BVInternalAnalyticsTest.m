@@ -11,13 +11,17 @@
 #import <XCTest/XCTest.h>
 
 #import <BVSDK/BVAnalyticsManager+Testing.h>
+#import <BVSDK/BVAnalyticsRemoteLogger+Testing.h>
 #import <BVSDK/BVBulkRatingsRequest.h>
 #import <BVSDK/BVCommon.h>
+#import <BVSDK/BVLogger+Private.h>
 #import <BVSDK/BVNotificationsAnalyticsHelper.h>
 #import <BVSDK/BVProductDisplayPageRequest.h>
 #import <BVSDK/BVQuestionsAndAnswersRequest.h>
 #import <BVSDK/BVRecommendations.h>
+#import <BVSDK/BVRemoteLogEvent.h>
 #import <BVSDK/BVReviewsRequest.h>
+#import <BVSDK/BVUserAgent+NSURLRequest.h>
 
 #import "BVBaseStubTestCase.h"
 
@@ -57,6 +61,9 @@
 
 - (void)tearDown {
   [super tearDown];
+
+  BVAnalyticsRemoteLogger.sharedRemoteLogger.remoteLogTestingCompletionBlock =
+      nil;
 }
 
 - (void)waitForAnalytics {
@@ -321,6 +328,62 @@
   [[BVAnalyticsManager sharedManager] flushQueue];
 
   [self waitForAnalytics];
+}
+
+#pragma mark Remote Logger Tests
+
+- (void)testAnalyticsDirectRemoteLogSubmission {
+  XCTestExpectation *expectation = [self
+      expectationWithDescription:@"testAnalyticsDirectRemoteLogSubmission"];
+
+  BVRemoteLogEvent *logEvent = [[BVRemoteLogEvent alloc]
+         initWithError:[BVLogger logLevelDescription:BVLogLevelFault]
+      localeIdentifier:NSLocale.autoupdatingCurrentLocale.localeIdentifier
+                   log:@"testing logging error facility"
+             bvProduct:@"Analytics"];
+
+  [BVAnalyticsRemoteLogger.sharedRemoteLogger
+         sendRemoteLogEvent:logEvent
+      withCompletionHandler:^(NSError *_Nullable error) {
+        if (error) {
+          NSLog(@"Error: %@", error);
+          XCTFail();
+        }
+        [expectation fulfill];
+      }];
+
+  [self waitForAnalytics];
+}
+
+- (void)testAnalyticsRemoteLogSubmission {
+  XCTestExpectation *expectation =
+      [self expectationWithDescription:@"testAnalyticsRemoteLogSubmission"];
+
+  BVAnalyticsRemoteLogger.sharedRemoteLogger.remoteLogTestingCompletionBlock =
+      ^(BVRemoteLogEvent *__nonnull remoteLog, NSError *__nullable error) {
+        if (error) {
+          NSLog(@"Error: %@\n%@", error, remoteLog.toRaw);
+          XCTFail();
+        }
+        [expectation fulfill];
+      };
+
+  BVLogFault(@"testing logging error facility", BV_PRODUCT_ANALYTICS);
+
+  [self waitForAnalytics];
+}
+
+- (void)testAnalyticsBVUserAgent {
+  NSString *userAgent = [NSURLRequest bvUserAgentWithLocaleIdentifier:@"en_US"];
+  NSString *osVersion = [[[UIDevice currentDevice] systemVersion]
+      stringByReplacingOccurrencesOfString:@"."
+                                withString:@"_"];
+  NSString *model = [[UIDevice currentDevice] model];
+  NSString *os = [model compare:@"iPad"] ? @"OS" : @"iPhone OS";
+
+  XCTAssertTrue([userAgent containsString:osVersion]);
+  XCTAssertTrue([userAgent containsString:model]);
+  XCTAssertTrue([userAgent containsString:os]);
 }
 
 #pragma mark Object Helper

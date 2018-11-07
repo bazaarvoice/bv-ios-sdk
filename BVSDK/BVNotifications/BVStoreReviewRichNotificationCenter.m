@@ -8,7 +8,7 @@
 
 #import "BVStoreReviewRichNotificationCenter.h"
 #import "BVBulkStoreItemsRequest.h"
-#import "BVLogger.h"
+#import "BVLogger+Private.h"
 #import "BVNotificationConstants.h"
 #import "BVNotificationsAnalyticsHelper.h"
 #import "BVProductDisplayPageRequest.h"
@@ -107,10 +107,10 @@ scheduleRichNotification:(BVStoreReviewNotificationProperties *)noteProps
           bvStoreReviewNotificationProperties];
 
   if (!noteProps) {
-    [[BVLogger sharedLogger]
-        error:@"Unable to create notification with nil "
-              @"BVStoreReviewNotificationProperties. Bad network "
-              @"connection or missing properties config?"];
+    BVLogError(@"Unable to create notification with nil "
+               @"BVStoreReviewNotificationProperties. Bad network connection "
+               @"or missing properties config?",
+               BV_PRODUCT_NOTIFICATIONS);
     return nil;
   }
 

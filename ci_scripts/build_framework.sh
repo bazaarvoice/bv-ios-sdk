@@ -4,7 +4,6 @@ set -euf -o pipefail
 echo Building universal framework
 xcodebuild -workspace BVSDK.xcworkspace -scheme BVSDK-Universal -configuration Release clean build | xcpretty -c
 
-
 echo zipping framework...
 ditto -ck --rsrc --sequesterRsrc --keepParent ./Output/BVSDK-Release-iphoneuniversal/BVSDK.framework BVSDK.framework.zip
 

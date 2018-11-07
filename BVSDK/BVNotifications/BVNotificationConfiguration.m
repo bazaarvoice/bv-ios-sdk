@@ -8,6 +8,7 @@
 
 #import "BVNotificationConfiguration.h"
 #import "BVCommon.h"
+#import "BVLogger+Private.h"
 #import "BVNetworkingManager.h"
 
 @implementation BVNotificationConfiguration
@@ -24,7 +25,7 @@ loadGeofenceConfiguration:(nonnull NSURL *)url
                    NSString *errorMessage = @"No config found for geofence "
                                             @"notifications. Will not post "
                                             @"notification.";
-                   [[BVLogger sharedLogger] error:errorMessage];
+                   BVLogError(errorMessage, BV_PRODUCT_NOTIFICATIONS);
                    [NSError errorWithDomain:BVErrDomain
                                        code:-1
                                    userInfo:@{@"message" : errorMessage}];
@@ -38,12 +39,12 @@ loadGeofenceConfiguration:(nonnull NSURL *)url
                    completion(props);
 
                  } else {
-                   [[BVLogger sharedLogger]
-                       error:[NSString
-                                 stringWithFormat:@"Failed to fetch store "
-                                                  @"notification "
-                                                  @"configuration: %@",
-                                                  error.localizedDescription]];
+                   BVLogError(
+                       ([NSString stringWithFormat:@"Failed to fetch store "
+                                                   @"notification "
+                                                   @"configuration: %@",
+                                                   error.localizedDescription]),
+                       BV_PRODUCT_NOTIFICATIONS);
                    failure(error);
                  }
                }];
@@ -61,7 +62,7 @@ loadPINConfiguration:(nonnull NSURL *)url
                    NSString *errorMessage = @"No notification config found "
                                             @"for PIN. Will not post "
                                             @"notifications.";
-                   [[BVLogger sharedLogger] error:errorMessage];
+                   BVLogError(errorMessage, BV_PRODUCT_NOTIFICATIONS);
                    [NSError errorWithDomain:BVErrDomain
                                        code:-1
                                    userInfo:@{@"message" : errorMessage}];
@@ -74,12 +75,12 @@ loadPINConfiguration:(nonnull NSURL *)url
                            initWithDictionary:response];
                    completion(props);
                  } else {
-                   [[BVLogger sharedLogger]
-                       error:[NSString
-                                 stringWithFormat:@"Failed to fetch store "
-                                                  @"notification "
-                                                  @"configuration: %@",
-                                                  error.localizedDescription]];
+                   BVLogError(
+                       ([NSString stringWithFormat:@"Failed to fetch store "
+                                                   @"notification "
+                                                   @"configuration: %@",
+                                                   error.localizedDescription]),
+                       BV_PRODUCT_NOTIFICATIONS);
                    failure(error);
                  }
                }];
@@ -90,7 +91,8 @@ loadPINConfiguration:(nonnull NSURL *)url
                                             NSError *error))completion {
   NSURLRequest *urlRequest = [NSURLRequest requestWithURL:url];
 
-  [[BVLogger sharedLogger] verbose:[NSString stringWithFormat:@"GET: %@", url]];
+  BVLogVerbose(([NSString stringWithFormat:@"GET: %@", url]),
+               BV_PRODUCT_NOTIFICATIONS);
 
   /// For private classes we ask for the NSURLSession but we don't hand back any
   /// objects since it would be useless to the developers as they have no

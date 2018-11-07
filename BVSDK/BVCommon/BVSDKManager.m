@@ -9,6 +9,7 @@
 #import "BVAnalyticsManager.h"
 #import "BVAuthenticatedUser+Private.h"
 #import "BVCommon.h"
+#import "BVLogger+Private.h"
 #import "BVSDKConfiguration.h"
 #import "BVSDKManager+Private.h"
 #import <UIKit/UIKit.h>
@@ -153,12 +154,12 @@ static NSString *const BVSDKConfigFileExt = @"json";
     analyticsLocale =
         [[NSLocale alloc] initWithLocaleIdentifier:analyticsLocaleIdentifier];
   } else {
-    [[BVLogger sharedLogger]
-        warning:[NSString stringWithFormat:@"BVSDK is currently using user "
-                                           @"region settings. Please see the "
-                                           @"documentation regarding setting "
-                                           @"proper locale settings for "
-                                           @"dealing with user data privacy."]];
+    BVLogWarning(
+        ([NSString stringWithFormat:@"BVSDK is currently using user region "
+                                    @"settings. Please see the documentation "
+                                    @"regarding setting proper locale settings "
+                                    @"for dealing with user data privacy."]),
+        BV_PRODUCT_COMMON);
   }
 
   [BVAnalyticsManager sharedManager].analyticsLocale = analyticsLocale;
@@ -281,8 +282,9 @@ static NSString *const BVSDKConfigFileExt = @"json";
   if (userAuthString && 0 < userAuthString.length) {
     [self setUserId:userAuthString];
   } else {
-    [[BVLogger sharedLogger] error:@"No userAuthString was supplied for "
-                                   @"the recommendations manager!"];
+    BVLogError(
+        @"No userAuthString was supplied for the recommendations manager!",
+        BV_PRODUCT_COMMON);
   }
 }
 

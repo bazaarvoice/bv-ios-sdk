@@ -65,4 +65,11 @@
  */
 - (NSMutableDictionary *)getMobileDiagnosticParams;
 
+/**
+ Get the base URL for the analytics engine.
+
+ @return String URL for Analytics Endpoint.
+ */
+- (nonnull NSString *)baseUrl;
+
 @end

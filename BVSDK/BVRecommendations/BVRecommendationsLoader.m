@@ -8,6 +8,7 @@
 #import <AdSupport/ASIdentifierManager.h>
 
 #import "BVCommon.h"
+#import "BVLogger+Private.h"
 #import "BVNetworkingManager.h"
 #import "BVRecommendationsLoader+Private.h"
 #import "BVRecommendationsRequest+Private.h"
@@ -44,8 +45,8 @@
     return;
   }
 
-  [[BVLogger sharedLogger]
-      verbose:[NSString stringWithFormat:@"GET: %@", url.absoluteString]];
+  BVLogVerbose(([NSString stringWithFormat:@"GET: %@", url.absoluteString]),
+               BV_PRODUCT_PERSONALIZATION);
 
   NSURLRequest *networkRequest = [NSURLRequest requestWithURL:url];
 
@@ -71,9 +72,9 @@
 
     [cache printCacheSize];
 
-    [[BVLogger sharedLogger]
-        verbose:[NSString
-                    stringWithFormat:@"CACHED RESPONSE: %@", responseDict]];
+    BVLogVerbose(
+        ([NSString stringWithFormat:@"CACHED RESPONSE: %@", responseDict]),
+        BV_PRODUCT_PERSONALIZATION);
 
     [self completionOnMainThread:profile.recommendations
                          handler:completionHandler];
@@ -113,10 +114,10 @@
             BVShopperProfile *profile =
                 [[BVShopperProfile alloc] initWithDictionary:responseDict];
 
-            [[BVLogger sharedLogger]
-                verbose:[NSString stringWithFormat:@"RESPONSE: (%ld): %@",
-                                                   (long)httpResp.statusCode,
-                                                   responseDict]];
+            BVLogVerbose(([NSString stringWithFormat:@"RESPONSE: (%ld): %@",
+                                                     (long)httpResp.statusCode,
+                                                     responseDict]),
+                         BV_PRODUCT_PERSONALIZATION);
 
             // Successful response, save in cache
             NSCachedURLResponse *newCachedResp =
