@@ -7,13 +7,13 @@
 
 #import <AdSupport/AdSupport.h>
 #import <UIKit/UIKit.h>
-#include <sys/sysctl.h>
 #include <sys/utsname.h>
 
 #import "BVAnalyticEventManager+Private.h"
 #import "BVAnalyticsManager+Testing.h"
+#import "BVAnalyticsRemoteLogger.h"
 #import "BVLocaleServiceManager.h"
-#import "BVLogger.h"
+#import "BVLogger+Private.h"
 #import "BVNetworkingManager.h"
 #import "BVNullHelper.h"
 #import "BVPersonalizationEvent.h"
@@ -107,6 +107,9 @@ static BVAnalyticsManager *analyticsInstance = nil;
 
     [self setFlushInterval:10.0f];
     [self registerForAppStateChanges];
+
+    /// Kick Remote Logging Facility
+    (void)[BVAnalyticsRemoteLogger sharedRemoteLogger];
   }
   return self;
 }
@@ -297,12 +300,11 @@ static BVAnalyticsManager *analyticsInstance = nil;
 #pragma mark - Event Queueing
 
 - (void)queueEvent:(NSDictionary *)eventData {
-  [[BVLogger sharedLogger]
-      analyticsMessage:[NSString
-                           stringWithFormat:@"%@ - %@ - %@",
-                                            [eventData objectForKey:@"cl"],
-                                            [eventData objectForKey:@"type"],
-                                            [eventData objectForKey:@"name"]]];
+  BVLogAnalytics(([NSString stringWithFormat:@"%@ - %@ - %@",
+                                             [eventData objectForKey:@"cl"],
+                                             [eventData objectForKey:@"type"],
+                                             [eventData objectForKey:@"name"]]),
+                 BV_PRODUCT_ANALYTICS);
   [self processEvent:eventData isAnonymous:NO];
 }
 
@@ -364,19 +366,19 @@ static BVAnalyticsManager *analyticsInstance = nil;
   // send events
   if ([self.eventQueue count] > 0) {
     NSDictionary *batch = @{@"batch" : self.eventQueue};
-    [self
-         sendBatchedPOSTEvent:batch
-        withCompletionHandler:^(NSError *__nullable error) {
-          if (error) {
-            [[BVLogger sharedLogger]
-                error:[NSString stringWithFormat:
-                                    @"ERROR: posting magpie impression event%@",
-                                    error.localizedDescription]];
-          }
+    [self sendBatchedPOSTEvent:batch
+         withCompletionHandler:^(NSError *__nullable error) {
+           if (error) {
+             BVLogError(
+                 ([NSString stringWithFormat:
+                                @"ERROR: posting magpie impression event%@",
+                                error.localizedDescription]),
+                 BV_PRODUCT_ANALYTICS);
+           }
 
-          [self flushImpressionEventCompletionQueue];
+           [self flushImpressionEventCompletionQueue];
 
-        }];
+         }];
 
     // purge queue
     [self.eventQueue removeAllObjects];
@@ -388,10 +390,11 @@ static BVAnalyticsManager *analyticsInstance = nil;
     [self sendBatchedPOSTEvent:batch
          withCompletionHandler:^(NSError *__nullable error) {
            if (error) {
-             [[BVLogger sharedLogger]
-                 error:[NSString stringWithFormat:
-                                     @"ERROR: posting magpie pageview event%@",
-                                     error.localizedDescription]];
+             BVLogError(
+                 ([NSString
+                     stringWithFormat:@"ERROR: posting magpie pageview event%@",
+                                      error.localizedDescription]),
+                 BV_PRODUCT_ANALYTICS);
            }
 
            [self flushPageViewEventCompletionQueue];
@@ -407,20 +410,18 @@ static BVAnalyticsManager *analyticsInstance = nil;
        withCompletionHandler:
            (void (^)(NSError *__nullable error))completionHandler {
   NSURL *url = [NSURL URLWithString:[self baseUrl]];
-  [[BVLogger sharedLogger]
-      analyticsMessage:[NSString
-                           stringWithFormat:@"POST Event: %@\nWith Data:%@",
-                                            url, eventData]];
+  BVLogAnalytics(([NSString stringWithFormat:@"POST Event: %@\nWith Data:%@",
+                                             url, eventData]),
+                 BV_PRODUCT_ANALYTICS);
 
   if (_isDryRunAnalytics) {
-    [[BVLogger sharedLogger]
-        info:@"Analytic events are not being sent to server"];
+    BVLogInfo(@"Analytic events are not being sent to server",
+              BV_PRODUCT_ANALYTICS);
     return;
   }
 
   /// For private classes we ask for the NSURLSession but we don't hand back
-  /// any
-  /// objects since it would be useless to the developers as they have no
+  /// any objects since it would be useless to the developers as they have no
   /// interface to the object graph.
   NSURLSession *session = nil;
   id<BVURLSessionDelegate> sessionDelegate =
@@ -458,25 +459,25 @@ static BVAnalyticsManager *analyticsInstance = nil;
                   NSString *errorMsg =
                       [[NSString alloc] initWithData:data
                                             encoding:NSUTF8StringEncoding];
-                  [[BVLogger sharedLogger] error:errorMsg];
+                  BVLogError(errorMsg, BV_PRODUCT_ANALYTICS);
 
                 } else {
-                  [[BVLogger sharedLogger]
-                      error:[NSString
-                                stringWithFormat:@"ERROR: Posting "
-                                                 @"analytics event "
-                                                 @"failed with "
-                                                 @"status: %ld and "
-                                                 @"error: %@",
-                                                 (long)httpResponse.statusCode,
-                                                 error]];
+                  BVLogError(
+                      ([NSString stringWithFormat:@"ERROR: Posting "
+                                                  @"analytics event "
+                                                  @"failed with "
+                                                  @"status: %ld and "
+                                                  @"error: %@",
+                                                  (long)httpResponse.statusCode,
+                                                  error]),
+                      BV_PRODUCT_ANALYTICS);
                 }
 
               } else {
                 // Successful analyatics event sent
                 NSString *message = [NSString
                     stringWithFormat:@"Analytics event sent successfully."];
-                [[BVLogger sharedLogger] analyticsMessage:message];
+                BVLogAnalytics(message, BV_PRODUCT_ANALYTICS);
               }
 
               dispatch_barrier_async(self.concurrentEventQueue, ^{
@@ -530,17 +531,16 @@ static BVAnalyticsManager *analyticsInstance = nil;
             .uppercaseString;
   }
 
-  [[BVLogger sharedLogger]
-      analyticsMessage:[NSString
-                           stringWithFormat:@"Configuration has set Locale: %@",
-                                            logLocale]];
+  BVLogAnalytics(
+      ([NSString
+          stringWithFormat:@"Configuration has set Locale: %@", logLocale]),
+      BV_PRODUCT_ANALYTICS);
 }
 
 - (void)registerForCurrentLocaleDidChangeNotifications {
   if (!self.localeUpdateNotificationCenterToken) {
-    [[BVLogger sharedLogger]
-        analyticsMessage:
-            @"Analytics REGISTERING for Locale Change Notifications."];
+    BVLogAnalytics(@"Analytics REGISTERING for Locale Change Notifications.",
+                   BV_PRODUCT_ANALYTICS);
 
     self.localeUpdateNotificationCenterToken =
         [[NSNotificationCenter defaultCenter]
@@ -558,9 +558,8 @@ static BVAnalyticsManager *analyticsInstance = nil;
 }
 
 - (void)unregisterForCurrentLocaleDidChangeNotifications {
-  [[BVLogger sharedLogger]
-      analyticsMessage:
-          @"Analytics UNREGISTERING for Locale Change Notifications."];
+  BVLogAnalytics(@"Analytics UNREGISTERING for Locale Change Notifications.",
+                 BV_PRODUCT_ANALYTICS);
 
   if (self.localeUpdateNotificationCenterToken) {
     [[NSNotificationCenter defaultCenter]
@@ -582,15 +581,15 @@ static BVAnalyticsManager *analyticsInstance = nil;
       stringFromDate:date]; // return ISO-8601 formatted UTC timestamp
 }
 
-- (NSString *)baseUrl {
+- (nonnull NSString *)baseUrl {
   BVLocaleServiceManager *localeServiceManager =
       [BVLocaleServiceManager sharedManager];
   NSAssert(localeServiceManager, @"BVLocaleServiceManager is nil.");
 
   if (self.isStagingServer) {
-    [[BVLogger sharedLogger] error:@"WARNING: Using staging server for "
-                                   @"analytic events. This should "
-                                   @"only be enabled for non-production."];
+    BVLogError(@"WARNING: Using staging server for analytic events. This "
+               @"should only be enabled for non-production.",
+               BV_PRODUCT_ANALYTICS);
   }
 
   return [localeServiceManager

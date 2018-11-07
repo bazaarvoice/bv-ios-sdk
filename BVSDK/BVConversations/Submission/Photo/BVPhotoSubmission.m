@@ -8,6 +8,7 @@
 #import "BVPhotoSubmission.h"
 #import "BVConversationsRequest+Private.h"
 #import "BVConversationsRequest.h"
+#import "BVLogger+Private.h"
 #import "BVMultiPart+NSURLRequest.h"
 #import "BVNetworkingManager.h"
 #import "BVPhotoSubmissionErrorResponse.h"
@@ -100,16 +101,17 @@ static NSUInteger const MAX_IMAGE_BYTES = 5 * 1024 * 1024; /// BV API max is 5MB
                                          andContentDictionary:parameters];
 
   if (!boundary) {
-    [[BVLogger sharedLogger]
-        error:@"Couldn't generate multi-part boundary, this shouldn't ever "
-              @"happen. Please file a bug."];
+    BVLogError(@"Couldn't generate multi-part boundary, this shouldn't ever "
+               @"happen. Please file a bug.",
+               BV_PRODUCT_CONVERSATIONS);
     return nil;
   }
 
-  [[BVLogger sharedLogger]
-      verbose:[NSString stringWithFormat:
-                            @"Generated boundary: %@, for content body: %@\n",
-                            boundary, body]];
+  BVLogVerbose(
+      ([NSString
+          stringWithFormat:@"Generated boundary: %@, for content body: %@\n",
+                           boundary, body]),
+      BV_PRODUCT_CONVERSATIONS);
 
   // create request
   NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url];

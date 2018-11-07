@@ -10,7 +10,7 @@
     if (![self waitForGroupToBeEmptyWithTimeout:timeout]) {                    \
       XCTFail(@"Timed out waiting for groups to empty.");                      \
     }                                                                          \
-  } while (0)
+  } while (NO)
 
 #import "BVBaseStubTestCase.h"
 #import <BVSDK/BVNullHelper.h>

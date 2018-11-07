@@ -6,7 +6,7 @@
 //
 
 #import "BVLocaleServiceManager.h"
-#import "BVLogger.h"
+#import "BVLogger+Private.h"
 #import "BVNullHelper.h"
 
 /// If we have to expand this we will rethink how we package all these fields
@@ -222,11 +222,11 @@ __strong static NSDictionary *resourceDictionary = nil;
     resource = value;
   }
 
-  [[BVLogger sharedLogger]
-      analyticsMessage:
-          [NSString
-              stringWithFormat:@"Analytics using Locale: %@ for resource: %@",
-                               localeIdentifier, resource]];
+  BVLogAnalytics(
+      ([NSString
+          stringWithFormat:@"Analytics using Locale: %@ for resource: %@",
+                           localeIdentifier, resource]),
+      BV_PRODUCT_ANALYTICS);
 
   return resource;
 }

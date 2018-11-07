@@ -8,6 +8,7 @@
 
 #import "BVCurationsFeedLoader.h"
 #import "BVCurationsFeedItem.h"
+#import "BVLogger+Private.h"
 #import "BVNetworkingManager.h"
 #import "BVSDKConfiguration.h"
 #import "BVSDKManager+Private.h"
@@ -50,7 +51,8 @@
   components.queryItems = queryItems;
   NSURL *url = components.URL;
 
-  [[BVLogger sharedLogger] verbose:[NSString stringWithFormat:@"GET: %@", url]];
+  BVLogVerbose(([NSString stringWithFormat:@"GET: %@", url]),
+               BV_PRODUCT_CURATIONS);
 
   NSURLSession *session = nil;
   id<BVURLSessionDelegate> sessionDelegate =
@@ -79,9 +81,9 @@
 
           if (!errorJSON) {
 
-            [[BVLogger sharedLogger]
-                verbose:[NSString
-                            stringWithFormat:@"RESPONSE: %@", responseDict]];
+            BVLogVerbose(
+                ([NSString stringWithFormat:@"RESPONSE: %@", responseDict]),
+                BV_PRODUCT_CURATIONS);
 
             // check response body status code first. Curations API will return
             // a 200 response on failures, but put the HTTP status in the "code"

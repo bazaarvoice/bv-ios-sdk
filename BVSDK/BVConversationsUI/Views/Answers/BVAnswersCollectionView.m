@@ -9,7 +9,7 @@
 #import "BVAnswer.h"
 #import "BVAnswerCollectionViewCell.h"
 #import "BVCommon.h"
-#import "BVLogger.h"
+#import "BVLogger+Private.h"
 #import "BVMessageInterceptor.h"
 #import "BVViewsHelper.h"
 
@@ -163,7 +163,7 @@
       NSString *message = @"BVAnswerCollectionViewCell has nil `answer` "
                           @"property. This must be set in "
                           @"`cellForItemAtIndexPath`.";
-      [[BVLogger sharedLogger] error:message];
+      BVLogError(message, BV_PRODUCT_CONVERSATIONS_UI);
       NSAssert(NO, message);
     }
   }

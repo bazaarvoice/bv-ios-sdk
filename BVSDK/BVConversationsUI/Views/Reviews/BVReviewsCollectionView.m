@@ -7,6 +7,7 @@
 
 #import "BVReviewsCollectionView.h"
 #import "BVCommon.h"
+#import "BVLogger+Private.h"
 #import "BVMessageInterceptor.h"
 #import "BVReview.h"
 #import "BVReviewCollectionViewCell.h"
@@ -190,7 +191,7 @@
       NSString *message = @"BVReviewCollectionViewCell has nil `review` "
                           @"property. This must be set in "
                           @"`cellForItemAtIndexPath`.";
-      [[BVLogger sharedLogger] error:message];
+      BVLogError(message, BV_PRODUCT_CONVERSATIONS_UI);
       NSAssert(NO, message);
     }
   }

@@ -7,7 +7,7 @@
 //
 
 #import "BVNotificationProperties.h"
-#import "BVLogger.h"
+#import "BVLogger+Private.h"
 #import "BVNullHelper.h"
 
 @implementation BVNotificationProperties

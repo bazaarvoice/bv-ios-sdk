@@ -569,6 +569,13 @@
 		B5A7B5382050764D00494F83 /* testSubmitQuestionFailure.json in Resources */ = {isa = PBXBuildFile; fileRef = B5A7B5372050764D00494F83 /* testSubmitQuestionFailure.json */; };
 		B5A7B53C20507A6A00494F83 /* testSubmitQuestionWithPhotoSubmit.json in Resources */ = {isa = PBXBuildFile; fileRef = B5A7B53B20507A6A00494F83 /* testSubmitQuestionWithPhotoSubmit.json */; };
 		B5A92D961FE85EEE008DA17C /* BVFeedbackSubmission.h in Headers */ = {isa = PBXBuildFile; fileRef = B5A92D951FE85EEE008DA17C /* BVFeedbackSubmission.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B5A9730A21923B5500634B31 /* BVAnalyticsRemoteLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = B5A9730821923B5500634B31 /* BVAnalyticsRemoteLogger.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		B5A9730B21923B5500634B31 /* BVAnalyticsRemoteLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = B5A9730921923B5500634B31 /* BVAnalyticsRemoteLogger.m */; };
+		B5A9730E2193428600634B31 /* BVRemoteLogEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = B5A9730C2193428600634B31 /* BVRemoteLogEvent.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		B5A9730F2193428600634B31 /* BVRemoteLogEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = B5A9730D2193428600634B31 /* BVRemoteLogEvent.m */; };
+		B5A973112193875400634B31 /* BVAnalyticsRemoteLogger+Testing.h in Headers */ = {isa = PBXBuildFile; fileRef = B5A973102193875400634B31 /* BVAnalyticsRemoteLogger+Testing.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		B5A97314219B352400634B31 /* BVUserAgent+NSURLRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = B5A97312219B352400634B31 /* BVUserAgent+NSURLRequest.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		B5A97315219B352400634B31 /* BVUserAgent+NSURLRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = B5A97313219B352400634B31 /* BVUserAgent+NSURLRequest.m */; };
 		B5AA0857215A8F4800E23690 /* BVBaseUGCSubmission+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = B5AA0856215A8F4800E23690 /* BVBaseUGCSubmission+Private.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		B5BE768A200E984B002BA818 /* BVBulkRatingFilterValue.h in Headers */ = {isa = PBXBuildFile; fileRef = B5BE7689200E97DB002BA818 /* BVBulkRatingFilterValue.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B5BE768C200E9FA0002BA818 /* BVCommentFilterValue.h in Headers */ = {isa = PBXBuildFile; fileRef = B5BE768B200E9F34002BA818 /* BVCommentFilterValue.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -1173,6 +1180,13 @@
 		B5A7B5372050764D00494F83 /* testSubmitQuestionFailure.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = testSubmitQuestionFailure.json; sourceTree = "<group>"; };
 		B5A7B53B20507A6A00494F83 /* testSubmitQuestionWithPhotoSubmit.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = testSubmitQuestionWithPhotoSubmit.json; sourceTree = "<group>"; };
 		B5A92D951FE85EEE008DA17C /* BVFeedbackSubmission.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVFeedbackSubmission.h; sourceTree = "<group>"; };
+		B5A9730821923B5500634B31 /* BVAnalyticsRemoteLogger.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BVAnalyticsRemoteLogger.h; sourceTree = "<group>"; };
+		B5A9730921923B5500634B31 /* BVAnalyticsRemoteLogger.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BVAnalyticsRemoteLogger.m; sourceTree = "<group>"; };
+		B5A9730C2193428600634B31 /* BVRemoteLogEvent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BVRemoteLogEvent.h; sourceTree = "<group>"; };
+		B5A9730D2193428600634B31 /* BVRemoteLogEvent.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BVRemoteLogEvent.m; sourceTree = "<group>"; };
+		B5A973102193875400634B31 /* BVAnalyticsRemoteLogger+Testing.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BVAnalyticsRemoteLogger+Testing.h"; sourceTree = "<group>"; };
+		B5A97312219B352400634B31 /* BVUserAgent+NSURLRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BVUserAgent+NSURLRequest.h"; sourceTree = "<group>"; };
+		B5A97313219B352400634B31 /* BVUserAgent+NSURLRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "BVUserAgent+NSURLRequest.m"; sourceTree = "<group>"; };
 		B5AA0856215A8F4800E23690 /* BVBaseUGCSubmission+Private.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BVBaseUGCSubmission+Private.h"; sourceTree = "<group>"; };
 		B5BE7689200E97DB002BA818 /* BVBulkRatingFilterValue.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BVBulkRatingFilterValue.h; sourceTree = "<group>"; };
 		B5BE768B200E9F34002BA818 /* BVCommentFilterValue.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BVCommentFilterValue.h; sourceTree = "<group>"; };
@@ -2185,6 +2199,8 @@
 				B58639A6214AFE0A00EFD763 /* BVSDKManager+Private.h */,
 				87C5FEAF1E22A05D004EE6E8 /* BVStringKeyValuePair.h */,
 				87C5FEB01E22A05D004EE6E8 /* BVStringKeyValuePair.m */,
+				B5A97312219B352400634B31 /* BVUserAgent+NSURLRequest.h */,
+				B5A97313219B352400634B31 /* BVUserAgent+NSURLRequest.m */,
 			);
 			path = Private;
 			sourceTree = "<group>";
@@ -2196,9 +2212,14 @@
 				B58639C4214AFE8700EFD763 /* BVAnalyticsManager.h */,
 				B58639C0214AFE8700EFD763 /* BVAnalyticsManager.m */,
 				B58639C2214AFE8700EFD763 /* BVAnalyticsManager+Testing.h */,
+				B5A9730821923B5500634B31 /* BVAnalyticsRemoteLogger.h */,
+				B5A9730921923B5500634B31 /* BVAnalyticsRemoteLogger.m */,
+				B5A973102193875400634B31 /* BVAnalyticsRemoteLogger+Testing.h */,
 				B58639BF214AFE8700EFD763 /* BVContextualInterests.h */,
 				B58639BE214AFE8700EFD763 /* BVLocaleServiceManager.h */,
 				B58639C3214AFE8700EFD763 /* BVLocaleServiceManager.m */,
+				B5A9730C2193428600634B31 /* BVRemoteLogEvent.h */,
+				B5A9730D2193428600634B31 /* BVRemoteLogEvent.m */,
 			);
 			path = Private;
 			sourceTree = "<group>";
@@ -2486,6 +2507,7 @@
 				87D424F31E8AD45400147FDB /* BVCurationsUICollectionView.h in Headers */,
 				153550B01E898CF800C62D90 /* BVCurationsUICollectionViewCell.h in Headers */,
 				B5BE7690200EA08C002BA818 /* BVQuestionFilterValue.h in Headers */,
+				B5A9730A21923B5500634B31 /* BVAnalyticsRemoteLogger.h in Headers */,
 				87F2DD431DAD585E00FB43F3 /* BVRecsAnalyticsHelper.h in Headers */,
 				B583AEED20094A58001E9548 /* BVProductIncludeType.h in Headers */,
 				B57B83382162BF05006B378E /* BVRandom+NSString.h in Headers */,
@@ -2524,6 +2546,7 @@
 				87F2DD0D1DAD585E00FB43F3 /* BVReviewCollectionViewCell.h in Headers */,
 				87F2DD3C1DAD585E00FB43F3 /* BVRecommendations.h in Headers */,
 				B583AEE1200816A4001E9548 /* BVSortOption.h in Headers */,
+				B5A97314219B352400634B31 /* BVUserAgent+NSURLRequest.h in Headers */,
 				B583AEDD2007FB59001E9548 /* BVMonotonicSortOrder.h in Headers */,
 				87F2DC751DAD585E00FB43F3 /* BVGenericConversationsResult.h in Headers */,
 				87F2DCD71DAD585E00FB43F3 /* BVFormFieldOptions.h in Headers */,
@@ -2590,6 +2613,7 @@
 				B59F8F1E2034C7B900087EF0 /* BVURLSessionDelegate.h in Headers */,
 				87F2DC821DAD585E00FB43F3 /* BVQuestionsAndAnswersResponse.h in Headers */,
 				87F2DC6C1DAD585E00FB43F3 /* BVDimensionAndDistributionUtil.h in Headers */,
+				B5A9730E2193428600634B31 /* BVRemoteLogEvent.h in Headers */,
 				B58639CB214AFE8700EFD763 /* BVAnalyticsManager.h in Headers */,
 				B583AED92007F80A001E9548 /* BVSortOrder.h in Headers */,
 				87F2DCED1DAD585E00FB43F3 /* BVReviewSubmission.h in Headers */,
@@ -2714,6 +2738,7 @@
 				87EDAFD91EDDD3E200FA07C0 /* BVCommentSubmissionErrorResponse.h in Headers */,
 				877AD2941EE1D134006C7070 /* BVBaseUGCSubmission.h in Headers */,
 				87252B091EF46FA10011C845 /* BVUploadableYouTubeVideo.h in Headers */,
+				B5A973112193875400634B31 /* BVAnalyticsRemoteLogger+Testing.h in Headers */,
 				87EDAFCC1EDDC9F400FA07C0 /* BVCommentSubmission.h in Headers */,
 				5F6201E11F70399200454D77 /* NSError+BVSubmissionErrorCodeParser.h in Headers */,
 				B575C3861FBDFD6F000F890B /* BVUASSubmission.h in Headers */,
@@ -2961,7 +2986,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "######################\n# Options\n######################\n\nREVEAL_ARCHIVE_IN_FINDER=true\n\nFRAMEWORK_NAME=\"${PROJECT_NAME}\"\n\nSIMULATOR_LIBRARY_PATH=\"${BUILD_DIR}/${CONFIGURATION}-iphonesimulator/${FRAMEWORK_NAME}.framework\"\n\nDEVICE_LIBRARY_PATH=\"${BUILD_DIR}/${CONFIGURATION}-iphoneos/${FRAMEWORK_NAME}.framework\"\n\nUNIVERSAL_LIBRARY_DIR=\"${BUILD_DIR}/${CONFIGURATION}-iphoneuniversal\"\n\nFRAMEWORK=\"${UNIVERSAL_LIBRARY_DIR}/${FRAMEWORK_NAME}.framework\"\n\n\n######################\n# Build Frameworks\n######################\n\nxcodebuild -workspace ${PROJECT_NAME}.xcworkspace -scheme ${PROJECT_NAME} -sdk iphonesimulator -configuration ${CONFIGURATION} clean build CONFIGURATION_BUILD_DIR=${BUILD_DIR}/${CONFIGURATION}-iphonesimulator 2>&1\n\nxcodebuild -workspace ${PROJECT_NAME}.xcworkspace -scheme ${PROJECT_NAME} -sdk iphoneos -configuration ${CONFIGURATION} clean build CONFIGURATION_BUILD_DIR=${BUILD_DIR}/${CONFIGURATION}-iphoneos 2>&1\n\n######################\n# Create directory for universal\n######################\n\nrm -rf \"${UNIVERSAL_LIBRARY_DIR}\"\n\nmkdir \"${UNIVERSAL_LIBRARY_DIR}\"\n\nmkdir \"${FRAMEWORK}\"\n\n\n######################\n# Copy files Framework\n######################\n\ncp -r \"${DEVICE_LIBRARY_PATH}/.\" \"${FRAMEWORK}\"\n\n\n######################\n# Make an universal binary\n######################\n\nlipo \"${SIMULATOR_LIBRARY_PATH}/${FRAMEWORK_NAME}\" \"${DEVICE_LIBRARY_PATH}/${FRAMEWORK_NAME}\" -create -output \"${FRAMEWORK}/${FRAMEWORK_NAME}\" | echo\n\n######################\n# On Release, copy the result to release directory\n######################\nOUTPUT_DIR=\"${PROJECT_DIR}/Output/${FRAMEWORK_NAME}-${CONFIGURATION}-iphoneuniversal/\"\n\nrm -rf \"$OUTPUT_DIR\"\nmkdir -p \"$OUTPUT_DIR\"\n\ncp -r \"${FRAMEWORK}\" \"$OUTPUT_DIR\"\n\nif [ ${REVEAL_ARCHIVE_IN_FINDER} = true ]; then\nopen \"${OUTPUT_DIR}/\"\nfi\n\n";
+			shellScript = "######################\n# Options\n######################\n\nREVEAL_ARCHIVE_IN_FINDER=true\n\nFRAMEWORK_NAME=\"${PROJECT_NAME}\"\n\nSIMULATOR_LIBRARY_PATH=\"${BUILD_DIR}/${CONFIGURATION}-iphonesimulator/${FRAMEWORK_NAME}.framework\"\n\nDEVICE_LIBRARY_PATH=\"${BUILD_DIR}/${CONFIGURATION}-iphoneos/${FRAMEWORK_NAME}.framework\"\n\nUNIVERSAL_LIBRARY_DIR=\"${BUILD_DIR}/${CONFIGURATION}-iphoneuniversal\"\n\nFRAMEWORK=\"${UNIVERSAL_LIBRARY_DIR}/${FRAMEWORK_NAME}.framework\"\n\n\n######################\n# Build Frameworks\n######################\n\nxcodebuild -workspace ${PROJECT_NAME}.xcworkspace -scheme ${PROJECT_NAME} -sdk iphonesimulator -configuration ${CONFIGURATION} clean build CONFIGURATION_BUILD_DIR=${BUILD_DIR}/${CONFIGURATION}-iphonesimulator -UseModernBuildSystem=NO 2>&1\n\nxcodebuild -workspace ${PROJECT_NAME}.xcworkspace -scheme ${PROJECT_NAME} -sdk iphoneos -configuration ${CONFIGURATION} clean build CONFIGURATION_BUILD_DIR=${BUILD_DIR}/${CONFIGURATION}-iphoneos -UseModernBuildSystem=NO 2>&1\n\n######################\n# Create directory for universal\n######################\n\nrm -rf \"${UNIVERSAL_LIBRARY_DIR}\"\n\nmkdir \"${UNIVERSAL_LIBRARY_DIR}\"\n\nmkdir \"${FRAMEWORK}\"\n\n\n######################\n# Copy files Framework\n######################\n\ncp -r \"${DEVICE_LIBRARY_PATH}/.\" \"${FRAMEWORK}\"\n\n\n######################\n# Make an universal binary\n######################\n\nlipo \"${SIMULATOR_LIBRARY_PATH}/${FRAMEWORK_NAME}\" \"${DEVICE_LIBRARY_PATH}/${FRAMEWORK_NAME}\" -create -output \"${FRAMEWORK}/${FRAMEWORK_NAME}\" | echo\n\n######################\n# On Release, copy the result to release directory\n######################\nOUTPUT_DIR=\"${PROJECT_DIR}/Output/${FRAMEWORK_NAME}-${CONFIGURATION}-iphoneuniversal/\"\n\nrm -rf \"$OUTPUT_DIR\"\nmkdir -p \"$OUTPUT_DIR\"\n\ncp -r \"${FRAMEWORK}\" \"$OUTPUT_DIR\"\n\nif [ ${REVEAL_ARCHIVE_IN_FINDER} = true ]; then\nopen \"${OUTPUT_DIR}/\"\nfi\n\n";
 		};
 		8FD522D26F8D16CB58E49BBE /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -3160,6 +3185,7 @@
 				87F2DC851DAD585E00FB43F3 /* BVRatingDistribution.m in Sources */,
 				87F2DC6D1DAD585E00FB43F3 /* BVDimensionAndDistributionUtil.m in Sources */,
 				B58639B4214AFE0A00EFD763 /* BVMessageInterceptor.m in Sources */,
+				B5A97315219B352400634B31 /* BVUserAgent+NSURLRequest.m in Sources */,
 				B5BE787B20113A32002BA818 /* BVBulkRatingIncludeType.m in Sources */,
 				87F2DD441DAD585E00FB43F3 /* BVRecsAnalyticsHelper.m in Sources */,
 				8754117A1E1F201E006C5C6E /* BVProductReviewNotificationCenter.m in Sources */,
@@ -3169,6 +3195,7 @@
 				87F2DC1F1DAD585E00FB43F3 /* BVPixel.m in Sources */,
 				5F6201E31F7039EA00454D77 /* NSError+BVSubmissionErrorCodeParser.m in Sources */,
 				873DC4901E7482840080FA03 /* BVAnalyticEventManager.m in Sources */,
+				B5A9730B21923B5500634B31 /* BVAnalyticsRemoteLogger.m in Sources */,
 				873DC4A01E7482840080FA03 /* BVTransactionEvent.m in Sources */,
 				B5A764BB1FDB1ACE00B5DC9A /* BVAnswerTableViewCell.m in Sources */,
 				87F2DC741DAD585E00FB43F3 /* BVDistributionValue.m in Sources */,
@@ -3201,6 +3228,7 @@
 				87B6DFA21ECA424300B75835 /* BVCommentsRequest.m in Sources */,
 				87B6DFA61ECA484400B75835 /* BVComment.m in Sources */,
 				87F2DC8E1DAD585E00FB43F3 /* BVSecondaryRating.m in Sources */,
+				B5A9730F2193428600634B31 /* BVRemoteLogEvent.m in Sources */,
 				B5A764D81FE1915200B5DC9A /* BVStoreReviewsResponse.m in Sources */,
 				87EDAFD61EDDD1FD00FA07C0 /* BVSubmittedComment.m in Sources */,
 			);

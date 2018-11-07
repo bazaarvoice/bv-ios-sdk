@@ -8,6 +8,7 @@
 #import "BVConversationsRequest.h"
 #import "BVDiagnosticHelpers.h"
 #import "BVDisplayErrorResponse.h"
+#import "BVLogger+Private.h"
 #import "BVNetworkingManager.h"
 #import "BVSDKConfiguration.h"
 #import "BVSDKManager+Private.h"
@@ -110,8 +111,8 @@ loadContent:(nonnull BVConversationsRequest *)request
   urlComponents.queryItems = [self getQueryItems:parameters];
   NSURLRequest *urlRequest = [NSURLRequest requestWithURL:urlComponents.URL];
 
-  [[BVLogger sharedLogger]
-      verbose:[NSString stringWithFormat:@"GET: %@", urlRequest.URL]];
+  BVLogVerbose(([NSString stringWithFormat:@"GET: %@", urlRequest.URL]),
+               BV_PRODUCT_CONVERSATIONS);
 
   NSURLSession *session = nil;
   id<BVURLSessionDelegate> sessionDelegate =
@@ -168,9 +169,9 @@ processData:(nullable NSData *)data
         BVDisplayErrorResponse *errorResponse =
             [[BVDisplayErrorResponse alloc] initWithApiResponse:json];
 
-        [[BVLogger sharedLogger]
-            verbose:[NSString stringWithFormat:@"RESPONSE: %@ (%ld)", json,
-                                               (long)statusCode]];
+        BVLogVerbose(([NSString stringWithFormat:@"RESPONSE: %@ (%ld)", json,
+                                                 (long)statusCode]),
+                     BV_PRODUCT_CONVERSATIONS);
 
         if (errorResponse) {
           [self sendErrors:[errorResponse toNSErrors] failureCallback:failure];

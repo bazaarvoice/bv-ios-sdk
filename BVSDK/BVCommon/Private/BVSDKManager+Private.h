@@ -10,6 +10,7 @@
 
 #import "BVSDKManager.h"
 
+@class BVSDKConfiguration;
 @interface BVSDKManager ()
 @property(nonatomic, strong, readonly, nonnull)
     BVSDKConfiguration *configuration;
