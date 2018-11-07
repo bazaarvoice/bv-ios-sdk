@@ -34,11 +34,11 @@
   NSMutableDictionary *eventDict;
 
   if ([self hasPII]) {
-    eventDict = [self crateBaseEvent:YES];
+    eventDict = [self createBaseEvent:YES];
     [eventDict addEntriesFromDictionary:CONVERSION_SCHEMA_PII];
     [eventDict setObject:@"true" forKey:@"hadPII"];
   } else {
-    eventDict = [self crateBaseEvent:NO];
+    eventDict = [self createBaseEvent:NO];
     [eventDict addEntriesFromDictionary:CONVERSION_SCHEMA];
   }
 
@@ -48,7 +48,7 @@
 }
 
 - (NSDictionary *)toRawNonPII {
-  NSMutableDictionary *eventDict = [self crateBaseEvent:NO];
+  NSMutableDictionary *eventDict = [self createBaseEvent:NO];
 
   if ([self hasPII]) {
     [eventDict setObject:@"true" forKey:@"hadPII"];
@@ -64,7 +64,7 @@
   return [NSDictionary dictionaryWithDictionary:eventDict];
 }
 
-- (NSMutableDictionary *)crateBaseEvent:(BOOL)anonymous {
+- (NSMutableDictionary *)createBaseEvent:(BOOL)anonymous {
   NSMutableDictionary *eventDict = [NSMutableDictionary
       dictionaryWithObjectsAndKeys:self.type, @"type", self.value, @"value",
                                    nil];

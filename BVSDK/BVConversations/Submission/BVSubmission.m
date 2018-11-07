@@ -7,7 +7,7 @@
 //
 
 #import "BVCommon.h"
-#import "BVLogger.h"
+#import "BVLogger+Private.h"
 #import "BVNetworkingManager.h"
 #import "BVSDKConfiguration.h"
 #import "BVSDKManager+Private.h"
@@ -193,8 +193,8 @@ static NSString *urlEncode(id object) {
             return;
           }
 
-          [[BVLogger sharedLogger]
-              verbose:[NSString stringWithFormat:@"RESPONSE: %@", json]];
+          BVLogVerbose(([NSString stringWithFormat:@"RESPONSE: %@", json]),
+                       BV_PRODUCT_CONVERSATIONS);
 
           BVSubmissionErrorResponse *submissionErrorResponse =
               [self createErrorResponse:json]; // fails gracefully
@@ -251,9 +251,9 @@ static NSString *urlEncode(id object) {
   [request setHTTPMethod:@"POST"];
   [request setHTTPBody:postBody];
 
-  [[BVLogger sharedLogger]
-      verbose:[NSString stringWithFormat:@"POST: %@\n with BODY: %@", urlString,
-                                         parameters]];
+  BVLogVerbose(([NSString stringWithFormat:@"POST: %@\n with BODY: %@",
+                                           urlString, parameters]),
+               BV_PRODUCT_CONVERSATIONS);
 
   return request;
 }

@@ -7,6 +7,7 @@
 
 #import "BVReviewsTableView.h"
 #import "BVCommon.h"
+#import "BVLogger+Private.h"
 #import "BVMessageInterceptor.h"
 #import "BVReviewTableViewCell.h"
 #import "BVViewsHelper.h"
@@ -131,7 +132,7 @@
       // error, cell must have review set
       NSString *message = @"BVReviewsTableViewCell has nil `review` property. "
                           @"This must be set in `cellForItemAtIndexPath`.";
-      [[BVLogger sharedLogger] error:message];
+      BVLogError(message, BV_PRODUCT_CONVERSATIONS_UI);
       NSAssert(NO, message);
     }
   }

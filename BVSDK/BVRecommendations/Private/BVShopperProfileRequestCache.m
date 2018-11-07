@@ -6,7 +6,7 @@
 //
 
 #import "BVShopperProfileRequestCache.h"
-#import "BVLogger.h"
+#import "BVLogger+Private.h"
 
 NSString *const CACHE_DATE_KEY = @"cache date";
 
@@ -63,12 +63,12 @@ NSString *const CACHE_DATE_KEY = @"cache date";
 }
 
 - (void)printCacheSize {
-
-  [[BVLogger sharedLogger]
-      verbose:[NSString stringWithFormat:
-                            @"NSURLCache Memory/Disk Size: %ld/%ld (bytes)",
-                            (unsigned long)[self currentMemoryUsage],
-                            (unsigned long)[self currentDiskUsage]]];
+  BVLogVerbose(
+      ([NSString
+          stringWithFormat:@"NSURLCache Memory/Disk Size: %ld/%ld (bytes)",
+                           (unsigned long)[self currentMemoryUsage],
+                           (unsigned long)[self currentDiskUsage]]),
+      BV_PRODUCT_PERSONALIZATION);
 }
 
 @end

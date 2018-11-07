@@ -13,12 +13,12 @@
 #define __ASSERT_IS_A(X, CLASS, MSG)                                           \
   do {                                                                         \
     NSAssert(__IS_A(X, CLASS), MSG);                                           \
-  } while (0)
+  } while (NO)
 
 #define __ASSERT_ISNT_A(X, CLASS, MSG)                                         \
   do {                                                                         \
     NSAssert(!__IS_A(X, CLASS), MSG);                                          \
-  } while (0)
+  } while (NO)
 
 #ifndef BVNullHelper_h
 #define BVNullHelper_h

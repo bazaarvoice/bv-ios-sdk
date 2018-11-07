@@ -6,7 +6,7 @@
 //
 
 #import "BVBaseUGCSubmission+Private.h"
-#import "BVLogger.h"
+#import "BVLogger+Private.h"
 #import "BVPhotoSubmissionResponse.h"
 #import "BVPixel.h"
 #import <UIKit/UIKit.h>
@@ -132,7 +132,7 @@
                       @"`BVSubmissionActionPreview` will not actially submit! "
                       @"Set to `BVSubmissionActionSubmit` for real submission.",
                       NSStringFromClass([self class])];
-    [[BVLogger sharedLogger] warning:warningLog];
+    BVLogWarning(warningLog, BV_PRODUCT_CONVERSATIONS);
     [super submit:success failure:failure];
     return;
   }

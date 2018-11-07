@@ -6,6 +6,7 @@
 //
 
 #import "BVStoreNotificationConfigurationLoader.h"
+#import "BVLogger+Private.h"
 #import "BVNotificationConfiguration.h"
 #import "BVSDKConfiguration.h"
 #import "BVSDKManager+Private.h"
@@ -51,8 +52,8 @@
 
   if ([[notification name]
           isEqualToString:CONVERSATIONS_STORES_API_KEY_SET_NOTIFICATION]) {
-    [[BVLogger sharedLogger]
-        verbose:@"Recieved notifcation for conversations stores configuration"];
+    BVLogVerbose(@"Recieved notifcation for conversations stores configuration",
+                 BV_PRODUCT_NOTIFICATIONS);
 
     [self loadStoreNotificationConfiguration:^(
               BVStoreReviewNotificationProperties *__nonnull response) {
@@ -92,15 +93,15 @@ loadStoreNotificationConfiguration:
                                                    .configuration.clientId]];
   [BVNotificationConfiguration loadGeofenceConfiguration:url
       completion:^(BVStoreReviewNotificationProperties *__nonnull response) {
-        [[BVLogger sharedLogger]
-            verbose:@"Successfully loaded BVStoreReviewNotificationProperties"];
+        BVLogVerbose(@"Successfully loaded BVStoreReviewNotificationProperties",
+                     BV_PRODUCT_NOTIFICATIONS);
         self->_bvStoreReviewNotificationProperties = response;
         completion(response);
 
       }
       failure:^(NSError *__nonnull error) {
-        [[BVLogger sharedLogger]
-            error:@"ERROR: Failed to load BVStoreReviewNotificationProperties"];
+        BVLogError(@"ERROR: Failed to load BVStoreReviewNotificationProperties",
+                   BV_PRODUCT_NOTIFICATIONS);
         failure(error);
       }];
 }

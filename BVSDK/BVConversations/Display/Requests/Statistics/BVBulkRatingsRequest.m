@@ -10,7 +10,7 @@
 #import "BVBulkRatingIncludeType.h"
 #import "BVCommaUtil.h"
 #import "BVConversationsRequest+Private.h"
-#import "BVLogger.h"
+#import "BVLogger+Private.h"
 #import "BVRelationalFilterOperator.h"
 #import "BVStringKeyValuePair.h"
 

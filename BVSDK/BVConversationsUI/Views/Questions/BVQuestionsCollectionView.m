@@ -7,6 +7,7 @@
 
 #import "BVQuestionsCollectionView.h"
 #import "BVCommon.h"
+#import "BVLogger+Private.h"
 #import "BVMessageInterceptor.h"
 #import "BVQuestion.h"
 #import "BVQuestionCollectionViewCell.h"
@@ -188,7 +189,7 @@
       NSString *message = @"BVQuestionCollectionViewCell has nil `question` "
                           @"property. This must be set in "
                           @"`cellForItemAtIndexPath`.";
-      [[BVLogger sharedLogger] error:message];
+      BVLogError(message, BV_PRODUCT_CONVERSATIONS_UI);
       NSAssert(NO, message);
     }
   }

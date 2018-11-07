@@ -10,7 +10,7 @@
 #import "BVAuthorIncludeType.h"
 #import "BVCommaUtil.h"
 #import "BVConversationsRequest+Private.h"
-#import "BVLogger.h"
+#import "BVLogger+Private.h"
 #import "BVMonotonicSortOrder.h"
 #import "BVPixel.h"
 #import "BVQuestionsSortOption.h"

@@ -5,7 +5,7 @@
 //  Copyright 2016 Bazaarvoice Inc. All rights reserved.
 //
 
-#import "BVLogger.h"
+#import "BVLogger+Private.h"
 
 #if __has_builtin(__builtin_os_log_format)
 #import <os/log.h>
@@ -13,9 +13,59 @@
 
 #define BV_LOG_TAG @"<bazaarvoice>"
 
+@interface BVLogger ()
+@property(nonatomic, strong) NSPointerArray *listenerList;
+@property(nonatomic, strong) dispatch_queue_t serialQueue;
+@property(nonatomic, strong) dispatch_queue_t listenerQueue;
+@property(nonatomic, assign) BVLogLevel internalLogLevel;
+@end
+
 @implementation BVLogger
 
 __strong static BVLogger *sharedLoggerInstance = nil;
+
++ (nonnull NSString *)logLevelDescription:(BVLogLevel)logLevel {
+  switch (logLevel) {
+  case BVLogLevelNone:
+    return @"none";
+    break;
+  case BVLogLevelFault:
+    return @"fault";
+    break;
+  case BVLogLevelError:
+    return @"error";
+    break;
+  case BVLogLevelWarning:
+    return @"warn";
+    break;
+  case BVLogLevelInfo:
+    return @"info";
+    break;
+  case BVLogLevelVerbose:
+    return @"debug";
+    break;
+  case BVLogLevelAnalyticsOnly:
+    return @"analytics";
+    break;
+  default:
+    return @"nil";
+    break;
+  }
+}
+
+- (void)setLogLevel:(BVLogLevel)logLevel {
+  dispatch_sync(self.serialQueue, ^{
+    self.internalLogLevel = logLevel;
+  });
+}
+
+- (BVLogLevel)logLevel {
+  __block BVLogLevel blockLogLevel;
+  dispatch_sync(self.serialQueue, ^{
+    blockLogLevel = self.internalLogLevel;
+  });
+  return blockLogLevel;
+}
 
 + (BVLogger *)sharedLogger {
   static dispatch_once_t onceToken;
@@ -27,33 +77,52 @@ __strong static BVLogger *sharedLoggerInstance = nil;
 
 - (id)init {
   if ((self = [super init])) {
-    self.logLevel = BVLogLevelError;
+    self.internalLogLevel = BVLogLevelError;
+    self.listenerList = [NSPointerArray weakObjectsPointerArray];
+    self.serialQueue = dispatch_queue_create(
+        "com.bazaarvoice.BVLogger.serialQueue", DISPATCH_QUEUE_SERIAL);
+    self.listenerQueue = dispatch_queue_create(
+        "com.bazaarvoice.BVLogger.listenerQueue", DISPATCH_QUEUE_SERIAL);
   }
   return self;
 }
 
-- (void)analyticsMessage:(nonnull NSString *)message {
-  [self printMessage:message forLogLevel:BVLogLevelAnalyticsOnly];
+- (void)analyticsMessage:(nonnull NSString *)message
+             withContext:(nullable NSDictionary *)context {
+  [self printMessage:message
+         forLogLevel:BVLogLevelAnalyticsOnly
+         withContext:context];
 }
 
-- (void)verbose:(nonnull NSString *)message {
-  [self printMessage:message forLogLevel:BVLogLevelVerbose];
+- (void)verbose:(nonnull NSString *)message
+    withContext:(nullable NSDictionary *)context {
+  [self printMessage:message forLogLevel:BVLogLevelVerbose withContext:context];
 }
 
-- (void)info:(nonnull NSString *)message {
-  [self printMessage:message forLogLevel:BVLogLevelInfo];
+- (void)info:(nonnull NSString *)message
+    withContext:(nullable NSDictionary *)context {
+  [self printMessage:message forLogLevel:BVLogLevelInfo withContext:context];
 }
 
-- (void)warning:(nonnull NSString *)message {
-  [self printMessage:message forLogLevel:BVLogLevelWarning];
+- (void)warning:(nonnull NSString *)message
+    withContext:(nullable NSDictionary *)context {
+  [self printMessage:message forLogLevel:BVLogLevelWarning withContext:context];
 }
 
-- (void)error:(nonnull NSString *)message {
-  [self printMessage:message forLogLevel:BVLogLevelError];
+- (void)error:(nonnull NSString *)message
+    withContext:(nullable NSDictionary *)context {
+  [self printMessage:message forLogLevel:BVLogLevelError withContext:context];
+}
+
+- (void)fault:(nonnull NSString *)message
+    withContext:(nullable NSDictionary *)context {
+  [self printMessage:message forLogLevel:BVLogLevelFault withContext:context];
 }
 
 - (void)printError:(nonnull NSError *)error {
-  [self printMessage:[error localizedDescription] forLogLevel:BVLogLevelError];
+  [self printMessage:[error localizedDescription]
+         forLogLevel:BVLogLevelError
+         withContext:nil];
 }
 
 - (void)printErrors:(nonnull NSArray<NSError *> *)errors {
@@ -62,24 +131,79 @@ __strong static BVLogger *sharedLoggerInstance = nil;
   }
 }
 
+- (void)addListener:(nonnull id<BVLogListener>)listener {
+  dispatch_sync(self.listenerQueue, ^{
+    [self.listenerList addPointer:(__bridge void *_Nullable)(listener)];
+  });
+}
+
+- (void)removeListener:(nonnull id<BVLogListener>)listener {
+  dispatch_sync(self.listenerQueue, ^{
+    __block NSInteger indexRemoval = -1;
+    [self.listenerList compact];
+    [self.listenerList.allObjects
+        enumerateObjectsUsingBlock:^(id _Nonnull obj, NSUInteger idx,
+                                     BOOL *_Nonnull stop) {
+          if (obj == listener) {
+            indexRemoval = idx;
+            *stop = YES;
+          }
+        }];
+    if (0 <= indexRemoval) {
+      [self.listenerList removePointerAtIndex:(NSUInteger)indexRemoval];
+    }
+  });
+}
+
+- (void)notifyListenersWithLevel:(BVLogLevel)logLevel
+                      andMessage:(nonnull NSString *)message
+                     withContext:(nullable NSDictionary *)context {
+  dispatch_sync(self.listenerQueue, ^{
+    [self.listenerList compact];
+    [self.listenerList.allObjects enumerateObjectsUsingBlock:^(
+                                      id _Nonnull obj, NSUInteger idx,
+                                      BOOL *_Nonnull stop) {
+      if ([obj respondsToSelector:@selector(logWithLevel:message:context:)]) {
+        id<BVLogListener> listener = (id<BVLogListener>)obj;
+        [listener logWithLevel:logLevel message:message context:context];
+      }
+    }];
+  });
+}
+
 - (void)printMessage:(nonnull NSString *)message
-         forLogLevel:(BVLogLevel)logLevel {
+         forLogLevel:(BVLogLevel)logLevel
+         withContext:(nullable NSDictionary *)context {
+  dispatch_async(self.serialQueue, ^{
+    if (!message || 0 == message.length) {
+      return;
+    }
 
-  if (BVLogLevelNone == self.logLevel || !message || 0 == message.length) {
-    return;
-  }
+    [self notifyListenersWithLevel:logLevel
+                        andMessage:message
+                       withContext:context];
 
-  NSString *logMsg = [NSString stringWithFormat:@"%@: %@", BV_LOG_TAG, message];
+    if (BVLogLevelNone == self.internalLogLevel) {
+      return;
+    }
 
-  if (BVLogLevelAnalyticsOnly == logLevel &&
-      BVLogLevelAnalyticsOnly == self.logLevel) {
+    NSString *logMsg =
+        [NSString stringWithFormat:@"%@: %@", BV_LOG_TAG, message];
+
+    /// If we have analytics only turned on we bail if the level doesn't match.
+    if (BVLogLevelAnalyticsOnly != logLevel &&
+        BVLogLevelAnalyticsOnly == self.internalLogLevel) {
+      return;
+    }
+
+    /// If we have have a level that doesn't match the passed in level we bail
+    /// if it's greater.
+    if (logLevel > self.internalLogLevel) {
+      return;
+    }
+
     [self enqueueMessage:logMsg forLogLevel:logLevel];
-    return;
-  }
-
-  if (logLevel <= self.logLevel) {
-    [self enqueueMessage:logMsg forLogLevel:logLevel];
-  }
+  });
 }
 
 - (void)enqueueMessage:(nonnull NSString *)message
@@ -92,7 +216,9 @@ __strong static BVLogger *sharedLoggerInstance = nil;
       const char *msg = [message UTF8String];
 
       switch (logLevel) {
-
+      case BVLogLevelFault:
+        os_log_fault(OS_LOG_DEFAULT, "%{public}s", msg);
+        break;
       case BVLogLevelError:
         os_log_error(OS_LOG_DEFAULT, "%{public}s", msg);
         break;

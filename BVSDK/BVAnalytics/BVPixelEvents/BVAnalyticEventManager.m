@@ -5,11 +5,8 @@
 //  Copyright © 2017 Bazaarvoice. All rights reserved.
 //
 
-#import <AdSupport/AdSupport.h>
-#include <sys/sysctl.h>
-#include <sys/utsname.h>
-
 #import "BVAnalyticEventManager+Private.h"
+#import <AdSupport/AdSupport.h>
 
 #define BVID_STORAGE_KEY @"BVID_STORAGE_KEY"
 

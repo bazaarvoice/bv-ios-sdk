@@ -8,6 +8,7 @@
 #import "BVAnswersTableView.h"
 #import "BVAnswerTableViewCell.h"
 #import "BVCommon.h"
+#import "BVLogger+Private.h"
 #import "BVMessageInterceptor.h"
 #import "BVViewsHelper.h"
 
@@ -104,7 +105,7 @@
       // error, cell must have answer set
       NSString *message = @"BVAnswerTableViewCell has nil `answer` property. "
                           @"This must be set in `cellForItemAtIndexPath`.";
-      [[BVLogger sharedLogger] error:message];
+      BVLogError(message, BV_PRODUCT_CONVERSATIONS_UI);
       NSAssert(NO, message);
     }
   }

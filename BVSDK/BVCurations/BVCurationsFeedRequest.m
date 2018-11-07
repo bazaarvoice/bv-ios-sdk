@@ -7,6 +7,7 @@
 //
 
 #import "BVCurationsFeedRequest.h"
+#import "BVLogger+Private.h"
 #import "BVSDKConfiguration.h"
 #import "BVSDKManager+Private.h"
 
@@ -190,8 +191,9 @@
                                                               error:&error];
 
     if (!jsonMediaData || error) {
-      [[BVLogger sharedLogger] error:@"Unable to parameterize media dictionary "
-                                     @"for curations request."];
+      BVLogError(
+          @"Unable to parameterize media dictionary for curations request.",
+          BV_PRODUCT_CURATIONS);
     } else {
       NSString *jsonString =
           [[NSString alloc] initWithData:jsonMediaData
