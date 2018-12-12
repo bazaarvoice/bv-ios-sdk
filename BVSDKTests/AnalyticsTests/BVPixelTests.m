@@ -684,4 +684,42 @@
   [self waitForAnalytics];
 }
 
+- (void)testCreateTransactionEventWithNilCity {
+    
+#if ANALYTICS_TEST_USING_MOCK_DATA == 1
+    [self addStubWith200ResponseForJSONFileNamed:@"emptyJSON.json"];
+#endif
+    
+    [[BVAnalyticsManager sharedManager]
+     enqueueImpressionTestWithName:@"testNonTransactionConversionNoPII"
+     withCompletionBlock:[self generateAnalyticsCompletionBlock]];
+    
+    NSArray *orderItems =
+    @[ [[BVTransactionItem alloc] initWithSku:@"123"
+                                         name:@"test product"
+                                     category:@"home and garden"
+                                        price:99.99
+                                     quantity:1
+                                     imageUrl:nil] ];
+    
+    BVTransactionEvent *transaction =
+    [[BVTransactionEvent alloc] initWithOrderId:@"testorderid"
+                                     orderTotal:99.99
+                                     orderItems:orderItems
+                                 andOtherParams:@{
+                                                  @"state" : @"TX",
+                                                  @"city" : [NSNull null],
+                                                  @"currency" : @"USD",
+                                                  /*PII*/ @"email" : @"some.one@domain.com"
+                                                  }];
+    
+    [transaction setCurrency:@"USD"];
+    [transaction setCity:nil];
+    [BVPixel trackEvent:transaction];
+    
+    [[BVAnalyticsManager sharedManager] flushQueue];
+    
+    [self waitForAnalytics];
+}
+
 @end

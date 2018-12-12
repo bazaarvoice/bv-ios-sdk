@@ -93,7 +93,7 @@
   }
 
   if (self.currency) {
-    [eventDict setObject:self.city forKey:@"currency"];
+    [eventDict setObject:self.currency forKey:@"currency"];
   }
 
   // convert and add Transaction Items
