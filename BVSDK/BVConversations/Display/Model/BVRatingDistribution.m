@@ -34,8 +34,10 @@
       case 4:
         self.fourStarCount = count;
         break;
-      default:
+      case 5:
         self.fiveStarCount = count;
+        break;
+      default:
         break;
       }
     }
