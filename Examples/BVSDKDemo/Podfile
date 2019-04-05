@@ -26,7 +26,7 @@ target 'BVSDKDemo' do
   pod 'SDWebImage'
   pod 'Google-Mobile-Ads-SDK'
   pod 'HCSStarRatingView'
-  pod 'NVActivityIndicatorView'
+  pod 'NVActivityIndicatorView', '~> 4.4.1'
   pod 'FontAwesomeKit/FontAwesome'
   pod 'XLActionController', '~> 3.0'
   pod 'youtube-ios-player-helper'
