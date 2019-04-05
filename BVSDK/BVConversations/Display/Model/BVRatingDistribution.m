@@ -14,12 +14,13 @@
     if (!apiResponse || ![apiResponse isKindOfClass:[NSArray class]]) {
       return nil;
     }
-
+    
     NSArray<NSDictionary *> *apiObject = (NSArray<NSDictionary *> *)apiResponse;
+    self.rawDistribution = apiObject;
     for (NSDictionary *value in apiObject) {
       NSNumber *count = value[@"Count"];
       NSNumber *valueNum = value[@"RatingValue"];
-
+        
       NSUInteger valueInt = [valueNum unsignedIntegerValue];
       switch (valueInt) {
       case 1:
