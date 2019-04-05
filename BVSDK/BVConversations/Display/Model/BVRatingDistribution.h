@@ -18,6 +18,7 @@
 @property(nonnull) NSNumber *threeStarCount;
 @property(nonnull) NSNumber *fourStarCount;
 @property(nonnull) NSNumber *fiveStarCount;
+@property(nonnull) NSArray *rawDistribution;
 
 - (nullable id)initWithApiResponse:(nullable id)apiResponse;
 
