@@ -23,7 +23,7 @@ target 'BVSDKDemo' do
   common_pods
   pod 'Fabric'
   pod 'Crashlytics'
-  pod 'SDWebImage'
+  pod 'SDWebImage', '~> 4.4.3'
   pod 'Google-Mobile-Ads-SDK'
   pod 'HCSStarRatingView'
   pod 'NVActivityIndicatorView', '~> 4.4.1'
