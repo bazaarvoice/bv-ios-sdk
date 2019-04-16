@@ -16,7 +16,8 @@
       - (nonnull instancetype)__unavailable init;
 - (nonnull instancetype)initWithID:(nonnull NSString *)ID
                              limit:(NSUInteger)limit
-                            offset:(NSUInteger)offset;
+                            offset:(NSUInteger)offset
+                        primaryFilter:(BVReviewFilterValue)primaryFilter;
 
 @property(nonatomic, assign, readonly) NSUInteger limit;
 @property(nonatomic, assign, readonly) NSUInteger offset;
