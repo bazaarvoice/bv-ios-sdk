@@ -20,6 +20,7 @@
 #import "BVSDKConfiguration.h"
 #import "BVSDKConstants.h"
 #import "BVSDKManager+Private.h"
+#import "BVUserAgent+NSURLRequest.h"
 
 @interface BVAnalyticsManager ()
 
@@ -437,7 +438,9 @@ static BVAnalyticsManager *analyticsInstance = nil;
   request.HTTPMethod = @"POST";
   [request setValue:@"application/json"
       forHTTPHeaderField:@"Content-Type"]; // content type
-
+  [request setValue:[NSURLRequest
+                       bvUserAgentWithLocaleIdentifier:self.analyticsLocale.localeIdentifier]
+      forHTTPHeaderField:@"User-Agent"];
   NSError *error = nil;
   NSData *data = [NSJSONSerialization dataWithJSONObject:eventData
                                                  options:kNilOptions
