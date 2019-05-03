@@ -16,7 +16,14 @@
 - (nonnull instancetype)initWithProductId:(nonnull NSString *)productId
                                     limit:(NSUInteger)limit
                                    offset:(NSUInteger)offset {
-  return self = [super initWithID:productId limit:limit offset:offset];
+    return self = [super initWithID:productId limit:limit offset:offset primaryFilter: BVReviewFilterValueProductId];
+}
+
+- (nonnull instancetype)initWithId:(nonnull NSString *)Id
+                         andFilter:(BVReviewFilterValue)filter
+                             limit:(NSUInteger)limit
+                            offset:(NSUInteger)offset {
+    return self = [super initWithID:Id limit:limit offset:offset primaryFilter: filter];
 }
 
 - (NSString *)productId {
