@@ -424,6 +424,7 @@
 		87F2DE171DAD945D00FB43F3 /* StoreReviewSubmissionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F2DE071DAD945D00FB43F3 /* StoreReviewSubmissionTests.swift */; };
 		87FEC8CA1DB1145D007DD44E /* integrate-dynamic-framework.sh in Resources */ = {isa = PBXBuildFile; fileRef = 87FEC8C91DB1145D007DD44E /* integrate-dynamic-framework.sh */; };
 		8D1764414ABEFA876BE81636 /* Pods_BVSDKTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7892A8713545E74147C58ECB /* Pods_BVSDKTests.framework */; };
+		981EE848226627F2000E9191 /* ReviewFilterDisplayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981EE847226627F2000E9191 /* ReviewFilterDisplayTests.swift */; };
 		B56D71822032476A002EC872 /* BVLocaleManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B56D71812032476A002EC872 /* BVLocaleManagerTests.m */; };
 		B56E1F921FBF86360025D5B4 /* UASSubmissionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56E1F911FBF86360025D5B4 /* UASSubmissionTests.swift */; };
 		B575C3861FBDFD6F000F890B /* BVUASSubmission.h in Headers */ = {isa = PBXBuildFile; fileRef = B575C3841FBDFD6F000F890B /* BVUASSubmission.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -1035,6 +1036,7 @@
 		87F2DE071DAD945D00FB43F3 /* StoreReviewSubmissionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreReviewSubmissionTests.swift; sourceTree = "<group>"; };
 		87FEC8C91DB1145D007DD44E /* integrate-dynamic-framework.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = "integrate-dynamic-framework.sh"; sourceTree = "<group>"; };
 		89529D79D81B13BA86882542 /* Pods-BVSDKTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BVSDKTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-BVSDKTests/Pods-BVSDKTests.release.xcconfig"; sourceTree = "<group>"; };
+		981EE847226627F2000E9191 /* ReviewFilterDisplayTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewFilterDisplayTests.swift; sourceTree = "<group>"; };
 		B56D71812032476A002EC872 /* BVLocaleManagerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = BVLocaleManagerTests.m; path = BVSDKTests/CommonTests/BVLocaleManagerTests.m; sourceTree = SOURCE_ROOT; };
 		B56E1F911FBF86360025D5B4 /* UASSubmissionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UASSubmissionTests.swift; sourceTree = "<group>"; };
 		B575C3841FBDFD6F000F890B /* BVUASSubmission.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = BVUASSubmission.h; path = ../Auth/BVUASSubmission.h; sourceTree = "<group>"; };
@@ -1934,6 +1936,7 @@
 				87C5FF5E1E36AB70004EE6E8 /* ProfileDisplayTests.swift */,
 				87F2DDF71DAD945D00FB43F3 /* QuestionDisplayTests.swift */,
 				87F2DDF81DAD945D00FB43F3 /* ReviewDisplayTests.swift */,
+				981EE847226627F2000E9191 /* ReviewFilterDisplayTests.swift */,
 				87F2DDF91DAD945D00FB43F3 /* StoresTests */,
 			);
 			path = DisplayTests;
@@ -3246,6 +3249,7 @@
 				87F2DE141DAD945D00FB43F3 /* PhotoUploadTests.swift in Sources */,
 				87F2DE0F1DAD945D00FB43F3 /* DisplayParametersTests.swift in Sources */,
 				87F2DE081DAD945D00FB43F3 /* ConversationsDisplayTests.swift in Sources */,
+				981EE848226627F2000E9191 /* ReviewFilterDisplayTests.swift in Sources */,
 				87F2DD621DAD5E9400FB43F3 /* BVNotificationConfigTests.m in Sources */,
 				87F2DE111DAD945D00FB43F3 /* ProductIdEscapeTests.swift in Sources */,
 				87F2DD5E1DAD5E9400FB43F3 /* BVBaseStubTestCase.m in Sources */,
