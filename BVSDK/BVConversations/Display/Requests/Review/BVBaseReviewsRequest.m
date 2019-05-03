@@ -32,16 +32,18 @@
 
 - (nonnull instancetype)initWithID:(nonnull NSString *)ID
                              limit:(NSUInteger)limit
-                            offset:(NSUInteger)offset {
+                            offset:(NSUInteger)offset
+                        primaryFilter:(BVReviewFilterValue)primaryFilter {
   if ((self = [super init])) {
-    [self initDefaultProps:ID];
+    [self initDefaultProps:ID primaryFilter:primaryFilter];
     _limit = limit;
     _offset = offset;
   }
   return self;
 }
 
-- (void)initDefaultProps:(NSString *)ID {
+- (void)initDefaultProps:(NSString *)ID
+              primaryFilter:(BVReviewFilterValue)primaryFilter {
   _ID = [BVCommaUtil escape:ID];
 
   _filters = [NSMutableArray array];
@@ -51,7 +53,7 @@
   // filter the request to the given productId
   BVFilter *filter = [[BVFilter alloc]
       initWithFilterType:[BVReviewFilterType filterTypeWithRawValue:
-                                                 BVReviewFilterValueProductId]
+                                                 primaryFilter]
           filterOperator:[BVRelationalFilterOperator
                              filterOperatorWithRawValue:
                                  BVRelationalFilterOperatorValueEqualTo]
