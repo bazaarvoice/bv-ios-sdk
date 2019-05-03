@@ -14,6 +14,12 @@ typedef void (^ReviewRequestCompletionHandler)(
 
 /*
  You can get multiple reviews and with this request object.
+ Reviews can be queried using the following BVReviewFilterValues
+ - BVReviewFilterValueProductId
+ - BVReviewFilterValueAuthorId
+ - BVReviewFilterValueSubmissionId
+ - BVReviewFilterValueCategoryAncestorId
+ 
  Optionally, you can filter, sort, or search reviews using the `addSort*` and
  `addFilter*` and `search` methods.
  */
@@ -24,6 +30,11 @@ typedef void (^ReviewRequestCompletionHandler)(
 - (nonnull instancetype)initWithProductId:(nonnull NSString *)productId
                                     limit:(NSUInteger)limit
                                    offset:(NSUInteger)offset;
+
+- (nonnull instancetype)initWithId:(nonnull NSString *)Id
+                     andFilter:(BVReviewFilterValue)filter
+                             limit:(NSUInteger)limit
+                            offset:(NSUInteger)offset;
 - (nonnull instancetype)__unavailable init;
 
 @end

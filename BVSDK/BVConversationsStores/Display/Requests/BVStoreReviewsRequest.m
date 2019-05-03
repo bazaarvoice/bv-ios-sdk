@@ -24,7 +24,7 @@
 - (nonnull instancetype)initWithStoreId:(nonnull NSString *)storeId
                                   limit:(NSUInteger)limit
                                  offset:(NSUInteger)offset {
-  if ((self = [super initWithID:storeId limit:limit offset:offset])) {
+    if ((self = [super initWithID:storeId limit:limit offset:offset primaryFilter: BVReviewFilterValueProductId])) {
     _storeIncludeTypes = [NSMutableArray array];
   }
   return self;
