@@ -31,9 +31,9 @@ target 'BVSDKDemo' do
   pod 'XLActionController', '~> 3.0'
   pod 'youtube-ios-player-helper'
   pod 'SDForms', :git => 'https://github.com/austimkelly/SDForms.git', :branch => 'master'
-  pod 'FBSDKCoreKit'
-  pod 'FBSDKLoginKit'
-  pod 'FBSDKShareKit'
+  pod 'FBSDKCoreKit', '~> 4.44.0'
+  pod 'FBSDKLoginKit', '~> 4.44.0'
+  pod 'FBSDKShareKit', '~> 4.44.0'
 end
 
 post_install do |installer|
