@@ -10,11 +10,11 @@
 #define BVSDKConstants_h
 
 /// Provides the master version of the SDK.
-#define BV_SDK_VERSION @"8.0.3"
+#define BV_SDK_VERSION @"8.0.4"
 
 /// Conversation SDK Version
 #define SDK_HEADER_NAME @"X-UA-BV-SDK"
-#define SDK_HEADER_VALUE @"IOS_SDK_V803"
+#define SDK_HEADER_VALUE @"IOS_SDK_V804"
 
 /// Error domain for NSError results, when present.
 #define BVErrDomain @"com.bazaarvoice.bvsdk"
