@@ -147,7 +147,9 @@
   req.limit = limit;
   req.hasPhotoOrVideo = @YES;
   if (_lastFetchedTimeStamp) {
-    req.before = _lastFetchedTimeStamp;
+    /*We decrement lastFetchedTimeStamp so that only items posted
+    before the given timestamp are fetched*/
+    req.before = [NSNumber numberWithInt:[_lastFetchedTimeStamp intValue] - 1];
   }
 
   if (_productId && 0 < _productId.length) {
