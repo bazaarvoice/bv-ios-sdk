@@ -28,6 +28,38 @@ typedef NS_ENUM(NSInteger, BVCurationsUILayout) {
 @property(nonatomic, strong, nonnull) NSArray<NSString *> *groups;
 
 /**
+ Setting has_photo causes the feed to be filtered based on the presence or
+ absence of a photo on the update. Set this to true to require a photo or
+ false to require the absence of one.
+ 
+ Note that setting one or more has_PhotoOrVideo, has_photo, or has_video
+ parameters yields the intersection (not the union) of the selected filters.
+ */
+@property(strong, nonatomic) NSNumber * _Nullable hasPhoto;
+
+/**
+ Setting has_video causes the feed to be filtered based on the presence or
+ absence of a video on the update. Set this to true to require a video or
+ false to require the absence of one.
+ 
+ Note that setting one or more has_PhotoOrVideo, has_photo, or has_video
+ parameters yields the intersection (not the union) of the
+ selected filters.
+ */
+@property(strong, nonatomic) NSNumber * _Nullable hasVideo;
+
+/**
+ Setting hasPhotoOrVideo causes the feed to be filtered based on the presence
+ or absence of a photo or video on the update. Set this to true to require a
+ video or video, or false to require the absence of one.
+ 
+ Note that setting one or more has_PhotoOrVideo, has_photo, or has_video
+ parameters yields the intersection (not the
+ union) of the selected filters.
+ */
+@property(strong, nonatomic) NSNumber * _Nullable hasPhotoOrVideo;
+
+/**
  Used to only show content that includes a particular product by ID
  Default is not to filter by product
  */
