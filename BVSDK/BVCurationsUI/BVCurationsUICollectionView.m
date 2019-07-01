@@ -61,7 +61,10 @@
   _itemsPerRow = 2;
   _pendingUpdate = NO;
   _shouldRequestImageLoad = @YES;
-
+  _hasPhotoOrVideo = @YES;
+  _hasPhoto = nil;
+  _hasVideo = nil;
+    
   self.delegate = self;
   self.dataSource = self;
   [self registerClass:[BVCurationsUICollectionViewCell class]
@@ -145,7 +148,10 @@
   BVCurationsFeedRequest *req =
       [[BVCurationsFeedRequest alloc] initWithGroups:_groups];
   req.limit = limit;
-  req.hasPhotoOrVideo = @YES;
+  req.hasPhotoOrVideo = _hasPhotoOrVideo;
+  req.hasPhoto = _hasPhoto;
+  req.hasVideo = _hasVideo;
+    
   if (_lastFetchedTimeStamp) {
     /*We decrement lastFetchedTimeStamp so that only items posted
     before the given timestamp are fetched*/
