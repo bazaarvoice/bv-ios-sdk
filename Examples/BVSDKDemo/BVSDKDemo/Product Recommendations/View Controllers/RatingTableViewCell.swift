@@ -88,7 +88,7 @@ class RatingTableViewCell: BVReviewTableViewCell {
     
     let newIcon = icon(size)
     newIcon?.addAttribute(
-      NSForegroundColorAttributeName,
+        NSAttributedString.Key.foregroundColor.rawValue,
       value: color
     )
     
@@ -124,7 +124,7 @@ class RatingTableViewCell: BVReviewTableViewCell {
       
       let attrString = NSMutableAttributedString(string: review!.reviewText ?? "")
       attrString.addAttribute(
-        NSParagraphStyleAttributeName,
+        NSAttributedString.Key.paragraphStyle,
         value: paragraphStyle,
         range: NSMakeRange(0, attrString.length)
       )
@@ -173,7 +173,7 @@ class RatingTableViewCell: BVReviewTableViewCell {
     
   }
   
-  func tappedAuthor(_ sender:UITapGestureRecognizer){
+    @objc func tappedAuthor(_ sender:UITapGestureRecognizer){
     if let onAuthorNameTapped = self.onAuthorNickNameTapped {
       onAuthorNameTapped((review?.authorId)!)
     }

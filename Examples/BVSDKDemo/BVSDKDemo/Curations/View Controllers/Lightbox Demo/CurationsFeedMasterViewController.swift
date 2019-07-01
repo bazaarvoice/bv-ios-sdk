@@ -52,13 +52,13 @@ class CurationsFeedMasterViewController: UIViewController, UIPageViewControllerD
     if socialFeedItems!.count > 0 {
       let firstController = getItemController(self.startIndex)!
       let startingViewControllers: NSArray = [firstController]
-      pageController.setViewControllers(startingViewControllers as? [UIViewController], direction: UIPageViewControllerNavigationDirection.forward, animated: false, completion: nil)
+        pageController.setViewControllers(startingViewControllers as? [UIViewController], direction: UIPageViewController.NavigationDirection.forward, animated: false, completion: nil)
     }
     
     pageViewController = pageController
-    addChildViewController(pageViewController!)
+    addChild(pageViewController!)
     self.view.addSubview(pageViewController!.view)
-    pageViewController!.didMove(toParentViewController: self)
+    pageViewController!.didMove(toParent: self)
     
     
   }

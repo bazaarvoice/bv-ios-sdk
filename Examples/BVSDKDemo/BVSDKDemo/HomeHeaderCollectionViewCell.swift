@@ -115,7 +115,7 @@ class HomeHeaderCollectionViewCell: UICollectionViewCell, UIScrollViewDelegate {
     )
   }
   
-  func autoScroll() {
+    @objc func autoScroll() {
     
     currentPageIndex += 1
     if currentPageIndex >= images.count {

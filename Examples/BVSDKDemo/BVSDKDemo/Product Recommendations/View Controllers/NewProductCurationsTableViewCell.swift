@@ -14,7 +14,7 @@ class NewProductCurationsTableViewCell: UITableViewCell, BVCurationsUICollection
   @IBOutlet weak var curationsCarousel : BVCurationsUICollectionView!
   @IBOutlet weak var errorLabel : UILabel! // initially hidden
   
-  let sdMngr = SDWebImageManager.shared()
+    let sdMngr = SDWebImageManager.shared
   
   var product : BVProduct? {
     
@@ -45,9 +45,11 @@ class NewProductCurationsTableViewCell: UITableViewCell, BVCurationsUICollection
   }
   
   public func curationsImageIsCached(_ imageUrl: String, completion: @escaping BVSDK.BVCurationsIsImageCachedCompletion) {
-    self.sdMngr.cachedImageExists(for: URL(string: imageUrl)) { (cached) in
-      completion(cached, imageUrl)
-    }
+    let key = self.sdMngr.cacheKey(for: URL(string: imageUrl))
+    self.sdMngr.imageCache.containsImage(forKey: key, cacheType: SDImageCacheType.all, completion: { (containsCacheType) in
+        let cached = containsCacheType != SDImageCacheType.none
+        completion(cached, imageUrl)
+        })
   }
   
   public func curationsDidSelect(_ feedItem: BVCurationsFeedItem) {

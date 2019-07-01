@@ -12,14 +12,14 @@ import FontAwesomeKit
 
 class WriteReviewViewController: UIViewController, SDFormDelegate, SDFormDataSource {
   
-  let reviewSubmissionParameters = SubmissionParameterHolder()
-  
+
   // For using SDFormField, this demo presumes one field item per section.
   // Hence, the section header will contain the tile, and the row will just contain the widget
   // and any placeholder text
   var formFields : [SDFormField] = []
   var sectionTitles : [String] = []
-  
+  var paramDict: NSMutableDictionary = [:]
+
   var form : SDForm?
   @IBOutlet weak var tableView: UITableView!
   @IBOutlet weak var header : ProductDetailHeaderView!
@@ -91,11 +91,12 @@ class WriteReviewViewController: UIViewController, SDFormDelegate, SDFormDataSou
   }
   
   private func updateProductUI(product: BVProduct) {
+    self.initParameterDictionary()
     self.initFormFields()
     header.product = product
   }
   
-  func submitTapped() {
+    @objc func submitTapped() {
     
     // NOTE: This sample doens't do field validation so we let the API do it for us.
     // Typically your UI Controller would do some basic validation and guide your user on the required fields and field lengths.
@@ -104,9 +105,9 @@ class WriteReviewViewController: UIViewController, SDFormDelegate, SDFormDataSou
     self.view.addSubview(self.spinner)
     
     // create a fill out the reviewSubmission object
-    let reviewSubmission = BVReviewSubmission(reviewTitle: self.reviewSubmissionParameters.title as? String ?? "",
-                                              reviewText: self.reviewSubmissionParameters.reviewText as? String ?? "",
-                                              rating: UInt(self.reviewSubmissionParameters.rating?.intValue ?? 0),
+        let reviewSubmission = BVReviewSubmission(reviewTitle: self.paramDict.value(forKey: "title") as? String ?? "",
+                                                  reviewText: self.paramDict.value(forKey: "reviewText") as? String ?? "",
+                                              rating: UInt(self.paramDict.value(forKey: "rating") as? Int ?? 0),
                                               productId: self.product!.identifier)
     
     
@@ -116,13 +117,13 @@ class WriteReviewViewController: UIViewController, SDFormDelegate, SDFormDataSou
     // We need to use the same userId for both the photo post and review content
     let userId = "123abc\(arc4random())"
     
-    reviewSubmission.userNickname = self.reviewSubmissionParameters.userNickname as? String
-    reviewSubmission.userEmail = self.reviewSubmissionParameters.userEmail as? String
+    reviewSubmission.userNickname = self.paramDict.value(forKey: "userNickname") as? String
+    reviewSubmission.userEmail = self.paramDict.value(forKey: "userEmail") as? String
     reviewSubmission.userId = userId
-    reviewSubmission.isRecommended = self.reviewSubmissionParameters.isRecommended
-    reviewSubmission.sendEmailAlertWhenPublished = self.reviewSubmissionParameters.sendEmailAlertWhenPublished
-    reviewSubmission.hostedAuthenticationEmail = self.reviewSubmissionParameters.userEmail as? String
-    if let photo = self.reviewSubmissionParameters.photo {
+    reviewSubmission.isRecommended = self.paramDict.value(forKey: "isRecommended") as? NSNumber
+    reviewSubmission.sendEmailAlertWhenPublished = self.paramDict.value(forKey: "sendEmailAlertWhenPublished") as? NSNumber
+    reviewSubmission.hostedAuthenticationEmail = self.paramDict.value(forKey: "userEmail") as? String
+    if let photo = self.paramDict.value(forKey: "photo") as? UIImage{
       reviewSubmission.addPhoto(photo, withPhotoCaption: nil)
     }
     
@@ -144,37 +145,55 @@ class WriteReviewViewController: UIViewController, SDFormDelegate, SDFormDataSou
     
   }
   
-  
-  func initFormFields(){
+  func initParameterDictionary() {
+    var rating : NSNumber?
+    var title : NSString?
+    var reviewText : NSString?
+    var userNickname : NSString?
+    var userEmail : NSString?
+    var isRecommended:NSNumber?
+    var sendEmailAlertWhenPublished:NSNumber?
+    var photo : UIImage?
     
-    let recommendProductSwitch = SDSwitchField(object: reviewSubmissionParameters, relatedPropertyKey: "isRecommended")
+    self.paramDict.setValue(rating, forKey: "rating")
+    self.paramDict.setValue(title, forKey: "title")
+    self.paramDict.setValue(reviewText, forKey: "reviewText")
+    self.paramDict.setValue(userNickname, forKey: "userNickname")
+    self.paramDict.setValue(userEmail, forKey: "userEmail")
+    self.paramDict.setValue(isRecommended, forKey: "isRecommended")
+    self.paramDict.setValue(sendEmailAlertWhenPublished, forKey: "sendEmailAlertWhenPublished")
+    self.paramDict.setValue(photo, forKey: "photo")
+    }
+    
+  func initFormFields(){
+    let recommendProductSwitch = SDSwitchField(object: self.paramDict, relatedPropertyKey: "isRecommended")
     recommendProductSwitch?.title = "I recommend this product."
     
-    let ratingStars = SDRatingStarsField(object: reviewSubmissionParameters, relatedPropertyKey: "rating")
+    let ratingStars = SDRatingStarsField(object: self.paramDict, relatedPropertyKey: "rating")
     ratingStars?.maximumValue = 5
     ratingStars?.minimumValue = 0
     ratingStars?.starsColor = UIColor.bazaarvoiceGold()
     
-    let reviewTitleField = SDTextFormField(object: reviewSubmissionParameters, relatedPropertyKey: "title")
+    let reviewTitleField = SDTextFormField(object: self.paramDict, relatedPropertyKey: "title")
     reviewTitleField?.placeholder = "Add your review title"
     
-    let reviewField = SDMultilineTextField(object: reviewSubmissionParameters, relatedPropertyKey: "reviewText")
+    let reviewField = SDMultilineTextField(object: self.paramDict, relatedPropertyKey: "reviewText")
     reviewField?.placeholder = "Add your thoughts and experinces with this product."
     
-    let nickNameField : SDTextFormField = SDTextFormField(object: reviewSubmissionParameters, relatedPropertyKey: "userNickname")
+    let nickNameField : SDTextFormField = SDTextFormField(object: self.paramDict, relatedPropertyKey: "userNickname")
     nickNameField.placeholder = "Display name for the question"
     
-    let emailAddressField : SDTextFormField = SDTextFormField(object: reviewSubmissionParameters, relatedPropertyKey: "userEmail")
+    let emailAddressField : SDTextFormField = SDTextFormField(object: self.paramDict, relatedPropertyKey: "userEmail")
     emailAddressField.placeholder = "Enter a valid email address."
     
-    let emailOKSwitchField = SDSwitchField(object: reviewSubmissionParameters, relatedPropertyKey: "sendEmailAlertWhenPublished")
+    let emailOKSwitchField = SDSwitchField(object: self.paramDict, relatedPropertyKey: "sendEmailAlertWhenPublished")
     emailOKSwitchField?.title = "Send me status by email?"
     
-    let photoField = SDPhotoField(object: reviewSubmissionParameters, relatedPropertyKey: "photo")
+    let photoField = SDPhotoField(object: self.paramDict, relatedPropertyKey: "photo")
     photoField?.presentingMode = SDFormFieldPresentingModeModal;
     photoField?.title = "photo"
     let cameraIcon = FAKFontAwesome.cameraIcon(withSize: 22)
-    cameraIcon?.addAttribute(NSForegroundColorAttributeName, value: UIColor.lightGray.withAlphaComponent(0.5))
+    cameraIcon?.addAttribute(NSAttributedString.Key.foregroundColor.rawValue, value: UIColor.lightGray.withAlphaComponent(0.5))
     photoField?.callToActionImage = cameraIcon?.image(with: CGSize(width: 22, height: 22))
     
     // Keep the formFields and sectionTitles in the same order if you switch them around.
@@ -188,7 +207,7 @@ class WriteReviewViewController: UIViewController, SDFormDelegate, SDFormDataSou
     
   }
   
-  func dismissSelf(){
+    @objc func dismissSelf(){
     
     if self.presentingViewController != nil {
       self.presentingViewController?.dismiss(animated: true, completion: nil)
@@ -239,20 +258,5 @@ class WriteReviewViewController: UIViewController, SDFormDelegate, SDFormDataSou
     return self;
   }
   
-  
-}
-
-@objc class SubmissionParameterHolder : NSObject {
-  
-  var rating : NSNumber?
-  var title : NSString?
-  var reviewText : NSString?
-  var userNickname : NSString?
-  var userEmail : NSString?
-  
-  var isRecommended:NSNumber?
-  var sendEmailAlertWhenPublished:NSNumber?
-  
-  var photo : UIImage?
   
 }
