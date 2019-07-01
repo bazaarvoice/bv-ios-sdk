@@ -22,7 +22,7 @@ class ProductDetailHeaderView: UIView {
   var product : BVProduct? {
     didSet {
       if let url = product?.imageUrl {
-        productImage.sd_setImage(with: NSURL(string: url) as URL!)
+        productImage.sd_setImage(with: NSURL(string: url) as? URL)
       }
       productName.text = product?.name
       

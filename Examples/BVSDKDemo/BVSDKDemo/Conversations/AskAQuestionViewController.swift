@@ -17,8 +17,7 @@ class AskAQuestionViewController: UIViewController, SDFormDelegate, SDFormDataSo
   // and any placeholder text
   var formFields : [SDFormField] = []
   var sectionTitles : [String] = []
-  
-  var questionSubmissionParameters = QuestionSubmissionParamsHolder()
+  var paramDict: NSMutableDictionary = [:]
   
   @IBOutlet weak var tableView: UITableView!
   @IBOutlet weak var header : ProductDetailHeaderView!
@@ -50,29 +49,44 @@ class AskAQuestionViewController: UIViewController, SDFormDelegate, SDFormDataSo
     
     // form scrolling above keyboard
     self.tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 300, right: 0)
-    
+    self.initParameterDictionary()
     self.initFormFields()
     
   }
-  
+    func initParameterDictionary() {
+        var questionSummary : NSString?
+        var questionDetails : NSString?
+        var userNickname : NSString?
+        var userEmail : NSString?
+        var sendEmailAlertWhenPublished:NSNumber?
+        var agreedToTermsAndConditions:NSNumber?
+        
+        self.paramDict.setValue(questionSummary, forKey: "questionSummary")
+        self.paramDict.setValue(questionDetails, forKey: "questionDetails")
+        self.paramDict.setValue(userNickname, forKey: "userNickname")
+        self.paramDict.setValue(userEmail, forKey: "userEmail")
+        self.paramDict.setValue(sendEmailAlertWhenPublished, forKey: "sendEmailAlertWhenPublished")
+        self.paramDict.setValue(agreedToTermsAndConditions, forKey: "agreedToTermsAndConditions")
+    }
+    
   func initFormFields(){
     
-    let questionField = SDMultilineTextField(object: self.questionSubmissionParameters, relatedPropertyKey: "questionSummary")
+    let questionField = SDMultilineTextField(object: self.paramDict, relatedPropertyKey: "questionSummary")
     questionField?.placeholder = "Example: How do I get replacement bolts?"
     
-    let moreDetailsField = SDMultilineTextField(object: self.questionSubmissionParameters, relatedPropertyKey: "questionDetails")
+    let moreDetailsField = SDMultilineTextField(object: self.paramDict, relatedPropertyKey: "questionDetails")
     moreDetailsField?.placeholder = "Example: I have looked at the manual and can't figure out what I'm doing wrong."
     
-    let nickNameField : SDTextFormField = SDTextFormField(object: self.questionSubmissionParameters, relatedPropertyKey: "userNickname")
+    let nickNameField : SDTextFormField = SDTextFormField(object: self.paramDict, relatedPropertyKey: "userNickname")
     nickNameField.placeholder = "Display name for the question"
     
-    let emailAddressField : SDTextFormField = SDTextFormField(object: self.questionSubmissionParameters, relatedPropertyKey: "userEmail")
+    let emailAddressField : SDTextFormField = SDTextFormField(object: self.paramDict, relatedPropertyKey: "userEmail")
     emailAddressField.placeholder = "Enter a valid email address."
     
-    let emailOKSwitchField = SDSwitchField(object: self.questionSubmissionParameters, relatedPropertyKey: "sendEmailAlertWhenPublished")
+    let emailOKSwitchField = SDSwitchField(object: self.paramDict, relatedPropertyKey: "sendEmailAlertWhenPublished")
     emailOKSwitchField?.title = "Send me status by email?"
     
-    let agreeTermsAndConditions = SDSwitchField(object: self.questionSubmissionParameters, relatedPropertyKey: "agreedToTermsAndConditions")
+    let agreeTermsAndConditions = SDSwitchField(object: self.paramDict, relatedPropertyKey: "agreedToTermsAndConditions")
     agreeTermsAndConditions?.title = "Agree?"
     
     // Keep the formFields and sectionTitles in the same order if you switch them around.
@@ -86,7 +100,7 @@ class AskAQuestionViewController: UIViewController, SDFormDelegate, SDFormDataSo
     
   }
   
-  func submitTapped() {
+    @objc func submitTapped() {
     
     // TODO: Add in field validator here....
     // Otherwise the API will validate for us.
@@ -100,12 +114,12 @@ class AskAQuestionViewController: UIViewController, SDFormDelegate, SDFormDataSo
     
     let submission = BVQuestionSubmission(productId: product.identifier)
     submission.action = .preview // don't actually just submit for real, this is just for demo
-    submission.questionSummary = self.questionSubmissionParameters.questionSummary as? String
-    submission.questionDetails = self.questionSubmissionParameters.questionDetails as? String
-    submission.userNickname = self.questionSubmissionParameters.userNickname as? String
-    submission.userEmail = self.questionSubmissionParameters.userEmail as? String
-    submission.sendEmailAlertWhenPublished = self.questionSubmissionParameters.sendEmailAlertWhenPublished
-    submission.agreedToTermsAndConditions = self.questionSubmissionParameters.agreedToTermsAndConditions
+    submission.questionSummary = self.paramDict.value(forKey: "questionSummary") as? String
+    submission.questionDetails = self.paramDict.value(forKey: "questionDetails") as? String
+    submission.userNickname = self.paramDict.value(forKey: "userNickname") as? String
+    submission.userEmail = self.paramDict.value(forKey: "userEmail") as? String
+    submission.sendEmailAlertWhenPublished = self.paramDict.value(forKey: "sendEmailAlertWhenPublished") as? NSNumber
+    submission.agreedToTermsAndConditions = self.paramDict.value(forKey: "agreedToTermsAndConditions") as? NSNumber
     
     submission.submit({ (response) in
       
@@ -165,17 +179,5 @@ class AskAQuestionViewController: UIViewController, SDFormDelegate, SDFormDataSo
     return self;
   }
   
-  
-}
-
-@objc class QuestionSubmissionParamsHolder : NSObject {
-  
-  var questionSummary : NSString?
-  var questionDetails : NSString?
-  var userNickname : NSString?
-  var userEmail : NSString?
-  
-  var sendEmailAlertWhenPublished:NSNumber?
-  var agreedToTermsAndConditions:NSNumber?
   
 }

@@ -87,7 +87,7 @@ class CurationsImageTableViewCell: UITableViewCell {
     
   }
   
-  func tappedImage(_ sender:UITapGestureRecognizer){
+    @objc func tappedImage(_ sender:UITapGestureRecognizer){
     
     // open safari - go to author's page
     let url = URL(string: self.feedItem!.permalink)
