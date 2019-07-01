@@ -66,7 +66,7 @@ open class BVSDKDemoActionController: ActionController<BVSDKDemoActionCell, Stri
     cellSpec = .nibFile(nibName: "BVSDKDemoActionCell", bundle: Bundle(for: BVSDKDemoActionCell.self), height: { _ in 60 })
     settings.animation.scale = nil
     settings.animation.present.duration = 0.5
-    settings.animation.present.options = UIViewAnimationOptions.curveEaseOut.union(.allowUserInteraction)
+    settings.animation.present.options = UIView.AnimationOptions.curveEaseOut.union(.allowUserInteraction)
     settings.animation.present.springVelocity = 0.0
     settings.animation.present.damping = 0.7
     settings.statusBar.style = .default
@@ -85,10 +85,10 @@ open class BVSDKDemoActionController: ActionController<BVSDKDemoActionCell, Stri
   open override func viewDidLoad() {
     super.viewDidLoad()
     contextView = ContextView(frame: CGRect(x: 0, y: -topSpace, width: collectionView.bounds.width, height: contentHeight + topSpace + 20))
-    contextView.autoresizingMask = UIViewAutoresizing.flexibleWidth.union(.flexibleBottomMargin)
+    contextView.autoresizingMask = UIView.AutoresizingMask.flexibleWidth.union(.flexibleBottomMargin)
     collectionView.clipsToBounds = false
     collectionView.addSubview(contextView)
-    collectionView.sendSubview(toBack: contextView)
+    collectionView.sendSubviewToBack(contextView)
     
     
     normalAnimationRect = UIView(frame: CGRect(x: 0, y: view.bounds.height/2, width: 30, height: 30))
@@ -112,7 +112,7 @@ open class BVSDKDemoActionController: ActionController<BVSDKDemoActionCell, Stri
     let initTime = 0.1
     let animationDuration = settings.animation.present.duration - 0.1
     
-    let options = UIViewAnimationOptions.curveEaseOut.union(.allowUserInteraction)
+    let options = UIView.AnimationOptions.curveEaseOut.union(.allowUserInteraction)
     UIView.animate(withDuration: initTime, delay: settings.animation.present.delay, options: options, animations: { [weak self] in
       guard let me = self else {
         return
@@ -216,7 +216,7 @@ open class BVSDKDemoActionController: ActionController<BVSDKDemoActionCell, Stri
   private func startAnimation() {
     if displayLink == nil {
       self.displayLink = CADisplayLink(target: self, selector: #selector(BVSDKDemoActionController.update(_:)))
-      self.displayLink.add(to: RunLoop.main, forMode: RunLoopMode.defaultRunLoopMode)
+        self.displayLink.add(to: RunLoop.main, forMode: RunLoop.Mode.default)
     }
     animationCount += 1
   }

@@ -41,7 +41,7 @@ class QuestionAnswerViewController: UIViewController, UITableViewDelegate, UITab
     tableView.delegate = self
     tableView.dataSource = self
     tableView.estimatedRowHeight = 40
-    tableView.rowHeight = UITableViewAutomaticDimension
+    tableView.rowHeight = UITableView.automaticDimension
     
     let nib1 = UINib(nibName: "CallToActionCell", bundle: nil)
     tableView.register(nib1, forCellReuseIdentifier: "CallToActionCell")
@@ -75,7 +75,7 @@ class QuestionAnswerViewController: UIViewController, UITableViewDelegate, UITab
     
   }
   
-  func askQuestionTapped() {
+    @objc func askQuestionTapped() {
     
     let askAQuestionVC = AskAQuestionViewController(nibName: "AskAQuestionViewController", bundle: nil, product: product)
     
@@ -83,7 +83,7 @@ class QuestionAnswerViewController: UIViewController, UITableViewDelegate, UITab
     
   }
   
-  func submitAnswerPressed(_ sender: UIButton) {
+    @objc func submitAnswerPressed(_ sender: UIButton) {
     
     let indexPathSection = sender.tag
     let question = questions[indexPathSection]
@@ -93,7 +93,7 @@ class QuestionAnswerViewController: UIViewController, UITableViewDelegate, UITab
     
   }
   
-  func readAnswersTapped(_ sender: UIButton) {
+    @objc func readAnswersTapped(_ sender: UIButton) {
     
     let indexPathSection = sender.tag
     let question = questions[indexPathSection]
@@ -139,14 +139,14 @@ class QuestionAnswerViewController: UIViewController, UITableViewDelegate, UITab
       
       let numAnswers = question.includedAnswers.count
       if numAnswers == 0 {
-        callToActionCell.button.setTitle("Be the first to answer!", for: UIControlState())
+        callToActionCell.button.setTitle("Be the first to answer!", for: UIControl.State())
         callToActionCell.setCustomLeftIcon(FAKFontAwesome.plusIcon(withSize:))
         callToActionCell.button.removeTarget(nil, action: nil, for: .allEvents)
         callToActionCell.button.tag = (indexPath as NSIndexPath).section
         callToActionCell.button.addTarget(self, action: #selector(QuestionAnswerViewController.submitAnswerPressed(_:)), for: .touchUpInside)
       }
       else {
-        callToActionCell.button.setTitle("Read \(numAnswers) answers", for: UIControlState())
+        callToActionCell.button.setTitle("Read \(numAnswers) answers", for: UIControl.State())
         callToActionCell.setCustomLeftIcon(FAKFontAwesome.commentsIcon(withSize:))
         callToActionCell.button.removeTarget(nil, action: nil, for: .allEvents)
         callToActionCell.button.tag = (indexPath as NSIndexPath).section

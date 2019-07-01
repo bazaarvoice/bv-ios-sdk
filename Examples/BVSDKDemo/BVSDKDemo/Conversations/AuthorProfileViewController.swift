@@ -50,25 +50,25 @@ class AuthorProfileViewController: UIViewController, UITableViewDataSource {
     let nib1 = UINib(nibName: "RatingTableViewCell", bundle: nil)
     reviewsTableView.register(nib1, forCellReuseIdentifier: "RatingTableViewCell")
     reviewsTableView.estimatedRowHeight = 40
-    reviewsTableView.rowHeight = UITableViewAutomaticDimension
+    reviewsTableView.rowHeight = UITableView.automaticDimension
     reviewsTableView.allowsSelection = false
     
     let nib2 = UINib(nibName: "AnswerTableViewCell", bundle: nil)
     answersTableView.register(nib2, forCellReuseIdentifier: "AnswerTableViewCell")
     answersTableView.estimatedRowHeight = 40
-    answersTableView.rowHeight = UITableViewAutomaticDimension
+    answersTableView.rowHeight = UITableView.automaticDimension
     answersTableView.allowsSelection = false
     
     let nib3 = UINib(nibName: "QuestionAnswerTableViewCell", bundle: nil)
     questionsTableView.register(nib3, forCellReuseIdentifier: "QuestionAnswerTableViewCell")
     questionsTableView.estimatedRowHeight = 40
-    questionsTableView.rowHeight = UITableViewAutomaticDimension
+    questionsTableView.rowHeight = UITableView.automaticDimension
     questionsTableView.allowsSelection = false
     
     let nib4 = UINib(nibName: "ReviewCommentTableViewCell", bundle: nil)
     commentsTableView.register(nib4, forCellReuseIdentifier: "ReviewCommentTableViewCell")
     commentsTableView.estimatedRowHeight = 40
-    commentsTableView.rowHeight = UITableViewAutomaticDimension
+    commentsTableView.rowHeight = UITableView.automaticDimension
     commentsTableView.allowsSelection = false
     
     self.view.layoutIfNeeded()
@@ -84,7 +84,7 @@ class AuthorProfileViewController: UIViewController, UITableViewDataSource {
   
   private func initDefaultUI() {
     
-    self.view.bringSubview(toFront: self.reviewsTableView)
+    self.view.bringSubviewToFront(self.reviewsTableView)
     
     self.userNameLabel.text = ""
     self.userLocationLabel.text = ""
@@ -239,13 +239,13 @@ class AuthorProfileViewController: UIViewController, UITableViewDataSource {
     switch sender.selectedSegmentIndex {
       
     case TableViewTag.ReviewsTableView.rawValue:
-      self.view.bringSubview(toFront: self.reviewsTableView)
+        self.view.bringSubviewToFront(self.reviewsTableView)
     case TableViewTag.QuestionsTableView.rawValue:
-      self.view.bringSubview(toFront: self.questionsTableView)
+        self.view.bringSubviewToFront(self.questionsTableView)
     case TableViewTag.AnswersTableView.rawValue:
-      self.view.bringSubview(toFront: self.answersTableView)
+        self.view.bringSubviewToFront(self.answersTableView)
     case TableViewTag.ReviewCommentsTableView.rawValue:
-      self.view.bringSubview(toFront: self.commentsTableView)
+        self.view.bringSubviewToFront(self.commentsTableView)
     default:
       print("Bad index in segmented control")
     }

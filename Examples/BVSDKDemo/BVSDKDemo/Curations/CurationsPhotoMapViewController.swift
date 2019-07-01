@@ -135,7 +135,7 @@ class CurationsPhotoMapViewController: UIViewController, MKMapViewDelegate {
       if mapView.region.span.latitudeDelta < 2.0 {
         jpsView.didSelectAnnotationView(inMap: mapView)
         let loc = feedItem?.coordinates;
-        let region = MKCoordinateRegionMake(CLLocationCoordinate2D(latitude: (loc?.latitude!.doubleValue)!, longitude: (loc?.longitude!.doubleValue)!), MKCoordinateSpanMake(storeZoom, storeZoom))
+        let region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: (loc?.latitude!.doubleValue)!, longitude: (loc?.longitude!.doubleValue)!), span: MKCoordinateSpan(latitudeDelta: storeZoom, longitudeDelta: storeZoom))
         mapView.setRegion(region, animated: true)
       }else {
         mapView.deselectAnnotation(annotation, animated: false)
@@ -183,7 +183,7 @@ class CurationsPhotoMapViewController: UIViewController, MKMapViewDelegate {
         var spanLat = abs(maxLat - minLat) + 0.3
         spanLat = spanLat > minGroupZoom ? spanLat : minGroupZoom
         
-        let region = MKCoordinateRegionMake(CLLocationCoordinate2D(latitude: avgLat, longitude: avgLong), MKCoordinateSpanMake(spanLat, spanLong))
+        let region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: avgLat, longitude: avgLong), span: MKCoordinateSpan(latitudeDelta: spanLat, longitudeDelta: spanLong))
         mapView.setRegion(region, animated: true)
         previousRegion = region
       }
@@ -216,7 +216,7 @@ class CurationsPhotoMapViewController: UIViewController, MKMapViewDelegate {
     }else{
       previousRegion = nil
       let coord = CLLocationCoordinate2D(latitude: 39.50, longitude: -98.35)
-      let region = MKCoordinateRegionMake(coord, MKCoordinateSpanMake(59.0, 59.0))
+        let region = MKCoordinateRegion(center: coord, span: MKCoordinateSpan(latitudeDelta: 59.0, longitudeDelta: 59.0))
       mapView.setRegion(region, animated: animated)
       shouldHideZoomout(true)
     }

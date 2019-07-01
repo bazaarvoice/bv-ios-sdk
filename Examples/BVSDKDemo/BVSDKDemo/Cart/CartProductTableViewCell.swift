@@ -19,7 +19,7 @@ class CartProductTableViewCell: UITableViewCell {
     didSet {
       if let _ = product {
         productTitle.text = product?.name
-        productImageView.sd_setImage(with: NSURL(string: (product?.imageUrl!)!) as URL!)
+        productImageView.sd_setImage(with: NSURL(string: (product?.imageUrl!)!) as URL?)
         productPrice.text = "$0.00"
       }
     }
