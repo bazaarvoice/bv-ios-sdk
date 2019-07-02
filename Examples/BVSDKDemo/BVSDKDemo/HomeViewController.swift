@@ -15,7 +15,7 @@ import FBSDKLoginKit
 //multiple of 2
 private let numProductsAboveAd = 4
 
-class HomeViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, GADNativeContentAdLoaderDelegate  {
+class HomeViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, GADUnifiedNativeAdLoaderDelegate  {
   
   @IBOutlet weak var versionLabel: UILabel!
   
@@ -493,7 +493,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
   
   // MARK: GADNativeContentAdLoaderDelegate
   
-  func adLoader(_ adLoader: GADAdLoader, didReceive nativeContentAd: GADNativeContentAd) {
+  func adLoader(_ adLoader: GADAdLoader, didReceive nativeContentAd: GADUnifiedNativeAd) {
     
     print("Received HomePage native ad")
     
