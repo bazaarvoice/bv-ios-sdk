@@ -31,7 +31,7 @@ private func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
 
 
 
-class NewProductPageViewController: BVProductDisplayPageViewController, UITableViewDelegate, UITableViewDataSource, GADNativeContentAdLoaderDelegate {
+class NewProductPageViewController: BVProductDisplayPageViewController, UITableViewDelegate, UITableViewDataSource, GADUnifiedNativeAdLoaderDelegate {
   
   enum ProductDetailSection : Int {
     case ratings = 0
@@ -58,7 +58,7 @@ class NewProductPageViewController: BVProductDisplayPageViewController, UITableV
   private var totalReviewCount, totalQuestionCount, totalAnswerCount : Int?
   
   private var adLoader : GADAdLoader?
-  private var nativeContentAd : GADNativeContentAd?
+    private var nativeContentAd : GADUnifiedNativeAd?
   
   private let productId : String
   
@@ -541,7 +541,7 @@ class NewProductPageViewController: BVProductDisplayPageViewController, UITableV
   
   //MARK: GADNativeContentAdLoaderDelegate
   
-  func adLoader(_ adLoader: GADAdLoader, didReceive nativeContentAd: GADNativeContentAd) {
+    func adLoader(_ adLoader: GADAdLoader, didReceive nativeContentAd: GADUnifiedNativeAd) {
     self.nativeContentAd = nativeContentAd
     self.tableView.reloadData()
   }
