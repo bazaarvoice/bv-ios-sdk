@@ -16,7 +16,7 @@ class NewProductRecsTableViewCell: UITableViewCell, UICollectionViewDataSource, 
   var products : [BVRecommendedProduct]?
   
   var adLoader : GADAdLoader?
-  var nativeContentAd : GADNativeContentAd?
+    var nativeContentAd : GADUnifiedNativeAd?
   
   let specialAdIndex = 4
   
@@ -149,7 +149,7 @@ class NewProductRecsTableViewCell: UITableViewCell, UICollectionViewDataSource, 
   
   //MARK: GADNativeContentAdLoaderDelegate
   
-  func adLoader(_ adLoader: GADAdLoader, didReceive nativeContentAd: GADNativeContentAd) {
+func adLoader(_ adLoader: GADAdLoader, didReceive nativeContentAd: GADUnifiedNativeAd) {
     
     self.nativeContentAd = nativeContentAd
     self.recommendationsCarousel.reloadData()
