@@ -41,8 +41,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     if (ProfileUtils.isFacebookInstalled()) {
-      FBSDKProfile.enableUpdates(onAccessTokenChange: true)
-      FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
+        Profile.enableUpdatesOnAccessTokenChange(true)
+        ApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
     }
     
     //Must be set before this method returns
@@ -53,8 +53,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     
     if (ProfileUtils.isFacebookInstalled()) {
-      FBSDKProfile.enableUpdates(onAccessTokenChange: true)
-      FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
+        Profile.enableUpdatesOnAccessTokenChange(true)
+        ApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
     }
     
     //Must be set before this method returns
@@ -68,12 +68,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   
   func applicationDidBecomeActive(_ application: UIApplication) {
     if (ProfileUtils.isFacebookInstalled()) {
-      FBSDKAppEvents.activateApp()
+        AppEvents.activateApp()
     }
   }
   
   func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
-    return FBSDKApplicationDelegate.sharedInstance().application(application, open: url, sourceApplication: sourceApplication, annotation: annotation)
+    return ApplicationDelegate.shared.application(application, open: url, sourceApplication: sourceApplication, annotation: annotation)
   }
   
   

@@ -176,15 +176,15 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     // check that user is logged in to facebook
     if (ProfileUtils.isFacebookInstalled()) {
       // The app ID was set so we can authenticate the user
-      if(FBSDKAccessToken.current() == nil) {
+        if(AccessToken.current == nil) {
         let loginViewController = FacebookLoginViewController(nibName: "FacebookLoginViewController", bundle: nil)
         let nav = UINavigationController(rootViewController: loginViewController)
         self.present(nav, animated: true, completion: nil)
       }
       else {
-        if let profile = FBSDKProfile.current() {
+            if let profile = Profile.current {
           
-          ProfileUtils.trackFBLogin(profile.name)
+                ProfileUtils.trackFBLogin(profile.name!)
           if SITE_AUTH == 1 {
             ProfileUtils.sharedInstance.setUserAuthString()
           }
