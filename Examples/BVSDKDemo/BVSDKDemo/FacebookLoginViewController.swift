@@ -10,7 +10,7 @@ import FBSDKLoginKit
 
 class FacebookLoginViewController: UIViewController {
   
-  @IBOutlet weak var fbLoginButton: FBSDKLoginButton!
+    @IBOutlet weak var fbLoginButton: FBLoginButton!
   
   let descriptionLabel = UILabel()
   
@@ -21,7 +21,7 @@ class FacebookLoginViewController: UIViewController {
     self.navigationController?.isNavigationBarHidden = true
     
     // check that user is logged in to facebook
-    if(FBSDKAccessToken.current() != nil) {
+    if(AccessToken.current != nil) {
       fbLoginButton.removeFromSuperview()
       self.presentingViewController?.dismiss(animated: true, completion: nil)
     }
