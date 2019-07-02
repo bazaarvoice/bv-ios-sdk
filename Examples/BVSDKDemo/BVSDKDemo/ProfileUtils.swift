@@ -63,21 +63,20 @@ open class ProfileUtils: NSObject {
   
   func logOut() {
     
-    let loginManager = LoginManager()
+    let loginManager = FBSDKLoginManager()
     loginManager.logOut() // this is an instance function
     
   }
   
   func setUserAuthString() {
     
-    if(AccessToken.current == nil) {
+    if(FBSDKAccessToken.current() == nil) {
       return;
     }
     
-    let req = GraphRequest(graphPath: "me", parameters: ["fields":"email,name,gender,hometown,age_range"], tokenString: AccessToken.current?.tokenString, version: nil, httpMethod: HTTPMethod(rawValue: "GET"))
+    let req = FBSDKGraphRequest(graphPath: "me", parameters: ["fields":"email,name,gender,hometown,age_range"], tokenString: FBSDKAccessToken.current().tokenString, version: nil, httpMethod: "GET")
     
-    
-    _ = req.start(completionHandler: { (connection, result, error) -> Void in
+    _ = req?.start(completionHandler: { (connection, result, error) -> Void in
       
       if(error == nil)
       {
