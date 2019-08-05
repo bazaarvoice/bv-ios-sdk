@@ -16,7 +16,7 @@ env:
 before_install:
   - set -e
   - set -o pipefail
-  - gem install xcpretty --no-ri --no-rdoc --no-document --quiet
+  - gem install xcpretty --no-document --quiet
   - pod --version
 
 script:
