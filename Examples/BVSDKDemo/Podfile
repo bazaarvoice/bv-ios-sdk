@@ -23,17 +23,18 @@ target 'BVSDKDemo' do
   common_pods
   pod 'Fabric'
   pod 'Crashlytics'
-  pod 'SDWebImage', '~> 4.4.3'
+  pod 'SDWebImage'
   pod 'Google-Mobile-Ads-SDK'
   pod 'HCSStarRatingView'
-  pod 'NVActivityIndicatorView', '~> 4.4.1'
+  pod 'NVActivityIndicatorView'
   pod 'FontAwesomeKit/FontAwesome'
-  pod 'XLActionController', '~> 3.0'
+  pod 'XLActionController'
   pod 'youtube-ios-player-helper'
   pod 'SDForms', :git => 'https://github.com/austimkelly/SDForms.git', :branch => 'master'
   pod 'FBSDKCoreKit', '~> 4.44.0'
   pod 'FBSDKLoginKit', '~> 4.44.0'
   pod 'FBSDKShareKit', '~> 4.44.0'
+
 end
 
 post_install do |installer|

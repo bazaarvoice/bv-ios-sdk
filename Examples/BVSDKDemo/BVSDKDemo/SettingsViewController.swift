@@ -20,7 +20,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     tableView.delegate = self
     tableView.dataSource = self
     tableView.estimatedRowHeight = 88
-    tableView.rowHeight = UITableViewAutomaticDimension
+    tableView.rowHeight = UITableView.automaticDimension
     
     return tableView
     

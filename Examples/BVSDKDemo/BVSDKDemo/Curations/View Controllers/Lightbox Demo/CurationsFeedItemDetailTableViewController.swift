@@ -262,7 +262,7 @@ class CurationsFeedItemDetailTableViewController: UITableViewController {
       // Refernced Product details
       // Product info tagged in this feed. This will not be present in all feeds
       
-      let productDetailCell = tableView.dequeueReusableCell(withIdentifier: "ProductDetailTableViewCell") as! ProductDetailTableViewCell!
+      let productDetailCell = tableView.dequeueReusableCell(withIdentifier: "ProductDetailTableViewCell") as! ProductDetailTableViewCell?
       let product = feedItem!.referencedProducts[(indexPath as NSIndexPath).row]
       productDetailCell?.product = product
       

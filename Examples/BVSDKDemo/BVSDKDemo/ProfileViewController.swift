@@ -29,7 +29,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     
   }
   
-  internal func logoutTapped(){
+    @objc internal func logoutTapped(){
     
     ProfileUtils.sharedInstance.logOut()
     

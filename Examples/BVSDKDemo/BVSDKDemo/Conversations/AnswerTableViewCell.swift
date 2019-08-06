@@ -59,10 +59,10 @@ class AnswerTableViewCell: BVAnswerTableViewCell {
         
         let helpfulText = totalPositiveFeedbackCountString + " of " + totalFeedbackCountString +  " users found this answer helpful"
         
-        let attributedString = NSMutableAttributedString(string: helpfulText as String, attributes: [NSFontAttributeName:UIFont.systemFont(ofSize: 12.0)])
+        let attributedString = NSMutableAttributedString(string: helpfulText as String, attributes: [NSAttributedString.Key.font:UIFont.systemFont(ofSize: 12.0)])
         
-        let boldFontAttribute = [NSFontAttributeName: UIFont.boldSystemFont(ofSize: 12.0)]
-        let colorFontAttribute = [NSForegroundColorAttributeName: UIColor.darkGray]
+        let boldFontAttribute = [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 12.0)]
+        let colorFontAttribute = [NSAttributedString.Key.foregroundColor: UIColor.darkGray]
         
         // Part of string to be bold
         attributedString.addAttributes(boldFontAttribute, range: (helpfulText as NSString).range(of: totalFeedbackCountString))
@@ -82,7 +82,7 @@ class AnswerTableViewCell: BVAnswerTableViewCell {
   }
   
   
-  func tappedAuthor(_ sender:UITapGestureRecognizer){
+    @objc func tappedAuthor(_ sender:UITapGestureRecognizer){
     if let onAuthorNameTapped = self.onAuthorNickNameTapped {
       onAuthorNameTapped((answer?.authorId)!)
     }

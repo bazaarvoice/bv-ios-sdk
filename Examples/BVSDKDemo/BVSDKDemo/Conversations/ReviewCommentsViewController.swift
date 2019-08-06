@@ -32,7 +32,7 @@ class ReviewCommentsViewController: UIViewController, UITableViewDataSource {
     self.title = "Review Comments"
     
     commentsTableView.estimatedRowHeight = 60
-    commentsTableView.rowHeight = UITableViewAutomaticDimension
+    commentsTableView.rowHeight = UITableView.automaticDimension
     commentsTableView.allowsSelection = false
     
     let nib = UINib(nibName: "ReviewCommentTableViewCell", bundle: nil)

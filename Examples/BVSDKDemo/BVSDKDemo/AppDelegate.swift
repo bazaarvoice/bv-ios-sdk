@@ -17,7 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   
   var window: UIWindow?
   
-  func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
     
     // start data mocking service
     
@@ -41,8 +41,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     if (ProfileUtils.isFacebookInstalled()) {
-      FBSDKProfile.enableUpdates(onAccessTokenChange: true)
-      FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
+        FBSDKProfile.enableUpdates(onAccessTokenChange: true)
+        FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
     }
     
     //Must be set before this method returns
@@ -53,8 +53,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     
     if (ProfileUtils.isFacebookInstalled()) {
-      FBSDKProfile.enableUpdates(onAccessTokenChange: true)
-      FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
+        FBSDKProfile.enableUpdates(onAccessTokenChange: true)
+        FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
     }
     
     //Must be set before this method returns
@@ -68,7 +68,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   
   func applicationDidBecomeActive(_ application: UIApplication) {
     if (ProfileUtils.isFacebookInstalled()) {
-      FBSDKAppEvents.activateApp()
+        FBSDKAppEvents.activateApp()
     }
   }
   
