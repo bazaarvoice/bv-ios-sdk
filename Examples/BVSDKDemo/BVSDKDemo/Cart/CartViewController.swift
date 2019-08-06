@@ -30,7 +30,7 @@ class CartViewController: UIViewController, UITableViewDataSource {
     self.styleCheckoutButtonButton()
     
     tableView.estimatedRowHeight = 100
-    tableView.rowHeight = UITableViewAutomaticDimension
+    tableView.rowHeight = UITableView.automaticDimension
     tableView.tableFooterView = UIView(frame: CGRect.zero)
     
     let nibCartProductCell = UINib(nibName: "CartProductTableViewCell", bundle: nil)
@@ -131,10 +131,10 @@ class CartViewController: UIViewController, UITableViewDataSource {
     emptyView.isHidden = !visible
     if visible {
       //clearButton.isEnabled = false
-      self.view.bringSubview(toFront: emptyView)
+        self.view.bringSubviewToFront(emptyView)
     } else {
       //clearButton.isEnabled = true
-      self.view.sendSubview(toBack: emptyView)
+        self.view.sendSubviewToBack(emptyView)
     }
   }
   
@@ -163,7 +163,7 @@ class CartViewController: UIViewController, UITableViewDataSource {
     return true
   }
   
-  func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
     if editingStyle == .delete {
       
       let product = CartManager.sharedInstance.productAtIndex(indexPath.row)

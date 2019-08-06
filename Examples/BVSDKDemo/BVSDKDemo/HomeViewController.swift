@@ -36,13 +36,13 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
   
   private lazy var gearIconImage : UIImage = {
     let menuIcon = FAKFontAwesome.gearIcon(withSize: 20)
-    menuIcon?.addAttribute(NSForegroundColorAttributeName, value: UIColor.white)
+    menuIcon?.addAttribute(NSAttributedString.Key.foregroundColor.rawValue, value: UIColor.white)
     return menuIcon!.image(with: CGSize(width: 20, height: 20))
   }()
   
   private lazy var cartIconImage : UIImage = {
     let menuIcon = FAKFontAwesome.shoppingCartIcon(withSize: 20)
-    menuIcon?.addAttribute(NSForegroundColorAttributeName, value: UIColor.white)
+    menuIcon?.addAttribute(NSAttributedString.Key.foregroundColor.rawValue, value: UIColor.white)
     return menuIcon!.image(with: CGSize(width: 20, height: 20))
   }()
   
@@ -161,7 +161,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
   }
   
   
-  func refresh(_ refreshControl: UIRefreshControl) {
+    @objc func refresh(_ refreshControl: UIRefreshControl) {
     // clear any cached recommendations, and reload latest recommendations from API
     BVRecommendationsLoader.purgeRecommendationsCache()
     self.loadProducts()
@@ -176,13 +176,13 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     // check that user is logged in to facebook
     if (ProfileUtils.isFacebookInstalled()) {
       // The app ID was set so we can authenticate the user
-      if(FBSDKAccessToken.current() == nil) {
+        if(FBSDKAccessToken.current() == nil) {
         let loginViewController = FacebookLoginViewController(nibName: "FacebookLoginViewController", bundle: nil)
         let nav = UINavigationController(rootViewController: loginViewController)
         self.present(nav, animated: true, completion: nil)
       }
       else {
-        if let profile = FBSDKProfile.current() {
+            if let profile = FBSDKProfile.current() {
           
           ProfileUtils.trackFBLogin(profile.name)
           if SITE_AUTH == 1 {
@@ -248,7 +248,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     // Always add the cart button to index 0
     let cartButton = UIBarButtonItem(
       image: self.cartIconImage,
-      style: UIBarButtonItemStyle.plain,
+      style: UIBarButtonItem.Style.plain,
       target: self,
       action: #selector(HomeViewController.cartIconPressed)
     )
@@ -259,11 +259,11 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
       if FileManager.default.fileExists(atPath: path, isDirectory: nil) {
         let settingsButton = UIBarButtonItem(
           image: self.gearIconImage,
-          style: UIBarButtonItemStyle.plain,
+          style: UIBarButtonItem.Style.plain,
           target: self,
           action: #selector(HomeViewController.settingsIconPressed)
         )
-        settingsButton.imageInsets = UIEdgeInsetsMake(0, 0, 0, -30)
+        settingsButton.imageInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: -30)
         buttonItems.append(settingsButton)
       }
     }
@@ -272,11 +272,11 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     
   }
   
-  func settingsIconPressed() {
+    @objc func settingsIconPressed() {
     self.navigationController?.pushViewController(SettingsViewController(), animated: true)
   }
   
-  func cartIconPressed(){
+    @objc func cartIconPressed(){
     self.navigationController?.pushViewController(CartViewController(), animated: true)
   }
   
@@ -410,7 +410,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     return self.products![indexPath.row + indexOffset]
   }
   
-  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: IndexPath) -> CGSize {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
     
     switch CellType(rawValue: indexPath.section)! {
     case .header:
@@ -493,7 +493,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
   
   // MARK: GADNativeContentAdLoaderDelegate
   
-    func adLoader(_ adLoader: GADAdLoader, didReceive nativeContentAd: GADUnifiedNativeAd) {
+  func adLoader(_ adLoader: GADAdLoader, didReceive nativeContentAd: GADUnifiedNativeAd) {
     
     print("Received HomePage native ad")
     

@@ -10,8 +10,8 @@ import FBSDKLoginKit
 
 class FacebookLoginViewController: UIViewController {
   
-  @IBOutlet weak var fbLoginButton: FBSDKLoginButton!
-  
+    @IBOutlet weak var fbLoginButton: FBSDKLoginButton!
+
   let descriptionLabel = UILabel()
   
   override func viewWillAppear(_ animated: Bool) {

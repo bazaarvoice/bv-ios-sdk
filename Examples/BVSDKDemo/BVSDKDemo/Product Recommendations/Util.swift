@@ -53,7 +53,7 @@ class Util: NSObject {
     
     let newIcon = icon(size)
     newIcon?.addAttribute(
-      NSForegroundColorAttributeName,
+        NSAttributedString.Key.foregroundColor.rawValue,
       value: color.withAlphaComponent(alpha)
     )
     
@@ -96,7 +96,7 @@ extension UIImageView {
       if cacheType == .none
       {
         self.alpha = 0
-        UIView.transition(with: self, duration: 0.6, options: UIViewAnimationOptions.transitionCrossDissolve, animations: { () -> Void in
+        UIView.transition(with: self, duration: 0.6, options: UIView.AnimationOptions.transitionCrossDissolve, animations: { () -> Void in
           self.image = image
           self.alpha = 1
         }, completion: nil)
@@ -184,7 +184,7 @@ extension UILabel {
     let attributedString = NSMutableAttributedString(string: fullText)
     attributedString.setAttributes([:], range: NSRange(0..<attributedString.length)) // remove all the default attributes
     
-    let colorFontAttribute = [NSForegroundColorAttributeName: UIColor.blue]
+    let colorFontAttribute = [NSAttributedString.Key.foregroundColor: UIColor.blue]
     
     attributedString.addAttributes(colorFontAttribute , range: (fullText as NSString).range(of: author, options: .backwards))
     

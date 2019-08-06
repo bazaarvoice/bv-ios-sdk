@@ -42,7 +42,7 @@ class AnswersViewController: UIViewController, UITableViewDataSource, UITableVie
     tableView.delegate = self
     tableView.dataSource = self
     tableView.estimatedRowHeight = 40
-    tableView.rowHeight = UITableViewAutomaticDimension
+    tableView.rowHeight = UITableView.automaticDimension
     
     let nib1 = UINib(nibName: "AnswerListHeaderCell", bundle: nil)
     tableView.register(nib1, forCellReuseIdentifier: "AnswerListHeaderCell")
@@ -88,7 +88,7 @@ class AnswersViewController: UIViewController, UITableViewDataSource, UITableVie
       else {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ProductPageButtonCell") as! ProductPageButtonCell
         
-        cell.button.setTitle("Give your answer!", for: UIControlState())
+        cell.button.setTitle("Give your answer!", for: UIControl.State())
         cell.setCustomLeftIcon(FAKFontAwesome.plusIcon(withSize:))
         cell.setCustomRightIcon(FAKFontAwesome.chevronRightIcon(withSize:))
         cell.button.removeTarget(nil, action: nil, for: .allEvents)
@@ -113,7 +113,7 @@ class AnswersViewController: UIViewController, UITableViewDataSource, UITableVie
     
   }
   
-  func writeAnAnswerTapped() {
+    @objc func writeAnAnswerTapped() {
     
     let vc = SubmitAnswerViewController(nibName: "SubmitAnswerViewController", bundle: nil, product:product,  question: question)
     
