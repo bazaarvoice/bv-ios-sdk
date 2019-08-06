@@ -81,13 +81,13 @@ public class CircleSearchView<ResultType>: UIView, UITextFieldDelegate, UITableV
     super.removeFromSuperview()
   }
   
-  func cancelPressed(btn: UIButton) {
+    @objc func cancelPressed(btn: UIButton) {
     searchTextField.resignFirstResponder()
     embeddingScrollView.isScrollEnabled = true
     updateState(from: embeddingScrollView.contentOffset, force: true)
   }
   
-  func searchPressed(btn: UIButton) {
+    @objc func searchPressed(btn: UIButton) {
     animateFullScreen()
     searchTextField.becomeFirstResponder()
   }
@@ -245,7 +245,7 @@ public class CircleSearchView<ResultType>: UIView, UITextFieldDelegate, UITableV
   
   private func animateFullScreen() {
     embeddingScrollView.isScrollEnabled = false//(searchTableView.isHidden || searchTableView.alpha == 0)
-    superview?.bringSubview(toFront: self)
+    superview?.bringSubviewToFront(self)
     animateTransition(to: .fullScreen)
   }
   
@@ -331,14 +331,14 @@ public class CircleSearchView<ResultType>: UIView, UITextFieldDelegate, UITableV
     }
     
     let result = textField.text?.replacingCharacters(in: (textField.text?.rangeFromNSRange(range)!)!, with: string)
-    if result!.characters.count >= minimumSearchLength
+    if result!.count >= minimumSearchLength
     {
       searchTimer = Timer.scheduledTimer(timeInterval: minKeyboardRestTimeToSearch, target:self, selector: #selector(CircleSearchView.notifyDelegateOfSearch(_:)), userInfo: result, repeats: false)
     }
     return true
   }
   
-  internal func notifyDelegateOfSearch(_ timer:Timer)
+    @objc internal func notifyDelegateOfSearch(_ timer:Timer)
   {
     var emptyResults = [CircleSearchResult<ResultType>]()
     searchChangedHandler(self, timer.userInfo as! String, &emptyResults){[weak self](results) in
@@ -443,7 +443,7 @@ fileprivate extension UIView
   func addCornerRadiusAnimation(from: CGFloat, to: CGFloat, duration: CFTimeInterval)
   {
     let animation = CABasicAnimation(keyPath:"cornerRadius")
-    animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)
+    animation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.linear)
     animation.fromValue = from
     animation.toValue = to
     animation.duration = duration
@@ -465,8 +465,8 @@ fileprivate extension String {
   func NSRangeFromRange(_ range : Range<String.Index>) -> NSRange {
     let from = range.lowerBound.samePosition(in: utf16)
     let to = range.upperBound.samePosition(in: utf16)
-    return NSRange(location: utf16.distance(from: utf16.startIndex, to: from),
-                   length: utf16.distance(from: from, to: to))
+    return NSRange(location: utf16.distance(from: utf16.startIndex, to: from!),
+                   length: utf16.distance(from: from!, to: to!))
   }
 }
 
@@ -477,7 +477,12 @@ fileprivate extension UIColor {
   }
   
   static func rgbaColor(r: Int, g: Int, b: Int, a: Int) -> UIColor{
-    return UIColor(colorLiteralRed: Float(Double(r) / 255.0), green: Float(Double(g) / 255.0), blue: Float(Double(b) / 255.0), alpha: Float(Double(a) / 255.0))
+    let red = Float(Double(r) / 255.0)
+    let green = Float(Double(g) / 255.0)
+    let blue = Float(Double(b) / 255.0)
+    let alpha = Float(Double(a) / 255.0)
+    
+    return UIColor(_colorLiteralRed: red, green: green, blue: blue, alpha: alpha)
   }
 }
 

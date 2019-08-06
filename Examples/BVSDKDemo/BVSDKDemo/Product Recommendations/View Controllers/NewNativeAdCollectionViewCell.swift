@@ -10,9 +10,9 @@ import GoogleMobileAds
 
 class NewNativeAdCollectionViewCell: UICollectionViewCell {
   
-    @IBOutlet weak var nativeContentAdView : GADUnifiedNativeAdView!
+  @IBOutlet weak var nativeContentAdView : GADUnifiedNativeAdView!
   
-    var nativeContentAd : GADUnifiedNativeAd? {
+  var nativeContentAd : GADUnifiedNativeAd? {
     didSet {
       let headlineLabel = nativeContentAdView.headlineView as! UILabel
       let bodyLabel = nativeContentAdView.bodyView as! UILabel

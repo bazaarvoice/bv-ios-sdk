@@ -9,14 +9,14 @@ import UIKit
 import BVSDK
 import GoogleMobileAds
 
-class NewProductRecsTableViewCell: UITableViewCell, UICollectionViewDataSource, UICollectionViewDelegate, GADNativeContentAdLoaderDelegate {
+class NewProductRecsTableViewCell: UITableViewCell, UICollectionViewDataSource, UICollectionViewDelegate, GADUnifiedNativeAdLoaderDelegate {
   
   @IBOutlet weak var recommendationsCarousel: BVProductRecommendationsCollectionView!
   
   var products : [BVRecommendedProduct]?
   
   var adLoader : GADAdLoader?
-    var nativeContentAd : GADUnifiedNativeAd?
+  var nativeContentAd : GADUnifiedNativeAd?
   
   let specialAdIndex = 4
   
@@ -149,7 +149,7 @@ class NewProductRecsTableViewCell: UITableViewCell, UICollectionViewDataSource, 
   
   //MARK: GADNativeContentAdLoaderDelegate
   
-func adLoader(_ adLoader: GADAdLoader, didReceive nativeContentAd: GADUnifiedNativeAd) {
+  func adLoader(_ adLoader: GADAdLoader, didReceive nativeContentAd: GADUnifiedNativeAd) {
     
     self.nativeContentAd = nativeContentAd
     self.recommendationsCarousel.reloadData()

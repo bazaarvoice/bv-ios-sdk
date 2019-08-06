@@ -6,7 +6,7 @@ set -o pipefail
 
 echo "Checking test Carthage app..."
 
-gem install xcpretty --no-ri --no-rdoc
+gem install xcpretty --no-document
 
 TESTDIR="$(cd $(dirname $0); pwd)"
 cd $TESTDIR

@@ -73,7 +73,7 @@ class RatingsAndReviewsViewController: UIViewController, UITableViewDelegate, UI
     let nib = UINib(nibName: "RatingTableViewCell", bundle: nil)
     tableView.register(nib, forCellReuseIdentifier: "RatingTableViewCell")
     tableView.estimatedRowHeight = 40
-    tableView.rowHeight = UITableViewAutomaticDimension
+    tableView.rowHeight = UITableView.automaticDimension
     tableView.allowsSelection = false
     
     // add a Write Review button...
@@ -88,7 +88,7 @@ class RatingsAndReviewsViewController: UIViewController, UITableViewDelegate, UI
     
   }
   
-  func writeReviewTapped() {
+    @objc func writeReviewTapped() {
     
     let vc = WriteReviewViewController(nibName:"WriteReviewViewController", bundle: nil, product: product)
     self.navigationController?.pushViewController(vc, animated: true)
@@ -213,7 +213,7 @@ class RatingsAndReviewsViewController: UIViewController, UITableViewDelegate, UI
       cell.setCustomLeftIcon(FAKFontAwesome.sortIcon(withSize:))
       
       let titlePrefix = selectedFilterOption == FilterOptions.location.rawValue ? "Filter:" : "Sort:"
-      cell.button.setTitle("\(titlePrefix) \(filterActionTitles[selectedFilterOption])", for: UIControlState())
+      cell.button.setTitle("\(titlePrefix) \(filterActionTitles[selectedFilterOption])", for: UIControl.State())
       
       return cell
       
@@ -273,7 +273,7 @@ class RatingsAndReviewsViewController: UIViewController, UITableViewDelegate, UI
     }
   }
   
-  func filterReviewsButtonPressed() {
+    @objc func filterReviewsButtonPressed() {
     
     let actionController = BVSDKDemoActionController()
     

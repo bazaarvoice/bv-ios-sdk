@@ -10,14 +10,14 @@ import BVSDK
 import SDForms
 
 class SubmitAnswerViewController: UIViewController, SDFormDelegate, SDFormDataSource {
-  
-  var answerSubmissionParameters = AnswerSubmissionParamsHolder()
-  
+    
   // For using SDFormField, this demo presumes one field item per section.
   // Hence, the section header will contain the tile, and the row will just contain the widget
   // and any placeholder text
   var formFields : [SDFormField] = []
   var sectionTitles : [String] = []
+  var paramDict: NSMutableDictionary = [:]
+
   
   var form : SDForm?
   
@@ -59,10 +59,11 @@ class SubmitAnswerViewController: UIViewController, SDFormDelegate, SDFormDataSo
     // add a SUBMIT button...
     self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Submit", style: .plain, target: self, action: #selector(SubmitAnswerViewController.submitTapped))
     
+    self.initParameterDictionary()
     self.initFormFields()
   }
   
-  func submitTapped() {
+    @objc func submitTapped() {
     
     // NOTE: This sample doens't do field validation so we let the API do it for us.
     // Typically your UI Controller would do some basic validation and guide your user on the required fields and field lengths.
@@ -71,11 +72,11 @@ class SubmitAnswerViewController: UIViewController, SDFormDelegate, SDFormDataSo
     self.view.addSubview(self.spinner)
     self.tableView.resignFirstResponder()
     
-    let submission = BVAnswerSubmission(questionId: selectedQuestion.identifier ?? "", answerText: answerSubmissionParameters.answerText as String? ?? "")
+    let submission = BVAnswerSubmission(questionId: selectedQuestion.identifier ?? "", answerText:self.paramDict.value(forKey: "answerText") as? String ?? "")
     submission.action = .preview // Don't actually post, just run in preview mode!
-    submission.userNickname = answerSubmissionParameters.userNickname as String?
-    submission.userEmail = answerSubmissionParameters.userEmail as String?
-    submission.sendEmailAlertWhenPublished = answerSubmissionParameters.sendEmailAlertWhenPublished
+    submission.userNickname = self.paramDict.value(forKey: "userNickname") as? String
+    submission.userEmail = self.paramDict.value(forKey: "userEmail") as? String
+    submission.sendEmailAlertWhenPublished = self.paramDict.value(forKey: "sendEmailAlertWhenPublished") as? NSNumber
     let userId = "123abc\(arc4random())"
     submission.userId = userId
     
@@ -103,19 +104,30 @@ class SubmitAnswerViewController: UIViewController, SDFormDelegate, SDFormDataSo
     
   }
   
+    func initParameterDictionary() {
+        var answerText : NSString?
+        var userNickname : NSString?
+        var userEmail : NSString?
+        var sendEmailAlertWhenPublished:NSNumber?
+        
+        self.paramDict.setValue(answerText, forKey: "answerText")
+        self.paramDict.setValue(userNickname, forKey: "userNickname")
+        self.paramDict.setValue(userEmail, forKey: "userEmail")
+        self.paramDict.setValue(sendEmailAlertWhenPublished, forKey: "sendEmailAlertWhenPublished")
+    }
   
   func initFormFields(){
     
-    let answerField = SDMultilineTextField(object: answerSubmissionParameters, relatedPropertyKey: "answerText")
+    let answerField = SDMultilineTextField(object: self.paramDict, relatedPropertyKey: "answerText")
     answerField?.placeholder = "Answer"
     
-    let nickNameField : SDTextFormField = SDTextFormField(object: answerSubmissionParameters, relatedPropertyKey: "userNickname")
+    let nickNameField : SDTextFormField = SDTextFormField(object: self.paramDict, relatedPropertyKey: "userNickname")
     nickNameField.placeholder = "Nickname"
     
-    let emailAddressField : SDTextFormField = SDTextFormField(object: answerSubmissionParameters, relatedPropertyKey: "userEmail")
+    let emailAddressField : SDTextFormField = SDTextFormField(object: self.paramDict, relatedPropertyKey: "userEmail")
     emailAddressField.placeholder = "Enter a valid email address"
     
-    let emailOKSwitchField = SDSwitchField(object: answerSubmissionParameters, relatedPropertyKey: "sendEmailAlertWhenPublished")
+    let emailOKSwitchField = SDSwitchField(object: self.paramDict, relatedPropertyKey: "sendEmailAlertWhenPublished")
     emailOKSwitchField?.title = "Send me status by email?"
     
     // Keep the formFields and sectionTitles in the same order if you switch them around.
@@ -167,14 +179,5 @@ class SubmitAnswerViewController: UIViewController, SDFormDelegate, SDFormDataSo
   func viewController(for form: SDForm!) -> UIViewController! {
     return self;
   }
-  
-}
-
-@objc class AnswerSubmissionParamsHolder : NSObject {
-  
-  var answerText : NSString?
-  var userNickname : NSString?
-  var userEmail : NSString?
-  var sendEmailAlertWhenPublished:NSNumber?
   
 }

@@ -57,7 +57,7 @@ class CurationsFeedItemDetailCell: UITableViewCell {
     
   }
   
-  func tappedAuthor(_ sender:UITapGestureRecognizer){
+    @objc func tappedAuthor(_ sender:UITapGestureRecognizer){
     if let onSocialButtonTapped = self.onSocialButtonTapped {
       onSocialButtonTapped(SocialOutlet.userProfile, self.feedItem!)
     }
@@ -103,7 +103,7 @@ class CurationsFeedItemDetailCell: UITableViewCell {
     
     let imageName = isFavorite ? "star_filled" : "star_unfilled"
     
-    self.starButton.setImage(UIImage(named: imageName), for: UIControlState())
+    self.starButton.setImage(UIImage(named: imageName), for: UIControl.State())
     
   }
   

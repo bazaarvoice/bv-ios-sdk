@@ -10,10 +10,10 @@ import GoogleMobileAds
 
 class HomeAdvertisementCollectionViewCell: UICollectionViewCell {
   
-    @IBOutlet weak var nativeContentAdView : GADUnifiedNativeAdView!
+  @IBOutlet weak var nativeContentAdView : GADUnifiedNativeAdView!
   
-    var nativeContentAd : GADUnifiedNativeAd? {
-
+  var nativeContentAd : GADUnifiedNativeAd? {
+    
     didSet{
       
       print("self " + (nativeContentAd?.headline)!)
@@ -28,7 +28,8 @@ class HomeAdvertisementCollectionViewCell: UICollectionViewCell {
       bodyLabel.text = nativeContentAd?.body
       callToActionLabel.text = nativeContentAd?.callToAction
       
-        self.nativeContentAdView.nativeAd = nativeContentAd
+      self.nativeContentAdView.nativeAd = nativeContentAd
+      
     }
     
   }

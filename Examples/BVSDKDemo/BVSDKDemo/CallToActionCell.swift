@@ -30,7 +30,7 @@ class CallToActionCell: UITableViewCell {
     
     let newIcon = icon(size)
     newIcon?.addAttribute(
-      NSForegroundColorAttributeName,
+        NSAttributedString.Key.foregroundColor.rawValue,
       value: UIColor.lightGray.withAlphaComponent(0.5)
     )
     

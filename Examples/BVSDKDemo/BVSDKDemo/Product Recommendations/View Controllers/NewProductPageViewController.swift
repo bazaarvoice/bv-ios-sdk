@@ -58,7 +58,7 @@ class NewProductPageViewController: BVProductDisplayPageViewController, UITableV
   private var totalReviewCount, totalQuestionCount, totalAnswerCount : Int?
   
   private var adLoader : GADAdLoader?
-    private var nativeContentAd : GADUnifiedNativeAd?
+  private var nativeContentAd : GADUnifiedNativeAd?
   
   private let productId : String
   
@@ -68,7 +68,7 @@ class NewProductPageViewController: BVProductDisplayPageViewController, UITableV
   
   private lazy var cartIconImage : UIImage = {
     let menuIcon = FAKFontAwesome.shoppingCartIcon(withSize: 20)
-    menuIcon?.addAttribute(NSForegroundColorAttributeName, value: UIColor.white)
+    menuIcon?.addAttribute(NSAttributedString.Key.foregroundColor.rawValue, value: UIColor.white)
     return menuIcon!.image(with: CGSize(width: 20, height: 20))
   }()
   
@@ -131,16 +131,16 @@ class NewProductPageViewController: BVProductDisplayPageViewController, UITableV
     // Always add the cart button to index 0
     let cartButton = UIBarButtonItem(
       image: self.cartIconImage,
-      style: UIBarButtonItemStyle.plain,
+      style: UIBarButtonItem.Style.plain,
       target: self,
-      action: #selector(HomeViewController.cartIconPressed)
+      action: #selector(self.cartIconPressed)
     )
     
     buttonItems.append(cartButton)
     
     if self.navigationController?.viewControllers.count > 2 {
       let homeBarButton = UIBarButtonItem(title: "Home", style: .done, target: self, action: #selector(NewProductPageViewController.homeButtonPressed))
-      homeBarButton.imageInsets = UIEdgeInsetsMake(0, 0, 0, -30)
+        homeBarButton.imageInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: -30)
       buttonItems.append(homeBarButton)
       
     }
@@ -149,7 +149,7 @@ class NewProductPageViewController: BVProductDisplayPageViewController, UITableV
     
   }
   
-  func cartIconPressed(){
+  @objc func cartIconPressed(){
     self.navigationController?.pushViewController(CartViewController(), animated: true)
   }
   
@@ -216,7 +216,7 @@ class NewProductPageViewController: BVProductDisplayPageViewController, UITableV
     self.updateCartBadgeCount()
   }
   
-  func homeButtonPressed() {
+    @objc func homeButtonPressed() {
     
     _ = self.navigationController?.popToRootViewController(animated: true)
     
@@ -353,7 +353,7 @@ class NewProductPageViewController: BVProductDisplayPageViewController, UITableV
   
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
     
-    return UITableViewAutomaticDimension
+    return UITableView.automaticDimension
     
   }
   
@@ -411,7 +411,7 @@ class NewProductPageViewController: BVProductDisplayPageViewController, UITableV
       
       if let count = totalReviewCount {
         
-        cell.button.setTitle("\(count) Reviews", for: UIControlState())
+        cell.button.setTitle("\(count) Reviews", for: UIControl.State())
         
       }
       
@@ -430,7 +430,7 @@ class NewProductPageViewController: BVProductDisplayPageViewController, UITableV
       
       if let count = totalQuestionCount, let answerCount = totalAnswerCount {
         
-        cell.button.setTitle("\(count) Questions, \(answerCount) Answers", for: UIControlState())
+        cell.button.setTitle("\(count) Questions, \(answerCount) Answers", for: UIControl.State())
         
       }
       
@@ -446,7 +446,7 @@ class NewProductPageViewController: BVProductDisplayPageViewController, UITableV
       cell.button.addTarget(self, action: #selector(NewProductPageViewController.curationsAddPhotoPressed), for: .touchUpInside)
       cell.setCustomLeftIcon(FAKFontAwesome.cameraRetroIcon(withSize:))
       cell.setCustomRightIcon(FAKFontAwesome.chevronRightIcon(withSize:))
-      cell.button.setTitle("Add your photo!", for: UIControlState())
+        cell.button.setTitle("Add your photo!", for: UIControl.State())
       
       return cell
       
@@ -460,7 +460,7 @@ class NewProductPageViewController: BVProductDisplayPageViewController, UITableV
       cell.button.addTarget(self, action: #selector(NewProductPageViewController.curationsViewPhotoMapPressed), for: .touchUpInside)
       cell.setCustomLeftIcon(FAKFontAwesome.locationArrowIcon(withSize:))
       cell.setCustomRightIcon(FAKFontAwesome.chevronRightIcon(withSize:))
-      cell.button.setTitle("Photos by Location", for: UIControlState())
+        cell.button.setTitle("Photos by Location", for: UIControl.State())
       
       return cell
       
@@ -471,7 +471,7 @@ class NewProductPageViewController: BVProductDisplayPageViewController, UITableV
     
   }
   
-  func ratingsButtonPressed() {
+    @objc func ratingsButtonPressed() {
     
     if totalReviewCount == nil {
       totalReviewCount = 0
@@ -489,7 +489,7 @@ class NewProductPageViewController: BVProductDisplayPageViewController, UITableV
     
   }
   
-  func questionsButtonPressed() {
+    @objc func questionsButtonPressed() {
     
     let questionsVC = QuestionAnswerViewController(
       nibName: "QuestionAnswerViewController",
@@ -500,7 +500,7 @@ class NewProductPageViewController: BVProductDisplayPageViewController, UITableV
     
   }
   
-  func curationsAddPhotoPressed() {
+    @objc func curationsAddPhotoPressed() {
     /*
      let shareRequest = BVCurationsAddPostRequest(
      groups: CurationsDemoConstants.DEFAULT_FEED_GROUPS_CURATIONS,
@@ -519,7 +519,7 @@ class NewProductPageViewController: BVProductDisplayPageViewController, UITableV
      */
   }
   
-  func curationsViewPhotoMapPressed() {
+    @objc func curationsViewPhotoMapPressed() {
     
     if curationsCell.curationsCarousel.feedItems.count > 0 {
       let curationsPhotoMapVC = CurationsPhotoMapViewController(nibName: "CurationsPhotoMapViewController", bundle: nil)
@@ -541,7 +541,7 @@ class NewProductPageViewController: BVProductDisplayPageViewController, UITableV
   
   //MARK: GADNativeContentAdLoaderDelegate
   
-    func adLoader(_ adLoader: GADAdLoader, didReceive nativeContentAd: GADUnifiedNativeAd) {
+  func adLoader(_ adLoader: GADAdLoader, didReceive nativeContentAd: GADUnifiedNativeAd) {
     self.nativeContentAd = nativeContentAd
     self.tableView.reloadData()
   }

@@ -76,7 +76,6 @@ open class ProfileUtils: NSObject {
     
     let req = FBSDKGraphRequest(graphPath: "me", parameters: ["fields":"email,name,gender,hometown,age_range"], tokenString: FBSDKAccessToken.current().tokenString, version: nil, httpMethod: "GET")
     
-    
     _ = req?.start(completionHandler: { (connection, result, error) -> Void in
       
       if(error == nil)
