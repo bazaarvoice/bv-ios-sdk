@@ -134,10 +134,24 @@ FOUNDATION_EXPORT const unsigned char BVSDKVersionString[];
 #import <BVSDK/BVFeedbackSubmission.h>
 #import <BVSDK/BVFeedbackSubmissionResponse.h>
 
+/// Dreamcatcher
+#import <BVSDK/BVInitiateSubmitRequest.h>
+#import <BVSDK/BVInitiateSubmitFormData.h>
+#import <BVSDK/BVInitiateSubmitResponse.h>
+#import <BVSDK/BVInitiateSubmitErrorResponse.h>
+#import <BVSDK/BVInitiateSubmitResponseData.h>
+
+#import <BVSDK/BVProgressiveSubmitRequest.h>
+#import <BVSDK/BVProgressiveSubmissionReview.h>
+#import <BVSDK/BVProgressiveSubmitResponse.h>
+#import <BVSDK/BVProgressiveSubmitErrorResponse.h>
+#import <BVSDK/BVProgressiveSubmitResponseData.h>
+
 /// Photo Submission
 #import <BVSDK/BVPhotoSubmission.h>
 #import <BVSDK/BVPhotoSubmissionErrorResponse.h>
 #import <BVSDK/BVPhotoSubmissionResponse.h>
+
 
 // Question Submission
 #import <BVSDK/BVQuestionSubmission.h>

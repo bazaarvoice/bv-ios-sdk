@@ -10,6 +10,7 @@
 @implementation BVModelUtil
 
 + (nullable NSDate *)convertTimestampToDatetime:(nullable id)timestamp {
+  NSDate *dateTime;
   if (!timestamp || ![timestamp isKindOfClass:[NSString class]]) {
     return nil;
   }
@@ -17,7 +18,13 @@
 
   NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
   [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SSSX"]; // UTC format
-  return [dateFormatter dateFromString:timestampString];
+  dateTime = [dateFormatter dateFromString:timestampString];
+    
+  if (dateTime == nil) {
+    [dateFormatter setDateFormat:@"yyyy-MM-dd'@'HH:mm:ss"];
+    dateTime = [dateFormatter dateFromString:timestampString];
+    }
+  return dateTime;
 }
 
 + (nonnull NSArray<BVPhoto *> *)parsePhotos:(nullable id)apiResponse {

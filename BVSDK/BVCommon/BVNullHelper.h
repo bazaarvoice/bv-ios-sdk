@@ -28,6 +28,13 @@
     target = value;                                                            \
   }
 
+#define SET_IF_NOT_NULL_WITH_ALTERNATE(target, value, alternateValue)                            \
+  if (value && value != [NSNull null]) {                              \
+    target = value;                                                            \
+} else if (alternateValue && alternateValue != [NSNull null]) {                                                                     \
+    target = alternateValue;                                                          \
+}
+
 #define SET_DEFAULT_IF_NULL(target, value, default)                            \
   if (value && value && value != [NSNull null]) {                              \
     target = value;                                                            \

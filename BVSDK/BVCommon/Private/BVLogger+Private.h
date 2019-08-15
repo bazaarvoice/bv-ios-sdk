@@ -53,6 +53,8 @@
   @{BV_PRODUCT_LOGGING_KEY : @"ConversationsUI"}
 #define BV_PRODUCT_CURATIONS @{BV_PRODUCT_LOGGING_KEY : @"Curations"}
 #define BV_PRODUCT_CURATIONS_UI @{BV_PRODUCT_LOGGING_KEY : @"CurationsUI"}
+#define BV_PRODUCT_DREAMCATCHER                                            \
+@{BV_PRODUCT_LOGGING_KEY : @"Dreamcatcher"}
 #define BV_PRODUCT_NOTIFICATIONS @{BV_PRODUCT_LOGGING_KEY : @"Notifications"}
 #define BV_PRODUCT_PERSONALIZATION                                             \
   @{BV_PRODUCT_LOGGING_KEY : @"Personalization"}

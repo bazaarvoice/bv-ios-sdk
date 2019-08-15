@@ -425,6 +425,28 @@
 		87FEC8CA1DB1145D007DD44E /* integrate-dynamic-framework.sh in Resources */ = {isa = PBXBuildFile; fileRef = 87FEC8C91DB1145D007DD44E /* integrate-dynamic-framework.sh */; };
 		8D1764414ABEFA876BE81636 /* Pods_BVSDKTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7892A8713545E74147C58ECB /* Pods_BVSDKTests.framework */; };
 		981EE848226627F2000E9191 /* ReviewFilterDisplayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981EE847226627F2000E9191 /* ReviewFilterDisplayTests.swift */; };
+		982B48C622F38364002D6F78 /* BVProgressiveSubmitErrorResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = 982B48C422F38364002D6F78 /* BVProgressiveSubmitErrorResponse.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		982B48C722F38364002D6F78 /* BVProgressiveSubmitErrorResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 982B48C522F38364002D6F78 /* BVProgressiveSubmitErrorResponse.m */; };
+		982B607522EA125C0041D40B /* BVProgressiveSubmissionReview.h in Headers */ = {isa = PBXBuildFile; fileRef = 982B607322EA125C0041D40B /* BVProgressiveSubmissionReview.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		982B607622EA125C0041D40B /* BVProgressiveSubmissionReview.m in Sources */ = {isa = PBXBuildFile; fileRef = 982B607422EA125C0041D40B /* BVProgressiveSubmissionReview.m */; };
+		987C074D22528F3300227934 /* BVInitiateSubmitFormData.h in Headers */ = {isa = PBXBuildFile; fileRef = 987C074C22528F3300227934 /* BVInitiateSubmitFormData.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		987C074F22528F4600227934 /* BVInitiateSubmitFormData.m in Sources */ = {isa = PBXBuildFile; fileRef = 987C074E22528F4600227934 /* BVInitiateSubmitFormData.m */; };
+		987C0751225290FB00227934 /* BVInitiateSubmitRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 987C0750225290FB00227934 /* BVInitiateSubmitRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		987C07532252910300227934 /* BVInitiateSubmitRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 987C07522252910300227934 /* BVInitiateSubmitRequest.m */; };
+		987C07552252910B00227934 /* BVInitiateSubmitErrorResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = 987C07542252910B00227934 /* BVInitiateSubmitErrorResponse.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		987C07572252911200227934 /* BVInitiateSubmitErrorResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 987C07562252911200227934 /* BVInitiateSubmitErrorResponse.m */; };
+		987C07592252911B00227934 /* BVInitiateSubmitResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = 987C07582252911B00227934 /* BVInitiateSubmitResponse.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		987C075B2252912200227934 /* BVInitiateSubmitResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 987C075A2252912200227934 /* BVInitiateSubmitResponse.m */; };
+		987C075D2252913000227934 /* BVInitiateSubmitResponseData.h in Headers */ = {isa = PBXBuildFile; fileRef = 987C075C2252913000227934 /* BVInitiateSubmitResponseData.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		987C075F2252913B00227934 /* BVInitiateSubmitResponseData.m in Sources */ = {isa = PBXBuildFile; fileRef = 987C075E2252913800227934 /* BVInitiateSubmitResponseData.m */; };
+		987C07612252933E00227934 /* BVInitiateSubmitTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 987C07602252933E00227934 /* BVInitiateSubmitTest.swift */; };
+		987C07642253F18200227934 /* BVProgressiveSubmitRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 987C07622253F18200227934 /* BVProgressiveSubmitRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		987C07652253F18200227934 /* BVProgressiveSubmitRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 987C07632253F18200227934 /* BVProgressiveSubmitRequest.m */; };
+		987C07682253F24C00227934 /* BVProgressiveSubmitResponseData.h in Headers */ = {isa = PBXBuildFile; fileRef = 987C07662253F24C00227934 /* BVProgressiveSubmitResponseData.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		987C07692253F24C00227934 /* BVProgressiveSubmitResponseData.m in Sources */ = {isa = PBXBuildFile; fileRef = 987C07672253F24C00227934 /* BVProgressiveSubmitResponseData.m */; };
+		987C076C2253FBCB00227934 /* BVProgressiveSubmitResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = 987C076A2253FBCB00227934 /* BVProgressiveSubmitResponse.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		987C076D2253FBCB00227934 /* BVProgressiveSubmitResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 987C076B2253FBCB00227934 /* BVProgressiveSubmitResponse.m */; };
+		987C076F2254038A00227934 /* BVIProgressiveSubmitTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 987C076E2254038A00227934 /* BVIProgressiveSubmitTest.swift */; };
 		B56D71822032476A002EC872 /* BVLocaleManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B56D71812032476A002EC872 /* BVLocaleManagerTests.m */; };
 		B56E1F921FBF86360025D5B4 /* UASSubmissionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56E1F911FBF86360025D5B4 /* UASSubmissionTests.swift */; };
 		B575C3861FBDFD6F000F890B /* BVUASSubmission.h in Headers */ = {isa = PBXBuildFile; fileRef = B575C3841FBDFD6F000F890B /* BVUASSubmission.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -1037,6 +1059,28 @@
 		87FEC8C91DB1145D007DD44E /* integrate-dynamic-framework.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = "integrate-dynamic-framework.sh"; sourceTree = "<group>"; };
 		89529D79D81B13BA86882542 /* Pods-BVSDKTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BVSDKTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-BVSDKTests/Pods-BVSDKTests.release.xcconfig"; sourceTree = "<group>"; };
 		981EE847226627F2000E9191 /* ReviewFilterDisplayTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewFilterDisplayTests.swift; sourceTree = "<group>"; };
+		982B48C422F38364002D6F78 /* BVProgressiveSubmitErrorResponse.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BVProgressiveSubmitErrorResponse.h; sourceTree = "<group>"; };
+		982B48C522F38364002D6F78 /* BVProgressiveSubmitErrorResponse.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BVProgressiveSubmitErrorResponse.m; sourceTree = "<group>"; };
+		982B607322EA125C0041D40B /* BVProgressiveSubmissionReview.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BVProgressiveSubmissionReview.h; sourceTree = "<group>"; };
+		982B607422EA125C0041D40B /* BVProgressiveSubmissionReview.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BVProgressiveSubmissionReview.m; sourceTree = "<group>"; };
+		987C074C22528F3300227934 /* BVInitiateSubmitFormData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVInitiateSubmitFormData.h; sourceTree = "<group>"; };
+		987C074E22528F4600227934 /* BVInitiateSubmitFormData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVInitiateSubmitFormData.m; sourceTree = "<group>"; };
+		987C0750225290FB00227934 /* BVInitiateSubmitRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVInitiateSubmitRequest.h; sourceTree = "<group>"; };
+		987C07522252910300227934 /* BVInitiateSubmitRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVInitiateSubmitRequest.m; sourceTree = "<group>"; };
+		987C07542252910B00227934 /* BVInitiateSubmitErrorResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVInitiateSubmitErrorResponse.h; sourceTree = "<group>"; };
+		987C07562252911200227934 /* BVInitiateSubmitErrorResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVInitiateSubmitErrorResponse.m; sourceTree = "<group>"; };
+		987C07582252911B00227934 /* BVInitiateSubmitResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVInitiateSubmitResponse.h; sourceTree = "<group>"; };
+		987C075A2252912200227934 /* BVInitiateSubmitResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVInitiateSubmitResponse.m; sourceTree = "<group>"; };
+		987C075C2252913000227934 /* BVInitiateSubmitResponseData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVInitiateSubmitResponseData.h; sourceTree = "<group>"; };
+		987C075E2252913800227934 /* BVInitiateSubmitResponseData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVInitiateSubmitResponseData.m; sourceTree = "<group>"; };
+		987C07602252933E00227934 /* BVInitiateSubmitTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BVInitiateSubmitTest.swift; sourceTree = "<group>"; };
+		987C07622253F18200227934 /* BVProgressiveSubmitRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BVProgressiveSubmitRequest.h; sourceTree = "<group>"; };
+		987C07632253F18200227934 /* BVProgressiveSubmitRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BVProgressiveSubmitRequest.m; sourceTree = "<group>"; };
+		987C07662253F24C00227934 /* BVProgressiveSubmitResponseData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BVProgressiveSubmitResponseData.h; sourceTree = "<group>"; };
+		987C07672253F24C00227934 /* BVProgressiveSubmitResponseData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BVProgressiveSubmitResponseData.m; sourceTree = "<group>"; };
+		987C076A2253FBCB00227934 /* BVProgressiveSubmitResponse.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BVProgressiveSubmitResponse.h; sourceTree = "<group>"; };
+		987C076B2253FBCB00227934 /* BVProgressiveSubmitResponse.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BVProgressiveSubmitResponse.m; sourceTree = "<group>"; };
+		987C076E2254038A00227934 /* BVIProgressiveSubmitTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BVIProgressiveSubmitTest.swift; sourceTree = "<group>"; };
 		B56D71812032476A002EC872 /* BVLocaleManagerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = BVLocaleManagerTests.m; path = BVSDKTests/CommonTests/BVLocaleManagerTests.m; sourceTree = SOURCE_ROOT; };
 		B56E1F911FBF86360025D5B4 /* UASSubmissionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UASSubmissionTests.swift; sourceTree = "<group>"; };
 		B575C3841FBDFD6F000F890B /* BVUASSubmission.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = BVUASSubmission.h; path = ../Auth/BVUASSubmission.h; sourceTree = "<group>"; };
@@ -1463,6 +1507,8 @@
 				B59F8F2520360D7100087EF0 /* NotificationTests */,
 				B59F8F2920360DE200087EF0 /* RecommendationsTests */,
 				B59F8F24203606E800087EF0 /* Support */,
+				987C07602252933E00227934 /* BVInitiateSubmitTest.swift */,
+				987C076E2254038A00227934 /* BVIProgressiveSubmitTest.swift */,
 			);
 			path = BVSDKTests;
 			sourceTree = "<group>";
@@ -1559,12 +1605,16 @@
 				87B6DFA41ECA484400B75835 /* BVComment.m */,
 				87F2DB2C1DAD585E00FB43F3 /* BVGenericConversationsResult.h */,
 				B5863981214AFA0E00EFD763 /* BVGenericConversationsResult.m */,
+				987C074C22528F3300227934 /* BVInitiateSubmitFormData.h */,
+				987C074E22528F4600227934 /* BVInitiateSubmitFormData.m */,
 				87F2DB4D1DAD585E00FB43F3 /* BVProduct.h */,
 				87F2DB4E1DAD585E00FB43F3 /* BVProduct.m */,
 				87F2DB4F1DAD585E00FB43F3 /* BVQuestion.h */,
 				87F2DB501DAD585E00FB43F3 /* BVQuestion.m */,
 				87F2DB511DAD585E00FB43F3 /* BVReview.h */,
 				87F2DB521DAD585E00FB43F3 /* BVReview.m */,
+				982B607322EA125C0041D40B /* BVProgressiveSubmissionReview.h */,
+				982B607422EA125C0041D40B /* BVProgressiveSubmissionReview.m */,
 			);
 			path = GenericConversationsResult;
 			sourceTree = "<group>";
@@ -1705,14 +1755,30 @@
 		87F2DBAF1DAD585E00FB43F3 /* Review */ = {
 			isa = PBXGroup;
 			children = (
+				987C0750225290FB00227934 /* BVInitiateSubmitRequest.h */,
+				987C07522252910300227934 /* BVInitiateSubmitRequest.m */,
+				987C07542252910B00227934 /* BVInitiateSubmitErrorResponse.h */,
+				987C07562252911200227934 /* BVInitiateSubmitErrorResponse.m */,
+				987C07582252911B00227934 /* BVInitiateSubmitResponse.h */,
+				987C075A2252912200227934 /* BVInitiateSubmitResponse.m */,
 				87F2DBB01DAD585E00FB43F3 /* BVReviewSubmission.h */,
 				87F2DBB11DAD585E00FB43F3 /* BVReviewSubmission.m */,
 				87F2DBB21DAD585E00FB43F3 /* BVReviewSubmissionErrorResponse.h */,
 				87F2DBB31DAD585E00FB43F3 /* BVReviewSubmissionErrorResponse.m */,
 				87F2DBB41DAD585E00FB43F3 /* BVReviewSubmissionResponse.h */,
 				87F2DBB51DAD585E00FB43F3 /* BVReviewSubmissionResponse.m */,
+				987C075C2252913000227934 /* BVInitiateSubmitResponseData.h */,
+				987C075E2252913800227934 /* BVInitiateSubmitResponseData.m */,
 				87F2DBB61DAD585E00FB43F3 /* BVSubmittedReview.h */,
 				87F2DBB71DAD585E00FB43F3 /* BVSubmittedReview.m */,
+				987C07622253F18200227934 /* BVProgressiveSubmitRequest.h */,
+				987C07632253F18200227934 /* BVProgressiveSubmitRequest.m */,
+				987C07662253F24C00227934 /* BVProgressiveSubmitResponseData.h */,
+				987C07672253F24C00227934 /* BVProgressiveSubmitResponseData.m */,
+				987C076A2253FBCB00227934 /* BVProgressiveSubmitResponse.h */,
+				987C076B2253FBCB00227934 /* BVProgressiveSubmitResponse.m */,
+				982B48C422F38364002D6F78 /* BVProgressiveSubmitErrorResponse.h */,
+				982B48C522F38364002D6F78 /* BVProgressiveSubmitErrorResponse.m */,
 			);
 			path = Review;
 			sourceTree = "<group>";
@@ -2512,8 +2578,11 @@
 				B5BE7690200EA08C002BA818 /* BVQuestionFilterValue.h in Headers */,
 				B5A9730A21923B5500634B31 /* BVAnalyticsRemoteLogger.h in Headers */,
 				87F2DD431DAD585E00FB43F3 /* BVRecsAnalyticsHelper.h in Headers */,
+				987C07552252910B00227934 /* BVInitiateSubmitErrorResponse.h in Headers */,
 				B583AEED20094A58001E9548 /* BVProductIncludeType.h in Headers */,
 				B57B83382162BF05006B378E /* BVRandom+NSString.h in Headers */,
+				987C075D2252913000227934 /* BVInitiateSubmitResponseData.h in Headers */,
+				982B48C622F38364002D6F78 /* BVProgressiveSubmitErrorResponse.h in Headers */,
 				B5BE76A4200EA5EC002BA818 /* BVQuestionsSortOptionValue.h in Headers */,
 				87F2DCC31DAD585E00FB43F3 /* BVAnswersSortOption.h in Headers */,
 				87F2DC641DAD585E00FB43F3 /* BVContextDataValue.h in Headers */,
@@ -2545,6 +2614,7 @@
 				B58639BC214AFE0A00EFD763 /* BVAuthenticatedUser+Private.h in Headers */,
 				87F2DCF11DAD585E00FB43F3 /* BVReviewSubmissionResponse.h in Headers */,
 				87F2DD071DAD585E00FB43F3 /* BVQuestionsTableView.h in Headers */,
+				987C074D22528F3300227934 /* BVInitiateSubmitFormData.h in Headers */,
 				87F2DD3D1DAD585E00FB43F3 /* BVRecommendationsLoader.h in Headers */,
 				87F2DD0D1DAD585E00FB43F3 /* BVReviewCollectionViewCell.h in Headers */,
 				87F2DD3C1DAD585E00FB43F3 /* BVRecommendations.h in Headers */,
@@ -2574,6 +2644,7 @@
 				87F2DC1E1DAD585E00FB43F3 /* BVPixel.h in Headers */,
 				87F2DC991DAD585E00FB43F3 /* BVReview.h in Headers */,
 				87F2DCCF1DAD585E00FB43F3 /* BVAnswerSubmissionResponse.h in Headers */,
+				987C0751225290FB00227934 /* BVInitiateSubmitRequest.h in Headers */,
 				87F2DAB81DAD579D00FB43F3 /* BVSDK.h in Headers */,
 				B5BE768A200E984B002BA818 /* BVBulkRatingFilterValue.h in Headers */,
 				87F2DC971DAD585E00FB43F3 /* BVQuestion.h in Headers */,
@@ -2653,6 +2724,8 @@
 				B583B128200E8ABE001E9548 /* BVFilterTypeValues.h in Headers */,
 				875410B01E1F10DF006C5C6E /* BVNotificationViewController.h in Headers */,
 				875411851E1F201E006C5C6E /* BVStoreReviewRichNotificationCenter.h in Headers */,
+				987C07682253F24C00227934 /* BVProgressiveSubmitResponseData.h in Headers */,
+				987C076C2253FBCB00227934 /* BVProgressiveSubmitResponse.h in Headers */,
 				875411731E1F201E006C5C6E /* BVNotificationProperties.h in Headers */,
 				875410B21E1F10DF006C5C6E /* BVProductReviewNotificationViewController.h in Headers */,
 				B57B8320215C2E22006B378E /* BVSubmittedType.h in Headers */,
@@ -2698,6 +2771,7 @@
 				1539745C1E719B9600BA52C1 /* BVDisplayResponse.h in Headers */,
 				B583AEE5200940FB001E9548 /* BVInclude.h in Headers */,
 				87A02B6A1E0971AC0002701B /* BVSubmittedFeedback.h in Headers */,
+				987C07592252911B00227934 /* BVInitiateSubmitResponse.h in Headers */,
 				873DC4951E7482840080FA03 /* BVImpressionEvent.h in Headers */,
 				873DC4991E7482840080FA03 /* BVPageViewEvent.h in Headers */,
 				B5BE769E200EA4FD002BA818 /* BVMonotonicSortOrderValue.h in Headers */,
@@ -2710,6 +2784,7 @@
 				873DC49B1E7482840080FA03 /* BVPersonalizationEvent.h in Headers */,
 				B5BE76A0200EA53D002BA818 /* BVProductIncludeTypeValue.h in Headers */,
 				B58639B2214AFE0A00EFD763 /* BVSDKManager+Private.h in Headers */,
+				982B607522EA125C0041D40B /* BVProgressiveSubmissionReview.h in Headers */,
 				B5BE769C200EA473002BA818 /* BVCommentsSortOptionValue.h in Headers */,
 				873DC4931E7482840080FA03 /* BVFeatureUsedEvent.h in Headers */,
 				873DC49F1E7482840080FA03 /* BVTransactionEvent.h in Headers */,
@@ -2757,6 +2832,7 @@
 				B583AEE92009486C001E9548 /* BVIncludeType.h in Headers */,
 				B5A764CF1FE1913800B5DC9A /* BVStoreReviewsRequest.h in Headers */,
 				B5A764DD1FE1917C00B5DC9A /* BVStoreIncludeType.h in Headers */,
+				987C07642253F18200227934 /* BVProgressiveSubmitRequest.h in Headers */,
 				B58639A2214AFD9D00EFD763 /* BVSubmissionErrorResponse+Private.h in Headers */,
 				B5A92D961FE85EEE008DA17C /* BVFeedbackSubmission.h in Headers */,
 				B5A764E61FE191BA00B5DC9A /* BVStoreReviewSubmission.h in Headers */,
@@ -2836,9 +2912,8 @@
 					};
 					87F2DAAF1DAD579D00FB43F3 = {
 						CreatedOnToolsVersion = 8.0;
-						DevelopmentTeam = TH9FFAVND4;
 						LastSwiftMigration = 1000;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 					};
 					87F2DDC71DAD6C6E00FB43F3 = {
 						CreatedOnToolsVersion = 8.0;
@@ -2851,6 +2926,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 			);
 			mainGroup = 87F2DA9D1DAD579D00FB43F3;
@@ -2997,7 +3073,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-BVSDKTests/Pods-BVSDKTests-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-BVSDKTests/Pods-BVSDKTests-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/OHHTTPStubs/OHHTTPStubs.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -3006,7 +3082,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BVSDKTests/Pods-BVSDKTests-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-BVSDKTests/Pods-BVSDKTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		B561DE251FCC82900019BE89 /* ShellScript */ = {
@@ -3059,9 +3135,11 @@
 				875411861E1F201E006C5C6E /* BVStoreReviewRichNotificationCenter.m in Sources */,
 				B5A764C81FE1912800B5DC9A /* BVStoreLocation.m in Sources */,
 				87F2DD371DAD585E00FB43F3 /* BVProductRecommendationsContainer.m in Sources */,
+				987C074F22528F4600227934 /* BVInitiateSubmitFormData.m in Sources */,
 				B583AEEA2009486C001E9548 /* BVIncludeType.m in Sources */,
 				158CF5881E71F4CD000EA063 /* BVBulkProductRequest.m in Sources */,
 				87F2DC981DAD585E00FB43F3 /* BVQuestion.m in Sources */,
+				987C07652253F18200227934 /* BVProgressiveSubmitRequest.m in Sources */,
 				87F2DD0A1DAD585E00FB43F3 /* BVQuestionTableViewCell.m in Sources */,
 				875411801E1F201E006C5C6E /* BVProductReviewSimpleNotificationCenter.m in Sources */,
 				B58639D6214AFEC800EFD763 /* BVRecommendationsRequestOptionsUtil.m in Sources */,
@@ -3082,9 +3160,11 @@
 				B583AED22006B4AA001E9548 /* BVRelationalFilterOperator.m in Sources */,
 				B5A764D91FE1915200B5DC9A /* BVBulkStoresResponse.m in Sources */,
 				875411741E1F201E006C5C6E /* BVNotificationProperties.m in Sources */,
+				987C07572252911200227934 /* BVInitiateSubmitErrorResponse.m in Sources */,
 				875411711E1F201E006C5C6E /* BVNotificationConfiguration.m in Sources */,
 				87F2DD0E1DAD585E00FB43F3 /* BVReviewCollectionViewCell.m in Sources */,
 				B5863982214AFA0E00EFD763 /* BVGenericConversationsResult.m in Sources */,
+				982B48C722F38364002D6F78 /* BVProgressiveSubmitErrorResponse.m in Sources */,
 				87F2DC591DAD585E00FB43F3 /* BVCommaUtil.m in Sources */,
 				87F2DC811DAD585E00FB43F3 /* BVQAStatistics.m in Sources */,
 				B57B8335215E8A58006B378E /* BVPhotoSubmissionErrorResponse.m in Sources */,
@@ -3119,6 +3199,7 @@
 				87C5FEB91E22A05D004EE6E8 /* BVBaseAnalyticsHelper.m in Sources */,
 				87F2DD421DAD585E00FB43F3 /* BVRecommendedProduct.m in Sources */,
 				87F2DC8A1DAD585E00FB43F3 /* BVReviewStatistic.m in Sources */,
+				987C076D2253FBCB00227934 /* BVProgressiveSubmitResponse.m in Sources */,
 				B5A764B21FDB1ACE00B5DC9A /* BVAnswersTableView.m in Sources */,
 				1539745D1E719B9600BA52C1 /* BVDisplayResponse.m in Sources */,
 				87F2DD141DAD585E00FB43F3 /* BVReviewTableViewCell.m in Sources */,
@@ -3136,7 +3217,10 @@
 				87F2DCD21DAD585E00FB43F3 /* BVSubmittedAnswer.m in Sources */,
 				87F2DCBC1DAD585E00FB43F3 /* BVProductFilterType.m in Sources */,
 				B5A764E31FE191AE00B5DC9A /* BVUploadableStorePhoto.m in Sources */,
+				987C07692253F24C00227934 /* BVProgressiveSubmitResponseData.m in Sources */,
 				875411781E1F201E006C5C6E /* BVOpenURLMetaData.m in Sources */,
+				987C07532252910300227934 /* BVInitiateSubmitRequest.m in Sources */,
+				982B607622EA125C0041D40B /* BVProgressiveSubmissionReview.m in Sources */,
 				873DC4941E7482840080FA03 /* BVFeatureUsedEvent.m in Sources */,
 				87F2DCB01DAD585E00FB43F3 /* BVReviewsRequest.m in Sources */,
 				87F2DC9A1DAD585E00FB43F3 /* BVReview.m in Sources */,
@@ -3169,6 +3253,7 @@
 				87F2DCBE1DAD585E00FB43F3 /* BVQuestionFilterType.m in Sources */,
 				87A02B6B1E0971AC0002701B /* BVSubmittedFeedback.m in Sources */,
 				B586398E214AFBD000EFD763 /* BVConversationsError.m in Sources */,
+				987C075F2252913B00227934 /* BVInitiateSubmitResponseData.m in Sources */,
 				87F2DC901DAD585E00FB43F3 /* BVSecondaryRatingsAverages.m in Sources */,
 				87F2DCDC1DAD585E00FB43F3 /* BVSubmissionAction.m in Sources */,
 				8754117E1E1F201E006C5C6E /* BVProductReviewRichNotificationCenter.m in Sources */,
@@ -3191,6 +3276,7 @@
 				B5A97315219B352400634B31 /* BVUserAgent+NSURLRequest.m in Sources */,
 				B5BE787B20113A32002BA818 /* BVBulkRatingIncludeType.m in Sources */,
 				87F2DD441DAD585E00FB43F3 /* BVRecsAnalyticsHelper.m in Sources */,
+				987C075B2252912200227934 /* BVInitiateSubmitResponse.m in Sources */,
 				8754117A1E1F201E006C5C6E /* BVProductReviewNotificationCenter.m in Sources */,
 				87EDAFD21EDDD02F00FA07C0 /* BVCommentSubmissionResponse.m in Sources */,
 				150FC2C71E71C21700717041 /* BVBulkProductResponse.m in Sources */,
@@ -3252,12 +3338,14 @@
 				981EE848226627F2000E9191 /* ReviewFilterDisplayTests.swift in Sources */,
 				87F2DD621DAD5E9400FB43F3 /* BVNotificationConfigTests.m in Sources */,
 				87F2DE111DAD945D00FB43F3 /* ProductIdEscapeTests.swift in Sources */,
+				987C076F2254038A00227934 /* BVIProgressiveSubmitTest.swift in Sources */,
 				87F2DD5E1DAD5E9400FB43F3 /* BVBaseStubTestCase.m in Sources */,
 				87F2DE0D1DAD945D00FB43F3 /* ConversationsStoresDisplayTests.swift in Sources */,
 				B59F8F232035EF2900087EF0 /* BVNetworkDelegateTestsDelegate.m in Sources */,
 				87EDAFC91EDDC6A900FA07C0 /* CommentSubmissionTests.swift in Sources */,
 				87F2DE0B1DAD945D00FB43F3 /* QuestionDisplayTests.swift in Sources */,
 				B56D71822032476A002EC872 /* BVLocaleManagerTests.m in Sources */,
+				987C07612252933E00227934 /* BVInitiateSubmitTest.swift in Sources */,
 				87F2DE101DAD945D00FB43F3 /* FilterTests.swift in Sources */,
 				B59185962040DADC006BE717 /* BVInternalAnalyticsTest.m in Sources */,
 				87F2DE0A1DAD945D00FB43F3 /* ProductDisplayTests.swift in Sources */,
@@ -3468,7 +3556,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 3462CE8D50CC0B93A458E62C /* Pods-BVSDKTests.debug.xcconfig */;
 			buildSettings = {
-				DEVELOPMENT_TEAM = TH9FFAVND4;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
 					"COCOAPODS=1",
@@ -3477,6 +3566,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks ${BUILT_PRODUCTS_DIR}/CommonCryptoModuleMap";
 				PRODUCT_BUNDLE_IDENTIFIER = com.bazaarvoice.bvsdk.BVSDKTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "./BVSDKTests/Support/BVSDKTests-Bridging-Header.h";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 			};
@@ -3486,7 +3576,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 89529D79D81B13BA86882542 /* Pods-BVSDKTests.release.xcconfig */;
 			buildSettings = {
-				DEVELOPMENT_TEAM = TH9FFAVND4;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
 					"COCOAPODS=1",
@@ -3495,6 +3586,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks ${BUILT_PRODUCTS_DIR}/CommonCryptoModuleMap";
 				PRODUCT_BUNDLE_IDENTIFIER = com.bazaarvoice.bvsdk.BVSDKTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "./BVSDKTests/Support/BVSDKTests-Bridging-Header.h";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 			};
