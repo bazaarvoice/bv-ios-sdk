@@ -22,5 +22,7 @@
 #import "BVStringKeyValuePair.h"
 #import "BVSubmission+Private.h"
 #import "UIImage+BundleLocator.h"
+#import "BVInitiateSubmitRequest.h"
+#import "BVProgressiveSubmitRequest.h"
 
 #endif /* BVSDKTests_Bridging_Header_h */

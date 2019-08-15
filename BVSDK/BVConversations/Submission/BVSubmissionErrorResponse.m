@@ -25,23 +25,30 @@
 
     NSDictionary *apiObject = (NSDictionary *)apiResponse;
 
-    NSNumber *hasErrs = apiObject[@"HasErrors"];
+    NSNumber *hasErrs;
+    SET_IF_NOT_NULL_WITH_ALTERNATE(hasErrs, apiObject[@"HasErrors"], apiObject[@"hasErrors"])
     self.hasErrors = (hasErrs && [hasErrs boolValue]) ? YES : NO;
 
     if (!self.hasErrors) {
       return nil;
     }
-
+      
     SET_IF_NOT_NULL(self.locale, apiObject[@"Locale"])
     SET_IF_NOT_NULL(self.submissionId, apiObject[@"SubmissionId"])
     SET_IF_NOT_NULL(self.typicalHoursToPost, apiObject[@"TypicalHoursToPost"])
     SET_IF_NOT_NULL(self.authorSubmissionToken,
                     apiObject[@"AuthorSubmissionToken"])
-
+      
+    NSArray<BVConversationsError *> *errors;
+    SET_IF_NOT_NULL_WITH_ALTERNATE(errors, apiObject[@"Errors"], apiObject[@"errors"])
+    
     self.errors = [BVConversationsError
-        createErrorListFromApiResponse:apiObject[@"Errors"]];
+        createErrorListFromApiResponse:errors];
+      
     self.fieldErrors = [BVFieldError
         createListFromFormErrorsDictionary:apiObject[@"FormErrors"]];
+      
+      
   }
   return self;
 }

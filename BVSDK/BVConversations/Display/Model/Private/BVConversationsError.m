@@ -11,13 +11,19 @@
 
 NSString *__nonnull const BVKeyErrorCode = @"BVKeyErrorCode";
 NSString *__nonnull const BVKeyErrorMessage = @"BVKeyErrorMessage";
+NSString *__nonnull const BVKeyErrorField = @"BVKeyErrorField";
 
 @implementation BVConversationsError
 
 - (nonnull id)initWithApiResponse:(nonnull NSDictionary *)apiResponse {
   if ((self = [super init])) {
-    SET_IF_NOT_NULL(self.message, apiResponse[@"Message"])
-    SET_IF_NOT_NULL(self.code, apiResponse[@"Code"])
+    self.code = @"N/A";
+    self.message = @"N/A";
+    self.field = @"N/A";
+      
+    SET_IF_NOT_NULL_WITH_ALTERNATE(self.code, apiResponse[@"Code"], apiResponse[@"code"])
+    SET_IF_NOT_NULL_WITH_ALTERNATE(self.message, apiResponse[@"Message"], apiResponse[@"message"])
+    SET_IF_NOT_NULL_WITH_ALTERNATE(self.field, apiResponse[@"Field"], apiResponse[@"field"])
   }
   return self;
 }
@@ -30,6 +36,7 @@ NSString *__nonnull const BVKeyErrorMessage = @"BVKeyErrorMessage";
                          userInfo:@{
                            NSLocalizedDescriptionKey : description,
                            BVKeyErrorMessage : self.message,
+                           BVKeyErrorField : self.field,
                            BVKeyErrorCode : self.code
                          }];
 }

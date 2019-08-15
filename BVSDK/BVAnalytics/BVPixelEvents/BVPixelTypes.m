@@ -88,6 +88,8 @@
     return @"Recommendations";
   case BVPixelProductTypeCurations:
     return @"Curations";
+  case BVPixelProductTypeProgressiveSubmission:
+    return @"ProgressiveSubmission";
   default:
     return @"UnknownProduct";
   }

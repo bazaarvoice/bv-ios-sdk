@@ -16,6 +16,7 @@ extern NSString *__nonnull const BVKeyErrorMessage;
 
 @property(nonnull) NSString *message;
 @property(nonnull) NSString *code;
+@property(nonnull) NSString *field;
 
 - (nonnull id)initWithApiResponse:(nonnull NSDictionary *)apiResponse;
 - (nonnull NSError *)toNSError;

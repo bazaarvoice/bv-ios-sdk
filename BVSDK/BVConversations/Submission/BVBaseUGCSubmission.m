@@ -75,26 +75,24 @@
     /// Enqueue the photo upload request
     dispatch_async(self.concurrentUploadQueue, ^{
 
-      [photo submit:^(
-                 BVSubmissionResponse<BVSubmittedPhoto *> *_Nonnull response) {
-        dispatch_async(self.serialUploadQueue, ^{
-
-          NSString *photoURL = response.result.photo.sizes.normalUrl;
-          NSString *photoCaption = response.result.photo.caption;
-          if (photoURL && photoCaption) {
-            [photoURLs addObject:photoURL];
-            [photoCaptions addObject:photo.photoCaption];
-          }
-          /// We leave if success
-          dispatch_group_leave(uploadGroup);
-        });
+        [photo upload:^(NSString *_Nonnull photoURL,
+                        NSString *_Nonnull photoCaption) {
+            dispatch_async(self.serialUploadQueue, ^{
+                
+                if (photoURL && photoCaption) {
+                    [photoURLs addObject:photoURL];
+                    [photoCaptions addObject:photo.photoCaption];
+                }
+                /// We leave if success
+                dispatch_group_leave(uploadGroup);
+            });
       }
           failure:^(NSArray<NSError *> *__nonnull errors) {
             dispatch_async(self.serialUploadQueue, ^{
-              [photoUploadErrors addObjectsFromArray:errors];
-
-              /// We leave if failure
-              dispatch_group_leave(uploadGroup);
+                [photoUploadErrors addObjectsFromArray:errors];
+                
+                /// We leave if success
+                dispatch_group_leave(uploadGroup);
             });
           }];
     });
