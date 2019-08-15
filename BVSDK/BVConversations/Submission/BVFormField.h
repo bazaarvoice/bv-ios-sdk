@@ -28,7 +28,10 @@
 @property(nonnull) NSString *label;
 @property(nonnull) NSString *type;
 @property(nonnull) NSString *value;
+@property(nonnull) NSString *classification;
+@property(nonnull) NSDictionary *valuesLabels;
 @property(nonnull) NSNumber *required;  // Boolean
+@property(nonnull) NSNumber *autoPopulate;  // Boolean
 @property(nonnull) NSNumber *minLength; // Integer
 @property(nonnull) NSNumber *maxLength; // Integer
 @property(nonnull) NSNumber *isDefault; // Boolean

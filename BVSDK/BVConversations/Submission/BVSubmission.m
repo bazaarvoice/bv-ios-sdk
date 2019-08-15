@@ -151,23 +151,6 @@ static NSString *urlEncode(id object) {
             return;
           }
 
-          if (statusCode >= 300) {
-            // HTTP status code indicates failure
-            NSString *errorDescription =
-                [NSString stringWithFormat:@"Unknown network error occurred, "
-                                           @"HTTP Status Code : [%lu].",
-                                           (unsigned long)statusCode];
-            NSError *statusError =
-                [NSError errorWithDomain:BVErrDomain
-                                    code:BV_ERROR_NETWORK_FAILED
-                                userInfo:@{
-                                  NSLocalizedDescriptionKey : errorDescription
-                                }];
-
-            [self sendError:statusError failureCallback:failure];
-            return;
-          }
-
           if (!data) {
             NSError *error =
                 [NSError errorWithDomain:BVErrDomain
@@ -207,6 +190,21 @@ static NSString *urlEncode(id object) {
             // errors. Example: 'invalid api key'
             [self sendErrors:submissionErrors failureCallback:failure];
             return;
+            } else if (statusCode >= 300) {
+                // HTTP status code indicates failure
+                NSString *errorDescription =
+                [NSString stringWithFormat:@"Unknown network error occurred, "
+                 @"HTTP Status Code : [%lu].",
+                 (unsigned long)statusCode];
+                NSError *statusError =
+                [NSError errorWithDomain:BVErrDomain
+                              code:BV_ERROR_NETWORK_FAILED
+                              userInfo:@{
+                NSLocalizedDescriptionKey : errorDescription
+                                         }];
+              
+                [self sendError:statusError failureCallback:failure];
+                return;
           }
 
           // success!

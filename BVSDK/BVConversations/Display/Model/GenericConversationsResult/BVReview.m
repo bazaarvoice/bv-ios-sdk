@@ -29,6 +29,7 @@
 
 - (id)initWithApiResponse:(NSDictionary *)apiResponse
                  includes:(BVConversationsInclude *)includes {
+    
   if ((self = [super init])) {
 
     if (!includes) {
@@ -40,7 +41,8 @@
     self.product = [includes getProductById:productId];
     self.cons = apiResponse[@"Cons"];
 
-    NSNumber *recommended = apiResponse[@"IsRecommended"];
+    NSNumber *recommended;
+    SET_IF_NOT_NULL_WITH_ALTERNATE(recommended, apiResponse[@"IsRecommended"], apiResponse[@"buyAgain"])
     if (![recommended isKindOfClass:[NSNull class]]) {
       self.isRecommended = recommended;
     }
@@ -65,16 +67,16 @@
       self.isFeatured = featured;
     }
 
-    SET_IF_NOT_NULL(self.userNickname, apiResponse[@"UserNickname"])
+    SET_IF_NOT_NULL_WITH_ALTERNATE(self.userNickname, apiResponse[@"UserNickname"], apiResponse[@"userNickname"])
     SET_IF_NOT_NULL(self.pros, apiResponse[@"Pros"])
-    SET_IF_NOT_NULL(self.submissionId, apiResponse[@"SubmissionId"])
+    SET_IF_NOT_NULL_WITH_ALTERNATE(self.submissionId, apiResponse[@"SubmissionId"], apiResponse[@"submissionID"])
     SET_IF_NOT_NULL(self.totalFeedbackCount, apiResponse[@"TotalFeedbackCount"])
     SET_IF_NOT_NULL(self.totalPositiveFeedbackCount,
                     apiResponse[@"TotalPositiveFeedbackCount"])
     SET_IF_NOT_NULL(self.userLocation, apiResponse[@"UserLocation"])
     SET_IF_NOT_NULL(self.authorId, apiResponse[@"AuthorId"])
-    SET_IF_NOT_NULL(self.productId, apiResponse[@"ProductId"])
-    SET_IF_NOT_NULL(self.title, apiResponse[@"Title"])
+    SET_IF_NOT_NULL_WITH_ALTERNATE(self.productId, apiResponse[@"ProductId"], apiResponse[@"productExternalID"])
+    SET_IF_NOT_NULL_WITH_ALTERNATE(self.title, apiResponse[@"Title"], apiResponse[@"title"]);
     SET_IF_NOT_NULL(self.productRecommendationIds,
                     apiResponse[@"ProductRecommendationIds"])
     SET_IF_NOT_NULL(self.additionalFields, apiResponse[@"AdditionalFields"])
@@ -83,7 +85,8 @@
     SET_IF_NOT_NULL(self.totalNegativeFeedbackCount,
                     apiResponse[@"TotalNegativeFeedbackCount"])
 
-    NSNumber *num = apiResponse[@"Rating"];
+    NSNumber *num;
+    SET_IF_NOT_NULL_WITH_ALTERNATE(num, apiResponse[@"Rating"], apiResponse[@"rating"]);
     if (num && [num isKindOfClass:[NSNumber class]]) {
       self.rating = [num unsignedIntegerValue];
     } else {
@@ -93,15 +96,19 @@
     SET_IF_NOT_NULL(self.contentLocale, apiResponse[@"ContentLocale"])
     SET_IF_NOT_NULL(self.ratingRange, apiResponse[@"RatingRange"])
     SET_IF_NOT_NULL(self.totalCommentCount, apiResponse[@"TotalCommentCount"])
-    SET_IF_NOT_NULL(self.reviewText, apiResponse[@"ReviewText"])
+    SET_IF_NOT_NULL_WITH_ALTERNATE(self.reviewText, apiResponse[@"ReviewText"], apiResponse[@"reviewText"])
     SET_IF_NOT_NULL(self.moderationStatus, apiResponse[@"ModerationStatus"])
     SET_IF_NOT_NULL(self.clientResponses, apiResponse[@"ClientResponses"])
     SET_IF_NOT_NULL(self.identifier, apiResponse[@"Id"])
 
     self.lastModificationTime = [BVModelUtil
         convertTimestampToDatetime:apiResponse[@"LastModificationTime"]];
+    NSString *submissionTime;
+    SET_IF_NOT_NULL_WITH_ALTERNATE(submissionTime, apiResponse[@"SubmissionTime"], apiResponse[@"submissionTime"])
+      
     self.submissionTime =
-        [BVModelUtil convertTimestampToDatetime:apiResponse[@"SubmissionTime"]];
+        [BVModelUtil convertTimestampToDatetime:submissionTime];
+
     self.lastModeratedTime = [BVModelUtil
         convertTimestampToDatetime:apiResponse[@"LastModeratedTime"]];
 

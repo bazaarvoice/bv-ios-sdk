@@ -18,6 +18,10 @@ typedef NS_ENUM(NSInteger, BVPhotoContentType) {
 
 @interface BVPhotoSubmission : BVSubmission <BVSubmittedPhoto *>
 
+typedef void (^BVPhotoSubmissionUploadCompletion)(
+                                                  NSString *__nonnull photoURL,
+                                                  NSString *__nonnull photoCaption);
+
 @property(nonnull, readonly) UIImage *photo;
 @property(nullable, readonly) NSString *photoCaption;
 @property(readonly) BVPhotoContentType photoContentType;
@@ -28,5 +32,8 @@ typedef NS_ENUM(NSInteger, BVPhotoContentType) {
                          photoCaption:(nullable NSString *)photoCaption
                      photoContentType:(BVPhotoContentType)photoContentType;
 - (nonnull instancetype)__unavailable init;
+
+- (void)upload:(BVPhotoSubmissionUploadCompletion)success
+failure:(ConversationsFailureHandler)failure;
 
 @end

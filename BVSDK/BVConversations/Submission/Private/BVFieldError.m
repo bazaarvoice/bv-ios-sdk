@@ -19,9 +19,9 @@ NSString *__nonnull const BVFieldErrorCode = @"BVFieldErrorCode";
 - (nullable instancetype)initWithApiResponse:
     (nonnull NSDictionary *)apiResponse {
   if ((self = [super init])) {
-    SET_IF_NOT_NULL(self.fieldName, apiResponse[@"Field"])
-    SET_IF_NOT_NULL(self.message, apiResponse[@"Message"])
-    SET_IF_NOT_NULL(self.code, apiResponse[@"Code"])
+    SET_IF_NOT_NULL_WITH_ALTERNATE(self.fieldName, apiResponse[@"Field"], apiResponse[@"field"])
+    SET_IF_NOT_NULL_WITH_ALTERNATE(self.message, apiResponse[@"Message"], apiResponse[@"message"])
+    SET_IF_NOT_NULL_WITH_ALTERNATE(self.code, apiResponse[@"Code"], apiResponse[@"code"])
   }
   return self;
 }
