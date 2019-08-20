@@ -2851,6 +2851,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 			);
 			mainGroup = 87F2DA9D1DAD579D00FB43F3;
