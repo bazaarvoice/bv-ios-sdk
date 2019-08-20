@@ -80,10 +80,10 @@
         dispatch_async(self.serialUploadQueue, ^{
 
           NSString *photoURL = response.result.photo.sizes.normalUrl;
-          NSString *photoCaption = response.result.photo.caption;
+          NSString *photoCaption = photo.photoCaption;
           if (photoURL && photoCaption) {
             [photoURLs addObject:photoURL];
-            [photoCaptions addObject:photo.photoCaption];
+            [photoCaptions addObject:photoCaption];
           }
           /// We leave if success
           dispatch_group_leave(uploadGroup);
