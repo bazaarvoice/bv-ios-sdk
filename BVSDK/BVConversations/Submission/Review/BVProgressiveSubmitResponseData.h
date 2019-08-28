@@ -18,6 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nullable) NSString *submissionId;
 @property(nullable) NSArray<NSString *> *fieldsOrder;
 @property(nullable) NSDictionary *formFields;
+@property(nullable) NSNumber *isFormComplete;
 
 @end
 

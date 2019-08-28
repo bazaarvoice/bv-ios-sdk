@@ -28,6 +28,7 @@ class BVProgressiveSubmitTest: XCTestCase {
             
             XCTAssertTrue(result?.submissionSessionToken != nil)
             XCTAssertTrue(result?.submissionId != nil)
+            XCTAssertTrue(result?.isFormComplete == true)
             XCTAssertTrue(review?.rating == (submission.submissionFields["rating"] as? NSNumber))
             XCTAssertTrue(review?.title == (submission.submissionFields["title"] as? String))
             XCTAssertTrue(review?.reviewText == (submission.submissionFields["reviewText"] as? String))
@@ -76,6 +77,31 @@ class BVProgressiveSubmitTest: XCTestCase {
             
             XCTAssertTrue(result?.submissionSessionToken != nil)
             XCTAssertTrue(result?.submissionId == nil)
+            XCTAssertTrue(review?.rating == (submission.submissionFields["rating"] as? NSNumber))
+            XCTAssertTrue(review?.title == (submission.submissionFields["title"] as? String))
+            XCTAssertTrue(review?.reviewText == (submission.submissionFields["reviewText"] as? String))
+            expectation.fulfill()
+        }, failure: { (errors) in
+            expectation.fulfill()
+            print(errors)
+            XCTFail()
+        })
+        waitForExpectations(timeout: 10, handler: nil)
+    }
+    
+    func testIncompleteProgressiveSubmitRequestWithPreview() {
+        let expectation = self.expectation(description: "testIncompleteProgressiveSubmitRequestWithPreview")
+        let submission = self.buildRequest()
+        submission.submissionFields["reviewText"] = nil
+        submission.isPreview = true
+        
+        submission.submit({ (submittedReview) in
+            let result = submittedReview.result
+            let review = result?.review
+            
+            XCTAssertTrue(result?.submissionSessionToken != nil)
+            XCTAssertTrue(result?.submissionId == nil)
+            XCTAssertTrue(result?.isFormComplete == false)
             XCTAssertTrue(review?.rating == (submission.submissionFields["rating"] as? NSNumber))
             XCTAssertTrue(review?.title == (submission.submissionFields["title"] as? String))
             XCTAssertTrue(review?.reviewText == (submission.submissionFields["reviewText"] as? String))
@@ -188,9 +214,9 @@ class BVProgressiveSubmitTest: XCTestCase {
             "agreedtotermsandconditions" : agreedtotermsandconditions
         ]
         let submission = BVProgressiveSubmitRequest(productId:"product2")
-        submission.submissionSessionToken = "hagk590cfro5b5wy8luo5kib7_d44fa4afcedfb01ca90ea388834329009aab81eaa320e5883ec53d62806e82dc"
+        submission.submissionSessionToken = "ap0ckgf8wo06o2bpwp5mwja2j_d60ee4c84ec13a39218972961608e0fcbb5bd1a782227506cba90e704b1c0245_iCiyJxoIJNo="
         submission.locale = "en_US"
-        submission.userToken = "b019b8d76f820afac112df32888285d8d236d1b8aba18ac7737fd20d414d28646d61786167653d333026484f535445443d564552494649454426646174653d323031393037323526656d61696c616464726573733d42564061696c2e636f6d267573657269643d74657374313039"
+        submission.userToken = "7568a3ca801d15a0b03f421c6b58e6263de46112125ce3605a3c9d1d76a1337f6d61786167653d333026484f535445443d564552494649454426646174653d323031393038323826656d61696c616464726573733d746573745573657237384042562e636f6d267573657269643d74657374557365723738"
         submission.submissionFields = fields as! [AnyHashable : Any]
         return submission
     }
@@ -198,5 +224,4 @@ class BVProgressiveSubmitTest: XCTestCase {
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
-
 }
