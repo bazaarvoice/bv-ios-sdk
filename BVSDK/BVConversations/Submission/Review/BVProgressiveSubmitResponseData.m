@@ -22,6 +22,7 @@
         SET_IF_NOT_NULL(self.submissionId, apiObject[@"submissionId"])
         SET_IF_NOT_NULL(self.submissionSessionToken, apiObject[@"submissionSessionToken"])
         SET_IF_NOT_NULL(self.fieldsOrder, apiResponse[@"fieldsOrder"])
+        SET_IF_NOT_NULL(self.isFormComplete, apiResponse[@"isFormComplete"])
 
         NSMutableDictionary *tmpFields = [NSMutableDictionary dictionary];
         NSDictionary *fields = [apiResponse objectForKey:@"fields"];
