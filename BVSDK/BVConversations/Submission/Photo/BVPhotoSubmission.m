@@ -140,7 +140,7 @@ static NSUInteger const MAX_IMAGE_BYTES = 5 * 1024 * 1024; /// BV API max is 5MB
   };
 }
 
-- (void)upload:(BVPhotoSubmissionUploadCompletion)success
+- (void)0upload:(BVPhotoSubmissionUploadCompletion)success
        failure:(ConversationsFailureHandler)failure {
     
     [self submit:^(BVSubmissionResponse<BVSubmittedPhoto *> *_Nonnull response) {
