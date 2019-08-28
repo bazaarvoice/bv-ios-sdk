@@ -12,7 +12,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface BVProgressiveSubmissionReview : BVReview
 
-@property(nullable) NSNumber *isFromSubmitDB;
 @property(nullable) NSString *previousSubmissionID;
 @property(nullable) NSDictionary *photoCollection;
 
