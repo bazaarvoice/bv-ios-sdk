@@ -15,6 +15,8 @@
 		15D5BEC81D79D10200D34EA0 /* JPSThumbnailAnnotation+Curations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D5BEC71D79D10200D34EA0 /* JPSThumbnailAnnotation+Curations.swift */; };
 		15D5BECA1D7A05E900D34EA0 /* CurationsPhotoMapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 15D5BEC91D7A05E900D34EA0 /* CurationsPhotoMapViewController.xib */; };
 		15D5BECE1D7A0AB500D34EA0 /* minusBtn.png in Resources */ = {isa = PBXBuildFile; fileRef = 15D5BECD1D7A0AB500D34EA0 /* minusBtn.png */; };
+		42B56C2623702FEA00563B5A /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B56C2423702FEA00563B5A /* SearchViewController.swift */; };
+		42B56C2723702FEA00563B5A /* SearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 42B56C2523702FEA00563B5A /* SearchViewController.xib */; };
 		730A646D1CE5548400580E9C /* NewProductPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 730A646B1CE5548400580E9C /* NewProductPageViewController.swift */; };
 		730A646E1CE5548400580E9C /* NewProductPageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 730A646C1CE5548400580E9C /* NewProductPageViewController.xib */; };
 		730A64711CE56A1700580E9C /* RatingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 730A646F1CE56A1700580E9C /* RatingTableViewCell.swift */; };
@@ -192,6 +194,8 @@
 		15D5BEC91D7A05E900D34EA0 /* CurationsPhotoMapViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CurationsPhotoMapViewController.xib; path = Resources/CurationsPhotoMapViewController.xib; sourceTree = "<group>"; };
 		15D5BECD1D7A0AB500D34EA0 /* minusBtn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = minusBtn.png; sourceTree = "<group>"; };
 		1D38BD81035DF0FB5F5D4E5C /* Pods-Curations Custom Post Extension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Curations Custom Post Extension.release.xcconfig"; path = "Pods/Target Support Files/Pods-Curations Custom Post Extension/Pods-Curations Custom Post Extension.release.xcconfig"; sourceTree = "<group>"; };
+		42B56C2423702FEA00563B5A /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		42B56C2523702FEA00563B5A /* SearchViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchViewController.xib; sourceTree = "<group>"; };
 		52CFBE9EEE604F1F249F13C6 /* Pods-BVSDKDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BVSDKDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-BVSDKDemo/Pods-BVSDKDemo.release.xcconfig"; sourceTree = "<group>"; };
 		636DE8CB900E4EB79DF875EF /* Pods_BVSDKDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BVSDKDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		730A646B1CE5548400580E9C /* NewProductPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewProductPageViewController.swift; sourceTree = "<group>"; };
@@ -397,6 +401,15 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		42B56C232370283000563B5A /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				42B56C2423702FEA00563B5A /* SearchViewController.swift */,
+				42B56C2523702FEA00563B5A /* SearchViewController.xib */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
 		73199AE11CDD84E4006CC59D = {
 			isa = PBXGroup;
 			children = (
@@ -423,6 +436,7 @@
 		73199AEC1CDD84E4006CC59D /* BVSDKDemo */ = {
 			isa = PBXGroup;
 			children = (
+				42B56C232370283000563B5A /* Search */,
 				73571C961CEE4DB700FF3220 /* BVSDKDemo.entitlements */,
 				73DD1A081CE026E500BCF87C /* MockDataManager */,
 				73199AED1CDD84E4006CC59D /* AppDelegate.swift */,
@@ -920,6 +934,7 @@
 				876FF1B61D21DDFF000ED410 /* FacebookLoginViewController.xib in Resources */,
 				87CF9A6B1DEE3D0A0069D2B9 /* CartProductTableViewCell.xib in Resources */,
 				87BB4C8D1D3821B400C860BE /* BVSDKDemoActionCell.xib in Resources */,
+				42B56C2723702FEA00563B5A /* SearchViewController.xib in Resources */,
 				733843921CED58C800928760 /* WriteReviewViewController.xib in Resources */,
 				874577231E42394200D6CBD0 /* AuthorProfileViewController.xib in Resources */,
 				877216801D3FDAD4007E5C6C /* conversationsReviewsEnduranceCycles_SortLowestRated.json in Resources */,
@@ -1102,6 +1117,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				42B56C2623702FEA00563B5A /* SearchViewController.swift in Sources */,
 				15A09C251ED5CB8000FEC447 /* CircleSearchView.swift in Sources */,
 				739A6D2B1CFF78DF0068B823 /* FacebookLoginViewController.swift in Sources */,
 				87BB4C861D372B2600C860BE /* JPSThumnail.m in Sources */,

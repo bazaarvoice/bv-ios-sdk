@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SearchViewController" customModule="BVSDKDemo" customModuleProvider="target">
+            <connections>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g1Y-Hp-KSF">
+                    <rect key="frame" x="8" y="44" width="406" height="818"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JSf-Z7-fXq">
+                            <rect key="frame" x="0.0" y="56" width="406" height="100"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="100" id="H60-tF-2kM"/>
+                            </constraints>
+                        </view>
+                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="QSJ-l2-rpl">
+                            <rect key="frame" x="0.0" y="156" width="406" height="662"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            <connections>
+                                <outlet property="dataSource" destination="-1" id="gee-50-55R"/>
+                                <outlet property="delegate" destination="-1" id="wcW-pn-gz9"/>
+                            </connections>
+                        </tableView>
+                        <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="bHA-ba-aGi">
+                            <rect key="frame" x="0.0" y="0.0" width="406" height="56"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </searchBar>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstItem="bHA-ba-aGi" firstAttribute="leading" secondItem="g1Y-Hp-KSF" secondAttribute="leading" id="1QC-4Y-ltF"/>
+                        <constraint firstItem="JSf-Z7-fXq" firstAttribute="top" secondItem="bHA-ba-aGi" secondAttribute="bottom" id="655-6G-CjC"/>
+                        <constraint firstAttribute="bottom" secondItem="QSJ-l2-rpl" secondAttribute="bottom" id="8BN-xB-RaZ"/>
+                        <constraint firstItem="bHA-ba-aGi" firstAttribute="leading" secondItem="g1Y-Hp-KSF" secondAttribute="leading" id="8iH-cr-IaL"/>
+                        <constraint firstItem="QSJ-l2-rpl" firstAttribute="top" secondItem="JSf-Z7-fXq" secondAttribute="bottom" id="M8V-WI-FK2"/>
+                        <constraint firstAttribute="trailing" secondItem="QSJ-l2-rpl" secondAttribute="trailing" id="MpR-ZE-Fjk"/>
+                        <constraint firstAttribute="trailing" secondItem="bHA-ba-aGi" secondAttribute="trailing" id="QHI-Io-Jgs"/>
+                        <constraint firstAttribute="trailing" secondItem="JSf-Z7-fXq" secondAttribute="trailing" id="UI8-H2-TrC"/>
+                        <constraint firstItem="QSJ-l2-rpl" firstAttribute="leading" secondItem="g1Y-Hp-KSF" secondAttribute="leading" id="oau-Hy-FE1"/>
+                        <constraint firstItem="JSf-Z7-fXq" firstAttribute="leading" secondItem="g1Y-Hp-KSF" secondAttribute="leading" id="pdC-X1-Gzh"/>
+                        <constraint firstItem="bHA-ba-aGi" firstAttribute="top" secondItem="g1Y-Hp-KSF" secondAttribute="top" id="s4z-gj-crS"/>
+                        <constraint firstAttribute="trailing" secondItem="bHA-ba-aGi" secondAttribute="trailing" id="u9m-f1-4do"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="g1Y-Hp-KSF" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="8" id="Cht-x3-WqG"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="g1Y-Hp-KSF" secondAttribute="trailing" id="XES-Qj-dbq"/>
+                <constraint firstItem="g1Y-Hp-KSF" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="jVb-VS-0ci"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="g1Y-Hp-KSF" secondAttribute="bottom" id="pbA-rg-czz"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <point key="canvasLocation" x="131.8840579710145" y="130.58035714285714"/>
+        </view>
+    </objects>
+</document>
