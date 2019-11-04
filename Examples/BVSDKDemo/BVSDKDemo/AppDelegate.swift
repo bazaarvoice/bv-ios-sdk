@@ -20,8 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
     
     // start data mocking service
-        
-        
+
     
     //after adding your configuration files you may configure the BVSDK as follows;
     //.prod to use your production configuration and .staging for staging configuration
