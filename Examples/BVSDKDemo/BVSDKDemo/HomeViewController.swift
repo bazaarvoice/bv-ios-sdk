@@ -481,7 +481,8 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
             
         default:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DemoCarouselCollectionViewCell", for: indexPath) as! DemoCarouselCollectionViewCell
-            cell.product = getRecommendationForIndexPath(indexPath)
+            let extractedExpr = getRecommendationForIndexPath(indexPath)
+            cell.product = extractedExpr
             return cell
             
         }
@@ -535,4 +536,9 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
 
 private enum CellType: Int {
     case header, recommendationHeader, productRecommendationTop, advertisement, productRecommendationBottom
+}
+
+//Create new cellType Enum for search result.
+private enum CellTypeForSearchResult: Int {
+    case product, review, comment, questionsAndAnswer
 }
