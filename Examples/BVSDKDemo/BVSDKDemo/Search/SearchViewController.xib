@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -61,7 +61,7 @@
                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="QSJ-l2-rpl">
+                                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="QSJ-l2-rpl" customClass="BVQuestionsTableView">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="662"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <connections>
@@ -69,13 +69,25 @@
                                         <outlet property="delegate" destination="-1" id="d76-V0-Fyk"/>
                                     </connections>
                                 </tableView>
+                                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="NT0-Ah-1nv" customClass="BVReviewsTableView">
+                                    <rect key="frame" x="0.0" y="76" width="414" height="586"/>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                    <connections>
+                                        <outlet property="dataSource" destination="-1" id="rAo-HK-VkW"/>
+                                        <outlet property="delegate" destination="-1" id="kI1-ae-pox"/>
+                                    </connections>
+                                </tableView>
                             </subviews>
                             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             <constraints>
+                                <constraint firstAttribute="bottom" secondItem="NT0-Ah-1nv" secondAttribute="bottom" id="AUY-x7-NR5"/>
                                 <constraint firstItem="Dc5-do-lAL" firstAttribute="top" secondItem="kdR-5A-izM" secondAttribute="top" constant="40" id="D5I-aw-bW5"/>
+                                <constraint firstAttribute="trailing" secondItem="NT0-Ah-1nv" secondAttribute="trailing" id="KQF-wn-1kq"/>
                                 <constraint firstItem="QSJ-l2-rpl" firstAttribute="leading" secondItem="kdR-5A-izM" secondAttribute="leading" id="Lt7-pF-dGB"/>
                                 <constraint firstAttribute="bottom" secondItem="QSJ-l2-rpl" secondAttribute="bottom" id="QgX-sX-lBx"/>
+                                <constraint firstItem="NT0-Ah-1nv" firstAttribute="top" secondItem="Dc5-do-lAL" secondAttribute="bottom" id="Vw0-v2-Vh8"/>
                                 <constraint firstAttribute="trailing" secondItem="QSJ-l2-rpl" secondAttribute="trailing" id="Z3s-qD-fki"/>
+                                <constraint firstItem="NT0-Ah-1nv" firstAttribute="leading" secondItem="kdR-5A-izM" secondAttribute="leading" id="cIR-Ew-lnq"/>
                                 <constraint firstItem="Dc5-do-lAL" firstAttribute="leading" secondItem="kdR-5A-izM" secondAttribute="leading" constant="20" id="jSw-0n-NBc"/>
                                 <constraint firstAttribute="trailing" secondItem="Dc5-do-lAL" secondAttribute="trailing" constant="20" id="vD2-w2-zx6"/>
                                 <constraint firstItem="QSJ-l2-rpl" firstAttribute="top" secondItem="kdR-5A-izM" secondAttribute="top" id="xek-i1-IZy"/>
@@ -84,6 +96,9 @@
                         <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="bHA-ba-aGi">
                             <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
                             <textInputTraits key="textInputTraits"/>
+                            <connections>
+                                <outlet property="delegate" destination="-1" id="271-og-O5Y"/>
+                            </connections>
                         </searchBar>
                     </subviews>
                     <color key="backgroundColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
