@@ -50,7 +50,7 @@ class QuestionDisplayTests: XCTestCase {
       XCTAssertEqual(answer.brandImageLogoURL, nil)
       XCTAssertEqual(answer.answerText, "zxnc,vznxc osaidmf oaismdfo ims adoifmaosidmfoiamsdfimasdf")
       
-      response.results.forEach { (question) in
+        response.results.forEach { _ in (question) 
         XCTAssertEqual(question.productId, "test1")
       }
       

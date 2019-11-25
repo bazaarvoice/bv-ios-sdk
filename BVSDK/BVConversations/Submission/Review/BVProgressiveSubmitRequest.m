@@ -33,6 +33,7 @@
         self.extendedResponse = NO;
         self.includeFields = NO;
         self.isPreview = NO;
+        self.first = YES;
     }
     return self;
 }
@@ -48,10 +49,13 @@
     [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     [request setHTTPBody:postBody];
     
-    BVLogVerbose(([NSString stringWithFormat:@"POST: %@\n with BODY: %@", urlString,
-                   postBody]),
-                 BV_PRODUCT_DREAMCATCHER);
-    
+    if (self.first == YES) {
+        BVLogVerbose(([NSString stringWithFormat:@"POST: %@\n with BODY: %@", urlString,
+                       postBody]),
+                     BV_PRODUCT_DREAMCATCHER);
+        self.first = NO;
+    }
+
     return request;
 }
 
