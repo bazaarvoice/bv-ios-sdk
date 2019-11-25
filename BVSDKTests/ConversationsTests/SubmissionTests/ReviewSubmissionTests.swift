@@ -36,8 +36,10 @@ class ReviewSubmissionTests: BVBaseStubTestCase {
     let review = self.fillOutReview(.submit)
     
     review.submit({ (reviewSubmission) in
+        
       XCTAssertTrue(reviewSubmission.formFields?.keys.count == 0)
       expectation.fulfill()
+        
     }, failure: { (errors) in
       print(errors.description)
       for error in errors {
@@ -48,7 +50,7 @@ class ReviewSubmissionTests: BVBaseStubTestCase {
       expectation.fulfill()
     })
     
-    waitForExpectations(timeout: 10, handler: nil)
+    waitForExpectations(timeout: 360, handler: nil)
   }
   
   func testSubmitReviewWithPhotoAndNetworkDelegate() {
@@ -302,6 +304,8 @@ class ReviewSubmissionTests: BVBaseStubTestCase {
     
     if let image = PhotoUploadTests.createPNG() {
       review.addPhoto(image, withPhotoCaption: "Very photogenic")
+      review.addPhoto(image, withPhotoCaption: "Very photogenic")
+
     }
     
     return review
