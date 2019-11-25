@@ -23,6 +23,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonnull, readwrite)  NSDictionary *submissionFields;
 @property(nullable, readwrite) NSString *submissionSessionToken;
 @property(nullable) NSString *locale;
+@property BOOL first;
 @property(nullable) NSString *fingerPrint;
 @property(nullable) NSString *campaignId;
 @property BOOL extendedResponse;

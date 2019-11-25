@@ -17,10 +17,11 @@ class BVProgressiveSubmitTest: XCTestCase {
         BVSDKManager.configure(withConfiguration: configDict, configType: .staging)
         BVSDKManager.shared().setLogLevel(.verbose)
     }
-    
+
     func testProgressiveSubmitRequestWithUserToken() {
         let expectation = self.expectation(description: "testProgressiveSubmitRequestWithUserToken")
         let submission = self.buildRequest()
+
         
         submission.submit({ (submittedReview) in
             let result = submittedReview.result
@@ -38,7 +39,7 @@ class BVProgressiveSubmitTest: XCTestCase {
             print(errors)
             XCTFail()
         })
-        waitForExpectations(timeout: 10, handler: nil)
+        waitForExpectations(timeout: 350, handler: nil)
     }
     
     func testProgressiveSubmitRequestWithFormFields() {
@@ -208,12 +209,12 @@ class BVProgressiveSubmitTest: XCTestCase {
     func buildRequest() -> BVProgressiveSubmitRequest {
         let agreedtotermsandconditions = true
         let fields: NSDictionary = [
-            "rating" : 5,
-            "title" : "This is my favorite product ever!",
+            "rating" : 4,
+            "title" : " my favorite product ever!",
             "reviewText" : "This is great its so awesome. I highly recomend using this product and think it makes a great gift for any holiday or special occasion. by far the best purchase ive made this year",
             "agreedtotermsandconditions" : agreedtotermsandconditions
         ]
-        let submission = BVProgressiveSubmitRequest(productId:"product2")
+        let submission = BVProgressiveSubmitRequest(productId:"product4")
         submission.submissionSessionToken = "TOKEN_REMOVED"
         submission.locale = "en_US"
         submission.userToken = "TOKEN_REMOVED"

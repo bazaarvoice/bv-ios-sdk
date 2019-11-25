@@ -17,8 +17,9 @@ class MockDataManager {
   var currentConfig: DemoConfig!
   var prodConfig: DemoConfig?
   var stagingConfig: DemoConfig?
-  
-  
+  var transactionHistory = [BVTransactionEvent]()
+
+
   init() {
     self.setupPreSelectedKeysIfPresent()
     self.setupMocking()
@@ -39,7 +40,7 @@ class MockDataManager {
       switchToConfig(config: config!)
     }
   }
-  
+    
   func setupPreSelectedKeysIfPresent() {
     
     let defaults = UserDefaults(suiteName: "group.bazaarvoice.bvsdkdemo.app")
@@ -390,15 +391,17 @@ class MockDataManager {
   private lazy var mockConfig: DemoConfig =  {
     let configDict = MockDataManager.getDefaultConfigDict()
     let config = DemoConfig(dictionary: configDict as NSDictionary)
-    config.isMock = true
+//    config.isMock = true
+    config.configType = .staging
+    
     return config
   }()
   
   private class func getDefaultConfigDict() -> Dictionary<String, AnyObject> {
-    return ["clientId": "REPLACE_ME" as AnyObject,
+    return ["clientId": "testcustomermobilesdk" as AnyObject,
             "displayName": "(Mock) Endurance Cycles" as AnyObject,
             "apiKeyShopperAdvertising": "REPLACE_ME" as AnyObject,
-            "apiKeyConversations": "REPLACE_ME" as AnyObject,
+            "apiKeyConversations": "KEY_REMOVED" as AnyObject,
             "apiKeyConversationsStores": "REPLACE_ME" as AnyObject,
             "apiKeyCurations": "REPLACE_ME" as AnyObject,
             "apiKeyPIN": "REPLACE_ME" as AnyObject,

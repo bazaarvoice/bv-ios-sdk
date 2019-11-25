@@ -49,7 +49,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
   override func viewDidLoad() {
     super.viewDidLoad()
     ProfileUtils.trackViewController(self)
-    
+    //Check for any new transactions UserDefaults. if so present alert view
     self.addBarButtonItems()
     
     self.view.backgroundColor = UIColor.white
@@ -191,8 +191,6 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
           
         }
       }
-      
-      
     }
   }
   
@@ -255,6 +253,16 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     
     buttonItems.append(cartButton)
     
+    let settingsButton = UIBarButtonItem(
+      image: self.gearIconImage,
+      style: UIBarButtonItem.Style.plain,
+      target: self,
+      action: #selector(HomeViewController.historyIconPressed)
+    )
+    settingsButton.imageInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: -30)
+    
+    buttonItems.append(settingsButton)
+    
     if let path = Bundle.main.path(forResource: "config/DemoAppConfigs", ofType: "plist") {
       if FileManager.default.fileExists(atPath: path, isDirectory: nil) {
         let settingsButton = UIBarButtonItem(
@@ -272,12 +280,19 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     
   }
   
+    @objc func historyIconPressed() {
+        self.navigationController?.pushViewController(OrderHistoryViewController(), animated: true)
+  }
+    
     @objc func settingsIconPressed() {
     self.navigationController?.pushViewController(SettingsViewController(), animated: true)
-  }
+    }
   
     @objc func cartIconPressed(){
     self.navigationController?.pushViewController(CartViewController(), animated: true)
+//    UIView.transition(with: self.view, duration: 10.5, options: [.transitionCurlUp], animations: {self.view.addSubview(self.spinner) }, completion: nil)
+//    UIView.transition(from: self.view, to: self.view, duration: 4.0, options: [.transitionCurlUp], completion: nil)
+//    self.navigationController?.pushViewController(CartViewController(), animated: true)
   }
   
   func loadConversationsProducts(){
@@ -285,7 +300,6 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     _ = SweetAlert().showAlert("Error", subTitle: "Unable to load products for this API key setup.", style: .error)
     
   }
-  
   
   func loadProducts() {
     self.recommendationsCollectionView.addSubview(self.spinner)
@@ -302,7 +316,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
   
   func loadConversations(omitStats : Bool) {
     let req = BVBulkProductRequest().sort(by: .productAverageOverallRating, monotonicSortOrderValue: .descending)
-      .filter(on: .productTotalReviewCount, relationalFilterOperatorValue: .greaterThanOrEqualTo, value: "10")
+      .filter(on: .productTotalReviewCount, relationalFilterOperatorValue: .greaterThanOrEqualTo, value: "1")
       .filter(on: .productIsActive, relationalFilterOperatorValue: .equalTo, value: "true")
       .filter(on: .productIsDisabled, relationalFilterOperatorValue: .equalTo, value: "false")
     if (!omitStats){
@@ -392,7 +406,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
           return 0
         }
       }
-      
+    
       return 0
     }
     

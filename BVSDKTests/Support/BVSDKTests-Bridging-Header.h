@@ -24,5 +24,6 @@
 #import "UIImage+BundleLocator.h"
 #import "BVInitiateSubmitRequest.h"
 #import "BVProgressiveSubmitRequest.h"
+#import <CommonCrypto/CommonHMAC.h>
 
 #endif /* BVSDKTests_Bridging_Header_h */

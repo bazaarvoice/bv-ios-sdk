@@ -101,7 +101,7 @@ class CartViewController: UIViewController, UITableViewDataSource {
     
     // Use the BVPixel to track the Conversion Transaction Event.
     BVPixel.trackEvent(transaction)
-    
+    MockDataManager.sharedInstance.transactionHistory.append(transaction)
     //BVAnalyticsManager.shared().flushQueue() // Send the event immediately (just for demo purposes)
     
     // Clear out the cart and let user know the demo transaction was complete.
