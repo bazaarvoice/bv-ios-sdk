@@ -30,6 +30,11 @@ class SearchViewController: UIViewController {
     var questions : [BVQuestion] = []
     var reviews : [BVReview] = []
     
+    private var votesDictionary  = [:] as! Dictionary<String, Votes>
+    
+    //For demo product is default selected option
+    private var selectedOption: String = "product"
+    
     
     
     //    init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?, product:BVProduct?) {
@@ -76,6 +81,9 @@ class SearchViewController: UIViewController {
         
         let nib4 = UINib(nibName: "CallToActionCell", bundle: nil)
         tableView.register(nib4, forCellReuseIdentifier: "CallToActionCell")
+        
+        let nib5 = UINib(nibName: "RatingTableViewCell", bundle: nil)
+        tableViewForRatings.register(nib5, forCellReuseIdentifier: "RatingTableViewCell")
     }
 }
 
@@ -83,52 +91,128 @@ class SearchViewController: UIViewController {
 extension SearchViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        
+        if tableView == self.tableView {
+            
+            return 2
+        }
+        else if tableView == self.tableViewForRatings {
+            return 2
+        }
+        else {
+            return 0
+        }
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return self.questions.count
+        if tableView == self.tableView {
+            return self.questions.count
+        }
+        else if tableView == self.tableViewForRatings {
+            return self.reviews.count
+        }
+        else {
+            return 0
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let question = questions[(indexPath as NSIndexPath).section]
-        
-        if (indexPath as NSIndexPath).row == 0 {
+        //QA TableView
+        if tableView == self.tableView {
             
-            let cell = tableView.dequeueReusableCell(withIdentifier: "QuestionAnswerTableViewCell") as! QuestionAnswerTableViewCell
-            cell.question = question
-            cell.onAuthorNickNameTapped = { (authorId) -> Void in
-                let authorVC = AuthorProfileViewController(authorId: authorId)
-                self.navigationController?.pushViewController(authorVC, animated: true)
-            }
-            return cell
-            
-        }
-        else {
-            
-            let callToActionCell = tableView.dequeueReusableCell(withIdentifier: "CallToActionCell") as! CallToActionCell
-            callToActionCell.setCustomRightIcon(FAKFontAwesome.chevronRightIcon(withSize:))
-            
-            let numAnswers = question.includedAnswers.count
-            if numAnswers == 0 {
-                callToActionCell.button.setTitle("Be the first to answer!", for: UIControl.State())
-                callToActionCell.setCustomLeftIcon(FAKFontAwesome.plusIcon(withSize:))
-                callToActionCell.button.removeTarget(nil, action: nil, for: .allEvents)
-                callToActionCell.button.tag = (indexPath as NSIndexPath).section
-                callToActionCell.button.addTarget(self, action: #selector(QuestionAnswerViewController.submitAnswerPressed(_:)), for: .touchUpInside)
+            if (indexPath as NSIndexPath).row == 0 {
+                
+                return self.questionAnswerTableViewCell(indexPath: indexPath)
             }
             else {
-                callToActionCell.button.setTitle("Read \(numAnswers) answers", for: UIControl.State())
-                callToActionCell.setCustomLeftIcon(FAKFontAwesome.commentsIcon(withSize:))
-                callToActionCell.button.removeTarget(nil, action: nil, for: .allEvents)
-                callToActionCell.button.tag = (indexPath as NSIndexPath).section
-                callToActionCell.button.addTarget(self, action: #selector(QuestionAnswerViewController.readAnswersTapped(_:)), for: .touchUpInside)
+                
+                return self.callToActionCell(indexPath: indexPath)
+                
+            }
+        }
+        else if tableView == self.tableViewForRatings {
+            return self.ratingTableViewCell(indexPath: indexPath)
+        }
+        
+        return UITableViewCell()
+    }
+}
+
+extension SearchViewController {
+    
+    private func callToActionCell(indexPath: IndexPath) -> CallToActionCell {
+        
+        let question = questions[(indexPath as NSIndexPath).section]
+        
+        let callToActionCell = tableView.dequeueReusableCell(withIdentifier: "CallToActionCell") as! CallToActionCell
+        callToActionCell.setCustomRightIcon(FAKFontAwesome.chevronRightIcon(withSize:))
+        
+        let numAnswers = question.includedAnswers.count
+        if numAnswers == 0 {
+            callToActionCell.button.setTitle("Be the first to answer!", for: UIControl.State())
+            callToActionCell.setCustomLeftIcon(FAKFontAwesome.plusIcon(withSize:))
+            callToActionCell.button.removeTarget(nil, action: nil, for: .allEvents)
+            callToActionCell.button.tag = (indexPath as NSIndexPath).section
+            callToActionCell.button.addTarget(self, action: #selector(QuestionAnswerViewController.submitAnswerPressed(_:)), for: .touchUpInside)
+        }
+        else {
+            callToActionCell.button.setTitle("Read \(numAnswers) answers", for: UIControl.State())
+            callToActionCell.setCustomLeftIcon(FAKFontAwesome.commentsIcon(withSize:))
+            callToActionCell.button.removeTarget(nil, action: nil, for: .allEvents)
+            callToActionCell.button.tag = (indexPath as NSIndexPath).section
+            callToActionCell.button.addTarget(self, action: #selector(QuestionAnswerViewController.readAnswersTapped(_:)), for: .touchUpInside)
+        }
+        
+        return callToActionCell
+    }
+    
+    private func questionAnswerTableViewCell(indexPath: IndexPath) -> QuestionAnswerTableViewCell {
+        
+        let question = questions[(indexPath as NSIndexPath).section]
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "QuestionAnswerTableViewCell") as! QuestionAnswerTableViewCell
+        cell.question = question
+        cell.onAuthorNickNameTapped = { (authorId) -> Void in
+            let authorVC = AuthorProfileViewController(authorId: authorId)
+            self.navigationController?.pushViewController(authorVC, animated: true)
+        }
+        return cell
+    }
+    
+    private func ratingTableViewCell(indexPath: IndexPath) -> RatingTableViewCell {
+        
+        let cell = tableViewForRatings.dequeueReusableCell(withIdentifier: "RatingTableViewCell") as! RatingTableViewCell
+        let review : BVReview  = reviews[(indexPath as NSIndexPath).row]
+        cell.review = review
+        
+        // Check to see if there was a vote on this review id
+        var cellVote = Votes.NoVote
+        if let previosVote = self.votesDictionary[review.identifier!]{
+            cellVote = previosVote
+        }
+        
+        cell.vote = cellVote
+        
+        
+        cell.onAuthorNickNameTapped = { (authorId) -> Void in
+            self.loadAuthorViewController(authorId: authorId)
+        }
+        
+        cell.onCommentIconTapped = { (reviewComments) -> Void in
+            self.loadCommentsViewController(reviewComments: reviewComments)
+        }
+        
+        cell.onVoteIconTapped = { (idVoteDict) -> Void in
+            if let key = idVoteDict.allKeys.first {
+                //self.votesDictionary[key] = idVoteDict.value(forKey: key as! String)
+                let value : Votes = idVoteDict[key as! String] as! Votes
+                self.votesDictionary[key as! String] = value
             }
             
-            return callToActionCell
-            
         }
+        
+        return cell
     }
 }
 
@@ -153,6 +237,34 @@ extension SearchViewController: UICollectionViewDataSource, UICollectionViewDele
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
+        //Update the selected option
+        self.selectedOption = self.radioButtonArray[indexPath.row].buttonName.lowercased()
+        
+        switch self.radioButtonArray[indexPath.row].buttonName.lowercased() {
+            
+        case "products":
+            
+            break
+            
+        case "comments":
+            
+            break
+            
+        case "reviews":
+            self.tableView.isHidden = true
+            self.tableViewForRatings.isHidden = false
+            break
+            
+        case "questions":
+            self.tableView.isHidden = false
+            self.tableViewForRatings.isHidden = true
+            break
+            
+        default:
+            //Refresh the Data
+            self.collectionView.reloadData()
+        }
+        
         //Removing the selected option
         for i in 0..<self.radioButtonArray.count {
             self.radioButtonArray[i].isSelected = false
@@ -176,7 +288,29 @@ extension SearchViewController: UISearchBarDelegate {
         //searchBar.resignFirstResponder()
         print("Working Fine")
         
-        self.loadQuestions(productId: searchBar.text ?? "")
+        
+        switch self.selectedOption.lowercased() {
+        case "products":
+            
+            break
+            
+        case "comments":
+            
+            break
+            
+        case "reviews":
+            self.loadReviews(productId: searchBar.text ?? "")
+            
+            break
+            
+        case "questions":
+            
+            self.loadQuestions(productId: searchBar.text ?? "")
+            
+            break
+        default:
+            return
+        }
     }
 }
 
@@ -230,7 +364,7 @@ extension SearchViewController {
             
             
             //  self.reviewFetchPending = false
-            self.tableView.reloadData()
+            self.tableViewForRatings.reloadData()
             
         })
         { (errors) in
@@ -269,6 +403,20 @@ extension SearchViewController {
             print("An error occurred: \(errors)")
             
         }
+        
+    }
+    
+    private func loadAuthorViewController(authorId: String) {
+        
+        let authorVC = AuthorProfileViewController(authorId: authorId)
+        self.navigationController?.pushViewController(authorVC, animated: true)
+        
+    }
+    
+    private func loadCommentsViewController(reviewComments: [BVComment]) {
+        
+        let reviewCommentsVC = ReviewCommentsViewController(reviewComments: reviewComments)
+        self.navigationController?.pushViewController(reviewCommentsVC, animated: true)
         
     }
 }

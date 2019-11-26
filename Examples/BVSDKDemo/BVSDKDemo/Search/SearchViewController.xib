@@ -12,6 +12,7 @@
                 <outlet property="collectionView" destination="CPa-LR-hS2" id="LI8-0P-yU0"/>
                 <outlet property="searchBar" destination="bHA-ba-aGi" id="H34-FA-4Le"/>
                 <outlet property="tableView" destination="QSJ-l2-rpl" id="qsz-4e-E1c"/>
+                <outlet property="tableViewForRatings" destination="NT0-Ah-1nv" id="3yE-3Y-kuo"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="view_Background" destination="g1Y-Hp-KSF" id="sCL-Ie-GCO"/>
                 <outlet property="view_Upper" destination="JSf-Z7-fXq" id="cgK-Wo-wnT"/>
@@ -70,7 +71,7 @@
                                     </connections>
                                 </tableView>
                                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="NT0-Ah-1nv" customClass="BVReviewsTableView">
-                                    <rect key="frame" x="0.0" y="76" width="414" height="586"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="662"/>
                                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                     <connections>
                                         <outlet property="dataSource" destination="-1" id="rAo-HK-VkW"/>
@@ -80,14 +81,14 @@
                             </subviews>
                             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             <constraints>
-                                <constraint firstAttribute="bottom" secondItem="NT0-Ah-1nv" secondAttribute="bottom" id="AUY-x7-NR5"/>
+                                <constraint firstItem="NT0-Ah-1nv" firstAttribute="top" secondItem="QSJ-l2-rpl" secondAttribute="top" id="7gS-sd-2V7"/>
+                                <constraint firstItem="NT0-Ah-1nv" firstAttribute="trailing" secondItem="QSJ-l2-rpl" secondAttribute="trailing" id="CKg-wq-xwt"/>
                                 <constraint firstItem="Dc5-do-lAL" firstAttribute="top" secondItem="kdR-5A-izM" secondAttribute="top" constant="40" id="D5I-aw-bW5"/>
-                                <constraint firstAttribute="trailing" secondItem="NT0-Ah-1nv" secondAttribute="trailing" id="KQF-wn-1kq"/>
+                                <constraint firstItem="NT0-Ah-1nv" firstAttribute="leading" secondItem="QSJ-l2-rpl" secondAttribute="leading" id="FS5-Ri-xbr"/>
                                 <constraint firstItem="QSJ-l2-rpl" firstAttribute="leading" secondItem="kdR-5A-izM" secondAttribute="leading" id="Lt7-pF-dGB"/>
                                 <constraint firstAttribute="bottom" secondItem="QSJ-l2-rpl" secondAttribute="bottom" id="QgX-sX-lBx"/>
-                                <constraint firstItem="NT0-Ah-1nv" firstAttribute="top" secondItem="Dc5-do-lAL" secondAttribute="bottom" id="Vw0-v2-Vh8"/>
                                 <constraint firstAttribute="trailing" secondItem="QSJ-l2-rpl" secondAttribute="trailing" id="Z3s-qD-fki"/>
-                                <constraint firstItem="NT0-Ah-1nv" firstAttribute="leading" secondItem="kdR-5A-izM" secondAttribute="leading" id="cIR-Ew-lnq"/>
+                                <constraint firstItem="NT0-Ah-1nv" firstAttribute="bottom" secondItem="QSJ-l2-rpl" secondAttribute="bottom" id="aRx-z3-8jT"/>
                                 <constraint firstItem="Dc5-do-lAL" firstAttribute="leading" secondItem="kdR-5A-izM" secondAttribute="leading" constant="20" id="jSw-0n-NBc"/>
                                 <constraint firstAttribute="trailing" secondItem="Dc5-do-lAL" secondAttribute="trailing" constant="20" id="vD2-w2-zx6"/>
                                 <constraint firstItem="QSJ-l2-rpl" firstAttribute="top" secondItem="kdR-5A-izM" secondAttribute="top" id="xek-i1-IZy"/>
@@ -126,7 +127,7 @@
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="g1Y-Hp-KSF" secondAttribute="bottom" id="pbA-rg-czz"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
-            <point key="canvasLocation" x="-1235" y="55"/>
+            <point key="canvasLocation" x="-1236.231884057971" y="54.910714285714285"/>
         </view>
     </objects>
 </document>
