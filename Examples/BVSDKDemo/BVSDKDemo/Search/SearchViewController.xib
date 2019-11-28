@@ -12,9 +12,11 @@
                 <outlet property="collectionView" destination="CPa-LR-hS2" id="LI8-0P-yU0"/>
                 <outlet property="searchBar" destination="bHA-ba-aGi" id="H34-FA-4Le"/>
                 <outlet property="tableView" destination="QSJ-l2-rpl" id="qsz-4e-E1c"/>
+                <outlet property="tableViewForComments" destination="pc5-Fk-kjk" id="Z1O-Dj-6kc"/>
                 <outlet property="tableViewForRatings" destination="NT0-Ah-1nv" id="3yE-3Y-kuo"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="view_Background" destination="g1Y-Hp-KSF" id="sCL-Ie-GCO"/>
+                <outlet property="view_TableBackground" destination="kdR-5A-izM" id="Afh-Y7-Yi6"/>
                 <outlet property="view_Upper" destination="JSf-Z7-fXq" id="cgK-Wo-wnT"/>
             </connections>
         </placeholder>
@@ -70,12 +72,20 @@
                                         <outlet property="delegate" destination="-1" id="d76-V0-Fyk"/>
                                     </connections>
                                 </tableView>
-                                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="NT0-Ah-1nv" customClass="BVReviewsTableView">
+                                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="NT0-Ah-1nv" customClass="BVReviewsTableView">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="662"/>
                                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                     <connections>
                                         <outlet property="dataSource" destination="-1" id="rAo-HK-VkW"/>
                                         <outlet property="delegate" destination="-1" id="kI1-ae-pox"/>
+                                    </connections>
+                                </tableView>
+                                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="pc5-Fk-kjk">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="662"/>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                    <connections>
+                                        <outlet property="dataSource" destination="-1" id="vje-QS-erZ"/>
+                                        <outlet property="delegate" destination="-1" id="mTg-zr-Oo9"/>
                                     </connections>
                                 </tableView>
                             </subviews>
@@ -84,14 +94,18 @@
                                 <constraint firstItem="NT0-Ah-1nv" firstAttribute="top" secondItem="QSJ-l2-rpl" secondAttribute="top" id="7gS-sd-2V7"/>
                                 <constraint firstItem="NT0-Ah-1nv" firstAttribute="trailing" secondItem="QSJ-l2-rpl" secondAttribute="trailing" id="CKg-wq-xwt"/>
                                 <constraint firstItem="Dc5-do-lAL" firstAttribute="top" secondItem="kdR-5A-izM" secondAttribute="top" constant="40" id="D5I-aw-bW5"/>
+                                <constraint firstItem="pc5-Fk-kjk" firstAttribute="leading" secondItem="kdR-5A-izM" secondAttribute="leading" id="Db5-Wd-uas"/>
                                 <constraint firstItem="NT0-Ah-1nv" firstAttribute="leading" secondItem="QSJ-l2-rpl" secondAttribute="leading" id="FS5-Ri-xbr"/>
                                 <constraint firstItem="QSJ-l2-rpl" firstAttribute="leading" secondItem="kdR-5A-izM" secondAttribute="leading" id="Lt7-pF-dGB"/>
                                 <constraint firstAttribute="bottom" secondItem="QSJ-l2-rpl" secondAttribute="bottom" id="QgX-sX-lBx"/>
+                                <constraint firstAttribute="bottom" secondItem="pc5-Fk-kjk" secondAttribute="bottom" id="SGy-Rv-lUa"/>
                                 <constraint firstAttribute="trailing" secondItem="QSJ-l2-rpl" secondAttribute="trailing" id="Z3s-qD-fki"/>
                                 <constraint firstItem="NT0-Ah-1nv" firstAttribute="bottom" secondItem="QSJ-l2-rpl" secondAttribute="bottom" id="aRx-z3-8jT"/>
                                 <constraint firstItem="Dc5-do-lAL" firstAttribute="leading" secondItem="kdR-5A-izM" secondAttribute="leading" constant="20" id="jSw-0n-NBc"/>
                                 <constraint firstAttribute="trailing" secondItem="Dc5-do-lAL" secondAttribute="trailing" constant="20" id="vD2-w2-zx6"/>
+                                <constraint firstAttribute="trailing" secondItem="pc5-Fk-kjk" secondAttribute="trailing" id="vWo-8l-J6L"/>
                                 <constraint firstItem="QSJ-l2-rpl" firstAttribute="top" secondItem="kdR-5A-izM" secondAttribute="top" id="xek-i1-IZy"/>
+                                <constraint firstItem="pc5-Fk-kjk" firstAttribute="top" secondItem="kdR-5A-izM" secondAttribute="top" id="xpb-1T-nf9"/>
                             </constraints>
                         </view>
                         <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="bHA-ba-aGi">

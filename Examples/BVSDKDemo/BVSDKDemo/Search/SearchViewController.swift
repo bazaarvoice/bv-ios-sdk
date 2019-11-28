@@ -21,32 +21,23 @@ class SearchViewController: UIViewController {
     var radioButtonArray: [RadioButton] = []
     
     @IBOutlet weak var view_Background: UIView!
+    @IBOutlet weak var view_TableBackground: UIView!
     @IBOutlet weak var view_Upper: UIView!
     @IBOutlet weak var tableView: BVQuestionsTableView!
     @IBOutlet weak var tableViewForRatings: BVReviewsTableView!
+    @IBOutlet weak var tableViewForComments: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var collectionView: UICollectionView!
     
     var questions : [BVQuestion] = []
     var reviews : [BVReview] = []
+    var author : BVAuthor?
     
     private var votesDictionary  = [:] as! Dictionary<String, Votes>
     
     //For demo product is default selected option
     private var selectedOption: String = "product"
     
-    
-    
-    //    init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?, product:BVProduct?) {
-    //      self.product = product!
-    //      super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-    //    }
-    
-    //    required init?(coder aDecoder: NSCoder) {
-    //      fatalError("init(coder:) has not been implemented")
-    //    }
-    //Test
-    //  private let productId : String = "test1"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -84,6 +75,9 @@ class SearchViewController: UIViewController {
         
         let nib5 = UINib(nibName: "RatingTableViewCell", bundle: nil)
         tableViewForRatings.register(nib5, forCellReuseIdentifier: "RatingTableViewCell")
+        
+        let nib6 = UINib(nibName: "ReviewCommentTableViewCell", bundle: nil)
+        tableViewForComments.register(nib6, forCellReuseIdentifier: "ReviewCommentTableViewCell")
     }
 }
 
@@ -93,11 +87,13 @@ extension SearchViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         if tableView == self.tableView {
-            
             return 2
         }
         else if tableView == self.tableViewForRatings {
             return 2
+        }
+        else if tableView == self.tableViewForComments {
+            return self.author == nil ? 0 : (self.author?.includedComments.count)!
         }
         else {
             return 0
@@ -110,6 +106,9 @@ extension SearchViewController: UITableViewDataSource {
         }
         else if tableView == self.tableViewForRatings {
             return self.reviews.count
+        }
+        else if tableView == self.tableViewForComments {
+            return 1
         }
         else {
             return 0
@@ -133,6 +132,11 @@ extension SearchViewController: UITableViewDataSource {
         }
         else if tableView == self.tableViewForRatings {
             return self.ratingTableViewCell(indexPath: indexPath)
+        }
+        else if tableView == self.tableViewForComments {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "ReviewCommentTableViewCell") as! ReviewCommentTableViewCell
+            cell.comment = self.author?.includedComments[indexPath.row]
+            return cell
         }
         
         return UITableViewCell()
@@ -243,21 +247,27 @@ extension SearchViewController: UICollectionViewDataSource, UICollectionViewDele
         switch self.radioButtonArray[indexPath.row].buttonName.lowercased() {
             
         case "products":
-            
+            //Clear Search API
+            self.searchBar.text = ""
             break
             
         case "comments":
-            
+            //Clear Search API
+            self.searchBar.text = ""
+            self.searchBar.text = ""
+            self.view_TableBackground.bringSubviewToFront(self.tableViewForComments)
             break
             
         case "reviews":
-            self.tableView.isHidden = true
-            self.tableViewForRatings.isHidden = false
+            //Clear Search API
+            self.searchBar.text = ""
+            self.view_TableBackground.bringSubviewToFront(self.tableViewForRatings)
             break
             
         case "questions":
-            self.tableView.isHidden = false
-            self.tableViewForRatings.isHidden = true
+            //Clear Search API
+            self.searchBar.text = ""
+            self.view_TableBackground.bringSubviewToFront(self.tableView)
             break
             
         default:
@@ -288,6 +298,8 @@ extension SearchViewController: UISearchBarDelegate {
         //searchBar.resignFirstResponder()
         print("Working Fine")
         
+        self.view.endEditing(true)
+        
         
         switch self.selectedOption.lowercased() {
         case "products":
@@ -295,7 +307,7 @@ extension SearchViewController: UISearchBarDelegate {
             break
             
         case "comments":
-            
+            self.fetchAuthorProfile(authorId: searchBar.text ?? "")
             break
             
         case "reviews":
@@ -322,7 +334,6 @@ extension SearchViewController {
         
         self.tableView.load(request, success: { (response) in
             
-            //        self.spinner.removeFromSuperview()
             self.questions = response.results
             self.tableView.reloadData()
             
@@ -332,7 +343,6 @@ extension SearchViewController {
             print("An error occurred: \(errors)")
             
         }
-        
     }
     
     func loadReviews(productId: String) {
@@ -341,17 +351,7 @@ extension SearchViewController {
         
         let request = BVReviewsRequest(productId: productId, limit: 20, offset: 0)// UInt(self.reviews.count))
         request.include(.reviewComments)
-        //      // Check sorting and filter FilterOptions
-        //      if selectedFilterOption == FilterOptions.highestRating.rawValue {
-        //        request.sort(by: .reviewRating, monotonicSortOrderValue: .descending)
-        //      } else if selectedFilterOption == FilterOptions.lowestRating.rawValue {
-        //        request.sort(by: .reviewRating, monotonicSortOrderValue: .ascending)
-        //      } else if selectedFilterOption == FilterOptions.mostHelpful.rawValue {
-        //        request.sort(by: .reviewHelpfulness, monotonicSortOrderValue: .descending)
-        //      } else if selectedFilterOption == FilterOptions.mostComments.rawValue {
-        //        request.sort(by: .reviewTotalCommentCount, monotonicSortOrderValue: .descending)
-        //      }
-        //
+        
         self.tableViewForRatings.load(request, success: { (response) in
             
             //self.spinner.removeFromSuperview()
@@ -376,36 +376,6 @@ extension SearchViewController {
         
     }
     
-    
-    func loadConversationsStats() {
-        
-        let request = BVProductDisplayPageRequest(productId: "product1")
-            .includeStatistics(.reviews)
-            .includeStatistics(.questions)
-        
-        request.load({ (response) in
-            
-            let product = response.result
-            
-            //        self.product = product
-            //
-            //        self.productName.text = product?.name
-            //        self.totalReviewCount = product?.reviewStatistics?.totalReviewCount as? Int ?? 0
-            //        self.totalQuestionCount = product?.qaStatistics?.totalQuestionCount as? Int ?? 0
-            //        self.totalAnswerCount = product?.qaStatistics?.totalAnswerCount as? Int ?? 0
-            //        if let url  = product?.imageUrl {
-            //          self.productImage.sd_setImage(with: URL(string: url))
-            //        }
-            self.tableView.reloadData()
-            
-        }) { (errors) in
-            
-            print("An error occurred: \(errors)")
-            
-        }
-        
-    }
-    
     private func loadAuthorViewController(authorId: String) {
         
         let authorVC = AuthorProfileViewController(authorId: authorId)
@@ -417,6 +387,71 @@ extension SearchViewController {
         
         let reviewCommentsVC = ReviewCommentsViewController(reviewComments: reviewComments)
         self.navigationController?.pushViewController(reviewCommentsVC, animated: true)
+        
+    }
+    
+    private func fetchAuthorProfile(authorId: String){
+        
+        //self.reviewsTableView.addSubview(self.spinner)
+        
+        let request = BVAuthorRequest(authorId: authorId)
+        // stats includes
+        request.includeStatistics(.authorAnswers)
+        request.includeStatistics(.authorQuestions)
+        request.includeStatistics(.authorReviews)
+        // other includes
+        request.include(.authorReviews, limit: 20)
+        request.include(.authorQuestions, limit: 20)
+        request.include(.authorAnswers, limit: 20)
+        request.include(.authorReviewComments, limit: 20)
+        // sorts
+        request.sort(by: .answerSubmissionTime, monotonicSortOrderValue: .descending)
+        request.sort(by: .reviewSubmissionTime, monotonicSortOrderValue: .descending)
+        request.sort(by: .questionSubmissionTime, monotonicSortOrderValue: .descending)
+        
+        request.load({ (response) in
+            
+            // success
+            if response.results.isEmpty {
+                _ = SweetAlert().showAlert("Empty Profile", subTitle:"There was no profile found.", style: .error)
+                return
+            }
+            
+            self.author = response.results.first!
+            
+            //  self.userNameLabel.text = self.author?.userNickname
+            
+            let location = self.author?.userLocation != nil ? (self.author?.userLocation)! : ""
+            // self.userLocationLabel.text = location
+            
+            // Just adding badge text here, really we want to use an image
+            var badgeString = ""
+            for badge in (self.author?.badges)! {
+                badgeString += badge.identifier!.uppercased()
+                if !(badge.isEqual(self.author?.badges.last)) {
+                    badgeString += ", "
+                } else {
+                    badgeString = " " + badgeString + " "
+                }
+            }
+            //self.userBadgesLabel.text = badgeString
+            
+            let totalCommentCount = self.author!.includedComments.count
+            
+            let commentButtonText = "Comments (\(totalCommentCount))"
+            
+            // self.ugcTypeSegmentedControl.setTitle(commentButtonText, forSegmentAt: 3)
+            
+            self.tableViewForComments.reloadData()
+            
+        }) { (error) in
+            
+            // error
+            print(error)
+            _ = SweetAlert().showAlert("Error Loading Profile", subTitle: error.description, style: .error)
+            // self.spinner.removeFromSuperview()
+            
+        }
         
     }
 }
