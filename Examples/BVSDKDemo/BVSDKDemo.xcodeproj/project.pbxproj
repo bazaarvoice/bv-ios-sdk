@@ -15,6 +15,8 @@
 		15D5BEC81D79D10200D34EA0 /* JPSThumbnailAnnotation+Curations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D5BEC71D79D10200D34EA0 /* JPSThumbnailAnnotation+Curations.swift */; };
 		15D5BECA1D7A05E900D34EA0 /* CurationsPhotoMapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 15D5BEC91D7A05E900D34EA0 /* CurationsPhotoMapViewController.xib */; };
 		15D5BECE1D7A0AB500D34EA0 /* minusBtn.png in Resources */ = {isa = PBXBuildFile; fileRef = 15D5BECD1D7A0AB500D34EA0 /* minusBtn.png */; };
+		429B7E7E23911A8F00E7321B /* ProductTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429B7E7C23911A8F00E7321B /* ProductTableViewCell.swift */; };
+		429B7E7F23911A8F00E7321B /* ProductTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 429B7E7D23911A8F00E7321B /* ProductTableViewCell.xib */; };
 		42B56C2623702FEA00563B5A /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B56C2423702FEA00563B5A /* SearchViewController.swift */; };
 		42B56C2723702FEA00563B5A /* SearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 42B56C2523702FEA00563B5A /* SearchViewController.xib */; };
 		42B56C2A2371650400563B5A /* SearchContentCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B56C282371650400563B5A /* SearchContentCollectionViewCell.swift */; };
@@ -196,6 +198,8 @@
 		15D5BEC91D7A05E900D34EA0 /* CurationsPhotoMapViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CurationsPhotoMapViewController.xib; path = Resources/CurationsPhotoMapViewController.xib; sourceTree = "<group>"; };
 		15D5BECD1D7A0AB500D34EA0 /* minusBtn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = minusBtn.png; sourceTree = "<group>"; };
 		1D38BD81035DF0FB5F5D4E5C /* Pods-Curations Custom Post Extension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Curations Custom Post Extension.release.xcconfig"; path = "Pods/Target Support Files/Pods-Curations Custom Post Extension/Pods-Curations Custom Post Extension.release.xcconfig"; sourceTree = "<group>"; };
+		429B7E7C23911A8F00E7321B /* ProductTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductTableViewCell.swift; sourceTree = "<group>"; };
+		429B7E7D23911A8F00E7321B /* ProductTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProductTableViewCell.xib; sourceTree = "<group>"; };
 		42B56C2423702FEA00563B5A /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		42B56C2523702FEA00563B5A /* SearchViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchViewController.xib; sourceTree = "<group>"; };
 		42B56C282371650400563B5A /* SearchContentCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchContentCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -412,6 +416,8 @@
 				42B56C2523702FEA00563B5A /* SearchViewController.xib */,
 				42B56C282371650400563B5A /* SearchContentCollectionViewCell.swift */,
 				42B56C292371650400563B5A /* SearchContentCollectionViewCell.xib */,
+				429B7E7C23911A8F00E7321B /* ProductTableViewCell.swift */,
+				429B7E7D23911A8F00E7321B /* ProductTableViewCell.xib */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -979,6 +985,7 @@
 				736D4D071CDED0C40095EE6B /* CurationsFeedPageViewController.xib in Resources */,
 				736D4CFD1CDED0C40095EE6B /* CurationsFeedItemDetailCell.xib in Resources */,
 				87F24D841DAE8147002231D6 /* enduranceCyclesChicago.gpx in Resources */,
+				429B7E7F23911A8F00E7321B /* ProductTableViewCell.xib in Resources */,
 				15A09C2D1ED5D08400FEC447 /* searchIcon@2x.png in Resources */,
 				737FA0B81CF8AD2700864B1B /* submitReview.json in Resources */,
 			);
@@ -1126,6 +1133,7 @@
 			files = (
 				42B56C2623702FEA00563B5A /* SearchViewController.swift in Sources */,
 				15A09C251ED5CB8000FEC447 /* CircleSearchView.swift in Sources */,
+				429B7E7E23911A8F00E7321B /* ProductTableViewCell.swift in Sources */,
 				739A6D2B1CFF78DF0068B823 /* FacebookLoginViewController.swift in Sources */,
 				87BB4C861D372B2600C860BE /* JPSThumnail.m in Sources */,
 				871AD3F31D063A57006583E5 /* ProfileUtils.swift in Sources */,

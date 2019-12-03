@@ -16,6 +16,16 @@ struct RadioButton {
     var isSelected: Bool = false
 }
 
+
+//        self.productName.text = product?.name
+//        if let url  = product?.imageUrl {
+//          self.productImage.sd_setImage(with: URL(string: url))
+//        }
+struct SearchedProduct {
+    var productName: String = ""
+    var imageUrl: String = ""
+}
+
 class SearchViewController: UIViewController {
     
     var radioButtonArray: [RadioButton] = []
@@ -25,13 +35,15 @@ class SearchViewController: UIViewController {
     @IBOutlet weak var view_Upper: UIView!
     @IBOutlet weak var tableView: BVQuestionsTableView!
     @IBOutlet weak var tableViewForRatings: BVReviewsTableView!
+    @IBOutlet weak var tableViewforProduct: UITableView!
     @IBOutlet weak var tableViewForComments: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var collectionView: UICollectionView!
     
-    var questions : [BVQuestion] = []
-    var reviews : [BVReview] = []
-    var author : BVAuthor?
+    var questions: [BVQuestion] = []
+    var reviews: [BVReview] = []
+    var author: BVAuthor?
+    var searchedProductArray: [SearchedProduct] = []
     
     private var votesDictionary  = [:] as! Dictionary<String, Votes>
     
@@ -78,6 +90,9 @@ class SearchViewController: UIViewController {
         
         let nib6 = UINib(nibName: "ReviewCommentTableViewCell", bundle: nil)
         tableViewForComments.register(nib6, forCellReuseIdentifier: "ReviewCommentTableViewCell")
+        
+        let nib7 = UINib(nibName: "ProductTableViewCell", bundle: nil)
+        tableViewforProduct.register(nib7, forCellReuseIdentifier: "ProductTableViewCell")
     }
 }
 
@@ -95,6 +110,9 @@ extension SearchViewController: UITableViewDataSource {
         else if tableView == self.tableViewForComments {
             return self.author == nil ? 0 : (self.author?.includedComments.count)!
         }
+        else if tableView == self.tableViewforProduct {
+            return self.searchedProductArray.count
+        }
         else {
             return 0
         }
@@ -108,6 +126,9 @@ extension SearchViewController: UITableViewDataSource {
             return self.reviews.count
         }
         else if tableView == self.tableViewForComments {
+            return 1
+        }
+        else if tableView == self.tableViewforProduct {
             return 1
         }
         else {
@@ -134,13 +155,15 @@ extension SearchViewController: UITableViewDataSource {
             return self.ratingTableViewCell(indexPath: indexPath)
         }
         else if tableView == self.tableViewForComments {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "ReviewCommentTableViewCell") as! ReviewCommentTableViewCell
-            cell.comment = self.author?.includedComments[indexPath.row]
-            return cell
+            return self.reviewCommentTableViewCell(indexPath: indexPath)
+        }
+        else if tableView == self.tableViewforProduct {
+            return self.productTableViewCell(indexPath: indexPath)
         }
         
         return UITableViewCell()
     }
+    
 }
 
 extension SearchViewController {
@@ -218,6 +241,19 @@ extension SearchViewController {
         
         return cell
     }
+    
+    private func reviewCommentTableViewCell(indexPath: IndexPath) -> ReviewCommentTableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ReviewCommentTableViewCell") as! ReviewCommentTableViewCell
+        cell.comment = self.author?.includedComments[indexPath.row]
+        return cell
+    }
+    
+    private func productTableViewCell(indexPath: IndexPath) -> ProductTableViewCell {
+        
+        let cell = tableViewforProduct.dequeueReusableCell(withIdentifier: "ProductTableViewCell", for: indexPath) as! ProductTableViewCell
+        cell.product = self.searchedProductArray[indexPath.row]
+        return cell
+    }
 }
 
 //Extension for UICollectionViewDataSource and UICollectionDelegateFlowLayout
@@ -249,11 +285,11 @@ extension SearchViewController: UICollectionViewDataSource, UICollectionViewDele
         case "products":
             //Clear Search API
             self.searchBar.text = ""
+            self.view_TableBackground.bringSubviewToFront(self.tableViewforProduct)
             break
             
         case "comments":
             //Clear Search API
-            self.searchBar.text = ""
             self.searchBar.text = ""
             self.view_TableBackground.bringSubviewToFront(self.tableViewForComments)
             break
@@ -303,7 +339,7 @@ extension SearchViewController: UISearchBarDelegate {
         
         switch self.selectedOption.lowercased() {
         case "products":
-            
+            self.loadConversationsStats(productId: searchBar.text ?? "")
             break
             
         case "comments":
@@ -454,4 +490,38 @@ extension SearchViewController {
         }
         
     }
+    
+    func loadConversationsStats(productId: String) {
+        
+        let request = BVProductDisplayPageRequest(productId: productId)
+            .includeStatistics(.reviews)
+            .includeStatistics(.questions)
+        
+        request.load({ (response) in
+            
+            self.searchedProductArray = []
+            
+            let product = response.result
+            
+            self.searchedProductArray.append(SearchedProduct(productName: product?.name ?? "NA", imageUrl: product?.imageUrl ?? "NA"))
+            
+            //  self.product = product
+            //
+            //        self.productName.text = product?.name
+            //        self.totalReviewCount = product?.reviewStatistics?.totalReviewCount as? Int ?? 0
+            //        self.totalQuestionCount = product?.qaStatistics?.totalQuestionCount as? Int ?? 0
+            //        self.totalAnswerCount = product?.qaStatistics?.totalAnswerCount as? Int ?? 0
+            //        if let url  = product?.imageUrl {
+            //          self.productImage.sd_setImage(with: URL(string: url))
+            //        }
+            self.tableViewforProduct.reloadData()
+            
+        }) { (errors) in
+            
+            print("An error occurred: \(errors)")
+            
+        }
+        
+    }
 }
+
