@@ -391,14 +391,15 @@ class MockDataManager {
     let configDict = MockDataManager.getDefaultConfigDict()
     let config = DemoConfig(dictionary: configDict as NSDictionary)
     config.isMock = true
+    //config.configType = .staging
     return config
   }()
   
   private class func getDefaultConfigDict() -> Dictionary<String, AnyObject> {
-    return ["clientId": "apitestcustomer" as AnyObject,//HERE
+    return ["clientId": "testcustomermobilesdk" as AnyObject,//HERE
             "displayName": "(Mock) Endurance Cycles" as AnyObject,
             "apiKeyShopperAdvertising": "REPLACE_ME" as AnyObject,
-            "apiKeyConversations": "kuy3zj9pr3n7i0wxajrzj04xo" as AnyObject,
+            "apiKeyConversations": "cauPFGiXDMZYw1QQ11PBmJXt5YdK5oEvirFBMxlyshhlU" as AnyObject,
             "apiKeyConversationsStores": "REPLACE_ME" as AnyObject,
             "apiKeyCurations": "REPLACE_ME" as AnyObject,
             "apiKeyPIN": "REPLACE_ME" as AnyObject,

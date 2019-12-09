@@ -34,6 +34,7 @@ class ProductTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    //Cell Configuration
     private func cellConfiguration() {
         self.productName.text = self.product.productName
         self.productImage.sd_setImage(with: URL(string: self.product.imageUrl))

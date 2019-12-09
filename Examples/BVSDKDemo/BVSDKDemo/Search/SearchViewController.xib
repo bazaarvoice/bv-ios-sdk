@@ -10,9 +10,10 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SearchViewController" customModule="BVSDKDemo" customModuleProvider="target">
             <connections>
                 <outlet property="collectionView" destination="CPa-LR-hS2" id="LI8-0P-yU0"/>
+                <outlet property="lbl_EmptyScreen" destination="Dc5-do-lAL" id="OI9-aK-wg1"/>
                 <outlet property="searchBar" destination="bHA-ba-aGi" id="H34-FA-4Le"/>
-                <outlet property="tableView" destination="QSJ-l2-rpl" id="qsz-4e-E1c"/>
                 <outlet property="tableViewForComments" destination="pc5-Fk-kjk" id="Z1O-Dj-6kc"/>
+                <outlet property="tableViewForQAndA" destination="QSJ-l2-rpl" id="5Ef-OZ-yr9"/>
                 <outlet property="tableViewForRatings" destination="NT0-Ah-1nv" id="3yE-3Y-kuo"/>
                 <outlet property="tableViewforProduct" destination="6Vg-A3-YJs" id="9WB-a0-4t5"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
