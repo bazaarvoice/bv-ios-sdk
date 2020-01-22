@@ -91,16 +91,24 @@ class CartViewController: UIViewController, UITableViewDataSource {
      BVTransaction also has convenience setters for commonly used params.
      */
     
-    let transaction = BVTransactionEvent(orderId:"123456",
+    let date = NSDate() // Get Todays Date
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "MMMM-dd-yyyy"
+    let stringDate: String = dateFormatter.string(from: date as Date)
+    
+    let orderId = Int.random(in: 100000 ..< 999000)
+    
+    let transaction = BVTransactionEvent(orderId:String(orderId),
                                          orderTotal: 0.00,
                                          orderItems: transactionItems,
-                                         andOtherParams: ["state":"TX","email":"some.one@domain.com"])
+                                         andOtherParams: ["state":"TX","email":"some.one@domain.com", "date":stringDate])
     
     transaction.shipping = 0.00
     transaction.tax = 0.00
     
     // Use the BVPixel to track the Conversion Transaction Event.
     BVPixel.trackEvent(transaction)
+    //We add the transaction to the transaction history list in case the progressiveSubmission flow is enabled
     MockDataManager.sharedInstance.transactionHistory.append(transaction)
     //BVAnalyticsManager.shared().flushQueue() // Send the event immediately (just for demo purposes)
     

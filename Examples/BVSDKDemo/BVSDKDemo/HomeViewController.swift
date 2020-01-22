@@ -39,6 +39,12 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     menuIcon?.addAttribute(NSAttributedString.Key.foregroundColor.rawValue, value: UIColor.white)
     return menuIcon!.image(with: CGSize(width: 20, height: 20))
   }()
+    
+  private lazy var historyIconImage : UIImage = {
+    let menuIcon = FAKFontAwesome.historyIcon(withSize: 20)
+    menuIcon?.addAttribute(NSAttributedString.Key.foregroundColor.rawValue, value: UIColor.white)
+    return menuIcon!.image(with: CGSize(width: 20, height: 20))
+  }()
   
   private lazy var cartIconImage : UIImage = {
     let menuIcon = FAKFontAwesome.shoppingCartIcon(withSize: 20)
@@ -253,16 +259,16 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     
     buttonItems.append(cartButton)
     
-    let settingsButton = UIBarButtonItem(
-      image: self.gearIconImage,
+    let transactionHistoryButton = UIBarButtonItem(
+      image: self.historyIconImage,
       style: UIBarButtonItem.Style.plain,
       target: self,
       action: #selector(HomeViewController.historyIconPressed)
     )
-    settingsButton.imageInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: -30)
-    
-    buttonItems.append(settingsButton)
-    
+    if !MockDataManager.sharedInstance.currentConfig.isMock {
+        self.navigationItem.setLeftBarButton(transactionHistoryButton, animated: true)
+    }
+
     if let path = Bundle.main.path(forResource: "config/DemoAppConfigs", ofType: "plist") {
       if FileManager.default.fileExists(atPath: path, isDirectory: nil) {
         let settingsButton = UIBarButtonItem(
@@ -290,9 +296,6 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
   
     @objc func cartIconPressed(){
     self.navigationController?.pushViewController(CartViewController(), animated: true)
-//    UIView.transition(with: self.view, duration: 10.5, options: [.transitionCurlUp], animations: {self.view.addSubview(self.spinner) }, completion: nil)
-//    UIView.transition(from: self.view, to: self.view, duration: 4.0, options: [.transitionCurlUp], completion: nil)
-//    self.navigationController?.pushViewController(CartViewController(), animated: true)
   }
   
   func loadConversationsProducts(){

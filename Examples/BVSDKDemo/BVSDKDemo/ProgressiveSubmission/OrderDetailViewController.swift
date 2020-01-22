@@ -44,7 +44,7 @@ class OrderDetailViewController: UIViewController, UITableViewDataSource, UITabl
             itemIds.append(products.sku)
         }
         let initiateSubmitRequest = BVInitiateSubmitRequest(productIds: itemIds)
-        initiateSubmitRequest.userToken = "TOKEN_REMOVED"
+        initiateSubmitRequest.userToken = MockDataManager.sharedInstance.userToken
         initiateSubmitRequest.locale = "en_US"
         initiateSubmitRequest.submit({ (initiateSubmitResponseData) in
             let products = initiateSubmitResponseData.result?.products
@@ -70,18 +70,19 @@ class OrderDetailViewController: UIViewController, UITableViewDataSource, UITabl
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-      let product = self.purchasedProducts[indexPath.row]
-        let formData = productDict![product.sku] as? BVInitiateSubmitFormData
-        
-      let vc = WriteReviewViewController(nibName:"WriteReviewViewController", bundle: nil, reviewData: formData!)
-      self.navigationController?.pushViewController(vc, animated: true)
-      self.tableView.deselectRow(at: indexPath, animated: true)
-      
+      //A valid userToken string must be set in the MockDataManager
+      if (MockDataManager.sharedInstance.userToken != "REPLACE_ME") {
+            let product = self.purchasedProducts[indexPath.row]
+            let formData = productDict![product.sku] as? BVInitiateSubmitFormData
+              
+            let vc = WriteReviewViewController(nibName:"WriteReviewViewController", bundle: nil, reviewData: formData!)
+            self.navigationController?.pushViewController(vc, animated: true)
+            self.tableView.deselectRow(at: indexPath, animated: true)
+      }
     }
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-      return true
+      return false
     }
     
     

@@ -249,7 +249,7 @@ static NSString *urlEncode(id object) {
   [request setHTTPMethod:@"POST"];
   [request setHTTPBody:postBody];
 
-  BVLogVerbose(([NSString stringWithFormat:@"OST: %@\n with BODY: %@",
+  BVLogVerbose(([NSString stringWithFormat:@"POST: %@\n with BODY: %@",
                                            urlString, parameters]),
                BV_PRODUCT_CONVERSATIONS);
 
