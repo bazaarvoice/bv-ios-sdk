@@ -17,8 +17,9 @@ class MockDataManager {
   var currentConfig: DemoConfig!
   var prodConfig: DemoConfig?
   var stagingConfig: DemoConfig?
-  var transactionHistory = [BVTransactionEvent]()
-
+  var transactionHistory = [BVTransactionEvent]() 
+  //Replace with valid UserToken string to test progressiveSubmission flow
+  var userToken = "REPLACE_ME"
 
   init() {
     self.setupPreSelectedKeysIfPresent()
@@ -391,17 +392,16 @@ class MockDataManager {
   private lazy var mockConfig: DemoConfig =  {
     let configDict = MockDataManager.getDefaultConfigDict()
     let config = DemoConfig(dictionary: configDict as NSDictionary)
-//    config.isMock = true
-    config.configType = .staging
+    config.isMock = true
     
     return config
   }()
   
   private class func getDefaultConfigDict() -> Dictionary<String, AnyObject> {
-    return ["clientId": "testcustomermobilesdk" as AnyObject,
+    return ["clientId": "REPLACE_ME" as AnyObject,
             "displayName": "(Mock) Endurance Cycles" as AnyObject,
             "apiKeyShopperAdvertising": "REPLACE_ME" as AnyObject,
-            "apiKeyConversations": "cauPFGiXDMZYw1QQ11PBmJXt5YdK5oEvirFBMxlyshhlU" as AnyObject,
+            "apiKeyConversations": "REPLACE_ME" as AnyObject,
             "apiKeyConversationsStores": "REPLACE_ME" as AnyObject,
             "apiKeyCurations": "REPLACE_ME" as AnyObject,
             "apiKeyPIN": "REPLACE_ME" as AnyObject,

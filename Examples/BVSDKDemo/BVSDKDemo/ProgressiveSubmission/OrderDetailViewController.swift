@@ -44,7 +44,7 @@ class OrderDetailViewController: UIViewController, UITableViewDataSource, UITabl
             itemIds.append(products.sku)
         }
         let initiateSubmitRequest = BVInitiateSubmitRequest(productIds: itemIds)
-        initiateSubmitRequest.userToken = "d8dd0efd2f9e2ebc5d201b3f2343fa06f8a3d4ff6259c44df02622ba8e0506e66d61786167653d333026484f535445443d564552494649454426646174653d323031393130323526656d61696c616464726573733d4256406d61696c2e636f6d267573657269643d74657374313039"
+        initiateSubmitRequest.userToken = MockDataManager.sharedInstance.userToken
         initiateSubmitRequest.locale = "en_US"
         initiateSubmitRequest.submit({ (initiateSubmitResponseData) in
             let products = initiateSubmitResponseData.result?.products
@@ -70,18 +70,19 @@ class OrderDetailViewController: UIViewController, UITableViewDataSource, UITabl
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-      let product = self.purchasedProducts[indexPath.row]
-        let formData = productDict![product.sku] as? BVInitiateSubmitFormData
-        
-      let vc = WriteReviewViewController(nibName:"WriteReviewViewController", bundle: nil, reviewData: formData!)
-      self.navigationController?.pushViewController(vc, animated: true)
-      self.tableView.deselectRow(at: indexPath, animated: true)
-      
+      //A valid userToken string must be set in the MockDataManager
+      if (MockDataManager.sharedInstance.userToken != "REPLACE_ME") {
+            let product = self.purchasedProducts[indexPath.row]
+            let formData = productDict![product.sku] as? BVInitiateSubmitFormData
+              
+            let vc = WriteReviewViewController(nibName:"WriteReviewViewController", bundle: nil, reviewData: formData!)
+            self.navigationController?.pushViewController(vc, animated: true)
+            self.tableView.deselectRow(at: indexPath, animated: true)
+      }
     }
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-      return true
+      return false
     }
     
     

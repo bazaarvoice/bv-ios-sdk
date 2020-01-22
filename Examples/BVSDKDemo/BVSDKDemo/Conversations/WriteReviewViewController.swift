@@ -184,12 +184,12 @@ class WriteReviewViewController: UIViewController, SDFormDelegate, SDFormDataSou
             "agreedtotermsandconditions" : agreedtotermsandconditions
         ]
         
-        submission.submissionSessionToken = "3r7l2qajvfbvi1cp61g7yq7zz_8633ea54b5a2ea0147ae0065cc91aa70c2349d401163fc4f5fb2dc7afb6a8461_tVwOo5Xosak="
+        submission.submissionSessionToken = self.paramDict.value(forKey: "sessionToken") as? String ?? ""
         submission.locale = "en_US"
-        submission.userToken = "d8dd0efd2f9e2ebc5d201b3f2343fa06f8a3d4ff6259c44df02622ba8e0506e66d61786167653d333026484f535445443d564552494649454426646174653d323031393130323526656d61696c616464726573733d4256406d61696c2e636f6d267573657269643d74657374313039"
+        submission.userToken = MockDataManager.sharedInstance.userToken
         submission.submissionFields = fields as! [AnyHashable : Any]
       
-      submission.submit({ (response) in
+        submission.submit({ (response) in
         
         DispatchQueue.main.async(execute: {
           _ = SweetAlert().showAlert("Success!", subTitle: "Your review was submitted. It may take up to 72 hours before your post is live.", style: .success)
@@ -216,13 +216,15 @@ class WriteReviewViewController: UIViewController, SDFormDelegate, SDFormDataSou
     var isRecommended:NSNumber?
     var sendEmailAlertWhenPublished:NSNumber?
     var photo : UIImage?
+    var sessionToken : String?
+    var userToken : String?
     
     rating = self.productReviewData?.progressiveSubmissionReview?.rating as NSNumber?
     title = self.productReviewData?.progressiveSubmissionReview?.title
     reviewText = self.productReviewData?.progressiveSubmissionReview?.reviewText
     isRecommended = self.productReviewData?.progressiveSubmissionReview?.isRecommended
     userNickname = self.productReviewData?.progressiveSubmissionReview?.userNickname
-
+    sessionToken = self.productReviewData?.submissionSessionToken
     
     self.paramDict.setValue(rating, forKey: "rating")
     self.paramDict.setValue(title, forKey: "title")
@@ -232,6 +234,7 @@ class WriteReviewViewController: UIViewController, SDFormDelegate, SDFormDataSou
     self.paramDict.setValue(isRecommended, forKey: "isRecommended")
     self.paramDict.setValue(sendEmailAlertWhenPublished, forKey: "sendEmailAlertWhenPublished")
     self.paramDict.setValue(photo, forKey: "photo")
+    self.paramDict.setValue(sessionToken, forKey: "sessionToken")
     }
     
   func initFormFields(){
