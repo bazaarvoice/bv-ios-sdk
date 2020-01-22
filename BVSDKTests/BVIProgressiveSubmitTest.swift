@@ -90,31 +90,6 @@ class BVProgressiveSubmitTest: XCTestCase {
         waitForExpectations(timeout: 10, handler: nil)
     }
     
-    func testIncompleteProgressiveSubmitRequestWithPreview() {
-        let expectation = self.expectation(description: "testIncompleteProgressiveSubmitRequestWithPreview")
-        let submission = self.buildRequest()
-        submission.submissionFields["reviewText"] = nil
-        submission.isPreview = true
-        
-        submission.submit({ (submittedReview) in
-            let result = submittedReview.result
-            let review = result?.review
-            
-            XCTAssertTrue(result?.submissionSessionToken != nil)
-            XCTAssertTrue(result?.submissionId == nil)
-            XCTAssertTrue(result?.isFormComplete == false)
-            XCTAssertTrue(review?.rating == (submission.submissionFields["rating"] as? NSNumber))
-            XCTAssertTrue(review?.title == (submission.submissionFields["title"] as? String))
-            XCTAssertTrue(review?.reviewText == (submission.submissionFields["reviewText"] as? String))
-            expectation.fulfill()
-        }, failure: { (errors) in
-            expectation.fulfill()
-            print(errors)
-            XCTFail()
-        })
-        waitForExpectations(timeout: 10, handler: nil)
-    }
-    
     func testProgressiveSubmitMissingUserEmailError() {
         let expectation = self.expectation(description: "testProgressiveSubmitMissingUserEmailError")
         let submission = self.buildRequest()
@@ -210,7 +185,7 @@ class BVProgressiveSubmitTest: XCTestCase {
         let agreedtotermsandconditions = true
         let fields: NSDictionary = [
             "rating" : 4,
-            "title" : " my favorite product ever!",
+            "title" : "my favorite product ever!",
             "reviewText" : "This is great its so awesome. I highly recomend using this product and think it makes a great gift for any holiday or special occasion. by far the best purchase ive made this year",
             "agreedtotermsandconditions" : agreedtotermsandconditions
         ]

@@ -24,14 +24,13 @@ class OrderHistoryTableViewCell: UITableViewCell {
             if let orderId = transaction?.orderId {
                 OrderIdLabel.text = "Order ID: \(orderId)"
             }
-            OrderDateLabel.text = "Friday, Oct 25th"
+            if let orderDate = transaction?.additionalParams?["date"]{
+                OrderDateLabel.text = orderDate as? String
+            }
             if let itemCount = transaction?.items.count {
                 itemCount == 1 ? (ItemCountLabel.text = "\(itemCount) item:") : (ItemCountLabel.text = "\(itemCount) items:")
             }
-            if let orderTotal = transaction?.total {
-                OrderTotalLabel.text = "$\(orderTotal)"
-            }
-            
+            OrderTotalLabel.text = "$0.00"
           }
         }
       }

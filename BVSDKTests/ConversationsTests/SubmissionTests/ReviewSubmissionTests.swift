@@ -50,7 +50,7 @@ class ReviewSubmissionTests: BVBaseStubTestCase {
       expectation.fulfill()
     })
     
-    waitForExpectations(timeout: 360, handler: nil)
+    waitForExpectations(timeout: 10, handler: nil)
   }
   
   func testSubmitReviewWithPhotoAndNetworkDelegate() {

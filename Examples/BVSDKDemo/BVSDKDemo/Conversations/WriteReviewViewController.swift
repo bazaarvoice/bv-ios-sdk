@@ -184,12 +184,12 @@ class WriteReviewViewController: UIViewController, SDFormDelegate, SDFormDataSou
             "agreedtotermsandconditions" : agreedtotermsandconditions
         ]
         
-        submission.submissionSessionToken = "TOKEN_REMOVED"
+        submission.submissionSessionToken = self.paramDict.value(forKey: "sessionToken") as? String ?? ""
         submission.locale = "en_US"
-        submission.userToken = "TOKEN_REMOVED"
+        submission.userToken = MockDataManager.sharedInstance.userToken
         submission.submissionFields = fields as! [AnyHashable : Any]
       
-      submission.submit({ (response) in
+        submission.submit({ (response) in
         
         DispatchQueue.main.async(execute: {
           _ = SweetAlert().showAlert("Success!", subTitle: "Your review was submitted. It may take up to 72 hours before your post is live.", style: .success)
@@ -216,13 +216,15 @@ class WriteReviewViewController: UIViewController, SDFormDelegate, SDFormDataSou
     var isRecommended:NSNumber?
     var sendEmailAlertWhenPublished:NSNumber?
     var photo : UIImage?
+    var sessionToken : String?
+    var userToken : String?
     
     rating = self.productReviewData?.progressiveSubmissionReview?.rating as NSNumber?
     title = self.productReviewData?.progressiveSubmissionReview?.title
     reviewText = self.productReviewData?.progressiveSubmissionReview?.reviewText
     isRecommended = self.productReviewData?.progressiveSubmissionReview?.isRecommended
     userNickname = self.productReviewData?.progressiveSubmissionReview?.userNickname
-
+    sessionToken = self.productReviewData?.submissionSessionToken
     
     self.paramDict.setValue(rating, forKey: "rating")
     self.paramDict.setValue(title, forKey: "title")
@@ -232,6 +234,7 @@ class WriteReviewViewController: UIViewController, SDFormDelegate, SDFormDataSou
     self.paramDict.setValue(isRecommended, forKey: "isRecommended")
     self.paramDict.setValue(sendEmailAlertWhenPublished, forKey: "sendEmailAlertWhenPublished")
     self.paramDict.setValue(photo, forKey: "photo")
+    self.paramDict.setValue(sessionToken, forKey: "sessionToken")
     }
     
   func initFormFields(){
