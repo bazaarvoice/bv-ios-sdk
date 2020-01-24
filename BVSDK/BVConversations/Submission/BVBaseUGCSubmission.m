@@ -59,6 +59,7 @@
   /// If we got nothing, then just bail
   if (0 == self.photos.count) {
     success(@[], @[]);
+    return;
   }
 
   NSMutableArray<NSString *> *photoURLs = [NSMutableArray array];
