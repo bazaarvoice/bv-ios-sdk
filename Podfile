@@ -9,7 +9,7 @@ target 'BVSDKTests' do
     #inherit! :search_paths
 
     # Pods for testing
-    pod 'OHHTTPStubs'
+    pod 'OHHTTPStubs', '~> 8.0.0'
     pod 'OHHTTPStubs/Swift'
 
 end
