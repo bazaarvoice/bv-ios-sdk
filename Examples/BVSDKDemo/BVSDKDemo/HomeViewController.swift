@@ -39,6 +39,12 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     menuIcon?.addAttribute(NSAttributedString.Key.foregroundColor.rawValue, value: UIColor.white)
     return menuIcon!.image(with: CGSize(width: 20, height: 20))
   }()
+    
+  private lazy var historyIconImage : UIImage = {
+    let menuIcon = FAKFontAwesome.historyIcon(withSize: 20)
+    menuIcon?.addAttribute(NSAttributedString.Key.foregroundColor.rawValue, value: UIColor.white)
+    return menuIcon!.image(with: CGSize(width: 20, height: 20))
+  }()
   
   private lazy var cartIconImage : UIImage = {
     let menuIcon = FAKFontAwesome.shoppingCartIcon(withSize: 20)
@@ -49,7 +55,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
   override func viewDidLoad() {
     super.viewDidLoad()
     ProfileUtils.trackViewController(self)
-    
+    //Check for any new transactions UserDefaults. if so present alert view
     self.addBarButtonItems()
     
     self.view.backgroundColor = UIColor.white
@@ -191,8 +197,6 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
           
         }
       }
-      
-      
     }
   }
   
@@ -202,7 +206,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     if adLoader == nil
     {
       
-      adLoader = GADAdLoader(adUnitID: "/5705/bv-incubator/IncubatorEnduranceCycles", rootViewController: self, adTypes: [GADAdLoaderAdType.nativeContent], options: nil)
+        adLoader = GADAdLoader(adUnitID: "/5705/bv-incubator/IncubatorEnduranceCycles", rootViewController: self, adTypes: [GADAdLoaderAdType.unifiedNative], options: nil)
       adLoader?.delegate = self
       
       let request = DFPRequest()
@@ -255,6 +259,16 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     
     buttonItems.append(cartButton)
     
+    let transactionHistoryButton = UIBarButtonItem(
+      image: self.historyIconImage,
+      style: UIBarButtonItem.Style.plain,
+      target: self,
+      action: #selector(HomeViewController.historyIconPressed)
+    )
+    if !MockDataManager.sharedInstance.currentConfig.isMock {
+        self.navigationItem.setLeftBarButton(transactionHistoryButton, animated: true)
+    }
+
     if let path = Bundle.main.path(forResource: "config/DemoAppConfigs", ofType: "plist") {
       if FileManager.default.fileExists(atPath: path, isDirectory: nil) {
         let settingsButton = UIBarButtonItem(
@@ -272,9 +286,13 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     
   }
   
+    @objc func historyIconPressed() {
+        self.navigationController?.pushViewController(OrderHistoryViewController(), animated: true)
+  }
+    
     @objc func settingsIconPressed() {
     self.navigationController?.pushViewController(SettingsViewController(), animated: true)
-  }
+    }
   
     @objc func cartIconPressed(){
     self.navigationController?.pushViewController(CartViewController(), animated: true)
@@ -285,7 +303,6 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     _ = SweetAlert().showAlert("Error", subTitle: "Unable to load products for this API key setup.", style: .error)
     
   }
-  
   
   func loadProducts() {
     self.recommendationsCollectionView.addSubview(self.spinner)
@@ -302,7 +319,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
   
   func loadConversations(omitStats : Bool) {
     let req = BVBulkProductRequest().sort(by: .productAverageOverallRating, monotonicSortOrderValue: .descending)
-      .filter(on: .productTotalReviewCount, relationalFilterOperatorValue: .greaterThanOrEqualTo, value: "10")
+      .filter(on: .productTotalReviewCount, relationalFilterOperatorValue: .greaterThanOrEqualTo, value: "1")
       .filter(on: .productIsActive, relationalFilterOperatorValue: .equalTo, value: "true")
       .filter(on: .productIsDisabled, relationalFilterOperatorValue: .equalTo, value: "false")
     if (!omitStats){
@@ -392,7 +409,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
           return 0
         }
       }
-      
+    
       return 0
     }
     

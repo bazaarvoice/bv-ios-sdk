@@ -147,6 +147,14 @@
 		87F24D851DAE8147002231D6 /* enduranceCyclesNY.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 87F24D831DAE8147002231D6 /* enduranceCyclesNY.gpx */; };
 		87F5B9361DC38F37004D2297 /* testNotificationConfig.json in Resources */ = {isa = PBXBuildFile; fileRef = 87F5B9351DC38F37004D2297 /* testNotificationConfig.json */; };
 		980FA1A922C3F9510021A2BA /* curationsEnduranceCycles.json in Resources */ = {isa = PBXBuildFile; fileRef = 980FA1A822C3F9510021A2BA /* curationsEnduranceCycles.json */; };
+		985C66D3235611AD00FB3D39 /* OrderHistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 985C66D1235611AD00FB3D39 /* OrderHistoryTableViewCell.swift */; };
+		985C66D4235611AD00FB3D39 /* OrderHistoryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 985C66D2235611AD00FB3D39 /* OrderHistoryTableViewCell.xib */; };
+		985C66D623561F1E00FB3D39 /* OrderHistoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 985C66D523561F1E00FB3D39 /* OrderHistoryViewController.xib */; };
+		985E4C1C235E0189007241B9 /* OrderDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 985E4C1B235E0189007241B9 /* OrderDetailViewController.xib */; };
+		985E4C1F235E0872007241B9 /* OrderHistoryProductTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 985E4C1D235E0872007241B9 /* OrderHistoryProductTableViewCell.swift */; };
+		985E4C20235E0872007241B9 /* OrderHistoryProductTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 985E4C1E235E0872007241B9 /* OrderHistoryProductTableViewCell.xib */; };
+		9860C2A0235634F0000964AB /* OrderDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9860C29F235634F0000964AB /* OrderDetailViewController.swift */; };
+		989D44EF234CEEB4002E0C44 /* OrderHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 989D44EE234CEEB4002E0C44 /* OrderHistoryViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -339,6 +347,14 @@
 		87F24D831DAE8147002231D6 /* enduranceCyclesNY.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = enduranceCyclesNY.gpx; path = gpx/enduranceCyclesNY.gpx; sourceTree = "<group>"; };
 		87F5B9351DC38F37004D2297 /* testNotificationConfig.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = testNotificationConfig.json; path = ../../../BVSDKTests/MockData/conversations/Display/testNotificationConfig.json; sourceTree = "<group>"; };
 		980FA1A822C3F9510021A2BA /* curationsEnduranceCycles.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = curationsEnduranceCycles.json; path = ../../BVSDKTests/MockData/curations/curationsEnduranceCycles.json; sourceTree = "<group>"; };
+		985C66D1235611AD00FB3D39 /* OrderHistoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderHistoryTableViewCell.swift; sourceTree = "<group>"; };
+		985C66D2235611AD00FB3D39 /* OrderHistoryTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrderHistoryTableViewCell.xib; sourceTree = "<group>"; };
+		985C66D523561F1E00FB3D39 /* OrderHistoryViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrderHistoryViewController.xib; sourceTree = "<group>"; };
+		985E4C1B235E0189007241B9 /* OrderDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrderDetailViewController.xib; sourceTree = "<group>"; };
+		985E4C1D235E0872007241B9 /* OrderHistoryProductTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderHistoryProductTableViewCell.swift; sourceTree = "<group>"; };
+		985E4C1E235E0872007241B9 /* OrderHistoryProductTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrderHistoryProductTableViewCell.xib; sourceTree = "<group>"; };
+		9860C29F235634F0000964AB /* OrderDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderDetailViewController.swift; sourceTree = "<group>"; };
+		989D44EE234CEEB4002E0C44 /* OrderHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderHistoryViewController.swift; sourceTree = "<group>"; };
 		BC927E763E958B0ADE062DDB /* Pods-Curations Custom Post Extension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Curations Custom Post Extension.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Curations Custom Post Extension/Pods-Curations Custom Post Extension.debug.xcconfig"; sourceTree = "<group>"; };
 		BF76865CF343C4C4833D6B9B /* Pods_Curations_Custom_Post_Extension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Curations_Custom_Post_Extension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -436,6 +452,7 @@
 				733BCEFD1CF752C500045FC2 /* HomeView */,
 				739C0EF01CDDA0BD00CE771B /* BVDemoNavigationController.swift */,
 				736D4C921CDEC5730095EE6B /* Product Recommendations */,
+				985C66CC235610F800FB3D39 /* ProgressiveSubmission */,
 				736D4CC91CDED0C40095EE6B /* Curations */,
 				739C0EEF1CDD9EB700CE771B /* Conversations */,
 				87CF9A6C1DEE46B10069D2B9 /* Cart */,
@@ -783,6 +800,21 @@
 			name = Cart;
 			sourceTree = "<group>";
 		};
+		985C66CC235610F800FB3D39 /* ProgressiveSubmission */ = {
+			isa = PBXGroup;
+			children = (
+				989D44EE234CEEB4002E0C44 /* OrderHistoryViewController.swift */,
+				985C66D523561F1E00FB3D39 /* OrderHistoryViewController.xib */,
+				985C66D1235611AD00FB3D39 /* OrderHistoryTableViewCell.swift */,
+				985C66D2235611AD00FB3D39 /* OrderHistoryTableViewCell.xib */,
+				9860C29F235634F0000964AB /* OrderDetailViewController.swift */,
+				985E4C1B235E0189007241B9 /* OrderDetailViewController.xib */,
+				985E4C1D235E0872007241B9 /* OrderHistoryProductTableViewCell.swift */,
+				985E4C1E235E0872007241B9 /* OrderHistoryProductTableViewCell.xib */,
+			);
+			path = ProgressiveSubmission;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -928,7 +960,9 @@
 				8747F1E31D11C2A000DC8E42 /* PermissionViewController.xib in Resources */,
 				736D4CB81CDEC5730095EE6B /* DemoCarouselCollectionViewCell.xib in Resources */,
 				736D4CFF1CDED0C40095EE6B /* CurationsImageTableViewCell.xib in Resources */,
+				985C66D623561F1E00FB3D39 /* OrderHistoryViewController.xib in Resources */,
 				736D4D051CDED0C40095EE6B /* CurationsFeedItemDetailTableViewController.xib in Resources */,
+				985C66D4235611AD00FB3D39 /* OrderHistoryTableViewCell.xib in Resources */,
 				733BCEF71CF7418900045FC2 /* HomeViewController.xib in Resources */,
 				736D4D011CDED0C40095EE6B /* CurationsYouTubePlayerTableViewCell.xib in Resources */,
 				733BCF071CF81F2800045FC2 /* SubmitAnswerViewController.xib in Resources */,
@@ -940,6 +974,7 @@
 				736D4CF11CDED0C40095EE6B /* icon_bvlogo.png in Resources */,
 				8731F40C1D10659A0046C484 /* enduranceCyclesAustin.gpx in Resources */,
 				733071C21CEF963D00B9F505 /* conversationsProductsIncludeStats.json in Resources */,
+				985E4C1C235E0189007241B9 /* OrderDetailViewController.xib in Resources */,
 				870F130F1E436FB800D46BE6 /* conversationsAuthorWithIncludes.json in Resources */,
 				736D4CB31CDEC5730095EE6B /* gear@2x.png in Resources */,
 				871AD40A1D088B9A006583E5 /* submitPhotoWithReview.json in Resources */,
@@ -956,6 +991,7 @@
 				733BCF011CF7BE5300045FC2 /* CallToActionCell.xib in Resources */,
 				736D4D071CDED0C40095EE6B /* CurationsFeedPageViewController.xib in Resources */,
 				736D4CFD1CDED0C40095EE6B /* CurationsFeedItemDetailCell.xib in Resources */,
+				985E4C20235E0872007241B9 /* OrderHistoryProductTableViewCell.xib in Resources */,
 				87F24D841DAE8147002231D6 /* enduranceCyclesChicago.gpx in Resources */,
 				15A09C2D1ED5D08400FEC447 /* searchIcon@2x.png in Resources */,
 				737FA0B81CF8AD2700864B1B /* submitReview.json in Resources */,
@@ -1102,10 +1138,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9860C2A0235634F0000964AB /* OrderDetailViewController.swift in Sources */,
 				15A09C251ED5CB8000FEC447 /* CircleSearchView.swift in Sources */,
 				739A6D2B1CFF78DF0068B823 /* FacebookLoginViewController.swift in Sources */,
 				87BB4C861D372B2600C860BE /* JPSThumnail.m in Sources */,
 				871AD3F31D063A57006583E5 /* ProfileUtils.swift in Sources */,
+				989D44EF234CEEB4002E0C44 /* OrderHistoryViewController.swift in Sources */,
 				87B97E961DEF218C005B8C85 /* CartViewController.swift in Sources */,
 				736D4D041CDED0C40095EE6B /* CurationsFeedItemDetailTableViewController.swift in Sources */,
 				733843881CED541A00928760 /* AnswersViewController.swift in Sources */,
@@ -1119,6 +1157,7 @@
 				87B97EB91DEF8CE4005B8C85 /* UIBarButtonItem+Badge.swift in Sources */,
 				736D4D001CDED0C40095EE6B /* CurationsYouTubePlayerTableViewCell.swift in Sources */,
 				877AD27C1EDF7051006C7070 /* ReviewCommentTableViewCell.swift in Sources */,
+				985E4C1F235E0872007241B9 /* OrderHistoryProductTableViewCell.swift in Sources */,
 				738E724C1CEEE91F00D30617 /* CardView.swift in Sources */,
 				730A64711CE56A1700580E9C /* RatingTableViewCell.swift in Sources */,
 				7348C3721CE05A30000B6F3C /* SettingsViewController.swift in Sources */,
@@ -1138,6 +1177,7 @@
 				87BB4C8B1D38201F00C860BE /* BVSDKDemoActionController.swift in Sources */,
 				734CF3541CE0414400132462 /* HomeViewController.swift in Sources */,
 				736D4CB71CDEC5730095EE6B /* DemoCarouselCollectionViewCell.swift in Sources */,
+				985C66D3235611AD00FB3D39 /* OrderHistoryTableViewCell.swift in Sources */,
 				733BCF061CF81F2800045FC2 /* SubmitAnswerViewController.swift in Sources */,
 				736D4D021CDED0C40095EE6B /* ProductDetailTableViewCell.swift in Sources */,
 				738E72491CEEE48A00D30617 /* ProductDetailHeaderView.swift in Sources */,

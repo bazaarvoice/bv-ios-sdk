@@ -17,8 +17,10 @@ class MockDataManager {
   var currentConfig: DemoConfig!
   var prodConfig: DemoConfig?
   var stagingConfig: DemoConfig?
-  
-  
+  var transactionHistory = [BVTransactionEvent]() 
+  //Replace with valid UserToken string to test progressiveSubmission flow
+  var userToken = "REPLACE_ME"
+
   init() {
     self.setupPreSelectedKeysIfPresent()
     self.setupMocking()
@@ -39,7 +41,7 @@ class MockDataManager {
       switchToConfig(config: config!)
     }
   }
-  
+    
   func setupPreSelectedKeysIfPresent() {
     
     let defaults = UserDefaults(suiteName: "group.bazaarvoice.bvsdkdemo.app")
@@ -391,6 +393,7 @@ class MockDataManager {
     let configDict = MockDataManager.getDefaultConfigDict()
     let config = DemoConfig(dictionary: configDict as NSDictionary)
     config.isMock = true
+    
     return config
   }()
   

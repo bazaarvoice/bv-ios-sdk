@@ -13,7 +13,7 @@ def bvsdk_pod
 end
 
 def common_pods
-  pod 'OHHTTPStubs'
+  pod 'OHHTTPStubs', '~> 8.0.0'
   pod 'OHHTTPStubs/Swift'
   pod 'SwiftyJSON'
   bvsdk_pod

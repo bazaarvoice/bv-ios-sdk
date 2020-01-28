@@ -302,6 +302,7 @@ class ReviewSubmissionTests: BVBaseStubTestCase {
     
     if let image = PhotoUploadTests.createPNG() {
       review.addPhoto(image, withPhotoCaption: "Very photogenic")
+
     }
     
     return review
