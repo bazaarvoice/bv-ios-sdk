@@ -18,7 +18,7 @@
             return nil;
         }
         self.progressiveSubmissionReview = [[BVProgressiveSubmissionReview alloc] initWithApiResponse:apiResponse[@"review"] includes:nil];
-        
+        SET_IF_NOT_NULL(self.progressiveSubmissionReview.userNickname, apiResponse[@"userNickname"])
         SET_IF_NOT_NULL(self.fieldsOrder, apiResponse[@"fieldsOrder"])
         SET_IF_NOT_NULL(self.submissionSessionToken, apiResponse[@"submissionSessionToken"])
         

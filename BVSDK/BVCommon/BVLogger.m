@@ -233,11 +233,10 @@ __strong static BVLogger *sharedLoggerInstance = nil;
         break;
       }
     }
+#else
+      NSLog(@"%@", message);
 
 #endif /* OSLog check */
-
-    /// We'll log to both loggers for the time being
-    NSLog(@"%@", message);
   });
 }
 

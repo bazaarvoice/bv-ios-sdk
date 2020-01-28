@@ -28,6 +28,9 @@ class WriteReviewViewController: UIViewController, SDFormDelegate, SDFormDataSou
   
   private var product: BVProduct?
   private var productId: String?
+  private var productReviewData: BVInitiateSubmitFormData?
+  private var isProgressiveReview: Bool = false
+
   
   init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?, product: BVProduct) {
     self.product = product
@@ -36,7 +39,13 @@ class WriteReviewViewController: UIViewController, SDFormDelegate, SDFormDataSou
   
   init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?, productId: String) {
     self.productId = productId
+    super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+  }
     
+  init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?, reviewData: BVInitiateSubmitFormData) {
+    self.productReviewData = reviewData
+    self.productId = reviewData.progressiveSubmissionReview?.productId
+    self.isProgressiveReview = true
     super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
   }
   
@@ -103,6 +112,18 @@ class WriteReviewViewController: UIViewController, SDFormDelegate, SDFormDataSou
     
     self.spinner.center = self.view.center
     self.view.addSubview(self.spinner)
+        
+        if (self.isProgressiveReview == true){
+            self.progressiveSubmitReview()
+        } else {
+            self.submitReview()
+        }
+  }
+    
+  func submitReview() {
+    
+    // NOTE: This sample doens't do field validation so we let the API do it for us.
+    // Typically your UI Controller would do some basic validation and guide your user on the required fields and field lengths.
     
     // create a fill out the reviewSubmission object
         let reviewSubmission = BVReviewSubmission(reviewTitle: self.paramDict.value(forKey: "title") as? String ?? "",
@@ -144,16 +165,66 @@ class WriteReviewViewController: UIViewController, SDFormDelegate, SDFormDataSou
     }
     
   }
-  
+    
+    func progressiveSubmitReview() {
+      
+      // NOTE: This sample doens't do field validation so we let the API do it for us.
+      // Typically your UI Controller would do some basic validation and guide your user on the required fields and field lengths.
+        
+      let submission = BVProgressiveSubmitRequest(productId:self.productId!)
+      let agreedtotermsandconditions = true
+
+      let fields: NSDictionary = [
+            "rating" : UInt(self.paramDict.value(forKey: "rating") as? Int ?? 0),
+            "title" : self.paramDict.value(forKey: "title") as? String ?? "",
+            "reviewtext" : self.paramDict.value(forKey: "reviewText") as? String ?? "",
+            "usernickname" : self.paramDict.value(forKey: "userNickname") as? String ?? "",
+            "isrecommended" : self.paramDict.value(forKey: "isRecommended") as? NSNumber ?? 0,
+            "sendemailalertwhenpublished" : self.paramDict.value(forKey: "sendEmailAlertWhenPublished") as? NSNumber ?? 0,
+            "agreedtotermsandconditions" : agreedtotermsandconditions
+        ]
+        
+        submission.submissionSessionToken = self.paramDict.value(forKey: "sessionToken") as? String ?? ""
+        submission.locale = "en_US"
+        submission.userToken = MockDataManager.sharedInstance.userToken
+        submission.submissionFields = fields as! [AnyHashable : Any]
+      
+        submission.submit({ (response) in
+        
+        DispatchQueue.main.async(execute: {
+          _ = SweetAlert().showAlert("Success!", subTitle: "Your review was submitted. It may take up to 72 hours before your post is live.", style: .success)
+          _ = self.navigationController?.popViewController(animated: true)
+        })
+        
+      }) { (errors) in
+        
+        DispatchQueue.main.async(execute: {
+          _ = SweetAlert().showAlert("Error!", subTitle: errors.first?.localizedDescription, style: .error)
+          self.spinner.removeFromSuperview()
+        })
+        
+      }
+      
+    }
+    
   func initParameterDictionary() {
     var rating : NSNumber?
-    var title : NSString?
-    var reviewText : NSString?
-    var userNickname : NSString?
-    var userEmail : NSString?
+    var title : String?
+    var reviewText : String?
+    var userNickname : String?
+    var userEmail : String?
     var isRecommended:NSNumber?
     var sendEmailAlertWhenPublished:NSNumber?
     var photo : UIImage?
+    var sessionToken : String?
+    var userToken : String?
+    
+    rating = self.productReviewData?.progressiveSubmissionReview?.rating as NSNumber?
+    title = self.productReviewData?.progressiveSubmissionReview?.title
+    reviewText = self.productReviewData?.progressiveSubmissionReview?.reviewText
+    isRecommended = self.productReviewData?.progressiveSubmissionReview?.isRecommended
+    userNickname = self.productReviewData?.progressiveSubmissionReview?.userNickname
+    sessionToken = self.productReviewData?.submissionSessionToken
     
     self.paramDict.setValue(rating, forKey: "rating")
     self.paramDict.setValue(title, forKey: "title")
@@ -163,6 +234,7 @@ class WriteReviewViewController: UIViewController, SDFormDelegate, SDFormDataSou
     self.paramDict.setValue(isRecommended, forKey: "isRecommended")
     self.paramDict.setValue(sendEmailAlertWhenPublished, forKey: "sendEmailAlertWhenPublished")
     self.paramDict.setValue(photo, forKey: "photo")
+    self.paramDict.setValue(sessionToken, forKey: "sessionToken")
     }
     
   func initFormFields(){
