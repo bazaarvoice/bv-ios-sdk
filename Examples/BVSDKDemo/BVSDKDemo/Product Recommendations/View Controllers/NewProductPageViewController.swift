@@ -199,7 +199,7 @@ class NewProductPageViewController: BVProductDisplayPageViewController, UITableV
     adLoader = GADAdLoader(
       adUnitID: "/5705/bv-incubator/EnduranceCyclesSale",
       rootViewController: self,
-      adTypes: [ GADAdLoaderAdType.nativeContent ],
+      adTypes: [ GADAdLoaderAdType.unifiedNative ],
       options: nil
     )
     adLoader!.delegate = self
