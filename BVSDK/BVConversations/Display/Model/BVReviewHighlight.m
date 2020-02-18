@@ -6,7 +6,11 @@
 // 
 
 #import "BVReviewHighlight.h"
+#import "BVNullHelper.h"
+
 
 @implementation BVReviewHighlight
+
+
 
 @end

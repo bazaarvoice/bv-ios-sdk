@@ -6,11 +6,14 @@
 // 
 
 #import <Foundation/Foundation.h>
-
-NS_ASSUME_NONNULL_BEGIN
+#import "BVReviewHighligtsReview.h"
 
 @interface BVReviewHighlight : NSObject
 
-@end
+@property(nullable) NSNumber *presenceCount;
+@property(nullable) NSNumber *mentionsCount;
+@property(nullable) NSArray<BVReviewHighligtsReview *> *bestExamples;
 
-NS_ASSUME_NONNULL_END
+- (nullable id)initWithApiResponse:(nullable id)apiResponse;
+
+@end
