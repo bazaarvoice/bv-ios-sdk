@@ -10,8 +10,8 @@
 
 @interface BVReviewHighlights : NSObject
 
-@property(nullable) NSArray<BVReviewHighlight *> *positive;
-@property(nullable) NSArray<BVReviewHighlight *> *negative;
+@property(nullable) NSArray<BVReviewHighlight *> *positives;
+@property(nullable) NSArray<BVReviewHighlight *> *negatives;
 
 - (nullable id)initWithApiResponse:(nullable id)apiResponse;
 
