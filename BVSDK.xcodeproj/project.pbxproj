@@ -457,6 +457,7 @@
 		987C076C2253FBCB00227934 /* BVProgressiveSubmitResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = 987C076A2253FBCB00227934 /* BVProgressiveSubmitResponse.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		987C076D2253FBCB00227934 /* BVProgressiveSubmitResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 987C076B2253FBCB00227934 /* BVProgressiveSubmitResponse.m */; };
 		987C076F2254038A00227934 /* BVIProgressiveSubmitTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 987C076E2254038A00227934 /* BVIProgressiveSubmitTest.swift */; };
+		9F82FBB32403945F00187666 /* ReviewHighlightsDisplayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F82FBB22403945F00187666 /* ReviewHighlightsDisplayTests.swift */; };
 		B56D71822032476A002EC872 /* BVLocaleManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B56D71812032476A002EC872 /* BVLocaleManagerTests.m */; };
 		B56E1F921FBF86360025D5B4 /* UASSubmissionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56E1F911FBF86360025D5B4 /* UASSubmissionTests.swift */; };
 		B575C3861FBDFD6F000F890B /* BVUASSubmission.h in Headers */ = {isa = PBXBuildFile; fileRef = B575C3841FBDFD6F000F890B /* BVUASSubmission.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -1101,6 +1102,7 @@
 		987C076A2253FBCB00227934 /* BVProgressiveSubmitResponse.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BVProgressiveSubmitResponse.h; sourceTree = "<group>"; };
 		987C076B2253FBCB00227934 /* BVProgressiveSubmitResponse.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BVProgressiveSubmitResponse.m; sourceTree = "<group>"; };
 		987C076E2254038A00227934 /* BVIProgressiveSubmitTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BVIProgressiveSubmitTest.swift; sourceTree = "<group>"; };
+		9F82FBB22403945F00187666 /* ReviewHighlightsDisplayTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewHighlightsDisplayTests.swift; sourceTree = "<group>"; };
 		B56D71812032476A002EC872 /* BVLocaleManagerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = BVLocaleManagerTests.m; path = BVSDKTests/CommonTests/BVLocaleManagerTests.m; sourceTree = SOURCE_ROOT; };
 		B56E1F911FBF86360025D5B4 /* UASSubmissionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UASSubmissionTests.swift; sourceTree = "<group>"; };
 		B575C3841FBDFD6F000F890B /* BVUASSubmission.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = BVUASSubmission.h; path = ../Auth/BVUASSubmission.h; sourceTree = "<group>"; };
@@ -2042,6 +2044,7 @@
 				87F2DDF81DAD945D00FB43F3 /* ReviewDisplayTests.swift */,
 				981EE847226627F2000E9191 /* ReviewFilterDisplayTests.swift */,
 				87F2DDF91DAD945D00FB43F3 /* StoresTests */,
+				9F82FBB22403945F00187666 /* ReviewHighlightsDisplayTests.swift */,
 			);
 			path = DisplayTests;
 			sourceTree = "<group>";
@@ -3378,6 +3381,7 @@
 				87B6DF9C1ECA3A0F00B75835 /* CommentsDisplayTests.swift in Sources */,
 				87F2DD641DAD5E9400FB43F3 /* BVUserProfileTests.m in Sources */,
 				87F2DE171DAD945D00FB43F3 /* StoreReviewSubmissionTests.swift in Sources */,
+				9F82FBB32403945F00187666 /* ReviewHighlightsDisplayTests.swift in Sources */,
 				B56E1F921FBF86360025D5B4 /* UASSubmissionTests.swift in Sources */,
 				87F2DE0C1DAD945D00FB43F3 /* ReviewDisplayTests.swift in Sources */,
 				87F2DE141DAD945D00FB43F3 /* PhotoUploadTests.swift in Sources */,
