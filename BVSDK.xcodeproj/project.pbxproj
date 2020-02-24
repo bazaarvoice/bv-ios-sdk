@@ -40,9 +40,9 @@
 		15BE4D261E55F03200C12B57 /* BVCurationsUICollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 870F133E1E490B5200D46BE6 /* BVCurationsUICollectionView.m */; };
 		15D4F83B1DF5D5F800E6B30D /* testNotificationProductConfig.json in Resources */ = {isa = PBXBuildFile; fileRef = 15D4F83A1DF5D5F800E6B30D /* testNotificationProductConfig.json */; };
 		15D4F83F1DF5EC3C00E6B30D /* ph.png in Resources */ = {isa = PBXBuildFile; fileRef = 15D4F83E1DF5EC3C00E6B30D /* ph.png */; };
-		4270F90C23F3D95D00082C15 /* BVReviewHighlightsRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 4270F90A23F3D95D00082C15 /* BVReviewHighlightsRequest.h */; };
+		4270F90C23F3D95D00082C15 /* BVReviewHighlightsRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 4270F90A23F3D95D00082C15 /* BVReviewHighlightsRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4270F90D23F3D95D00082C15 /* BVReviewHighlightsRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 4270F90B23F3D95D00082C15 /* BVReviewHighlightsRequest.m */; };
-		4270F91023F3D97C00082C15 /* BVReviewHighlightsResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = 4270F90E23F3D97C00082C15 /* BVReviewHighlightsResponse.h */; };
+		4270F91023F3D97C00082C15 /* BVReviewHighlightsResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = 4270F90E23F3D97C00082C15 /* BVReviewHighlightsResponse.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4270F91123F3D97C00082C15 /* BVReviewHighlightsResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 4270F90F23F3D97C00082C15 /* BVReviewHighlightsResponse.m */; };
 		4270F91423F3D9CB00082C15 /* BVReviewHighlight.h in Headers */ = {isa = PBXBuildFile; fileRef = 4270F91223F3D9CB00082C15 /* BVReviewHighlight.h */; };
 		4270F91523F3D9CB00082C15 /* BVReviewHighlight.m in Sources */ = {isa = PBXBuildFile; fileRef = 4270F91323F3D9CB00082C15 /* BVReviewHighlight.m */; };

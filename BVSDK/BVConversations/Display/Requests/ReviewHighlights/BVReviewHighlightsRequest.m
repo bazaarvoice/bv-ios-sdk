@@ -36,7 +36,7 @@
 }
 
 - (nonnull NSMutableArray<BVStringKeyValuePair *> *)createParams {
-    return  nil;
+    return nil;
 }
 
 - (void)load:(void (^)(BVReviewHighlightsResponse * _Nonnull))success failure:(ConversationsFailureHandler)failure {
