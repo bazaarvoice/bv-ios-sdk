@@ -20,14 +20,14 @@
         
         NSDictionary *apiObject = (NSDictionary *)apiResponse;
         
-        SET_IF_NOT_NULL(self.positive, apiResponse[@"positive"])
-        SET_IF_NOT_NULL(self.negative, apiResponse[@"negative"])
+        SET_IF_NOT_NULL(self.positives, apiResponse[@"positive"])
+        SET_IF_NOT_NULL(self.negatives, apiResponse[@"negative"])
 
-        if (!self.positive) {
+        if (!self.positives) {
             //self.positive =
         }
         
-        if (!self.negative) {
+        if (!self.negatives) {
             
         }
     }
