@@ -20,16 +20,25 @@
         
         NSDictionary *apiObject = (NSDictionary *)apiResponse;
         
-        SET_IF_NOT_NULL(self.positives, apiResponse[@"positive"])
-        SET_IF_NOT_NULL(self.negatives, apiResponse[@"negative"])
-
-        if (!self.positives) {
-            //self.positive =
-        }
+        //Mapping PositiveData
+        NSDictionary *positiveData = [apiResponse objectForKey:@"positive"];
+        NSMutableArray *positivesArrayBuilder = [NSMutableArray array];
         
-        if (!self.negatives) {
-            
+        for (NSString *key in positiveData) {
+            BVReviewHighlight *positive = [[BVReviewHighlight alloc] initWithTitle:key content:positiveData[key]];
+            [positivesArrayBuilder addObject:positive];
         }
+        self.positives = positivesArrayBuilder;
+
+        
+        //Mapping NegativeData
+        NSDictionary *negativeData = [apiResponse objectForKey:@"negative"];
+        NSMutableArray *negativesArrayBuilder = [NSMutableArray array];
+        
+        for (NSString *key in negativeData) {
+            BVReviewHighlight *negative = [[BVReviewHighlight alloc] initWithTitle:key content:negativeData[key]];
+        }
+        self.negatives = negativesArrayBuilder;
     }
     return self;
 }
