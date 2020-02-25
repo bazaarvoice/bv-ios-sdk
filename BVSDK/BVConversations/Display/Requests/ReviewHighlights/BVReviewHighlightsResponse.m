@@ -10,8 +10,12 @@
 @implementation BVReviewHighlightsResponse
 
 - (instancetype)initWithApiResponse:(NSDictionary *)apiResponse {
-    // TODO:- Add Response Parsing logic
-    return nil;
+    if ((self = [super init])) {
+        
+        self.reviewHighlights = [[BVReviewHighlights alloc] initWithApiResponse:[apiResponse objectForKey:@"subjects"]];
+        
+    }
+    return self;
 }
 
 @end
