@@ -9,4 +9,9 @@
 
 @implementation BVReviewHighlightsResponse
 
+- (instancetype)initWithApiResponse:(NSDictionary *)apiResponse {
+    // TODO:- Add Response Parsing logic
+    return nil;
+}
+
 @end
