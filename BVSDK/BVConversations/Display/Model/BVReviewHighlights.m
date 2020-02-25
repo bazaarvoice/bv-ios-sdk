@@ -17,19 +17,27 @@
         if (!apiResponse || ![apiResponse isKindOfClass:[NSDictionary class]]) {
             return nil;
         }
+                
+        //Mapping PositiveData
+        NSDictionary *positiveData = [apiResponse objectForKey:@"positive"];
+        NSMutableArray *positivesArrayBuilder = [NSMutableArray array];
         
-        NSDictionary *apiObject = (NSDictionary *)apiResponse;
-        
-        SET_IF_NOT_NULL(self.positives, apiResponse[@"positive"])
-        SET_IF_NOT_NULL(self.negatives, apiResponse[@"negative"])
+        for (NSString *key in positiveData) {
+            BVReviewHighlight *positive = [[BVReviewHighlight alloc] initWithTitle:key content:positiveData[key]];
+            [positivesArrayBuilder addObject:positive];
+        }
+        self.positives = positivesArrayBuilder;
 
-        if (!self.positives) {
-            //self.positive =
-        }
         
-        if (!self.negatives) {
-            
+        //Mapping NegativeData
+        NSDictionary *negativeData = [apiResponse objectForKey:@"negative"];
+        NSMutableArray *negativesArrayBuilder = [NSMutableArray array];
+        
+        for (NSString *key in negativeData) {
+            BVReviewHighlight *negative = [[BVReviewHighlight alloc] initWithTitle:key content:negativeData[key]];
+            [negativesArrayBuilder addObject:negative];
         }
+        self.negatives = negativesArrayBuilder;
     }
     return self;
 }
