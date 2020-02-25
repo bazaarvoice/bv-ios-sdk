@@ -17,7 +17,6 @@
 //TODO
 @property(nullable) NSString *title;
 
-- (nullable id)initWithApiResponse:(nullable id)apiResponse;
 - (nullable id)initWithTitle:(NSString *_Nullable)title content:(nullable id) content;
 
 @end
