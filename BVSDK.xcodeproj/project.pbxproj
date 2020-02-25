@@ -44,11 +44,11 @@
 		4270F90D23F3D95D00082C15 /* BVReviewHighlightsRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 4270F90B23F3D95D00082C15 /* BVReviewHighlightsRequest.m */; };
 		4270F91023F3D97C00082C15 /* BVReviewHighlightsResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = 4270F90E23F3D97C00082C15 /* BVReviewHighlightsResponse.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4270F91123F3D97C00082C15 /* BVReviewHighlightsResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 4270F90F23F3D97C00082C15 /* BVReviewHighlightsResponse.m */; };
-		4270F91423F3D9CB00082C15 /* BVReviewHighlight.h in Headers */ = {isa = PBXBuildFile; fileRef = 4270F91223F3D9CB00082C15 /* BVReviewHighlight.h */; };
+		4270F91423F3D9CB00082C15 /* BVReviewHighlight.h in Headers */ = {isa = PBXBuildFile; fileRef = 4270F91223F3D9CB00082C15 /* BVReviewHighlight.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4270F91523F3D9CB00082C15 /* BVReviewHighlight.m in Sources */ = {isa = PBXBuildFile; fileRef = 4270F91323F3D9CB00082C15 /* BVReviewHighlight.m */; };
-		42AD491523FBC3010040ADD7 /* BVReviewHighligtsReview.h in Headers */ = {isa = PBXBuildFile; fileRef = 42AD491323FBC3010040ADD7 /* BVReviewHighligtsReview.h */; };
+		42AD491523FBC3010040ADD7 /* BVReviewHighligtsReview.h in Headers */ = {isa = PBXBuildFile; fileRef = 42AD491323FBC3010040ADD7 /* BVReviewHighligtsReview.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		42AD491623FBC3010040ADD7 /* BVReviewHighligtsReview.m in Sources */ = {isa = PBXBuildFile; fileRef = 42AD491423FBC3010040ADD7 /* BVReviewHighligtsReview.m */; };
-		42AD491923FBDB090040ADD7 /* BVReviewHighlights.h in Headers */ = {isa = PBXBuildFile; fileRef = 42AD491723FBDB090040ADD7 /* BVReviewHighlights.h */; };
+		42AD491923FBDB090040ADD7 /* BVReviewHighlights.h in Headers */ = {isa = PBXBuildFile; fileRef = 42AD491723FBDB090040ADD7 /* BVReviewHighlights.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		42AD491A23FBDB090040ADD7 /* BVReviewHighlights.m in Sources */ = {isa = PBXBuildFile; fileRef = 42AD491823FBDB090040ADD7 /* BVReviewHighlights.m */; };
 		5F140C5D1F9553FE00905828 /* skelly_android.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5F140C5C1F9553FE00905828 /* skelly_android.jpg */; };
 		5F51EA4D1F575659002FA8FD /* BVFormInputType.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F51EA4C1F575659002FA8FD /* BVFormInputType.m */; };
