@@ -11,10 +11,6 @@
 
 @implementation BVReviewHighlight
 
-- (id)initWithApiResponse:(id)apiResponse {
-    return self;
-}
-
 - (id)initWithTitle:(NSString *)title content:(id)content {
     
     if ((self = [super init])) {
