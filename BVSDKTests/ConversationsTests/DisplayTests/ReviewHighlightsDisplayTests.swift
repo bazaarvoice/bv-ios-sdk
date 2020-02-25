@@ -39,6 +39,23 @@ class ReviewHighlightsDisplayTests: XCTestCase {
     //Both Pros and Cons are returned for a valid productId and clientId.
     func testProsAndCons() {
         
+        let expectation = self.expectation(description: "testProsAndCons")
+        
+        let request = BVReviewHighlightsRequest(productId: "")
+        request.load({ (response) in
+            
+            expectation.fulfill()
+            
+        }) { (error) in
+            
+            XCTFail("Profile display request error: \(error)")
+            expectation.fulfill()
+        }
+        
+        self.waitForExpectations(timeout: 10) { (error) in
+            XCTAssertNil(error, "Something went horribly wrong, request took too long.")
+        }
+        
     }
     
     //Only Pros are returned and no Cons are returned for a valid productId and clientId.
@@ -52,15 +69,22 @@ class ReviewHighlightsDisplayTests: XCTestCase {
             
             XCTAssertNotNil(response.reviewHighlights)
             XCTAssertNotNil(response.reviewHighlights.positives)
+            
             if let positives = response.reviewHighlights.positives {
                 XCTAssertFalse(positives.isEmpty)
+            }
+            
+            XCTAssertNotNil(response.reviewHighlights.negatives)
+            
+            if let negatives = response.reviewHighlights.negatives {
+                XCTAssertTrue(negatives.isEmpty)
             }
             
             expectation.fulfill()
             
         }) { (error) in
             
-            XCTFail("profile display request error: \(error)")
+            XCTFail("Profile display request error: \(error)")
             expectation.fulfill()
         }
         
@@ -73,35 +97,153 @@ class ReviewHighlightsDisplayTests: XCTestCase {
     //Only Cons are returned and no Pros are returned for a valid productId and clientId.
     func testOnlyConsAndNoPros() {
         
+        let expectation = self.expectation(description: "testOnlyConsAndNoPros")
+        
+        let request = BVReviewHighlightsRequest(productId: "")
+        request.load({ (response) in
+            
+            expectation.fulfill()
+            
+        }) { (error) in
+            
+            XCTFail("Profile display request error: \(error)")
+            expectation.fulfill()
+        }
+        
+        self.waitForExpectations(timeout: 10) { (error) in
+            XCTAssertNil(error, "Something went horribly wrong, request took too long.")
+        }
     }
     
     //No Pros and Cons are returned for a valid productId and clientId (Review count < 10, Excluding incentivised reviews review count < 10).
     func testNoProsAndCons() {
+        
+        let expectation = self.expectation(description: "testNoProsAndCons")
+        
+        let request = BVReviewHighlightsRequest(productId: "")
+        request.load({ (response) in
+            
+            expectation.fulfill()
+            
+        }) { (error) in
+            
+            XCTFail("Profile display request error: \(error)")
+            expectation.fulfill()
+        }
+        
+        self.waitForExpectations(timeout: 10) { (error) in
+            XCTAssertNil(error, "Something went horribly wrong, request took too long.")
+        }
         
     }
     
     //The given productId is invalid. In this case a specific error should be returned.
     func testInvalidProductId() {
         
+        let expectation = self.expectation(description: "testInvalidProductId")
+        
+        let request = BVReviewHighlightsRequest(productId: "")
+        request.load({ (response) in
+            
+            expectation.fulfill()
+            
+        }) { (error) in
+            
+            XCTFail("Profile display request error: \(error)")
+            expectation.fulfill()
+        }
+        
+        self.waitForExpectations(timeout: 10) { (error) in
+            XCTAssertNil(error, "Something went horribly wrong, request took too long.")
+        }
+        
     }
     
     //The given clientId is invalid. In this case a specific error should be returned.
     func testInvalidClientId() {
+        
+        let expectation = self.expectation(description: "testInvalidClientId")
+        
+        let request = BVReviewHighlightsRequest(productId: "")
+        request.load({ (response) in
+            
+            expectation.fulfill()
+            
+        }) { (error) in
+            
+            XCTFail("Profile display request error: \(error)")
+            expectation.fulfill()
+        }
+        
+        self.waitForExpectations(timeout: 10) { (error) in
+            XCTAssertNil(error, "Something went horribly wrong, request took too long.")
+        }
         
     }
     
     //The clientId does not have RH enabled. In this case a specific error should be returned.
     func testReviewHighlightsNotEnabled() {
         
+        let expectation = self.expectation(description: "testReviewHighlightsNotEnabled")
+        
+        let request = BVReviewHighlightsRequest(productId: "")
+        request.load({ (response) in
+            
+            expectation.fulfill()
+            
+        }) { (error) in
+            
+            XCTFail("Profile display request error: \(error)")
+            expectation.fulfill()
+        }
+        
+        self.waitForExpectations(timeout: 10) { (error) in
+            XCTAssertNil(error, "Something went horribly wrong, request took too long.")
+        }
+        
     }
     
     //Pros & Cons should not be mismatched.
     func testProsAndConsNotMismatched() {
         
+        let expectation = self.expectation(description: "testProsAndConsNotMismatched")
+        
+        let request = BVReviewHighlightsRequest(productId: "")
+        request.load({ (response) in
+            
+            expectation.fulfill()
+            
+        }) { (error) in
+            
+            XCTFail("Profile display request error: \(error)")
+            expectation.fulfill()
+        }
+        
+        self.waitForExpectations(timeout: 10) { (error) in
+            XCTAssertNil(error, "Something went horribly wrong, request took too long.")
+        }
+        
     }
     
     //The sequence of the Pros and Cons should be the same as return in Response.
     func testProsAndConsSequence() {
+        
+        let expectation = self.expectation(description: "testProsAndConsSequence")
+        
+        let request = BVReviewHighlightsRequest(productId: "")
+        request.load({ (response) in
+            
+            expectation.fulfill()
+            
+        }) { (error) in
+            
+            XCTFail("Profile display request error: \(error)")
+            expectation.fulfill()
+        }
+        
+        self.waitForExpectations(timeout: 10) { (error) in
+            XCTAssertNil(error, "Something went horribly wrong, request took too long.")
+        }
         
     }
     
