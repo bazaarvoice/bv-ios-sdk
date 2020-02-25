@@ -39,15 +39,27 @@ class ReviewHighlightsDisplayTests: XCTestCase {
     //Both Pros and Cons are returned for a valid productId and clientId.
     func testProsAndCons() {
         
-        let expectation = self.expectation(description: "testReviewHighlightsRequest")
+    }
+    
+    //Only Pros are returned and no Cons are returned for a valid productId and clientId.
+    func testOnlyProsAndNoCons() {
+        
+        let expectation = self.expectation(description: "testOnlyProsAndNoCons")
         
         let request = BVReviewHighlightsRequest(productId: "5068ZW")
         request.load({ (response) in
             
+            
+            XCTAssertNotNil(response.reviewHighlights)
+            XCTAssertNotNil(response.reviewHighlights.positives)
+            if let positives = response.reviewHighlights.positives {
+                XCTAssertFalse(positives.isEmpty)
+            }
+            
             expectation.fulfill()
             
-            
         }) { (error) in
+            
             XCTFail("profile display request error: \(error)")
             expectation.fulfill()
         }
@@ -55,11 +67,6 @@ class ReviewHighlightsDisplayTests: XCTestCase {
         self.waitForExpectations(timeout: 10) { (error) in
             XCTAssertNil(error, "Something went horribly wrong, request took too long.")
         }
-        
-    }
-    
-    //Only Pros are returned and no Cons are returned for a valid productId and clientId.
-    func testOnlyProsAndNoCons() {
         
     }
     
@@ -97,7 +104,5 @@ class ReviewHighlightsDisplayTests: XCTestCase {
     func testProsAndConsSequence() {
         
     }
-    
-    
     
 }
