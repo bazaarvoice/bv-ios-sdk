@@ -17,9 +17,7 @@
         if (!apiResponse || ![apiResponse isKindOfClass:[NSDictionary class]]) {
             return nil;
         }
-        
-        NSDictionary *apiObject = (NSDictionary *)apiResponse;
-        
+                
         //Mapping PositiveData
         NSDictionary *positiveData = [apiResponse objectForKey:@"positive"];
         NSMutableArray *positivesArrayBuilder = [NSMutableArray array];
@@ -37,6 +35,7 @@
         
         for (NSString *key in negativeData) {
             BVReviewHighlight *negative = [[BVReviewHighlight alloc] initWithTitle:key content:negativeData[key]];
+            [negativesArrayBuilder addObject:negative];
         }
         self.negatives = negativesArrayBuilder;
     }
