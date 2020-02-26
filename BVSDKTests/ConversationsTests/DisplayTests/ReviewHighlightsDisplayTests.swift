@@ -11,6 +11,7 @@
  Both Pros and Cons are returned for a valid productId and clientId.
  Only Pros are returned and no Cons are returned for a valid productId and clientId.
  Only Cons are returned and no Pros are returned for a valid productId and clientId.
+ The count of PROS and CONS Should be equal to or less then five.
  No Pros and Cons are returned for a valid productId and clientId (Review count < 10, Excluding incentivised reviews review count < 10).
  The given productId is invalid. In this case a specific error should be returned.
  The given clientId is invalid. In this case a specific error should be returned.
@@ -174,6 +175,7 @@ class ReviewHighlightsDisplayTests: XCTestCase {
         
     }
     
+    //The count of PROS and CONS Should be equal to or less then five.
     func testCountOfProsAndConsNotMoreThanFive() {
         
         let expectation = self.expectation(description: "testCountOfProsAndConsNotMoreThanFive")
@@ -185,12 +187,12 @@ class ReviewHighlightsDisplayTests: XCTestCase {
             XCTAssertNotNil(response.reviewHighlights.positives)
             XCTAssertNotNil(response.reviewHighlights.negatives)
             
-            if let negative = response.reviewHighlights.negatives {
-                XCTAssertFalse(negative.count > 5)
+            if let negatives = response.reviewHighlights.negatives {
+                XCTAssertFalse(negatives.count > 5)
             }
             
-            if let positive = response.reviewHighlights.positives {
-                XCTAssertFalse(positive.count > 5)
+            if let positives = response.reviewHighlights.positives {
+                XCTAssertFalse(positives.count > 5)
             }
             
             expectation.fulfill()
@@ -237,6 +239,7 @@ class ReviewHighlightsDisplayTests: XCTestCase {
         
         let expectation = self.expectation(description: "testInvalidClientId")
         
+        //To change the Client ID for this TestCase.
         let configDict = ["clientId": "invalidClinetId"];
         BVSDKManager.configure(withConfiguration: configDict, configType: .staging)
         BVSDKManager.shared().setLogLevel(.verbose)
