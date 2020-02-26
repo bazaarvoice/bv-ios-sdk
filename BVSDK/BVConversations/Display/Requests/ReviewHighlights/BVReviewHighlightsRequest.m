@@ -37,10 +37,6 @@
     return endpoint;
 }
 
-- (nonnull NSMutableArray<BVStringKeyValuePair *> *)createParams {
-    return nil;
-}
-
 - (void)load:(void (^)(BVReviewHighlightsResponse * _Nonnull))success failure:(ConversationsFailureHandler)failure {
     
     [self loadContent:self
@@ -58,14 +54,11 @@
               failure:failure];
 }
 
-- (void)
-loadContent:(nonnull BVReviewHighlightsRequest *)request
- completion:(nonnull void (^)(NSDictionary *__nonnull response))completion
-    failure:(nonnull void (^)(NSArray<NSError *> *__nonnull errors))failure {
+- (void)loadContent:(BVConversationsRequest *)request completion:(void (^)(NSDictionary * _Nonnull))completion failure:(void (^)(NSArray<NSError *> * _Nonnull))failure {
     
     NSString *url = [NSString
-        stringWithFormat:@"%@%@", [BVReviewHighlightsRequest commonEndpoint],
-                         [request endpoint]];
+    stringWithFormat:@"%@%@", [BVReviewHighlightsRequest commonEndpoint],
+                     [self endpoint]];
     NSURLComponents *urlComponents = [NSURLComponents componentsWithString:url];
     NSURLRequest *urlRequest = [NSURLRequest requestWithURL:urlComponents.URL];
     BVLogVerbose(([NSString stringWithFormat:@"GET: %@", urlRequest.URL]),
@@ -107,7 +100,6 @@ loadContent:(nonnull BVReviewHighlightsRequest *)request
     }
 }
 
-
 - (void)
 processData:(nullable NSData *)data
    response:(nullable NSURLResponse *)response
@@ -124,7 +116,6 @@ processData:(nullable NSData *)data
                                                                options:kNilOptions
                                                                  error:&err];
           
-          NSLog(@"JSON: %@", json);
           if (json) {
 //              BVDisplayErrorResponse *errorResponse =
 //              [[BVDisplayErrorResponse alloc] initWithApiResponse:json];
