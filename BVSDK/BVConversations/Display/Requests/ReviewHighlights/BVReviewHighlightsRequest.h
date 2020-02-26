@@ -7,9 +7,8 @@
 
 #import "BVReviewHighlightsResponse.h"
 #import "BVConversationsRequest.h"
-#import "BVReviewHighlightsBaseRequest.h"
 
-@interface BVReviewHighlightsRequest : BVReviewHighlightsBaseRequest
+@interface BVReviewHighlightsRequest : BVConversationsRequest
 
 @property(nonnull, readonly) NSString *productId;
 

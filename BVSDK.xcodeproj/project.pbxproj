@@ -458,8 +458,6 @@
 		987C076D2253FBCB00227934 /* BVProgressiveSubmitResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 987C076B2253FBCB00227934 /* BVProgressiveSubmitResponse.m */; };
 		987C076F2254038A00227934 /* BVIProgressiveSubmitTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 987C076E2254038A00227934 /* BVIProgressiveSubmitTest.swift */; };
 		9F82FBB32403945F00187666 /* ReviewHighlightsDisplayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F82FBB22403945F00187666 /* ReviewHighlightsDisplayTests.swift */; };
-		9F9B8921240511D300DCD71D /* BVReviewHighlightsBaseRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 9F9B891F240511D300DCD71D /* BVReviewHighlightsBaseRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		9F9B8922240511D300DCD71D /* BVReviewHighlightsBaseRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F9B8920240511D300DCD71D /* BVReviewHighlightsBaseRequest.m */; };
 		B56D71822032476A002EC872 /* BVLocaleManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B56D71812032476A002EC872 /* BVLocaleManagerTests.m */; };
 		B56E1F921FBF86360025D5B4 /* UASSubmissionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56E1F911FBF86360025D5B4 /* UASSubmissionTests.swift */; };
 		B575C3861FBDFD6F000F890B /* BVUASSubmission.h in Headers */ = {isa = PBXBuildFile; fileRef = B575C3841FBDFD6F000F890B /* BVUASSubmission.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -1105,8 +1103,6 @@
 		987C076B2253FBCB00227934 /* BVProgressiveSubmitResponse.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BVProgressiveSubmitResponse.m; sourceTree = "<group>"; };
 		987C076E2254038A00227934 /* BVIProgressiveSubmitTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BVIProgressiveSubmitTest.swift; sourceTree = "<group>"; };
 		9F82FBB22403945F00187666 /* ReviewHighlightsDisplayTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewHighlightsDisplayTests.swift; sourceTree = "<group>"; };
-		9F9B891F240511D300DCD71D /* BVReviewHighlightsBaseRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BVReviewHighlightsBaseRequest.h; sourceTree = "<group>"; };
-		9F9B8920240511D300DCD71D /* BVReviewHighlightsBaseRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BVReviewHighlightsBaseRequest.m; sourceTree = "<group>"; };
 		B56D71812032476A002EC872 /* BVLocaleManagerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = BVLocaleManagerTests.m; path = BVSDKTests/CommonTests/BVLocaleManagerTests.m; sourceTree = SOURCE_ROOT; };
 		B56E1F911FBF86360025D5B4 /* UASSubmissionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UASSubmissionTests.swift; sourceTree = "<group>"; };
 		B575C3841FBDFD6F000F890B /* BVUASSubmission.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = BVUASSubmission.h; path = ../Auth/BVUASSubmission.h; sourceTree = "<group>"; };
@@ -1342,8 +1338,6 @@
 				4270F90B23F3D95D00082C15 /* BVReviewHighlightsRequest.m */,
 				4270F90E23F3D97C00082C15 /* BVReviewHighlightsResponse.h */,
 				4270F90F23F3D97C00082C15 /* BVReviewHighlightsResponse.m */,
-				9F9B891F240511D300DCD71D /* BVReviewHighlightsBaseRequest.h */,
-				9F9B8920240511D300DCD71D /* BVReviewHighlightsBaseRequest.m */,
 			);
 			path = ReviewHighlights;
 			sourceTree = "<group>";
@@ -2678,7 +2672,6 @@
 				87F2DC581DAD585E00FB43F3 /* BVCommaUtil.h in Headers */,
 				87F2DD151DAD585E00FB43F3 /* BVReviewView.h in Headers */,
 				B5BE76A6200EA666002BA818 /* BVReviewIncludeTypeValue.h in Headers */,
-				9F9B8921240511D300DCD71D /* BVReviewHighlightsBaseRequest.h in Headers */,
 				87F2DD171DAD585E00FB43F3 /* BVCurations.h in Headers */,
 				B583B125200E8ABE001E9548 /* BVConversationDisplay.h in Headers */,
 				87F2DC621DAD585E00FB43F3 /* BVBulkRatingsResponse.h in Headers */,
@@ -3255,7 +3248,6 @@
 				87F2DD421DAD585E00FB43F3 /* BVRecommendedProduct.m in Sources */,
 				87F2DC8A1DAD585E00FB43F3 /* BVReviewStatistic.m in Sources */,
 				987C076D2253FBCB00227934 /* BVProgressiveSubmitResponse.m in Sources */,
-				9F9B8922240511D300DCD71D /* BVReviewHighlightsBaseRequest.m in Sources */,
 				B5A764B21FDB1ACE00B5DC9A /* BVAnswersTableView.m in Sources */,
 				1539745D1E719B9600BA52C1 /* BVDisplayResponse.m in Sources */,
 				87F2DD141DAD585E00FB43F3 /* BVReviewTableViewCell.m in Sources */,
