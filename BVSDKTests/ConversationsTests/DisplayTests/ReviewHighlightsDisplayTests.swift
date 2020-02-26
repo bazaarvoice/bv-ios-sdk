@@ -27,7 +27,7 @@ class ReviewHighlightsDisplayTests: XCTestCase {
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.
         super.setUp()
-        let configDict = ["clientId": "hibbett"];
+        let configDict = ["clientId": "1800petmeds"];
         BVSDKManager.configure(withConfiguration: configDict, configType: .staging)
         BVSDKManager.shared().setLogLevel(.verbose)
     }
@@ -41,8 +41,20 @@ class ReviewHighlightsDisplayTests: XCTestCase {
         
         let expectation = self.expectation(description: "testProsAndCons")
         
-        let request = BVReviewHighlightsRequest(productId: "")
+        let request = BVReviewHighlightsRequest(productId: "prod1011")
         request.load({ (response) in
+            
+            XCTAssertNotNil(response.reviewHighlights)
+            XCTAssertNotNil(response.reviewHighlights.negatives)
+            XCTAssertNotNil(response.reviewHighlights.positives)
+            
+            if let negatives = response.reviewHighlights.negatives {
+                XCTAssertFalse(negatives.isEmpty)
+            }
+            
+            if let positives = response.reviewHighlights.positives {
+                XCTAssertFalse(positives.isEmpty)
+            }
             
             expectation.fulfill()
             
@@ -63,7 +75,7 @@ class ReviewHighlightsDisplayTests: XCTestCase {
         
         let expectation = self.expectation(description: "testOnlyProsAndNoCons")
         
-        let request = BVReviewHighlightsRequest(productId: "5068ZW")
+        let request = BVReviewHighlightsRequest(productId: "prod10002")
         request.load({ (response) in
             
             
@@ -99,8 +111,21 @@ class ReviewHighlightsDisplayTests: XCTestCase {
         
         let expectation = self.expectation(description: "testOnlyConsAndNoPros")
         
-        let request = BVReviewHighlightsRequest(productId: "")
+        let request = BVReviewHighlightsRequest(productId: "5068ZW")
         request.load({ (response) in
+            
+            XCTAssertNotNil(response.reviewHighlights)
+            XCTAssertNotNil(response.reviewHighlights.negatives)
+            
+            if let negatives = response.reviewHighlights.negatives {
+                XCTAssertFalse(negatives.isEmpty)
+            }
+            
+            XCTAssertNotNil(response.reviewHighlights.positives)
+            
+            if let positives = response.reviewHighlights.positives {
+                XCTAssertTrue(positives.isEmpty)
+            }
             
             expectation.fulfill()
             
@@ -115,13 +140,25 @@ class ReviewHighlightsDisplayTests: XCTestCase {
         }
     }
     
-    //No Pros and Cons are returned for a valid productId and clientId (Review count < 10, Excluding incentivised reviews review count < 10).
-    func testNoProsAndCons() {
+    //No Pros and No Cons are returned for a valid productId and clientId (Review count < 10, Excluding incentivised reviews review count < 10).
+    func testNoProsAndNoCons() {
         
         let expectation = self.expectation(description: "testNoProsAndCons")
         
-        let request = BVReviewHighlightsRequest(productId: "")
+        let request = BVReviewHighlightsRequest(productId: "5068ZW")
         request.load({ (response) in
+            
+            XCTAssertNotNil(response.reviewHighlights)
+            XCTAssertNotNil(response.reviewHighlights.negatives)
+            XCTAssertNotNil(response.reviewHighlights.positives)
+            
+            if let negatives = response.reviewHighlights.negatives {
+                XCTAssertTrue(negatives.isEmpty)
+            }
+            
+            if let positives = response.reviewHighlights.positives {
+                XCTAssertTrue(positives.isEmpty)
+            }
             
             expectation.fulfill()
             
@@ -135,6 +172,40 @@ class ReviewHighlightsDisplayTests: XCTestCase {
             XCTAssertNil(error, "Something went horribly wrong, request took too long.")
         }
         
+    }
+    
+    func testCountOfProsAndConsNotMoreThanFive() {
+        
+        let expectation = self.expectation(description: "testCountOfProsAndConsNotMoreThanFive")
+        
+        let request = BVReviewHighlightsRequest(productId: "prod11480")
+        request.load({ (response) in
+            
+            XCTAssertNotNil(response.reviewHighlights)
+            XCTAssertNotNil(response.reviewHighlights.positives)
+            XCTAssertNotNil(response.reviewHighlights.negatives)
+            
+            if let negative = response.reviewHighlights.negatives {
+                XCTAssertFalse(negative.count > 5)
+            }
+            
+            if let positive = response.reviewHighlights.positives {
+                XCTAssertFalse(positive.count > 5)
+            }
+            
+            expectation.fulfill()
+            
+            
+        }) { (error) in
+            
+            XCTFail("Profile display request error: \(error)")
+            expectation.fulfill()
+            
+        }
+        
+        self.waitForExpectations(timeout: 10) { (error) in
+            XCTAssertNil(error, "Something went horribly worng, request took too long.")
+        }
     }
     
     //The given productId is invalid. In this case a specific error should be returned.
@@ -142,14 +213,16 @@ class ReviewHighlightsDisplayTests: XCTestCase {
         
         let expectation = self.expectation(description: "testInvalidProductId")
         
-        let request = BVReviewHighlightsRequest(productId: "")
+        let request = BVReviewHighlightsRequest(productId: "invalidProductId")
         request.load({ (response) in
+            
+            XCTFail("success block should not be called")
             
             expectation.fulfill()
             
         }) { (error) in
             
-            XCTFail("Profile display request error: \(error)")
+            XCTAssertNotNil(error)
             expectation.fulfill()
         }
         
@@ -164,14 +237,19 @@ class ReviewHighlightsDisplayTests: XCTestCase {
         
         let expectation = self.expectation(description: "testInvalidClientId")
         
-        let request = BVReviewHighlightsRequest(productId: "")
+        let configDict = ["clientId": "invalidClinetId"];
+        BVSDKManager.configure(withConfiguration: configDict, configType: .staging)
+        BVSDKManager.shared().setLogLevel(.verbose)
+        
+        let request = BVReviewHighlightsRequest(productId: "5068ZW")
         request.load({ (response) in
             
+            XCTFail("success block should not be called")
             expectation.fulfill()
             
         }) { (error) in
             
-            XCTFail("Profile display request error: \(error)")
+            XCTAssertNotNil(error)
             expectation.fulfill()
         }
         
@@ -186,14 +264,15 @@ class ReviewHighlightsDisplayTests: XCTestCase {
         
         let expectation = self.expectation(description: "testReviewHighlightsNotEnabled")
         
-        let request = BVReviewHighlightsRequest(productId: "")
+        let request = BVReviewHighlightsRequest(productId: "5068ZW")
         request.load({ (response) in
             
+            XCTFail("success block should not be called")
             expectation.fulfill()
             
         }) { (error) in
             
-            XCTFail("Profile display request error: \(error)")
+            XCTAssertNotNil(error)
             expectation.fulfill()
         }
         
@@ -208,8 +287,20 @@ class ReviewHighlightsDisplayTests: XCTestCase {
         
         let expectation = self.expectation(description: "testProsAndConsNotMismatched")
         
-        let request = BVReviewHighlightsRequest(productId: "")
+        let request = BVReviewHighlightsRequest(productId: "5068ZW")
         request.load({ (response) in
+            
+            XCTAssertNotNil(response.reviewHighlights)
+            XCTAssertNotNil(response.reviewHighlights.negatives)
+            XCTAssertNotNil(response.reviewHighlights.positives)
+            
+            if let negatives = response.reviewHighlights.negatives {
+                XCTAssertFalse(negatives.isEmpty)
+            }
+            
+            if let positives = response.reviewHighlights.positives {
+                XCTAssertFalse(positives.isEmpty)
+            }
             
             expectation.fulfill()
             
@@ -225,13 +316,26 @@ class ReviewHighlightsDisplayTests: XCTestCase {
         
     }
     
+    // TODO:- Se
     //The sequence of the Pros and Cons should be the same as return in Response.
     func testProsAndConsSequence() {
         
         let expectation = self.expectation(description: "testProsAndConsSequence")
         
-        let request = BVReviewHighlightsRequest(productId: "")
+        let request = BVReviewHighlightsRequest(productId: "5068ZW")
         request.load({ (response) in
+            
+            XCTAssertNotNil(response.reviewHighlights)
+            XCTAssertNotNil(response.reviewHighlights.negatives)
+            XCTAssertNotNil(response.reviewHighlights.positives)
+            
+            if let negatives = response.reviewHighlights.negatives {
+                XCTAssertFalse(negatives.isEmpty)
+            }
+            
+            if let positives = response.reviewHighlights.positives {
+                XCTAssertFalse(positives.isEmpty)
+            }
             
             expectation.fulfill()
             

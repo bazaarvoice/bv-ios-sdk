@@ -2043,8 +2043,8 @@
 				87F2DDF71DAD945D00FB43F3 /* QuestionDisplayTests.swift */,
 				87F2DDF81DAD945D00FB43F3 /* ReviewDisplayTests.swift */,
 				981EE847226627F2000E9191 /* ReviewFilterDisplayTests.swift */,
-				87F2DDF91DAD945D00FB43F3 /* StoresTests */,
 				9F82FBB22403945F00187666 /* ReviewHighlightsDisplayTests.swift */,
+				87F2DDF91DAD945D00FB43F3 /* StoresTests */,
 			);
 			path = DisplayTests;
 			sourceTree = "<group>";
