@@ -112,7 +112,7 @@ class ReviewHighlightsDisplayTests: XCTestCase {
         
         let expectation = self.expectation(description: "testOnlyConsAndNoPros")
         
-        let request = BVReviewHighlightsRequest(productId: "5068ZW")
+        let request = BVReviewHighlightsRequest(productId: "prod1022")
         request.load({ (response) in
             
             XCTAssertNotNil(response.reviewHighlights)
