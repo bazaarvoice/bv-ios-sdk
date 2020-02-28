@@ -176,19 +176,4 @@ processData:(nullable NSData *)data
   }
 }
 
-- (void)sendError:(nonnull NSError *)error
-    failureCallback:(nonnull void (^)(NSArray<NSError *> *__nonnull errors))failure {
-  [self sendErrors:@[ error ] failureCallback:failure];
-}
-
-- (void)sendErrors:(nonnull NSArray<NSError *> *)errors
-    failureCallback:(nonnull void (^)(NSArray<NSError *> *__nonnull errors))failure {
-  for (NSError *error in errors) {
-    [[BVLogger sharedLogger] printError:error];
-  }
-  dispatch_async(dispatch_get_main_queue(), ^{
-    failure(errors);
-  });
-}
-
 @end
