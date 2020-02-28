@@ -22,4 +22,10 @@ loadContent:(nonnull BVConversationsRequest *)request
  completion:(nonnull void (^)(NSDictionary *__nonnull response))completion
     failure:(nonnull void (^)(NSArray<NSError *> *__nonnull errors))failure;
 
+- (void)sendError:(nonnull NSError *)error
+  failureCallback:(nonnull ConversationsFailureHandler)failure;
+
+- (void)sendErrors:(nonnull NSArray<NSError *> *)errors
+   failureCallback:(nonnull ConversationsFailureHandler)failure;
+
 @end
