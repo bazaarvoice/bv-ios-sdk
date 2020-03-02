@@ -8,7 +8,6 @@
 #import "BVReviewHighlightsRequest.h"
 #import "BVSDKConfiguration.h"
 #import "BVSDKManager+Private.h"
-#import "BVStringKeyValuePair.h"
 #import "BVLogger+Private.h"
 #import "BVNetworkingManager.h"
 

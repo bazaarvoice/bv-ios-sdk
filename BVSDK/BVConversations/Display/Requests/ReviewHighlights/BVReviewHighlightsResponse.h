@@ -8,8 +8,6 @@
 #import <Foundation/Foundation.h>
 #import "BVReviewHighlights.h"
 
-NS_ASSUME_NONNULL_BEGIN
-
 @interface BVReviewHighlightsResponse : NSObject
 
 @property(nonnull) BVReviewHighlights *reviewHighlights;
@@ -17,5 +15,3 @@ NS_ASSUME_NONNULL_BEGIN
 - (nonnull instancetype)initWithApiResponse:(nonnull NSDictionary *)apiResponse;
 
 @end
-
-NS_ASSUME_NONNULL_END
