@@ -10,6 +10,7 @@
 #import "BVSDKManager+Private.h"
 #import "BVLogger+Private.h"
 #import "BVNetworkingManager.h"
+#import "BVReviewHighlightsErrorResponse.h"
 
 @implementation BVReviewHighlightsRequest
 
@@ -116,30 +117,21 @@ processData:(nullable NSData *)data
                                                                  error:&err];
           
           if (json) {
-//              BVDisplayErrorResponse *errorResponse =
-//              [[BVDisplayErrorResponse alloc] initWithApiResponse:json];
-//
-//              BVLogVerbose(([NSString stringWithFormat:@"RESPONSE: %@ (%ld)", json,
-//                             (long)statusCode]),
-//                           BV_PRODUCT_CONVERSATIONS);
-              
-              // TODO:- Map API Error Response
+              BVReviewHighlightsErrorResponse *errorResponse =
+              [[BVReviewHighlightsErrorResponse alloc] initWithApiResponse:json];
 
-              // invoke success callback on main thread
-              dispatch_async(dispatch_get_main_queue(), ^{
-                  completion(json);
-              });
+              BVLogVerbose(([NSString stringWithFormat:@"RESPONSE: %@ (%ld)", json,
+                             (long)statusCode]),
+                           BV_PRODUCT_CONVERSATIONS);
               
-//              if (errorResponse) {
-//
-//                  // TODO:- Send API Resopnse Error
-////                  [self sendErrors:[errorResponse toNSErrors] failureCallback:failure];
-//              } else {
-//                  // invoke success callback on main thread
-//                  dispatch_async(dispatch_get_main_queue(), ^{
-//                      completion(json);
-//                  });
-//              }
+              if (errorResponse) {
+                [self sendError:[errorResponse toNSError] failureCallback:failure];
+              } else {
+                  // invoke success callback on main thread
+                  dispatch_async(dispatch_get_main_queue(), ^{
+                      completion(json);
+                  });
+              }
           } else if (err) {
               [self sendError:err failureCallback:failure];
           } else {

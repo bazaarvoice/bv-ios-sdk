@@ -6,11 +6,12 @@
 // 
 
 #import <Foundation/Foundation.h>
+#import "BVDisplayErrorResponse.h"
 
-NS_ASSUME_NONNULL_BEGIN
 
-@interface BVReviewHighlightsErrorResponse : NSObject
+@interface BVReviewHighlightsErrorResponse : BVDisplayErrorResponse
+
+- (nonnull NSError *)toNSError;
 
 @end
 
-NS_ASSUME_NONNULL_END
