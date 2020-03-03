@@ -458,7 +458,7 @@
 		987C076D2253FBCB00227934 /* BVProgressiveSubmitResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 987C076B2253FBCB00227934 /* BVProgressiveSubmitResponse.m */; };
 		987C076F2254038A00227934 /* BVIProgressiveSubmitTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 987C076E2254038A00227934 /* BVIProgressiveSubmitTest.swift */; };
 		9F82FBB32403945F00187666 /* ReviewHighlightsDisplayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F82FBB22403945F00187666 /* ReviewHighlightsDisplayTests.swift */; };
-		9F9D353C240E2A4C00419D28 /* BVReviewHighlightsErrorResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = 9F9D353A240E2A4C00419D28 /* BVReviewHighlightsErrorResponse.h */; };
+		9F9D353C240E2A4C00419D28 /* BVReviewHighlightsErrorResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = 9F9D353A240E2A4C00419D28 /* BVReviewHighlightsErrorResponse.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9F9D353D240E2A4C00419D28 /* BVReviewHighlightsErrorResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F9D353B240E2A4C00419D28 /* BVReviewHighlightsErrorResponse.m */; };
 		B56D71822032476A002EC872 /* BVLocaleManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B56D71812032476A002EC872 /* BVLocaleManagerTests.m */; };
 		B56E1F921FBF86360025D5B4 /* UASSubmissionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56E1F911FBF86360025D5B4 /* UASSubmissionTests.swift */; };
