@@ -309,7 +309,7 @@ class ReviewHighlightsDisplayTests: XCTestCase {
             
         }) { (error) in
             
-            XCTFail("Profile display request error: \(error)")
+            XCTFail("Review Highlights display request error: \(error)")
             expectation.fulfill()
         }
         
