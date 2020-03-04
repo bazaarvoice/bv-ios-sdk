@@ -10,6 +10,7 @@
 #import "BVSDKManager+Private.h"
 #import "BVLogger+Private.h"
 #import "BVNetworkingManager.h"
+#import "BVReviewHighlightsErrorResponse.h"
 
 @implementation BVReviewHighlightsRequest
 
@@ -36,7 +37,7 @@
     return endpoint;
 }
 
-- (void)load:(void (^)(BVReviewHighlightsResponse * _Nonnull))success failure:(ConversationsFailureHandler)failure {
+- (void)load:(void (^)(BVReviewHighlightsResponse *__nonnull response))success failure:(nonnull ConversationsFailureHandler)failure {
     
     [self loadContent:self
            completion:^(NSDictionary * _Nonnull response) {
@@ -53,7 +54,10 @@
               failure:failure];
 }
 
-- (void)loadContent:(BVConversationsRequest *)request completion:(void (^)(NSDictionary * _Nonnull))completion failure:(void (^)(NSArray<NSError *> * _Nonnull))failure {
+- (void)
+loadContent:(nonnull BVConversationsRequest *)request
+completion:(nonnull void (^)(NSDictionary *__nonnull response))completion
+failure:(nonnull void (^)(NSArray<NSError *> *__nonnull errors))failure {
     
     NSString *url = [NSString
     stringWithFormat:@"%@%@", [BVReviewHighlightsRequest commonEndpoint],
@@ -116,30 +120,21 @@ processData:(nullable NSData *)data
                                                                  error:&err];
           
           if (json) {
-//              BVDisplayErrorResponse *errorResponse =
-//              [[BVDisplayErrorResponse alloc] initWithApiResponse:json];
-//
-//              BVLogVerbose(([NSString stringWithFormat:@"RESPONSE: %@ (%ld)", json,
-//                             (long)statusCode]),
-//                           BV_PRODUCT_CONVERSATIONS);
-              
-              // TODO:- Map API Error Response
+              BVReviewHighlightsErrorResponse *errorResponse =
+              [[BVReviewHighlightsErrorResponse alloc] initWithApiResponse:json];
 
-              // invoke success callback on main thread
-              dispatch_async(dispatch_get_main_queue(), ^{
-                  completion(json);
-              });
+              BVLogVerbose(([NSString stringWithFormat:@"RESPONSE: %@ (%ld)", json,
+                             (long)statusCode]),
+                           BV_PRODUCT_CONVERSATIONS);
               
-//              if (errorResponse) {
-//
-//                  // TODO:- Send API Resopnse Error
-////                  [self sendErrors:[errorResponse toNSErrors] failureCallback:failure];
-//              } else {
-//                  // invoke success callback on main thread
-//                  dispatch_async(dispatch_get_main_queue(), ^{
-//                      completion(json);
-//                  });
-//              }
+              if (errorResponse) {
+                [self sendError:[errorResponse toNSError] failureCallback:failure];
+              } else {
+                  // invoke success callback on main thread
+                  dispatch_async(dispatch_get_main_queue(), ^{
+                      completion(json);
+                  });
+              }
           } else if (err) {
               [self sendError:err failureCallback:failure];
           } else {
