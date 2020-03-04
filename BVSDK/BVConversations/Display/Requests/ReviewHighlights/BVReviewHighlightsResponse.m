@@ -9,7 +9,7 @@
 
 @implementation BVReviewHighlightsResponse
 
-- (instancetype)initWithApiResponse:(NSDictionary *)apiResponse {
+- (instancetype)initWithApiResponse:(nonnull NSDictionary *)apiResponse {
     if ((self = [super init])) {
         
         self.reviewHighlights = [[BVReviewHighlights alloc] initWithApiResponse:[apiResponse objectForKey:@"subjects"]];
