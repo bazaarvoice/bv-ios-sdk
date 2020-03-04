@@ -149,23 +149,13 @@ class ReviewHighlightsDisplayTests: XCTestCase {
         let request = BVReviewHighlightsRequest(productId: "5068ZW")
         request.load({ (response) in
             
-            XCTAssertNotNil(response.reviewHighlights)
-            XCTAssertNotNil(response.reviewHighlights.negatives)
-            XCTAssertNotNil(response.reviewHighlights.positives)
-            
-            if let negatives = response.reviewHighlights.negatives {
-                XCTAssertTrue(negatives.isEmpty)
-            }
-            
-            if let positives = response.reviewHighlights.positives {
-                XCTAssertTrue(positives.isEmpty)
-            }
+            XCTFail("success block should not be called")
             
             expectation.fulfill()
             
         }) { (error) in
             
-            XCTFail("Review Highlights display request error: \(error)")
+            XCTAssertNotNil(error)
             expectation.fulfill()
         }
         
@@ -290,7 +280,7 @@ class ReviewHighlightsDisplayTests: XCTestCase {
         
         let expectation = self.expectation(description: "testProsAndConsNotMismatched")
         
-        let request = BVReviewHighlightsRequest(productId: "5068ZW")
+        let request = BVReviewHighlightsRequest(productId: "prod1011")
         request.load({ (response) in
             
             XCTAssertNotNil(response.reviewHighlights)
@@ -319,13 +309,12 @@ class ReviewHighlightsDisplayTests: XCTestCase {
         
     }
     
-    // TODO:- Se
     //The sequence of the Pros and Cons should be the same as return in Response.
     func testProsAndConsSequence() {
         
         let expectation = self.expectation(description: "testProsAndConsSequence")
         
-        let request = BVReviewHighlightsRequest(productId: "5068ZW")
+        let request = BVReviewHighlightsRequest(productId: "prod1011")
         request.load({ (response) in
             
             XCTAssertNotNil(response.reviewHighlights)
