@@ -458,6 +458,8 @@
 		987C076D2253FBCB00227934 /* BVProgressiveSubmitResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 987C076B2253FBCB00227934 /* BVProgressiveSubmitResponse.m */; };
 		987C076F2254038A00227934 /* BVIProgressiveSubmitTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 987C076E2254038A00227934 /* BVIProgressiveSubmitTest.swift */; };
 		9F82FBB32403945F00187666 /* ReviewHighlightsDisplayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F82FBB22403945F00187666 /* ReviewHighlightsDisplayTests.swift */; };
+		9F9D353C240E2A4C00419D28 /* BVReviewHighlightsErrorResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = 9F9D353A240E2A4C00419D28 /* BVReviewHighlightsErrorResponse.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9F9D353D240E2A4C00419D28 /* BVReviewHighlightsErrorResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F9D353B240E2A4C00419D28 /* BVReviewHighlightsErrorResponse.m */; };
 		B56D71822032476A002EC872 /* BVLocaleManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B56D71812032476A002EC872 /* BVLocaleManagerTests.m */; };
 		B56E1F921FBF86360025D5B4 /* UASSubmissionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56E1F911FBF86360025D5B4 /* UASSubmissionTests.swift */; };
 		B575C3861FBDFD6F000F890B /* BVUASSubmission.h in Headers */ = {isa = PBXBuildFile; fileRef = B575C3841FBDFD6F000F890B /* BVUASSubmission.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -1103,6 +1105,8 @@
 		987C076B2253FBCB00227934 /* BVProgressiveSubmitResponse.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BVProgressiveSubmitResponse.m; sourceTree = "<group>"; };
 		987C076E2254038A00227934 /* BVIProgressiveSubmitTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BVIProgressiveSubmitTest.swift; sourceTree = "<group>"; };
 		9F82FBB22403945F00187666 /* ReviewHighlightsDisplayTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewHighlightsDisplayTests.swift; sourceTree = "<group>"; };
+		9F9D353A240E2A4C00419D28 /* BVReviewHighlightsErrorResponse.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BVReviewHighlightsErrorResponse.h; sourceTree = "<group>"; };
+		9F9D353B240E2A4C00419D28 /* BVReviewHighlightsErrorResponse.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BVReviewHighlightsErrorResponse.m; sourceTree = "<group>"; };
 		B56D71812032476A002EC872 /* BVLocaleManagerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = BVLocaleManagerTests.m; path = BVSDKTests/CommonTests/BVLocaleManagerTests.m; sourceTree = SOURCE_ROOT; };
 		B56E1F911FBF86360025D5B4 /* UASSubmissionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UASSubmissionTests.swift; sourceTree = "<group>"; };
 		B575C3841FBDFD6F000F890B /* BVUASSubmission.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = BVUASSubmission.h; path = ../Auth/BVUASSubmission.h; sourceTree = "<group>"; };
@@ -1338,6 +1342,8 @@
 				4270F90B23F3D95D00082C15 /* BVReviewHighlightsRequest.m */,
 				4270F90E23F3D97C00082C15 /* BVReviewHighlightsResponse.h */,
 				4270F90F23F3D97C00082C15 /* BVReviewHighlightsResponse.m */,
+				9F9D353A240E2A4C00419D28 /* BVReviewHighlightsErrorResponse.h */,
+				9F9D353B240E2A4C00419D28 /* BVReviewHighlightsErrorResponse.m */,
 			);
 			path = ReviewHighlights;
 			sourceTree = "<group>";
@@ -2665,6 +2671,7 @@
 				B5A97314219B352400634B31 /* BVUserAgent+NSURLRequest.h in Headers */,
 				B583AEDD2007FB59001E9548 /* BVMonotonicSortOrder.h in Headers */,
 				87F2DC751DAD585E00FB43F3 /* BVGenericConversationsResult.h in Headers */,
+				9F9D353C240E2A4C00419D28 /* BVReviewHighlightsErrorResponse.h in Headers */,
 				87F2DCD71DAD585E00FB43F3 /* BVFormFieldOptions.h in Headers */,
 				87F2DCCD1DAD585E00FB43F3 /* BVAnswerSubmissionErrorResponse.h in Headers */,
 				87F2DCC71DAD585E00FB43F3 /* BVQuestionsSortOption.h in Headers */,
@@ -3316,6 +3323,7 @@
 				87C5FE9A1E22914C004EE6E8 /* BVStoreNotificationConfigurationLoader.m in Sources */,
 				B58639A1214AFD9D00EFD763 /* BVFieldError.m in Sources */,
 				87F2DCAE1DAD585E00FB43F3 /* BVQuestionsAndAnswersRequest.m in Sources */,
+				9F9D353D240E2A4C00419D28 /* BVReviewHighlightsErrorResponse.m in Sources */,
 				B583AED62006C18F001E9548 /* BVFilterType.m in Sources */,
 				87F2DC941DAD585E00FB43F3 /* BVAnswer.m in Sources */,
 				875410B31E1F10DF006C5C6E /* BVProductReviewNotificationViewController.m in Sources */,
