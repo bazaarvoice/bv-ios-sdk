@@ -13,8 +13,6 @@
 @property(nullable) NSNumber *presenceCount;
 @property(nullable) NSNumber *mentionsCount;
 @property(nullable) NSArray<BVReviewHighligtsReview *> *bestExamples;
-
-//TODO
 @property(nullable) NSString *title;
 
 - (nullable id)initWithTitle:(NSString *_Nullable)title content:(nullable id) content;
