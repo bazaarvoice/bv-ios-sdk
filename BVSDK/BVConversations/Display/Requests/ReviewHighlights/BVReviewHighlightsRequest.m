@@ -37,7 +37,7 @@
     return endpoint;
 }
 
-- (void)load:(void (^)(BVReviewHighlightsResponse * _Nonnull))success failure:(ConversationsFailureHandler)failure {
+- (void)load:(void (^)(BVReviewHighlightsResponse *__nonnull response))success failure:(nonnull ConversationsFailureHandler)failure {
     
     [self loadContent:self
            completion:^(NSDictionary * _Nonnull response) {
@@ -54,7 +54,10 @@
               failure:failure];
 }
 
-- (void)loadContent:(BVConversationsRequest *)request completion:(void (^)(NSDictionary * _Nonnull))completion failure:(void (^)(NSArray<NSError *> * _Nonnull))failure {
+- (void)
+loadContent:(nonnull BVConversationsRequest *)request
+completion:(nonnull void (^)(NSDictionary *__nonnull response))completion
+failure:(nonnull void (^)(NSArray<NSError *> *__nonnull errors))failure {
     
     NSString *url = [NSString
     stringWithFormat:@"%@%@", [BVReviewHighlightsRequest commonEndpoint],
