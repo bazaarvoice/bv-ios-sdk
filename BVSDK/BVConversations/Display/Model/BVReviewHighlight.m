@@ -17,10 +17,6 @@
         
         self.title = title;
         
-        if (!content || ![content isKindOfClass:[NSDictionary class]]) {
-            return nil;
-        }
-        
         NSDictionary *apiObject = (NSDictionary *)content;
         
         SET_IF_NOT_NULL(self.mentionsCount, apiObject[@"mentionsCount"])
@@ -36,15 +32,8 @@
             [bestExamplesArrayBuilder addObject:review];
         }
         
-        if (bestExamplesArrayBuilder.count == 0) {
-            return nil;
-        }
-        
         self.bestExamples = bestExamplesArrayBuilder;
-        
-
     }
-    
     
     return self;
 }
