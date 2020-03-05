@@ -51,10 +51,18 @@ class ReviewHighlightsDisplayTests: XCTestCase {
             
             if let negatives = response.reviewHighlights.negatives {
                 XCTAssertFalse(negatives.isEmpty)
+                
+                for negative in negatives {
+                    XCTAssertNotNil(negative.title)
+                }
             }
             
             if let positives = response.reviewHighlights.positives {
                 XCTAssertFalse(positives.isEmpty)
+                
+                for positive in positives {
+                    XCTAssertNotNil(positive.title)
+                }
             }
             
             expectation.fulfill()
@@ -85,6 +93,10 @@ class ReviewHighlightsDisplayTests: XCTestCase {
             
             if let positives = response.reviewHighlights.positives {
                 XCTAssertFalse(positives.isEmpty)
+                
+                for positive in positives {
+                    XCTAssertNotNil(positive.title)
+                }
             }
             
             XCTAssertNotNil(response.reviewHighlights.negatives)
@@ -120,6 +132,10 @@ class ReviewHighlightsDisplayTests: XCTestCase {
             
             if let negatives = response.reviewHighlights.negatives {
                 XCTAssertFalse(negatives.isEmpty)
+                
+                for negative in negatives {
+                    XCTAssertNotNil(negative.title)
+                }
             }
             
             XCTAssertNotNil(response.reviewHighlights.positives)
@@ -178,10 +194,20 @@ class ReviewHighlightsDisplayTests: XCTestCase {
             XCTAssertNotNil(response.reviewHighlights.negatives)
             
             if let negatives = response.reviewHighlights.negatives {
+                
+                for negative in negatives {
+                    XCTAssertNotNil(negative.title)
+                }
+                
                 XCTAssertFalse(negatives.count > 5)
             }
             
             if let positives = response.reviewHighlights.positives {
+                
+                for positive in positives {
+                    XCTAssertNotNil(positive.title)
+                }
+                
                 XCTAssertFalse(positives.count > 5)
             }
             
@@ -289,10 +315,18 @@ class ReviewHighlightsDisplayTests: XCTestCase {
             
             if let negatives = response.reviewHighlights.negatives {
                 XCTAssertFalse(negatives.isEmpty)
+                
+                for negative in negatives {
+                    XCTAssertNotNil(negative.title)
+                }
             }
             
             if let positives = response.reviewHighlights.positives {
                 XCTAssertFalse(positives.isEmpty)
+                
+                for positive in positives {
+                    XCTAssertNotNil(positive.title)
+                }
             }
             
             expectation.fulfill()
