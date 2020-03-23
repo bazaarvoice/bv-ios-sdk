@@ -15,8 +15,6 @@
  No Pros and Cons are returned for a valid productId and clientId (Review count < 10, Excluding incentivised reviews review count < 10).
  The given productId is invalid. In this case a specific error should be returned.
  The given clientId is invalid. In this case a specific error should be returned.
- The clientId does not have RH enabled. In this case a specific error should be returned.
- Pros & Cons should not be mismatched.
  The sequence of the Pros and Cons should be the same as return in Response.
  */
 
@@ -269,71 +267,6 @@ class ReviewHighlightsDisplayTests: XCTestCase {
         }) { (error) in
             
             XCTAssertNotNil(error)
-            expectation.fulfill()
-        }
-        
-        self.waitForExpectations(timeout: 10) { (error) in
-            XCTAssertNil(error, "Something went horribly wrong, request took too long.")
-        }
-        
-    }
-    
-    //The clientId does not have RH enabled. In this case a specific error should be returned.
-    func testReviewHighlightsNotEnabled() {
-        
-        let expectation = self.expectation(description: "testReviewHighlightsNotEnabled")
-        
-        let request = BVReviewHighlightsRequest(productId: "5068ZW")
-        request.load({ (response) in
-            
-            XCTFail("success block should not be called")
-            expectation.fulfill()
-            
-        }) { (error) in
-            
-            XCTAssertNotNil(error)
-            expectation.fulfill()
-        }
-        
-        self.waitForExpectations(timeout: 10) { (error) in
-            XCTAssertNil(error, "Something went horribly wrong, request took too long.")
-        }
-        
-    }
-    
-    //Pros & Cons should not be mismatched.
-    func testProsAndConsNotMismatched() {
-        
-        let expectation = self.expectation(description: "testProsAndConsNotMismatched")
-        
-        let request = BVReviewHighlightsRequest(productId: "prod1011")
-        request.load({ (response) in
-            
-            XCTAssertNotNil(response.reviewHighlights)
-            XCTAssertNotNil(response.reviewHighlights.negatives)
-            XCTAssertNotNil(response.reviewHighlights.positives)
-            
-            if let negatives = response.reviewHighlights.negatives {
-                XCTAssertFalse(negatives.isEmpty)
-                
-                for negative in negatives {
-                    XCTAssertNotNil(negative.title)
-                }
-            }
-            
-            if let positives = response.reviewHighlights.positives {
-                XCTAssertFalse(positives.isEmpty)
-                
-                for positive in positives {
-                    XCTAssertNotNil(positive.title)
-                }
-            }
-            
-            expectation.fulfill()
-            
-        }) { (error) in
-            
-            XCTFail("Review Highlights display request error: \(error)")
             expectation.fulfill()
         }
         
