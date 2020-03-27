@@ -14,6 +14,8 @@ class ReviewHighlightsDetailsViewController: UIViewController {
     @IBOutlet weak var view_Backgound: UIView!
     @IBOutlet weak var tableView: UITableView!
     
+    @IBOutlet weak var lbl_PresenceCount: UILabel!
+    @IBOutlet weak var lbl_MentionsCount: UILabel!
     var bVReviewHighlight: BVReviewHighlight = BVReviewHighlight() {
         didSet {
             self.title = bVReviewHighlight.title?.capitalized
@@ -40,13 +42,16 @@ extension ReviewHighlightsDetailsViewController: UITableViewDelegate, UITableVie
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return self.bVReviewHighlight.bestExamples?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "ReviewHighlightsDetailsTableViewCell", for: indexPath) as! ReviewHighlightsDetailsTableViewCell
-        
+        if let bestExample = self.bVReviewHighlight.bestExamples {
+            cell.bVReviewHighligtsReview = bestExample[indexPath.row]
+            print(indexPath.row)
+        }
         return cell
     }
     
