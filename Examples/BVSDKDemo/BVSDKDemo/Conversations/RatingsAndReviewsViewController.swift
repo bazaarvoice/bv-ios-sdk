@@ -260,7 +260,9 @@ class RatingsAndReviewsViewController: UIViewController, UITableViewDelegate, UI
                     let cell = tableView.dequeueReusableCell(withIdentifier: "ReviewHightlightsTableViewCell", for: indexPath) as! ReviewHightlightsTableViewCell
                     cell.selectionStyle = .none
                     if let title = self.bVReviewHighlights.positives?[indexPath.row - 1].title?.capitalized {
-                        cell.lbl_Title.text = title
+                        if let count = self.bVReviewHighlights.positives?[indexPath.row - 1].bestExamples?.count {
+                         cell.lbl_Title.text = title + " (\(count))"
+                        }
                     }
                     
                     return cell
@@ -279,8 +281,10 @@ class RatingsAndReviewsViewController: UIViewController, UITableViewDelegate, UI
                     
                     let cell = tableView.dequeueReusableCell(withIdentifier: "ReviewHightlightsTableViewCell", for: indexPath) as! ReviewHightlightsTableViewCell
                     cell.selectionStyle = .none
-                    if let title = self.bVReviewHighlights.negatives?[indexPath.row - 1].title?.capitalized {
-                        cell.lbl_Title.text = title
+                    if let title = self.bVReviewHighlights.positives?[indexPath.row - 1].title?.capitalized {
+                        if let count = self.bVReviewHighlights.positives?[indexPath.row - 1].bestExamples?.count {
+                         cell.lbl_Title.text = title + " (\(count))"
+                        }
                     }
                     
                     return cell

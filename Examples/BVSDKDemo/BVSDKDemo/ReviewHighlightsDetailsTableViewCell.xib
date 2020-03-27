@@ -41,10 +41,11 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WNr-e4-xQP" customClass="HCSStarRatingView">
-                                <rect key="frame" x="16" y="79" width="232" height="20"/>
+                                <rect key="frame" x="16" y="79" width="87" height="20"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="tintColor" red="0.99715530870000002" green="0.85457783939999998" blue="0.063469812269999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
+                                    <constraint firstAttribute="width" constant="87" id="a8o-6m-29Y"/>
                                     <constraint firstAttribute="height" constant="20" id="mqL-ay-S91"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
@@ -64,9 +65,8 @@
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="accurateHalfStars" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZpO-sw-0FK">
-                                <rect key="frame" x="15" y="115" width="481" height="243"/>
-                                <string key="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum</string>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZpO-sw-0FK">
+                                <rect key="frame" x="15" y="107" width="481" height="251"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
                                 <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -81,9 +81,9 @@
                             <constraint firstAttribute="trailing" secondItem="ZpO-sw-0FK" secondAttribute="trailing" constant="15" id="Hnn-Qj-7ji"/>
                             <constraint firstItem="WNr-e4-xQP" firstAttribute="leading" secondItem="YKA-9Q-23I" secondAttribute="leading" constant="16" id="Lch-qJ-6xt"/>
                             <constraint firstItem="5id-IV-CLW" firstAttribute="top" secondItem="MF3-7q-Ayh" secondAttribute="bottom" constant="3" id="MQh-fZ-xzL"/>
+                            <constraint firstItem="ZpO-sw-0FK" firstAttribute="top" secondItem="YKA-9Q-23I" secondAttribute="top" constant="107" id="Wb2-cO-d5R"/>
                             <constraint firstAttribute="bottom" secondItem="ZpO-sw-0FK" secondAttribute="bottom" constant="15" id="hfc-wF-BFI"/>
                             <constraint firstAttribute="trailing" secondItem="MF3-7q-Ayh" secondAttribute="trailing" constant="15" id="ksw-eg-AhS"/>
-                            <constraint firstItem="ZpO-sw-0FK" firstAttribute="top" secondItem="YKA-9Q-23I" secondAttribute="top" constant="115" id="rTt-nl-CXr"/>
                             <constraint firstItem="MF3-7q-Ayh" firstAttribute="leading" secondItem="YKA-9Q-23I" secondAttribute="leading" constant="15" id="s21-GY-8Vp"/>
                             <constraint firstItem="m6K-ae-t5z" firstAttribute="top" secondItem="5id-IV-CLW" secondAttribute="bottom" constant="3" id="sRc-48-RHd"/>
                             <constraint firstItem="5id-IV-CLW" firstAttribute="leading" secondItem="YKA-9Q-23I" secondAttribute="leading" constant="15" id="sZ2-UK-xAT"/>
@@ -107,7 +107,7 @@
                 <outlet property="txt_ReviewText" destination="ZpO-sw-0FK" id="Am8-wt-wRv"/>
                 <outlet property="view_Background" destination="YKA-9Q-23I" id="9yi-Mn-3dq"/>
             </connections>
-            <point key="canvasLocation" x="-164" y="6"/>
+            <point key="canvasLocation" x="-164.49275362318841" y="5.6919642857142856"/>
         </tableViewCell>
     </objects>
 </document>

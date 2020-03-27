@@ -20,17 +20,27 @@
                         <rect key="frame" x="15" y="5" width="300" height="34"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YcR-z6-T86">
-                                <rect key="frame" x="0.0" y="0.0" width="300" height="34"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                                <rect key="frame" x="0.0" y="0.0" width="251" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrowtriangle.right.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="NJt-Fg-e6H">
+                                <rect key="frame" x="268" y="5" width="17" height="24"/>
+                                <color key="tintColor" white="0.66666666666666663" alpha="0.61922089041095896" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="17" id="I1B-Fd-xIk"/>
+                                    <constraint firstAttribute="height" constant="28.5" id="dFv-iB-6Jd"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="YcR-z6-T86" firstAttribute="top" secondItem="r8I-ac-dSI" secondAttribute="top" id="2UY-d6-jGy"/>
-                            <constraint firstAttribute="trailing" secondItem="YcR-z6-T86" secondAttribute="trailing" id="Bvb-f2-Sao"/>
+                            <constraint firstItem="NJt-Fg-e6H" firstAttribute="leading" secondItem="YcR-z6-T86" secondAttribute="trailing" constant="17" id="D5s-Z3-cTV"/>
+                            <constraint firstItem="NJt-Fg-e6H" firstAttribute="centerY" secondItem="r8I-ac-dSI" secondAttribute="centerY" id="FpD-fn-740"/>
                             <constraint firstItem="YcR-z6-T86" firstAttribute="leading" secondItem="r8I-ac-dSI" secondAttribute="leading" id="McY-Cg-6XF"/>
+                            <constraint firstAttribute="trailing" secondItem="NJt-Fg-e6H" secondAttribute="trailing" constant="15" id="jXx-4H-mwI"/>
                             <constraint firstAttribute="bottom" secondItem="YcR-z6-T86" secondAttribute="bottom" id="sSO-1N-ur4"/>
                         </constraints>
                     </view>
@@ -50,4 +60,7 @@
             <point key="canvasLocation" x="131.8840579710145" y="145.98214285714286"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="arrowtriangle.right.fill" catalog="system" width="64" height="56"/>
+    </resources>
 </document>

@@ -17,7 +17,11 @@ class ReviewHighlightsDetailsTableViewCell: UITableViewCell {
     @IBOutlet weak var lbl_AuthorPlace: UILabel!
     @IBOutlet weak var txt_ReviewText: UILabel!
     
-    var bVReviewHighligtsReview: BVReviewHighligtsReview = BVReviewHighligtsReview()
+    var bVReviewHighligtsReview: BVReviewHighligtsReview = BVReviewHighligtsReview() {
+        didSet {
+            self.cellConfiguration()
+        }
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -28,6 +32,13 @@ class ReviewHighlightsDetailsTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    private func cellConfiguration() {
+        self.lbl_AuthorName.text = self.bVReviewHighligtsReview.reviewTitle
+        self.lbl_time.text = self.bVReviewHighligtsReview.submissionTime
+        self.lbl_AuthorPlace.text = self.bVReviewHighligtsReview.author
+        self.txt_ReviewText.text = self.bVReviewHighligtsReview.reviewText
     }
     
 }
