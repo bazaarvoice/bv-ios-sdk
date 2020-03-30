@@ -13,7 +13,8 @@ class ReviewHighlightsHeaderTableViewCell: UITableViewCell {
     @IBOutlet weak var view_CellBackground: UIView!
     @IBOutlet weak var view_Separator: UIView!
     @IBOutlet weak var lbl_Title: UILabel!
-    @IBOutlet weak var imageView_: UIImageView!
+    @IBOutlet weak var lbl_Count: UILabel!
+    
 
     override func awakeFromNib() {
         super.awakeFromNib()

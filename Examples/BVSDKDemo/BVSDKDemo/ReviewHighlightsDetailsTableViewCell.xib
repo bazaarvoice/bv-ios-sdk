@@ -106,6 +106,7 @@
                 <outlet property="lbl_time" destination="5id-IV-CLW" id="jGx-vR-lEN"/>
                 <outlet property="txt_ReviewText" destination="ZpO-sw-0FK" id="Am8-wt-wRv"/>
                 <outlet property="view_Background" destination="YKA-9Q-23I" id="9yi-Mn-3dq"/>
+                <outlet property="view_Rating" destination="WNr-e4-xQP" id="tJw-Id-o8s"/>
             </connections>
             <point key="canvasLocation" x="-164.49275362318841" y="5.6919642857142856"/>
         </tableViewCell>

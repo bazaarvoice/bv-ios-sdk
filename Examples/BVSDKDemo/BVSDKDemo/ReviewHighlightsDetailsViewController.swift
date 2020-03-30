@@ -14,8 +14,6 @@ class ReviewHighlightsDetailsViewController: UIViewController {
     @IBOutlet weak var view_Backgound: UIView!
     @IBOutlet weak var tableView: UITableView!
     
-    @IBOutlet weak var lbl_PresenceCount: UILabel!
-    @IBOutlet weak var lbl_MentionsCount: UILabel!
     var bVReviewHighlight: BVReviewHighlight = BVReviewHighlight() {
         didSet {
             self.title = bVReviewHighlight.title?.capitalized
