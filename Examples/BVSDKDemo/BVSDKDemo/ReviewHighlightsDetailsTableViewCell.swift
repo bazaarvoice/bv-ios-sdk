@@ -8,6 +8,7 @@
 
 import UIKit
 import BVSDK
+import HCSStarRatingView
 
 class ReviewHighlightsDetailsTableViewCell: UITableViewCell {
 
@@ -16,6 +17,7 @@ class ReviewHighlightsDetailsTableViewCell: UITableViewCell {
     @IBOutlet weak var lbl_time: UILabel!
     @IBOutlet weak var lbl_AuthorPlace: UILabel!
     @IBOutlet weak var txt_ReviewText: UILabel!
+    @IBOutlet weak var view_Rating: HCSStarRatingView!
     
     var bVReviewHighligtsReview: BVReviewHighligtsReview = BVReviewHighligtsReview() {
         didSet {
@@ -39,6 +41,9 @@ class ReviewHighlightsDetailsTableViewCell: UITableViewCell {
         self.lbl_time.text = self.bVReviewHighligtsReview.submissionTime
         self.lbl_AuthorPlace.text = self.bVReviewHighligtsReview.author
         self.txt_ReviewText.text = self.bVReviewHighligtsReview.reviewText
+        if let rating = self.bVReviewHighligtsReview.rating {
+            self.view_Rating.value = CGFloat(truncating: rating)
+        }
     }
     
 }

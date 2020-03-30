@@ -253,6 +253,11 @@ class RatingsAndReviewsViewController: UIViewController, UITableViewDelegate, UI
                     cell.selectionStyle = .none
                     cell.lbl_Title.text = self.reviewHighlightsHeaderModelArray[indexPath.section].title
                     
+                    //For total PROS Count
+                    if let positive = self.bVReviewHighlights.positives {
+                        cell.lbl_Count.text = "\(positive.count)"
+                    }
+                    
                     return cell
                 }
                 else {
@@ -261,7 +266,7 @@ class RatingsAndReviewsViewController: UIViewController, UITableViewDelegate, UI
                     cell.selectionStyle = .none
                     if let title = self.bVReviewHighlights.positives?[indexPath.row - 1].title?.capitalized {
                         if let count = self.bVReviewHighlights.positives?[indexPath.row - 1].bestExamples?.count {
-                         cell.lbl_Title.text = title + " (\(count))"
+                            cell.lbl_Title.text = title + " (\(count))"
                         }
                     }
                     
@@ -275,15 +280,20 @@ class RatingsAndReviewsViewController: UIViewController, UITableViewDelegate, UI
                     cell.selectionStyle = .none
                     cell.lbl_Title.text = self.reviewHighlightsHeaderModelArray[indexPath.section].title
                     
+                    //For total CONS Count
+                    if let negative = self.bVReviewHighlights.negatives {
+                        cell.lbl_Count.text = "\(negative.count)"
+                    }
+                    
                     return cell
                 }
                 else {
                     
                     let cell = tableView.dequeueReusableCell(withIdentifier: "ReviewHightlightsTableViewCell", for: indexPath) as! ReviewHightlightsTableViewCell
                     cell.selectionStyle = .none
-                    if let title = self.bVReviewHighlights.positives?[indexPath.row - 1].title?.capitalized {
-                        if let count = self.bVReviewHighlights.positives?[indexPath.row - 1].bestExamples?.count {
-                         cell.lbl_Title.text = title + " (\(count))"
+                    if let title = self.bVReviewHighlights.negatives?[indexPath.row - 1].title?.capitalized {
+                        if let count = self.bVReviewHighlights.negatives?[indexPath.row - 1].bestExamples?.count {
+                            cell.lbl_Title.text = title + " (\(count))"
                         }
                     }
                     
@@ -484,6 +494,10 @@ class RatingsAndReviewsViewController: UIViewController, UITableViewDelegate, UI
 
 extension RatingsAndReviewsViewController {
     
+    private func initialUISetUp() {
+        self.reviewHighlightsHeightConstraints.constant = 0
+    }
+    
     private func registerCell() {
         let nib = UINib(nibName: "ReviewHightlightsTableViewCell", bundle: nil)
         self.reviewHightlightsTableView.register(nib, forCellReuseIdentifier: "ReviewHightlightsTableViewCell")
@@ -521,7 +535,9 @@ extension RatingsAndReviewsViewController {
     
     private func loadReviewsHighligts() {
         
-        let reviewHighlightsRequest = BVReviewHighlightsRequest.init(productId: "prod1011")
+        let reviewHighlightsRequest = BVReviewHighlightsRequest.init(productId: "prod10004")//prod10002
+        print("\(self.product.identifier)")
+        //let reviewHighlightsRequest = BVReviewHighlightsRequest.init(productId: self.product.identifier)
         
         reviewHighlightsRequest.load({ (response) in
             
@@ -530,7 +546,8 @@ extension RatingsAndReviewsViewController {
             self.reviewHightlightsTableView.reloadData()
             
         }) { (error) in
-            print(error)
+            //Hide the ReviewHighlights Tableview.
+            self.reviewHighlightsHeightConstraints.constant = 0
         }
     }
     
