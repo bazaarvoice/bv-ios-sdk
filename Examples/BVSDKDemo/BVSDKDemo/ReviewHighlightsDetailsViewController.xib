@@ -9,8 +9,6 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ReviewHighlightsDetailsViewController" customModule="BVSDKDemo" customModuleProvider="target">
             <connections>
-                <outlet property="lbl_MentionsCount" destination="tEB-Tn-TtY" id="mV0-X3-iI1"/>
-                <outlet property="lbl_PresenceCount" destination="5Zf-uV-lqg" id="Ra5-Ie-cgB"/>
                 <outlet property="tableView" destination="1oW-A0-D8C" id="Fo6-js-rKC"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="view_Backgound" destination="jnz-m9-dWY" id="HrE-Fv-Xzl"/>
@@ -24,39 +22,6 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jnz-m9-dWY">
                     <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                     <subviews>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FCf-6L-v9z">
-                            <rect key="frame" x="0.0" y="0.0" width="414" height="0.0"/>
-                            <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Presence Count: " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Zf-uV-lqg">
-                                    <rect key="frame" x="15" y="5" width="384" height="45"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="45" id="EQM-Hf-k84"/>
-                                    </constraints>
-                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
-                                    <color key="textColor" red="0.0" green="0.23921568630000001" blue="0.29803921570000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mentions Count: " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tEB-Tn-TtY">
-                                    <rect key="frame" x="15" y="-50" width="384" height="45"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="45" id="93s-58-SM9"/>
-                                    </constraints>
-                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
-                                    <color key="textColor" red="0.0" green="0.23921568630000001" blue="0.29803921570000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                            </subviews>
-                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                            <constraints>
-                                <constraint firstItem="5Zf-uV-lqg" firstAttribute="top" secondItem="FCf-6L-v9z" secondAttribute="top" constant="5" id="8KY-P1-rB2"/>
-                                <constraint firstAttribute="trailing" secondItem="5Zf-uV-lqg" secondAttribute="trailing" constant="15" id="Ltj-8A-g0H"/>
-                                <constraint firstAttribute="trailing" secondItem="tEB-Tn-TtY" secondAttribute="trailing" constant="15" id="WEo-V8-BYQ"/>
-                                <constraint firstAttribute="bottom" secondItem="tEB-Tn-TtY" secondAttribute="bottom" constant="5" id="fPR-7M-Zgx"/>
-                                <constraint firstItem="5Zf-uV-lqg" firstAttribute="leading" secondItem="FCf-6L-v9z" secondAttribute="leading" constant="15" id="guf-N4-9uD"/>
-                                <constraint firstItem="tEB-Tn-TtY" firstAttribute="leading" secondItem="FCf-6L-v9z" secondAttribute="leading" constant="15" id="uTB-wu-BOz"/>
-                                <constraint firstAttribute="height" id="ygJ-YU-OkF"/>
-                            </constraints>
-                        </view>
                         <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="1oW-A0-D8C">
                             <rect key="frame" x="10" y="0.0" width="394" height="818"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -69,12 +34,9 @@
                     <color key="backgroundColor" red="0.96078431372549022" green="0.96078431372549022" blue="0.96078431372549022" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstItem="1oW-A0-D8C" firstAttribute="leading" secondItem="jnz-m9-dWY" secondAttribute="leading" constant="10" id="1AF-db-nId"/>
+                        <constraint firstItem="1oW-A0-D8C" firstAttribute="top" secondItem="jnz-m9-dWY" secondAttribute="top" id="4Ie-7b-9Rt"/>
                         <constraint firstAttribute="trailing" secondItem="1oW-A0-D8C" secondAttribute="trailing" constant="10" id="Edg-hW-Alv"/>
-                        <constraint firstItem="1oW-A0-D8C" firstAttribute="top" secondItem="FCf-6L-v9z" secondAttribute="bottom" id="Nbu-qI-tBr"/>
-                        <constraint firstAttribute="trailing" secondItem="FCf-6L-v9z" secondAttribute="trailing" id="iBa-0h-MHG"/>
-                        <constraint firstItem="FCf-6L-v9z" firstAttribute="top" secondItem="jnz-m9-dWY" secondAttribute="top" id="oWO-RH-xWo"/>
                         <constraint firstAttribute="bottom" secondItem="1oW-A0-D8C" secondAttribute="bottom" id="taS-SX-mvz"/>
-                        <constraint firstItem="FCf-6L-v9z" firstAttribute="leading" secondItem="jnz-m9-dWY" secondAttribute="leading" id="tjN-AP-4jd"/>
                     </constraints>
                 </view>
             </subviews>
