@@ -10,10 +10,10 @@
 #ifndef BVFILTERVALUES_H
 #define BVFILTERVALUES_H
 
-#import <BVSDK/BVBulkRatingFilterValue.h>
-#import <BVSDK/BVCommentFilterValue.h>
-#import <BVSDK/BVProductFilterValue.h>
-#import <BVSDK/BVQuestionFilterValue.h>
-#import <BVSDK/BVReviewFilterValue.h>
+#import "BVBulkRatingFilterValue.h"
+#import "BVCommentFilterValue.h"
+#import "BVProductFilterValue.h"
+#import "BVQuestionFilterValue.h"
+#import "BVReviewFilterValue.h"
 
 #endif /* BVFILTERVALUES_H */
