@@ -10,10 +10,10 @@
 #ifndef BVINCLUDETYPEVALUES_H
 #define BVINCLUDETYPEVALUES_H
 
-#import <BVSDK/BVAuthorIncludeTypeValue.h>
-#import <BVSDK/BVBulkRatingIncludeTypeValue.h>
-#import <BVSDK/BVCommentIncludeTypeValue.h>
-#import <BVSDK/BVProductIncludeTypeValue.h>
-#import <BVSDK/BVReviewIncludeTypeValue.h>
+#import "BVAuthorIncludeTypeValue.h"
+#import "BVBulkRatingIncludeTypeValue.h"
+#import "BVCommentIncludeTypeValue.h"
+#import "BVProductIncludeTypeValue.h"
+#import "BVReviewIncludeTypeValue.h"
 
 #endif /* BVINCLUDETYPEVALUES_H */
