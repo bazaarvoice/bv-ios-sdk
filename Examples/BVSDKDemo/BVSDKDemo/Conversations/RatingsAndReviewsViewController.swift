@@ -27,6 +27,7 @@ class RatingsAndReviewsViewController: UIViewController, UITableViewDelegate, UI
     private let numReviewToFetch : Int32 = 20
     private var reviewFetchPending : Bool = false // Is an API call in progress
     var totalReviewCount = 0
+    private var tempIndexForReviewHighlights: Int = 0
     
     private var bVReviewHighlights = BVReviewHighlights()
     private var reviewHighlightsHeaderModelArray: [ReviewHighlightsHeaderModel] = []
@@ -57,9 +58,10 @@ class RatingsAndReviewsViewController: UIViewController, UITableViewDelegate, UI
     
     private var selectedFilterOption : Int = FilterOptions.mostRecent.rawValue
     
-    init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?, product:BVProduct, totalReviewCount: Int) {
+    init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?, product:BVProduct, totalReviewCount: Int, tempIndexForReviewHighlights: Int) {
         
         self.totalReviewCount = totalReviewCount
+        self.tempIndexForReviewHighlights = tempIndexForReviewHighlights
         self.product = product
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         
@@ -535,9 +537,9 @@ extension RatingsAndReviewsViewController {
     
     private func loadReviewsHighligts() {
         
-        let reviewHighlightsRequest = BVReviewHighlightsRequest.init(productId: "prod10004")//prod10002
-        print("\(self.product.identifier)")
-        //let reviewHighlightsRequest = BVReviewHighlightsRequest.init(productId: self.product.identifier)
+        let tempProductIdArray = []//Add your product IDs here
+        
+        let reviewHighlightsRequest = BVReviewHighlightsRequest.init(productId: tempProductIdArray[tempIndexForReviewHighlights])
         
         reviewHighlightsRequest.load({ (response) in
             
