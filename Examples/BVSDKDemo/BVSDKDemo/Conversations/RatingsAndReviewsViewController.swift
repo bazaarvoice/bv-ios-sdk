@@ -537,7 +537,7 @@ extension RatingsAndReviewsViewController {
     
     private func loadReviewsHighligts() {
         
-        let tempProductIdArray = []//Add your product IDs here
+        let tempProductIdArray: [String] = []//Add your product IDs here
         
         let reviewHighlightsRequest = BVReviewHighlightsRequest.init(productId: tempProductIdArray[tempIndexForReviewHighlights])
         
