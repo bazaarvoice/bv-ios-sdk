@@ -191,8 +191,8 @@ class BVProgressiveSubmitTest: XCTestCase {
             "reviewText" : "This is great its so awesome. I highly recomend using this product and think it makes a great gift for any holiday or special occasion. by far the best purchase ive made this year",
             "agreedtotermsandconditions" : agreedtotermsandconditions
         ]
-        let submission = BVProgressiveSubmitRequest(productId:"product4")
-        submission.submissionSessionToken = "TOKEN_REMOVED"
+        let submission = BVProgressiveSubmitRequest(productId:"product10")
+        submission.submissionSessionToken = "TOKEN_REMOVED" //"TOKEN_REMOVED"
         submission.locale = "en_US"
         submission.userToken = "TOKEN_REMOVED"
         submission.submissionFields = fields as! [AnyHashable : Any]
