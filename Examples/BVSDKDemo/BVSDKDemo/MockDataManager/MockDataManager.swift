@@ -398,7 +398,7 @@ class MockDataManager {
   }()
   
   private class func getDefaultConfigDict() -> Dictionary<String, AnyObject> {
-    return ["clientId": "1800petmeds" as AnyObject,
+    return ["clientId": "REPLACE_ME" as AnyObject,
             "displayName": "(Mock) Endurance Cycles" as AnyObject,
             "apiKeyShopperAdvertising": "REPLACE_ME" as AnyObject,
             "apiKeyConversations": "REPLACE_ME" as AnyObject,
