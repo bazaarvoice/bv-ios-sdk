@@ -628,7 +628,7 @@
 		B5D7E83E20507E8400DEB434 /* testSubmitReviewFailureCodeParsing.json in Resources */ = {isa = PBXBuildFile; fileRef = B5D7E83D20507E8400DEB434 /* testSubmitReviewFailureCodeParsing.json */; };
 		B5D7E840205083EC00DEB434 /* testSubmitStoreReviewWithPhoto.json in Resources */ = {isa = PBXBuildFile; fileRef = B5D7E83F205083EC00DEB434 /* testSubmitStoreReviewWithPhoto.json */; };
 		B5D7E8422050840E00DEB434 /* testSubmitReviewFailureStore.json in Resources */ = {isa = PBXBuildFile; fileRef = B5D7E8412050840E00DEB434 /* testSubmitReviewFailureStore.json */; };
-		B5DDA04E1FE8633800C47C01 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B5DDA04D1FE8633800C47C01 /* Assets.xcassets */; };
+		B5DDA04E1FE8633800C47C01 /* BVCurationsAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B5DDA04D1FE8633800C47C01 /* BVCurationsAssets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1262,7 +1262,7 @@
 		B5D7E83D20507E8400DEB434 /* testSubmitReviewFailureCodeParsing.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = testSubmitReviewFailureCodeParsing.json; sourceTree = "<group>"; };
 		B5D7E83F205083EC00DEB434 /* testSubmitStoreReviewWithPhoto.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = testSubmitStoreReviewWithPhoto.json; sourceTree = "<group>"; };
 		B5D7E8412050840E00DEB434 /* testSubmitReviewFailureStore.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = testSubmitReviewFailureStore.json; sourceTree = "<group>"; };
-		B5DDA04D1FE8633800C47C01 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B5DDA04D1FE8633800C47C01 /* BVCurationsAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = BVCurationsAssets.xcassets; sourceTree = "<group>"; };
 		EC098EFAFB725736F0751BA0 /* libPods-BVSDK.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BVSDK.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -1292,7 +1292,7 @@
 		1544B36C1E37D4F7000B0427 /* SocialMediaIcons */ = {
 			isa = PBXGroup;
 			children = (
-				B5DDA04D1FE8633800C47C01 /* Assets.xcassets */,
+				B5DDA04D1FE8633800C47C01 /* BVCurationsAssets.xcassets */,
 			);
 			path = SocialMediaIcons;
 			sourceTree = "<group>";
@@ -1307,6 +1307,14 @@
 				1544B36C1E37D4F7000B0427 /* SocialMediaIcons */,
 			);
 			path = BVCurationsUI;
+			sourceTree = "<group>";
+		};
+		42B5B69224371F3D008BC557 /* BVSDKImports */ = {
+			isa = PBXGroup;
+			children = (
+				87F2DAAA1DAD579D00FB43F3 /* BVSDK.h */,
+			);
+			path = BVSDKImports;
 			sourceTree = "<group>";
 		};
 		87252B0B1EF46FF40011C845 /* Video */ = {
@@ -1480,6 +1488,7 @@
 		87F2DAA91DAD579D00FB43F3 /* BVSDK */ = {
 			isa = PBXGroup;
 			children = (
+				42B5B69224371F3D008BC557 /* BVSDKImports */,
 				87F2DAC41DAD585E00FB43F3 /* BVAnalytics */,
 				87C5FE9F1E22A05D004EE6E8 /* BVCommon */,
 				B5A7649D1FDAEBB900B5DC9A /* BVCommonUI */,
@@ -2055,7 +2064,6 @@
 		87FEC8C81DB11448007DD44E /* Support */ = {
 			isa = PBXGroup;
 			children = (
-				87F2DAAA1DAD579D00FB43F3 /* BVSDK.h */,
 				87F2DAAB1DAD579D00FB43F3 /* Info.plist */,
 				87FEC8C91DB1145D007DD44E /* integrate-dynamic-framework.sh */,
 			);
@@ -2947,7 +2955,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				87FEC8CA1DB1145D007DD44E /* integrate-dynamic-framework.sh in Resources */,
-				B5DDA04E1FE8633800C47C01 /* Assets.xcassets in Resources */,
+				B5DDA04E1FE8633800C47C01 /* BVCurationsAssets.xcassets in Resources */,
 				875411891E1F201E006C5C6E /* mapThumbnail.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
