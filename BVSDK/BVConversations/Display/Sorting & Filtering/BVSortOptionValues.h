@@ -10,10 +10,10 @@
 #ifndef BVSORTOPTIONVALUES_H
 #define BVSORTOPTIONVALUES_H
 
-#import <BVSDK/BVAnswersSortOptionValue.h>
-#import <BVSDK/BVCommentsSortOptionValue.h>
-#import <BVSDK/BVProductsSortOptionValue.h>
-#import <BVSDK/BVQuestionsSortOptionValue.h>
-#import <BVSDK/BVReviewsSortOptionValue.h>
+#import "BVAnswersSortOptionValue.h"
+#import "BVCommentsSortOptionValue.h"
+#import "BVProductsSortOptionValue.h"
+#import "BVQuestionsSortOptionValue.h"
+#import "BVReviewsSortOptionValue.h"
 
 #endif /* BVSORTOPTIONVALUES_H */

@@ -10,6 +10,6 @@
 #ifndef BVFILTEROPERATORS_H
 #define BVFILTEROPERATORS_H
 
-#import <BVSDK/BVRelationalFilterOperatorValue.h>
+#import "BVRelationalFilterOperatorValue.h"
 
 #endif /* BVFILTEROPERATORS_H */

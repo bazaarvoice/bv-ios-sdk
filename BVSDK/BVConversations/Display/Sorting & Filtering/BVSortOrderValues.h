@@ -10,6 +10,6 @@
 #ifndef BVSORTORDERVALUES_H
 #define BVSORTORDERVALUES_H
 
-#import <BVSDK/BVMonotonicSortOrderValue.h>
+#import "BVMonotonicSortOrderValue.h"
 
 #endif /* BVSORTORDERVALUES_H */
