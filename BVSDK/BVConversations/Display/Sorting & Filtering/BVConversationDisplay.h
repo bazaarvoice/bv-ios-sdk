@@ -10,10 +10,10 @@
 #ifndef BVCONVERSATIONDISPLAY_H
 #define BVCONVERSATIONDISPLAY_H
 
-#import <BVSDK/BVFilterOperatorValues.h>
-#import <BVSDK/BVFilterTypeValues.h>
-#import <BVSDK/BVIncludeTypeValues.h>
-#import <BVSDK/BVSortOptionValues.h>
-#import <BVSDK/BVSortOrderValues.h>
+#import "BVFilterOperatorValues.h"
+#import "BVFilterTypeValues.h"
+#import "BVIncludeTypeValues.h"
+#import "BVSortOptionValues.h"
+#import "BVSortOrderValues.h"
 
 #endif /* BVCONVERSATIONDISPLAY_H */
