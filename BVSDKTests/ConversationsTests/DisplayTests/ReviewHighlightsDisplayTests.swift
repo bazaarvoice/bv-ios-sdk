@@ -281,6 +281,9 @@ class ReviewHighlightsDisplayTests: XCTestCase {
         
         let expectation = self.expectation(description: "testProsAndConsSequence")
         
+        let expectedPositives: [String] = ["cleaning", "satisfaction", "ease of use"] // array of expected positives
+        let expectedNegatives: [String] = ["small", "large"] // array of expected negatives
+        
         let request = BVReviewHighlightsRequest(productId: "prod1011")
         request.load({ (response) in
             
@@ -290,10 +293,20 @@ class ReviewHighlightsDisplayTests: XCTestCase {
             
             if let negatives = response.reviewHighlights.negatives {
                 XCTAssertFalse(negatives.isEmpty)
+                
+                for (index, negative) in negatives.enumerated() {
+                    XCTAssertNotNil(negative.title)
+                    XCTAssertEqual(negative.title, expectedNegatives[index])
+                }
             }
             
             if let positives = response.reviewHighlights.positives {
                 XCTAssertFalse(positives.isEmpty)
+                
+                for (index, positive) in positives.enumerated() {
+                    XCTAssertNotNil(positive.title)
+                    XCTAssertEqual(positive.title, expectedPositives[index])
+                }
             }
             
             expectation.fulfill()
