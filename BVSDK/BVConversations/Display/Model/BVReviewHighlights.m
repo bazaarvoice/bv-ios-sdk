@@ -26,6 +26,15 @@
             BVReviewHighlight *positive = [[BVReviewHighlight alloc] initWithTitle:key content:positiveData[key]];
             [positivesArrayBuilder addObject:positive];
         }
+        
+        // Sort in the descending order of mentionsCount
+        [positivesArrayBuilder sortUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
+            BVReviewHighlight *firstReviewHighlight = (BVReviewHighlight *) obj1;
+            BVReviewHighlight *secondReviewHighlight = (BVReviewHighlight *) obj2;
+            return [secondReviewHighlight.mentionsCount compare:firstReviewHighlight.mentionsCount];
+            
+        }];
+        
         self.positives = positivesArrayBuilder;
 
         
@@ -37,6 +46,15 @@
             BVReviewHighlight *negative = [[BVReviewHighlight alloc] initWithTitle:key content:negativeData[key]];
             [negativesArrayBuilder addObject:negative];
         }
+        
+        // Sort in the descending order of mentionsCount
+        [negativesArrayBuilder sortUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
+            BVReviewHighlight *firstReviewHighlight = (BVReviewHighlight *) obj1;
+            BVReviewHighlight *secondReviewHighlight = (BVReviewHighlight *) obj2;
+            return [secondReviewHighlight.mentionsCount compare:firstReviewHighlight.mentionsCount];
+            
+        }];
+        
         self.negatives = negativesArrayBuilder;
     }
     return self;
