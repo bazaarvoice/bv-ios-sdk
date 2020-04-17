@@ -454,12 +454,12 @@
 		9FB5C455243DA60C0057BA34 /* BVReviewHighlightsRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 9FB5C44F243DA60C0057BA34 /* BVReviewHighlightsRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9FB5C456243DA60C0057BA34 /* BVReviewHighlightsErrorResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FB5C450243DA60C0057BA34 /* BVReviewHighlightsErrorResponse.m */; };
 		9FB5C458243DA6250057BA34 /* ReviewHighlightsDisplayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB5C457243DA6250057BA34 /* ReviewHighlightsDisplayTests.swift */; };
-		9FB5C45F243DA6690057BA34 /* BVReviewHighligtsReview.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FB5C459243DA6690057BA34 /* BVReviewHighligtsReview.m */; };
+		9FB5C45F243DA6690057BA34 /* BVReviewHighlightsReview.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FB5C459243DA6690057BA34 /* BVReviewHighlightsReview.m */; };
 		9FB5C460243DA6690057BA34 /* BVReviewHighlight.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FB5C45A243DA6690057BA34 /* BVReviewHighlight.m */; };
 		9FB5C461243DA6690057BA34 /* BVReviewHighlight.h in Headers */ = {isa = PBXBuildFile; fileRef = 9FB5C45B243DA6690057BA34 /* BVReviewHighlight.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9FB5C462243DA6690057BA34 /* BVReviewHighlights.h in Headers */ = {isa = PBXBuildFile; fileRef = 9FB5C45C243DA6690057BA34 /* BVReviewHighlights.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9FB5C463243DA6690057BA34 /* BVReviewHighlights.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FB5C45D243DA6690057BA34 /* BVReviewHighlights.m */; };
-		9FB5C464243DA6690057BA34 /* BVReviewHighligtsReview.h in Headers */ = {isa = PBXBuildFile; fileRef = 9FB5C45E243DA6690057BA34 /* BVReviewHighligtsReview.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9FB5C464243DA6690057BA34 /* BVReviewHighlightsReview.h in Headers */ = {isa = PBXBuildFile; fileRef = 9FB5C45E243DA6690057BA34 /* BVReviewHighlightsReview.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B56D71822032476A002EC872 /* BVLocaleManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B56D71812032476A002EC872 /* BVLocaleManagerTests.m */; };
 		B56E1F921FBF86360025D5B4 /* UASSubmissionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56E1F911FBF86360025D5B4 /* UASSubmissionTests.swift */; };
 		B575C3861FBDFD6F000F890B /* BVUASSubmission.h in Headers */ = {isa = PBXBuildFile; fileRef = B575C3841FBDFD6F000F890B /* BVUASSubmission.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -1101,12 +1101,12 @@
 		9FB5C44F243DA60C0057BA34 /* BVReviewHighlightsRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVReviewHighlightsRequest.h; sourceTree = "<group>"; };
 		9FB5C450243DA60C0057BA34 /* BVReviewHighlightsErrorResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVReviewHighlightsErrorResponse.m; sourceTree = "<group>"; };
 		9FB5C457243DA6250057BA34 /* ReviewHighlightsDisplayTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewHighlightsDisplayTests.swift; sourceTree = "<group>"; };
-		9FB5C459243DA6690057BA34 /* BVReviewHighligtsReview.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVReviewHighligtsReview.m; sourceTree = "<group>"; };
+		9FB5C459243DA6690057BA34 /* BVReviewHighlightsReview.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVReviewHighlightsReview.m; sourceTree = "<group>"; };
 		9FB5C45A243DA6690057BA34 /* BVReviewHighlight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVReviewHighlight.m; sourceTree = "<group>"; };
 		9FB5C45B243DA6690057BA34 /* BVReviewHighlight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVReviewHighlight.h; sourceTree = "<group>"; };
 		9FB5C45C243DA6690057BA34 /* BVReviewHighlights.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVReviewHighlights.h; sourceTree = "<group>"; };
 		9FB5C45D243DA6690057BA34 /* BVReviewHighlights.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVReviewHighlights.m; sourceTree = "<group>"; };
-		9FB5C45E243DA6690057BA34 /* BVReviewHighligtsReview.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVReviewHighligtsReview.h; sourceTree = "<group>"; };
+		9FB5C45E243DA6690057BA34 /* BVReviewHighlightsReview.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVReviewHighlightsReview.h; sourceTree = "<group>"; };
 		B56D71812032476A002EC872 /* BVLocaleManagerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = BVLocaleManagerTests.m; path = BVSDKTests/CommonTests/BVLocaleManagerTests.m; sourceTree = SOURCE_ROOT; };
 		B56E1F911FBF86360025D5B4 /* UASSubmissionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UASSubmissionTests.swift; sourceTree = "<group>"; };
 		B575C3841FBDFD6F000F890B /* BVUASSubmission.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = BVUASSubmission.h; path = ../Auth/BVUASSubmission.h; sourceTree = "<group>"; };
@@ -1613,8 +1613,8 @@
 				9FB5C45A243DA6690057BA34 /* BVReviewHighlight.m */,
 				9FB5C45C243DA6690057BA34 /* BVReviewHighlights.h */,
 				9FB5C45D243DA6690057BA34 /* BVReviewHighlights.m */,
-				9FB5C45E243DA6690057BA34 /* BVReviewHighligtsReview.h */,
-				9FB5C459243DA6690057BA34 /* BVReviewHighligtsReview.m */,
+				9FB5C45E243DA6690057BA34 /* BVReviewHighlightsReview.h */,
+				9FB5C459243DA6690057BA34 /* BVReviewHighlightsReview.m */,
 				87F2DB401DAD585E00FB43F3 /* BVReviewStatistic.h */,
 				87F2DB411DAD585E00FB43F3 /* BVReviewStatistic.m */,
 				87F2DB421DAD585E00FB43F3 /* BVReviewStatistics.h */,
@@ -2822,7 +2822,7 @@
 				B5863994214AFBD000EFD763 /* BVDimensionAndDistributionUtil+Private.h in Headers */,
 				87C5FEBB1E22A05D004EE6E8 /* BVDiagnosticHelpers.h in Headers */,
 				B57B8334215E8A58006B378E /* BVPhotoSubmissionErrorResponse.h in Headers */,
-				9FB5C464243DA6690057BA34 /* BVReviewHighligtsReview.h in Headers */,
+				9FB5C464243DA6690057BA34 /* BVReviewHighlightsReview.h in Headers */,
 				87F2DC601DAD585E00FB43F3 /* BVBrand.h in Headers */,
 				B58639DA214AFEC800EFD763 /* BVRecommendationsRequestOptionsUtil.h in Headers */,
 				87F2DC841DAD585E00FB43F3 /* BVRatingDistribution.h in Headers */,
@@ -3370,7 +3370,7 @@
 				87F2DCCA1DAD585E00FB43F3 /* BVReviewsSortOption.m in Sources */,
 				87F2DCA81DAD585E00FB43F3 /* BVBulkRatingsRequest.m in Sources */,
 				873DC49C1E7482840080FA03 /* BVPersonalizationEvent.m in Sources */,
-				9FB5C45F243DA6690057BA34 /* BVReviewHighligtsReview.m in Sources */,
+				9FB5C45F243DA6690057BA34 /* BVReviewHighlightsReview.m in Sources */,
 				87C5FE9E1E229168004EE6E8 /* BVProductReviewNotificationConfigurationLoader.m in Sources */,
 				B58639CA214AFE8700EFD763 /* BVLocaleServiceManager.m in Sources */,
 				87F2DC691DAD585E00FB43F3 /* BVDisplayErrorResponse.m in Sources */,

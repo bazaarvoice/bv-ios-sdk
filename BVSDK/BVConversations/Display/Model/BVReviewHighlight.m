@@ -27,7 +27,7 @@
         NSMutableArray *bestExamplesArrayBuilder = [NSMutableArray array];
         
         for (NSDictionary *bestExample in bestExamplesDictionary) {
-            BVReviewHighligtsReview *review = [[BVReviewHighligtsReview alloc] initWithApiResponse:bestExample];
+            BVReviewHighlightsReview *review = [[BVReviewHighlightsReview alloc] initWithApiResponse:bestExample];
             
             [bestExamplesArrayBuilder addObject:review];
         }
