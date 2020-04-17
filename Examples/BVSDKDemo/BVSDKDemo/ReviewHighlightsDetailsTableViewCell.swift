@@ -19,7 +19,7 @@ class ReviewHighlightsDetailsTableViewCell: UITableViewCell {
     @IBOutlet weak var txt_ReviewText: UILabel!
     @IBOutlet weak var view_Rating: HCSStarRatingView!
     
-    var bVReviewHighligtsReview: BVReviewHighligtsReview = BVReviewHighligtsReview() {
+    var bVReviewHighligtsReview: BVReviewHighlightsReview = BVReviewHighlightsReview() {
         didSet {
             self.cellConfiguration()
         }
