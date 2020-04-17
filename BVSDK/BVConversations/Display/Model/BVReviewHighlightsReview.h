@@ -1,5 +1,5 @@
 //
-//  BVReviewHighligtsReview.h
+//  BVReviewHighlightsReview.h
 //  BVSDK
 //
 //  Copyright © 2020 Bazaarvoice. All rights reserved.
@@ -7,7 +7,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface BVReviewHighligtsReview : NSObject
+@interface BVReviewHighlightsReview : NSObject
 
 @property(nullable) NSNumber *rating;
 @property(nullable) NSString *about;

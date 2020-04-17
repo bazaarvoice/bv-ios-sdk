@@ -6,13 +6,13 @@
 // 
 
 #import <Foundation/Foundation.h>
-#import "BVReviewHighligtsReview.h"
+#import "BVReviewHighlightsReview.h"
 
 @interface BVReviewHighlight : NSObject
 
 @property(nullable) NSNumber *presenceCount;
 @property(nullable) NSNumber *mentionsCount;
-@property(nullable) NSArray<BVReviewHighligtsReview *> *bestExamples;
+@property(nullable) NSArray<BVReviewHighlightsReview *> *bestExamples;
 @property(nullable) NSString *title;
 
 - (nullable id)initWithTitle:(NSString *_Nullable)title content:(nullable id) content;

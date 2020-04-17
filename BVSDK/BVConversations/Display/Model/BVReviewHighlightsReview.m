@@ -1,14 +1,14 @@
 //
-//  BVReviewHighligtsReview.m
+//  BVReviewHighlightsReview.m
 //  BVSDK
 //
 //  Copyright © 2020 Bazaarvoice. All rights reserved.
 // 
 
-#import "BVReviewHighligtsReview.h"
+#import "BVReviewHighlightsReview.h"
 #import "BVNullHelper.h"
 
-@implementation BVReviewHighligtsReview
+@implementation BVReviewHighlightsReview
 
 - (nullable id)initWithApiResponse:(nullable id)apiResponse {
     
