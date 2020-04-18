@@ -11,20 +11,21 @@ import SwiftyJSON
 import BVSDK
 
 class MockDataManager {
-  
-  static let sharedInstance = MockDataManager()
-  var pinReponse: Data?
-  var currentConfig: DemoConfig!
-  var prodConfig: DemoConfig?
-  var stagingConfig: DemoConfig?
-  var transactionHistory = [BVTransactionEvent]() 
-  //Replace with valid UserToken string to test progressiveSubmission flow
-  var userToken = "REPLACE_ME"
-
-  init() {
-    self.setupPreSelectedKeysIfPresent()
-    self.setupMocking()
-  }
+    
+    static let sharedInstance = MockDataManager()
+    var pinReponse: Data?
+    var currentConfig: DemoConfig!
+    var prodConfig: DemoConfig?
+    var stagingConfig: DemoConfig?
+    var transactionHistory = [BVTransactionEvent]()
+    var reviewHighlightsProductIds: [String] = []//Add your productIds here to enable or use the ReviewHighlights
+    //Replace with valid UserToken string to test progressiveSubmission flow
+    var userToken = "REPLACE_ME"
+    
+    init() {
+        self.setupPreSelectedKeysIfPresent()
+        self.setupMocking()
+    }
   
   static let PRESELECTED_CONFIG_DISPLAY_NAME_KEY = "BV_PRE_SELECTED_CONFIG_DISPLAY_NAME"
   
@@ -42,21 +43,30 @@ class MockDataManager {
     }
   }
     
-  func setupPreSelectedKeysIfPresent() {
-    
-    let defaults = UserDefaults(suiteName: "group.bazaarvoice.bvsdkdemo.app")
-    let preselectedDisplayName = defaults!.string(forKey: MockDataManager.PRESELECTED_CONFIG_DISPLAY_NAME_KEY) ?? mockConfig.displayName
-    
-    let matchingConfig = configs.filter{ $0.displayName == preselectedDisplayName }.first
-    if let config = matchingConfig {
-      switchToConfig(config: config)
-    }else {
-      switchToConfig(config: mockConfig)
+    func setupPreSelectedKeysIfPresent() {
+        
+        let defaults = UserDefaults(suiteName: "group.bazaarvoice.bvsdkdemo.app")
+        let preselectedDisplayName = defaults!.string(forKey: MockDataManager.PRESELECTED_CONFIG_DISPLAY_NAME_KEY) ?? mockConfig.displayName
+        
+        let matchingConfig = configs.filter{ $0.displayName == preselectedDisplayName }.first
+        if let config = matchingConfig {
+            switchToConfig(config: config)
+        }else {
+            switchToConfig(config: mockConfig)
+        }
     }
-  }
-  
-  func setupMocking() {
     
+    func getReviewHighlightsProductIdForIndex(index: Int) -> String?  {
+        
+        if index > self.reviewHighlightsProductIds.count - 1 {
+            return nil
+        }
+        
+        return self.reviewHighlightsProductIds[index]
+    }
+    
+    func setupMocking() {
+        
     OHHTTPStubs.stubRequests(passingTest: { (request) -> Bool in
       
       return self.shouldMockResponseForRequest(request)
