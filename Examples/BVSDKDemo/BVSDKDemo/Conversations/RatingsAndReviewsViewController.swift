@@ -23,11 +23,11 @@ class RatingsAndReviewsViewController: UIViewController, UITableViewDelegate, UI
     // In production app, you'd want to save the votes for content id and user in a local db.
     private var votesDictionary  = [:] as! Dictionary<String, Votes>
     let product : BVProduct
+    var reviewHighlightsProductId: String?
     
     private let numReviewToFetch : Int32 = 20
     private var reviewFetchPending : Bool = false // Is an API call in progress
     var totalReviewCount = 0
-    private var tempIndexForReviewHighlights: Int = 0
     
     private var bVReviewHighlights = BVReviewHighlights()
     private var reviewHighlightsHeaderModelArray: [ReviewHighlightsHeaderModel] = []
@@ -58,10 +58,10 @@ class RatingsAndReviewsViewController: UIViewController, UITableViewDelegate, UI
     
     private var selectedFilterOption : Int = FilterOptions.mostRecent.rawValue
     
-    init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?, product:BVProduct, totalReviewCount: Int, tempIndexForReviewHighlights: Int) {
+    init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?, product:BVProduct, totalReviewCount: Int, reviewHighlightsProductId: String?) {
         
         self.totalReviewCount = totalReviewCount
-        self.tempIndexForReviewHighlights = tempIndexForReviewHighlights
+        self.reviewHighlightsProductId = reviewHighlightsProductId
         self.product = product
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         
@@ -97,7 +97,13 @@ class RatingsAndReviewsViewController: UIViewController, UITableViewDelegate, UI
         tableView.register(nibConversationsCell, forCellReuseIdentifier: "ProductPageButtonCell")
         
         self.initReviewHighlightsHeaderArray()
-        self.loadReviewsHighligts()
+        
+        if let productID = reviewHighlightsProductId {
+            self.loadReviewsHighligts(productID: productID)
+        }
+        else {
+            self.reviewHighlightsHeightConstraints.constant = 0
+        }
         self.loadReviews()
         
     }
@@ -535,11 +541,9 @@ extension RatingsAndReviewsViewController {
         
     }
     
-    private func loadReviewsHighligts() {
+    private func loadReviewsHighligts(productID: String) {
         
-        let tempProductIdArray: [String] = []//Add your product IDs here
-        
-        let reviewHighlightsRequest = BVReviewHighlightsRequest.init(productId: tempProductIdArray[tempIndexForReviewHighlights])
+        let reviewHighlightsRequest = BVReviewHighlightsRequest.init(productId: productID)
         
         reviewHighlightsRequest.load({ (response) in
             

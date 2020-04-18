@@ -108,7 +108,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     let csv = CircleSearchView<BVDisplayableProductContent>(scrollView: self.recommendationsCollectionView, changeHandler: { (_, searchText, ressults, completion) in
       self.doConversationsSearch(searchText, completion: completion)
     }) { (_, results) in
-        let vc = NewProductPageViewController(productId: results.identifier,tempIndexForReviewHighlights: 0)
+        let vc = NewProductPageViewController(productId: results.identifier)
       self.navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -490,7 +490,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     switch CellType(rawValue: indexPath.section)! {
     case .productRecommendationTop, .productRecommendationBottom:
       
-        let productView = NewProductPageViewController( productId: self.getRecommendationForIndexPath(indexPath).identifier, tempIndexForReviewHighlights: indexPath.row)
+        let productView = NewProductPageViewController( productId: self.getRecommendationForIndexPath(indexPath).identifier, reviewHighlightsProductId: MockDataManager.sharedInstance.getReviewHighlightsProductIdForIndex(index: indexPath.row))
       
       self.navigationController?.pushViewController(productView, animated: true)
       

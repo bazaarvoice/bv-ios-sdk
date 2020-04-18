@@ -56,12 +56,12 @@ class NewProductPageViewController: BVProductDisplayPageViewController, UITableV
   @IBOutlet weak var addToCartButton: UIButton!
   
   private var totalReviewCount, totalQuestionCount, totalAnswerCount : Int?
+  var reviewHighlightsProductId: String?
   
   private var adLoader : GADAdLoader?
   private var nativeContentAd : GADUnifiedNativeAd?
   
   private let productId : String
-  private var tempIndexForReviewHighlights: Int = 0
   
   private var defaultStoreId = "0"
   
@@ -73,10 +73,10 @@ class NewProductPageViewController: BVProductDisplayPageViewController, UITableV
     return menuIcon!.image(with: CGSize(width: 20, height: 20))
   }()
   
-    init(productId: String, tempIndexForReviewHighlights: Int) {
+    init(productId: String, reviewHighlightsProductId: String? = nil) {
     
     self.productId = productId
-    self.tempIndexForReviewHighlights = tempIndexForReviewHighlights
+    self.reviewHighlightsProductId = reviewHighlightsProductId
     super.init(nibName: nil, bundle: nil)
     
   }
@@ -373,7 +373,7 @@ class NewProductPageViewController: BVProductDisplayPageViewController, UITableV
       recsCell.onProductRecTapped = {
         (selectedProduct) -> Void in
         
-        let productView = NewProductPageViewController(productId: selectedProduct.productId, tempIndexForReviewHighlights: 0)
+        let productView = NewProductPageViewController(productId: selectedProduct.productId)
         
         self.navigationController?.pushViewController(productView, animated: true)
         
@@ -485,7 +485,7 @@ class NewProductPageViewController: BVProductDisplayPageViewController, UITableV
         bundle: nil,
         product: p,
         totalReviewCount: totalReviewCount!,
-        tempIndexForReviewHighlights: self.tempIndexForReviewHighlights)
+        reviewHighlightsProductId: self.reviewHighlightsProductId)
       
       self.navigationController?.pushViewController(ratingsVC, animated: true)
     }
