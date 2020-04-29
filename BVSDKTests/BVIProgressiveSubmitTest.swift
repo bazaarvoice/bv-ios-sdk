@@ -18,79 +18,77 @@ class BVProgressiveSubmitTest: XCTestCase {
         BVSDKManager.shared().setLogLevel(.verbose)
     }
     
-    /*
-     func testProgressiveSubmitRequestWithUserToken() {
-     let expectation = self.expectation(description: "testProgressiveSubmitRequestWithUserToken")
-     let submission = self.buildRequest()
-     
-     
-     submission.submit({ (submittedReview) in
-     let result = submittedReview.result
-     let review = result?.review
-     
-     XCTAssertTrue(result?.submissionSessionToken != nil)
-     XCTAssertTrue(result?.submissionId != nil)
-     XCTAssertTrue(result?.isFormComplete == true)
-     XCTAssertTrue(review?.rating == (submission.submissionFields["rating"] as? NSNumber))
-     XCTAssertTrue(review?.title == (submission.submissionFields["title"] as? String))
-     XCTAssertTrue(review?.reviewText == (submission.submissionFields["reviewText"] as? String))
-     expectation.fulfill()
-     }, failure: { (errors) in
-     expectation.fulfill()
-     print(errors)
-     XCTFail()
-     })
-     waitForExpectations(timeout: 350, handler: nil)
-     }
-     
-     func testProgressiveSubmitRequestWithFormFields() {
-     let expectation = self.expectation(description: "testProgressiveSubmitRequestWithUserToken")
-     let submission = self.buildRequest()
-     submission.includeFields = true
-     
-     submission.submit({ (submittedReview) in
-     let result = submittedReview.result
-     let review = result?.review
-     
-     XCTAssertTrue(result?.submissionSessionToken != nil)
-     XCTAssertTrue(result?.submissionId != nil)
-     XCTAssertTrue(result?.fieldsOrder != nil)
-     XCTAssertTrue(result?.formFields != nil)
-     XCTAssertTrue(review?.rating == (submission.submissionFields["rating"] as? NSNumber))
-     XCTAssertTrue(review?.title == (submission.submissionFields["title"] as? String))
-     XCTAssertTrue(review?.reviewText == (submission.submissionFields["reviewText"] as? String))
-     expectation.fulfill()
-     }, failure: { (errors) in
-     expectation.fulfill()
-     print(errors)
-     XCTFail()
-     })
-     waitForExpectations(timeout: 10, handler: nil)
-     }
-     
-     func testProgressiveSubmitRequestWithPreview() {
-     let expectation = self.expectation(description: "testProgressiveSubmitRequestWithUserToken")
-     let submission = self.buildRequest()
-     submission.isPreview = true
-     
-     submission.submit({ (submittedReview) in
-     let result = submittedReview.result
-     let review = result?.review
-     
-     XCTAssertTrue(result?.submissionSessionToken != nil)
-     XCTAssertTrue(result?.submissionId == nil)
-     XCTAssertTrue(review?.rating == (submission.submissionFields["rating"] as? NSNumber))
-     XCTAssertTrue(review?.title == (submission.submissionFields["title"] as? String))
-     XCTAssertTrue(review?.reviewText == (submission.submissionFields["reviewText"] as? String))
-     expectation.fulfill()
-     }, failure: { (errors) in
-     expectation.fulfill()
-     print(errors)
-     XCTFail()
-     })
-     waitForExpectations(timeout: 10, handler: nil)
-     }
-     */
+    func testProgressiveSubmitRequestWithUserToken() {
+        let expectation = self.expectation(description: "testProgressiveSubmitRequestWithUserToken")
+        let submission = self.buildRequest()
+        
+        
+        submission.submit({ (submittedReview) in
+            let result = submittedReview.result
+            let review = result?.review
+            
+            XCTAssertTrue(result?.submissionSessionToken != nil)
+            XCTAssertTrue(result?.submissionId != nil)
+            XCTAssertTrue(result?.isFormComplete == true)
+            XCTAssertTrue(review?.rating == (submission.submissionFields["rating"] as? NSNumber))
+            XCTAssertTrue(review?.title == (submission.submissionFields["title"] as? String))
+            XCTAssertTrue(review?.reviewText == (submission.submissionFields["reviewText"] as? String))
+            expectation.fulfill()
+        }, failure: { (errors) in
+            expectation.fulfill()
+            print(errors)
+            XCTFail()
+        })
+        waitForExpectations(timeout: 350, handler: nil)
+    }
+    
+    func testProgressiveSubmitRequestWithFormFields() {
+        let expectation = self.expectation(description: "testProgressiveSubmitRequestWithUserToken")
+        let submission = self.buildRequest()
+        submission.includeFields = true
+        
+        submission.submit({ (submittedReview) in
+            let result = submittedReview.result
+            let review = result?.review
+            
+            XCTAssertTrue(result?.submissionSessionToken != nil)
+            XCTAssertTrue(result?.submissionId != nil)
+            XCTAssertTrue(result?.fieldsOrder != nil)
+            XCTAssertTrue(result?.formFields != nil)
+            XCTAssertTrue(review?.rating == (submission.submissionFields["rating"] as? NSNumber))
+            XCTAssertTrue(review?.title == (submission.submissionFields["title"] as? String))
+            XCTAssertTrue(review?.reviewText == (submission.submissionFields["reviewText"] as? String))
+            expectation.fulfill()
+        }, failure: { (errors) in
+            expectation.fulfill()
+            print(errors)
+            XCTFail()
+        })
+        waitForExpectations(timeout: 10, handler: nil)
+    }
+    
+    func testProgressiveSubmitRequestWithPreview() {
+        let expectation = self.expectation(description: "testProgressiveSubmitRequestWithUserToken")
+        let submission = self.buildRequest()
+        submission.isPreview = true
+        
+        submission.submit({ (submittedReview) in
+            let result = submittedReview.result
+            let review = result?.review
+            
+            XCTAssertTrue(result?.submissionSessionToken != nil)
+            XCTAssertTrue(result?.submissionId == nil)
+            XCTAssertTrue(review?.rating == (submission.submissionFields["rating"] as? NSNumber))
+            XCTAssertTrue(review?.title == (submission.submissionFields["title"] as? String))
+            XCTAssertTrue(review?.reviewText == (submission.submissionFields["reviewText"] as? String))
+            expectation.fulfill()
+        }, failure: { (errors) in
+            expectation.fulfill()
+            print(errors)
+            XCTFail()
+        })
+        waitForExpectations(timeout: 10, handler: nil)
+    }
     
     func testProgressiveSubmitMissingUserEmailError() {
         let expectation = self.expectation(description: "testProgressiveSubmitMissingUserEmailError")
@@ -192,7 +190,7 @@ class BVProgressiveSubmitTest: XCTestCase {
             "agreedtotermsandconditions" : agreedtotermsandconditions
         ]
         let submission = BVProgressiveSubmitRequest(productId:"product10")
-        submission.submissionSessionToken = "TOKEN_REMOVED" //"TOKEN_REMOVED"
+        submission.submissionSessionToken = "TOKEN_REMOVED"
         submission.locale = "en_US"
         submission.userToken = "TOKEN_REMOVED"
         submission.submissionFields = fields as! [AnyHashable : Any]
