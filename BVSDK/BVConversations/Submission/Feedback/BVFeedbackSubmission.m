@@ -32,7 +32,6 @@
   NSMutableDictionary *parameters = [NSMutableDictionary
       dictionaryWithDictionary:[super createSubmissionParameters]];
 
-  parameters[@"userid"] = self.userId;
   parameters[@"contentId"] = self.contentId;
 
   switch (self.contentType) {
