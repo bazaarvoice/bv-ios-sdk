@@ -7,6 +7,7 @@
 
 #import "BVSubmission.h"
 #import "BVSubmittedFeedback.h"
+#import "BVBaseUGCSubmission.h"
 #import <Foundation/Foundation.h>
 
 /*
@@ -46,14 +47,13 @@ typedef NS_ENUM(NSInteger, BVFeedbackVote) {
  @availability BVSDK 6.1.0 and later
  */
 
-@interface BVFeedbackSubmission : BVSubmission <BVSubmittedFeedback *>
+@interface BVFeedbackSubmission : BVBaseUGCSubmission <BVSubmittedFeedback *>
 
 @property(nonnull) NSString *contentId;
 @property BVFeedbackContentType contentType;
 @property BVFeedbackType feedbackType;
 
 @property BVFeedbackVote vote;
-@property(nonnull) NSString *userId;
 @property(nullable) NSString *reasonText;
 
 - (nonnull instancetype)initWithContentId:(nonnull NSString *)contentId
