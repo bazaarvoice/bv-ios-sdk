@@ -11,6 +11,7 @@
 #import "BVLogger+Private.h"
 #import "BVNetworkingManager.h"
 #import "BVReviewHighlightsErrorResponse.h"
+#import "BVFeatureUsedEvent.h"
 
 @implementation BVReviewHighlightsRequest
 
@@ -49,7 +50,9 @@
           success(reviewHighlightsResponse);
         });
         
-        // TODO:- Add analytics call if required.
+        if (reviewHighlightsResponse && reviewHighlightsResponse.reviewHighlights) {
+            [self sendReviewHighlightsAnalytics];
+        }
     }
               failure:failure];
 }
@@ -101,6 +104,17 @@ failure:(nonnull void (^)(NSArray<NSError *> *__nonnull errors))failure {
                          fromBVObject:self
                        withURLSession:session];
     }
+}
+
+- (void)sendReviewHighlightsAnalytics {
+    BVFeatureUsedEvent *event = [[BVFeatureUsedEvent alloc]
+     initWithProductId:self.productId
+     withBrand:nil
+     withProductType:BVPixelProductTypeConversationsReviews
+     withEventName:BVPixelFeatureUsedEventNameReviewHighlights
+     withAdditionalParams:nil];
+    
+    [BVPixel trackEvent:event];
 }
 
 - (void)
