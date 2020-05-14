@@ -33,6 +33,8 @@
     return @"Click";
   case BVPixelFeatureUsedNameProfile:
     return @"Profile";
+  case BVPixelFeatureUsedEventNameReviewHighlights:
+    return @"ReviewHighlights";
   default:
     return @"Unknown";
     break;
