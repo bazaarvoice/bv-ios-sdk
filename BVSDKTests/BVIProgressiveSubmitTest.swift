@@ -190,7 +190,7 @@ class BVProgressiveSubmitTest: XCTestCase {
             "agreedtotermsandconditions" : agreedtotermsandconditions
         ]
         let submission = BVProgressiveSubmitRequest(productId:"product10")
-        submission.submissionSessionToken = "OeMKVi1tXoJOT3YFlYjaaJffmL20qOorqf0J87lcklmt8GZ7tbNDDyDx/UZeV+Dv7CgRurvxkrn0uAiNjdQpq9Z2ABxVvNq/kHnElA3GTs0="
+        submission.submissionSessionToken = "whpqx/tQ9PbquPh/6h0915ffmL20qOorqf0J87lcklmt8GZ7tbNDDyDx/UZeV+Dv7CgRurvxkrn0uAiNjdQpq9Z2ABxVvNq/kHnElA3GTs0="
         submission.locale = "en_US"
         submission.userToken = "6851e5f974485291cd2c32bfbc4d00774e6d298910c3b0c674e553a4cc48562d6d61786167653d33353626484f535445443d564552494649454426646174653d323031393037323526656d61696c616464726573733d42564061696c2e636f6d267573657269643d74657374313039"
         submission.submissionFields = fields as! [AnyHashable : Any]
