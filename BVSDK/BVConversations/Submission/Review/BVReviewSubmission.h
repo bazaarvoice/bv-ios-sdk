@@ -33,6 +33,10 @@
                                  reviewText:(nonnull NSString *)reviewText
                                      rating:(NSUInteger)rating
                                   productId:(nonnull NSString *)productId;
+
+-(nonnull instancetype)initWithAction:(BVSubmissionAction)action
+                            productId:(nonnull NSString *)productId;
+
 - (nonnull instancetype)__unavailable init;
 
 /// Value is text representing a user comment to explain numerical Net Promoter
