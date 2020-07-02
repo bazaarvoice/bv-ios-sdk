@@ -124,11 +124,11 @@
   self.photoURLs = nil;
   self.photoCaptions = nil;
 
-  if (BVSubmissionActionPreview == self.action) {
+  if (BVSubmissionActionPreview == self.action || BVSubmissionActionForm == self.action) {
     NSString *warningLog =
         [NSString stringWithFormat:
                       @"Submitting a '%@' with action set to "
-                      @"`BVSubmissionActionPreview` will not actially submit! "
+                      @"`BVSubmissionActionPreview`/`BVSubmissionActionForm` will not actially submit! "
                       @"Set to `BVSubmissionActionSubmit` for real submission.",
                       NSStringFromClass([self class])];
     BVLogWarning(warningLog, BV_PRODUCT_CONVERSATIONS);
@@ -179,7 +179,9 @@
   NSMutableDictionary *parameters = [NSMutableDictionary
       dictionaryWithDictionary:[super createSubmissionParameters]];
 
-  parameters[@"action"] = [BVSubmissionActionUtil toString:self.action];
+  if (self.action != BVSubmissionActionForm) {
+    parameters[@"action"] = [BVSubmissionActionUtil toString:self.action];
+  }
 
   parameters[@"campaignid"] = self.campaignId;
   parameters[@"locale"] = self.locale;
