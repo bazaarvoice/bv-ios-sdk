@@ -57,6 +57,22 @@
   return self;
 }
 
+- (instancetype)initWithAction:(BVSubmissionAction)action productId:(NSString *)productId {
+    if ((self = [super init])) {
+        self.action = action;
+        self.productId = productId;
+        
+        self.additionalFields = [NSMutableDictionary dictionary];
+        self.contextDataValues = [NSMutableDictionary dictionary];
+        self.ratingQuestions = [NSMutableDictionary dictionary];
+        self.ratingSliders = [NSMutableDictionary dictionary];
+        self.predefinedTags = [NSMutableDictionary dictionary];
+        self.freeformTags = [NSMutableDictionary dictionary];
+        self.videos = [NSMutableArray array];
+    }
+    return self;
+}
+
 /// https://developer.bazaarvoice.com/apis/conversations/tutorials/field_types#additional-field
 - (void)addAdditionalField:(nonnull NSString *)fieldName
                      value:(nonnull NSString *)value {
