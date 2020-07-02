@@ -17,6 +17,8 @@
     return @"Submit";
   case BVSubmissionActionPreview:
     return @"Preview";
+  case BVSubmissionActionForm:
+    return @"";
   }
 }
 

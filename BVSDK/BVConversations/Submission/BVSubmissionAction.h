@@ -16,7 +16,8 @@
  */
 typedef NS_ENUM(NSInteger, BVSubmissionAction) {
   BVSubmissionActionSubmit,
-  BVSubmissionActionPreview
+  BVSubmissionActionPreview,
+  BVSubmissionActionForm
 };
 
 @interface BVSubmissionActionUtil : NSObject
