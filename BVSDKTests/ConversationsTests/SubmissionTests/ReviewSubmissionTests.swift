@@ -148,6 +148,30 @@ class ReviewSubmissionTests: BVBaseStubTestCase {
     
     waitForExpectations(timeout: 10, handler: nil)
   }
+    
+    func testSubmitReviewWithFormFields() {
+
+        let expectation = self.expectation(description: "testSubmitReviewWithFormFields")
+        
+        let review = BVReviewSubmission(action: .form,
+                                        productId: "test1")
+        
+        let randomId = String(arc4random())
+        review.userId = "UserId" + randomId
+        
+        review.submit({ (reviewSubmission) in
+            
+            XCTAssertNotNil(reviewSubmission.formFields)
+            expectation.fulfill()
+            
+        }, failure: { (errors) in
+            
+            XCTFail()
+            expectation.fulfill()
+            
+        })
+        waitForExpectations(timeout: 10, handler: nil)
+    }
   
   func testSubmitReviewFailure() {
     let expectation =
