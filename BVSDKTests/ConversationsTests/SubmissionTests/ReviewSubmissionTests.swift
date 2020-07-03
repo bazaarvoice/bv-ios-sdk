@@ -162,6 +162,7 @@ class ReviewSubmissionTests: BVBaseStubTestCase {
         review.submit({ (reviewSubmission) in
             
             XCTAssertNotNil(reviewSubmission.formFields)
+            XCTAssertTrue(reviewSubmission.formFields?.keys.count == 50)
             expectation.fulfill()
             
         }, failure: { (errors) in
