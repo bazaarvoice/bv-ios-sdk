@@ -119,7 +119,7 @@ relationalFilterOperator:
                  BVQuestionsAndAnswersResponse *__nonnull response))success
      failure:(nonnull ConversationsFailureHandler)failure {
   // validate request
-  if (1 > self.limit || 20 < self.limit) {
+  if (1 > self.limit || 100 < self.limit) {
     [self sendError:[super limitError:self.limit] failureCallback:failure];
   } else {
     [self loadQuestions:self completion:success failure:failure];

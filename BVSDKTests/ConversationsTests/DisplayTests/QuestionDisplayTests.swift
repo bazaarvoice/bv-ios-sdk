@@ -68,4 +68,32 @@ class QuestionDisplayTests: XCTestCase {
     
   }
   
+    
+    func testQuestionDisplayFailure() {
+        
+        let expectation = self.expectation(description: "testQuestionDisplayFailure")
+        
+        let request = BVQuestionsAndAnswersRequest(productId: "test1", limit: 101, offset: 0)
+            .filter(on: .questionHasAnswers, relationalFilterOperatorValue: .equalTo, value: "true")
+        
+        request.load({ (response) in
+            
+            XCTFail("success block should not be called")
+            
+            expectation.fulfill()
+            
+        }) { (error) in
+            
+            XCTAssertNotNil(error)
+            
+            expectation.fulfill()
+            
+        }
+        
+        self.waitForExpectations(timeout: 10) { (error) in
+            XCTAssertNil(error, "Something went horribly wrong, request took too long.")
+        }
+        
+    }
+    
 }
