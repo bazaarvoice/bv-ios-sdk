@@ -69,7 +69,7 @@ class QuestionDisplayTests: XCTestCase {
   }
   
     
-    func testQuestionDisplayFailure() {
+    func testQuestionDisplayLimitFailure() {
         
         let expectation = self.expectation(description: "testQuestionDisplayFailure")
         
