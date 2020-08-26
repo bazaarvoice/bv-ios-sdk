@@ -14,7 +14,7 @@
 
 /// Conversation SDK Version
 #define SDK_HEADER_NAME @"X-UA-BV-SDK"
-#define SDK_HEADER_VALUE @"IOS_SDK_V822"
+#define SDK_HEADER_VALUE @"IOS_SDK_V823"
 
 /// Error domain for NSError results, when present.
 #define BVErrDomain @"com.bazaarvoice.bvsdk"
