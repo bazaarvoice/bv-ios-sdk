@@ -273,6 +273,7 @@ class ReviewDisplayTests: XCTestCase {
     let expectation = self.expectation(description: "testReviewIncludeAuthors")
     
     let request = BVReviewsRequest(productId: "test1", limit: 10, offset: 0)
+      .include(.reviewProducts)
       .include(.reviewAuthors)
     
     request.load({ (response) in
