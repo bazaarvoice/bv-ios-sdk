@@ -47,6 +47,7 @@
 @property(nullable) NSString *categoryId;
 @property(nonnull) NSArray<NSString *> *modelNumbers;
 @property(nullable) BVReviewStatistics *reviewStatistics;
+@property(nullable) BVReviewStatistics *filteredReviewStatistics;
 @property(nullable) BVQAStatistics *qaStatistics;
 
 @property(nonnull, readonly) NSArray<BVReview *> *includedReviews;
