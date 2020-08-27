@@ -256,4 +256,31 @@ class ReviewDisplayTests: XCTestCase {
     }
     
   }
+  
+  func testReviewIncludeAuthors() {
+    
+    let expectation = self.expectation(description: "testReviewIncludeAuthors")
+    
+    let request = BVReviewsRequest(productId: "test1", limit: 10, offset: 0)
+      .include(.reviewAuthors)
+    
+    request.load({ (response) in
+      
+      XCTAssertEqual(response.results.count, 10)
+      
+      for review in response.results {
+        XCTAssertNotNil(review.author)
+      }
+      expectation.fulfill()
+      
+    }) { (error) in
+      
+      XCTFail("review display request error: \(error)")
+      
+    }
+    
+    self.waitForExpectations(timeout: 10000) { (error) in
+      XCTAssertNil(error, "Something went horribly wrong, request took too long.")
+    }
+  }
 }
