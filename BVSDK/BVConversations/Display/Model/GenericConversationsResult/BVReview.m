@@ -39,6 +39,7 @@
 
     NSString *productId = apiResponse[@"ProductId"];
     self.product = [includes getProductById:productId];
+    self.author = [includes getAuthorById:apiResponse[@"AuthorId"]];
     self.cons = apiResponse[@"Cons"];
 
     NSNumber *recommended;

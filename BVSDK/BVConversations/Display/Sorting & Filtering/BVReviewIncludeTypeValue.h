@@ -13,6 +13,7 @@
 /// Types of Bazaarvoice content that can be included with a Profile.
 typedef NS_ENUM(NSInteger, BVReviewIncludeTypeValue) {
   BVReviewIncludeTypeValueReviewProducts,
+  BVReviewIncludeTypeValueReviewAuthors,
   BVReviewIncludeTypeValueReviewComments
 };
 
