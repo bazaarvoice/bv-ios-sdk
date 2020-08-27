@@ -151,21 +151,32 @@ class ReviewDisplayTests: XCTestCase {
             
             XCTAssertEqual(response.results.count, 10)
             let review = response.results.first!
-            
+          
             XCTAssertNotNil(review.product)
             XCTAssertNotNil(review.product?.reviewStatistics)
+            XCTAssertNotNil(review.product?.filteredReviewStatistics)
             XCTAssertNotNil(review.product?.qaStatistics)
             
             XCTAssertNotNil(review.product?.reviewStatistics?.contextDataDistribution)
             XCTAssertNotNil(review.product?.reviewStatistics?.tagDistribution)
             XCTAssertNotNil(review.product?.reviewStatistics?.ratingDistribution)
+          
+            XCTAssertNotNil(review.product?.filteredReviewStatistics?.contextDataDistribution)
+            XCTAssertNotNil(review.product?.filteredReviewStatistics?.tagDistribution)
+            XCTAssertNotNil(review.product?.filteredReviewStatistics?.ratingDistribution)
             
             let qualityAvg = review.product?.reviewStatistics?.secondaryRatingsAverages?["Quality"] as! NSNumber;
             let valueAvg = review.product?.reviewStatistics?.secondaryRatingsAverages?["Value"] as! NSNumber;
             
             XCTAssertTrue(qualityAvg.intValue > 0)
             XCTAssertTrue(valueAvg.intValue > 0)
+          
+            let filteredReviewStatsQualityAvg = review.product?.filteredReviewStatistics?.secondaryRatingsAverages?["Quality"] as! NSNumber;
+            let filteredReviewStatsValueAvg = review.product?.filteredReviewStatistics?.secondaryRatingsAverages?["Value"] as! NSNumber;
             
+            XCTAssertTrue(filteredReviewStatsQualityAvg.intValue > 0)
+            XCTAssertTrue(filteredReviewStatsValueAvg.intValue > 0)
+              
             XCTAssertEqual(review.identifier, "192432")
             
             XCTAssertEqual(review.isRatingsOnly, false)
@@ -210,7 +221,7 @@ class ReviewDisplayTests: XCTestCase {
             XCTFail("product display request error: \(error)")
         }
         
-        self.waitForExpectations(timeout: 1000) { (error) in
+        self.waitForExpectations(timeout: 10) { (error) in
             XCTAssertNil(error, "Something went horribly wrong, request took too long.")
         }
         
