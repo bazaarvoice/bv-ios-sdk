@@ -145,11 +145,19 @@ class ReviewDisplayTests: XCTestCase {
             .filter(on: .hasPhotos, relationalFilterOperatorValue: .equalTo, value: "true")
             .filter(on: .hasComments, relationalFilterOperatorValue: .equalTo, value: "false")
             .include(.reviewProducts)
+            .include(.reviewAuthors)
             .addCustomDisplayParameter("filteredstats", withValue: "reviews,questions")
         
         request.load({ (response) in
             
             XCTAssertEqual(response.results.count, 10)
+          
+           // check for author includes
+            for review in response.results {
+              XCTAssertNotNil(review.author)
+              XCTAssertEqual(review.authorId, review.author?.authorId)
+            }
+          
             let review = response.results.first!
           
             XCTAssertNotNil(review.product)
@@ -263,35 +271,6 @@ class ReviewDisplayTests: XCTestCase {
     }
     
     self.waitForExpectations(timeout: 10) { (error) in
-      XCTAssertNil(error, "Something went horribly wrong, request took too long.")
-    }
-    
-  }
-  
-  func testReviewIncludeAuthors() {
-    
-    let expectation = self.expectation(description: "testReviewIncludeAuthors")
-    
-    let request = BVReviewsRequest(productId: "test1", limit: 10, offset: 0)
-      .include(.reviewProducts)
-      .include(.reviewAuthors)
-    
-    request.load({ (response) in
-      
-      XCTAssertEqual(response.results.count, 10)
-      
-      for review in response.results {
-        XCTAssertNotNil(review.author)
-      }
-      expectation.fulfill()
-      
-    }) { (error) in
-      
-      XCTFail("review display request error: \(error)")
-      
-    }
-    
-    self.waitForExpectations(timeout: 10000) { (error) in
       XCTAssertNil(error, "Something went horribly wrong, request took too long.")
     }
   }
