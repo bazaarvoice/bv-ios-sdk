@@ -10,6 +10,7 @@
 
 @class BVBadge;
 @class BVComment;
+@class BVAuthor;
 @class BVContextDataValue;
 @class BVPhoto;
 @class BVProduct;
@@ -48,6 +49,7 @@
 @property(nullable) NSString *userLocation;
 @property(nonnull) NSArray<BVBadge *> *badges;
 @property(nullable) NSString *authorId;
+@property(nullable) BVAuthor *author;
 @property(nullable) NSNumber *isFeatured;
 @property(nullable) NSString *productId;
 @property(nonnull) NSArray<NSString *> *productRecommendationIds;
