@@ -28,6 +28,9 @@
     case BVReviewIncludeTypeValueReviewProducts:
       self.value = @"Products";
       break;
+    case BVReviewIncludeTypeValueReviewAuthors:
+      self.value = @"Authors";
+      break;
     case BVReviewIncludeTypeValueReviewComments:
       self.value = @"Comments";
       break;

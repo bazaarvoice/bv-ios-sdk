@@ -56,13 +56,11 @@
     SET_IF_NOT_NULL(self.EANs, apiResponse[@"EANs"])
     SET_IF_NOT_NULL(self.modelNumbers, apiResponse[@"ModelNumbers"])
 
-    self.reviewStatistics = [[BVReviewStatistics alloc]
+    self.filteredReviewStatistics = [[BVReviewStatistics alloc]
         initWithApiResponse:apiResponse[@"FilteredReviewStatistics"]];
 
-    if (!self.reviewStatistics) {
-      self.reviewStatistics = [[BVReviewStatistics alloc]
+    self.reviewStatistics = [[BVReviewStatistics alloc]
           initWithApiResponse:apiResponse[@"ReviewStatistics"]];
-    }
 
     self.qaStatistics = [[BVQAStatistics alloc]
         initWithApiResponse:apiResponse[@"FilteredQAStatistics"]];
