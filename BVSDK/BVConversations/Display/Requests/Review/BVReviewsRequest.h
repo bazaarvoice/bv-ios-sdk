@@ -26,6 +26,7 @@ typedef void (^ReviewRequestCompletionHandler)(
 @interface BVReviewsRequest : BVBaseReviewsRequest <BVReviewsResponse *>
 
 @property(nonnull, readonly) NSString *productId;
+@property BOOL incentivizedStats;
 
 - (nonnull instancetype)initWithProductId:(nonnull NSString *)productId
                                     limit:(NSUInteger)limit
