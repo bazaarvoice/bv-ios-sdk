@@ -82,11 +82,11 @@
                           pairWithKey:@"Filter"
                                 value:[filter toParameterString]]];
   }
-
-  for (BVIncludeType *include in self.includes) {
+  
+  if (0 < self.includes.count) {
     [params addObject:[BVStringKeyValuePair
                           pairWithKey:@"Include"
-                                value:[include toIncludeTypeParameterString]]];
+                                value:[self includesToParams:self.includes]]];
   }
 
   if ([self.sorts count] > 0) {
@@ -100,6 +100,22 @@
   }
 
   return params;
+}
+
+- (nonnull NSString *)includesToParams:
+    (nonnull NSArray<BVIncludeType *> *)includes {
+
+  NSMutableArray<NSString *> *includesStringArray =
+      [NSMutableArray arrayWithCapacity:includes.count];
+
+  for (BVIncludeType *include in includes) {
+    [includesStringArray addObject:[include toIncludeTypeParameterString]];
+  }
+
+  NSArray<NSString *> *sortedArray = [includesStringArray
+      sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
+
+  return [sortedArray componentsJoinedByString:@","];
 }
 
 - (nonnull NSString *)endpoint {
