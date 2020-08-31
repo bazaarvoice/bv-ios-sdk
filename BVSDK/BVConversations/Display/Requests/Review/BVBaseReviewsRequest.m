@@ -49,7 +49,6 @@
   _filters = [NSMutableArray array];
   _sorts = [NSMutableArray array];
   _includes = [NSMutableArray array];
-  _incentivizedStats = NO;
 
   // filter the request to the given productId
   BVFilter *filter = [[BVFilter alloc]
@@ -98,10 +97,6 @@
     NSString *allTogetherNow = [sortsAsStrings componentsJoinedByString:@","];
     [params addObject:[BVStringKeyValuePair pairWithKey:@"Sort"
                                                   value:allTogetherNow]];
-  }
-
-  if (self.incentivizedStats == YES) {
-    [params addObject:[BVStringKeyValuePair pairWithKey:@"incentivizedstats" value:@"true"]];
   }
   
   return params;

@@ -23,7 +23,6 @@
 @property(nonatomic, assign, readonly) NSUInteger offset;
 @property(nullable, nonatomic, strong, readonly) NSString *ID;
 @property(nullable, nonatomic, strong, readonly) NSString *search;
-@property BOOL incentivizedStats;
 
 - (void)sendReviewResultsAnalytics:(nonnull NSArray<BVReview *> *)reviews;
 - (void)sendReviewsAnalytics:(nonnull BVReviewsResponse *)reviewsResponse;
@@ -51,5 +50,6 @@ relationalFilterOperatorValue:
      failure:(nonnull ConversationsFailureHandler)failure;
 
 - (nonnull BVResponseType)createResponse:(nonnull NSDictionary *)raw;
+- (nonnull NSMutableArray *)createParams;
 
 @end
