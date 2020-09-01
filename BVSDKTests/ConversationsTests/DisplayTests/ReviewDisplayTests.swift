@@ -335,7 +335,7 @@ class ReviewDisplayTests: XCTestCase {
     
     }
     
-    self.waitForExpectations(timeout: 10000) { (error) in
+    self.waitForExpectations(timeout: 10) { (error) in
       XCTAssertNil(error, "Something went horribly wrong, request took too long.")
     }
   }
