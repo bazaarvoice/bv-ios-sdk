@@ -10,6 +10,7 @@
 #import "BVCommon.h"
 #import "BVFilter.h"
 #import "BVSort.h"
+#import "BVStringKeyValuePair.h"
 
 @implementation BVReviewsRequest
 
