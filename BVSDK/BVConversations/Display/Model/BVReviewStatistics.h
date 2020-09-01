@@ -23,6 +23,7 @@
 @property(nullable) NSNumber *overallRatingRange;
 @property(nullable) NSNumber *totalReviewCount;
 @property(nullable) NSNumber *ratingsOnlyReviewCount;
+@property(nullable) NSNumber *incentivizedReviewCount;
 @property(nullable) NSNumber *recommendedCount;
 
 @property(nullable) BVSecondaryRatingsAverages *secondaryRatingsAverages;
