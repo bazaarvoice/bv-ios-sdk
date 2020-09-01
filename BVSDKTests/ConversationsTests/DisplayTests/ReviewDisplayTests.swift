@@ -274,4 +274,69 @@ class ReviewDisplayTests: XCTestCase {
       XCTAssertNil(error, "Something went horribly wrong, request took too long.")
     }
   }
+  
+  func testReviewDisplayIncentivizedStats() {
+    
+    let configDict = ["clientId": "apitestcustomer",
+                      "apiKeyConversations": "caB45h2jBqXFw1OE043qoMBD1gJC8EwFNCjktzgwncXY4"];
+    BVSDKManager.configure(withConfiguration: configDict, configType: .staging)
+    
+    let expectation = self.expectation(description: "testReviewDisplayIncentivizedStats")
+    
+    let request = BVReviewsRequest(productId: "data-gen-moppq9ekthfzbc6qff3bqokie", limit: 10, offset: 0)
+      .include(.reviewProducts)
+      .include(.reviewAuthors)
+      .addCustomDisplayParameter("filteredstats", withValue: "reviews")
+    
+    request.incentivizedStats = true
+    request.load({ (response) in
+      
+      XCTAssertEqual(response.results.count, 10)
+      
+      // check for author includes
+       for review in response.results {
+         XCTAssertNotNil(review.author)
+         XCTAssertEqual(review.authorId, review.author?.authorId)
+         XCTAssertNotNil(review.author?.reviewStatistics?.incentivizedReviewCount)
+       }
+      
+      let review : BVReview = response.results.first!
+      
+      XCTAssertNotNil(review.product)
+      XCTAssertEqual(review.productId, "data-gen-moppq9ekthfzbc6qff3bqokie")
+      
+      // Review Statistics assertions
+      XCTAssertNotNil(review.product?.reviewStatistics)
+      XCTAssertNotNil(review.product?.reviewStatistics?.incentivizedReviewCount)
+      XCTAssertEqual(review.product?.reviewStatistics?.incentivizedReviewCount, 15)
+      XCTAssertNotNil(review.product?.reviewStatistics?.contextDataDistribution?.value(forKey: "IncentivizedReview"))
+      
+      let incentivizedReview = review.product?.reviewStatistics?.contextDataDistribution?.value(forKey: "IncentivizedReview") as! BVDistributionElement
+      XCTAssertEqual(incentivizedReview.identifier, "IncentivizedReview")
+      XCTAssertEqual(incentivizedReview.label, "Received an incentive for this review")
+      XCTAssertEqual(incentivizedReview.values.count, 1)
+      
+      // Filtered Review Statistics assertions
+      XCTAssertNotNil(review.product?.filteredReviewStatistics)
+      XCTAssertNotNil(review.product?.filteredReviewStatistics?.incentivizedReviewCount)
+      XCTAssertEqual(review.product?.filteredReviewStatistics?.incentivizedReviewCount, 15)
+      XCTAssertNotNil(review.product?.filteredReviewStatistics?.contextDataDistribution?.value(forKey: "IncentivizedReview"))
+      
+      let filteredIncentivizedReview = review.product?.filteredReviewStatistics?.contextDataDistribution?.value(forKey: "IncentivizedReview") as! BVDistributionElement
+      XCTAssertEqual(filteredIncentivizedReview.identifier, "IncentivizedReview")
+      XCTAssertEqual(filteredIncentivizedReview.label, "Received an incentive for this review")
+      XCTAssertEqual(filteredIncentivizedReview.values.count, 1)
+      
+      expectation.fulfill()
+      
+    }) { (error) in
+      
+      XCTFail("review display request error: \(error)")
+    
+    }
+    
+    self.waitForExpectations(timeout: 10000) { (error) in
+      XCTAssertNil(error, "Something went horribly wrong, request took too long.")
+    }
+  }
 }
