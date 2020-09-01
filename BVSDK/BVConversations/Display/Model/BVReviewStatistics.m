@@ -30,6 +30,8 @@
     SET_IF_NOT_NULL(self.totalReviewCount, apiObject[@"TotalReviewCount"])
     SET_IF_NOT_NULL(self.ratingsOnlyReviewCount,
                     apiObject[@"RatingsOnlyReviewCount"])
+    SET_IF_NOT_NULL(self.incentivizedReviewCount,
+                    apiObject[@"IncentivizedReviewCount"])
     SET_IF_NOT_NULL(self.recommendedCount, apiObject[@"RecommendedCount"])
 
     self.secondaryRatingsAverages = [BVSecondaryRatingsAverages
