@@ -283,7 +283,7 @@ class ReviewDisplayTests: XCTestCase {
     
     let expectation = self.expectation(description: "testReviewDisplayIncentivizedStats")
     
-    let request = BVReviewsRequest(productId: "data-gen-moppq9ekthfzbc6qff3bqokie", limit: 10, offset: 0)
+    let request = BVReviewsRequest(productId: "data-gen-moppq9ekthfzbc6qff3bqokie", limit: 55, offset: 0)
       .include(.reviewProducts)
       .include(.reviewAuthors)
       .addCustomDisplayParameter("filteredstats", withValue: "reviews")
@@ -291,15 +291,32 @@ class ReviewDisplayTests: XCTestCase {
     request.incentivizedStats = true
     request.load({ (response) in
       
-      XCTAssertEqual(response.results.count, 10)
+      XCTAssertEqual(response.results.count, 55)
+      XCTAssertEqual(response.results.filter({ $0.badges.contains(where: { $0.identifier == "incentivizedReview" })}).count, 15)
       
-      // check for author includes
-       for review in response.results {
-         XCTAssertNotNil(review.author)
-         XCTAssertEqual(review.authorId, review.author?.authorId)
-         XCTAssertNotNil(review.author?.reviewStatistics?.incentivizedReviewCount)
-       }
-      
+      for review in response.results {
+        
+        // author includes assertions
+        XCTAssertNotNil(review.author)
+        XCTAssertEqual(review.authorId, review.author?.authorId)
+        XCTAssertNotNil(review.author?.reviewStatistics?.incentivizedReviewCount)
+        
+        if let incentivizedBadge = review.badges.first(where: { $0.identifier == "incentivizedReview"}) {
+          
+          // assertions for incentivized review badge properties
+          XCTAssertEqual(incentivizedBadge.badgeType, .custom)
+          XCTAssertEqual(incentivizedBadge.contentType, "REVIEW")
+          
+          // assertions for context data values of incentivized review
+          XCTAssertTrue(review.contextDataValues.contains(where: {$0.identifier == "IncentivizedReview"}))
+          if let incentivizedContextDataValue = review.contextDataValues.first(where: {$0.identifier == "IncentivizedReview"}) {
+            XCTAssertNotNil(incentivizedContextDataValue.dimensionLabel) // dimensionLabel Value could be anything so actual value check is not added
+            XCTAssertEqual(incentivizedContextDataValue.value, "True")
+            XCTAssertEqual(incentivizedContextDataValue.valueLabel, "Yes")
+          }
+        }
+      }
+          
       let review : BVReview = response.results.first!
       
       XCTAssertNotNil(review.product)
@@ -335,7 +352,7 @@ class ReviewDisplayTests: XCTestCase {
     
     }
     
-    self.waitForExpectations(timeout: 10) { (error) in
+    self.waitForExpectations(timeout: 20) { (error) in
       XCTAssertNil(error, "Something went horribly wrong, request took too long.")
     }
   }
