@@ -107,4 +107,38 @@ class ProductDisplayTests: XCTestCase {
   }
   
   
+  func testProductDisplayIncentivizedStats() {
+      
+    // configuration for incentivized stats data
+    let configDict = ["clientId": "apitestcustomer",
+                      "apiKeyConversations": "KEY_REMOVED"];
+    BVSDKManager.configure(withConfiguration: configDict, configType: .staging)
+
+    let expectation = self.expectation(description: "testProductDisplayIncentivizedStats")
+    
+    let request = BVProductDisplayPageRequest(productId: "test1234567")
+      .includeStatistics(.reviews)
+      .addCustomDisplayParameter("filteredstats", withValue: "reviews")
+    
+    request.incentivizedStats = true
+    request.load({ (response) in
+      
+      XCTAssertNotNil(response.result)
+      
+      let product = response.result!
+      
+      XCTAssertEqual(product.reviewStatistics?.incentivizedReviewCount, 3)
+      XCTAssertEqual(product.filteredReviewStatistics?.incentivizedReviewCount, 3)
+      
+      expectation.fulfill()
+      
+    }) { (error) in
+      XCTFail("product display request error: \(error)")
+      expectation.fulfill()
+    }
+    
+    self.waitForExpectations(timeout: 10) { (error) in
+      XCTAssertNil(error, "Something went horribly wrong, request took too long.")
+    }
+  }
 }
