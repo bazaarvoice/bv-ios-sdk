@@ -39,6 +39,7 @@
     _reviewFilters = [NSMutableArray array];
     _questionFilters = [NSMutableArray array];
     _pdpIncludes = [NSMutableArray array];
+    self.incentivizedStats = NO;
   }
 
   return self;
@@ -206,6 +207,10 @@ addIncludedQuestionsFilterType:
                 value:[NSString stringWithFormat:@"%@", include.includeLimit]];
       [params addObject:pair];
     }
+  }
+  
+  if (self.incentivizedStats == YES) {
+    [params addObject:[BVStringKeyValuePair pairWithKey:@"incentivizedstats" value:@"true"]];
   }
 
   return params;
