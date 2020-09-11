@@ -50,6 +50,7 @@ initWithProductIds:(nonnull NSArray<NSString *> *)productIds
                                    BVRelationalFilterOperatorValueEqualTo]
                     values:productIds];
     [self.filters addObject:filter];
+    self.incentivizedStats = NO;
   }
   return self;
 }
@@ -138,6 +139,10 @@ relationalFilterOperatorValue:
                           pairWithKey:@"Filter"
                                 value:[filter toParameterString]]];
   }
+    
+    if (self.incentivizedStats == YES) {
+       [params addObject:[BVStringKeyValuePair pairWithKey:@"incentivizedstats" value:@"true"]];
+     }
 
   return params;
 }
