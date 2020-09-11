@@ -127,8 +127,28 @@ class ProductDisplayTests: XCTestCase {
       
       let product = response.result!
       
+      XCTAssertNotNil(product.identifier)
+      
+      // Review Statistics assertions
       XCTAssertEqual(product.reviewStatistics?.incentivizedReviewCount, 3)
+      XCTAssertNotNil(product.reviewStatistics?.contextDataDistribution?.value(forKey: "IncentivizedReview"))
+      
+      let incentivizedReview = product.reviewStatistics?.contextDataDistribution?.value(forKey: "IncentivizedReview") as! BVDistributionElement
+      XCTAssertEqual(incentivizedReview.identifier, "IncentivizedReview")
+      XCTAssertEqual(incentivizedReview.label, "Received an incentive for this review")
+      XCTAssertEqual(incentivizedReview.values.count, 1)
+      
+      
+      // Filtered Review Statistics assertions
+      XCTAssertNotNil(product.filteredReviewStatistics)
+      XCTAssertNotNil(product.filteredReviewStatistics?.incentivizedReviewCount)
       XCTAssertEqual(product.filteredReviewStatistics?.incentivizedReviewCount, 3)
+      XCTAssertNotNil(product.filteredReviewStatistics?.contextDataDistribution?.value(forKey: "IncentivizedReview"))
+      
+      let filteredIncentivizedReview = product.filteredReviewStatistics?.contextDataDistribution?.value(forKey: "IncentivizedReview") as! BVDistributionElement
+      XCTAssertEqual(filteredIncentivizedReview.identifier, "IncentivizedReview")
+      XCTAssertEqual(filteredIncentivizedReview.label, "Received an incentive for this review")
+      XCTAssertEqual(filteredIncentivizedReview.values.count, 1)
       
       expectation.fulfill()
       
