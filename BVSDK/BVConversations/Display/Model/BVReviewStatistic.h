@@ -15,6 +15,7 @@
 @property(nullable) NSNumber *totalReviewCount;
 @property(nullable) NSNumber *averageOverallRating;
 @property(nullable) NSNumber *overallRatingRange;
+@property(nullable) NSNumber *incentivizedReviewCount;
 
 - (nullable id)initWithApiResponse:(nullable id)apiResponse;
 

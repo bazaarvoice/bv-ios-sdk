@@ -92,5 +92,42 @@ class InlineRatingsDisplayTests: XCTestCase {
     }
     
   }
+    
+    func testInlineRatingsDisplayIncetivizedReviews() {
+      
+       let configDict = ["clientId": "apitestcustomer",
+                           "apiKeyConversations": "KEY_REMOVED"];
+         BVSDKManager.configure(withConfiguration: configDict, configType: .staging)
+         
+         let expectation = self.expectation(description: "testReviewDisplayIncentivizedStats")
+      
+      let request =
+        BVBulkRatingsRequest(productIds: ["data-gen-moppq9ekthfzbc6qff3bqokie"], statistics: .bulkRatingAll)
+          .filter(on: .bulkRatingContentLocale, relationalFilterOperatorValue: .equalTo, values: ["en_US"])
+          request.incentivizedStats = true
+      
+      request.load({ (response) in
+        XCTAssertEqual(response.results.count, 1)
+        XCTAssertEqual(response.results[0].productId, "data-gen-moppq9ekthfzbc6qff3bqokie")
+        XCTAssertEqual(response.results[0].reviewStatistics?.incentivizedReviewCount, 15)
+        XCTAssertEqual(response.results[0].nativeReviewStatistics?.incentivizedReviewCount, 15)
+        
+        XCTAssertEqual(response.results[0].reviewStatistics?.averageOverallRating,4.3818)
+        XCTAssertEqual(response.results[0].reviewStatistics?.overallRatingRange, 5)
+        XCTAssertEqual(response.results[0].reviewStatistics?.totalReviewCount, 55)
+        
+        XCTAssertEqual(response.results[0].nativeReviewStatistics?.averageOverallRating,4.3818)
+        XCTAssertEqual(response.results[0].nativeReviewStatistics?.overallRatingRange, 5)
+        XCTAssertEqual(response.results[0].nativeReviewStatistics?.totalReviewCount, 55)
+        expectation.fulfill()
+      }) { (error) in
+        XCTFail("inline ratings request error: \(error)")
+      }
+      
+      self.waitForExpectations(timeout: 10) { (error) in
+        XCTAssertNil(error, "Something went horribly wrong, request took too long.")
+      }
+      
+    }
   
 }
