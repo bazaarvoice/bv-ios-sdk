@@ -23,6 +23,7 @@
     SET_IF_NOT_NULL(self.averageOverallRating,
                     apiObject[@"AverageOverallRating"])
     SET_IF_NOT_NULL(self.overallRatingRange, apiObject[@"OverallRatingRange"])
+    SET_IF_NOT_NULL(self.incentivizedReviewCount, apiObject[@"IncentivizedReviewCount"])
 
     if (!self.totalReviewCount) {
       self.totalReviewCount = [NSNumber numberWithInt:0];
@@ -35,7 +36,8 @@
     if (!self.overallRatingRange) {
       self.overallRatingRange = [NSNumber numberWithInt:0];
     }
-  }
+      
+}
   return self;
 }
 

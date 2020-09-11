@@ -20,6 +20,8 @@ typedef void (^BulkRatingsSuccessHandler)(
  */
 @interface BVBulkRatingsRequest : BVConversationsRequest
 
+@property BOOL incentivizedStats;
+
 - (nonnull instancetype)
 initWithProductIds:(nonnull NSArray<NSString *> *)productIds
         statistics:(BVBulkRatingIncludeTypeValue)bulkRatingIncludeTypeValue;
