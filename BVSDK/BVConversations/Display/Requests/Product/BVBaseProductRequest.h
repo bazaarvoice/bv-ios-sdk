@@ -14,6 +14,8 @@ typedef void (^ProductSearchRequestCompletionHandler)(
 
 @interface BVBaseProductRequest : BVConversationsRequest
 
+@property BOOL incentivizedStats;
+
 /// Type of social content to include with the product request. NOTE:
 /// BVProductIncludeTypeValue is only supported for statistics, no for Includes.
 - (nonnull instancetype)includeProductIncludeTypeValue:
