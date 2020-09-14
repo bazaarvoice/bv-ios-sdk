@@ -44,6 +44,7 @@ class ProductTextSearchTests: XCTestCase {
       XCTAssertNotNil(product.identifier)
       
       // Review Statistics assertions
+      XCTAssertNotNil(product.reviewStatistics)
       XCTAssertEqual(product.reviewStatistics?.incentivizedReviewCount, 6)
       XCTAssertNotNil(product.reviewStatistics?.contextDataDistribution?.value(forKey: "IncentivizedReview"))
       
@@ -55,7 +56,6 @@ class ProductTextSearchTests: XCTestCase {
       
       // Filtered Review Statistics assertions
       XCTAssertNotNil(product.filteredReviewStatistics)
-      XCTAssertNotNil(product.filteredReviewStatistics?.incentivizedReviewCount)
       XCTAssertEqual(product.filteredReviewStatistics?.incentivizedReviewCount, 6)
       XCTAssertNotNil(product.filteredReviewStatistics?.contextDataDistribution?.value(forKey: "IncentivizedReview"))
       

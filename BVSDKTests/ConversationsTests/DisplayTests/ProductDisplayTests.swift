@@ -127,9 +127,11 @@ class ProductDisplayTests: XCTestCase {
       
       let product = response.result!
       
-      XCTAssertNotNil(product.identifier)
+      XCTAssertEqual(product.identifier, "test1234567")
       
       // Review Statistics assertions
+      XCTAssertNotNil(product.reviewStatistics)
+      XCTAssertNotNil(product.reviewStatistics?.incentivizedReviewCount)
       XCTAssertEqual(product.reviewStatistics?.incentivizedReviewCount, 3)
       XCTAssertNotNil(product.reviewStatistics?.contextDataDistribution?.value(forKey: "IncentivizedReview"))
       
