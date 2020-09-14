@@ -107,4 +107,60 @@ class ProductDisplayTests: XCTestCase {
   }
   
   
+  func testProductDisplayIncentivizedStats() {
+      
+    // configuration for incentivized stats data
+    let configDict = ["clientId": "apitestcustomer",
+                      "apiKeyConversations": "caB45h2jBqXFw1OE043qoMBD1gJC8EwFNCjktzgwncXY4"];
+    BVSDKManager.configure(withConfiguration: configDict, configType: .staging)
+
+    let expectation = self.expectation(description: "testProductDisplayIncentivizedStats")
+    
+    let request = BVProductDisplayPageRequest(productId: "test1234567")
+      .includeStatistics(.reviews)
+      .addCustomDisplayParameter("filteredstats", withValue: "reviews")
+    
+    request.incentivizedStats = true
+    request.load({ (response) in
+      
+      XCTAssertNotNil(response.result)
+      
+      let product = response.result!
+      
+      XCTAssertEqual(product.identifier, "test1234567")
+      
+      // Review Statistics assertions
+      XCTAssertNotNil(product.reviewStatistics)
+      XCTAssertNotNil(product.reviewStatistics?.incentivizedReviewCount)
+      XCTAssertEqual(product.reviewStatistics?.incentivizedReviewCount, 3)
+      XCTAssertNotNil(product.reviewStatistics?.contextDataDistribution?.value(forKey: "IncentivizedReview"))
+      
+      let incentivizedReview = product.reviewStatistics?.contextDataDistribution?.value(forKey: "IncentivizedReview") as! BVDistributionElement
+      XCTAssertEqual(incentivizedReview.identifier, "IncentivizedReview")
+      XCTAssertEqual(incentivizedReview.label, "Received an incentive for this review")
+      XCTAssertEqual(incentivizedReview.values.count, 1)
+      
+      
+      // Filtered Review Statistics assertions
+      XCTAssertNotNil(product.filteredReviewStatistics)
+      XCTAssertNotNil(product.filteredReviewStatistics?.incentivizedReviewCount)
+      XCTAssertEqual(product.filteredReviewStatistics?.incentivizedReviewCount, 3)
+      XCTAssertNotNil(product.filteredReviewStatistics?.contextDataDistribution?.value(forKey: "IncentivizedReview"))
+      
+      let filteredIncentivizedReview = product.filteredReviewStatistics?.contextDataDistribution?.value(forKey: "IncentivizedReview") as! BVDistributionElement
+      XCTAssertEqual(filteredIncentivizedReview.identifier, "IncentivizedReview")
+      XCTAssertEqual(filteredIncentivizedReview.label, "Received an incentive for this review")
+      XCTAssertEqual(filteredIncentivizedReview.values.count, 1)
+      
+      expectation.fulfill()
+      
+    }) { (error) in
+      XCTFail("product display request error: \(error)")
+      expectation.fulfill()
+    }
+    
+    self.waitForExpectations(timeout: 10) { (error) in
+      XCTAssertNil(error, "Something went horribly wrong, request took too long.")
+    }
+  }
 }
