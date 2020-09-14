@@ -30,7 +30,6 @@ class BulkProductTests: XCTestCase {
     request.incentivizedStats = true
     request.load({ (response) in
       
-      print(response.results.count)
       XCTAssertNotNil(response.results)
       XCTAssertEqual(response.results.count, 10)
       
@@ -45,6 +44,7 @@ class BulkProductTests: XCTestCase {
       XCTAssertNotNil(product.identifier)
       
       // Review Statistics assertions
+      XCTAssertNotNil(product.reviewStatistics)
       XCTAssertEqual(product.reviewStatistics?.incentivizedReviewCount, 1)
       XCTAssertNotNil(product.reviewStatistics?.contextDataDistribution?.value(forKey: "IncentivizedReview"))
       
@@ -56,7 +56,6 @@ class BulkProductTests: XCTestCase {
       
       // Filtered Review Statistics assertions
       XCTAssertNotNil(product.filteredReviewStatistics)
-      XCTAssertNotNil(product.filteredReviewStatistics?.incentivizedReviewCount)
       XCTAssertEqual(product.filteredReviewStatistics?.incentivizedReviewCount, 1)
       XCTAssertNotNil(product.filteredReviewStatistics?.contextDataDistribution?.value(forKey: "IncentivizedReview"))
       
