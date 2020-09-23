@@ -140,18 +140,6 @@ class ProductDisplayTests: XCTestCase {
       XCTAssertEqual(incentivizedReview.label, "Received an incentive for this review")
       XCTAssertEqual(incentivizedReview.values.count, 1)
       
-      
-      // Filtered Review Statistics assertions
-      XCTAssertNotNil(product.filteredReviewStatistics)
-      XCTAssertNotNil(product.filteredReviewStatistics?.incentivizedReviewCount)
-      XCTAssertEqual(product.filteredReviewStatistics?.incentivizedReviewCount, 3)
-      XCTAssertNotNil(product.filteredReviewStatistics?.contextDataDistribution?.value(forKey: "IncentivizedReview"))
-      
-      let filteredIncentivizedReview = product.filteredReviewStatistics?.contextDataDistribution?.value(forKey: "IncentivizedReview") as! BVDistributionElement
-      XCTAssertEqual(filteredIncentivizedReview.identifier, "IncentivizedReview")
-      XCTAssertEqual(filteredIncentivizedReview.label, "Received an incentive for this review")
-      XCTAssertEqual(filteredIncentivizedReview.values.count, 1)
-      
       expectation.fulfill()
       
     }) { (error) in
