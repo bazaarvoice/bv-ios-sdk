@@ -162,28 +162,17 @@ class ReviewDisplayTests: XCTestCase {
           
             XCTAssertNotNil(review.product)
             XCTAssertNotNil(review.product?.reviewStatistics)
-            XCTAssertNotNil(review.product?.filteredReviewStatistics)
             XCTAssertNotNil(review.product?.qaStatistics)
             
             XCTAssertNotNil(review.product?.reviewStatistics?.contextDataDistribution)
             XCTAssertNotNil(review.product?.reviewStatistics?.tagDistribution)
             XCTAssertNotNil(review.product?.reviewStatistics?.ratingDistribution)
-          
-            XCTAssertNotNil(review.product?.filteredReviewStatistics?.contextDataDistribution)
-            XCTAssertNotNil(review.product?.filteredReviewStatistics?.tagDistribution)
-            XCTAssertNotNil(review.product?.filteredReviewStatistics?.ratingDistribution)
             
             let qualityAvg = review.product?.reviewStatistics?.secondaryRatingsAverages?["Quality"] as! NSNumber;
             let valueAvg = review.product?.reviewStatistics?.secondaryRatingsAverages?["Value"] as! NSNumber;
             
             XCTAssertTrue(qualityAvg.intValue > 0)
             XCTAssertTrue(valueAvg.intValue > 0)
-          
-            let filteredReviewStatsQualityAvg = review.product?.filteredReviewStatistics?.secondaryRatingsAverages?["Quality"] as! NSNumber;
-            let filteredReviewStatsValueAvg = review.product?.filteredReviewStatistics?.secondaryRatingsAverages?["Value"] as! NSNumber;
-            
-            XCTAssertTrue(filteredReviewStatsQualityAvg.intValue > 0)
-            XCTAssertTrue(filteredReviewStatsValueAvg.intValue > 0)
               
             XCTAssertEqual(review.identifier, "192432")
             
@@ -332,17 +321,6 @@ class ReviewDisplayTests: XCTestCase {
       XCTAssertEqual(incentivizedReview.identifier, "IncentivizedReview")
       XCTAssertEqual(incentivizedReview.label, "Received an incentive for this review")
       XCTAssertEqual(incentivizedReview.values.count, 1)
-      
-      // Filtered Review Statistics assertions
-      XCTAssertNotNil(review.product?.filteredReviewStatistics)
-      XCTAssertNotNil(review.product?.filteredReviewStatistics?.incentivizedReviewCount)
-      XCTAssertEqual(review.product?.filteredReviewStatistics?.incentivizedReviewCount, 15)
-      XCTAssertNotNil(review.product?.filteredReviewStatistics?.contextDataDistribution?.value(forKey: "IncentivizedReview"))
-      
-      let filteredIncentivizedReview = review.product?.filteredReviewStatistics?.contextDataDistribution?.value(forKey: "IncentivizedReview") as! BVDistributionElement
-      XCTAssertEqual(filteredIncentivizedReview.identifier, "IncentivizedReview")
-      XCTAssertEqual(filteredIncentivizedReview.label, "Received an incentive for this review")
-      XCTAssertEqual(filteredIncentivizedReview.values.count, 1)
       
       expectation.fulfill()
       
