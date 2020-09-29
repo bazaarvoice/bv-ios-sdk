@@ -39,7 +39,7 @@ class BVProgressiveSubmitTest: XCTestCase {
             print(errors)
             XCTFail()
         })
-        waitForExpectations(timeout: 350, handler: nil)
+        waitForExpectations(timeout: 10, handler: nil)
     }
     
     func testProgressiveSubmitRequestWithFormFields() {
