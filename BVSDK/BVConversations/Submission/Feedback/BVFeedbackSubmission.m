@@ -134,4 +134,13 @@
   return feedbackEvent;
 }
 
+- (void)submit:(void (^__nonnull)(
+          BVSubmissionResponse<BVSubmittedType *> *__nonnull))success
+    failure:(nonnull ConversationsFailureHandler)failure {
+    
+  self.action = BVSubmissionActionPreview;
+    
+  [super submit:success failure:failure];
+}
+
 @end
