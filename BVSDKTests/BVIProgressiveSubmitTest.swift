@@ -39,7 +39,7 @@ class BVProgressiveSubmitTest: XCTestCase {
             print(errors)
             XCTFail()
         })
-        waitForExpectations(timeout: 350, handler: nil)
+        waitForExpectations(timeout: 10, handler: nil)
     }
     
     func testProgressiveSubmitRequestWithFormFields() {
@@ -190,7 +190,7 @@ class BVProgressiveSubmitTest: XCTestCase {
             "agreedtotermsandconditions" : agreedtotermsandconditions
         ]
         let submission = BVProgressiveSubmitRequest(productId:"product10")
-        submission.submissionSessionToken = "dFoWc967kc/1LS6zcpnD1JffmL20qOorqf0J87lcklmt8GZ7tbNDDyDx/UZeV+Dv7CgRurvxkrn0uAiNjdQpq9Z2ABxVvNq/kHnElA3GTs0="
+        submission.submissionSessionToken = "Nhe9yRdZuUFPWqJ8vAwAAJffmL20qOorqf0J87lcklmt8GZ7tbNDDyDx/UZeV+Dv7CgRurvxkrn0uAiNjdQpq9Z2ABxVvNq/kHnElA3GTs0="
         submission.locale = "en_US"
         submission.userToken = "d45025df4135ef2689ff580dd4208f33646174653d3230323030373331267573657269643d7465737431303926456d61696c416464726573733d425625343061696c2e636f6d264d61786167653d3335362656657269666965645075726368617365723d74727565"
         submission.submissionFields = fields as! [AnyHashable : Any]
