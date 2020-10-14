@@ -49,5 +49,6 @@
 @property(readonly) BOOL isSyndicated;
 @property(nullable, nonatomic, strong, readonly)
     BVSyndicationSource *syndicationSource;
+@property(nullable) NSString *sourceClient;
 
 @end

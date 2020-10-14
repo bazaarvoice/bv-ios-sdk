@@ -70,6 +70,7 @@
 
     SET_IF_NOT_NULL_WITH_ALTERNATE(self.userNickname, apiResponse[@"UserNickname"], apiResponse[@"userNickname"])
     SET_IF_NOT_NULL(self.pros, apiResponse[@"Pros"])
+    SET_IF_NOT_NULL(self.sourceClient, apiResponse[@"SourceClient"])
     SET_IF_NOT_NULL_WITH_ALTERNATE(self.submissionId, apiResponse[@"SubmissionId"], apiResponse[@"submissionID"])
     SET_IF_NOT_NULL(self.totalFeedbackCount, apiResponse[@"TotalFeedbackCount"])
     SET_IF_NOT_NULL(self.totalPositiveFeedbackCount,

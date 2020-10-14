@@ -96,4 +96,41 @@ class QuestionDisplayTests: XCTestCase {
         
     }
     
+    func testQuestionDisplayCOR() {
+        
+        let configDict = ["clientId": "testcust-contentoriginsynd",
+                          "apiKeyConversations": "carz85SqKJp9FrZgeb2irdiEBT4b0DSe7m1KUm18elijE"];
+        BVSDKManager.configure(withConfiguration: configDict, configType: .staging)
+        
+        let expectation = self.expectation(description: "testQuestionDisplayCOR")
+        let request = BVQuestionsAndAnswersRequest(productId: "Concierge-Common-Product-1", limit: 10, offset: 0)
+            .filter(on: .questionHasAnswers, relationalFilterOperatorValue: .equalTo, value: "true")
+        
+        request.load({ (response) in
+            
+            if let question : BVQuestion = response.results.first(where: { $0.identifier == "1536656" }){
+                
+                //Source Client
+                XCTAssertEqual(question.sourceClient, "testcust-contentorigin")
+                //Syndicated Source
+                XCTAssertNotNil(question.syndicationSource)
+                XCTAssertEqual(question.syndicationSource?.logoImageUrl, "https://contentorigin-stg.bazaarvoice.com/testsynd-origin/en_US/SYND1_SKY.png")
+                XCTAssertEqual(question.syndicationSource?.name, "TestCustomer-Contentorigin_Synd_en_US")
+            }
+            
+            expectation.fulfill()
+            
+        }) { (error) in
+            
+            XCTFail("comment display request error: \(error)")
+            
+        }
+        
+        self.waitForExpectations(timeout: 10000) { (error) in
+            XCTAssertNil(error, "Something went horribly wrong, request took too long.")
+        }
+         
+        
+    }
+    
 }
