@@ -55,6 +55,7 @@
                     apiResponse[@"TotalNegativeFeedbackCount"])
     SET_IF_NOT_NULL(_contentLocale, apiResponse[@"ContentLocale"])
     SET_IF_NOT_NULL(_campaignId, apiResponse[@"CampaignId"])
+    SET_IF_NOT_NULL(self.sourceClient, apiResponse[@"SourceClient"])
 
     _submissionTime =
         [BVModelUtil convertTimestampToDatetime:apiResponse[@"SubmissionTime"]];

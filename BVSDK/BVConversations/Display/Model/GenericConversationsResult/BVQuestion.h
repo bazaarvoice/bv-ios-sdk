@@ -59,6 +59,7 @@
 @property(nullable, nonatomic, strong, readonly) NSNumber *isSyndicated;
 @property(nullable, nonatomic, strong, readonly)
     BVSyndicationSource *syndicationSource;
+@property(nullable) NSString *sourceClient;
 
 @property(nonnull, nonatomic, copy) NSArray<BVAnswer *> *includedAnswers;
 

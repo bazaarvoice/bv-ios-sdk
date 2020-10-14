@@ -69,6 +69,7 @@
 @property(nullable) NSDate *lastModeratedTime;
 @property(nullable, nonatomic, strong, readonly)
     BVSyndicationSource *syndicationSource;
+@property(nullable) NSString *sourceClient;
 
 @property(nonnull, readonly) NSArray<BVComment *> *includedComments;
 

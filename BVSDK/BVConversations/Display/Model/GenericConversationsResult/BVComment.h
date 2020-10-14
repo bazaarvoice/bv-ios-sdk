@@ -42,6 +42,7 @@
 @property(readonly) BOOL isSyndicated;
 @property(nullable, nonatomic, strong, readonly)
     BVSyndicationSource *syndicationSource;
+@property(nullable) NSString *sourceClient;
 
 @property(nonnull, readonly) NSArray<BVAnswer *> *includedAnswers;
 @property(nonnull, readonly) NSArray<BVAuthor *> *includedAuthors;

@@ -23,6 +23,7 @@
       SET_IF_NOT_NULL(_name, apiObject[@"Name"]);
       SET_IF_NOT_NULL(_contentLink, apiObject[@"ContentLink"]);
       SET_IF_NOT_NULL(_logoImageUrl, apiObject[@"LogoImageUrl"]);
+      SET_IF_NOT_NULL(_logoImageUrl, apiObject[@"ClientId"]);
     }
   }
   return self;
