@@ -45,6 +45,7 @@
                     apiResponse[@"TotalInappropriateFeedbackCount"])
     SET_IF_NOT_NULL(self.userLocation, apiResponse[@"UserLocation"])
     SET_IF_NOT_NULL(self.authorId, apiResponse[@"AuthorId"])
+    SET_IF_NOT_NULL(self.sourceClient, apiResponse[@"SourceClient"])
 
     NSNumber *featured = apiResponse[@"IsFeatured"];
     if (![featured isKindOfClass:[NSNull class]]) {

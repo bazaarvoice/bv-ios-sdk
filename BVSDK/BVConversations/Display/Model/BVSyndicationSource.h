@@ -17,6 +17,7 @@
 @property(nullable, readonly) NSString *logoImageUrl;
 @property(nullable, readonly) NSString *contentLink;
 @property(nullable, readonly) NSString *name;
+@property(nullable, readonly) NSString *clientId;
 
 - (nullable id)initWithApiResponse:(nullable id)apiResponse;
 
