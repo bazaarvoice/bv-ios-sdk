@@ -334,4 +334,46 @@ class ReviewDisplayTests: XCTestCase {
       XCTAssertNil(error, "Something went horribly wrong, request took too long.")
     }
   }
+  
+  func testReviewDisplayCOR(){
+    let configDict = ["clientId": "testcust-contentoriginsynd",
+                      "apiKeyConversations": "ca79jZohgqUDHy625ASm2su46Iu092ZhKuhKibga3Z6zo"];
+    BVSDKManager.configure(withConfiguration: configDict, configType: .staging)
+    
+    let expectation = self.expectation(description: "testReviewDisplayCOR")
+    let request = BVReviewsRequest(productId: "Concierge-Common-Product-1", limit: 10, offset: 0)
+      .include(.reviewProducts)
+      .include(.reviewAuthors)
+      .addCustomDisplayParameter("filteredstats", withValue: "reviews")
+    
+    request.load({ (response) in
+      
+      XCTAssertEqual(response.results.count, 10) // We filtered on a review id, so there should only be one
+      
+      guard let review = response.results.first(where: {$0.identifier == "33952344"}) else {
+        
+        XCTFail("review not found")
+        expectation.fulfill()
+        return
+        
+      }
+      //Source Client
+      XCTAssertEqual(review.sourceClient, "testcust-contentorigin")
+      //Syndicated Source
+      XCTAssertNotNil(review.syndicationSource)
+      XCTAssertEqual(review.syndicationSource?.logoImageUrl, "https://contentorigin-stg.bazaarvoice.com/testsynd-origin/en_US/SYND1_SKY.png")
+      XCTAssertEqual(review.syndicationSource?.name, "TestCustomer-Contentorigin_Synd_en_US")
+      
+      expectation.fulfill()
+      
+    }) { (error) in
+      
+      XCTFail("review display request error: \(error)")
+      
+    }
+    
+    self.waitForExpectations(timeout: 10) { (error) in
+      XCTAssertNil(error, "Something went horribly wrong, request took too long.")
+    }
+  }
 }
