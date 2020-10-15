@@ -263,4 +263,41 @@ class CommentsDisplayTests: XCTestCase {
       XCTAssertNil(error, "Something went horribly wrong, request took too long.")
     }
   }
+    
+  func testCommentCOR(){
+    
+    let configDict = ["clientId": "testcust-contentoriginsynd",
+                      "apiKeyConversations": "KEY_REMOVED"];
+    BVSDKManager.configure(withConfiguration: configDict, configType: .staging)
+    
+    let expectation = self.expectation(description: "testCommentCOR")
+    let request = BVCommentsRequest(productId: "Concierge-Common-Product-1", andReviewId: "33950761", limit: 10, offset: 0)
+    
+    request.load({ (response) in
+      
+      guard let comment : BVComment = response.results.first(where: { $0.commentId == "4312642" })else {
+        
+        XCTFail("comment not found")
+        expectation.fulfill()
+        return
+        
+      }
+      //Source client
+      XCTAssertEqual(comment.sourceClient, "testcust-contentoriginsynd")
+      //Syndicated Source
+      XCTAssertNotNil(comment.syndicationSource)
+      XCTAssertEqual(comment.syndicationSource?.logoImageUrl, "https://contentorigin-stg.bazaarvoice.com/testsynd1-origin/en_US/Fish03_small.jpg")
+      XCTAssertEqual(comment.syndicationSource?.name, "TestCustomer-Contentorigin_Synd1_en_US")
+      expectation.fulfill()
+      
+    }) { (error) in
+      
+      XCTFail("comment display request error: \(error)")
+      
+    }
+    
+    self.waitForExpectations(timeout: 10) { (error) in
+      XCTAssertNil(error, "Something went horribly wrong, request took too long.")
+    }
+  }
 }
