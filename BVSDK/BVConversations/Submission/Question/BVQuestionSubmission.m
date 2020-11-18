@@ -48,6 +48,11 @@
     parameters[@"sendemailalertwhenpublished"] =
         [self.sendEmailAlertWhenPublished boolValue] ? @"true" : @"false";
   }
+    
+    if (self.sendEmailAlertWhenAnswered) {
+      parameters[@"sendEmailAlertWhenAnswered"] =
+          [self.sendEmailAlertWhenAnswered boolValue] ? @"true" : @"false";
+    }
 
   return parameters;
 }
