@@ -50,7 +50,7 @@
   }
     
     if (self.sendEmailAlertWhenAnswered) {
-      parameters[@"sendEmailAlertWhenAnswered"] =
+      parameters[@"SendEmailAlertWhenAnswered"] =
           [self.sendEmailAlertWhenAnswered boolValue] ? @"true" : @"false";
     }
 
