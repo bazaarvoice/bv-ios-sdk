@@ -24,7 +24,7 @@
                        (X)]
 #define BVFORM_NSSTRING_FOR_FILENAME(X)                                        \
   [NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"; "  \
-                             @"filename=\"upload\"\r\n",                       \
+                             @"filename=\"upload.jpg\"\r\n",                   \
                              (X)]
 #define BVFORM_NSSTRING_FOR_FILE_CONTENT_TYPE                                  \
   @"Content-Type: application/octet-stream\r\n\r\n"
