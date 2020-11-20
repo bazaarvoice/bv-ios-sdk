@@ -146,7 +146,7 @@ static NSUInteger const MAX_IMAGE_BYTES = 5 * 1024 * 1024; /// BV API max is 5MB
     [self submit:^(BVSubmissionResponse<BVSubmittedPhoto *> *_Nonnull response) {
         
         NSString *photoURL = response.result.photo.sizes.normalUrl;
-        NSString *photoCaption = response.result.photo.caption;
+        NSString *photoCaption = response.result.photo.caption ?: self.photoCaption;
         
         success(photoURL, photoCaption);
     }
