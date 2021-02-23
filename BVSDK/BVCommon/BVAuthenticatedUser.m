@@ -6,10 +6,12 @@
 //
 
 #import "BVAuthenticatedUser+Testing.h"
+#import "BVAnalyticEventManager.h"
 #import "BVCommon.h"
 #import "BVLogger+Private.h"
 #import "BVNetworkingManager.h"
 #import <AdSupport/AdSupport.h>
+#import <AppTrackingTransparency/ATTrackingManager.h>
 
 @interface BVAuthenticatedUser ()
 
@@ -24,11 +26,18 @@
             isStaging:(BOOL)isStage {
 // don't grab profile if user has opted for limited ad targeting
 #ifdef DISABLE_BVSDK_IDFA
-  return;
-#else
-  if (![[ASIdentifierManager sharedManager] isAdvertisingTrackingEnabled]) {
+    
+    if (@available(iOS 14, *)) {
+        if ([ATTrackingManager trackingAuthorizationStatus] == ATTrackingManagerAuthorizationStatusNotDetermined) {
+            [BVAnalyticEventManager.sharedManager requestIDFA];
+        }
+    }
+    
     return;
-  }
+#else
+    if ([BVAnalyticEventManager.sharedManager isAdvertisingTrackingEnabled]) {
+        return;
+    }
 
   NSAssert(passKey && 0 < passKey.length,
            @"You must supply apiKeyShopperAdvertising in the BVSDKManager.");
@@ -150,35 +159,41 @@
 }
 
 - (NSDictionary *)getTargetingKeywords {
-#ifdef DISABLE_BVSDK_IDFA
-  BOOL trackingEnabled = NO;
-#else
-  BOOL trackingEnabled =
-      [[ASIdentifierManager sharedManager] isAdvertisingTrackingEnabled];
-#endif
-
-  if (!self.personalizedPreferences || !trackingEnabled)
-    return nil;
-
-  NSDictionary *profile =
-      [self.personalizedPreferences objectForKey:@"profile"];
-  if (!profile) {
-    return nil;
-  }
-
-  NSMutableDictionary *targetingInfo = [NSMutableDictionary dictionary];
-
-  for (NSString *key in profile) {
-    // ensure we don't include profile id
-    if (![key isEqualToString:@"id"]) {
-      NSDictionary *value = [profile objectForKey:key];
-      if (value && [value count] > 0) {
-        [targetingInfo setObject:[self generateString:value] forKey:key];
-      }
+    
+    if (@available(iOS 14, *)) {
+        if ([ATTrackingManager trackingAuthorizationStatus] == ATTrackingManagerAuthorizationStatusNotDetermined) {
+            [BVAnalyticEventManager.sharedManager requestIDFA];
+        }
     }
-  }
-
-  return targetingInfo;
+    
+#ifdef DISABLE_BVSDK_IDFA
+    BOOL trackingEnabled = NO;
+#else
+    BOOL trackingEnabled = [BVAnalyticEventManager.sharedManager isAdvertisingTrackingEnabled];
+#endif
+    
+    if (!self.personalizedPreferences || !trackingEnabled)
+        return nil;
+    
+    NSDictionary *profile =
+    [self.personalizedPreferences objectForKey:@"profile"];
+    if (!profile) {
+        return nil;
+    }
+    
+    NSMutableDictionary *targetingInfo = [NSMutableDictionary dictionary];
+    
+    for (NSString *key in profile) {
+        // ensure we don't include profile id
+        if (![key isEqualToString:@"id"]) {
+            NSDictionary *value = [profile objectForKey:key];
+            if (value && [value count] > 0) {
+                [targetingInfo setObject:[self generateString:value] forKey:key];
+            }
+        }
+    }
+    
+    return targetingInfo;
 }
 
 - (NSString *)generateString:(NSDictionary *)dict {

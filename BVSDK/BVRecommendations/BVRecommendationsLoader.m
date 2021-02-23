@@ -8,6 +8,7 @@
 #import <AdSupport/ASIdentifierManager.h>
 
 #import "BVCommon.h"
+#import "BVAnalyticEventManager.h"
 #import "BVLogger+Private.h"
 #import "BVNetworkingManager.h"
 #import "BVRecommendationsLoader+Private.h"
@@ -18,6 +19,7 @@
 #import "BVSDKManager+Private.h"
 #import "BVShopperProfile.h"
 #import "BVShopperProfileRequestCache.h"
+#import <AppTrackingTransparency/ATTrackingManager.h>
 
 @interface BVRecommendationsLoader ()
 @end
@@ -363,12 +365,19 @@ completionOnMainThread:(NSArray<BVRecommendedProduct *> *)recommendations
 }
 
 - (NSString *)getIdfaString {
-  if ([[ASIdentifierManager sharedManager] isAdvertisingTrackingEnabled]) {
-    return [[[ASIdentifierManager sharedManager] advertisingIdentifier]
-        UUIDString];
-  } else {
-    return @"nontracking";
-  }
+    
+    if (@available(iOS 14, *)) {
+        if ([ATTrackingManager trackingAuthorizationStatus] == ATTrackingManagerAuthorizationStatusNotDetermined) {
+            [BVAnalyticEventManager.sharedManager requestIDFA];
+        }
+    }
+    
+    if ([BVAnalyticEventManager.sharedManager isAdvertisingTrackingEnabled]) {
+        return [[[ASIdentifierManager sharedManager] advertisingIdentifier]
+                UUIDString];
+    } else {
+        return @"nontracking";
+    }
 }
 
 - (BOOL)isSDKValid {
@@ -402,5 +411,6 @@ completionOnMainThread:(NSArray<BVRecommendedProduct *> *)recommendations
 
   return [NSError errorWithDomain:BVErrDomain code:-1 userInfo:userInfo];
 }
+
 
 @end
