@@ -15,8 +15,8 @@
 /// client app does not use the BVSDKManager to initialize the SDK.
 @property(strong, nonatomic) NSString *clientId;
 
-- (BOOL)isAdvertisingTrackingEnabled;
++ (BOOL)isAdvertisingTrackingEnabled;
 
-- (void)requestIDFA;
++ (void)requestIDFA;
 
 @end
