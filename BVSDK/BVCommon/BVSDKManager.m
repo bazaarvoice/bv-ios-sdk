@@ -6,6 +6,7 @@
 //
 
 #import "BVAnalyticEventManager+Private.h"
+#import <AppTrackingTransparency/ATTrackingManager.h>
 #import "BVAnalyticsManager.h"
 #import "BVAuthenticatedUser+Private.h"
 #import "BVCommon.h"
@@ -90,6 +91,13 @@ static NSString *const BVSDKConfigFileExt = @"json";
 
     // make sure analytics has been started
     [BVAnalyticsManager sharedManager];
+      //To present the authorization request call requestTrackingAuthorizationWithCompletionHandler:
+      //the user can grant the App Tracking Transparency permission
+      if (@available(iOS 14, *)) {
+          if ([ATTrackingManager trackingAuthorizationStatus] == ATTrackingManagerAuthorizationStatusNotDetermined) {
+              [BVAnalyticEventManager requestIDFA];
+          }
+      }
 
     _urlSessionDelegateQueue = dispatch_queue_create(
         "com.bazaarvoice.BVSDKManager.urlSessionDelegateQueue",

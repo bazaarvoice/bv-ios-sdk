@@ -88,14 +88,8 @@ __strong static BVAnalyticEventManager *mgrInstance = nil;
   // check it limit ad tracking is enabled
   NSString *idfa = @"nontracking";
 #ifndef DISABLE_BVSDK_IDFA
-    
-    if (@available(iOS 14, *)) {
-        if ([ATTrackingManager trackingAuthorizationStatus] == ATTrackingManagerAuthorizationStatusNotDetermined) {
-            [self requestIDFA];
-        }
-    }
-    
-    if ([self isAdvertisingTrackingEnabled] && !anonymous) {
+
+    if ([BVAnalyticEventManager isAdvertisingTrackingEnabled] && !anonymous) {
         idfa = [[[ASIdentifierManager sharedManager] advertisingIdentifier]
                 UUIDString];
     }
@@ -106,7 +100,8 @@ __strong static BVAnalyticEventManager *mgrInstance = nil;
   return params;
 }
 
-- (BOOL)isAdvertisingTrackingEnabled {
+//Use the trackingAuthorizationStatus property to check authorization status.
++ (BOOL)isAdvertisingTrackingEnabled {
 
     if (@available(iOS 14, *)) {
         return [ATTrackingManager trackingAuthorizationStatus] == ATTrackingManagerAuthorizationStatusAuthorized;
@@ -116,7 +111,7 @@ __strong static BVAnalyticEventManager *mgrInstance = nil;
     }
 }
 
-- (void)requestIDFA {
++ (void)requestIDFA {
     if (@available(iOS 14, *)) {
         [ATTrackingManager requestTrackingAuthorizationWithCompletionHandler:^(ATTrackingManagerAuthorizationStatus status) {}];
     }

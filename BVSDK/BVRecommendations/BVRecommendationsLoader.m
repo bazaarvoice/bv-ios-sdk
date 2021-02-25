@@ -365,14 +365,8 @@ completionOnMainThread:(NSArray<BVRecommendedProduct *> *)recommendations
 }
 
 - (NSString *)getIdfaString {
-    
-    if (@available(iOS 14, *)) {
-        if ([ATTrackingManager trackingAuthorizationStatus] == ATTrackingManagerAuthorizationStatusNotDetermined) {
-            [BVAnalyticEventManager.sharedManager requestIDFA];
-        }
-    }
-    
-    if ([BVAnalyticEventManager.sharedManager isAdvertisingTrackingEnabled]) {
+
+    if ([BVAnalyticEventManager isAdvertisingTrackingEnabled]) {
         return [[[ASIdentifierManager sharedManager] advertisingIdentifier]
                 UUIDString];
     } else {
