@@ -26,16 +26,9 @@
             isStaging:(BOOL)isStage {
 // don't grab profile if user has opted for limited ad targeting
 #ifdef DISABLE_BVSDK_IDFA
-    
-    if (@available(iOS 14, *)) {
-        if ([ATTrackingManager trackingAuthorizationStatus] == ATTrackingManagerAuthorizationStatusNotDetermined) {
-            [BVAnalyticEventManager.sharedManager requestIDFA];
-        }
-    }
-    
     return;
 #else
-    if ([BVAnalyticEventManager.sharedManager isAdvertisingTrackingEnabled]) {
+    if ([BVAnalyticEventManager isAdvertisingTrackingEnabled]) {
         return;
     }
 
@@ -159,17 +152,11 @@
 }
 
 - (NSDictionary *)getTargetingKeywords {
-    
-    if (@available(iOS 14, *)) {
-        if ([ATTrackingManager trackingAuthorizationStatus] == ATTrackingManagerAuthorizationStatusNotDetermined) {
-            [BVAnalyticEventManager.sharedManager requestIDFA];
-        }
-    }
-    
+
 #ifdef DISABLE_BVSDK_IDFA
     BOOL trackingEnabled = NO;
 #else
-    BOOL trackingEnabled = [BVAnalyticEventManager.sharedManager isAdvertisingTrackingEnabled];
+    BOOL trackingEnabled = [BVAnalyticEventManager isAdvertisingTrackingEnabled];
 #endif
     
     if (!self.personalizedPreferences || !trackingEnabled)
