@@ -27,6 +27,9 @@
 }
 
 - (BOOL)respondsToSelector:(SEL)aSelector {
+  if ([@"_diffableDataSourceImpl" isEqualToString:NSStringFromSelector(aSelector)]) {
+    return NO;
+  }
   if ([self.middleMan respondsToSelector:aSelector]) {
     return YES;
   }
