@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -80,12 +81,6 @@
                                 <exclude reference="KPJ-Fh-VF7"/>
                             </mask>
                         </variation>
-                        <connections>
-                            <outlet property="bodyView" destination="IbK-aE-zCQ" id="IJL-tL-nEe"/>
-                            <outlet property="callToActionView" destination="sbq-I2-ggF" id="oK8-V1-VBc"/>
-                            <outlet property="headlineView" destination="gwV-53-nZF" id="2sO-re-vee"/>
-                            <outlet property="imageView" destination="Peg-Of-7ll" id="1Cj-ht-JSz"/>
-                        </connections>
                     </view>
                 </subviews>
             </view>
