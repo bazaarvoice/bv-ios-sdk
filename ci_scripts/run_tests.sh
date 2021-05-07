@@ -28,11 +28,11 @@ echo "my pid: $pid"
 
 
 echo "Installing cocoapods dependencies for BVSDK Test target"
-pod install --repo-update
+pod install
 
 
 echo Running tests
-xcodebuild test -workspace ../BVSDK.xcworkspace -scheme "BVSDK-Tests" GCC_PREPROCESSOR_DEFINITIONS='$GCC_PREPROCESSOR_DEFINITIONS BV_IGNORE_TESTING_STUBS=1' -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 6,OS=latest' | xcpretty -c
+xcodebuild test -workspace ../BVSDK.xcworkspace -scheme "BVSDK-Tests" GCC_PREPROCESSOR_DEFINITIONS='$GCC_PREPROCESSOR_DEFINITIONS BV_IGNORE_TESTING_STUBS=1' -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 12,OS=latest' | xcpretty -c
 
 
 cleanup
