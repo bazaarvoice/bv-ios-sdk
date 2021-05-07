@@ -30,11 +30,11 @@ set -euf -o pipefail
 
 echo Installing cocoapods dependencies for the BVSDKDemo...
 cd ../Examples/BVSDKDemo
-pod install --repo-update
+pod install
 cd ../..
 
 
 echo Staring build...
-xcodebuild -workspace ./Examples/BVSDKDemo/BVSDKDemo.xcworkspace -scheme "BVSDKDemo" -sdk iphonesimulator | xcpretty -c
+xcodebuild ONLY_ACTIVE_ARCH=YES -workspace ./Examples/BVSDKDemo/BVSDKDemo.xcworkspace -scheme "BVSDKDemo" -sdk iphonesimulator -UseModernBuildSystem=NO | xcpretty -c
 
 cleanup
