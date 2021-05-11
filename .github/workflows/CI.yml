@@ -8,20 +8,26 @@ on:
 
 jobs:
   build-and-test:
-
+    
     runs-on: macos-latest
-
+    
     steps:
     - uses: actions/checkout@v2
-
+    
     - name: Select Xcode
       run: sudo Xcode-select -switch /Applications/Xcode_12.4.app
-
+    
     - name: Build
       run: '././ci_scripts/build_framework.sh'
-      
-    - name: Run tests
-      run: '././ci_scripts/run_tests.sh'
-      
+    
+#    - name: Run tests
+#      run: '././ci_scripts/run_tests.sh'
+    
     - name: Build Demo App
       run: '././ci_scripts/build_bvsdkdemo.sh'
+        
+    - name: Installation Carthage
+      run: '././Tests/installation_tests/carthage/test.sh'
+    
+    - name: Build BVPixel
+      run: '././Tests/installation_tests/bvpixel/swift/test.sh'
