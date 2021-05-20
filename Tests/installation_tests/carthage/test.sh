@@ -21,4 +21,4 @@ echo "git \"$GIT_REPO\" \"$GIT_BRANCH\"" > "$TESTDIR/Cartfile"
 
 carthage bootstrap --platform ios --configuration Debug --no-use-binaries
 
-xcodebuild ONLY_ACTIVE_ARCH=YES build -project "${TESTDIR}/CarthageTest.xcodeproj" -scheme CarthageTest -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 12,OS=latest' | xcpretty -c
+xcodebuild ONLY_ACTIVE_ARCH=YES build -project "${TESTDIR}/CarthageTest.xcodeproj" -scheme CarthageTest -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 12,OS=latest' -UseModernBuildSystem=NO | xcpretty -c
