@@ -91,13 +91,17 @@ static NSString *const BVSDKConfigFileExt = @"json";
 
     // make sure analytics has been started
     [BVAnalyticsManager sharedManager];
+      
+    // Check if DISABLE_BVSDK_IDFA flag is added or not
+    #ifndef DISABLE_BVSDK_IDFA
       //To present the authorization request call requestTrackingAuthorizationWithCompletionHandler:
-      //the user can grant the App Tracking Transparency permission
+      //the user can grant the App Tracking Transparency permission.
       if (@available(iOS 14, *)) {
           if ([ATTrackingManager trackingAuthorizationStatus] == ATTrackingManagerAuthorizationStatusNotDetermined) {
               [BVAnalyticEventManager requestIDFA];
           }
       }
+    #endif
 
     _urlSessionDelegateQueue = dispatch_queue_create(
         "com.bazaarvoice.BVSDKManager.urlSessionDelegateQueue",
