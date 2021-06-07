@@ -8,4 +8,4 @@ echo "Building stand-alone bvpixel"
 
 cd "$(dirname "$0")"
 
-xcodebuild build -project ./bvpixel.xcodeproj -scheme bvpixel -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 7,OS=latest'
+xcodebuild build -project ./bvpixel.xcodeproj -scheme bvpixel -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 12,OS=latest'
