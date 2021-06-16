@@ -112,13 +112,13 @@ class InlineRatingsDisplayTests: XCTestCase {
         XCTAssertEqual(response.results[0].reviewStatistics?.incentivizedReviewCount, 15)
         XCTAssertEqual(response.results[0].nativeReviewStatistics?.incentivizedReviewCount, 15)
         
-        XCTAssertEqual(response.results[0].reviewStatistics?.averageOverallRating,4.3818)
+        XCTAssertEqual(response.results[0].reviewStatistics?.averageOverallRating,4.24)
         XCTAssertEqual(response.results[0].reviewStatistics?.overallRatingRange, 5)
-        XCTAssertEqual(response.results[0].reviewStatistics?.totalReviewCount, 55)
+        XCTAssertEqual(response.results[0].reviewStatistics?.totalReviewCount, 75)
         
-        XCTAssertEqual(response.results[0].nativeReviewStatistics?.averageOverallRating,4.3818)
+        XCTAssertEqual(response.results[0].nativeReviewStatistics?.averageOverallRating,4.24)
         XCTAssertEqual(response.results[0].nativeReviewStatistics?.overallRatingRange, 5)
-        XCTAssertEqual(response.results[0].nativeReviewStatistics?.totalReviewCount, 55)
+        XCTAssertEqual(response.results[0].nativeReviewStatistics?.totalReviewCount, 75)
         expectation.fulfill()
       }) { (error) in
         XCTFail("inline ratings request error: \(error)")
