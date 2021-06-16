@@ -29,7 +29,6 @@ class BVProgressiveSubmitTest: XCTestCase {
             
             XCTAssertTrue(result?.submissionSessionToken != nil)
             XCTAssertTrue(result?.submissionId != nil)
-            XCTAssertTrue(result?.isFormComplete == true)
             XCTAssertTrue(review?.rating == (submission.submissionFields["rating"] as? NSNumber))
             XCTAssertTrue(review?.title == (submission.submissionFields["title"] as? String))
             XCTAssertTrue(review?.reviewText == (submission.submissionFields["reviewText"] as? String))
