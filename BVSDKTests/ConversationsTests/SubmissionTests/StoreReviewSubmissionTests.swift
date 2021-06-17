@@ -51,7 +51,7 @@ class StoreReviewSubmissionTests: BVBaseStubTestCase {
     
     let review = BVStoreReviewSubmission(reviewTitle: "", reviewText: "", rating: 123, storeId: "1000001")
     review.userNickname = "cgil"
-    review.userId = "craiggiddl"
+    review.userId = "craiggiddll"
     review.action = .submit
     
     review.submit({ (reviewSubmission) in
@@ -59,7 +59,7 @@ class StoreReviewSubmissionTests: BVBaseStubTestCase {
       expectation.fulfill()
     }, failure: { (errors) in
       errors.forEach { print("Expected Failure Item: \($0)") }
-      XCTAssertEqual(errors.count, 5)
+      XCTAssertEqual(errors.count, 4)
       expectation.fulfill()
     })
     waitForExpectations(timeout: 10, handler: nil)
