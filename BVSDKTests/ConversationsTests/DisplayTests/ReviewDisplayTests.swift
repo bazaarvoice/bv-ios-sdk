@@ -281,7 +281,7 @@ class ReviewDisplayTests: XCTestCase {
     request.load({ (response) in
       
       XCTAssertEqual(response.results.count, 55)
-      XCTAssertEqual(response.results.filter({ $0.badges.contains(where: { $0.identifier == "incentivizedReview" })}).count, 15)
+      XCTAssertEqual(response.results.filter({ $0.badges.contains(where: { $0.identifier == "incentivizedReview" })}).count, 9)
       
       for review in response.results {
         
