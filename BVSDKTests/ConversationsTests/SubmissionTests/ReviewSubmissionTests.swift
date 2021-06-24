@@ -187,7 +187,7 @@ class ReviewSubmissionTests: BVBaseStubTestCase {
     let review = BVReviewSubmission(
       reviewTitle: "", reviewText: "", rating: 123, productId: "1000001")
     review.userNickname = "cgil"
-    review.userId = "craiggiddl"
+    review.userId = "craiggiddlll"
     review.action = .submit
     
     review.submit({ (reviewSubmission) in
@@ -196,7 +196,7 @@ class ReviewSubmissionTests: BVBaseStubTestCase {
     }, failure: { (errors) in
       errors.forEach { print("Expected Failure Item: \($0)") }
       
-      XCTAssertEqual(errors.count, 5)
+      XCTAssertEqual(errors.count, 4)
       expectation.fulfill()
     })
     waitForExpectations(timeout: 10, handler: nil)
@@ -215,7 +215,7 @@ class ReviewSubmissionTests: BVBaseStubTestCase {
     let review = BVReviewSubmission(
       reviewTitle: "", reviewText: "", rating: 123, productId: "1000001")
     review.userNickname = "cgil"
-    review.userId = "craiggiddl"
+    review.userId = "craiggiddll"
     review.action = .submit
     
     review.submit({ (reviewSubmission) in
@@ -246,7 +246,7 @@ class ReviewSubmissionTests: BVBaseStubTestCase {
       }
       
       XCTAssertEqual(formRequiredCount, 3)
-      XCTAssertEqual(formDuplicateCount, 1)
+      XCTAssertEqual(formDuplicateCount, 0)
       XCTAssertEqual(formTooHighCount, 1)
       
       expectation.fulfill()

@@ -29,7 +29,6 @@ class BVProgressiveSubmitTest: XCTestCase {
             
             XCTAssertTrue(result?.submissionSessionToken != nil)
             XCTAssertTrue(result?.submissionId != nil)
-            XCTAssertTrue(result?.isFormComplete == true)
             XCTAssertTrue(review?.rating == (submission.submissionFields["rating"] as? NSNumber))
             XCTAssertTrue(review?.title == (submission.submissionFields["title"] as? String))
             XCTAssertTrue(review?.reviewText == (submission.submissionFields["reviewText"] as? String))
@@ -190,9 +189,9 @@ class BVProgressiveSubmitTest: XCTestCase {
             "agreedtotermsandconditions" : agreedtotermsandconditions
         ]
         let submission = BVProgressiveSubmitRequest(productId:"product10")
-        submission.submissionSessionToken = "Nhe9yRdZuUFPWqJ8vAwAAJffmL20qOorqf0J87lcklmt8GZ7tbNDDyDx/UZeV+Dv7CgRurvxkrn0uAiNjdQpq9Z2ABxVvNq/kHnElA3GTs0="
+        submission.submissionSessionToken = "VcticiyaPKqkXxKeZbKRoq0a3ArcQqAObHunbMNdjOiDSSYElouJV7wHkb6nZaSLw5q8OtGFyRFyPyZAChej/RAYtPmVCleQuFiwuKub0ac="
         submission.locale = "en_US"
-        submission.userToken = "d45025df4135ef2689ff580dd4208f33646174653d3230323030373331267573657269643d7465737431303926456d61696c416464726573733d425625343061696c2e636f6d264d61786167653d3335362656657269666965645075726368617365723d74727565"
+        submission.userToken = "6b1549daa5df7eb481d8cf95c0d3e4d2646174653d3230323130363134267573657269643d746573743039383826456d61696c416464726573733d646576656c6f70657225343062617a616172766f6963652e636f6d26557365724e616d653d3039383874657374266d61786167653d333635"
         submission.submissionFields = fields as! [AnyHashable : Any]
         return submission
     }
