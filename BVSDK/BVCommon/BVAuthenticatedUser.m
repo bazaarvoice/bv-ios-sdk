@@ -28,7 +28,7 @@
 #ifdef DISABLE_BVSDK_IDFA
     return;
 #else
-    if ([BVAnalyticEventManager isAdvertisingTrackingEnabled]) {
+    if (![BVAnalyticEventManager isAdvertisingTrackingEnabled]) {
         return;
     }
 
