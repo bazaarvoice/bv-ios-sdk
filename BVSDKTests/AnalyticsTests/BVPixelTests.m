@@ -591,8 +591,14 @@
   XCTAssertNil([transactionNoPII objectForKey:@"email"]);
   XCTAssertTrue(
       [[transactionNoPII objectForKey:@"hadPII"] isEqualToString:@"true"]);
-  XCTAssertFalse([[transactionNoPII objectForKey:@"advertisingId"]
-      isEqualToString:@"nontracking"]);
+    if (@available(iOS 14, *)) {
+        XCTAssertTrue([[transactionNoPII objectForKey:@"advertisingId"]
+                       isEqualToString:@"nontracking"]);
+      }
+      else {
+        XCTAssertFalse([[transactionNoPII objectForKey:@"advertisingId"]
+                        isEqualToString:@"nontracking"]);
+      }
 
   [BVPixel trackEvent:transaction];
 
@@ -670,8 +676,15 @@
   XCTAssertNil([conversionNoPII objectForKey:@"email"]);
   XCTAssertTrue(
       [[conversionNoPII objectForKey:@"hadPII"] isEqualToString:@"true"]);
-  XCTAssertFalse([[conversionNoPII objectForKey:@"advertisingId"]
-      isEqualToString:@"nontracking"]);
+
+    if (@available(iOS 14, *)) {
+        XCTAssertTrue([[conversionNoPII objectForKey:@"advertisingId"]
+                       isEqualToString:@"nontracking"]);
+      }
+      else {
+        XCTAssertFalse([[conversionNoPII objectForKey:@"advertisingId"]
+                        isEqualToString:@"nontracking"]);
+      }
 
   [BVPixel trackEvent:conversion];
 
