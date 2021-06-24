@@ -80,7 +80,7 @@ class QuestionSubmissionTests: BVBaseStubTestCase {
       XCTFail()
     }, failure: { (errors) in
       
-      XCTAssertEqual(errors.count, 2)
+      XCTAssertEqual(errors.count, 1)
       for error in errors as [NSError] {
         let fieldName = error.userInfo[BVFieldErrorName] as! String
         let errorCode = error.userInfo[BVFieldErrorCode] as! String
