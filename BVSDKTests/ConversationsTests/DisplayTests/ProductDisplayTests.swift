@@ -25,6 +25,7 @@ class ProductDisplayTests: XCTestCase {
     let request = BVProductDisplayPageRequest(productId: "test1")
       .include(.reviews, limit: 10)
       .include(.questions, limit: 5)
+      .include(.authors, limit: 13)
       .includeStatistics(.reviews)
     
     request.load({ (response) in
@@ -43,6 +44,7 @@ class ProductDisplayTests: XCTestCase {
       XCTAssertEqual(product.identifier, "test1")
       XCTAssertEqual(product.includedReviews.count, 10)
       XCTAssertEqual(product.includedQuestions.count, 5)
+      XCTAssertEqual(product.includedAuthors.count, 13)
       expectation.fulfill()
       
     }) { (error) in
