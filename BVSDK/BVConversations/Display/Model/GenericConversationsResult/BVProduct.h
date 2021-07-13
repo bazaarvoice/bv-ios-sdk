@@ -13,6 +13,7 @@
 @class BVQuestion;
 @class BVReview;
 @class BVReviewStatistics;
+@class BVAuthor;
 
 /*
  The main information contained within a `BVProductResponse` which is a response
@@ -51,5 +52,7 @@
 
 @property(nonnull, readonly) NSArray<BVReview *> *includedReviews;
 @property(nonnull, readonly) NSArray<BVQuestion *> *includedQuestions;
+@property(nonnull, readonly) NSArray<BVAuthor *> *includedAuthors;
+
 
 @end

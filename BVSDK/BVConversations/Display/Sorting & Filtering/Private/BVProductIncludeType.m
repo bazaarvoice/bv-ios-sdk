@@ -34,6 +34,9 @@
     case BVProductIncludeTypeValueQuestions:
       self.value = @"Questions";
       break;
+    case BVProductIncludeTypeValueAuthors:
+        self.value = @"Authors";
+        break;
     }
   }
   return self;
