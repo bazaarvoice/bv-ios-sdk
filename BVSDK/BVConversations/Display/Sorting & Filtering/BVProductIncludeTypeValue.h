@@ -13,7 +13,8 @@
 typedef NS_ENUM(NSInteger, BVProductIncludeTypeValue) {
   BVProductIncludeTypeValueReviews,
   BVProductIncludeTypeValueQuestions,
-  BVProductIncludeTypeValueAnswers
+  BVProductIncludeTypeValueAnswers,
+  BVProductIncludeTypeValueAuthors
 };
 
 #endif /* BVPDPINCLUDETYPEVALUE_H */
