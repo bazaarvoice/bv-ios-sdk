@@ -76,6 +76,8 @@
                                              Question);
     GET_BVOBJECTS_FROM_CONVERSATIONS_INCLUDE(_includedReviews, includes,
                                              Review);
+    GET_BVOBJECTS_FROM_CONVERSATIONS_INCLUDE(_includedAuthors, includes,
+                                               Author);
   }
   return self;
 }
