@@ -376,4 +376,50 @@ class ReviewDisplayTests: XCTestCase {
       XCTAssertNil(error, "Something went horribly wrong, request took too long.")
     }
   }
+  
+  func testReviewDisplayDateOfConsumerExperience() {
+    
+    let configDict = ["clientId": "testcustomermobilesdk",
+                      "apiKeyConversations": "caYgyVsPvUkcK2a4aBCu0CK64S3vx6ERor9FpgAM32Uew"];
+    BVSDKManager.configure(withConfiguration: configDict, configType: .staging)
+    
+    let expectation = self.expectation(description: "testReviewDisplayDateOfConsumerExperience")
+    let request = BVReviewsRequest(productId: "test1", limit: 10, offset: 0)
+    request.load({ (response) in
+    
+      let reviews = response.results
+      
+      XCTAssertGreaterThan(reviews.count, 0)
+      
+      for review in reviews {
+        
+        XCTAssertNotNil(review.additionalFields)
+
+        guard let additionalFields = review.additionalFields as? [String: [String: String]] else {
+          XCTFail()
+          expectation.fulfill()
+          return
+        }
+        
+        XCTAssertNotNil(additionalFields["DateOfUserExperience"])
+        
+        let dateOfConsumerExperienceField = additionalFields["DateOfUserExperience"]!
+        
+        XCTAssertEqual(dateOfConsumerExperienceField["Id"], "DateOfUserExperience")
+        XCTAssertEqual(dateOfConsumerExperienceField["Label"], "Date of user experience")
+        XCTAssertNotNil(dateOfConsumerExperienceField["Value"])
+      }
+      
+      expectation.fulfill()
+      
+    }) { (error) in
+      
+      XCTFail("review display request error: \(error)")
+      expectation.fulfill()
+    }
+    
+    self.waitForExpectations(timeout: 10) { (error) in
+      XCTAssertNil(error, "Something went horribly wrong, request took too long.")
+    }
+  }
 }
