@@ -294,6 +294,38 @@ class ReviewSubmissionTests: BVBaseStubTestCase {
     waitForExpectations(timeout: 10, handler: nil)
   }
   
+  func testSubmitReviewDateOfConsumerExperienceFormFields() {
+    
+    let configDict = ["clientId": "testcustomermobilesdk",
+                      "apiKeyConversations": "KEY_REMOVED"];
+    BVSDKManager.configure(withConfiguration: configDict, configType: .staging)
+    
+    let expectation = self.expectation(description: "testSubmitReviewDateOfConsumerExperienceFormFields")
+        
+    let review = BVReviewSubmission(action: .form,
+                                    productId: "test1")
+    
+    review.submit({ (reviewSubmission) in
+
+      XCTAssertNotNil(reviewSubmission.formFields)
+      
+      guard let formFields = reviewSubmission.formFields as? [String: BVFormField] else {
+        XCTFail()
+        expectation.fulfill()
+        return
+      }
+      
+      XCTAssertNotNil(formFields["additionalfield_DateOfUserExperience"])
+      expectation.fulfill()
+        
+    }, failure: { (errors) in
+        XCTFail()
+        expectation.fulfill()
+    })
+    
+    waitForExpectations(timeout: 10, handler: nil)
+  }
+  
   func fillOutReview(_ action : BVSubmissionAction) -> BVReviewSubmission {
     let review = BVReviewSubmission(
       reviewTitle: "review title",
