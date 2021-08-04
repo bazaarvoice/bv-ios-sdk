@@ -326,6 +326,41 @@ class ReviewSubmissionTests: BVBaseStubTestCase {
     waitForExpectations(timeout: 10, handler: nil)
   }
   
+  func testSubmitReviewWithDateOfConsumerExperience() {
+    
+    let configDict = ["clientId": "testcustomermobilesdk",
+                      "apiKeyConversations": "caYgyVsPvUkcK2a4aBCu0CK64S3vx6ERor9FpgAM32Uew"];
+    BVSDKManager.configure(withConfiguration: configDict, configType: .staging)
+    
+    let expectation = self.expectation(description: "testSubmitReviewWithDateOfConsumerExperience")
+    
+    let review = BVReviewSubmission(
+      reviewTitle: "review title",
+      reviewText: "more than 50 more than 50 more than 50 more than 50 more" +
+      "than 50",
+      rating: 4,
+      productId: "test1")
+    review.action = .submit
+    review.user = "Tesst564jh"
+    review.addAdditionalField("DateOfUserExperience", value: "2021-04-03") // Date of consumer experience param
+    
+    review.submit({ (reviewSubmission) in
+
+      expectation.fulfill()
+    }, failure: { (errors) in
+      
+      print(errors.description)
+      for error in errors {
+        let nsError = error as NSError
+        print(nsError.userInfo["BVFieldErrorMessage"] ?? "")
+      }
+      XCTFail()
+      expectation.fulfill()
+    })
+    
+    waitForExpectations(timeout: 10, handler: nil)
+  }
+  
   func fillOutReview(_ action : BVSubmissionAction) -> BVReviewSubmission {
     let review = BVReviewSubmission(
       reviewTitle: "review title",
