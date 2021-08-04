@@ -345,7 +345,7 @@ class ReviewSubmissionTests: BVBaseStubTestCase {
     review.addAdditionalField("DateOfUserExperience", value: "2021-04-03") // Date of consumer experience param
     
     review.submit({ (reviewSubmission) in
-
+      XCTAssertTrue(reviewSubmission.formFields?.keys.count == 0)
       expectation.fulfill()
     }, failure: { (errors) in
       
