@@ -361,6 +361,41 @@ class ReviewSubmissionTests: BVBaseStubTestCase {
     waitForExpectations(timeout: 10, handler: nil)
   }
   
+  func testSubmitReviewWithInvalidDateOfConsumerExperience() {
+    
+    let configDict = ["clientId": "testcustomermobilesdk",
+                      "apiKeyConversations": "KEY_REMOVED"];
+    BVSDKManager.configure(withConfiguration: configDict, configType: .staging)
+    
+    let expectation = self.expectation(description: "testSubmitReviewWithInvalidDateOfConsumerExperience")
+    
+    let review = BVReviewSubmission(
+      reviewTitle: "review title",
+      reviewText: "more than 50 more than 50 more than 50 more than 50 more" +
+      "than 50",
+      rating: 4,
+      productId: "test1")
+    review.action = .submit
+    review.user = "Tesst564jh"
+    review.addAdditionalField("DateOfUserExperience", value: "03-04-2021") // Invalid Date of consumer experience
+    
+    review.submit({ (reviewSubmission) in
+      XCTFail("Success block should not be called.")
+      expectation.fulfill()
+    }, failure: { (errors) in
+      
+      XCTAssertEqual(errors.count, 1)
+      
+      let invalidDateofUXError = errors.first! as NSError
+      XCTAssertEqual(invalidDateofUXError.bvSubmissionErrorCode(), .formPatternMismatch)
+      XCTAssertEqual(invalidDateofUXError.userInfo["BVFieldErrorName"] as! String, "additionalfield_DateOfUserExperience")
+      
+      expectation.fulfill()
+    })
+    
+    waitForExpectations(timeout: 10, handler: nil)
+  }
+  
   func fillOutReview(_ action : BVSubmissionAction) -> BVReviewSubmission {
     let review = BVReviewSubmission(
       reviewTitle: "review title",
