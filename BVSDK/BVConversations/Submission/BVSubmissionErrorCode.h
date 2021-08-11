@@ -35,5 +35,6 @@ typedef NS_ENUM(NSInteger, BVSubmissionErrorCode) {
   BVSubmissionErrorCodeParamDuplicateSubmission,
   BVSubmissionErrorCodeParamInvalidSubjectId,
   BVSubmissionErrorCodeParamMissingSubjectId,
+  BVSubmissionErrorCodeFormFutureDate,
   BVSubmissionErrorCodeUnknown
 };
