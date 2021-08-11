@@ -87,6 +87,9 @@
   if ([code isEqualToString:@"ERROR_PARAM_MISSING_SUBJECT_ID"]) {
     return BVSubmissionErrorCodeParamMissingSubjectId;
   }
+  if ([code isEqualToString:@"ERROR_FORM_FUTURE_DATE"]) {
+    return BVSubmissionErrorCodeFormFutureDate;
+  }
   return BVSubmissionErrorCodeUnknown;
 }
 

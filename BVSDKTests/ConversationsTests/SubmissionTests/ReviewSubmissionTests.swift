@@ -412,20 +412,20 @@ class ReviewSubmissionTests: BVBaseStubTestCase {
       productId: "test1")
     review.action = .submit
     review.user = "Tesst564jh"
+    review.userNickname = "Test09675"
     review.addAdditionalField("DateOfUserExperience", value: "2022-04-03") // Invalid Date of consumer experience
-    
+    review.agreedToTermsAndConditions = true
+
     review.submit({ (reviewSubmission) in
       XCTFail("Success block should not be called.")
       expectation.fulfill()
     }, failure: { (errors) in
       
       XCTAssertEqual(errors.count, 1)
+      let invalidDateofUXError = errors.first! as NSError
       
-      // TODO:- Uncomment & update the below assertions once future date validation is added by the API.
-//      let invalidDateofUXError = errors.first! as NSError
-//      print(invalidDateofUXError.bvSubmissionErrorCode())
-//      XCTAssertEqual(invalidDateofUXError.bvSubmissionErrorCode(), .formPatternMismatch)
-//      XCTAssertEqual(invalidDateofUXError.userInfo["BVFieldErrorName"] as! String, "additionalfield_DateOfUserExperience")
+      XCTAssertEqual(invalidDateofUXError.bvSubmissionErrorCode(), .formFutureDate)
+      XCTAssertEqual(invalidDateofUXError.userInfo["BVFieldErrorName"] as! String, "additionalfield_DateOfUserExperience")
       
       expectation.fulfill()
     })
