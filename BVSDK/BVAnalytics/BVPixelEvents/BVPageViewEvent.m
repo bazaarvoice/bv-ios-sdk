@@ -57,7 +57,7 @@
   [eventDict addEntriesFromDictionary:self.additionalParams];
   [eventDict addEntriesFromDictionary:PRODUCT_PAGEVIEW_SCHEMA];
   [eventDict addEntriesFromDictionary:[[BVAnalyticEventManager sharedManager]
-                                          getCommonAnalyticsDictAnonymous:NO]];
+                                          getCommonAnalyticsDict]];
 
   return [NSDictionary dictionaryWithDictionary:eventDict];
 }
