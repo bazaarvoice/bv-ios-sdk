@@ -32,17 +32,5 @@
 /// The server-side calulated Authentication string
 @property NSString *userAuthString;
 
-/**
-    Update the user profile for the client device given a valid Authentication
-   string.
-
-    @param force   Force the profile to be updated, regardless last time of
-   update.
-    @param passKey The Authentication string
-    @param isStage pass in YES if using staging server, NO for production.
- */
-- (void)updateProfile:(BOOL)force
-           withAPIKey:(NSString *)passKey
-            isStaging:(BOOL)isStage;
 
 @end
