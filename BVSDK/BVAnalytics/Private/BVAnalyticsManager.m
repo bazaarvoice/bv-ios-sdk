@@ -5,7 +5,6 @@
 //  Copyright 2016 Bazaarvoice Inc. All rights reserved.
 //
 
-#import <AdSupport/AdSupport.h>
 #import <UIKit/UIKit.h>
 #include <sys/utsname.h>
 
@@ -250,7 +249,7 @@ static BVAnalyticsManager *analyticsInstance = nil;
 
   NSMutableDictionary *eventData = [NSMutableDictionary
       dictionaryWithDictionary:[[BVAnalyticEventManager sharedManager]
-                                   getCommonAnalyticsDictAnonymous:NO]];
+                                   getCommonAnalyticsDict]];
   [eventData addEntriesFromDictionary:[self getMobileDiagnosticParams]];
   [eventData addEntriesFromDictionary:[self getAppStateEventParams]];
   [eventData setObject:appState forKey:@"appState"];
@@ -306,19 +305,15 @@ static BVAnalyticsManager *analyticsInstance = nil;
                                              [eventData objectForKey:@"type"],
                                              [eventData objectForKey:@"name"]]),
                  BV_PRODUCT_ANALYTICS);
-  [self processEvent:eventData isAnonymous:NO];
+  [self processEvent:eventData ];
 }
 
-- (void)queueAnonymousEvent:(NSDictionary *)eventData {
-  [self processEvent:eventData isAnonymous:YES];
-}
-
-- (void)processEvent:(NSDictionary *)eventData isAnonymous:(BOOL)anonymous {
+- (void)processEvent:(NSDictionary *)eventData {
   NSMutableDictionary *eventForQueue =
       [NSMutableDictionary dictionaryWithDictionary:eventData];
   [eventForQueue
       addEntriesFromDictionary:[[BVAnalyticEventManager sharedManager]
-                                   getCommonAnalyticsDictAnonymous:anonymous]];
+                                   getCommonAnalyticsDict]];
 
   dispatch_barrier_sync(self.concurrentEventQueue, ^{
     // Update event queue
@@ -343,7 +338,7 @@ static BVAnalyticsManager *analyticsInstance = nil;
       [NSMutableDictionary dictionaryWithDictionary:pageViewEvent];
   [eventForQueue
       addEntriesFromDictionary:[[BVAnalyticEventManager sharedManager]
-                                   getCommonAnalyticsDictAnonymous:NO]];
+                                   getCommonAnalyticsDict]];
 
   dispatch_barrier_sync(self.concurrentEventQueue, ^{
     // Update PageView queue events
