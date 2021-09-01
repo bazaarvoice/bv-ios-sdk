@@ -16,7 +16,7 @@
 
 /**
  Creates a raw dictionary event that removes any possibly personally
- identifiable information. These events are fine to send with IDFA.
+ identifiable information. 
 
  @param params The additional parameters added to the event creation
 

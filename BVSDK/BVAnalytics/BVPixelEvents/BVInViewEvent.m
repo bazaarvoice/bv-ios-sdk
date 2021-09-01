@@ -46,7 +46,7 @@
   [eventDict addEntriesFromDictionary:self.additionalParams];
   [eventDict addEntriesFromDictionary:FEATURE_USED_INVIEW_SCHEMA];
   [eventDict addEntriesFromDictionary:[[BVAnalyticEventManager sharedManager]
-                                          getCommonAnalyticsDictAnonymous:NO]];
+                                          getCommonAnalyticsDict]];
 
   return [NSDictionary dictionaryWithDictionary:eventDict];
 }

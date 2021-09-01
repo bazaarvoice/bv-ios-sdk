@@ -29,11 +29,11 @@
   NSMutableDictionary *eventDict;
 
   if ([self hasPII]) {
-    eventDict = [self createBaseEvent:YES];
+    eventDict = [self createBaseEvent];
     [eventDict addEntriesFromDictionary:TRANSACTION_SCHEMA_PII];
     [eventDict setObject:@"true" forKey:@"hadPII"];
   } else {
-    eventDict = [self createBaseEvent:NO];
+    eventDict = [self createBaseEvent];
     [eventDict addEntriesFromDictionary:TRANSACTION_SCHEMA];
   }
 
@@ -43,7 +43,7 @@
 }
 
 - (NSDictionary *)toRawNonPII {
-  NSMutableDictionary *eventDict = [self createBaseEvent:NO];
+  NSMutableDictionary *eventDict = [self createBaseEvent];
 
   [eventDict addEntriesFromDictionary:TRANSACTION_SCHEMA];
 
@@ -62,7 +62,7 @@
 }
 
 // All transaction events are created from a base set of properties.
-- (NSMutableDictionary *)createBaseEvent:(BOOL)anonymous {
+- (NSMutableDictionary *)createBaseEvent {
   NSMutableDictionary *eventDict = [NSMutableDictionary
       dictionaryWithObjectsAndKeys:self.orderId, @"orderId", nil];
 
@@ -109,7 +109,7 @@
   [eventDict setObject:[self getLoadId] forKey:@"loadId"];
   [eventDict
       addEntriesFromDictionary:[[BVAnalyticEventManager sharedManager]
-                                   getCommonAnalyticsDictAnonymous:anonymous]];
+                                   getCommonAnalyticsDict]];
 
   return eventDict;
 }

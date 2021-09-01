@@ -6,7 +6,6 @@
 //
 
 #import "BVAnalyticEventManager+Private.h"
-#import <AppTrackingTransparency/ATTrackingManager.h>
 #import "BVAnalyticsManager.h"
 #import "BVAuthenticatedUser+Private.h"
 #import "BVCommon.h"
@@ -92,16 +91,6 @@ static NSString *const BVSDKConfigFileExt = @"json";
     // make sure analytics has been started
     [BVAnalyticsManager sharedManager];
       
-    // Check if DISABLE_BVSDK_IDFA flag is added or not
-    #ifndef DISABLE_BVSDK_IDFA
-      //To present the authorization request call requestTrackingAuthorizationWithCompletionHandler:
-      //the user can grant the App Tracking Transparency permission.
-      if (@available(iOS 14, *)) {
-          if ([ATTrackingManager trackingAuthorizationStatus] == ATTrackingManagerAuthorizationStatusNotDetermined) {
-              [BVAnalyticEventManager requestIDFA];
-          }
-      }
-    #endif
 
     _urlSessionDelegateQueue = dispatch_queue_create(
         "com.bazaarvoice.BVSDKManager.urlSessionDelegateQueue",
@@ -300,22 +289,6 @@ static NSString *const BVSDKConfigFileExt = @"json";
   }
 }
 
-// Update the user profile by calling the /users/ endpoint if the targeting
-// params are empty.
-- (void)updateUserProfileIfEmpty {
-  [self.bvUser updateProfile:NO
-                  withAPIKey:self.configuration.apiKeyShopperAdvertising
-                   isStaging:self.configuration.staging];
-}
-
-// Udpate the user profile by calling the /users/ endpoint, regardless of the
-// current state of the targeting params
-- (void)updateUserProfileForce {
-  [self.bvUser updateProfile:YES
-                  withAPIKey:self.configuration.apiKeyShopperAdvertising
-                   isStaging:self.configuration.staging];
-}
-
 - (void)setUserId:(NSString *)userAuthString {
   self.bvUser.userAuthString = userAuthString;
 
@@ -325,34 +298,15 @@ static NSString *const BVSDKConfigFileExt = @"json";
 
   [NSObject cancelPreviousPerformRequestsWithTarget:self];
 
-  // try to grab the profile as soon as its available
-  [self updateUserProfileForce];
-  [self waitForProfileUpdatesByPollingWithStep:6.0f andMaxTimeInterval:24.0f];
 }
 
-- (void)waitForProfileUpdatesByPollingWithStep:(NSTimeInterval)step
-                            andMaxTimeInterval:(NSTimeInterval)maxTimeInterval {
-  NSTimeInterval currentStep = step;
-
-  while (currentStep > maxTimeInterval) {
-    dispatch_after(
-        dispatch_time(DISPATCH_TIME_NOW, (int64_t)(currentStep * NSEC_PER_SEC)),
-        dispatch_get_main_queue(), ^{
-          [self updateUserProfileIfEmpty];
-        });
-
-    currentStep += currentStep;
-  }
-}
 
 - (BVAuthenticatedUser *)getBVAuthenticatedUser {
   return self.bvUser;
 }
 
 - (NSDictionary *)getCustomTargeting {
-  NSAssert(_apiKeyShopperAdvertising && 0 < _apiKeyShopperAdvertising.length,
-           @"You must supply apiKeyShopperAdvertising in the BVSDKManager.");
-  return [self.bvUser getTargetingKeywords];
+    return  nil;
 }
 
 @end

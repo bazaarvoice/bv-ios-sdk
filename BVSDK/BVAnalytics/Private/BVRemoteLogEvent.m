@@ -48,7 +48,7 @@
 - (nonnull NSDictionary *)toRaw {
   NSMutableDictionary *eventDict = [NSMutableDictionary
       dictionaryWithDictionary:[[BVAnalyticEventManager sharedManager]
-                                   getCommonAnalyticsDictAnonymous:YES]];
+                                   getCommonAnalyticsDict]];
   [eventDict addEntriesFromDictionary:BV_ERROR_SCHEMA];
 
   NSString *systemVersion = [[UIDevice currentDevice] systemVersion];

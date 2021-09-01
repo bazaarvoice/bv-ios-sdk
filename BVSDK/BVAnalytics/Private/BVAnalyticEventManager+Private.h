@@ -14,7 +14,7 @@
 
 @property(strong, nonatomic) NSString *eventSource;
 
-- (NSDictionary *)getCommonAnalyticsDictAnonymous:(BOOL)anonymous;
+- (NSDictionary *)getCommonAnalyticsDict;
 
 @end
 
