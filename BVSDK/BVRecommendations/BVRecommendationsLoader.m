@@ -5,7 +5,6 @@
 //  Copyright 2016 Bazaarvoice Inc. All rights reserved.
 //
 
-#import <AdSupport/ASIdentifierManager.h>
 
 #import "BVCommon.h"
 #import "BVAnalyticEventManager.h"
@@ -19,7 +18,6 @@
 #import "BVSDKManager+Private.h"
 #import "BVShopperProfile.h"
 #import "BVShopperProfileRequestCache.h"
-#import <AppTrackingTransparency/ATTrackingManager.h>
 
 @interface BVRecommendationsLoader ()
 @end
@@ -210,7 +208,7 @@ completionOnMainThread:(NSArray<BVRecommendedProduct *> *)recommendations
       [NSString stringWithFormat:@"%@=%@", @"_bvIosSdkVersion", BV_SDK_VERSION];
 
   NSString *idParam =
-      [NSString stringWithFormat:@"magpie_idfa_%@", [self getIdfaString]];
+      [NSString stringWithFormat:@"magpie_idfa_%@", @"nontracking"];
 
   NSString *endPoint = [NSString
       stringWithFormat:
@@ -364,15 +362,6 @@ completionOnMainThread:(NSArray<BVRecommendedProduct *> *)recommendations
   return [NSURL URLWithString:endPoint];
 }
 
-- (NSString *)getIdfaString {
-
-    if ([BVAnalyticEventManager isAdvertisingTrackingEnabled]) {
-        return [[[ASIdentifierManager sharedManager] advertisingIdentifier]
-                UUIDString];
-    } else {
-        return @"nontracking";
-    }
-}
 
 - (BOOL)isSDKValid {
   NSString *clientId = [BVSDKManager sharedManager].configuration.clientId;

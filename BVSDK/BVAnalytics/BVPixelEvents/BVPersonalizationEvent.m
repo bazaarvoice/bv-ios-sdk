@@ -26,7 +26,7 @@
 
   [eventDict addEntriesFromDictionary:PERSONALIZATION_SCHEMA];
   [eventDict addEntriesFromDictionary:[[BVAnalyticEventManager sharedManager]
-                                          getCommonAnalyticsDictAnonymous:NO]];
+                                          getCommonAnalyticsDict]];
   [eventDict addEntriesFromDictionary:@{@"source" : @"ProfileMobile"}];
 
   return eventDict;
