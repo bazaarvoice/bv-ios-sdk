@@ -10,10 +10,5 @@
 
 #import "BVAuthenticatedUser.h"
 
-@interface BVAuthenticatedUser ()
-
-- (NSDictionary *)getTargetingKeywords;
-
-@end
 
 #endif /* BVAUTHENTICATEDUSER_PRIVATE_H */

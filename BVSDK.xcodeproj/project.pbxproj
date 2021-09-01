@@ -40,6 +40,7 @@
 		15BE4D261E55F03200C12B57 /* BVCurationsUICollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 870F133E1E490B5200D46BE6 /* BVCurationsUICollectionView.m */; };
 		15D4F83B1DF5D5F800E6B30D /* testNotificationProductConfig.json in Resources */ = {isa = PBXBuildFile; fileRef = 15D4F83A1DF5D5F800E6B30D /* testNotificationProductConfig.json */; };
 		15D4F83F1DF5EC3C00E6B30D /* ph.png in Resources */ = {isa = PBXBuildFile; fileRef = 15D4F83E1DF5EC3C00E6B30D /* ph.png */; };
+		2EAD31C326DCAC8600903208 /* BVAuthenticatedUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EAD31C226DCAC8600903208 /* BVAuthenticatedUser.m */; };
 		5F140C5D1F9553FE00905828 /* skelly_android.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5F140C5C1F9553FE00905828 /* skelly_android.jpg */; };
 		5F51EA4D1F575659002FA8FD /* BVFormInputType.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F51EA4C1F575659002FA8FD /* BVFormInputType.m */; };
 		5F51EA501F5F2BB4002FA8FD /* BVFormInputType.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F51EA4B1F575578002FA8FD /* BVFormInputType.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -135,7 +136,6 @@
 		87C5FE9D1E229168004EE6E8 /* BVProductReviewNotificationConfigurationLoader.h in Headers */ = {isa = PBXBuildFile; fileRef = 87C5FE9B1E229168004EE6E8 /* BVProductReviewNotificationConfigurationLoader.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		87C5FE9E1E229168004EE6E8 /* BVProductReviewNotificationConfigurationLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 87C5FE9C1E229168004EE6E8 /* BVProductReviewNotificationConfigurationLoader.m */; };
 		87C5FEB61E22A05D004EE6E8 /* BVAuthenticatedUser.h in Headers */ = {isa = PBXBuildFile; fileRef = 87C5FEA01E22A05D004EE6E8 /* BVAuthenticatedUser.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		87C5FEB71E22A05D004EE6E8 /* BVAuthenticatedUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 87C5FEA11E22A05D004EE6E8 /* BVAuthenticatedUser.m */; };
 		87C5FEB81E22A05D004EE6E8 /* BVBaseAnalyticsHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 87C5FEA21E22A05D004EE6E8 /* BVBaseAnalyticsHelper.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		87C5FEB91E22A05D004EE6E8 /* BVBaseAnalyticsHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 87C5FEA31E22A05D004EE6E8 /* BVBaseAnalyticsHelper.m */; };
 		87C5FEBA1E22A05D004EE6E8 /* BVCommon.h in Headers */ = {isa = PBXBuildFile; fileRef = 87C5FEA41E22A05D004EE6E8 /* BVCommon.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -674,6 +674,7 @@
 		15D4F83A1DF5D5F800E6B30D /* testNotificationProductConfig.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = testNotificationProductConfig.json; sourceTree = "<group>"; };
 		15D4F83E1DF5EC3C00E6B30D /* ph.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ph.png; sourceTree = "<group>"; };
 		15D4F8451DF5EFFF00E6B30D /* BVSDKTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BVSDKTests-Bridging-Header.h"; sourceTree = "<group>"; };
+		2EAD31C226DCAC8600903208 /* BVAuthenticatedUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVAuthenticatedUser.m; sourceTree = "<group>"; };
 		3462CE8D50CC0B93A458E62C /* Pods-BVSDKTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BVSDKTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BVSDKTests/Pods-BVSDKTests.debug.xcconfig"; sourceTree = "<group>"; };
 		5F140C5C1F9553FE00905828 /* skelly_android.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = skelly_android.jpg; sourceTree = "<group>"; };
 		5F51EA4B1F575578002FA8FD /* BVFormInputType.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BVFormInputType.h; sourceTree = "<group>"; };
@@ -780,7 +781,6 @@
 		87C5FE9B1E229168004EE6E8 /* BVProductReviewNotificationConfigurationLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVProductReviewNotificationConfigurationLoader.h; sourceTree = "<group>"; };
 		87C5FE9C1E229168004EE6E8 /* BVProductReviewNotificationConfigurationLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVProductReviewNotificationConfigurationLoader.m; sourceTree = "<group>"; };
 		87C5FEA01E22A05D004EE6E8 /* BVAuthenticatedUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVAuthenticatedUser.h; sourceTree = "<group>"; };
-		87C5FEA11E22A05D004EE6E8 /* BVAuthenticatedUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVAuthenticatedUser.m; sourceTree = "<group>"; };
 		87C5FEA21E22A05D004EE6E8 /* BVBaseAnalyticsHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVBaseAnalyticsHelper.h; sourceTree = "<group>"; };
 		87C5FEA31E22A05D004EE6E8 /* BVBaseAnalyticsHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVBaseAnalyticsHelper.m; sourceTree = "<group>"; };
 		87C5FEA41E22A05D004EE6E8 /* BVCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVCommon.h; sourceTree = "<group>"; };
@@ -1426,8 +1426,8 @@
 		87C5FE9F1E22A05D004EE6E8 /* BVCommon */ = {
 			isa = PBXGroup;
 			children = (
+				2EAD31C226DCAC8600903208 /* BVAuthenticatedUser.m */,
 				87C5FEA01E22A05D004EE6E8 /* BVAuthenticatedUser.h */,
-				87C5FEA11E22A05D004EE6E8 /* BVAuthenticatedUser.m */,
 				87C5FEA21E22A05D004EE6E8 /* BVBaseAnalyticsHelper.h */,
 				87C5FEA31E22A05D004EE6E8 /* BVBaseAnalyticsHelper.m */,
 				87C5FEA41E22A05D004EE6E8 /* BVCommon.h */,
@@ -3344,6 +3344,7 @@
 				87F2DC851DAD585E00FB43F3 /* BVRatingDistribution.m in Sources */,
 				87F2DC6D1DAD585E00FB43F3 /* BVDimensionAndDistributionUtil.m in Sources */,
 				B58639B4214AFE0A00EFD763 /* BVMessageInterceptor.m in Sources */,
+				2EAD31C326DCAC8600903208 /* BVAuthenticatedUser.m in Sources */,
 				B5A97315219B352400634B31 /* BVUserAgent+NSURLRequest.m in Sources */,
 				B5BE787B20113A32002BA818 /* BVBulkRatingIncludeType.m in Sources */,
 				87F2DD441DAD585E00FB43F3 /* BVRecsAnalyticsHelper.m in Sources */,
@@ -3370,7 +3371,6 @@
 				87F2DC5D1DAD585E00FB43F3 /* BVBadge.m in Sources */,
 				B583AEE6200940FB001E9548 /* BVInclude.m in Sources */,
 				B575C3931FBE2479000F890B /* BVSubmittedUAS.m in Sources */,
-				87C5FEB71E22A05D004EE6E8 /* BVAuthenticatedUser.m in Sources */,
 				87F2DD081DAD585E00FB43F3 /* BVQuestionsTableView.m in Sources */,
 				9FB5C456243DA60C0057BA34 /* BVReviewHighlightsErrorResponse.m in Sources */,
 				87F2DCCA1DAD585E00FB43F3 /* BVReviewsSortOption.m in Sources */,

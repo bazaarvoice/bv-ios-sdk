@@ -109,7 +109,7 @@
       isEqualToString:[BVSDKManager sharedManager].configuration.clientId]);
   XCTAssertTrue([hashedIP isEqualToString:@"default"]);
 
-  XCTAssertNotNil(idfa);
+  XCTAssertNil(idfa);
   XCTAssertNotNil(UA);
 }
 
@@ -574,31 +574,17 @@
   NSDictionary *transactionPIIDict = [transaction toRaw];
   NSDictionary *transactionNoPII = [transaction toRawNonPII];
 
-  [self checkCommonEventParams:transactionPIIDict]; // PII is in event, but IDFA
-                                                    // is removed
-  [self checkCommonEventParams:transactionNoPII]; // PII is not in the event and
-                                                  // IDFA is present
+  [self checkCommonEventParams:transactionPIIDict];
+  [self checkCommonEventParams:transactionNoPII];
 
-  // Default event that has PII (e.g. email) will have set idfa to nontracking
-  XCTAssertTrue([[transactionPIIDict objectForKey:@"advertisingId"]
-      isEqualToString:@"nontracking"]);
   XCTAssertTrue(
       [[transactionPIIDict objectForKey:@"hadPII"] isEqualToString:@"true"]);
   XCTAssertTrue([[transactionPIIDict objectForKey:@"email"]
       isEqualToString:@"some.one@domain.com"]);
 
-  // For the nonPII-created dict, the email would be stripped but idfa presetn
   XCTAssertNil([transactionNoPII objectForKey:@"email"]);
   XCTAssertTrue(
       [[transactionNoPII objectForKey:@"hadPII"] isEqualToString:@"true"]);
-    if (@available(iOS 14, *)) {
-        XCTAssertTrue([[transactionNoPII objectForKey:@"advertisingId"]
-                       isEqualToString:@"nontracking"]);
-      }
-      else {
-        XCTAssertFalse([[transactionNoPII objectForKey:@"advertisingId"]
-                        isEqualToString:@"nontracking"]);
-      }
 
   [BVPixel trackEvent:transaction];
 
@@ -659,32 +645,18 @@
   NSDictionary *conversionPIIDict = [conversion toRaw];
   NSDictionary *conversionNoPII = [conversion toRawNonPII];
 
-  [self checkCommonEventParams:conversionPIIDict]; // PII is in event, but IDFA
-                                                   // is removed
-  [self checkCommonEventParams:conversionNoPII]; // PII is not in the event and
-                                                 // IDFA is present
-
-  // Default event that has PII (e.g. email) will have set idfa to nontracking
-  XCTAssertTrue([[conversionPIIDict objectForKey:@"advertisingId"]
-      isEqualToString:@"nontracking"]);
+  [self checkCommonEventParams:conversionPIIDict];
+  [self checkCommonEventParams:conversionNoPII]; 
   XCTAssertTrue(
       [[conversionPIIDict objectForKey:@"hadPII"] isEqualToString:@"true"]);
   XCTAssertTrue([[conversionPIIDict objectForKey:@"email"]
       isEqualToString:@"some.one@domain.com"]);
 
-  // For the nonPII-created dict, the email would be stripped but idfa presetn
+
   XCTAssertNil([conversionNoPII objectForKey:@"email"]);
   XCTAssertTrue(
       [[conversionNoPII objectForKey:@"hadPII"] isEqualToString:@"true"]);
 
-    if (@available(iOS 14, *)) {
-        XCTAssertTrue([[conversionNoPII objectForKey:@"advertisingId"]
-                       isEqualToString:@"nontracking"]);
-      }
-      else {
-        XCTAssertFalse([[conversionNoPII objectForKey:@"advertisingId"]
-                        isEqualToString:@"nontracking"]);
-      }
 
   [BVPixel trackEvent:conversion];
 

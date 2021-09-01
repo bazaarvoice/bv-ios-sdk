@@ -34,11 +34,11 @@
   NSMutableDictionary *eventDict;
 
   if ([self hasPII]) {
-    eventDict = [self createBaseEvent:YES];
+    eventDict = [self createBaseEvent];
     [eventDict addEntriesFromDictionary:CONVERSION_SCHEMA_PII];
     [eventDict setObject:@"true" forKey:@"hadPII"];
   } else {
-    eventDict = [self createBaseEvent:NO];
+    eventDict = [self createBaseEvent];
     [eventDict addEntriesFromDictionary:CONVERSION_SCHEMA];
   }
 
@@ -48,7 +48,7 @@
 }
 
 - (NSDictionary *)toRawNonPII {
-  NSMutableDictionary *eventDict = [self createBaseEvent:NO];
+  NSMutableDictionary *eventDict = [self createBaseEvent];
 
   if ([self hasPII]) {
     [eventDict setObject:@"true" forKey:@"hadPII"];
@@ -64,7 +64,7 @@
   return [NSDictionary dictionaryWithDictionary:eventDict];
 }
 
-- (NSMutableDictionary *)createBaseEvent:(BOOL)anonymous {
+- (NSMutableDictionary *)createBaseEvent {
   NSMutableDictionary *eventDict = [NSMutableDictionary
       dictionaryWithObjectsAndKeys:self.type, @"type", self.value, @"value",
                                    nil];
@@ -78,7 +78,7 @@
   [eventDict setObject:[self getLoadId] forKey:@"loadId"];
   [eventDict
       addEntriesFromDictionary:[[BVAnalyticEventManager sharedManager]
-                                   getCommonAnalyticsDictAnonymous:anonymous]];
+                                   getCommonAnalyticsDict]];
 
   return eventDict;
 }
