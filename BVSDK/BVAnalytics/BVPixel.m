@@ -5,7 +5,6 @@
 //  Copyright 2016 Bazaarvoice Inc. All rights reserved.
 //
 
-#import <AdSupport/AdSupport.h>
 
 #import "BVAnalyticsManager.h"
 #import "BVPixel.h"
@@ -18,7 +17,7 @@
     BVConversionEvent *conversion = (BVConversionEvent *)event;
     if ([conversion hasPII]) {
       [[BVAnalyticsManager sharedManager]
-          queueAnonymousEvent:[conversion toRaw]];
+          queueEvent:[conversion toRaw]];
     }
 
     [[BVAnalyticsManager sharedManager] queueEvent:[conversion toRawNonPII]];
@@ -27,7 +26,7 @@
     BVTransactionEvent *transaction = (BVTransactionEvent *)event;
     if ([transaction hasPII]) {
       [[BVAnalyticsManager sharedManager]
-          queueAnonymousEvent:[transaction toRaw]];
+          queueEvent:[transaction toRaw]];
     }
 
     [[BVAnalyticsManager sharedManager] queueEvent:[transaction toRawNonPII]];

@@ -52,7 +52,7 @@
   [eventDict addEntriesFromDictionary:self.additionalParams];
   [eventDict addEntriesFromDictionary:USED_FEATURE_SCHEMA];
   [eventDict addEntriesFromDictionary:[[BVAnalyticEventManager sharedManager]
-                                          getCommonAnalyticsDictAnonymous:NO]];
+                                          getCommonAnalyticsDict]];
 
   return [NSDictionary dictionaryWithDictionary:eventDict];
 }
