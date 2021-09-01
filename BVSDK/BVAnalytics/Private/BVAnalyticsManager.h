@@ -33,8 +33,6 @@
 /// Add an event to the analytics processing queuek
 - (void)queueEvent:(NSDictionary *)eventData;
 
-/// Add an event without IDFA to the analytics processing queue
-- (void)queueAnonymousEvent:(NSDictionary *)eventData;
 
 /**
     Add a page view event to be queued. Pageview events run on a separate event
