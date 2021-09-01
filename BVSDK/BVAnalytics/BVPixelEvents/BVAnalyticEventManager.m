@@ -6,8 +6,6 @@
 //
 
 #import "BVAnalyticEventManager+Private.h"
-#import <AdSupport/AdSupport.h>
-#import <AppTrackingTransparency/ATTrackingManager.h>
 
 #define BVID_STORAGE_KEY @"BVID_STORAGE_KEY"
 
@@ -70,7 +68,7 @@ __strong static BVAnalyticEventManager *mgrInstance = nil;
   return self;
 }
 
-- (NSDictionary *)getCommonAnalyticsDictAnonymous:(BOOL)anonymous {
+- (NSDictionary *)getCommonAnalyticsDict {
   NSMutableDictionary *params = [NSMutableDictionary dictionaryWithDictionary:@{
     @"mobileSource" : @"bv-ios-sdk",
     @"HashedIP" : @"default",
@@ -84,37 +82,8 @@ __strong static BVAnalyticEventManager *mgrInstance = nil;
 
   [params setValue:self.clientId forKey:@"client"];
 
-  // idfa
-  // check it limit ad tracking is enabled
-  NSString *idfa = @"nontracking";
-#ifndef DISABLE_BVSDK_IDFA
-
-    if ([BVAnalyticEventManager isAdvertisingTrackingEnabled] && !anonymous) {
-        idfa = [[[ASIdentifierManager sharedManager] advertisingIdentifier]
-                UUIDString];
-    }
-#endif
-
-  [params setValue:idfa forKey:@"advertisingId"];
 
   return params;
-}
-
-//Use the trackingAuthorizationStatus property to check authorization status.
-+ (BOOL)isAdvertisingTrackingEnabled {
-
-    if (@available(iOS 14, *)) {
-        return [ATTrackingManager trackingAuthorizationStatus] == ATTrackingManagerAuthorizationStatusAuthorized;
-    }
-    else {
-        return ([[ASIdentifierManager sharedManager] isAdvertisingTrackingEnabled]);
-    }
-}
-
-+ (void)requestIDFA {
-    if (@available(iOS 14, *)) {
-        [ATTrackingManager requestTrackingAuthorizationWithCompletionHandler:^(ATTrackingManagerAuthorizationStatus status) {}];
-    }
 }
 
 @end

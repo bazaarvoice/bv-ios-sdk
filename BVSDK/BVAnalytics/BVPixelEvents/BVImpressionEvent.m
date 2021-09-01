@@ -55,7 +55,7 @@
   [eventDict addEntriesFromDictionary:self.additionalParams];
   [eventDict addEntriesFromDictionary:UGC_IMPRESSION_SCHEMA];
   [eventDict addEntriesFromDictionary:[[BVAnalyticEventManager sharedManager]
-                                          getCommonAnalyticsDictAnonymous:NO]];
+                                          getCommonAnalyticsDict]];
 
   return [NSDictionary dictionaryWithDictionary:eventDict];
 }

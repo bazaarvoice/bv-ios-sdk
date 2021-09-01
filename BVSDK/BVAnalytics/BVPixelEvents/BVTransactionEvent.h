@@ -41,7 +41,7 @@ BVPixel API.
 
 /**
  Creates a raw dictionary event that removes any possibly personally
- identifiable information. These events are fine to send with IDFA.
+ identifiable information. 
 
  @return The fully created event that can be sent to Bazaarvoice Analytics.
  */
