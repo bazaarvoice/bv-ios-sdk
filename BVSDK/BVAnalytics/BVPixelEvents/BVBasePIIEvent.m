@@ -21,7 +21,7 @@ __strong static NSSet *whitelistParams;
         initWithObjects:@"orderId", @"affiliation", @"total", @"tax",
                         @"shipping", @"city", @"state", @"country", @"currency",
                         @"items", @"locale", @"discount", @"type", @"label", @"value",
-                        @"proxy", @"partnerSource", @"deploymentZone" @"TestCase", @"TestSession",
+                        @"proxy", @"partnerSource", @"deploymentZone", @"TestCase", @"TestSession",
                         @"dc", @"ref", nil];
 
     self.additionalParams = params ? params : [NSDictionary dictionary];
