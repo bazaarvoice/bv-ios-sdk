@@ -27,6 +27,7 @@
             [tempValues setObject:product forKey:product.progressiveSubmissionReview.productId];
         }
         self.products = tempValues;
+        self.userid = [apiResponse objectForKey:@"userId"];
         
     }
     return self;

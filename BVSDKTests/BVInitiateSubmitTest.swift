@@ -91,6 +91,51 @@ class BVInitiateSubmitTest: XCTestCase {
         waitForExpectations(timeout: 10, handler: nil)
     }
     
+    func testHostedAuthInitiateSubmit() {
+        let expectation = self.expectation(description: "testHostedAuthInitiateSubmit")
+        let initiateSubmitRequest = BVInitiateSubmitRequest(productIds: ["product1", "product2"])
+        initiateSubmitRequest.locale = "en_US"
+        initiateSubmitRequest.hostedauth = true;
+        
+        initiateSubmitRequest.submit({ (initiateSubmitResponseData) in
+            expectation.fulfill()
+            XCTAssertTrue( initiateSubmitResponseData.result?.products.count == 2)
+            XCTAssertTrue( initiateSubmitResponseData.result?.userid != nil)
+        }, failure: { (errors) in
+            expectation.fulfill()
+            print(errors)
+            XCTFail()
+        })
+        waitForExpectations(timeout: 10, handler: nil)
+    }
+    
+    func testHostedAuthInitiateSubmitWithUserIdError() {
+        let expectation = self.expectation(description: "testHostedAuthInitiateSubmitWithUserIdError")
+        let initiateSubmitRequest = BVInitiateSubmitRequest(productIds: ["product1", "product2"])
+        initiateSubmitRequest.locale = "en_US"
+        initiateSubmitRequest.hostedauth = true;
+        initiateSubmitRequest.userId = "Nickname"
+        
+        initiateSubmitRequest.submit({ (initiateSubmitResponseData) in
+            expectation.fulfill()
+            XCTFail()
+        }, failure: { (errors) in
+            XCTAssertEqual(errors.count, 1)
+            let error = errors.first! as NSError
+            
+            let fieldName = error.userInfo["BVKeyErrorField"] as! String
+            let errorCode = error.userInfo["BVKeyErrorCode"] as! String
+            let errorMessage = error.userInfo["BVKeyErrorMessage"] as! String
+            
+            XCTAssertEqual(fieldName, "HostedAuth")
+            XCTAssertEqual(errorCode, "Bad Request")
+            XCTAssertEqual(errorMessage, "userId / userToekn is not allowed for hosted auth submission initiation.")
+            
+            expectation.fulfill()
+        })
+        waitForExpectations(timeout: 10, handler: nil)
+    }
+        
     func testInitiateSubmitMissingUserIdError() {
         let expectation = self.expectation(description: "testInitiateSubmitMissingUserIdError")
         let initiateSubmitRequest = BVInitiateSubmitRequest(productIds: ["product1", "product2", "product3"])
