@@ -41,6 +41,74 @@ class BVProgressiveSubmitTest: XCTestCase {
         waitForExpectations(timeout: 10, handler: nil)
     }
     
+    func testHostedAuthProgressiveSubmitRequest() {
+        let expectation = self.expectation(description: "testHostedAuthProgressiveSubmitRequest")
+        let submission = self.buildHostedAuthRequest()
+        
+        
+        submission.submit({ (submittedReview) in
+            let result = submittedReview.result
+            let review = result?.review
+            
+            XCTAssertTrue(result?.submissionSessionToken != nil)
+            XCTAssertTrue(result?.submissionId != nil)
+            XCTAssertTrue(review?.rating == (submission.submissionFields["rating"] as? NSNumber))
+            XCTAssertTrue(review?.title == (submission.submissionFields["title"] as? String))
+            XCTAssertTrue(review?.reviewText == (submission.submissionFields["reviewText"] as? String))
+            expectation.fulfill()
+        }, failure: { (errors) in
+            expectation.fulfill()
+            XCTFail()
+        })
+        waitForExpectations(timeout: 10, handler: nil)
+    }
+    
+    func testHostedAuthProgressiveSubmitRequestMissingHostedAuthEmail() {
+        let expectation = self.expectation(description: "testHostedAuthProgressiveSubmitRequestMissingHostedAuthEmail")
+        let submission = self.buildHostedAuthRequest()
+        submission.submissionFields.removeValue(forKey: "hostedauthentication_authenticationemail")
+        
+        submission.submit({ (submittedReview) in
+            expectation.fulfill()
+            XCTFail()
+        }, failure: { (errors) in
+            XCTAssertEqual(errors.count, 1)
+            let error = errors.first! as NSError
+            
+            let errorCode = error.userInfo["BVKeyErrorCode"] as! String
+            let errorMessage = error.userInfo["BVKeyErrorMessage"] as! String
+            
+            XCTAssertEqual(errorCode, "ERROR_PARAM_INVALID_PARAMETERS")
+            XCTAssertEqual(errorMessage, "Hosted authentication callback URL and hosted authentication e-mail parameters are required when hosted authentication is enabled")
+            
+            expectation.fulfill()
+        })
+        waitForExpectations(timeout: 10, handler: nil)
+    }
+    
+    func testHostedAuthProgressiveSubmitRequestIncorrectUserId() {
+        let expectation = self.expectation(description: "testHostedAuthProgressiveSubmitRequestIncorrectUserId")
+        let submission = self.buildHostedAuthRequest()
+        submission.userId = "IncorrectUserId"
+        
+        submission.submit({ (submittedReview) in
+            expectation.fulfill()
+            XCTFail()
+        }, failure: { (errors) in
+            XCTAssertEqual(errors.count, 1)
+            let error = errors.first! as NSError
+            
+            let errorCode = error.userInfo["BVKeyErrorCode"] as! String
+            let errorMessage = error.userInfo["BVKeyErrorMessage"] as! String
+            
+            XCTAssertEqual(errorCode, "ERROR_PARAM_INVALID_PARAMETERS")
+            XCTAssertEqual(errorMessage, "Supplied Submission session token does not match the Review and Subject")
+            
+            expectation.fulfill()
+        })
+        waitForExpectations(timeout: 10, handler: nil)
+    }
+    
     func testProgressiveSubmitRequestWithFormFields() {
         let expectation = self.expectation(description: "testProgressiveSubmitRequestWithUserToken")
         let submission = self.buildRequest()
@@ -193,6 +261,27 @@ class BVProgressiveSubmitTest: XCTestCase {
         submission.locale = "en_US"
         submission.userToken = "6b1549daa5df7eb481d8cf95c0d3e4d2646174653d3230323130363134267573657269643d746573743039383826456d61696c416464726573733d646576656c6f70657225343062617a616172766f6963652e636f6d26557365724e616d653d3039383874657374266d61786167653d333635"
         submission.submissionFields = fields as! [AnyHashable : Any]
+        return submission
+    }
+    
+    func buildHostedAuthRequest() -> BVProgressiveSubmitRequest {
+        let agreedtotermsandconditions = true
+        let fields: NSDictionary = [
+            "rating" : 4,
+            "title" : "my favorite product ever!",
+            "reviewText" : "This is great its so awesome. I highly recomend using this product and think it makes a great gift for any holiday or special occasion. by far the best purchase ive made this year",
+            "agreedtotermsandconditions" : agreedtotermsandconditions,
+            "hostedauthentication_authenticationemail": "developer@bazaarvoice.com",
+            "hostedauthentication_callbackurl": "http://apitestcustomer.bazaarvoice.com/home.html",
+            "additionalfield_DateOfUserExperience": "2021-05-05"
+        ]
+        let submission = BVProgressiveSubmitRequest(productId:"product1")
+        submission.userId = "ztiocejlzsas7tdjyf50to9l8t"
+        submission.locale = "en_US"
+        submission.submissionSessionToken = "ZVjwtagqniYuLrjdfyUzlsUEpOMAygPMOiLwBXPBBSpf/FtrEo8HUR5sb0TsMxlIHw36scZjrr2JAVwM175SvFtzxiJKclShg8uYx1UDVCR8ajya2zak2AfHwBEv5R8v"
+        submission.submissionFields = fields as! [AnyHashable : Any]
+        submission.hostedauth = true
+        
         return submission
     }
     
