@@ -28,6 +28,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property BOOL extendedResponse;
 @property BOOL includeFields;
 @property BOOL isPreview;
+@property BOOL hostedauth;
 
 @end
 

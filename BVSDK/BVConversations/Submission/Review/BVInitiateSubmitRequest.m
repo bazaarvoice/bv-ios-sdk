@@ -31,6 +31,7 @@
     if ((self = [super init])) {
         self.productIds = productIds;
         self.extendedResponse = NO;
+        self.hostedauth = NO;
     }
     return self;
 }
@@ -60,6 +61,10 @@
     [queryItems addObject:[[NSURLQueryItem alloc] initWithName:@"apiversion" value:@"5.4"]];    
     if (self.extendedResponse == YES) {
         [queryItems addObject:[[NSURLQueryItem alloc] initWithName:@"extended" value:nil]];
+    }
+    
+    if (self.hostedauth == YES) {
+        [queryItems addObject:[[NSURLQueryItem alloc] initWithName:@"hostedauth" value:nil]];
     }
     
     return queryItems;

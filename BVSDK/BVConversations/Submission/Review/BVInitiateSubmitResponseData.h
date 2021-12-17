@@ -12,5 +12,6 @@
 @interface BVInitiateSubmitResponseData : BVSubmittedType
 
 @property(nonnull) NSDictionary *products;
+@property(nullable) NSString *userid;
 
 @end

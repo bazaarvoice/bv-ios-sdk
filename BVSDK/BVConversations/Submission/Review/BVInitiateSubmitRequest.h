@@ -30,6 +30,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nullable) NSString *fingerPrint;
 @property(nullable) NSString *campaignId;
 @property BOOL extendedResponse;
+@property BOOL hostedauth;
 
 @end
 

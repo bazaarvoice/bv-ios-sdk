@@ -33,6 +33,7 @@
         self.extendedResponse = NO;
         self.includeFields = NO;
         self.isPreview = NO;
+        self.hostedauth = NO;
     }
     return self;
 }
@@ -68,6 +69,10 @@
     }
     if (self.isPreview == YES) {
         [queryItems addObject:[[NSURLQueryItem alloc] initWithName:@"preview" value:nil]];
+    }
+    
+    if (self.hostedauth == YES) {
+        [queryItems addObject:[[NSURLQueryItem alloc] initWithName:@"hostedauth" value:nil]];
     }
     
     return queryItems;
