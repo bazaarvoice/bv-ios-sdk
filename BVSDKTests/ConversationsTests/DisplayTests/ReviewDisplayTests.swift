@@ -95,6 +95,55 @@ class ReviewDisplayTests: XCTestCase {
         }
         
     }
+    
+    func testReviewFeatureFilter() {
+        
+        let expectation = self.expectation(description: "testReviewDisplay")
+        
+        let request = BVReviewsRequest(productId: "XYZ123-prod-3-4-ExternalId", limit: 5, offset: 0)
+        request.feature = "speed"
+        
+        request.load({ (response) in
+        
+        XCTAssert(response.totalResults == 12)
+        expectation.fulfill()
+            
+        }) { (error) in
+            
+            XCTFail("review display request error: \(error)")
+            
+        }
+        
+        self.waitForExpectations(timeout: 1000) { (error) in
+            XCTAssertNil(error, "Something went horribly wrong, request took too long.")
+        }
+        
+    }
+    
+    func testReviewEmptyFeatureFilter() {
+        
+        let expectation = self.expectation(description: "testReviewDisplay")
+        
+        let request = BVReviewsRequest(productId: "XYZ123-prod-3-4-ExternalId", limit: 5, offset: 0)
+        request.feature = ""
+        
+        request.load({ (response) in
+            
+        XCTFail()
+        expectation.fulfill()
+            
+        }) { (error) in
+         
+            XCTAssert((error.first! as NSError).bvErrorCode() == BVErrorCode.paramInvalidFeatureAttribute)
+            expectation.fulfill()
+            
+        }
+        
+        self.waitForExpectations(timeout: 1000) { (error) in
+            XCTAssertNil(error, "Something went horribly wrong, request took too long.")
+        }
+        
+    }
   
   
   func testSyndicationSource(){

@@ -86,5 +86,13 @@
   }
   return tempResult;
 }
++ (nonnull NSArray<BVFeature *> *)parseFeatures:(nullable id)apiResponse {
+  NSMutableArray<BVFeature *> *tempValues = [NSMutableArray array];
+
+  for (NSDictionary *feature in apiResponse) {
+    [tempValues addObject:[[BVFeature alloc] initWithApiResponse:feature]];
+  }
+  return tempValues;
+}
 
 @end
