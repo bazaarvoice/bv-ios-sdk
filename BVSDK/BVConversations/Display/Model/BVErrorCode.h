@@ -28,6 +28,7 @@ typedef NS_ENUM(NSInteger, BVErrorCode) {
   BVErrorCodeParamInvalidOffset,
   BVErrorCodeParamInvalidSearchAttribute,
   BVErrorCodeParamInvalidSortAttribute,
+  BVErrorCodeParamInvalidFeatureAttribute,
 
   // Submission Request Specific
   BVErrorCodeDuplicateSubmission,

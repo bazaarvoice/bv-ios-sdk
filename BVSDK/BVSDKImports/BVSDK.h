@@ -130,6 +130,7 @@ FOUNDATION_EXPORT const unsigned char BVSDKVersionString[];
 #import "BVReviewsCollectionView.h"
 #import "BVReviewsRequest.h"
 #import "BVReviewsTableView.h"
+#import "BVFeaturesRequest.h"
 
 #import "BVFeedbackSubmission.h"
 #import "BVFeedbackSubmissionResponse.h"

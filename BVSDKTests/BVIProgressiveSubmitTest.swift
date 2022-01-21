@@ -45,7 +45,6 @@ class BVProgressiveSubmitTest: XCTestCase {
         let expectation = self.expectation(description: "testHostedAuthProgressiveSubmitRequest")
         let submission = self.buildHostedAuthRequest()
         
-        
         submission.submit({ (submittedReview) in
             let result = submittedReview.result
             let review = result?.review
@@ -276,7 +275,7 @@ class BVProgressiveSubmitTest: XCTestCase {
             "additionalfield_DateOfUserExperience": "2021-05-05"
         ]
         let submission = BVProgressiveSubmitRequest(productId:"product1")
-        submission.userId = "ztiocejlzsas7tdjyf50to9l8t"
+        submission.userId = "KEY_REMOVED"
         submission.locale = "en_US"
         submission.submissionSessionToken = "TOKEN_REMOVED"
         submission.submissionFields = fields as! [AnyHashable : Any]
