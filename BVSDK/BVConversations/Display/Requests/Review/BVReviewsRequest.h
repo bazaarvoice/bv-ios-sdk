@@ -27,6 +27,7 @@ typedef void (^ReviewRequestCompletionHandler)(
 
 @property(nonnull, readonly) NSString *productId;
 @property BOOL incentivizedStats;
+@property(nullable) NSString *feature;
 
 - (nonnull instancetype)initWithProductId:(nonnull NSString *)productId
                                     limit:(NSUInteger)limit

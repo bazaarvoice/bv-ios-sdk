@@ -54,6 +54,9 @@
   if ([code isEqualToString:@"ERROR_PARAM_INVALID_SORT_ATTRIBUTE"]) {
     return BVErrorCodeParamInvalidSortAttribute;
   }
+  if ([code isEqualToString:@"ERROR_PARAM_INVALID_FEATURE_ATTRIBUTE"]) {
+      return BVErrorCodeParamInvalidFeatureAttribute;
+  }
   if ([code isEqualToString:@"ERROR_DUPLICATE_SUBMISSION"]) {
     return BVErrorCodeDuplicateSubmission;
   }

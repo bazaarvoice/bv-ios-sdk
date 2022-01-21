@@ -36,6 +36,10 @@
     [params addObject:[BVStringKeyValuePair pairWithKey:@"incentivizedstats" value:@"true"]];
   }
   
+  if (self.feature) {
+    [params addObject:[BVStringKeyValuePair pairWithKey:@"feature" value:self.feature]];
+  }
+
   return params;
 }
 

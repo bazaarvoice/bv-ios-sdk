@@ -40,6 +40,15 @@
 		15BE4D261E55F03200C12B57 /* BVCurationsUICollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 870F133E1E490B5200D46BE6 /* BVCurationsUICollectionView.m */; };
 		15D4F83B1DF5D5F800E6B30D /* testNotificationProductConfig.json in Resources */ = {isa = PBXBuildFile; fileRef = 15D4F83A1DF5D5F800E6B30D /* testNotificationProductConfig.json */; };
 		15D4F83F1DF5EC3C00E6B30D /* ph.png in Resources */ = {isa = PBXBuildFile; fileRef = 15D4F83E1DF5EC3C00E6B30D /* ph.png */; };
+		2E998AC82789963D0036DE64 /* BVFeaturesRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E998AC72789963D0036DE64 /* BVFeaturesRequest.m */; };
+		2E998ACB2789967E0036DE64 /* BVFeaturesResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E998ACA2789967E0036DE64 /* BVFeaturesResponse.m */; };
+		2E998ACD278996940036DE64 /* BVFeaturesRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 2E998ACC278996940036DE64 /* BVFeaturesRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2E998ACF278996A80036DE64 /* BVFeaturesResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = 2E998ACE278996A80036DE64 /* BVFeaturesResponse.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2E998AD12789B3E10036DE64 /* BVFeatures.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E998AD02789B3E10036DE64 /* BVFeatures.m */; };
+		2E998AD32789B3F00036DE64 /* BVFeatures.h in Headers */ = {isa = PBXBuildFile; fileRef = 2E998AD22789B3F00036DE64 /* BVFeatures.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2E998AD52789B4990036DE64 /* BVFeature.h in Headers */ = {isa = PBXBuildFile; fileRef = 2E998AD42789B4990036DE64 /* BVFeature.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2E998AD72789B4C20036DE64 /* BVFeature.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E998AD62789B4C20036DE64 /* BVFeature.m */; };
+		2E998AD9278BF02A0036DE64 /* FeatureDisplayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E998AD8278BF02A0036DE64 /* FeatureDisplayTests.swift */; };
 		2EAD31C326DCAC8600903208 /* BVAuthenticatedUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EAD31C226DCAC8600903208 /* BVAuthenticatedUser.m */; };
 		5F140C5D1F9553FE00905828 /* skelly_android.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5F140C5C1F9553FE00905828 /* skelly_android.jpg */; };
 		5F51EA4D1F575659002FA8FD /* BVFormInputType.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F51EA4C1F575659002FA8FD /* BVFormInputType.m */; };
@@ -674,6 +683,15 @@
 		15D4F83A1DF5D5F800E6B30D /* testNotificationProductConfig.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = testNotificationProductConfig.json; sourceTree = "<group>"; };
 		15D4F83E1DF5EC3C00E6B30D /* ph.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ph.png; sourceTree = "<group>"; };
 		15D4F8451DF5EFFF00E6B30D /* BVSDKTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BVSDKTests-Bridging-Header.h"; sourceTree = "<group>"; };
+		2E998AC72789963D0036DE64 /* BVFeaturesRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BVFeaturesRequest.m; sourceTree = "<group>"; };
+		2E998ACA2789967E0036DE64 /* BVFeaturesResponse.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BVFeaturesResponse.m; sourceTree = "<group>"; };
+		2E998ACC278996940036DE64 /* BVFeaturesRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BVFeaturesRequest.h; sourceTree = "<group>"; };
+		2E998ACE278996A80036DE64 /* BVFeaturesResponse.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BVFeaturesResponse.h; sourceTree = "<group>"; };
+		2E998AD02789B3E10036DE64 /* BVFeatures.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BVFeatures.m; sourceTree = "<group>"; };
+		2E998AD22789B3F00036DE64 /* BVFeatures.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BVFeatures.h; sourceTree = "<group>"; };
+		2E998AD42789B4990036DE64 /* BVFeature.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BVFeature.h; sourceTree = "<group>"; };
+		2E998AD62789B4C20036DE64 /* BVFeature.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BVFeature.m; sourceTree = "<group>"; };
+		2E998AD8278BF02A0036DE64 /* FeatureDisplayTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureDisplayTests.swift; sourceTree = "<group>"; };
 		2EAD31C226DCAC8600903208 /* BVAuthenticatedUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVAuthenticatedUser.m; sourceTree = "<group>"; };
 		3462CE8D50CC0B93A458E62C /* Pods-BVSDKTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BVSDKTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BVSDKTests/Pods-BVSDKTests.debug.xcconfig"; sourceTree = "<group>"; };
 		5F140C5C1F9553FE00905828 /* skelly_android.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = skelly_android.jpg; sourceTree = "<group>"; };
@@ -1339,6 +1357,17 @@
 			path = BVCurationsUI;
 			sourceTree = "<group>";
 		};
+		2E998AC92789964E0036DE64 /* Feature */ = {
+			isa = PBXGroup;
+			children = (
+				2E998ACC278996940036DE64 /* BVFeaturesRequest.h */,
+				2E998AC72789963D0036DE64 /* BVFeaturesRequest.m */,
+				2E998ACE278996A80036DE64 /* BVFeaturesResponse.h */,
+				2E998ACA2789967E0036DE64 /* BVFeaturesResponse.m */,
+			);
+			path = Feature;
+			sourceTree = "<group>";
+		};
 		42B5B69224371F3D008BC557 /* BVSDKImports */ = {
 			isa = PBXGroup;
 			children = (
@@ -1633,6 +1662,8 @@
 				87F2DB491DAD585E00FB43F3 /* BVVideo.m */,
 				5F6201DB1F7030FA00454D77 /* NSError+BVErrorCodeParser.h */,
 				5F6201DD1F70342C00454D77 /* NSError+BVErrorCodeParser.m */,
+				2E998AD42789B4990036DE64 /* BVFeature.h */,
+				2E998AD62789B4C20036DE64 /* BVFeature.m */,
 				87F2DB4A1DAD585E00FB43F3 /* GenericConversationsResult */,
 				B5863984214AFBCF00EFD763 /* Private */,
 			);
@@ -1660,6 +1691,8 @@
 				87F2DB521DAD585E00FB43F3 /* BVReview.m */,
 				982B607322EA125C0041D40B /* BVProgressiveSubmissionReview.h */,
 				982B607422EA125C0041D40B /* BVProgressiveSubmissionReview.m */,
+				2E998AD22789B3F00036DE64 /* BVFeatures.h */,
+				2E998AD02789B3E10036DE64 /* BVFeatures.m */,
 			);
 			path = GenericConversationsResult;
 			sourceTree = "<group>";
@@ -1681,6 +1714,7 @@
 				B57B833F2163CA86006B378E /* Review */,
 				9FB5C44A243DA60C0057BA34 /* ReviewHighlights */,
 				B57B833E2163CA74006B378E /* Statistics */,
+				2E998AC92789964E0036DE64 /* Feature */,
 			);
 			path = Requests;
 			sourceTree = "<group>";
@@ -2053,6 +2087,7 @@
 				87F2DDF91DAD945D00FB43F3 /* StoresTests */,
 				9F9672F82509FF9E00484A29 /* BulkProductTests.swift */,
 				9F9672FA250A091B00484A29 /* ProductTextSearchTests.swift */,
+				2E998AD8278BF02A0036DE64 /* FeatureDisplayTests.swift */,
 			);
 			path = DisplayTests;
 			sourceTree = "<group>";
@@ -2634,7 +2669,11 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2E998ACD278996940036DE64 /* BVFeaturesRequest.h in Headers */,
+				2E998ACF278996A80036DE64 /* BVFeaturesResponse.h in Headers */,
+				2E998AD32789B3F00036DE64 /* BVFeatures.h in Headers */,
 				87D424F31E8AD45400147FDB /* BVCurationsUICollectionView.h in Headers */,
+				2E998AD52789B4990036DE64 /* BVFeature.h in Headers */,
 				153550B01E898CF800C62D90 /* BVCurationsUICollectionViewCell.h in Headers */,
 				B5BE7690200EA08C002BA818 /* BVQuestionFilterValue.h in Headers */,
 				B5A9730A21923B5500634B31 /* BVAnalyticsRemoteLogger.h in Headers */,
@@ -3202,6 +3241,7 @@
 				87F2DCE61DAD585E00FB43F3 /* BVQuestionSubmission.m in Sources */,
 				875411861E1F201E006C5C6E /* BVStoreReviewRichNotificationCenter.m in Sources */,
 				9FB5C453243DA60C0057BA34 /* BVReviewHighlightsRequest.m in Sources */,
+				2E998AD12789B3E10036DE64 /* BVFeatures.m in Sources */,
 				B5A764C81FE1912800B5DC9A /* BVStoreLocation.m in Sources */,
 				87F2DD371DAD585E00FB43F3 /* BVProductRecommendationsContainer.m in Sources */,
 				987C074F22528F4600227934 /* BVInitiateSubmitFormData.m in Sources */,
@@ -3322,6 +3362,7 @@
 				875411841E1F201E006C5C6E /* BVStoreReviewNotificationProperties.m in Sources */,
 				87F2DCBE1DAD585E00FB43F3 /* BVQuestionFilterType.m in Sources */,
 				87A02B6B1E0971AC0002701B /* BVSubmittedFeedback.m in Sources */,
+				2E998AC82789963D0036DE64 /* BVFeaturesRequest.m in Sources */,
 				B586398E214AFBD000EFD763 /* BVConversationsError.m in Sources */,
 				987C075F2252913B00227934 /* BVInitiateSubmitResponseData.m in Sources */,
 				87F2DC901DAD585E00FB43F3 /* BVSecondaryRatingsAverages.m in Sources */,
@@ -3361,6 +3402,7 @@
 				B5A764BB1FDB1ACE00B5DC9A /* BVAnswerTableViewCell.m in Sources */,
 				87F2DC741DAD585E00FB43F3 /* BVDistributionValue.m in Sources */,
 				87F2DCC01DAD585E00FB43F3 /* BVReviewFilterType.m in Sources */,
+				2E998ACB2789967E0036DE64 /* BVFeaturesResponse.m in Sources */,
 				B5A764BA1FDB1ACE00B5DC9A /* BVAnswerView.m in Sources */,
 				87E810EE1ECCC4CD0032C753 /* BVCommentIncludeType.m in Sources */,
 				B57B8325215E802A006B378E /* BVSubmittedPhoto.m in Sources */,
@@ -3376,6 +3418,7 @@
 				87F2DCCA1DAD585E00FB43F3 /* BVReviewsSortOption.m in Sources */,
 				87F2DCA81DAD585E00FB43F3 /* BVBulkRatingsRequest.m in Sources */,
 				873DC49C1E7482840080FA03 /* BVPersonalizationEvent.m in Sources */,
+				2E998AD72789B4C20036DE64 /* BVFeature.m in Sources */,
 				9FB5C45F243DA6690057BA34 /* BVReviewHighlightsReview.m in Sources */,
 				87C5FE9E1E229168004EE6E8 /* BVProductReviewNotificationConfigurationLoader.m in Sources */,
 				B58639CA214AFE8700EFD763 /* BVLocaleServiceManager.m in Sources */,
@@ -3415,6 +3458,7 @@
 				9F9672F92509FF9E00484A29 /* BulkProductTests.swift in Sources */,
 				987C076F2254038A00227934 /* BVIProgressiveSubmitTest.swift in Sources */,
 				87F2DD5E1DAD5E9400FB43F3 /* BVBaseStubTestCase.m in Sources */,
+				2E998AD9278BF02A0036DE64 /* FeatureDisplayTests.swift in Sources */,
 				87F2DE0D1DAD945D00FB43F3 /* ConversationsStoresDisplayTests.swift in Sources */,
 				B59F8F232035EF2900087EF0 /* BVNetworkDelegateTestsDelegate.m in Sources */,
 				87EDAFC91EDDC6A900FA07C0 /* CommentSubmissionTests.swift in Sources */,
