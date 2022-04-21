@@ -184,6 +184,56 @@ relationalFilterOperatorValue:
   return self;
 }
 
+- (nonnull instancetype)
+    filterOnReviewFilterFieldType:(BVReviewFilterFieldType)reviewFilterFieldType
+                          fieldId:(nonnull NSString *)reviewFilterFieldId
+    relationalFilterOperatorValue:(BVRelationalFilterOperatorValue)relationalFilterOperatorValue
+                            value:(nonnull NSString *)value {
+  [self filterOnReviewFilterFieldType:reviewFilterFieldType
+                              fieldId:reviewFilterFieldId
+        relationalFilterOperatorValue:relationalFilterOperatorValue
+                               values:@[ value ]];
+  return self;
+}
+
+- (nonnull instancetype)
+filterOnReviewFilterFieldType:(BVReviewFilterFieldType)reviewFilterFieldType
+                      fieldId:(nonnull NSString *)reviewFilterFieldId
+relationalFilterOperatorValue:(BVRelationalFilterOperatorValue)relationalFilterOperatorValue
+                       values:(nonnull NSArray<NSString *> *)values {
+
+   NSString *reviewFilterFieldTypeString;
+    
+    switch (reviewFilterFieldType) {
+    case BVReviewFilterFieldTypeAdditionalField:
+      reviewFilterFieldTypeString = @"AdditionalField";
+      break;
+    case BVReviewFilterFieldTypeContextDataValue:
+      reviewFilterFieldTypeString = @"ContextDataValue";
+      break;
+    case BVReviewFilterFieldTypeSecondaryRating:
+      reviewFilterFieldTypeString = @"SecondaryRating";
+      break;
+    case BVReviewFilterFieldTypeTag:
+      reviewFilterFieldTypeString = @"Tag";
+      break;
+    }
+    
+  NSString *reviewFilterField = [NSString stringWithFormat: @"%@_%@", reviewFilterFieldTypeString, reviewFilterFieldId];
+
+    
+  BVFilter *filter = [[BVFilter alloc]
+      initWithString: reviewFilterField
+          filterOperator:
+              [BVRelationalFilterOperator
+                  filterOperatorWithRawValue:relationalFilterOperatorValue]
+                  values:values];
+    
+  [self.filters addObject:filter];
+    
+  return self;
+}
+
 - (void)load:(nonnull void (^)(
                  BVDisplayResponse<BVReview *> *__nonnull response))success
      failure:(nonnull ConversationsFailureHandler)failure {

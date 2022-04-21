@@ -54,6 +54,7 @@
 		2E998AD72789B4C20036DE64 /* BVFeature.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E998AD62789B4C20036DE64 /* BVFeature.m */; };
 		2E998AD9278BF02A0036DE64 /* FeatureDisplayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E998AD8278BF02A0036DE64 /* FeatureDisplayTests.swift */; };
 		2EAD31C326DCAC8600903208 /* BVAuthenticatedUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EAD31C226DCAC8600903208 /* BVAuthenticatedUser.m */; };
+		2EE2579127F23EE300E6DBDE /* BVReviewFilterFieldType.h in Headers */ = {isa = PBXBuildFile; fileRef = 2EE2579027F23EE300E6DBDE /* BVReviewFilterFieldType.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5F140C5D1F9553FE00905828 /* skelly_android.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5F140C5C1F9553FE00905828 /* skelly_android.jpg */; };
 		5F51EA4D1F575659002FA8FD /* BVFormInputType.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F51EA4C1F575659002FA8FD /* BVFormInputType.m */; };
 		5F51EA501F5F2BB4002FA8FD /* BVFormInputType.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F51EA4B1F575578002FA8FD /* BVFormInputType.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -701,6 +702,7 @@
 		2E998AD62789B4C20036DE64 /* BVFeature.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BVFeature.m; sourceTree = "<group>"; };
 		2E998AD8278BF02A0036DE64 /* FeatureDisplayTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureDisplayTests.swift; sourceTree = "<group>"; };
 		2EAD31C226DCAC8600903208 /* BVAuthenticatedUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVAuthenticatedUser.m; sourceTree = "<group>"; };
+		2EE2579027F23EE300E6DBDE /* BVReviewFilterFieldType.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BVReviewFilterFieldType.h; sourceTree = "<group>"; };
 		3462CE8D50CC0B93A458E62C /* Pods-BVSDKTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BVSDKTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BVSDKTests/Pods-BVSDKTests.debug.xcconfig"; sourceTree = "<group>"; };
 		5F140C5C1F9553FE00905828 /* skelly_android.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = skelly_android.jpg; sourceTree = "<group>"; };
 		5F51EA4B1F575578002FA8FD /* BVFormInputType.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BVFormInputType.h; sourceTree = "<group>"; };
@@ -1753,6 +1755,7 @@
 				B5BE76A3200EA5EC002BA818 /* BVQuestionsSortOptionValue.h */,
 				B5BE7691200EA0CA002BA818 /* BVRelationalFilterOperatorValue.h */,
 				B5BE7693200EA157002BA818 /* BVReviewFilterValue.h */,
+				2EE2579027F23EE300E6DBDE /* BVReviewFilterFieldType.h */,
 				B5BE76A5200EA666002BA818 /* BVReviewIncludeTypeValue.h */,
 				B5BE76A7200EA6B4002BA818 /* BVReviewsSortOptionValue.h */,
 				B583B124200E8ABE001E9548 /* BVSortOptionValues.h */,
@@ -2902,6 +2905,7 @@
 				873DC49B1E7482840080FA03 /* BVPersonalizationEvent.h in Headers */,
 				B5BE76A0200EA53D002BA818 /* BVProductIncludeTypeValue.h in Headers */,
 				B58639B2214AFE0A00EFD763 /* BVSDKManager+Private.h in Headers */,
+				2EE2579127F23EE300E6DBDE /* BVReviewFilterFieldType.h in Headers */,
 				982B607522EA125C0041D40B /* BVProgressiveSubmissionReview.h in Headers */,
 				B5BE769C200EA473002BA818 /* BVCommentsSortOptionValue.h in Headers */,
 				873DC4931E7482840080FA03 /* BVFeatureUsedEvent.h in Headers */,
