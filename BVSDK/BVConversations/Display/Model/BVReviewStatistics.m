@@ -38,6 +38,8 @@
         createWithDictionary:apiObject[@"SecondaryRatingsAverages"]];
     self.tagDistribution = [BVDimensionAndDistributionUtil
         createDistributionWithApiResponse:apiObject[@"TagDistribution"]];
+    self.secondaryRatingsDistribution = [BVDimensionAndDistributionUtil 
+        createSecondaryRatingsDistributionWithApiResponse:apiObject[@"SecondaryRatingsDistribution"]];
     self.contextDataDistribution = [BVDimensionAndDistributionUtil
         createDistributionWithApiResponse:apiObject
                                               [@"ContextDataDistribution"]];

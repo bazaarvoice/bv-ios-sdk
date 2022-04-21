@@ -28,4 +28,23 @@
   return tempValues;
 }
 
++ (nullable SecondaryRatingsDistribution)createSecondaryRatingsDistributionWithApiResponse:
+    (nullable id)apiResponse {
+  if (!apiResponse) {
+    return nil;
+  }
+
+  NSDictionary<NSString *, NSDictionary *> *apiObject =
+      (NSDictionary<NSString *, NSDictionary *> *)apiResponse;
+  SecondaryRatingsDistribution tempValues = [NSMutableDictionary dictionary];
+  for (NSString *key in apiObject) {
+    NSDictionary *value = [apiObject objectForKey:key];
+    BVSecondaryRatingsDistributionElement *element =
+        [[BVSecondaryRatingsDistributionElement alloc] initWithApiResponse:value];
+    [tempValues setObject:element forKey:key];
+  }
+
+  return tempValues;
+}
+
 @end
