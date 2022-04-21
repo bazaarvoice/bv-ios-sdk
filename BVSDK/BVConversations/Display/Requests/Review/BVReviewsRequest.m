@@ -14,8 +14,9 @@
 
 @interface BVReviewsRequest ()
 
-@property(nullable) NSString *feature;
+@property BOOL secondaryRatingStats;
 @property BOOL tagStats;
+@property(nullable) NSString *feature;
 
 @end
 
@@ -25,6 +26,7 @@
                                     limit:(NSUInteger)limit
                                    offset:(NSUInteger)offset {
     self.incentivizedStats = NO;
+    self.secondaryRatingStats = NO;
     self.tagStats = NO;
     return self = [super initWithID:productId limit:limit offset:offset primaryFilter: BVReviewFilterValueProductId];
 }
@@ -34,13 +36,14 @@
                              limit:(NSUInteger)limit
                             offset:(NSUInteger)offset {
     self.incentivizedStats = NO;
+    self.secondaryRatingStats = NO;
     self.tagStats = NO;
     return self = [super initWithID:Id limit:limit offset:offset primaryFilter: filter];
 }
 
-- (nonnull instancetype)feature:(nullable NSString *)feature{
-    _feature = feature;
-    return self;
+- (nonnull instancetype)secondaryRatingStats:(BOOL)secondaryRatingStats {
+  _secondaryRatingStats = secondaryRatingStats;
+   return self;
 }
 
 - (nonnull instancetype)tagStats:(BOOL)tagStats {
@@ -48,11 +51,21 @@
   return self;
 }
 
+- (nonnull instancetype)feature:(nullable NSString *)feature{
+    _feature = feature;
+    return self;
+}
+
+
 - (nonnull NSMutableArray *)createParams {
   NSMutableArray<BVStringKeyValuePair *> *params = [super createParams];
   
   if (self.incentivizedStats == YES) {
     [params addObject:[BVStringKeyValuePair pairWithKey:@"incentivizedstats" value:@"true"]];
+  }
+    
+  if (self.secondaryRatingStats == YES) {
+      [params addObject:[BVStringKeyValuePair pairWithKey:@"secondaryratingstats" value:@"true"]];
   }
 
   if (self.tagStats == YES) {
