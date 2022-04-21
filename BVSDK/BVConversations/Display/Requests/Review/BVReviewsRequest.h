@@ -39,4 +39,6 @@ typedef void (^ReviewRequestCompletionHandler)(
                             offset:(NSUInteger)offset;
 - (nonnull instancetype)__unavailable init;
 
+- (nonnull instancetype)tagStats:(BOOL)tagStats;
+
 @end

@@ -12,12 +12,19 @@
 #import "BVSort.h"
 #import "BVStringKeyValuePair.h"
 
+@interface BVReviewsRequest ()
+
+@property BOOL tagStats;
+
+@end
+
 @implementation BVReviewsRequest
 
 - (nonnull instancetype)initWithProductId:(nonnull NSString *)productId
                                     limit:(NSUInteger)limit
                                    offset:(NSUInteger)offset {
     self.incentivizedStats = NO;
+    self.tagStats = NO;
     return self = [super initWithID:productId limit:limit offset:offset primaryFilter: BVReviewFilterValueProductId];
 }
 
@@ -26,7 +33,13 @@
                              limit:(NSUInteger)limit
                             offset:(NSUInteger)offset {
     self.incentivizedStats = NO;
+    self.tagStats = NO;
     return self = [super initWithID:Id limit:limit offset:offset primaryFilter: filter];
+}
+
+- (nonnull instancetype)tagStats:(BOOL)tagStats {
+  _tagStats = tagStats;
+  return self;
 }
 
 - (nonnull NSMutableArray *)createParams {
@@ -34,6 +47,10 @@
   
   if (self.incentivizedStats == YES) {
     [params addObject:[BVStringKeyValuePair pairWithKey:@"incentivizedstats" value:@"true"]];
+  }
+
+  if (self.tagStats == YES) {
+      [params addObject:[BVStringKeyValuePair pairWithKey:@"tagstats" value:@"true"]];
   }
   
   if (self.feature) {

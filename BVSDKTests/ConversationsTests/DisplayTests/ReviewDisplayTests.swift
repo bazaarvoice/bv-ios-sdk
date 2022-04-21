@@ -120,6 +120,41 @@ class ReviewDisplayTests: XCTestCase {
         
     }
     
+    
+    func testReviewsRequestTagStats() {
+        
+        let expectation = self.expectation(description: "testReviewStatisticsTagStats")
+        
+        let request = BVReviewsRequest(productId: "test1", limit: 10, offset: 0)
+                        .include(.reviewProducts)
+                        .tagStats(true)
+            
+        request.load({ (response) in
+        
+           let includedProduct =  response.results.first?.product
+           XCTAssertNotNil(includedProduct?.reviewStatistics?.tagDistribution!["Con"])
+           let conTagDistribution =  includedProduct?.reviewStatistics?.tagDistribution!["Con"] as! BVDistributionElement
+           let conTagDistributionValues = conTagDistribution.values
+            
+           XCTAssertEqual(conTagDistributionValues.count, 10)
+           XCTAssertEqual(conTagDistributionValues.first?.count,30)
+           XCTAssertEqual(conTagDistributionValues.first?.value,"Quality")
+            
+        expectation.fulfill()
+            
+        }) { (error) in
+            
+            XCTFail("review display request error: \(error)")
+            
+        }
+        
+        self.waitForExpectations(timeout: 1000) { (error) in
+            XCTAssertNil(error, "Something went horribly wrong, request took too long.")
+        }
+        
+    }
+    
+    
     func testReviewEmptyFeatureFilter() {
         
         let expectation = self.expectation(description: "testReviewDisplay")
