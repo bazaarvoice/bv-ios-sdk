@@ -506,6 +506,54 @@ class ReviewDisplayTests: XCTestCase {
       XCTAssertNil(error, "Something went horribly wrong, request took too long.")
     }
   }
+    
+    
+    func testReviewRequestSecondaryRatingsDistribution() {
+        
+        let configDict = ["clientId": "testcustomermobilesdk",
+                          "apiKeyConversations": "KEY_REMOVED"];
+        BVSDKManager.configure(withConfiguration: configDict, configType: .staging)
+        
+        let expectation = self.expectation(description: "testReviewRequestSecondaryRatingsDistribution")
+        
+        let request = BVReviewsRequest(productId: "Product1", limit: 10, offset: 0)
+            .include(.reviewProducts)
+            .secondaryRatingStats(true)
+            
+        request.load({ (response) in
+            
+            let reviewStatistics =  response.results.first?.product?.reviewStatistics
+            XCTAssertNotNil(reviewStatistics?.secondaryRatingsDistribution!["WhatSizeIsTheProduct"])
+            let productSizeSecondaryRatingsDistribution =  reviewStatistics?.secondaryRatingsDistribution!["WhatSizeIsTheProduct"] as! BVSecondaryRatingsDistributionElement
+            XCTAssertEqual(productSizeSecondaryRatingsDistribution.label,"What size is the product?")
+            let productSizeSecondaryRatingsDistributionValues = productSizeSecondaryRatingsDistribution.values
+
+            XCTAssertEqual(productSizeSecondaryRatingsDistributionValues.first?.count,9)
+            XCTAssertEqual(productSizeSecondaryRatingsDistributionValues.first?.value,2)
+            XCTAssertEqual(productSizeSecondaryRatingsDistributionValues.first?.valueLabel,"Medium")
+            
+            XCTAssertNotNil(reviewStatistics?.secondaryRatingsDistribution!["Quality"])
+            let qualitySecondaryRatingsDistribution =  reviewStatistics?.secondaryRatingsDistribution!["Quality"] as! BVSecondaryRatingsDistributionElement
+            XCTAssertEqual(qualitySecondaryRatingsDistribution.label,"Quality of Product")
+            let qualitySecondaryRatingsDistributionValues = qualitySecondaryRatingsDistribution.values
+
+            XCTAssertEqual(qualitySecondaryRatingsDistributionValues.first?.count,9)
+            XCTAssertEqual(qualitySecondaryRatingsDistributionValues.first?.value,4)
+            XCTAssertNil(qualitySecondaryRatingsDistributionValues.first!.valueLabel)
+            
+            expectation.fulfill()
+            
+        }) { (error) in
+            
+            XCTFail("review display request error: \(error)")
+            expectation.fulfill()
+        }
+        
+        self.waitForExpectations(timeout: 1000) { (error) in
+            XCTAssertNil(error, "Something went horribly wrong, request took too long.")
+        }
+        
+    }
   
   func testContextDataValueLabelIncludes(){
     

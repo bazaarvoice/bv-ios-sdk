@@ -40,6 +40,10 @@
 		15BE4D261E55F03200C12B57 /* BVCurationsUICollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 870F133E1E490B5200D46BE6 /* BVCurationsUICollectionView.m */; };
 		15D4F83B1DF5D5F800E6B30D /* testNotificationProductConfig.json in Resources */ = {isa = PBXBuildFile; fileRef = 15D4F83A1DF5D5F800E6B30D /* testNotificationProductConfig.json */; };
 		15D4F83F1DF5EC3C00E6B30D /* ph.png in Resources */ = {isa = PBXBuildFile; fileRef = 15D4F83E1DF5EC3C00E6B30D /* ph.png */; };
+		2E371E592808226B008D9223 /* BVSecondaryRatingsDistributionElement.h in Headers */ = {isa = PBXBuildFile; fileRef = 2E371E572808226B008D9223 /* BVSecondaryRatingsDistributionElement.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2E371E5A2808226B008D9223 /* BVSecondaryRatingsDistributionElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E371E582808226B008D9223 /* BVSecondaryRatingsDistributionElement.m */; };
+		2E371E5D280824BE008D9223 /* BVSecondaryRatingsDistributionValue.h in Headers */ = {isa = PBXBuildFile; fileRef = 2E371E5B280824BE008D9223 /* BVSecondaryRatingsDistributionValue.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2E371E5E280824BE008D9223 /* BVSecondaryRatingsDistributionValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E371E5C280824BE008D9223 /* BVSecondaryRatingsDistributionValue.m */; };
 		2E998AC82789963D0036DE64 /* BVFeaturesRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E998AC72789963D0036DE64 /* BVFeaturesRequest.m */; };
 		2E998ACB2789967E0036DE64 /* BVFeaturesResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E998ACA2789967E0036DE64 /* BVFeaturesResponse.m */; };
 		2E998ACD278996940036DE64 /* BVFeaturesRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 2E998ACC278996940036DE64 /* BVFeaturesRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -683,6 +687,10 @@
 		15D4F83A1DF5D5F800E6B30D /* testNotificationProductConfig.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = testNotificationProductConfig.json; sourceTree = "<group>"; };
 		15D4F83E1DF5EC3C00E6B30D /* ph.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ph.png; sourceTree = "<group>"; };
 		15D4F8451DF5EFFF00E6B30D /* BVSDKTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BVSDKTests-Bridging-Header.h"; sourceTree = "<group>"; };
+		2E371E572808226B008D9223 /* BVSecondaryRatingsDistributionElement.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BVSecondaryRatingsDistributionElement.h; sourceTree = "<group>"; };
+		2E371E582808226B008D9223 /* BVSecondaryRatingsDistributionElement.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BVSecondaryRatingsDistributionElement.m; sourceTree = "<group>"; };
+		2E371E5B280824BE008D9223 /* BVSecondaryRatingsDistributionValue.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BVSecondaryRatingsDistributionValue.h; sourceTree = "<group>"; };
+		2E371E5C280824BE008D9223 /* BVSecondaryRatingsDistributionValue.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BVSecondaryRatingsDistributionValue.m; sourceTree = "<group>"; };
 		2E998AC72789963D0036DE64 /* BVFeaturesRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BVFeaturesRequest.m; sourceTree = "<group>"; };
 		2E998ACA2789967E0036DE64 /* BVFeaturesResponse.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BVFeaturesResponse.m; sourceTree = "<group>"; };
 		2E998ACC278996940036DE64 /* BVFeaturesRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BVFeaturesRequest.h; sourceTree = "<group>"; };
@@ -1629,8 +1637,12 @@
 				87F2DB261DAD585E00FB43F3 /* BVDimensionElement.m */,
 				87F2DB281DAD585E00FB43F3 /* BVDistributionElement.h */,
 				87F2DB291DAD585E00FB43F3 /* BVDistributionElement.m */,
+				2E371E572808226B008D9223 /* BVSecondaryRatingsDistributionElement.h */,
+				2E371E582808226B008D9223 /* BVSecondaryRatingsDistributionElement.m */,
 				87F2DB2A1DAD585E00FB43F3 /* BVDistributionValue.h */,
 				87F2DB2B1DAD585E00FB43F3 /* BVDistributionValue.m */,
+				2E371E5B280824BE008D9223 /* BVSecondaryRatingsDistributionValue.h */,
+				2E371E5C280824BE008D9223 /* BVSecondaryRatingsDistributionValue.m */,
 				5FE2C0801F6B05100090DD55 /* BVErrorCode.h */,
 				87F2DB2F1DAD585E00FB43F3 /* BVPhoto.h */,
 				87F2DB301DAD585E00FB43F3 /* BVPhoto.m */,
@@ -2670,6 +2682,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				2E998ACD278996940036DE64 /* BVFeaturesRequest.h in Headers */,
+				2E371E5D280824BE008D9223 /* BVSecondaryRatingsDistributionValue.h in Headers */,
+				2E371E592808226B008D9223 /* BVSecondaryRatingsDistributionElement.h in Headers */,
 				2E998ACF278996A80036DE64 /* BVFeaturesResponse.h in Headers */,
 				2E998AD32789B3F00036DE64 /* BVFeatures.h in Headers */,
 				87D424F31E8AD45400147FDB /* BVCurationsUICollectionView.h in Headers */,
@@ -3313,6 +3327,7 @@
 				1539745D1E719B9600BA52C1 /* BVDisplayResponse.m in Sources */,
 				87F2DD141DAD585E00FB43F3 /* BVReviewTableViewCell.m in Sources */,
 				87F2DCEC1DAD585E00FB43F3 /* BVSubmittedQuestion.m in Sources */,
+				2E371E5E280824BE008D9223 /* BVSecondaryRatingsDistributionValue.m in Sources */,
 				87C5FF5D1E36A8B7004EE6E8 /* BVAuthorResponse.m in Sources */,
 				87A02B671E096B300002701B /* BVFeedbackSubmissionResponse.m in Sources */,
 				87F2DC5F1DAD585E00FB43F3 /* BVBadgeType.m in Sources */,
@@ -3366,6 +3381,7 @@
 				B586398E214AFBD000EFD763 /* BVConversationsError.m in Sources */,
 				987C075F2252913B00227934 /* BVInitiateSubmitResponseData.m in Sources */,
 				87F2DC901DAD585E00FB43F3 /* BVSecondaryRatingsAverages.m in Sources */,
+				2E371E5A2808226B008D9223 /* BVSecondaryRatingsDistributionElement.m in Sources */,
 				87F2DCDC1DAD585E00FB43F3 /* BVSubmissionAction.m in Sources */,
 				8754117E1E1F201E006C5C6E /* BVProductReviewRichNotificationCenter.m in Sources */,
 				875410B51E1F10DF006C5C6E /* BVStoreReviewNotificationViewController.m in Sources */,
