@@ -153,4 +153,38 @@ class ProductDisplayTests: XCTestCase {
       XCTAssertNil(error, "Something went horribly wrong, request took too long.")
     }
   }
+    
+    func testProductRequestTagStats() {
+        
+        let expectation = self.expectation(description: "testProductStatisticsTagStats")
+        
+        let request = BVProductDisplayPageRequest(productId: "test1")
+                        .addCustomDisplayParameter("stats", withValue: "reviews")
+                        .tagStats(true)
+            
+        request.load({ (response) in
+        
+           let reviewStatistics =  response.result?.reviewStatistics
+           XCTAssertNotNil(reviewStatistics?.tagDistribution!["Con"])
+           let conTagDistribution =  reviewStatistics?.tagDistribution!["Con"] as! BVDistributionElement
+           let conTagDistributionValues = conTagDistribution.values
+            
+           XCTAssertEqual(conTagDistributionValues.count, 10)
+           XCTAssertEqual(conTagDistributionValues.first?.count,30)
+           XCTAssertEqual(conTagDistributionValues.first?.value,"Quality")
+             
+          
+        expectation.fulfill()
+            
+        }) { (error) in
+            
+            XCTFail("review display request error: \(error)")
+            
+        }
+        
+        self.waitForExpectations(timeout: 1000) { (error) in
+            XCTAssertNil(error, "Something went horribly wrong, request took too long.")
+        }
+        
+    }
 }

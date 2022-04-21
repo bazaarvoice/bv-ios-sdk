@@ -28,7 +28,7 @@
     NSMutableArray<BVInclude *> *pdpIncludes;
 @property(nonnull, nonatomic, strong, readonly)
     NSMutableArray<BVInclude *> *includes;
-
+@property BOOL tagStats;
 @end
 
 @implementation BVBaseProductRequest
@@ -40,6 +40,7 @@
     _questionFilters = [NSMutableArray array];
     _pdpIncludes = [NSMutableArray array];
     self.incentivizedStats = NO;
+    self.tagStats = NO;
   }
 
   return self;
@@ -97,6 +98,11 @@
                               includeTypeWithRawValue:productIncludeTypeValue]];
 
   [self.pdpIncludes addObject:statToInclude];
+  return self;
+}
+
+- (nonnull instancetype)tagStats:(BOOL)tagStats {
+  _tagStats = tagStats;
   return self;
 }
 
@@ -211,6 +217,10 @@ addIncludedQuestionsFilterType:
   
   if (self.incentivizedStats == YES) {
     [params addObject:[BVStringKeyValuePair pairWithKey:@"incentivizedstats" value:@"true"]];
+  }
+    
+  if (self.tagStats == YES) {
+        [params addObject:[BVStringKeyValuePair pairWithKey:@"tagstats" value:@"true"]];
   }
 
   return params;

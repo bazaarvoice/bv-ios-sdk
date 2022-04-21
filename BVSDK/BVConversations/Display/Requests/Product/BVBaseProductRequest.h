@@ -26,6 +26,9 @@ typedef void (^ProductSearchRequestCompletionHandler)(
 - (nonnull instancetype)includeStatistics:
     (BVProductIncludeTypeValue)productIncludeTypeValue;
 
+// Includes tag statistics under review statistics
+- (nonnull instancetype)tagStats:(BOOL)tagStats;
+
 /// Inclusive filter to add for included reviews.
 - (nonnull instancetype)
     filterOnReviewFilterValue:(BVReviewFilterValue)reviewFilterValue
