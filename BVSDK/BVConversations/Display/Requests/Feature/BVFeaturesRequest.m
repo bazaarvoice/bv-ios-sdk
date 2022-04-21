@@ -10,6 +10,13 @@
 #import "BVConversationsRequest+Private.h"
 #import "BVStringKeyValuePair.h"
 
+@interface BVFeaturesRequest ()
+
+@property(nonnull, readonly) NSString *productId;
+@property(nonnull, readonly) NSString *language;
+
+@end
+
 @implementation BVFeaturesRequest
 
 - (nonnull instancetype)initWithProductId:(nonnull NSString *)productId {

@@ -14,6 +14,7 @@
 
 @interface BVReviewsRequest ()
 
+@property(nullable) NSString *feature;
 @property BOOL tagStats;
 
 @end
@@ -35,6 +36,11 @@
     self.incentivizedStats = NO;
     self.tagStats = NO;
     return self = [super initWithID:Id limit:limit offset:offset primaryFilter: filter];
+}
+
+- (nonnull instancetype)feature:(nullable NSString *)feature{
+    _feature = feature;
+    return self;
 }
 
 - (nonnull instancetype)tagStats:(BOOL)tagStats {
