@@ -14,6 +14,7 @@
   if ((self = [super init])) {
     SET_IF_NOT_NULL(self.value, apiResponse[@"Value"])
     SET_IF_NOT_NULL(self.count, apiResponse[@"Count"])
+    SET_IF_NOT_NULL(self.valueLabel, apiResponse[@"ValueLabel"])
   }
   return self;
 }
