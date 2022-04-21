@@ -101,7 +101,7 @@ class ReviewDisplayTests: XCTestCase {
         let expectation = self.expectation(description: "testReviewDisplay")
         
         let request = BVReviewsRequest(productId: "XYZ123-prod-3-4-ExternalId", limit: 5, offset: 0)
-        request.feature = "speed"
+                        .feature("speed")
         
         request.load({ (response) in
         
@@ -160,7 +160,7 @@ class ReviewDisplayTests: XCTestCase {
         let expectation = self.expectation(description: "testReviewDisplay")
         
         let request = BVReviewsRequest(productId: "XYZ123-prod-3-4-ExternalId", limit: 5, offset: 0)
-        request.feature = ""
+                        .feature("")
         
         request.load({ (response) in
             
