@@ -471,4 +471,37 @@ class ReviewDisplayTests: XCTestCase {
       XCTAssertNil(error, "Something went horribly wrong, request took too long.")
     }
   }
+  
+  func testContextDataValueLabelIncludes(){
+    
+    let configDict = ["clientId": "testcustomermobilesdk",
+                      "apiKeyConversations": "KEY_REMOVED"];
+    BVSDKManager.configure(withConfiguration: configDict, configType: .staging)
+    
+    let expectation = self.expectation(description: "testContextDataValueLabelIncludes")
+    let request = BVReviewsRequest(productId: "Product1", limit: 10, offset: 0)
+      .include(.reviewProducts)
+      .addCustomDisplayParameter("Stats", withValue: "reviews")
+    request.load({ (response) in
+    
+        let review = response.results.first!
+    
+        XCTAssertNotNil(review.product?.reviewStatistics?.contextDataDistribution?.value(forKey: "Gender"))
+        
+        let incentivizedReviewDistribution = review.product?.reviewStatistics?.contextDataDistribution?.value(forKey: "Gender") as! BVDistributionElement
+        
+        XCTAssertEqual(incentivizedReviewDistribution.values.first?.valueLabel,"Male")
+      
+      expectation.fulfill()
+      
+    }) { (error) in
+      
+      XCTFail("review display request error: \(error)")
+      expectation.fulfill()
+    }
+    
+    self.waitForExpectations(timeout: 10) { (error) in
+      XCTAssertNil(error, "Something went horribly wrong, request took too long.")
+    }
+  }
 }
