@@ -507,8 +507,39 @@ class ReviewDisplayTests: XCTestCase {
     }
   }
     
-    
-    func testReviewRequestSecondaryRatingsDistribution() {
+  func testReviewSeconadaryRatingFilter() {
+        
+        let expectation = self.expectation(description: "testReviewSeconadaryRatingFilter")
+        
+        let request = BVReviewsRequest(productId: "test1", limit: 5, offset: 0)
+          .filter(on: .secondaryRating, fieldId: "Quality", relationalFilterOperatorValue: .equalTo, value: "2")
+          
+        request.load({ (response) in
+        
+        let reviews = response.results
+            
+        for review in reviews {
+            let qualityRating = review.secondaryRatings.filter({ $0.identifier == "Quality"}).first;
+            XCTAssertTrue(qualityRating?.value == 2)
+        }
+        
+        expectation.fulfill()
+            
+        }) { (error) in
+            
+            XCTFail("review display request error: \(error)")
+            
+            expectation.fulfill()
+        }
+        
+        self.waitForExpectations(timeout: 1000) { (error) in
+            XCTAssertNil(error, "Something went horribly wrong, request took too long.")
+        }
+        
+    }
+
+
+        func testReviewRequestSecondaryRatingsDistribution() {
         
         let configDict = ["clientId": "testcustomermobilesdk",
                           "apiKeyConversations": "KEY_REMOVED"];
@@ -543,9 +574,10 @@ class ReviewDisplayTests: XCTestCase {
             
             expectation.fulfill()
             
-        }) { (error) in
+            }) { (error) in
             
             XCTFail("review display request error: \(error)")
+            
             expectation.fulfill()
         }
         
@@ -554,6 +586,114 @@ class ReviewDisplayTests: XCTestCase {
         }
         
     }
+    
+    func testReviewAdditionalFieldFilter() {
+        
+        let configDict = ["clientId": "testcustomer-56",
+                          "apiKeyConversations": "KEY_REMOVED"];
+        BVSDKManager.configure(withConfiguration: configDict, configType: .staging)
+          
+          let expectation = self.expectation(description: "testReviewAdditionalFieldFilter")
+          
+          let request = BVReviewsRequest(productId: "test1", limit: 10, offset: 0)
+            .filter(on: .additionalField, fieldId: "DateOfUserExperience", relationalFilterOperatorValue: .equalTo, value: "2021-04-03")
+            
+          request.load({ (response) in
+          
+          let reviews = response.results
+              
+          for review in reviews {
+              let additionalField_DateOfUserExperience = review.additionalFields!["DateOfUserExperience"] as! NSDictionary
+
+              XCTAssertTrue(additionalField_DateOfUserExperience["Value"] as! String == "2021-04-03")
+          }
+          
+          expectation.fulfill()
+              
+          }) { (error) in
+              
+              XCTFail("review display request error: \(error)")
+              
+          }
+          
+          self.waitForExpectations(timeout: 1000) { (error) in
+              XCTAssertNil(error, "Something went horribly wrong, request took too long.")
+          }
+          
+      }
+    
+    
+    func testReviewTagFilter() {
+        
+        let configDict = ["clientId": "apitestcustomer",
+                          "apiKeyConversations": "KEY_REMOVED"];
+        BVSDKManager.configure(withConfiguration: configDict, configType: .staging)
+          
+          let expectation = self.expectation(description: "testReviewTagFilter")
+          
+          let request = BVReviewsRequest(productId: "JAM5BLK", limit: 10, offset: 0)
+            .filter(on: .tag, fieldId: "ProductVariant", relationalFilterOperatorValue: .equalTo, value: "Gray")
+            
+          request.load({ (response) in
+          
+          let reviews = response.results
+              
+          for review in reviews {
+              let tag_ProductVariant = review.tagDimensions!["ProductVariant"] as! BVDimensionElement
+              let tag_ProductVariantValues = tag_ProductVariant.values
+              XCTAssertTrue(tag_ProductVariantValues!.contains("Gray"))
+          }
+          
+          expectation.fulfill()
+              
+          }) { (error) in
+              
+              XCTFail("review display request error: \(error)")
+              
+          }
+          
+          self.waitForExpectations(timeout: 1000) { (error) in
+              XCTAssertNil(error, "Something went horribly wrong, request took too long.")
+          }
+          
+      }
+    
+    func testReviewCDVFilter() {
+        
+        let configDict = ["clientId": "apitestcustomer",
+                          "apiKeyConversations": "KEY_REMOVED"];
+        BVSDKManager.configure(withConfiguration: configDict, configType: .staging)
+          
+          let expectation = self.expectation(description: "testReviewCDVFilter")
+          
+          let request = BVReviewsRequest(productId: "JAM5BLK", limit: 10, offset: 0)
+            .filter(on: .contextDataValue, fieldId: "DidYouReceiveThisProductForFree", relationalFilterOperatorValue: .equalTo, value: "Yes")
+            
+          request.load({ (response) in
+          
+          let reviews = response.results
+              
+          for review in reviews {
+              let contextDataValue_DidYouReceiveThisProductForFree = review.contextDataValues.first(where: { cdv in
+                  cdv.identifier == "DidYouReceiveThisProductForFree"
+              })
+
+              XCTAssertTrue(contextDataValue_DidYouReceiveThisProductForFree?.value == "Yes")
+          }
+          
+          expectation.fulfill()
+              
+          }) { (error) in
+              
+              XCTFail("review display request error: \(error)")
+              
+          }
+          
+          self.waitForExpectations(timeout: 1000) { (error) in
+              XCTAssertNil(error, "Something went horribly wrong, request took too long.")
+          }
+          
+      }
   
   func testContextDataValueLabelIncludes(){
     
