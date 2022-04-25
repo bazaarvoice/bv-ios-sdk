@@ -16,6 +16,7 @@ typedef void (^ProductSearchRequestCompletionHandler)(
 
 @property BOOL incentivizedStats;
 
+
 /// Type of social content to include with the product request. NOTE:
 /// BVProductIncludeTypeValue is only supported for statistics, no for Includes.
 - (nonnull instancetype)includeProductIncludeTypeValue:
@@ -25,6 +26,12 @@ typedef void (^ProductSearchRequestCompletionHandler)(
 // Includes statistics for the included content type.
 - (nonnull instancetype)includeStatistics:
     (BVProductIncludeTypeValue)productIncludeTypeValue;
+
+// Includes secondary ratings distribution under review statistics
+- (nonnull instancetype)secondaryRatingStats:(BOOL)secondaryRatingStats;
+
+// Includes tag statistics under review statistics
+- (nonnull instancetype)tagStats:(BOOL)tagStats;
 
 /// Inclusive filter to add for included reviews.
 - (nonnull instancetype)

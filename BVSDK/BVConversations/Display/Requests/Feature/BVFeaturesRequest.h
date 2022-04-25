@@ -10,10 +10,6 @@
 
 @interface BVFeaturesRequest : BVConversationsRequest
 
-@property(nonnull, readonly) NSString *productId;
-@property(nonnull, readonly) NSString *language;
-
-
 - (nonnull instancetype)initWithProductId:(nonnull NSString *)productId;
 - (nonnull instancetype)initWithProductId:(nonnull NSString *)productId language:(nonnull NSString *)language;
 - (nonnull instancetype)__unavailable init;

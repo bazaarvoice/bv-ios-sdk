@@ -46,6 +46,18 @@ relationalFilterOperatorValue:
     (BVRelationalFilterOperatorValue)relationalFilterOperatorValue
                        values:(nonnull NSArray<NSString *> *)values;
 
+- (nonnull instancetype)
+    filterOnReviewFilterFieldType:(BVReviewFilterFieldType)reviewFilterFieldType
+                          fieldId:(nonnull NSString *)reviewFilterFieldId
+    relationalFilterOperatorValue:(BVRelationalFilterOperatorValue)relationalFilterOperatorValue
+                            value:(nonnull NSString *)value;
+
+- (nonnull instancetype)
+filterOnReviewFilterFieldType:(BVReviewFilterFieldType)reviewFilterFieldType
+                      fieldId:(nonnull NSString *)reviewFilterFieldId
+relationalFilterOperatorValue:(BVRelationalFilterOperatorValue)relationalFilterOperatorValue
+                       values:(nonnull NSArray<NSString *> *)values;
+
 - (void)load:(nonnull void (^)(BVResponseType __nonnull response))success
      failure:(nonnull ConversationsFailureHandler)failure;
 
