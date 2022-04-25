@@ -153,4 +153,87 @@ class ProductDisplayTests: XCTestCase {
       XCTAssertNil(error, "Something went horribly wrong, request took too long.")
     }
   }
+    
+  func testProductRequestSecondaryRatingsDistribution() {
+        
+      let configDict = ["clientId": "testcustomermobilesdk",
+                        "apiKeyConversations": "KEY_REMOVED"];
+      BVSDKManager.configure(withConfiguration: configDict, configType: .staging)
+        
+        let expectation = self.expectation(description: "testProductRequestSecondaryRatingsDistribution")
+        
+        let request = BVProductDisplayPageRequest(productId: "Product1")
+            .addCustomDisplayParameter("stats", withValue: "Reviews")
+            .secondaryRatingStats(true)
+            
+        request.load({ (response) in
+            
+            let reviewStatistics =  response.result?.reviewStatistics
+            XCTAssertNotNil(reviewStatistics?.secondaryRatingsDistribution!["WhatSizeIsTheProduct"])
+            let productSizeSecondaryRatingsDistribution =  reviewStatistics?.secondaryRatingsDistribution!["WhatSizeIsTheProduct"] as! BVSecondaryRatingsDistributionElement
+            XCTAssertEqual(productSizeSecondaryRatingsDistribution.label,"What size is the product?")
+            let productSizeSecondaryRatingsDistributionValues = productSizeSecondaryRatingsDistribution.values
+
+            XCTAssertEqual(productSizeSecondaryRatingsDistributionValues.first?.count,9)
+            XCTAssertEqual(productSizeSecondaryRatingsDistributionValues.first?.value,2)
+            XCTAssertEqual(productSizeSecondaryRatingsDistributionValues.first?.valueLabel,"Medium")
+            
+            XCTAssertNotNil(reviewStatistics?.secondaryRatingsDistribution!["Quality"])
+            let qualitySecondaryRatingsDistribution =  reviewStatistics?.secondaryRatingsDistribution!["Quality"] as! BVSecondaryRatingsDistributionElement
+            XCTAssertEqual(qualitySecondaryRatingsDistribution.label,"Quality of Product")
+            let qualitySecondaryRatingsDistributionValues = qualitySecondaryRatingsDistribution.values
+
+            XCTAssertEqual(qualitySecondaryRatingsDistributionValues.first?.count,9)
+            XCTAssertEqual(qualitySecondaryRatingsDistributionValues.first?.value,4)
+            XCTAssertNil(qualitySecondaryRatingsDistributionValues.first!.valueLabel)
+            
+            expectation.fulfill()
+            
+        }) { (error) in
+            
+            XCTFail("review display request error: \(error)")
+            expectation.fulfill()
+            
+        }
+        
+        self.waitForExpectations(timeout: 1000) { (error) in
+            XCTAssertNil(error, "Something went horribly wrong, request took too long.")
+        }
+        
+    }
+
+        func testProductRequestTagStats() {
+        
+        let expectation = self.expectation(description: "testProductStatisticsTagStats")
+        
+        let request = BVProductDisplayPageRequest(productId: "test1")
+                        .addCustomDisplayParameter("stats", withValue: "reviews")
+                        .tagStats(true)
+            
+        request.load({ (response) in
+        
+           let reviewStatistics =  response.result?.reviewStatistics
+           XCTAssertNotNil(reviewStatistics?.tagDistribution!["Con"])
+           let conTagDistribution =  reviewStatistics?.tagDistribution!["Con"] as! BVDistributionElement
+           let conTagDistributionValues = conTagDistribution.values
+            
+           XCTAssertEqual(conTagDistributionValues.count, 10)
+           XCTAssertEqual(conTagDistributionValues.first?.count,30)
+           XCTAssertEqual(conTagDistributionValues.first?.value,"Quality")
+             
+          
+        expectation.fulfill()
+        
+            }) { (error) in
+            
+            XCTFail("review display request error: \(error)")
+            expectation.fulfill()
+            
+        }
+        
+        self.waitForExpectations(timeout: 1000) { (error) in
+            XCTAssertNil(error, "Something went horribly wrong, request took too long.")
+        }
+        
+    }
 }

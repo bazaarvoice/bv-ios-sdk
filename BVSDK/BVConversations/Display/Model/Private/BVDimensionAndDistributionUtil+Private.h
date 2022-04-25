@@ -14,6 +14,8 @@
 
 + (nullable TagDistribution)createDistributionWithApiResponse:
     (nullable id)apiResponse;
++ (nullable SecondaryRatingsDistribution)createSecondaryRatingsDistributionWithApiResponse:
+    (nullable id)apiResponse;
 
 @end
 

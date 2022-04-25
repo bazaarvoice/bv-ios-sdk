@@ -1,14 +1,14 @@
 //
-//  DistributionValue.m
+//  BVSecondaryRatingsDistributionValue.m
 //  BVSDK
 //
-//  Copyright © 2016 Bazaarvoice. All rights reserved.
-//
+//  Copyright © 2022 Bazaarvoice. All rights reserved.
+// 
 
-#import "BVDistributionValue.h"
+#import "BVSecondaryRatingsDistributionValue.h"
 #import "BVNullHelper.h"
 
-@implementation BVDistributionValue
+@implementation BVSecondaryRatingsDistributionValue
 
 - (nonnull id)initWithApiResponse:(nonnull NSDictionary *)apiResponse {
   if ((self = [super init])) {

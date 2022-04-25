@@ -14,6 +14,7 @@
 
 @property(nonnull) NSString *value;
 @property(nonnull) NSNumber *count;
+@property(nullable) NSString *valueLabel;
 
 - (nonnull id)initWithApiResponse:(nonnull NSDictionary *)apiResponse;
 

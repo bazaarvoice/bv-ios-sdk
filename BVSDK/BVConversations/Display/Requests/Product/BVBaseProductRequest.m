@@ -28,6 +28,8 @@
     NSMutableArray<BVInclude *> *pdpIncludes;
 @property(nonnull, nonatomic, strong, readonly)
     NSMutableArray<BVInclude *> *includes;
+@property BOOL secondaryRatingStats;
+@property BOOL tagStats;
 
 @end
 
@@ -40,6 +42,8 @@
     _questionFilters = [NSMutableArray array];
     _pdpIncludes = [NSMutableArray array];
     self.incentivizedStats = NO;
+    self.secondaryRatingStats = NO;
+    self.tagStats = NO;
   }
 
   return self;
@@ -97,6 +101,16 @@
                               includeTypeWithRawValue:productIncludeTypeValue]];
 
   [self.pdpIncludes addObject:statToInclude];
+  return self;
+}
+
+- (nonnull instancetype)secondaryRatingStats:(BOOL)secondaryRatingStats {
+  _secondaryRatingStats = secondaryRatingStats;
+   return self;
+}
+
+- (nonnull instancetype)tagStats:(BOOL)tagStats {
+  _tagStats = tagStats;
   return self;
 }
 
@@ -211,6 +225,14 @@ addIncludedQuestionsFilterType:
   
   if (self.incentivizedStats == YES) {
     [params addObject:[BVStringKeyValuePair pairWithKey:@"incentivizedstats" value:@"true"]];
+  }
+    
+  if (self.secondaryRatingStats == YES) {
+    [params addObject:[BVStringKeyValuePair pairWithKey:@"secondaryratingstats" value:@"true"]];
+  }
+  
+  if (self.tagStats == YES) {
+        [params addObject:[BVStringKeyValuePair pairWithKey:@"tagstats" value:@"true"]];
   }
 
   return params;
