@@ -15,5 +15,6 @@
 #import "BVProductFilterValue.h"
 #import "BVQuestionFilterValue.h"
 #import "BVReviewFilterValue.h"
+#import "BVReviewFilterFieldType.h"
 
 #endif /* BVFILTERVALUES_H */

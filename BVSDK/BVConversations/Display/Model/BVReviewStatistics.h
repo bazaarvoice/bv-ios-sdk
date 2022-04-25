@@ -30,6 +30,7 @@
 @property(nullable) BVRatingDistribution *ratingDistribution;
 
 @property(nullable) TagDistribution tagDistribution;
+@property(nullable) SecondaryRatingsDistribution secondaryRatingsDistribution;
 @property(nullable) ContextDataDistribution contextDataDistribution;
 
 @property(nullable) NSDate *firstSubmissionTime;
