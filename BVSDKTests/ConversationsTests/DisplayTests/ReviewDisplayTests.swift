@@ -727,4 +727,73 @@ class ReviewDisplayTests: XCTestCase {
       XCTAssertNil(error, "Something went horribly wrong, request took too long.")
     }
   }
+    
+    func testReviewCustomSortOrder() {
+        
+        let configDict = ["clientId": "testcustomermobilesdk",
+                          "apiKeyConversations": "cavNO70oED9uDIo3971pfLc9IJET3eaozVNHJhL1vnAK4"];
+        BVSDKManager.configure(withConfiguration: configDict, configType: .staging)
+        
+        let expectation = self.expectation(description: "testReviewCustomSortOrder")
+        
+        let request = BVReviewsRequest(productId: "product1", limit: 20, offset: 0)
+            .sort(by: .contentLocale, customSortOrder: ["es_US","en_US"])
+
+        
+        request.load({ (response) in
+            
+            let reviews = response.results
+            let ContentLocales = reviews.map { review in
+                review.contentLocale
+            }
+
+            XCTAssertTrue(ContentLocales.index(of: "es_US")! < ContentLocales.index(of: "en_US")!);
+            expectation.fulfill()
+            
+        }) { (error) in
+            
+            XCTFail("review display request error: \(error)")
+            expectation.fulfill()
+        }
+        
+        self.waitForExpectations(timeout: 1000) { (error) in
+            XCTAssertNil(error, "Something went horribly wrong, request took too long.")
+        }
+        
+    }
+    
+    func testReviewCustomSortOrderOver5Values() {
+        
+        let configDict = ["clientId": "testcustomermobilesdk",
+                          "apiKeyConversations": "cavNO70oED9uDIo3971pfLc9IJET3eaozVNHJhL1vnAK4"];
+        BVSDKManager.configure(withConfiguration: configDict, configType: .staging)
+        
+        
+        let expectation = self.expectation(description: "testReviewCustomSortOrderOver5Values")
+        
+        let request = BVReviewsRequest(productId: "product1", limit: 10, offset: 5)
+            .sort(by: .contentLocale, customSortOrder: ["fr_FR","en_GB","en_US","en_ZH","en_CA","en_DE"])
+        
+        request.load({ (response) in
+            
+            XCTFail("Only 5 locales are allowed")
+            expectation.fulfill()
+            
+        }) { (errors) in
+            for error in errors as [NSError] {
+                
+              let errorCode = error.userInfo["BVKeyErrorCode"] as! String
+              let errorMessage = error.userInfo["BVKeyErrorMessage"] as! String
+
+              XCTAssertEqual(errorCode, "ERROR_PARAM_INVALID_SORT_ATTRIBUTE")
+              XCTAssertEqual(errorMessage, "Sort by contentlocale cannot have more than 5 values")
+            }
+            expectation.fulfill()
+        }
+        
+        self.waitForExpectations(timeout: 1000) { (error) in
+            XCTAssertNil(error, "Something went horribly wrong, request took too long.")
+        }
+        
+    }
 }
