@@ -36,6 +36,10 @@ sortByReviewsSortOptionValue:(BVReviewsSortOptionValue)reviewsSortOptionValue
      monotonicSortOrderValue:(BVMonotonicSortOrderValue)monotonicSortOrderValue;
 
 - (nonnull instancetype)
+sortByReviewsCustomOrderSortOptionValue:(BVReviewsCustomOrderSortOptionValue)reviewsCustomOrderSortOptionValue
+customSortOrder:(nonnull NSArray<NSString *> *)customSortOrder;
+
+- (nonnull instancetype)
     filterOnReviewFilterValue:(BVReviewFilterValue)reviewFilterValue
 relationalFilterOperatorValue:
     (BVRelationalFilterOperatorValue)relationalFilterOperatorValue
