@@ -44,6 +44,8 @@
 		2E371E5A2808226B008D9223 /* BVSecondaryRatingsDistributionElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E371E582808226B008D9223 /* BVSecondaryRatingsDistributionElement.m */; };
 		2E371E5D280824BE008D9223 /* BVSecondaryRatingsDistributionValue.h in Headers */ = {isa = PBXBuildFile; fileRef = 2E371E5B280824BE008D9223 /* BVSecondaryRatingsDistributionValue.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2E371E5E280824BE008D9223 /* BVSecondaryRatingsDistributionValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E371E5C280824BE008D9223 /* BVSecondaryRatingsDistributionValue.m */; };
+		2E88C046282A38C4007B77B0 /* BVCustomSortOrder.h in Headers */ = {isa = PBXBuildFile; fileRef = 2E88C044282A38C4007B77B0 /* BVCustomSortOrder.h */; };
+		2E88C047282A38C4007B77B0 /* BVCustomSortOrder.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E88C045282A38C4007B77B0 /* BVCustomSortOrder.m */; };
 		2E998AC82789963D0036DE64 /* BVFeaturesRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E998AC72789963D0036DE64 /* BVFeaturesRequest.m */; };
 		2E998ACB2789967E0036DE64 /* BVFeaturesResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E998ACA2789967E0036DE64 /* BVFeaturesResponse.m */; };
 		2E998ACD278996940036DE64 /* BVFeaturesRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 2E998ACC278996940036DE64 /* BVFeaturesRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -53,6 +55,9 @@
 		2E998AD52789B4990036DE64 /* BVFeature.h in Headers */ = {isa = PBXBuildFile; fileRef = 2E998AD42789B4990036DE64 /* BVFeature.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2E998AD72789B4C20036DE64 /* BVFeature.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E998AD62789B4C20036DE64 /* BVFeature.m */; };
 		2E998AD9278BF02A0036DE64 /* FeatureDisplayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E998AD8278BF02A0036DE64 /* FeatureDisplayTests.swift */; };
+		2EA5DD962824FDA4006B0949 /* BVReviewsCustomOrderSortOptionValue.h in Headers */ = {isa = PBXBuildFile; fileRef = 2EA5DD952824FDA4006B0949 /* BVReviewsCustomOrderSortOptionValue.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2EA5DD992825110E006B0949 /* BVReviewsCustomOrderSortOption.h in Headers */ = {isa = PBXBuildFile; fileRef = 2EA5DD972825110E006B0949 /* BVReviewsCustomOrderSortOption.h */; };
+		2EA5DD9A2825110E006B0949 /* BVReviewsCustomOrderSortOption.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EA5DD982825110E006B0949 /* BVReviewsCustomOrderSortOption.m */; };
 		2EAD31C326DCAC8600903208 /* BVAuthenticatedUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EAD31C226DCAC8600903208 /* BVAuthenticatedUser.m */; };
 		2EE2579127F23EE300E6DBDE /* BVReviewFilterFieldType.h in Headers */ = {isa = PBXBuildFile; fileRef = 2EE2579027F23EE300E6DBDE /* BVReviewFilterFieldType.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5F140C5D1F9553FE00905828 /* skelly_android.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5F140C5C1F9553FE00905828 /* skelly_android.jpg */; };
@@ -692,6 +697,8 @@
 		2E371E582808226B008D9223 /* BVSecondaryRatingsDistributionElement.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BVSecondaryRatingsDistributionElement.m; sourceTree = "<group>"; };
 		2E371E5B280824BE008D9223 /* BVSecondaryRatingsDistributionValue.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BVSecondaryRatingsDistributionValue.h; sourceTree = "<group>"; };
 		2E371E5C280824BE008D9223 /* BVSecondaryRatingsDistributionValue.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BVSecondaryRatingsDistributionValue.m; sourceTree = "<group>"; };
+		2E88C044282A38C4007B77B0 /* BVCustomSortOrder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BVCustomSortOrder.h; sourceTree = "<group>"; };
+		2E88C045282A38C4007B77B0 /* BVCustomSortOrder.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BVCustomSortOrder.m; sourceTree = "<group>"; };
 		2E998AC72789963D0036DE64 /* BVFeaturesRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BVFeaturesRequest.m; sourceTree = "<group>"; };
 		2E998ACA2789967E0036DE64 /* BVFeaturesResponse.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BVFeaturesResponse.m; sourceTree = "<group>"; };
 		2E998ACC278996940036DE64 /* BVFeaturesRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BVFeaturesRequest.h; sourceTree = "<group>"; };
@@ -701,6 +708,9 @@
 		2E998AD42789B4990036DE64 /* BVFeature.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BVFeature.h; sourceTree = "<group>"; };
 		2E998AD62789B4C20036DE64 /* BVFeature.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BVFeature.m; sourceTree = "<group>"; };
 		2E998AD8278BF02A0036DE64 /* FeatureDisplayTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureDisplayTests.swift; sourceTree = "<group>"; };
+		2EA5DD952824FDA4006B0949 /* BVReviewsCustomOrderSortOptionValue.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BVReviewsCustomOrderSortOptionValue.h; sourceTree = "<group>"; };
+		2EA5DD972825110E006B0949 /* BVReviewsCustomOrderSortOption.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BVReviewsCustomOrderSortOption.h; sourceTree = "<group>"; };
+		2EA5DD982825110E006B0949 /* BVReviewsCustomOrderSortOption.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BVReviewsCustomOrderSortOption.m; sourceTree = "<group>"; };
 		2EAD31C226DCAC8600903208 /* BVAuthenticatedUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVAuthenticatedUser.m; sourceTree = "<group>"; };
 		2EE2579027F23EE300E6DBDE /* BVReviewFilterFieldType.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BVReviewFilterFieldType.h; sourceTree = "<group>"; };
 		3462CE8D50CC0B93A458E62C /* Pods-BVSDKTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BVSDKTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BVSDKTests/Pods-BVSDKTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -1758,6 +1768,7 @@
 				2EE2579027F23EE300E6DBDE /* BVReviewFilterFieldType.h */,
 				B5BE76A5200EA666002BA818 /* BVReviewIncludeTypeValue.h */,
 				B5BE76A7200EA6B4002BA818 /* BVReviewsSortOptionValue.h */,
+				2EA5DD952824FDA4006B0949 /* BVReviewsCustomOrderSortOptionValue.h */,
 				B583B124200E8ABE001E9548 /* BVSortOptionValues.h */,
 				B583B121200E8ABD001E9548 /* BVSortOrderValues.h */,
 				B583B11E200E888C001E9548 /* Private */,
@@ -2304,6 +2315,8 @@
 				B583AEE82009486C001E9548 /* BVIncludeType.m */,
 				B583AEDB2007FB59001E9548 /* BVMonotonicSortOrder.h */,
 				B583AEDC2007FB59001E9548 /* BVMonotonicSortOrder.m */,
+				2E88C044282A38C4007B77B0 /* BVCustomSortOrder.h */,
+				2E88C045282A38C4007B77B0 /* BVCustomSortOrder.m */,
 				87F2DB781DAD585E00FB43F3 /* BVProductFilterType.h */,
 				87F2DB791DAD585E00FB43F3 /* BVProductFilterType.m */,
 				B583AEEB20094A58001E9548 /* BVProductIncludeType.h */,
@@ -2328,6 +2341,8 @@
 				B583AEE0200816A4001E9548 /* BVSortOption.m */,
 				B583AED72007F80A001E9548 /* BVSortOrder.h */,
 				B583AED82007F80A001E9548 /* BVSortOrder.m */,
+				2EA5DD972825110E006B0949 /* BVReviewsCustomOrderSortOption.h */,
+				2EA5DD982825110E006B0949 /* BVReviewsCustomOrderSortOption.m */,
 			);
 			path = Private;
 			sourceTree = "<group>";
@@ -2781,6 +2796,7 @@
 				B58639C5214AFE8700EFD763 /* BVLocaleServiceManager.h in Headers */,
 				B5BE768E200EA025002BA818 /* BVProductFilterValue.h in Headers */,
 				B583B12A200E8ABE001E9548 /* BVSortOptionValues.h in Headers */,
+				2E88C046282A38C4007B77B0 /* BVCustomSortOrder.h in Headers */,
 				87F2DCAD1DAD585E00FB43F3 /* BVQuestionsAndAnswersRequest.h in Headers */,
 				87F2DCBD1DAD585E00FB43F3 /* BVQuestionFilterType.h in Headers */,
 				87F2DCE11DAD585E00FB43F3 /* BVPhotoSubmission.h in Headers */,
@@ -2905,6 +2921,7 @@
 				873DC49B1E7482840080FA03 /* BVPersonalizationEvent.h in Headers */,
 				B5BE76A0200EA53D002BA818 /* BVProductIncludeTypeValue.h in Headers */,
 				B58639B2214AFE0A00EFD763 /* BVSDKManager+Private.h in Headers */,
+				2EA5DD962824FDA4006B0949 /* BVReviewsCustomOrderSortOptionValue.h in Headers */,
 				2EE2579127F23EE300E6DBDE /* BVReviewFilterFieldType.h in Headers */,
 				982B607522EA125C0041D40B /* BVProgressiveSubmissionReview.h in Headers */,
 				B5BE769C200EA473002BA818 /* BVCommentsSortOptionValue.h in Headers */,
@@ -2968,6 +2985,7 @@
 				B575C38A1FBE02FE000F890B /* BVUASSubmissionErrorResponse.h in Headers */,
 				B575C38E1FBE1A4F000F890B /* BVUASSubmissionResponse.h in Headers */,
 				5F51EA501F5F2BB4002FA8FD /* BVFormInputType.h in Headers */,
+				2EA5DD992825110E006B0949 /* BVReviewsCustomOrderSortOption.h in Headers */,
 				B583B129200E8ABE001E9548 /* BVFilterOperatorValues.h in Headers */,
 				5F6201DC1F7030FA00454D77 /* NSError+BVErrorCodeParser.h in Headers */,
 				5F608FF41F6AF3E100E197CE /* BVSubmissionErrorCode.h in Headers */,
@@ -3297,6 +3315,7 @@
 				B57B8335215E8A58006B378E /* BVPhotoSubmissionErrorResponse.m in Sources */,
 				B5A764E71FE191BA00B5DC9A /* BVStoreReviewSubmission.m in Sources */,
 				87C5FEBF1E22A05D004EE6E8 /* BVLogger.m in Sources */,
+				2EA5DD9A2825110E006B0949 /* BVReviewsCustomOrderSortOption.m in Sources */,
 				873DC4981E7482840080FA03 /* BVInViewEvent.m in Sources */,
 				B57B8329215E8054006B378E /* BVPhotoSubmissionResponse.m in Sources */,
 				87F2DD101DAD585E00FB43F3 /* BVReviewsCollectionView.m in Sources */,
@@ -3377,6 +3396,7 @@
 				87F2DC721DAD585E00FB43F3 /* BVDistributionElement.m in Sources */,
 				87C5FEC61E22A05D004EE6E8 /* BVStringKeyValuePair.m in Sources */,
 				87F2DC7D1DAD585E00FB43F3 /* BVProductsResponse.m in Sources */,
+				2E88C047282A38C4007B77B0 /* BVCustomSortOrder.m in Sources */,
 				B583AEF2200956D0001E9548 /* BVAuthorIncludeType.m in Sources */,
 				875411841E1F201E006C5C6E /* BVStoreReviewNotificationProperties.m in Sources */,
 				87F2DCBE1DAD585E00FB43F3 /* BVQuestionFilterType.m in Sources */,
