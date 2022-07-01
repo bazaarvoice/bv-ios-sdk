@@ -13,12 +13,14 @@
 #import "BVConversationsRequest+Private.h"
 #import "BVFilter.h"
 #import "BVMonotonicSortOrder.h"
+#import "BVCustomSortOrder.h"
 #import "BVProduct.h"
 #import "BVRelationalFilterOperator.h"
 #import "BVReview.h"
 #import "BVReviewFilterType.h"
 #import "BVReviewIncludeType.h"
 #import "BVReviewsSortOption.h"
+#import "BVReviewsCustomOrderSortOption.h"
 #import "BVSort.h"
 #import "BVStringKeyValuePair.h"
 
@@ -154,6 +156,16 @@ sortByReviewsSortOptionValue:(BVReviewsSortOptionValue)reviewsSortOptionValue
                sortOrder:[BVMonotonicSortOrder
                              sortOrderWithRawValue:monotonicSortOrderValue]];
   [self.sorts addObject:sort];
+  return self;
+}
+
+- (nonnull instancetype)
+sortByReviewsCustomOrderSortOptionValue:(BVReviewsCustomOrderSortOptionValue)reviewsCustomOrderSortOptionValue
+     customSortOrder:(nonnull NSArray<NSString *> *)customSortOrder{
+  BVSort *sort = [[BVSort alloc] initWithCustomOrderSortOption:[BVReviewsCustomOrderSortOption
+                                                                sortOptionWithRawValue:reviewsCustomOrderSortOptionValue]
+                                               customSortOrder:[BVCustomSortOrder customSortOrderWithValues:customSortOrder]];
+    [self.sorts addObject:sort];
   return self;
 }
 

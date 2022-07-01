@@ -593,7 +593,7 @@ static BVAnalyticsManager *analyticsInstance = nil;
   return [localeServiceManager
       resourceForService:BVLocaleServiceManagerServiceAnalytics
               withLocale:self.analyticsLocale
-         andIsProduction:(!self.isStagingServer)];
+         andIsProduction:![self.isStagingServer boolValue]];
 }
 
 #pragma mark - Testing
