@@ -17,5 +17,6 @@
 #import "BVReviewsSortOptionValue.h"
 
 #import "BVReviewsCustomOrderSortOptionValue.h"
+#import "BVReviewsRelevancySortOptionValue.h"
 
 #endif /* BVSORTOPTIONVALUES_H */

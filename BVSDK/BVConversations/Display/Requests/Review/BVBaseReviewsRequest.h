@@ -40,6 +40,10 @@ sortByReviewsCustomOrderSortOptionValue:(BVReviewsCustomOrderSortOptionValue)rev
 customSortOrder:(nonnull NSArray<NSString *> *)customSortOrder;
 
 - (nonnull instancetype)
+sortByReviewsRelevancySortOptionValue:(BVReviewsRelevancySortOptionValue)reviewsRelevancySortOptionValue
+     relevancySortTypeValue:(BVRelevancySortTypeValue)relevancySortTypeValue;
+
+- (nonnull instancetype)
     filterOnReviewFilterValue:(BVReviewFilterValue)reviewFilterValue
 relationalFilterOperatorValue:
     (BVRelationalFilterOperatorValue)relationalFilterOperatorValue
