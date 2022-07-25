@@ -15,5 +15,6 @@
 #import "BVIncludeTypeValues.h"
 #import "BVSortOptionValues.h"
 #import "BVSortOrderValues.h"
+#import "BVSortTypeValues.h"
 
 #endif /* BVCONVERSATIONDISPLAY_H */

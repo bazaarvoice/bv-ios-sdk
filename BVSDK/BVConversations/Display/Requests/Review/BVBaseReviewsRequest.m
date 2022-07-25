@@ -14,6 +14,7 @@
 #import "BVFilter.h"
 #import "BVMonotonicSortOrder.h"
 #import "BVCustomSortOrder.h"
+#import "BVRelevancySortType.h"
 #import "BVProduct.h"
 #import "BVRelationalFilterOperator.h"
 #import "BVReview.h"
@@ -21,6 +22,7 @@
 #import "BVReviewIncludeType.h"
 #import "BVReviewsSortOption.h"
 #import "BVReviewsCustomOrderSortOption.h"
+#import "BVReviewsRelevancySortOption.h"
 #import "BVSort.h"
 #import "BVStringKeyValuePair.h"
 
@@ -166,6 +168,18 @@ sortByReviewsCustomOrderSortOptionValue:(BVReviewsCustomOrderSortOptionValue)rev
                                                                 sortOptionWithRawValue:reviewsCustomOrderSortOptionValue]
                                                customSortOrder:[BVCustomSortOrder customSortOrderWithValues:customSortOrder]];
     [self.sorts addObject:sort];
+  return self;
+}
+
+- (nonnull instancetype)
+sortByReviewsRelevancySortOptionValue:(BVReviewsRelevancySortOptionValue)reviewsRelevancySortOptionValue
+     relevancySortTypeValue:(BVRelevancySortTypeValue)relevancySortTypeValue {
+  BVSort *sort = [[BVSort alloc]
+      initWithSortOption:[BVReviewsRelevancySortOption
+                             sortOptionWithRawValue:reviewsRelevancySortOptionValue]
+               sortType:[BVRelevancySortType
+                             sortTypeWithRawValue:relevancySortTypeValue]];
+  [self.sorts addObject:sort];
   return self;
 }
 

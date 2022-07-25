@@ -40,6 +40,15 @@
 		15BE4D261E55F03200C12B57 /* BVCurationsUICollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 870F133E1E490B5200D46BE6 /* BVCurationsUICollectionView.m */; };
 		15D4F83B1DF5D5F800E6B30D /* testNotificationProductConfig.json in Resources */ = {isa = PBXBuildFile; fileRef = 15D4F83A1DF5D5F800E6B30D /* testNotificationProductConfig.json */; };
 		15D4F83F1DF5EC3C00E6B30D /* ph.png in Resources */ = {isa = PBXBuildFile; fileRef = 15D4F83E1DF5EC3C00E6B30D /* ph.png */; };
+		2E0672CE288C1DE2008D2AF7 /* BVReviewsRelevancySortOptionValue.h in Headers */ = {isa = PBXBuildFile; fileRef = 2E0672CD288C1DE2008D2AF7 /* BVReviewsRelevancySortOptionValue.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2E0672D3288C3AD5008D2AF7 /* BVReviewsRelevancySortOption.h in Headers */ = {isa = PBXBuildFile; fileRef = 2E0672D1288C3AD5008D2AF7 /* BVReviewsRelevancySortOption.h */; };
+		2E0672D4288C3AD5008D2AF7 /* BVReviewsRelevancySortOption.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E0672D2288C3AD5008D2AF7 /* BVReviewsRelevancySortOption.m */; };
+		2E0672D6288C3FFA008D2AF7 /* BVSortTypeValues.h in Headers */ = {isa = PBXBuildFile; fileRef = 2E0672D5288C3FFA008D2AF7 /* BVSortTypeValues.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2E0672DC288C5420008D2AF7 /* BVSortType.h in Headers */ = {isa = PBXBuildFile; fileRef = 2E0672DB288C5420008D2AF7 /* BVSortType.h */; };
+		2E0672DE288C542E008D2AF7 /* BVSortType.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E0672DD288C542E008D2AF7 /* BVSortType.m */; };
+		2E0672E0288C54F8008D2AF7 /* BVRelevancySortType.h in Headers */ = {isa = PBXBuildFile; fileRef = 2E0672DF288C54F8008D2AF7 /* BVRelevancySortType.h */; };
+		2E0672E2288C550A008D2AF7 /* BVRelevancySortType.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E0672E1288C550A008D2AF7 /* BVRelevancySortType.m */; };
+		2E0672E4288C55C8008D2AF7 /* BVRelevancySortTypeValue.h in Headers */ = {isa = PBXBuildFile; fileRef = 2E0672E3288C55C8008D2AF7 /* BVRelevancySortTypeValue.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2E371E592808226B008D9223 /* BVSecondaryRatingsDistributionElement.h in Headers */ = {isa = PBXBuildFile; fileRef = 2E371E572808226B008D9223 /* BVSecondaryRatingsDistributionElement.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2E371E5A2808226B008D9223 /* BVSecondaryRatingsDistributionElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E371E582808226B008D9223 /* BVSecondaryRatingsDistributionElement.m */; };
 		2E371E5D280824BE008D9223 /* BVSecondaryRatingsDistributionValue.h in Headers */ = {isa = PBXBuildFile; fileRef = 2E371E5B280824BE008D9223 /* BVSecondaryRatingsDistributionValue.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -693,6 +702,15 @@
 		15D4F83A1DF5D5F800E6B30D /* testNotificationProductConfig.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = testNotificationProductConfig.json; sourceTree = "<group>"; };
 		15D4F83E1DF5EC3C00E6B30D /* ph.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ph.png; sourceTree = "<group>"; };
 		15D4F8451DF5EFFF00E6B30D /* BVSDKTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BVSDKTests-Bridging-Header.h"; sourceTree = "<group>"; };
+		2E0672CD288C1DE2008D2AF7 /* BVReviewsRelevancySortOptionValue.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BVReviewsRelevancySortOptionValue.h; sourceTree = "<group>"; };
+		2E0672D1288C3AD5008D2AF7 /* BVReviewsRelevancySortOption.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BVReviewsRelevancySortOption.h; sourceTree = "<group>"; };
+		2E0672D2288C3AD5008D2AF7 /* BVReviewsRelevancySortOption.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BVReviewsRelevancySortOption.m; sourceTree = "<group>"; };
+		2E0672D5288C3FFA008D2AF7 /* BVSortTypeValues.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BVSortTypeValues.h; sourceTree = "<group>"; };
+		2E0672DB288C5420008D2AF7 /* BVSortType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVSortType.h; sourceTree = "<group>"; };
+		2E0672DD288C542E008D2AF7 /* BVSortType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVSortType.m; sourceTree = "<group>"; };
+		2E0672DF288C54F8008D2AF7 /* BVRelevancySortType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVRelevancySortType.h; sourceTree = "<group>"; };
+		2E0672E1288C550A008D2AF7 /* BVRelevancySortType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVRelevancySortType.m; sourceTree = "<group>"; };
+		2E0672E3288C55C8008D2AF7 /* BVRelevancySortTypeValue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVRelevancySortTypeValue.h; sourceTree = "<group>"; };
 		2E371E572808226B008D9223 /* BVSecondaryRatingsDistributionElement.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BVSecondaryRatingsDistributionElement.h; sourceTree = "<group>"; };
 		2E371E582808226B008D9223 /* BVSecondaryRatingsDistributionElement.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BVSecondaryRatingsDistributionElement.m; sourceTree = "<group>"; };
 		2E371E5B280824BE008D9223 /* BVSecondaryRatingsDistributionValue.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BVSecondaryRatingsDistributionValue.h; sourceTree = "<group>"; };
@@ -1758,6 +1776,7 @@
 				B583B122200E8ABD001E9548 /* BVFilterTypeValues.h */,
 				B583B120200E8ABD001E9548 /* BVIncludeTypeValues.h */,
 				B5BE769D200EA4DD002BA818 /* BVMonotonicSortOrderValue.h */,
+				2E0672E3288C55C8008D2AF7 /* BVRelevancySortTypeValue.h */,
 				B5BE768D200E9FD2002BA818 /* BVProductFilterValue.h */,
 				B5BE769F200EA53A002BA818 /* BVProductIncludeTypeValue.h */,
 				B5BE76A1200EA58A002BA818 /* BVProductsSortOptionValue.h */,
@@ -1769,8 +1788,10 @@
 				B5BE76A5200EA666002BA818 /* BVReviewIncludeTypeValue.h */,
 				B5BE76A7200EA6B4002BA818 /* BVReviewsSortOptionValue.h */,
 				2EA5DD952824FDA4006B0949 /* BVReviewsCustomOrderSortOptionValue.h */,
+				2E0672CD288C1DE2008D2AF7 /* BVReviewsRelevancySortOptionValue.h */,
 				B583B124200E8ABE001E9548 /* BVSortOptionValues.h */,
 				B583B121200E8ABD001E9548 /* BVSortOrderValues.h */,
+				2E0672D5288C3FFA008D2AF7 /* BVSortTypeValues.h */,
 				B583B11E200E888C001E9548 /* Private */,
 			);
 			path = "Sorting & Filtering";
@@ -2315,6 +2336,8 @@
 				B583AEE82009486C001E9548 /* BVIncludeType.m */,
 				B583AEDB2007FB59001E9548 /* BVMonotonicSortOrder.h */,
 				B583AEDC2007FB59001E9548 /* BVMonotonicSortOrder.m */,
+				2E0672DF288C54F8008D2AF7 /* BVRelevancySortType.h */,
+				2E0672E1288C550A008D2AF7 /* BVRelevancySortType.m */,
 				2E88C044282A38C4007B77B0 /* BVCustomSortOrder.h */,
 				2E88C045282A38C4007B77B0 /* BVCustomSortOrder.m */,
 				87F2DB781DAD585E00FB43F3 /* BVProductFilterType.h */,
@@ -2335,12 +2358,16 @@
 				87D424E81E89C32E00147FDB /* BVReviewIncludeType.m */,
 				87F2DB861DAD585E00FB43F3 /* BVReviewsSortOption.h */,
 				87F2DB871DAD585E00FB43F3 /* BVReviewsSortOption.m */,
+				2E0672D1288C3AD5008D2AF7 /* BVReviewsRelevancySortOption.h */,
+				2E0672D2288C3AD5008D2AF7 /* BVReviewsRelevancySortOption.m */,
 				87F2DB7E1DAD585E00FB43F3 /* BVSort.h */,
 				87F2DB7F1DAD585E00FB43F3 /* BVSort.m */,
 				B583AEDF200816A4001E9548 /* BVSortOption.h */,
 				B583AEE0200816A4001E9548 /* BVSortOption.m */,
 				B583AED72007F80A001E9548 /* BVSortOrder.h */,
 				B583AED82007F80A001E9548 /* BVSortOrder.m */,
+				2E0672DB288C5420008D2AF7 /* BVSortType.h */,
+				2E0672DD288C542E008D2AF7 /* BVSortType.m */,
 				2EA5DD972825110E006B0949 /* BVReviewsCustomOrderSortOption.h */,
 				2EA5DD982825110E006B0949 /* BVReviewsCustomOrderSortOption.m */,
 			);
@@ -2729,6 +2756,7 @@
 				87F2DD0F1DAD585E00FB43F3 /* BVReviewsCollectionView.h in Headers */,
 				B583B127200E8ABE001E9548 /* BVSortOrderValues.h in Headers */,
 				87F2DCCB1DAD585E00FB43F3 /* BVAnswerSubmission.h in Headers */,
+				2E0672D3288C3AD5008D2AF7 /* BVReviewsRelevancySortOption.h in Headers */,
 				B588E7002124A23600F76040 /* BVRecommendationsRequestOptions.h in Headers */,
 				87F2DCD91DAD585E00FB43F3 /* BVSubmission.h in Headers */,
 				5FE2C0811F6B05100090DD55 /* BVErrorCode.h in Headers */,
@@ -2740,6 +2768,7 @@
 				87F2DCEB1DAD585E00FB43F3 /* BVSubmittedQuestion.h in Headers */,
 				B586398D214AFBD000EFD763 /* BVModelUtil.h in Headers */,
 				B57B8330215E8A31006B378E /* BVFeedbackSubmissionErrorResponse.h in Headers */,
+				2E0672E0288C54F8008D2AF7 /* BVRelevancySortType.h in Headers */,
 				87F2DC7A1DAD585E00FB43F3 /* BVPhotoSizes.h in Headers */,
 				B583B126200E8ABE001E9548 /* BVIncludeTypeValues.h in Headers */,
 				B586399A214AFD7400EFD763 /* BVBaseReviewsRequest+Private.h in Headers */,
@@ -2855,6 +2884,7 @@
 				8754117D1E1F201E006C5C6E /* BVProductReviewRichNotificationCenter.h in Headers */,
 				875411791E1F201E006C5C6E /* BVProductReviewNotificationCenter.h in Headers */,
 				875410B41E1F10DF006C5C6E /* BVStoreReviewNotificationViewController.h in Headers */,
+				2E0672DC288C5420008D2AF7 /* BVSortType.h in Headers */,
 				B58639B1214AFE0A00EFD763 /* BVMultiPart+NSURLRequest.h in Headers */,
 				B583B128200E8ABE001E9548 /* BVFilterTypeValues.h in Headers */,
 				875410B01E1F10DF006C5C6E /* BVNotificationViewController.h in Headers */,
@@ -2916,8 +2946,11 @@
 				B5BE787720113462002BA818 /* BVBulkRatingIncludeTypeValue.h in Headers */,
 				873DC48F1E7482840080FA03 /* BVAnalyticEventManager.h in Headers */,
 				873DC4A11E7482840080FA03 /* BVTransactionItem.h in Headers */,
+				2E0672CE288C1DE2008D2AF7 /* BVReviewsRelevancySortOptionValue.h in Headers */,
 				873DC4911E7482840080FA03 /* BVConversionEvent.h in Headers */,
 				873DC4971E7482840080FA03 /* BVInViewEvent.h in Headers */,
+				2E0672D6288C3FFA008D2AF7 /* BVSortTypeValues.h in Headers */,
+				2E0672E4288C55C8008D2AF7 /* BVRelevancySortTypeValue.h in Headers */,
 				873DC49B1E7482840080FA03 /* BVPersonalizationEvent.h in Headers */,
 				B5BE76A0200EA53D002BA818 /* BVProductIncludeTypeValue.h in Headers */,
 				B58639B2214AFE0A00EFD763 /* BVSDKManager+Private.h in Headers */,
@@ -3265,6 +3298,7 @@
 				87F2DC831DAD585E00FB43F3 /* BVQuestionsAndAnswersResponse.m in Sources */,
 				87F2DD3E1DAD585E00FB43F3 /* BVRecommendationsLoader.m in Sources */,
 				87F2DCAC1DAD585E00FB43F3 /* BVProductDisplayPageRequest.m in Sources */,
+				2E0672DE288C542E008D2AF7 /* BVSortType.m in Sources */,
 				B5A764DC1FE1917C00B5DC9A /* BVStoreIncludeType.m in Sources */,
 				87F2DC961DAD585E00FB43F3 /* BVProduct.m in Sources */,
 				87EDAFDA1EDDD3E200FA07C0 /* BVCommentSubmissionErrorResponse.m in Sources */,
@@ -3289,6 +3323,7 @@
 				875411801E1F201E006C5C6E /* BVProductReviewSimpleNotificationCenter.m in Sources */,
 				B58639D6214AFEC800EFD763 /* BVRecommendationsRequestOptionsUtil.m in Sources */,
 				B583AEDE2007FB59001E9548 /* BVMonotonicSortOrder.m in Sources */,
+				2E0672E2288C550A008D2AF7 /* BVRelevancySortType.m in Sources */,
 				87F2DD231DAD585E00FB43F3 /* BVCurationsFeedLoader.m in Sources */,
 				B5A764C91FE1912800B5DC9A /* BVStore.m in Sources */,
 				873DC4A21E7482840080FA03 /* BVTransactionItem.m in Sources */,
@@ -3459,6 +3494,7 @@
 				87F2DCA81DAD585E00FB43F3 /* BVBulkRatingsRequest.m in Sources */,
 				873DC49C1E7482840080FA03 /* BVPersonalizationEvent.m in Sources */,
 				2E998AD72789B4C20036DE64 /* BVFeature.m in Sources */,
+				2E0672D4288C3AD5008D2AF7 /* BVReviewsRelevancySortOption.m in Sources */,
 				9FB5C45F243DA6690057BA34 /* BVReviewHighlightsReview.m in Sources */,
 				87C5FE9E1E229168004EE6E8 /* BVProductReviewNotificationConfigurationLoader.m in Sources */,
 				B58639CA214AFE8700EFD763 /* BVLocaleServiceManager.m in Sources */,

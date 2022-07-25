@@ -796,4 +796,32 @@ class ReviewDisplayTests: XCTestCase {
         }
         
     }
+    
+    func testReviewRelevancySort() {
+        
+        let configDict = ["clientId": "mobile_test_customer_stg",
+                          "apiKeyConversations": "KEY_REMOVED"];
+        BVSDKManager.configure(withConfiguration: configDict, configType: .staging)
+        
+        let expectation = self.expectation(description: "testReviewRelevancySort")
+        
+        let request = BVReviewsRequest(productId: "product1", limit: 20, offset: 0)
+            .sort(by: .relevancy, relevancySortTypeValue: .A2)
+        
+        request.load({ (response) in
+        
+           XCTAssertEqual(response.results.first?.identifier ?? "" , "34016202")
+           expectation.fulfill()
+            
+        }) { (error) in
+            
+            XCTFail("review display request error: \(error)")
+            expectation.fulfill()
+        }
+        
+        self.waitForExpectations(timeout: 1000) { (error) in
+            XCTAssertNil(error, "Something went horribly wrong, request took too long.")
+        }
+        
+    }
 }
