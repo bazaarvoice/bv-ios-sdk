@@ -44,6 +44,16 @@
     return self;
 }
 
+- (nonnull id)initWithSortOption:(nonnull id<BVSortOptionProtocol>)sortOption
+                       sortType:(nonnull id<BVSortTypeProtocol>)sortType {
+  if ((self = [super init])) {
+    self.sortOption = [sortOption toSortOptionParameterString];
+    self.sortOrder = [sortType toSortTypeParameterString];
+  }
+  return self;
+}
+
+
 - (nonnull NSString *)toParameterString {
   return [NSString stringWithFormat:@"%@:%@", self.sortOption, self.sortOrder];
 }
