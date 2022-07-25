@@ -25,6 +25,12 @@
 - (nonnull NSString *)toCustomSortOrderParameterString;
 @end
 
+@protocol BVSortTypeProtocol
++ (nonnull NSString *)toSortTypeParameterStringWithRawValue:
+    (NSInteger)rawValue;
+- (nonnull NSString *)toSortTypeParameterString;
+@end
+
 @interface BVSort : NSObject
 
 - (nonnull id)initWithSortOption:(nonnull id<BVSortOptionProtocol>)sortOption
@@ -34,6 +40,8 @@
                                  (nonnull id<BVSortOrderProtocol>)sortOrder;
 - (nonnull id)initWithCustomOrderSortOption:(nonnull id<BVSortOptionProtocol>)customOrderSortOption
                        customSortOrder:(nonnull id<BVCustomSortOrderProtocol>)customSortOrder;
+- (nonnull id)initWithSortOption:(nonnull id<BVSortOptionProtocol>)sortOption
+                       sortType:(nonnull id<BVSortTypeProtocol>)sortType;
 - (nonnull NSString *)toParameterString;
 
 @end
