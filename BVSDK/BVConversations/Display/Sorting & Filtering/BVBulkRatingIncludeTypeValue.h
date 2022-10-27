@@ -13,6 +13,8 @@
 typedef NS_ENUM(NSInteger, BVBulkRatingIncludeTypeValue) {
   BVBulkRatingIncludeTypeValueBulkRatingReviews,
   BVBulkRatingIncludeTypeValueBulkRatingNativeReviews,
+  BVBulkRatingIncludeTypeValueBulkRatingQuestions,
+  BVBulkRatingIncludeTypeValueBulkRatingNativeAnswers,
   BVBulkRatingIncludeTypeValueBulkRatingAll
 };
 
