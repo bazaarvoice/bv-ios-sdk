@@ -31,8 +31,14 @@
     case BVBulkRatingIncludeTypeValueBulkRatingNativeReviews:
       self.value = @"NativeReviews";
       break;
+    case BVBulkRatingIncludeTypeValueBulkRatingNativeAnswers:
+        self.value = @"Answers";
+        break;
+    case BVBulkRatingIncludeTypeValueBulkRatingQuestions:
+        self.value = @"Questions";
+        break;
     case BVBulkRatingIncludeTypeValueBulkRatingAll:
-      self.value = @"Reviews,NativeReviews";
+      self.value = @"Reviews,NativeReviews,Answers,Questions";
       break;
     }
   }
