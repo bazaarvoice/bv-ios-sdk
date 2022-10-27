@@ -21,6 +21,8 @@
         initWithApiResponse:productStatistics[@"ReviewStatistics"]];
     self.nativeReviewStatistics = [[BVReviewStatistic alloc]
         initWithApiResponse:productStatistics[@"NativeReviewStatistics"]];
+    self.qaStatisctics = [[BVQAStatistics alloc]
+        initWithApiResponse:productStatistics[@"QAStatistics"]];
   }
   return self;
 }

@@ -130,4 +130,30 @@ class InlineRatingsDisplayTests: XCTestCase {
       
     }
   
+  func testInlineRatingsQAstatistics() {
+    
+    let configDict = ["clientId": "apitestcustomer",
+                        "apiKeyConversations": "KEY_REMOVED"];
+      BVSDKManager.configure(withConfiguration: configDict, configType: .staging)
+
+    
+    let expectation = self.expectation(description: "testInlineRatingsQAstatistics")
+    
+    let request =
+    BVBulkRatingsRequest(productIds: ["data-gen-moppq9ekthfzbc6qff3bqokie"], statistics: .bulkRatingAll)
+        .filter(on: .bulkRatingContentLocale, relationalFilterOperatorValue: .equalTo, values: ["en_US"])
+    
+    request.load({ (response) in
+      XCTAssertEqual(response.results.count, 1)
+      XCTAssertNotNil(response.results[0].qaStatisctics?.totalQuestionCount)
+      XCTAssertNotNil(response.results[0].qaStatisctics?.totalAnswerCount)
+      expectation.fulfill()
+    }) { (error) in
+      XCTFail("inline ratings request error: \(error)")
+    }
+    
+    self.waitForExpectations(timeout: 10) { (error) in
+      XCTAssertNil(error, "Something went horribly wrong, request took too long.")
+    }
+  }
 }
