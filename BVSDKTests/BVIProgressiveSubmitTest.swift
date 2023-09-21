@@ -88,7 +88,7 @@ class BVProgressiveSubmitTest: XCTestCase {
     func testHostedAuthProgressiveSubmitRequestIncorrectUserId() {
         let expectation = self.expectation(description: "testHostedAuthProgressiveSubmitRequestIncorrectUserId")
         let submission = self.buildHostedAuthRequest()
-        submission.userId = "IncorrectUserId"
+        submission.userId = loadKeyForUserId(userId: .incorrectUserId)
         
         submission.submit({ (submittedReview) in
             expectation.fulfill()
@@ -160,7 +160,7 @@ class BVProgressiveSubmitTest: XCTestCase {
         let expectation = self.expectation(description: "testProgressiveSubmitMissingUserEmailError")
         let submission = self.buildRequest()
         submission.userToken = nil
-        submission.userId = "tets109"
+        submission.userId = loadKeyForUserId(userId: .submitUserId)
         
         submission.submit({ (submittedReview) in
             expectation.fulfill()
@@ -275,7 +275,7 @@ class BVProgressiveSubmitTest: XCTestCase {
             "additionalfield_DateOfUserExperience": "2021-05-05"
         ]
         let submission = BVProgressiveSubmitRequest(productId:"product1")
-        submission.userId = "zeygrozkxbvg01ulz5yuxzk2y3"
+        submission.userId = loadKeyForUserId(userId: .hostedAuthUserId)
         submission.locale = "en_US"
         submission.submissionSessionToken = "9y8kITDlqeFpCLH634OJJvRnOcHwAsELZjOO4UT488WRz+qyogOam0P+YyZna5/CpyFK6I4XwPNAuKP7hDRBtXfkXAUp2qtGgI/GqbhcEIydQPMh9TGx8kc/8Dgn6Ik1"
         submission.submissionFields = fields as! [AnyHashable : Any]

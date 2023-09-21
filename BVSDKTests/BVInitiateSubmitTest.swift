@@ -21,7 +21,7 @@ class BVInitiateSubmitTest: XCTestCase {
     func testInitiateSubmitWithUserID() {
         let expectation = self.expectation(description: "testInitiateSubmitWithUserID")
         let initiateSubmitRequest = BVInitiateSubmitRequest(productIds: ["product1", "product2", "product3"])
-        initiateSubmitRequest.userId = "test109"
+        initiateSubmitRequest.userId = loadKeyForUserId(userId: .submitUserId)
         initiateSubmitRequest.locale = "en_US"
         initiateSubmitRequest.submit({ (initiateSubmitResponseData) in
             let products = initiateSubmitResponseData.result?.products
@@ -47,7 +47,7 @@ class BVInitiateSubmitTest: XCTestCase {
     func testInitiateSubmitWithExtendedResponse() {
         let expectation = self.expectation(description: "testInitiateSubmitWithUserID")
         let initiateSubmitRequest = BVInitiateSubmitRequest(productIds: ["product1", "product2", "product3"])
-        initiateSubmitRequest.userId = "test109"
+        initiateSubmitRequest.userId = loadKeyForUserId(userId: .submitUserId)
         initiateSubmitRequest.locale = "en_US"
         
         initiateSubmitRequest.submit({ (initiateSubmitResponseData) in
@@ -114,7 +114,7 @@ class BVInitiateSubmitTest: XCTestCase {
         let initiateSubmitRequest = BVInitiateSubmitRequest(productIds: ["product1", "product2"])
         initiateSubmitRequest.locale = "en_US"
         initiateSubmitRequest.hostedauth = true;
-        initiateSubmitRequest.userId = "Nickname"
+        initiateSubmitRequest.userId = loadKeyForUserId(userId: .incorrectUserId)
         
         initiateSubmitRequest.submit({ (initiateSubmitResponseData) in
             expectation.fulfill()
@@ -161,7 +161,7 @@ class BVInitiateSubmitTest: XCTestCase {
         
         let expectation = self.expectation(description: "testInitiateSubmitInvalidApiKeyError")
         let initiateSubmitRequest = BVInitiateSubmitRequest(productIds: ["product1", "product2", "product3"])
-        initiateSubmitRequest.userId = "test109"
+        initiateSubmitRequest.userId = loadKeyForUserId(userId: .submitUserId)
         initiateSubmitRequest.locale = "en_US"
 
         initiateSubmitRequest.submit({ (initiateSubmitResponseData) in
@@ -180,7 +180,7 @@ class BVInitiateSubmitTest: XCTestCase {
         let expectation = self.expectation(description: "testInitiateSubmitMissingProductsError")
         
         let initiateSubmitRequest = BVInitiateSubmitRequest(productIds: [])
-        initiateSubmitRequest.userId = "test109"
+        initiateSubmitRequest.userId = loadKeyForUserId(userId: .submitUserId)
         initiateSubmitRequest.locale = "en_US"
 
         initiateSubmitRequest.submit({ (initiateSubmitResponseData) in
@@ -199,7 +199,7 @@ class BVInitiateSubmitTest: XCTestCase {
         let expectation = self.expectation(description: "testInitiateSubmitMissingLocaleError")
         
         let initiateSubmitRequest = BVInitiateSubmitRequest(productIds: ["product1", "product2", "product3"])
-        initiateSubmitRequest.userId = "test109"
+        initiateSubmitRequest.userId = loadKeyForUserId(userId: .submitUserId)
         
         initiateSubmitRequest.submit({ (initiateSubmitResponseData) in
             expectation.fulfill()

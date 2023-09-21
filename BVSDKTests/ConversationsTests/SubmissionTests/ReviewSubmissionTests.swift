@@ -187,7 +187,7 @@ class ReviewSubmissionTests: BVBaseStubTestCase {
     let review = BVReviewSubmission(
       reviewTitle: "", reviewText: "", rating: 123, productId: "1000001")
     review.userNickname = "cgil"
-    review.userId = "craiggiddlll"
+    review.userId = loadKeyForUserId(userId: .reviewUserId)
     review.action = .submit
     
     review.submit({ (reviewSubmission) in
@@ -215,7 +215,7 @@ class ReviewSubmissionTests: BVBaseStubTestCase {
     let review = BVReviewSubmission(
       reviewTitle: "", reviewText: "", rating: 123, productId: "1000001")
     review.userNickname = "cgil"
-    review.userId = "craiggiddll"
+    review.userId = loadKeyForUserId(userId: .reviewUserId)
     review.action = .submit
     
     review.submit({ (reviewSubmission) in
@@ -267,7 +267,7 @@ class ReviewSubmissionTests: BVBaseStubTestCase {
     let review = BVReviewSubmission(
       reviewTitle: "", reviewText: "", rating: 123, productId: "")
     review.userNickname = "cgil"
-    review.userId = "craiggiddl"
+    review.userId = loadKeyForUserId(userId: .reviewUserId)
     review.action = .submit
     
     review.submit({ (reviewSubmission) in
@@ -341,7 +341,7 @@ class ReviewSubmissionTests: BVBaseStubTestCase {
       rating: 4,
       productId: "test1")
     review.action = .submit
-    review.user = "Tesst564jh"
+    review.user = loadKeyForUserId(userId: .reviewUser)
     review.addAdditionalField("DateOfUserExperience", value: "2021-04-03") // Date of consumer experience param
     
     review.submit({ (reviewSubmission) in
@@ -376,7 +376,7 @@ class ReviewSubmissionTests: BVBaseStubTestCase {
       rating: 4,
       productId: "test1")
     review.action = .submit
-    review.user = "Tesst564jh"
+    review.user = loadKeyForUserId(userId: .reviewUserId)
     review.addAdditionalField("DateOfUserExperience", value: "03-04-2021") // Invalid Date of consumer experience
     
     review.submit({ (reviewSubmission) in
@@ -411,7 +411,7 @@ class ReviewSubmissionTests: BVBaseStubTestCase {
       rating: 4,
       productId: "test1")
     review.action = .submit
-    review.user = "Tesst564jh"
+    review.user = loadKeyForUserId(userId: .reviewUserId)
     review.userNickname = "Test09675"
     review.addAdditionalField("DateOfUserExperience", value: "2022-04-03") // Invalid Date of consumer experience
     review.agreedToTermsAndConditions = true
