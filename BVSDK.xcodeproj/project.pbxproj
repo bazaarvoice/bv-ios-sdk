@@ -672,6 +672,8 @@
 		B5D7E840205083EC00DEB434 /* testSubmitStoreReviewWithPhoto.json in Resources */ = {isa = PBXBuildFile; fileRef = B5D7E83F205083EC00DEB434 /* testSubmitStoreReviewWithPhoto.json */; };
 		B5D7E8422050840E00DEB434 /* testSubmitReviewFailureStore.json in Resources */ = {isa = PBXBuildFile; fileRef = B5D7E8412050840E00DEB434 /* testSubmitReviewFailureStore.json */; };
 		B5DDA04E1FE8633800C47C01 /* BVCurationsAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B5DDA04D1FE8633800C47C01 /* BVCurationsAssets.xcassets */; };
+		B7856D222ABC18EF0031D22A /* userIdJSON.json in Resources */ = {isa = PBXBuildFile; fileRef = B7856D212ABC18EF0031D22A /* userIdJSON.json */; };
+		B7856D242ABC1F770031D22A /* BVTestUsers.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7856D232ABC1F770031D22A /* BVTestUsers.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1349,6 +1351,8 @@
 		B5D7E83F205083EC00DEB434 /* testSubmitStoreReviewWithPhoto.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = testSubmitStoreReviewWithPhoto.json; sourceTree = "<group>"; };
 		B5D7E8412050840E00DEB434 /* testSubmitReviewFailureStore.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = testSubmitReviewFailureStore.json; sourceTree = "<group>"; };
 		B5DDA04D1FE8633800C47C01 /* BVCurationsAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = BVCurationsAssets.xcassets; sourceTree = "<group>"; };
+		B7856D212ABC18EF0031D22A /* userIdJSON.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = userIdJSON.json; sourceTree = "<group>"; };
+		B7856D232ABC1F770031D22A /* BVTestUsers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BVTestUsers.swift; sourceTree = "<group>"; };
 		EC098EFAFB725736F0751BA0 /* libPods-BVSDK.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BVSDK.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -2104,6 +2108,7 @@
 				87A9ECB71E1DA87E00666636 /* malformedJSON.json */,
 				87F2DD911DAD698500FB43F3 /* productsToReviewResult.json */,
 				87F2DD921DAD698500FB43F3 /* recommendations */,
+				B7856D212ABC18EF0031D22A /* userIdJSON.json */,
 			);
 			path = MockData;
 			sourceTree = "<group>";
@@ -2466,6 +2471,7 @@
 			children = (
 				15D4F8451DF5EFFF00E6B30D /* BVSDKTests-Bridging-Header.h */,
 				87F2DAB71DAD579D00FB43F3 /* Info.plist */,
+				B7856D232ABC1F770031D22A /* BVTestUsers.swift */,
 			);
 			path = Support;
 			sourceTree = "<group>";
@@ -3191,6 +3197,7 @@
 				B5A7B5342050758300494F83 /* testSubmitQuestionWithPhotoPreview.json in Resources */,
 				B5D7E83A20507E5300DEB434 /* testSubmitReviewFailure.json in Resources */,
 				B5D7E83E20507E8400DEB434 /* testSubmitReviewFailureCodeParsing.json in Resources */,
+				B7856D222ABC18EF0031D22A /* userIdJSON.json in Resources */,
 				B5D7E83C20507E6D00DEB434 /* testSubmitReviewFailureFormCodeParsing.json in Resources */,
 				B5A7B52620505BCC00494F83 /* testSumbitReviewCommentWithError.json in Resources */,
 				B5A7B524205059FA00494F83 /* testSubmitReviewComment.json in Resources */,
@@ -3540,6 +3547,7 @@
 				87EDAFC91EDDC6A900FA07C0 /* CommentSubmissionTests.swift in Sources */,
 				87F2DE0B1DAD945D00FB43F3 /* QuestionDisplayTests.swift in Sources */,
 				B56D71822032476A002EC872 /* BVLocaleManagerTests.m in Sources */,
+				B7856D242ABC1F770031D22A /* BVTestUsers.swift in Sources */,
 				987C07612252933E00227934 /* BVInitiateSubmitTest.swift in Sources */,
 				87F2DE101DAD945D00FB43F3 /* FilterTests.swift in Sources */,
 				B59185962040DADC006BE717 /* BVInternalAnalyticsTest.m in Sources */,
@@ -3710,7 +3718,7 @@
 				);
 				INFOPLIST_FILE = BVSDK/Support/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.bazaarvoice.bvsdk;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -3739,7 +3747,7 @@
 				GCC_PREFIX_HEADER = "";
 				INFOPLIST_FILE = BVSDK/Support/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.bazaarvoice.bvsdk;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -3760,6 +3768,7 @@
 					"COCOAPODS=1",
 				);
 				INFOPLIST_FILE = BVSDKTests/Support/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks ${BUILT_PRODUCTS_DIR}/CommonCryptoModuleMap";
 				PRODUCT_BUNDLE_IDENTIFIER = com.bazaarvoice.bvsdk.BVSDKTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -3781,6 +3790,7 @@
 					"COCOAPODS=1",
 				);
 				INFOPLIST_FILE = BVSDKTests/Support/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks ${BUILT_PRODUCTS_DIR}/CommonCryptoModuleMap";
 				PRODUCT_BUNDLE_IDENTIFIER = com.bazaarvoice.bvsdk.BVSDKTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
