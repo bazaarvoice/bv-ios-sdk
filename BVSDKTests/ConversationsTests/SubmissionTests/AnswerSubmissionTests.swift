@@ -92,7 +92,7 @@ class AnswerSubmissionTests: BVBaseStubTestCase {
     let expectation = self.expectation(description: "")
     
     let answer = BVAnswerSubmission(questionId: "6104", answerText: "")
-    answer.userId = loadKeyForUserId(userId: .answerUserId)
+    answer.userId = BVTestUsers().loadKeyForUserId(userId: .answerUserId)
     answer.action = .preview
     
     let sequenceFiles:[String] =

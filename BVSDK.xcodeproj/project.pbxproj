@@ -2107,8 +2107,8 @@
 				87F2DD901DAD698500FB43F3 /* emptyJSON.json */,
 				87A9ECB71E1DA87E00666636 /* malformedJSON.json */,
 				87F2DD911DAD698500FB43F3 /* productsToReviewResult.json */,
-				87F2DD921DAD698500FB43F3 /* recommendations */,
 				B7856D212ABC18EF0031D22A /* userIdJSON.json */,
+				87F2DD921DAD698500FB43F3 /* recommendations */,
 			);
 			path = MockData;
 			sourceTree = "<group>";
