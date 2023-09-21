@@ -73,7 +73,7 @@ class QuestionSubmissionTests: BVBaseStubTestCase {
     
     let question = BVQuestionSubmission(productId: "1000001")
     question.userNickname = "cgil"
-    question.userId = loadKeyForUserId(userId: .questionsUserId)
+    question.userId = BVTestUsers().loadKeyForUserId(userId: .questionsUserId)
     question.action = .preview
     
     question.submit({ (questionSubmission) in
