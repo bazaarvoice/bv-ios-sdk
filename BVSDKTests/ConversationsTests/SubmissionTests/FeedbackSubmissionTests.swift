@@ -47,8 +47,7 @@ class FeedbackSubmissionTests: BVBaseStubTestCase {
     stub(withJSONSequence: sequenceFiles)
     
     let feedback = BVFeedbackSubmission(contentId: "83725", with: .review, with: .helpfulness)
-    
-    feedback.userId = loadKeyForUserId(userId: .feedbackUserId)
+    feedback.userId = BVTestUsers().loadKeyForUserId(userId: .feedbackUserId)
     feedback.vote = .positive
     
     feedback.submit({ (response) in
@@ -82,8 +81,7 @@ class FeedbackSubmissionTests: BVBaseStubTestCase {
     stub(withJSONSequence: sequenceFiles)
     
     let feedback = BVFeedbackSubmission(contentId: "83725", with: .review, with: .inappropriate)
-    
-    feedback.userId = loadKeyForUserId(userId: .feedbackUserId)
+    feedback.userId = BVTestUsers().loadKeyForUserId(userId: .feedbackUserId)
     feedback.reasonText = "Optional reason text in this field."
     
     feedback.submit({ (response) in
@@ -141,7 +139,7 @@ class FeedbackSubmissionTests: BVBaseStubTestCase {
         let expectation = self.expectation(description: "testSubmitFeedbackWithUserId")
         
         let feedback = BVFeedbackSubmission(contentId: "83725", with: .review, with: .helpfulness)
-        feedback.userId = loadKeyForUserId(userId: .feedbackUserId)
+        feedback.userId = BVTestUsers().loadKeyForUserId(userId: .feedbackUserId)
         feedback.vote = .positive
         
         feedback.submit({ (response) in
@@ -171,7 +169,7 @@ class FeedbackSubmissionTests: BVBaseStubTestCase {
         
         let feedback = BVFeedbackSubmission(contentId: "83725", with: .review, with: .helpfulness)
         feedback.vote = .positive
-        feedback.user = loadKeyForUserId(userId: .feedbackUser)
+        feedback.user = BVTestUsers().loadKeyForUserId(userId: .feedbackUser)
         
         feedback.submit({ (response) in
           // success
@@ -199,7 +197,7 @@ class FeedbackSubmissionTests: BVBaseStubTestCase {
         let expectation = self.expectation(description: "testSubmitFeedbackWithUASForRequireEncryptedUserIds")
         
         let feedback = BVFeedbackSubmission(contentId: "83725", with: .review, with: .helpfulness)
-        feedback.userId = loadKeyForUserId(userId: .feedbackUserId)
+        feedback.userId = BVTestUsers().loadKeyForUserId(userId: .feedbackUserId)
         feedback.vote = .positive
         
         feedback.submit({ (response) in
@@ -224,7 +222,7 @@ class FeedbackSubmissionTests: BVBaseStubTestCase {
         
         let feedback = BVFeedbackSubmission(contentId: "83725", with: .review, with: .helpfulness)
         feedback.vote = .positive
-        feedback.user = loadKeyForUserId(userId: .feedbackUser)
+        feedback.user = BVTestUsers().loadKeyForUserId(userId: .feedbackUser)
         
         feedback.submit({ (response) in
           // success
