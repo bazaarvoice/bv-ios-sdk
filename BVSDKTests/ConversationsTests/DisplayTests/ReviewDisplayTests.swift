@@ -62,6 +62,7 @@ class ReviewDisplayTests: XCTestCase {
             XCTAssertNil(review.photos.first?.caption, "Etiam malesuada ultricies urna in scelerisque. Sed viverra blandit nibh non egestas. Sed rhoncus, ipsum in vehicula imperdiet, purus lectus sodales erat, eget ornare lacus lectus ac leo. Suspendisse tristique sollicitudin ultricies. Aliquam erat volutpat.")
             XCTAssertEqual(review.photos.first?.identifier, "79880")
             XCTAssertNotNil(review.photos.first?.sizes?.thumbnailUrl)
+            XCTAssertEqual(review.originalProductName, nil)
             
             // Not getting this Object
             /*
@@ -817,6 +818,53 @@ class ReviewDisplayTests: XCTestCase {
             
             XCTFail("review display request error: \(error)")
             expectation.fulfill()
+        }
+        
+        self.waitForExpectations(timeout: 1000) { (error) in
+            XCTAssertNil(error, "Something went horribly wrong, request took too long.")
+        }
+        
+    }
+    
+    func testReviewQueryDisplayOriginalProductName() {
+        let configDict = ["clientId": "apitestcustomer",
+                          "apiKeyConversations": "KEY_REMOVED"];
+
+        BVSDKManager.configure(withConfiguration: configDict, configType: .staging)
+
+        let expectation = self.expectation(description: "testReviewQueryDisplayOriginalProductName")
+        
+        let request = BVReviewsRequest(productId: "data-gen-moppq9ekthfzbc6qff3bqokie", limit: 10, offset: 4)
+            .sort(by: .reviewRating, monotonicSortOrderValue: .descending)
+        
+        request.load({ (response) in
+            
+            XCTAssertEqual(response.results.count, 10)
+            let review = response.results.first!
+            XCTAssertEqual(review.rating, 5)
+            XCTAssertEqual(review.title, "Test")
+            XCTAssertEqual(review.reviewText, "test test test test test test test usernickname can be used on 2 different products or not testreviewtest jhcontest")
+            XCTAssertEqual(review.moderationStatus, "APPROVED")
+            XCTAssertEqual(review.identifier, "41173932")
+            XCTAssertNotNil(review.productId)
+            XCTAssertEqual(review.isRatingsOnly, false)
+            XCTAssertEqual(review.isFeatured, false)
+            XCTAssertEqual(review.productId, "data-gen-moppq9ekthfzbc6qff3bqokie")
+            XCTAssertEqual(review.authorId, "jh12345")
+            XCTAssertEqual(review.userNickname, "jhcontest")
+            XCTAssertEqual(review.userLocation, nil)
+            XCTAssertEqual(review.originalProductName, "14K White Gold Diamond Teardrop Necklace")
+                        
+            response.results.forEach { (review) in
+                XCTAssertEqual(review.productId, "data-gen-moppq9ekthfzbc6qff3bqokie")
+            }
+            
+            expectation.fulfill()
+            
+        }) { (error) in
+            
+            XCTFail("review display request error: \(error)")
+            
         }
         
         self.waitForExpectations(timeout: 1000) { (error) in
