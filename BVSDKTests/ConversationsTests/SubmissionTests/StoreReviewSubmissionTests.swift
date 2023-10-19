@@ -51,7 +51,7 @@ class StoreReviewSubmissionTests: BVBaseStubTestCase {
     
     let review = BVStoreReviewSubmission(reviewTitle: "", reviewText: "", rating: 123, storeId: "1000001")
     review.userNickname = "cgil"
-    review.userId = "craiggiddll"
+    review.userId = BVTestUsers().loadKeyForUserId(userId: .storeReviewUserId)
     review.action = .submit
     
     review.submit({ (reviewSubmission) in
