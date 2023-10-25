@@ -102,6 +102,7 @@
     SET_IF_NOT_NULL(self.moderationStatus, apiResponse[@"ModerationStatus"])
     SET_IF_NOT_NULL(self.clientResponses, apiResponse[@"ClientResponses"])
     SET_IF_NOT_NULL(self.identifier, apiResponse[@"Id"])
+    SET_IF_NOT_NULL(self.originalProductName, apiResponse[@"OriginalProductName"])
 
     self.lastModificationTime = [BVModelUtil
         convertTimestampToDatetime:apiResponse[@"LastModificationTime"]];
