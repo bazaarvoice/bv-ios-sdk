@@ -275,7 +275,7 @@ class BVProgressiveSubmitTest: XCTestCase {
             "additionalfield_DateOfUserExperience": "2021-05-05"
         ]
         let submission = BVProgressiveSubmitRequest(productId:"product1")
-        submission.userId = BVTestUsers().loadKeyForUserId(userId: .hostedAuthUserId)
+        submission.userId = BVTestUsers().loadKeyForUserId(userId: .hostedUserId)
         submission.locale = "en_US"
         submission.submissionSessionToken = "TOKEN_REMOVED"
         submission.submissionFields = fields as! [AnyHashable : Any]

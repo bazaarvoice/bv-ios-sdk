@@ -18,7 +18,7 @@ class BVTestUsers {
         case storeReviewUserId = "storeReviewUserId"
         case submitUserId = "submitUserId"
         case incorrectUserId = "incorrectUserId"
-        case hostedAuthUserId = "hostedAuthUserId"
+        case hostedUserId = "hostedUserId"
     }
     
     func loadKeyForUserId(userId: userIdKeys) -> String {
