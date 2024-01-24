@@ -15,7 +15,7 @@ class QuestionDisplayTests: XCTestCase {
     super.setUp()
     
     let configDict = ["clientId": "apitestcustomer",
-                      "apiKeyConversations": "KEY_REMOVED"];
+                      "apiKeyConversations": BVTestUsers().loadValueForKey(key: .conversationsKey1)];
     BVSDKManager.configure(withConfiguration: configDict, configType: .staging)
   }
   
@@ -99,7 +99,7 @@ class QuestionDisplayTests: XCTestCase {
   func testQuestionDisplayCOR() {
     
     let configDict = ["clientId": "testcust-contentoriginsynd",
-                      "apiKeyConversations": "KEY_REMOVED"];
+                      "apiKeyConversations": BVTestUsers().loadValueForKey(key: .conversationsKey2)];
     BVSDKManager.configure(withConfiguration: configDict, configType: .staging)
     
     let expectation = self.expectation(description: "testQuestionDisplayCOR")

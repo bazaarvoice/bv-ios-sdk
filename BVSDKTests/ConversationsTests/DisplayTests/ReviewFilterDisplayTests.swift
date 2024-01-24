@@ -14,7 +14,7 @@ class ReviewFilterDisplayTest: XCTestCase {
         super.setUp()
         
         let configDict = ["clientId": "conciergeapidocumentation",
-                          "apiKeyConversations": "KEY_REMOVED"];
+                          "apiKeyConversations": BVTestUsers().loadValueForKey(key: .conversationsKey3)];
         BVSDKManager.configure(withConfiguration: configDict, configType: .staging)
     }
     

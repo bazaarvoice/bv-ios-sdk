@@ -13,7 +13,7 @@ class BVInitiateSubmitTest: XCTestCase {
     override func setUp() {
         super.setUp()
         let configDict = ["clientId": "testcustomermobilesdk",
-                          "apiKeyConversations": "KEY_REMOVED"];
+                          "apiKeyConversations": BVTestUsers().loadValueForKey(key: .conversationsKey12)];
         BVSDKManager.configure(withConfiguration: configDict, configType: .staging)
         BVSDKManager.shared().setLogLevel(.verbose)
     }
@@ -21,7 +21,7 @@ class BVInitiateSubmitTest: XCTestCase {
     func testInitiateSubmitWithUserID() {
         let expectation = self.expectation(description: "testInitiateSubmitWithUserID")
         let initiateSubmitRequest = BVInitiateSubmitRequest(productIds: ["product1", "product2", "product3"])
-        initiateSubmitRequest.userId = BVTestUsers().loadKeyForUserId(userId: .submitUserId)
+        initiateSubmitRequest.userId = BVTestUsers().loadValueForKey(key: .submitUserId)
         initiateSubmitRequest.locale = "en_US"
         initiateSubmitRequest.submit({ (initiateSubmitResponseData) in
             let products = initiateSubmitResponseData.result?.products
@@ -47,7 +47,7 @@ class BVInitiateSubmitTest: XCTestCase {
     func testInitiateSubmitWithExtendedResponse() {
         let expectation = self.expectation(description: "testInitiateSubmitWithUserID")
         let initiateSubmitRequest = BVInitiateSubmitRequest(productIds: ["product1", "product2", "product3"])
-        initiateSubmitRequest.userId = BVTestUsers().loadKeyForUserId(userId: .submitUserId)
+        initiateSubmitRequest.userId = BVTestUsers().loadValueForKey(key: .submitUserId)
         initiateSubmitRequest.locale = "en_US"
         
         initiateSubmitRequest.submit({ (initiateSubmitResponseData) in
@@ -114,7 +114,7 @@ class BVInitiateSubmitTest: XCTestCase {
         let initiateSubmitRequest = BVInitiateSubmitRequest(productIds: ["product1", "product2"])
         initiateSubmitRequest.locale = "en_US"
         initiateSubmitRequest.hostedauth = true;
-        initiateSubmitRequest.userId = BVTestUsers().loadKeyForUserId(userId: .incorrectUserId)
+        initiateSubmitRequest.userId = BVTestUsers().loadValueForKey(key: .incorrectUserId)
         
         initiateSubmitRequest.submit({ (initiateSubmitResponseData) in
             expectation.fulfill()
@@ -161,7 +161,7 @@ class BVInitiateSubmitTest: XCTestCase {
         
         let expectation = self.expectation(description: "testInitiateSubmitInvalidApiKeyError")
         let initiateSubmitRequest = BVInitiateSubmitRequest(productIds: ["product1", "product2", "product3"])
-        initiateSubmitRequest.userId = BVTestUsers().loadKeyForUserId(userId: .submitUserId)
+        initiateSubmitRequest.userId = BVTestUsers().loadValueForKey(key: .submitUserId)
         initiateSubmitRequest.locale = "en_US"
 
         initiateSubmitRequest.submit({ (initiateSubmitResponseData) in
@@ -180,7 +180,7 @@ class BVInitiateSubmitTest: XCTestCase {
         let expectation = self.expectation(description: "testInitiateSubmitMissingProductsError")
         
         let initiateSubmitRequest = BVInitiateSubmitRequest(productIds: [])
-        initiateSubmitRequest.userId = BVTestUsers().loadKeyForUserId(userId: .submitUserId)
+        initiateSubmitRequest.userId = BVTestUsers().loadValueForKey(key: .submitUserId)
         initiateSubmitRequest.locale = "en_US"
 
         initiateSubmitRequest.submit({ (initiateSubmitResponseData) in
@@ -199,7 +199,7 @@ class BVInitiateSubmitTest: XCTestCase {
         let expectation = self.expectation(description: "testInitiateSubmitMissingLocaleError")
         
         let initiateSubmitRequest = BVInitiateSubmitRequest(productIds: ["product1", "product2", "product3"])
-        initiateSubmitRequest.userId = BVTestUsers().loadKeyForUserId(userId: .submitUserId)
+        initiateSubmitRequest.userId = BVTestUsers().loadValueForKey(key: .submitUserId)
         
         initiateSubmitRequest.submit({ (initiateSubmitResponseData) in
             expectation.fulfill()

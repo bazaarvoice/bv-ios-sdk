@@ -15,7 +15,7 @@ class QuestionSubmissionTests: BVBaseStubTestCase {
     super.setUp()
     
     let configDict = ["clientId": "apitestcustomer",
-                      "apiKeyConversations": "KEY_REMOVED"];
+                      "apiKeyConversations": BVTestUsers().loadValueForKey(key: .conversationsKey11)];
     BVSDKManager.configure(withConfiguration: configDict, configType: .staging)
   }
   
@@ -73,7 +73,7 @@ class QuestionSubmissionTests: BVBaseStubTestCase {
     
     let question = BVQuestionSubmission(productId: "1000001")
     question.userNickname = "cgil"
-    question.userId = BVTestUsers().loadKeyForUserId(userId: .questionsUserId)
+      question.userId = BVTestUsers().loadValueForKey(key: .questionsUserId)
     question.action = .preview
     
     question.submit({ (questionSubmission) in
