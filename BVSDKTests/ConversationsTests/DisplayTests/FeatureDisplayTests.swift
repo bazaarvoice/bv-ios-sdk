@@ -15,7 +15,7 @@ class FeatureDisplayTests: XCTestCase {
   override func setUp() {
     super.setUp()
     let configDict = ["clientId": "testcustomer-concierge-regression",
-                      "apiKeyConversations": "KEY_REMOVED"];
+                      "apiKeyConversations": BVTestUsers().loadValueForKey(key: .conversationsKey9)];
     BVSDKManager.configure(withConfiguration: configDict, configType: .staging)
     BVSDKManager.shared().setLogLevel(.verbose)
   }

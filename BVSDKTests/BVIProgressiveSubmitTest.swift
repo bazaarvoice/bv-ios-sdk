@@ -13,7 +13,7 @@ class BVProgressiveSubmitTest: XCTestCase {
     override func setUp() {
         super.setUp()
         let configDict = ["clientId": "testcustomermobilesdk",
-                          "apiKeyConversations": "KEY_REMOVED"];
+                          "apiKeyConversations": BVTestUsers().loadValueForKey(key: .conversationsKey1)];
         BVSDKManager.configure(withConfiguration: configDict, configType: .staging)
         BVSDKManager.shared().setLogLevel(.verbose)
     }
@@ -88,7 +88,7 @@ class BVProgressiveSubmitTest: XCTestCase {
     func testHostedAuthProgressiveSubmitRequestIncorrectUserId() {
         let expectation = self.expectation(description: "testHostedAuthProgressiveSubmitRequestIncorrectUserId")
         let submission = self.buildHostedAuthRequest()
-        submission.userId = BVTestUsers().loadKeyForUserId(userId: .incorrectUserId)
+        submission.userId = BVTestUsers().loadValueForKey(key: .incorrectUserId)
         
         submission.submit({ (submittedReview) in
             expectation.fulfill()
@@ -160,7 +160,7 @@ class BVProgressiveSubmitTest: XCTestCase {
         let expectation = self.expectation(description: "testProgressiveSubmitMissingUserEmailError")
         let submission = self.buildRequest()
         submission.userToken = nil
-        submission.userId = BVTestUsers().loadKeyForUserId(userId: .submitUserId)
+        submission.userId = BVTestUsers().loadValueForKey(key: .submitUserId)
         
         submission.submit({ (submittedReview) in
             expectation.fulfill()
@@ -275,7 +275,7 @@ class BVProgressiveSubmitTest: XCTestCase {
             "additionalfield_DateOfUserExperience": "2021-05-05"
         ]
         let submission = BVProgressiveSubmitRequest(productId:"product1")
-        submission.userId = BVTestUsers().loadKeyForUserId(userId: .hostedUserId)
+        submission.userId = BVTestUsers().loadValueForKey(key: .hostedUserId)
         submission.locale = "en_US"
         submission.submissionSessionToken = "TOKEN_REMOVED"
         submission.submissionFields = fields as! [AnyHashable : Any]

@@ -15,7 +15,7 @@ class ReviewDisplayTests: XCTestCase {
     super.setUp()
     
     let configDict = ["clientId": "apitestcustomer",
-                      "apiKeyConversations": "KEY_REMOVED"];
+                      "apiKeyConversations": BVTestUsers().loadValueForKey(key: .conversationsKey1)];
     BVSDKManager.configure(withConfiguration: configDict, configType: .staging)
     BVSDKManager.shared().setLogLevel(BVLogLevel.verbose)
   }
@@ -352,7 +352,7 @@ class ReviewDisplayTests: XCTestCase {
   func testReviewDisplayIncentivizedStats() {
     
     let configDict = ["clientId": "apitestcustomer",
-                      "apiKeyConversations": "KEY_REMOVED"];
+                      "apiKeyConversations": BVTestUsers().loadValueForKey(key: .conversationsKey3)];
     BVSDKManager.configure(withConfiguration: configDict, configType: .staging)
     
     let expectation = self.expectation(description: "testReviewDisplayIncentivizedStats")
@@ -422,7 +422,7 @@ class ReviewDisplayTests: XCTestCase {
   
   func testReviewDisplayCOR(){
     let configDict = ["clientId": "testcust-contentoriginsynd",
-                      "apiKeyConversations": "KEY_REMOVED"];
+                      "apiKeyConversations": BVTestUsers().loadValueForKey(key: .conversationsKey5)];
     BVSDKManager.configure(withConfiguration: configDict, configType: .staging)
     
     let expectation = self.expectation(description: "testReviewDisplayCOR")
@@ -465,7 +465,7 @@ class ReviewDisplayTests: XCTestCase {
   func testReviewDisplayDateOfConsumerExperience() {
     
     let configDict = ["clientId": "testcustomermobilesdk",
-                      "apiKeyConversations": "KEY_REMOVED"];
+                      "apiKeyConversations": BVTestUsers().loadValueForKey(key: .conversationsKey6)];
     BVSDKManager.configure(withConfiguration: configDict, configType: .staging)
     
     let expectation = self.expectation(description: "testReviewDisplayDateOfConsumerExperience")
@@ -543,7 +543,7 @@ class ReviewDisplayTests: XCTestCase {
         func testReviewRequestSecondaryRatingsDistribution() {
         
         let configDict = ["clientId": "testcustomermobilesdk",
-                          "apiKeyConversations": "KEY_REMOVED"];
+                          "apiKeyConversations": BVTestUsers().loadValueForKey(key: .conversationsKey4)];
         BVSDKManager.configure(withConfiguration: configDict, configType: .staging)
         
         let expectation = self.expectation(description: "testReviewRequestSecondaryRatingsDistribution")
@@ -591,7 +591,7 @@ class ReviewDisplayTests: XCTestCase {
     func testReviewAdditionalFieldFilter() {
         
         let configDict = ["clientId": "testcustomer-56",
-                          "apiKeyConversations": "KEY_REMOVED"];
+                          "apiKeyConversations": BVTestUsers().loadValueForKey(key: .conversationsKey6)];
         BVSDKManager.configure(withConfiguration: configDict, configType: .staging)
           
           let expectation = self.expectation(description: "testReviewAdditionalFieldFilter")
@@ -627,7 +627,7 @@ class ReviewDisplayTests: XCTestCase {
     func testReviewTagFilter() {
         
         let configDict = ["clientId": "apitestcustomer",
-                          "apiKeyConversations": "KEY_REMOVED"];
+                          "apiKeyConversations": BVTestUsers().loadValueForKey(key: .conversationsKey7)];
         BVSDKManager.configure(withConfiguration: configDict, configType: .staging)
           
           let expectation = self.expectation(description: "testReviewTagFilter")
@@ -662,7 +662,7 @@ class ReviewDisplayTests: XCTestCase {
     func testReviewCDVFilter() {
         
         let configDict = ["clientId": "apitestcustomer",
-                          "apiKeyConversations": "KEY_REMOVED"];
+                          "apiKeyConversations": BVTestUsers().loadValueForKey(key: .conversationsKey7)];
         BVSDKManager.configure(withConfiguration: configDict, configType: .staging)
           
           let expectation = self.expectation(description: "testReviewCDVFilter")
@@ -699,7 +699,7 @@ class ReviewDisplayTests: XCTestCase {
   func testContextDataValueLabelIncludes(){
     
     let configDict = ["clientId": "testcustomermobilesdk",
-                      "apiKeyConversations": "KEY_REMOVED"];
+                      "apiKeyConversations": BVTestUsers().loadValueForKey(key: .conversationsKey4)];
     BVSDKManager.configure(withConfiguration: configDict, configType: .staging)
     
     let expectation = self.expectation(description: "testContextDataValueLabelIncludes")
@@ -732,7 +732,7 @@ class ReviewDisplayTests: XCTestCase {
     func testReviewCustomSortOrder() {
         
         let configDict = ["clientId": "testcustomermobilesdk",
-                          "apiKeyConversations": "KEY_REMOVED"];
+                          "apiKeyConversations": BVTestUsers().loadValueForKey(key: .conversationsKey4)];
         BVSDKManager.configure(withConfiguration: configDict, configType: .staging)
         
         let expectation = self.expectation(description: "testReviewCustomSortOrder")
@@ -766,7 +766,7 @@ class ReviewDisplayTests: XCTestCase {
     func testReviewCustomSortOrderOver5Values() {
         
         let configDict = ["clientId": "testcustomermobilesdk",
-                          "apiKeyConversations": "KEY_REMOVED"];
+                          "apiKeyConversations": BVTestUsers().loadValueForKey(key: .conversationsKey4)];
         BVSDKManager.configure(withConfiguration: configDict, configType: .staging)
         
         
@@ -801,7 +801,7 @@ class ReviewDisplayTests: XCTestCase {
     func testReviewRelevancySort() {
         
         let configDict = ["clientId": "mobile_test_customer_stg",
-                          "apiKeyConversations": "KEY_REMOVED"];
+                          "apiKeyConversations": BVTestUsers().loadValueForKey(key: .conversationsKey8)];
         BVSDKManager.configure(withConfiguration: configDict, configType: .staging)
         
         let expectation = self.expectation(description: "testReviewRelevancySort")
@@ -828,7 +828,7 @@ class ReviewDisplayTests: XCTestCase {
     
     func testReviewQueryDisplayOriginalProductName() {
         let configDict = ["clientId": "apitestcustomer",
-                          "apiKeyConversations": "KEY_REMOVED"];
+                          "apiKeyConversations": BVTestUsers().loadValueForKey(key: .conversationsKey3)];
 
         BVSDKManager.configure(withConfiguration: configDict, configType: .staging)
 
