@@ -1,0 +1,28 @@
+#########################################################################################
+#   Component
+#########################################################################################
+
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: bv-ios-sdk
+  description: Bazaarvoice Mobile SDK for iOS which supports Objective-C programming language.
+  links:
+    - url: https://github.com/bvengineering/bv-ios-sdk-dev
+      title: bv-ios-sdk repository
+  tags:
+    - mobile-sdk
+    - mobile
+    - objective-c
+spec:
+  type: service
+  lifecycle: production
+  owner: mobile
+  system: mobile-sdk
+  dependsOn:
+    - resource:progressiveReviewUser
+    - resource:buildRequestSession
+    - resource:buildRequestSuccessSession
+    - resource:bvsdk_config_staging_apiKeyConversations
+
+---
