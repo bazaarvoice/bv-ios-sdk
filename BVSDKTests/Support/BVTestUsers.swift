@@ -21,7 +21,8 @@ class BVTestUsers {
         case conversationsKey10 = "conversationsKey10"
         case conversationsKey11 = "conversationsKey11"
         case conversationsKey12 = "conversationsKey12"
-
+        case conversationsKey13 = "conversationsKey13"
+        
         case answerUserId = "answerUserId"
         case feedbackUserId = "feedbackUserId"
         case feedbackUser = "feedbackUser"
@@ -32,6 +33,11 @@ class BVTestUsers {
         case submitUserId = "submitUserId"
         case incorrectUserId = "incorrectUserId"
         case hostedUserId = "hostedUserId"
+        case progressiveReviewUser = "progressiveReviewUser"
+
+        case buildRequestSession = "buildRequestSession"
+        case buildHostedRequestSuccessSession = "buildHostedRequestSuccessSession"
+
     }
     
     func loadValueForKey(key: testKeys) -> String {

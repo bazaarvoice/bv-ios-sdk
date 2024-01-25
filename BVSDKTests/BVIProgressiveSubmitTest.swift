@@ -256,9 +256,9 @@ class BVProgressiveSubmitTest: XCTestCase {
             "agreedtotermsandconditions" : agreedtotermsandconditions
         ]
         let submission = BVProgressiveSubmitRequest(productId:"product10")
-        submission.submissionSessionToken = "TOKEN_REMOVED"
+        submission.submissionSessionToken = BVTestUsers().loadValueForKey(key: .buildRequestSession)
         submission.locale = "en_US"
-        submission.userToken = "TOKEN_REMOVED"
+        submission.userToken = BVTestUsers().loadValueForKey(key: .progressiveReviewUser)
         submission.submissionFields = fields as! [AnyHashable : Any]
         return submission
     }
@@ -277,7 +277,8 @@ class BVProgressiveSubmitTest: XCTestCase {
         let submission = BVProgressiveSubmitRequest(productId:"product1")
         submission.userId = BVTestUsers().loadValueForKey(key: .hostedUserId)
         submission.locale = "en_US"
-        submission.submissionSessionToken = "TOKEN_REMOVED"
+        submission.submissionSessionToken = BVTestUsers().loadValueForKey(key: .buildHostedRequestSuccessSession)
+        
         submission.submissionFields = fields as! [AnyHashable : Any]
         submission.hostedauth = true
         

@@ -76,7 +76,7 @@ class BVInitiateSubmitTest: XCTestCase {
     func testInitiateSubmitWithUserToken() {
         let expectation = self.expectation(description: "testInitiateSubmitWithUserToken")
         let initiateSubmitRequest = BVInitiateSubmitRequest(productIds: ["product1", "product2", "product3"])
-        initiateSubmitRequest.userToken = "TOKEN_REMOVED"
+        initiateSubmitRequest.userToken = BVTestUsers().loadValueForKey(key: .progressiveReviewUser)
         initiateSubmitRequest.locale = "en_US"
         initiateSubmitRequest.extendedResponse = true;
         
