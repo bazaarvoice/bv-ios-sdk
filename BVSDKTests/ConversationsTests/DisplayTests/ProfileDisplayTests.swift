@@ -155,7 +155,7 @@ class ProfileDisplayTests: XCTestCase {
   
   func testProfileDisplayFailure() {
     let configDict = ["clientId": "conciergeapidocumentation",
-                      "apiKeyConversations": "badkey"];
+                      "apiKeyConversations": BVTestUsers().loadValueForKey(key: .conversationsKey14)];
     BVSDKManager.configure(withConfiguration: configDict, configType: .staging)
     
     let expectation = self.expectation(description: "testDisplayFailure")

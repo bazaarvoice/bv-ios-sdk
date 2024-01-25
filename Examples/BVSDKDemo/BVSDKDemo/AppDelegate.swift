@@ -95,7 +95,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
      Pre-populated with a small profile interested in men's and women's apparel -- for testing and demonstration purposes.
      */
     if SITE_AUTH != 1 {
-      BVSDKManager.shared().setUAS("TOKEN_REMOVED")
+      BVSDKManager.shared().setUAS("0ce436b29697d6bc74f30f724b9b0bb6646174653d31323334267573657269643d5265636f6d6d656e646174696f6e7353646b54657374")
     }
     
   }

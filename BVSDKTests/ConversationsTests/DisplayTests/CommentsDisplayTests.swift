@@ -68,7 +68,7 @@ class CommentsDisplayTests: XCTestCase {
       let theComment = response.results.first!
       
       XCTAssertEqual(theComment.title, "TEST>> I came in the store wanting to try 4 other")
-      XCTAssertEqual(theComment.authorId, "TEST_AUTHOR")
+      XCTAssertEqual(theComment.authorId, "63kfce2dchdd2f8te9en4xx5y")
       XCTAssertEqual(theComment.isSyndicated, false)
       XCTAssertEqual(theComment.reviewId, "192548")
       XCTAssertEqual(theComment.userLocation, nil)
