@@ -116,7 +116,7 @@ open class ProfileUtils: NSObject {
         if SITE_AUTH == 1 {
           BVUserAuthStringGenerator.generateUAS(userProfileDict, withCompletion: { (uas, error) in
             if (error == nil){
-              BVSDKManager.shared().setUserWithAuthString(uas!)
+              BVSDKManager.shared().setUAS(uas!)
             } else {
               print("An error occurred generating the UAS.");
             }

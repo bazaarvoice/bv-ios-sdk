@@ -6,7 +6,7 @@
 //
 
 /// user information can be included in the userAuthString - sent with:
-/// [[BVSDKManager sharedManager] setUserWithAuthString:myAuthString];
+/// [[BVSDKManager sharedManager] setUAS:myAuthString];
 
 #define BVUSER_ID @"userid"
 #define BVUSER_AGE @"age";

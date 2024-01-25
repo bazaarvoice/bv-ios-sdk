@@ -95,7 +95,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
      Pre-populated with a small profile interested in men's and women's apparel -- for testing and demonstration purposes.
      */
     if SITE_AUTH != 1 {
-      BVSDKManager.shared().setUserWithAuthString("TOKEN_REMOVED")
+      BVSDKManager.shared().setUAS("TOKEN_REMOVED")
     }
     
   }
