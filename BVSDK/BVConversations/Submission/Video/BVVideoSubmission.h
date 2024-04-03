@@ -13,7 +13,7 @@ typedef NS_ENUM(NSInteger, BVVideoContentType) {
   BVVideoContentTypeReview
 };
 
-@interface BVVideoSubmission: BVSubmission <BVSubmittedType *>
+@interface BVVideoSubmission: BVSubmission <BVSubmittedVideo *>
 
 typedef void (^BVVideoSubmissionUploadCompletion)(
                                                   NSString *__nonnull videoURL);

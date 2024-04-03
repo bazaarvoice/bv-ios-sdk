@@ -674,13 +674,15 @@
 		B5DDA04E1FE8633800C47C01 /* BVCurationsAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B5DDA04D1FE8633800C47C01 /* BVCurationsAssets.xcassets */; };
 		B7856D222ABC18EF0031D22A /* userIdJSON.json in Resources */ = {isa = PBXBuildFile; fileRef = B7856D212ABC18EF0031D22A /* userIdJSON.json */; };
 		B7856D242ABC1F770031D22A /* BVTestUsers.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7856D232ABC1F770031D22A /* BVTestUsers.swift */; };
+		B79DB0C22BAAC45800E18B4E /* earthVideo.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = B79DB0C12BAAC45800E18B4E /* earthVideo.mp4 */; };
 		B7B3B95C2BAAB48D00A2831B /* BVSubmittedVideo.m in Sources */ = {isa = PBXBuildFile; fileRef = B7B3B95B2BAAB48D00A2831B /* BVSubmittedVideo.m */; };
-		B7B3B95E2BAAB4B500A2831B /* BVVideoSubmission.h in Headers */ = {isa = PBXBuildFile; fileRef = B7E7C6A72BA2D70F006632CF /* BVVideoSubmission.h */; };
-		B7B3B95F2BAAB4B700A2831B /* BVSubmittedVideo.h in Headers */ = {isa = PBXBuildFile; fileRef = B7B3B95D2BAAB49F00A2831B /* BVSubmittedVideo.h */; };
+		B7B3B95E2BAAB4B500A2831B /* BVVideoSubmission.h in Headers */ = {isa = PBXBuildFile; fileRef = B7E7C6A72BA2D70F006632CF /* BVVideoSubmission.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B7B3B95F2BAAB4B700A2831B /* BVSubmittedVideo.h in Headers */ = {isa = PBXBuildFile; fileRef = B7B3B95D2BAAB49F00A2831B /* BVSubmittedVideo.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B7B3B9612BAAB62100A2831B /* BVVideoSubmissionResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = B7B3B9602BAAB62100A2831B /* BVVideoSubmissionResponse.m */; };
-		B7B3B9632BAAB62A00A2831B /* BVVideoSubmissionResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = B7B3B9622BAAB62A00A2831B /* BVVideoSubmissionResponse.h */; };
+		B7B3B9632BAAB62A00A2831B /* BVVideoSubmissionResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = B7B3B9622BAAB62A00A2831B /* BVVideoSubmissionResponse.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B7B3B9652BAAB8CF00A2831B /* BVVideoSubmissionErrorResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = B7B3B9642BAAB8CF00A2831B /* BVVideoSubmissionErrorResponse.m */; };
-		B7B3B9672BAAB8DD00A2831B /* BVVideoSubmissionErrorResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = B7B3B9662BAAB8DD00A2831B /* BVVideoSubmissionErrorResponse.h */; };
+		B7B3B9672BAAB8DD00A2831B /* BVVideoSubmissionErrorResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = B7B3B9662BAAB8DD00A2831B /* BVVideoSubmissionErrorResponse.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B7B3B9692BAABCF800A2831B /* VideoUploadTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B3B9682BAABCF800A2831B /* VideoUploadTests.swift */; };
 		B7E7C6A62BA2D616006632CF /* BVVideoSubmission.m in Sources */ = {isa = PBXBuildFile; fileRef = B7E7C6A52BA2D616006632CF /* BVVideoSubmission.m */; };
 /* End PBXBuildFile section */
 
@@ -1361,14 +1363,16 @@
 		B5DDA04D1FE8633800C47C01 /* BVCurationsAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = BVCurationsAssets.xcassets; sourceTree = "<group>"; };
 		B7856D212ABC18EF0031D22A /* userIdJSON.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = userIdJSON.json; sourceTree = "<group>"; };
 		B7856D232ABC1F770031D22A /* BVTestUsers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BVTestUsers.swift; sourceTree = "<group>"; };
+		B79DB0C12BAAC45800E18B4E /* earthVideo.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = earthVideo.mp4; sourceTree = "<group>"; };
 		B7B3B95B2BAAB48D00A2831B /* BVSubmittedVideo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BVSubmittedVideo.m; sourceTree = "<group>"; };
 		B7B3B95D2BAAB49F00A2831B /* BVSubmittedVideo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BVSubmittedVideo.h; sourceTree = "<group>"; };
 		B7B3B9602BAAB62100A2831B /* BVVideoSubmissionResponse.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BVVideoSubmissionResponse.m; sourceTree = "<group>"; };
 		B7B3B9622BAAB62A00A2831B /* BVVideoSubmissionResponse.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BVVideoSubmissionResponse.h; sourceTree = "<group>"; };
 		B7B3B9642BAAB8CF00A2831B /* BVVideoSubmissionErrorResponse.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BVVideoSubmissionErrorResponse.m; sourceTree = "<group>"; };
 		B7B3B9662BAAB8DD00A2831B /* BVVideoSubmissionErrorResponse.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BVVideoSubmissionErrorResponse.h; sourceTree = "<group>"; };
-		B7E7C6A52BA2D616006632CF /* BVVideoSubmission.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BVVideoSubmission.m; sourceTree = "<group>"; };
-		B7E7C6A72BA2D70F006632CF /* BVVideoSubmission.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BVVideoSubmission.h; sourceTree = "<group>"; };
+		B7B3B9682BAABCF800A2831B /* VideoUploadTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoUploadTests.swift; sourceTree = "<group>"; };
+		B7E7C6A52BA2D616006632CF /* BVVideoSubmission.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVVideoSubmission.m; sourceTree = "<group>"; };
+		B7E7C6A72BA2D70F006632CF /* BVVideoSubmission.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVVideoSubmission.h; sourceTree = "<group>"; };
 		EC098EFAFB725736F0751BA0 /* libPods-BVSDK.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BVSDK.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -2198,6 +2202,7 @@
 		87F2DE021DAD945D00FB43F3 /* SubmissionTests */ = {
 			isa = PBXGroup;
 			children = (
+				B79DB0C12BAAC45800E18B4E /* earthVideo.mp4 */,
 				5F140C5C1F9553FE00905828 /* skelly_android.jpg */,
 				15D4F83E1DF5EC3C00E6B30D /* ph.png */,
 				87F2DE031DAD945D00FB43F3 /* AnswerSubmissionTests.swift */,
@@ -2208,6 +2213,7 @@
 				87F2DE061DAD945D00FB43F3 /* ReviewSubmissionTests.swift */,
 				87F2DE071DAD945D00FB43F3 /* StoreReviewSubmissionTests.swift */,
 				B56E1F911FBF86360025D5B4 /* UASSubmissionTests.swift */,
+				B7B3B9682BAABCF800A2831B /* VideoUploadTests.swift */,
 			);
 			path = SubmissionTests;
 			sourceTree = "<group>";
@@ -3237,6 +3243,7 @@
 				B57B838A2174E5BE006B378E /* testUploadablePhotoFailure.json in Resources */,
 				B5A7B530205072EB00494F83 /* testUploadablePhotoJPGTooLargeSuccess.json in Resources */,
 				B5A7B52E205072D000494F83 /* testUploadablePhotoPNGSuccess.json in Resources */,
+				B79DB0C22BAAC45800E18B4E /* earthVideo.mp4 in Resources */,
 				B5A7B51E205049D100494F83 /* testUploadPNG.json in Resources */,
 				5F140C5D1F9553FE00905828 /* skelly_android.jpg in Resources */,
 				15D4F83F1DF5EC3C00E6B30D /* ph.png in Resources */,
@@ -3570,6 +3577,7 @@
 				981EE848226627F2000E9191 /* ReviewFilterDisplayTests.swift in Sources */,
 				87F2DD621DAD5E9400FB43F3 /* BVNotificationConfigTests.m in Sources */,
 				87F2DE111DAD945D00FB43F3 /* ProductIdEscapeTests.swift in Sources */,
+				B7B3B9692BAABCF800A2831B /* VideoUploadTests.swift in Sources */,
 				9F9672F92509FF9E00484A29 /* BulkProductTests.swift in Sources */,
 				987C076F2254038A00227934 /* BVIProgressiveSubmitTest.swift in Sources */,
 				87F2DD5E1DAD5E9400FB43F3 /* BVBaseStubTestCase.m in Sources */,

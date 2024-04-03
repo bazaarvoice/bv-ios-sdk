@@ -12,7 +12,7 @@
 - (nonnull instancetype)initWithApiResponse:(NSDictionary *)apiResponse {
   if ((self = [super initWithApiResponse:apiResponse])) {
     self.result =
-        [[BVSubmittedVideo alloc] initWithApiResponse:apiResponse[@"video"]];
+        [[BVSubmittedVideo alloc] initWithApiResponse:apiResponse[@"Video"]];
   }
   return self;
 }

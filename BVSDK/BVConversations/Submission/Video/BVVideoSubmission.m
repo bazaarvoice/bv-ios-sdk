@@ -48,17 +48,23 @@ static NSUInteger const MAX_VIDEO_BYTES = 250 * 1024 * 1024; /// BV API max is 2
 
 
 - (nullable NSData *)nsDataForVideo {
-    NSData *nsData = [self.video dataUsingEncoding:NSUTF8StringEncoding];
-    
-  if (nsData && nsData.length > self.maxVideoBytes) {
-      return nsData;
-  } else {
-      return nil;
-  }
+    @try {
+        NSData *videoData = [NSData dataWithContentsOfFile: self.video];
+        if (videoData && videoData.length < self.maxVideoBytes) {
+            return videoData;
+        }
+    } @catch (NSException *exception) {
+        NSLog(@"%@", exception);
+    }
+    return nil;
 }
 
 - (nonnull NSString *)endpoint {
   return @"uploadvideo.json";
+}
+
+- (nonnull NSString *)getFileName {
+  return self.video.lastPathComponent;
 }
 
 - (nonnull NSURLRequest *)generateRequest {
@@ -71,6 +77,7 @@ static NSUInteger const MAX_VIDEO_BYTES = 250 * 1024 * 1024; /// BV API max is 2
   /// add multipart form data
   NSMutableData *body = [NSMutableData data];
   NSString *boundary = [NSURLRequest generateBoundaryWithData:body
+                                         andFileName:[self getFileName]
                                          andContentDictionary:parameters];
 
   if (!boundary) {

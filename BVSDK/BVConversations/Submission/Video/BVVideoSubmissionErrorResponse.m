@@ -15,7 +15,7 @@
     if (__IS_KIND_OF(apiResponse, NSDictionary)) {
       NSDictionary *apiObject = (NSDictionary *)apiResponse;
       self.errorResult =
-          [[BVSubmittedVideo alloc] initWithApiResponse:apiObject[@"video"]];
+          [[BVSubmittedVideo alloc] initWithApiResponse:apiObject[@"Video"]];
     }
   }
   return self;
