@@ -36,9 +36,12 @@ class VideoUploadTests: BVBaseStubTestCase {
         let expectation = self.expectation(description: "testUploadVideo")
         
         let bundle = Bundle(for: VideoUploadTests.self)
-        guard let videoPath = bundle.path(forResource: "earthVideo", ofType: "mp4")
+        guard let videoPath = bundle.path(forResource: "testVideo", ofType: "mp4")
         else {
-            return nil
+            debugPrint("testVideo.mp4 not found")
+            XCTFail()
+            expectation.fulfill()
+            return
         }
         
         let video = BVVideoSubmission(video: videoPath, videoContentType: .review)

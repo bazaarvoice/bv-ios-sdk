@@ -672,9 +672,9 @@
 		B5D7E840205083EC00DEB434 /* testSubmitStoreReviewWithPhoto.json in Resources */ = {isa = PBXBuildFile; fileRef = B5D7E83F205083EC00DEB434 /* testSubmitStoreReviewWithPhoto.json */; };
 		B5D7E8422050840E00DEB434 /* testSubmitReviewFailureStore.json in Resources */ = {isa = PBXBuildFile; fileRef = B5D7E8412050840E00DEB434 /* testSubmitReviewFailureStore.json */; };
 		B5DDA04E1FE8633800C47C01 /* BVCurationsAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B5DDA04D1FE8633800C47C01 /* BVCurationsAssets.xcassets */; };
+		B72EA4532BD78E5900462116 /* testVideo.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = B72EA4522BD78E5900462116 /* testVideo.mp4 */; };
 		B7856D222ABC18EF0031D22A /* userIdJSON.json in Resources */ = {isa = PBXBuildFile; fileRef = B7856D212ABC18EF0031D22A /* userIdJSON.json */; };
 		B7856D242ABC1F770031D22A /* BVTestUsers.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7856D232ABC1F770031D22A /* BVTestUsers.swift */; };
-		B79DB0C22BAAC45800E18B4E /* earthVideo.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = B79DB0C12BAAC45800E18B4E /* earthVideo.mp4 */; };
 		B7B3B95C2BAAB48D00A2831B /* BVSubmittedVideo.m in Sources */ = {isa = PBXBuildFile; fileRef = B7B3B95B2BAAB48D00A2831B /* BVSubmittedVideo.m */; };
 		B7B3B95E2BAAB4B500A2831B /* BVVideoSubmission.h in Headers */ = {isa = PBXBuildFile; fileRef = B7E7C6A72BA2D70F006632CF /* BVVideoSubmission.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B7B3B95F2BAAB4B700A2831B /* BVSubmittedVideo.h in Headers */ = {isa = PBXBuildFile; fileRef = B7B3B95D2BAAB49F00A2831B /* BVSubmittedVideo.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -1361,9 +1361,9 @@
 		B5D7E83F205083EC00DEB434 /* testSubmitStoreReviewWithPhoto.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = testSubmitStoreReviewWithPhoto.json; sourceTree = "<group>"; };
 		B5D7E8412050840E00DEB434 /* testSubmitReviewFailureStore.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = testSubmitReviewFailureStore.json; sourceTree = "<group>"; };
 		B5DDA04D1FE8633800C47C01 /* BVCurationsAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = BVCurationsAssets.xcassets; sourceTree = "<group>"; };
+		B72EA4522BD78E5900462116 /* testVideo.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = testVideo.mp4; sourceTree = "<group>"; };
 		B7856D212ABC18EF0031D22A /* userIdJSON.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = userIdJSON.json; sourceTree = "<group>"; };
 		B7856D232ABC1F770031D22A /* BVTestUsers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BVTestUsers.swift; sourceTree = "<group>"; };
-		B79DB0C12BAAC45800E18B4E /* earthVideo.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = earthVideo.mp4; sourceTree = "<group>"; };
 		B7B3B95B2BAAB48D00A2831B /* BVSubmittedVideo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BVSubmittedVideo.m; sourceTree = "<group>"; };
 		B7B3B95D2BAAB49F00A2831B /* BVSubmittedVideo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BVSubmittedVideo.h; sourceTree = "<group>"; };
 		B7B3B9602BAAB62100A2831B /* BVVideoSubmissionResponse.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BVVideoSubmissionResponse.m; sourceTree = "<group>"; };
@@ -2202,7 +2202,7 @@
 		87F2DE021DAD945D00FB43F3 /* SubmissionTests */ = {
 			isa = PBXGroup;
 			children = (
-				B79DB0C12BAAC45800E18B4E /* earthVideo.mp4 */,
+				B72EA4522BD78E5900462116 /* testVideo.mp4 */,
 				5F140C5C1F9553FE00905828 /* skelly_android.jpg */,
 				15D4F83E1DF5EC3C00E6B30D /* ph.png */,
 				87F2DE031DAD945D00FB43F3 /* AnswerSubmissionTests.swift */,
@@ -3182,6 +3182,7 @@
 				87F2DDB71DAD698500FB43F3 /* curations500Error.json in Resources */,
 				87F2DDB91DAD698500FB43F3 /* curationsFeedTest1.json in Resources */,
 				87F2DDBA1DAD698500FB43F3 /* post_ErrorParsingBody.json in Resources */,
+				B72EA4532BD78E5900462116 /* testVideo.mp4 in Resources */,
 				87F2DDBB1DAD698500FB43F3 /* post_MissingRequiredKey.json in Resources */,
 				87F2DDBC1DAD698500FB43F3 /* post_successfulCreation.json in Resources */,
 				87F2DDBD1DAD698500FB43F3 /* puppy.jpg in Resources */,
@@ -3243,7 +3244,6 @@
 				B57B838A2174E5BE006B378E /* testUploadablePhotoFailure.json in Resources */,
 				B5A7B530205072EB00494F83 /* testUploadablePhotoJPGTooLargeSuccess.json in Resources */,
 				B5A7B52E205072D000494F83 /* testUploadablePhotoPNGSuccess.json in Resources */,
-				B79DB0C22BAAC45800E18B4E /* earthVideo.mp4 in Resources */,
 				B5A7B51E205049D100494F83 /* testUploadPNG.json in Resources */,
 				5F140C5D1F9553FE00905828 /* skelly_android.jpg in Resources */,
 				15D4F83F1DF5EC3C00E6B30D /* ph.png in Resources */,
