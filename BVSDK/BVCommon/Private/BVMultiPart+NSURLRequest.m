@@ -22,9 +22,11 @@
   [NSString                                                                    \
       stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"\r\n\r\n", \
                        (X)]
+#define BVFORM_NSSTRING_FOR_NAME(X)                                        \
+  [NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"; ",  \
+                             (X)]
 #define BVFORM_NSSTRING_FOR_FILENAME(X)                                        \
-  [NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"; "  \
-                             @"filename=\"upload.jpg\"\r\n",                   \
+  [NSString stringWithFormat:@"filename=\"%@\"\r\n",                   \
                              (X)]
 #define BVFORM_NSSTRING_FOR_FILE_CONTENT_TYPE                                  \
   @"Content-Type: application/octet-stream\r\n\r\n"
@@ -34,6 +36,7 @@
 
 + (nullable NSString *)
 generateBoundaryWithData:(nonnull NSMutableData *)bodyData
+    andFileName:(nonnull NSString *) fileName
     andContentDictionary:(nonnull NSDictionary *)contentDictionary {
   NSString *boundary = nil;
   NSMutableArray<NSData *> *contentData = nil;
@@ -85,7 +88,9 @@ generateBoundaryWithData:(nonnull NSMutableData *)bodyData
 
         if (__IS_KIND_OF(obj, NSData)) {
           NSData *value = (NSData *)obj;
-          [data appendData:[BVFORM_NSSTRING_FOR_FILENAME(keyString)
+            [data appendData:[BVFORM_NSSTRING_FOR_NAME(keyString)
+                                 dataUsingEncoding:NSUTF8StringEncoding]];
+          [data appendData:[BVFORM_NSSTRING_FOR_FILENAME(fileName)
                                dataUsingEncoding:NSUTF8StringEncoding]];
           [data appendData:[BVFORM_NSSTRING_FOR_FILE_CONTENT_TYPE
                                dataUsingEncoding:NSUTF8StringEncoding]];

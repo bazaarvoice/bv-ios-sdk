@@ -161,6 +161,11 @@ FOUNDATION_EXPORT const unsigned char BVSDKVersionString[];
 #import "BVPhotoSubmissionErrorResponse.h"
 #import "BVPhotoSubmissionResponse.h"
 
+/// Video Submission
+#import "BVVideoSubmission.h"
+#import "BVVideoSubmissionErrorResponse.h"
+#import "BVVideoSubmissionResponse.h"
+#import "BVSubmittedVideo.h"
 
 // Question Submission
 #import "BVQuestionSubmission.h"
