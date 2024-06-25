@@ -11,6 +11,7 @@
 
 + (nullable NSString *)
 generateBoundaryWithData:(nonnull NSMutableData *)bodyData
+    andFileName:(nonnull NSString *)fileName
     andContentDictionary:(nonnull NSDictionary *)contentDictionary;
 
 @end

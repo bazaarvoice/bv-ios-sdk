@@ -98,7 +98,8 @@ static NSUInteger const MAX_IMAGE_BYTES = 5 * 1024 * 1024; /// BV API max is 5MB
   /// add multipart form data
   NSMutableData *body = [NSMutableData data];
   NSString *boundary = [NSURLRequest generateBoundaryWithData:body
-                                         andContentDictionary:parameters];
+                        andFileName:@"upload.jpg"
+                        andContentDictionary:parameters];
 
   if (!boundary) {
     BVLogError(@"Couldn't generate multi-part boundary, this shouldn't ever "
