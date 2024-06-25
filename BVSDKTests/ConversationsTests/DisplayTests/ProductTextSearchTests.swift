@@ -47,7 +47,11 @@ class ProductTextSearchTests: XCTestCase {
       XCTAssertEqual(product.reviewStatistics?.incentivizedReviewCount, 6)
       XCTAssertNotNil(product.reviewStatistics?.contextDataDistribution?.value(forKey: "IncentivizedReview"))
       
-      let incentivizedReview = product.reviewStatistics?.contextDataDistribution?.value(forKey: "IncentivizedReview") as! BVDistributionElement
+      guard let incentivizedReview = product.reviewStatistics?.contextDataDistribution?.value(forKey: "IncentivizedReview") as? BVDistributionElement else {
+        XCTFail("Incentivised review not found")
+        expectation.fulfill()
+        return
+      }
       XCTAssertEqual(incentivizedReview.identifier, "IncentivizedReview")
       XCTAssertEqual(incentivizedReview.label, "Received an incentive for this review")
       XCTAssertEqual(incentivizedReview.values.count, 1)
