@@ -15,7 +15,7 @@ class ReviewSubmissionTests: BVBaseStubTestCase {
     super.setUp()
     
     let configDict = ["clientId": "apitestcustomer",
-                      "apiKeyConversations": "KEY_REMOVED"];
+                      "apiKeyConversations": BVTestUsers().loadValueForKey(key: .conversationsKey11)];
     BVSDKManager.configure(withConfiguration: configDict, configType: .staging)
     BVSDKManager.shared().setLogLevel(.error)
     BVSDKManager.shared().urlSessionDelegate = nil;
@@ -187,7 +187,7 @@ class ReviewSubmissionTests: BVBaseStubTestCase {
     let review = BVReviewSubmission(
       reviewTitle: "", reviewText: "", rating: 123, productId: "1000001")
     review.userNickname = "cgil"
-    review.userId = BVTestUsers().loadKeyForUserId(userId: .reviewUserId)
+    review.userId = BVTestUsers().loadValueForKey(key: .reviewUserId)
     review.action = .submit
     
     review.submit({ (reviewSubmission) in
@@ -215,7 +215,7 @@ class ReviewSubmissionTests: BVBaseStubTestCase {
     let review = BVReviewSubmission(
       reviewTitle: "", reviewText: "", rating: 123, productId: "1000001")
     review.userNickname = "cgil"
-    review.userId = BVTestUsers().loadKeyForUserId(userId: .reviewUserId)
+    review.userId = BVTestUsers().loadValueForKey(key: .reviewUserId)
     review.action = .submit
     
     review.submit({ (reviewSubmission) in
@@ -267,7 +267,7 @@ class ReviewSubmissionTests: BVBaseStubTestCase {
     let review = BVReviewSubmission(
       reviewTitle: "", reviewText: "", rating: 123, productId: "")
     review.userNickname = "cgil"
-    review.userId = BVTestUsers().loadKeyForUserId(userId: .reviewUserId)
+    review.userId = BVTestUsers().loadValueForKey(key: .reviewUserId)
     review.action = .submit
     
     review.submit({ (reviewSubmission) in
@@ -297,7 +297,7 @@ class ReviewSubmissionTests: BVBaseStubTestCase {
   func testSubmitReviewDateOfConsumerExperienceFormFields() {
     
     let configDict = ["clientId": "testcustomermobilesdk",
-                      "apiKeyConversations": "KEY_REMOVED"];
+                      "apiKeyConversations": BVTestUsers().loadValueForKey(key: .conversationsKey6)];
     BVSDKManager.configure(withConfiguration: configDict, configType: .staging)
     
     let expectation = self.expectation(description: "testSubmitReviewDateOfConsumerExperienceFormFields")
@@ -329,7 +329,7 @@ class ReviewSubmissionTests: BVBaseStubTestCase {
   func testSubmitReviewWithDateOfConsumerExperience() {
     
     let configDict = ["clientId": "testcustomermobilesdk",
-                      "apiKeyConversations": "KEY_REMOVED"];
+                      "apiKeyConversations": BVTestUsers().loadValueForKey(key: .conversationsKey6)];
     BVSDKManager.configure(withConfiguration: configDict, configType: .staging)
     
     let expectation = self.expectation(description: "testSubmitReviewWithDateOfConsumerExperience")
@@ -341,7 +341,7 @@ class ReviewSubmissionTests: BVBaseStubTestCase {
       rating: 4,
       productId: "test1")
     review.action = .submit
-    review.user = BVTestUsers().loadKeyForUserId(userId: .reviewUser)
+    review.user = BVTestUsers().loadValueForKey(key: .reviewUser)
     review.addAdditionalField("DateOfUserExperience", value: "2021-04-03") // Date of consumer experience param
     
     review.submit({ (reviewSubmission) in
@@ -364,7 +364,7 @@ class ReviewSubmissionTests: BVBaseStubTestCase {
   func testSubmitReviewWithInvalidDateOfConsumerExperience() {
     
     let configDict = ["clientId": "testcustomermobilesdk",
-                      "apiKeyConversations": "KEY_REMOVED"];
+                      "apiKeyConversations": BVTestUsers().loadValueForKey(key: .conversationsKey6)];
     BVSDKManager.configure(withConfiguration: configDict, configType: .staging)
     
     let expectation = self.expectation(description: "testSubmitReviewWithInvalidDateOfConsumerExperience")
@@ -376,7 +376,7 @@ class ReviewSubmissionTests: BVBaseStubTestCase {
       rating: 4,
       productId: "test1")
     review.action = .submit
-    review.user = BVTestUsers().loadKeyForUserId(userId: .reviewUserId)
+    review.user = BVTestUsers().loadValueForKey(key: .reviewUserId)
     review.addAdditionalField("DateOfUserExperience", value: "03-04-2021") // Invalid Date of consumer experience
     
     review.submit({ (reviewSubmission) in
@@ -399,7 +399,7 @@ class ReviewSubmissionTests: BVBaseStubTestCase {
   func testSubmitReviewWithFutureDateOfConsumerExperience() {
     
     let configDict = ["clientId": "testcustomermobilesdk",
-                      "apiKeyConversations": "KEY_REMOVED"];
+                      "apiKeyConversations": BVTestUsers().loadValueForKey(key: .conversationsKey12)];
     BVSDKManager.configure(withConfiguration: configDict, configType: .staging)
     
     let expectation = self.expectation(description: "testSubmitReviewWithInvalidDateOfConsumerExperience")
@@ -411,7 +411,7 @@ class ReviewSubmissionTests: BVBaseStubTestCase {
       rating: 4,
       productId: "test1")
     review.action = .submit
-    review.user = BVTestUsers().loadKeyForUserId(userId: .reviewUserId)
+    review.user = BVTestUsers().loadValueForKey(key: .reviewUserId)
     review.userNickname = "Test09675"
     review.addAdditionalField("DateOfUserExperience", value: "2022-04-03") // Invalid Date of consumer experience
     review.agreedToTermsAndConditions = true

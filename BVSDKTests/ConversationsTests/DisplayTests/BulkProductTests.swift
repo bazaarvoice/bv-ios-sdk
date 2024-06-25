@@ -12,7 +12,7 @@ class BulkProductTests: XCTestCase {
   override func setUp() {
     // Put setup code here. This method is called before the invocation of each test method in the class.
     let configDict = ["clientId": "apitestcustomer",
-                      "apiKeyConversations": "KEY_REMOVED"];
+                      "apiKeyConversations": BVTestUsers().loadValueForKey(key: .conversationsKey3)];
     BVSDKManager.configure(withConfiguration: configDict, configType: .staging)
   }
   

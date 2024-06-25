@@ -279,7 +279,7 @@ static NSString *const BVSDKConfigFileExt = @"json";
 
 #pragma mark - user
 
-- (void)setUserWithAuthString:(NSString *)userAuthString {
+- (void)setUAS:(NSString *)userAuthString {
   if (userAuthString && 0 < userAuthString.length) {
     [self setUserId:userAuthString];
   } else {

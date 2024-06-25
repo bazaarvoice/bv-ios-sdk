@@ -14,7 +14,7 @@ class ConversationsTests: XCTestCase {
         super.setUp()
         
         let configDict = ["clientId": "apitestcustomer",
-                          "apiKeyConversations": "testApiKey"];
+                          "apiKeyConversations": BVTestUsers().loadValueForKey(key: .conversationsKey10)];
         BVSDKManager.configure(withConfiguration: configDict, configType: .staging)
     }
     
@@ -26,7 +26,7 @@ class ConversationsTests: XCTestCase {
         // check that the request sent includes diagnostic information about the app and sdk
         let params = BVReviewsRequest(productId: "test1", limit: 10, offset: 0).createParams()
         
-        XCTAssertEqual(getParamValue(params, keyToSearchFor: "passkey"), "testApiKey")
+        XCTAssertEqual(getParamValue(params, keyToSearchFor: "passkey"), BVTestUsers().loadValueForKey(key: .conversationsKey10))
         XCTAssertEqual(getParamValue(params, keyToSearchFor: "apiversion"), "5.4")
         XCTAssertEqual(getParamValue(params, keyToSearchFor: "_bvIosSdkVersion"), BV_SDK_VERSION)
         

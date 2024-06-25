@@ -13,7 +13,7 @@ class ProductDisplayTests: XCTestCase {
   override func setUp() {
     super.setUp()
     let configDict = ["clientId": "apitestcustomer",
-                      "apiKeyConversations": "KEY_REMOVED"];
+                      "apiKeyConversations": BVTestUsers().loadValueForKey(key: .conversationsKey1)];
     BVSDKManager.configure(withConfiguration: configDict, configType: .staging)
   }
   
@@ -113,7 +113,7 @@ class ProductDisplayTests: XCTestCase {
       
     // configuration for incentivized stats data
     let configDict = ["clientId": "apitestcustomer",
-                      "apiKeyConversations": "KEY_REMOVED"];
+                      "apiKeyConversations": BVTestUsers().loadValueForKey(key: .conversationsKey3)];
     BVSDKManager.configure(withConfiguration: configDict, configType: .staging)
 
     let expectation = self.expectation(description: "testProductDisplayIncentivizedStats")
@@ -157,7 +157,7 @@ class ProductDisplayTests: XCTestCase {
   func testProductRequestSecondaryRatingsDistribution() {
         
       let configDict = ["clientId": "testcustomermobilesdk",
-                        "apiKeyConversations": "KEY_REMOVED"];
+                        "apiKeyConversations": BVTestUsers().loadValueForKey(key: .conversationsKey4)];
       BVSDKManager.configure(withConfiguration: configDict, configType: .staging)
         
         let expectation = self.expectation(description: "testProductRequestSecondaryRatingsDistribution")

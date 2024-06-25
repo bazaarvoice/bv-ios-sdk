@@ -672,8 +672,8 @@
 		B5D7E840205083EC00DEB434 /* testSubmitStoreReviewWithPhoto.json in Resources */ = {isa = PBXBuildFile; fileRef = B5D7E83F205083EC00DEB434 /* testSubmitStoreReviewWithPhoto.json */; };
 		B5D7E8422050840E00DEB434 /* testSubmitReviewFailureStore.json in Resources */ = {isa = PBXBuildFile; fileRef = B5D7E8412050840E00DEB434 /* testSubmitReviewFailureStore.json */; };
 		B5DDA04E1FE8633800C47C01 /* BVCurationsAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B5DDA04D1FE8633800C47C01 /* BVCurationsAssets.xcassets */; };
+		B7856D222ABC18EF0031D22A /* testKeys.json in Resources */ = {isa = PBXBuildFile; fileRef = B7856D212ABC18EF0031D22A /* testKeys.json */; };
 		B72EA4532BD78E5900462116 /* testVideo.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = B72EA4522BD78E5900462116 /* testVideo.mp4 */; };
-		B7856D222ABC18EF0031D22A /* userIdJSON.json in Resources */ = {isa = PBXBuildFile; fileRef = B7856D212ABC18EF0031D22A /* userIdJSON.json */; };
 		B7856D242ABC1F770031D22A /* BVTestUsers.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7856D232ABC1F770031D22A /* BVTestUsers.swift */; };
 		B7B3B95C2BAAB48D00A2831B /* BVSubmittedVideo.m in Sources */ = {isa = PBXBuildFile; fileRef = B7B3B95B2BAAB48D00A2831B /* BVSubmittedVideo.m */; };
 		B7B3B95E2BAAB4B500A2831B /* BVVideoSubmission.h in Headers */ = {isa = PBXBuildFile; fileRef = B7E7C6A72BA2D70F006632CF /* BVVideoSubmission.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -1361,8 +1361,8 @@
 		B5D7E83F205083EC00DEB434 /* testSubmitStoreReviewWithPhoto.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = testSubmitStoreReviewWithPhoto.json; sourceTree = "<group>"; };
 		B5D7E8412050840E00DEB434 /* testSubmitReviewFailureStore.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = testSubmitReviewFailureStore.json; sourceTree = "<group>"; };
 		B5DDA04D1FE8633800C47C01 /* BVCurationsAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = BVCurationsAssets.xcassets; sourceTree = "<group>"; };
+		B7856D212ABC18EF0031D22A /* testKeys.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = testKeys.json; sourceTree = "<group>"; };
 		B72EA4522BD78E5900462116 /* testVideo.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = testVideo.mp4; sourceTree = "<group>"; };
-		B7856D212ABC18EF0031D22A /* userIdJSON.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = userIdJSON.json; sourceTree = "<group>"; };
 		B7856D232ABC1F770031D22A /* BVTestUsers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BVTestUsers.swift; sourceTree = "<group>"; };
 		B7B3B95B2BAAB48D00A2831B /* BVSubmittedVideo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BVSubmittedVideo.m; sourceTree = "<group>"; };
 		B7B3B95D2BAAB49F00A2831B /* BVSubmittedVideo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BVSubmittedVideo.h; sourceTree = "<group>"; };
@@ -2135,7 +2135,7 @@
 				87F2DD901DAD698500FB43F3 /* emptyJSON.json */,
 				87A9ECB71E1DA87E00666636 /* malformedJSON.json */,
 				87F2DD911DAD698500FB43F3 /* productsToReviewResult.json */,
-				B7856D212ABC18EF0031D22A /* userIdJSON.json */,
+				B7856D212ABC18EF0031D22A /* testKeys.json */,
 				87F2DD921DAD698500FB43F3 /* recommendations */,
 			);
 			path = MockData;
@@ -3232,7 +3232,7 @@
 				B5A7B5342050758300494F83 /* testSubmitQuestionWithPhotoPreview.json in Resources */,
 				B5D7E83A20507E5300DEB434 /* testSubmitReviewFailure.json in Resources */,
 				B5D7E83E20507E8400DEB434 /* testSubmitReviewFailureCodeParsing.json in Resources */,
-				B7856D222ABC18EF0031D22A /* userIdJSON.json in Resources */,
+				B7856D222ABC18EF0031D22A /* testKeys.json in Resources */,
 				B5D7E83C20507E6D00DEB434 /* testSubmitReviewFailureFormCodeParsing.json in Resources */,
 				B5A7B52620505BCC00494F83 /* testSumbitReviewCommentWithError.json in Resources */,
 				B5A7B524205059FA00494F83 /* testSubmitReviewComment.json in Resources */,

@@ -14,7 +14,7 @@ class VideoUploadTests: BVBaseStubTestCase {
         super.setUp()
         
         let configDict = ["clientId": "apitestcustomer",
-                          "apiKeyConversations": "KEY_REMOVED"];
+                          "apiKeyConversations": BVTestUsers().loadValueForKey(key: .conversationsKey1)];
         BVSDKManager.configure(withConfiguration: configDict, configType: .staging)
         BVSDKManager.shared().urlSessionDelegate = nil
     }

@@ -14,7 +14,7 @@ class InlineRatingsDisplayTests: XCTestCase {
   override func setUp() {
     super.setUp()
     let configDict = ["clientId": "apitestcustomer",
-                      "apiKeyConversations": "KEY_REMOVED"];
+                      "apiKeyConversations": BVTestUsers().loadValueForKey(key: .conversationsKey1)];
     BVSDKManager.configure(withConfiguration: configDict, configType: .staging)
   }
   
@@ -96,7 +96,7 @@ class InlineRatingsDisplayTests: XCTestCase {
     func testInlineRatingsDisplayIncetivizedReviews() {
       
        let configDict = ["clientId": "apitestcustomer",
-                           "apiKeyConversations": "KEY_REMOVED"];
+                           "apiKeyConversations": BVTestUsers().loadValueForKey(key: .conversationsKey3)];
          BVSDKManager.configure(withConfiguration: configDict, configType: .staging)
          
          let expectation = self.expectation(description: "testReviewDisplayIncentivizedStats")
@@ -133,7 +133,7 @@ class InlineRatingsDisplayTests: XCTestCase {
   func testInlineRatingsQAstatistics() {
     
     let configDict = ["clientId": "apitestcustomer",
-                        "apiKeyConversations": "KEY_REMOVED"];
+                        "apiKeyConversations": BVTestUsers().loadValueForKey(key: .conversationsKey3)];
       BVSDKManager.configure(withConfiguration: configDict, configType: .staging)
 
     

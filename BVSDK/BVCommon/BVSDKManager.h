@@ -71,7 +71,7 @@ typedef NS_ENUM(NSUInteger, BVConfigurationType) {
 /// minimum timeout of 240 seconds for post requests.
 @property(nonatomic, assign) float timeout;
 
-/// The authenticed user retrieved after calling setUserWithAuthString. The
+/// The authenticed user retrieved after calling setUAS. The
 /// model may be empty until the BV user profile has been reconcilled.
 @property(nonnull, strong, readonly) BVAuthenticatedUser *bvUser;
 
@@ -99,7 +99,7 @@ typedef NS_ENUM(NSUInteger, BVConfigurationType) {
     @param userAuthString The UAS that was generated server-side for
    Bazaarvoice.
  */
-- (void)setUserWithAuthString:(nonnull NSString *)userAuthString;
+- (void)setUAS:(nonnull NSString *)userAuthString;
 
 /**
     Generate DFP (Doubleclick For Publsher's) compatible custom targeting.

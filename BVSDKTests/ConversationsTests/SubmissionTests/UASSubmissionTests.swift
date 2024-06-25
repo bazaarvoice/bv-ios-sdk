@@ -31,8 +31,8 @@ class UASSubmissionTests: XCTestCase {
   override func setUp() {
     super.setUp()
     let configDict =
-      ["clientId" : "conversationsapihostedauth",
-       "apiKeyConversations" : "KEY_REMOVED"];
+      ["clientId": "conversationsapihostedauth",
+       "apiKeyConversations": BVTestUsers().loadValueForKey(key: .conversationsKey13)];
     BVSDKManager.configure(
       withConfiguration: configDict, configType: .prod)
     BVSDKManager.shared().setLogLevel(.verbose)

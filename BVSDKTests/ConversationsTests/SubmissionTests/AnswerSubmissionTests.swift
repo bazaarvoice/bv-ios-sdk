@@ -14,7 +14,7 @@ class AnswerSubmissionTests: BVBaseStubTestCase {
   override func setUp() {
     super.setUp()
     let configDict = ["clientId": "apitestcustomer",
-                      "apiKeyConversations": "KEY_REMOVED"];
+                      "apiKeyConversations": BVTestUsers().loadValueForKey(key: .conversationsKey11)];
     BVSDKManager.configure(withConfiguration: configDict, configType: .staging)
     BVSDKManager.shared().setLogLevel(.verbose)
   }
@@ -92,7 +92,7 @@ class AnswerSubmissionTests: BVBaseStubTestCase {
     let expectation = self.expectation(description: "")
     
     let answer = BVAnswerSubmission(questionId: "6104", answerText: "")
-    answer.userId = BVTestUsers().loadKeyForUserId(userId: .answerUserId)
+      answer.userId = BVTestUsers().loadValueForKey(key: .answerUserId)
     answer.action = .preview
     
     let sequenceFiles:[String] =

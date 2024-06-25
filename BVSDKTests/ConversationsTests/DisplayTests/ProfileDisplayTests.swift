@@ -15,7 +15,7 @@ class ProfileDisplayTests: XCTestCase {
   override func setUp() {
     super.setUp()
     let configDict = ["clientId": "conciergeapidocumentation",
-                      "apiKeyConversations": "KEY_REMOVED"];
+                      "apiKeyConversations": BVTestUsers().loadValueForKey(key: .conversationsKey3)];
     BVSDKManager.configure(withConfiguration: configDict, configType: .staging)
     BVSDKManager.shared().setLogLevel(.verbose)
   }
@@ -155,7 +155,7 @@ class ProfileDisplayTests: XCTestCase {
   
   func testProfileDisplayFailure() {
     let configDict = ["clientId": "conciergeapidocumentation",
-                      "apiKeyConversations": "badkey"];
+                      "apiKeyConversations": BVTestUsers().loadValueForKey(key: .conversationsKey14)];
     BVSDKManager.configure(withConfiguration: configDict, configType: .staging)
     
     let expectation = self.expectation(description: "testDisplayFailure")
