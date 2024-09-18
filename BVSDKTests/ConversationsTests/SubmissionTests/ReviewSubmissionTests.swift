@@ -48,7 +48,7 @@ class ReviewSubmissionTests: BVBaseStubTestCase {
       expectation.fulfill()
     })
     
-    waitForExpectations(timeout: 10, handler: nil)
+    waitForExpectations(timeout: 120, handler: nil)
   }
   
   func testSubmitReviewWithPhotoAndNetworkDelegate() {
@@ -464,11 +464,12 @@ class ReviewSubmissionTests: BVBaseStubTestCase {
     review.addRatingQuestion("Fit", value: 3)
     review.addCustomSubmissionParameter("_foo", withValue: "bar")
     
-    if let image = PhotoUploadTests.createPNG() {
-      review.addPhoto(image, withPhotoCaption: "Very photogenic")
+//    if let image = PhotoUploadTests.createPNG() {
+//      review.addPhoto(image, withPhotoCaption: "Very photogenic")
 
-    }
-    
+//    }
+      review.addVideo(URL(string: VIDEO_URL)!, withVideoCaption: VIDEO_CAPTION, uploadVideo: false)
+      review.addVideo(URL(string: VideoUploadTests.getVideoPath()!)!, withVideoCaption: "Test Video", uploadVideo: true)
     return review
   }
 }

@@ -19,6 +19,15 @@ class VideoUploadTests: BVBaseStubTestCase {
         BVSDKManager.shared().urlSessionDelegate = nil
     }
     
+    class func getVideoPath() -> String? {
+        let bundle = Bundle(for: VideoUploadTests.self)
+        guard let videoPath = bundle.path(forResource: "testVideo", ofType: "mp4")
+        else {
+            return nil
+        }
+        return videoPath
+    }
+    
     
     func testUploadVideoFailure() throws {
         let bundle = Bundle(for: VideoUploadTests.self)
@@ -35,8 +44,7 @@ class VideoUploadTests: BVBaseStubTestCase {
         
         let expectation = self.expectation(description: "testUploadVideo")
         
-        let bundle = Bundle(for: VideoUploadTests.self)
-        guard let videoPath = bundle.path(forResource: "testVideo", ofType: "mp4")
+        guard let videoPath = VideoUploadTests.getVideoPath()
         else {
             debugPrint("testVideo.mp4 not found")
             XCTFail()
@@ -44,7 +52,7 @@ class VideoUploadTests: BVBaseStubTestCase {
             return
         }
         
-        let video = BVVideoSubmission(video: videoPath, videoContentType: .review)
+        let video = BVVideoSubmission(video: videoPath, videoCaption: "Test Video", uploadVideo: true, videoContentType: .review)
         video.submit({ (videoSubmissionResponse) in
           XCTAssertNotNil(videoSubmissionResponse.result)
           XCTAssertNotNil(videoSubmissionResponse.result?.video.videoUrl)

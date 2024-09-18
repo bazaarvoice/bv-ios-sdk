@@ -23,16 +23,18 @@ static NSUInteger const MAX_VIDEO_BYTES = 250 * 1024 * 1024; /// BV API max is 2
 @interface BVVideoSubmission ()
 
 @property(nonnull, readwrite) NSString *video;
+@property(nonnull, readwrite) NSString *videoCaption;
 @property(readwrite) BVVideoContentType videoContentType;
 
 @end
 
 @implementation BVVideoSubmission
 
-
-- (nonnull instancetype)initWithVideo:(nonnull NSString *)video videoContentType:(BVVideoContentType)videoContentType {
+- (instancetype)initWithVideo:(NSString *)video videoCaption:(NSString *)videoCaption uploadVideo:(BOOL)uploadVideo videoContentType:(BVVideoContentType)videoContentType {
     if ((self = [super init])) {
       self.video = video;
+      self.videoCaption = videoCaption;
+      self.uploadVideo = uploadVideo;
       self.videoContentType = videoContentType;
       self.maxVideoBytes = MAX_VIDEO_BYTES;
     }
@@ -125,8 +127,9 @@ static NSUInteger const MAX_VIDEO_BYTES = 250 * 1024 * 1024; /// BV API max is 2
     [self submit:^(BVSubmissionResponse<BVSubmittedVideo *> *_Nonnull response) {
         
         NSString *videoUrl = response.result.video.videoUrl;
-        
-        success(videoUrl);
+        NSString *videoCaption = response.result.video.caption ?: self.videoCaption;
+
+        success(videoUrl, videoCaption);
     }
      
          failure:^(NSArray<NSError *> *__nonnull errors) {

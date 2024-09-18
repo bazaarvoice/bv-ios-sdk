@@ -100,4 +100,12 @@
 - (void)addPhoto:(nonnull UIImage *)image
     withPhotoCaption:(nullable NSString *)photoCaption;
 
+/// Add a user-provided video.
+///
+/// @param videoPath           The user-provded video.
+/// @param videoCaption    The user-provided caption for the video.
+- (void)addVideo:(nonnull NSURL *)videoPath
+    withVideoCaption:(nullable NSString *)videoCaption
+    uploadVideo:(BOOL)uploadVideo;
+
 @end

@@ -8,6 +8,7 @@
 #import "BVBaseUGCSubmission+Private.h"
 #import "BVLogger+Private.h"
 #import "BVPhotoSubmissionResponse.h"
+#import "BVVideoSubmissionResponse.h"
 #import "BVPixel.h"
 #import <UIKit/UIKit.h>
 
@@ -18,6 +19,12 @@
     NSArray<NSString *> *photoURLs;
 @property(nonatomic, strong, readwrite, nullable)
     NSArray<NSString *> *photoCaptions;
+@property(nonatomic, strong, readwrite, nullable)
+    NSMutableArray<BVVideoSubmission     *> *internalVideos;
+@property(nonatomic, strong, readwrite, nullable)
+    NSArray<NSString *> *videoURLs;
+@property(nonatomic, strong, readwrite, nullable)
+    NSArray<NSString *> *videoCaptions;
 @property(nonatomic, strong, nonnull) dispatch_queue_t serialUploadQueue;
 @property(nonatomic, strong, nonnull) dispatch_queue_t concurrentUploadQueue;
 @end
@@ -32,9 +39,18 @@
   return self.internalPhotos;
 }
 
++ (BVVideoContentType)videoContentType {
+  return BVVideoContentTypeReview;
+}
+
+- (NSMutableArray<BVVideoSubmission *> *)videos {
+  return self.internalVideos;
+}
+
 - (nonnull instancetype)init {
   if ((self = [super init])) {
     self.internalPhotos = [NSMutableArray array];
+    self.internalVideos = [NSMutableArray array];
     self.serialUploadQueue =
         dispatch_queue_create("com.bazaarvoice.BVBaseUGCSubmission.uploadQueue",
                               DISPATCH_QUEUE_SERIAL);
@@ -123,6 +139,8 @@
   /// photos but at least everything should succeed.
   self.photoURLs = nil;
   self.photoCaptions = nil;
+    self.videoURLs = nil;
+    self.videoCaptions = nil;
 
   if (BVSubmissionActionPreview == self.action || BVSubmissionActionForm == self.action) {
     NSString *warningLog =
@@ -167,6 +185,31 @@
     }
         failure:^(NSArray<NSError *> *_Nonnull errors) {
           [self sendErrors:errors failureCallback:failure];
+        }];
+      
+      /// upload videos before submitting comments (prr only)
+        [self asyncUploadVideo:^(NSArray<NSString *> * _Nonnull videoURLs,
+                                 NSArray<NSString *> * _Nonnull videoCaptions) {
+            /// Squirrel away video meta-data
+            self.videoURLs = videoURLs;
+            self.videoCaptions = videoCaptions;
+            
+            /// Do the actual submission
+            [super submit:success failure:failure];
+            
+            /// Send off analytics if need be
+            [videoURLs
+                enumerateObjectsUsingBlock:^(NSString *_Nonnull obj, NSUInteger idx,
+                                             BOOL *_Nonnull stop) {
+                  /// Queue one event for each photo uploaded.
+                  id<BVAnalyticEvent> videoUploadEvent = [self trackMediaUploadEvent];
+                  if (videoUploadEvent) {
+                    [BVPixel trackEvent:videoUploadEvent];
+                  }
+                }];
+
+        } failure:^(NSArray<NSError *> * _Nonnull errors) {
+            [self sendErrors:errors failureCallback:failure];
         }];
 
   }
@@ -230,6 +273,25 @@
       parameters[key] = obj;
     }];
   }
+    
+    if (self.videoURLs && self.videoCaptions &&
+        self.videos.count == self.videoURLs.count) {
+      [self.videoURLs
+          enumerateObjectsUsingBlock:^(NSString *_Nonnull obj, NSUInteger idx,
+                                       BOOL *_Nonnull stop) {
+            NSString *key =
+                [NSString stringWithFormat:@"videourl_%lu", (unsigned long)idx];
+            parameters[key] = obj;
+          }];
+
+      [self.photoCaptions enumerateObjectsUsingBlock:^(NSString *_Nonnull obj,
+                                                       NSUInteger idx,
+                                                       BOOL *_Nonnull stop) {
+        NSString *key =
+            [NSString stringWithFormat:@"videocaption_%lu", (unsigned long)idx];
+        parameters[key] = obj;
+      }];
+    }
 
   return parameters;
 }
@@ -237,6 +299,80 @@
 - (nullable id<BVAnalyticEvent>)trackMediaUploadEvent {
   NSAssert(NO, @"trackMediaUploadEvent method should be overridden");
   return nil;
+}
+
+- (void)addVideo:(nonnull NSURL *)videoPath withVideoCaption:(nullable NSString *)videoCaption uploadVideo:(BOOL)uploadVideo {
+    
+    BVVideoSubmission *video = [[BVVideoSubmission alloc] initWithVideo:videoPath.absoluteString
+                                                           videoCaption:videoCaption
+                                                            uploadVideo:uploadVideo
+                                                       videoContentType:BVVideoContentTypeReview];
+    
+  [self.internalVideos addObject:video];
+}
+
+- (void)asyncUploadVideo:(BVBaseUGCSubmissionVideoCompletion)success
+                 failure:(ConversationsFailureHandler)failure {
+    /// If we got nothing, then just bail
+    if (0 == self.videos.count) {
+        success(@[], @[]);
+        return;
+    }
+    
+    NSMutableArray<NSString *> *videoURLs = [NSMutableArray array];
+    NSMutableArray<NSString *> *videoCaptions = [NSMutableArray array];
+    NSMutableArray<NSError *> *videoUploadErrors = [NSMutableArray array];
+    
+    dispatch_group_t uploadGroup = dispatch_group_create();
+    
+    for (BVVideoSubmission *video in self.videos) {
+        /// We enter before the dispatch to avoid any whacky race conditions such as
+        /// these blocks not being serviced until the final wait block is issued.
+        if (video.uploadVideo) {
+            dispatch_group_enter(uploadGroup);
+            
+            /// Enqueue the photo upload request
+            dispatch_async(self.concurrentUploadQueue, ^{
+                
+                [video upload:^(NSString * _Nonnull videoURL,
+                                NSString * _Nonnull videoCaption) {
+                    dispatch_async(self.serialUploadQueue, ^{
+                        if (videoURL && videoCaption) {
+                            [videoURLs addObject:videoURL];
+                            [videoCaptions addObject:videoCaption];
+                        }
+                        /// We leave if success
+                        dispatch_group_leave(uploadGroup);
+                    });
+                } failure:^(NSArray<NSError *> * _Nonnull errors) {
+                    dispatch_async(self.serialUploadQueue, ^{
+                        [videoUploadErrors addObjectsFromArray:errors];
+                        
+                        /// We leave if success
+                        dispatch_group_leave(uploadGroup);
+                    });
+                }];
+            });
+        } else {
+            [videoURLs addObject:video.video];
+            [videoCaptions addObject:video.videoCaption];
+        }
+    }
+
+  dispatch_async(self.concurrentUploadQueue, ^{
+    /// Wait until all enqueued operations have completed
+    (void)dispatch_group_wait(uploadGroup, DISPATCH_TIME_FOREVER);
+
+    /// Call back on the serial queue just to be on the safe side, i.e., if we
+    /// make code changes in the future that may introduce race conditions.
+    dispatch_async(self.serialUploadQueue, ^{
+      if (0 < videoUploadErrors.count) {
+        failure(videoUploadErrors);
+        return;
+      }
+      success(videoURLs, videoCaptions);
+    });
+  });
 }
 
 @end
