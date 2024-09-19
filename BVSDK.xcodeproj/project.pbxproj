@@ -78,8 +78,6 @@
 		5F6201E11F70399200454D77 /* NSError+BVSubmissionErrorCodeParser.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F6201E01F70399200454D77 /* NSError+BVSubmissionErrorCodeParser.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5F6201E31F7039EA00454D77 /* NSError+BVSubmissionErrorCodeParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F6201E21F7039EA00454D77 /* NSError+BVSubmissionErrorCodeParser.m */; };
 		5FE2C0811F6B05100090DD55 /* BVErrorCode.h in Headers */ = {isa = PBXBuildFile; fileRef = 5FE2C0801F6B05100090DD55 /* BVErrorCode.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		87252B091EF46FA10011C845 /* BVUploadableYouTubeVideo.h in Headers */ = {isa = PBXBuildFile; fileRef = 87252B071EF46FA10011C845 /* BVUploadableYouTubeVideo.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		87252B0A1EF46FA10011C845 /* BVUploadableYouTubeVideo.m in Sources */ = {isa = PBXBuildFile; fileRef = 87252B081EF46FA10011C845 /* BVUploadableYouTubeVideo.m */; };
 		873DC48E1E7482840080FA03 /* BVAnalyticEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 873DC4791E7482840080FA03 /* BVAnalyticEvent.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		873DC48F1E7482840080FA03 /* BVAnalyticEventManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 873DC47A1E7482840080FA03 /* BVAnalyticEventManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		873DC4901E7482840080FA03 /* BVAnalyticEventManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 873DC47B1E7482840080FA03 /* BVAnalyticEventManager.m */; };
@@ -672,8 +670,18 @@
 		B5D7E840205083EC00DEB434 /* testSubmitStoreReviewWithPhoto.json in Resources */ = {isa = PBXBuildFile; fileRef = B5D7E83F205083EC00DEB434 /* testSubmitStoreReviewWithPhoto.json */; };
 		B5D7E8422050840E00DEB434 /* testSubmitReviewFailureStore.json in Resources */ = {isa = PBXBuildFile; fileRef = B5D7E8412050840E00DEB434 /* testSubmitReviewFailureStore.json */; };
 		B5DDA04E1FE8633800C47C01 /* BVCurationsAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B5DDA04D1FE8633800C47C01 /* BVCurationsAssets.xcassets */; };
-		B7856D222ABC18EF0031D22A /* userIdJSON.json in Resources */ = {isa = PBXBuildFile; fileRef = B7856D212ABC18EF0031D22A /* userIdJSON.json */; };
+		B72EA4532BD78E5900462116 /* testVideo.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = B72EA4522BD78E5900462116 /* testVideo.mp4 */; };
+		B7856D222ABC18EF0031D22A /* testKeys.json in Resources */ = {isa = PBXBuildFile; fileRef = B7856D212ABC18EF0031D22A /* testKeys.json */; };
 		B7856D242ABC1F770031D22A /* BVTestUsers.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7856D232ABC1F770031D22A /* BVTestUsers.swift */; };
+		B7B3B95C2BAAB48D00A2831B /* BVSubmittedVideo.m in Sources */ = {isa = PBXBuildFile; fileRef = B7B3B95B2BAAB48D00A2831B /* BVSubmittedVideo.m */; };
+		B7B3B95E2BAAB4B500A2831B /* BVVideoSubmission.h in Headers */ = {isa = PBXBuildFile; fileRef = B7E7C6A72BA2D70F006632CF /* BVVideoSubmission.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B7B3B95F2BAAB4B700A2831B /* BVSubmittedVideo.h in Headers */ = {isa = PBXBuildFile; fileRef = B7B3B95D2BAAB49F00A2831B /* BVSubmittedVideo.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B7B3B9612BAAB62100A2831B /* BVVideoSubmissionResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = B7B3B9602BAAB62100A2831B /* BVVideoSubmissionResponse.m */; };
+		B7B3B9632BAAB62A00A2831B /* BVVideoSubmissionResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = B7B3B9622BAAB62A00A2831B /* BVVideoSubmissionResponse.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B7B3B9652BAAB8CF00A2831B /* BVVideoSubmissionErrorResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = B7B3B9642BAAB8CF00A2831B /* BVVideoSubmissionErrorResponse.m */; };
+		B7B3B9672BAAB8DD00A2831B /* BVVideoSubmissionErrorResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = B7B3B9662BAAB8DD00A2831B /* BVVideoSubmissionErrorResponse.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B7B3B9692BAABCF800A2831B /* VideoUploadTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B3B9682BAABCF800A2831B /* VideoUploadTests.swift */; };
+		B7E7C6A62BA2D616006632CF /* BVVideoSubmission.m in Sources */ = {isa = PBXBuildFile; fileRef = B7E7C6A52BA2D616006632CF /* BVVideoSubmission.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -748,8 +756,6 @@
 		870F133E1E490B5200D46BE6 /* BVCurationsUICollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVCurationsUICollectionView.m; sourceTree = "<group>"; };
 		870F133F1E490B5200D46BE6 /* BVCurationsUICollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVCurationsUICollectionViewCell.h; sourceTree = "<group>"; };
 		870F13401E490B5200D46BE6 /* BVCurationsUICollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVCurationsUICollectionViewCell.m; sourceTree = "<group>"; };
-		87252B071EF46FA10011C845 /* BVUploadableYouTubeVideo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVUploadableYouTubeVideo.h; sourceTree = "<group>"; };
-		87252B081EF46FA10011C845 /* BVUploadableYouTubeVideo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVUploadableYouTubeVideo.m; sourceTree = "<group>"; };
 		873DC4791E7482840080FA03 /* BVAnalyticEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVAnalyticEvent.h; sourceTree = "<group>"; };
 		873DC47A1E7482840080FA03 /* BVAnalyticEventManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVAnalyticEventManager.h; sourceTree = "<group>"; };
 		873DC47B1E7482840080FA03 /* BVAnalyticEventManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVAnalyticEventManager.m; sourceTree = "<group>"; };
@@ -1351,8 +1357,18 @@
 		B5D7E83F205083EC00DEB434 /* testSubmitStoreReviewWithPhoto.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = testSubmitStoreReviewWithPhoto.json; sourceTree = "<group>"; };
 		B5D7E8412050840E00DEB434 /* testSubmitReviewFailureStore.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = testSubmitReviewFailureStore.json; sourceTree = "<group>"; };
 		B5DDA04D1FE8633800C47C01 /* BVCurationsAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = BVCurationsAssets.xcassets; sourceTree = "<group>"; };
-		B7856D212ABC18EF0031D22A /* userIdJSON.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = userIdJSON.json; sourceTree = "<group>"; };
+		B72EA4522BD78E5900462116 /* testVideo.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = testVideo.mp4; sourceTree = "<group>"; };
+		B7856D212ABC18EF0031D22A /* testKeys.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = testKeys.json; sourceTree = "<group>"; };
 		B7856D232ABC1F770031D22A /* BVTestUsers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BVTestUsers.swift; sourceTree = "<group>"; };
+		B7B3B95B2BAAB48D00A2831B /* BVSubmittedVideo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BVSubmittedVideo.m; sourceTree = "<group>"; };
+		B7B3B95D2BAAB49F00A2831B /* BVSubmittedVideo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BVSubmittedVideo.h; sourceTree = "<group>"; };
+		B7B3B9602BAAB62100A2831B /* BVVideoSubmissionResponse.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BVVideoSubmissionResponse.m; sourceTree = "<group>"; };
+		B7B3B9622BAAB62A00A2831B /* BVVideoSubmissionResponse.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BVVideoSubmissionResponse.h; sourceTree = "<group>"; };
+		B7B3B9642BAAB8CF00A2831B /* BVVideoSubmissionErrorResponse.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BVVideoSubmissionErrorResponse.m; sourceTree = "<group>"; };
+		B7B3B9662BAAB8DD00A2831B /* BVVideoSubmissionErrorResponse.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BVVideoSubmissionErrorResponse.h; sourceTree = "<group>"; };
+		B7B3B9682BAABCF800A2831B /* VideoUploadTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoUploadTests.swift; sourceTree = "<group>"; };
+		B7E7C6A52BA2D616006632CF /* BVVideoSubmission.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVVideoSubmission.m; sourceTree = "<group>"; };
+		B7E7C6A72BA2D70F006632CF /* BVVideoSubmission.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVVideoSubmission.h; sourceTree = "<group>"; };
 		EC098EFAFB725736F0751BA0 /* libPods-BVSDK.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BVSDK.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -1421,8 +1437,14 @@
 		87252B0B1EF46FF40011C845 /* Video */ = {
 			isa = PBXGroup;
 			children = (
-				87252B071EF46FA10011C845 /* BVUploadableYouTubeVideo.h */,
-				87252B081EF46FA10011C845 /* BVUploadableYouTubeVideo.m */,
+				B7E7C6A52BA2D616006632CF /* BVVideoSubmission.m */,
+				B7E7C6A72BA2D70F006632CF /* BVVideoSubmission.h */,
+				B7B3B95B2BAAB48D00A2831B /* BVSubmittedVideo.m */,
+				B7B3B95D2BAAB49F00A2831B /* BVSubmittedVideo.h */,
+				B7B3B9602BAAB62100A2831B /* BVVideoSubmissionResponse.m */,
+				B7B3B9622BAAB62A00A2831B /* BVVideoSubmissionResponse.h */,
+				B7B3B9642BAAB8CF00A2831B /* BVVideoSubmissionErrorResponse.m */,
+				B7B3B9662BAAB8DD00A2831B /* BVVideoSubmissionErrorResponse.h */,
 			);
 			path = Video;
 			sourceTree = "<group>";
@@ -2107,7 +2129,7 @@
 				87F2DD901DAD698500FB43F3 /* emptyJSON.json */,
 				87A9ECB71E1DA87E00666636 /* malformedJSON.json */,
 				87F2DD911DAD698500FB43F3 /* productsToReviewResult.json */,
-				B7856D212ABC18EF0031D22A /* userIdJSON.json */,
+				B7856D212ABC18EF0031D22A /* testKeys.json */,
 				87F2DD921DAD698500FB43F3 /* recommendations */,
 			);
 			path = MockData;
@@ -2174,6 +2196,7 @@
 		87F2DE021DAD945D00FB43F3 /* SubmissionTests */ = {
 			isa = PBXGroup;
 			children = (
+				B72EA4522BD78E5900462116 /* testVideo.mp4 */,
 				5F140C5C1F9553FE00905828 /* skelly_android.jpg */,
 				15D4F83E1DF5EC3C00E6B30D /* ph.png */,
 				87F2DE031DAD945D00FB43F3 /* AnswerSubmissionTests.swift */,
@@ -2184,6 +2207,7 @@
 				87F2DE061DAD945D00FB43F3 /* ReviewSubmissionTests.swift */,
 				87F2DE071DAD945D00FB43F3 /* StoreReviewSubmissionTests.swift */,
 				B56E1F911FBF86360025D5B4 /* UASSubmissionTests.swift */,
+				B7B3B9682BAABCF800A2831B /* VideoUploadTests.swift */,
 			);
 			path = SubmissionTests;
 			sourceTree = "<group>";
@@ -2838,6 +2862,7 @@
 				87F2DD451DAD585E00FB43F3 /* BVShopperProfile.h in Headers */,
 				87F2DC8F1DAD585E00FB43F3 /* BVSecondaryRatingsAverages.h in Headers */,
 				87F2DD361DAD585E00FB43F3 /* BVProductRecommendationsContainer.h in Headers */,
+				B7B3B95F2BAAB4B700A2831B /* BVSubmittedVideo.h in Headers */,
 				87F2DCE91DAD585E00FB43F3 /* BVQuestionSubmissionResponse.h in Headers */,
 				153974471E6F151500BA52C1 /* BVBaseReviewsRequest.h in Headers */,
 				B58639BA214AFE0A00EFD763 /* BVMessageInterceptor.h in Headers */,
@@ -2911,6 +2936,7 @@
 				9FB5C462243DA6690057BA34 /* BVReviewHighlights.h in Headers */,
 				B57B8324215E802A006B378E /* BVSubmittedPhoto.h in Headers */,
 				B58639C6214AFE8700EFD763 /* BVContextualInterests.h in Headers */,
+				B7B3B9672BAAB8DD00A2831B /* BVVideoSubmissionErrorResponse.h in Headers */,
 				B5863993214AFBD000EFD763 /* BVConversationsError.h in Headers */,
 				875411831E1F201E006C5C6E /* BVStoreReviewNotificationProperties.h in Headers */,
 				8754116F1E1F201E006C5C6E /* BVNotificationCenterObject.h in Headers */,
@@ -2955,6 +2981,7 @@
 				2E0672CE288C1DE2008D2AF7 /* BVReviewsRelevancySortOptionValue.h in Headers */,
 				873DC4911E7482840080FA03 /* BVConversionEvent.h in Headers */,
 				873DC4971E7482840080FA03 /* BVInViewEvent.h in Headers */,
+				B7B3B9632BAAB62A00A2831B /* BVVideoSubmissionResponse.h in Headers */,
 				2E0672D6288C3FFA008D2AF7 /* BVSortTypeValues.h in Headers */,
 				2E0672E4288C55C8008D2AF7 /* BVRelevancySortTypeValue.h in Headers */,
 				873DC49B1E7482840080FA03 /* BVPersonalizationEvent.h in Headers */,
@@ -2979,6 +3006,7 @@
 				150FC2C61E71C21700717041 /* BVBulkProductResponse.h in Headers */,
 				87C5FF621E36B416004EE6E8 /* BVAuthor.h in Headers */,
 				87D424E91E89C32E00147FDB /* BVReviewIncludeType.h in Headers */,
+				B7B3B95E2BAAB4B500A2831B /* BVVideoSubmission.h in Headers */,
 				87D425271E8EE39700147FDB /* BVViewedCGCEvent.h in Headers */,
 				8777BB421EBA3823008C4715 /* BVSyndicationSource.h in Headers */,
 				87B6DFA11ECA424300B75835 /* BVCommentsRequest.h in Headers */,
@@ -2994,7 +3022,6 @@
 				87EDAFD51EDDD1FD00FA07C0 /* BVSubmittedComment.h in Headers */,
 				87EDAFD91EDDD3E200FA07C0 /* BVCommentSubmissionErrorResponse.h in Headers */,
 				877AD2941EE1D134006C7070 /* BVBaseUGCSubmission.h in Headers */,
-				87252B091EF46FA10011C845 /* BVUploadableYouTubeVideo.h in Headers */,
 				B5A973112193875400634B31 /* BVAnalyticsRemoteLogger+Testing.h in Headers */,
 				87EDAFCC1EDDC9F400FA07C0 /* BVCommentSubmission.h in Headers */,
 				5F6201E11F70399200454D77 /* NSError+BVSubmissionErrorCodeParser.h in Headers */,
@@ -3148,6 +3175,7 @@
 				87F2DDB71DAD698500FB43F3 /* curations500Error.json in Resources */,
 				87F2DDB91DAD698500FB43F3 /* curationsFeedTest1.json in Resources */,
 				87F2DDBA1DAD698500FB43F3 /* post_ErrorParsingBody.json in Resources */,
+				B72EA4532BD78E5900462116 /* testVideo.mp4 in Resources */,
 				87F2DDBB1DAD698500FB43F3 /* post_MissingRequiredKey.json in Resources */,
 				87F2DDBC1DAD698500FB43F3 /* post_successfulCreation.json in Resources */,
 				87F2DDBD1DAD698500FB43F3 /* puppy.jpg in Resources */,
@@ -3197,7 +3225,7 @@
 				B5A7B5342050758300494F83 /* testSubmitQuestionWithPhotoPreview.json in Resources */,
 				B5D7E83A20507E5300DEB434 /* testSubmitReviewFailure.json in Resources */,
 				B5D7E83E20507E8400DEB434 /* testSubmitReviewFailureCodeParsing.json in Resources */,
-				B7856D222ABC18EF0031D22A /* userIdJSON.json in Resources */,
+				B7856D222ABC18EF0031D22A /* testKeys.json in Resources */,
 				B5D7E83C20507E6D00DEB434 /* testSubmitReviewFailureFormCodeParsing.json in Resources */,
 				B5A7B52620505BCC00494F83 /* testSumbitReviewCommentWithError.json in Resources */,
 				B5A7B524205059FA00494F83 /* testSubmitReviewComment.json in Resources */,
@@ -3289,7 +3317,6 @@
 			files = (
 				5F6201DF1F70385E00454D77 /* NSError+BVErrorCodeParser.m in Sources */,
 				B58639B9214AFE0A00EFD763 /* BVMultiPart+NSURLRequest.m in Sources */,
-				87252B0A1EF46FA10011C845 /* BVUploadableYouTubeVideo.m in Sources */,
 				153550AF1E898CF000C62D90 /* BVCurationsUICollectionViewCell.m in Sources */,
 				15BE4D261E55F03200C12B57 /* BVCurationsUICollectionView.m in Sources */,
 				B586398F214AFBD000EFD763 /* BVConversationsInclude.m in Sources */,
@@ -3305,6 +3332,7 @@
 				87F2DC831DAD585E00FB43F3 /* BVQuestionsAndAnswersResponse.m in Sources */,
 				87F2DD3E1DAD585E00FB43F3 /* BVRecommendationsLoader.m in Sources */,
 				87F2DCAC1DAD585E00FB43F3 /* BVProductDisplayPageRequest.m in Sources */,
+				B7B3B9652BAAB8CF00A2831B /* BVVideoSubmissionErrorResponse.m in Sources */,
 				2E0672DE288C542E008D2AF7 /* BVSortType.m in Sources */,
 				B5A764DC1FE1917C00B5DC9A /* BVStoreIncludeType.m in Sources */,
 				87F2DC961DAD585E00FB43F3 /* BVProduct.m in Sources */,
@@ -3396,6 +3424,7 @@
 				87C5FF5D1E36A8B7004EE6E8 /* BVAuthorResponse.m in Sources */,
 				87A02B671E096B300002701B /* BVFeedbackSubmissionResponse.m in Sources */,
 				87F2DC5F1DAD585E00FB43F3 /* BVBadgeType.m in Sources */,
+				B7B3B95C2BAAB48D00A2831B /* BVSubmittedVideo.m in Sources */,
 				87F2DD461DAD585E00FB43F3 /* BVShopperProfile.m in Sources */,
 				87F2DC7B1DAD585E00FB43F3 /* BVPhotoSizes.m in Sources */,
 				B58639C7214AFE8700EFD763 /* BVAnalyticsManager.m in Sources */,
@@ -3475,6 +3504,7 @@
 				8754117A1E1F201E006C5C6E /* BVProductReviewNotificationCenter.m in Sources */,
 				87EDAFD21EDDD02F00FA07C0 /* BVCommentSubmissionResponse.m in Sources */,
 				150FC2C71E71C21700717041 /* BVBulkProductResponse.m in Sources */,
+				B7E7C6A62BA2D616006632CF /* BVVideoSubmission.m in Sources */,
 				87F2DCF41DAD585E00FB43F3 /* BVSubmittedReview.m in Sources */,
 				87F2DC1F1DAD585E00FB43F3 /* BVPixel.m in Sources */,
 				5F6201E31F7039EA00454D77 /* NSError+BVSubmissionErrorCodeParser.m in Sources */,
@@ -3490,6 +3520,7 @@
 				B57B8325215E802A006B378E /* BVSubmittedPhoto.m in Sources */,
 				87F2DCB81DAD585E00FB43F3 /* BVFilter.m in Sources */,
 				87F2DC7F1DAD585E00FB43F3 /* BVProductStatistics.m in Sources */,
+				B7B3B9612BAAB62100A2831B /* BVVideoSubmissionResponse.m in Sources */,
 				B583AEE2200816A4001E9548 /* BVSortOption.m in Sources */,
 				87F2DCBA1DAD585E00FB43F3 /* BVFilterOperator.m in Sources */,
 				87F2DC5D1DAD585E00FB43F3 /* BVBadge.m in Sources */,
@@ -3538,6 +3569,7 @@
 				981EE848226627F2000E9191 /* ReviewFilterDisplayTests.swift in Sources */,
 				87F2DD621DAD5E9400FB43F3 /* BVNotificationConfigTests.m in Sources */,
 				87F2DE111DAD945D00FB43F3 /* ProductIdEscapeTests.swift in Sources */,
+				B7B3B9692BAABCF800A2831B /* VideoUploadTests.swift in Sources */,
 				9F9672F92509FF9E00484A29 /* BulkProductTests.swift in Sources */,
 				987C076F2254038A00227934 /* BVIProgressiveSubmitTest.swift in Sources */,
 				87F2DD5E1DAD5E9400FB43F3 /* BVBaseStubTestCase.m in Sources */,

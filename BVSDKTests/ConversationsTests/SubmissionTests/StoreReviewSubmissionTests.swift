@@ -14,7 +14,7 @@ class StoreReviewSubmissionTests: BVBaseStubTestCase {
   override func setUp() {
     super.setUp()
     let configDict = ["clientId": "apiunittests",
-                      "apiKeyConversationsStores": "KEY_REMOVED"];
+                      "apiKeyConversationsStores": BVTestUsers().loadValueForKey(key: .conversationsKey11)];
     BVSDKManager.configure(withConfiguration: configDict, configType: .staging)
     BVSDKManager.shared().setLogLevel(.error)
   }
@@ -51,7 +51,7 @@ class StoreReviewSubmissionTests: BVBaseStubTestCase {
     
     let review = BVStoreReviewSubmission(reviewTitle: "", reviewText: "", rating: 123, storeId: "1000001")
     review.userNickname = "cgil"
-    review.userId = BVTestUsers().loadKeyForUserId(userId: .storeReviewUserId)
+      review.userId = BVTestUsers().loadValueForKey(key: .storeReviewUserId)
     review.action = .submit
     
     review.submit({ (reviewSubmission) in

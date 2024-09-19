@@ -88,7 +88,7 @@ static BVAuthenticatedUser *user = nil;
 
 // For a typical user profile call, the client will simply pass in the UAS
 // string and be done with it. The logic behind the call to
-// BVSDKManager#setUserWithAuthString will handle all requirements for making
+// BVSDKManager#setUAS will handle all requirements for making
 // sure the profile is updated.
 // The text itself
 - (void)testSetUserProfile {
@@ -104,7 +104,7 @@ static BVAuthenticatedUser *user = nil;
           withPassingTest:self.passableTest];
 
   [[BVSDKManager sharedManager]
-      setUserWithAuthString:@"0ce436b29697d6bc74f30f724b9b0bb6646174653d3132333"
+      setUAS:@"0ce436b29697d6bc74f30f724b9b0bb6646174653d3132333"
                             @"4267573657269643d5265636f6d6d656e646174696f6e7353"
                             @"646b54657374"]; // pre-populated with a small
                                               // profile interested in "pets",

@@ -117,7 +117,6 @@ FOUNDATION_EXPORT const unsigned char BVSDKVersionString[];
 #import "BVQuestionsTableView.h"
 #import "BVReviewCollectionViewCell.h"
 #import "BVStoreReviewsRequest.h"
-#import "BVUploadableYouTubeVideo.h"
 
 #import "BVAuthorRequest.h"
 #import "BVBaseProductRequest.h"
@@ -161,6 +160,11 @@ FOUNDATION_EXPORT const unsigned char BVSDKVersionString[];
 #import "BVPhotoSubmissionErrorResponse.h"
 #import "BVPhotoSubmissionResponse.h"
 
+/// Video Submission
+#import "BVVideoSubmission.h"
+#import "BVVideoSubmissionErrorResponse.h"
+#import "BVVideoSubmissionResponse.h"
+#import "BVSubmittedVideo.h"
 
 // Question Submission
 #import "BVQuestionSubmission.h"

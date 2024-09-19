@@ -12,7 +12,7 @@ class ProductTextSearchTests: XCTestCase {
   override func setUp() {
     // Put setup code here. This method is called before the invocation of each test method in the class.
     let configDict = ["clientId": "apitestcustomer",
-                      "apiKeyConversations": "KEY_REMOVED"];
+                      "apiKeyConversations": BVTestUsers().loadValueForKey(key: .conversationsKey3)];
     BVSDKManager.configure(withConfiguration: configDict, configType: .staging)
   }
   
@@ -47,7 +47,11 @@ class ProductTextSearchTests: XCTestCase {
       XCTAssertEqual(product.reviewStatistics?.incentivizedReviewCount, 6)
       XCTAssertNotNil(product.reviewStatistics?.contextDataDistribution?.value(forKey: "IncentivizedReview"))
       
-      let incentivizedReview = product.reviewStatistics?.contextDataDistribution?.value(forKey: "IncentivizedReview") as! BVDistributionElement
+      guard let incentivizedReview = product.reviewStatistics?.contextDataDistribution?.value(forKey: "IncentivizedReview") as? BVDistributionElement else {
+        XCTFail("Incentivised review not found")
+        expectation.fulfill()
+        return
+      }
       XCTAssertEqual(incentivizedReview.identifier, "IncentivizedReview")
       XCTAssertEqual(incentivizedReview.label, "Received an incentive for this review")
       XCTAssertEqual(incentivizedReview.values.count, 1)
