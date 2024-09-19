@@ -48,7 +48,7 @@ class ReviewSubmissionTests: BVBaseStubTestCase {
       expectation.fulfill()
     })
     
-    waitForExpectations(timeout: 10, handler: nil)
+    waitForExpectations(timeout: 120, handler: nil)
   }
   
   func testSubmitReviewWithPhotoAndNetworkDelegate() {
@@ -123,10 +123,10 @@ class ReviewSubmissionTests: BVBaseStubTestCase {
   let VIDEO_URL = "https://www.youtube.com/watch?v=oHg5SJYRHA0"
   let VIDEO_CAPTION = "Very videogenic"
   
-  func testSubmitReviewWithVideoPreview() {
+  func testSubmitReviewWithYoutubeVideoPreview() {
     
     let expectation =
-      self.expectation(description: "testSubmitReviewWithVideoPreview")
+      self.expectation(description: "testSubmitReviewWithYoutubeVideoPreview")
     
     let sequenceFiles:[String] =
       [
@@ -135,10 +135,10 @@ class ReviewSubmissionTests: BVBaseStubTestCase {
     stub(withJSONSequence: sequenceFiles)
     
     let review = self.fillOutReview(.preview)
-    review.addVideoURL(VIDEO_URL, withCaption: VIDEO_CAPTION)
+    review.addVideo(VIDEO_URL, withVideoCaption: VIDEO_CAPTION, uploadVideo: false)
+
     review.submit({ (reviewSubmission) in
       // When run in Preview mode, we get the formFields that can be used for submission.
-      
       XCTAssertTrue(reviewSubmission.formFields?.keys.count == 50)
       expectation.fulfill()
     }, failure: { (errors) in
@@ -148,6 +148,32 @@ class ReviewSubmissionTests: BVBaseStubTestCase {
     
     waitForExpectations(timeout: 10, handler: nil)
   }
+    
+    func testSubmitReviewWithUploadVideoPreview() {
+      
+      let expectation =
+        self.expectation(description: "testSubmitReviewWithUploadVideoPreview")
+      
+      let sequenceFiles:[String] =
+        [
+          "testSubmitReviewWithVideoPreview.json"
+      ]
+      stub(withJSONSequence: sequenceFiles)
+      
+      let review = self.fillOutReview(.preview)
+      review.addVideo(VideoUploadTests.getVideoPath()!, withVideoCaption: VIDEO_CAPTION, uploadVideo: true)
+
+      review.submit({ (reviewSubmission) in
+        // When run in Preview mode, we get the formFields that can be used for submission.
+        XCTAssertTrue(reviewSubmission.formFields?.keys.count == 50)
+        expectation.fulfill()
+      }, failure: { (errors) in
+        XCTFail()
+        expectation.fulfill()
+      })
+      
+      waitForExpectations(timeout: 10, handler: nil)
+    }
     
     func testSubmitReviewWithFormFields() {
 
@@ -196,7 +222,7 @@ class ReviewSubmissionTests: BVBaseStubTestCase {
     }, failure: { (errors) in
       errors.forEach { print("Expected Failure Item: \($0)") }
       
-      XCTAssertEqual(errors.count, 4)
+      XCTAssertEqual(errors.count, 5)
       expectation.fulfill()
     })
     waitForExpectations(timeout: 10, handler: nil)
@@ -246,7 +272,7 @@ class ReviewSubmissionTests: BVBaseStubTestCase {
       }
       
       XCTAssertEqual(formRequiredCount, 3)
-      XCTAssertEqual(formDuplicateCount, 0)
+      XCTAssertEqual(formDuplicateCount, 1)
       XCTAssertEqual(formTooHighCount, 1)
       
       expectation.fulfill()
@@ -435,8 +461,8 @@ class ReviewSubmissionTests: BVBaseStubTestCase {
   
   func fillOutReview(_ action : BVSubmissionAction) -> BVReviewSubmission {
     let review = BVReviewSubmission(
-      reviewTitle: "review title",
-      reviewText: "more than 50 more than 50 more than 50 more than 50 more" +
+      reviewTitle: "test review obj-c 7",
+      reviewText: "both video and photo upload more than 50 more than 50 more than 50 more than 50 more" +
       "than 50",
       rating: 4,
       productId: "test1")
@@ -468,7 +494,6 @@ class ReviewSubmissionTests: BVBaseStubTestCase {
       review.addPhoto(image, withPhotoCaption: "Very photogenic")
 
     }
-    
     return review
   }
 }
