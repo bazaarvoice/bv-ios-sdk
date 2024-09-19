@@ -122,7 +122,7 @@
         "Options": [],
         "Type": "TextInput",
         "Required": false,
-        "Value": "https://www.youtube.com/watch?v=oHg5SJYRHA0",
+        "Value": null,
         "Label": null,
         "MinLength": 0,
         "Id": "videourl_1",

@@ -104,7 +104,7 @@
 ///
 /// @param videoPath           The user-provded video.
 /// @param videoCaption    The user-provided caption for the video.
-- (void)addVideo:(nonnull NSURL *)videoPath
+- (void)addVideo:(nonnull NSString *)videoPath
     withVideoCaption:(nullable NSString *)videoCaption
     uploadVideo:(BOOL)uploadVideo;
 

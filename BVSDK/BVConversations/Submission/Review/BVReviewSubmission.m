@@ -10,7 +10,6 @@
 #import "BVFeatureUsedEvent.h"
 #import "BVReviewSubmissionErrorResponse.h"
 #import "BVReviewSubmissionResponse.h"
-#import "BVUploadableYouTubeVideo.h"
 
 @interface BVReviewSubmission ()
 
@@ -25,8 +24,6 @@
 @property(nonnull) NSMutableDictionary *ratingSliders;
 @property(nonnull) NSMutableDictionary *predefinedTags;
 @property(nonnull) NSMutableDictionary *freeformTags;
-
-@property(nonnull) NSMutableArray<BVUploadableYouTubeVideo *> *videos;
 
 @end
 
@@ -52,7 +49,7 @@
     self.ratingSliders = [NSMutableDictionary dictionary];
     self.predefinedTags = [NSMutableDictionary dictionary];
     self.freeformTags = [NSMutableDictionary dictionary];
-    self.videos = [NSMutableArray array];
+//    self.videos = [NSMutableArray array];
   }
   return self;
 }
@@ -68,7 +65,7 @@
         self.ratingSliders = [NSMutableDictionary dictionary];
         self.predefinedTags = [NSMutableDictionary dictionary];
         self.freeformTags = [NSMutableDictionary dictionary];
-        self.videos = [NSMutableArray array];
+//        self.videos = [NSMutableArray array];
     }
     return self;
 }
@@ -129,14 +126,6 @@
   self.freeformTags[key] = value;
 }
 
-- (void)addVideoURL:(nonnull NSString *)url
-        withCaption:(nullable NSString *)videoCaption {
-  BVUploadableYouTubeVideo *video =
-      [[BVUploadableYouTubeVideo alloc] initWithVideoURL:url
-                                            videoCaption:videoCaption];
-  [self.videos addObject:video];
-}
-
 - (nonnull NSString *)endpoint {
   return @"submitreview.json";
 }
@@ -160,20 +149,6 @@
   if (self.netPromoterScore) {
     parameters[@"netpromoterscore"] =
         [NSString stringWithFormat:@"%i", [self.netPromoterScore intValue]];
-  }
-
-  NSUInteger videoIndex = 1;
-  for (BVUploadableYouTubeVideo *video in self.videos) {
-    NSString *key = [NSString stringWithFormat:@"VideoUrl_%i", (int)videoIndex];
-    parameters[key] = video.videoURL;
-
-    if (video.videoCaption) {
-      NSString *key =
-          [NSString stringWithFormat:@"VideoCaption_%i", (int)videoIndex];
-      parameters[key] = video.videoCaption;
-    }
-
-    videoIndex += 1;
   }
 
   for (NSString *key in self.additionalFields) {
