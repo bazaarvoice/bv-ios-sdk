@@ -49,7 +49,6 @@
     self.ratingSliders = [NSMutableDictionary dictionary];
     self.predefinedTags = [NSMutableDictionary dictionary];
     self.freeformTags = [NSMutableDictionary dictionary];
-//    self.videos = [NSMutableArray array];
   }
   return self;
 }
@@ -65,7 +64,6 @@
         self.ratingSliders = [NSMutableDictionary dictionary];
         self.predefinedTags = [NSMutableDictionary dictionary];
         self.freeformTags = [NSMutableDictionary dictionary];
-//        self.videos = [NSMutableArray array];
     }
     return self;
 }
