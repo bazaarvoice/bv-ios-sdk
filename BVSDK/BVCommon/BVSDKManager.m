@@ -27,6 +27,7 @@
 @property(nonnull, nonatomic, strong) NSString *PINContentExtensionCategory;
 @property(nonnull, nonatomic, strong) NSString *apiKeyShopperAdvertising;
 @property(nonnull, nonatomic, strong) NSString *apiKeyCurations;
+@property(nonnull, nonatomic, strong) NSString *apiKeyProductSentiments;
 @end
 
 @implementation BVSDKManager
@@ -102,6 +103,7 @@ static NSString *const BVSDKConfigFileExt = @"json";
     _apiKeyConversations = nil;
     _apiKeyShopperAdvertising = nil;
     _apiKeyConversationsStores = nil;
+    _apiKeyProductSentiments = nil;
     _internalConfiguration = [[BVSDKConfiguration alloc] init];
   }
   return self;
@@ -271,6 +273,12 @@ static NSString *const BVSDKConfigFileExt = @"json";
   _apiKeyCurations = apiKeyCurations;
   [_internalConfiguration setValue:apiKeyCurations
                         forKeyPath:@"apiKeyCurations"];
+}
+
+- (void)setApiKeyProductSentiments:(NSString *)apiKeyProductSentiments {
+  _apiKeyProductSentiments = apiKeyProductSentiments;
+  [_internalConfiguration setValue:apiKeyProductSentiments
+                        forKeyPath:@"apiKeyProductSentiments"];
 }
 
 - (void)setLogLevel:(BVLogLevel)logLevel {
