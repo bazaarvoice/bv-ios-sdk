@@ -5,7 +5,9 @@
 //  Copyright © 2024 Bazaarvoice. All rights reserved.
 // 
 
-@interface BVExpressions : NSObject
+#import "BVProductSentimentsResult.h"
+
+@interface BVExpressions : BVProductSentimentsResult
 
 @property(nullable) NSString *nativeFeature;
 @property(nullable) NSArray<NSString *> *expressions;

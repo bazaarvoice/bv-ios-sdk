@@ -182,11 +182,13 @@ static NSString *const BVSDKConfigFileExt = @"json";
   NSString *returnValue = [NSString
       stringWithFormat:@"Setting Values:\n conversations API key = %@ \n "
                        @"shopper marketing API key = %@ \n conversations "
-                       @"for stores API key = %@ \n BVSDK Version = %@ \n "
+                       @"for stores API key = %@ \n for Product Sentiments "
+                       @"API key = %@ \n BVSDK Version = %@ \n "
                        @"clientId = %@ \n staging = %i \n",
                        self.configuration.apiKeyConversations,
                        self.configuration.apiKeyShopperAdvertising,
                        self.configuration.apiKeyConversationsStores,
+                       self.configuration.apiKeyProductSentiments,
                        BV_SDK_VERSION, self.configuration.clientId,
                        self.configuration.staging];
 

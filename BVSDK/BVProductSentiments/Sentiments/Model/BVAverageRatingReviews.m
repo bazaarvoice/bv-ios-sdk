@@ -10,8 +10,7 @@
 #import "BVNullHelper.h"
 
 @implementation BVAverageRatingReviews
-
-- (nullable id)initWithApiResponse:(nullable id)apiResponse {
+- (id)initWithApiResponse:(NSDictionary *)apiResponse {
   if ((self = [super init])) {
     if (!apiResponse) {
       return nil;

@@ -9,15 +9,14 @@
 #import "BVNullHelper.h"
 
 @implementation BVSummarisedFeatures 
-
-- (nullable id)initWithApiResponse:(nullable id)apiResponse {
+- (id)initWithApiResponse:(NSDictionary *)apiResponse {
   if ((self = [super init])) {
     if (!apiResponse) {
       return nil;
     }
 
     NSDictionary *apiObject = (NSDictionary *)apiResponse;
-
+      
     SET_IF_NOT_NULL(self.bestFeatures, apiObject[@"bestFeatures"])
     SET_IF_NOT_NULL(self.worstFeatures, apiObject[@"worstFeatures"])
     SET_IF_NOT_NULL(self.status, apiObject[@"status"])

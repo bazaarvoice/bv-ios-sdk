@@ -7,6 +7,7 @@
 
 #ifndef BVProductSentimentsErrorCode_h
 #define BVProductSentimentsErrorCode_h
+#import <Foundation/Foundation.h>
 
 
 /*

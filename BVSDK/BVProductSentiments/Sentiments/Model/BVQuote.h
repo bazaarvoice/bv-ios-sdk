@@ -8,8 +8,9 @@
 #ifndef BVQuote_h
 #define BVQuote_h
 
+#import "BVProductSentimentsResult.h"
 
-@interface BVQuote : NSObject
+@interface BVQuote : BVProductSentimentsResult
 
 @property(nullable) NSString *quoteID;
 @property(nullable) NSString *text;

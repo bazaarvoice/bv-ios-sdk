@@ -10,11 +10,12 @@
 
 #import <Foundation/Foundation.h>
 #import "BVProductFeature.h"
+#import "BVProductSentimentsResult.h"
 
 /*
  Best and Worst features of a product.
  */
-@interface BVProductFeatures : NSObject
+@interface BVProductFeatures : BVProductSentimentsResult
                                         
 @property(nullable) NSArray<BVProductFeature *> *features;
 @property(nullable) NSNumber *status;

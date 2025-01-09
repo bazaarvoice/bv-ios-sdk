@@ -7,8 +7,9 @@
 
 #import <Foundation/Foundation.h>
 #import "BVQuote.h"
+#import "BVProductSentimentsResult.h"
 
-@interface BVQuotes : NSObject
+@interface BVQuotes : BVProductSentimentsResult
 
 @property(nullable) NSArray<BVQuote *> *quotes;
 @property(nullable) NSNumber *status;

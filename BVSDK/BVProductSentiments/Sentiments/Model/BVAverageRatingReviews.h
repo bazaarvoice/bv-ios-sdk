@@ -8,8 +8,9 @@
 #ifndef BVAverageRatingReviews_h
 #define BVAverageRatingReviews_h
 
+#import "BVProductSentimentsResult.h"
 
-@interface BVAverageRatingReviews : NSObject
+@interface BVAverageRatingReviews : BVProductSentimentsResult
 
 @property(nullable) NSNumber *positive;
 @property(nullable) NSNumber *negative;

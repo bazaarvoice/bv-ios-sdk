@@ -601,7 +601,6 @@ class ReviewDisplayTests: XCTestCase {
           
           let request = BVReviewsRequest(productId: "test1", limit: 10, offset: 0)
             .filter(on: .additionalField, fieldId: "DateOfUserExperience", relationalFilterOperatorValue: .equalTo, value: "2021-04-03")
-            .addCustomDisplayParameter("", withValue: <#T##String#>)
             
           request.load({ (response) in
           

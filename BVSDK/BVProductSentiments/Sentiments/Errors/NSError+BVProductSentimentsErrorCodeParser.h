@@ -12,7 +12,7 @@
 #import <Foundation/Foundation.h>
 
 @interface NSError (BVProductSentimentsErrorCodeParser)
-- (BVProductSentimentsErrorCode)bvSubmissionErrorCode;
+- (BVProductSentimentsErrorCode)bvProductSentimentsErrorCode;
 @end
 
 #endif /* NSError_BVProductSentimentsErrorCodeParser_h */
