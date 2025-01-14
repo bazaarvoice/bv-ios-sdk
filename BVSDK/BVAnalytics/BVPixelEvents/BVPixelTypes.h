@@ -22,7 +22,8 @@ typedef NS_ENUM(NSInteger, BVPixelFeatureUsedEventName) {
   BVPixelFeatureUsedEventContentClick,
   BVPixelFeatureUsedEventNameInView,
   BVPixelFeatureUsedNameProfile,
-    BVPixelFeatureUsedEventNameReviewHighlights
+  BVPixelFeatureUsedEventNameReviewHighlights,
+  BVPixelFeatureUsedEventNameReviewSummary
 };
 
 @interface BVPixelFeatureUsedEventNameUtil : NSObject
