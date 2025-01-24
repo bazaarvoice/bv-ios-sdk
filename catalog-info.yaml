@@ -11,9 +11,9 @@ metadata:
     - mobile
     - objective-c
 spec:
-  type: service
+  type: library
   lifecycle: production
-  owner: mobile
+  owner: mobile-sdk
   system: mobile-sdk
   dependsOn:
     - resource:progressiveReviewUser
