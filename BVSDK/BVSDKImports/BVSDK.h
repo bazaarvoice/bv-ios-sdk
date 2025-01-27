@@ -208,3 +208,28 @@ FOUNDATION_EXPORT const unsigned char BVSDKVersionString[];
 
 // Recommendations
 #import "BVRecommendations.h"
+
+// Product Sentiments
+#import "BVProductSentiments.h"
+#import "BVProductSentimentsRequest.h"
+#import "BVProductSentimentsResponse.h"
+#import "BVProductSentimentsResult.h"
+#import "BVProductSentimentsErrorCode.h"
+#import "BVProductSentimentsErrorResponse.h"
+#import "NSError+BVProductSentimentsErrorCodeParser.h"
+
+#import "BVSummarisedFeaturesRequest.h"
+#import "BVSummarisedFeaturesResponse.h"
+
+#import "BVSummarisedFeaturesQuotesRequest.h"
+#import "BVSummarisedFeaturesQuotesResponse.h"
+
+#import "BVProductFeaturesRequest.h"
+#import "BVProductFeaturesResponse.h"
+
+#import "BVProductQuotesRequest.h"
+#import "BVProductQuotesResponse.h"
+
+#import "BVProductExpressionsRequest.h"
+#import "BVProductExpressionsResponse.h"
+

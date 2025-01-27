@@ -82,4 +82,10 @@ Pod::Spec.new do |s|
     recs.dependency 'BVSDK/BVCommon'
   end
 
+ s.subspec 'BVProductSentiments' do |sentiments|
+    recs.source_files = 'BVSDK/BVProductSentiments/**/*.{h,m}'
+    recs.private_header_files = 'BVSDK/BVProductSentiments/**/Private/*.{h}'
+    recs.dependency 'BVSDK/BVCommon'
+  end
+
 end
