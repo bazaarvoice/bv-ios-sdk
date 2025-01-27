@@ -35,6 +35,8 @@
     return @"Profile";
   case BVPixelFeatureUsedEventNameReviewHighlights:
     return @"ReviewHighlights";
+  case BVPixelFeatureUsedEventNameReviewSummary:
+    return @"ReviewSummary";
   default:
     return @"Unknown";
     break;

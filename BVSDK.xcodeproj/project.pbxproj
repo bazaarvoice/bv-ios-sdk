@@ -670,9 +670,40 @@
 		B5D7E840205083EC00DEB434 /* testSubmitStoreReviewWithPhoto.json in Resources */ = {isa = PBXBuildFile; fileRef = B5D7E83F205083EC00DEB434 /* testSubmitStoreReviewWithPhoto.json */; };
 		B5D7E8422050840E00DEB434 /* testSubmitReviewFailureStore.json in Resources */ = {isa = PBXBuildFile; fileRef = B5D7E8412050840E00DEB434 /* testSubmitReviewFailureStore.json */; };
 		B5DDA04E1FE8633800C47C01 /* BVCurationsAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B5DDA04D1FE8633800C47C01 /* BVCurationsAssets.xcassets */; };
+		B70EC8CA2D12A331007A37D3 /* BVProductSentimentsResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = B78683BF2D002A9B00BBCE3F /* BVProductSentimentsResponse.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B70EC8CB2D12A334007A37D3 /* BVProductSentimentsResult.h in Headers */ = {isa = PBXBuildFile; fileRef = B78683CB2D08468300BBCE3F /* BVProductSentimentsResult.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B70EC8CC2D12A337007A37D3 /* BVProductSentimentsErrorCode.h in Headers */ = {isa = PBXBuildFile; fileRef = B78683B62CEDE61A00BBCE3F /* BVProductSentimentsErrorCode.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B70EC8CD2D12A33A007A37D3 /* NSError+BVProductSentimentsErrorCodeParser.h in Headers */ = {isa = PBXBuildFile; fileRef = B78683B82CEDE77800BBCE3F /* NSError+BVProductSentimentsErrorCodeParser.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B70EC8CE2D12A350007A37D3 /* BVProductFeatures.h in Headers */ = {isa = PBXBuildFile; fileRef = B78683AD2CEDD9B300BBCE3F /* BVProductFeatures.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B70EC8CF2D12A35C007A37D3 /* BVQuotes.h in Headers */ = {isa = PBXBuildFile; fileRef = B78683A72CEDC4F100BBCE3F /* BVQuotes.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B70EC8D02D12A360007A37D3 /* BVQuote.h in Headers */ = {isa = PBXBuildFile; fileRef = B78683B32CEDDD4400BBCE3F /* BVQuote.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B70EC8D12D12A363007A37D3 /* BVExpressions.h in Headers */ = {isa = PBXBuildFile; fileRef = B78683AA2CEDC50B00BBCE3F /* BVExpressions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B70EC8D22D12A36A007A37D3 /* BVAverageRatingReviews.h in Headers */ = {isa = PBXBuildFile; fileRef = B78683B02CEDDB4200BBCE3F /* BVAverageRatingReviews.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B72EA4532BD78E5900462116 /* testVideo.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = B72EA4522BD78E5900462116 /* testVideo.mp4 */; };
 		B7856D222ABC18EF0031D22A /* testKeys.json in Resources */ = {isa = PBXBuildFile; fileRef = B7856D212ABC18EF0031D22A /* testKeys.json */; };
 		B7856D242ABC1F770031D22A /* BVTestUsers.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7856D232ABC1F770031D22A /* BVTestUsers.swift */; };
+		B786839E2CE5FA6E00BBCE3F /* BVProductSentiments.h in Headers */ = {isa = PBXBuildFile; fileRef = B786839D2CE5FA6E00BBCE3F /* BVProductSentiments.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B78683A02CE5FA8900BBCE3F /* BVSummarisedFeatures.h in Headers */ = {isa = PBXBuildFile; fileRef = B786839F2CE5FA8900BBCE3F /* BVSummarisedFeatures.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B78683A22CE5FAA000BBCE3F /* BVSummarisedFeatures.m in Sources */ = {isa = PBXBuildFile; fileRef = B78683A12CE5FAA000BBCE3F /* BVSummarisedFeatures.m */; };
+		B78683A42CEC690500BBCE3F /* BVProductFeature.h in Headers */ = {isa = PBXBuildFile; fileRef = B78683A32CEC690500BBCE3F /* BVProductFeature.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B78683A62CEC691400BBCE3F /* BVProductFeature.m in Sources */ = {isa = PBXBuildFile; fileRef = B78683A52CEC691400BBCE3F /* BVProductFeature.m */; };
+		B78683A92CEDC4FD00BBCE3F /* BVQuotes.m in Sources */ = {isa = PBXBuildFile; fileRef = B78683A82CEDC4FD00BBCE3F /* BVQuotes.m */; };
+		B78683AC2CEDC51900BBCE3F /* BVExpressions.m in Sources */ = {isa = PBXBuildFile; fileRef = B78683AB2CEDC51900BBCE3F /* BVExpressions.m */; };
+		B78683AF2CEDD9C100BBCE3F /* BVProductFeatures.m in Sources */ = {isa = PBXBuildFile; fileRef = B78683AE2CEDD9C100BBCE3F /* BVProductFeatures.m */; };
+		B78683B22CEDDB4E00BBCE3F /* BVAverageRatingReviews.m in Sources */ = {isa = PBXBuildFile; fileRef = B78683B12CEDDB4E00BBCE3F /* BVAverageRatingReviews.m */; };
+		B78683B52CEDDD4E00BBCE3F /* BVQuote.m in Sources */ = {isa = PBXBuildFile; fileRef = B78683B42CEDDD4E00BBCE3F /* BVQuote.m */; };
+		B78683BA2CEDE78D00BBCE3F /* NSError+BVProductSentimentsErrorCodeParser.m in Sources */ = {isa = PBXBuildFile; fileRef = B78683B92CEDE78D00BBCE3F /* NSError+BVProductSentimentsErrorCodeParser.m */; };
+		B78683BC2D002A7400BBCE3F /* BVProductSentimentsRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = B78683BB2D002A7400BBCE3F /* BVProductSentimentsRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B78683BE2D002A8200BBCE3F /* BVProductSentimentsRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = B78683BD2D002A8200BBCE3F /* BVProductSentimentsRequest.m */; };
+		B78683C12D002AA700BBCE3F /* BVProductSentimentsResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = B78683C02D002AA700BBCE3F /* BVProductSentimentsResponse.m */; };
+		B78683C42D08177700BBCE3F /* BVSummarisedFeaturesRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = B78683C32D08177700BBCE3F /* BVSummarisedFeaturesRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B78683C62D08178300BBCE3F /* BVSummarisedFeaturesRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = B78683C52D08178300BBCE3F /* BVSummarisedFeaturesRequest.m */; };
+		B78683C82D08179700BBCE3F /* BVSummarisedFeaturesResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = B78683C72D08179700BBCE3F /* BVSummarisedFeaturesResponse.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B78683CA2D0817A800BBCE3F /* BVSummarisedFeaturesResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = B78683C92D0817A800BBCE3F /* BVSummarisedFeaturesResponse.m */; };
+		B78683CD2D08469400BBCE3F /* BVProductSentimentsResult.m in Sources */ = {isa = PBXBuildFile; fileRef = B78683CC2D08469400BBCE3F /* BVProductSentimentsResult.m */; };
+		B78683D02D096C1900BBCE3F /* BVSummarisedFeaturesQueryTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B78683CF2D096C1900BBCE3F /* BVSummarisedFeaturesQueryTest.swift */; };
+		B78683D32D096FD900BBCE3F /* BVProductSentimentsErrorResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = B78683D22D096FD900BBCE3F /* BVProductSentimentsErrorResponse.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B78683D52D096FEE00BBCE3F /* BVProductSentimentsErrorResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = B78683D42D096FEE00BBCE3F /* BVProductSentimentsErrorResponse.m */; };
 		B7B3B95C2BAAB48D00A2831B /* BVSubmittedVideo.m in Sources */ = {isa = PBXBuildFile; fileRef = B7B3B95B2BAAB48D00A2831B /* BVSubmittedVideo.m */; };
 		B7B3B95E2BAAB4B500A2831B /* BVVideoSubmission.h in Headers */ = {isa = PBXBuildFile; fileRef = B7E7C6A72BA2D70F006632CF /* BVVideoSubmission.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B7B3B95F2BAAB4B700A2831B /* BVSubmittedVideo.h in Headers */ = {isa = PBXBuildFile; fileRef = B7B3B95D2BAAB49F00A2831B /* BVSubmittedVideo.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -681,6 +712,34 @@
 		B7B3B9652BAAB8CF00A2831B /* BVVideoSubmissionErrorResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = B7B3B9642BAAB8CF00A2831B /* BVVideoSubmissionErrorResponse.m */; };
 		B7B3B9672BAAB8DD00A2831B /* BVVideoSubmissionErrorResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = B7B3B9662BAAB8DD00A2831B /* BVVideoSubmissionErrorResponse.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B7B3B9692BAABCF800A2831B /* VideoUploadTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B3B9682BAABCF800A2831B /* VideoUploadTests.swift */; };
+		B7C833302D2E57970088B7C0 /* BVSummarisedFeaturesQuotesRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = B7C8332F2D2E57970088B7C0 /* BVSummarisedFeaturesQuotesRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B7C833322D2E57B10088B7C0 /* BVSummarisedFeaturesQuotesRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = B7C833312D2E57B10088B7C0 /* BVSummarisedFeaturesQuotesRequest.m */; };
+		B7C833342D2E57BF0088B7C0 /* BVSummarisedFeaturesQuotesResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = B7C833332D2E57BF0088B7C0 /* BVSummarisedFeaturesQuotesResponse.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B7C833362D2E57CB0088B7C0 /* BVSummarisedFeaturesQuotesResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = B7C833352D2E57CB0088B7C0 /* BVSummarisedFeaturesQuotesResponse.m */; };
+		B7C833382D2E6EC60088B7C0 /* BVSummarisedFeaturesQuotesQueryTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7C833372D2E6EC60088B7C0 /* BVSummarisedFeaturesQuotesQueryTest.swift */; };
+		B7C8333D2D2E79330088B7C0 /* BVProductFeaturesRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = B7C8333C2D2E79330088B7C0 /* BVProductFeaturesRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B7C8333F2D2E793E0088B7C0 /* BVProductFeaturesRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = B7C8333E2D2E793E0088B7C0 /* BVProductFeaturesRequest.m */; };
+		B7C833412D2E794F0088B7C0 /* BVProductFeaturesResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = B7C833402D2E794F0088B7C0 /* BVProductFeaturesResponse.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B7C833432D2E795B0088B7C0 /* BVProductFeaturesResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = B7C833422D2E795B0088B7C0 /* BVProductFeaturesResponse.m */; };
+		B7C833452D2E79730088B7C0 /* BVProductQuotesRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = B7C833442D2E79730088B7C0 /* BVProductQuotesRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B7C833472D2E79800088B7C0 /* BVProductQuotesRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = B7C833462D2E79800088B7C0 /* BVProductQuotesRequest.m */; };
+		B7C833492D2E798D0088B7C0 /* BVProductQuotesResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = B7C833482D2E798D0088B7C0 /* BVProductQuotesResponse.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B7C8334B2D2E79960088B7C0 /* BVProductQuotesResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = B7C8334A2D2E79960088B7C0 /* BVProductQuotesResponse.m */; };
+		B7C8334D2D2E79B20088B7C0 /* BVProductExpressionsRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = B7C8334C2D2E79B20088B7C0 /* BVProductExpressionsRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B7C8334F2D2E79BE0088B7C0 /* BVProductExpressionsRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = B7C8334E2D2E79BE0088B7C0 /* BVProductExpressionsRequest.m */; };
+		B7C833512D2E79C90088B7C0 /* BVProductExpressionsResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = B7C833502D2E79C90088B7C0 /* BVProductExpressionsResponse.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B7C833532D2E79D30088B7C0 /* BVProductExpressionsResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = B7C833522D2E79D30088B7C0 /* BVProductExpressionsResponse.m */; };
+		B7C833552D2E7CC70088B7C0 /* BVProductFeaturesQueryTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7C833542D2E7CC70088B7C0 /* BVProductFeaturesQueryTest.swift */; };
+		B7C833592D2E7FA50088B7C0 /* BVProductQuotesQueryTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7C833582D2E7FA50088B7C0 /* BVProductQuotesQueryTest.swift */; };
+		B7C8335B2D2E866E0088B7C0 /* BVProductExpressionsQueryTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7C8335A2D2E866E0088B7C0 /* BVProductExpressionsQueryTest.swift */; };
+		B7C8335E2D2FA9520088B7C0 /* BVReviewSummaryRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = B7C8335D2D2FA9520088B7C0 /* BVReviewSummaryRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B7C833602D2FA95E0088B7C0 /* BVReviewSummaryRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = B7C8335F2D2FA95E0088B7C0 /* BVReviewSummaryRequest.m */; };
+		B7C833622D2FA96C0088B7C0 /* BVReviewSummaryResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = B7C833612D2FA96C0088B7C0 /* BVReviewSummaryResponse.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B7C833642D2FA9750088B7C0 /* BVReviewSummaryResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = B7C833632D2FA9750088B7C0 /* BVReviewSummaryResponse.m */; };
+		B7C833672D2FAA330088B7C0 /* BVReviewSummary.h in Headers */ = {isa = PBXBuildFile; fileRef = B7C833662D2FAA330088B7C0 /* BVReviewSummary.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B7C833692D2FAA3D0088B7C0 /* BVReviewSummary.m in Sources */ = {isa = PBXBuildFile; fileRef = B7C833682D2FAA3D0088B7C0 /* BVReviewSummary.m */; };
+		B7C8336B2D2FC4A30088B7C0 /* BVReviewSummaryDisplayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7C8336A2D2FC4A30088B7C0 /* BVReviewSummaryDisplayTests.swift */; };
+		B7C8336D2D2FCA740088B7C0 /* BVReviewSummaryFormatTypeValue.h in Headers */ = {isa = PBXBuildFile; fileRef = B7C8336C2D2FC8930088B7C0 /* BVReviewSummaryFormatTypeValue.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B7E7C6A62BA2D616006632CF /* BVVideoSubmission.m in Sources */ = {isa = PBXBuildFile; fileRef = B7E7C6A52BA2D616006632CF /* BVVideoSubmission.m */; };
 /* End PBXBuildFile section */
 
@@ -1360,6 +1419,37 @@
 		B72EA4522BD78E5900462116 /* testVideo.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = testVideo.mp4; sourceTree = "<group>"; };
 		B7856D212ABC18EF0031D22A /* testKeys.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = testKeys.json; sourceTree = "<group>"; };
 		B7856D232ABC1F770031D22A /* BVTestUsers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BVTestUsers.swift; sourceTree = "<group>"; };
+		B786839D2CE5FA6E00BBCE3F /* BVProductSentiments.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BVProductSentiments.h; sourceTree = "<group>"; };
+		B786839F2CE5FA8900BBCE3F /* BVSummarisedFeatures.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BVSummarisedFeatures.h; sourceTree = "<group>"; };
+		B78683A12CE5FAA000BBCE3F /* BVSummarisedFeatures.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BVSummarisedFeatures.m; sourceTree = "<group>"; };
+		B78683A32CEC690500BBCE3F /* BVProductFeature.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BVProductFeature.h; sourceTree = "<group>"; };
+		B78683A52CEC691400BBCE3F /* BVProductFeature.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BVProductFeature.m; sourceTree = "<group>"; };
+		B78683A72CEDC4F100BBCE3F /* BVQuotes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BVQuotes.h; sourceTree = "<group>"; };
+		B78683A82CEDC4FD00BBCE3F /* BVQuotes.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BVQuotes.m; sourceTree = "<group>"; };
+		B78683AA2CEDC50B00BBCE3F /* BVExpressions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BVExpressions.h; sourceTree = "<group>"; };
+		B78683AB2CEDC51900BBCE3F /* BVExpressions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BVExpressions.m; sourceTree = "<group>"; };
+		B78683AD2CEDD9B300BBCE3F /* BVProductFeatures.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BVProductFeatures.h; sourceTree = "<group>"; };
+		B78683AE2CEDD9C100BBCE3F /* BVProductFeatures.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BVProductFeatures.m; sourceTree = "<group>"; };
+		B78683B02CEDDB4200BBCE3F /* BVAverageRatingReviews.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BVAverageRatingReviews.h; sourceTree = "<group>"; };
+		B78683B12CEDDB4E00BBCE3F /* BVAverageRatingReviews.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BVAverageRatingReviews.m; sourceTree = "<group>"; };
+		B78683B32CEDDD4400BBCE3F /* BVQuote.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BVQuote.h; sourceTree = "<group>"; };
+		B78683B42CEDDD4E00BBCE3F /* BVQuote.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BVQuote.m; sourceTree = "<group>"; };
+		B78683B62CEDE61A00BBCE3F /* BVProductSentimentsErrorCode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BVProductSentimentsErrorCode.h; sourceTree = "<group>"; };
+		B78683B82CEDE77800BBCE3F /* NSError+BVProductSentimentsErrorCodeParser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSError+BVProductSentimentsErrorCodeParser.h"; sourceTree = "<group>"; };
+		B78683B92CEDE78D00BBCE3F /* NSError+BVProductSentimentsErrorCodeParser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSError+BVProductSentimentsErrorCodeParser.m"; sourceTree = "<group>"; };
+		B78683BB2D002A7400BBCE3F /* BVProductSentimentsRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BVProductSentimentsRequest.h; sourceTree = "<group>"; };
+		B78683BD2D002A8200BBCE3F /* BVProductSentimentsRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BVProductSentimentsRequest.m; sourceTree = "<group>"; };
+		B78683BF2D002A9B00BBCE3F /* BVProductSentimentsResponse.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BVProductSentimentsResponse.h; sourceTree = "<group>"; };
+		B78683C02D002AA700BBCE3F /* BVProductSentimentsResponse.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BVProductSentimentsResponse.m; sourceTree = "<group>"; };
+		B78683C32D08177700BBCE3F /* BVSummarisedFeaturesRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BVSummarisedFeaturesRequest.h; sourceTree = "<group>"; };
+		B78683C52D08178300BBCE3F /* BVSummarisedFeaturesRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BVSummarisedFeaturesRequest.m; sourceTree = "<group>"; };
+		B78683C72D08179700BBCE3F /* BVSummarisedFeaturesResponse.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BVSummarisedFeaturesResponse.h; sourceTree = "<group>"; };
+		B78683C92D0817A800BBCE3F /* BVSummarisedFeaturesResponse.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BVSummarisedFeaturesResponse.m; sourceTree = "<group>"; };
+		B78683CB2D08468300BBCE3F /* BVProductSentimentsResult.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BVProductSentimentsResult.h; sourceTree = "<group>"; };
+		B78683CC2D08469400BBCE3F /* BVProductSentimentsResult.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BVProductSentimentsResult.m; sourceTree = "<group>"; };
+		B78683CF2D096C1900BBCE3F /* BVSummarisedFeaturesQueryTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BVSummarisedFeaturesQueryTest.swift; sourceTree = "<group>"; };
+		B78683D22D096FD900BBCE3F /* BVProductSentimentsErrorResponse.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BVProductSentimentsErrorResponse.h; sourceTree = "<group>"; };
+		B78683D42D096FEE00BBCE3F /* BVProductSentimentsErrorResponse.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BVProductSentimentsErrorResponse.m; sourceTree = "<group>"; };
 		B7B3B95B2BAAB48D00A2831B /* BVSubmittedVideo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BVSubmittedVideo.m; sourceTree = "<group>"; };
 		B7B3B95D2BAAB49F00A2831B /* BVSubmittedVideo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BVSubmittedVideo.h; sourceTree = "<group>"; };
 		B7B3B9602BAAB62100A2831B /* BVVideoSubmissionResponse.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BVVideoSubmissionResponse.m; sourceTree = "<group>"; };
@@ -1367,6 +1457,34 @@
 		B7B3B9642BAAB8CF00A2831B /* BVVideoSubmissionErrorResponse.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BVVideoSubmissionErrorResponse.m; sourceTree = "<group>"; };
 		B7B3B9662BAAB8DD00A2831B /* BVVideoSubmissionErrorResponse.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BVVideoSubmissionErrorResponse.h; sourceTree = "<group>"; };
 		B7B3B9682BAABCF800A2831B /* VideoUploadTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoUploadTests.swift; sourceTree = "<group>"; };
+		B7C8332F2D2E57970088B7C0 /* BVSummarisedFeaturesQuotesRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BVSummarisedFeaturesQuotesRequest.h; sourceTree = "<group>"; };
+		B7C833312D2E57B10088B7C0 /* BVSummarisedFeaturesQuotesRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BVSummarisedFeaturesQuotesRequest.m; sourceTree = "<group>"; };
+		B7C833332D2E57BF0088B7C0 /* BVSummarisedFeaturesQuotesResponse.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BVSummarisedFeaturesQuotesResponse.h; sourceTree = "<group>"; };
+		B7C833352D2E57CB0088B7C0 /* BVSummarisedFeaturesQuotesResponse.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BVSummarisedFeaturesQuotesResponse.m; sourceTree = "<group>"; };
+		B7C833372D2E6EC60088B7C0 /* BVSummarisedFeaturesQuotesQueryTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BVSummarisedFeaturesQuotesQueryTest.swift; sourceTree = "<group>"; };
+		B7C8333C2D2E79330088B7C0 /* BVProductFeaturesRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BVProductFeaturesRequest.h; sourceTree = "<group>"; };
+		B7C8333E2D2E793E0088B7C0 /* BVProductFeaturesRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BVProductFeaturesRequest.m; sourceTree = "<group>"; };
+		B7C833402D2E794F0088B7C0 /* BVProductFeaturesResponse.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BVProductFeaturesResponse.h; sourceTree = "<group>"; };
+		B7C833422D2E795B0088B7C0 /* BVProductFeaturesResponse.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BVProductFeaturesResponse.m; sourceTree = "<group>"; };
+		B7C833442D2E79730088B7C0 /* BVProductQuotesRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BVProductQuotesRequest.h; sourceTree = "<group>"; };
+		B7C833462D2E79800088B7C0 /* BVProductQuotesRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BVProductQuotesRequest.m; sourceTree = "<group>"; };
+		B7C833482D2E798D0088B7C0 /* BVProductQuotesResponse.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BVProductQuotesResponse.h; sourceTree = "<group>"; };
+		B7C8334A2D2E79960088B7C0 /* BVProductQuotesResponse.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BVProductQuotesResponse.m; sourceTree = "<group>"; };
+		B7C8334C2D2E79B20088B7C0 /* BVProductExpressionsRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BVProductExpressionsRequest.h; sourceTree = "<group>"; };
+		B7C8334E2D2E79BE0088B7C0 /* BVProductExpressionsRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BVProductExpressionsRequest.m; sourceTree = "<group>"; };
+		B7C833502D2E79C90088B7C0 /* BVProductExpressionsResponse.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BVProductExpressionsResponse.h; sourceTree = "<group>"; };
+		B7C833522D2E79D30088B7C0 /* BVProductExpressionsResponse.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BVProductExpressionsResponse.m; sourceTree = "<group>"; };
+		B7C833542D2E7CC70088B7C0 /* BVProductFeaturesQueryTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BVProductFeaturesQueryTest.swift; sourceTree = "<group>"; };
+		B7C833582D2E7FA50088B7C0 /* BVProductQuotesQueryTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BVProductQuotesQueryTest.swift; sourceTree = "<group>"; };
+		B7C8335A2D2E866E0088B7C0 /* BVProductExpressionsQueryTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BVProductExpressionsQueryTest.swift; sourceTree = "<group>"; };
+		B7C8335D2D2FA9520088B7C0 /* BVReviewSummaryRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BVReviewSummaryRequest.h; sourceTree = "<group>"; };
+		B7C8335F2D2FA95E0088B7C0 /* BVReviewSummaryRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BVReviewSummaryRequest.m; sourceTree = "<group>"; };
+		B7C833612D2FA96C0088B7C0 /* BVReviewSummaryResponse.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BVReviewSummaryResponse.h; sourceTree = "<group>"; };
+		B7C833632D2FA9750088B7C0 /* BVReviewSummaryResponse.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BVReviewSummaryResponse.m; sourceTree = "<group>"; };
+		B7C833662D2FAA330088B7C0 /* BVReviewSummary.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BVReviewSummary.h; sourceTree = "<group>"; };
+		B7C833682D2FAA3D0088B7C0 /* BVReviewSummary.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BVReviewSummary.m; sourceTree = "<group>"; };
+		B7C8336A2D2FC4A30088B7C0 /* BVReviewSummaryDisplayTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BVReviewSummaryDisplayTests.swift; sourceTree = "<group>"; };
+		B7C8336C2D2FC8930088B7C0 /* BVReviewSummaryFormatTypeValue.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BVReviewSummaryFormatTypeValue.h; sourceTree = "<group>"; };
 		B7E7C6A52BA2D616006632CF /* BVVideoSubmission.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVVideoSubmission.m; sourceTree = "<group>"; };
 		B7E7C6A72BA2D70F006632CF /* BVVideoSubmission.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVVideoSubmission.h; sourceTree = "<group>"; };
 		EC098EFAFB725736F0751BA0 /* libPods-BVSDK.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BVSDK.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1623,6 +1741,7 @@
 				875410A71E1F10DF006C5C6E /* BVExtensionNotifications */,
 				875411531E1F201E006C5C6E /* BVNotifications */,
 				87F2DC021DAD585E00FB43F3 /* BVRecommendations */,
+				B78683912CE5F59400BBCE3F /* BVProductSentiments */,
 				87FEC8C81DB11448007DD44E /* Support */,
 			);
 			path = BVSDK;
@@ -1631,6 +1750,7 @@
 		87F2DAB41DAD579D00FB43F3 /* BVSDKTests */ = {
 			isa = PBXGroup;
 			children = (
+				B78683CE2D096BEE00BBCE3F /* ProductSentimentsTests */,
 				B59F8F2620360D9700087EF0 /* AnalyticsTests */,
 				B59F8F2720360DB500087EF0 /* CommonTests */,
 				87F2DDF21DAD945D00FB43F3 /* ConversationsTests */,
@@ -1732,6 +1852,8 @@
 				5F6201DD1F70342C00454D77 /* NSError+BVErrorCodeParser.m */,
 				2E998AD42789B4990036DE64 /* BVFeature.h */,
 				2E998AD62789B4C20036DE64 /* BVFeature.m */,
+				B7C833662D2FAA330088B7C0 /* BVReviewSummary.h */,
+				B7C833682D2FAA3D0088B7C0 /* BVReviewSummary.m */,
 				87F2DB4A1DAD585E00FB43F3 /* GenericConversationsResult */,
 				B5863984214AFBCF00EFD763 /* Private */,
 			);
@@ -1781,6 +1903,7 @@
 				B57B833D2163CA23006B378E /* Question */,
 				B57B833F2163CA86006B378E /* Review */,
 				9FB5C44A243DA60C0057BA34 /* ReviewHighlights */,
+				B7C8335C2D2FA9020088B7C0 /* ReviewSummarisation */,
 				B57B833E2163CA74006B378E /* Statistics */,
 				2E998AC92789964E0036DE64 /* Feature */,
 			);
@@ -1818,6 +1941,7 @@
 				B583B124200E8ABE001E9548 /* BVSortOptionValues.h */,
 				B583B121200E8ABD001E9548 /* BVSortOrderValues.h */,
 				2E0672D5288C3FFA008D2AF7 /* BVSortTypeValues.h */,
+				B7C8336C2D2FC8930088B7C0 /* BVReviewSummaryFormatTypeValue.h */,
 				B583B11E200E888C001E9548 /* Private */,
 			);
 			path = "Sorting & Filtering";
@@ -2158,6 +2282,7 @@
 				87F2DDF81DAD945D00FB43F3 /* ReviewDisplayTests.swift */,
 				981EE847226627F2000E9191 /* ReviewFilterDisplayTests.swift */,
 				9FB5C457243DA6250057BA34 /* ReviewHighlightsDisplayTests.swift */,
+				B7C8336A2D2FC4A30088B7C0 /* BVReviewSummaryDisplayTests.swift */,
 				87F2DDF91DAD945D00FB43F3 /* StoresTests */,
 				9F9672F82509FF9E00484A29 /* BulkProductTests.swift */,
 				9F9672FA250A091B00484A29 /* ProductTextSearchTests.swift */,
@@ -2749,6 +2874,162 @@
 			path = Private;
 			sourceTree = "<group>";
 		};
+		B78683912CE5F59400BBCE3F /* BVProductSentiments */ = {
+			isa = PBXGroup;
+			children = (
+				B78683942CE5F93300BBCE3F /* Sentiments */,
+				B786839D2CE5FA6E00BBCE3F /* BVProductSentiments.h */,
+			);
+			path = BVProductSentiments;
+			sourceTree = "<group>";
+		};
+		B78683942CE5F93300BBCE3F /* Sentiments */ = {
+			isa = PBXGroup;
+			children = (
+				B78683D12D096FA500BBCE3F /* Common */,
+				B78683B72CEDE75400BBCE3F /* Errors */,
+				B78683962CE5F94F00BBCE3F /* Requests */,
+				B78683952CE5F94900BBCE3F /* Model */,
+			);
+			path = Sentiments;
+			sourceTree = "<group>";
+		};
+		B78683952CE5F94900BBCE3F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B786839F2CE5FA8900BBCE3F /* BVSummarisedFeatures.h */,
+				B78683A12CE5FAA000BBCE3F /* BVSummarisedFeatures.m */,
+				B78683AD2CEDD9B300BBCE3F /* BVProductFeatures.h */,
+				B78683AE2CEDD9C100BBCE3F /* BVProductFeatures.m */,
+				B78683A32CEC690500BBCE3F /* BVProductFeature.h */,
+				B78683A52CEC691400BBCE3F /* BVProductFeature.m */,
+				B78683A72CEDC4F100BBCE3F /* BVQuotes.h */,
+				B78683A82CEDC4FD00BBCE3F /* BVQuotes.m */,
+				B78683B32CEDDD4400BBCE3F /* BVQuote.h */,
+				B78683B42CEDDD4E00BBCE3F /* BVQuote.m */,
+				B78683AA2CEDC50B00BBCE3F /* BVExpressions.h */,
+				B78683AB2CEDC51900BBCE3F /* BVExpressions.m */,
+				B78683B02CEDDB4200BBCE3F /* BVAverageRatingReviews.h */,
+				B78683B12CEDDB4E00BBCE3F /* BVAverageRatingReviews.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		B78683962CE5F94F00BBCE3F /* Requests */ = {
+			isa = PBXGroup;
+			children = (
+				B78683C22D0816CD00BBCE3F /* SummarisedFeatures */,
+				B7C8332E2D2E56A10088B7C0 /* SummarisedFeaturesQuotes */,
+				B7C833392D2E763A0088B7C0 /* ProductFeatures */,
+				B7C8333A2D2E76600088B7C0 /* ProductQuotes */,
+				B7C8333B2D2E766B0088B7C0 /* ProductExpressions */,
+			);
+			path = Requests;
+			sourceTree = "<group>";
+		};
+		B78683B72CEDE75400BBCE3F /* Errors */ = {
+			isa = PBXGroup;
+			children = (
+				B78683B62CEDE61A00BBCE3F /* BVProductSentimentsErrorCode.h */,
+				B78683B82CEDE77800BBCE3F /* NSError+BVProductSentimentsErrorCodeParser.h */,
+				B78683B92CEDE78D00BBCE3F /* NSError+BVProductSentimentsErrorCodeParser.m */,
+				B78683D22D096FD900BBCE3F /* BVProductSentimentsErrorResponse.h */,
+				B78683D42D096FEE00BBCE3F /* BVProductSentimentsErrorResponse.m */,
+			);
+			path = Errors;
+			sourceTree = "<group>";
+		};
+		B78683C22D0816CD00BBCE3F /* SummarisedFeatures */ = {
+			isa = PBXGroup;
+			children = (
+				B78683C32D08177700BBCE3F /* BVSummarisedFeaturesRequest.h */,
+				B78683C52D08178300BBCE3F /* BVSummarisedFeaturesRequest.m */,
+				B78683C72D08179700BBCE3F /* BVSummarisedFeaturesResponse.h */,
+				B78683C92D0817A800BBCE3F /* BVSummarisedFeaturesResponse.m */,
+			);
+			path = SummarisedFeatures;
+			sourceTree = "<group>";
+		};
+		B78683CE2D096BEE00BBCE3F /* ProductSentimentsTests */ = {
+			isa = PBXGroup;
+			children = (
+				B78683CF2D096C1900BBCE3F /* BVSummarisedFeaturesQueryTest.swift */,
+				B7C833372D2E6EC60088B7C0 /* BVSummarisedFeaturesQuotesQueryTest.swift */,
+				B7C833542D2E7CC70088B7C0 /* BVProductFeaturesQueryTest.swift */,
+				B7C833582D2E7FA50088B7C0 /* BVProductQuotesQueryTest.swift */,
+				B7C8335A2D2E866E0088B7C0 /* BVProductExpressionsQueryTest.swift */,
+			);
+			path = ProductSentimentsTests;
+			sourceTree = "<group>";
+		};
+		B78683D12D096FA500BBCE3F /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				B78683BB2D002A7400BBCE3F /* BVProductSentimentsRequest.h */,
+				B78683BD2D002A8200BBCE3F /* BVProductSentimentsRequest.m */,
+				B78683BF2D002A9B00BBCE3F /* BVProductSentimentsResponse.h */,
+				B78683C02D002AA700BBCE3F /* BVProductSentimentsResponse.m */,
+				B78683CB2D08468300BBCE3F /* BVProductSentimentsResult.h */,
+				B78683CC2D08469400BBCE3F /* BVProductSentimentsResult.m */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		B7C8332E2D2E56A10088B7C0 /* SummarisedFeaturesQuotes */ = {
+			isa = PBXGroup;
+			children = (
+				B7C8332F2D2E57970088B7C0 /* BVSummarisedFeaturesQuotesRequest.h */,
+				B7C833312D2E57B10088B7C0 /* BVSummarisedFeaturesQuotesRequest.m */,
+				B7C833332D2E57BF0088B7C0 /* BVSummarisedFeaturesQuotesResponse.h */,
+				B7C833352D2E57CB0088B7C0 /* BVSummarisedFeaturesQuotesResponse.m */,
+			);
+			path = SummarisedFeaturesQuotes;
+			sourceTree = "<group>";
+		};
+		B7C833392D2E763A0088B7C0 /* ProductFeatures */ = {
+			isa = PBXGroup;
+			children = (
+				B7C8333C2D2E79330088B7C0 /* BVProductFeaturesRequest.h */,
+				B7C8333E2D2E793E0088B7C0 /* BVProductFeaturesRequest.m */,
+				B7C833402D2E794F0088B7C0 /* BVProductFeaturesResponse.h */,
+				B7C833422D2E795B0088B7C0 /* BVProductFeaturesResponse.m */,
+			);
+			path = ProductFeatures;
+			sourceTree = "<group>";
+		};
+		B7C8333A2D2E76600088B7C0 /* ProductQuotes */ = {
+			isa = PBXGroup;
+			children = (
+				B7C833442D2E79730088B7C0 /* BVProductQuotesRequest.h */,
+				B7C833462D2E79800088B7C0 /* BVProductQuotesRequest.m */,
+				B7C833482D2E798D0088B7C0 /* BVProductQuotesResponse.h */,
+				B7C8334A2D2E79960088B7C0 /* BVProductQuotesResponse.m */,
+			);
+			path = ProductQuotes;
+			sourceTree = "<group>";
+		};
+		B7C8333B2D2E766B0088B7C0 /* ProductExpressions */ = {
+			isa = PBXGroup;
+			children = (
+				B7C8334C2D2E79B20088B7C0 /* BVProductExpressionsRequest.h */,
+				B7C8334E2D2E79BE0088B7C0 /* BVProductExpressionsRequest.m */,
+				B7C833502D2E79C90088B7C0 /* BVProductExpressionsResponse.h */,
+				B7C833522D2E79D30088B7C0 /* BVProductExpressionsResponse.m */,
+			);
+			path = ProductExpressions;
+            sourceTree = "<group>";
+        };
+		B7C8335C2D2FA9020088B7C0 /* ReviewSummarisation */ = {
+			isa = PBXGroup;
+			children = (
+				B7C8335D2D2FA9520088B7C0 /* BVReviewSummaryRequest.h */,
+				B7C8335F2D2FA95E0088B7C0 /* BVReviewSummaryRequest.m */,
+				B7C833612D2FA96C0088B7C0 /* BVReviewSummaryResponse.h */,
+				B7C833632D2FA9750088B7C0 /* BVReviewSummaryResponse.m */,
+			);
+			path = ReviewSummarisation;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -2756,9 +3037,13 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B786839E2CE5FA6E00BBCE3F /* BVProductSentiments.h in Headers */,
 				2E998ACD278996940036DE64 /* BVFeaturesRequest.h in Headers */,
 				2E371E5D280824BE008D9223 /* BVSecondaryRatingsDistributionValue.h in Headers */,
 				2E371E592808226B008D9223 /* BVSecondaryRatingsDistributionElement.h in Headers */,
+				B70EC8CC2D12A337007A37D3 /* BVProductSentimentsErrorCode.h in Headers */,
+				B70EC8CA2D12A331007A37D3 /* BVProductSentimentsResponse.h in Headers */,
+				B70EC8CD2D12A33A007A37D3 /* NSError+BVProductSentimentsErrorCodeParser.h in Headers */,
 				2E998ACF278996A80036DE64 /* BVFeaturesResponse.h in Headers */,
 				2E998AD32789B3F00036DE64 /* BVFeatures.h in Headers */,
 				87D424F31E8AD45400147FDB /* BVCurationsUICollectionView.h in Headers */,
@@ -2773,6 +3058,7 @@
 				987C075D2252913000227934 /* BVInitiateSubmitResponseData.h in Headers */,
 				982B48C622F38364002D6F78 /* BVProgressiveSubmitErrorResponse.h in Headers */,
 				B5BE76A4200EA5EC002BA818 /* BVQuestionsSortOptionValue.h in Headers */,
+				B7C833302D2E57970088B7C0 /* BVSummarisedFeaturesQuotesRequest.h in Headers */,
 				87F2DCC31DAD585E00FB43F3 /* BVAnswersSortOption.h in Headers */,
 				87F2DC641DAD585E00FB43F3 /* BVContextDataValue.h in Headers */,
 				87F2DD221DAD585E00FB43F3 /* BVCurationsFeedLoader.h in Headers */,
@@ -2790,12 +3076,14 @@
 				B588E7002124A23600F76040 /* BVRecommendationsRequestOptions.h in Headers */,
 				87F2DCD91DAD585E00FB43F3 /* BVSubmission.h in Headers */,
 				5FE2C0811F6B05100090DD55 /* BVErrorCode.h in Headers */,
+				B7C833342D2E57BF0088B7C0 /* BVSummarisedFeaturesQuotesResponse.h in Headers */,
 				87F2DC911DAD585E00FB43F3 /* BVVideo.h in Headers */,
 				87F2DCB91DAD585E00FB43F3 /* BVFilterOperator.h in Headers */,
 				87F2DD111DAD585E00FB43F3 /* BVReviewsTableView.h in Headers */,
 				87F2DCDF1DAD585E00FB43F3 /* BVSubmissionResponse.h in Headers */,
 				87F2DCD11DAD585E00FB43F3 /* BVSubmittedAnswer.h in Headers */,
 				87F2DCEB1DAD585E00FB43F3 /* BVSubmittedQuestion.h in Headers */,
+				B70EC8CF2D12A35C007A37D3 /* BVQuotes.h in Headers */,
 				B586398D214AFBD000EFD763 /* BVModelUtil.h in Headers */,
 				B57B8330215E8A31006B378E /* BVFeedbackSubmissionErrorResponse.h in Headers */,
 				2E0672E0288C54F8008D2AF7 /* BVRelevancySortType.h in Headers */,
@@ -2844,6 +3132,7 @@
 				87F2DCB71DAD585E00FB43F3 /* BVFilter.h in Headers */,
 				8779DB271DD20D8D00E6CAF5 /* BVStoreReviewsTableView.h in Headers */,
 				87F2DCBB1DAD585E00FB43F3 /* BVProductFilterType.h in Headers */,
+				B70EC8D12D12A363007A37D3 /* BVExpressions.h in Headers */,
 				B58639D8214AFEC800EFD763 /* BVProductReview+Private.h in Headers */,
 				87F2DCE71DAD585E00FB43F3 /* BVQuestionSubmissionErrorResponse.h in Headers */,
 				158CF5871E71F4CD000EA063 /* BVBulkProductRequest.h in Headers */,
@@ -2919,6 +3208,7 @@
 				B58639B1214AFE0A00EFD763 /* BVMultiPart+NSURLRequest.h in Headers */,
 				B583B128200E8ABE001E9548 /* BVFilterTypeValues.h in Headers */,
 				875410B01E1F10DF006C5C6E /* BVNotificationViewController.h in Headers */,
+				B70EC8D22D12A36A007A37D3 /* BVAverageRatingReviews.h in Headers */,
 				875411851E1F201E006C5C6E /* BVStoreReviewRichNotificationCenter.h in Headers */,
 				987C07682253F24C00227934 /* BVProgressiveSubmitResponseData.h in Headers */,
 				987C076C2253FBCB00227934 /* BVProgressiveSubmitResponse.h in Headers */,
@@ -2958,6 +3248,7 @@
 				87C5FEC21E22A05D004EE6E8 /* BVSDKConstants.h in Headers */,
 				B58639D7214AFEC800EFD763 /* BVShopperProfileRequestCache.h in Headers */,
 				87C5FEB61E22A05D004EE6E8 /* BVAuthenticatedUser.h in Headers */,
+				B70EC8D02D12A360007A37D3 /* BVQuote.h in Headers */,
 				87C5FEC11E22A05D004EE6E8 /* BVNullHelper.h in Headers */,
 				B5863994214AFBD000EFD763 /* BVDimensionAndDistributionUtil+Private.h in Headers */,
 				87C5FEBB1E22A05D004EE6E8 /* BVDiagnosticHelpers.h in Headers */,
@@ -2983,9 +3274,26 @@
 				873DC4971E7482840080FA03 /* BVInViewEvent.h in Headers */,
 				B7B3B9632BAAB62A00A2831B /* BVVideoSubmissionResponse.h in Headers */,
 				2E0672D6288C3FFA008D2AF7 /* BVSortTypeValues.h in Headers */,
+				B7C833622D2FA96C0088B7C0 /* BVReviewSummaryResponse.h in Headers */,
+				B7C8335E2D2FA9520088B7C0 /* BVReviewSummaryRequest.h in Headers */,
+				B7C833672D2FAA330088B7C0 /* BVReviewSummary.h in Headers */,
 				2E0672E4288C55C8008D2AF7 /* BVRelevancySortTypeValue.h in Headers */,
 				873DC49B1E7482840080FA03 /* BVPersonalizationEvent.h in Headers */,
 				B5BE76A0200EA53D002BA818 /* BVProductIncludeTypeValue.h in Headers */,
+				B70EC8CB2D12A334007A37D3 /* BVProductSentimentsResult.h in Headers */,
+				B78683A42CEC690500BBCE3F /* BVProductFeature.h in Headers */,
+				B78683A02CE5FA8900BBCE3F /* BVSummarisedFeatures.h in Headers */,
+				B78683D32D096FD900BBCE3F /* BVProductSentimentsErrorResponse.h in Headers */,
+				B7C833412D2E794F0088B7C0 /* BVProductFeaturesResponse.h in Headers */,
+				B7C8333D2D2E79330088B7C0 /* BVProductFeaturesRequest.h in Headers */,
+				B78683C82D08179700BBCE3F /* BVSummarisedFeaturesResponse.h in Headers */,
+				B78683BC2D002A7400BBCE3F /* BVProductSentimentsRequest.h in Headers */,
+				B7C833492D2E798D0088B7C0 /* BVProductQuotesResponse.h in Headers */,
+				B7C833452D2E79730088B7C0 /* BVProductQuotesRequest.h in Headers */,
+				B7C833512D2E79C90088B7C0 /* BVProductExpressionsResponse.h in Headers */,
+				B7C8334D2D2E79B20088B7C0 /* BVProductExpressionsRequest.h in Headers */,
+				B78683C42D08177700BBCE3F /* BVSummarisedFeaturesRequest.h in Headers */,
+				B7C8336D2D2FCA740088B7C0 /* BVReviewSummaryFormatTypeValue.h in Headers */,
 				B58639B2214AFE0A00EFD763 /* BVSDKManager+Private.h in Headers */,
 				2EA5DD962824FDA4006B0949 /* BVReviewsCustomOrderSortOptionValue.h in Headers */,
 				2EE2579127F23EE300E6DBDE /* BVReviewFilterFieldType.h in Headers */,
@@ -3058,6 +3366,7 @@
 				B58639B8214AFE0A00EFD763 /* BVNetworkingManager.h in Headers */,
 				B5A764A61FDAFBA700B5DC9A /* UIImage+BundleLocator.h in Headers */,
 				87F2DD201DAD585E00FB43F3 /* BVCurationsFeedItem.h in Headers */,
+				B70EC8CE2D12A350007A37D3 /* BVProductFeatures.h in Headers */,
 				B583AED12006B4AA001E9548 /* BVRelationalFilterOperator.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3315,6 +3624,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B7C833362D2E57CB0088B7C0 /* BVSummarisedFeaturesQuotesResponse.m in Sources */,
 				5F6201DF1F70385E00454D77 /* NSError+BVErrorCodeParser.m in Sources */,
 				B58639B9214AFE0A00EFD763 /* BVMultiPart+NSURLRequest.m in Sources */,
 				153550AF1E898CF000C62D90 /* BVCurationsUICollectionViewCell.m in Sources */,
@@ -3331,15 +3641,19 @@
 				B5A764A21FDAFB7B00B5DC9A /* BVViewsHelper.m in Sources */,
 				87F2DC831DAD585E00FB43F3 /* BVQuestionsAndAnswersResponse.m in Sources */,
 				87F2DD3E1DAD585E00FB43F3 /* BVRecommendationsLoader.m in Sources */,
+				B78683AC2CEDC51900BBCE3F /* BVExpressions.m in Sources */,
+				B7C833602D2FA95E0088B7C0 /* BVReviewSummaryRequest.m in Sources */,
 				87F2DCAC1DAD585E00FB43F3 /* BVProductDisplayPageRequest.m in Sources */,
 				B7B3B9652BAAB8CF00A2831B /* BVVideoSubmissionErrorResponse.m in Sources */,
 				2E0672DE288C542E008D2AF7 /* BVSortType.m in Sources */,
+				B78683C62D08178300BBCE3F /* BVSummarisedFeaturesRequest.m in Sources */,
 				B5A764DC1FE1917C00B5DC9A /* BVStoreIncludeType.m in Sources */,
 				87F2DC961DAD585E00FB43F3 /* BVProduct.m in Sources */,
 				87EDAFDA1EDDD3E200FA07C0 /* BVCommentSubmissionErrorResponse.m in Sources */,
 				87F2DC881DAD585E00FB43F3 /* BVReviewsResponse.m in Sources */,
 				873DC4921E7482840080FA03 /* BVConversionEvent.m in Sources */,
 				B57B83392162BF05006B378E /* BVRandom+NSString.m in Sources */,
+				B78683A62CEC691400BBCE3F /* BVProductFeature.m in Sources */,
 				87F2DCCE1DAD585E00FB43F3 /* BVAnswerSubmissionErrorResponse.m in Sources */,
 				87F2DD0C1DAD585E00FB43F3 /* BVQuestionView.m in Sources */,
 				87A02B631E0967EE0002701B /* BVFeedbackSubmission.m in Sources */,
@@ -3349,6 +3663,7 @@
 				2E998AD12789B3E10036DE64 /* BVFeatures.m in Sources */,
 				B5A764C81FE1912800B5DC9A /* BVStoreLocation.m in Sources */,
 				87F2DD371DAD585E00FB43F3 /* BVProductRecommendationsContainer.m in Sources */,
+				B7C833642D2FA9750088B7C0 /* BVReviewSummaryResponse.m in Sources */,
 				987C074F22528F4600227934 /* BVInitiateSubmitFormData.m in Sources */,
 				B583AEEA2009486C001E9548 /* BVIncludeType.m in Sources */,
 				158CF5881E71F4CD000EA063 /* BVBulkProductRequest.m in Sources */,
@@ -3365,13 +3680,16 @@
 				B58639B5214AFE0A00EFD763 /* BVSDKConfiguration.m in Sources */,
 				87F2DCD61DAD585E00FB43F3 /* BVFormField.m in Sources */,
 				87C5FEC41E22A05D004EE6E8 /* BVSDKManager.m in Sources */,
+				B7C833322D2E57B10088B7C0 /* BVSummarisedFeaturesQuotesRequest.m in Sources */,
 				87F2DD211DAD585E00FB43F3 /* BVCurationsFeedItem.m in Sources */,
 				87C5FF631E36B416004EE6E8 /* BVAuthor.m in Sources */,
 				873DC4961E7482840080FA03 /* BVImpressionEvent.m in Sources */,
 				87F2DCF21DAD585E00FB43F3 /* BVReviewSubmissionResponse.m in Sources */,
 				87F2DCDA1DAD585E00FB43F3 /* BVSubmission.m in Sources */,
+				B7C833472D2E79800088B7C0 /* BVProductQuotesRequest.m in Sources */,
 				87F2DCCC1DAD585E00FB43F3 /* BVAnswerSubmission.m in Sources */,
 				B57B8331215E8A31006B378E /* BVFeedbackSubmissionErrorResponse.m in Sources */,
+				B78683BE2D002A8200BBCE3F /* BVProductSentimentsRequest.m in Sources */,
 				B583AED22006B4AA001E9548 /* BVRelationalFilterOperator.m in Sources */,
 				B5A764D91FE1915200B5DC9A /* BVBulkStoresResponse.m in Sources */,
 				875411741E1F201E006C5C6E /* BVNotificationProperties.m in Sources */,
@@ -3409,11 +3727,13 @@
 				B583AEEE20094A58001E9548 /* BVProductIncludeType.m in Sources */,
 				87C5FF591E368DF2004EE6E8 /* BVAuthorRequest.m in Sources */,
 				87F2DCF01DAD585E00FB43F3 /* BVReviewSubmissionErrorResponse.m in Sources */,
+				B78683A22CE5FAA000BBCE3F /* BVSummarisedFeatures.m in Sources */,
 				87F2DD251DAD585E00FB43F3 /* BVCurationsFeedRequest.m in Sources */,
 				B5A764B71FDB1ACE00B5DC9A /* BVAnswersCollectionView.m in Sources */,
 				87F2DD121DAD585E00FB43F3 /* BVReviewsTableView.m in Sources */,
 				87C5FEB91E22A05D004EE6E8 /* BVBaseAnalyticsHelper.m in Sources */,
 				87F2DD421DAD585E00FB43F3 /* BVRecommendedProduct.m in Sources */,
+				B78683CD2D08469400BBCE3F /* BVProductSentimentsResult.m in Sources */,
 				87F2DC8A1DAD585E00FB43F3 /* BVReviewStatistic.m in Sources */,
 				987C076D2253FBCB00227934 /* BVProgressiveSubmitResponse.m in Sources */,
 				B5A764B21FDB1ACE00B5DC9A /* BVAnswersTableView.m in Sources */,
@@ -3424,13 +3744,17 @@
 				87C5FF5D1E36A8B7004EE6E8 /* BVAuthorResponse.m in Sources */,
 				87A02B671E096B300002701B /* BVFeedbackSubmissionResponse.m in Sources */,
 				87F2DC5F1DAD585E00FB43F3 /* BVBadgeType.m in Sources */,
+				B7C833432D2E795B0088B7C0 /* BVProductFeaturesResponse.m in Sources */,
 				B7B3B95C2BAAB48D00A2831B /* BVSubmittedVideo.m in Sources */,
 				87F2DD461DAD585E00FB43F3 /* BVShopperProfile.m in Sources */,
 				87F2DC7B1DAD585E00FB43F3 /* BVPhotoSizes.m in Sources */,
 				B58639C7214AFE8700EFD763 /* BVAnalyticsManager.m in Sources */,
 				87F2DD021DAD585E00FB43F3 /* BVProductPageViews.m in Sources */,
 				87F2DC791DAD585E00FB43F3 /* BVPhoto.m in Sources */,
+				B7C833532D2E79D30088B7C0 /* BVProductExpressionsResponse.m in Sources */,
+				B78683AF2CEDD9C100BBCE3F /* BVProductFeatures.m in Sources */,
 				877AD2951EE1D134006C7070 /* BVBaseUGCSubmission.m in Sources */,
+				B78683A92CEDC4FD00BBCE3F /* BVQuotes.m in Sources */,
 				87D424EA1E89C32E00147FDB /* BVReviewIncludeType.m in Sources */,
 				87F2DCD21DAD585E00FB43F3 /* BVSubmittedAnswer.m in Sources */,
 				87F2DCBC1DAD585E00FB43F3 /* BVProductFilterType.m in Sources */,
@@ -3441,6 +3765,7 @@
 				982B607622EA125C0041D40B /* BVProgressiveSubmissionReview.m in Sources */,
 				873DC4941E7482840080FA03 /* BVFeatureUsedEvent.m in Sources */,
 				87F2DCB01DAD585E00FB43F3 /* BVReviewsRequest.m in Sources */,
+				B78683CA2D0817A800BBCE3F /* BVSummarisedFeaturesResponse.m in Sources */,
 				87F2DC9A1DAD585E00FB43F3 /* BVReview.m in Sources */,
 				9FB5C460243DA6690057BA34 /* BVReviewHighlight.m in Sources */,
 				B5A764CE1FE1913800B5DC9A /* BVStoreReviewsRequest.m in Sources */,
@@ -3461,6 +3786,7 @@
 				87D425281E8EE39700147FDB /* BVViewedCGCEvent.m in Sources */,
 				87F2DD061DAD585E00FB43F3 /* BVQuestionsCollectionView.m in Sources */,
 				87F2DCE21DAD585E00FB43F3 /* BVPhotoSubmission.m in Sources */,
+				B78683BA2CEDE78D00BBCE3F /* NSError+BVProductSentimentsErrorCodeParser.m in Sources */,
 				150FC2CB1E71C58B00717041 /* BVBaseProductRequest.m in Sources */,
 				B5A764B91FDB1ACE00B5DC9A /* BVAnswerCollectionViewCell.m in Sources */,
 				87F2DD041DAD585E00FB43F3 /* BVQuestionCollectionViewCell.m in Sources */,
@@ -3471,9 +3797,11 @@
 				B583AEF2200956D0001E9548 /* BVAuthorIncludeType.m in Sources */,
 				875411841E1F201E006C5C6E /* BVStoreReviewNotificationProperties.m in Sources */,
 				87F2DCBE1DAD585E00FB43F3 /* BVQuestionFilterType.m in Sources */,
+				B78683C12D002AA700BBCE3F /* BVProductSentimentsResponse.m in Sources */,
 				87A02B6B1E0971AC0002701B /* BVSubmittedFeedback.m in Sources */,
 				2E998AC82789963D0036DE64 /* BVFeaturesRequest.m in Sources */,
 				B586398E214AFBD000EFD763 /* BVConversationsError.m in Sources */,
+				B78683B52CEDDD4E00BBCE3F /* BVQuote.m in Sources */,
 				987C075F2252913B00227934 /* BVInitiateSubmitResponseData.m in Sources */,
 				87F2DC901DAD585E00FB43F3 /* BVSecondaryRatingsAverages.m in Sources */,
 				2E371E5A2808226B008D9223 /* BVSecondaryRatingsDistributionElement.m in Sources */,
@@ -3483,10 +3811,12 @@
 				8779DB251DD20D5D00E6CAF5 /* BVStoreReviewsTableView.m in Sources */,
 				873DC49A1E7482840080FA03 /* BVPageViewEvent.m in Sources */,
 				87F2DCE81DAD585E00FB43F3 /* BVQuestionSubmissionErrorResponse.m in Sources */,
+				B7C8333F2D2E793E0088B7C0 /* BVProductFeaturesRequest.m in Sources */,
 				87F2DD401DAD585E00FB43F3 /* BVRecommendationsRequest.m in Sources */,
 				B575C38B1FBE02FE000F890B /* BVUASSubmissionErrorResponse.m in Sources */,
 				87EDAFCD1EDDC9F400FA07C0 /* BVCommentSubmission.m in Sources */,
 				87C5FE9A1E22914C004EE6E8 /* BVStoreNotificationConfigurationLoader.m in Sources */,
+				B7C8334F2D2E79BE0088B7C0 /* BVProductExpressionsRequest.m in Sources */,
 				B58639A1214AFD9D00EFD763 /* BVFieldError.m in Sources */,
 				87F2DCAE1DAD585E00FB43F3 /* BVQuestionsAndAnswersRequest.m in Sources */,
 				B583AED62006C18F001E9548 /* BVFilterType.m in Sources */,
@@ -3505,6 +3835,7 @@
 				87EDAFD21EDDD02F00FA07C0 /* BVCommentSubmissionResponse.m in Sources */,
 				150FC2C71E71C21700717041 /* BVBulkProductResponse.m in Sources */,
 				B7E7C6A62BA2D616006632CF /* BVVideoSubmission.m in Sources */,
+				B78683D52D096FEE00BBCE3F /* BVProductSentimentsErrorResponse.m in Sources */,
 				87F2DCF41DAD585E00FB43F3 /* BVSubmittedReview.m in Sources */,
 				87F2DC1F1DAD585E00FB43F3 /* BVPixel.m in Sources */,
 				5F6201E31F7039EA00454D77 /* NSError+BVSubmissionErrorCodeParser.m in Sources */,
@@ -3513,6 +3844,7 @@
 				873DC4A01E7482840080FA03 /* BVTransactionEvent.m in Sources */,
 				B5A764BB1FDB1ACE00B5DC9A /* BVAnswerTableViewCell.m in Sources */,
 				87F2DC741DAD585E00FB43F3 /* BVDistributionValue.m in Sources */,
+				B7C833692D2FAA3D0088B7C0 /* BVReviewSummary.m in Sources */,
 				87F2DCC01DAD585E00FB43F3 /* BVReviewFilterType.m in Sources */,
 				2E998ACB2789967E0036DE64 /* BVFeaturesResponse.m in Sources */,
 				B5A764BA1FDB1ACE00B5DC9A /* BVAnswerView.m in Sources */,
@@ -3535,6 +3867,7 @@
 				2E0672D4288C3AD5008D2AF7 /* BVReviewsRelevancySortOption.m in Sources */,
 				9FB5C45F243DA6690057BA34 /* BVReviewHighlightsReview.m in Sources */,
 				87C5FE9E1E229168004EE6E8 /* BVProductReviewNotificationConfigurationLoader.m in Sources */,
+				B78683B22CEDDB4E00BBCE3F /* BVAverageRatingReviews.m in Sources */,
 				B58639CA214AFE8700EFD763 /* BVLocaleServiceManager.m in Sources */,
 				87F2DC691DAD585E00FB43F3 /* BVDisplayErrorResponse.m in Sources */,
 				B5A764D11FE1913800B5DC9A /* BVBulkStoreItemsRequest.m in Sources */,
@@ -3544,6 +3877,7 @@
 				B583AEDA2007F80A001E9548 /* BVSortOrder.m in Sources */,
 				87F2DCC61DAD585E00FB43F3 /* BVProductsSortOption.m in Sources */,
 				87F2DD161DAD585E00FB43F3 /* BVReviewView.m in Sources */,
+				B7C8334B2D2E79960088B7C0 /* BVProductQuotesResponse.m in Sources */,
 				87B6DFA21ECA424300B75835 /* BVCommentsRequest.m in Sources */,
 				87B6DFA61ECA484400B75835 /* BVComment.m in Sources */,
 				87F2DC8E1DAD585E00FB43F3 /* BVSecondaryRating.m in Sources */,
@@ -3557,12 +3891,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B7C833552D2E7CC70088B7C0 /* BVProductFeaturesQueryTest.swift in Sources */,
 				87B6DF9C1ECA3A0F00B75835 /* CommentsDisplayTests.swift in Sources */,
 				87F2DD641DAD5E9400FB43F3 /* BVUserProfileTests.m in Sources */,
 				87F2DE171DAD945D00FB43F3 /* StoreReviewSubmissionTests.swift in Sources */,
 				9FB5C458243DA6250057BA34 /* ReviewHighlightsDisplayTests.swift in Sources */,
+				B7C833592D2E7FA50088B7C0 /* BVProductQuotesQueryTest.swift in Sources */,
 				B56E1F921FBF86360025D5B4 /* UASSubmissionTests.swift in Sources */,
 				87F2DE0C1DAD945D00FB43F3 /* ReviewDisplayTests.swift in Sources */,
+				B7C833382D2E6EC60088B7C0 /* BVSummarisedFeaturesQuotesQueryTest.swift in Sources */,
 				87F2DE141DAD945D00FB43F3 /* PhotoUploadTests.swift in Sources */,
 				87F2DE0F1DAD945D00FB43F3 /* DisplayParametersTests.swift in Sources */,
 				87F2DE081DAD945D00FB43F3 /* ConversationsDisplayTests.swift in Sources */,
@@ -3570,13 +3907,16 @@
 				87F2DD621DAD5E9400FB43F3 /* BVNotificationConfigTests.m in Sources */,
 				87F2DE111DAD945D00FB43F3 /* ProductIdEscapeTests.swift in Sources */,
 				B7B3B9692BAABCF800A2831B /* VideoUploadTests.swift in Sources */,
+				B78683D02D096C1900BBCE3F /* BVSummarisedFeaturesQueryTest.swift in Sources */,
 				9F9672F92509FF9E00484A29 /* BulkProductTests.swift in Sources */,
 				987C076F2254038A00227934 /* BVIProgressiveSubmitTest.swift in Sources */,
+				B7C8336B2D2FC4A30088B7C0 /* BVReviewSummaryDisplayTests.swift in Sources */,
 				87F2DD5E1DAD5E9400FB43F3 /* BVBaseStubTestCase.m in Sources */,
 				2E998AD9278BF02A0036DE64 /* FeatureDisplayTests.swift in Sources */,
 				87F2DE0D1DAD945D00FB43F3 /* ConversationsStoresDisplayTests.swift in Sources */,
 				B59F8F232035EF2900087EF0 /* BVNetworkDelegateTestsDelegate.m in Sources */,
 				87EDAFC91EDDC6A900FA07C0 /* CommentSubmissionTests.swift in Sources */,
+				B7C8335B2D2E866E0088B7C0 /* BVProductExpressionsQueryTest.swift in Sources */,
 				87F2DE0B1DAD945D00FB43F3 /* QuestionDisplayTests.swift in Sources */,
 				B56D71822032476A002EC872 /* BVLocaleManagerTests.m in Sources */,
 				B7856D242ABC1F770031D22A /* BVTestUsers.swift in Sources */,

@@ -40,6 +40,9 @@
 @property(nonatomic, strong, readonly, nullable)
     NSString *apiKeyShopperAdvertising;
 
+/// Your private API key for the BVProductSentiments
+@property(nonatomic, strong, readonly, nullable) NSString *apiKeyProductSentiments;
+
 /// Your private API key for the BVCurations API
 @property(nonatomic, strong, readonly, nullable) NSString *apiKeyCurations;
 
