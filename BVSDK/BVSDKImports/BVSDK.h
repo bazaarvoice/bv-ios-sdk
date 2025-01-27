@@ -155,6 +155,12 @@ FOUNDATION_EXPORT const unsigned char BVSDKVersionString[];
 #import "BVReviewHighlight.h"
 #import "BVReviewHighlightsReview.h"
 
+/// Review Summary
+#import "BVReviewSummaryFormatTypeValue.h"
+#import "BVReviewSummary.h"
+#import "BVReviewSummaryRequest.h"
+#import "BVReviewSummaryResponse.h"
+
 /// Photo Submission
 #import "BVPhotoSubmission.h"
 #import "BVPhotoSubmissionErrorResponse.h"
