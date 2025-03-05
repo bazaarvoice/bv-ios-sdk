@@ -12,11 +12,6 @@
 #import "BVQuotes.h"
 
 @interface BVSummarisedFeaturesQuotesResponse : BVProductSentimentsResponse <BVQuotes *>
-
-//@property (nullable) ResultType result;
-//
-//- (nonnull instancetype)initWithApiResponse:(nonnull NSDictionary *)apiResponse;
-
 @end
 
 #endif /* BVSummarisedFeaturesQuotesResponse_h */

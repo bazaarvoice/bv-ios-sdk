@@ -21,12 +21,8 @@
  */
 @interface BVProductSentimentsErrorResponse : NSObject
 
-@property(nonnull) NSString *code;
-@property(nonnull) NSString *type;
-@property(nonnull) NSString *title;
-@property(nonnull) NSString *detail;
-
-- (nullable id)initWithApiResponse:(nonnull NSDictionary *)apiResponse;
+- (nullable id)initWithApiResponse:(nonnull NSDictionary *)apiResponse
+                        statusCode:(nonnull NSString *)statusCode;
 - (nonnull NSArray<NSError *> *)toNSErrors;
 
 @end

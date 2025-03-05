@@ -14,7 +14,7 @@ final class BVReviewSummaryDisplayTests: XCTestCase {
         super.setUp()
         
         let configDict = ["clientId": "bv-beauty",
-                          "apiKeyConversations": BVTestUsers().loadValueForKey(key: .bvBeauty)];
+                          "apiKeyConversations": BVTestUsers().loadValueForKey(key: .conversationsKeyBVBeauty)];
         BVSDKManager.configure(withConfiguration: configDict, configType: .prod)
       }
     
@@ -25,7 +25,7 @@ final class BVReviewSummaryDisplayTests: XCTestCase {
     func testReviewSummaryDisplay() {
       
       let expectation = self.expectation(description: "testReviewSummaryDisplay")
-      let request = BVReviewSummaryRequest(productId: "P000036", formatType: BVReviewSummaryFormatType.paragraph)
+      let request = BVReviewSummaryRequest(productId: "P000036", formatType: BVReviewSummaryFormatType.bullet) // or BVReviewSummaryFormatType.paragraph
       
       request.load({ (response) in
           XCTAssertNotNil(response.summary)

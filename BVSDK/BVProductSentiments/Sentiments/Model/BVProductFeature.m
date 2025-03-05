@@ -23,9 +23,10 @@
     SET_IF_NOT_NULL(self.featureID, apiObject[@"featureId"])
     SET_IF_NOT_NULL(self.percentPositive, apiObject[@"percentPositive"])
     SET_IF_NOT_NULL(self.nativeFeature, apiObject[@"nativeFeature"])
-    SET_IF_NOT_NULL(self.reviewsMentioned, apiObject[@"reviewsMentioned"])
-    SET_IF_NOT_NULL(self.averageRatingReviews, apiObject[@"averageRatingReviews"])
-    SET_IF_NOT_NULL(self.embedded, apiObject[@"_embedded"])
+    self.reviewsMentioned = [[BVAverageRatingReviews alloc] initWithApiResponse:apiResponse[@"reviewsMentioned"]];
+    self.averageRatingReviews = [[BVAverageRatingReviews alloc] initWithApiResponse:apiResponse[@"averageRatingReviews"]];
+    self.embedded = [[BVQuotes alloc] initWithApiResponse:apiResponse[@"_embedded"]];
+
   }
   return self;
 }

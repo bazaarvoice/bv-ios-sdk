@@ -19,14 +19,4 @@
     return [[BVSummarisedFeatures alloc] initWithApiResponse:apiResponse];
 }
 
-//- (nonnull instancetype)initWithApiResponse:(nonnull NSDictionary *)apiResponse {
-//    if ((self = [super init])) {
-//      NSDictionary *results = apiResponse;
-//      if (results.count) {
-//        _result = [self createResult:results];
-//      }
-//    }
-//    return self;
-//  }
-
 @end
