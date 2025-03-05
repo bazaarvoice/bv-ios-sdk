@@ -25,8 +25,19 @@
     SET_IF_NOT_NULL(self.detail, apiObject[@"detail"])
     SET_IF_NOT_NULL(self.detail, apiObject[@"detail"])
     SET_IF_NOT_NULL(self.instance, apiObject[@"instance"])
+      self.features = [BVProductFeatures parseProductFeature:apiResponse[@"features"]];
+
   }
   return self;
+}
+
++ (nonnull NSArray<BVProductFeature *> *)parseProductFeature:(nullable id)apiResponse {
+    NSMutableArray<BVProductFeature *> *tempValues = [NSMutableArray array];
+    NSArray *apiObject = apiResponse;
+    for (NSDictionary *object in apiObject) {
+        [tempValues addObject:[[BVProductFeature alloc] initWithApiResponse:object]];
+    }
+    return tempValues;
 }
 
 @end

@@ -94,6 +94,8 @@
     return @"Curations";
   case BVPixelProductTypeProgressiveSubmission:
     return @"ProgressiveSubmission";
+  case BVPixelProductTypeProductSentiments:
+    return @"ProductSentiments";
   default:
     return @"UnknownProduct";
   }

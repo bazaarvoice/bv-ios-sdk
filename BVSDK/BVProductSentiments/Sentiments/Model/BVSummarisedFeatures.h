@@ -25,9 +25,6 @@
 @property(nullable) NSString *type;
 @property(nullable) NSString *instance;
 
-@property(nullable) BVProductFeature *firstFeatures;
-@property(nullable) NSNumber *pp;
-
 - (nullable id)initWithApiResponse:(nullable id)apiResponse;
 
 @end

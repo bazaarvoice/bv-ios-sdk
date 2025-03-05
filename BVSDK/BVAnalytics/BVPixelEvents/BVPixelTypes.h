@@ -61,7 +61,8 @@ typedef NS_ENUM(NSInteger, BVPixelProductType) {
   BVPixelProductTypeProductRecommendations,
   BVPixelProductTypePIN,
   BVPixelProductTypeLocation,
-  BVPixelProductTypeProgressiveSubmission
+  BVPixelProductTypeProgressiveSubmission,
+  BVPixelProductTypeProductSentiments
 };
 
 @interface BVPixelProductTypeUtil : NSObject

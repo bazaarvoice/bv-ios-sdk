@@ -6,13 +6,13 @@
 // 
 
 #import <Foundation/Foundation.h>
-#import "BVFieldError.h"
+#import "BVProductSentimentsError.h"
 #import "NSError+BVProductSentimentsErrorCodeParser.h"
 
 @implementation NSError (BVErrorCodeParser)
 
 - (BVProductSentimentsErrorCode)bvProductSentimentsErrorCode {
-  NSString *code = [self userInfo][BVFieldErrorCode];
+  NSString *code = [self userInfo][BVKeyPSStatusCode];
   if (!code) {
     return BVProductSentimentsErrorCodeUnknown;
   }

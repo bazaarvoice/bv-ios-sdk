@@ -7,11 +7,11 @@
 
 #import <Foundation/Foundation.h>
 #import "BVAverageRatingReviews.h"
-#import "BVQuote.h"
+#import "BVQuotes.h"
 #import "BVProductSentimentsResult.h"
 
 @class BVAverageRatingReviews;
-@class BVQuote;
+@class BVQuotes;
 
 @interface BVProductFeature : BVProductSentimentsResult
 
@@ -21,7 +21,7 @@
 @property(nullable) NSString *nativeFeature;
 @property(nullable) BVAverageRatingReviews *reviewsMentioned;
 @property(nullable) BVAverageRatingReviews *averageRatingReviews;
-@property(nullable) BVQuote *embedded;
+@property(nullable) BVQuotes *embedded;
 
 - (nullable id)initWithApiResponse:(nullable id)apiResponse;
 

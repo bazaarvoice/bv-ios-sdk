@@ -20,8 +20,6 @@
 - (nonnull NSString *)getPassKey;
 
 - (nonnull NSError *)limitError:(NSInteger)limit;
-- (nonnull NSError *)tooManyProductsError:
-    (nonnull NSArray<NSString *> *)productIds;
 
 - (void)
 loadContent:(nonnull BVProductSentimentsRequest *)request

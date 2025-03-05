@@ -7,12 +7,12 @@
 
 #import <Foundation/Foundation.h>
 #import "BVProductSentimentsRequest.h"
-//#import "BVDisplayErrorResponse.h"
 #import "BVLogger+Private.h"
 #import "BVNetworkingManager.h"
 #import "BVSDKConfiguration.h"
 #import "BVSDKManager+Private.h"
 #import "BVStringKeyValuePair.h"
+#import "BVProductSentimentsErrorResponse.h"
 
 @interface BVProductSentimentsRequest ()
 @property(strong, nonatomic)
@@ -28,22 +28,22 @@
 - (nonnull NSMutableArray<BVStringKeyValuePair *> *)createParams {
   NSMutableArray<BVStringKeyValuePair *> *params = [NSMutableArray array];
 
-//  [params
-//      addObject:[BVStringKeyValuePair pairWithKey:@"apiversion" value:@"5.4"]];
+  [params
+      addObject:[BVStringKeyValuePair pairWithKey:@"apiversion" value:@"5.4"]];
 //  [params addObject:[BVStringKeyValuePair pairWithKey:@"passkey"
 //                                                value:[self getPassKey]]];
-//  [params addObject:[BVStringKeyValuePair
-//                        pairWithKey:@"_appId"
-//                              value:[NSBundle mainBundle].bundleIdentifier]];
-//  [params
-//      addObject:[BVStringKeyValuePair
-//                    pairWithKey:@"_appVersion"
-//                          value:[BVDiagnosticHelpers releaseVersionNumber]]];
-//  [params addObject:[BVStringKeyValuePair
-//                        pairWithKey:@"_buildNumber"
-//                              value:[BVDiagnosticHelpers buildVersionNumber]]];
-//  [params addObject:[BVStringKeyValuePair pairWithKey:@"_bvIosSdkVersion"
-//                                                value:BV_SDK_VERSION]];
+  [params addObject:[BVStringKeyValuePair
+                        pairWithKey:@"_appId"
+                              value:[NSBundle mainBundle].bundleIdentifier]];
+  [params
+      addObject:[BVStringKeyValuePair
+                    pairWithKey:@"_appVersion"
+                          value:[BVDiagnosticHelpers releaseVersionNumber]]];
+  [params addObject:[BVStringKeyValuePair
+                        pairWithKey:@"_buildNumber"
+                              value:[BVDiagnosticHelpers buildVersionNumber]]];
+  [params addObject:[BVStringKeyValuePair pairWithKey:@"_bvIosSdkVersion"
+                                                value:BV_SDK_VERSION]];
 
   if (_customQueryParameters) {
     [params addObjectsFromArray:_customQueryParameters];
@@ -142,42 +142,33 @@ processData:(nullable NSData *)data
   NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
   NSInteger statusCode = [httpResponse statusCode];
 
-  if (statusCode == 200) {
     @try {
-      NSError *err;
-      NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data
-                                                           options:kNilOptions
-                                                             error:&err];
-      if (json) {
-          
-//        BVDisplayErrorResponse *errorResponse =
-//            [[BVDisplayErrorResponse alloc] initWithApiResponse:json];
-//
-//        BVLogVerbose(([NSString stringWithFormat:@"RESPONSE: %@ (%ld)", json,
-//                                                 (long)statusCode]),
-//                     BV_PRODUCT_CONVERSATIONS);
-//
-//        if (errorResponse) {
-//          [self sendErrors:[errorResponse toNSErrors] failureCallback:failure];
-//        } else {
-//          // invoke success callback on main thread
-          dispatch_async(dispatch_get_main_queue(), ^{
-            completion(json);
-          });
-//        }
-      } else if (err) {
-        [self sendError:err failureCallback:failure];
-      } else {
-        NSError *parsingError =
-            [NSError errorWithDomain:BVErrDomain
-                                code:BV_ERROR_PARSING_FAILED
-                            userInfo:@{
-                              NSLocalizedDescriptionKey :
-                                  @"An unknown parsing error occurred."
-                            }];
-        [self sendError:parsingError failureCallback:failure];
-      }
-
+        NSError *err;
+        NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data
+                                                             options:kNilOptions
+                                                               error:&err];
+        
+        if (statusCode == 200 && json) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                completion(json);
+            });
+        } else if (statusCode) {
+            BVProductSentimentsErrorResponse *errorResponse =
+            [[BVProductSentimentsErrorResponse alloc] initWithApiResponse:json statusCode:[@(statusCode) stringValue]];
+            BVLogVerbose(([NSString stringWithFormat:@"RESPONSE: %@ (%ld)", json,
+                           (long)statusCode]),
+                         BV_PRODUCT_CONVERSATIONS);
+            [self sendErrors:[errorResponse toNSErrors] failureCallback:failure];
+        } else {
+          NSString *message = [NSString
+              stringWithFormat:@"HTTP response status code: %li with error: %@",
+                               (long)statusCode, error.localizedDescription];
+          NSError *enhancedError =
+              [NSError errorWithDomain:BVErrDomain
+                                  code:BV_ERROR_NETWORK_FAILED
+                              userInfo:@{NSLocalizedDescriptionKey : message}];
+          [self sendError:enhancedError failureCallback:failure];
+        }
     } @catch (NSException *exception) {
       NSError *err =
           [NSError errorWithDomain:BVErrDomain
@@ -188,16 +179,6 @@ processData:(nullable NSData *)data
                           }];
       [self sendError:err failureCallback:failure];
     }
-  } else {
-    NSString *message = [NSString
-        stringWithFormat:@"HTTP response status code: %li with error: %@",
-                         (long)statusCode, error.localizedDescription];
-    NSError *enhancedError =
-        [NSError errorWithDomain:BVErrDomain
-                            code:BV_ERROR_NETWORK_FAILED
-                        userInfo:@{NSLocalizedDescriptionKey : message}];
-    [self sendError:enhancedError failureCallback:failure];
-  }
 }
 
 - (nonnull NSError *)limitError:(NSInteger)limit {
@@ -207,17 +188,6 @@ processData:(nullable NSData *)data
                        (long)limit];
   return [NSError errorWithDomain:BVErrDomain
                              code:BV_ERROR_INVALID_LIMIT
-                         userInfo:@{NSLocalizedDescriptionKey : message}];
-}
-
-- (nonnull NSError *)tooManyProductsError:
-    (nonnull NSArray<NSString *> *)productIds {
-  NSString *message = [NSString
-      stringWithFormat:
-          @"Too many productIds requested: %lu. Must be between 1 and 100.",
-          (unsigned long)[productIds count]];
-  return [NSError errorWithDomain:BVErrDomain
-                             code:BV_ERROR_TOO_MANY_PRODUCTS
                          userInfo:@{NSLocalizedDescriptionKey : message}];
 }
 
