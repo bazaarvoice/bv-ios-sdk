@@ -704,6 +704,8 @@
 		B78683D02D096C1900BBCE3F /* BVSummarisedFeaturesQueryTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B78683CF2D096C1900BBCE3F /* BVSummarisedFeaturesQueryTest.swift */; };
 		B78683D32D096FD900BBCE3F /* BVProductSentimentsErrorResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = B78683D22D096FD900BBCE3F /* BVProductSentimentsErrorResponse.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B78683D52D096FEE00BBCE3F /* BVProductSentimentsErrorResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = B78683D42D096FEE00BBCE3F /* BVProductSentimentsErrorResponse.m */; };
+		B78F94682D548EA500D9ECC4 /* BVProductSentimentsError.m in Sources */ = {isa = PBXBuildFile; fileRef = B78F94672D548EA500D9ECC4 /* BVProductSentimentsError.m */; };
+		B78F94692D548EA900D9ECC4 /* BVProductSentimentsError.h in Headers */ = {isa = PBXBuildFile; fileRef = B78F94662D548E9600D9ECC4 /* BVProductSentimentsError.h */; };
 		B7B3B95C2BAAB48D00A2831B /* BVSubmittedVideo.m in Sources */ = {isa = PBXBuildFile; fileRef = B7B3B95B2BAAB48D00A2831B /* BVSubmittedVideo.m */; };
 		B7B3B95E2BAAB4B500A2831B /* BVVideoSubmission.h in Headers */ = {isa = PBXBuildFile; fileRef = B7E7C6A72BA2D70F006632CF /* BVVideoSubmission.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B7B3B95F2BAAB4B700A2831B /* BVSubmittedVideo.h in Headers */ = {isa = PBXBuildFile; fileRef = B7B3B95D2BAAB49F00A2831B /* BVSubmittedVideo.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -1450,6 +1452,8 @@
 		B78683CF2D096C1900BBCE3F /* BVSummarisedFeaturesQueryTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BVSummarisedFeaturesQueryTest.swift; sourceTree = "<group>"; };
 		B78683D22D096FD900BBCE3F /* BVProductSentimentsErrorResponse.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BVProductSentimentsErrorResponse.h; sourceTree = "<group>"; };
 		B78683D42D096FEE00BBCE3F /* BVProductSentimentsErrorResponse.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BVProductSentimentsErrorResponse.m; sourceTree = "<group>"; };
+		B78F94662D548E9600D9ECC4 /* BVProductSentimentsError.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BVProductSentimentsError.h; sourceTree = "<group>"; };
+		B78F94672D548EA500D9ECC4 /* BVProductSentimentsError.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BVProductSentimentsError.m; sourceTree = "<group>"; };
 		B7B3B95B2BAAB48D00A2831B /* BVSubmittedVideo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BVSubmittedVideo.m; sourceTree = "<group>"; };
 		B7B3B95D2BAAB49F00A2831B /* BVSubmittedVideo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BVSubmittedVideo.h; sourceTree = "<group>"; };
 		B7B3B9602BAAB62100A2831B /* BVVideoSubmissionResponse.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BVVideoSubmissionResponse.m; sourceTree = "<group>"; };
@@ -2935,6 +2939,8 @@
 				B78683B92CEDE78D00BBCE3F /* NSError+BVProductSentimentsErrorCodeParser.m */,
 				B78683D22D096FD900BBCE3F /* BVProductSentimentsErrorResponse.h */,
 				B78683D42D096FEE00BBCE3F /* BVProductSentimentsErrorResponse.m */,
+				B78F94662D548E9600D9ECC4 /* BVProductSentimentsError.h */,
+				B78F94672D548EA500D9ECC4 /* BVProductSentimentsError.m */,
 			);
 			path = Errors;
 			sourceTree = "<group>";
@@ -3017,8 +3023,8 @@
 				B7C833522D2E79D30088B7C0 /* BVProductExpressionsResponse.m */,
 			);
 			path = ProductExpressions;
-            sourceTree = "<group>";
-        };
+			sourceTree = "<group>";
+		};
 		B7C8335C2D2FA9020088B7C0 /* ReviewSummarisation */ = {
 			isa = PBXGroup;
 			children = (
@@ -3122,6 +3128,7 @@
 				87F2DD411DAD585E00FB43F3 /* BVRecommendedProduct.h in Headers */,
 				B58639BB214AFE0A00EFD763 /* BVSDKConfiguration.h in Headers */,
 				87F2DD051DAD585E00FB43F3 /* BVQuestionsCollectionView.h in Headers */,
+				B78F94692D548EA900D9ECC4 /* BVProductSentimentsError.h in Headers */,
 				87F2DC1E1DAD585E00FB43F3 /* BVPixel.h in Headers */,
 				87F2DC991DAD585E00FB43F3 /* BVReview.h in Headers */,
 				87F2DCCF1DAD585E00FB43F3 /* BVAnswerSubmissionResponse.h in Headers */,
@@ -3783,6 +3790,7 @@
 				B575C3871FBDFD6F000F890B /* BVUASSubmission.m in Sources */,
 				87E810E61ECCA0190032C753 /* BVCommentsSortOption.m in Sources */,
 				875411761E1F201E006C5C6E /* BVNotificationsAnalyticsHelper.m in Sources */,
+				B78F94682D548EA500D9ECC4 /* BVProductSentimentsError.m in Sources */,
 				87D425281E8EE39700147FDB /* BVViewedCGCEvent.m in Sources */,
 				87F2DD061DAD585E00FB43F3 /* BVQuestionsCollectionView.m in Sources */,
 				87F2DCE21DAD585E00FB43F3 /* BVPhotoSubmission.m in Sources */,

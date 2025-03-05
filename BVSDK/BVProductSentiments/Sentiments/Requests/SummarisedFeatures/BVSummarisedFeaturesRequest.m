@@ -78,9 +78,22 @@ loadSummarisedFeatures:(nonnull BVProductSentimentsRequest *)request
            dispatch_async(dispatch_get_main_queue(), ^{
              completion(summarisedFeaturesResponse);
            });
-//           [self sendQuestionsAnalytics:questionsAndAnswersResponse];
+           [self sendProductSentimentsAnalytics];
          }
             failure:failure];
+}
+
+- (void)sendProductSentimentsAnalytics {
+    // send usedfeature for product sentiments
+
+    BVFeatureUsedEvent *event = [[BVFeatureUsedEvent alloc]
+           initWithProductId:self.productId
+                   withBrand:nil
+             withProductType:BVPixelProductTypeProductSentiments
+               withEventName:BVPixelFeatureUsedEventNameReviewHighlights
+        withAdditionalParams:nil];
+
+    [BVPixel trackEvent:event];
 }
 
 @end

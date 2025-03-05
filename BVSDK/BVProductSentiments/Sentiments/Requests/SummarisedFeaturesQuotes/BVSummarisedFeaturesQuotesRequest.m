@@ -54,6 +54,9 @@
   // validate request
   if ([self.productId isEqualToString:@""] || [self.featureId isEqualToString:@""] || [self.language isEqualToString:@""]) {
     [self sendError:[self validationError] failureCallback:failure];
+  } else if (1 > self.limit || 100 < self.limit) {
+      // invalid request
+    [self sendError:[super limitError:self.limit] failureCallback:failure];
   } else {
     [self loadSummarisedFeaturesQuotes:self completion:success failure:failure];
   }
@@ -81,11 +84,22 @@ loadSummarisedFeaturesQuotes:(nonnull BVProductSentimentsRequest *)request
            dispatch_async(dispatch_get_main_queue(), ^{
              completion(summarisedFeaturesQuotesResponse);
            });
-//           [self sendQuestionsAnalytics:questionsAndAnswersResponse];
+                 [self sendProductSentimentsAnalytics];
          }
             failure:failure];
 }
 
+- (void)sendProductSentimentsAnalytics {
+    // send usedfeature for product sentiments
 
+    BVFeatureUsedEvent *event = [[BVFeatureUsedEvent alloc]
+           initWithProductId:self.productId
+                   withBrand:nil
+             withProductType:BVPixelProductTypeProductSentiments
+               withEventName:BVPixelFeatureUsedEventNameReviewHighlights
+        withAdditionalParams:nil];
+
+    [BVPixel trackEvent:event];
+}
 
 @end
