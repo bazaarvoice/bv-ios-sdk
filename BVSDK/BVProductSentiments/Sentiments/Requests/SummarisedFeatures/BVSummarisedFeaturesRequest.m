@@ -18,13 +18,13 @@
 - (nonnull instancetype)initWithProductId:(nonnull NSString *)productId
                                  language:(nonnull NSString *)language
                                  embed:(nullable NSString *)embed {
-  if ((self = [super init])) {
-    _productId = [BVCommaUtil escape:productId];
-    _language = [BVCommaUtil escape:language];
-      if ([embed length] > 0) {
-          _embed = embed;
-      }
-  }
+    if ((self = [super init])) {
+        _productId = [BVCommaUtil escape:productId];
+        _language = language;
+        if ([embed length] > 0) {
+            _embed = embed;
+        }
+    }
   return self;
 }
 
