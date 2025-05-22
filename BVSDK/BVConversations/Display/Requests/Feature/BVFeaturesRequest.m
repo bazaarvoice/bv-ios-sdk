@@ -25,11 +25,10 @@
 
 - (nonnull instancetype)initWithProductId:(nonnull NSString *)productId
                                    language:(nonnull NSString *)language {
-  if ((self = [super init])) {
-
-    _productId = [BVCommaUtil escape:productId];
-    _language = language;
-  }
+    if ((self = [super init])) {
+        _productId = [BVCommaUtil escape:productId];
+        _language = language;
+    }
   return self;
 }
 
