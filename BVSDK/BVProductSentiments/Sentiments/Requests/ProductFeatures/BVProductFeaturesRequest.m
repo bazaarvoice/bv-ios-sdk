@@ -21,8 +21,8 @@
                                   language:(NSString * _Nonnull)language
                                      limit:(NSUInteger)limit {
     if ((self = [super init])) {
-      _productId = [BVCommaUtil escape:productId];
-        _language = [BVCommaUtil escape:language];
+        _productId = [BVCommaUtil escape:productId];
+        _language = language;
         _limit = limit;
     }
     return self;
