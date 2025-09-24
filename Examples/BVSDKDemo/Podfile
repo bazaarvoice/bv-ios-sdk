@@ -1,5 +1,5 @@
 # Minimum iOS version
-platform :ios, '12.0'
+platform :ios, '15.0'
 
 # Using swift, so Dynamic Frameworks required!
 use_frameworks!
