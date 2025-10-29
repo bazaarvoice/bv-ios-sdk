@@ -1,0 +1,45 @@
+
+{
+  "features": [
+    {
+      "feature": "wearing",
+      "nativeFeature": "wearing"
+    },
+    {
+      "feature": "quick",
+      "nativeFeature": "quick"
+    },
+    {
+      "feature": "longevity",
+      "nativeFeature": "longevity"
+    },
+    {
+      "feature": "drying",
+      "nativeFeature": "drying"
+    },
+    {
+      "feature": "removal",
+      "nativeFeature": "removal"
+    },
+    {
+      "feature": "width",
+      "nativeFeature": "width"
+    },
+    {
+      "feature": "price",
+      "nativeFeature": "price"
+    },
+    {
+      "feature": "application",
+      "nativeFeature": "application"
+    },
+    {
+      "feature": "appearance",
+      "nativeFeature": "appearance"
+    },
+    {
+      "feature": "coats",
+      "nativeFeature": "coats"
+    }
+  ]
+}
