@@ -15,13 +15,18 @@ class ReviewHightlightsTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        view_CellBackground.layer.cornerRadius = 5
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    func setBgViewBorder(color: UIColor) {
+        self.view_CellBackground.layer.borderColor = color.cgColor
+        self.view_CellBackground.layer.borderWidth = 1
     }
     
 }

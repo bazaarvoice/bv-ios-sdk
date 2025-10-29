@@ -10,12 +10,50 @@ import BVSDK
 import FontAwesomeKit
 import XLActionController
 
+enum ReviewTableSections {
+    
+    case features
+    case summary
+    case pros
+    case cons
+    case positiveQuotes
+    case negativeQuotes
+    case featureQuotes
+    case quotes
+    case actionButtons
+    case reviews
+    
+    var title: String {
+        switch self {
+            
+        case .features:
+            return "Product Features"
+        case .summary:
+            return "✨ AI Generated Review Summary"
+        case .pros:
+            return "Pros"
+        case .cons:
+            return "Cons"
+        case .positiveQuotes:
+            return "Most Helpful Review Quotes"
+        case .negativeQuotes:
+            return "Most Critical Review Quotes"
+        case .featureQuotes:
+            return "Quotes for Feature"
+        case .quotes:
+            return "Most Useful Quotes"
+        case .actionButtons:
+            return "Actions"
+        case .reviews:
+            return "Reviews"
+        }
+    }
+}
 
 class RatingsAndReviewsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var tableView: BVReviewsTableView!
     @IBOutlet weak var header : ProductDetailHeaderView!
-    @IBOutlet weak var reviewHightlightsTableView: UITableView!
     var spinner = Util.createSpinner(UIColor.bazaarvoiceNavy(), size: CGSize(width: 44,height: 44), padding: 0)
     
     private var reviews : [BVReview] = []
@@ -28,12 +66,7 @@ class RatingsAndReviewsViewController: UIViewController, UITableViewDelegate, UI
     private let numReviewToFetch : Int32 = 20
     private var reviewFetchPending : Bool = false // Is an API call in progress
     var totalReviewCount = 0
-    
-    private var bVReviewHighlights = BVReviewHighlights()
-    private var reviewHighlightsHeaderModelArray: [ReviewHighlightsHeaderModel] = []
-    private var expand: Bool = false
-    @IBOutlet weak var reviewHighlightsHeightConstraints: NSLayoutConstraint!
-    
+        
     enum RatingsAndReviewsSections : Int {
         case filter = 0
         case reviews
@@ -57,7 +90,9 @@ class RatingsAndReviewsViewController: UIViewController, UITableViewDelegate, UI
     private let filterActionTitles = ["Most Recent", "Highest Rating", "Lowest Rating", "Most Helpful", "Most Comments", "Location Filter"]
     
     private var selectedFilterOption : Int = FilterOptions.mostRecent.rawValue
-    
+    private var displayReviewHighlights: Bool = false
+    private var productSentimentsViewModel: ProductSentimentsViewModelDelegate?
+
     init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?, product:BVProduct, totalReviewCount: Int, reviewHighlightsProductId: String?) {
         
         self.totalReviewCount = totalReviewCount
@@ -78,34 +113,34 @@ class RatingsAndReviewsViewController: UIViewController, UITableViewDelegate, UI
         
         header.product = product
         
-        let nib = UINib(nibName: "RatingTableViewCell", bundle: nil)
-        tableView.register(nib, forCellReuseIdentifier: "RatingTableViewCell")
-        
         //Register ReviewHighlights Cell
         self.registerCell()
         
         tableView.estimatedRowHeight = 40
         tableView.rowHeight = UITableView.automaticDimension
-        tableView.allowsSelection = false
         
         // add a Write Review button...
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Write a review", style: .plain, target: self, action: #selector(RatingsAndReviewsViewController.writeReviewTapped))
         
         self.title = "Reviews"
         
-        let nibConversationsCell = UINib(nibName: "ProductPageButtonCell", bundle: nil)
-        tableView.register(nibConversationsCell, forCellReuseIdentifier: "ProductPageButtonCell")
-        
-        self.initReviewHighlightsHeaderArray()
-        
-        if let productID = reviewHighlightsProductId {
-            self.loadReviewsHighligts(productID: productID)
-        }
-        else {
-            self.reviewHighlightsHeightConstraints.constant = 0
-        }
         self.loadReviews()
+        self.productSentimentsViewModel = ProductSentimentsViewModel(productId: product.identifier)
+        self.productSentimentsViewModel?.productSentimentsUIDelegate = self
+    }
+    
+    private func registerCell() {
+        let nibConversationsCell = UINib(nibName: "ReviewsSectionsToogleTableViewCell", bundle: nil)
+        tableView.register(nibConversationsCell, forCellReuseIdentifier: "ReviewsSectionsToogleTableViewCell")
         
+        let nib = UINib(nibName: "ReviewHightlightsTableViewCell", bundle: nil)
+        self.tableView.register(nib, forCellReuseIdentifier: "ReviewHightlightsTableViewCell")
+        
+        let nib1 = UINib(nibName: "ReviewHighlightsHeaderTableViewCell", bundle: nil)
+        self.tableView.register(nib1, forCellReuseIdentifier: "ReviewHighlightsHeaderTableViewCell")
+        
+        let nib2 = UINib(nibName: "RatingTableViewCell", bundle: nil)
+        tableView.register(nib2, forCellReuseIdentifier: "RatingTableViewCell")
     }
     
     @objc func writeReviewTapped() {
@@ -173,216 +208,132 @@ class RatingsAndReviewsViewController: UIViewController, UITableViewDelegate, UI
     // MARK: UITableViewDatasource
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        if tableView == self.reviewHightlightsTableView {
-            
-            if section == 0 {
-                
-                if let positive = self.bVReviewHighlights.positives {
-                    return self.reviewHighlightsHeaderModelArray[section].isExpand ? positive.count + 1 : 1
-                }
-                
-            }
-            else {
-                if let negative = self.bVReviewHighlights.negatives {
-                    return self.reviewHighlightsHeaderModelArray[section].isExpand ? negative.count + 1 : 1
-                }
-            }
-        }
-        else {
-            
-            var count = 0
-            
-            switch section {
-            case RatingsAndReviewsSections.reviews.rawValue:
-                count = reviews.count
-                break
-            case RatingsAndReviewsSections.filter.rawValue:
-                count = 1
-                break
-            default:
-                break
-            }
-            
-            return count
+        switch self.reviewTableSections[section] {
+        case .actionButtons:
+            return 1
+        case .reviews:
+            return reviews.count
+        default:
+            return self.productSentimentsViewModel?.getRowCount(self.reviewTableSections[section]) ?? 0
         }
         
-        return 0
+       
+//            
+//            var count = 0
+//            
+//            switch section {
+//            case RatingsAndReviewsSections.reviews.rawValue:
+//                count = reviews.count
+//                break
+//            case RatingsAndReviewsSections.filter.rawValue:
+//                count = 1
+//                break
+//            default:
+//                break
+//            }
+//            
+//            return count
+        
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        
-        if tableView == self.reviewHightlightsTableView {
-            return 2
-        }
-        
-        return RatingsAndReviewsSections.count()
-    }
-    
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        //        if tableView == self.reviewHightlightsTableView {
-        //            return 100
-        //        }
-        //
-        return 0
-    }
-    
-    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        
-        if tableView == self.reviewHightlightsTableView {
-            return 0
-        }
-        
-        if section == RatingsAndReviewsSections.reviews.rawValue {
-            return 22
-        }
-        
-        return 0
-    }
-    
-    func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
-        
-        // TODO: Plain table styling has stickey footer so need fix that
-        //        if section == RatingsAndReviewsSections.Reviews.rawValue && totalReviewCount <= self.reviews.count {
-        //            return "End of Content"
-        //        }
-        
-        return ""
+        return self.reviewTableSections.count
+        //return RatingsAndReviewsSections.count()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        if tableView == self.reviewHightlightsTableView {
+        let sectionType = self.reviewTableSections[indexPath.section]
+        switch sectionType {
             
-            if indexPath.section == 0 {
-                
-                if indexPath.row == 0 {
-                    let cell = tableView.dequeueReusableCell(withIdentifier: "ReviewHighlightsHeaderTableViewCell", for: indexPath) as! ReviewHighlightsHeaderTableViewCell
-                    cell.selectionStyle = .none
-                    cell.lbl_Title.text = self.reviewHighlightsHeaderModelArray[indexPath.section].title
-                    
-                    //For total PROS Count
-                    if let positive = self.bVReviewHighlights.positives {
-                        cell.lbl_Count.text = "\(positive.count)"
-                    }
-                    
-                    return cell
-                }
-                else {
-                    
-                    let cell = tableView.dequeueReusableCell(withIdentifier: "ReviewHightlightsTableViewCell", for: indexPath) as! ReviewHightlightsTableViewCell
-                    cell.selectionStyle = .none
-                    if let title = self.bVReviewHighlights.positives?[indexPath.row - 1].title?.capitalized {
-                        if let count = self.bVReviewHighlights.positives?[indexPath.row - 1].bestExamples?.count {
-                            cell.lbl_Title.text = title + " (\(count))"
-                        }
-                    }
-                    
-                    return cell
-                }
+        case .features, .summary, .pros, .cons, .positiveQuotes, .negativeQuotes, .featureQuotes, .quotes:
+            
+            let cell = tableView.dequeueReusableCell(withIdentifier: "ReviewHightlightsTableViewCell", for: indexPath) as! ReviewHightlightsTableViewCell
+            cell.selectionStyle = .none
+//            if let title = self.bVReviewHighlights.negatives?[indexPath.row - 1].title?.capitalized {
+//                if let count = self.bVReviewHighlights.negatives?[indexPath.row - 1].bestExamples?.count {
+//                    cell.lbl_Title.text = title + " (\(count))"
+//                }
+//            }
+            
+            let displayText = self.productSentimentsViewModel?.getText(sectionType, indexPath.row)
+            cell.lbl_Title.text = displayText
+            if sectionType == .pros {
+                cell.lbl_Title.textColor = UIColor.systemGreen
+                cell.setBgViewBorder(color: UIColor.systemGreen.withAlphaComponent(0.5))
+            } else if sectionType == .cons {
+                cell.lbl_Title.textColor = UIColor.systemRed
+                cell.setBgViewBorder(color: UIColor.systemRed.withAlphaComponent(0.5))
+            } else {
+                cell.lbl_Title.textColor = UIColor.systemGray
+                cell.setBgViewBorder(color: UIColor.systemGray.withAlphaComponent(0.5))
             }
-            else {
-                
-                if indexPath.row == 0 {
-                    let cell = tableView.dequeueReusableCell(withIdentifier: "ReviewHighlightsHeaderTableViewCell", for: indexPath) as! ReviewHighlightsHeaderTableViewCell
-                    cell.selectionStyle = .none
-                    cell.lbl_Title.text = self.reviewHighlightsHeaderModelArray[indexPath.section].title
-                    
-                    //For total CONS Count
-                    if let negative = self.bVReviewHighlights.negatives {
-                        cell.lbl_Count.text = "\(negative.count)"
-                    }
-                    
-                    return cell
-                }
-                else {
-                    
-                    let cell = tableView.dequeueReusableCell(withIdentifier: "ReviewHightlightsTableViewCell", for: indexPath) as! ReviewHightlightsTableViewCell
-                    cell.selectionStyle = .none
-                    if let title = self.bVReviewHighlights.negatives?[indexPath.row - 1].title?.capitalized {
-                        if let count = self.bVReviewHighlights.negatives?[indexPath.row - 1].bestExamples?.count {
-                            cell.lbl_Title.text = title + " (\(count))"
-                        }
-                    }
-                    
-                    return cell
-                }
+            return cell
+
+        case .actionButtons:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "ReviewsSectionsToogleTableViewCell") as! ReviewsSectionsToogleTableViewCell
+
+            cell.toggleReviewHighlightsButton.removeTarget(nil, action: nil, for: .allEvents)
+            cell.toggleReviewHighlightsButton.addTarget(self, action: #selector(RatingsAndReviewsViewController.toggleReviewHighlightsPressed), for: .touchUpInside)
+            cell.setReviewHighlightsButtonTitle(isOn: self.displayReviewHighlights)
+
+            cell.button.removeTarget(nil, action: nil, for: .allEvents)
+            cell.button.addTarget(self, action: #selector(RatingsAndReviewsViewController.filterReviewsButtonPressed), for: .touchUpInside)
+            cell.setCustomLeftIcon(FAKFontAwesome.sortIcon(withSize:))
+            
+            let titlePrefix = selectedFilterOption == FilterOptions.location.rawValue ? "Filter:" : "Sort:"
+            cell.button.setTitle("\(titlePrefix) \(filterActionTitles[selectedFilterOption])", for: UIControl.State())
+            
+            return cell
+        case .reviews:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "RatingTableViewCell") as! RatingTableViewCell
+            let review : BVReview  = reviews[(indexPath as NSIndexPath).row]
+            cell.review = review
+            
+            // Check to see if there was a vote on this review id
+            var cellVote = Votes.NoVote
+            if let previosVote = self.votesDictionary[review.identifier!]{
+                cellVote = previosVote
             }
             
+            cell.vote = cellVote
             
-        }
-        else {
             
-            let cell = UITableViewCell()
+            cell.onAuthorNickNameTapped = { (authorId) -> Void in
+                self.loadAuthorViewController(authorId: authorId)
+            }
             
-            switch (indexPath as NSIndexPath).section {
-            case RatingsAndReviewsSections.filter.rawValue:
-                
-                let cell = tableView.dequeueReusableCell(withIdentifier: "ProductPageButtonCell") as! ProductPageButtonCell
-                
-                cell.button.removeTarget(nil, action: nil, for: .allEvents)
-                cell.button.addTarget(self, action: #selector(RatingsAndReviewsViewController.filterReviewsButtonPressed), for: .touchUpInside)
-                cell.setCustomLeftIcon(FAKFontAwesome.sortIcon(withSize:))
-                
-                let titlePrefix = selectedFilterOption == FilterOptions.location.rawValue ? "Filter:" : "Sort:"
-                cell.button.setTitle("\(titlePrefix) \(filterActionTitles[selectedFilterOption])", for: UIControl.State())
-                
-                return cell
-                
-            case RatingsAndReviewsSections.reviews.rawValue:
-                
-                let cell = tableView.dequeueReusableCell(withIdentifier: "RatingTableViewCell") as! RatingTableViewCell
-                let review : BVReview  = reviews[(indexPath as NSIndexPath).row]
-                cell.review = review
-                
-                // Check to see if there was a vote on this review id
-                var cellVote = Votes.NoVote
-                if let previosVote = self.votesDictionary[review.identifier!]{
-                    cellVote = previosVote
+            cell.onCommentIconTapped = { (reviewComments) -> Void in
+                self.loadCommentsViewController(reviewComments: reviewComments)
+            }
+            
+            cell.onVoteIconTapped = { (idVoteDict) -> Void in
+                if let key = idVoteDict.allKeys.first {
+                    //self.votesDictionary[key] = idVoteDict.value(forKey: key as! String)
+                    let value : Votes = idVoteDict[key as! String] as! Votes
+                    self.votesDictionary[key as! String] = value
                 }
                 
-                cell.vote = cellVote
-                
-                
-                cell.onAuthorNickNameTapped = { (authorId) -> Void in
-                    self.loadAuthorViewController(authorId: authorId)
-                }
-                
-                cell.onCommentIconTapped = { (reviewComments) -> Void in
-                    self.loadCommentsViewController(reviewComments: reviewComments)
-                }
-                
-                cell.onVoteIconTapped = { (idVoteDict) -> Void in
-                    if let key = idVoteDict.allKeys.first {
-                        //self.votesDictionary[key] = idVoteDict.value(forKey: key as! String)
-                        let value : Votes = idVoteDict[key as! String] as! Votes
-                        self.votesDictionary[key as! String] = value
-                    }
-                    
-                }
-                
-                return cell
-                
-            default:
-                break
             }
             
             return cell
+            
         }
-        
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if tableView == self.reviewHightlightsTableView {
-            if indexPath.row == 0 {
-                return 50
-            }
-            else {
-                return 40
-            }
-        }
-        
         return UITableView.automaticDimension
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if self.reviewTableSections[section] == .actionButtons {
+            return CGFloat.leastNormalMagnitude
+        } else {
+            return 40
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return CGFloat.leastNormalMagnitude
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
@@ -400,13 +351,19 @@ class RatingsAndReviewsViewController: UIViewController, UITableViewDelegate, UI
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        if self.reviewTableSections[section] == .actionButtons {
+            return nil
+        }
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ReviewHighlightsHeaderTableViewCell") as! ReviewHighlightsHeaderTableViewCell
+        cell.selectionStyle = .none
+        cell.lbl_Title.text = self.reviewTableSections[section].title
         
-        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 100))
-        let title = UILabel(frame: CGRect(x: 0, y: 0, width: (UIScreen.main.bounds.width - 100), height: 70))
-        title.text = "Positive"
-        headerView.addSubview(title)
-        
-        return headerView
+        return cell
+    }
+    
+    @objc func toggleReviewHighlightsPressed() {
+        self.displayReviewHighlights = !self.displayReviewHighlights
+        self.tableView.reloadData()
     }
     
     @objc func filterReviewsButtonPressed() {
@@ -453,115 +410,41 @@ class RatingsAndReviewsViewController: UIViewController, UITableViewDelegate, UI
     }
     
     // MARK: UITableViewDelegate
-    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        // Currently nothing to do when selecting a review
-        // But we could add further review author details (e.g. profile view)
-        
-        //Expand/Collapse selected cell
-        if tableView == self.reviewHightlightsTableView {
-            
-            if indexPath.row == 0 {
-                
-                for i in 0..<self.reviewHighlightsHeaderModelArray.count {
-                    
-                    if i == indexPath.section {
-                        self.reviewHighlightsHeaderModelArray[indexPath.section].isExpand = !self.reviewHighlightsHeaderModelArray[indexPath.section].isExpand
-                    }
-                    else {
-                        self.reviewHighlightsHeaderModelArray[i].isExpand = false
-                    }
-                }
-                
-                self.updateReviewHightlightsTableViewHeightConstraints()
-                self.reviewHightlightsTableView.reloadData()
-                
-            }
-            else {
-                let reviewHighlightsDetailsViewController: ReviewHighlightsDetailsViewController = ReviewHighlightsDetailsViewController()
-                if self.reviewHighlightsHeaderModelArray[0].isExpand {
-                    if let positive = self.bVReviewHighlights.positives {
-                        reviewHighlightsDetailsViewController.bVReviewHighlight = positive[indexPath.row - 1]
-                    }
-                }
-                else {
-                    if let negative = self.bVReviewHighlights.negatives {
-                        reviewHighlightsDetailsViewController.bVReviewHighlight = negative[indexPath.row - 1]
-                    }
-                }
-                self.navigationController?.pushViewController(reviewHighlightsDetailsViewController, animated: true)
-            }
+        let type = self.reviewTableSections[indexPath.section]
+        if type == .features || type == .pros || type == .cons {
+            self.productSentimentsViewModel?.didSelectFeatureAtIndex(type, indexPath.row)
         }
-        
-        return;
-        
     }
-    
 }
 
 extension RatingsAndReviewsViewController {
-    
-    private func initialUISetUp() {
-        self.reviewHighlightsHeightConstraints.constant = 0
-    }
-    
-    private func registerCell() {
-        let nib = UINib(nibName: "ReviewHightlightsTableViewCell", bundle: nil)
-        self.reviewHightlightsTableView.register(nib, forCellReuseIdentifier: "ReviewHightlightsTableViewCell")
-        
-        let nib1 = UINib(nibName: "ReviewHighlightsHeaderTableViewCell", bundle: nil)
-        self.reviewHightlightsTableView.register(nib1, forCellReuseIdentifier: "ReviewHighlightsHeaderTableViewCell")
-    }
-    
-    private func initReviewHighlightsHeaderArray() {
-        //Removing all older values
-        self.reviewHighlightsHeaderModelArray.removeAll()
-        self.reviewHighlightsHeaderModelArray.append(ReviewHighlightsHeaderModel(title: "Pros Mentioned", isExpand: false))
-        self.reviewHighlightsHeaderModelArray.append(ReviewHighlightsHeaderModel(title: "Cons mentioned", isExpand: false))
-    }
-    
-    private func updateReviewHightlightsTableViewHeightConstraints() {
-        if self.reviewHighlightsHeaderModelArray[0].isExpand {
-            
-            if let positive = self.bVReviewHighlights.positives {
-                self.reviewHighlightsHeightConstraints.constant = CGFloat((100 + (positive.count * 40)))
-            }
-            
-        }
-            
-        else if self.reviewHighlightsHeaderModelArray[1].isExpand {
-            if let negative = self.bVReviewHighlights.negatives {
-                self.reviewHighlightsHeightConstraints.constant = CGFloat((100 + (negative.count * 40)))
-            }
-        }
-        else {
-            self.reviewHighlightsHeightConstraints.constant = 100
-        }
-        
-    }
-    
-    private func loadReviewsHighligts(productID: String) {
-        
-        let reviewHighlightsRequest = BVReviewHighlightsRequest.init(productId: productID)
-        
-        reviewHighlightsRequest.load({ (response) in
-            
-            self.bVReviewHighlights = response.reviewHighlights
-            
-            self.reviewHightlightsTableView.reloadData()
-            
-        }) { (error) in
-            //Hide the ReviewHighlights Tableview.
-            self.reviewHighlightsHeightConstraints.constant = 0
+    var reviewTableSections: [ReviewTableSections] {
+        if displayReviewHighlights {
+            return [
+                .summary,
+                .features,
+                .quotes,
+                .pros,
+                .cons,
+//                .positiveQuotes,
+//                .negativeQuotes,
+                .featureQuotes,
+                .actionButtons,
+                .reviews
+            ]
+        } else {
+            return [
+                .summary,
+                .actionButtons,
+                .reviews
+            ]
         }
     }
-    
 }
 
-struct ReviewHighlightsHeaderModel {
-    var title: String = ""
-    var isExpand: Bool = false
+extension RatingsAndReviewsViewController: ProductSentimentsUIDelegate {
+    func reloadData() {
+        self.tableView.reloadData()
+    }
 }
-
-

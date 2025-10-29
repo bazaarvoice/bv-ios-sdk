@@ -1,54 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="24128" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="24063"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="ReviewHightlightsTableViewCell" customModule="BVSDKDemo" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="49" id="KGk-i7-Jjw" customClass="ReviewHightlightsTableViewCell" customModule="BVSDKDemo" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r8I-ac-dSI">
-                        <rect key="frame" x="15" y="5" width="300" height="34"/>
+                        <rect key="frame" x="10" y="5" width="300" height="39"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YcR-z6-T86">
-                                <rect key="frame" x="0.0" y="0.0" width="255" height="34"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                                <rect key="frame" x="10" y="0.0" width="280" height="39"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" systemColor="scrollViewTexturedBackgroundColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrowtriangle.right.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="NJt-Fg-e6H">
-                                <rect key="frame" x="272" y="8.5" width="11" height="16.5"/>
-                                <color key="tintColor" white="0.66666666666666663" alpha="0.29909567636986312" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="11" id="I1B-Fd-xIk"/>
-                                    <constraint firstAttribute="height" constant="21" id="dFv-iB-6Jd"/>
-                                </constraints>
-                            </imageView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="YcR-z6-T86" firstAttribute="top" secondItem="r8I-ac-dSI" secondAttribute="top" id="2UY-d6-jGy"/>
-                            <constraint firstItem="NJt-Fg-e6H" firstAttribute="leading" secondItem="YcR-z6-T86" secondAttribute="trailing" constant="17" id="D5s-Z3-cTV"/>
-                            <constraint firstItem="NJt-Fg-e6H" firstAttribute="centerY" secondItem="r8I-ac-dSI" secondAttribute="centerY" id="FpD-fn-740"/>
-                            <constraint firstItem="YcR-z6-T86" firstAttribute="leading" secondItem="r8I-ac-dSI" secondAttribute="leading" id="McY-Cg-6XF"/>
-                            <constraint firstAttribute="trailing" secondItem="NJt-Fg-e6H" secondAttribute="trailing" constant="17" id="jXx-4H-mwI"/>
+                            <constraint firstAttribute="trailing" secondItem="YcR-z6-T86" secondAttribute="trailing" constant="10" id="34a-wO-Wi5"/>
+                            <constraint firstItem="YcR-z6-T86" firstAttribute="leading" secondItem="r8I-ac-dSI" secondAttribute="leading" constant="10" id="McY-Cg-6XF"/>
                             <constraint firstAttribute="bottom" secondItem="YcR-z6-T86" secondAttribute="bottom" id="sSO-1N-ur4"/>
+                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="uH7-sx-zSN"/>
                         </constraints>
                     </view>
                 </subviews>
+                <color key="backgroundColor" systemColor="tertiarySystemGroupedBackgroundColor"/>
                 <constraints>
-                    <constraint firstAttribute="trailing" secondItem="r8I-ac-dSI" secondAttribute="trailing" constant="5" id="Kfm-EU-J3h"/>
+                    <constraint firstAttribute="trailing" secondItem="r8I-ac-dSI" secondAttribute="trailing" constant="10" id="Kfm-EU-J3h"/>
                     <constraint firstItem="r8I-ac-dSI" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="OIP-3p-2Be"/>
-                    <constraint firstItem="r8I-ac-dSI" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="ila-q5-Nid"/>
+                    <constraint firstItem="r8I-ac-dSI" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="ila-q5-Nid"/>
                     <constraint firstAttribute="bottom" secondItem="r8I-ac-dSI" secondAttribute="bottom" constant="5" id="sN1-sH-UGt"/>
                 </constraints>
             </tableViewCellContentView>
@@ -57,10 +51,15 @@
                 <outlet property="lbl_Title" destination="YcR-z6-T86" id="eBa-fo-aqQ"/>
                 <outlet property="view_CellBackground" destination="r8I-ac-dSI" id="b3j-Et-5eY"/>
             </connections>
-            <point key="canvasLocation" x="131.8840579710145" y="145.98214285714286"/>
+            <point key="canvasLocation" x="131.8840579710145" y="147.65625"/>
         </tableViewCell>
     </objects>
     <resources>
-        <image name="arrowtriangle.right.fill" catalog="system" width="64" height="56"/>
+        <systemColor name="scrollViewTexturedBackgroundColor">
+            <color red="0.43529411764705883" green="0.44313725490196076" blue="0.47450980392156861" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="tertiarySystemGroupedBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
     </resources>
 </document>

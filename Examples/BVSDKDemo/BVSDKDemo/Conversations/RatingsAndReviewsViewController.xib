@@ -11,8 +11,6 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RatingsAndReviewsViewController" customModule="BVSDKDemo" customModuleProvider="target">
             <connections>
                 <outlet property="header" destination="3xO-Tq-KLn" id="dIb-Mr-nD1"/>
-                <outlet property="reviewHighlightsHeightConstraints" destination="Dlr-Mg-fE8" id="iq9-hv-gui"/>
-                <outlet property="reviewHightlightsTableView" destination="39t-iz-JTb" id="FQR-cP-hNo"/>
                 <outlet property="tableView" destination="mDi-oH-qeH" id="W4h-Nd-3E1"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -90,9 +88,9 @@
                     </constraints>
                     <variation key="default">
                         <mask key="constraints">
-                            <exclude reference="3jk-Kf-aYU"/>
                             <exclude reference="o0d-sK-yYf"/>
                             <exclude reference="tyw-uI-KaX"/>
+                            <exclude reference="3jk-Kf-aYU"/>
                         </mask>
                     </variation>
                     <connections>
@@ -101,20 +99,9 @@
                         <outlet property="productStars" destination="fhM-6I-IFB" id="91M-QG-RNn"/>
                     </connections>
                 </view>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="39t-iz-JTb">
-                    <rect key="frame" x="0.0" y="80" width="375" height="100"/>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="grouped" separatorStyle="none" rowHeight="-1" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="mDi-oH-qeH" customClass="BVReviewsTableView">
+                    <rect key="frame" x="0.0" y="80" width="375" height="587"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="100" id="Dlr-Mg-fE8"/>
-                    </constraints>
-                    <connections>
-                        <outlet property="dataSource" destination="-1" id="0mW-kF-dTy"/>
-                        <outlet property="delegate" destination="-1" id="zFT-xo-2YV"/>
-                    </connections>
-                </tableView>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="mDi-oH-qeH" customClass="BVReviewsTableView">
-                    <rect key="frame" x="0.0" y="180" width="375" height="487"/>
-                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="2QZ-4A-Fk5"/>
                         <outlet property="delegate" destination="-1" id="ZHc-4S-0zL"/>
@@ -123,13 +110,10 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="39t-iz-JTb" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="3yd-Ru-Ssr"/>
-                <constraint firstItem="mDi-oH-qeH" firstAttribute="top" secondItem="39t-iz-JTb" secondAttribute="bottom" id="Fhd-QP-84q"/>
                 <constraint firstItem="mDi-oH-qeH" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="H5w-y1-XcC"/>
-                <constraint firstAttribute="trailing" secondItem="39t-iz-JTb" secondAttribute="trailing" id="O2K-ak-hgV"/>
                 <constraint firstAttribute="trailing" secondItem="mDi-oH-qeH" secondAttribute="trailing" id="dSm-eM-qBg"/>
                 <constraint firstAttribute="trailing" secondItem="3xO-Tq-KLn" secondAttribute="trailing" id="jbJ-W2-oOk"/>
-                <constraint firstItem="39t-iz-JTb" firstAttribute="top" secondItem="3xO-Tq-KLn" secondAttribute="bottom" id="oNS-Tu-Q9h"/>
+                <constraint firstItem="mDi-oH-qeH" firstAttribute="top" secondItem="3xO-Tq-KLn" secondAttribute="bottom" id="mIc-ow-ph0"/>
                 <constraint firstItem="3xO-Tq-KLn" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="qLq-DW-jbG"/>
                 <constraint firstAttribute="bottom" secondItem="mDi-oH-qeH" secondAttribute="bottom" id="vRk-uf-uwf"/>
                 <constraint firstItem="3xO-Tq-KLn" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="xjg-to-aGh"/>

@@ -15,7 +15,6 @@
 		15D5BEC81D79D10200D34EA0 /* JPSThumbnailAnnotation+Curations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D5BEC71D79D10200D34EA0 /* JPSThumbnailAnnotation+Curations.swift */; };
 		15D5BECA1D7A05E900D34EA0 /* CurationsPhotoMapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 15D5BEC91D7A05E900D34EA0 /* CurationsPhotoMapViewController.xib */; };
 		15D5BECE1D7A0AB500D34EA0 /* minusBtn.png in Resources */ = {isa = PBXBuildFile; fileRef = 15D5BECD1D7A0AB500D34EA0 /* minusBtn.png */; };
-		29D3BE3BFAF5C606F24A8219 /* Pods_BVSDKDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 752147F7AC0CA440552B35A4 /* Pods_BVSDKDemo.framework */; };
 		42AD3CB4242E43860000296E /* ReviewHightlightsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42AD3CB2242E43860000296E /* ReviewHightlightsTableViewCell.swift */; };
 		42AD3CB5242E43860000296E /* ReviewHightlightsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 42AD3CB3242E43860000296E /* ReviewHightlightsTableViewCell.xib */; };
 		42AD3CB8242E477B0000296E /* ReviewHighlightsHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42AD3CB6242E477B0000296E /* ReviewHighlightsHeaderTableViewCell.swift */; };
@@ -169,6 +168,11 @@
 		B78A3E582EB1DAE100981962 /* productQuotes.json in Resources */ = {isa = PBXBuildFile; fileRef = B78A3E552EB1DAE100981962 /* productQuotes.json */; };
 		B78A3E592EB1DAE100981962 /* summarisedFeatures.json in Resources */ = {isa = PBXBuildFile; fileRef = B78A3E532EB1DAE100981962 /* summarisedFeatures.json */; };
 		B78A3E5A2EB1DAE100981962 /* conversationsReviewSummary.json in Resources */ = {isa = PBXBuildFile; fileRef = B78A3E562EB1DAE100981962 /* conversationsReviewSummary.json */; };
+		B78A3E5C2EB1DEDC00981962 /* ProductSentimentsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B78A3E5B2EB1DEDC00981962 /* ProductSentimentsViewModel.swift */; };
+		B78A3E5D2EB1DEDC00981962 /* ProductSentimentsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B78A3E5B2EB1DEDC00981962 /* ProductSentimentsViewModel.swift */; };
+		B78EB7A02EB2129A00B7647A /* ReviewsSectionsToogleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B78EB79E2EB2129A00B7647A /* ReviewsSectionsToogleTableViewCell.swift */; };
+		B78EB7A12EB2129A00B7647A /* ReviewsSectionsToogleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B78EB79F2EB2129A00B7647A /* ReviewsSectionsToogleTableViewCell.xib */; };
+		D6E224EFC7178A6EE94422B9 /* Pods_BVSDKDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8E4D93E82B9A42C2D006373 /* Pods_BVSDKDemo.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -213,7 +217,7 @@
 		15D5BEC71D79D10200D34EA0 /* JPSThumbnailAnnotation+Curations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "JPSThumbnailAnnotation+Curations.swift"; sourceTree = "<group>"; };
 		15D5BEC91D7A05E900D34EA0 /* CurationsPhotoMapViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CurationsPhotoMapViewController.xib; path = Resources/CurationsPhotoMapViewController.xib; sourceTree = "<group>"; };
 		15D5BECD1D7A0AB500D34EA0 /* minusBtn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = minusBtn.png; sourceTree = "<group>"; };
-		3F8962665E4F05EFC6C83E42 /* Pods-BVSDKDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BVSDKDemo.debug.xcconfig"; path = "Target Support Files/Pods-BVSDKDemo/Pods-BVSDKDemo.debug.xcconfig"; sourceTree = "<group>"; };
+		325C723F4D3F159792BC01D4 /* Pods-BVSDKDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BVSDKDemo.debug.xcconfig"; path = "Target Support Files/Pods-BVSDKDemo/Pods-BVSDKDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		42AD3CB2242E43860000296E /* ReviewHightlightsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewHightlightsTableViewCell.swift; sourceTree = "<group>"; };
 		42AD3CB3242E43860000296E /* ReviewHightlightsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReviewHightlightsTableViewCell.xib; sourceTree = "<group>"; };
 		42AD3CB6242E477B0000296E /* ReviewHighlightsHeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewHighlightsHeaderTableViewCell.swift; sourceTree = "<group>"; };
@@ -303,7 +307,6 @@
 		73DD1A061CE021DC00BCF87C /* MockDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MockDataManager.swift; path = MockDataManager/MockDataManager.swift; sourceTree = "<group>"; };
 		73F020F21CED4E8D00FC7D7D /* QuestionAnswerTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionAnswerTableViewCell.swift; sourceTree = "<group>"; };
 		73F020F31CED4E8D00FC7D7D /* QuestionAnswerTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QuestionAnswerTableViewCell.xib; sourceTree = "<group>"; };
-		752147F7AC0CA440552B35A4 /* Pods_BVSDKDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BVSDKDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		870F130E1E436FB800D46BE6 /* conversationsAuthorWithIncludes.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = conversationsAuthorWithIncludes.json; path = ../../../BVSDKTests/MockData/conversations/conversationsAuthorWithIncludes.json; sourceTree = "<group>"; };
 		871AD3F21D063A57006583E5 /* ProfileUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileUtils.swift; sourceTree = "<group>"; };
 		871AD4041D074E2F006583E5 /* post_successfulCreation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = post_successfulCreation.json; path = ../../../BVSDKTests/MockData/curations/post_successfulCreation.json; sourceTree = "<group>"; };
@@ -366,7 +369,6 @@
 		87F24D821DAE8147002231D6 /* enduranceCyclesChicago.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = enduranceCyclesChicago.gpx; path = gpx/enduranceCyclesChicago.gpx; sourceTree = "<group>"; };
 		87F24D831DAE8147002231D6 /* enduranceCyclesNY.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = enduranceCyclesNY.gpx; path = gpx/enduranceCyclesNY.gpx; sourceTree = "<group>"; };
 		87F5B9351DC38F37004D2297 /* testNotificationConfig.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = testNotificationConfig.json; path = ../../../BVSDKTests/MockData/conversations/Display/testNotificationConfig.json; sourceTree = "<group>"; };
-		97CF2C3D05BDF834D410FFB8 /* Pods-BVSDKDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BVSDKDemo.release.xcconfig"; path = "Target Support Files/Pods-BVSDKDemo/Pods-BVSDKDemo.release.xcconfig"; sourceTree = "<group>"; };
 		980FA1A822C3F9510021A2BA /* curationsEnduranceCycles.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = curationsEnduranceCycles.json; path = ../../BVSDKTests/MockData/curations/curationsEnduranceCycles.json; sourceTree = "<group>"; };
 		985C66D1235611AD00FB3D39 /* OrderHistoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderHistoryTableViewCell.swift; sourceTree = "<group>"; };
 		985C66D2235611AD00FB3D39 /* OrderHistoryTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrderHistoryTableViewCell.xib; sourceTree = "<group>"; };
@@ -381,6 +383,11 @@
 		B78A3E542EB1DAE100981962 /* productFeatures.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = productFeatures.json; sourceTree = "<group>"; };
 		B78A3E552EB1DAE100981962 /* productQuotes.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = productQuotes.json; sourceTree = "<group>"; };
 		B78A3E562EB1DAE100981962 /* conversationsReviewSummary.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = conversationsReviewSummary.json; sourceTree = "<group>"; };
+		B78A3E5B2EB1DEDC00981962 /* ProductSentimentsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductSentimentsViewModel.swift; sourceTree = "<group>"; };
+		B78EB79E2EB2129A00B7647A /* ReviewsSectionsToogleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewsSectionsToogleTableViewCell.swift; sourceTree = "<group>"; };
+		B78EB79F2EB2129A00B7647A /* ReviewsSectionsToogleTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReviewsSectionsToogleTableViewCell.xib; sourceTree = "<group>"; };
+		D8E4D93E82B9A42C2D006373 /* Pods_BVSDKDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BVSDKDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FBA50345589FB0F79B6B5FA5 /* Pods-BVSDKDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BVSDKDemo.release.xcconfig"; path = "Target Support Files/Pods-BVSDKDemo/Pods-BVSDKDemo.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -388,7 +395,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				29D3BE3BFAF5C606F24A8219 /* Pods_BVSDKDemo.framework in Frameworks */,
+				D6E224EFC7178A6EE94422B9 /* Pods_BVSDKDemo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -420,7 +427,7 @@
 			children = (
 				8742A37A1D7869370043B4A3 /* UserNotificationsUI.framework */,
 				8742A3781D7864640043B4A3 /* UserNotifications.framework */,
-				752147F7AC0CA440552B35A4 /* Pods_BVSDKDemo.framework */,
+				D8E4D93E82B9A42C2D006373 /* Pods_BVSDKDemo.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -428,8 +435,8 @@
 		6865AF2A3322FC03B7A4136D /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				3F8962665E4F05EFC6C83E42 /* Pods-BVSDKDemo.debug.xcconfig */,
-				97CF2C3D05BDF834D410FFB8 /* Pods-BVSDKDemo.release.xcconfig */,
+				325C723F4D3F159792BC01D4 /* Pods-BVSDKDemo.debug.xcconfig */,
+				FBA50345589FB0F79B6B5FA5 /* Pods-BVSDKDemo.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -591,6 +598,8 @@
 				732E188D1CE65682000A3EC9 /* NewNativeAdCollectionViewCell.xib */,
 				73571C9A1CEE823C00FF3220 /* ProductPageButtonCell.swift */,
 				73571C9B1CEE823C00FF3220 /* ProductPageButtonCell.xib */,
+				B78EB79E2EB2129A00B7647A /* ReviewsSectionsToogleTableViewCell.swift */,
+				B78EB79F2EB2129A00B7647A /* ReviewsSectionsToogleTableViewCell.xib */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -690,6 +699,7 @@
 		739C0EEF1CDD9EB700CE771B /* Conversations */ = {
 			isa = PBXGroup;
 			children = (
+				B78A3E5B2EB1DEDC00981962 /* ProductSentimentsViewModel.swift */,
 				B78A3E4F2EB0B9B400981962 /* ProductVideoUploadView.swift */,
 				8745771A1E42390C00D6CBD0 /* AuthorProfile */,
 				738E72471CEEE48A00D30617 /* ProductDetailHeaderView.swift */,
@@ -864,7 +874,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 73199B121CDD84E4006CC59D /* Build configuration list for PBXNativeTarget "BVSDKDemo" */;
 			buildPhases = (
-				E1951FDCE7B0EB189125D440 /* [CP] Check Pods Manifest.lock */,
+				7DF527FF2006DB946D322F9B /* [CP] Check Pods Manifest.lock */,
 				730A09F11D01F3EF00E71C3B /* Import Hidden Keys */,
 				73199AE61CDD84E4006CC59D /* Sources */,
 				73199AE71CDD84E4006CC59D /* Frameworks */,
@@ -874,7 +884,7 @@
 				73617B7C1CFF38970063BD5F /* Twitter Fabric build script */,
 				871AD3F11D05FC25006583E5 /* Reset Plist */,
 				878D4C631DD66BD400430654 /* Embed Frameworks */,
-				95B4079E371361A0714626D7 /* [CP] Embed Pods Frameworks */,
+				36980035468F89269C5F1893 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1031,6 +1041,7 @@
 				733BCEF41CF638F000045FC2 /* slide_2@2x.jpg in Resources */,
 				87CD523E1CE57ABD00FC2726 /* NewProductRecsTableViewCell.xib in Resources */,
 				733843891CED541A00928760 /* AnswersViewController.xib in Resources */,
+				B78EB7A12EB2129A00B7647A /* ReviewsSectionsToogleTableViewCell.xib in Resources */,
 				732E188B1CE653ED000A3EC9 /* config in Resources */,
 				42AD3CB9242E477B0000296E /* ReviewHighlightsHeaderTableViewCell.xib in Resources */,
 				736D4CC71CDEC8EB0095EE6B /* FontAwesome.otf in Resources */,
@@ -1058,64 +1069,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		730A09F11D01F3EF00E71C3B /* Import Hidden Keys */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Import Hidden Keys";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# Optional resources can live under /config/ to run the app with configured client API keys\nRESOURCE_PATH=$SRCROOT\n\necho \"Add secret keys to environment variables\"\n\nif [ -f \"config/FabricApiKey.txt\" ] && [ -f \"config/FabricSecretKey.txt\" ]\nthen\n\n   export FABRIC_API_KEY=$(cat config/FabricApiKey.txt)\n   export FABRIC_SECRET_KEY=$(cat config/FabricSecretKey.txt)\n\n   #echo FABRIC_API_KEY and FABRIC_SECRET_KEY set:\n   #echo ${FABRIC_API_KEY} : ${FABRIC_SECRET_KEY}\n\n   /usr/libexec/PlistBuddy   -c \"Set :Fabric:APIKey ${FABRIC_API_KEY}\"  BVSDKDemo/Info.plist\n\nfi\n\n\nif [ -f \"config/FacebookAppId.txt\" ] && [ -f \"config/FacebookUrlScheme.txt\" ]\n then\n\n   export FACEBOOK_APP_ID=$(cat config/FacebookAppId.txt)\n   export FACEBOOK_URL_SCHEME=$(cat config/FacebookUrlScheme.txt)\n\n   #echo FACEBOOK_APP_ID and FACEBOOK_URL_SCHEME set\n   #echo ${FACEBOOK_APP_ID} : ${FACEBOOK_URL_SCHEME}\n\n   /usr/libexec/PlistBuddy   -c \"Set :FacebookAppID ${FACEBOOK_APP_ID}\"  BVSDKDemo/Info.plist\n   /usr/libexec/PlistBuddy   -c \"Set CFBundleURLTypes:0:CFBundleURLSchemes:1 ${FACEBOOK_URL_SCHEME}\"  BVSDKDemo/Info.plist\n\nfi\n\n";
-		};
-		73617B7C1CFF38970063BD5F /* Twitter Fabric build script */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Twitter Fabric build script";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# grab fabric keys from .gitignore'd config files\nif [ -f \"config/FabricApiKey.txt\" ] && [ -f \"config/FabricSecretKey.txt\" ]\nthen\n    export FABRIC_API_KEY=$(cat config/FabricApiKey.txt)\n    export FABRIC_SECRET_KEY=$(cat config/FabricSecretKey.txt)\n    # run fabric\n    \"${PODS_ROOT}/Fabric/run\" ${FABRIC_API_KEY} ${FABRIC_SECRET_KEY}\nfi\n";
-		};
-		73FCC5221CE16FB400AD6AAE /* Add Client Config Files */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Add Client Config Files";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# An optional resource can live under /config/DemoAppConfigs.plist to run the app with configured client API keys\nRESOURCE_PATH=$SRCROOT\necho \"Add Client Config Files Build Step\"\nFILENAME_IN_BUNDLE=config/DemoAppConfigs.plist\n\nBUILD_APP_DIR=${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.app\necho \"$RESOURCE_PATH/$FILENAME_IN_BUNDLE\"\nif [ -s $RESOURCE_PATH/$FILENAME_IN_BUNDLE ]\nthen\n    echo \"Copying client config resource:\"\n    echo $RESOURCE_PATH/$FILENAME_IN_BUNDLE $BUILD_APP_DIR/$FILENAME_IN_BUNDLE\n    cp $RESOURCE_PATH/$FILENAME_IN_BUNDLE $BUILD_APP_DIR/$FILENAME_IN_BUNDLE\nfi";
-		};
-		871AD3F11D05FC25006583E5 /* Reset Plist */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Reset Plist";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# set the variables set in previous step back to their default values\n/usr/libexec/PlistBuddy   -c 'Set :FacebookAppID \"\"'  BVSDKDemo/Info.plist\n/usr/libexec/PlistBuddy   -c 'Set :Fabric:APIKey \"\"'  BVSDKDemo/Info.plist\n/usr/libexec/PlistBuddy   -c 'Set CFBundleURLTypes:0:CFBundleURLSchemes:1 \"fbreserved\"'  BVSDKDemo/Info.plist\n";
-			showEnvVarsInLog = 0;
-		};
-		95B4079E371361A0714626D7 /* [CP] Embed Pods Frameworks */ = {
+		36980035468F89269C5F1893 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1165,7 +1119,49 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-BVSDKDemo/Pods-BVSDKDemo-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		E1951FDCE7B0EB189125D440 /* [CP] Check Pods Manifest.lock */ = {
+		730A09F11D01F3EF00E71C3B /* Import Hidden Keys */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Import Hidden Keys";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Optional resources can live under /config/ to run the app with configured client API keys\nRESOURCE_PATH=$SRCROOT\n\necho \"Add secret keys to environment variables\"\n\nif [ -f \"config/FabricApiKey.txt\" ] && [ -f \"config/FabricSecretKey.txt\" ]\nthen\n\n   export FABRIC_API_KEY=$(cat config/FabricApiKey.txt)\n   export FABRIC_SECRET_KEY=$(cat config/FabricSecretKey.txt)\n\n   #echo FABRIC_API_KEY and FABRIC_SECRET_KEY set:\n   #echo ${FABRIC_API_KEY} : ${FABRIC_SECRET_KEY}\n\n   /usr/libexec/PlistBuddy   -c \"Set :Fabric:APIKey ${FABRIC_API_KEY}\"  BVSDKDemo/Info.plist\n\nfi\n\n\nif [ -f \"config/FacebookAppId.txt\" ] && [ -f \"config/FacebookUrlScheme.txt\" ]\n then\n\n   export FACEBOOK_APP_ID=$(cat config/FacebookAppId.txt)\n   export FACEBOOK_URL_SCHEME=$(cat config/FacebookUrlScheme.txt)\n\n   #echo FACEBOOK_APP_ID and FACEBOOK_URL_SCHEME set\n   #echo ${FACEBOOK_APP_ID} : ${FACEBOOK_URL_SCHEME}\n\n   /usr/libexec/PlistBuddy   -c \"Set :FacebookAppID ${FACEBOOK_APP_ID}\"  BVSDKDemo/Info.plist\n   /usr/libexec/PlistBuddy   -c \"Set CFBundleURLTypes:0:CFBundleURLSchemes:1 ${FACEBOOK_URL_SCHEME}\"  BVSDKDemo/Info.plist\n\nfi\n\n";
+		};
+		73617B7C1CFF38970063BD5F /* Twitter Fabric build script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Twitter Fabric build script";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# grab fabric keys from .gitignore'd config files\nif [ -f \"config/FabricApiKey.txt\" ] && [ -f \"config/FabricSecretKey.txt\" ]\nthen\n    export FABRIC_API_KEY=$(cat config/FabricApiKey.txt)\n    export FABRIC_SECRET_KEY=$(cat config/FabricSecretKey.txt)\n    # run fabric\n    \"${PODS_ROOT}/Fabric/run\" ${FABRIC_API_KEY} ${FABRIC_SECRET_KEY}\nfi\n";
+		};
+		73FCC5221CE16FB400AD6AAE /* Add Client Config Files */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Add Client Config Files";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# An optional resource can live under /config/DemoAppConfigs.plist to run the app with configured client API keys\nRESOURCE_PATH=$SRCROOT\necho \"Add Client Config Files Build Step\"\nFILENAME_IN_BUNDLE=config/DemoAppConfigs.plist\n\nBUILD_APP_DIR=${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.app\necho \"$RESOURCE_PATH/$FILENAME_IN_BUNDLE\"\nif [ -s $RESOURCE_PATH/$FILENAME_IN_BUNDLE ]\nthen\n    echo \"Copying client config resource:\"\n    echo $RESOURCE_PATH/$FILENAME_IN_BUNDLE $BUILD_APP_DIR/$FILENAME_IN_BUNDLE\n    cp $RESOURCE_PATH/$FILENAME_IN_BUNDLE $BUILD_APP_DIR/$FILENAME_IN_BUNDLE\nfi";
+		};
+		7DF527FF2006DB946D322F9B /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1187,6 +1183,21 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		871AD3F11D05FC25006583E5 /* Reset Plist */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Reset Plist";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# set the variables set in previous step back to their default values\n/usr/libexec/PlistBuddy   -c 'Set :FacebookAppID \"\"'  BVSDKDemo/Info.plist\n/usr/libexec/PlistBuddy   -c 'Set :Fabric:APIKey \"\"'  BVSDKDemo/Info.plist\n/usr/libexec/PlistBuddy   -c 'Set CFBundleURLTypes:0:CFBundleURLSchemes:1 \"fbreserved\"'  BVSDKDemo/Info.plist\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -1196,6 +1207,7 @@
 			files = (
 				9860C2A0235634F0000964AB /* OrderDetailViewController.swift in Sources */,
 				15A09C251ED5CB8000FEC447 /* CircleSearchView.swift in Sources */,
+				B78A3E5C2EB1DEDC00981962 /* ProductSentimentsViewModel.swift in Sources */,
 				739A6D2B1CFF78DF0068B823 /* FacebookLoginViewController.swift in Sources */,
 				87BB4C861D372B2600C860BE /* JPSThumnail.m in Sources */,
 				871AD3F31D063A57006583E5 /* ProfileUtils.swift in Sources */,
@@ -1245,6 +1257,7 @@
 				42AD3CC0242E95860000296E /* ReviewHighlightsDetailsTableViewCell.swift in Sources */,
 				7385D8671CE3AD7600CA5F5E /* BaseDemoComposeServiceViewController.swift in Sources */,
 				736D4CFE1CDED0C40095EE6B /* CurationsImageTableViewCell.swift in Sources */,
+				B78EB7A02EB2129A00B7647A /* ReviewsSectionsToogleTableViewCell.swift in Sources */,
 				8747F1E11D11C2A000DC8E42 /* LocationPermissionViewController.swift in Sources */,
 				87BB4C7C1D36EB3300C860BE /* CurationsPhotoMapViewController.swift in Sources */,
 				73F020F41CED4E8D00FC7D7D /* QuestionAnswerTableViewCell.swift in Sources */,
@@ -1270,6 +1283,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B78A3E5D2EB1DEDC00981962 /* ProductSentimentsViewModel.swift in Sources */,
 				739BDACA1CED4833007D52CC /* ConversationsModel.swift in Sources */,
 				73199B031CDD84E4006CC59D /* BVSDKDemoTests.swift in Sources */,
 				B78A3E512EB0B9C200981962 /* ProductVideoUploadView.swift in Sources */,
@@ -1331,6 +1345,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				EXCLUDED_ARCHS = "";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -1345,6 +1360,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -1387,6 +1403,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				EXCLUDED_ARCHS = "";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -1395,6 +1412,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -1405,7 +1423,7 @@
 		};
 		73199B131CDD84E4006CC59D /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3F8962665E4F05EFC6C83E42 /* Pods-BVSDKDemo.debug.xcconfig */;
+			baseConfigurationReference = 325C723F4D3F159792BC01D4 /* Pods-BVSDKDemo.debug.xcconfig */;
 			buildSettings = {
 				ALTERNATE_GROUP = "";
 				ALTERNATE_OWNER = "";
@@ -1442,7 +1460,7 @@
 		};
 		73199B141CDD84E4006CC59D /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 97CF2C3D05BDF834D410FFB8 /* Pods-BVSDKDemo.release.xcconfig */;
+			baseConfigurationReference = FBA50345589FB0F79B6B5FA5 /* Pods-BVSDKDemo.release.xcconfig */;
 			buildSettings = {
 				ALTERNATE_GROUP = "";
 				ALTERNATE_OWNER = "";
