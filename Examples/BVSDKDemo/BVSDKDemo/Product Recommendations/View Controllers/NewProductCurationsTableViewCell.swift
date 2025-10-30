@@ -46,7 +46,7 @@ class NewProductCurationsTableViewCell: UITableViewCell, BVCurationsUICollection
   
   public func curationsImageIsCached(_ imageUrl: String, completion: @escaping BVSDK.BVCurationsIsImageCachedCompletion) {
     let key = self.sdMngr.cacheKey(for: URL(string: imageUrl))
-    self.sdMngr.imageCache.containsImage(forKey: key, cacheType: SDImageCacheType.all, completion: { (containsCacheType) in
+      self.sdMngr.imageCache.containsImage!(forKey: key, cacheType: SDImageCacheType.all, completion: { (containsCacheType) in
         let cached = containsCacheType != SDImageCacheType.none
         completion(cached, imageUrl)
         })

@@ -1,0 +1,291 @@
+
+{
+  "bestFeatures": [
+    {
+      "featureId": "111715",
+      "feature": "removal",
+      "percentPositive": 1,
+      "nativeFeature": "removal",
+      "reviewsMentioned": {
+        "total": 4,
+        "positive": 4,
+        "negative": 0,
+        "incentivized": 0
+      },
+      "averageRatingReviews": {
+        "positive": 5,
+        "negative": 0,
+        "incentivized": 0
+      },
+      "_embedded": {
+        "quotes": [
+          {
+            "quoteId": "CIthuA/T4hYzBYrJp+3VyQ3W6m56G+qrkpcuCOKnmm6tRXfcukJiUTZYADFyrpUQTKZtVlKRa9c=",
+            "text": "Easy to remove with regular nail polish remover.",
+            "emotion": "none",
+            "reviewRating": 5,
+            "reviewId": "8691de8d-5034-5427-837d-a076e389d79d",
+            "reviewedAt": "2023-07-12",
+            "translatedText": "Easy to remove with regular nail polish remover.",
+            "nativeLanguage": "en-US",
+            "incentivised": false,
+            "reviewType": "NATIVE"
+          },
+          {
+            "quoteId": "K2fv42cuftr0Kr9hIAqzK+m9NpIaXbFx3jLwAoxE6d10eksoZSXpETZYADFyrpUQTKZtVlKRa9c=",
+            "text": "Easy to remove with regular nail polish remover.",
+            "emotion": "none",
+            "reviewRating": 5,
+            "reviewId": "c39cfab3-dffe-56fa-9e6a-42a7c76acc0d",
+            "reviewedAt": "2023-07-12",
+            "translatedText": "Easy to remove with regular nail polish remover.",
+            "nativeLanguage": "en-US",
+            "incentivised": false,
+            "reviewType": "NATIVE"
+          },
+          {
+            "quoteId": "RdGd8Ic+tFibxVpM8xmPABhyKWhwtQsKlv2HBAv+Xr85jdlx6GtsFjZYADFyrpUQTKZtVlKRa9c=",
+            "text": "Easy to remove with nail polish remover.",
+            "emotion": "none",
+            "reviewRating": 5,
+            "reviewId": "3885a54b-0f98-53b6-b9a0-9b95c6ea4aae",
+            "reviewedAt": "2023-07-12",
+            "translatedText": "Easy to remove with nail polish remover.",
+            "nativeLanguage": "en-US",
+            "incentivised": false,
+            "reviewType": "NATIVE"
+          },
+          {
+            "quoteId": "cXpNE1ljRaeTko7yCWdVrklYf7DTrSeXDORxLJRl8gQCdVhzFkJA7zZYADFyrpUQTKZtVlKRa9c=",
+            "text": "Easy to remove with nail polish remover.",
+            "emotion": "none",
+            "reviewRating": 5,
+            "reviewId": "170ecf4e-ba4a-549e-ba0b-1720e826252c",
+            "reviewedAt": "2023-07-12",
+            "translatedText": "Easy to remove with nail polish remover.",
+            "nativeLanguage": "en-US",
+            "incentivised": false,
+            "reviewType": "NATIVE"
+          }
+        ]
+      }
+    },
+    {
+      "featureId": "111090",
+      "feature": "appearance",
+      "percentPositive": 1,
+      "nativeFeature": "appearance",
+      "reviewsMentioned": {
+        "total": 3,
+        "positive": 3,
+        "negative": 0,
+        "incentivized": 0
+      },
+      "averageRatingReviews": {
+        "positive": 6.6666665,
+        "negative": 0,
+        "incentivized": 0
+      },
+      "_embedded": {
+        "quotes": [
+          {
+            "quoteId": "CIthuA/T4hYzBYrJp+3VyQ3W6m56G+qrkpcuCOKnmm7lYRL0SZtudoUTfEeumEE2eXpFovA5uhI=",
+            "text": "Elegant and classy appearance on nails.",
+            "emotion": "joy",
+            "reviewRating": 5,
+            "reviewId": "8691de8d-5034-5427-837d-a076e389d79d",
+            "reviewedAt": "2023-07-12",
+            "translatedText": "Elegant and classy appearance on nails.",
+            "nativeLanguage": "en-US",
+            "incentivised": false,
+            "reviewType": "NATIVE"
+          },
+          {
+            "quoteId": "wWOS33umMyIki8cFe99P0RbBizI6BVWZd5XUnnA3u+oJ5ciWgvI0sIUTfEeumEE2TKZtVlKRa9c=",
+            "text": "Chic and trendy nail polish.",
+            "emotion": "none",
+            "reviewRating": 5,
+            "reviewId": "13ad7058-b3cb-5ce9-ae91-5c0ae877f130",
+            "reviewedAt": "2023-07-12",
+            "translatedText": "Chic and trendy nail polish.",
+            "nativeLanguage": "en-US",
+            "incentivised": false,
+            "reviewType": "NATIVE"
+          },
+          {
+            "quoteId": "cXpNE1ljRaeTko7yCWdVrklYf7DTrSeXDORxLJRl8gSDlc9CSOC3Q4UTfEeumEE2TKZtVlKRa9c=",
+            "text": "Bottle design is sleek and stylish.",
+            "emotion": "none",
+            "reviewRating": 5,
+            "reviewId": "170ecf4e-ba4a-549e-ba0b-1720e826252c",
+            "reviewedAt": "2023-07-12",
+            "translatedText": "Bottle design is sleek and stylish.",
+            "nativeLanguage": "en-US",
+            "incentivised": false,
+            "reviewType": "NATIVE"
+          },
+          {
+            "quoteId": "cXpNE1ljRaeTko7yCWdVrklYf7DTrSeXDORxLJRl8gRqQbgLN18d/YUTfEeumEE2TKZtVlKRa9c=",
+            "text": "Wide range of trendy shades.",
+            "emotion": "none",
+            "reviewRating": 5,
+            "reviewId": "170ecf4e-ba4a-549e-ba0b-1720e826252c",
+            "reviewedAt": "2023-07-12",
+            "translatedText": "Wide range of trendy shades.",
+            "nativeLanguage": "en-US",
+            "incentivised": false,
+            "reviewType": "NATIVE"
+          }
+        ]
+      }
+    },
+    {
+      "featureId": "111708",
+      "feature": "vivid",
+      "percentPositive": 1,
+      "nativeFeature": "vivid",
+      "reviewsMentioned": {
+        "total": 2,
+        "positive": 2,
+        "negative": 0,
+        "incentivized": 0
+      },
+      "averageRatingReviews": {
+        "positive": 7,
+        "negative": 0,
+        "incentivized": 0
+      },
+      "_embedded": {
+        "quotes": [
+          {
+            "quoteId": "K2fv42cuftr0Kr9hIAqzK+m9NpIaXbFx3jLwAoxE6d0PxrTPOrJXLWAQsuNp5ZQDTKZtVlKRa9c=",
+            "text": "Longlasting color that stays vibrant for days.",
+            "emotion": "none",
+            "reviewRating": 5,
+            "reviewId": "c39cfab3-dffe-56fa-9e6a-42a7c76acc0d",
+            "reviewedAt": "2023-07-12",
+            "translatedText": "Longlasting color that stays vibrant for days.",
+            "nativeLanguage": "en-US",
+            "incentivised": false,
+            "reviewType": "NATIVE"
+          },
+          {
+            "quoteId": "K2fv42cuftr0Kr9hIAqzK+m9NpIaXbFx3jLwAoxE6d0Orgq19+B3w2AQsuNp5ZQDTKZtVlKRa9c=",
+            "text": "Longlasting and vibrant shades.",
+            "emotion": "none",
+            "reviewRating": 5,
+            "reviewId": "c39cfab3-dffe-56fa-9e6a-42a7c76acc0d",
+            "reviewedAt": "2023-07-12",
+            "translatedText": "Longlasting and vibrant shades.",
+            "nativeLanguage": "en-US",
+            "incentivised": false,
+            "reviewType": "NATIVE"
+          }
+        ]
+      }
+    },
+    {
+      "featureId": "111766",
+      "feature": "for everyday use",
+      "percentPositive": 1,
+      "nativeFeature": "for everyday use",
+      "reviewsMentioned": {
+        "total": 3,
+        "positive": 3,
+        "negative": 0,
+        "incentivized": 0
+      },
+      "averageRatingReviews": {
+        "positive": 5,
+        "negative": 0,
+        "incentivized": 0
+      },
+      "_embedded": {
+        "quotes": [
+          {
+            "quoteId": "CIthuA/T4hYzBYrJp+3VyQ3W6m56G+qrkpcuCOKnmm4nJ4yuzUoGmOtSW+6c095fTKZtVlKRa9c=",
+            "text": "Elevate your everyday look.",
+            "emotion": "none",
+            "reviewRating": 5,
+            "reviewId": "8691de8d-5034-5427-837d-a076e389d79d",
+            "reviewedAt": "2023-07-12",
+            "translatedText": "Elevate your everyday look.",
+            "nativeLanguage": "en-US",
+            "incentivised": false,
+            "reviewType": "NATIVE"
+          },
+          {
+            "quoteId": "GR4I1lbJelUS5V3kTpw23dAqc8XuQ/CVJoiYbYcwAoD50BFyoYdiButSW+6c095fTKZtVlKRa9c=",
+            "text": "Suitable for daily wear.",
+            "emotion": "none",
+            "reviewRating": 5,
+            "reviewId": "1fe05779-6533-5237-8a3b-9105d6ee667c",
+            "reviewedAt": "2023-07-12",
+            "translatedText": "Suitable for daily wear.",
+            "nativeLanguage": "en-US",
+            "incentivised": false,
+            "reviewType": "NATIVE"
+          },
+          {
+            "quoteId": "FGYrkcKM0k3jMHrqwV/OosWfe7U5CpzJ2ne6/0BhXOhHCGiCMyf5COtSW+6c095fTKZtVlKRa9c=",
+            "text": "Suitable for daily wear without excessive chipping.",
+            "emotion": "none",
+            "reviewRating": 5,
+            "reviewId": "49e3720c-ac79-5489-9db0-42dadfae3522",
+            "reviewedAt": "2023-07-12",
+            "translatedText": "Suitable for daily wear without excessive chipping.",
+            "nativeLanguage": "en-US",
+            "incentivised": false,
+            "reviewType": "NATIVE"
+          }
+        ]
+      }
+    },
+    {
+      "featureId": "81293",
+      "feature": "quick",
+      "percentPositive": 1,
+      "nativeFeature": "quick",
+      "reviewsMentioned": {
+        "total": 4,
+        "positive": 3,
+        "negative": 0,
+        "incentivized": 0
+      },
+      "averageRatingReviews": {
+        "positive": 4.6666665,
+        "negative": 0,
+        "incentivized": 0
+      },
+      "_embedded": {
+        "quotes": [
+          {
+            "quoteId": "K2fv42cuftr0Kr9hIAqzK+m9NpIaXbFx3jLwAoxE6d35dp552PulBFI7pry2FI5nqCwp5UQF/c0=",
+            "text": "Dries quickly, perfect for busy individuals.",
+            "emotion": "none",
+            "reviewRating": 5,
+            "reviewId": "c39cfab3-dffe-56fa-9e6a-42a7c76acc0d",
+            "reviewedAt": "2023-07-12",
+            "translatedText": "Dries quickly, perfect for busy individuals.",
+            "nativeLanguage": "en-US",
+            "incentivised": false,
+            "reviewType": "NATIVE"
+          },
+          {
+            "quoteId": "cXpNE1ljRaeTko7yCWdVrklYf7DTrSeXDORxLJRl8gTmZVdiUNnMUVI7pry2FI5nqCwp5UQF/c0=",
+            "text": "Does not flake off quickly.",
+            "emotion": "none",
+            "reviewRating": 5,
+            "reviewId": "170ecf4e-ba4a-549e-ba0b-1720e826252c",
+            "reviewedAt": "2023-07-12",
+            "translatedText": "Does not flake off quickly.",
+            "nativeLanguage": "en-US",
+            "incentivised": false,
+            "reviewType": "NATIVE"
+          }
+        ]
+      }
+    }
+  ],
+  "worstFeatures": []
+}
