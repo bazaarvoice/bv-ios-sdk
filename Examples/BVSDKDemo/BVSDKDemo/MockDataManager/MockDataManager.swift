@@ -527,7 +527,7 @@ class MockDataManager {
   lazy var configs : [DemoConfig] = {
     var configs = [DemoConfig]()
     configs.append(contentsOf: self.fromFileConfigs)
-//    configs.append(self.mockConfig)
+    configs.append(self.mockConfig)
     
     guard let path = Bundle.main.path(forResource: "config/DemoAppConfigs", ofType: "plist") else { return configs }
     guard let contents = NSArray(contentsOfFile: path) else { return configs }
