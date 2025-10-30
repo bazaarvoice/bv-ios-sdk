@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="24128" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="24063"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RatingsAndReviewsViewController" customModule="BVSDKDemo" customModuleProvider="target">
             <connections>
                 <outlet property="header" destination="3xO-Tq-KLn" id="dIb-Mr-nD1"/>
-                <outlet property="reviewHighlightsHeightConstraints" destination="Dlr-Mg-fE8" id="iq9-hv-gui"/>
-                <outlet property="reviewHightlightsTableView" destination="39t-iz-JTb" id="FQR-cP-hNo"/>
                 <outlet property="tableView" destination="mDi-oH-qeH" id="W4h-Nd-3E1"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -24,8 +24,9 @@
                     <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Chf-Xg-pmK">
-                            <rect key="frame" x="8" y="8" width="64" height="64"/>
+                            <rect key="frame" x="8" y="28" width="44" height="44"/>
                             <constraints>
+                                <constraint firstAttribute="width" secondItem="Chf-Xg-pmK" secondAttribute="height" multiplier="1:1" id="0Y1-Dz-QkV"/>
                                 <constraint firstAttribute="width" secondItem="Chf-Xg-pmK" secondAttribute="height" multiplier="1:1" id="8yG-ct-r1l"/>
                                 <constraint firstAttribute="height" constant="122" id="Gu5-7P-UA9"/>
                             </constraints>
@@ -37,13 +38,13 @@
                             </variation>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Product Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2Mi-Z1-6nM">
-                            <rect key="frame" x="80" y="16" width="287" height="22"/>
+                            <rect key="frame" x="60" y="16" width="307" height="22"/>
                             <fontDescription key="fontDescription" type="system" weight="light" pointSize="18"/>
                             <color key="textColor" red="0.0" green="0.2392156869" blue="0.29803922770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fhM-6I-IFB" customClass="HCSStarRatingView">
-                            <rect key="frame" x="80" y="41" width="100" height="20"/>
+                            <rect key="frame" x="60" y="41" width="100" height="20"/>
                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <color key="tintColor" red="0.99715530872344971" green="0.85457783937454224" blue="0.063469812273979187" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
@@ -69,7 +70,6 @@
                     </subviews>
                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
-                        <constraint firstItem="Chf-Xg-pmK" firstAttribute="width" secondItem="Chf-Xg-pmK" secondAttribute="height" multiplier="1:1" id="0Y1-Dz-QkV"/>
                         <constraint firstItem="Chf-Xg-pmK" firstAttribute="leading" secondItem="3xO-Tq-KLn" secondAttribute="leadingMargin" id="39a-Kg-HMn"/>
                         <constraint firstItem="HKP-Xh-Weu" firstAttribute="leading" secondItem="fhM-6I-IFB" secondAttribute="trailing" id="3jk-Kf-aYU"/>
                         <constraint firstAttribute="height" constant="80" id="3o0-Wa-r8F"/>
@@ -88,9 +88,9 @@
                     </constraints>
                     <variation key="default">
                         <mask key="constraints">
-                            <exclude reference="3jk-Kf-aYU"/>
                             <exclude reference="o0d-sK-yYf"/>
                             <exclude reference="tyw-uI-KaX"/>
+                            <exclude reference="3jk-Kf-aYU"/>
                         </mask>
                     </variation>
                     <connections>
@@ -99,20 +99,9 @@
                         <outlet property="productStars" destination="fhM-6I-IFB" id="91M-QG-RNn"/>
                     </connections>
                 </view>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="39t-iz-JTb">
-                    <rect key="frame" x="0.0" y="80" width="375" height="100"/>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="100" id="Dlr-Mg-fE8"/>
-                    </constraints>
-                    <connections>
-                        <outlet property="dataSource" destination="-1" id="0mW-kF-dTy"/>
-                        <outlet property="delegate" destination="-1" id="zFT-xo-2YV"/>
-                    </connections>
-                </tableView>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="mDi-oH-qeH" customClass="BVReviewsTableView">
-                    <rect key="frame" x="0.0" y="180" width="375" height="487"/>
-                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="grouped" separatorStyle="none" rowHeight="-1" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="mDi-oH-qeH" customClass="BVReviewsTableView">
+                    <rect key="frame" x="0.0" y="80" width="375" height="587"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="2QZ-4A-Fk5"/>
                         <outlet property="delegate" destination="-1" id="ZHc-4S-0zL"/>
@@ -121,13 +110,10 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="39t-iz-JTb" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="3yd-Ru-Ssr"/>
-                <constraint firstItem="mDi-oH-qeH" firstAttribute="top" secondItem="39t-iz-JTb" secondAttribute="bottom" id="Fhd-QP-84q"/>
                 <constraint firstItem="mDi-oH-qeH" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="H5w-y1-XcC"/>
-                <constraint firstAttribute="trailing" secondItem="39t-iz-JTb" secondAttribute="trailing" id="O2K-ak-hgV"/>
                 <constraint firstAttribute="trailing" secondItem="mDi-oH-qeH" secondAttribute="trailing" id="dSm-eM-qBg"/>
                 <constraint firstAttribute="trailing" secondItem="3xO-Tq-KLn" secondAttribute="trailing" id="jbJ-W2-oOk"/>
-                <constraint firstItem="39t-iz-JTb" firstAttribute="top" secondItem="3xO-Tq-KLn" secondAttribute="bottom" id="oNS-Tu-Q9h"/>
+                <constraint firstItem="mDi-oH-qeH" firstAttribute="top" secondItem="3xO-Tq-KLn" secondAttribute="bottom" id="mIc-ow-ph0"/>
                 <constraint firstItem="3xO-Tq-KLn" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="qLq-DW-jbG"/>
                 <constraint firstAttribute="bottom" secondItem="mDi-oH-qeH" secondAttribute="bottom" id="vRk-uf-uwf"/>
                 <constraint firstItem="3xO-Tq-KLn" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="xjg-to-aGh"/>
@@ -135,4 +121,9 @@
             <point key="canvasLocation" x="-263" y="67"/>
         </view>
     </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>

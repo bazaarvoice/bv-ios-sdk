@@ -1,0 +1,65 @@
+
+{
+  "quotes": [
+    {
+      "id": "K2fv42cuftr0Kr9hIAqzK+m9NpIaXbFx3jLwAoxE6d0PxrTPOrJXLS/gIHxKBLaYK2fv42cuftr0Kr9hIAqzK+m9NpIaXbFx3jLwAoxE6d3yv22tdJNWRg==",
+      "text": "Longlasting color that stays vibrant for days.",
+      "reviewRating": 5,
+      "reviewId": "c39cfab3-dffe-56fa-9e6a-42a7c76acc0d",
+      "reviewedAt": "2023-07-12",
+      "nativeLanguage": "en-US",
+      "highlightedText": "Longlasting color that stays vibrant <strong>for days</strong>.",
+      "incentivised": false,
+      "translatedText": "Longlasting color that stays vibrant for days.",
+      "reviewType": "NATIVE"
+    },
+    {
+      "id": "cXpNE1ljRaeTko7yCWdVrklYf7DTrSeXDORxLJRl8gRqQbgLN18d/YUTfEeumEE2cXpNE1ljRaeTko7yCWdVrklYf7DTrSeXDORxLJRl8gRYWaKYKcEeqQ==",
+      "text": "Wide range of trendy shades.",
+      "reviewRating": 5,
+      "reviewId": "170ecf4e-ba4a-549e-ba0b-1720e826252c",
+      "reviewedAt": "2023-07-12",
+      "nativeLanguage": "en-US",
+      "highlightedText": "Wide range of <strong>trendy</strong> shades.",
+      "incentivised": false,
+      "translatedText": "Wide range of trendy shades.",
+      "reviewType": "NATIVE"
+    },
+    {
+      "id": "wWOS33umMyIki8cFe99P0RbBizI6BVWZd5XUnnA3u+rk6+gY4ylmHh2OP6NBT9MUwWOS33umMyIki8cFe99P0RbBizI6BVWZd5XUnnA3u+rltUBmaxm/ZQ==",
+      "text": "Good value for the price.",
+      "reviewRating": 5,
+      "reviewId": "13ad7058-b3cb-5ce9-ae91-5c0ae877f130",
+      "reviewedAt": "2023-07-12",
+      "nativeLanguage": "en-US",
+      "highlightedText": "Good <strong>value</strong> for the price.",
+      "incentivised": false,
+      "translatedText": "Good value for the price.",
+      "reviewType": "NATIVE"
+    },
+    {
+      "id": "K2fv42cuftr0Kr9hIAqzK+m9NpIaXbFx3jLwAoxE6d0ugY6dOKaV2NwyY3FCjYnhK2fv42cuftr0Kr9hIAqzK+m9NpIaXbFx3jLwAoxE6d3yv22tdJNWRg==",
+      "text": "Smooth application with no streaks or clumps.",
+      "reviewRating": 5,
+      "reviewId": "c39cfab3-dffe-56fa-9e6a-42a7c76acc0d",
+      "reviewedAt": "2023-07-12",
+      "nativeLanguage": "en-US",
+      "highlightedText": "Smooth application with no streaks or <strong>clumps</strong>.",
+      "incentivised": false,
+      "translatedText": "Smooth application with no streaks or clumps.",
+      "reviewType": "NATIVE"
+    },
+    {
+      "id": "CIthuA/T4hYzBYrJp+3VyQ3W6m56G+qrkpcuCOKnmm7j+vRK1uIfvFILNbQBq747CIthuA/T4hYzBYrJp+3VyQ3W6m56G+qrkpcuCOKnmm47JxtDYutE0Q==",
+      "text": "Lightweight formula that feels comfortable on nails.",
+      "reviewRating": 5,
+      "reviewId": "8691de8d-5034-5427-837d-a076e389d79d",
+      "reviewedAt": "2023-07-12",
+      "nativeLanguage": "en-US",
+      "highlightedText": "Lightweight <strong>formula</strong> that feels comfortable on nails.",
+      "incentivised": false,
+      "translatedText": "Lightweight formula that feels comfortable on nails.",
+      "reviewType": "NATIVE"
+    }
+  ]
+}

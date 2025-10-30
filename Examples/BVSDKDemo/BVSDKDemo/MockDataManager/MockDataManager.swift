@@ -88,10 +88,15 @@ class MockDataManager {
   let conversationsQuestionsMatch = "bazaarvoice.com/data/question"
   let conversationsProductMatch = "bazaarvoice.com/data/products"
   let conversationsAuthorsMatch = "bazaarvoice.com/data/authors"
+  let conversationsReviewSummary = "bazaarvoice.com/data/reviewsummary"
   let submitReviewMatch = "bazaarvoice.com/data/submitreview"
   let submitReviewPhotoMatch = "bazaarvoice.com/data/uploadphoto"
   let submitQuestionMatch = "bazaarvoice.com/data/submitquestion"
   let submitAnswerMatch = "bazaarvoice.com/data/submitanswer"
+  let productSentimentsSummarisedFeatures = "bazaarvoice.com/sentiment/v1/summarised-features"
+  let productSentimentsProductFeatures = "bazaarvoice.com/sentiment/v1/features"
+  let productSentimentsProductQuotes = "bazaarvoice.com/sentiment/v1/quotes"
+
   var convoStoresConfigMatch = String(format:"s3.amazonaws.com/incubator-mobile-apps/sdk/%@/ios/%@/conversations-stores", S3_API_VERSION, "REPLACE_ME")
   var pinConfigMatch = String(format:"s3.amazonaws.com/incubator-mobile-apps/sdk/%@/ios/%@/pin", S3_API_VERSION, "REPLACE_ME")
   let pinRequestMatch = "bazaarvoice.com/pin/toreview"
@@ -122,6 +127,7 @@ class MockDataManager {
     let containsConversationsQuestions = url.contains(conversationsQuestionsMatch)
     let containsConversationsProducts = url.contains(conversationsProductMatch)
     let containsConversationsAuthors = url.contains(conversationsAuthorsMatch)
+    let containsConversationsReviewSummary = url.contains(conversationsReviewSummary)
     let containsSubmitReviews = url.contains(submitReviewMatch)
     let containsSubmitPhotoReviews = url.contains(submitReviewPhotoMatch)
     let containsSubmitQuestion = url.contains(submitQuestionMatch)
@@ -129,8 +135,11 @@ class MockDataManager {
     let containsConvoStoresConfig = url.contains(convoStoresConfigMatch)
     let containsPINConfig = url.contains(pinConfigMatch)
     let containsPINRequest = url.contains(pinRequestMatch)
-    
-    return containsCurations || containsCurationsPhotoPost || containsRecommendations || containsProfile || containsConversations || containsConversationsQuestions || containsConversationsProducts || containsConversationsAuthors || containsSubmitReviews || containsSubmitPhotoReviews || containsSubmitQuestion || containsSubmitAnswers || containsConvoStoresConfig || containsPINConfig || containsPINRequest
+    let containsPSSummarisedFeatures = url.contains(productSentimentsSummarisedFeatures)
+    let containsPSProductFeatures = url.contains(productSentimentsProductFeatures)
+    let containsPSProductQuotes = url.contains(productSentimentsProductQuotes)
+
+    return containsCurations || containsCurationsPhotoPost || containsRecommendations || containsProfile || containsConversations || containsConversationsQuestions || containsConversationsProducts || containsConversationsAuthors || containsConversationsReviewSummary || containsSubmitReviews || containsSubmitPhotoReviews || containsSubmitQuestion || containsSubmitAnswers || containsConvoStoresConfig || containsPINConfig || containsPINRequest || containsPSSummarisedFeatures || containsPSProductFeatures || containsPSProductQuotes
     
   }
   
@@ -211,6 +220,16 @@ class MockDataManager {
       )
       
     }
+      
+      if url.contains(conversationsReviewSummary) {
+          
+          return OHHTTPStubsResponse(
+            fileAtPath: OHPathForFile("conversationsReviewSummary.json", type(of: self))!,
+            statusCode: 200,
+            headers: ["Content-Type": "application/json;charset=utf-8"]
+          )
+          
+      }
     
     if url.contains(conversationsMatch) {
       
@@ -321,7 +340,37 @@ class MockDataManager {
       )
       
     }
-    
+
+      if url.contains(productSentimentsSummarisedFeatures) {
+        
+        return OHHTTPStubsResponse(
+          fileAtPath: OHPathForFile("summarisedFeatures.json", type(of: self))!,
+          statusCode: 200,
+          headers: ["Content-Type": "application/json;charset=utf-8"]
+        )
+        
+      }
+
+      if url.contains(productSentimentsProductFeatures) {
+        
+        return OHHTTPStubsResponse(
+          fileAtPath: OHPathForFile("productFeatures.json", type(of: self))!,
+          statusCode: 200,
+          headers: ["Content-Type": "application/json;charset=utf-8"]
+        )
+        
+      }
+
+      if url.contains(productSentimentsProductQuotes) {
+        
+        return OHHTTPStubsResponse(
+          fileAtPath: OHPathForFile("productQuotes.json", type(of: self))!,
+          statusCode: 200,
+          headers: ["Content-Type": "application/json;charset=utf-8"]
+        )
+        
+      }
+
     if url.contains(convoStoresConfigMatch) {
       
       return OHHTTPStubsResponse(
@@ -414,6 +463,7 @@ class MockDataManager {
             "apiKeyConversations": "REPLACE_ME" as AnyObject,
             "apiKeyConversationsStores": "REPLACE_ME" as AnyObject,
             "apiKeyCurations": "REPLACE_ME" as AnyObject,
+            "apiKeyProductSentiments": "REPLACE_ME" as AnyObject,
             "apiKeyPIN": "REPLACE_ME" as AnyObject,
             "apiKeyLocation": "00000000-0000-0000-0000-000000000000" as AnyObject]
   }

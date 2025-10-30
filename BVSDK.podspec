@@ -21,7 +21,7 @@ Pod::Spec.new do |s|
   s.summary = 'Simple iOS SDK to interact with the Bazaarvoice platform API.'
   s.description = 'The Bazaarvoice software development kit (SDK) for iOS is an iOS static library that provides an easy way to generate REST calls to the Bazaarvoice Developer API. Using this SDK, mobile developers can quickly integrate Bazaarvoice content into their native iOS apps for iPhone and iPad on iOS 8.0 or newer.'
 
-  s.platform = :ios, '12.0'
+  s.platform = :ios, '15.0'
   s.requires_arc = true
   s.default_subspec = 'BVCommon'
 

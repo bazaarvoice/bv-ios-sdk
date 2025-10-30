@@ -9,6 +9,7 @@ import UIKit
 import BVSDK
 import SDForms
 import FontAwesomeKit
+import MobileCoreServices
 
 class WriteReviewViewController: UIViewController, SDFormDelegate, SDFormDataSource {
   
@@ -23,6 +24,7 @@ class WriteReviewViewController: UIViewController, SDFormDelegate, SDFormDataSou
   var form : SDForm?
   @IBOutlet weak var tableView: UITableView!
   @IBOutlet weak var header : ProductDetailHeaderView!
+  @IBOutlet weak var uploadVideoView : ProductVideoUploadView!
   
   var spinner = Util.createSpinner(UIColor.bazaarvoiceNavy(), size: CGSize(width: 44,height: 44), padding: 0)
   
@@ -81,6 +83,7 @@ class WriteReviewViewController: UIViewController, SDFormDelegate, SDFormDataSou
     }else {
       loadProduct(productId: productId!)
     }
+      self.uploadVideoView.delegate = self
   }
   
   private func loadProduct(productId: String) {
@@ -146,6 +149,9 @@ class WriteReviewViewController: UIViewController, SDFormDelegate, SDFormDataSou
     reviewSubmission.hostedAuthenticationEmail = self.paramDict.value(forKey: "userEmail") as? String
     if let photo = self.paramDict.value(forKey: "photo") as? UIImage{
       reviewSubmission.addPhoto(photo, withPhotoCaption: nil)
+    }
+    if let video = self.paramDict.value(forKey: "video") as? String{
+      reviewSubmission.addVideo(video, withVideoCaption: "Video from Demo app", uploadVideo: true)
     }
     
     reviewSubmission.submit({ (response) in
@@ -216,6 +222,7 @@ class WriteReviewViewController: UIViewController, SDFormDelegate, SDFormDataSou
     var isRecommended:NSNumber?
     var sendEmailAlertWhenPublished:NSNumber?
     var photo : UIImage?
+    var video : String?
     var sessionToken : String?
     var userToken : String?
     
@@ -234,6 +241,7 @@ class WriteReviewViewController: UIViewController, SDFormDelegate, SDFormDataSou
     self.paramDict.setValue(isRecommended, forKey: "isRecommended")
     self.paramDict.setValue(sendEmailAlertWhenPublished, forKey: "sendEmailAlertWhenPublished")
     self.paramDict.setValue(photo, forKey: "photo")
+    self.paramDict.setValue(video, forKey: "video")
     self.paramDict.setValue(sessionToken, forKey: "sessionToken")
     }
     
@@ -331,4 +339,33 @@ class WriteReviewViewController: UIViewController, SDFormDelegate, SDFormDataSou
   }
   
   
+}
+
+extension WriteReviewViewController: ProductVideoUploadViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func openVideoPicker() {
+        if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
+            let pickerController = UIImagePickerController()
+            pickerController.delegate = self
+            pickerController.sourceType = .photoLibrary
+            pickerController.mediaTypes = [kUTTypeMovie as String, kUTTypeVideo as String]
+            self.present(pickerController, animated: true, completion: nil)
+        }
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        print("No item selected")
+        picker.dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let videoUrl = info[.mediaURL] as? URL {
+            print(videoUrl)
+            self.uploadVideoView.addVideoButton.setTitle("Video \(videoUrl.lastPathComponent) added", for: .normal)
+            self.paramDict.setValue(videoUrl.path, forKey: "video")
+            print(self.paramDict.value(forKey: "video") as! String)
+            picker.dismiss(animated: true, completion: nil)
+        } else {
+            print("Something went wrong")
+        }
+    }
 }
