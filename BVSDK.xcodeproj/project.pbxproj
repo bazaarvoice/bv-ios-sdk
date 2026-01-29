@@ -680,6 +680,22 @@
 		B70EC8D12D12A363007A37D3 /* BVExpressions.h in Headers */ = {isa = PBXBuildFile; fileRef = B78683AA2CEDC50B00BBCE3F /* BVExpressions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B70EC8D22D12A36A007A37D3 /* BVAverageRatingReviews.h in Headers */ = {isa = PBXBuildFile; fileRef = B78683B02CEDDB4200BBCE3F /* BVAverageRatingReviews.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B72EA4532BD78E5900462116 /* testVideo.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = B72EA4522BD78E5900462116 /* testVideo.mp4 */; };
+		B73BCD422F18E873008659BF /* BVReviewTokens.h in Headers */ = {isa = PBXBuildFile; fileRef = B73BCD412F18E842008659BF /* BVReviewTokens.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B73BCD442F18E878008659BF /* BVReviewTokens.m in Sources */ = {isa = PBXBuildFile; fileRef = B73BCD432F18E876008659BF /* BVReviewTokens.m */; };
+		B73BCD462F18E886008659BF /* BVMatchedTokens.h in Headers */ = {isa = PBXBuildFile; fileRef = B73BCD452F18E87F008659BF /* BVMatchedTokens.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B73BCD482F18E88A008659BF /* BVMatchedTokens.m in Sources */ = {isa = PBXBuildFile; fileRef = B73BCD472F18E889008659BF /* BVMatchedTokens.m */; };
+		B73BCD4B2F18EB7E008659BF /* BVReviewTokensRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = B73BCD4A2F18EB69008659BF /* BVReviewTokensRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B73BCD4D2F18EB84008659BF /* BVReviewTokensRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = B73BCD4C2F18EB81008659BF /* BVReviewTokensRequest.m */; };
+		B73BCD4F2F18EB91008659BF /* BVReviewTokensResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = B73BCD4E2F18EB87008659BF /* BVReviewTokensResponse.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B73BCD512F18EB95008659BF /* BVReviewTokensResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = B73BCD502F18EB94008659BF /* BVReviewTokensResponse.m */; };
+		B73BCD542F18EF65008659BF /* ReviewTokensDisplayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B73BCD532F18EF59008659BF /* ReviewTokensDisplayTests.swift */; };
+		B73BCD592F1F7607008659BF /* BVMatchedTokensSubmission.m in Sources */ = {isa = PBXBuildFile; fileRef = B73BCD582F1F7604008659BF /* BVMatchedTokensSubmission.m */; };
+		B73BCD5B2F1F763A008659BF /* BVMatchedTokensSubmissionResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = B73BCD5A2F1F7623008659BF /* BVMatchedTokensSubmissionResponse.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B73BCD5D2F1F7640008659BF /* BVMatchedTokensSubmissionResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = B73BCD5C2F1F763F008659BF /* BVMatchedTokensSubmissionResponse.m */; };
+		B73BCD5F2F1F7D82008659BF /* MatchedTokensSubmissionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B73BCD5E2F1F7D77008659BF /* MatchedTokensSubmissionTests.swift */; };
+		B73BCD602F1F7EEB008659BF /* BVMatchedTokensSubmission.h in Headers */ = {isa = PBXBuildFile; fileRef = B73BCD562F1F75D2008659BF /* BVMatchedTokensSubmission.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B73BCD622F20C397008659BF /* BVMatchedTokensSubmissionErrorResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = B73BCD612F20C388008659BF /* BVMatchedTokensSubmissionErrorResponse.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B73BCD642F20C39C008659BF /* BVMatchedTokensSubmissionErrorResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = B73BCD632F20C39B008659BF /* BVMatchedTokensSubmissionErrorResponse.m */; };
 		B7856D222ABC18EF0031D22A /* testKeys.json in Resources */ = {isa = PBXBuildFile; fileRef = B7856D212ABC18EF0031D22A /* testKeys.json */; };
 		B7856D242ABC1F770031D22A /* BVTestUsers.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7856D232ABC1F770031D22A /* BVTestUsers.swift */; };
 		B786839E2CE5FA6E00BBCE3F /* BVProductSentiments.h in Headers */ = {isa = PBXBuildFile; fileRef = B786839D2CE5FA6E00BBCE3F /* BVProductSentiments.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -1419,6 +1435,22 @@
 		B5D7E8412050840E00DEB434 /* testSubmitReviewFailureStore.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = testSubmitReviewFailureStore.json; sourceTree = "<group>"; };
 		B5DDA04D1FE8633800C47C01 /* BVCurationsAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = BVCurationsAssets.xcassets; sourceTree = "<group>"; };
 		B72EA4522BD78E5900462116 /* testVideo.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = testVideo.mp4; sourceTree = "<group>"; };
+		B73BCD412F18E842008659BF /* BVReviewTokens.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BVReviewTokens.h; sourceTree = "<group>"; };
+		B73BCD432F18E876008659BF /* BVReviewTokens.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BVReviewTokens.m; sourceTree = "<group>"; };
+		B73BCD452F18E87F008659BF /* BVMatchedTokens.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BVMatchedTokens.h; sourceTree = "<group>"; };
+		B73BCD472F18E889008659BF /* BVMatchedTokens.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BVMatchedTokens.m; sourceTree = "<group>"; };
+		B73BCD4A2F18EB69008659BF /* BVReviewTokensRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BVReviewTokensRequest.h; sourceTree = "<group>"; };
+		B73BCD4C2F18EB81008659BF /* BVReviewTokensRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BVReviewTokensRequest.m; sourceTree = "<group>"; };
+		B73BCD4E2F18EB87008659BF /* BVReviewTokensResponse.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BVReviewTokensResponse.h; sourceTree = "<group>"; };
+		B73BCD502F18EB94008659BF /* BVReviewTokensResponse.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BVReviewTokensResponse.m; sourceTree = "<group>"; };
+		B73BCD532F18EF59008659BF /* ReviewTokensDisplayTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewTokensDisplayTests.swift; sourceTree = "<group>"; };
+		B73BCD562F1F75D2008659BF /* BVMatchedTokensSubmission.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BVMatchedTokensSubmission.h; sourceTree = "<group>"; };
+		B73BCD582F1F7604008659BF /* BVMatchedTokensSubmission.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BVMatchedTokensSubmission.m; sourceTree = "<group>"; };
+		B73BCD5A2F1F7623008659BF /* BVMatchedTokensSubmissionResponse.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BVMatchedTokensSubmissionResponse.h; sourceTree = "<group>"; };
+		B73BCD5C2F1F763F008659BF /* BVMatchedTokensSubmissionResponse.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BVMatchedTokensSubmissionResponse.m; sourceTree = "<group>"; };
+		B73BCD5E2F1F7D77008659BF /* MatchedTokensSubmissionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchedTokensSubmissionTests.swift; sourceTree = "<group>"; };
+		B73BCD612F20C388008659BF /* BVMatchedTokensSubmissionErrorResponse.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BVMatchedTokensSubmissionErrorResponse.h; sourceTree = "<group>"; };
+		B73BCD632F20C39B008659BF /* BVMatchedTokensSubmissionErrorResponse.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BVMatchedTokensSubmissionErrorResponse.m; sourceTree = "<group>"; };
 		B7856D212ABC18EF0031D22A /* testKeys.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = testKeys.json; sourceTree = "<group>"; };
 		B7856D232ABC1F770031D22A /* BVTestUsers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BVTestUsers.swift; sourceTree = "<group>"; };
 		B786839D2CE5FA6E00BBCE3F /* BVProductSentiments.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BVProductSentiments.h; sourceTree = "<group>"; };
@@ -1805,6 +1837,8 @@
 		87F2DB121DAD585E00FB43F3 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				B73BCD432F18E876008659BF /* BVReviewTokens.m */,
+				B73BCD412F18E842008659BF /* BVReviewTokens.h */,
 				87F2DB131DAD585E00FB43F3 /* BVBadge.h */,
 				87F2DB141DAD585E00FB43F3 /* BVBadge.m */,
 				87F2DB151DAD585E00FB43F3 /* BVBadgeType.h */,
@@ -1896,6 +1930,7 @@
 		87F2DB611DAD585E00FB43F3 /* Requests */ = {
 			isa = PBXGroup;
 			children = (
+				B73BCD492F18EB3C008659BF /* ContentCoach */,
 				87F2DB641DAD585E00FB43F3 /* BVConversationsRequest.h */,
 				87F2DB651DAD585E00FB43F3 /* BVConversationsRequest.m */,
 				87F2DB1F1DAD585E00FB43F3 /* BVDisplayErrorResponse.h */,
@@ -1980,6 +2015,7 @@
 				B575C37B1FBDEF07000F890B /* Auth */,
 				87F2DB891DAD585E00FB43F3 /* Answer */,
 				87EDAFCE1EDDCEAD00FA07C0 /* Comment */,
+				B73BCD552F1F7573008659BF /* ContentCoach */,
 				87A02B5D1E0963020002701B /* Feedback */,
 				87F2DBA01DAD585E00FB43F3 /* Photo */,
 				B586399D214AFD9D00EFD763 /* Private */,
@@ -2268,6 +2304,7 @@
 		87F2DDF21DAD945D00FB43F3 /* ConversationsTests */ = {
 			isa = PBXGroup;
 			children = (
+				B73BCD522F18EF3A008659BF /* ContentCoachTests */,
 				87F2DDF31DAD945D00FB43F3 /* DisplayTests */,
 				87F2DDFB1DAD945D00FB43F3 /* MiscTests */,
 				87F2DE001DAD945D00FB43F3 /* ParsingTests */,
@@ -2878,6 +2915,41 @@
 			path = Private;
 			sourceTree = "<group>";
 		};
+		B73BCD492F18EB3C008659BF /* ContentCoach */ = {
+			isa = PBXGroup;
+			children = (
+				B73BCD502F18EB94008659BF /* BVReviewTokensResponse.m */,
+				B73BCD4E2F18EB87008659BF /* BVReviewTokensResponse.h */,
+				B73BCD4C2F18EB81008659BF /* BVReviewTokensRequest.m */,
+				B73BCD4A2F18EB69008659BF /* BVReviewTokensRequest.h */,
+			);
+			path = ContentCoach;
+			sourceTree = "<group>";
+		};
+		B73BCD522F18EF3A008659BF /* ContentCoachTests */ = {
+			isa = PBXGroup;
+			children = (
+				B73BCD5E2F1F7D77008659BF /* MatchedTokensSubmissionTests.swift */,
+				B73BCD532F18EF59008659BF /* ReviewTokensDisplayTests.swift */,
+			);
+			path = ContentCoachTests;
+			sourceTree = "<group>";
+		};
+		B73BCD552F1F7573008659BF /* ContentCoach */ = {
+			isa = PBXGroup;
+			children = (
+				B73BCD632F20C39B008659BF /* BVMatchedTokensSubmissionErrorResponse.m */,
+				B73BCD612F20C388008659BF /* BVMatchedTokensSubmissionErrorResponse.h */,
+				B73BCD5C2F1F763F008659BF /* BVMatchedTokensSubmissionResponse.m */,
+				B73BCD5A2F1F7623008659BF /* BVMatchedTokensSubmissionResponse.h */,
+				B73BCD582F1F7604008659BF /* BVMatchedTokensSubmission.m */,
+				B73BCD562F1F75D2008659BF /* BVMatchedTokensSubmission.h */,
+				B73BCD472F18E889008659BF /* BVMatchedTokens.m */,
+				B73BCD452F18E87F008659BF /* BVMatchedTokens.h */,
+			);
+			path = ContentCoach;
+			sourceTree = "<group>";
+		};
 		B78683912CE5F59400BBCE3F /* BVProductSentiments */ = {
 			isa = PBXGroup;
 			children = (
@@ -3043,6 +3115,11 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B73BCD4F2F18EB91008659BF /* BVReviewTokensResponse.h in Headers */,
+				B73BCD5B2F1F763A008659BF /* BVMatchedTokensSubmissionResponse.h in Headers */,
+				B73BCD622F20C397008659BF /* BVMatchedTokensSubmissionErrorResponse.h in Headers */,
+				B73BCD422F18E873008659BF /* BVReviewTokens.h in Headers */,
+				B73BCD4B2F18EB7E008659BF /* BVReviewTokensRequest.h in Headers */,
 				B786839E2CE5FA6E00BBCE3F /* BVProductSentiments.h in Headers */,
 				2E998ACD278996940036DE64 /* BVFeaturesRequest.h in Headers */,
 				2E371E5D280824BE008D9223 /* BVSecondaryRatingsDistributionValue.h in Headers */,
@@ -3300,7 +3377,9 @@
 				B7C833512D2E79C90088B7C0 /* BVProductExpressionsResponse.h in Headers */,
 				B7C8334D2D2E79B20088B7C0 /* BVProductExpressionsRequest.h in Headers */,
 				B78683C42D08177700BBCE3F /* BVSummarisedFeaturesRequest.h in Headers */,
+				B73BCD602F1F7EEB008659BF /* BVMatchedTokensSubmission.h in Headers */,
 				B7C8336D2D2FCA740088B7C0 /* BVReviewSummaryFormatTypeValue.h in Headers */,
+				B73BCD462F18E886008659BF /* BVMatchedTokens.h in Headers */,
 				B58639B2214AFE0A00EFD763 /* BVSDKManager+Private.h in Headers */,
 				2EA5DD962824FDA4006B0949 /* BVReviewsCustomOrderSortOptionValue.h in Headers */,
 				2EE2579127F23EE300E6DBDE /* BVReviewFilterFieldType.h in Headers */,
@@ -3431,7 +3510,7 @@
 				TargetAttributes = {
 					87F2DAA61DAD579D00FB43F3 = {
 						CreatedOnToolsVersion = 8.0;
-						LastSwiftMigration = 0910;
+						LastSwiftMigration = 2600;
 						ProvisioningStyle = Manual;
 					};
 					87F2DAAF1DAD579D00FB43F3 = {
@@ -3632,6 +3711,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				B7C833362D2E57CB0088B7C0 /* BVSummarisedFeaturesQuotesResponse.m in Sources */,
+				B73BCD592F1F7607008659BF /* BVMatchedTokensSubmission.m in Sources */,
+				B73BCD642F20C39C008659BF /* BVMatchedTokensSubmissionErrorResponse.m in Sources */,
 				5F6201DF1F70385E00454D77 /* NSError+BVErrorCodeParser.m in Sources */,
 				B58639B9214AFE0A00EFD763 /* BVMultiPart+NSURLRequest.m in Sources */,
 				153550AF1E898CF000C62D90 /* BVCurationsUICollectionViewCell.m in Sources */,
@@ -3689,6 +3770,7 @@
 				87C5FEC41E22A05D004EE6E8 /* BVSDKManager.m in Sources */,
 				B7C833322D2E57B10088B7C0 /* BVSummarisedFeaturesQuotesRequest.m in Sources */,
 				87F2DD211DAD585E00FB43F3 /* BVCurationsFeedItem.m in Sources */,
+				B73BCD512F18EB95008659BF /* BVReviewTokensResponse.m in Sources */,
 				87C5FF631E36B416004EE6E8 /* BVAuthor.m in Sources */,
 				873DC4961E7482840080FA03 /* BVImpressionEvent.m in Sources */,
 				87F2DCF21DAD585E00FB43F3 /* BVReviewSubmissionResponse.m in Sources */,
@@ -3696,6 +3778,7 @@
 				B7C833472D2E79800088B7C0 /* BVProductQuotesRequest.m in Sources */,
 				87F2DCCC1DAD585E00FB43F3 /* BVAnswerSubmission.m in Sources */,
 				B57B8331215E8A31006B378E /* BVFeedbackSubmissionErrorResponse.m in Sources */,
+				B73BCD4D2F18EB84008659BF /* BVReviewTokensRequest.m in Sources */,
 				B78683BE2D002A8200BBCE3F /* BVProductSentimentsRequest.m in Sources */,
 				B583AED22006B4AA001E9548 /* BVRelationalFilterOperator.m in Sources */,
 				B5A764D91FE1915200B5DC9A /* BVBulkStoresResponse.m in Sources */,
@@ -3804,6 +3887,8 @@
 				2E88C047282A38C4007B77B0 /* BVCustomSortOrder.m in Sources */,
 				B583AEF2200956D0001E9548 /* BVAuthorIncludeType.m in Sources */,
 				875411841E1F201E006C5C6E /* BVStoreReviewNotificationProperties.m in Sources */,
+				B73BCD5D2F1F7640008659BF /* BVMatchedTokensSubmissionResponse.m in Sources */,
+				B73BCD442F18E878008659BF /* BVReviewTokens.m in Sources */,
 				87F2DCBE1DAD585E00FB43F3 /* BVQuestionFilterType.m in Sources */,
 				B78683C12D002AA700BBCE3F /* BVProductSentimentsResponse.m in Sources */,
 				87A02B6B1E0971AC0002701B /* BVSubmittedFeedback.m in Sources */,
@@ -3828,6 +3913,7 @@
 				B58639A1214AFD9D00EFD763 /* BVFieldError.m in Sources */,
 				87F2DCAE1DAD585E00FB43F3 /* BVQuestionsAndAnswersRequest.m in Sources */,
 				B583AED62006C18F001E9548 /* BVFilterType.m in Sources */,
+				B73BCD482F18E88A008659BF /* BVMatchedTokens.m in Sources */,
 				87F2DC941DAD585E00FB43F3 /* BVAnswer.m in Sources */,
 				875410B31E1F10DF006C5C6E /* BVProductReviewNotificationViewController.m in Sources */,
 				9FB5C454243DA60C0057BA34 /* BVReviewHighlightsResponse.m in Sources */,
@@ -3938,7 +4024,9 @@
 				87E28C831E5F88FE00915FDB /* BVPixelTests.m in Sources */,
 				87F2DE151DAD945D00FB43F3 /* QuestionSubmissionTests.swift in Sources */,
 				87F2DD631DAD5E9400FB43F3 /* BVRecommendationsTests.m in Sources */,
+				B73BCD5F2F1F7D82008659BF /* MatchedTokensSubmissionTests.swift in Sources */,
 				87F2DE091DAD945D00FB43F3 /* InlineRatingsDisplayTests.swift in Sources */,
+				B73BCD542F18EF65008659BF /* ReviewTokensDisplayTests.swift in Sources */,
 				87A02B5F1E0963710002701B /* FeedbackSubmissionTests.swift in Sources */,
 				87C5FF5F1E36AB70004EE6E8 /* ProfileDisplayTests.swift in Sources */,
 				87F2DD601DAD5E9400FB43F3 /* BVCurationsTests.m in Sources */,
@@ -4105,6 +4193,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 6.0;
 			};
 			name = Debug;
 		};
@@ -4133,6 +4222,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 6.0;
 			};
 			name = Release;
 		};
