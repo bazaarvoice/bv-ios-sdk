@@ -37,6 +37,8 @@
     return @"ReviewHighlights";
   case BVPixelFeatureUsedEventNameReviewSummary:
     return @"ReviewSummary";
+  case BVPixelFeatureUsedEventNameContentCoach:
+    return @"ContentCoach";
   default:
     return @"Unknown";
     break;

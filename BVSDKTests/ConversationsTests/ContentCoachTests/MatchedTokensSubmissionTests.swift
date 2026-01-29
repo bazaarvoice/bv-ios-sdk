@@ -31,7 +31,17 @@ class MatchedTokensSubmissionTests: BVBaseStubTestCase {
             // verify response object....
             print(response.result?.data ?? "No data")
             XCTAssertNotNil(response.result)
-            XCTAssertTrue(response.result!.data!.count == 2)
+            guard let result = response.result else {
+                XCTFail("Expected response.result to be non-nil")
+                expectation.fulfill()
+                return
+            }
+            guard let data = result.data else {
+                XCTFail("Expected response.result?.data to be non-nil")
+                expectation.fulfill()
+                return
+            }
+            XCTAssertEqual(data.count, 2)
             expectation.fulfill()
             
         }) { (errors) in
