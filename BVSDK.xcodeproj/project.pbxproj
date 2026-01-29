@@ -693,7 +693,6 @@
 		B73BCD5B2F1F763A008659BF /* BVMatchedTokensSubmissionResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = B73BCD5A2F1F7623008659BF /* BVMatchedTokensSubmissionResponse.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B73BCD5D2F1F7640008659BF /* BVMatchedTokensSubmissionResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = B73BCD5C2F1F763F008659BF /* BVMatchedTokensSubmissionResponse.m */; };
 		B73BCD5F2F1F7D82008659BF /* MatchedTokensSubmissionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B73BCD5E2F1F7D77008659BF /* MatchedTokensSubmissionTests.swift */; };
-		B73BCD602F1F7EEB008659BF /* BVMatchedTokensSubmission.h in Headers */ = {isa = PBXBuildFile; fileRef = B73BCD562F1F75D2008659BF /* BVMatchedTokensSubmission.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B73BCD622F20C397008659BF /* BVMatchedTokensSubmissionErrorResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = B73BCD612F20C388008659BF /* BVMatchedTokensSubmissionErrorResponse.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B73BCD642F20C39C008659BF /* BVMatchedTokensSubmissionErrorResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = B73BCD632F20C39B008659BF /* BVMatchedTokensSubmissionErrorResponse.m */; };
 		B7856D222ABC18EF0031D22A /* testKeys.json in Resources */ = {isa = PBXBuildFile; fileRef = B7856D212ABC18EF0031D22A /* testKeys.json */; };
@@ -758,6 +757,7 @@
 		B7C833692D2FAA3D0088B7C0 /* BVReviewSummary.m in Sources */ = {isa = PBXBuildFile; fileRef = B7C833682D2FAA3D0088B7C0 /* BVReviewSummary.m */; };
 		B7C8336B2D2FC4A30088B7C0 /* BVReviewSummaryDisplayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7C8336A2D2FC4A30088B7C0 /* BVReviewSummaryDisplayTests.swift */; };
 		B7C8336D2D2FCA740088B7C0 /* BVReviewSummaryFormatTypeValue.h in Headers */ = {isa = PBXBuildFile; fileRef = B7C8336C2D2FC8930088B7C0 /* BVReviewSummaryFormatTypeValue.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B7E347B32F2B3B31004E9B5B /* BVMatchedTokensSubmission.h in Headers */ = {isa = PBXBuildFile; fileRef = B7E347B22F2B3B25004E9B5B /* BVMatchedTokensSubmission.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B7E7C6A62BA2D616006632CF /* BVVideoSubmission.m in Sources */ = {isa = PBXBuildFile; fileRef = B7E7C6A52BA2D616006632CF /* BVVideoSubmission.m */; };
 /* End PBXBuildFile section */
 
@@ -1444,7 +1444,6 @@
 		B73BCD4E2F18EB87008659BF /* BVReviewTokensResponse.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BVReviewTokensResponse.h; sourceTree = "<group>"; };
 		B73BCD502F18EB94008659BF /* BVReviewTokensResponse.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BVReviewTokensResponse.m; sourceTree = "<group>"; };
 		B73BCD532F18EF59008659BF /* ReviewTokensDisplayTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewTokensDisplayTests.swift; sourceTree = "<group>"; };
-		B73BCD562F1F75D2008659BF /* BVMatchedTokensSubmission.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BVMatchedTokensSubmission.h; sourceTree = "<group>"; };
 		B73BCD582F1F7604008659BF /* BVMatchedTokensSubmission.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BVMatchedTokensSubmission.m; sourceTree = "<group>"; };
 		B73BCD5A2F1F7623008659BF /* BVMatchedTokensSubmissionResponse.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BVMatchedTokensSubmissionResponse.h; sourceTree = "<group>"; };
 		B73BCD5C2F1F763F008659BF /* BVMatchedTokensSubmissionResponse.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BVMatchedTokensSubmissionResponse.m; sourceTree = "<group>"; };
@@ -1521,6 +1520,7 @@
 		B7C833682D2FAA3D0088B7C0 /* BVReviewSummary.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BVReviewSummary.m; sourceTree = "<group>"; };
 		B7C8336A2D2FC4A30088B7C0 /* BVReviewSummaryDisplayTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BVReviewSummaryDisplayTests.swift; sourceTree = "<group>"; };
 		B7C8336C2D2FC8930088B7C0 /* BVReviewSummaryFormatTypeValue.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BVReviewSummaryFormatTypeValue.h; sourceTree = "<group>"; };
+		B7E347B22F2B3B25004E9B5B /* BVMatchedTokensSubmission.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BVMatchedTokensSubmission.h; sourceTree = "<group>"; };
 		B7E7C6A52BA2D616006632CF /* BVVideoSubmission.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVVideoSubmission.m; sourceTree = "<group>"; };
 		B7E7C6A72BA2D70F006632CF /* BVVideoSubmission.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVVideoSubmission.h; sourceTree = "<group>"; };
 		EC098EFAFB725736F0751BA0 /* libPods-BVSDK.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BVSDK.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -2943,7 +2943,7 @@
 				B73BCD5C2F1F763F008659BF /* BVMatchedTokensSubmissionResponse.m */,
 				B73BCD5A2F1F7623008659BF /* BVMatchedTokensSubmissionResponse.h */,
 				B73BCD582F1F7604008659BF /* BVMatchedTokensSubmission.m */,
-				B73BCD562F1F75D2008659BF /* BVMatchedTokensSubmission.h */,
+				B7E347B22F2B3B25004E9B5B /* BVMatchedTokensSubmission.h */,
 				B73BCD472F18E889008659BF /* BVMatchedTokens.m */,
 				B73BCD452F18E87F008659BF /* BVMatchedTokens.h */,
 			);
@@ -3117,6 +3117,7 @@
 			files = (
 				B73BCD4F2F18EB91008659BF /* BVReviewTokensResponse.h in Headers */,
 				B73BCD5B2F1F763A008659BF /* BVMatchedTokensSubmissionResponse.h in Headers */,
+				B7E347B32F2B3B31004E9B5B /* BVMatchedTokensSubmission.h in Headers */,
 				B73BCD622F20C397008659BF /* BVMatchedTokensSubmissionErrorResponse.h in Headers */,
 				B73BCD422F18E873008659BF /* BVReviewTokens.h in Headers */,
 				B73BCD4B2F18EB7E008659BF /* BVReviewTokensRequest.h in Headers */,
@@ -3377,7 +3378,6 @@
 				B7C833512D2E79C90088B7C0 /* BVProductExpressionsResponse.h in Headers */,
 				B7C8334D2D2E79B20088B7C0 /* BVProductExpressionsRequest.h in Headers */,
 				B78683C42D08177700BBCE3F /* BVSummarisedFeaturesRequest.h in Headers */,
-				B73BCD602F1F7EEB008659BF /* BVMatchedTokensSubmission.h in Headers */,
 				B7C8336D2D2FCA740088B7C0 /* BVReviewSummaryFormatTypeValue.h in Headers */,
 				B73BCD462F18E886008659BF /* BVMatchedTokens.h in Headers */,
 				B58639B2214AFE0A00EFD763 /* BVSDKManager+Private.h in Headers */,

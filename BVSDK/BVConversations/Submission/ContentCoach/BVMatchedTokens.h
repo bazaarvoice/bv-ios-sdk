@@ -7,12 +7,6 @@
 
 #import <Foundation/Foundation.h>
 #import "BVSubmittedType.h"
-/*
- A Bazaarvoice Context Data Value. Generally, this is extra information
- collected when a user
- submitted a review, question, or answer.
- A common Context Data Value is "Age" and "Gender".
- */
 
 @interface BVMatchedTokens : BVSubmittedType
 

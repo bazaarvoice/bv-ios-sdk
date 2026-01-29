@@ -28,7 +28,7 @@ final class ReviewTokensDisplayTests: XCTestCase {
       let request = BVReviewTokensRequest(productId: "P000036")
       
       request.load({ (response) in
-          print(response.data)
+          print(response.data ?? "")
           XCTAssertNotNil(response.data)
         expectation.fulfill()
         

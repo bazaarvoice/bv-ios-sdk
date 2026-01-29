@@ -52,13 +52,16 @@ loadReviewTokens:(nonnull BVConversationsRequest *)request
 
 - (void)sendReviewTokensAnalytics {
     // send usedfeature for review tokens
+    NSDictionary *additionalParams = @{
+      @"detail1" : @"Review Tokens"
+    };
 
     BVFeatureUsedEvent *event = [[BVFeatureUsedEvent alloc]
            initWithProductId:self.productId
                    withBrand:nil
-             withProductType:BVPixelProductTypeConversationsProfile
-               withEventName:BVPixelFeatureUsedEventNameReviewSummary
-        withAdditionalParams:nil];
+             withProductType:BVPixelProductTypeConversationsReviews
+               withEventName:BVPixelFeatureUsedEventNameContentCoach
+        withAdditionalParams:additionalParams];
 
     [BVPixel trackEvent:event];
 }

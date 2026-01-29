@@ -76,32 +76,19 @@
 
 - (id<BVAnalyticEvent>)trackEvent {
 
-  // Fire event now that we've confirmed the answer was successfully uploaded.
-
-  BVPixelImpressionContentType contentType = BVPixelImpressionContentTypeReview;
-  BVPixelProductType productTypeForEvent =
-      BVPixelProductTypeConversationsReviews;
-
-    contentType = BVPixelImpressionContentTypeReview;
-    productTypeForEvent = BVPixelProductTypeConversationsReviews;
-
-  BVPixelFeatureUsedEventName featureUsed = BVPixelFeatureUsedEventNameReviewSummary;
-  NSString *detail1 = @"Content Coach";
-
+  // Fire event now that we've confirmed that tokens were matched successfully.
   NSDictionary *additionalParams = @{
-    @"contentType" : [BVPixelImpressionContentTypeUtil toString:contentType],
-    @"productId" : self.productId,
-    @"detail1" : detail1
+    @"detail1" : @"Matched Tokens"
   };
 
-  BVFeatureUsedEvent *feedbackEvent =
+  BVFeatureUsedEvent *matchedTokensEvent =
       [[BVFeatureUsedEvent alloc] initWithProductId:self.productId
                                           withBrand:nil
-                                    withProductType:productTypeForEvent
-                                      withEventName:featureUsed
+                                    withProductType:BVPixelProductTypeConversationsReviews
+                                      withEventName:BVPixelFeatureUsedEventNameContentCoach
                                withAdditionalParams:additionalParams];
 
-  return feedbackEvent;
+  return matchedTokensEvent;
 }
 
 - (void)submit:(void (^__nonnull)(
