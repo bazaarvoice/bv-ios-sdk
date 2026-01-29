@@ -233,3 +233,13 @@ FOUNDATION_EXPORT const unsigned char BVSDKVersionString[];
 #import "BVProductExpressionsRequest.h"
 #import "BVProductExpressionsResponse.h"
 
+/// Review Tokens
+#import "BVReviewTokens.h"
+#import "BVReviewTokensRequest.h"
+#import "BVReviewTokensResponse.h"
+
+/// Matched Tokens
+#import "BVMatchedTokens.h"
+#import "BVMatchedTokensSubmission.h"
+#import "BVMatchedTokensSubmissionResponse.h"
+#import "BVMatchedTokensSubmissionErrorResponse.h"
