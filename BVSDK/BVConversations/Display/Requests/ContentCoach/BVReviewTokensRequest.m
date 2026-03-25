@@ -42,7 +42,7 @@ loadReviewTokens:(nonnull BVConversationsRequest *)request
              completion(reviewTokensResponse);
            });
 
-           if (reviewTokensResponse && reviewTokensResponse.data) {
+           if (reviewTokensResponse && reviewTokensResponse.tokens) {
              [self sendReviewTokensAnalytics];
            }
 

@@ -14,7 +14,7 @@
 @property(nullable) NSString *type;
 @property(nullable) NSString *title;
 @property(nullable) NSString *detail;
-@property(nullable) NSArray<NSString *> *data;
+@property(nullable) NSArray<NSString *> *tokens;
 
 - (nullable id)initWithApiResponse:(nullable id)apiResponse;
 

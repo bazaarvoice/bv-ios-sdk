@@ -90,10 +90,14 @@ class ConversationsDisplayTests: XCTestCase {
           XCTAssertEqual(review.authorId, "1q0mz2ni4is")
           XCTAssertEqual(review.userNickname, "h1VXaRZwbvy")
           XCTAssertNil(review.userLocation, "San Fransisco, California")
-          
-          XCTAssertEqual((review.tagDimensions!["Pro"]! as AnyObject).label, "Pros")
-          XCTAssertEqual((review.tagDimensions!["Pro"]! as AnyObject).identifier, "Pro")
-          XCTAssertEqual((review.tagDimensions!["Pro"]! as AnyObject).values!!, ["Pro 2", "ma"])
+          guard let tagDimensions = review.tagDimensions, let proDimension = tagDimensions["Pro"] else 	{
+                XCTFail("tag dimensions should not be nil")
+                expectation.fulfill()
+                return
+          }
+          XCTAssertEqual((proDimension as AnyObject).label, "Pros")
+          XCTAssertEqual((proDimension as AnyObject).identifier, "Pro")
+          XCTAssertEqual((proDimension as AnyObject).values!!, ["Pro 2", "ma"])
           
           XCTAssertEqual(review.photos.count, 6)
           XCTAssertNil(review.photos.first?.caption, "Etiam malesuada ultricies urna in scelerisque. Sed viverra blandit nibh non egestas. Sed rhoncus, ipsum in vehicula imperdiet, purus lectus sodales erat, eget ornare lacus lectus ac leo. Suspendisse tristique sollicitudin ultricies. Aliquam erat volutpat.")

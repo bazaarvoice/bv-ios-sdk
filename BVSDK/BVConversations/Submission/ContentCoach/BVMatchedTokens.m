@@ -16,7 +16,7 @@
     SET_IF_NOT_NULL(self.type, apiResponse[@"type"])
     SET_IF_NOT_NULL(self.title, apiResponse[@"title"])
     SET_IF_NOT_NULL(self.detail, apiResponse[@"detail"])
-    SET_IF_NOT_NULL(self.data, apiResponse[@"data"])
+    SET_IF_NOT_NULL(self.tokens, apiResponse[@"data"])
   }
   return self;
 }
