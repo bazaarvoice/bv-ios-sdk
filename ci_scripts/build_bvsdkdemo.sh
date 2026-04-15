@@ -35,6 +35,6 @@ cd ../..
 
 
 echo Staring build...
-xcodebuild ONLY_ACTIVE_ARCH=YES -workspace ./Examples/BVSDKDemo/BVSDKDemo.xcworkspace -scheme "BVSDKDemo" -sdk iphonesimulator | xcpretty -c
+xcodebuild ONLY_ACTIVE_ARCH=YES -workspace ./Examples/BVSDKDemo/BVSDKDemo.xcworkspace -scheme "BVSDKDemo" -sdk iphonesimulator -UseModernBuildSystem=NO | xcpretty -c
 
 cleanup
