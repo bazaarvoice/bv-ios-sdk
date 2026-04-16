@@ -203,7 +203,10 @@ class PhotoUploadTests: BVBaseStubTestCase {
   
   // MARK: - Request Construction Tests
   
-  func testPhotoUploadRequestHasPasskeyInQueryParams() {
+  private static let kAuthKeyParam = "passkey"
+  private static let kApiVersionParam = "apiversion"
+  
+  func testPhotoUploadRequestHasAuthKeyInQueryParams() {
     guard let image = PhotoUploadTests.createPNG() else {
       XCTFail("Could not create test image")
       return
@@ -222,9 +225,9 @@ class PhotoUploadTests: BVBaseStubTestCase {
       return
     }
     
-    let passkey = queryItems.first(where: { $0.name == "passkey" })?.value
-    XCTAssertNotNil(passkey, "passkey should be present as a query parameter")
-    XCTAssertFalse(passkey?.isEmpty ?? true, "passkey should not be empty")
+    let authKey = queryItems.first(where: { $0.name == PhotoUploadTests.kAuthKeyParam })?.value
+    XCTAssertNotNil(authKey, "auth key should be present as a query parameter")
+    XCTAssertFalse(authKey?.isEmpty ?? true, "auth key should not be empty")
   }
   
   func testPhotoUploadRequestHasApiVersionInQueryParams() {
@@ -246,7 +249,7 @@ class PhotoUploadTests: BVBaseStubTestCase {
       return
     }
     
-    let apiversion = queryItems.first(where: { $0.name == "apiversion" })?.value
+    let apiversion = queryItems.first(where: { $0.name == PhotoUploadTests.kApiVersionParam })?.value
     XCTAssertEqual(apiversion, "5.4", "apiversion query param should be 5.4")
   }
   
@@ -287,7 +290,7 @@ class PhotoUploadTests: BVBaseStubTestCase {
     XCTAssertEqual(request.httpMethod, "POST", "Photo upload should use POST method")
   }
   
-  func testPhotoUploadRequestBodyDoesNotContainPasskey() {
+  func testPhotoUploadRequestBodyDoesNotContainAuthKey() {
     guard let image = PhotoUploadTests.createPNG() else {
       XCTFail("Could not create test image")
       return
@@ -300,8 +303,8 @@ class PhotoUploadTests: BVBaseStubTestCase {
     
     let params = photo.createSubmissionParameters()
     XCTAssertNil(
-      params["passkey"],
-      "passkey should not be in the multipart body parameters")
+      params[PhotoUploadTests.kAuthKeyParam],
+      "auth key should not be in the multipart body parameters")
   }
   
   func testPhotoUploadRequestBodyDoesNotContainApiVersion() {
@@ -317,7 +320,7 @@ class PhotoUploadTests: BVBaseStubTestCase {
     
     let params = photo.createSubmissionParameters()
     XCTAssertNil(
-      params["apiversion"],
+      params[PhotoUploadTests.kApiVersionParam],
       "apiversion should not be in the multipart body parameters")
   }
   
@@ -356,5 +359,45 @@ class PhotoUploadTests: BVBaseStubTestCase {
     XCTAssertTrue(
       params["photo"] is Data,
       "photo should be NSData")
+  }
+  
+  func testPhotoUploadRequestHandlesLargeFile() {
+    // Create a 30MB image to simulate a large photo upload
+    let thirtyMB = 30 * 1024 * 1024
+    let largeImageData = Data(count: thirtyMB)
+    guard let image = UIImage(data: largeImageData) ?? PhotoUploadTests.createPNG() else {
+      XCTFail("Could not create test image")
+      return
+    }
+    
+    let photo = BVPhotoSubmission(
+      photo: image,
+      photoCaption: "Large photo test",
+      photoContentType: .review)
+    
+    let request = photo.generateRequest()
+    guard let url = request.url,
+          let components = URLComponents(url: url, resolvingAgainstBaseURL: false),
+          let queryItems = components.queryItems else {
+      XCTFail("Could not parse URL from generated request")
+      return
+    }
+    
+    // Auth key and API version should be in query params, not in the body
+    let authKey = queryItems.first(where: { $0.name == PhotoUploadTests.kAuthKeyParam })?.value
+    XCTAssertNotNil(authKey, "auth key should be in query params for large upload")
+    
+    let apiversion = queryItems.first(where: { $0.name == PhotoUploadTests.kApiVersionParam })?.value
+    XCTAssertEqual(apiversion, "5.4", "apiversion should be in query params for large upload")
+    
+    XCTAssertTrue(
+      url.absoluteString.contains("uploadphoto.json"),
+      "URL should contain uploadphoto.json endpoint")
+    XCTAssertEqual(request.httpMethod, "POST", "Large photo upload should use POST method")
+    
+    // Verify body params don't contain auth key
+    let params = photo.createSubmissionParameters()
+    XCTAssertNil(params[PhotoUploadTests.kAuthKeyParam],
+                 "auth key should not be in multipart body for large upload")
   }
 }

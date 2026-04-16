@@ -91,11 +91,17 @@ static NSUInteger const MAX_IMAGE_BYTES = 5 * 1024 * 1024; /// BV API max is 5MB
 - (nonnull NSURLRequest *)generateRequest {
   NSDictionary *parameters = [self createSubmissionParameters];
 
-  NSString *passKey =
+  static NSString *const kAuthKeyParam = @"passkey";
+  static NSString *const kApiVersionParam = @"apiversion";
+  static NSString *const kApiVersionValue = @"5.4";
+  
+  NSString *authKeyValue =
       [BVSDKManager sharedManager].configuration.apiKeyConversations;
   NSString *urlString = [NSString
-      stringWithFormat:@"%@%@?apiversion=5.4&passkey=%@",
-      [BVSubmission commonEndpoint], [self endpoint], passKey];
+      stringWithFormat:@"%@%@?%@=%@&%@=%@",
+      [BVSubmission commonEndpoint], [self endpoint],
+      kApiVersionParam, kApiVersionValue,
+      kAuthKeyParam, authKeyValue];
   NSURL *url = [NSURL URLWithString:urlString];
 
   /// add multipart form data

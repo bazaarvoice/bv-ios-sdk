@@ -72,8 +72,17 @@ static NSUInteger const MAX_VIDEO_BYTES = 250 * 1024 * 1024; /// BV API max is 2
 - (nonnull NSURLRequest *)generateRequest {
   NSDictionary *parameters = [self createSubmissionParameters];
 
+  static NSString *const kAuthKeyParam = @"passkey";
+  static NSString *const kApiVersionParam = @"apiversion";
+  static NSString *const kApiVersionValue = @"5.4";
+  
+  NSString *authKeyValue =
+      [BVSDKManager sharedManager].configuration.apiKeyConversations;
   NSString *urlString = [NSString
-      stringWithFormat:@"%@%@", [BVSubmission commonEndpoint], [self endpoint]];
+      stringWithFormat:@"%@%@?%@=%@&%@=%@",
+      [BVSubmission commonEndpoint], [self endpoint],
+      kApiVersionParam, kApiVersionValue,
+      kAuthKeyParam, authKeyValue];
   NSURL *url = [NSURL URLWithString:urlString];
 
   /// add multipart form data
@@ -110,13 +119,9 @@ static NSUInteger const MAX_VIDEO_BYTES = 250 * 1024 * 1024; /// BV API max is 2
 }
 
 - (nonnull NSDictionary *)createSubmissionParameters {
-  NSString *passKey =
-      [BVSDKManager sharedManager].configuration.apiKeyConversations;
   NSString *videoContentType = [self videoContentTypeToString];
   NSData *videoData = [self nsDataForVideo];
   return @{
-    @"apiversion" : @"5.4",
-    @"passkey" : passKey,
     @"contenttype" : videoContentType,
     @"video" : videoData
   };
