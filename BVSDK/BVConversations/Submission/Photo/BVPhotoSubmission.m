@@ -18,7 +18,7 @@
 #import "BVSubmission+Private.h"
 #import "BVSubmissionErrorResponse.h"
 
-static NSUInteger const MAX_IMAGE_BYTES = 5 * 1024 * 1024; /// BV API max is 5MB
+static NSUInteger const MAX_IMAGE_BYTES = 30 * 1024 * 1024; /// BV API max is 30MB
 
 @interface BVPhotoSubmission ()
 
