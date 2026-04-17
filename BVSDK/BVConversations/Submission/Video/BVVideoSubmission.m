@@ -72,18 +72,12 @@ static NSUInteger const MAX_VIDEO_BYTES = 250 * 1024 * 1024; /// BV API max is 2
 - (nonnull NSURLRequest *)generateRequest {
   NSDictionary *parameters = [self createSubmissionParameters];
 
-  static NSString *const kAuthKeyParam = @"passkey";
-  static NSString *const kApiVersionParam = @"apiversion";
-  static NSString *const kApiVersionValue = @"5.4";
-  
-  NSString *authKeyValue =
-      [BVSDKManager sharedManager].configuration.apiKeyConversations;
   NSString *urlString = [NSString
-      stringWithFormat:@"%@%@?%@=%@&%@=%@",
-      [BVSubmission commonEndpoint], [self endpoint],
-      kApiVersionParam, kApiVersionValue,
-      kAuthKeyParam, authKeyValue];
-  NSURL *url = [NSURL URLWithString:urlString];
+      stringWithFormat:@"%@%@",
+      [BVSubmission commonEndpoint], [self endpoint]];
+  NSURLComponents *urlComponents = [NSURLComponents componentsWithString:urlString];
+  urlComponents.queryItems = [self getQueryItems];
+  NSURL *url = urlComponents.URL;
 
   /// add multipart form data
   NSMutableData *body = [NSMutableData data];
@@ -116,6 +110,15 @@ static NSUInteger const MAX_VIDEO_BYTES = 250 * 1024 * 1024; /// BV API max is 2
   [request setHTTPBody:body];
 
   return request;
+}
+
+- (nonnull NSArray<NSURLQueryItem *> *)getQueryItems {
+  NSString *authKeyValue =
+      [BVSDKManager sharedManager].configuration.apiKeyConversations;
+  NSMutableArray<NSURLQueryItem *> *queryItems = [NSMutableArray array];
+  [queryItems addObject:[[NSURLQueryItem alloc] initWithName:@"passkey" value:authKeyValue]];
+  [queryItems addObject:[[NSURLQueryItem alloc] initWithName:@"apiversion" value:@"5.4"]];
+  return queryItems;
 }
 
 - (nonnull NSDictionary *)createSubmissionParameters {
