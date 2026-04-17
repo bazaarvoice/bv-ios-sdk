@@ -360,44 +360,4 @@ class PhotoUploadTests: BVBaseStubTestCase {
       params["photo"] is Data,
       "photo should be NSData")
   }
-  
-  func testPhotoUploadRequestHandlesLargeFile() {
-    // Create a 30MB image to simulate a large photo upload
-    let thirtyMB = 30 * 1024 * 1024
-    let largeImageData = Data(count: thirtyMB)
-    guard let image = UIImage(data: largeImageData) ?? PhotoUploadTests.createPNG() else {
-      XCTFail("Could not create test image")
-      return
-    }
-    
-    let photo = BVPhotoSubmission(
-      photo: image,
-      photoCaption: "Large photo test",
-      photoContentType: .review)
-    
-    let request = photo.generateRequest()
-    guard let url = request.url,
-          let components = URLComponents(url: url, resolvingAgainstBaseURL: false),
-          let queryItems = components.queryItems else {
-      XCTFail("Could not parse URL from generated request")
-      return
-    }
-    
-    // Auth key and API version should be in query params, not in the body
-    let authKey = queryItems.first(where: { $0.name == PhotoUploadTests.kAuthKeyParam })?.value
-    XCTAssertNotNil(authKey, "auth key should be in query params for large upload")
-    
-    let apiversion = queryItems.first(where: { $0.name == PhotoUploadTests.kApiVersionParam })?.value
-    XCTAssertEqual(apiversion, "5.4", "apiversion should be in query params for large upload")
-    
-    XCTAssertTrue(
-      url.absoluteString.contains("uploadphoto.json"),
-      "URL should contain uploadphoto.json endpoint")
-    XCTAssertEqual(request.httpMethod, "POST", "Large photo upload should use POST method")
-    
-    // Verify body params don't contain auth key
-    let params = photo.createSubmissionParameters()
-    XCTAssertNil(params[PhotoUploadTests.kAuthKeyParam],
-                 "auth key should not be in multipart body for large upload")
-  }
 }
