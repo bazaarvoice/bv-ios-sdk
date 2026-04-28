@@ -200,4 +200,164 @@ class PhotoUploadTests: BVBaseStubTestCase {
       in: Bundle(for: PhotoUploadTests.self),
       compatibleWith: nil)
   }
+  
+  // MARK: - Request Construction Tests
+  
+  private static let kAuthKeyParam = "passkey"
+  private static let kApiVersionParam = "apiversion"
+  
+  func testPhotoUploadRequestHasAuthKeyInQueryParams() {
+    guard let image = PhotoUploadTests.createPNG() else {
+      XCTFail("Could not create test image")
+      return
+    }
+    
+    let photo = BVPhotoSubmission(
+      photo: image,
+      photoCaption: "Test caption",
+      photoContentType: .review)
+    
+    let request = photo.generateRequest()
+    guard let url = request.url,
+          let components = URLComponents(url: url, resolvingAgainstBaseURL: false),
+          let queryItems = components.queryItems else {
+      XCTFail("Could not parse URL from generated request")
+      return
+    }
+    
+    let authKey = queryItems.first(where: { $0.name == PhotoUploadTests.kAuthKeyParam })?.value
+    XCTAssertNotNil(authKey, "auth key should be present as a query parameter")
+    XCTAssertFalse(authKey?.isEmpty ?? true, "auth key should not be empty")
+  }
+  
+  func testPhotoUploadRequestHasApiVersionInQueryParams() {
+    guard let image = PhotoUploadTests.createPNG() else {
+      XCTFail("Could not create test image")
+      return
+    }
+    
+    let photo = BVPhotoSubmission(
+      photo: image,
+      photoCaption: "Test caption",
+      photoContentType: .review)
+    
+    let request = photo.generateRequest()
+    guard let url = request.url,
+          let components = URLComponents(url: url, resolvingAgainstBaseURL: false),
+          let queryItems = components.queryItems else {
+      XCTFail("Could not parse URL from generated request")
+      return
+    }
+    
+    let apiversion = queryItems.first(where: { $0.name == PhotoUploadTests.kApiVersionParam })?.value
+    XCTAssertEqual(apiversion, "5.4", "apiversion query param should be 5.4")
+  }
+  
+  func testPhotoUploadRequestHasCorrectEndpoint() {
+    guard let image = PhotoUploadTests.createPNG() else {
+      XCTFail("Could not create test image")
+      return
+    }
+    
+    let photo = BVPhotoSubmission(
+      photo: image,
+      photoCaption: "Test caption",
+      photoContentType: .review)
+    
+    let request = photo.generateRequest()
+    guard let url = request.url else {
+      XCTFail("Could not get URL from generated request")
+      return
+    }
+    
+    XCTAssertTrue(
+      url.absoluteString.contains("uploadphoto.json"),
+      "URL should contain uploadphoto.json endpoint")
+  }
+  
+  func testPhotoUploadRequestIsPostMethod() {
+    guard let image = PhotoUploadTests.createPNG() else {
+      XCTFail("Could not create test image")
+      return
+    }
+    
+    let photo = BVPhotoSubmission(
+      photo: image,
+      photoCaption: "Test caption",
+      photoContentType: .review)
+    
+    let request = photo.generateRequest()
+    XCTAssertEqual(request.httpMethod, "POST", "Photo upload should use POST method")
+  }
+  
+  func testPhotoUploadRequestBodyDoesNotContainAuthKey() {
+    guard let image = PhotoUploadTests.createPNG() else {
+      XCTFail("Could not create test image")
+      return
+    }
+    
+    let photo = BVPhotoSubmission(
+      photo: image,
+      photoCaption: "Test caption",
+      photoContentType: .review)
+    
+    let params = photo.createSubmissionParameters()
+    XCTAssertNil(
+      params[PhotoUploadTests.kAuthKeyParam],
+      "auth key should not be in the multipart body parameters")
+  }
+  
+  func testPhotoUploadRequestBodyDoesNotContainApiVersion() {
+    guard let image = PhotoUploadTests.createPNG() else {
+      XCTFail("Could not create test image")
+      return
+    }
+    
+    let photo = BVPhotoSubmission(
+      photo: image,
+      photoCaption: "Test caption",
+      photoContentType: .review)
+    
+    let params = photo.createSubmissionParameters()
+    XCTAssertNil(
+      params[PhotoUploadTests.kApiVersionParam],
+      "apiversion should not be in the multipart body parameters")
+  }
+  
+  func testPhotoUploadRequestBodyContainsContentType() {
+    guard let image = PhotoUploadTests.createPNG() else {
+      XCTFail("Could not create test image")
+      return
+    }
+    
+    let photo = BVPhotoSubmission(
+      photo: image,
+      photoCaption: "Test caption",
+      photoContentType: .review)
+    
+    let params = photo.createSubmissionParameters()
+    XCTAssertEqual(
+      params["contenttype"] as? String, "review",
+      "contenttype should be present in the multipart body parameters")
+  }
+  
+  func testPhotoUploadRequestBodyContainsPhotoData() {
+    guard let image = PhotoUploadTests.createPNG() else {
+      XCTFail("Could not create test image")
+      return
+    }
+    
+    let photo = BVPhotoSubmission(
+      photo: image,
+      photoCaption: "Test caption",
+      photoContentType: .review)
+    
+    let params = photo.createSubmissionParameters()
+    XCTAssertNotNil(
+      params["photo"],
+      "photo data should be present in the multipart body parameters")
+    XCTAssertTrue(
+      params["photo"] is Data,
+      "photo should be NSData")
+  }
 }
