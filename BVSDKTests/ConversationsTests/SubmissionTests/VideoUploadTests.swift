@@ -10,9 +10,10 @@ import XCTest
 
 class VideoUploadTests: BVBaseStubTestCase {
     
-    private static let kAuthKeyParam = "passkey"
-    private static let kApiVersionParam = "apiversion"
-    
+    private static let kAuthKeyParam = "PassKey"
+    private static let kApiVersionParam = "ApiVersion"
+    private static let kContentType = "contentType"
+
     override func setUp() {
         super.setUp()
         
@@ -119,6 +120,31 @@ class VideoUploadTests: BVBaseStubTestCase {
         XCTAssertEqual(apiversion, "5.4", "apiversion query param should be 5.4")
     }
     
+    func testVideoUploadRequestHasContentTypeInQueryParams() {
+        guard let videoPath = VideoUploadTests.getVideoPath() else {
+            XCTFail("Could not get video path")
+            return
+        }
+        
+        let video = BVVideoSubmission(
+            video: videoPath,
+            videoCaption: "Test Video",
+            uploadVideo: true,
+            videoContentType: .review)
+        
+        
+        let request = video.generateRequest()
+        guard let url = request.url,
+              let components = URLComponents(url: url, resolvingAgainstBaseURL: false),
+              let queryItems = components.queryItems else {
+            XCTFail("Could not parse URL from generated request")
+            return
+        }
+        
+        let contentType = queryItems.first(where: { $0.name == VideoUploadTests.kContentType })?.value
+        XCTAssertEqual(contentType, "review", "contentType query param should be review")
+    }
+    
     func testVideoUploadRequestHasCorrectEndpoint() {
         guard let videoPath = VideoUploadTests.getVideoPath() else {
             XCTFail("Could not get video path")
@@ -194,24 +220,6 @@ class VideoUploadTests: BVBaseStubTestCase {
             "apiversion should not be in the multipart body parameters")
     }
     
-    func testVideoUploadRequestBodyContainsContentType() {
-        guard let videoPath = VideoUploadTests.getVideoPath() else {
-            XCTFail("Could not get video path")
-            return
-        }
-        
-        let video = BVVideoSubmission(
-            video: videoPath,
-            videoCaption: "Test Video",
-            uploadVideo: true,
-            videoContentType: .review)
-        
-        let params = video.createSubmissionParameters()
-        XCTAssertEqual(
-            params["contenttype"] as? String, "review",
-            "contenttype should be present in the multipart body parameters")
-    }
-    
     func testVideoUploadRequestBodyContainsVideoData() {
         guard let videoPath = VideoUploadTests.getVideoPath() else {
             XCTFail("Could not get video path")
@@ -226,10 +234,10 @@ class VideoUploadTests: BVBaseStubTestCase {
         
         let params = video.createSubmissionParameters()
         XCTAssertNotNil(
-            params["video"],
+            params["Video"],
             "video data should be present in the multipart body parameters")
         XCTAssertTrue(
-            params["video"] is Data,
+            params["Video"] is Data,
             "video should be NSData")
     }
     

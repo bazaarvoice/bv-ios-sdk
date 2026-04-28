@@ -41,6 +41,12 @@
              : @"https://api.bazaarvoice.com/data/";
 }
 
++ (nonnull NSString *)videoUploadEndpoint {
+  return [BVSDKManager sharedManager].configuration.staging
+             ? @"https://stgmedia.api.bazaarvoice.com/data/"
+             : @"https://media.api.bazaarvoice.com/data/";
+}
+
 - (void)sendError:(nonnull NSError *)error
     failureCallback:(ConversationsFailureHandler)failure {
   [[BVLogger sharedLogger] printError:error];
