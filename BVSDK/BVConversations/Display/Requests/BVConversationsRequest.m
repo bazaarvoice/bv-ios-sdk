@@ -205,12 +205,38 @@ processData:(nullable NSData *)data
       [self sendError:err failureCallback:failure];
     }
   } else {
-    NSString *message = [NSString
-        stringWithFormat:@"HTTP response status code: %li with error: %@",
-                         (long)statusCode, error.localizedDescription];
+      NSString *message;
+      NSInteger code = BV_ERROR_NETWORK_FAILED;
+      if (data.length > 0) {
+         NSError *jsonErr = nil;
+         id obj = [NSJSONSerialization JSONObjectWithData:data
+                                                  options:kNilOptions
+                                                    error:&jsonErr];
+         if ([obj isKindOfClass:[NSDictionary class]]) {
+           NSDictionary *json = (NSDictionary *)obj;
+           id detail = json[@"detail"];
+           id status = json[@"status"];
+           if ([detail isKindOfClass:[NSString class]] && ((NSString *)detail).length > 0) {
+             message = (NSString *)detail;
+           }
+           if ([status isKindOfClass:[NSNumber class]]) {
+             code = ((NSNumber *)status).integerValue;
+           }
+         }
+       }
+      
+      if (!message.length) {
+        if (error) {
+          message = [NSString stringWithFormat:@"HTTP response status code: %li with error: %@",
+                                               (long)statusCode, error.localizedDescription];
+        } else {
+          message = [NSString stringWithFormat:@"HTTP response status code: %li", (long)statusCode];
+        }
+      }
+      
     NSError *enhancedError =
         [NSError errorWithDomain:BVErrDomain
-                            code:BV_ERROR_NETWORK_FAILED
+                            code:code
                         userInfo:@{NSLocalizedDescriptionKey : message}];
     [self sendError:enhancedError failureCallback:failure];
   }

@@ -28,15 +28,13 @@ final class ReviewTokensDisplayTests: XCTestCase {
         let request = BVReviewTokensRequest(productId: "P000036")
         
         request.load({ (response) in
-            print(response.data ?? "")
-            XCTAssertNotNil(response.data)
+            print(response.tokens as Any)
+            XCTAssertNotNil(response.tokens)
             expectation.fulfill()
             
         }) { (error) in
-            
-            XCTFail("product display request error: \(error)")
+            XCTFail("token display request error: \(error)")
             expectation.fulfill()
-            
         }
         
         self.waitForExpectations(timeout: 10) { (error) in

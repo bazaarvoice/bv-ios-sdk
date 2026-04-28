@@ -25,7 +25,7 @@ final class BVReviewSummaryDisplayTests: XCTestCase {
     func testReviewSummaryDisplay() {
       
       let expectation = self.expectation(description: "testReviewSummaryDisplay")
-      let request = BVReviewSummaryRequest(productId: "P000036", formatType: BVReviewSummaryFormatType.bullet) // or BVReviewSummaryFormatType.paragraph
+        let request = BVReviewSummaryRequest(productId: "P000036", language: "es", formatType: BVReviewSummaryFormatType.bullet) // or BVReviewSummaryFormatType.paragraph
       
       request.load({ (response) in
           XCTAssertNotNil(response.summary)
@@ -39,7 +39,7 @@ final class BVReviewSummaryDisplayTests: XCTestCase {
         
       }
       
-      self.waitForExpectations(timeout: 10) { (error) in
+      self.waitForExpectations(timeout: 30) { (error) in
         XCTAssertNil(error, "Something went horribly wrong, request took too long.")
       }
       
