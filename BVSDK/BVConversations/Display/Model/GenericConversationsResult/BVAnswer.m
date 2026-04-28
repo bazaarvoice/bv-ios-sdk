@@ -41,6 +41,7 @@
     SET_IF_NOT_NULL(self.identifier, apiResponse[@"Id"])
     SET_IF_NOT_NULL(self.answerText, apiResponse[@"AnswerText"])
     SET_IF_NOT_NULL(self.sourceClient, apiResponse[@"SourceClient"])
+    SET_IF_NOT_NULL(self.automatedAnswerSource, apiResponse[@"AutomatedAnswerSource"])
 
     self.lastModificationTime = [BVModelUtil
         convertTimestampToDatetime:apiResponse[@"LastModificationTime"]];
