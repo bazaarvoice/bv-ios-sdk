@@ -3,7 +3,7 @@
 //  BVSDK
 //
 //  Copyright © 2026 Bazaarvoice. All rights reserved.
-// 
+//
 
 
 import XCTest
@@ -40,7 +40,8 @@ class MatchedTokensSubmissionTests: BVBaseStubTestCase {
             expectation.fulfill()
             
         }) { (errors) in
-            print("matched tokens request error: \(errors)")
+            XCTFail("matched tokens request error: \(errors)")
+            expectation.fulfill()
         }
         
         waitForExpectations(timeout: 30, handler: nil)
