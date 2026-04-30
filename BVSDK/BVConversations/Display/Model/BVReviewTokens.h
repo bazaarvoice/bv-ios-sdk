@@ -13,7 +13,7 @@
 @property(nullable) NSString *type;
 @property(nullable) NSString *title;
 @property(nullable) NSString *detail;
-@property(nullable) NSArray<NSString *> *data;
+@property(nullable) NSArray<NSString *> *tokens;
 
 - (nonnull id)initWithApiResponse:(nonnull id)apiResponse;
 

@@ -18,7 +18,7 @@
 #import "BVSubmission+Private.h"
 #import "BVSubmissionErrorResponse.h"
 
-static NSUInteger const MAX_IMAGE_BYTES = 5 * 1024 * 1024; /// BV API max is 5MB
+static NSUInteger const MAX_IMAGE_BYTES = 30 * 1024 * 1024; /// BV API max is 30MB
 
 @interface BVPhotoSubmission ()
 
@@ -92,8 +92,11 @@ static NSUInteger const MAX_IMAGE_BYTES = 5 * 1024 * 1024; /// BV API max is 5MB
   NSDictionary *parameters = [self createSubmissionParameters];
 
   NSString *urlString = [NSString
-      stringWithFormat:@"%@%@", [BVSubmission commonEndpoint], [self endpoint]];
-  NSURL *url = [NSURL URLWithString:urlString];
+      stringWithFormat:@"%@%@",
+      [BVSubmission commonEndpoint], [self endpoint]];
+  NSURLComponents *urlComponents = [NSURLComponents componentsWithString:urlString];
+  urlComponents.queryItems = [self getQueryItems];
+  NSURL *url = urlComponents.URL;
 
   /// add multipart form data
   NSMutableData *body = [NSMutableData data];
@@ -128,14 +131,19 @@ static NSUInteger const MAX_IMAGE_BYTES = 5 * 1024 * 1024; /// BV API max is 5MB
   return request;
 }
 
-- (nonnull NSDictionary *)createSubmissionParameters {
-  NSString *passKey =
+- (nonnull NSArray<NSURLQueryItem *> *)getQueryItems {
+  NSString *authKeyValue =
       [BVSDKManager sharedManager].configuration.apiKeyConversations;
+  NSMutableArray<NSURLQueryItem *> *queryItems = [NSMutableArray array];
+  [queryItems addObject:[[NSURLQueryItem alloc] initWithName:@"passkey" value:authKeyValue]];
+  [queryItems addObject:[[NSURLQueryItem alloc] initWithName:@"apiversion" value:@"5.4"]];
+  return queryItems;
+}
+
+- (nonnull NSDictionary *)createSubmissionParameters {
   NSString *photoContentType = [self photoContentTypeToString];
   NSData *photoData = [self nsDataForPhoto];
   return @{
-    @"apiversion" : @"5.4",
-    @"passkey" : passKey,
     @"contenttype" : photoContentType,
     @"photo" : photoData
   };

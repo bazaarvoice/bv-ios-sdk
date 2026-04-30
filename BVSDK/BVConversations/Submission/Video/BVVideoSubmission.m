@@ -73,8 +73,11 @@ static NSUInteger const MAX_VIDEO_BYTES = 250 * 1024 * 1024; /// BV API max is 2
   NSDictionary *parameters = [self createSubmissionParameters];
 
   NSString *urlString = [NSString
-      stringWithFormat:@"%@%@", [BVSubmission commonEndpoint], [self endpoint]];
-  NSURL *url = [NSURL URLWithString:urlString];
+      stringWithFormat:@"%@%@",
+      [BVSubmission videoUploadEndpoint], [self endpoint]];
+  NSURLComponents *urlComponents = [NSURLComponents componentsWithString:urlString];
+  urlComponents.queryItems = [self getQueryItems];
+  NSURL *url = urlComponents.URL;
 
   /// add multipart form data
   NSMutableData *body = [NSMutableData data];
@@ -109,16 +112,22 @@ static NSUInteger const MAX_VIDEO_BYTES = 250 * 1024 * 1024; /// BV API max is 2
   return request;
 }
 
-- (nonnull NSDictionary *)createSubmissionParameters {
-  NSString *passKey =
+- (nonnull NSArray<NSURLQueryItem *> *)getQueryItems {
+  NSString *authKeyValue =
       [BVSDKManager sharedManager].configuration.apiKeyConversations;
-  NSString *videoContentType = [self videoContentTypeToString];
+  NSMutableArray<NSURLQueryItem *> *queryItems = [NSMutableArray array];
+    NSString *videoContentType = [self videoContentTypeToString];
+
+  [queryItems addObject:[[NSURLQueryItem alloc] initWithName:@"PassKey" value:authKeyValue]];
+  [queryItems addObject:[[NSURLQueryItem alloc] initWithName:@"ApiVersion" value:@"5.4"]];
+  [queryItems addObject:[[NSURLQueryItem alloc] initWithName:@"contentType" value:videoContentType]];
+  return queryItems;
+}
+
+- (nonnull NSDictionary *)createSubmissionParameters {
   NSData *videoData = [self nsDataForVideo];
   return @{
-    @"apiversion" : @"5.4",
-    @"passkey" : passKey,
-    @"contenttype" : videoContentType,
-    @"video" : videoData
+    @"Video" : videoData
   };
 }
           

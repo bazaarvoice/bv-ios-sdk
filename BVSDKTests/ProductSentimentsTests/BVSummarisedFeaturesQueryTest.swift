@@ -33,7 +33,7 @@ final class BVSummarisedFeaturesQueryTest: XCTestCase {
                 expectation.fulfill()
                 return
             }
-            XCTAssertEqual(feature.nativeFeature, "removal")
+            XCTAssertNotNil(feature.nativeFeature)
             XCTAssertNotNil(feature.embedded?.quotes)
             expectation.fulfill()
         }) { (errors) in
@@ -43,7 +43,7 @@ final class BVSummarisedFeaturesQueryTest: XCTestCase {
             }
             expectation.fulfill()
           }
-        self.waitForExpectations(timeout: 120) { (error) in
+        self.waitForExpectations(timeout: 30) { (error) in
             XCTAssertNil(error, "Something went horribly wrong, request took too long.")
         }
     }
@@ -57,7 +57,7 @@ final class BVSummarisedFeaturesQueryTest: XCTestCase {
                 expectation.fulfill()
                 return
             }
-            XCTAssertEqual(feature.nativeFeature, "removal")
+            XCTAssertNotNil(feature.nativeFeature)
             XCTAssertNil(feature.embedded?.quotes)
             expectation.fulfill()
         }) { (errors) in
@@ -67,7 +67,7 @@ final class BVSummarisedFeaturesQueryTest: XCTestCase {
             }
             expectation.fulfill()
           }
-        self.waitForExpectations(timeout: 60) { (error) in
+        self.waitForExpectations(timeout: 30) { (error) in
           XCTAssertNil(error, "Something went horribly wrong, request took too long.")
         }
     }

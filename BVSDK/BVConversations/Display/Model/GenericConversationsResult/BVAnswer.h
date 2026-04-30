@@ -50,5 +50,6 @@
 @property(nullable, nonatomic, strong, readonly)
     BVSyndicationSource *syndicationSource;
 @property(nullable) NSString *sourceClient;
+@property(nullable) NSString *automatedAnswerSource;
 
 @end

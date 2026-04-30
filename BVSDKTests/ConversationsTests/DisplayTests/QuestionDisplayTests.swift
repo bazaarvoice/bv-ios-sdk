@@ -50,7 +50,7 @@ class QuestionDisplayTests: XCTestCase {
       XCTAssertEqual(answer.brandImageLogoURL, nil)
       XCTAssertEqual(answer.answerText, "zxnc,vznxc osaidmf oaismdfo ims adoifmaosidmfoiamsdfimasdf")
       
-        response.results.forEach { _ in (question) 
+        response.results.forEach { _ in (question)
         XCTAssertEqual(question.productId, "test1")
       }
       
@@ -150,4 +150,38 @@ class QuestionDisplayTests: XCTestCase {
       XCTAssertNil(error, "Something went horribly wrong, request took too long.")
     }
   }
+
+    func testAutomatedAnswerDisplay() {
+        let configDict = ["clientId": "test-editreviews",
+                          "apiKeyConversations": BVTestUsers().loadValueForKey(key: .conversationsKeyAutomatedAnswerSource)];
+        BVSDKManager.configure(withConfiguration: configDict, configType: .staging)
+        
+        let expectation = self.expectation(description: "")
+        let request = BVQuestionsAndAnswersRequest(productId: "testproduct_locale_en_iq", limit: 10, offset: 0)
+        
+        request.load({ (response) in
+            let question = response.results.first!
+            XCTAssertEqual(question.identifier, "2400720")
+            var aiGeneratedFlag = false
+            var aiAssistedFlag = false
+            for answer in question.includedAnswers {
+                if answer.identifier == "2550582" {
+                    XCTAssertEqual(answer.automatedAnswerSource, "AI-Generated")
+                    aiGeneratedFlag = true
+                } else if answer.identifier == "2550583" {
+                    XCTAssertEqual(answer.automatedAnswerSource, "AI-Assisted")
+                    aiAssistedFlag = true
+                }
+            }
+            XCTAssertTrue(aiGeneratedFlag, "Expected answerId 2550582 present in the response.")
+            XCTAssertTrue(aiAssistedFlag, "Expected answerId 2550583 present in the response.")
+            expectation.fulfill()
+        }) { (error) in
+            XCTFail("product display request error: \(error)")
+            expectation.fulfill()
+        }
+        self.waitForExpectations(timeout: 10) { (error) in
+            XCTAssertNil(error, "Something went horribly wrong, request took too long.")
+        }
+    }
 }

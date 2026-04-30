@@ -24,6 +24,7 @@ class BVTestUsers {
         case conversationsKey13 = "conversationsKey13"
         case conversationsKey14 = "conversationsKey14"
         case conversationsKeyBVBeauty = "conversationsKeyBVBeauty"
+        case conversationsKeyAutomatedAnswerSource = "conversationsKeyAutomatedAnswerSource"
         case answerUserId = "answerUserId"
         case feedbackUserId = "feedbackUserId"
         case feedbackUser = "feedbackUser"

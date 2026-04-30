@@ -3,7 +3,7 @@
 //  BVSDK
 //
 //  Copyright © 2026 Bazaarvoice. All rights reserved.
-// 
+//
 
 
 import XCTest
@@ -25,19 +25,14 @@ class MatchedTokensSubmissionTests: BVBaseStubTestCase {
         
         let expectation = self.expectation(description: "testMatchedTokensQuery")
         let testMatchedTokensQuery = BVMatchedTokensSubmission(productId: "P000036", withReviewText: "This product has great absorption and fragrance.")
-        
         testMatchedTokensQuery.submit({ (response) in
-            // success
-            // verify response object....
-            print(response.result?.data ?? "No data")
-            XCTAssertNotNil(response.result)
             guard let result = response.result else {
-                XCTFail("Expected response.result to be non-nil")
+                XCTFail("Expected response")
                 expectation.fulfill()
                 return
             }
-            guard let data = result.data else {
-                XCTFail("Expected response.result?.data to be non-nil")
+            guard let data = result.tokens else {
+                XCTFail("Expected tokens")
                 expectation.fulfill()
                 return
             }
@@ -45,9 +40,7 @@ class MatchedTokensSubmissionTests: BVBaseStubTestCase {
             expectation.fulfill()
             
         }) { (errors) in
-            // error
-            print(errors.first?.localizedDescription ?? "No error")
-            XCTFail("Should not be in failure block")
+            XCTFail("matched tokens request error: \(errors)")
             expectation.fulfill()
         }
         

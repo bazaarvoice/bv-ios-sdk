@@ -24,10 +24,12 @@
 @interface BVReviewSummaryRequest : BVConversationsRequest
 
 @property(nonnull, readonly) NSString *productId;
+@property(nonnull, readonly) NSString *language;
 @property BVReviewSummaryFormatType formatType;
 
 /// The id and format  for the review summary you are trying to fetch
 - (nonnull instancetype)initWithProductId:(nonnull NSString *)productId
+                                 language:(NSString *_Nonnull)language
                                formatType:(BVReviewSummaryFormatType)formatType;
 - (nonnull instancetype)__unavailable init;
 

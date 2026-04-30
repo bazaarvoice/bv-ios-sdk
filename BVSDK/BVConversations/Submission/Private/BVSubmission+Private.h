@@ -19,6 +19,7 @@
     @property(nonatomic, readonly, nonnull) NSString *conversationsKey;
 
 + (nonnull NSString *)commonEndpoint;
++ (nonnull NSString *)videoUploadEndpoint;
 
 - (void)sendError:(nonnull NSError *)error
     failureCallback:(nonnull ConversationsFailureHandler)failure;
