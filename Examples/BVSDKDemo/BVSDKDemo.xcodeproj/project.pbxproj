@@ -172,6 +172,8 @@
 		B78A3E5D2EB1DEDC00981962 /* ProductSentimentsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B78A3E5B2EB1DEDC00981962 /* ProductSentimentsViewModel.swift */; };
 		B78EB7A02EB2129A00B7647A /* ReviewsSectionsToogleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B78EB79E2EB2129A00B7647A /* ReviewsSectionsToogleTableViewCell.swift */; };
 		B78EB7A12EB2129A00B7647A /* ReviewsSectionsToogleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B78EB79F2EB2129A00B7647A /* ReviewsSectionsToogleTableViewCell.xib */; };
+		B7D353CA2FFFA1F400364E5B /* WriteReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7D353C92FFFA1F400364E5B /* WriteReviewView.swift */; };
+		B7D353CC2FFFA34200364E5B /* WriteReviewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7D353CB2FFFA33C00364E5B /* WriteReviewViewModel.swift */; };
 		D6E224EFC7178A6EE94422B9 /* Pods_BVSDKDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8E4D93E82B9A42C2D006373 /* Pods_BVSDKDemo.framework */; };
 /* End PBXBuildFile section */
 
@@ -386,6 +388,8 @@
 		B78A3E5B2EB1DEDC00981962 /* ProductSentimentsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductSentimentsViewModel.swift; sourceTree = "<group>"; };
 		B78EB79E2EB2129A00B7647A /* ReviewsSectionsToogleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewsSectionsToogleTableViewCell.swift; sourceTree = "<group>"; };
 		B78EB79F2EB2129A00B7647A /* ReviewsSectionsToogleTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReviewsSectionsToogleTableViewCell.xib; sourceTree = "<group>"; };
+		B7D353C92FFFA1F400364E5B /* WriteReviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteReviewView.swift; sourceTree = "<group>"; };
+		B7D353CB2FFFA33C00364E5B /* WriteReviewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteReviewViewModel.swift; sourceTree = "<group>"; };
 		D8E4D93E82B9A42C2D006373 /* Pods_BVSDKDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BVSDKDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FBA50345589FB0F79B6B5FA5 /* Pods-BVSDKDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BVSDKDemo.release.xcconfig"; path = "Target Support Files/Pods-BVSDKDemo/Pods-BVSDKDemo.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -699,6 +703,7 @@
 		739C0EEF1CDD9EB700CE771B /* Conversations */ = {
 			isa = PBXGroup;
 			children = (
+				B7D353C82FFFA1DE00364E5B /* Views */,
 				B78A3E5B2EB1DEDC00981962 /* ProductSentimentsViewModel.swift */,
 				B78A3E4F2EB0B9B400981962 /* ProductVideoUploadView.swift */,
 				8745771A1E42390C00D6CBD0 /* AuthorProfile */,
@@ -865,6 +870,15 @@
 				B78A3E562EB1DAE100981962 /* conversationsReviewSummary.json */,
 			);
 			path = ProductSentiments;
+			sourceTree = "<group>";
+		};
+		B7D353C82FFFA1DE00364E5B /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B7D353CB2FFFA33C00364E5B /* WriteReviewViewModel.swift */,
+				B7D353C92FFFA1F400364E5B /* WriteReviewView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1249,10 +1263,12 @@
 				87BB4C8B1D38201F00C860BE /* BVSDKDemoActionController.swift in Sources */,
 				734CF3541CE0414400132462 /* HomeViewController.swift in Sources */,
 				736D4CB71CDEC5730095EE6B /* DemoCarouselCollectionViewCell.swift in Sources */,
+				B7D353CC2FFFA34200364E5B /* WriteReviewViewModel.swift in Sources */,
 				985C66D3235611AD00FB3D39 /* OrderHistoryTableViewCell.swift in Sources */,
 				733BCF061CF81F2800045FC2 /* SubmitAnswerViewController.swift in Sources */,
 				736D4D021CDED0C40095EE6B /* ProductDetailTableViewCell.swift in Sources */,
 				738E72491CEEE48A00D30617 /* ProductDetailHeaderView.swift in Sources */,
+				B7D353CA2FFFA1F400364E5B /* WriteReviewView.swift in Sources */,
 				733BCEED1CF6300100045FC2 /* HomeHeaderCollectionViewCell.swift in Sources */,
 				42AD3CC0242E95860000296E /* ReviewHighlightsDetailsTableViewCell.swift in Sources */,
 				7385D8671CE3AD7600CA5F5E /* BaseDemoComposeServiceViewController.swift in Sources */,
