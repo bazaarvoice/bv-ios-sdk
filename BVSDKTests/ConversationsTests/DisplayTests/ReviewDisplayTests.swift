@@ -91,7 +91,7 @@ class ReviewDisplayTests: XCTestCase {
             
         }
         
-        self.waitForExpectations(timeout: 1000) { (error) in
+        self.waitForExpectations(timeout: 30) { (error) in
             XCTAssertNil(error, "Something went horribly wrong, request took too long.")
         }
         
@@ -115,7 +115,7 @@ class ReviewDisplayTests: XCTestCase {
             
         }
         
-        self.waitForExpectations(timeout: 1000) { (error) in
+        self.waitForExpectations(timeout: 30) { (error) in
             XCTAssertNil(error, "Something went horribly wrong, request took too long.")
         }
         
@@ -134,7 +134,10 @@ class ReviewDisplayTests: XCTestCase {
         
            let includedProduct =  response.results.first?.product
            XCTAssertNotNil(includedProduct?.reviewStatistics?.tagDistribution!["Con"])
-           let conTagDistribution =  includedProduct?.reviewStatistics?.tagDistribution!["Con"] as! BVDistributionElement
+            guard let tagDistribution = includedProduct?.reviewStatistics?.tagDistribution, let conTagDistribution = tagDistribution["Con"] as? BVDistributionElement else {
+                XCTFail("review display request failed")
+                return
+            }
            let conTagDistributionValues = conTagDistribution.values
             
            XCTAssertEqual(conTagDistributionValues.count, 10)
@@ -149,7 +152,7 @@ class ReviewDisplayTests: XCTestCase {
             
         }
         
-        self.waitForExpectations(timeout: 1000) { (error) in
+        self.waitForExpectations(timeout: 30) { (error) in
             XCTAssertNil(error, "Something went horribly wrong, request took too long.")
         }
         
