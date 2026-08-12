@@ -62,6 +62,8 @@
     // validate request
     if ([self.productId isEqualToString:@""]) {
         [self sendError:[self validationError:@"productId"] failureCallback:failure];
+    } else if (self.language == nil && self.locale == nil) {
+        [self sendError:[self validationError:@"language or locale"] failureCallback:failure];
     } else {
         [self loadReviewSummary:self completion:success failure:failure];
     }

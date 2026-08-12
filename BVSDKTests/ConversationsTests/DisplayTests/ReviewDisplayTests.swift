@@ -133,11 +133,13 @@ class ReviewDisplayTests: XCTestCase {
         request.load({ (response) in
         
            let includedProduct =  response.results.first?.product
-           XCTAssertNotNil(includedProduct?.reviewStatistics?.tagDistribution!["Con"])
             guard let tagDistribution = includedProduct?.reviewStatistics?.tagDistribution, let conTagDistribution = tagDistribution["Con"] as? BVDistributionElement else {
                 XCTFail("review display request failed")
+                expectation.fulfill()
                 return
             }
+            XCTAssertNotNil(conTagDistribution)
+
            let conTagDistributionValues = conTagDistribution.values
             
            XCTAssertEqual(conTagDistributionValues.count, 10)
