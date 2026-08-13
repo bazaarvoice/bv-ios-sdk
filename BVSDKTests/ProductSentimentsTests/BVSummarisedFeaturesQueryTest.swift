@@ -13,8 +13,8 @@ final class BVSummarisedFeaturesQueryTest: XCTestCase {
     override func setUp() {
       super.setUp()
       let configDict = ["clientId": "bv-beauty",
-                        "apiKeyProductSentiments": BVTestUsers().loadValueForKey(key: .conversationsKeyBVBeauty)];
-      BVSDKManager.configure(withConfiguration: configDict, configType: .prod)
+                        "apiKeyProductSentiments": BVTestUsers().loadValueForKey(key: .conversationsKeyBVBeautyProductSentiments)];
+      BVSDKManager.configure(withConfiguration: configDict, configType: .staging)
       BVSDKManager.shared().setLogLevel(BVLogLevel.verbose)
       BVSDKManager.shared().urlSessionDelegate = nil;
     }
@@ -26,7 +26,7 @@ final class BVSummarisedFeaturesQueryTest: XCTestCase {
 
     func testProductSummarisedFeatures() {
         let expectation = self.expectation(description: "testProductSummarisedFeatures")
-        let request = BVSummarisedFeaturesRequest(productId: "P000010", language: "en", embed: "quotes")
+        let request = BVSummarisedFeaturesRequest(productId: "P000036", language: "en", embed: "quotes")
         request.load({ response in
             guard let bestFeatures = response.result.bestFeatures, let feature = bestFeatures.first else {
                 XCTFail("No feature received")
@@ -50,7 +50,7 @@ final class BVSummarisedFeaturesQueryTest: XCTestCase {
     
     func testProductSummarisedFeaturesWithoutQuotes() {
         let expectation = self.expectation(description: "testProductSummarisedFeaturesWithoutQuotes")
-        let request = BVSummarisedFeaturesRequest(productId: "P000010", language: "en", embed: "")
+        let request = BVSummarisedFeaturesRequest(productId: "P000036", language: "en", embed: "")
         request.load({ response in
             guard let bestFeatures = response.result.bestFeatures, let feature = bestFeatures.first else {
                 XCTFail("No feature received")

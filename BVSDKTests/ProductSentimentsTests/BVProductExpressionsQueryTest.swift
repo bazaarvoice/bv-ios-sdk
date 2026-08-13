@@ -13,8 +13,8 @@ final class BVProductExpressionsQueryTest: XCTestCase {
     override func setUp() {
       super.setUp()
       let configDict = ["clientId": "bv-beauty",
-                        "apiKeyProductSentiments": BVTestUsers().loadValueForKey(key: .conversationsKeyBVBeauty)];
-      BVSDKManager.configure(withConfiguration: configDict, configType: .prod)
+                        "apiKeyProductSentiments": BVTestUsers().loadValueForKey(key: .conversationsKeyBVBeautyProductSentiments)];
+      BVSDKManager.configure(withConfiguration: configDict, configType: .staging)
         BVSDKManager.shared().setLogLevel(BVLogLevel.verbose)
         BVSDKManager.shared().urlSessionDelegate = nil;
     }
@@ -26,7 +26,7 @@ final class BVProductExpressionsQueryTest: XCTestCase {
 
     func testProductQuotes() {
         let expectation = self.expectation(description: "testProductQuotes")
-        let request = BVProductExpressionsRequest(productId: "P000010", feature: "removal", language: "en", limit: 10)
+        let request = BVProductExpressionsRequest(productId: "P000036", feature: "hydrating", language: "en", limit: 10)
         request.load({ response in
             XCTAssertNotNil(response.result.expressions)
             expectation.fulfill()
