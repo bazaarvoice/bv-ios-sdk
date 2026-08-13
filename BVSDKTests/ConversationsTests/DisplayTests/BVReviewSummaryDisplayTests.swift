@@ -26,7 +26,6 @@ final class BVReviewSummaryDisplayTests: XCTestCase {
         let expectation = self.expectation(description: "testReviewSummaryDisplay")
         let request = BVReviewSummaryRequest(productId: "P000036", language: "es", formatType: BVReviewSummaryFormatType.paragraph)
         request.load({ (response) in
-            print("language:\n" + response.summary!)
             XCTAssertNotNil(response.summary)
             XCTAssertNotNil(response.title)
             expectation.fulfill()
