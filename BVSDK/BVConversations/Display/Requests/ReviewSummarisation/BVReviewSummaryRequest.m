@@ -19,9 +19,9 @@
 
 @implementation BVReviewSummaryRequest
 
-- (instancetype)initWithProductId:(NSString *)productId
-                         language:(nonnull NSString *)language
-                       formatType:(BVReviewSummaryFormatType)formatType {
+- (nonnull instancetype)initWithProductId:(nonnull NSString *)productId
+                                 language:(nullable NSString *)language
+                               formatType:(BVReviewSummaryFormatType)formatType {
     if ((self = [super init])) {
         _productId = [BVCommaUtil escape:productId];
         _language = language;
@@ -30,6 +30,16 @@
   return self;
 }
 
+- (nonnull instancetype)initWithProductId:(nonnull NSString *)productId
+                                   locale:(nullable NSString *)locale
+                               formatType:(BVReviewSummaryFormatType)formatType {
+    if ((self = [super init])) {
+        _productId = [BVCommaUtil escape:productId];
+        _locale = locale;
+        _formatType = formatType;
+    }
+  return self;
+}
 
 - (NSString*)formatTypeToString:(BVReviewSummaryFormatType)formatType {
     NSString *result = nil;
@@ -52,8 +62,8 @@
     // validate request
     if ([self.productId isEqualToString:@""]) {
         [self sendError:[self validationError:@"productId"] failureCallback:failure];
-    } else if ([self.language isEqualToString:@""]) {
-        [self sendError:[self validationError:@"language"] failureCallback:failure];
+    } else if (self.language == nil && self.locale == nil) {
+        [self sendError:[self validationError:@"language or locale"] failureCallback:failure];
     } else {
         [self loadReviewSummary:self completion:success failure:failure];
     }
@@ -115,18 +125,25 @@ failure:(nonnull void (^)(NSArray<NSError *> *__nonnull errors))failure {
 
 
 - (nonnull NSMutableArray *)createParams {
-  NSMutableArray<BVStringKeyValuePair *> *params = [super createParams];
-  [params
-      addObject:[BVStringKeyValuePair pairWithKey:@"productId" value:self.productId]];
-  [params
-      addObject:[BVStringKeyValuePair pairWithKey:@"language" value:self.language]];
-  NSString *format = [self formatTypeToString:(self.formatType)];
-  [params
-      addObject:[BVStringKeyValuePair
-                    pairWithKey:@"formatType"
-                 value:format]];
-  return params;
+    NSMutableArray<BVStringKeyValuePair *> *params = [super createParams];
+    [params
+     addObject:[BVStringKeyValuePair pairWithKey:@"productId" value:self.productId]];
+    NSString *format = [self formatTypeToString:(self.formatType)];
+    if (self.language) {
+        [params
+         addObject:[BVStringKeyValuePair pairWithKey:@"language" value:self.language]];
+    }
+    if (self.locale) {
+        [params
+         addObject:[BVStringKeyValuePair pairWithKey:@"locale" value:self.locale]];
+    }
+    [params
+     addObject:[BVStringKeyValuePair
+                pairWithKey:@"formatType"
+                value:format]];
+    return params;
 }
-    @end
+
+@end
     
     

@@ -53,7 +53,7 @@ class ProductSentimentsViewModel: ProductSentimentsViewModelDelegate {
     private func fetchReviewSummary() {
         
         self.dispatchGroup.enter()
-        let request = BVReviewSummaryRequest(productId: self.productId, formatType: BVReviewSummaryFormatType.bullet) // or BVReviewSummaryFormatType.paragraph
+        let request = BVReviewSummaryRequest(productId: self.productId, language: "en", formatType: BVReviewSummaryFormatType.bullet) // or BVReviewSummaryFormatType.paragraph
           
           request.load({ (response) in
               self.reviewSummary = response

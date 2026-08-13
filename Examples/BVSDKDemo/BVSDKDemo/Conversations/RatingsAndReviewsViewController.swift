@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SwiftUI
 import BVSDK
 import FontAwesomeKit
 import XLActionController
@@ -145,9 +146,20 @@ class RatingsAndReviewsViewController: UIViewController, UITableViewDelegate, UI
     
     @objc func writeReviewTapped() {
         
-        let vc = WriteReviewViewController(nibName:"WriteReviewViewController", bundle: nil, product: product)
-        self.navigationController?.pushViewController(vc, animated: true)
+//        let vc = WriteReviewViewController(nibName:"WriteReviewViewController", bundle: nil, product: product)
+//        self.navigationController?.pushViewController(vc, animated: true)
         
+        let writeViewModel = WriteReviewViewModel()
+        writeViewModel.setup(product: product, productId: nil, reviewData: nil)
+        let writeReviewView = WriteReviewView(viewModel: writeViewModel, dismissAction: { [weak self] in
+            self?.navigationController?.popViewController(animated: true)
+        })
+        let hostedViewController = UIHostingController(rootView: writeReviewView)
+                
+        hostedViewController.navigationItem.title = "Write a Review"
+        self.navigationController?.pushViewController(hostedViewController, animated: true)
+
+
     }
     
     func loadReviews() {
